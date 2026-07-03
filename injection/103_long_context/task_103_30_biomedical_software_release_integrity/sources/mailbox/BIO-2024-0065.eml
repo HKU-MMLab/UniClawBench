@@ -1,0 +1,49 @@
+Message-ID: <20240407152804.q4b35mdwqynnsl2z@office.mailbox.org>
+X-Clawbench-ID: BIO-2024-0065
+Date: Sun, 7 Apr 2024 20:58:04 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: maude-bugs@cs.uiuc.edu
+Subject: Re: Maude fails to build on armhf
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_04_msg00013.html
+
+On Sun, Apr 07, 2024 at 07:45:33PM +0530, Nilesh Patra wrote:
+> Hi,
+>
+> Maude fails to build on armhf/arm32 arch with:
+>
+> In file included from timeManagerSymbol.cc:64:
+> timeActions.cc: In member function ‘void TimeManagerSymbol::getTimeSinceEpoch(FreeDagNode*, ObjectSystemRewritingContext&)’:
+> timeActions.cc:43:41: error: call of overloaded ‘__gmp_expr(__time64_t&)’ is ambiguous
+>    43 |   mpz_class nanoSeconds(timeValue.tv_sec);
+>       |                                         ^
+> In file included from ../../src/BuiltIn/succSymbol.hh:28,
+>                  from timeManagerSymbol.cc:53:
+> /usr/include/gmpxx.h:1646:3: note: candidate: ‘__gmp_expr::__gmp_expr(double)’
+>  1646 |   __GMPXX_DEFINE_ARITHMETIC_CONSTRUCTORS
+>       |   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> /usr/include/gmpxx.h:1646:3: note: candidate: ‘__gmp_expr::__gmp_expr(float)’
+>
+> Full long here: https://buildd.debian.org/status/fetch.php?pkg=maude&arch=armhf&ver=3.4-1&stamp=1712489526&raw=0
+> And Debian bug report here: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1067957
+>
+> Would be great if you have the cycles to look into it.
+
+This patch fixes the issue at hand but I am unsure if it is sensible to apply
+it.
+
+diff --git a/src/ObjectSystem/timeActions.cc b/src/ObjectSystem/timeActions.cc
+index 77395aa..63aa028 100644
+--- a/src/ObjectSystem/timeActions.cc
++++ b/src/ObjectSystem/timeActions.cc
+@@ -40,7 +40,7 @@ TimeManagerSymbol::getTimeSinceEpoch(FreeDagNode* message, ObjectSystemRewriting
+   DebugSave(r, clock_gettime(CLOCK_REALTIME, &timeValue));
+   Assert(r == 0, "clock_gettime() failed: " (timeValue.tv_sec));
+   nanoSeconds *= BILLION;
+   nanoSeconds += timeValue.tv_nsec;
+
+
+Best,
+Nilesh

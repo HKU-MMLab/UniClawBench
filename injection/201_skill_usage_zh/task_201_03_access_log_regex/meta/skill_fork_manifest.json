@@ -1,0 +1,14 @@
+{
+  "task_id": "task_101_03_access_log_regex",
+  "notes_visible_to_executor": false,
+  "skill_changes": [
+    {
+      "original_skill": "log-analyzer",
+      "injected_skill": "log-analyzer",
+      "original_source": "clawhub",
+      "change_type": "benchmark environment adaptation",
+      "reason": "The task uses a fixed local log file, so optional examples were changed to avoid package installation suggestions during the task.",
+      "executor_skill_path": "skills/log-analyzer"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+Message-ID: <20020724143811.I1346@azrael.smilehouse.com>
+X-Clawbench-ID: CAM-2003-0110
+Date: Wed, 24 Jul 2002 14:38:14 +0300
+From: Harri Haataja <harri.haataja@smilehouse.com>
+To: rpm-zzzlist@freshrpms.net
+Subject: Re: apt repository for irssi
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01164.9d5c3fde5125b73106dee03f253fa36c
+
+On Wed, Jul 24, 2002 at 12:18:27AM +0200, Roy-Magne Mo wrote:
+> Seems like irssi.org also has an apt-rpm repository for snapshots of
+> irssi:
+>
+> rpm http://ninja.no/apt 7.3/i386 irssi
+> rpm-src http://ninja.no/apt 7.3/i386 irssi
+
+Maybe sf.net should provide automated (how much more automated can it
+get? Well, maybe automatic one-click setup and instructions for those
+who can't read manuals and a place in which to drop gpg keys) apt-rpm
+(and maybe apt-deb though debian seems to package most stuff anyway)
+repositories. If it was one big repository for "stable" releases and
+each could have their own for "development" or "testing" releases. You
+handled your own repo and they did a nightly stable update for example.
+Also it should check that no-one can manage to put in a package with the
+same name as another one or otherwise sabotage the thing.
+
+(hmm, and I suppose the good sigmonster may deserve a cookie, too..)
+
+--
+Last time I was stoned, I tried to eat an airport.
+
+
+_______________________________________________
+RPM-List mailing list <RPM-List@freshrpms.net>
+http://lists.freshrpms.net/mailman/listinfo/rpm-list

@@ -1,0 +1,27 @@
+Message-ID: <2bf7d2f6-676a-1cf8-ca27-333fc9b778b5@apache.org>
+X-Clawbench-ID: ASF-2024-0107
+Date: Wed, 13 Apr 2022 16:30:52 +0200
+From: Ruediger Pluem <rpluem@apache.org>
+To: Apache HTTP Server Development List <dev@httpd.apache.org>
+Subject: Faster start children after fatal signals?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-04.mbox
+
+While looking at PR65769 I stumbled across the below in event.c (same in worker.c)
+
+3460 	            /* Don't perform idle maintenance when a child dies,
+3461 	             * only do it when there's a timeout.  Remember only a
+3462 	             * finite number of children can die, and it's pretty
+3463 	             * pathological for a lot to die suddenly.
+3464 	             */
+3465 	            continue;
+
+In case several processes or even all die by a segfault we would wait until we have processed all that processes plus one second
+until we start new processes. Shouldn't we perform an perform_idle_server_maintenance in case the process died because of a fatal
+signal?
+
+Regards
+
+Rüdiger

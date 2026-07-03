@@ -1,0 +1,53 @@
+Message-ID: <5df461dd-eb20-6217-e030-ea57a42685b0@apache.org>
+X-Clawbench-ID: ASF-2024-0185
+Date: Mon, 8 May 2023 17:00:22 -0500
+From: Daniel Gruno <humbedooh@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Switch read/write repository from Subversion to Git
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-05.mbox
+
+On 2023-05-08 16:18, Christopher Schultz wrote:
+> Graham,
+>
+> On 5/8/23 05:29, Graham Leggett via dev wrote:
+>> On 04 May 2023, at 09:34, Ruediger Pluem <rpluem@apache.org> wrote:
+>>
+>>> This is a formal vote on whether we should move our read/write
+>>> repository from Subversion to Git.
+>>> This means that our latest read/write repository will be no longer
+>>> available via svn.apache.org. It
+>>> will be available via Git at
+>>> https://gitbox.apache.org/repos/asf/httpd-site.git and
+>>> https://github.com/apache/httpd.git.
+>>> Github also offers the possibility to use a Subversion client:
+>>> https://docs.github.com/en/get-started/working-with-subversion-on-github/support-for-subversion-clients
+>>>
+>>>
+>>> [ ]: Move the read/write repository from Subversion to Git and
+>>> leverage the features of Github (for now Actions and PR).
+>>> [ ]: Move the read/write repository from Subversion to Git, but I
+>>> don't want to work with Github and I will only work with
+>>>      what gitbox.apache.org offers.
+>>> [X]: Leave everything as is.
+>>
+>> I would rather see proper SVN integration with Github. This is a vote
+>> of no confidence in our own projects.
+>
+> I don't see it as an anti-NIH vote or anything like that.
+>
+> git simply has a bunch of superior features, behaviors, etc. that
+> Subversion simply will never have, regardless of any commitment of their
+> development team. Sure, the svn team could replicate git, but since git
+> already exists, why not use it?
+>
+> -chris
+
+My 2 cents on this is it's not Git vs Subversion here - it's GitHub vs
+SubversionHub, and the latter doesn't exist. Given how the majority of
+users use GitHub, it really isn't about how Git in any way is
+better/worse than Subversion, it's 99% about the tools that GitHub offer.
+
+VHS vs BetaMax anyone? :)

@@ -1,0 +1,59 @@
+Message-ID: <YgY+H56qXTst9PNC@fusion>
+X-Clawbench-ID: BIO-2024-0698
+Date: Fri, 11 Feb 2022 11:44:47 +0100
+From: Étienne Mollier <emollier@emlwks999.eu>
+To: Steffen Möller <steffen_moeller@gmx.de>
+Subject: Re: RFS faber - build dependency for boost-python
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2022_02_msg00023.html
+
+Hi Steffen,
+
+Steffen Möller, on 2022-02-08:
+> https://salsa.debian.org/python-team/packages/faber
+>
+> I had asked the Debian boost folks already to comment on that package
+> but have not heard back. Faber is a build tool that the upstream boost
+> community has elevated as the next thing for their Python interface. But
+> it can also be used as a substitute for make.
+>
+> Anyway. Could someone please have a look that I have not borked to
+> smoothen the transition through NEW? Please feel free to upload.
+
+Please kindly check the buildability of the package using a
+clean chroot (automating this with pbuilder or sbuild, or
+anything doing similar job at your preference.  :)  I had to
+append python3-yaml  to the build dependencies to go
+through the build and test process.
+
+There were some Lintian issues afterwards, which you might want
+to address:
+
+W: faber: useless-whatis-entry usr/share/man/man1/faber.1.gz
+I: faber source: debian-watch-contains-dh_make-template  [debian/watch]
+I: faber: spelling-error-in-description platoform platform
+I: python3-faber: spelling-error-in-description platoform platform
+
+(With help2man, you can set the whatis entry with --name flag.)
+
+You will have to document as well the following files in
+d/copyright, as otherwise the package would probably get
+rejected from NEW:
+  - doc/_static/boost.css
+  - src/faber/termcolor.py
+  - src/faber_bench/images/stop.svg (looks CC0/public domain,
+    but I am unsure)
+Maybe I missed other files, so don't hesitate to do one more
+review on your end.
+
+I don't have access to the Debian Python team repository, so I
+haven't pushed nor uploaded anything.
+
+In hope this helps,
+--
+Étienne Mollier
+Fingerprint:  8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+Sent from /dev/pts/2, please excuse my verbosity.
+On air: Glass Hammer - Long And Long Ago

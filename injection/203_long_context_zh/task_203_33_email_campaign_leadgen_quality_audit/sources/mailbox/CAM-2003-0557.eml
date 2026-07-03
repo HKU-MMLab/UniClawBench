@@ -1,0 +1,22 @@
+Message-ID: <3DA12334.2010705@punkass.com>
+X-Clawbench-ID: CAM-2003-0557
+Date: Mon, 07 Oct 2002 08:01:24 +0200
+From: Roi Dayan <dejavo@punkass.com>
+To: rpm-zzzlist@freshrpms.net
+Subject: apt-get problem ?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01267.88686fe91228476214e39e736ef35838
+
+When I try to use apt-get upgrade
+it wants to install libusb while I got it
+(same version)
+and all collapse because of this.
+
+Roi
+
+
+_______________________________________________
+RPM-List mailing list <RPM-List@freshrpms.net>
+http://lists.freshrpms.net/mailman/listinfo/rpm-list

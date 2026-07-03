@@ -1,0 +1,48 @@
+Message-ID: <Zufia-H0zm5WsLT_@an3as.eu>
+X-Clawbench-ID: BIO-2024-0382
+Date: Mon, 16 Sep 2024 09:46:51 +0200
+From: Andreas Tille <tille@debian.org>
+To: Pierre Gruet <pgt@debian.org>
+Subject: Re: About removing libsis-jhdf5-java from unstable
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_09_msg00007.html
+
+Hi Pierre,
+
+Am Mon, Sep 16, 2024 at 07:24:04AM +0200 schrieb Pierre Gruet:
+> I would like to remove libsis-jhdf5-java from unstable. To be accurate, it
+> is rather a proposal by pini in the bug log
+> 	https://bugs.debian.org/1078968
+> which is about libsis-jhdf5-java blocking the upcoming auto-hdf5 transition.
+> pini and I looked at it and it seems difficult to see what changes would be
+> needed in libsis-jhdf5-java to make it build against hdf5 1.14.x .
+> Meanwhile, upstream does not seem to be active anymore, the orig repo is
+> unreachable...
+>
+> I have reworked the two rdeps of the package, fastqc and megan-ce, so that
+> they don't need sis-jhdf5.
+
+The only reason why sis-jhdf5 was packaged was fastqc (possibly later
+megan-ce was profitting from it).
+
+> This was done by removing some classes from the
+> build. This does not affect their rdeps. fastqc and megan-ce have reached
+> testing, so that libsis-jhdf5-java now has no rdep in unstable nor testing.
+>
+> If no voice is raised, I will proceed with the removal of libsis-jhdf5-java
+> from unstable within a week.
+
+Sounds perfectly fine as long as fastqc and megan-ce are fine and are
+passing their tests.
+
+> Cc-ing the current other uploaders so that no one misses it.
+
+Thanks for the ping and caring for Debian Med Java packages.
+
+Kind regards
+    Andreas.
+
+--
+https://fam-tille.de

@@ -1,0 +1,41 @@
+Message-ID: <637f34a9-d48e-4203-b364-5ea788faa38b@christopherschultz.net>
+X-Clawbench-ID: ASF-2024-1434
+Date: Fri, 8 Jul 2022 16:34:35 -0400
+From: Christopher Schultz <chris@christopherschultz.net>
+To: dev@httpd.apache.org
+Subject: Re: mod-proxy with sticky JSESSIONID and SiteMinder.
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-07.mbox
+
+Jon,
+
+On 7/8/22 13:52, jonmcalexander.wellsfargo.com via dev wrote:
+>> Another dumb question: I've been assuming we are talking about:
+>>
+>> client (e.g. browser) -> mod_proxy -> Tomcat -> application
+>
+> The application on Tomcat does the communicating to SiteMinder with
+> the credentials from the .fcc siteminder stuff.
+Then the problem is between the application and SiteMinder, and has
+nothing to do with either Tomcat or mod_proxy.
+
+>> This is because you said "this was working with mod_jk" and mod_jk
+>> doesn't do forward-proxying, only reverse-proxying.
+ >
+> Apparently something with the mod_proxy is working right as the login
+> page comes up. This is not hosted on the Apache HTTPD.
+Further corroborating evidence. Your mod_proxy->Tomcat setup is probably
+working as expected.
+
+Since it's likely Java-specific, feel free to move this conversation to
+users@tomcat, but mark it as [OT] since it's not a problem with Tomcat.
+I have a thought that you may have configured something in a way that
+could have affected your SiteMinder configuration, but I won't pollute
+the dev@http list with it.
+
+BTW next time, ask on users@httpd.apache.org. This is the dev list, to
+discuss development, not get user-help.
+
+-chris

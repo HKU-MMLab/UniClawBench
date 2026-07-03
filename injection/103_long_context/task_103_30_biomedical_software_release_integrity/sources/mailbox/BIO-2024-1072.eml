@@ -1,0 +1,100 @@
+Message-ID: <ZPDP37a1OVxTPH2A@an3as.eu>
+X-Clawbench-ID: BIO-2024-1072
+Date: Thu, 31 Aug 2023 19:37:35 +0200
+From: Andreas Tille <tille@debian.org>
+To: "Maarten L. Hekkelman" <maarten@hekkelman.com>
+Subject: Re: help wanted
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_08_msg00033.html
+
+Hi Maarten,
+
+Am Thu, Aug 31, 2023 at 05:48:14PM +0200 schrieb Maarten L. Hekkelman:
+> Op 31-08-2023 om 16:44 schreef Andreas Tille:
+> > Am Thu, Aug 31, 2023 at 04:16:25PM +0200 schrieb Maarten L. Hekkelman:
+> > > routine-update, that is a useful tool, too bad it nuked my rules file... ;-)
+> > Really?  Usually debian/rules changes are only with confirmation of
+> > the user.  Could you please describe in detail what happened.
+>
+> Using the page on SphinxDocumentation [1] as inspiration, I added the
+> following to my rules file:
+>
+> >
+> > override_dh_auto_build: export http_proxy=127.0.0.1:9
+> > override_dh_auto_build: export https_proxy=127.0.0.1:9
+> > override_dh_auto_build:
+> >         dh_auto_build
+>
+>
+> But after running routine-update, the last two lines were deleted. As a
+> result, nothing was compiled during the auto build step.
+
+I'm wondering how you got routine-update running at all.  I get
+
+
+bp:info: Tarballs 'libzeep_6.0.6.orig.tar.gz' not found at '../tarballs/'
+gbp:info: Creating /home/andreas/debian-maintain/salsa/med-team/build-area/libzeep_6.0.6.orig.tar.gz
+gbp:error: Cannot find pristine tar commit for archive 'libzeep_6.0.6.orig.tar.gz'
+
+
+The consequent use of routine-update would prevent those missings for
+your team mates. ;-)
+
+
+The only change routine-update did on my site is:
+
+
+$ git diff HEAD^
+diff --git a/debian/changelog b/debian/changelog
+index a3c9954..6f715d5 100644
+--- a/debian/changelog
++++ b/debian/changelog
+@@ -1,3 +1,9 @@
++libzeep (6.0.6-2) unstable; urgency=medium
++
++  * Standards-Version: 4.6.2 (routine-update)
++
++ -- Andreas Tille   Thu, 31 Aug 2023 19:31:44 +0200
++
+ libzeep (6.0.6-1) experimental; urgency=medium
+
+   * New upstream release.
+diff --git a/debian/control b/debian/control
+index 90e8909..058b3cd 100644
+--- a/debian/control
++++ b/debian/control
+@@ -14,7 +14,7 @@ Build-Depends: debhelper-compat (= 13),
+                           python3-exhale,
+                python3-sphinx-rtd-theme,
+                python3-myst-parser
+-Standards-Version: 4.6.0
++Standards-Version: 4.6.2
+ Vcs-Browser: https://salsa.debian.org/med-team/libzeep
+ Vcs-Git: https://salsa.debian.org/med-team/libzeep.git
+ Homepage: https://github.com/mhekkel/libzeep
+
+
+
+> > > Perhaps I should file a bug report somewhere.
+> > Yes, please do.
+>
+> Using reportbug I suppose? I will.
+
+Yes, as always.  This might probably help tracking down the issue which
+I can't reproduce on the current repository on Salsa.  I admit I'd be
+extremely astonished about the change you are describing since those
+lines are not touched at all.  The according commit would be interesting
+to see as well.
+
+Kind regards
+   Andreas.
+
+> [1] https://wiki.debian.org/SphinxDocumentation
+>
+>
+>
+
+--
+http://fam-tille.de

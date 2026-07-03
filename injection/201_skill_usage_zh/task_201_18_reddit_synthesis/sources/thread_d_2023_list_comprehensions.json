@@ -1,0 +1,38 @@
+{
+  "captured_at": "2023-04-02T19:55:11Z",
+  "permalink": "https://www.reddit.com/r/learnpython/comments/12c5xyz/",
+  "post": {
+    "title": "When does a list comprehension stop being readable and turn into a one-liner monster?",
+    "author": "junior_dev_alex",
+    "url": "https://www.reddit.com/r/learnpython/comments/12c5xyz/",
+    "permalink": "/r/learnpython/comments/12c5xyz/when_does_a_list_comprehension_stop_being/",
+    "selftext": "Code review feedback on my PR was 'rewrite this list comprehension as a for-loop, it's unreadable.' But I genuinely thought it was clearer than 8 lines of for-loop. Where do you draw the line — nesting depth, line length, number of conditions?",
+    "num_comments": 34,
+    "score": 95,
+    "subreddit": "learnpython",
+    "created_utc": 1680465311.0
+  },
+  "top_level_comments": [
+    {
+      "id": "jf2x9pq",
+      "author": "pep8_pete",
+      "score": 52,
+      "body": "Rough rule of thumb: one for-clause and at most one if-clause is a comprehension. Anything beyond that — nested comprehension, two filters, a ternary inside the expression — convert to a loop. Readability beats cleverness every time.",
+      "permalink": "/r/learnpython/comments/12c5xyz/_/jf2x9pq/"
+    },
+    {
+      "id": "jf2y0kv",
+      "author": "loop_lover",
+      "score": 23,
+      "body": "If it doesn't fit on one line at 88 columns it should be a for-loop. Black will tell you.",
+      "permalink": "/r/learnpython/comments/12c5xyz/_/jf2y0kv/"
+    },
+    {
+      "id": "jf2zddx",
+      "author": "review_grump",
+      "score": 11,
+      "body": "Generator expressions inside `sum`/`any`/`all` are fine even if they get a bit long. Standalone list comps with nested fors? Pain.",
+      "permalink": "/r/learnpython/comments/12c5xyz/_/jf2zddx/"
+    }
+  ]
+}

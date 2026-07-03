@@ -1,0 +1,26 @@
+{
+  "id": "pr_5375",
+  "repo": "pallets/flask",
+  "number": 5375,
+  "title": "Added some Changes in README.rst to pull",
+  "body": "Cosmetic enhancements to the README: bold and italic formatting, badges from shields.io, minor rewording. No impact on the Flask library itself.",
+  "author": "ghost",
+  "author_association": "NONE",
+  "prior_merged_prs": 0,
+  "first_contributed_at": "2024-01-01T00:00:00Z",
+  "additions": 24,
+  "deletions": 8,
+  "files_changed": 1,
+  "changed_files": [
+    "README.rst"
+  ],
+  "base_ref": "main",
+  "head_ref": "patch-1",
+  "created_at": "2024-01-01T11:42:00Z",
+  "merged_at": null,
+  "closed_at": "2024-01-01T16:08:11Z",
+  "state": "closed",
+  "merged": false,
+  "milestone": null,
+  "labels": []
+}

@@ -1,0 +1,41 @@
+task_id: task_102_06_nasa_images_api
+category: 102_exploration
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I want to grab the original high-resolution version of a famous NASA image
+  programmatically, plus its metadata — straight from NASA, not from a random
+  blog.
+
+  Start at NASA's image library site:
+
+      https://images.nasa.gov/
+
+  This site is backed by a public API. Please find that API and use it (not by
+  scraping the gallery web UI) to:
+
+  - search for the "Pillars of Creation" image,
+  - pick the most relevant result and report its NASA id and title,
+  - then resolve that item's asset manifest to find the actual original /
+    largest image file URL (the asset list is a second call, separate from the
+    search results),
+  - download that original image and confirm it really is an image (content
+    type + that the file is non-trivially large).
+
+  Save the metadata + the chosen original asset URL to
+  `/tmp_workspace/results/nasa_pillars.json`, save the downloaded image under
+  `/tmp_workspace/results/`, and save the exact request URLs you called plus
+  their raw JSON responses to `/tmp_workspace/results/nasa_evidence/`.
+
+references:
+  - references/eval_rule.md
+
+codex:
+  max_user_followups: 2

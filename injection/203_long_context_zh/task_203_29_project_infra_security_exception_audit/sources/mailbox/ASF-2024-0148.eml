@@ -1,0 +1,25 @@
+Message-ID: <CANso6eE2Z4Jbt9B5pD6kv5Db-m9nFUK_F4RNO1z_1jCs8=urWQ@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0148
+Date: Mon, 14 Mar 2022 13:56:57 +1000
+From: Edwardo Garcia <wdgarc88@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.53-rc2 as httpd-2.4.53
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-03.mbox
+
+This
+
+Release whenever you want, my 30 years in this game shows most networks,
+> including mine, are not going to touch it on a weekend anyway, so monday or
+> tuesday before it hits test beds - assuming there is a real need to upgrade
+> in the first place (high CVE etc), and later in the week before it hits
+> productions boxes -  and no errors (since has been made clear by some that
+> non PMC/comitters opinions aren't wanted, after over 10 years I no longer
+> test rc's on our OS's)
+>
+> so by all means release as often as you like when you like, admins will
+> likely ignore it anyway :)
+>
+>

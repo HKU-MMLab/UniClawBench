@@ -1,0 +1,32 @@
+Message-ID: <20020808223254.GV3169@bsd.havk.org>
+X-Clawbench-ID: CAM-2003-0421
+Date: Thu, 08 Aug 2002 17:32:54 -0500
+From: Steve Price <steve@havk.org>
+To: razor-users@example.sourceforge.net
+Subject: [Razor-users] false-positive found
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00607.c72e1448ce18361a82550ed78a579d47
+
+Razor v1 just called a post to the mutt-users mailing list SPAM
+with the following signature.
+
+        b230a8ed84eb262bed1f2c908703990d3483b55f
+
+BTW, is there are another way for us folks still using v1 to
+revoke false-positives such as this without posting to the list?
+
+Thanks.
+
+-steve
+
+
+-------------------------------------------------------
+This sf.net email is sponsored by:ThinkGeek
+Welcome to geek heaven.
+http://thinkgeek.com/sf
+_______________________________________________
+Razor-users mailing list
+Razor-users@lists.sourceforge.net
+https://lists.sourceforge.net/lists/listinfo/razor-users

@@ -1,0 +1,87 @@
+task_id: task_101_32_sysadmin_forensics
+category: 101_skill_usage
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  One of our staging boxes looks like it got popped and I need to figure
+  out what happened before we hand it to the incident team. Use the
+  sysadmin toolkit skill for the forensic narrative and the shell-analysis
+  skill for picking apart oddly-quoted bash, multi-line cron entries,
+  and log fragments.
+
+  I pulled together what I had under /tmp_workspace/clawbench/sources/:
+  shell history in history.txt, plus fragments of auth.log, syslog, and
+  cron.log.
+
+  Can you reconstruct what happened and write it up in
+  /tmp_workspace/results/forensics.md? Three sections:
+    1. A timeline table — timestamp, command or event, which log it
+       came from, and what you think the attacker was trying to do.
+       Reconstruct each distinct attack step with one row per
+       independent event: dedupe near-duplicate log lines (e.g. the
+       multiple per-minute cron beacon executions collapse into one
+       persistence event; repeated failed-password attempts from the
+       same source IP collapse into one noise event). Cover every
+       independent step from initial access through lateral movement,
+       privilege escalation, persistence mechanisms, and
+       cleanup/anti-forensics the attacker ran, plus the salient
+       background noise so the incident team can see what's benign.
+       Aim for one line per distinct event, not one line per source-
+       log line.
+    2. An attack narrative that reconstructs the full kill chain, broken
+       into phases. Tag each phase with the relevant MITRE ATT&CK
+       technique ID so the incident team can cross-reference.
+    3. A cleanup / hardening list with exactly 5 concrete actions we
+       should run on the box. Each action must reference a specific
+       confirmed IOC string from the iocs.json handoff — full path,
+       full crontab line, or full IP — so the responder knows exactly
+       what to remove or rotate.
+
+  Also save two structured handoff files for the infra ticket:
+    - /tmp_workspace/results/evidence.csv with columns event_id,
+      timestamp, phase, source_file, evidence_text, interpretation,
+      recommended_action. One row per distinct timeline event from
+      §1 (same dedupe — collapse near-duplicate log lines into a
+      single representative row), keep them in time order, and use
+      exact evidence text from the source logs. For the phase column,
+      normalize each row to one of: entry, lateral,
+      privilege_escalation, persistence, anti_forensics, or noise.
+    - /tmp_workspace/results/iocs.json with confirmed indicators grouped
+      into accounts, external_ips, internal_hosts, files_or_paths,
+      persistence, and stolen_credentials. For each indicator record
+      its complete observable form — full file paths, full crontab
+      lines with all five cron fields plus the command, full hostnames,
+      full URLs. Abbreviated forms reduce IOC value for the responder.
+      Include a separate likely_noise list for things that look
+      suspicious but are probably background noise or normal admin
+      activity.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - history.txt
+  - auth.log
+  - syslog
+  - cron.log
+
+skills:
+  - sysadmin-toolbox
+  - claw-shell
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

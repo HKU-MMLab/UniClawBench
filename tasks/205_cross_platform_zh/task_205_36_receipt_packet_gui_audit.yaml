@@ -1,0 +1,56 @@
+task_id: task_205_36_receipt_packet_gui_audit
+category: 205_cross_platform_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我在这里放了一小份供应商收据包：
+
+      /tmp_workspace/clawbench/sources/receipt_packet/
+
+  请用桌面文件管理器和一个真正的图片或 PDF 查看器来检查这些收据图片。
+  这份收据包是从共享盘复制过来的，所以要留意重复扫描或近似重复的文件，
+  它们不应被重复计算两次。
+
+  在以下位置创建一个 LibreOffice Calc 电子表格：
+
+      /tmp_workspace/results/receipt_packet_audit.ods
+
+  电子表格中每个源文件占一行，包含以下字段：源文件、采纳/排除、若有则
+  标注 duplicate-of、条目数、若可见则标注商家或简短收据标签、类别、总
+  金额，以及备注。另外包含一个汇总区，列出采纳的收据数、排除的重复数，
+  以及所有唯一收据的最终核准总额。
+
+  然后用 LibreOffice Writer 在以下位置写一份简短的审计备忘录：
+
+      /tmp_workspace/results/receipt_packet_memo.odt
+
+  同时导出或保存一份纯文本副本到：
+
+      /tmp_workspace/results/receipt_packet_memo.txt
+
+  在 `/tmp_workspace/results/gui_evidence/` 下保存截图，展示：源文件夹
+  或打开的收据图片、Calc 电子表格，以及 Writer 备忘录。请使用真正的 GUI
+  应用进行审查和最终截图；仅靠脚本生成的电子表格/备忘录是不够的。
+
+sources:
+  - receipt_packet/
+
+services:
+  - name: receipt-gui-setup
+    path: receipt-gui-setup
+    start: bash install.sh
+    oneshot: true
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+codex:
+  max_user_followups: 2

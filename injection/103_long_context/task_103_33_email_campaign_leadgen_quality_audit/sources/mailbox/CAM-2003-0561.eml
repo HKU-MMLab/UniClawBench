@@ -1,0 +1,31 @@
+Message-ID: <20020730114016.A21006@fiachra.ucd.ie>
+X-Clawbench-ID: CAM-2003-0561
+Date: Tue, 30 Jul 2002 11:40:16 +0100
+From: Gavin McCullagh <ilug_gmc@fiachra.ucd.ie>
+To: ilug@linux.ie
+Subject: Re: [ILUG] Mutt reply hooks
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00157.bc9f30a8cf071135d4f3145a15013f72
+
+Hi,
+
+On Tue, 30 Jul 2002, Gavin McCullagh wrote:
+
+> set alternates = "kbeditor@linuxcare.com|coolapps@linuxcare.com"
+> set reverse_name
+
+PS Make sure not to have a line like this:
+
+	send-hook .  'my_hdr From: Gavin McCullagh <gav......>"
+
+which will only override it and cause pain and suffering.
+
+Gavin
+
+
+--
+Irish Linux Users' Group: ilug@linux.ie
+http://www.linux.ie/mailman/listinfo/ilug for (un)subscription information.
+List maintainer: listmaster@linux.ie

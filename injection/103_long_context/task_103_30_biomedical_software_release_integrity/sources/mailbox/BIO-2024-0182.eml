@@ -1,0 +1,37 @@
+Message-ID: <ZLAeDyyxO673TEwM@an3as.eu>
+X-Clawbench-ID: BIO-2024-0182
+Date: Thu, 13 Jul 2023 17:53:51 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: [Help] undefined symbol: H5Oget_info  in  uncalled
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_07_msg00062.html
+
+Hi,
+
+I could need some help for uncalled, where build time test fails with
+
+ERROR: uncalled (unittest.loader._FailedTest.uncalled)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: uncalled
+Traceback (most recent call last):
+  File "/usr/lib/python3.11/unittest/loader.py", line 440, in _find_test_path
+    package = self._get_module_from_name(name)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/unittest/loader.py", line 350, in _get_module_from_name
+    __import__(name)
+  File "/builds/med-team/uncalled/debian/output/source_dir/.pybuild/cpython3_3.11_uncalled/build/uncalled/__init__.py", line 1, in
+    from _uncalled import *
+ImportError: /builds/med-team/uncalled/debian/output/source_dir/.pybuild/cpython3_3.11_uncalled/build/_uncalled.cpython-311-x86_64-linux-gnu.so: undefined symbol: H5Oget_info
+----------------------------------------------------------------------
+
+see
+   https://salsa.debian.org/med-team/uncalled/-/jobs/4428370
+
+Kind regards
+    Andreas.
+
+--
+http://fam-tille.de

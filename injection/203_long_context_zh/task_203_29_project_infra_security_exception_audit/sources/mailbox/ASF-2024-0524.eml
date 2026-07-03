@@ -1,0 +1,41 @@
+Message-ID: <A305E7DD-48AD-42C3-B091-7585BE1E3A96@eissing.org>
+X-Clawbench-ID: ASF-2024-0524
+Date: Sat, 30 Sep 2023 16:45:47 +0200
+From: "Stefan Eissing via dev" <dev@httpd.apache.org>
+To: dev@httpd.apache.org
+Subject: Re: Please support/enable https by default in the Apache web sever.
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-09.mbox
+
+Take for example Caddy, which is https: by default and gets you a valid Let's Encrypt certificate (unless you configure it to do something different). You enter your domain in the config file and it does the rest.
+
+Such a setup would be possible with Apache as well. It's a matter of the configuration files the installed package provides.
+
+But some people do not want this. Some people prefer to use certbot or acme.sh or another setup. There is a large variety how this can go and no single best solution for everyone.
+
+I have written several recipes for Apache ACME myself to help people with this. See <https://github.com/icing/mod_md>
+
+Cheers,
+Stefan
+
+
+> Am 30.09.2023 um 16:30 schrieb Emmanuel Dreyfus <manu@netbsd.org>:
+>
+> On Sat, Sep 30, 2023 at 07:40:34PM +0530, General Email wrote:
+>> By the way, I don't understand how the default certificate can be abused.
+>
+> It is not signed by a trusted CA, hence your browser cannot tell if it
+> is speaking to your legitimate web server, or to some malware lurking
+> in between. Perhaps your web trafic is not worth being evesdropped, but
+> consider a malware could inject an exploit against your browser in your
+> web trafic. The attacker could just be an infected machine on the same
+> LAN.
+>
+> The security level of an untrusted ceritificate is not much better than
+> plain text HTTP.
+>
+> --
+> Emmanuel Dreyfus
+> manu@netbsd.org

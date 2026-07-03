@@ -1,0 +1,81 @@
+Message-ID: <CAKQ1sVP9ruTg_+0uaDaf7YSPT2qFPWKHJL3v4hXUC5_TS4u2dg@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1360
+Date: Wed, 1 Mar 2023 12:51:58 +0100
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: Eric Covener <covener@gmail.com>, httpd-dev <dev@httpd.apache.org>
+Subject: Re: [apache/httpd] Event wip (PR #294)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-03.mbox
+
+Hi Eric,
+
+I'm back from vacation and see your message, though not on gh anymore
+so not sure if you figured out something..
+In any case I'm interested in discussing this (and see if I'm making
+good use of AsyncRequestWorkerFactor in this PR), plus it allows me to
+come back to this PR (and hopefully finalize the work soon).
+
+>
+> Hi @ylavic I have a question about some code that you removed here :)
+>
+> I am trying to grok current 2.4.x connections_above_limit(). Specifically, why it cares about both threadsperchild and the number of idlers at the same time. I am hoping you recall what was misguided about it and that will make the rest click for me.
+
+
+FWICT, AsyncRequestWorkerFactor started with r1137755 as a tunable
+overcommit for the per-child queuing capacity, that is (IIUC) to favor
+queuing connections over spawning new children (preferably when
+requests can be handled without or with limited blocking).
+Using it as a ThreadsPerChild factor for the maximum capacity makes
+sense to me, which is what this PR #294 does. But it requires to know
+the number of pending connections/events accurately (i.e. those
+waiting for an idle thread to handle them) to compare the capacity
+with.
+In trunk/2.4.x we don't have an easy way to know that (two
+distinct/internal queues track pending sockets and timers in the
+fdqueue implementation), so I think it's why connections_above_limit()
+uses this "num_relevant_conns < ThreadsPerChild + num_idle_threads *
+AsyncRequestWorkerFactor" test (with AsyncRequestWorkerFactor being a
+factor of idle *threads*, though since this is first conditioned to
+num_idle_threads > 0 we probably also always stop accepting
+connections whenever ThreadsPerChild is reached..).
+In this PR/WIP I changed the fdqueue to handle all the types of
+pending events (sockets, timers...) in a single/same queue, which
+allows to accurately know at any time how many idle threads or pending
+events there are, and since the queue has no hard/implementation size
+limit (array => ring) it allows mpm_event to both be fully
+non-blocking and to maintain the fdqueue size externally by "pausing"
+accept() precisely when there are too many pending events.
+That's how/why should_disable_listensocks() can be simply
+"ap_queue_info_count(worker_queue_info) < -(ThreadsPerChild *
+AsyncRequestWorkerFactor)" (where ap_queue_info_count() >= 0 gives the
+number of idle threads, or < 0 here for the number of
+connections/events to schedule, with AsyncRequestWorkerFactor >= 0).
+
+In my testing (at the time, didn't retest lately) the performances
+were pretty good with "MaxRequestWorkers auto", that is:
+        threads_per_child = num_online_cpus;
+        min_spare_threads = threads_per_child;
+        max_spare_threads = max_workers * 3 / 4;
+        ap_daemons_to_start = 1;
+        active_daemons_limit = max_workers / threads_per_child;
+        #define SCOREBOARD_LIMIT_FACTOR 4
+        server_limit = active_daemons_limit * SCOREBOARD_LIMIT_FACTOR;
+        thread_limit = threads_per_child * SCOREBOARD_LIMIT_FACTOR;
+
+I can't remember the numbers but, if I didn't mess up with my testing,
+it worked quite significantly better than trunk/2.4.x with much less
+threads/children running. I still have some ongoing local
+changes/cleanups and async work in mod_ssl, but the MPM changes look
+almost ready to me (some commits need splitting still..).
+By the way, since these are quite significant changes in mpm_event, I
+wonder(ed) if it'd better go to a new mpm_again (or something :)
+rather than in mpm_event itself ("backporting" there what's
+helpful/safe still if needed).
+
+Hope this helps clarify how I see AsyncRequestWorkerFactor and the
+state of this PR..
+
+Regards;
+Yann.

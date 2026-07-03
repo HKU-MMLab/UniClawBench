@@ -1,0 +1,41 @@
+Message-ID: <f22fd17d-6f9e-8431-da2c-6d24169bf323@gmail.com>
+X-Clawbench-ID: ASF-2024-0364
+Date: Wed, 20 Jul 2022 17:39:19 +0200
+From: jean-frederic clere <jfclere@gmail.com>
+To: dev@httpd.apache.org, Yann Ylavic <ylavic.dev@gmail.com>
+Subject: Re: problems with proxy worker and name_ex
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-07.mbox
+
+On 20/07/2022 11:09, Yann Ylavic wrote:
+> On Wed, Jul 20, 2022 at 10:43 AM jean-frederic clere <jfclere@gmail.com> wrote:
+>>
+>> Hi,
+>>
+>> I think we have something wrong:
+>> https://github.com/apache/httpd/blob/trunk/include/ap_mmn.h#L719
+>> and
+>> https://github.com/apache/httpd/blob/2.4.x/include/ap_mmn.h#L601
+>>
+>> How external modules can detect that 2.4.x has diverged from trunk?
+>
+> For 2.5.x/trunk (where PROXY_WORKER_MAX_NAME_SIZE bumped to 384):
+> #if AP_MODULE_MAGIC_AT_LEAST(20211221, 0)
+>
+> For 2.4.x (where name_ex[PROXY_WORKER_EXT_NAME_SIZE] was added):
+> #if MODULE_MAGIC_NUMBER_MAJOR == 20120211 && MODULE_MAGIC_NUMBER_MINOR >= 124
+>
+> ?
+Oops too tired today... Sorry for the noises... Thanks ;-)
+
+>
+> Regards;
+> Yann.
+
+
+--
+Cheers
+
+Jean-Frederic

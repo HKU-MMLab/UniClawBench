@@ -1,0 +1,649 @@
+{
+  "generated_at": "2026-04-19T00:00:00Z",
+  "table": "Deals",
+  "items": [
+    {
+      "deal_id": "D0001",
+      "stage": "Negotiation",
+      "days_in_stage": 42,
+      "value_usd": 80000.0,
+      "account_name": "Acme Logistics",
+      "owner": "Alice P.",
+      "contact": "Jordan Singh",
+      "last_contact_date": "2026-03-08"
+    },
+    {
+      "deal_id": "D0002",
+      "stage": "Negotiation",
+      "days_in_stage": 35,
+      "value_usd": 29165.76,
+      "account_name": "Globex Media",
+      "owner": "Bob K.",
+      "contact": "Taylor Chen",
+      "last_contact_date": "2026-03-15"
+    },
+    {
+      "deal_id": "D0003",
+      "stage": "Negotiation",
+      "days_in_stage": 18,
+      "value_usd": 11781.15,
+      "account_name": "Initech Retail",
+      "owner": "Carol M.",
+      "contact": "Morgan Nguyen",
+      "last_contact_date": "2026-04-01"
+    },
+    {
+      "deal_id": "D0004",
+      "stage": "Won",
+      "days_in_stage": 46,
+      "value_usd": 64011.05,
+      "account_name": "Hooli Fintech",
+      "owner": "Dave R.",
+      "contact": "Riley Patel",
+      "last_contact_date": "2026-03-04"
+    },
+    {
+      "deal_id": "D0005",
+      "stage": "Proposal",
+      "days_in_stage": 50,
+      "value_usd": 75000.0,
+      "account_name": "Umbrella Health",
+      "owner": "Erin Y.",
+      "contact": "Casey Garcia",
+      "last_contact_date": "2026-02-28"
+    },
+    {
+      "deal_id": "D0006",
+      "stage": "Won",
+      "days_in_stage": 49,
+      "value_usd": 40982.69,
+      "account_name": "Dunder Paper",
+      "owner": "Frank L.",
+      "contact": "Avery Kim",
+      "last_contact_date": "2026-03-01"
+    },
+    {
+      "deal_id": "D0007",
+      "stage": "Qualified",
+      "days_in_stage": 32,
+      "value_usd": 41042.96,
+      "account_name": "Stark Industries",
+      "owner": "Grace T.",
+      "contact": "Drew O'Brien",
+      "last_contact_date": "2026-03-18"
+    },
+    {
+      "deal_id": "D0008",
+      "stage": "Negotiation",
+      "days_in_stage": 14,
+      "value_usd": 6773.62,
+      "account_name": "Wayne Capital",
+      "owner": "Alice P.",
+      "contact": "Sam Rossi",
+      "last_contact_date": "2026-04-05"
+    },
+    {
+      "deal_id": "D0009",
+      "stage": "Lost",
+      "days_in_stage": 48,
+      "value_usd": 18812.54,
+      "account_name": "Monsters Coffee",
+      "owner": "Bob K.",
+      "contact": "Jordan Singh",
+      "last_contact_date": "2026-03-02"
+    },
+    {
+      "deal_id": "D0010",
+      "stage": "Qualified",
+      "days_in_stage": 17,
+      "value_usd": 46404.77,
+      "account_name": "Pied Piper Labs",
+      "owner": "Carol M.",
+      "contact": "Taylor Chen",
+      "last_contact_date": "2026-04-02"
+    },
+    {
+      "deal_id": "D0011",
+      "stage": "Proposal",
+      "days_in_stage": 45,
+      "value_usd": 92000.0,
+      "account_name": "Massive Dynamic",
+      "owner": "Dave R.",
+      "contact": "Morgan Nguyen",
+      "last_contact_date": "2026-03-05"
+    },
+    {
+      "deal_id": "D0012",
+      "stage": "Lead",
+      "days_in_stage": 11,
+      "value_usd": 14404.3,
+      "account_name": "Soylent Foods",
+      "owner": "Erin Y.",
+      "contact": "Riley Patel",
+      "last_contact_date": "2026-04-08"
+    },
+    {
+      "deal_id": "D0013",
+      "stage": "Lead",
+      "days_in_stage": 37,
+      "value_usd": 38130.21,
+      "account_name": "Vandelay Imports",
+      "owner": "Frank L.",
+      "contact": "Casey Garcia",
+      "last_contact_date": "2026-03-13"
+    },
+    {
+      "deal_id": "D0014",
+      "stage": "Lost",
+      "days_in_stage": 31,
+      "value_usd": 75018.59,
+      "account_name": "Gekko Partners",
+      "owner": "Grace T.",
+      "contact": "Avery Kim",
+      "last_contact_date": "2026-03-19"
+    },
+    {
+      "deal_id": "D0015",
+      "stage": "Won",
+      "days_in_stage": 30,
+      "value_usd": 55822.32,
+      "account_name": "Cyberdyne Robotics",
+      "owner": "Alice P.",
+      "contact": "Drew O'Brien",
+      "last_contact_date": "2026-03-20"
+    },
+    {
+      "deal_id": "D0016",
+      "stage": "Lost",
+      "days_in_stage": 40,
+      "value_usd": 32826.04,
+      "account_name": "Tyrell Systems",
+      "owner": "Bob K.",
+      "contact": "Sam Rossi",
+      "last_contact_date": "2026-03-10"
+    },
+    {
+      "deal_id": "D0017",
+      "stage": "Qualified",
+      "days_in_stage": 25,
+      "value_usd": 6085.05,
+      "account_name": "Nakatomi Plaza",
+      "owner": "Carol M.",
+      "contact": "Jordan Singh",
+      "last_contact_date": "2026-03-25"
+    },
+    {
+      "deal_id": "D0018",
+      "stage": "Qualified",
+      "days_in_stage": 29,
+      "value_usd": 29205.95,
+      "account_name": "Oscorp Biotech",
+      "owner": "Dave R.",
+      "contact": "Taylor Chen",
+      "last_contact_date": "2026-03-21"
+    },
+    {
+      "deal_id": "D0019",
+      "stage": "Lead",
+      "days_in_stage": 24,
+      "value_usd": 23472.17,
+      "account_name": "Wonka Confections",
+      "owner": "Erin Y.",
+      "contact": "Morgan Nguyen",
+      "last_contact_date": "2026-03-26"
+    },
+    {
+      "deal_id": "D0020",
+      "stage": "Negotiation",
+      "days_in_stage": 2,
+      "value_usd": 62083.15,
+      "account_name": "Spacely Sprockets",
+      "owner": "Frank L.",
+      "contact": "Riley Patel",
+      "last_contact_date": "2026-04-17"
+    },
+    {
+      "deal_id": "D0021",
+      "stage": "Negotiation",
+      "days_in_stage": 31,
+      "value_usd": 43890.6,
+      "account_name": "Prestige Worldwide",
+      "owner": "Grace T.",
+      "contact": "Casey Garcia",
+      "last_contact_date": "2026-03-19"
+    },
+    {
+      "deal_id": "D0022",
+      "stage": "Negotiation",
+      "days_in_stage": 1,
+      "value_usd": 76947.0,
+      "account_name": "Los Pollos Grp",
+      "owner": "Alice P.",
+      "contact": "Avery Kim",
+      "last_contact_date": "2026-04-18"
+    },
+    {
+      "deal_id": "D0023",
+      "stage": "Qualified",
+      "days_in_stage": 55,
+      "value_usd": 78000.0,
+      "account_name": "Parr Technologies",
+      "owner": "Bob K.",
+      "contact": "Drew O'Brien",
+      "last_contact_date": "2026-02-23"
+    },
+    {
+      "deal_id": "D0024",
+      "stage": "Won",
+      "days_in_stage": 17,
+      "value_usd": 48461.1,
+      "account_name": "Hammer Industrial",
+      "owner": "Carol M.",
+      "contact": "Sam Rossi",
+      "last_contact_date": "2026-04-02"
+    },
+    {
+      "deal_id": "D0025",
+      "stage": "Negotiation",
+      "days_in_stage": 22,
+      "value_usd": 58983.17,
+      "account_name": "Vought Media",
+      "owner": "Dave R.",
+      "contact": "Jordan Singh",
+      "last_contact_date": "2026-03-28"
+    },
+    {
+      "deal_id": "D0026",
+      "stage": "Negotiation",
+      "days_in_stage": 55,
+      "value_usd": 88000.0,
+      "account_name": "Sirius Cybernetics",
+      "owner": "Erin Y.",
+      "contact": "Taylor Chen",
+      "last_contact_date": "2026-02-23"
+    },
+    {
+      "deal_id": "D0027",
+      "stage": "Qualified",
+      "days_in_stage": 65,
+      "value_usd": 85000.0,
+      "account_name": "Cogswell Cogs",
+      "owner": "Frank L.",
+      "contact": "Morgan Nguyen",
+      "last_contact_date": "2026-02-13"
+    },
+    {
+      "deal_id": "D0028",
+      "stage": "Proposal",
+      "days_in_stage": 70,
+      "value_usd": 95000.0,
+      "account_name": "Zorg Industries",
+      "owner": "Grace T.",
+      "contact": "Riley Patel",
+      "last_contact_date": "2026-02-08"
+    },
+    {
+      "deal_id": "D0029",
+      "stage": "Won",
+      "days_in_stage": 10,
+      "value_usd": 74771.78,
+      "account_name": "Rekall Travel",
+      "owner": "Alice P.",
+      "contact": "Casey Garcia",
+      "last_contact_date": "2026-04-09"
+    },
+    {
+      "deal_id": "D0030",
+      "stage": "Won",
+      "days_in_stage": 51,
+      "value_usd": 43096.67,
+      "account_name": "Tessier-Ashpool",
+      "owner": "Bob K.",
+      "contact": "Avery Kim",
+      "last_contact_date": "2026-02-27"
+    },
+    {
+      "deal_id": "D0031",
+      "stage": "Negotiation",
+      "days_in_stage": 22,
+      "value_usd": 38000.0,
+      "account_name": "Borealis Foods",
+      "owner": "Alice P.",
+      "contact": "Sam Wei",
+      "last_contact_date": "2026-03-28"
+    },
+    {
+      "deal_id": "D0032",
+      "stage": "Proposal",
+      "days_in_stage": 21,
+      "value_usd": 27500.0,
+      "account_name": "Hadley Logistics",
+      "owner": "Bob H.",
+      "contact": "Riya Mehta",
+      "last_contact_date": "2026-03-29"
+    },
+    {
+      "deal_id": "D0033",
+      "stage": "Qualified",
+      "days_in_stage": 25,
+      "value_usd": 41200.0,
+      "account_name": "Quanta Materials",
+      "owner": "Diana K.",
+      "contact": "Iris Wong",
+      "last_contact_date": "2026-03-25"
+    },
+    {
+      "deal_id": "D0034",
+      "stage": "Negotiation",
+      "days_in_stage": 27,
+      "value_usd": 24500.0,
+      "account_name": "Helix Bio",
+      "owner": "Alice P.",
+      "contact": "Priya Banerjee",
+      "last_contact_date": "2026-03-23"
+    },
+    {
+      "deal_id": "D0035",
+      "stage": "Qualified",
+      "days_in_stage": 30,
+      "value_usd": 33150.5,
+      "account_name": "Lumon Industries",
+      "owner": "Bob K.",
+      "contact": "Marco Costa",
+      "last_contact_date": "2026-03-20"
+    },
+    {
+      "deal_id": "D0036",
+      "stage": "Lead",
+      "days_in_stage": 8,
+      "value_usd": 7250.0,
+      "account_name": "Nimbus Cloud",
+      "owner": "Carol M.",
+      "contact": "Hana Sato",
+      "last_contact_date": "2026-04-11"
+    },
+    {
+      "deal_id": "D0037",
+      "stage": "Proposal",
+      "days_in_stage": 26,
+      "value_usd": 39880.1,
+      "account_name": "Aperture Science",
+      "owner": "Dave R.",
+      "contact": "Lena Volkov",
+      "last_contact_date": "2026-03-24"
+    },
+    {
+      "deal_id": "D0038",
+      "stage": "Won",
+      "days_in_stage": 12,
+      "value_usd": 28910.0,
+      "account_name": "Veidt Enterprises",
+      "owner": "Erin Y.",
+      "contact": "Theo Park",
+      "last_contact_date": "2026-04-07"
+    },
+    {
+      "deal_id": "D0039",
+      "stage": "Negotiation",
+      "days_in_stage": 28,
+      "value_usd": 47210.4,
+      "account_name": "Octan Energy",
+      "owner": "Frank L.",
+      "contact": "Mira Solberg",
+      "last_contact_date": "2026-03-22"
+    },
+    {
+      "deal_id": "D0040",
+      "stage": "Lost",
+      "days_in_stage": 38,
+      "value_usd": 22444.2,
+      "account_name": "Wernham Hogg",
+      "owner": "Grace T.",
+      "contact": "Naoki Endo",
+      "last_contact_date": "2026-03-12"
+    },
+    {
+      "deal_id": "D0041",
+      "stage": "Lead",
+      "days_in_stage": 19,
+      "value_usd": 15300.0,
+      "account_name": "Bluth Bananas",
+      "owner": "Alice P.",
+      "contact": "Sasha Ivanov",
+      "last_contact_date": "2026-03-31"
+    },
+    {
+      "deal_id": "D0042",
+      "stage": "Qualified",
+      "days_in_stage": 13,
+      "value_usd": 21785.0,
+      "account_name": "Sterling Cooper",
+      "owner": "Bob K.",
+      "contact": "Yara Faruk",
+      "last_contact_date": "2026-04-06"
+    },
+    {
+      "deal_id": "D0043",
+      "stage": "Negotiation",
+      "days_in_stage": 35,
+      "value_usd": 51220.0,
+      "account_name": "Genco Pura Olive",
+      "owner": "Carol M.",
+      "contact": "Devon Hart",
+      "last_contact_date": "2026-03-15"
+    },
+    {
+      "deal_id": "D0044",
+      "stage": "Proposal",
+      "days_in_stage": 6,
+      "value_usd": 18620.0,
+      "account_name": "Yoyodyne Propulsion",
+      "owner": "Dave R.",
+      "contact": "Eli Romano",
+      "last_contact_date": "2026-04-13"
+    },
+    {
+      "deal_id": "D0045",
+      "stage": "Won",
+      "days_in_stage": 42,
+      "value_usd": 36888.5,
+      "account_name": "Cyberdyne Defense",
+      "owner": "Erin Y.",
+      "contact": "Anya Werner",
+      "last_contact_date": "2026-03-08"
+    },
+    {
+      "deal_id": "D0046",
+      "stage": "Qualified",
+      "days_in_stage": 24,
+      "value_usd": 27440.0,
+      "account_name": "Pawnee Public",
+      "owner": "Frank L.",
+      "contact": "Ravi Gupta",
+      "last_contact_date": "2026-03-26"
+    },
+    {
+      "deal_id": "D0047",
+      "stage": "Negotiation",
+      "days_in_stage": 4,
+      "value_usd": 33500.0,
+      "account_name": "Vehement Capital",
+      "owner": "Grace T.",
+      "contact": "Mei Lin",
+      "last_contact_date": "2026-04-15"
+    },
+    {
+      "deal_id": "D0048",
+      "stage": "Lead",
+      "days_in_stage": 33,
+      "value_usd": 19960.0,
+      "account_name": "Pinwheel Toys",
+      "owner": "Diana K.",
+      "contact": "Owen Brady",
+      "last_contact_date": "2026-03-17"
+    },
+    {
+      "deal_id": "D0049",
+      "stage": "Proposal",
+      "days_in_stage": 23,
+      "value_usd": 44100.0,
+      "account_name": "Macrosoft Cloud",
+      "owner": "Bob H.",
+      "contact": "Lina Khalil",
+      "last_contact_date": "2026-03-27"
+    },
+    {
+      "deal_id": "D0050",
+      "stage": "Lost",
+      "days_in_stage": 55,
+      "value_usd": 27345.0,
+      "account_name": "Bluestar Airlines",
+      "owner": "Alice P.",
+      "contact": "Ines Ortega",
+      "last_contact_date": "2026-02-23"
+    },
+    {
+      "deal_id": "D0051",
+      "stage": "Negotiation",
+      "days_in_stage": 9,
+      "value_usd": 19620.0,
+      "account_name": "Buy n Large",
+      "owner": "Bob K.",
+      "contact": "Tariq Hassan",
+      "last_contact_date": "2026-04-10"
+    },
+    {
+      "deal_id": "D0052",
+      "stage": "Qualified",
+      "days_in_stage": 38,
+      "value_usd": 40220.3,
+      "account_name": "InGen Biological",
+      "owner": "Carol M.",
+      "contact": "Pia Schwarz",
+      "last_contact_date": "2026-03-12"
+    },
+    {
+      "deal_id": "D0053",
+      "stage": "Won",
+      "days_in_stage": 5,
+      "value_usd": 31100.0,
+      "account_name": "Hephaestus Forge",
+      "owner": "Dave R.",
+      "contact": "Felix Andersen",
+      "last_contact_date": "2026-04-14"
+    },
+    {
+      "deal_id": "D0054",
+      "stage": "Proposal",
+      "days_in_stage": 33,
+      "value_usd": 36750.0,
+      "account_name": "Wormwood & Sons",
+      "owner": "Erin Y.",
+      "contact": "Sora Hayashi",
+      "last_contact_date": "2026-03-17"
+    },
+    {
+      "deal_id": "D0055",
+      "stage": "Lead",
+      "days_in_stage": 16,
+      "value_usd": 12880.0,
+      "account_name": "Plumbus Plastics",
+      "owner": "Frank L.",
+      "contact": "Aiyana Chen",
+      "last_contact_date": "2026-04-03"
+    },
+    {
+      "deal_id": "D0056",
+      "stage": "Negotiation",
+      "days_in_stage": 26,
+      "value_usd": 53420.0,
+      "account_name": "Krusty Krab Foods",
+      "owner": "Grace T.",
+      "contact": "Nikolai Petrov",
+      "last_contact_date": "2026-03-24"
+    },
+    {
+      "deal_id": "D0057",
+      "stage": "Lost",
+      "days_in_stage": 23,
+      "value_usd": 16200.0,
+      "account_name": "Krusty Studios",
+      "owner": "Diana K.",
+      "contact": "Beatriz Lima",
+      "last_contact_date": "2026-03-27"
+    },
+    {
+      "deal_id": "D0058",
+      "stage": "Qualified",
+      "days_in_stage": 7,
+      "value_usd": 18460.0,
+      "account_name": "Reynholm Industries",
+      "owner": "Bob H.",
+      "contact": "Liam O'Connor",
+      "last_contact_date": "2026-04-12"
+    },
+    {
+      "deal_id": "D0059",
+      "stage": "Won",
+      "days_in_stage": 25,
+      "value_usd": 47215.0,
+      "account_name": "Mom Friendly Robot",
+      "owner": "Alice P.",
+      "contact": "Greta Halvorsen",
+      "last_contact_date": "2026-03-25"
+    },
+    {
+      "deal_id": "D0060",
+      "stage": "Proposal",
+      "days_in_stage": 32,
+      "value_usd": 41110.0,
+      "account_name": "Globo Gym Fitness",
+      "owner": "Bob K.",
+      "contact": "Hans Ziegler",
+      "last_contact_date": "2026-03-18"
+    },
+    {
+      "deal_id": "D0061",
+      "stage": "Negotiation",
+      "days_in_stage": 20,
+      "value_usd": 22980.0,
+      "account_name": "Caldwell Brothers",
+      "owner": "Carol M.",
+      "contact": "Selma Diaz",
+      "last_contact_date": "2026-03-30"
+    },
+    {
+      "deal_id": "D0062",
+      "stage": "Lead",
+      "days_in_stage": 12,
+      "value_usd": 9425.0,
+      "account_name": "Rylatech Robotics",
+      "owner": "Dave R.",
+      "contact": "Quinn Morales",
+      "last_contact_date": "2026-04-07"
+    },
+    {
+      "deal_id": "D0063",
+      "stage": "Qualified",
+      "days_in_stage": 36,
+      "value_usd": 30420.0,
+      "account_name": "Tessen Galleries",
+      "owner": "Erin Y.",
+      "contact": "Jamal Idris",
+      "last_contact_date": "2026-03-14"
+    },
+    {
+      "deal_id": "D0064",
+      "stage": "Lost",
+      "days_in_stage": 60,
+      "value_usd": 21500.0,
+      "account_name": "Black Mesa Research",
+      "owner": "Frank L.",
+      "contact": "Camille Royer",
+      "last_contact_date": "2026-02-18"
+    }
+  ],
+  "active_pipeline_value_usd": 1857271.16,
+  "terminal_value_usd": 685405.48,
+  "total_pipeline_usd": 2542676.64
+}

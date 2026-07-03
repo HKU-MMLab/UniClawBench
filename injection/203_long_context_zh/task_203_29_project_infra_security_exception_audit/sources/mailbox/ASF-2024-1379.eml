@@ -1,0 +1,108 @@
+Message-ID: <SHXPR01MB0720CEA1431B9C892E0A285683EF9@SHXPR01MB0720.CHNPR01.prod.partner.outlook.cn>
+X-Clawbench-ID: ASF-2024-1379
+Date: Thu, 14 Apr 2022 11:25:37 +0000
+From: =?gb2312?B?wfXDzw==?= <liumeng@telemap.com.cn>
+To: "dev@httpd.apache.org" <dev@httpd.apache.org>
+Subject: =?gb2312?B?tPC4tDogW2FwYWNoZV1tYXhjb25uZWN0aW9uc3BlcmNoaWxkIHByb2JsZW0=?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-04.mbox
+
+I am sorry that  is there anybody can answer my question?
+
+Hello, Mr Mentor
+
+I tried to translat it to English, please forgive my poor English
+
+Recently, when using the forwarding function of Apache, the
+The [maxconnectionsperchild] parameter in the MPM is ambiguous within the company.
+
+During the peak hours of the company's internal servers, the number of sub processes(hpptd) of
+each server is about 1000,[Maxconnectionsperchild] is currently set to 0. In order to be able to
+resolve the  access target regularlyIn DNS, we plan to adjust the value of [maxconnectionsperchild]
+to make each child process in half a day that It can be restarted once.
+
+My question is After setting this parameter, if it is possible that 1000 processes are arrive at the same time
+resulting in service interruption?
+
+Current server setting of [maxsparechlid = 20] and  [minspareechlid = 10]
+If [maxconnectionsperchild] is set, should the settings of these two values be adjusted synchronously
+(the purpose is not to restart all child processes at the same time during peak service)
+
+If there is insufficient information, please let me konw.
+There is my phone below, you can communicate by phone.
+But I’m sorry that I just can speak Chinese or Japanese
+
+Best regares
+Have a nice work
+
+-------------------------------------------------------------------------------------------
+Liu Meng
+Project Development Dept.
+Tel : 010 82306399-7526 /Phone : 18500386112
+
+NavInfo Co., Ltd.  Southeast Crossing of BeiQing Rd. and YongFeng Rd., HaiDian District, Beijing  NavInfo Building Block A-8F
+Address : 8Floor,A Block,NavInfo Building, Southeast Crossing of BeiQing Rd. and YongFeng Rd., HaiDian District, Beijing（100094）
+-------------------------------------------------------------------------------------------
+
+From: Liu Meng <liumeng@telemap.com.cn<mailto:liumeng@telemap.com.cn>>
+Sent: April 12, 2022 17:20
+To: dev@httpd.apache.org<mailto:dev@httpd.apache.org>
+Subject: [apache]maxconnectionsperchild problem
+
+
+Dear Engineer,
+
+
+Please allow me to ask my question in Chinese.
+
+
+Recently, when using Apache's forwarding feature, there has been internal disagreement about the
+
+MaxConnectionsPerChild parameter in prefork mode.
+
+
+During peak hours, each server has around 1000 child processes.
+
+MaxConnectionsPerChild is currently set to 0. In order to periodically resolve the DNS of the access target,
+
+we plan to adjust MaxConnectionsPerChild so that each child process
+
+restarts approximately once every half day.
+
+
+My question is: after setting this parameter, is it possible that all 1000 processes reach the configured
+
+connection count at the same time and terminate simultaneously, causing a service interruption?
+
+
+Current server settings: maxsparechild = 20, minsparchild = 10.
+
+If MaxConnectionsPerChild is set, should these two values also be adjusted synchronously
+
+(to prevent all child processes from restarting at the same time during peak hours)?
+
+
+If there is insufficient information, please let me know.
+
+My phone number is below; you are welcome to call.
+
+I can communicate in Chinese or Japanese.
+
+I am also able to respond in Japanese.
+
+
+Sorry to bother you during your busy schedule.
+
+Best wishes for your work.
+
+
+-------------------------------------------------------------------------------------------
+Liu Meng
+Project Development Dept.
+Tel : 010 82306399-7526 /Phone : 18500386112
+
+NavInfo Co., Ltd.  Southeast Crossing of BeiQing Rd. and YongFeng Rd., HaiDian District, Beijing  NavInfo Building Block A-8F
+Address : 8Floor,A Block,NavInfo Building, Southeast Crossing of BeiQing Rd. and YongFeng Rd., HaiDian District, Beijing（100094）
+-------------------------------------------------------------------------------------------

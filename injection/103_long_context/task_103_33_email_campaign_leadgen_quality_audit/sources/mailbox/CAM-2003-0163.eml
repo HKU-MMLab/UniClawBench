@@ -1,0 +1,51 @@
+Message-ID: <20020808140745.A19598@ie.suberic.net>
+X-Clawbench-ID: CAM-2003-0163
+Date: Thu, 08 Aug 2002 14:07:45 +0100
+From: kevin lyda <kevin+dated+1029244066.f56e49@ie.suberic.net>
+To: ilug@linux.ie
+Subject: Re: [ILUG] slashdot EW Dijkstra humor
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00291.4cefa7eed26c113ee44256009896c176
+
+On Thu, Aug 08, 2002 at 12:00:04PM +0100, Padraig Brady wrote:
+> Yes a clever term usually (and deservedly) attributed to perl.
+
+there's no need for perl to be write only.
+
+> Of course you can create write-only code in any language.
+> There's even a competition for obfuscated C code which is always
+> worth a look: http://www.es.ioccc.org/main.html
+
+yes, always fun.  it's a good way to learn the little details of c.
+
+> p.s. what sort of processing do you do with:
+> kevin+dated+1029235349.f17378@ie.suberic.net
+
+that's a dated address:
+
+    % tmda-check-address kevin+dated+1029235349.f17378@ie.suberic.net
+    STATUS:  VALID
+    EXPIRES: Tue Aug 13 10:42:29 2002 UTC
+
+which means anyone can send email to that address with no problem until
+that date.  after that they have to confirm.  more info can be found
+here: www.tmda.net.
+
+as an aside, it is possible to filter mail to a mailman mailing list
+with tmda as well.  subscribers can post to the list without a confirm;
+non-subscribers would need to confirm their posts.
+
+kevin
+
+--
+kevin@suberic.net     that a believer is happier than a skeptic is no more to
+fork()'ed on 37058400    the point than the fact that a drunken man is happier
+meatspace place: home       than a sober one. the happiness of credulity is a
+http://ie.suberic.net/~kevin   cheap & dangerous quality -- g.b. shaw
+
+--
+Irish Linux Users' Group: ilug@linux.ie
+http://www.linux.ie/mailman/listinfo/ilug for (un)subscription information.
+List maintainer: listmaster@linux.ie

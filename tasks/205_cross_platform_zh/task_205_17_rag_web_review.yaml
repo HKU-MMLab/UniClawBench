@@ -1,0 +1,16 @@
+task_id: task_205_17_rag_web_review
+category: 205_cross_platform_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+recording: none
+headed: auto
+task: "你是一名准备选择论文复现课题的研究生。你的课题是 RAG 中的 grounding / attribution / citation quality，你最关心的是是否值得花一周时间进行复现。只使用浏览器和网页完成以下任务：在某个论文网站上找一篇 2026 年或之后发表、主题明确与 RAG grounding / attribution / citation quality 相关的论文；然后找到它官方或作者提供的 GitHub 仓库页面，收集 stars、open issues 数量、最近一次代码更新时间，以及 README 是否提供训练或推理说明。\n\n将最终结论写入：\n\n    /tmp_workspace/results/rag_grounding_paper_review.md\n\n该 Markdown 必须包含六个顶级章节：\n- paper title\n- paper link\n- publication venue/year\n- repo link\n- repo activity summary\n- reproduction readiness judgment\n\n最终结论必须明确回答：\"Is it worth spending one week trying to reproduce: yes / no / maybe\"，并给出不超过 120 词的理由。不要只写摘要，也不要选择与通用 RAG 检索无关的纯生成类论文。\n"
+codex:
+  max_user_followups: 2
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json

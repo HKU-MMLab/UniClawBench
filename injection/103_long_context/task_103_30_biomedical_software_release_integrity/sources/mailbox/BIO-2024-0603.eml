@@ -1,0 +1,23 @@
+Message-ID: <udlr1a5o0dr.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-0603
+Date: Tue, 21 Dec 2021 21:10:24 -0500
+From: ucko@debian.org (Aaron M. Ucko)
+To: Andreas Tille <andreas@an3as.eu>
+Subject: Re: Help with possibly broken ar archive
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_12_msg00131.html
+
+Andreas Tille  writes:
+
+> I've never seen this before and I wonder whether this is something
+> I should be concerned about before uploading.
+
+Yes, it looks like the build system is set up to produce "thin" archives
+that can't stand on their own; please try patching the Makefile to drop
+the T flag from LINK.A (line 72).
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

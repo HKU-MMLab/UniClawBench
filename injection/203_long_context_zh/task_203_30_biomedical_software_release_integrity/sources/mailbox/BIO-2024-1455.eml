@@ -1,0 +1,38 @@
+Message-ID: <08f87e2af8361fe6ae753c3b1e3505a35249e58c.camel@gmail.com>
+X-Clawbench-ID: BIO-2024-1455
+Date: Wed, 03 Nov 2021 16:55:54 +0100
+From: Julien Puydt <julien.puydt@gmail.com>
+To: debian-science@lists.debian.org
+Subject: Re: Debian Math Team
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_11_msg00023.html
+
+Hi,
+
+Le lundi 01 novembre 2021 à 15:28 +0100, Andreas Tille a écrit :
+>
+> How to move a package:
+>
+>  In Salsa:
+>
+>     Settings
+>       -> General
+>            -> Advanced [Expand]
+>                 -> Transfer project
+>
+> This redirects users who are using the old URL.  For sure you need
+> the according permissions in both teams (not sure whether maintainer
+> is sufficient or whether you need owner).
+>
+
+Hmmm... I just tried with flint, and I can go to settings, expand
+"Advanced"... and the choices are "Housekeeping", "Export project" and
+"Change path".
+
+Perhaps I lack some credentials?
+
+Cheers,
+
+J.Puydt

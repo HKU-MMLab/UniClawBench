@@ -1,0 +1,74 @@
+task_id: task_201_38_resume_upgrade
+category: 201_skill_usage_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我正在申请一个高级后端职位，而我的简历一团糟——条目过时、有一些内部
+  矛盾，而且完全没有对接 JD。帮我把它整理好。请用简历助手技能做结构性
+  重构，用 Word 文档技能让它保持规范的 Word 格式，再用文案技能把语言
+  收紧。另外用 UI/UX 评审技能审视最终简历，检查排版和视觉层次是否显得
+  专业——把任何版式问题记录在 feedback.md 中。
+
+  我当前的简历位于 /tmp_workspace/clawbench/sources/resume_2023.docx，
+  JD 位于 /tmp_workspace/clawbench/sources/jd_senior_be.txt。注意：原稿
+  中存在事实错误和内部矛盾——对不上的日期、各条目之间相互冲突的数字、
+  按时间线根本不可能的所声称的工作年限。把它们全部找出并修正。
+
+  在合理的情况下保持雇主、职位和时间段不变，且不要捏造当前简历无法支撑的
+  新项目、工具或成果。
+
+  1. /tmp_workspace/results/resume_v2.docx——保持 Word 格式，保留整体的
+     各个板块，但重写条目，使经历真正对接 JD 的要求，并解决上文所述的事实
+     问题。
+  2. /tmp_workspace/results/feedback.md——最多 15 行，说明你为什么做出
+     这些改动，外加几条关于我接下来该做什么的建议。点明你所做的事实修正，
+     以便我审阅。
+  3. /tmp_workspace/results/coverage.md——一份紧凑的 JD 对齐矩阵。为职位
+     描述中的每一项必备（must-have）和加分（nice-to-have）要求各设一行，
+     包含：要求、你所用的简历证据、修订后的简历措辞，以及简历是否有足够
+     支撑或该项是否应当略去。按照 JD 原文中每个条目/要求行各设一行；对于
+     像值班（on-call）、SLO 或事故复盘这类捆绑成簇、JD 把相邻的可靠性
+     概念列在一起的情况，将其保持为单独一行，只要你的证据覆盖所列概念中的
+     任意一个就标为已支撑。只有当 JD 行点名了明显不同的技术时才拆成单独的
+     行，例如 PostgreSQL、Kafka 和 Kubernetes 拆成 3 行。对于简历中完全
+     缺失的要求，明确标为不支撑，而不要捏造经历。一份典型的高级后端 JD
+     按此规则拆分后通常落在 9 到 15 行之间；如果你的矩阵更短，说明你过度
+     捆绑了。
+  4. /tmp_workspace/results/evidence_map.xlsx——一个我在投递前可以审核的
+     工作簿。包含工作表 `JD_Coverage`、`Bullet_Rewrites` 和
+     `Unsupported_Items`。每一行应把 JD 要求或修订后的条目与原简历中的
+     确切引文挂钩，或标为不支撑。各工作表统一采用一套规范的 5 列结构，
+     以保证审核一致：`requirement_or_bullet`、`original_resume_quote`、
+     `revised_resume_wording`、`support_status`、`decision`。`decision`
+     的取值必须恰好是以下之一：`used` 表示重写进了最终简历，`softened`
+     表示保留但弱化处理，`omitted` 表示完全略去。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - resume_2023.docx
+  - jd_senior_be.txt
+
+skills:
+  - resume-assistant
+  - word-docx
+  - copywriting
+  - ui-ux-pro-max
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

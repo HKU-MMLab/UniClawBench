@@ -1,0 +1,51 @@
+Message-ID: <Y90lBP7ASHhpDD+n@an3as.eu>
+X-Clawbench-ID: BIO-2024-1221
+Date: Fri, 3 Feb 2023 16:15:16 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Debian Med video conference next Sunday 2023-02-05 18:00 UTC
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_02_msg00011.html
+
+Hi,
+
+this is the call for the next video conference of the Debian Med team
+that are an established means to organise the tasks inside our team.
+
+We diverge from our usual rule
+   First Friday of a month
+   Third Sunday of a month
+since I'm traveling today and thus we agreed on Matrix to meet on
+Sunday.
+
+Meetings usually take us only 15-20min depending what we are talking
+about and how many people are joining.  The next meeting is Friday
+18:00 UTC
+
+     https://www.timeanddate.com/worldclock/fixedtime.html?iso=20230106T18
+
+The meeting is on the Debian Social channel
+
+     https://jitsi.debian.social/DebianMedCovid19
+
+These video meetings were started in the Debian Med Biohackathon.
+The topic is what contributors have done in the past period and to
+coordinate the work until the next meeting.
+
+For those who are interested in hot topics we want to tackle, here
+are some items:
+
+  - Short evaluation of the sprint in Berlin
+  - Trying hard to get all packages migrating to testing
+  - Pushing latest versions of our software
+
+Newcomers are always welcome.
+
+Lets keep on the great work and see you on Sunday
+
+       Andreas.
+
+--
+http://fam-tille.de

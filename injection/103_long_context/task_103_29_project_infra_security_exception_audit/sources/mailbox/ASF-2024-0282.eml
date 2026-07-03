@@ -1,0 +1,32 @@
+Message-ID: <4a78457b-8fb4-515f-3a00-53a1b5693eb5@apache.org>
+X-Clawbench-ID: ASF-2024-0282
+Date: Thu, 27 Jan 2022 09:57:33 +0100
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: mpm event assertion failures
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-01.mbox
+
+On 1/26/22 6:34 PM, Yann Ylavic wrote:
+> On Wed, Jan 26, 2022 at 5:07 PM Graham Leggett <minfrin@sharp.fm> wrote:
+>>
+>> We need to clarify expectations at this point.
+>>
+>> The trunk of httpd has a policy called “commit then review” (CTR), meaning that changes are applied first, and then review is done to see what the ramifications of those changes are. Some changes are at a high level and very well contained, some changes such as this one are at a very low level and affect the whole server. Obviously there is an expectation that one must think it works before committing, but none of our contributors have access to even a fraction of the number of platforms that httpd runs on, and so we must rely on both our CI and the review of others (thus the “then review”) to show us where things have gone wrong. Our CI is a tool to tell us what potentially has gone wrong across a wide set of scenarios, far beyond the capability of what a single person has access to.
+>
+> I agree with all of the above, there is nothing wrong with the way you did it.
+> Maybe now that we have a better ci that runs on each branch, a github
+> PR could be created first to see/test the results before checking in
+> to trunk (this was not an option a few years ago)?
+> This still allows for review and/or help if something goes wrong (by
+> asking on dev@ if needed), while others don't have to wait for trunk
+> to work for their own changes.
+
+This sounds like an excellent proposal here to me as it looks like that finding the issue takes longer and it removes stress from
+everyone.
+
+Regards
+
+Rüdiger

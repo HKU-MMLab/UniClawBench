@@ -1,0 +1,47 @@
+task_id: task_203_11_nyc_broadway_museum_budget
+category: 203_long_context_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我想和一位朋友去纽约市进行一次百老汇 + 博物馆的四日游。日期是：下周五到再下周二（周五到周二共住 4 晚），2 人，从 SFO 出发，到达机场 JFK、EWR 或 LGA 均可接受。请实际调研并制定一份完整的预算和行程方案，但不要支付、不要订机票、不要订酒店、不要订演出票、不要买博物馆门票、不要预订餐厅，也不要提交任何不可逆的订单。把所有截图和文档保存到 `/tmp_workspace/results/`。
+
+  搜索从 SFO 飞往纽约市区域机场的往返航班，仅限直飞，且只接受 United 或 Delta。去程航班必须在下周五 07:00 到 12:30 之间从 SFO 出发；返程航班必须在再下周二 15:00 到 20:30 之间从纽约区域机场飞往 SFO。在 Kayak 以及 United 或 Delta 至少一家航空公司的官网上搜索；从每个平台记录 1 个最合适的结果，包括机场、航空公司、出发/到达时间、直飞/中转情况、票价、行李/改签限制和截图。
+
+  住宿方面，只考虑 M Social Hotel Times Square New York、Hilton Garden Inn Times Square Central 和 citizenM New York Times Square。在 Booking.com 和每家酒店官网搜索从下周五到再下周二、2 人、1 间房的住宿。记录房型、4 晚总价、是否含税费、取消政策、评分/地址和截图。如果某网站拦截了查询或无法显示价格，就截图并在最终方案中如实说明；不要编造价格。
+
+  百老汇演出方面，只考虑 The Lion King、Hamilton、Wicked 和 Moulin Rouge! The Musical。搜索下周五到再下周一之间的 2 张票，优先考虑 19:00 到 20:30 之间开场的晚场或周末日场。使用官方演出/票务页面，以及 TodayTix、Broadway.com 或 Ticketmaster 中至少一个二级/聚合平台。记录演出日期、座位区域或价位档、单票价格、手续费或总价、退款/转让限制和截图。
+
+  博物馆方面，只考虑 The Metropolitan Museum of Art、MoMA、American Museum of Natural History 和 Guggenheim Museum。使用官方门票/入场页面查询行程期间 2 名成人的门票。记录成人票价、开放时间、是否需要分时入场、取消/改期规则和截图。
+
+  餐厅方面，从 Carmine's Italian Restaurant Times Square、Joe Allen、The Smith、Junior's Restaurant、Le Bernardin 和 Kochi 中任选 5 家，并查询从下周五到再下周一、2 人能否在 18:00 到 20:30 之间预订晚餐。优先使用 OpenTable、Resy 或餐厅的官方预订页面。记录最佳可用时间、平台、是否需要信用卡或押金，以及截图，但不要完成预订。
+
+  最后生成 `/tmp_workspace/results/nyc_broadway_museum_plan.md`，包含每日行程、一张涵盖机票/酒店/百老汇/博物馆/餐厅/当地交通/活动备用金的预算表，以及两套方案：省钱版和舒适版。尽量把舒适版的总预算控制在 $5,000 / 2 人以内。最终文档必须列出所用的所有截图路径，并清晰标注任何被拦截、缺少价格或不可用的数据。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/process_evidence/Delta_flight.png
+  - references/process_evidence/Kayak_flight.png
+  - references/process_evidence/TodayTix_hamilton.png
+  - references/process_evidence/booking_M_Social_hotel.png
+  - references/process_evidence/booking_citizenM.png
+  - references/process_evidence/booking_hilton_garden_inn.png
+  - references/process_evidence/official_Le_Bernadin.png
+  - references/process_evidence/official_M_Social_hotel.png
+  - references/process_evidence/official_citizenM.png
+  - references/process_evidence/official_hamilton.png
+  - references/process_evidence/official_hilton_garden_inn.png
+  - references/process_evidence/official_wicked.png
+  - references/process_evidence/opentable_Joe_Allen.png
+  - references/process_evidence/opentable_Kochi.png
+  - references/process_evidence/opentable_carmine.png
+  - references/process_evidence/opentablee_The_Smith.png
+codex:
+  max_user_followups: 2

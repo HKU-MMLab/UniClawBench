@@ -1,0 +1,48 @@
+Message-ID: <6e22f011-cfcb-bbc1-75dd-bf47561dc4c3@apache.org>
+X-Clawbench-ID: ASF-2024-0882
+Date: Tue, 25 Jun 2024 08:53:50 +0200
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.60-rc1 as httpd-2.4.60
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-06.mbox
+
+On 6/25/24 8:30 AM, Helmut K. C. Tessarek wrote:
+> Hello,
+>
+> On 2024-06-24 14:28, Eric Covener wrote:
+>> Hi all,
+>>
+>> Please find below the proposed release tarball and signatures:
+>>
+>> https://dist.apache.org/repos/dist/dev/httpd/
+>>
+>> I would like to call a VOTE over the next few days to release
+>> this candidate tarball httpd-2.4.60-rc1 as 2.4.60:
+>> [ ] +1: It's not just good, it's good enough!
+>> [ ] +0: Let's have a talk.
+>> [ ] -1: There's trouble in paradise. Here's what's wrong.
+>
+> It's the first time I tested an rc, but since my current one coredumps on Fedora 40 (a bug is open), I thought I'd give it a try.
+>
+> Right after starting it, I get permission errors all over the place.
+>
+> Here an example:
+>
+> [core:error] [pid 1385877] AH00132: file permissions deny server access:
+> proxy:unix:/run/php82-fpm/xxx.sock|fcgi://xxx/var/www/index.php
+>
+> As you can see there is no space between the fcgi and the path of the resource.
+>
+> The last part should be: fcgi://xxx /var/www/index.php
+>
+> Or maybe this is correct and normal way the error message is constructed. Either way, as soon as I install 2.4.59, the errors are
+> gone. Thus, something is off with this version.
+
+Can you provide more details on your configuration how you forward stuff to fcgi and what request you made?
+
+Regards
+
+Rüdiger

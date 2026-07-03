@@ -1,0 +1,64 @@
+Message-ID: <9ff3a8e22b7d432d812b8dd266a76a87@wellsfargo.com>
+X-Clawbench-ID: ASF-2024-0929
+Date: Fri, 8 Jul 2022 15:30:41 +0000
+From: "jonmcalexander.wellsfargo.com via dev" <dev@httpd.apache.org>
+To: <dev@httpd.apache.org>
+Subject: RE: mod-proxy with sticky JSESSIONID and SiteMinder.
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-07.mbox
+
+Hi Christopher, nice to see a familiar name. :-)
+
+Currently we have it down to a SSL Handshake Failure between the Tomcat server and the SiteMinder server.
+
+com.wellsfargo.mortgage.feature.wff.authorization.login.mvc.UserLoginChannelSecureHelper 08 Jul 2022 08:06:39,505 ERROR [https-jsse-nio-8305-exec-6]: DEVT: ilonline: Unable to get Channel Secure Session: Unable to perform siteminder handshake
+java.lang.Exception: Unable to perform siteminder handshake
+
+Thanks,
+
+Dream * Excel * Explore * Inspire
+Jon McAlexander
+Senior Infrastructure Engineer
+Asst. Vice President
+He/His
+
+Middleware Product Engineering
+Enterprise CIO | EAS | Middleware | Infrastructure Solutions
+
+8080 Cobblestone Rd | Urbandale, IA 50322
+MAC: F4469-010
+Tel 515-988-2508 | Cell 515-988-2508
+
+jonmcalexander@wellsfargo.com
+This message may contain confidential and/or privileged information. If you are not the addressee or authorized to receive this for the addressee, you must not use, copy, disclose, or take any action based on this message or any information herein. If you have received this message in error, please advise the sender immediately by reply e-mail and delete this message. Thank you for your cooperation.
+
+
+> -----Original Message-----
+> From: Christopher Schultz <chris@christopherschultz.net>
+> Sent: Friday, July 8, 2022 10:03 AM
+> To: dev@httpd.apache.org
+> Subject: Re: mod-proxy with sticky JSESSIONID and SiteMinder.
+>
+> Jon,
+>
+> On 7/7/22 16:56, jonmcalexander.wellsfargo.com via dev wrote:
+> > Seem to have an issue with mod-proxy and making the JSESSIONID and the
+> > SMSESSION cookie sticky. How can this be done? This setup was working
+> > with mod-jk, but when moving to mod-proxy over https it’s not working.
+> > We are configured to use mutual authentication between apache and
+> > tomcat (for proxy only), but with the certificateVerification set to
+> > required in Tomcat, we are getting a
+> > java.base/sun.security.ssl.Alert.createSSLException and with setting
+> > it to optional, we are getting a javax.net.ssl.SSLHandshakeException:
+> > Received fatal alert: bad_certificate error (extensive).
+>
+> Did you double-check the client and server certs to make sure they haven't
+> expired or anything silly like that?
+>
+> It sounds like you are reporting multiple problems, here.
+>
+> Which one is most urgent/problematic? We'll solve one thing at a time.
+>
+> -chris

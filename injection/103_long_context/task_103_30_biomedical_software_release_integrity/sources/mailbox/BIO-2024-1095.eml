@@ -1,0 +1,98 @@
+Message-ID: <Z2BHoZrYQedVDvy2@an3as.eu>
+X-Clawbench-ID: BIO-2024-1095
+Date: Mon, 16 Dec 2024 16:30:41 +0100
+From: Andreas Tille <tille@debian.org>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Re: [Advent Calendar] second week bug work
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_12_msg00016.html
+
+Am Sun, Dec 15, 2024 at 01:37:17PM -0300 schrieb Emmanuel Arias:
+> Hi amazing team!
+>
+> I send my (little) bug fixes report for this Advent Calendar Bug
+> Squashing party :-). I started in the second week.
+>
+> * 09-12-2024
+>   - qiime push to salsa a patch to remove crypt module. Fix #1084668.
+>   - pyqi: Fix syntaxWarning. Fix #1085822.
+>   - geneimpact: Fix syntaxWarning. Fix #1085915.
+>
+> * 11-12-2024
+>   - yanosim: Fix SyntaxWarning. Fix #1087194.
+>
+> * 13-12-2024
+>   - Start working on deepdiff to fix #1088239. Need orderly-set package in Debian.
+>   - psychopy: Push to salsa fix of #1086772
+>
+> * 14-12-2024
+>   - Package orderly-set. Closes: #1089916
+>
+> I plan continue working in psychopy on the next week.
+
+That's really great since psychopy is quite some work.
+
+I'm just appending my list of bugs (most of them low hanging fruits
+so please do not compare just the number!)
+
+
+2024-12-01:     nim-hts 1046095 1049588 1081123
+
+2024-12-02:     hts-nim-tools 1075071
+                ray 1085491
+                eegdev 1079978
+
+2024-12-03:     argtable2 876665
+                sweed 1080069
+                glam2 1081315
+
+2024-12-04:     python-hl7 1083648
+                ariba 1085332
+
+2024-12-05:     changeo 1085416
+                busco  1085372
+
+2024-12-06:     circlator 1085417
+                bmtk 1085366
+                fastaq 1085573
+
+2024-12-07:     discosnp 1085542
+                ghmm 1085608
+                htseq 1085638
+
+2024-12-08:     microbegps 1085723
+                mirtop 1085726
+
+2024-12-09:     obitools 1085745
+                pbsuite 1085772
+                presto 1085789
+
+2024-12-10:     snippy 1089272
+                allelecount 1089249
+                r-cran-commonmark 1048735, 1088546
+
+2024-12-11:     readucks 1087041
+                rambo-k 1087042
+                sortmerna 1087092
+
+2024-12-12:     (not uploaded) toil 1087116
+                (not uploaded) sra-sdk 1087096
+                (just closed since eamanu forgot in changelog) yanosim 1087194
+
+2024-12-13:     sumaclust 1075545
+                mosdepth 1075288
+                baitfisher 1043995
+
+2024-12-14:     sumalibs 1075544
+                gwama 1044305
+                fermi-lite 1044647 1049564
+
+2024-12-15:     igraph 970497
+                concavity 1043837
+                libcolt-free-java 1045212
+
+
+--
+https://fam-tille.de

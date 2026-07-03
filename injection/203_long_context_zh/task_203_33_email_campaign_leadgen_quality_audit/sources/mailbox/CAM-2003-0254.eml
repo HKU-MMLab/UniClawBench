@@ -1,0 +1,24 @@
+Message-ID: <m23csy539p.fsf@maya.dyndns.org>
+X-Clawbench-ID: CAM-2003-0254
+Date: Wed, 28 Aug 2002 12:58:26 -0400
+From: Gary Lawrence Murphy <garym@canada.com>
+To: harley@argote.ch
+Subject: Re: Java is for kiddies
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00350.b01dafc878fcedbeee6a4d7c120ef0c4
+
+>>>>> "R" == Robert Harley <harley@argote.ch> writes:
+
+    R> Depends who writes it.  One guy will write a bug every 5 lines,
+    R> another every 5000 lines.  Put them both on a project and that
+    R> will average out to a bug every 4.995 lines.
+
+And a Java program, due to the extensive class libraries, will weigh
+in at 10% the number of lines of the equivalent C program.  QED.
+
+--
+Gary Lawrence Murphy <garym@teledyn.com> TeleDynamics Communications Inc
+ Business Advantage through Community Software : http://www.teledyn.com
+"Computers are useless.  They can only give you answers."(Pablo Picasso)

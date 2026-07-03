@@ -1,0 +1,36 @@
+Message-ID: <20210909081228.GH14786@an3as.eu>
+X-Clawbench-ID: BIO-2024-1473
+Date: Thu, 9 Sep 2021 10:12:28 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Salsa-ci build failure but autobuilders are succeeding
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_09_msg00014.html
+
+Hi,
+
+for gff2aplot I get a build failure in salsa-ci[1] but the autobuilders
+are fine[2].  I somehow suspected that this might be due to a missing
+HOME dir and tried a fix[3] but it did not helped.
+
+There is another issue for gwyddion that fails in salsa-ci[4] and works
+in the autobuilders[5].  Here I do not even have an idea for a fix.
+
+While I think autobuilders are relevant but it would be cool to silence
+CI.
+
+Kind regards
+
+      Andreas.
+
+
+[1] https://salsa.debian.org/med-team/gff2aplot/-/jobs/1926459
+[2] https://buildd.debian.org/status/package.php?p=gff2aplot
+[3] https://salsa.debian.org/med-team/gff2aplot/-/blob/master/debian/rules#L7
+[4] https://salsa.debian.org/med-team/gwyddion/-/jobs/1926447
+[5] https://buildd.debian.org/status/package.php?p=gwyddion
+
+--
+http://fam-tille.de

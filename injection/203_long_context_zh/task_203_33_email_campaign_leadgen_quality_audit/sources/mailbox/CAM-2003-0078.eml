@@ -1,0 +1,52 @@
+Message-ID: <20021002105324.5ee715d2.matthias@egwn.net>
+X-Clawbench-ID: CAM-2003-0078
+Date: Wed, 02 Oct 2002 10:53:24 +0200
+From: Matthias Saou <matthias@egwn.net>
+To: rpm-zzzlist@freshrpms.net
+Subject: Re: use new apt to do null to RH8 upgrade?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01220.f57815121767436c538407a25eacdd88
+
+Once upon a time, Brian wrote :
+
+>     Yeah, I need to work this out, too; I just learned my lesson about
+>     living on the bleeding edge. Lesson learned?  NO MORE XIMIAN, UNDER
+>     ANY CIRCUMSTANCES.  Man, that was annoying.
+
+We all learned that sooner or later, right? When I got down to that myself
+is when I started redhat.aldil.org, now known as freshrpms.net ;-)
+
+>     Anyway, I have returned to Redhat 7.3 on my root filesystem (saved my
+>     home directories, music and games on other partitions) and while I
+>     have the 8.0 stuff in the list, everything I want to upgrade requires
+>     200+ RPMs.
+>
+>     I'm not opposed to this, but apt is.  "apt-get dist-upgrade" dumps
+>     core.
+
+Strange.
+Anyway, although I'd easily recommend upgrading 7.x to 7.3 using apt, I
+wouldn't for 7.x to 8.0 as they are C++ binary incompatible... and apt is
+entirely written in C++ and dynamically linked :-/
+
+Still, that doesn't explain a core dump :-(
+
+>     What's the inside secret here, or do I just start searching mirrors
+>     for the ISO and get over it?
+
+Why "search"? There's more than enough to choose from here :
+http://freshrpms.net/mirrors/psyche.html
+
+Matthias
+
+--
+Matthias Saou                                World Trade Center
+-------------                                Edificio Norte 4 Planta
+System and Network Engineer                  08039 Barcelona, Spain
+Electronic Group Interactive                 Phone : +34 936 00 23 23
+
+_______________________________________________
+RPM-List mailing list <RPM-List@freshrpms.net>
+http://lists.freshrpms.net/mailman/listinfo/rpm-list

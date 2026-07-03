@@ -1,0 +1,48 @@
+Message-ID: <YZA6gHiqW85BfjjC@lena.dartmouth.edu>
+X-Clawbench-ID: BIO-2024-1171
+Date: Sat, 13 Nov 2021 17:21:52 -0500
+From: Yaroslav Halchenko <debian@onerussian.com>
+To: debian-med@lists.debian.org
+Subject: Re: Progress in merging neurodebian team?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_11_msg00075.html
+
+On Sat, 13 Nov 2021, Andreas Tille wrote:
+> > Do we have a, sort of ETA to do this?
+
+> I do it
+
+>    A) if I have time _and_
+>    B) I find some specific issue on a package
+
+> Issues can be RC bugs, package not in testing, broken watch file etc.
+
+> There are packages I gave up.  For instance I have some mental note on
+> fsl saying: non-free, outdated (upstream has version 6.0) and terribly
+> complex.
+
+yeah, don't bother with FSL!  Even though still popular, non-free
+license, and no longer fully open source AFAIK.
+
+If any other alternative in purpose -- pick up AFNI please.
+Major (if not all) licensing issues were resolved, we never uploaded to
+debian proper though.  Upstream is very receptive and friendly.
+Problems:
+- age (in how long it has been out there, but it is still active)
+- original build infrastructure was "suboptimal",Michael redid in cmake,
+  upstream worked on establishing their own cmake build infra but they
+  are not actively use it
+
+our aged, not updated in awhile packaging:
+https://github.com/neurodebian/afni/tree/debian
+
+upstream: https://afni.nimh.nih.gov/
+https://github.com/afni/afni
+
+--
+Yaroslav O. Halchenko
+Center for Open Neuroscience     http://centerforopenneuroscience.org
+Dartmouth College, 419 Moore Hall, Hinman Box 6207, Hanover, NH 03755
+WWW:   http://www.linkedin.com/in/yarik

@@ -1,0 +1,57 @@
+Message-ID: <YeqWLJVcbzUaajcW@an3as.eu>
+X-Clawbench-ID: BIO-2024-1110
+Date: Fri, 21 Jan 2022 12:17:00 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: sambamba and freebayes new releases
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_01_msg00050.html
+
+Am Fri, Jan 21, 2022 at 11:45:48AM +0100 schrieb Pjotr Prins:
+> We release sambamba and freebayes with updated meson build systems. It
+> should work for Debian. If not I am happy to troubleshoot.
+
+$ apt policy sambamba
+sambamba:
+  Installed: (none)
+  Candidate: 0.8.2+dfsg-1
+  Version table:
+     0.8.2+dfsg-1 501
+        501 http://deb.debian.org/debian testing/main amd64 Packages
+         50 http://deb.debian.org/debian unstable/main amd64 Packages
+
+$ $ dput freebayes_1.3.6-1_source.changes
+Uploading freebayes using ftp to ftp-master (host: ftp.upload.debian.org; directory: /pub/UploadQueue/)
+running allowed-distribution: check whether a local profile permits uploads to the target distribution
+running protected-distribution: warn before uploading to distributions where a special policy applies
+running checksum: verify checksums before uploading
+running suite-mismatch: check the target distribution for common errors
+running gpg: check GnuPG signatures before the upload
+ signfile dsc freebayes_1.3.6-1.dsc tille@debian.org
+
+ fixup_buildinfo freebayes_1.3.6-1.dsc freebayes_1.3.6-1_amd64.buildinfo
+ signfile buildinfo freebayes_1.3.6-1_amd64.buildinfo tille@debian.org
+
+ fixup_changes dsc freebayes_1.3.6-1.dsc freebayes_1.3.6-1_source.changes
+ fixup_changes buildinfo freebayes_1.3.6-1_amd64.buildinfo freebayes_1.3.6-1_source.changes
+ signfile changes freebayes_1.3.6-1_source.changes tille@debian.org
+
+Successfully signed dsc, buildinfo, changes files
+Uploading freebayes_1.3.6-1.dsc
+Uploading freebayes_1.3.6.orig.tar.gz
+Uploading freebayes_1.3.6-1.debian.tar.xz
+Uploading freebayes_1.3.6-1_amd64.buildinfo
+Uploading freebayes_1.3.6-1_source.changes
+
+
+So sambamba seems to be the latest version in testing and freebayes
+should follow soon.
+
+Thanks a lot for pinging here which is really welcome
+
+       Andreas.
+
+--
+http://fam-tille.de

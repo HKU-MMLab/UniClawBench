@@ -1,0 +1,30 @@
+{
+  "task_id": "task_201_13_pdf_invoices_structure",
+  "note": "Hybrid-by-design: 5 single-page invoice PDFs that exercise the pdf-extract skill across deliberately different layouts (schema variants A-E) and multiple currencies (USD / EUR / CNY). The AP payment ledger is synthetic but realistic and was added in this hardening round to require cross-file reconciliation. Synthesis is load-bearing here because real B2B invoices and payment exports are proprietary; the task focuses on cross-layout extraction and accounting reconciliation, not content fidelity.",
+  "entries": [
+    {
+      "path": "invoices/invoice_001.pdf",
+      "description": "Office-supply invoice, USD, schema variant A (SKU / Description / Qty / Unit Price / Amount)."
+    },
+    {
+      "path": "invoices/invoice_002.pdf",
+      "description": "Logistics invoice, EUR, schema variant B (Item Code / Item / Quantity / Rate / Line Total)."
+    },
+    {
+      "path": "invoices/invoice_003.pdf",
+      "description": "Cloud services invoice, USD, schema variant C (Part# / Product / Units / Price/Unit / Ext. Price)."
+    },
+    {
+      "path": "invoices/invoice_004.pdf",
+      "description": "Consulting invoice, USD, schema variant D (Code / Service / Hrs / Hourly / Subtotal)."
+    },
+    {
+      "path": "invoices/invoice_005.pdf",
+      "description": "Manufacturing invoice, CNY, schema variant E (SKU / Desc / Count / Each / Total)."
+    },
+    {
+      "path": "ap_payments_ledger.csv",
+      "description": "Synthetic AP payment export keyed by invoice_number for cross-file reconciliation."
+    }
+  ]
+}

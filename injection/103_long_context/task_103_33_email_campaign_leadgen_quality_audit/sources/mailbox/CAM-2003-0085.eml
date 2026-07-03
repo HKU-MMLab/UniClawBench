@@ -1,0 +1,91 @@
+Message-ID: <1029945287.4797.TMDA@deepeddy.vircio.com>
+X-Clawbench-ID: CAM-2003-0085
+Date: Wed, 21 Aug 2002 10:54:46 -0500
+From: Chris Garrigues <cwg-exmh@DeepEddy.Com>
+To: recipient@example.net
+Subject: Re: New Sequences Window
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00008.6b73027e1e56131377941ff1db17ff12
+
+> From:  Chris Garrigues <cwg-exmh@DeepEddy.Com>
+> Date:  Wed, 21 Aug 2002 10:40:39 -0500
+>
+> > From:  Chris Garrigues <cwg-exmh@DeepEddy.Com>
+> > Date:  Wed, 21 Aug 2002 10:17:45 -0500
+> >
+> > > From:  Robert Elz <kre@munnari.OZ.AU>
+> > > Date:  Wed, 21 Aug 2002 19:30:01 +0700
+> > >
+> > > Actually, you once could, now when I try this, entering a sequence name
+> > > in the pick box, and a single message number, or a range N-N in the
+> > > list of messages, and no pick attributes at all, I now get ...
+> > >
+> > > syntax error in expression "int(1+1+(1 hit-1)*(3868-1-2)/(4878-1))"
+> > >     while executing
+> > > "expr int($minlineno+1+($msgid-$minmsgid)*($maxlineno-$minlineno-2)/($maxmsgid-$minmsgid))"
+> > >     (procedure "Ftoc_FindMsg" line 46)
+> > >     invoked from within
+> > > "Ftoc_FindMsg $msg"
+> > >     (procedure "Ftoc_FindMsgs" line 5)
+> > >     invoked from within
+> > > "Ftoc_FindMsgs $msgids"
+> > >     (procedure "Ftoc_PickMsgs" line 5)
+> > >     invoked from within
+> > > "Ftoc_PickMsgs $pick(ids) $pick(addtosel)"
+> > >     (procedure "PickInner" line 13)
+> > >     invoked from within
+> > > "PickInner {exec pick +inbox -list} {4852 -sequence mercury}"
+> > >     ("uplevel" body line 1)
+> > >     invoked from within
+> > > "uplevel #0 $cmd"
+> > >     (procedure "busyCursorInner" line 8)
+> > >     invoked from within
+> > > "busyCursorInner $cmd $widgets"
+> > >     (procedure "busyCursorHack" line 32)
+> > >     invoked from within
+> > > "busyCursorHack $args"
+> > >     ("cursor" arm line 1)
+> > >     invoked from within
+> > > "switch $busy(style) {
+> > > 	icon		{busyIcon $args}
+> > > 	cursorAll	{busyCursor $args}
+> > > 	cursor		{busyCursorHack $args}
+> > > 	default		{eval $args}
+> > >     }"
+> > >     (procedure "busy" line 3)
+> > >     invoked from within
+> > > "busy PickInner $cmd $msgs"
+> > >     (procedure "Pick_It" line 51)
+> > >     invoked from within
+> > > "Pick_It"
+> > >     invoked from within
+> > > ".pick.but.pick invoke"
+> > >     ("uplevel" body line 1)
+> > >     invoked from within
+> > > "uplevel #0 [list $w invoke]"
+> > >     (procedure "tkButtonUp" line 7)
+> > >     invoked from within
+> > > "tkButtonUp .pick.but.pick
+> > > "
+> > >     (command bound to event)
+> > >
+> > > It has been ages since I did this last though.   I tried adding a Subject
+> > > to pick on (easy as I know what's in the message...) which made no difference.
+> > > Looks as if something is now saying "1 hit" when before it didn't, or
+> > > similar.
+>
+> hmmm, that may or may not be my fault...I'll take a look at it.
+
+I can't reproduce this error.
+
+Chris
+
+--
+Chris Garrigues                 http://www.DeepEddy.Com/~cwg/
+virCIO                          http://www.virCIO.Com
+716 Congress, Suite 200
+Austin, TX  78701		+1 512 374 0500
+
+  World War III:  The Wrong-Doers Vs. the Evil-Doers.

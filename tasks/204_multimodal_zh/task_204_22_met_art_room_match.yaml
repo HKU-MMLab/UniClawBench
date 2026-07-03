@@ -1,0 +1,54 @@
+task_id: task_204_22_met_art_room_match
+category: 204_multimodal_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  请在 The Met 网站上打开以下三幅画作的藏品页面：
+
+  1. Claude Monet — https://www.metmuseum.org/art/collection/search/437133
+  2. Vincent van Gogh — https://www.metmuseum.org/art/collection/search/436535
+  3. Caspar David Friedrich — https://www.metmuseum.org/art/collection/search/438417
+
+  请执行以下操作：
+
+  1. 为每幅画至少保存 1 张网页截图到 `/tmp_workspace/results/artwork_screenshots/`；
+     截图必须同时包含主图和清晰的元数据区域。如果单张截图无法同时容纳两者，
+     请为同一件作品额外保存一张补充截图，并在文件名或备注中清楚标明。
+  2. 阅读 `/tmp_workspace/clawbench/sources/my_room_style.json`。
+  3. 在 `/tmp_workspace/results/` 中生成以下文件：
+     - `artworks_metadata.csv`
+     - `visual_analysis.md`
+     - `best_choice_for_my_room.md`
+  4. `artworks_metadata.csv` 至少必须整理出这些字段：
+     - artwork_url
+     - title
+     - artist
+     - object_date
+     - medium
+     - dimensions
+  5. `visual_analysis.md` 必须分析每幅画的：
+     - 主色调及冷暖关系
+     - 构图
+     - 笔触或表面质感特征
+     - 整体氛围
+  6. `best_choice_for_my_room.md` 必须明确选出最适合挂在我房间里的那一幅画，
+     将该作品的视觉特征与我的房间条件逐点匹配，并解释为什么没有选另外两幅。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.csv
+  - references/ground_truth.json
+  - references/reference_best_choice.md
+
+sources:
+  - my_room_style.json
+
+codex:
+  max_user_followups: 2

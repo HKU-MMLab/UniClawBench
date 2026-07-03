@@ -1,0 +1,93 @@
+Message-ID: <D0E6EA56-DB05-447D-A1F5-5D2203958086@sharp.fm>
+X-Clawbench-ID: ASF-2024-0059
+Date: Sun, 21 Apr 2024 11:53:12 +0100
+From: "Graham Leggett via dev" <dev@httpd.apache.org>
+To: dev@httpd.apache.org
+Subject: Re: [WIP] mod_authnz_ldap / mod_ldap support for APR v2 LDAP API
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-04.mbox
+
+On 19 Apr 2024, at 09:01, Ruediger Pluem <rpluem@apache.org> wrote:
+
+> First of all I haven't gone through the patch. Hence I may be off below.
+>
+> I think the core issue with the LDAP API we have in APR-UTIL 1.x today and that let to the
+> removal discussions on APR side in 2010 (https://lists.apache.org/thread/pz5c28g0gf248fvpds53zl1f8by9n8n4)
+> and 2011 (https://lists.apache.org/thread/cslw4gj0jgx3bmr8trz0jtfq5bmv1tfl) is that it is an incomplete
+> abstraction of the LDAP libraries. mod_authnz_ldap and mod_ldap as consumers of the current API
+> have LDAP library specific code and need to link directly against the specific LDAP library.
+
+What you've described above is the exact thing that has been fixed.
+
+This is the core of the patch:
+
+https://github.com/apache/httpd/pull/438/files#diff-f309c2fcd650f484a21c930ddde995a646387421b671232f5b643328f7d2da06
+
+diff --git a/modules/aaa/config.m4 b/modules/aaa/config.m4
+index 1b59f99f492..b12e03b287d 100644
+--- a/modules/aaa/config.m4
++++ b/modules/aaa/config.m4
+@@ -49,21 +49,7 @@ APACHE_MODULE(authz_core, core authorization provider vector module, , , yes)
+
+ dnl LDAP authentication module. This module has both the authn and authz
+ dnl modules in one, so as to share the LDAP server config directives.
+-APACHE_MODULE(authnz_ldap, LDAP based authentication, , , most, [
+-  APACHE_CHECK_APR_HAS_LDAP
+-  if test "$ac_cv_APR_HAS_LDAP" = "yes" ; then
+-    if test -z "$apu_config" ; then
+-      LDAP_LIBS="`$apr_config --ldap-libs`"
+-    else
+-      LDAP_LIBS="`$apu_config --ldap-libs`"
+-    fi
+-    APR_ADDTO(MOD_AUTHNZ_LDAP_LDADD, [$LDAP_LIBS])
+-    AC_SUBST(MOD_AUTHNZ_LDAP_LDADD)
+-  else
+-    AC_MSG_WARN([apr/apr-util is compiled without ldap support])
+-    enable_authnz_ldap=no
+-  fi
+-])
++APACHE_MODULE(authnz_ldap, LDAP based authentication, , , most)
+
+ dnl FastCGI authorizer interface, supporting authn and authz.
+ APACHE_MODULE(authnz_fcgi,
+
+LDAP is no longer special. DBD, DBM, SQL, LDAP, all the same.
+
+> I agree that it is of limited sense to decide during runtime which LDAP library to use as typically there is
+> only one available on a particular system. This is substantially different from the situation with databases.
+
+This isn't the whole story.
+
+Like databases, we have lots of different drivers with wildly different and incompatible implementations. Unlike databases, the majority of these drivers are based on a C API published as an RFC 30 years ago, and therefore are about 80% common code / clashing symbols. It is the way that it is. The driver specific code involves SSL (which evolved) and SASL binding (which evolved), but the vast majority of the code is still standard.
+
+For this reason it's pointless coming up with five separate drivers for five separate libraries. You can never load two at the same time because clashing symbols. This is true of all code, it has nothing to do with httpd specifically. Someone binds to library A in a module, and then someone else binds to library B in a different module, you are not loading those two modules into the server at the same time, it's just not happening.
+
+A further problem is that the libraries diverged.
+
+Many of the functions in OpenLDAP and Windows have been deprecated, replaced with _ext functions. The LDAP_DEPRECATED define is now gone.
+
+Rebinding for example works totally differently if you're on IBM, or on OpenLDAP. One does not block, but has limited SASL capability. The other does SASL for you, but blocks. Windows expects you to rebind yourself.
+
+SASL is wild west. OpenLDAP does SASL for you, but you have to do an intricate dance between two functions to make it work. Windows says "here you go, have a binary blob, pass it to the Windows specific SASL implementation will you". Again, different approaches, it is what it is.
+
+Non-blocking behaviour is inconsistent. Some functions in some libraries block in some circumstances. You've got to be a masochist if every single consumer of LDAP has to deal with all of these inconsistencies, over and over again.
+
+The "P" in APR stands for portability, and that is exactly what I as a consumer of an LDAP API want.
+
+> The point back then on APR side was that this incomplete API should be either "completed" or removed from APR
+> and that its code should move to httpd which should deal then directly with all the gory details of the various
+> LDAP libraries not just with a subset. This happened on APR trunk side, but not on httpd trunk side.
+
+What happened in the past was that code was removed from APR without a replacement implementation having been provided first. The expectation was that other people (me) would provide free labour to replace that removed implementation to make the server whole again.
+
+I have been working on this on and off for years, providing custom patched httpd's to get the immediate job done. It has reached the point where I can't be supporting custom patches and this needed finishing.
+
+People have been very helpful reviewing the APR patches, and for that I am very grateful. You go round and round in circles for weeks hitting a problem, solving it, hitting the next problem, solving it. After a while you become blind to the code and fresh eyes are needed.
+
+To vendors who expect me to go back to the drawing board and redo things differently for their benefit, pay me.
+
+Regards,
+Graham
+--

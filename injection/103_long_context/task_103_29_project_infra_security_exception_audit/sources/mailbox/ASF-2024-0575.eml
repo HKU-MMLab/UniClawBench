@@ -1,0 +1,38 @@
+Message-ID: <550C779C-E79F-48FA-89E6-E520E9E3408E@eissing.org>
+X-Clawbench-ID: ASF-2024-0575
+Date: Mon, 19 Sep 2022 11:20:37 +0200
+From: "Stefan Eissing via dev" <dev@httpd.apache.org>
+To: dev@httpd.apache.org
+Subject: Re: Planned support for http/2 + websockets?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-09.mbox
+
+Hi Karin,
+
+> Am 16.09.2022 um 16:47 schrieb Karin Hedlund <hedlund.k@gmail.com>:
+>
+> Does anybody know of any plans to add support for rfc8441
+> (https://datatracker.ietf.org/doc/html/rfc8441) in Apache httpd?
+
+Nothing planned that I know of.
+
+> I've really tried, but couldn't find anything regarding it other than
+> an e-mail to this list ~5 years ago.
+> (https://httpd.markmail.org/message/w3gkrejvfwmm6dqz?q=websocket+http2)
+> But it didn't seem to get any traction, or did it?
+>
+> I'm about to start hacking away on it because we need it.
+> But since I'm totally new to Apache and httpd, I wanted to check if it
+> maybe happens to already be on anybody's list.
+
+Looking forward to see what come up with. I'm available in case you have any questions. Also note: curl is adding support for websockets in the next release and I think it has landed in its master already.
+
+Kind Regards,
+Stefan
+
+> (The support seems to already be there in libnghttp2.)
+>
+> Kind regards,
+> Karin

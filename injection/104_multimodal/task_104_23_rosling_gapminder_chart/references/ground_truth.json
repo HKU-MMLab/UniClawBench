@@ -1,0 +1,44 @@
+{
+  "source_accessed_on": "2026-04-23",
+  "ted_talk": {
+    "url": "https://www.ted.com/talks/hans_rosling_the_best_stats_you_ve_ever_seen",
+    "title": "The best stats you've ever seen",
+    "speaker": "Hans Rosling",
+    "duration_seconds": 1172,
+    "external_youtube_code": "RUwS1uAdUcI",
+    "chart_window_seconds": [
+      540,
+      840
+    ],
+    "reference_frame_second": 810
+  },
+  "gapminder_sources": {
+    "landing_page": "https://www.gapminder.org/data/",
+    "gdp_doc": "https://www.gapminder.org/data/documentation/gd001/",
+    "gdp_xlsx": "https://github.com/Gapminder-Indicators/gdppc_cppp/raw/master/gdppc_cppp-by-gapminder.xlsx",
+    "life_doc": "https://www.gapminder.org/data/documentation/gd004/",
+    "life_xlsx": "https://github.com/Gapminder-Indicators/lex/raw/master/lex-by-gapminder.xlsx",
+    "population_doc": "https://www.gapminder.org/data/documentation/gd003/",
+    "population_xlsx": "https://gapm.io/dl_popv8"
+  },
+  "chart_spec": {
+    "reference_year": 2003,
+    "acceptable_years": [
+      2002,
+      2003,
+      2004
+    ],
+    "x_axis": "GDP per capita, PPP (constant 2011 international $)",
+    "x_scale": "log",
+    "y_axis": "Life expectancy",
+    "bubble_size": "Population",
+    "color_grouping": "Continent or equivalent broad world region"
+  },
+  "highlighted_relationships": [
+    "United States should be far to the right with high life expectancy.",
+    "China should sit to the right of India and above India on life expectancy.",
+    "Nigeria should have the lowest life expectancy among the highlighted countries.",
+    "Brazil should be to the right of China on GDP per capita and slightly above China on life expectancy.",
+    "China and India should be the two largest highlighted bubbles by population."
+  ]
+}

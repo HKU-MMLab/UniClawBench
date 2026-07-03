@@ -1,0 +1,115 @@
+Message-ID: <3902260c97f14de39203e8b66156f293@wellsfargo.com>
+X-Clawbench-ID: ASF-2024-1210
+Date: Fri, 8 Jul 2022 17:52:01 +0000
+From: "jonmcalexander.wellsfargo.com via dev" <dev@httpd.apache.org>
+To: <dev@httpd.apache.org>
+Subject: RE: mod-proxy with sticky JSESSIONID and SiteMinder.
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-07.mbox
+
+Chris
+> -----Original Message-----
+> From: Christopher Schultz <chris@christopherschultz.net>
+> Sent: Friday, July 8, 2022 10:46 AM
+> To: dev@httpd.apache.org
+> Subject: Re: mod-proxy with sticky JSESSIONID and SiteMinder.
+>
+> Jon,
+>
+> On 7/8/22 11:30, jonmcalexander.wellsfargo.com via dev wrote:
+> > Hi Christopher, nice to see a familiar name. :-)
+> >
+> > Currently we have it down to a SSL Handshake Failure between the Tomcat
+> server and the SiteMinder server.
+> >
+> > com.wellsfargo.mortgage.feature.wff.authorization.login.mvc.UserLoginC
+> > hannelSecureHelper 08 Jul 2022 08:06:39,505 ERROR
+> > [https-jsse-nio-8305-exec-6]: DEVT: ilonline: Unable to get Channel
+> > Secure Session: Unable to perform siteminder handshake
+> > java.lang.Exception: Unable to perform siteminder handshake
+>
+> Any more detail, other than a stack trace? Did you check your certs?
+
+This gives the most information without going into all the sub lines. Don't know what to scrub/not scrub from that. :-)
+Yes, checked the cert that is being presented in the proxy section for httpd:
+
+SSLProxyCACertificateFile
+SSLProxyMachineCertificateFile
+
+These are formatted correct.
+
+>
+> This looks like the Tomcat side of the connection, since it's a Java stack trace.
+> Is this what happens when mod_proxy connects to Tomcat, or is this your
+> application or some other component reaching-out from Tomcat to
+> elsewhere? I ask because Tomcat is unlikely to emit an error message saying
+> "Unable to perform siteminder handshake".
+
+Yes, this is after configuring mod_proxy to replace mod_jk. The web and tomcat used to communicate over AJP and didn't have any other connector. An SSL connector was added to Tomcat for the mod_proxy.
+
+>
+> Another dumb question: I've been assuming we are talking about:
+>
+> client (e.g. browser) -> mod_proxy -> Tomcat -> application
+
+The application on Tomcat does the communicating to SiteMinder with the credentials from the .fcc siteminder stuff.
+
+>
+> This is because you said "this was working with mod_jk" and mod_jk doesn't
+> do forward-proxying, only reverse-proxying.
+
+Apparently something with the mod_proxy is working right as the login page comes up. This is not hosted on the Apache HTTPD.
+
+>
+> But the error message suggests that this has nothing to do with the
+> connection from httpd / mod_proxy -> Tomcat.
+>
+> -chris
+>
+> >> -----Original Message-----
+> >> From: Christopher Schultz <chris@christopherschultz.net>
+> >> Sent: Friday, July 8, 2022 10:03 AM
+> >> To: dev@httpd.apache.org
+> >> Subject: Re: mod-proxy with sticky JSESSIONID and SiteMinder.
+> >>
+> >> Jon,
+> >>
+> >> On 7/7/22 16:56, jonmcalexander.wellsfargo.com via dev wrote:
+> >>> Seem to have an issue with mod-proxy and making the JSESSIONID and
+> >>> the SMSESSION cookie sticky. How can this be done? This setup was
+> >>> working with mod-jk, but when moving to mod-proxy over https it’s not
+> working.
+> >>> We are configured to use mutual authentication between apache and
+> >>> tomcat (for proxy only), but with the certificateVerification set to
+> >>> required in Tomcat, we are getting a
+> >>> java.base/sun.security.ssl.Alert.createSSLException and with setting
+> >>> it to optional, we are getting a javax.net.ssl.SSLHandshakeException:
+> >>> Received fatal alert: bad_certificate error (extensive).
+> >>
+> >> Did you double-check the client and server certs to make sure they
+> >> haven't expired or anything silly like that?
+> >>
+> >> It sounds like you are reporting multiple problems, here.
+> >>
+> >> Which one is most urgent/problematic? We'll solve one thing at a time.
+> >>
+> >> -chris
+
+
+Dream * Excel * Explore * Inspire
+Jon McAlexander
+Senior Infrastructure Engineer
+Asst. Vice President
+He/His
+
+Middleware Product Engineering
+Enterprise CIO | EAS | Middleware | Infrastructure Solutions
+
+8080 Cobblestone Rd | Urbandale, IA 50322
+MAC: F4469-010
+Tel 515-988-2508 | Cell 515-988-2508
+
+jonmcalexander@wellsfargo.com
+This message may contain confidential and/or privileged information. If you are not the addressee or authorized to receive this for the addressee, you must not use, copy, disclose, or take any action based on this message or any information herein. If you have received this message in error, please advise the sender immediately by reply e-mail and delete this message. Thank you for your cooperation.

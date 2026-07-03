@@ -1,0 +1,31 @@
+Message-ID: <CAKQ1sVPm5_TbmiFFS8S+4O-F7hY3OY6nWJyo8UvVoJyLet78Aw@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0339
+Date: Wed, 12 Jan 2022 11:34:51 +0100
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: httpd-dev <dev@httpd.apache.org>
+Subject: Re: ocsp.t failing
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-01.mbox
+
+On Wed, Jan 12, 2022 at 11:09 AM Joe Orton <jorton@redhat.com> wrote:
+> >
+> > I wonder if this is due to change in the OpenSSL version in Ubuntu?
+>
+> Appears not :) Big thanks to Yann for fixing it!
+
+Actually yes :) An OpenSSL change which caused a modification of the
+perl IO-Socket-SSL module [1] which caused a different error message
+returned for rejected handshakes.
+
+Most credits go to DimStar on #httpd though, who pinged me when (s)he
+saw that we disabled the test for "unknwon reasons" and that I was
+fighting with travis to show me something. (S)he bisected and pointed
+me to the offending commit in IO-Socket-SSL thus allowing me to
+upgrade the module locally and reproduce, the fix was then
+straightforward..
+
+So many thanks to DimStar!
+
+[1] https://github.com/noxxi/p5-io-socket-ssl/commit/0c22923961535a7602a287acb8f65a88c7705a86

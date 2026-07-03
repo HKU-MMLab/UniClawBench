@@ -1,0 +1,49 @@
+Message-ID: <oydelcsv2z4.fsf@bert.cs.rice.edu>
+X-Clawbench-ID: CAM-2003-1079
+Date: Wed, 21 Aug 2002 06:57:35 -0500
+From: Scott A Crosby <scrosby@cs.rice.edu>
+To: "Craig R.Hughes" <craig@deersoft.com>
+Subject: [SAtalk] Re: results for giant mass-check (phew)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01333.2fe6c479eb5eb14b6284188771522355
+
+On Tue, 20 Aug 2002 11:14:50 -0700, Craig R.Hughes <craig@deersoft.com> writes:
+
+> On Tuesday, August 20, 2002, at 07:23  AM, Justin Mason wrote:
+>
+`> Remember that the GA is going to be considering combinatorial uses of
+> the rules, so rules which look dodgy on their own might be gems for
+> the GA -- perhaps something with a S/O ratio of .5 actually occurs
+> often in combination with some other rule, and in those situations,
+> helps to distinguish spam vs nonspam.
+>
+
+We're currently using a perceptron classifier. It *can't* learn
+combinations of rules.[1]
+
+I gave an example, assume 4 rules:
+   SPAM = (A or B) and (C or D)
+
+It cannot learn that function.
+
+A decision tree classifier *can* learn that example, and the function
+above, where a .5 S/O rule is only important in certain
+circumstances. (Then again, it may be smartest to hardcode a meta-rule
+for that case, rather than trust to a naive DT learner.)
+
+Scott
+
+
+[1] To be fair, nor can a Bayes classifier.
+
+
+-------------------------------------------------------
+This sf.net email is sponsored by: OSDN - Tired of that same old
+cell phone?  Get a new here for FREE!
+https://www.inphonic.com/r.asp?r=sourceforge1&refcode1=vs3390
+_______________________________________________
+Spamassassin-talk mailing list
+Spamassassin-talk@lists.sourceforge.net
+https://lists.sourceforge.net/lists/listinfo/spamassassin-talk

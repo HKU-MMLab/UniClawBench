@@ -1,0 +1,64 @@
+Message-ID: <Yuy36Diq9mZXRAkJ@an3as.eu>
+X-Clawbench-ID: BIO-2024-1015
+Date: Fri, 5 Aug 2022 08:25:44 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Étienne Mollier <emollier@emlwks999.eu>
+Subject: Re: Can someone have a look at the new upstream version of plink2
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_08_msg00026.html
+
+Hi Étienne,
+
+Am Thu, Aug 04, 2022 at 11:17:20PM +0200 schrieb Étienne Mollier:
+> Andreas Tille, on 2022-08-04:
+> > I tried to upgrade plink2 to latest upstream but as per Salsa CI[1]
+> > the build fails on amd64 with
+> […]
+> >  1534 | #      error "32-byte-float-vector builds require FMA3 as well."
+>
+> plink2 is one of the packages implementing simde.  It looks like
+> for certain architecture flags, the source code also expects to
+> be able to make use of fma instructions, which are CPU specific.
+>
+> Not all x86_64 processors support fma, so -mfma would be another
+> build option to add to the simde build for the vector intrinsics
+> which require it.
+
+I admit the -mfma flag was new in the upstream code when I refreshed
+the patch debian/patches/baseline.  If I try
+
+$ git diff
+diff --git a/debian/patches/baseline b/debian/patches/baseline
+index 35392f8..fda4df6 100644
+--- a/debian/patches/baseline
++++ b/debian/patches/baseline
+@@ -8,7 +8,7 @@ Forwarded: not-needed
+
+  # BASEFLAGS=-g -DZSTD_MULTITHREAD -DSTATIC_ZSTD
+ -BASEFLAGS=-g -mavx2 -mbmi -mbmi2 -mfma -mlzcnt -DZSTD_MULTITHREAD
+-+BASEFLAGS=-g -DZSTD_MULTITHREAD
+++BASEFLAGS=-g -mfma -DZSTD_MULTITHREAD
+  # BASEFLAGS=-g -msse4.2 -DZSTD_MULTITHREAD
+
+  include Makefile.src
+
+
+the build failure remains on my hardware.
+
+> The processor flag would also need to be
+> checked in the dispatch code when selecting the proper binary
+> for the end-user CPU.
+>
+> In hope this helps,
+
+Well, it gives some explanation - but no real solution how to build
+the package.
+
+Kind regards
+
+     Andreas.
+
+--
+http://fam-tille.de

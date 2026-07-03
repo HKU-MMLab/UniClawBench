@@ -1,0 +1,31 @@
+Message-ID: <CAOGo0VYT8BCwBtPZvSMNiYhp_JhN+XBzqq+yMo9RhBQGAYp7mQ@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1189
+Date: Sat, 26 Oct 2024 00:48:19 +0100
+From: sebb <sebbaz@gmail.com>
+To: dev@community.apache.org
+Subject: Retirement of HelpWanted.apache.org
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-10.mbox
+
+[Bcc to commons,curator,cxf,datafu,directory,groovy,httpd,impala,jmeter,mahout,myfaces,oodt,openoffice,poi,sis,tika
+so replies are directed to comdev only]
+
+Comdev have decided that the HelpWanted app should be retired as it is
+not worth the maintenance effort -- it is barely used.
+
+It will be shutting down.
+
+AFAICT, only HTTPD and POI link directly to the HelpWanted website.
+Those projects will need to adjust some web pages, as all traffic will
+be redirected to a holding page.
+
+Other projects have some outstanding entries (though they may by now
+be obsolete).
+
+A JSON dump of all 43 entries (sorted by project, created) can be found at:
+
+https://svn.apache.org/repos/asf/comdev/helpwanted.apache.org/tasks-2024-10-26.json
+
+Sebb

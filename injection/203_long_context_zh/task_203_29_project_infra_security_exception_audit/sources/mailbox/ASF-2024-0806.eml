@@ -1,0 +1,22 @@
+Message-ID: <Zg0KyNnSdNprP8Xm@redhat.com>
+X-Clawbench-ID: ASF-2024-0806
+Date: Wed, 3 Apr 2024 08:52:40 +0100
+From: Joe Orton <jorton@redhat.com>
+To: dev@httpd.apache.org
+Subject: Re: Failing test t/apache/pr64339.t
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-04.mbox
+
+On Tue, Apr 02, 2024 at 08:46:46PM -0400, Eric Covener wrote:
+> This could be due to none of these happening:
+> - mod_mime didn't send a charset from backend
+> - no BOM
+> - no xml2EncDefault (8859-1 effectively by default) on frontend
+>
+> To make the conf match the test code, this works for me to address
+> mod_mime on the backend:
+
+Yup. Sorry for wasting your time on this. Thanks for the commit, I had
+the same change uncommitted locally still and missed it.

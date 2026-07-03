@@ -1,0 +1,21 @@
+{
+  "display_name": "BlogFolio \u2014 Grid",
+  "based_on": "generic blog/portfolio grid",
+  "item_metadata_fields": [
+    "title",
+    "caption",
+    "date",
+    "author",
+    "tags"
+  ],
+  "features": {
+    "timeline": false,
+    "map": false,
+    "iiif_large_images": false,
+    "browse_by_filter": true,
+    "search": true,
+    "responsive": true
+  },
+  "note": "blog-style grid; no archival provenance fields, no IIIF, no timeline",
+  "id": "blogfolio_grid"
+}

@@ -1,0 +1,46 @@
+Message-ID: <ZFp2dh5G7COdlYVq@an3as.eu>
+X-Clawbench-ID: BIO-2024-1273
+Date: Tue, 9 May 2023 18:36:06 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Nextflow - have just used it on our HPC cluster and liked it
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_05_msg00005.html
+
+Hi Pierre,
+
+Am Mon, May 08, 2023 at 10:50:54PM +0200 schrieb Pierre Gruet:
+>
+> It is very nice to hear from you on Nextflow, this is a motivation booster
+> for the packaging!
+
++1
+
+> I have indeed packaged many dependencies, and if I remember correctly I had
+> two issues at this step:
+> - kryo 5.x is needed although we have libkryo-java/2.7 in Debian, which
+> cannot be upgraded to version 5.x as it would break gradle (!). So we need a
+> dedicated src:kryo5 package, I began doing it but took a break for whatever
+> reason;
+
+If we need two versions of kryo it needs passing new - thus you can upload
+it at any time, thought.
+
+> - more annoying: I need groovy 3.x and in Debian we have groovy 2.4.21. I
+> tried to package it but met some antlr4 issues on which I have to spend more
+> time.
+>
+> I think reworking on this will be a good task after the release of Bookworm.
+> I can try again and post possible issues here.
+
+May be groovy can be upgraded in experimental to version 3.x?
+
+Thanks a lot for working on all these dependencies!
+
+Kind regards
+     Andreas.
+
+--
+http://fam-tille.de

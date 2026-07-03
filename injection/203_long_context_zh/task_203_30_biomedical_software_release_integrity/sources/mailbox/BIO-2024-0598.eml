@@ -1,0 +1,26 @@
+Message-ID: <a37e7d54-51b7-a9c8-47ab-94056120e595@debian.org>
+X-Clawbench-ID: BIO-2024-0598
+Date: Sun, 17 Oct 2021 09:44:36 +0300
+From: Andrius Merkys <merkys@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: RFH: Getting fastp building on more archs
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00083.html
+
+Hi Nilesh,
+
+On 2021-10-16 11:44, Nilesh Patra wrote:
+> Hi Andrius, the reason is quoted below (reply from zigo on -python)
+>
+>> Hi,
+>>
+>> Did you look into the source package? isal is written in assembly
+>> language...
+
+On the same thread Graham reported success in building isal on armhf,
+ppc64el and riscv64. This gives some hope for fastp as well.
+
+Best,
+Andrius

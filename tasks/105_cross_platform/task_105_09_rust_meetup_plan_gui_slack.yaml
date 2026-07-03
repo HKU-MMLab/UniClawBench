@@ -1,0 +1,121 @@
+task_id: task_105_09_rust_meetup_plan_gui_slack
+category: 105_cross_platform
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  Complete the 5P-MIX2-2 cross-platform planning task for Rust Global: Tokyo.
+
+  Event information and route information must come from real public web pages.
+  Do not use a local simulated event site or local map page:
+
+  - Event page: https://rustfoundation.org/event/rust-global-tokyo/
+  - Event background: https://rustfoundation.org/media/rust-global-tokyo-connecting-the-rust-ecosystem-across-industries-regions/
+  - Venue/travel page: https://events.linuxfoundation.org/open-source-summit-japan/attend/venue-travel/
+  - Route estimate: https://www.rome2rio.com/s/Shibuya-Station/Toranomon-Station
+  - Registration page: https://register.linuxfoundation.org/event/rust-global-tokyo-2025/register
+
+  The service installs and verifies a real desktop calendar, a real GUI text
+  editor, and real Slack Desktop. The verification record is saved at
+  `/tmp_workspace/clawbench/service_state/real_plan_gui_apps_task_105_09.json`.
+  Do not use Calendar Mock or Slack Mock.
+
+  1. Confirm the date, official start/end time, venue, and registration
+     requirements for Rust Global: Tokyo from the real event page.
+  2. Confirm the commute estimate from Shibuya Station to the venue from the real
+     route/venue pages. Combine the Rome2Rio subway estimate from Shibuya Station
+     to Toranomon Station with the venue page's walking estimate from Toranomon
+     Station Exit 1 to Toranomon Hills Forum.
+  3. Create the calendar event yourself in the real desktop calendar GUI. Do not
+     use Calendar Mock, a local simulator, or any script that creates or records
+     the event for you. The calendar event title must include `Rust Global:
+     Tokyo`; the start time must be exactly 40 minutes before the official event
+     start time, and the end time should use the official event end time.
+     Preserve the venue and registration link information in the location/notes.
+     Save a real calendar window screenshot:
+
+         /tmp_workspace/results/rust_meetup_plan_calendar_screenshot.png
+
+     The screenshot should show the saved event or event details inside the real
+     calendar application. An ICS import preview, unselected calendar, or unsaved
+     dialog is not enough to prove the event was created.
+
+     Also save an auditable calendar export or event state:
+
+         /tmp_workspace/results/rust_meetup_plan_calendar_export.ics
+         /tmp_workspace/results/rust_meetup_plan_calendar_event.json
+
+  4. Use a real GUI text editor to write the planning document yourself. Do not
+     use a script to directly generate or prefill the final document. Save the
+     document as:
+
+         /tmp_workspace/results/rust_meetup_plan_5p.md
+
+     Also save a screenshot showing this document open in the text editor:
+
+         /tmp_workspace/results/note_editor_plan_screenshot.png
+
+     The document must have only these three top-level sections:
+
+     - Event info
+     - Route estimate
+     - Arrival plan
+
+     Synthesize the web information into a practical plan; do not copy whole
+     paragraphs from the web page introduction. The Arrival plan should use the
+     combined commute estimate and give a Shibuya Station departure time that
+     arrives at the venue around 17:50.
+  5. Open real Slack Desktop. If the environment is already logged in to a Slack
+     workspace, send a message of no more than 120 characters to `#social`
+     summarizing the event time, venue, or arrival plan. Save the Slack screenshot
+     and text audit:
+
+         /tmp_workspace/results/slack_desktop_evidence.png
+         /tmp_workspace/results/slack_message_evidence.md
+
+     If Slack Desktop is not logged in or has no usable workspace/credentials,
+     still launch real Slack Desktop, save a login/workspace selection screenshot,
+     and explain why the message could not be sent in `slack_message_evidence.md`.
+     Do not use a local Slack mock. `slack_desktop_evidence.png` must actually
+     show a Slack Desktop channel, message, login page, workspace selection page,
+     or explicit error screen. If the file exists but the screenshot content is
+     another application, count Slack visual evidence as missing. Do not replace
+     the Slack Desktop screenshot with Slack logs/screenshots shown inside an
+     image viewer, Calendar, terminal, or another application window. Even if the
+     taskbar or window title contains the word Slack, the pixel content must show
+     the real Slack Desktop interface or error page.
+
+  6. Save real web-page usage evidence:
+
+         /tmp_workspace/results/browser_event_page.png
+         /tmp_workspace/results/browser_route_page.png
+
+     The screenshots should show real Rust Foundation / Linux Foundation /
+     Rome2Rio pages. Do not use local pages, cached screenshots, or text excerpts
+     as substitutes for real web evidence.
+
+  7. Save `/tmp_workspace/results/gui_evidence.md`, listing evidence for real web
+     pages, the real calendar, the real text editor, and real Slack Desktop.
+
+  The final `/tmp_workspace/results/` directory should contain calendar event
+  state/screenshot/export artifacts, the planning document, Slack Desktop
+  evidence, and the GUI usage record.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+services:
+  - name: real-plan-gui-apps-setup
+    path: real-plan-gui-apps-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

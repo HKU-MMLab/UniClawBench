@@ -1,0 +1,49 @@
+{
+  "task_id": "task_102_17_api_docs_framework",
+  "note": "Answer key for a candidate-selection task. Capability flags (builtin/plugin/no) are normalized from each framework's official docs and shipped in sources/candidates.json. Offline + frozen -> deterministic. The conflict: the purpose-built 'API renderer' is NOT a full docs site, the trendiest options lack versioning, and the classic option lacks dark mode; only two general frameworks cover all five requirements, and the tie-break is which one has the version-critical capability built in.",
+
+  "hard_requirements": ["code_blocks", "dark_mode", "search", "versioning", "openapi_rendering"],
+  "hard_pass_rule": "a capability counts as satisfied if it is 'builtin' OR 'plugin' (available, even if it needs configuration); 'no' = not satisfied",
+
+  "soft_preferences": {
+    "SC1_versioning_builtin": "VERSIONING is the requirement most painful to bolt on (it shapes the whole site structure for /v1 vs /v2). Prefer a framework where versioning is BUILTIN over one where it needs an external tool.",
+    "SC2_fewer_plugins": "prefer fewer total plugin-required capabilities (less integration/maintenance)"
+  },
+
+  "per_candidate": [
+    {"id":"docusaurus","code_blocks":"builtin","dark_mode":"builtin","search":"plugin","versioning":"builtin","openapi_rendering":"plugin","hard_pass":true,"missing":[],"builtin_count":3,"note":"covers all five; versioning BUILTIN; only search + openapi need plugins"},
+    {"id":"mkdocs_material","code_blocks":"builtin","dark_mode":"builtin","search":"builtin","versioning":"plugin","openapi_rendering":"plugin","hard_pass":true,"missing":[],"builtin_count":3,"note":"covers all five; but versioning needs external 'mike' tool + openapi needs a plugin"},
+    {"id":"redoc","code_blocks":"no","dark_mode":"plugin","search":"builtin","versioning":"no","openapi_rendering":"builtin","hard_pass":false,"missing":["code_blocks","versioning"],"trap":"OBVIOUS-CHOICE TRAP: it's THE OpenAPI renderer, so it looks perfect for 'API docs' — but it is not a full docs site: no authored guide pages with code blocks, and no multi-version docs."},
+    {"id":"vitepress","code_blocks":"builtin","dark_mode":"builtin","search":"builtin","versioning":"no","openapi_rendering":"plugin","hard_pass":false,"missing":["versioning"],"trap":"TRENDY TRAP: fast and modern with 4/5 builtin, but NO first-party versioning — fails a hard requirement for a v1/v2 API."},
+    {"id":"starlight","code_blocks":"builtin","dark_mode":"builtin","search":"builtin","versioning":"no","openapi_rendering":"plugin","hard_pass":false,"missing":["versioning"],"trap":"same as vitepress: great builtins but no first-party versioning."},
+    {"id":"sphinx_rtd","code_blocks":"builtin","dark_mode":"no","search":"builtin","versioning":"builtin","openapi_rendering":"plugin","hard_pass":false,"missing":["dark_mode"],"trap":"CLASSIC TRAP: strong (versioning builtin via RTD) but the classic RTD theme has no built-in dark mode toggle -> fails the dark-mode requirement."}
+  ],
+
+  "hard_pass_survivors": ["docusaurus", "mkdocs_material"],
+  "tiebreak": {
+    "docusaurus": {"versioning": "builtin", "plugins_needed": ["search", "openapi_rendering"]},
+    "mkdocs_material": {"versioning": "plugin (external mike)", "plugins_needed": ["versioning", "openapi_rendering"]},
+    "winner": "docusaurus",
+    "reason": "Both cover all five requirements, but versioning is the most structural/hard-to-retrofit requirement and Docusaurus has it BUILT IN, whereas MkDocs Material needs the external 'mike' tool. Docusaurus also needs one fewer plugin overall for the critical reqs."
+  },
+
+  "gold": {
+    "selected_id": "docusaurus",
+    "acceptable_alternative": "mkdocs_material with an explicit, correct tradeoff that acknowledges versioning is plugin/external (mike) -> up to ~0.85",
+    "key_facts": {
+      "redoc_is_a_trap": "must NOT be the primary pick; it is an OpenAPI renderer, not a full docs site (no code-block guides, no versioning). It is fine to EMBED redoc inside the chosen docs site, but not as the standalone answer.",
+      "vitepress_starlight_trap": "must be rejected for lacking first-party versioning",
+      "sphinx_trap": "must be rejected for lacking built-in dark mode",
+      "survivors": ["docusaurus", "mkdocs_material"],
+      "optimal": "docusaurus (versioning builtin)"
+    }
+  },
+
+  "scoring_anchors": {
+    "must_reject_with_reason": ["redoc", "vitepress", "sphinx_rtd"],
+    "must_identify_survivors": ["docusaurus", "mkdocs_material"],
+    "optimal_selection": "docusaurus",
+    "min_candidates_evaluated": 5,
+    "note": "An executor that picks Redoc because 'it does OpenAPI' has fallen for the obvious trap and ignored the code-blocks + versioning requirements. The decisive reasoning is: only docusaurus and mkdocs_material cover all five, and docusaurus has the version-critical capability built in."
+  }
+}

@@ -1,0 +1,21 @@
+Message-ID: <e5e05732-b78b-7b93-ba65-d630149587ed@blastwave.org>
+X-Clawbench-ID: ASF-2024-0931
+Date: Fri, 5 May 2023 04:19:03 -0400
+From: Dennis Clarke <dclarke@blastwave.org>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Switch read/write repository from Subversion to Git
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-05.mbox
+
+> Everybody says git is decentralized, so why are you even asking this
+> question? Can't you just use any git repository, anywhere? ;-)
+
+Github is microsoft and you can bet they will break things. It is only a
+matter of time with them.
+
+--
+Dennis Clarke
+RISC-V/SPARC/PPC/ARM/CISC
+Four decades in production systems.

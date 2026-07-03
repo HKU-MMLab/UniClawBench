@@ -1,0 +1,47 @@
+Message-ID: <ZKRnifpPCDgsTrmk@fusion>
+X-Clawbench-ID: BIO-2024-1170
+Date: Tue, 4 Jul 2023 20:40:09 +0200
+From: Étienne Mollier <emollier@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: Droping .py extension in cnvkit
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_07_msg00007.html
+
+Hi all,
+
+Steven Robbins, on 2023-07-04:
+> On Tuesday, July 4, 2023 5:25:34 A.M. CDT Andreas Tille wrote:
+>
+> > The thread[2] actually was about the cnvkit example and IMHO we should
+> > decide now what to do here.  I'm persinally in favour of shipping
+> > upstream names.  They moved from setup.py to pyproject.toml so our patch
+> > does not work any more.  I wonder whether we want to fix the patch or
+> > rather our rules file which does a lot of renaming which we could drop
+> > and by doing so simplify the packaging.
+> >
+> > What do you think?
+>
+> I 100% agree with the sentiment of not changing upstream names.  Policy is a
+> guide, and a good one, but in this particular aspect (don't use suffixes) it is
+> at best a nice-to-have.
+
+Seconded, as initially highlighted by Charles, avoiding
+unnecessary deviations makes heterogeneous setups easier to
+manage.
+
+In one of the packages I prepared, prinseq-lite, I happen to
+have provided extension-less links to make the command line look
+nicer, but that was in addition of the upstream commands, not as
+a replacement.  Also in that particular case, this was somewhat
+easily doable, but there may be situations where getting no
+extensions will be harder to achieve, in which case leaving the
+suffix would probably be a better use of everyone's time.
+
+Have a nice day,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  gpg: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/2, please excuse my verbosity
+   `-    on air: Uriah Heep - July Morning

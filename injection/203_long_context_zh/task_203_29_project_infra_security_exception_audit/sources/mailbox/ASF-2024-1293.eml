@@ -1,0 +1,67 @@
+Message-ID: <A5DEE19B-0C7F-4616-AB89-D64A9332D1EB@eissing.org>
+X-Clawbench-ID: ASF-2024-1293
+Date: Fri, 25 Feb 2022 14:23:42 +0100
+From: Stefan Eissing <stefan@eissing.org>
+To: dev@httpd.apache.org
+Subject: Re: module threads and mpm lifecycle
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-02.mbox
+
+> Am 25.02.2022 um 14:15 schrieb Graham Leggett <minfrin@sharp.fm>:
+>
+> On 23 Feb 2022, at 12:39, Stefan Eissing <stefan@eissing.org> wrote:
+>
+>> One thing that is currently missing is a way to shutdown/reap/join module threads when the mpm exits.
+>>
+>> Example:
+>>
+>> mod_watchdog creates several threads post_config which are only joined on pool destruction.
+>>
+>> Problem:
+>>
+>> pool destruction is not ordered between modules and dependencies on order are not
+>> fully known. This leads to crashes in OpenSSL, for example, when mod_ssl is destructed
+>> before all watchdogs using OpenSSL are joined (OpenSSL 3.x seems to do better on this,
+>> but the point remains valid).
+>
+> A note on OpenSSL termination - in old versions of OpenSSL, there was this wrong assumption that an application would only ever initialise OpenSSL once, and in turn shut down OpenSSL once, but this scenario doesn’t exist in the real world (like ours, where modules that have no idea about each other independently use OpenSSL).
+>
+> OpenSSL 3 (and I think earlier versions, I don’t remember) have gone further than “do better”, they have (to my knowledge) 100% fixed this problem by turning all OpenSSL init functions into noops and using reference counting internally to ensure sanity is maintained at all times.
+>
+> If any of this doesn't work, we need to let OpenSSL know.
+>
+>> There has been attempts by Yann to make a patch that make the OpenSSL termination
+>> way later (adding it to a 'higher' pool destruction). But that would only solve
+>> this particular problem and not any other 3rd party dependency.
+>>
+>> Proposal:
+>>
+>> Add a hook 'child_exiting(int graceful)' where modules can register
+>> and do their own thread join/reap.
+>>
+>>
+>> On a graceful shutdown, this would allow watchdogs to fully complete any ongoing task
+>> before things start to disappear in the process.
+>
+> +1 - will be very useful.
+
+Thanks. I added this and support in mod_watchdog. Results from mpm_event seem to
+indicate that this works.
+
+However, I get strange failures/crashes with mpm_prefork. Seemingly when clean_child_exit()
+is directly invoked from the signal handler. I have not been able to wrap my head around
+what is causing this.
+
+I disabled calling the child_stopping/child_stopped hooks when this is invoked by the signal
+handler. This should revert mpm_prefork to the state before and have it again passing in out
+Travis CI. If this still fails, I screwed up somewhere else.
+
+Kind Regards,
+Stefan
+
+>
+> Regards,
+> Graham
+> —

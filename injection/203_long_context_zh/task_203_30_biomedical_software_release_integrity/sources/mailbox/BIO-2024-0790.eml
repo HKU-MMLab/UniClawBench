@@ -1,0 +1,25 @@
+Message-ID: <izb3WrE9fj4oikKxT-gTiW8k-dtgXMVCgPhV-LduITnVoSYHgdNpFZtBLC_IqIUvd-X2xvDwPhWtfeujiTGMOPWIjX4HDxP7vMY5nLM74bs=@protonmail.com>
+X-Clawbench-ID: BIO-2024-0790
+Date: Tue, 21 Dec 2021 13:33:09 +0000
+From: Lance Lin <LQi254@protonmail.com>
+To: "debian-med@lists.debian.org" <debian-med@lists.debian.org>
+Subject: autopkgtest requiring large data sets (pique, hinge)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_12_msg00120.html
+
+Debian Medical Team,
+
+I have started looking at adding autopkgtest suites for a variety of packages. Two of the packages (hinge, pique) require very large data sets to run their included examples. The sizes are several GB. It also looks like they may be graphical in nature.
+
+
+Is it permissible for autopkgtest suites to download such large amounts of data from the internet? Or should they be included in the repo?
+
+If so, I am happy to continue to look at these packages to include some basic level of testing.
+
+Thank you!
+
+As I don't have direct domain knowledge of the technology
+Lance Lin
+GPG Fingerprint:  8CAD 1250 8EE0 3A41 7223  03EC 7096 F91E D75D 028F

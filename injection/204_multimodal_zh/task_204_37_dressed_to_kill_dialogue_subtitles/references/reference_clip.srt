@@ -1,0 +1,745 @@
+1
+00:00:00,000 --> 00:00:00,290
+What about me? This is murder.
+
+2
+00:00:00,300 --> 00:00:02,130
+What about Scotland Yard?
+
+3
+00:00:02,130 --> 00:00:04,550
+What about Sherlock Holmes?
+
+4
+00:00:04,550 --> 00:00:06,660
+Now get out!
+
+5
+00:00:33,410 --> 00:00:35,480
+Did you get it?
+
+6
+00:00:37,290 --> 00:00:38,750
+Good.
+
+7
+00:00:38,750 --> 00:00:41,790
+Did you have any
+trouble with him?
+
+8
+00:00:41,800 --> 00:00:43,910
+Just a matter of murder.
+
+9
+00:00:47,680 --> 00:00:49,970
+- Ah, Mr. Holmes.
+- Hopkins.
+
+10
+00:00:49,970 --> 00:00:51,550
+Thanks for coming so promptly.
+
+11
+00:00:51,560 --> 00:00:54,640
+Inspector Lestrade suggested
+that I call through to you.
+
+12
+00:00:54,640 --> 00:00:58,060
+- Mr. Emery was a client of Mr. Holmes, Inspector.
+- Indeed.
+
+13
+00:00:58,060 --> 00:01:00,060
+You didn't mention that when
+I telephoned you, Mr. Holmes.
+
+14
+00:01:00,060 --> 00:01:02,060
+Well not exactly
+a client, Inspector.
+
+15
+00:01:02,070 --> 00:01:04,730
+- Sergeant Thompson?
+- He was killed between the hours of eleven
+
+16
+00:01:04,740 --> 00:01:07,580
+and two o'clock this
+morning, Mr. Holmes.
+
+17
+00:01:09,240 --> 00:01:10,520
+Must have been someone he knew.
+
+18
+00:01:10,530 --> 00:01:13,330
+Someone of whom
+he had no suspicion.
+
+19
+00:01:13,330 --> 00:01:15,080
+Poor old Stinky.
+
+20
+00:01:15,080 --> 00:01:17,750
+It's all my fault.
+I should have prevented this.
+
+21
+00:01:17,750 --> 00:01:21,330
+Well, it's no time to start
+talking about that now, Doctor.
+
+22
+00:01:21,340 --> 00:01:23,130
+Apparently, it's gone.
+
+23
+00:01:23,130 --> 00:01:25,130
+That's the second attempt
+on the musical box
+
+24
+00:01:25,130 --> 00:01:26,920
+that Emery bought
+at the auction sale
+
+25
+00:01:26,920 --> 00:01:28,720
+and this time it was successful.
+
+26
+00:01:28,720 --> 00:01:30,510
+But that box is only
+worth two pounds.
+
+27
+00:01:30,510 --> 00:01:32,760
+It's worth a man's life, Watson.
+
+28
+00:01:32,760 --> 00:01:36,180
+I think we'd better pay a visit to Gaylord's
+Auction Room and that fellow Crabtree.
+
+29
+00:01:36,180 --> 00:01:37,560
+Inspector may I suggest
+
+30
+00:01:37,560 --> 00:01:39,350
+that you make a complete
+search of this flat
+
+31
+00:01:39,350 --> 00:01:43,060
+for a small plain musical
+box about that size.
+
+32
+00:01:43,070 --> 00:01:45,040
+Thank you. Come on, Watson.
+
+33
+00:01:46,780 --> 00:01:49,450
+You say the first box
+went to Mr. Julian Emery,
+
+34
+00:01:49,450 --> 00:01:52,780
+the second, Mr. Kilgour,
+143B Hampton Way,
+
+35
+00:01:52,780 --> 00:01:54,660
+and the third to the
+unidentified young lady
+
+36
+00:01:54,660 --> 00:01:56,910
+who presumably has a shop
+and lives near Golders Green?
+
+37
+00:01:56,910 --> 00:01:58,240
+That's right Mr. Holmes.
+
+38
+00:01:58,250 --> 00:02:00,660
+Isn't it rather strange,
+Mr. Crabtree,
+
+39
+00:02:00,670 --> 00:02:03,790
+that you've had three identical musical
+boxes, all playing the same tune?
+
+40
+00:02:03,790 --> 00:02:05,710
+- Where did they come from?
+- Dartmoor Prison.
+
+41
+00:02:05,710 --> 00:02:08,800
+- Dartmoor?
+- We get a regular shipment from there every month.
+
+42
+00:02:08,800 --> 00:02:10,170
+The inmates manufacture them.
+
+43
+00:02:10,180 --> 00:02:11,510
+Well, they make all kinds
+of things you know?
+
+44
+00:02:11,510 --> 00:02:13,180
+Pipe racks, wastepaper baskets,
+
+45
+00:02:13,180 --> 00:02:15,640
+- musical boxes.
+- Did you happen to notice
+
+46
+00:02:15,640 --> 00:02:18,770
+if anyone showed any particular
+interest during the auction
+
+47
+00:02:18,770 --> 00:02:22,730
+in the purchases
+of these three boxes?
+
+48
+00:02:22,730 --> 00:02:24,480
+Oh, come now, Mr. Crabtree,
+
+49
+00:02:24,480 --> 00:02:26,900
+this is very literally a
+matter of life and death.
+
+50
+00:02:26,900 --> 00:02:29,280
+Well, since you put it
+that way, Mr. Holmes,
+
+51
+00:02:29,280 --> 00:02:31,570
+there was a gentleman came in here
+about an hour after closing time.
+
+52
+00:02:31,570 --> 00:02:35,530
+And he was in an
+awful state, he was,
+
+53
+00:02:35,530 --> 00:02:37,620
+he gave me five pounds to tell
+him where the boxes had gone.
+
+54
+00:02:37,620 --> 00:02:39,620
+He said they had sentimental
+value for him, sir.
+
+55
+00:02:39,620 --> 00:02:41,500
+Expensive sentiment.
+
+56
+00:02:41,500 --> 00:02:42,740
+Can you describe him?
+
+57
+00:02:42,750 --> 00:02:44,290
+Well he was tall,
+distinguished looking
+
+58
+00:02:44,290 --> 00:02:46,210
+and he had gray hair
+and a mustache.
+
+59
+00:02:46,210 --> 00:02:47,500
+He was quite a gentleman, sir.
+
+60
+00:02:47,500 --> 00:02:49,050
+And what was his reaction
+
+61
+00:02:49,050 --> 00:02:50,840
+when you were
+unable to supply him
+
+62
+00:02:50,840 --> 00:02:52,720
+with the address of the young
+lady who owned the shop?
+
+63
+00:02:52,720 --> 00:02:55,220
+I told him that the young lady
+usually come back on Thursday.
+
+64
+00:02:55,220 --> 00:02:57,930
+He said he'd come back on
+Thursday and that's tomorrow.
+
+65
+00:02:57,930 --> 00:03:00,680
+Thank you Mr. Crabtree, you've
+been very helpful. Thank you.
+
+66
+00:03:00,680 --> 00:03:02,270
+Come along, Watson.
+
+67
+00:03:02,270 --> 00:03:04,480
+- Where we going now, Holmes?
+- The home of Mr. Kilgour,
+
+68
+00:03:04,480 --> 00:03:06,270
+the man who bought
+the third box.
+
+69
+00:03:12,530 --> 00:03:14,450
+But hang it all, Holmes,
+
+70
+00:03:14,450 --> 00:03:16,530
+how do you know those other two
+musical boxes are of any importance?
+
+71
+00:03:16,530 --> 00:03:18,030
+I don't, but I certainly
+have no intention
+
+72
+00:03:18,030 --> 00:03:20,840
+of waiting till the owners
+are murdered to find out.
+
+73
+00:03:22,750 --> 00:03:24,210
+No one at home.
+
+74
+00:03:24,210 --> 00:03:26,500
+I hope that's the explanation.
+
+75
+00:03:26,500 --> 00:03:28,660
+Well, have a look
+through this window.
+
+76
+00:03:33,840 --> 00:03:36,930
+Doesn't seem to be anyone there.
+
+77
+00:03:36,930 --> 00:03:40,810
+Whole place seems deserted
+as far as I can see.
+
+78
+00:03:40,810 --> 00:03:43,350
+- Yes?
+- Mr. and Mrs. Kilgour at home?
+
+79
+00:03:43,350 --> 00:03:44,980
+- No.
+- When do you expect them?
+
+80
+00:03:44,980 --> 00:03:46,980
+Oh, in an hour or so.
+
+81
+00:03:46,980 --> 00:03:48,650
+There's no use
+you're hanging about.
+
+82
+00:03:48,650 --> 00:03:50,270
+They don't buy nothing
+from peddlers.
+
+83
+00:03:50,280 --> 00:03:51,560
+Peddlers?
+
+84
+00:03:51,570 --> 00:03:53,610
+My good woman this is
+Mr. Sherlock Holmes.
+
+85
+00:03:53,610 --> 00:03:55,570
+Sherlock Holmes? Oh, go on.
+
+86
+00:03:55,570 --> 00:03:57,620
+Do you mind if we
+come in and wait?
+
+87
+00:03:57,620 --> 00:03:58,990
+My business is rather urgent.
+
+88
+00:03:58,990 --> 00:04:01,950
+Well, I've got to go out
+to do my shopping
+
+89
+00:04:01,950 --> 00:04:03,580
+and I don't know if Mrs. Kilgour
+
+90
+00:04:03,580 --> 00:04:05,580
+would like any strangers
+nosing about.
+
+91
+00:04:05,580 --> 00:04:07,170
+Quite all right, I assure you.
+
+92
+00:04:07,170 --> 00:04:08,670
+Well, I've got to be off.
+
+93
+00:04:08,670 --> 00:04:12,170
+You two wait in the parlor
+and no smoking either.
+
+94
+00:04:12,170 --> 00:04:17,130
+Mrs. Kilgour says it
+smells up the house.
+
+95
+00:04:17,140 --> 00:04:19,700
+- Funny old girl, Holmes.
+- Hmm.
+
+96
+00:04:37,160 --> 00:04:39,200
+- Park Lane.
+- Park Lane?
+
+97
+00:04:39,200 --> 00:04:41,370
+And what would the likes of
+you be doing in Park Lane?
+
+98
+00:04:41,370 --> 00:04:43,330
+Now don't worry
+about the fare, ducky.
+
+99
+00:04:43,330 --> 00:04:46,360
+If ya knows how to get
+to Park Lane, now off it.
+
+100
+00:04:51,460 --> 00:04:53,590
+You know, Holmes,
+I've been thinking.
+
+101
+00:04:53,590 --> 00:04:54,640
+There must have been
+something hidden
+
+102
+00:04:54,670 --> 00:04:57,420
+in that box of old Stinky's.
+
+103
+00:04:57,430 --> 00:05:00,800
+Stolen jewelry possibly.
+
+104
+00:05:00,800 --> 00:05:03,190
+- What's up Holmes?
+- Listen.
+
+105
+00:05:05,350 --> 00:05:08,060
+Well, it's just the steam
+in the water pipes.
+
+106
+00:05:13,860 --> 00:05:15,230
+Watson!
+
+107
+00:05:17,400 --> 00:05:19,010
+Great Scott!
+
+108
+00:05:20,410 --> 00:05:22,880
+Come along, Holmes,
+get her on the chair here.
+
+109
+00:05:23,700 --> 00:05:26,410
+Shh. It's all right, my dear.
+
+110
+00:05:27,460 --> 00:05:30,750
+There, there, there.
+Now don't worry.
+
+111
+00:05:30,750 --> 00:05:32,750
+It's all over.
+
+112
+00:05:32,750 --> 00:05:35,050
+There you are, dear.
+Don't cry anymore.
+
+113
+00:05:35,050 --> 00:05:37,840
+She tied me up and
+shut me in the cupboard.
+
+114
+00:05:37,840 --> 00:05:39,680
+I know, I know.
+
+115
+00:05:39,680 --> 00:05:41,590
+She won't come back.
+
+116
+00:05:41,600 --> 00:05:43,720
+Did you show her
+your new musical box?
+
+117
+00:05:43,720 --> 00:05:46,350
+Yes. She said she
+wanted to hear it play
+
+118
+00:05:46,350 --> 00:05:50,100
+- and as soon as I showed it to her she grabbed a hold...
+- I know. I know now.
+
+119
+00:05:50,100 --> 00:05:52,350
+Now don't worry, we'll buy
+you a new musical box.
+
+120
+00:05:52,360 --> 00:05:54,610
+Yes, my dear,
+the best one in London.
+
+121
+00:05:54,610 --> 00:05:56,780
+Watson.
+
+122
+00:05:56,780 --> 00:05:58,940
+Oh, what a fool,
+what a fool I've been.
+
+123
+00:05:58,950 --> 00:06:00,280
+What do you mean, Holmes?
+
+124
+00:06:00,280 --> 00:06:01,470
+She took the musical box
+out of this house
+
+125
+00:06:01,490 --> 00:06:03,070
+in that market basket
+
+126
+00:06:03,070 --> 00:06:04,830
+right under our very noses.
+
+127
+00:06:04,830 --> 00:06:08,000
+Why would the Kilgour charwoman
+want to take the music box?
+
+128
+00:06:08,000 --> 00:06:09,580
+She isn't the Kilgour charwoman
+
+129
+00:06:09,580 --> 00:06:11,460
+she's a consummate actress.
+
+130
+00:06:11,460 --> 00:06:13,880
+An extremely clever, unscrupulous
+woman who will stop at nothing.
+
+131
+00:06:13,880 --> 00:06:15,250
+Take care of the child,
+will you, old fellow,
+
+132
+00:06:15,250 --> 00:06:17,000
+till her parents get back.
+
+133
+00:06:17,010 --> 00:06:19,300
+- Explain everything to them.
+- Of course I will.
+
+134
+00:06:19,300 --> 00:06:21,180
+But Holmes, where are you going?
+
+135
+00:06:21,180 --> 00:06:22,970
+Somewhere, somehow
+
+136
+00:06:22,970 --> 00:06:25,300
+I must get to the young lady who
+bought that third musical box
+
+137
+00:06:25,310 --> 00:06:27,010
+before our opponents find her.
+
+138
+00:06:27,020 --> 00:06:29,450
+I only hope that
+I won't be too late.
+
+139
+00:06:34,770 --> 00:06:38,070
+Now, now, now, darling
+you mustn't cry anymore.
+
+140
+00:06:38,070 --> 00:06:39,400
+Cheer up.
+
+141
+00:06:39,400 --> 00:06:41,570
+Would you... would you
+like to hear old uncle
+
+142
+00:06:41,570 --> 00:06:44,000
+make a noise like a duck?
+
+143
+00:06:53,000 --> 00:06:55,250
+Oh, sorry. Huh.
+
+144
+00:07:20,190 --> 00:07:22,240
+Now, ladies and gentlemen
+how much am I offered
+
+145
+00:07:22,240 --> 00:07:26,370
+for this beautiful laced
+Dresden china figurine?
+
+146
+00:07:26,370 --> 00:07:28,240
+A lady of the French court.
+
+147
+00:07:28,240 --> 00:07:31,450
+Now this is the genuine article.
+
+148
+00:07:31,450 --> 00:07:33,540
+What a beautiful ornament
+for your mantelpiece
+
+149
+00:07:33,540 --> 00:07:36,210
+as a centerpiece on
+the dining room table.
+
+150
+00:07:36,210 --> 00:07:38,290
+Now will somebody
+start me for ten pounds?
+
+151
+00:07:38,290 --> 00:07:40,300
+Will somebody start me
+for ten pounds?
+
+152
+00:07:40,300 --> 00:07:42,050
+Eight pounds?
+
+153
+00:07:42,050 --> 00:07:43,510
+Seven pounds?
+
+154
+00:07:43,510 --> 00:07:44,840
+All right five.
+
+155
+00:07:44,840 --> 00:07:45,760
+Five pounds is offered.
+Five pounds is offered.
+
+156
+00:07:45,800 --> 00:07:46,810
+Five pounds is offered.
+
+157
+00:07:46,850 --> 00:07:48,130
+Five pounds ten.
+
+158
+00:07:48,140 --> 00:07:51,560
+Five pounds fifteen,
+five pounds fifteen.
+
+159
+00:07:51,560 --> 00:07:53,520
+Six pounds is offered.
+Six pounds, six pounds,
+
+160
+00:07:53,520 --> 00:07:55,230
+going once, going twice,
+
+161
+00:07:55,230 --> 00:07:57,020
+the third and the last call
+we're all done.
+
+162
+00:07:57,020 --> 00:07:59,540
+Sold to the lady from
+Trikland for six pounds.

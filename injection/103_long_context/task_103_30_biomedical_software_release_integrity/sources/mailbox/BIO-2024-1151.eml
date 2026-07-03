@@ -1,0 +1,29 @@
+Message-ID: <udl8rqi3bth.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-1151
+Date: Mon, 30 May 2022 18:17:14 -0400
+From: ucko@debian.org (Aaron M. Ucko)
+To: <debian-med@lists.debian.org>
+Subject: Re: Accepted ebook-tools 0.2.2-5 (source) into unstable
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_05_msg00036.html
+
+Andreas Tille  writes:
+
+>    #967243: acedb: depends on deprecated GTK 2
+
+That looks like a separate matter.  Also, I see no direct runtime
+dependency on GTK 2 at this point, so I presume it would simply(?) be a
+matter of adjusting the upstream build system to build only efetch and
+to do without any third-party libraries, and trimming build dependencies
+accordingly.  I'll believe that the upstream changes may be easier said
+than done, though.
+
+I suppose we might also need to drop the transitional acedb-other-belvu
+and acedb-other-dotter packages if seqtools can't move on from GTK 2,
+but that would be a straightforward packaging change.
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

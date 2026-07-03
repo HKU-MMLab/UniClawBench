@@ -1,0 +1,61 @@
+task_id: task_105_21_nextjs_learning_path
+category: 105_cross_platform
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I've been meaning to properly learn Next.js v15.3.1. Could you compare
+  this release with the previous patch v15.3.0 and tell me what changed?
+  I'm curious whether the peer dependencies shifted, whether the release
+  notes went from a big changelog to a small patch note, and how much
+  time elapsed between the two versions.
+
+  I also have 5 YouTube tutorials saved up and I'd like them sorted by
+  upload date from newest to oldest as a learning path. The ones closest
+  to the v15.3.1 release date should reflect the latest API patterns,
+  while older ones probably still cover 13/14 APIs. If you could also
+  check how many v15 core topics each video actually covers — async,
+  react 19, fetch, cookies, headers, params, router cache — and pick
+  the single best one to start with, that'd be great.
+
+  Don't just guess content from the duration — pull the English auto
+  captions for each video and count how many times each of those 7 v15
+  keywords appears in the subtitles. I want a per-video × per-keyword
+  frequency table so I can tell the difference between "mentioned once
+  in passing" and "dedicated an entire section." Based on that keyword
+  frequency, tell me which video has the deepest v15 coverage (most
+  keywords covered + highest total frequency).
+
+  Finally, give me a learning-path document that combines the version
+  comparison and the recommended video order.
+
+  Leave the subtitle .vtt files under /tmp_workspace/results/ so I can
+  cross-check later; name the other data files however you see fit.
+
+  Video IDs (all on youtu.be):
+    Sklc_fQBmcs
+    _w0Ikk4JY7U
+    ZVnjOPwW4ZA
+    mTz0GXj8NN0
+    Zq5fmkH0T78
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources: []
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

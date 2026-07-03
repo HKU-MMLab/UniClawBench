@@ -1,0 +1,27 @@
+Message-ID: <ZFkCbTlPC9mi1VGp@jamack.stsp.name>
+X-Clawbench-ID: ASF-2024-0009
+Date: Mon, 8 May 2023 16:08:45 +0200
+From: Stefan Sperling <stsp@apache.org>
+To: dev@httpd.apache.org, Graham Leggett <minfrin@sharp.fm>
+Subject: Re: [VOTE] Switch read/write repository from Subversion to Git
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-05.mbox
+
+On Mon, May 08, 2023 at 10:29:04AM +0100, Graham Leggett via dev wrote:
+> This is a vote of no confidence in our own projects.
+
+If the ASF at large was confident in SVN as a technology then our current
+reality would look quite different. The Subversion project never managed
+to grow its developer base by becoming part of the ASF. We've mostly seen
+people who were already involved beforehand slowly disappearing over time.
+As a result, maintenance and development activity has declined sharply in
+recent years. Nobody at the ASF seems to notice or care and the result of
+a vote such as this won't make any difference in the matter.
+
+The overall preference for Github on the HTTPD project makes sense to me
+and isn't unexpected at all. Subversion passes as a stellar open source
+project by how it is being run but it is failing to attract open source
+communities as users based on technical merits. Most of the remaining
+users are running their Subversion servers behind closed doors.

@@ -1,0 +1,21 @@
+Message-ID: <CALK=YjOups+azn5RAKkmGBdnotANVzzej2AuVfL1EirhAgiCoQ@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1032
+Date: Wed, 26 Jun 2024 17:20:09 -0400
+From: Eric Covener <covener@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.60-rc4 as httpd-2.4.60
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-06.mbox
+
+On Wed, Jun 26, 2024 at 5:14 PM Helmut K. C. Tessarek
+<tessarek@evermeet.cx> wrote:
+>
+> On 2024-06-26 13:10, Eric Covener wrote:
+> > Please find below the proposed release tarball and signatures:
+>
+> I don't get a vote, but the issue I had (fcgi permissions) is now gone.
+
+Thanks for testing and re-testing. I just extended an existing FCGI
+test to cover the scenario as well.

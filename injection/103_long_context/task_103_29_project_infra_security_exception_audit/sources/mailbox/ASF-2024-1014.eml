@@ -1,0 +1,149 @@
+Message-ID: <81488d32-1657-8415-104d-33052081e00c@apache.org>
+X-Clawbench-ID: ASF-2024-1014
+Date: Mon, 25 Apr 2022 12:59:00 +0200
+From: Ruediger Pluem <rpluem@apache.org>
+To: Apache HTTP Server Development List <dev@httpd.apache.org>
+Subject: Re: Error while configuring/compiling Apache 2.4.53
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-04.mbox
+
+See https://bz.apache.org/bugzilla/show_bug.cgi?id=66000
+
+Regards
+
+Rüdiger
+
+On 4/25/22 11:16 AM, Ganeshprasad MS wrote:
+> CONFIDENTIAL & RESTRICTED
+>
+>
+> Hi Team,
+>
+>
+>
+> (I am trying to contact Apache HTTPD community from last few days but no response, kindly respond to my below query ☹)
+>
+>
+>
+> We have downloaded the Apache HTTPD source httpd-2.4.53.tar.gz <https://dlcdn.apache.org/httpd/httpd-2.4.53.tar.gz> from Apache
+> software foundation and trying to compile/build the Apache binaries, but we are facing the below error while configuring the
+> Apache HTTPD.
+>
+>
+>
+> FYI: I am not facing the issue while configuring *2.4.52 and below* versions.
+>
+>
+>
+> Kindly help me in identifying/resolving the issue asap.
+>
+>
+>
+>
+>
+> *Error in ./configure step:*
+>
+>
+>
+> ============================================================
+>
+> Configuring HTTPD build
+>
+> ============================================================
+>
+> Options: --prefix /remote/users/gms/2.4.53/apache-pack/build/PKL-AWS-2.4.53.0/Release --enable-proxy --enable-proxy-ajp
+> --enable-proxy-balancer --enable-proxy-http --enable-rewrite --enable-info --enable-headers --enable-expires --enable-deflate
+> --enable-ssl --with-ssl=/remote/users/gms/2.4.53/apache-pack/build/PKL-AWS-2.4.53.0/Release
+> --with-pcre=/remote/users/gms/2.4.53/apache-pack/build/pcre --with-apr=/remote/users/gms/2.4.53/apache-pack/build/apr
+> --with-apr-util=/remote/users/gms/2.4.53/apache-pack/build/apr-util --with-crypto
+>
+> CPPFLAGS:
+>
+> checking for chosen layout... Apache
+>
+> checking for working mkdir -p... yes
+>
+> checking for grep that handles long lines and -e... /usr/bin/grep
+>
+> checking for egrep... /usr/bin/grep -E
+>
+> checking build system type... x86_64-pc-linux-gnu
+>
+> checking host system type... x86_64-pc-linux-gnu
+>
+> checking target system type... x86_64-pc-linux-gnu
+>
+> configure:
+>
+> configure: Configuring Apache Portable Runtime library...
+>
+> configure:
+>
+> checking for APR... yes
+>
+>   setting CC to "gcc"
+>
+>   setting CPP to "gcc -E"
+>
+>   setting CFLAGS to " -g -O2 -pthread"
+>
+>   setting CPPFLAGS to " -DLINUX -D_REENTRANT -D_GNU_SOURCE"
+>
+>   setting LDFLAGS to " "
+>
+> configure:
+>
+> configure: Configuring Apache Portable Runtime Utility library...
+>
+> configure:
+>
+> checking for APR-util... yes
+>
+> checking for gcc... gcc
+>
+> checking whether the C compiler works... yes
+>
+> checking for C compiler default output file name... a.out
+>
+> checking for suffix of executables...
+>
+> checking whether we are cross compiling... no
+>
+> checking for suffix of object files... o
+>
+> checking whether we are using the GNU C compiler... yes
+>
+> checking whether gcc accepts -g... yes
+>
+> checking for gcc option to accept ISO C89... none needed
+>
+> checking how to run the C preprocessor... gcc -E
+>
+> checking for gcc option to accept ISO C99... -std=gnu99
+>
+> checking for -pcre2-config... no
+>
+> checking for -pcre-config... no
+>
+> checking for pcre2-config... no
+>
+> checking for pcre-config... pcre-config
+>
+> configure: error: Did not find working script at pcre-config
+>
+> ============================================================
+>
+> Exited on error
+>
+>
+>
+> Regards,
+>
+> Ganeshprasad
+>
+>
+>
+>
+>

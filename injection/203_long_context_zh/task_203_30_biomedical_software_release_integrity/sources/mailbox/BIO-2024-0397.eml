@@ -1,0 +1,44 @@
+Message-ID: <42184171087524decec11ff7a0ba7f7dd3d67bb9.camel@med.uni-goettingen.de>
+X-Clawbench-ID: BIO-2024-0397
+Date: Thu, 30 Dec 2021 18:12:57 +0000
+From: "Uecker, Martin" <Martin.Uecker@med.uni-goettingen.de>
+To: "debian-med@lists.debian.org" <debian-med@lists.debian.org>,	"andreas@an3as.eu" <andreas@an3as.eu>
+Subject: Re: bart: version 0.7.00
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_12_msg00194.html
+
+Am Donnerstag, den 30.12.2021, 09:58 +0100 schrieb Andreas Tille:
+> Am Thu, Dec 30, 2021 at 02:01:32PM +0530 schrieb Nilesh Patra:
+> > Uploaded, thanks for your work!
+>
+> Thanks to you both.
+
+Thanks Nilesh!
+
+Unfortunately, this needs another round.  Armel and s390x
+need another change for the same compiler issue.  I also
+figured out how to make the crossbuilds work, which should
+make testing these things much easier. Also made some
+other tweaks.
+
+For bart-cuda, I also merged these changes and fixed
+the changelog.  But I am not sure this solves the
+issue with the nvidia-cuda-toolkit dependency (locally
+this works for me with cowbuilder)
+
+Martin
+
+> > > Also the identical bart-cuda package (in master-contrib)
+> > > fails to build on salsa because it says the
+> > > nvidia-cuda-toolkit  is uninstallable.
+> > > could give it a try.
+>
+> IMHO Salca-CI does not include non-free in sources.list so
+> this is bound to fail.
+>
+> Kind regards
+>
+>      Andreas.
+>

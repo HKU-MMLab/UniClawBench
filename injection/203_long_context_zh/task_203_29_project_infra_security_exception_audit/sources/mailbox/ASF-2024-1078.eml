@@ -1,0 +1,56 @@
+Message-ID: <92CAD62E-EC49-4D0A-B286-745B8EFEA639@eissing.org>
+X-Clawbench-ID: ASF-2024-1078
+Date: Tue, 22 Aug 2023 13:57:25 +0200
+From: "Stefan Eissing via dev" <dev@httpd.apache.org>
+To: dev@httpd.apache.org,  Eissing Stefan <stefan@eissing.org>
+Subject: Re: 2.4.x fails to compile
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-08.mbox
+
+Nevermind, this change is already in https://github.com/apache/httpd/pull/366, so if we bring that in, all should be well.
+
+> Am 22.08.2023 um 13:48 schrieb Stefan Eissing via dev <dev@httpd.apache.org>:
+>
+> I believe we can add that to the backport proposal without resetting the votes.
+>
+>> Am 22.08.2023 um 12:57 schrieb Ruediger Pluem <rpluem@apache.org>:
+>>
+>> Currently 2.4.x fails to compile for me with the following error:
+>>
+>> In file included from h2_c1_io.c:24:
+>> h2_c1_io.c: In function ‘pass_output’:
+>> /usr/src/apache/httpd-2.4.x/include/http_log.h:495:14: warning: ‘rv’ may be used uninitialized in this function
+>> [-Wmaybe-uninitialized]
+>>             ap_log_cerror_(file, line, mi, level, status, c, __VA_ARGS__); \
+>>             ^~~~~~~~~~~~~~
+>> h2_c1_io.c:264:18: note: ‘rv’ was declared here
+>>    apr_status_t rv;
+>>                 ^~
+>>
+>>
+>> The following patch fixes this. It is part of r1910507 which is not backported yet.
+>>
+>> Index: modules/http2/h2_c1_io.c
+>> ===================================================================
+>> --- modules/http2/h2_c1_io.c (revision 1911839)
+>> +++ modules/http2/h2_c1_io.c (working copy)
+>> @@ -267,7 +267,7 @@
+>>        /* recursive call, may be triggered by an H2EOS bucket
+>>         * being destroyed and triggering sending more data? */
+>>        AP_DEBUG_ASSERT(0);
+>> -        ap_log_cerror(APLOG_MARK, APLOG_ERR, rv, c, APLOGNO(10456)
+>> +        ap_log_cerror(APLOG_MARK, APLOG_ERR, 0, c, APLOGNO(10456)
+>>                      "h2_c1_io(%ld): recursive call of h2_c1_io_pass. "
+>>                      "Denied to prevent output corruption. This "
+>>                      "points to a bug in the HTTP/2 implementation.",
+>>
+>>
+>> Not sure how we proceed best from here. If we commit it to 2.4.x (after appropriate voting of course) it would break the current
+>> backport proposal. But as the backport proposal is a PR it might be easy to take out this small part of the proposal.
+>>
+>> Regards
+>>
+>> Rüdiger
+>

@@ -1,0 +1,26 @@
+Message-ID: <Y2dlG5qBCDGREqff@an3as.eu>
+X-Clawbench-ID: BIO-2024-1046
+Date: Sun, 6 Nov 2022 08:41:15 +0100
+From: Andreas Tille <andreas@fam-tille.de>
+To: Étienne Mollier <emollier@emlwks999.eu>
+Subject: Re: Help for new version of bowtie2 needed
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_11_msg00020.html
+
+Am Sat, Nov 05, 2022 at 08:31:13PM +0100 schrieb Étienne Mollier:
+> > on arm64 but the emulation layer takes some time so haven't
+> > build and test results yet.
+>
+> The bowtie2 test on arm64 looks good.  I fix some minor issues,
+> redo checks and upload.
+
+Please remind me to serve you a $DRINK once we might meet. ;-)
+
+Thanks a lot
+    Andreas.
+
+
+--
+http://fam-tille.de

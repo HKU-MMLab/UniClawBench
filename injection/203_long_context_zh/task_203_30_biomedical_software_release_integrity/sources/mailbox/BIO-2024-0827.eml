@@ -1,0 +1,56 @@
+Message-ID: <YhZgQlYyhXaowVAM@an3as.eu>
+X-Clawbench-ID: BIO-2024-0827
+Date: Wed, 23 Feb 2022 17:26:42 +0100
+From: Andreas Tille <tille@debian.org>
+To: Mathieu Malaterre <malat@debian.org>
+Subject: Re: Cmake help needed for ncbi-vdb
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_02_msg00107.html
+
+Hi Mathieu,
+
+Am Mon, Feb 21, 2022 at 09:29:46AM +0100 schrieb Mathieu Malaterre:
+> > The point is that the linker flags to libmbedtls-dev, zlib and others
+> > need to be set.  Excluding references to code copies was easy[2] ... but
+> > now we need the according -l options and my cmake knowledge is to weak.
+>
+> I've pushed a ugly hack... hopefully this can be discussed with
+> upstream for a better integration.
+
+Thanks a lot for this patch.  It helped compiling the code.
+
+Unfortunately the build is not yet correct since the -soname options
+included into the build are wrong.  For instance the compile option that
+is generated is in the current configuration for instance:
+
+  ... -shared -Wl,-soname,libkdf5.so ...
+
+while the correct soname would be
+
+  ... -shared -Wl,-soname,libkdf5.so.3 ...
+
+(according to the fact that libkdf5.so.3.0.0 is created.)  I tried to
+fix this with the patch
+
+
+--- a/libs/hdf5/CMakeLists.txt
++++ b/libs/hdf5/CMakeLists.txt
+@@ -54,3 +54,5 @@ if( HDF5_FOUND )
+     ExportShared( kdf5 true "${HDF5_LIBRARIES};ncbi-vdb" )
+
+ endif()
++
++SET_TARGET_PROPERTIES(kdf5 PROPERTIES OUTPUT_NAME kdf5 SOVERSION 3)
+
+
+but for some reason this does not have any effect.  Do you have any
+idea how to set SONAME correctly?
+
+Kind regards
+
+     Andreas.
+
+--
+http://fam-tille.de

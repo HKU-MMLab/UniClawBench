@@ -1,0 +1,38 @@
+Message-ID: <15909092-23e4-ff59-1f36-65e4b979f635@free.fr>
+X-Clawbench-ID: BIO-2024-0803
+Date: Sat, 25 Sep 2021 17:57:55 +0200
+From: Vincent Prat <vivi@debian.org>
+To: debian-science@lists.debian.org, sebastien@debian.org
+Subject: GraphBLAS and SuiteSparse
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_09_msg00034.html
+
+Hi,
+
+I recently started packaging python-suitesparse-graphblas [1], which is
+a Python binding of SuiteSparse:GraphBLAS [2].
+The version of GraphBLAS packaged in Debian comes from a different
+repository that includes many other pieces of software, SuiteSparse [3].
+My problem is that the version included in SuiteSparse (currently 5.0.5)
+is out of date compared to the standalone version (currently 5.1.7) used
+by python-suitesparse-graphblas.
+
+What is the best option?
+a) packaging the standalone version with a different name
+b) packaging the standalone version instead of the one included in
+SuiteSparse
+c) packaging an outdated version of python-suitesparse-graphblas to fit
+the version of GraphBLAS included in SuiteSparse
+
+As far as I know, other pieces included in SuiteSparse do not depend on
+GraphBLAS, so I would rather go for option b.
+Sébastien, can you confirm this ?
+
+Best regards,
+Vincent
+
+[1] https://github.com/GraphBLAS/python-suitesparse-graphblas
+[2] https://github.com/DrTimothyAldenDavis/GraphBLAS
+[3] https://github.com/DrTimothyAldenDavis/SuiteSparse

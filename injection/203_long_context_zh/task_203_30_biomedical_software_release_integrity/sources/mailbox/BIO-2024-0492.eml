@@ -1,0 +1,33 @@
+Message-ID: <Ymmm0phEktNLgW38@fusion>
+X-Clawbench-ID: BIO-2024-0492
+Date: Wed, 27 Apr 2022 22:25:54 +0200
+From: Étienne Mollier <emollier@emlwks999.eu>
+To: Sébastien Jodogne <s.jodogne@orthanc-labs.com>
+Subject: Re: Neuroimaging plugin for Orthanc
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_04_msg00049.html
+
+Sébastien Jodogne, on 2022-04-27:
+> On 27/04/22 19:55, Étienne Mollier wrote:
+> > All good to me, you can adjust the d/changelog to target either
+> > "unstable" or "experimental" at your convenience, instead of
+> > "UNRELEASED", and it will be ready for upload.
+>
+> Great! I have adjusted d/changelog for upload:
+> https://salsa.debian.org/med-team/orthanc-neuro/-/commit/6c1ab84e5b695ca4f57b30806b0b0ac56e51a441
+
+Uploaded, or at least, attempted to, that's my first sponsored
+upload.  The package should make it to the New queue soon.
+
+> Have a nice evening,
+> Thanks again,
+
+You're welcome, Thanks go to you for your contributions.
+Have a nice evening as well,  :)
+--
+Étienne Mollier
+Fingerprint:  8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+Sent from /dev/pts/2, please excuse my verbosity.
+On air: Fates Warning - Pirates of the Underground

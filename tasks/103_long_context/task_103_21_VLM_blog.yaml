@@ -1,0 +1,56 @@
+task_id: task_103_21_VLM_blog
+category: 103_long_context
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I need to make a paper-reading HTML blog on the topic of Generalized Visual Language Models.
+  Please organize it around the following main thread:
+  1. Why combine vision and language
+    - Explain the goal of VLMs: connecting visual perception with language reasoning.
+    - Introduce the question of how image representations enter language models.
+
+  2. Joint image-text pretraining
+    - Discuss methods such as VisualBERT and SimVLM that jointly train image-text representations.
+
+  3. Image embeddings as language-model prefixes
+    - Discuss methods such as Frozen and ClipCap that map image embeddings into LM prefixes.
+    - Emphasize that the language model can be trained lightly or frozen.
+
+  4. Cross-attention fusion
+    - Discuss methods such as Flamingo that inject visual features into language models through cross-attention.
+
+  5. Contrastive captioner foundation models
+    - Discuss how CoCa combines contrastive learning and captioning to support retrieval and generation tasks.
+
+  6. No-training and tool-composition approaches
+    - Discuss PICa, Socratic Models, and similar approaches that do not retrain large models, but complete vision-language tasks through prompts or tool composition.
+
+  7. Practical synthesis
+    - Summarize the core design question of VLMs: where visual information enters the language model, whether through joint fusion, prefixes, cross-attention, contrastive-captioning, or tool composition.
+
+  The candidate papers are all in `/tmp_workspace/clawbench/sources/papers/`, and I renamed the files to non-semantic numbers, so do not guess from filenames. Read these papers and select the papers that should be discussed for each section, including the opening problem introduction.
+
+  Make the blog rich in both text and figures. You may screenshot figures/tables from the papers, but the screenshots must be complete, clear, matched to the content, and detailed enough to read text and details. Formulas may be written as screenshots or LaTeX. Use the prepared `/tmp_workspace/clawbench/sources/assets/`, which contains the CSS, JavaScript, and MathJax formula-rendering dependencies needed by the page template.
+
+  Save the final blog to `/tmp_workspace/results/VLM_blog/`; it should contain the HTML file and corresponding assets. Put images referenced by the HTML into `/tmp_workspace/clawbench/results/assets/images`, and cite the source paper for every figure in the blog.
+
+  Also save `/tmp_workspace/results/selection_note.md` explaining why each section selected these papers.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/VLM_blog/
+  - references/paper_mapping.json
+sources:
+  - papers/
+  - assets/
+
+codex:
+  max_user_followups: 2

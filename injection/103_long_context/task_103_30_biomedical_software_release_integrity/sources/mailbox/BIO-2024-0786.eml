@@ -1,0 +1,60 @@
+Message-ID: <YYgIwV1sC5idj/w1@an3as.eu>
+X-Clawbench-ID: BIO-2024-0786
+Date: Sun, 7 Nov 2021 18:11:29 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-science@lists.debian.org
+Subject: Re: Blends framework for Debian Math (Was: Science Subgroups [was Re: Debian Math Team])
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_11_msg00057.html
+
+Hi Gard,
+
+Am Sun, Nov 07, 2021 at 04:38:09PM +0100 schrieb Gard Spreemann:
+>
+> >> Aha! Thanks for teaching me. I'll fix these things.
+> >>
+> >> Where are these task files documented, by the way?
+> >
+> >    https://blends.debian.org/blends/ch06.html
+> >
+> > You could hopefully find the Blends doc easily when going to
+> >
+> >    https://blends.debian.org
+> >
+> > --> if not please let me know how to enhance the pointers to
+> > the docs.
+>
+> I could not find the documentation for fields like "Task" and
+> "Description", but that could just be me.
+
+May be also this chapter is worth reading:
+
+   https://blends.debian.org/blends/apb.html
+
+It at least documents "Description" - but you are right "Task"
+is not covered by the documentation.  I'd recommend to simply
+check the examples of Debian Science and see where it shows up
+on the Web Sentinel.
+
+> > ;-)
+>
+> I've made a new merge request with the packages I added before now split
+> out into separate task files. I landed on keeping the whole MSC2020 code
+> + name, even though it's quite verbose. Maybe we'll change that later.
+
+I repeat what I commented on your MR here:
+
+  I merged this MR. However, for my taste the task names are a bit long.
+  If you consider that these tasks will be turned into binary packages
+  named math-your-very-long-names this is somehow inconvenient for users.
+  If I were you I would try to find shorter names. BTW, you have push
+  permissions and can push directly.
+
+Kind regards
+
+     Andreas.
+
+--
+http://fam-tille.de

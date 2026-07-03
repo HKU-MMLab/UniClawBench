@@ -1,0 +1,31 @@
+Message-ID: <560ab0b6-051e-e446-55b3-442e1ce0c227@debian.org>
+X-Clawbench-ID: BIO-2024-0494
+Date: Tue, 4 Oct 2022 10:38:01 +0300
+From: Andrius Merkys <merkys@debian.org>
+To: Andreas Tille <tille@debian.org>
+Subject: Re: pufferfish wants to link with twopaco and ntcard
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00007.html
+
+Hi,
+
+On 2022-10-03 18:32, Andreas Tille wrote:
+> My main motivation to start ntcard and twopaco packages was to avoid
+> code duplication in pufferfish.  I admit it seems I faild in doing this
+> sensibly to forget creating a library package.  Simply do whatever
+> brings you forward with pufferfish and fix what I failed to do.
+
+Thanks for replies, Andreas and Steffen!
+
+Alas, I did not get far. Static libraries for ntcard and twopaco are
+easy to add (I have pushed 'static-library' branches to salsa for these
+packages). However, pufferfish has patched main() functions of ntcard
+and twopaco executables in order to use them in internal calls.
+
+At this point I do not think much can be done without getting the
+upstreams of pufferfish, ntcard and twopaco to align their interfaces.
+
+Best,
+Andrius

@@ -1,0 +1,40 @@
+Message-ID: <YhT/FL4r1Kr2B/oc@an3as.eu>
+X-Clawbench-ID: BIO-2024-1407
+Date: Tue, 22 Feb 2022 16:19:48 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: PIQUE
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_02_msg00106.html
+
+Hi Nilesh,
+
+Am Tue, Feb 22, 2022 at 08:01:59PM +0530 schrieb Nilesh Patra:
+>
+> It was me who added in that to the policy, but I did not think about deciding/zero-ing
+> down on an upper limit for the size of data that is acceptable for embedding.
+
+Thanks a lot for adding this.
+
+> For now, I have been mostly going on my instincts and embedded what I considered as a sensible size,
+> but we might want to decide on an acceptable
+> size limit at that front; maybe ~100 MiB? -- I am not sure myself.
+
+I'm not sure either.  I'd think we leave it as is and decide on a case
+by case base what is sensible or not.  For example if it is about GATK
+(which is large in itself and a potentially high popcon package with a
+high frequency of new versions which might deserve thorough testing) I'd
+accept a larger data set than for a relatively small package with a low
+popcon value.
+
+For pique it might sense to add some README.test and add the code how
+to test the package there to make it visible for the user.
+
+Kind regards
+
+      Andreas.
+
+--
+http://fam-tille.de

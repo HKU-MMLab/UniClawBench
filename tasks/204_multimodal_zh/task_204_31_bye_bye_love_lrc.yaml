@@ -1,0 +1,43 @@
+task_id: task_204_31_bye_bye_love_lrc
+category: 204_multimodal_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  请打开音频文件：
+  /tmp_workspace/clawbench/sources/song.mp3
+
+  这是一首匿名歌曲。不要试图从文件名、元数据、互联网信息或记忆中推断歌曲名、歌手、版本或现有歌词；
+  最终的歌词和时间戳必须仅基于这段音频。
+
+  你必须真正播放并聆听这段音频，自己进行转写。不要下载歌词、现成的 LRC/SRT 文件、歌词网站文本，
+  也不要依赖记忆；最终的歌词和时间戳必须基于这段音频。
+
+  请根据这段音频生成一个带时间戳的歌词文件，并保存为：
+  /tmp_workspace/results/song_generated.lrc
+
+  要求：
+  1. 使用标准 LRC 格式，每行形如 [mm:ss.xx]lyrics
+  2. 逐行对齐每一个可听辨的自然句或短语；不要把整首歌压缩成只有寥寥几行
+  3. 完成初稿后，再次聆听音频，检查时间戳和歌词是否有明显偏差
+  4. 如果发现任何不合适之处，直接修改 LRC 文件，而不是输出一个单独的新版本
+  5. 最后，还要在 /tmp_workspace/results/song_notes.md 保存一份简要说明，解释你仔细复核了哪些时间范围
+
+  如果 `/tmp_workspace/results/` 不存在，请先创建它。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.lrc
+  - references/ground_truth.srt
+
+sources:
+  - song.mp3
+
+codex:
+  max_user_followups: 2

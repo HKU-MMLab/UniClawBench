@@ -1,0 +1,51 @@
+Message-ID: <176d3872-d4d1-3664-5fac-808e1ae31ecc@apache.org>
+X-Clawbench-ID: ASF-2024-0936
+Date: Wed, 15 Dec 2021 14:31:23 +0100
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: travis setup for 2.4.x
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2021-12.mbox
+
+On 12/14/21 12:57 PM, Stefan Eissing wrote:
+>
+>
+>> Am 14.12.2021 um 12:53 schrieb Joe Orton <jorton@redhat.com>:
+>>
+>> On Tue, Dec 14, 2021 at 11:34:24AM +0100, Stefan Eissing wrote:
+>>> How is the relation between the .travis.yml in trunk and 2.4.x? We have checks for jobs in trunk with
+>>>
+>>> - if: *condition_not_24x
+>>>
+>>> and those jobs do not appear in the 2.4.x/.travis.yml. Is this a leftover? Are these 2 clearly separate or merged somehow?
+>>
+>> The intent was that .travis.yml (and test/travis*) can be kept the same
+>> in 2.4.x as in trunk, with the "if" conditions then used to limit
+>> exactly which tests are run in trunk vs 2.4. Then we should write the
+>> tests for trunk in a way which should always be fine to backport as-is
+>> to 2.4.
+>
+> Ah, I get it. Thanks.
+>
+>> In practice it gets a bit hard to disentangle some changes, and the 2.4
+>> .travis.yml is a bit stale, so maybe there is a better practice.  e.g.
+>> we could simply maintain two completely independent .travis.yml files
+>> and copy and paste stuff from trunk where required.
+>>
+>> Not really sure to be honest, welcome any opinions.
+>
+> For me, I'd like to tinker with things in trunk without any fear
+> of breaking stuff in our release testing. That is why I prefer copies
+> of test/modules/* from trunk in 2.4.x that I refresh ideally on backports.
+>
+> I myself find this easier than version checking in test. ymmv.
+
+How about marking tests that could break the release build as "allowed to fail"?
+It would still give you the testing against 2.4.x, but things would remain "green".
+We already have such tests for other architectures already.
+
+Regards
+
+Rüdiger

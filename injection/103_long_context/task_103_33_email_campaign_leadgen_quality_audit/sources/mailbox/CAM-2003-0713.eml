@@ -1,0 +1,26 @@
+Message-ID: <200209190946.g8J9k1308152@hobbit.linuxworks.com.au.nospam>
+X-Clawbench-ID: CAM-2003-0713
+Date: Thu, 19 Sep 2002 19:46:01 +1000
+From: Tony Nugent <tony@linuxworks.com.au>
+To: exmh-users@spamassassin.taint.org
+Subject: customising FTOC display for specific folders...
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01028.9bc3697b9d9eb23fc4427b482b012f40
+
+Is there any way to customise the folder table of contents for
+specific folders?
+
+I know it is possible to do per-folder customisation with components
+and replcomps for message templates, but what about -form format
+files for scan?
+
+Cheers
+Tony
+
+
+_______________________________________________
+Exmh-users mailing list
+Exmh-users@redhat.com
+https://listman.redhat.com/mailman/listinfo/exmh-users

@@ -1,0 +1,39 @@
+Message-ID: <20020822145523.A2125@rover.vipul.net>
+X-Clawbench-ID: CAM-2003-1230
+Date: Thu, 22 Aug 2002 14:55:23 -0700
+From: Vipul Ved Prakash <mail@vipul.net>
+To: razor-users@example.sourceforge.net
+Subject: [Razor-users] honor is not in csl
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01398.71acfbb0cfc859e20438e06955e66d27
+
+Folks,
+
+Some of you seem to have hardcoded honor as the default catalogue server.
+There are three catalogue only servers running now, and honor is acting
+as a nomination only server. Tonight we will be completely turning off
+catalogue support on honor, so if you are specifying honor with the -rs
+option, please take it out and let the agents discover a closeby
+catalogue server.
+
+cheers,
+vipul.
+
+
+--
+
+Vipul Ved Prakash          |   "The future is here, it's just not
+Software Design Artist     |    widely distributed."
+http://vipul.net/          |              -- William Gibson
+
+
+-------------------------------------------------------
+This sf.net email is sponsored by: OSDN - Tired of that same old
+cell phone?  Get a new here for FREE!
+https://www.inphonic.com/r.asp?r=sourceforge1&refcode1=vs3390
+_______________________________________________
+Razor-users mailing list
+Razor-users@lists.sourceforge.net
+https://lists.sourceforge.net/lists/listinfo/razor-users

@@ -1,0 +1,186 @@
+{
+  "task_id": "task_101_14_excel_pivot_chart",
+  "difficulty": "Hard",
+  "schema": "a",
+  "schema_notes": "cleaned revenue pivot with returns, voids, and late adjustments",
+  "skills_declared": [
+    "excel-weekly-dashboard",
+    "office-document-specialist-suite"
+  ],
+  "ground_truth": {
+    "expected_sheets": [
+      "Cleaned_Data",
+      "Pivot",
+      "Momentum"
+    ],
+    "input_regions": [
+      "United Kingdom",
+      "Netherlands",
+      "EIRE",
+      "Australia",
+      "Germany"
+    ],
+    "input_products": [
+      "Kitchen",
+      "Decor",
+      "Stationery",
+      "Bag"
+    ],
+    "row_count": 240,
+    "excluded_void_count": 12,
+    "return_count": 21,
+        "late_adjustment_count": 27,
+        "reconciliation": {
+            "path": "/tmp_workspace/results/reconciliation.csv",
+            "qa_sheet": "QA_Checks",
+            "required_statuses": [
+                "booked",
+                "return",
+                "void",
+                "late_adjustment"
+            ],
+            "required_columns": [
+                "status",
+                "row_count",
+                "gross_signed_revenue",
+                "excluded_revenue",
+                "included_net_revenue",
+                "rule_used"
+            ],
+            "expected_counts": {
+                "booked": 180,
+                "return": 21,
+                "void": 12,
+                "late_adjustment": 27,
+                "total_rows": 240
+            },
+            "reconciliation_row_totals": {
+                "booked": {
+                    "row_count": 180,
+                    "gross_signed_revenue_usd": 512462.43,
+                    "excluded_revenue_usd": 0.0,
+                    "included_net_revenue_usd": 512462.43
+                },
+                "return": {
+                    "row_count": 21,
+                    "gross_signed_revenue_usd": -85402.77,
+                    "excluded_revenue_usd": 0.0,
+                    "included_net_revenue_usd": -85402.77
+                },
+                "void": {
+                    "row_count": 12,
+                    "gross_signed_revenue_usd": 0.0,
+                    "excluded_revenue_usd": 0.0,
+                    "included_net_revenue_usd": 0.0
+                },
+                "late_adjustment": {
+                    "row_count": 27,
+                    "gross_signed_revenue_usd": -18129.95,
+                    "excluded_revenue_usd": 0.0,
+                    "included_net_revenue_usd": -18129.95
+                },
+                "sum_included_net_revenue_usd": 408929.71,
+                "tolerance_usd": 0.05,
+                "tieout_to_pivot_grand_total": true
+            },
+            "qa_check_expected_results": [
+                {
+                    "check": "void_rule_applied",
+                    "expected_status": "PASS",
+                    "validates": "void rows contribute 0 to net revenue (12 rows, included_net=0.00)"
+                },
+                {
+                    "check": "return_rule_applied",
+                    "expected_status": "PASS",
+                    "validates": "return rows kept as negative (21 rows, included_net=-85402.77)"
+                },
+                {
+                    "check": "late_adjustment_rule_applied",
+                    "expected_status": "PASS",
+                    "validates": "late_adjustment rows counted in correction_month (27 rows, included_net=-18129.95)"
+                },
+                {
+                    "check": "reconciliation_to_pivot_tieout",
+                    "expected_status": "PASS",
+                    "validates": "sum of included_net_revenue across statuses (408929.71) ties to pivot grand total within ±0.05 USD"
+                },
+                {
+                    "check": "row_count_total",
+                    "expected_status": "PASS",
+                    "validates": "240 input rows = 180 booked + 21 return + 12 void + 27 late_adjustment"
+                }
+            ],
+            "qa_check_required_count": 5,
+            "qa_check_must_be_formula_backed": true
+        },
+        "pivot_region_product": {
+      "United Kingdom": {
+        "Kitchen": 1212.66,
+        "Decor": 13641.7,
+        "Stationery": 46275.49,
+        "Bag": 27733.21
+      },
+      "Netherlands": {
+        "Kitchen": 37799.46,
+        "Decor": 29295.7,
+        "Stationery": 19037.75,
+        "Bag": -98.17
+      },
+      "EIRE": {
+        "Kitchen": 32993.64,
+        "Decor": 33071.36,
+        "Stationery": 26547.02,
+        "Bag": 31290.28
+      },
+      "Australia": {
+        "Kitchen": 8939.43,
+        "Decor": 22276.3,
+        "Stationery": -2920.02,
+        "Bag": 22717.85
+      },
+      "Germany": {
+        "Kitchen": 18006.56,
+        "Decor": 11223.59,
+        "Stationery": 6263.26,
+        "Bag": 23622.64
+      }
+    },
+    "monthly_net_revenue": [
+      {
+        "month": "2011-01",
+        "net_revenue_usd": 116680.29,
+        "mom_pct": null
+      },
+      {
+        "month": "2011-02",
+        "net_revenue_usd": 145163.09,
+        "mom_pct": 24.41
+      },
+      {
+        "month": "2011-03",
+        "net_revenue_usd": 147086.33,
+        "mom_pct": 1.32
+      }
+    ],
+    "total_net_revenue_usd": 408929.71,
+    "tolerance_usd": 0.05,
+    "topic_dimensions": [
+      "region_x_product_matrix_with_grand_totals",
+      "monthly_progression_jan_feb_mar_with_mom_deltas",
+      "top_bottom_performers_per_region",
+      "void_return_late_adjustment_isolation",
+      "year_over_year_or_quarter_over_quarter_context_hint"
+    ],
+    "min_dimensions_covered": 5,
+    "expected_pivot_cell_corner": [
+      {"region": "United Kingdom", "product": "Stationery", "value_usd": 46275.49},
+      {"region": "Netherlands", "product": "Bag", "value_usd": -98.17},
+      {"region": "EIRE", "product": "Kitchen", "value_usd": 32993.64},
+      {"region": "Australia", "product": "Stationery", "value_usd": -2920.02},
+      {"region": "Germany", "product": "Bag", "value_usd": 23622.64}
+    ],
+    "expected_pivot_cell_corner_min": 3,
+    "expected_pivot_cell_corner_tolerance_usd": 0.05,
+    "expected_pivot_cell_corner_note": "Secondary anchor: 5 high-signal corner / spotlight cells (mix of large positive, small negative, and corner-of-grid values) for spot-checking pivot numeric correctness. ≥3/5 within ±0.05 → 0.08; 2/5 → 0.04; ≤1 → 0."
+  }
+}

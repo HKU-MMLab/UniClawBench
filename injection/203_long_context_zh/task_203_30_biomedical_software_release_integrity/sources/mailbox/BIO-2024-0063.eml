@@ -1,0 +1,30 @@
+Message-ID: <ZJvFNHadMnqn+E7+@fusion>
+X-Clawbench-ID: BIO-2024-0063
+Date: Wed, 28 Jun 2023 07:29:24 +0200
+From: Étienne Mollier <emollier@emlwks999.eu>
+To: debian-med@lists.debian.org
+Subject: Re: help with git errors
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_06_msg00029.html
+
+Hello,
+
+Andreas Tille, on 2023-06-27:
+> Am Tue, Jun 27, 2023 at 09:54:19PM +0200 schrieb Étienne Mollier:
+> > I'm short of options that wouldn't involve a force push.
+>
+> If a forced push might be the solution its probably sensible to
+> go that road.
+
+I attempted a rebase to glue the history back in one thread, but
+this doesn't seem to have had the hopefully expected effect.
+I'll continue on Friday when I have some time to dig into that,
+unless someone beats me at it.
+
+Have a nice day,  :)
+--
+Étienne Mollier
+Fingerprint:  8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+Sent from /dev/tty1, please excuse my verbosity.

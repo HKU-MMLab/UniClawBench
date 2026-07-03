@@ -1,0 +1,22 @@
+Message-ID: <CALK=YjN2ogZ1Yt7C4akkPDPy_V7z3P1RAfUF2B4Z5-j_eU7o=g@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1289
+Date: Thu, 4 Apr 2024 09:32:42 -0400
+From: Eric Covener <covener@gmail.com>
+To: Apache HTTP Server Development List <dev@httpd.apache.org>
+Subject: Re: [VOTE] Release httpd-2.4.59-rc1 as httpd-2.4.59
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-04.mbox
+
+On Thu, Apr 4, 2024 at 8:12 AM Eric Covener <covener@gmail.com> wrote:
+
+Proceeding with release now, thanks everyone for testing.
+
+> FYI I plan to call this in about an hour with the following binding +1:
+> covener, icing, jorton, thumbs, gbechis, jfclere, ylavic, minfrin
+
+
+--
+Eric Covener
+covener@gmail.com

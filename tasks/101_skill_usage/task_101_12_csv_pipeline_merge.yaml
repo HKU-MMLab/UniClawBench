@@ -1,0 +1,108 @@
+task_id: task_101_12_csv_pipeline_merge
+category: 101_skill_usage
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  Our Q1 data migration left a mess and I need it cleaned up before the
+  ops review. Under /tmp_workspace/clawbench/sources/ there are 15 CSV
+  files with random-looking filenames like data_001.csv through
+  data_015.csv — the original names got lost during the export. Grab the
+  workspace's CSV pipeline skill and the Python visualization skill for the
+  heavy lifting here: figure out what each file actually is from its content
+  and then
+  merge everything into a single master fact table.
+
+  As far as I can tell from talking to the team, those 15 files cover a
+  few different things mixed together:
+
+  - customer information, with multiple schema versions floating around
+    because the contact list was re-exported a couple of times
+  - orders, split out by month
+  - products, split out by region
+  - reconciliation data settling some of the orders
+
+  Files are not labeled, so you'll need to read the headers to tell
+  customer files apart from order files apart from product catalogs apart
+  from reconciliation batches.
+
+  Please produce:
+
+  1. /tmp_workspace/results/master.csv — the cleaned fact table at order
+     grain, enriched with customer and product info. Normalize the source
+     schemas carefully and make sure the result is safe to use as the master
+     table rather than just a concatenation of files.
+
+  2. /tmp_workspace/results/summary.md — a short markdown report
+     listing the final row count, number of unique customers, total
+     revenue, and the top 5 products by total revenue as a ranked list.
+
+  3. /tmp_workspace/results/conflicts.json — a JSON list of customer records
+     that need human review because the source files disagree on something. A
+     "conflict" is any case where the SAME customer_id shows different values
+     across exports — that includes name changes, phone updates, email
+     corrections, and address differences, not only cases where the names
+     obviously disagree. Don't just silently pick one value. Older-export-only
+     records that simply weren't refreshed and don't actually disagree are NOT
+     conflicts. For each conflict, include the customer_id, the field or
+     fields that differ, every distinct value you saw, and which source file
+     each value came from.
+
+  4. /tmp_workspace/results/conflict_review.csv — a flat review sheet with
+     one row per conflicting customer_id from conflicts.json and columns
+     customer_id, distinct_names, source_files, chosen_name_if_any, and
+     why_it_needs_review.
+
+  Hard rules: don't invent customer_ids that aren't in any source
+  table, and keep the master table to one row per real order.
+
+  The summary should make it obvious what kinds of disagreements
+  actually came up — typo cleanups, address changes, contact updates,
+  etc. — which version we kept and how we picked it, where each
+  canonical record came from, and the rollup numbers at the end. Call
+  out separately which of the flagged conflicts are really just
+  cosmetic drift versus the ones that genuinely need a human pair of
+  eyes. Either expand summary.md to include those threads or drop a
+  sidecar /tmp_workspace/results/merge_notes.md — whichever reads more
+  naturally — but each of those angles should be visible somewhere in
+  the deliverable.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - data_001.csv
+  - data_002.csv
+  - data_003.csv
+  - data_004.csv
+  - data_005.csv
+  - data_006.csv
+  - data_007.csv
+  - data_008.csv
+  - data_009.csv
+  - data_010.csv
+  - data_011.csv
+  - data_012.csv
+  - data_013.csv
+  - data_014.csv
+  - data_015.csv
+
+skills:
+  - csv-pipeline
+  - python-dataviz
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

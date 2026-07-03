@@ -1,0 +1,31 @@
+name = "Academic CV"
+license = "MIT"
+licenselink = "https://github.com/HugoBlox/hugo-theme-academic-cv/blob/main/LICENSE.md"
+description = "The **Academic CV / Résumé Template** helps a single researcher publish a personal CV/résumé website with a biography, a publications list (with BibTeX auto-import), experience, and skills. It is designed around ONE person, not a multi-person group."
+homepage = "https://github.com/HugoBlox/hugo-theme-academic-cv"
+demosite = "https://academic-cv.netlify.app/"
+tags = ["academic",
+        "cv",
+        "resume",
+        "personal",
+        "publications",
+        "bibtex",
+        "responsive",
+        "clean",
+        "minimal",
+        "light",
+        "dark",
+        "multilingual",
+        "portfolio",
+        "starter",
+        "modern"
+        ]
+features = ["page builder", "widgets", "publication system", "bibtex auto-import", "experience", "skills", "blog", "search"]
+
+# NOTE: There is NO team/members profile system — this is a single-person CV
+# template (compare "Research Group", which has team profiles). Multilingual and
+# the publication/BibTeX system are present; the people/team system is not.
+
+[author]
+  name = "George Cushen / Hugo Blox"
+  homepage = "https://hugoblox.com"

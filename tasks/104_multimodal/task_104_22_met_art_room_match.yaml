@@ -1,0 +1,54 @@
+task_id: task_104_22_met_art_room_match
+category: 104_multimodal
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  Please open the collection pages on The Met website for the following three paintings:
+
+  1. Claude Monet — https://www.metmuseum.org/art/collection/search/437133
+  2. Vincent van Gogh — https://www.metmuseum.org/art/collection/search/436535
+  3. Caspar David Friedrich — https://www.metmuseum.org/art/collection/search/438417
+
+  Please do the following:
+
+  1. Save at least 1 webpage screenshot for each painting to `/tmp_workspace/results/artwork_screenshots/`;
+     the screenshot must include both the main image and a clear metadata area. If a single screenshot cannot fit both,
+     save an additional supplemental screenshot for the same artwork and mark that clearly in the filename or notes.
+  2. Read `/tmp_workspace/clawbench/sources/my_room_style.json`.
+  3. Generate the following in `/tmp_workspace/results/`:
+     - `artworks_metadata.csv`
+     - `visual_analysis.md`
+     - `best_choice_for_my_room.md`
+  4. `artworks_metadata.csv` must organize at least these fields:
+     - artwork_url
+     - title
+     - artist
+     - object_date
+     - medium
+     - dimensions
+  5. `visual_analysis.md` must analyze each painting's:
+     - Main color palette and warm/cool relationship
+     - Composition
+     - Brushwork or surface texture characteristics
+     - Overall atmosphere
+  6. `best_choice_for_my_room.md` must clearly select the one painting best suited to hang in my room,
+     match the artwork's visual characteristics to my room conditions point by point, and explain why the other two were not selected.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.csv
+  - references/ground_truth.json
+  - references/reference_best_choice.md
+
+sources:
+  - my_room_style.json
+
+codex:
+  max_user_followups: 2

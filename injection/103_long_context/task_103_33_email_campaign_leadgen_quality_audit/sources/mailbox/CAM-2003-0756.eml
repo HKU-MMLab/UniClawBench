@@ -1,0 +1,39 @@
+Message-ID: <m2r8h8t0wv.fsf@maya.dyndns.org>
+X-Clawbench-ID: CAM-2003-0756
+Date: Fri, 09 Aug 2002 13:08:48 -0400
+From: Gary Lawrence Murphy <garym@canada.com>
+To: fork <fork@spamassassin.taint.org>
+Subject: Shatter Attacks - How to break Windows
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00982.2334d78ca615a3222c1425e7b1db67a0
+
+I'm sure this is common knowledge already, but just in case ...
+
+http://security.tombom.co.uk/shatter.html
+
+   This paper presents a new generation of attacks against Microsoft
+   Windows, and possibly other message-based windowing systems. The
+   flaws presented in this paper are, at the time of writing,
+   unfixable. The only reliable solution to these attacks requires
+   functionality that is not present in Windows, as well as efforts on
+   the part of every single Windows software vendor. Microsoft has
+   known about these flaws for some time; when I alerted them to this
+   attack, their response was that they do not class it as a flaw -
+   the email can be found here. This research was sparked by comments
+   made by Microsoft VP Jim Allchin who stated, under oath, that there
+   were flaws in Windows so great that they would threaten national
+   security if the Windows source code were to be disclosed. He
+   mentioned Message Queueing, and immediately regretted it. However,
+   given the quantity of research currently taking place around the
+   world after Mr Allchin's comments, it is about time the white hat
+   community saw what is actually possible.
+
+
+--
+Gary Lawrence Murphy <garym@teledyn.com> TeleDynamics Communications Inc
+Business Innovations Through Open Source Systems: http://www.teledyn.com
+"Computers are useless.  They can only give you answers."(Pablo Picasso)
+
+http://xent.com/mailman/listinfo/fork

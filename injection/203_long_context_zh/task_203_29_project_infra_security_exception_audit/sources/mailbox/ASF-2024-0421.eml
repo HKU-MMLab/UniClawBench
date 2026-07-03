@@ -1,0 +1,28 @@
+Message-ID: <PR_kwDOFoJrE85chEpL@gitbox.apache.org>
+X-Clawbench-ID: ASF-2024-0421
+Date: Wed, 11 Oct 2023 13:39:34 -0000
+From: =?utf-8?q?raboof_=28via_GitHub=29?= <git@apache.org>
+To: dev@httpd.apache.org
+Subject: =?utf-8?q?=5BPR=5D_Document_non-impact_of_CVE-2023-44487_=5Bhttpd-site=5D?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-10.mbox
+
+raboof opened a new pull request, #10:
+URL: https://github.com/apache/httpd-site/pull/10
+
+   We're getting questions about the impact of CVE-2023-44487 on Apache HTTP Server. While there's some information available (https://chaos.social/@icing/111212195435976222, https://chaos.social/@icing/111212195435976222) it might be good to have a statement around this on our own site.
+
+   We don't have a great place for this yet: https://httpd.apache.org/security/vulnerabilities_24.html seems like the logical place, though as that's generated from the CVEs it might be fiddly to fit in right now. Perhaps we should start with a section on https://httpd.apache.org/security_report.html and then move it once we come up with a better place for it?
+
+
+--
+This is an automated message from the Apache Git Service.
+To respond to the message, please log on to GitHub and use the
+URL above to go to the specific comment.
+
+To unsubscribe, e-mail: dev-unsubscribe@httpd.apache.org
+
+For queries about this service, please contact Infrastructure at:
+users@infra.apache.org

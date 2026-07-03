@@ -1,0 +1,49 @@
+Message-ID: <ZK1yg/irqGkgCuU2@an3as.eu>
+X-Clawbench-ID: BIO-2024-1279
+Date: Tue, 11 Jul 2023 17:17:23 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Issues with concurrentqueue
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_07_msg00046.html
+
+Hi,
+
+I intended to update concurrentqueue to its latest upstream version.  My
+commits in Salsa have the following issues:
+
+  E: libconcurrentqueue-dev: triplet-dir-and-architecture-mismatch is for amd64 instead of all [usr/lib/x86_64-linux-gnu/]
+
+which is caused by some generated cmake input files residing there.  While
+the (untested) change
+
+diff --git a/debian/rules b/debian/rules
+index ca3e2c9..b155a0e 100755
+--- a/debian/rules
++++ b/debian/rules
+@@ -17,6 +17,8 @@ endif
+
+ execute_after_dh_install:
+        find debian/ -name LICENSE.md -delete
++       # Cmake is installed in arch-dependant triplet dir but the package is arch all
++       if [ -d debian/`dh_listpackages`/usr/lib/*/cmake ] ; then mv debian/`dh_listpackages`/usr/lib/*/cmake debian/`dh_listpackages`/usr/share/ ; done
+
+ override_dh_auto_clean:
+        rm -f build/bin/unittests build/bin/libtbb.a build/bin/fuzztests build/bin/benchmarks fuzztests.log
+
+could probably deal with the lintian issue I have learned in other
+packages that sometimes cmake input is really arch dependant.  I'd be
+happy if someone with some cmale background could check this.  If
+this might really be the case we rather need to change Architecture
+from all to any.
+
+The other issue is the autopkgtest.  The header file was moved to the
+subdirectory moodycamel which breaks our manually written test.  We
+possibly should take over upstream build time test which works.
+
+Kind regards
+    Andreas.
+--
+http://fam-tille.de

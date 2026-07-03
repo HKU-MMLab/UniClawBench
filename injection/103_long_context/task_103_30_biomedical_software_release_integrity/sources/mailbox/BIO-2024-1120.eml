@@ -1,0 +1,29 @@
+Message-ID: <YV1auiTwxQWb+cRL@an3as.eu>
+X-Clawbench-ID: BIO-2024-1120
+Date: Wed, 6 Oct 2021 10:13:46 +0200
+From: Andreas Tille <tille@debian.org>
+To: 679905@bugs.debian.org, Radostan Riedel <raybuntu@googlemail.com>,	Baptiste Carvello <devel@baptiste-carvello.net>,	Picca Frédéric-Emmanuel <picca@synchrotron-soleil.fr>
+Subject: Re: RFP: cctbx -- Computational Crystallography Toolbox
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00023.html
+
+Hi,
+
+I've got a hint about cctbx and realised that there is an RFP (degraded
+from ITP) as well as a salsa repository[1].  I took the freedom to
+inject the latest upstream source and updated *parts* of the packaging
+to recent standards.  I have no idea whether this might give some new
+inspiration for those who want to catch up with this package, which is
+interesting for several teams (in CC).  So I simply make some noise for
+anybody who might want to continue from here.
+
+Kind regards
+
+      Andreas.
+
+[1] https://salsa.debian.org/science-team/cctbx
+
+--
+http://fam-tille.de

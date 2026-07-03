@@ -1,0 +1,25 @@
+Message-ID: <YbeG83rJfJxQ4lkz@an3as.eu>
+X-Clawbench-ID: BIO-2024-0007
+Date: Mon, 13 Dec 2021 18:46:27 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: r-bioc-txdb.hsapiens.ucsc.hg19.knowngene on salsa Re: please kindly review: r-bioc-fishpond -- Fishpond: differential transcript and gene expression with
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_12_msg00084.html
+
+Am Mon, Dec 13, 2021 at 05:35:27PM +0100 schrieb Steffen Möller:
+>
+> I did not have the privileges to remove the previous
+> r-bioc-txdb.hsapiens.ucsc.hg19.knowngene repository but could rename it,
+> so that is what I have done and then injected the new one.
+
+*-removeme is removed.
+
+Kind regards
+
+      Andreas.
+
+--
+http://fam-tille.de

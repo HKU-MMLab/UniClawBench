@@ -1,0 +1,20 @@
+Message-ID: <690b8b6d-f8c3-4f1c-a71d-e41b977a4b60@evermeet.cx>
+X-Clawbench-ID: ASF-2024-1438
+Date: Thu, 27 Jun 2024 16:54:28 -0400
+From: "Helmut K. C. Tessarek" <tessarek@evermeet.cx>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.60-rc4 as httpd-2.4.60
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-06.mbox
+
+On 2024-06-26 17:20, Eric Covener wrote:
+> Thanks for testing and re-testing. I just extended an existing FCGI
+> test to cover the scenario as well.
+
+You are welcome. Thanks for doing the release work and for adding a test
+that will catch this in the future. :+1
+
+May I ask whether you thought about using gh actions to run the test suite?
+Even if AIX is not available via gh, you can self-host a runner.

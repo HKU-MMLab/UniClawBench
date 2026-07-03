@@ -1,0 +1,33 @@
+Message-ID: <YfRjXQmvw6zNiLGd@an3as.eu>
+X-Clawbench-ID: BIO-2024-1290
+Date: Fri, 28 Jan 2022 22:42:53 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Java help for king needed
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_01_msg00111.html
+
+Am Fri, Jan 28, 2022 at 10:11:27PM +0100 schrieb pgtdebian@free.fr:
+>
+> If you want, I would be happy to package pdfbox-graphics2d. I can do that
+> very soon.
+> Else, please tell me if you start something :-)
+
+I've pushed
+
+    https://salsa.debian.org/java-team/libpdfbox-graphics2d-java
+
+and would like to hand over from here.
+
+d/control needs (Build-)Depends
+d/rules is a rough template
+d/copyright could need some review
+
+Thanks a lot for your offer to work on this
+
+      Andreas.
+
+--
+http://fam-tille.de

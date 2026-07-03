@@ -1,0 +1,31 @@
+Message-ID: <20211230191202.ldcfmbljdtlwkrdu@ShayanLaptop.lan>
+X-Clawbench-ID: BIO-2024-0535
+Date: Thu, 30 Dec 2021 19:12:02 +0000
+From: Shayan Doust <hello@shayandoust.me>
+To: debian-med@lists.debian.org
+Subject: damapper update - elf issue
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_12_msg00195.html
+
+Hello,
+
+I was having a look at damapper, as this is a package I updated a couple months ago.
+Lintian reports the following warnings:
+
+
+W: damapper-dbgsym: elf-error In program headers: Unable to find program interpreter name [usr/lib/debug/.build-id/55/e58a44b96637abb0d4d24e5d1a469bcd8fd96d.debug]
+W: damapper-dbgsym: elf-error In program headers: Unable to find program interpreter name [usr/lib/debug/.build-id/ec/5f1783bdc76ff36831ef002e808abf9efff53a.debug]
+
+I must admit that I have never seen an elf error like this before, and I would rather
+be sure of a fix before I consider uploading. Any suggestions to why I'm seeing this?
+
+Kind regards,
+Shayan
+
+--
+Shayan Doust - 201427418
+Fingerprint: 0401 A810 A6F2 4303 1EA3 9759 6D7D 4419 19D0 2395
+
+Note: all emails sent by me are signed with my PGP key.

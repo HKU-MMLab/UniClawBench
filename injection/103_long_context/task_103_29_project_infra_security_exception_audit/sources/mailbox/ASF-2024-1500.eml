@@ -1,0 +1,39 @@
+Message-ID: <CAEv10NTh0AmADmYJYrboPbXr-4pe6ud+0sLUdXVXY5T319RgaA@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1500
+Date: Tue, 5 Apr 2022 19:33:32 +0530
+From: kumar2000s@gmail.com
+To: dev@httpd.apache.org
+Subject: Re: Serve multiple websites (not sub-domains) from port 80
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-04.mbox
+
+You should use Name based hosting and that will serve your purpose.
+
+On Mon, Apr 4, 2022 at 8:48 PM A <amit.general.misc@gmail.com> wrote:
+
+> Hi,
+>
+> I am planning to make changes to Apache web server so that it can serve
+> multiple websites (not sub-domains) from port 80.
+>
+> This will save money for someone who has more than one website. That
+> person need not buy more than one hosting plan, one hosting plan will
+> suffice.
+>
+> Based on the incoming base URL, Apache web server will decide from which
+> directory to serve the index file or other files. There will be a user file
+> where user can list which website is mapped to which directory.
+>
+> For example:
+>
+> abcd:com:/abcd
+> xyz.com:/xyz
+>
+> I am not familiar with Apache web server code so can someone point me to
+> few files which I need to modify to implement this feature.
+>
+> Regards,
+> Amit
+>

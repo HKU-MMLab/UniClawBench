@@ -1,0 +1,24 @@
+Message-ID: <YYwiKN7HmFtq6H62@an3as.eu>
+X-Clawbench-ID: BIO-2024-0313
+Date: Wed, 10 Nov 2021 20:48:56 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Alastair McKinstry <alastair.mckinstry@sceal.ie>
+Subject: Re: Upgrading pandas
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_11_msg00080.html
+
+Am Wed, Nov 10, 2021 at 07:36:00PM +0000 schrieb Alastair McKinstry:
+>
+> I've the same error in python-xarray, both 0.20.1 I'm packaging and the current 0.19.0 now FTBFS due to this.
+> Can we prioritise upgrading nbconvert to 6+ ?
+
+I guess you should forward this question to Debian Python Team.
+
+Kind regards
+
+      Andreas.
+
+--
+http://fam-tille.de

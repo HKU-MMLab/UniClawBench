@@ -1,0 +1,25 @@
+Message-ID: <udl1qrvnhdy.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-1363
+Date: Wed, 28 Sep 2022 20:39:21 -0400
+From: ucko@debian.org (Aaron M. Ucko)
+To: <debian-med@lists.debian.org>
+Subject: Re: Finishing ncbi-vdb and sra-sdk
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_09_msg00043.html
+
+Andreas Tille  writes:
+
+> This would be really helpful since we are approaching the next freeze
+> with an unpredictable migration time through new queue due to name
+> change of the library package.
+
+Ah, right, sra-sdk will need to go through NEW too -- the ngs-sdk code
+it absorbed underwent an SONAME bump along the way.  (All necessary
+ncbi-vdb changes passed NEW a few weeks ago, but ncbi-vdb 3.x is sitting
+in experimental until sra-sdk joins it.)  I'll see what I can do.
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

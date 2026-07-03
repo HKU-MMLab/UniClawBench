@@ -1,0 +1,39 @@
+Message-ID: <Y1j7sM/UZgfcnvxy@an3as.eu>
+X-Clawbench-ID: BIO-2024-0982
+Date: Wed, 26 Oct 2022 11:19:44 +0200
+From: Andreas Tille <tille@debian.org>
+To: Mathieu Malaterre <malat@debian.org>
+Subject: Re: gdcm: vtk[6,7] removal
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00091.html
+
+Hi Mathieu,
+
+Am Wed, Oct 26, 2022 at 11:16:30AM +0200 schrieb Mathieu Malaterre:
+> > > https://salsa.debian.org/med-team/gdcm/-/commits/debian/experimental/
+> >
+> > Ups, sorry for missing this.  I've merged your changes into master but the
+> > said problem remains[1].
+> >
+> > Kind regards
+> >     Andreas.
+> >
+> > [1] https://salsa.debian.org/med-team/gdcm/-/jobs/3427720
+>
+> AFAIK, this is a new bug in vtk9.1 package:
+>
+> CMake Error at /usr/lib/x86_64-linux-gnu/cmake/vtk-9.1/VTK-vtk-module-find-packages.cmake:115
+> (find_package):
+> 5432 By not providing "FindQt5.cmake" in CMAKE_MODULE_PATH this project has
+
+OK, may be this is an explanation for the issue.  Do you see any chance
+for a workaround?  Finally we should upload a VTK 9.x enabled gdcm to
+unstable in a foreseable time frame.
+
+Kind regards
+    Andreas.
+
+--
+http://fam-tille.de

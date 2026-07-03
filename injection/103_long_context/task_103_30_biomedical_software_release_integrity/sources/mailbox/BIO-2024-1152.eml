@@ -1,0 +1,43 @@
+Message-ID: <ZeokLofclGMlQsWu@an3as.eu>
+X-Clawbench-ID: BIO-2024-1152
+Date: Thu, 7 Mar 2024 21:31:42 +0100
+From: Andreas Tille <andreas@fam-tille.de>
+To: "Michael R. Crusoe" <michael.r.crusoe@gmail.com>
+Subject: Re: regarding filtering architectures
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_03_msg00002.html
+
+Hi Michael,
+
+Am Thu, Mar 07, 2024 at 12:23:15PM +0100 schrieb Michael R. Crusoe:
+> This is a great tip, thanks!
+>
+> I've pushed commits that use the provisions from the
+> architecture-properties package to clean up d/control for the following
+> packages:
+>
+> abyss
+> bazel-bootstrap
+> bowtie
+> bowtie2
+> canu
+> diamond-aligner
+> gmap
+> jellyfish
+> kallisto
+> mmseqs2
+> pbcopper
+> python-skbio
+> subread
+
+Very nice!  That way we will not forget this in the next upgrade.  I
+guess there are more candidates - my strategy would be to seek for loong
+in the list of architectures.
+
+Thanks for this effort
+    Andreas.
+
+--
+http://fam-tille.de

@@ -1,0 +1,45 @@
+Message-ID: <CACQs4iy8FD+uMtxr_RfQF3U43Rkssj8vydAMa+JqKop-L3mR5w@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1026
+Date: Tue, 20 Aug 2024 09:01:02 +0200
+From: Vladimir Chlup <vchlup@redhat.com>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE CLOSED] Switch read/write repository from Subversion to Git
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-08.mbox
+
+Hello,
+
+It's not necessarily related, but some time ago, I created a PR (
+https://github.com/apache/httpd/pull/437) that adds git commands for apr
+checkout to INSTALL. Given that everything is also on git, svn is not
+needed. Especially if the switch happens, I think it would be nice to have
+it in.
+
+Regards,
+
+
+On Mon, Aug 19, 2024 at 7:51 PM Roy T. Fielding <fielding@gbiv.com> wrote:
+
+> > On Aug 19, 2024, at 8:22 AM, Eric Covener <covener@gmail.com> wrote:
+> >
+> > To bring the convo back here out of cwiki -- in a world where we moved
+> > to read/write git, with reviews happening in the context of a pull
+> > request, does anyone else have any feelings about ditching or keeping
+> > the STATUS file?
+>
+> I created STATUS to help drive dev conversations toward a release.
+> A resource-based window on open issues, organized by tag or priority,
+> would be just as good and easier to maintain. +1 to a replacement.
+>
+> I suggest leaving STATUS as a static file containing a link to the new
+> resource
+> and maybe examples of using the GH API to download a local copy of issues.
+>
+> ....Roy
+>
+>
+
+--
+Vladimír Chlup

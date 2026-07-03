@@ -1,0 +1,34 @@
+Message-ID: <CALK=YjNtwwu43ui6=6+bD7DCy7HUwq9aadviQtGofPPibY2yyQ@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0568
+Date: Sun, 2 Apr 2023 12:10:25 -0400
+From: Eric Covener <covener@gmail.com>
+To: Apache HTTP Server Development List <dev@httpd.apache.org>
+Subject: [VOTE] Release httpd-2.4.57-rc1 as httpd-2.4.57
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-04.mbox
+
+Hi all,
+
+Please find below the proposed release tarball and signatures:
+
+https://dist.apache.org/repos/dist/dev/httpd/
+
+I would like to call a VOTE over the next few days to release
+this candidate tarball httpd-2.4.57-rc1 as 2.4.57:
+[ ] +1: It's not just good, it's good enough!
+[ ] +0: Let's have a talk.
+[ ] -1: There's trouble in paradise. Here's what's wrong.
+
+The computed digests of the tarball up for vote are:
+sha256: bc3e7e540b83ec24f9b847c6b4d7148c55b79b27d102e21227eb65f7183d6b45
+*httpd-2.4.57-rc1.tar.gz
+sha512: 730560d4aab3699aa59716bb75858f8432a902aeab3c380b4d3e0f6813e9ae4e278d3b7fdf63a4e94c07b5100933d8684d76f6095f3d60d48ea0f1458c9ed0b4
+*httpd-2.4.57-rc1.tar.gz
+
+The SVN candidate source is found at tags/2.4.57-rc1-candidate.
+
+--
+Eric Covener
+covener@gmail.com

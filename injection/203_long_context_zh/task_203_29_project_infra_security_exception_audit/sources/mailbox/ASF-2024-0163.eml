@@ -1,0 +1,38 @@
+Message-ID: <60A1AE2B-3854-4B7F-8A07-7397259BEA43@apache.org>
+X-Clawbench-ID: ASF-2024-0163
+Date: Thu, 16 Dec 2021 14:49:19 -0800
+From: Chris Lambertus <cml@apache.org>
+To: dev@httpd.apache.org
+Subject: Fwd: Incorrect hyperlink on "Verifying Apache HTTP Server Releases"  page
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2021-12.mbox
+
+Hi httpd folks.
+
+root received this report, FYI.
+
+-Chris
+
+
+> Begin forwarded message:
+>
+> From: Matt Johnson <TheComputerCheats@pm.me>
+> Subject: Incorrect hyperlink on "Verifying Apache HTTP Server Releases" page
+> Date: December 16, 2021 at 2:31:27 PM PST
+> To: "root@apache.org" <root@apache.org>
+> Reply-To: Matt Johnson <TheComputerCheats@pm.me>
+>
+>
+> When trying to muddle through how to update log4j myself, I was directed to the "Verifying Apache HTTP Server Releases" at URL https://httpd.apache.org/dev/verification.html <https://httpd.apache.org/dev/verification.html>
+>
+> Within that page, there is a link to https://evil32.org/ <https://evil32.org/>
+>
+> This page does not seem to have ever had significant content, and I spent an embarassing amount of time at archive.org trying to figure out what happened to it. After using a search engine, I have come to believe https://evil32.com <https://evil32.com/> was the intended link.
+>
+> I tried to find a webmaster email address, but this was the closest I could find. If I stretch really really far I might be able to call this a security issue, so I have justified pestering this email address about it since I did not find a more correct place to report this issue.
+>
+> Thank you for your time.
+>
+> P.S.- The key verification process described didn't work for me(possibly due to the key revocation issued?), but I may have gpg misconfigured on my end. That is not the purpose of this email, however.

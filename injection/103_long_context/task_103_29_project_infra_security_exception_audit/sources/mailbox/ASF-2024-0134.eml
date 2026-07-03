@@ -1,0 +1,22 @@
+Message-ID: <811c5d5d-3858-087f-ab79-92e441e455dd@apache.org>
+X-Clawbench-ID: ASF-2024-0134
+Date: Tue, 9 May 2023 09:06:30 +0200
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Switch read/write repository from Subversion to Git
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-05.mbox
+
+On 5/8/23 9:16 AM, Greg Stein wrote:
+> I might suggest another day or two because of the weekend and because it is so high-impact. Maybe an extra post to private@ in
+> case some PMC members aren't tracking dev@ very closely.
+>
+>
+
+I intend to close this vote in about 48 hours. It has been open then for a week.
+
+Regards
+
+Rüdiger

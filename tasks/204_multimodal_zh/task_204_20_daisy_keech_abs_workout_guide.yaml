@@ -1,0 +1,47 @@
+task_id: task_204_20_daisy_keech_abs_workout_guide
+category: 204_multimodal_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  请在 YouTube 上找到 Daisy Keech 的腹肌训练视频，并完整观看与以下标题最匹配的视频：
+
+  `Daisy Keech hourglass abs workout but just the exercises (with timer and breaks)`
+
+  对本任务而言，只要通过标题识别出该资源即可；它不必来自 Daisy Keech 的官方频道。
+  如果你最终使用 Daisy Keech 的官方原版来核对动作，请在结果中明确说明你使用了哪个视频，
+  并解释它与这个带计时器的剪辑版本之间是如何对应的。
+  你必须直接观看视频画面和计时器内容。不要下载字幕或文字稿，也不要从别处的动作清单去猜测；
+  动作顺序和时长必须来自你实际观看的视频。
+
+  任务要求：
+  1. 为每个动作提取以下内容：
+     - 动作名称（用英文）
+     - 时长或次数
+     - 休息时间
+  2. 为每个动作至少截取一张标准姿势的截图，并保存到
+     `/tmp_workspace/results/abs_workout_frames/`。
+  3. 在 `/tmp_workspace/results/abs_workout_guide.md` 生成一份图文并茂的训练指南。
+
+  最终文档必须包含：
+  - 一张完整的动作表
+  - 每个动作的截图引用
+  - 简要说明你是如何确认这是目标视频的
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/reference_exercise_table.csv
+  - references/reference_abs_workout_guide.md
+  - references/reference_abs_workout_report.md
+  - references/source_frames/
+  - references/source_frames_reference_sheet.jpg
+
+codex:
+  max_user_followups: 2

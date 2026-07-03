@@ -1,0 +1,81 @@
+{
+  "paper": {
+    "title": "LLaMA: Open and Efficient Foundation Language Models",
+    "arxiv_id": "2302.13971"
+  },
+  "target": {
+    "figure": "Figure 2",
+    "page_render": "page 8 of hidden render",
+    "required_panels": ["TriviaQA", "SIQA", "PIQA"],
+    "x_axis": "Billion of tokens",
+    "series": ["LLaMA 7B", "LLaMA 13B", "LLaMA 33B", "LLaMA 65B"],
+    "baseline": "Chinchilla"
+  },
+  "visual_reference": {
+    "images": {
+      "full_figure": "figure2_full.png",
+      "TriviaQA": "figure2_triviaqa.png",
+      "SIQA": "figure2_siqa.png",
+      "PIQA": "figure2_piqa.png"
+    },
+    "grading_priority": "The rendered PNGs must visually resemble the panel crops. Endpoint values alone are not sufficient for pass-level credit.",
+    "layout_anchors": [
+      "paper-figure proportions and margins",
+      "dense empirical trace texture rather than smooth illustrative curves",
+      "7B and 13B traces ending around 1000B tokens",
+      "33B and 65B traces continuing to about 1400B tokens",
+      "purple dashed Chinchilla baseline drawn horizontally across each panel",
+      "source-like spacing, crossings, and local wiggles for each panel"
+    ]
+  },
+  "panel_targets": {
+    "TriviaQA": {
+      "y_axis": "Accuracy",
+      "baseline_approx": 64.1,
+      "endpoints_approx": {
+        "LLaMA 7B": 56.5,
+        "LLaMA 13B": 63.3,
+        "LLaMA 33B": 69.9,
+        "LLaMA 65B": 72.4
+      },
+      "trace_points_approx": {
+        "LLaMA 7B": [[250, 41.6], [500, 49.0], [750, 53.4], [1000, 56.5]],
+        "LLaMA 13B": [[250, 48.2], [500, 55.1], [750, 60.3], [1000, 63.3]],
+        "LLaMA 33B": [[250, 55.6], [500, 61.4], [750, 64.7], [1000, 67.7], [1250, 69.6], [1400, 70.0]],
+        "LLaMA 65B": [[250, 58.6], [500, 64.8], [750, 67.4], [1000, 70.1], [1250, 71.9], [1400, 72.5]]
+      }
+    },
+    "SIQA": {
+      "y_axis": "Accuracy",
+      "baseline_approx": 51.3,
+      "endpoints_approx": {
+        "LLaMA 7B": 48.8,
+        "LLaMA 13B": 50.6,
+        "LLaMA 33B": 50.6,
+        "LLaMA 65B": 51.9
+      },
+      "trace_points_approx": {
+        "LLaMA 7B": [[250, 46.9], [500, 47.7], [750, 48.0], [1000, 48.8]],
+        "LLaMA 13B": [[250, 48.7], [500, 49.0], [750, 50.6], [1000, 50.6]],
+        "LLaMA 33B": [[250, 49.0], [500, 49.5], [750, 50.4], [1000, 50.5], [1250, 50.5], [1400, 50.6]],
+        "LLaMA 65B": [[250, 49.2], [500, 50.8], [750, 51.2], [1000, 50.8], [1250, 51.0], [1400, 51.9]]
+      }
+    },
+    "PIQA": {
+      "y_axis": "Accuracy",
+      "baseline_approx": 81.8,
+      "endpoints_approx": {
+        "LLaMA 7B": 79.4,
+        "LLaMA 13B": 80.1,
+        "LLaMA 33B": 81.9,
+        "LLaMA 65B": 82.8
+      },
+      "trace_points_approx": {
+        "LLaMA 7B": [[250, 76.3], [500, 78.1], [750, 78.5], [1000, 79.4]],
+        "LLaMA 13B": [[250, 77.9], [500, 78.7], [750, 79.5], [1000, 80.1]],
+        "LLaMA 33B": [[250, 79.0], [500, 79.7], [750, 80.4], [1000, 81.3], [1250, 81.6], [1400, 81.9]],
+        "LLaMA 65B": [[250, 79.7], [500, 80.6], [750, 81.3], [1000, 82.2], [1250, 82.9], [1400, 82.8]]
+      }
+    }
+  }
+}

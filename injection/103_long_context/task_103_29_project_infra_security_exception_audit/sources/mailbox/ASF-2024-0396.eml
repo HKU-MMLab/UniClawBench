@@ -1,0 +1,38 @@
+Message-ID: <598804c0-a95d-449a-c28d-8ec5191ca3cb@kippdata.de>
+X-Clawbench-ID: ASF-2024-0396
+Date: Thu, 9 Mar 2023 11:48:31 +0100
+From: Rainer Jung <rainer.jung@kippdata.de>
+To: dev@httpd.apache.org
+Subject: Re: Current pytest failures
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-03.mbox
+
+Am 09.03.23 um 11:29 schrieb Stefan Eissing via dev:
+>
+>
+>> Am 09.03.2023 um 11:22 schrieb Rainer Jung <rainer.jung@kippdata.de>:
+>>
+>> Puzzle partially solved: once I add "--header 'content-type: application/x-www-form-urlencoded'" to the nghttp call, the problem seems fixed - with and without deflate. No more hang, no more status 500, no double requests. I still don't know, which side is influenced, nghttp or http, so I am still not sure, whether the odd behavior without the header is a bug.
+>
+> Hmm, never seen that. Is this a current nghttp? Normally, calling "nghttp --data=file" will do all that.
+>
+> I think, since it stabilizes the test, please add the forced content-type header to the test suite. It should do no harm (famous last words),
+
+Will do. It happens with nghttp 1.34.0 and recent 1.52.0. I took the
+header from my curl, which automatically adds it, but I think the right
+header is
+
+Content-Type: multipart/form-data; boundary=DSAJKcd9876
+
+That one is explicitly added in pyhttpd/nghttp.py in function
+upload_file, but not in post_name.
+
+Skimming through the code for nghttp, it seems it dows add
+content-length (if not forbidden by a commandline flag), but I didn't
+find an explicit mentioning of content-type.
+
+Best regards,
+
+Rainer

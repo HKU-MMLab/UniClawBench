@@ -1,0 +1,62 @@
+task_id: task_205_22_ai_framework_q1_2026
+category: 205_cross_platform_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我们团队下周要开会决定采用哪个 LLM agent 编排
+  框架。候选项是 langchain、llama_index、crewAI、
+  pydantic-ai 和 langgraph。光看 star 数量意义不大——我想
+  看看这五个里哪个在 2026 年第一季度
+  （2026-01-01 到 2026-03-31）实际有在维护，谁的社区在增长，以及谁还
+  在 Hacker News 和 Stack Overflow 上被讨论。
+
+  你能把所有这些维度都拉出来，给我一份评估报告吗？
+  每个框架几行数字、一个综合排名，以及一个有
+  数据支撑的最终推荐。
+
+  排名我想要简单一点：取第一季度的 PR 数、release
+  数、issue 数和 HN story 数作为 4 个信号。对每个
+  维度排名，然后对排名取平均——平均值最低者胜出。
+
+  另外，如果某个框架的核心贡献者在 GitHub 上
+  还拥有几十个其他仓库，这说明该团队有广泛的生态——也把这个
+  信息包含进来。
+
+  此外，查一下这 5 个框架之间的 Python 依赖重叠
+  程度。拉取每个仓库的 pyproject.toml（langchain 和
+  langgraph 是 monorepo——实际的包分别位于
+  libs/langchain/ 和 libs/langgraph/ 下；crewAI 位于
+  lib/crewai/ 下；pydantic-ai 位于 pydantic_ai_slim/ 下；llama_index
+  主要看 llama-index-core/），并提取每个框架的运行时
+  依赖列表。然后做集合运算：哪些包出现在 ≥3 个
+  框架中，可视为"共享基础设施"？哪些出现在全部 5 个中？我
+  猜 pydantic 之类的是通用的——这告诉我 LLM agent
+  领域的"生态枢纽"是什么，也反映了
+  这五个团队设计理念的相似程度。
+
+  仓库：langchain-ai/langchain、run-llama/llama_index、
+  crewAIInc/crewAI、pydantic/pydantic-ai、langchain-ai/langgraph。
+
+  将报告和数据文件放在 /tmp_workspace/results/ 下。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources: []
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

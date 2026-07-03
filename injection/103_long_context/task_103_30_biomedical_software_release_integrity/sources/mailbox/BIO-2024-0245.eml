@@ -1,0 +1,80 @@
+Message-ID: <Zffyf8NwRqLcEcql@banach.uvt.nl>
+X-Clawbench-ID: BIO-2024-0245
+Date: Mon, 18 Mar 2024 08:51:27 +0100
+From: Joost van Baal-Ilić <joostvb+debian-r@uvt.nl>
+To: Debian R <debian-r@lists.debian.org>,	Debian Science List <debian-science@lists.debian.org>,	Debian Med Project List <debian-med@lists.debian.org>
+Subject: Re: Action needed for R-pkg Uploaders
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_03_msg00019.html
+
+Hi,
+
+Andreas: thanks a lot for this heads-up, and thanks HUGELY for maintaining the
+bulk of the r-cran ecosystem in Debian for such a long time.
+
+Op Mon, Mar 11, 2024 at 03:47:42PM +0100 schreef Andreas Tille:
+>
+
+>
+> Joost van Baal-Ilić :
+>  r-cran-bdgraph
+>  r-cran-corpcor
+>  r-cran-d3network
+>  r-cran-farver
+>  r-cran-fdrtool
+>  r-cran-formatr
+>  r-cran-ggforce
+>  r-cran-ggm
+>  r-cran-ggrepel
+>  r-cran-glasso
+>  r-cran-highr
+>  r-cran-httpuv
+>  r-cran-huge
+>  r-cran-hunspell
+>  r-cran-knitr
+>  r-cran-lavaan
+>  r-cran-lisreltor
+>  r-cran-markdown
+>  r-cran-matrixcalc
+>  r-cran-mi
+>  r-cran-mime
+>  r-cran-nfactors
+>  r-cran-qgraph
+>  r-cran-rcppparallel
+>  r-cran-rockchalk
+>  r-cran-sem
+>  r-cran-semplot
+>  r-cran-semtools
+>  r-cran-statcheck
+>  r-cran-tweenr
+>  r-cran-yaml
+
+I'm afraid I won't have time to take care of those in the near
+future.  However, I _do_ plan to keep maintaining:
+
+ r-cran-lavaan
+ r-cran-hunspell
+ r-cran-markdown
+ r-cran-httpuv
+ r-cran-statcheck
+
+(And I've just managed to do upload new upstream of r-cran-statcheck;
+routine-update indeed makes life much easier :)
+
+So, would it be usefull to do an upload of the 31 - 5 = 26 other packages
+dropping my name from Uploaders: so changing:
+
+ Maintainer: Debian R Packages Maintainers
+ Uploaders: Joost van Baal-Ilić
+
+into
+
+ Maintainer: Debian R Packages Maintainers
+
+in debian/control?
+
+Thanks, Bye,
+
+Joost

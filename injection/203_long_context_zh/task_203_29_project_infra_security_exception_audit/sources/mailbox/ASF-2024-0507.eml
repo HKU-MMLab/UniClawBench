@@ -1,0 +1,38 @@
+Message-ID: <856644e5-cc0a-7e54-89b1-9f61f91723be@evermeet.cx>
+X-Clawbench-ID: ASF-2024-0507
+Date: Wed, 18 Jan 2023 14:12:18 -0500
+From: "Helmut K. C. Tessarek" <tessarek@evermeet.cx>
+To: dev@httpd.apache.org, Eissing Stefan <stefan@eissing.org>
+Subject: Re: sporadic 500 errors with 2.4.55
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-01.mbox
+
+On 2023-01-18 13:40, Stefan Eissing via dev wrote:
+> Thanks for the logs. That was really helpful. If you can build a 2.4.55 yourself, could you try the following patch?
+
+Yep, the patch fixed it. I don't see any 500 errors anymore.
+
+> The 500 in the access log happens when a client RST (resets) a stream before the response has really started. The HTTP/2 processing of this is totally fine and as should be. We just have an entry in the access log where there should be none.
+
+It's also generating a 500 that can be seen by the server. e.g. I found this
+by using a php file as an ErrorDocument that sends an email when encountering
+a 500.
+
+Thus this 500 is not only in the logs but must also trigger the ErrorDocument
+500. Those are also gone now.
+
+Thanks a bunch for fixing this.
+
+Cheers,
+   K. C.
+
+--
+regards Helmut K. C. Tessarek              KeyID 0x172380A011EF4944
+Key fingerprint = 8A55 70C1 BD85 D34E ADBC 386C 1723 80A0 11EF 4944
+
+/*
+    Thou shalt not follow the NULL pointer for chaos and madness
+    await thee at its end.
+*/

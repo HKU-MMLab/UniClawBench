@@ -1,0 +1,34 @@
+Message-ID: <Z3JZezbYGbXsmzZ4@an3as.eu>
+X-Clawbench-ID: BIO-2024-0952
+Date: Mon, 30 Dec 2024 09:27:39 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: [Advent Calendar] third week bug work
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_12_msg00033.html
+
+Am Sun, Dec 29, 2024 at 11:58:38AM +0100 schrieb Étienne Mollier:
+> I think the
+> most concerning issue is #953053, but real blockers are
+> autopkgtest failure on s390x (we probably want to drop big
+> endian support)
+
+We should definitely drop big endian support.
+
+> and #1084568 (there is a hint from Alexandre
+> Detiste about pulling the missing Python module from a side
+> package, so the RC bug should be somewhat low hanging fruit
+> now).
+
+:-)
+
+> Acknowledged, I add deepdiff to the count as I won't see it
+> appear in Alioth lists.
+
+Thank you all for your contributions
+    Andreas.
+
+--
+https://fam-tille.de

@@ -1,0 +1,42 @@
+Message-ID: <ZKPzno5CvMVZG+AN@an3as.eu>
+X-Clawbench-ID: BIO-2024-0602
+Date: Tue, 4 Jul 2023 12:25:34 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>,	Steffen Möller <steffen_moeller@gmx.de>,	"Michael R. Crusoe" <michael.crusoe@gmail.com>
+Subject: Droping .py extension in cnvkit
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_07_msg00002.html
+
+Hi,
+
+I tried to upgrade cnvkit to its latest upstream version.  Steffen and
+Michael (in CC) did a lot of effort to follow some recommendation given
+in UpstreamGuide[1] (BTW, the link to policy there seems to deal with a
+different topic - at least in the latest policy).  While I absolutely
+agree with the argument that language extensions in upstream scripts are
+a nuisance I think we all agreed in the thread starting here[2] that we
+are doing a disservice to our users when renaming tools that are named
+differently in the non-Debian free software world.  Thus our template
+contains an according lintian-override[3] which I'm using in all new
+packages I'm packaging.
+
+The thread[2] actually was about the cnvkit example and IMHO we should
+decide now what to do here.  I'm persinally in favour of shipping
+upstream names.  They moved from setup.py to pyproject.toml so our patch
+does not work any more.  I wonder whether we want to fix the patch or
+rather our rules file which does a lot of renaming which we could drop
+and by doing so simplify the packaging.
+
+What do you think?
+
+Kind regards
+     Andreas.
+
+[1] https://wiki.debian.org/UpstreamGuide#Language_extensions_in_scripts
+[2] https://lists.debian.org/debian-med/2018/06/msg00043.html
+[3] https://salsa.debian.org/med-team/community/package_template/-/blob/master/debian/lintian-overrides
+
+--
+http://fam-tille.de

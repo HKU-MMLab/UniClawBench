@@ -1,0 +1,41 @@
+task_id: task_202_26_nasa_image_crop_provenance
+category: 202_exploration_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我偶然看到这张某幅太空图像的裁剪特写，没有任何说明文字，我
+  想知道它究竟展示的是什么天体，并找到原始的
+  NASA 图像记录（而非博客或新闻转载）。图片在这里：
+
+      /tmp_workspace/clawbench/sources/crop.jpg
+
+  它只是一幅更大图像的一处细节，没有文字或标签，所以请仅凭
+  图片本身识别该天体，然后将它追溯回 NASA 的权威
+  来源。
+
+  请告诉我：
+  - 这是什么天体，
+  - 是哪台 NASA 望远镜/仪器拍摄的（如果能确定的话），
+  - NASA 图像 id 以及规范的 NASA 图像库 / JPL 记录 URL，
+  - 大致的发布日期。
+
+  把你的结论和支撑证据（你是如何识别它的，以及
+  规范的 NASA 记录 URL）保存到
+  `/tmp_workspace/results/image_provenance.json`，并把笔记/截图放在
+  `/tmp_workspace/results/` 下。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+sources:
+  - crop.jpg
+
+codex:
+  max_user_followups: 2

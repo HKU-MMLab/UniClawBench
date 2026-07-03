@@ -1,0 +1,23 @@
+Message-ID: <2F4A5C66-20DC-42A1-94D2-281DB5C8E6C0@webweaving.org>
+X-Clawbench-ID: ASF-2024-1430
+Date: Wed, 20 Nov 2024 13:01:49 +0100
+From: Dirk-Willem van Gulik <dirkx@webweaving.org>
+To: dev@httpd.apache.org
+Subject: Re: modules-dev: advice on http client library?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-11.mbox
+
+On 20 Nov 2024, at 12:45, Eric Covener <covener@gmail.com> wrote:
+
+> I need a very basic HTTP client library (not even HTTPS) to introduce
+> in a micro release of a module (really of a httpd fork with some
+> proprietary modules).  It is a new dependency of a proprietary
+> library that we might have to move up to at any time.
+...
+> Anyone have additional useful ideas/pointers?
+
+The trival code in 'ab', in test().
+
+Dw.

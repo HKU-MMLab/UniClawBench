@@ -1,0 +1,51 @@
+Message-ID: <BADF3C947A1BD54FBA75C70C241B0B9E762E67@ex02.idirect.net>
+X-Clawbench-ID: CAM-2003-0649
+Date: Mon, 19 Aug 2002 18:31:25 -0400
+From: "Harig, Mark A." <maharig@idirect.net>
+To: rpm-zzzlist@freshrpms.net
+Subject: RE: when building a rpm i386-redhat-linux- is appended to man page
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01261.8335ae817bc240842df41dd7c3de2420
+
+> -----Original Message-----
+> From: Matthias Saou [mailto:matthias@egwn.net]
+> Sent: Monday, August 19, 2002 5:25 PM
+> To: rpm-zzzlist@freshrpms.net
+> Subject: Re: when building a rpm i386-redhat-linux- is appended to man
+> page
+>
+>
+> Once upon a time, Harig, wrote :
+>
+> > >
+> > > The workaround is to pass an extra argument to configure
+> as follows :
+> > >
+> > > %configure --program-prefix=%{?_program_prefix:%{_program_prefix}}
+> > >
+> >
+> > This works when you are defining a switch that %configure
+> > does not already define, but how can we override an
+> > existing switch?
+>
+> Well, %configure doesn't define "--program-prefix=", so that's why it
+> works. Maybe you thought that was an example, but no, it's
+> the exact syntax
+> to use as a workaround ;-)
+>
+> Matthias
+>
+
+Actually, I was hoping that you could answer the question "how can we
+override an existing switch?"  For example, %configure uses the command-
+line switch '--prefix'.  How can we override that value?
+
+  %configure ???
+
+---
+
+_______________________________________________
+RPM-List mailing list <RPM-List@freshrpms.net>
+http://lists.freshrpms.net/mailman/listinfo/rpm-list

@@ -1,0 +1,38 @@
+Message-ID: <YYOYMvSlxU6sJi35@an3as.eu>
+X-Clawbench-ID: BIO-2024-0110
+Date: Thu, 4 Nov 2021 09:22:10 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: no report generation, likely not only for pigx-rnaseq Re: What happened to r-cran-jquerylib ?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_11_msg00022.html
+
+Hi Steffen,
+
+Am Wed, Nov 03, 2021 at 08:35:33PM +0100 schrieb Steffen Möller:
+>
+> Concerning the symbolic links - maybe the idea is better than I had
+> initially thought. Would there be a way to have a warning written when
+> an older version is requested? Maybe we should just not have the older
+> versions and provoke a clear and easily(?) detectable error.
+
+Since I had no really good idea about this I hesitated to continue with
+this package.  Since we really need it (as you know best) we should
+probably ignore those older version issues and see how to solve things
+once we might really need it.
+
+> The more we fiddle with JavaScript, though, the more likely such
+> difficulties are likely to develop.
+
+I absolutely agree here and I admit I have a bad gut feeling about more
+and more JS stuff interweaved in R packages - but well, that seems to
+be something we can hardly avoid.
+
+Kind regards
+
+        Andreas.
+
+--
+http://fam-tille.de

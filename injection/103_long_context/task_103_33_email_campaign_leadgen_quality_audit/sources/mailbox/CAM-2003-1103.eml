@@ -1,0 +1,39 @@
+Message-ID: <20020806125617.F17211@ie.suberic.net>
+X-Clawbench-ID: CAM-2003-1103
+Date: Tue, 06 Aug 2002 12:56:17 +0100
+From: kevin lyda <kevin+dated+1029066979.c30bc3@ie.suberic.net>
+To: Matthew French <mfrench42@yahoo.co.uk>
+Subject: Re: [ILUG] Sparc Solaris (was: Dell GX260 V Redhat 7.3)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00264.9552e74929dc9ef75aa7ea8b57d527fe
+
+On Tue, Aug 06, 2002 at 09:46:27AM +0100, Matthew French wrote:
+> Declan Houlihan mentioned:
+> > We're actually investigating switching from Sparc/Solaris to
+> > Intel/Linux.
+>
+> And then:
+> > At the moment at work, if we want a new workstation, we just
+> > buy whatever Sun's latest system is, we jumpstart it, and
+> > that's it, it's up and running.
+
+sorry, i missed this.  redhat supplies something similar called kickstart
+(guess who inspired them?).  pc hardware is dumb, so you'll need to use
+a floppy.  otoh, every jumpstart config i've seen required rarp plus
+plugging the new box's ethernet+ip into a file.  a kickstart boot can
+just use a dhcp server.
+
+kevin
+
+--
+kevin@suberic.net     that a believer is happier than a skeptic is no more to
+fork()'ed on 37058400    the point than the fact that a drunken man is happier
+meatspace place: home       than a sober one. the happiness of credulity is a
+http://ie.suberic.net/~kevin   cheap & dangerous quality -- g.b. shaw
+
+--
+Irish Linux Users' Group: ilug@linux.ie
+http://www.linux.ie/mailman/listinfo/ilug for (un)subscription information.
+List maintainer: listmaster@linux.ie

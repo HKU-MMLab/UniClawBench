@@ -1,0 +1,145 @@
+Message-ID: <CA+Ua4eWWyDnBb8xa9tc=iUQ_JS5e_E0FcotAEM4agUsnT=pkPw@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0554
+Date: Mon, 5 Aug 2024 15:22:35 +0100
+From: Jakub Zelenka <jakub.sysop@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: [Bug 69203] proxy error from php-fpm backend for paths containing spaces
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-08.mbox
+
+Hello,
+
+I'm PHP-FPM maintainer. We got actually report about this as well so just
+went through this.
+
+On Sat, Aug 3, 2024 at 7:35 PM Eric Covener <covener@gmail.com> wrote:
+
+> On Fri, Aug 2, 2024 at 12:19 PM Yann Ylavic <ylavic.dev@gmail.com> wrote:
+> >
+> > On Fri, Aug 2, 2024 at 3:26 PM Eric Covener <covener@gmail.com> wrote:
+> > >
+> > > On Fri, Aug 2, 2024 at 9:10 AM Yann Ylavic <ylavic.dev@gmail.com>
+> wrote:
+> > > >
+> > > > On Fri, Aug 2, 2024 at 1:06 PM Eric Covener <covener@gmail.com>
+> wrote:
+> > > > >
+> > > > > > Yeah, if not under DocumentRoot I don't see how ProxyPass could
+> work,
+> > > > > > but SetHandler should since it's following the whole request
+> > > > > > processing to resolve the filesystem r->filename?
+> > > > >
+> > > > > In the examples I am seeing spot-checking google results, people
+> who
+> > > > > use ProxyPass + FPM hard-code the document root (or wherever the
+> stuff
+> > > > > is) in the 2nd parameter. This includes our own manual and the
+> > > > > unofficial confluence wiki.
+> > > >
+> > > > Ah ok, I think we can do something like this:
+> > > >         if (rconf->need_dirwalk) {
+> > > >             const char *docroot = ap_document_root(r);
+> > > >             if (strncmp(docroot, r->filename, strlen(docroot)) != 0)
+> {
+> > > >                 r->proxyreq = PROXYREQ_NONE;
+> > > >                 ap_core_translate(r);
+> > > >             }
+> > > >             ap_directory_walk(r);
+> > > >         }
+> > > > ?
+> > >
+> > > I think users could be happily humming along with some other absolute
+> > > filesystem path in the ProxyPass 2nd arg and would now see it
+> > > docroot-prefixed.
+> > > Are you trying to make the ProxyPass+FPM vars better because they will
+> > > no longer be fixed up by apache_was_here side effects? I think it is
+> > > probably bes to just retain/restore some of the historical bogus
+> > > values if MAY_BE_FPM -- maybe doing them at the last moment where we'd
+> > > do the above.
+> >
+> > Maybe this:
+> >     if (rconf) {
+> >         if (!rconf->need_dirwalk) {
+> >             r->filename = rconf->filename;
+> >         }
+> >         else {
+> >             char *saved_uri = r->uri;
+> >             char *saved_path_info = r->path_info;
+> >             int i = 0;
+> >
+> >             /* Try to find the script without DocumentRoot than with */
+> >             do {
+> >                 r->path_info = NULL;
+> >                 r->filename = r->uri = rconf->filename;
+> >                 if (i) {
+> >                     r->proxyreq = PROXYREQ_NONE;
+> >                     ap_core_translate(r);
+> >                     r->proxyreq = PROXYREQ_REVERSE;
+> >                 }
+> >                 ap_directory_walk(r);
+> >             } while (r->finfo.filetype != APR_REG && ++i < 2);
+> >
+> >             /* If no actual script was found, fall back to the "proxy:"
+> >              * SCRIPT_FILENAME dealt with below or by php-fpm directly.
+> >              */
+> >             if (i == 2) {
+> >                 r->path_info = saved_path_info;
+> >                 r->filename = proxy_filename;
+> >             }
+> >             /* Restore REQUEST_URI in any case */
+> >             r->uri = saved_uri;
+> >         }
+> >     }
+> > ?
+>
+> Looks good to me, curious what you are thinking for changes-entry or
+> is this more for a semblance of sanity in this area of code if we have
+> to come back to it?
+>
+> This seems to (at least):
+> - fix slightly nonsensical combo of SetHandler + proxy-fcgi-pathinfo=full
+> - allows ProxyPass + proxy-fcgi-pathinfo=full to not repeat the
+> document root in the directive
+>
+> I don't see a ton of references to proxy-fcgi-pathinfo in the wild. It
+> was kind of pre-emptive as I remember along with the
+> ProxyFCGISetEnvIf. But one the few I found (on php.net) said "Don't
+> use ProxyPassMatch. Use SetHandler."
+>
+>
+I don't think this is correct as we definitely have users using
+ProxyPassMatch and it mostly just works for their use cases.
+
+
+> We could also consider deprecating the use of proxypass specifically
+> with FPM (where the balancer scenario is kind of moot).
+>
+
+I wouldn't deprecate proxypass with FPM. Note that the most usual setup is
+just a single file (index.php) getting the actual path in path info where
+proxypass is just fine. WordPress is a bit different but think that works
+too. So deprecating something that would be helpful for absolute minority
+of users does not make much sense to me. It might be better to just
+document the limitations.
+
+In terms of logic, the only part that we decode is pathinfo if it's taken
+from proxy pass because there is no PATH_INFO env that we would use
+otherwise. For such case, we need to take it from SCRIPT_FILENAME which is
+encoded so we need to decode it. All of this is just a horrible piece of
+code that accumulated over the years (probably my least favourity part of
+FPM really) so any changes can easily break things and would be good idea
+to test it properly. I added some tests that show the expectation that we
+have which can be found here:
+https://github.com/php/php-src/tree/master/sapi/fpm/tests (all of those
+fcgi-*-apache*).
+
+Feel free to ask if you want to clarify some bits in FPM or its tests. I
+will also try to find some time to test this patch (most likely next week)
+and later I plan to do some integration tests which could potentially run
+daily against trunk (it's a bit longer term plan though).
+
+Regards
+
+Jakub

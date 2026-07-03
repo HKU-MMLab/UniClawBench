@@ -1,0 +1,34 @@
+Message-ID: <197388fa-e642-ed95-d623-55b73fd4bf32@kippdata.de>
+X-Clawbench-ID: ASF-2024-0058
+Date: Thu, 7 Apr 2022 13:04:34 +0200
+From: Rainer Jung <rainer.jung@kippdata.de>
+To: "dev@httpd.apache.org" <dev@httpd.apache.org>
+Subject: Adding a2md to httpd sources?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-04.mbox
+
+Hi there,
+
+during my experiments with the nice pytest based test suite against
+2.4.x I noticed, that many mod_md tests need "a2md". The sources for
+this commandline tool ar in Stefan's GitHub repos for mod_md, but not
+inside the httpd 2.4.x source tree.
+
+I have not really checked, what a2md exactly does, but was wondering,
+how much sense it would make to add it to 2.4.x as another support binary?
+
+ From the man page:
+
+The a2md utility can be used to configure and update managed domains
+with the mod_md module for Apache HTTP Server. Managed Domains are
+virtual hosts which automatically obtain and renew TLS certificates from
+an ACME server.
+
+Is it ready for prime time? Would it interact with a custom build of
+httpd (layout might differ from distros)? What's the expectation?
+
+Thanks and regards,
+
+Rainer

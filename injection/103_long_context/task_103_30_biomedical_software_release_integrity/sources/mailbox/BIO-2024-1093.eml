@@ -1,0 +1,38 @@
+Message-ID: <20210909063136.GF14786@an3as.eu>
+X-Clawbench-ID: BIO-2024-1093
+Date: Thu, 9 Sep 2021 08:31:36 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>,	Pierre Gruet <pgtdebian@free.fr>
+Subject: Scala error when trying to build latest version of pilon
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_09_msg00013.html
+
+Hi Pierre (and others)
+
+when trying to build the latest version of pilon[1] I get:
+
+...
+scalac -classpath /usr/share/java/htsjdk.jar -d pilon.jar src/main/scala/org/broadinstitute/pilon/*
+src/main/scala/org/broadinstitute/pilon/BamFile.scala:24: error: object jdk is not a member of package scala
+import scala.jdk.CollectionConverters._
+             ^
+src/main/scala/org/broadinstitute/pilon/BamFile.scala:65: error: value asScala is not a member of java.util.List[htsjdk.samtools.SAMSequenceRecord]
+    val seqs = r.getFileHeader.getSequenceDictionary.getSequences.asScala
+                                                                  ^
+src/main/scala/org/broadinstitute/pilon/BamFile.scala:96: error: value asScala is not a member of htsjdk.samtools.SAMRecordIterator
+    val reads = r.queryUnmapped.asScala.filter(validateRead(_)).toList
+                                ^
+src/main/scala/org/broadinstitute/pilon/BamFile.scala:119: error: value asScala is not a member of htsjdk.samtools.SAMRecordIterator
+possible cause: maybe a semicolon is missing before `value asScala'?
+      (region.start-10000) max 0, (region.stop+10000) min region.contig.length).asScala
+                                                                                ^
+src/main/scala/org/broadinstitute/pilon/PileUpRegion.scala:22: error: object jdk is not a member of package scala
+import scala.jdk.CollectionConverters._
+             ^
+src/main/scala/org/broadinstitute/pilon/BamFile.scala:297: error: value asScala is not a member of htsjdk.samtools.SAMRecordIterator
+    for (read https://salsa.debian.org/med-team/pilon
+
+--
+http://fam-tille.de

@@ -1,0 +1,33 @@
+Message-ID: <NBBBIGEGHIGMPCNKHCECEEGKEAAA.kenn@bluetree.ie>
+X-Clawbench-ID: CAM-2003-0772
+Date: Mon, 12 Aug 2002 19:56:23 +0100
+From: Kenn Humborg <kenn@bluetree.ie>
+To: Nick Murtagh <nickm@go2.ie>, ilug@linux.ie
+Subject: RE: [ILUG] slashdot EW Dijkstra humor
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00349.335e1da552568724040e799bf3b1d582
+
+> > If you're using a break or similar construct in a while loop
+> then you might
+> > want to rethink your guard condition.
+>
+> Good point, I didn't think of that. However, that doesn't help with a
+> case statement, which IMHO is cleaner than using an if statement if you
+> have a lot of branches... but then again maybe that should be refactored
+> away with polymorphism :)
+
+Well, you should consider 'break' inside a 'select' statement
+to be part of the syntax, rather than a control flow modifier.
+
+A _mandatory_ part of the syntax, at that.
+
+Later,
+Kenn
+
+
+--
+Irish Linux Users' Group: ilug@linux.ie
+http://www.linux.ie/mailman/listinfo/ilug for (un)subscription information.
+List maintainer: listmaster@linux.ie

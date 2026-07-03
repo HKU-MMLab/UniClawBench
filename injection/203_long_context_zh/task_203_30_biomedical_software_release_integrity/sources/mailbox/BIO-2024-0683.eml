@@ -1,0 +1,25 @@
+Message-ID: <Y1ZFjwsJ3YOZg8cz@an3as.eu>
+X-Clawbench-ID: BIO-2024-0683
+Date: Mon, 24 Oct 2022 09:58:07 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>,	Pierre Gruet <pgtdebian@free.fr>
+Subject: Please have a look at beast2-mcmc in Git
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00075.html
+
+Hi Pierre,
+
+I've updated beast2-mcmc in Git but the new upstream version fails to
+build[1] which has hopefully a simple fix.
+
+Kind regards
+
+    Andreas.
+
+
+[1] https://salsa.debian.org/med-team/beast2-mcmc/-/jobs/3420119
+
+--
+http://fam-tille.de

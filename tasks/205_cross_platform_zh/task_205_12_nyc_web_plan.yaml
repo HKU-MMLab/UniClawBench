@@ -1,0 +1,50 @@
+task_id: task_205_12_nyc_web_plan
+category: 205_cross_platform_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+recording: none
+headed: auto
+task: |
+  你是一名游客，第一次到纽约。请为下周日制定计划，
+  那天你只有 09:30-14:30 可用于半日文化活动，而且
+  固定出发点是 Grand Central Terminal。如果下周日是公共
+  假日、闭馆日、特殊营业时间日、售罄，或者官方页面没有
+  提供足够的针对该日期的开放/入场信息，则改用再下一个
+  周日并说明原因。仅使用浏览器和网页
+  制定一份博物馆行程。候选景点仅限于：The Met、
+  MoMA、American Museum of Natural History 和 Whitney Museum。
+
+  你需要查看每个候选景点的官方网站，了解所选日期的开放时间和
+  当日购票或预约规则，并结合
+  地图网页给出的从出发点出发以及景点之间的
+  路线时间。最后，选出 2 个最合适的景点，并在这个文件中提供一份
+  具体的日程安排：
+
+      /tmp_workspace/results/nyc_sunday_museum_plan.md
+
+  行程必须满足：
+  - 总时长不超过 5 小时。
+  - 至少包含一个 20-40 分钟的用餐或咖啡休息时段。
+  - 不要安排官方规则明显不确定或当日无法
+    入场的景点。
+  - 每段单独的换乘最好不超过 30 分钟。
+
+  Markdown 必须包含四个顶级部分：
+  - candidate check
+  - route timing
+  - final itinerary
+  - why rejected others
+
+  在最终计划中注明所选日期。
+codex:
+  max_user_followups: 2
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/process_evidence/Whitney_museum.png
+  - references/process_evidence/google_map_GCT_to_WM.png
+  - references/process_evidence/google_map_WM_to_AMNH.png

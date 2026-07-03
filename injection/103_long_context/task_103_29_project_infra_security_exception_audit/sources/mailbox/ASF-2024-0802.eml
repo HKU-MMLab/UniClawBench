@@ -1,0 +1,23 @@
+Message-ID: <DE6ABF24-9FBD-46CF-9C80-DA4C92423811@eissing.org>
+X-Clawbench-ID: ASF-2024-0802
+Date: Fri, 30 Jun 2023 09:24:11 +0200
+From: "Stefan Eissing via dev" <dev@httpd.apache.org>
+To: dev@httpd.apache.org,  Eissing Stefan <stefan@eissing.org>
+Subject: Re: http2 backports need one vote
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-06.mbox
+
+Thanks, Yann!
+
+Merged into 2.4.x as r1910699.
+
+> Am 29.06.2023 um 10:30 schrieb Stefan Eissing via dev <dev@httpd.apache.org>:
+>
+> The cumulative mod_http2 backport proposal via PR https://github.com/apache/httpd/pull/364 needs one more vote.
+>
+> I appreciate if someone could add his vote to this.
+>
+> Kind Regards,
+> Stefan

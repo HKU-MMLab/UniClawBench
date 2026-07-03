@@ -1,0 +1,31 @@
+Message-ID: <DB9P192MB15407C5F20CCC2D493D85BBCA69E2@DB9P192MB1540.EURP192.PROD.OUTLOOK.COM>
+X-Clawbench-ID: BIO-2024-1241
+Date: Fri, 6 Sep 2024 10:41:11 +0000
+From: Urmas Rist <urmas@leil.io>
+To: Steffen Möller <steffen_moeller@gmx.de>
+Subject: Re: Re: Re: Shared cluster storage for bioinformatics
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_09_msg00002.html
+
+Sorry for the delay, I also wanted to talk with the former LizardFS
+maintainer as well. I've now finally submitted a ITP for SaunaFS
+(https://lists.debian.org/debian-devel/2024/09/msg00115.html). Since it was my
+first ITP, I don't know if I missed anything (I may have been too detailed,
+after now reading other ITP's). As said there, I will need a sponsor, but I'll
+start working on packages for it.
+
+> Thank you, Urmas! This sounds great. I am not sure about how much help I can be
+> when it comes to maintaining/packaging work that is such close to the kernel,
+> but just shout out whenever you need help.
+
+It's not actually part of the kernel in any way. It uses FUSE (fuse3), which
+means all of the program is written in userspace. The only thing close
+to the kernel is the client, which handles the filesystem calls from the
+kernel in userspace.
+
+---
+Best regards,
+Urmas Rist
+SaunaFS maintainer

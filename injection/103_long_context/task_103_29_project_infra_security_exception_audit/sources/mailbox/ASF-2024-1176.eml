@@ -1,0 +1,34 @@
+Message-ID: <CALK=YjPT7GVZ8dpK=C1H3PGN1w4cftbGOBcdbvrAVzE9TT73Lw@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1176
+Date: Mon, 9 Jan 2023 08:05:30 -0500
+From: Eric Covener <covener@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: stable branch
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-01.mbox
+
+On Mon, Jan 9, 2023 at 3:48 AM Emmanuel Dreyfus <manu@netbsd.org> wrote:
+>
+> Hello
+>
+> I see in httpd/branches/2.4.x/STATUS that my DAVlockDiscovery
+> contribution now has three +1 including mine. May I commit
+> the change to the branch?
+>
+>   *) mod_dav: DAVlockDiscovery option to disable WebDAV lock discovery
+>      This is a game changer for performances if client use PROPFIND a lot,
+>      trunk patch: http://svn.apache.org/r1904638
+>                   http://svn.apache.org/r1904662
+>                   http://svn.apache.org/r1905170
+>                   http://svn.apache.org/r1905206
+>                   http://svn.apache.org/r1905230
+>      2.4.x patch: svn merge -c 1904638,1904662,1905170,1905206,1905230 ^/httpd/h
+> ttpd/trunk .
+>      +1: manu, covener, gbechis
+>      covener: xml needs doc tweak after backport
+
+Yes. Most times, the person who proposed it does the final backport.
+Sometimes, the last person to vote or someone preparing a release will
+apply it.

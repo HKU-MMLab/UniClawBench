@@ -1,0 +1,79 @@
+Message-ID: <YlPhmcuuinnge26o@an3as.eu>
+X-Clawbench-ID: BIO-2024-1295
+Date: Mon, 11 Apr 2022 10:06:49 +0200
+From: Andreas Tille <andreas@fam-tille.de>
+To: Mohd Bilal <rmb@envs.net>
+Subject: Re: RFS: added autopkgtest for pplacer
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_04_msg00033.html
+
+Hi Mohd,
+
+Am Sun, Apr 10, 2022 at 08:08:42PM -0000 schrieb Mohd Bilal:
+> I've added autopkgtest for pplacer[1] . As suggested in the matrix room , I've used the test prescribed in the Makefile as well as included some of the commands from the pplacer tutorial[2] .
+
+Thanks a lot for your effort to write a test for pplacer.
+
+> Requesting someone to review and sponsor my changes.
+
+I have some remarks here.
+
+1. There is no information given where you obtained the data in
+   debian/tests/data from.  It is good style to add some script that
+   fetches the data from somewhere (may be via wget or whaterver
+   tool you prefer.
+
+2. The data should be also mentioned in d/copyright.
+
+3. Since the size of the data exceedes the size of the other files
+   it might make sense to create a separate tarball as it is
+   described in the Debian Med team policy[3].  Alternatively
+   you might consider xz compressing the data files (which needs
+   adding them in debian/source/include-binaries) and uncompressing
+   them once they are needed.  The compression rate might be
+   sufficiently high to tolerate the size of the compressed data
+   files.
+   It might be also be sensible to create an extra pplacer-examples
+   binary package in case the compression rate is not high enough.
+   A sign for the issue is also given by lintian:
+    I: pplacer: arch-dep-package-has-big-usr-share 12192kB 39%
+
+4. Unfortunately the test does not work in my pbuilder environment.
+   I've added a `set -x` to run-unit-test and so I'Ve got:
+
+autopkgtest [07:44:44]: test run-unit-test: [-----------------------
++ export LC_ALL=C.UTF-8
++ LC_ALL=C.UTF-8
++ '[' /tmp/autopkgtest.W5By5K/autopkgtest_tmp = '' ']'
++ cp -a /usr/share/doc/pplacer/examples/src /usr/share/doc/pplacer/examples/vaginal_16s.refpkg /tmp/autopkgtest.W5By5K/autopkgtest_tmp
++ cp -a /tmp/autopkgtest.W5By5K/tree/ /tmp/autopkgtest.W5By5K/autopkgtest_tmp
++ cd /tmp/autopkgtest.W5By5K/autopkgtest_tmp
++ echo -e '\e[93m\e[1mTest 1\e[0m'
++ cd src
++ make test
+Test 1
+make: *** No rule to make target 'test'.  Stop.
+autopkgtest [07:44:45]: test run-unit-test: -----------------------]
+
+There is no Makefile provided and if I'm checking the build directory
+the Makefile would need a binary _build/tests/tests.native which
+contains the according calls to the pplacer binaries.  Thus the test
+only works in a full source tree ... and I admit I'm quite baffled
+why the Salsa-CI test is passing.  It obviously rebuilds the needed
+binary but I have no idea why.
+
+I think what we should do instead is to read the text of the upstream
+test and implement (part of) the calls to the tools as shell script.
+
+Kind regards and thanks again for your work on this anyway
+
+      Andreas.
+
+> [1] - https://salsa.debian.org/med-team/pplacer
+> [2] - https://fhcrc.github.io/microbiome-demo/
+[3] https://med-team.pages.debian.net/policy/#embedding-large-test-data
+
+--
+http://fam-tille.de

@@ -1,0 +1,45 @@
+Message-ID: <8844f238424abd57c21738569c2aec5a@debian.org>
+X-Clawbench-ID: BIO-2024-0798
+Date: Thu, 16 Dec 2021 15:31:11 -0800
+From: Mo Zhou <lumin@debian.org>
+To: tony mancill <tmancill@debian.org>
+Subject: Re: jblas update to 1.2.5?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_12_msg00015.html
+
+Hi tony,
+
+On 2021-12-11 16:14, tony mancill wrote:
+> My first question is, do we have users?  Is the software useful to
+> maintain in Debian?  The popcon for the package is low (around 15) and
+> there haven't been recent bug reports.  If there are users, I will
+> gladly prepare an update.
+
+No idea.
+
+> And if we do update in Debian, I thought readers of this list might have
+> opinions about whether I should switch the Debian packaging from
+> building against lapack to openblas.
+
+We have registered libblas.so and liblapack.so with our
+update-alternatives
+mechanism. After installing libopenblas with apt, jblas will
+automatically
+switch to use openblas without recompilation. The blas and lapack
+libraries
+provide a (mostly consistent API/ABIs).  It is not necessary to switch
+to
+a specific BLAS. You may add openblas to the Recommends: dependency
+field
+as a strong preference on faster implementations. I have already done
+that for a couple of computation intensive packages, e.g., caffe,
+pytorch, etc.
+
+> Thank you for your input!
+> tony
+>
+> P.S.  Thank you to Andreas Tille for directing me to the right list.
+> This is a cross-post of
+> https://lists.debian.org/debian-med/2021/12/msg00051.html.

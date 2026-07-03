@@ -1,0 +1,49 @@
+Message-ID: <8a672960-7b7b-d225-dedf-2b9c9019ad39@apache.org>
+X-Clawbench-ID: ASF-2024-0779
+Date: Sat, 22 Jan 2022 20:41:06 +0100
+From: Daniel Gruno <humbedooh@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: Remove link to "complete list of mirrors" from download page
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-01.mbox
+
+I've culled what is no longer relevant here.
+
+With regards,
+Daniel.
+
+On 22/01/2022 19.37, Daniel Sahlberg wrote:
+> Hi,
+>
+> Due to ASF's migration to the new Download Content Delivery System, the
+> "complete list of mirrors" ([1]) no longer exists om www.apache.org.
+>
+> Can someone with commit access update the download script (I'm assuming
+> it would actually be download.mdtext) and remove this link?
+>
+> Do note that the download script provided by ASF is, depending on your
+> location, adding the https://dlcdn.apache.org both to the [http] and to
+> the [backup] lists and thus, for some users, the Other mirrors display
+> the same site as both the primary and the backup download site. I have
+> tried to work around this but didn't manage (see for example [3]). I'm
+> not sure if Infra consider it to be a bug that dlcdn is in both lists [4].
+>
+> Kind regards,
+>
+> Daniel Sahlberg
+>
+> (Hangaround in the Subversion project).
+>
+>
+> [1] https://www.apache.org/mirrors/
+>
+> [2] https://httpd.apache.org/download.cgi
+>
+> [3] https://lists.apache.org/thread/0hrtsyc1bj7nv8qqj8jl0gnn49l0fhwz
+>
+> [4] https://lists.apache.org/thread/ws49tpb8dqzpk2652qsf4ndwoq5y5v3c
+> (require authentication)
+>
+>

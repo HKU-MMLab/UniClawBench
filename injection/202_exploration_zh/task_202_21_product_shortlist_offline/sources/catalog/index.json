@@ -1,0 +1,65 @@
+{
+  "description": "Offline product catalog of 27-inch-class 4K monitors. Each <id>.json has a 'listing' (search-result summary) and a 'detail' (authoritative product page). When listing and detail disagree, the DETAIL page is authoritative. Pick monitors matching the buyer's needs.",
+  "buyer_requirements": {
+    "size_in": "approximately 27 (26-28)",
+    "resolution": "true 4K (3840x2160)",
+    "usb_c_video_input": "USB-C must carry VIDEO (DisplayPort Alt Mode), not charging/data only",
+    "price_type": "new direct purchase (not used/renewed/coupon/other-seller)",
+    "budget_usd": "<= 500 (the NEW direct price)",
+    "delivery": "ships to US",
+    "availability": "in stock"
+  },
+  "products": [
+    {
+      "id": "M01",
+      "file": "M01.json",
+      "title": "Dell S2722QC 27\" 4K USB-C Monitor"
+    },
+    {
+      "id": "M02",
+      "file": "M02.json",
+      "title": "ViewPro 27\" 4K Monitor with USB-C"
+    },
+    {
+      "id": "M03",
+      "file": "M03.json",
+      "title": "Acme UltraSharp 27\" QHD/4K-Ready USB-C"
+    },
+    {
+      "id": "M04",
+      "file": "M04.json",
+      "title": "LG 27UP850 27\" 4K UHD USB-C"
+    },
+    {
+      "id": "M05",
+      "file": "M05.json",
+      "title": "BenQ 27\" 4K USB-C Designer Monitor"
+    },
+    {
+      "id": "M06",
+      "file": "M06.json",
+      "title": "Samsung 32\" 4K USB-C Monitor"
+    },
+    {
+      "id": "M07",
+      "file": "M07.json",
+      "title": "Iiyama 27\" 4K USB-C ProLite"
+    },
+    {
+      "id": "M08",
+      "file": "M08.json",
+      "title": "ASUS ProArt 27\" 4K USB-C"
+    },
+    {
+      "id": "M09",
+      "file": "M09.json",
+      "title": "Eizo 27\" 4K USB-C"
+    },
+    {
+      "id": "M10",
+      "file": "M10.json",
+      "title": "HP 27\" 4K USB-C (Renewed)"
+    }
+  ],
+  "shortlist_size": 3
+}

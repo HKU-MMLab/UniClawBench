@@ -1,0 +1,21 @@
+Message-ID: <CAKQ1sVNZsy040iGwZXy2LQj=US+XRyRCOmBq=HfGiv12cAG1cg@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1175
+Date: Wed, 9 Feb 2022 16:52:31 +0100
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: httpd-dev <dev@httpd.apache.org>
+Subject: Re: mpm event assertion failures
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-02.mbox
+
+On Wed, Feb 9, 2022 at 4:43 PM Yann Ylavic <ylavic.dev@gmail.com> wrote:
+>
+> With PR #294 this specific case shouldn't happen anymore (thanks to
+> https://github.com/apache/httpd/pull/294/commits/7089813e13bba0f25bd34df4c643cf5878e6e043).
+
+That link broke with my rebases..
+It's currently https://github.com/apache/httpd/pull/294/commits/b009a66cb2d86a58182a5703bbaa1847e785f2b0,
+but in case it breaks again later that's "mpm_event: Pending queue for
+when active connections have no worker available" in the PR #294
+series.

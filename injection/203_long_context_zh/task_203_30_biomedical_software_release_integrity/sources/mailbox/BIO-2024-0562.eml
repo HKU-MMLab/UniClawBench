@@ -1,0 +1,40 @@
+Message-ID: <CA+7wUsyyadyx+t75uEsH2sm64W1gpARcpNEz=0Y0xSpVHt616A@mail.gmail.com>
+X-Clawbench-ID: BIO-2024-0562
+Date: Mon, 21 Mar 2022 15:04:11 +0100
+From: Mathieu Malaterre <malat@debian.org>
+To: Andreas Tille <tille@debian.org>
+Subject: Re: ismrmrd has cmake build issue
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_03_msg00022.html
+
+On Mon, Mar 21, 2022 at 2:49 PM Andreas Tille  wrote:
+>
+> Hi Mathieu,
+>
+> Am Mon, Mar 21, 2022 at 02:03:56PM +0100 schrieb Mathieu Malaterre:
+> >
+> > On Mon, Mar 21, 2022 at 1:44 PM Andreas Tille  wrote:
+> > > I injected the new version of ismrmrd but it does not build as you can
+> > > see in Salsa CI[1].  I reported this upstream[2] but they can not
+> > > reproduce the issue.  I tried my own luck with a patch to make sure
+> > > the header files will be found:
+> >
+> > The compilation issue is caused by add_static_lib.patch. Do you really
+> > need that patch ?
+> >
+> > ...
+> > fatal error: ismrmrd/ismrmrd.h: No such file or directory
+> > ...
+>
+> Well, usually *-dev packages should provide a static library (and
+> d-shlibs which is used to provide proper libraries is even enforcing
+> this).  While its probably not a cruxial feature I'd be happy if we
+> could keep it.
+
+Ok. Try with 85df4cc.
+
+Removing the warning-as-errors stuff does seems to work for me.
+
+Good luck

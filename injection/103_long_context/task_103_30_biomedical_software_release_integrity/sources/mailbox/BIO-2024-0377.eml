@@ -1,0 +1,29 @@
+Message-ID: <202110021617.35564.rhkramer@gmail.com>
+X-Clawbench-ID: BIO-2024-0377
+Date: Sat, 2 Oct 2021 16:17:35 -0400
+From: rhkramer@gmail.com
+To: debian-med@lists.debian.org
+Subject: OT: which editor or editing widgit does it use? (was: Re: Project proposal for the Debian Med group)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00014.html
+
+On Saturday, October 02, 2021 02:23:35 PM Guido Rovera wrote:
+> Here are some details about the project.
+
+> - Markdown editor with powerful formatting options, to create structured
+> media-rich web pages without programming knowledge
+
+Which editor / editing widgit does it use?  Is it scintilla by any chance, or
+maybe the kde kwrite / kate widgit, or is it something different, maybe custom
+built?
+
+I write my notes (non-medical) using TWiki / Foswiki markup and wondering if I
+could adapt your software to work with that.
+
+I currently use kate as the editor, with syntax highlighting for that markup
+via a .xml file in the kate / kwrite "format" (for lack of the more correct
+word), and am working (have been working) on moving to a scintilla based
+editor (of which there are quite a few, either working or in development
+(possibly as many as 100?).

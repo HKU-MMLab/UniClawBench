@@ -1,0 +1,24 @@
+Message-ID: <YWfdoJjKzoJ6AWyp@an3as.eu>
+X-Clawbench-ID: BIO-2024-0718
+Date: Thu, 14 Oct 2021 09:34:56 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: "Aaron M. Ucko" <ucko@debian.org>,	Debian Med Project List <debian-med@lists.debian.org>
+Subject: golang-github-dataence-porter2 fails autopkgtest
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00048.html
+
+Hi Aaron,
+
+I updated golang-github-dataence-porter2 since uscan failed parsing
+upstream (there were no tags and I switched to git mode).  Unfortunately
+the autopkgtest fails in my pbuilder chroot.  Can you (or anybody else
+who is comfortable with go) could have a look?
+
+Kind regards
+
+      Andreas.
+
+--
+http://fam-tille.de

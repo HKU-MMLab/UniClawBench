@@ -1,0 +1,40 @@
+Message-ID: <CALK=YjPj41CV65t+=nfU8bjeH+uDk+sTU6J3rZjE4DUe46qJFA@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0846
+Date: Mon, 17 Apr 2023 10:18:59 -0400
+From: Eric Covener <covener@gmail.com>
+To: jean-frederic clere <jfclere@gmail.com>
+Subject: Re: graceful stop of child process in a module
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-04.mbox
+
+On Mon, Apr 17, 2023 at 10:16 AM jean-frederic clere <jfclere@gmail.com> wrote:
+>
+> On 4/17/23 01:00, Eric Covener wrote:
+> > On Fri, Apr 14, 2023 at 11:49 AM jean-frederic clere <jfclere@gmail.com> wrote:
+> >>
+> >> Hi,
+> >>
+> >> I am try to gracefully stop a child process instead using ap_assert(0),
+> >> is there a "clean way" to do that?
+> >
+> > I added something like this to our distribution in IBM to address a
+> > hairy problem with our security library.
+> >
+> > Each MPM already has a way to terminate the process due to
+> > MaxRequestsPerChild, e.g. check_infinite_requests() in worker and
+> > event or the block like this in winnt:
+> >
+> >          /* Have we hit MaxConnectionsPerChild connections? */
+> >          if (ap_max_requests_per_child) {
+> >              requests_this_child++;
+> >              if (requests_this_child > ap_max_requests_per_child) {
+> >                  SetEvent(max_requests_per_child_event);
+> >              }
+> >          }
+> >
+>
+> I don't see how I can get the right event: max_requests_per_child_event.
+
+When I did it I put the impl in child.c where the event is a static global

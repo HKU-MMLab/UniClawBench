@@ -1,0 +1,64 @@
+Message-ID: <0B1A0A92-E85A-40B8-AA8F-3B44BCE7534C@gbiv.com>
+X-Clawbench-ID: ASF-2024-0380
+Date: Tue, 25 Jan 2022 08:42:31 -0800
+From: "Roy T. Fielding" <fielding@gbiv.com>
+To: httpd dev <dev@httpd.apache.org>
+Subject: Re: http and http/1.x separation
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-01.mbox
+
+> On Jan 24, 2022, at 6:53 AM, Stefan Eissing <stefan@eissing.org> wrote:
+>
+>
+>
+>> Am 24.01.2022 um 15:40 schrieb Yann Ylavic <ylavic.dev@gmail.com <mailto:ylavic.dev@gmail.com>>:
+>>
+>> On Mon, Jan 24, 2022 at 3:28 PM Stefan Eissing <stefan@eissing.org <mailto:stefan@eissing.org>> wrote:
+>>>
+>>> FYI: I am busy hacking away at the separation between our HTTP and HTTP/1.x handling code. I'll make a PR once all tests have passed, so we can talk about the changes.
+>>
+>> Looking forward to seeing it ;)
+>
+> 🙈
+>
+>>
+>>>
+>>> The goals are pretty simple:
+>>>
+>>> 1. have mod_http focus on HTTP semantics, header checks, ap_die conversions,
+>>>  not chunking and CRLFs.
+>>> 2. have a mod_http1 that installs TRANSCODE filters when the connection is h1.
+>>>  those do the chunking and the header serialization.
+>>> 3. Have interim responses that send META buckets, not DATA to the transcode filters.
+>>>  No content filter will be confused by those.
+>>> 4. Pass FOOTERS in/out as META buckets in a similar way.
+>>>
+>>> The main idea is to introduce a META "HEADERS" bucket that is used for
+>>> final/interim responses and footers as well. This will safely pass through
+>>> all filters that do not know about it. This is similar to the ERROR bucket
+>>> type we already have.
+>>
+>> There are some assumptions in httpd (and possibly third-party modules)
+>> that meta buckets have a no length, so if "HEADERS" buckets have one
+>> you might need to embed it in the bucket->data struct..
+>
+> Yes, it's 0 length like ERROR and has a struct as that holds:
+> - int status, opt 0
+> - const char *reason, opt NULL
+> - apr_table_t *headers
+> - apr_table_t *notes
+>
+> on responses, shallow copied from the request_rec, etc.
+>
+> The nice thing is that the HTTP/1.x transcode out filter can
+> now check in one place that
+> - there is indeed a HEADERS before data buckets
+> - there is only one HEADERS with status >= 200
+>
+> And "above" the transcode layer, a data bucket is content, period.
+
+And trailers can be implemented this way too, right?
+
+....Roy

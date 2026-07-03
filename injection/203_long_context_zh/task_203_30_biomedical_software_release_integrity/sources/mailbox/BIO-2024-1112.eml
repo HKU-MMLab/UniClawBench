@@ -1,0 +1,97 @@
+Message-ID: <20221004143128.qw4uiorzh4fk5il7@nileshpatra.info>
+X-Clawbench-ID: BIO-2024-1112
+Date: Tue, 4 Oct 2022 20:01:28 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: John Marshall <John.W.Marshall@glasgow.ac.uk>
+Subject: Re: [Help] New version of htslib does not build
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00011.html
+
+Hi,
+
+I am on a VAC right now but happened to see this.
+
+On Tue, Oct 04, 2022 at 01:38:49PM +0000, John Marshall wrote:
+> On 1 Oct 2022, at 07:21, Nilesh Patra  wrote:
+> > I have fixed a bunch of things with htscodecs and htslib, both
+> > of which were not building on !amd64. Hopefully it is
+> > fine now.
+>
+> If htscodecs or htslib is failing to build on !amd64 due to a problem outside your Debian-specific build scripts, you should report the problem upstream.
+
+OK.
+
+> Presumably this is a reference to
+>
+>    * Do not build on higher baseline so as to not violate arch baseline
+>    * Remove avx or sse specific symbols
+>    * undef neon to build on arm properly as well
+>
+> which undefines HAVE_{AVX2,AVX512,POPCNT,SSE3,SSE4_1} and __ARM_NEON, thus preventing the SIMD-using code in rANS_static32x16pr_{avx2,avx512,neon,sse4}.c from being built.
+>
+> These are probed for in configure and should be only defined on Intel or ARM respectively (and only when the build machine's compiler is capable), where they exist. So this should not itself be causing failures on !amd64.
+
+Yeah right. The thing that was causing failures on !amd64 was that there were amd64 specific symbols in debian/libhtscodecs2.symbols that were not
+matching on those archs due to avx2/avx512 specific ABI being exported there. I could have very well added in to check thos symbols _only_ on amd64 but
+I did not do so because we were violating baseline anyway (explanation below)
+
+> Moreover, see rans_enc_func() and rans_dec_func() in rANS_static4x16pr.c. On x86-64, these check the CPU's capabilities at runtime and use the best available SIMD rANS implementation or the scalar implementation, as appropriate.
+
+Are you sure about the "runtime" thing? (More explanation below)
+
+> On ARM, brief googling suggests there isn't an obvious unprivileged intrinsic to detect Neon availability and these functions will use the Neon implementation unless disabled via rans_set_cpu(). (There are platform-specific APIs that could be used to check Neon availability, at least on Linux.) But are you aware of a platform supported by ARM Linux that does not provide Neon, where this code always using the Neon implementation would fail?
+
+I am in no way a computer architecture pro, but that said I have seen bug reports wherein non-neon failures are reported
+
+	https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=982794
+
+Atleast armhf _might_ not honor this. But yes, this can be enabled for arm64 atleast.
+
+> You don't explain what you mean by avoiding "violat[ing] arch baseline",
+
+Because that is pretty standard in debian-land. Here is what it means:
+
+	https://wiki.debian.org/ArchitectureSpecificsMemo#Architecture_baselines
+
+> but as these SIMD-using functions are only invoked depending on runtime host capabilities,
+
+Are you sure about the runtime thingy? I felt it would be according to build time instead.
+I admittedly did not go through the entire code, and I believe you are more
+educated on this than I am, and I indeed agree with your rans_dec_func statement,
+but here's what I see on running a little test:
+
+$ elfx86exts /usr/lib/x86_64-linux-gnu/libhtscodecs.so.2.1.0
+MODE64 (call)
+CMOV (cmove)
+SSE2 (movdqu)
+SSE1 (movaps)
+SSE41 (pmovzxwd)
+SSSE3 (pshufb)
+AVX (vmovdqu)
+AVX2 (vpunpcklbw)
+NOVLX (vpaddd)
+AVX512 (vpbroadcastd)
+CDI (vptestnmd)
+CPU Generation: Unknown
+
+The users will download the program that is compiled on debian buildd machines, which has support for AVX, AVX2 etc.
+And so as per this little test, it _seems_ like this will crash on baseline that is lower than AVX.
+
+The solution that we do for other packages is to patch it with simde, build binaries for each arch baseline and select the most
+appropriate one with a little script, for instance as done in last-align, see:
+
+	https://salsa.debian.org/med-team/last-align/-/blob/master/debian/bin/simd-dispatch
+
+But here there is only _one_ so lib and this felt a crap-load of maintainance work to me, and I only have 24 hours in the day.
+I also felt that this is likely not an ultimately important library, and it was building for just baseline should not be too bad.
+
+> I suspect flatly disabling them is unnecessary. Certainly it will make CRAM-using code less efficient on Debian.
+
+I do not have any energy to work on this but if you could provide a patch, me/others would be more than happy to merge it and
+upload.
+
+--
+Best,
+Nilesh

@@ -1,0 +1,33 @@
+Message-ID: <1089215611.35461.1703933851022@office.mailbox.org>
+X-Clawbench-ID: BIO-2024-1175
+Date: Sat, 30 Dec 2023 16:27:31 +0530 (IST)
+From: Nilesh Patra <nilesh@nileshpatra.com>
+To: "debian-med@lists.debian.org" <debian-med@lists.debian.org>
+Subject: Re: Please help fixing meson/cmake code of btllib to use Debian packaged libargparse
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_12_msg00089.html
+
+> On 12/30/2023 4:21 PM IST Andreas Tille  wrote:
+>
+>
+> Am Sat, Dec 30, 2023 at 01:19:32PM +0530 schrieb Nilesh Patra:
+> > > Sure.  Feel free to implement this - I'm just not available for the next
+> > > couple of days.
+> >
+> > This is the currently existing solution itself. Only additional change needed is to
+> > replace python3-all-dev with python3-dev in d/control.
+>
+> I can try to do so but I'm afraid we will run into the same issue as
+> for libsbml[1].
+
+No, we won't. There are no autopkgtests for the python wrapper. If autopkgtests for this
+are added, we should just run the same for default python3 and not all supported versions.
+
+libsbml tests fail due to us running it for supporter pyvers[1]. I don't think it should be an issue.
+
+[1]: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1059650#20
+
+Best,
+Nilesh

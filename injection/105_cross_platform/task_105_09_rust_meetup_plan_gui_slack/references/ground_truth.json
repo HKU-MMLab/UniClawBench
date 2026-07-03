@@ -1,0 +1,47 @@
+{
+  "task_id": "task_105_09_rust_meetup_plan_gui_slack",
+  "captured_at": "2026-05-03",
+  "source_urls": [
+    "https://rustfoundation.org/event/rust-global-tokyo/",
+    "https://rustfoundation.org/media/rust-global-tokyo-connecting-the-rust-ecosystem-across-industries-regions/",
+    "https://events.linuxfoundation.org/open-source-summit-japan/attend/venue-travel/",
+    "https://www.rome2rio.com/s/Shibuya-Station/Toranomon-Station",
+    "https://register.linuxfoundation.org/event/rust-global-tokyo-2025/register"
+  ],
+  "event_title": "Rust Global: Tokyo",
+  "date": "2025-12-08",
+  "timezone": "Asia/Tokyo",
+  "event_start": "2025-12-08T18:30:00+09:00",
+  "event_end": "2025-12-08T20:30:00+09:00",
+  "calendar_start": "2025-12-08T17:50:00+09:00",
+  "location": "Toranomon Hills Forum, 5F Toranomon Hills Mori Tower, 1-23-3 Toranomon, Minato-ku, Tokyo 105-6305, Japan",
+  "registration_url": "https://register.linuxfoundation.org/event/rust-global-tokyo-2025/register",
+  "registration_rule": "Pre-registration is required; the listed registration fee is USD 30.",
+  "route_origin": "Shibuya Station",
+  "route_destination": "Toranomon Hills Forum",
+  "route_duration_minutes": 17,
+  "route_details": [
+    "Tokyo Metro Ginza Line from Shibuya Station to Toranomon Station, about 12 minutes.",
+    "Official venue access from Toranomon Station Exit 1 to Toranomon Hills Forum, about 5 minutes on foot."
+  ],
+  "arrival_plan": "Leave Shibuya Station around 17:33 to arrive at the venue around 17:50, before the 18:30 event start.",
+  "slack_channel": "#social",
+  "slack_message_max_chars": 120,
+  "expected_outputs": {
+    "calendar": "/tmp_workspace/results/rust_meetup_plan_calendar_event.json",
+    "calendar_ics": "/tmp_workspace/results/rust_meetup_plan_calendar_export.ics",
+    "calendar_screenshot": "/tmp_workspace/results/rust_meetup_plan_calendar_screenshot.png",
+    "note": "/tmp_workspace/results/rust_meetup_plan_5p.md",
+    "slack_screenshot": "/tmp_workspace/results/slack_desktop_evidence.png",
+    "slack_evidence": "/tmp_workspace/results/slack_message_evidence.md",
+    "gui_evidence": "/tmp_workspace/results/gui_evidence.md",
+    "note_editor_state": "/tmp_workspace/results/rust_meetup_plan_note_editor_state.json",
+    "calendar_app_state": "/tmp_workspace/results/rust_meetup_plan_calendar_app_state.json",
+    "service_state": "/tmp_workspace/clawbench/service_state/real_plan_gui_apps_task_105_09.json"
+  },
+  "required_note_sections": [
+    "event info",
+    "route estimate",
+    "arrival plan"
+  ]
+}

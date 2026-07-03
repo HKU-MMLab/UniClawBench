@@ -1,0 +1,35 @@
+Message-ID: <udlv91zbmma.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-0703
+Date: Thu, 14 Oct 2021 12:24:29 -0400
+From: ucko@debian.org (Aaron M. Ucko)
+To: Andreas Tille <tille@debian.org>
+Subject: Re: sra-sdk is lacking libngs
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00054.html
+
+Andreas Tille  writes:
+
+> Ahhhm my failure.  Usually I do it in this sequence.
+
+No problem; thanks for getting ngs-sdk now.
+
+> Yep, I'm aware of this in principle and I've added a versioned
+> Build-Depends now.  Unfortunately it did not helped - may be since I
+> did not do a correct ngs-sdk update?  The error remains unfortunately.
+
+I was afraid the ngs-sdk upgrade might not suffice.  It looks like the
+existing ngs-c++ library does the job; I was able to get past these
+errors by substiting -sngs-c++ for both occurrences of -sngs in
+tools/vdb-sql/Makefile and simply removing -sngs from
+tools/ngs-pileup/Makefile.
+
+Meanwhile, I see kget has gone away altogether, so debian/rules can and
+should stop trying to rename it.
+
+I'll push fixes for both complications shortly.
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

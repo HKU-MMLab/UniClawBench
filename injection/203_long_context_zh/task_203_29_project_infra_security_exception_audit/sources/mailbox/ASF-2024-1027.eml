@@ -1,0 +1,28 @@
+Message-ID: <Zg1hCZ5b9KJl5tpD@redhat.com>
+X-Clawbench-ID: ASF-2024-1027
+Date: Wed, 3 Apr 2024 15:00:41 +0100
+From: Joe Orton <jorton@redhat.com>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.59-rc1 as httpd-2.4.59
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-04.mbox
+
+On Wed, Apr 03, 2024 at 08:26:09AM -0400, Eric Covener wrote:
+> Please find below the proposed release tarball and signatures:
+>
+> https://dist.apache.org/repos/dist/dev/httpd/
+>
+> I would like to call a SHORTENED VOTE to release
+> this candidate tarball httpd-2.4.59-rc1 as 2.4.59:
+> [X] +1: It's not just good, it's good enough!
+> [ ] +0: Let's have a talk.
+> [ ] -1: There's trouble in paradise. Here's what's wrong.
+
++1 from me. Passes test suite on RHEL8+9+CentOS Stream 10. Big thanks for
+RMing.
+
+Also a CI pass: https://github.com/apache/httpd/actions/runs/8538499329
+
+Regards, Joe

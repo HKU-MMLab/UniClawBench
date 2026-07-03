@@ -1,0 +1,25 @@
+Message-ID: <84514A44-8239-494F-9A13-428BB59B10FA@vmware.com>
+X-Clawbench-ID: ASF-2024-0017
+Date: Tue, 20 Dec 2022 20:20:01 +0000
+From: =?utf-8?B?SmVzw7pzIEdvbnrDoWxleg==?= <jesusgm@vmware.com>
+To: "dev@httpd.apache.org" <dev@httpd.apache.org>
+Subject: FW: mod_wasm: Contributing Upstream to Apache
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-12.mbox
+
+Hi everyone,
+
+A couple of good news.
+
+First, now mod_wasm and its dependency wasm_runtime are successfully built as part of a new test in Travis CI: https://app.travis-ci.com/github/apache/httpd/jobs/591640483
+The changes have been added to the open PR #335: https://github.com/apache/httpd/pull/335
+
+Secondly, we built a mod_wasm.so and a wasm_runtime.dll versions for Windows and tested them successfully with XAMMP.
+We have been collaborating with Apache Lounge folks and now we have a first "mod_wasm for Windows" package: https://www.apachelounge.com/download/VS17/modules/mod_wasm-0.10.1-win64-VS17.zip
+
+Looking forward to your feedback and next steps for contribution.
+
+Have a Merry Christmas and Happy New Year!
+Jesús

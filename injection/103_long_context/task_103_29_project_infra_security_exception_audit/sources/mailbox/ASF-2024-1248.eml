@@ -1,0 +1,34 @@
+Message-ID: <CALK=YjNj6=JzyV0skrsCjf-VadTN2vezCHqwP1nqEbZ+GqcXhQ@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1248
+Date: Tue, 10 Jan 2023 09:02:07 -0500
+From: Eric Covener <covener@gmail.com>
+To: Apache HTTP Server Development List <dev@httpd.apache.org>
+Subject: Re: [VOTE] Release httpd-2.4.55-rc1 as httpd-2.4.55
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-01.mbox
+
+On Tue, Jan 10, 2023 at 8:40 AM Eric Covener <covener@apache.org> wrote:
+>
+> Hi all,
+>
+> Please find below the proposed release tarball and signatures:
+>
+> https://dist.apache.org/repos/dist/dev/httpd/
+>
+> I would like to call a VOTE over the next few days to release
+> this candidate tarball httpd-2.4.55-rc1 as 2.4.55:
+> [x] +1: It's not just good, it's good enough!
+> [ ] +0: Let's have a talk.
+> [ ] -1: There's trouble in paradise. Here's what's wrong.
+
++1 AIX/xlc/ppc64 with just some familiar failures below.
+
+Test Summary Report
+-------------------
+t/ab/base.t                       (Wstat: 0 Tests: 5 Failed: 4)
+  Failed tests:  1-4 (libpath stuff)
+t/security/CVE-2009-3555.t        (Wstat: 2048 Tests: 0 Failed: 0)
+  Non-zero exit status: 8 (perl SSLEAY stuff)
+  Parse errors: Bad plan.  You planned 4 tests but ran 0.

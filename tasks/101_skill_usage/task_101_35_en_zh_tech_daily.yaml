@@ -1,0 +1,72 @@
+task_id: task_101_35_en_zh_tech_daily
+category: 101_skill_usage
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I run a small Chinese tech digest for my team every few days and I've
+  fallen behind — three days of raw material are piling up. Help me turn
+  them into something my team will actually read. Use the Chinese news-snapshot skill
+  for the Chinese news file, the repo trending skill for the GitHub
+  trending file, and the translation skill to render any English repo
+  descriptions into Chinese.
+
+  The snapshots are under /tmp_workspace/clawbench/sources/:
+    - ai_news_zh_snapshot.json — Chinese-language tech news items captured
+      on 2026-04-18, 2026-04-19, 2026-04-20 from 36kr newsflash + hot-list,
+      each with title, link, pub_date, summary.
+    - github_trending_snapshot.json — daily snapshots of trending Python
+      AI/LLM/agent GitHub repos captured on the same three days, each with
+      name, description, url, stars, captured_on, topics.
+
+  Synthesize a 3-day digest in Chinese at
+  /tmp_workspace/results/digest.md with:
+    - "## Top 10" — exactly 10 items, list the 5 news items first
+      (ranked among themselves) and then the 5 repos as a separate
+      block, not interleaved. For news, prefer the newest items but
+      keep coverage across all 3 days, capped at 2 items per day so
+      day 3 still surfaces. For repos, use the star count from the
+      most recent capture day, sorted descending. Each line: Chinese
+      title — translate English repo descriptions into Chinese —
+      followed by a [news] or [repo] source tag, the URL, the source
+      day or capture day, and a 1-sentence Chinese summary.
+    - "## Categories" — assign each of the 10 items to exactly one of these
+      four buckets based on its primary topic: AI / chip / cloud / web.
+      Show the bucket name and the titles under it, with the bucket count
+      next to the name.
+    - "## By Day" — for the 5 news items, show how many came from each of
+      the three capture days, e.g. "2026-04-20: 2 / 2026-04-19: 2 /
+      2026-04-18: 1".
+
+  Also save /tmp_workspace/results/selection_audit.csv with one row per Top
+  10 item and these columns: final_rank, source_tag, source_day, title, url,
+  popularity_value, category, selection_reason. popularity_value is the
+  pub_date for news and the latest-day stars for repos.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - ai_news_zh_snapshot.json
+  - github_trending_snapshot.json
+
+skills:
+  - news-snapshot-zh
+  - repo-snapshot-cn
+  - translate
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

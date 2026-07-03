@@ -1,0 +1,76 @@
+[
+  {
+    "file": "papers/paper_01.pdf",
+    "title": "Deep Unsupervised Learning using Nonequilibrium Thermodynamics",
+    "authors": "Jascha Sohl-Dickstein et al.",
+    "year": 2015,
+    "url": "https://arxiv.org/pdf/1503.03585",
+    "sections": [
+      "Introduction and Problem Framing",
+      "Core Framework",
+      "Forward and Reverse Diffusion"
+    ],
+    "note": "Introduces the original diffusion probabilistic modeling framework: a fixed forward noising process and a learned reverse denoising process."
+  },
+  {
+    "file": "papers/paper_02.pdf",
+    "title": "Denoising Diffusion Probabilistic Models",
+    "authors": "Jonathan Ho et al.",
+    "year": 2020,
+    "url": "https://arxiv.org/pdf/2006.11239",
+    "sections": [
+      "Introduction and Problem Framing",
+      "Core Framework",
+      "Forward and Reverse Diffusion",
+      "DDPM Training Objective",
+      "Quality and Stability Improvements"
+    ],
+    "note": "Defines the modern DDPM formulation and noise-prediction training objective; also serves as the baseline that later improvements build on."
+  },
+  {
+    "file": "papers/paper_03.pdf",
+    "title": "Generative Modeling by Estimating Gradients of the Data Distribution",
+    "authors": "Yang Song and Stefano Ermon",
+    "year": 2019,
+    "url": "https://arxiv.org/pdf/1907.05600",
+    "sections": [
+      "Core Framework",
+      "Score-Based View"
+    ],
+    "note": "Introduces noise-conditioned score networks and provides the score-based view used to interpret diffusion noise prediction."
+  },
+  {
+    "file": "papers/paper_04.pdf",
+    "title": "Improved Denoising Diffusion Probabilistic Models",
+    "authors": "Alex Nichol and Prafulla Dhariwal",
+    "year": 2021,
+    "url": "https://arxiv.org/pdf/2102.09672",
+    "sections": [
+      "Quality and Stability Improvements",
+      "Sampling Acceleration"
+    ],
+    "note": "Improves DDPM with cosine noise schedule, learned reverse variance, and a hybrid objective for better likelihood and sample quality."
+  },
+  {
+    "file": "papers/paper_05.pdf",
+    "title": "Denoising Diffusion Implicit Models",
+    "authors": "Jiaming Song et al.",
+    "year": 2020,
+    "url": "https://arxiv.org/pdf/2010.02502",
+    "sections": [
+      "Sampling Acceleration"
+    ],
+    "note": "Introduces DDIM, a deterministic or partially stochastic sampling formulation that reduces the number of diffusion sampling steps."
+  },
+  {
+    "file": "papers/paper_06.pdf",
+    "title": "High-Resolution Image Synthesis with Latent Diffusion Models",
+    "authors": "Robin Rombach et al.",
+    "year": 2022,
+    "url": "https://arxiv.org/pdf/2112.10752",
+    "sections": [
+      "Latent Diffusion"
+    ],
+    "note": "Moves diffusion from pixel space to latent space, making high-resolution and conditional image generation more practical."
+  }
+]

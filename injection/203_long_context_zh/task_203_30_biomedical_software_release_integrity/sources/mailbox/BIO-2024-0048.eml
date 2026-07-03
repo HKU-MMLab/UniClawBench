@@ -1,0 +1,52 @@
+Message-ID: <YVv1JtK4cn95uoGP@an3as.eu>
+X-Clawbench-ID: BIO-2024-0048
+Date: Tue, 5 Oct 2021 08:48:06 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Do users know about README.Debian and /usr/share/doc/packagename (Was: libcifpp)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00020.html
+
+Hie Pierre,
+
+Am Mon, Oct 04, 2021 at 09:18:32PM +0200 schrieb Pierre Gruet:
+> This is interesting, thanks for sharing this information. Actually I cannot
+> say I am surprised.
+>
+> Do you know if users read our manpages? I feel we can expect /some/ users
+> will type
+>
+>     man command
+>
+> if something is not working as expected, but for sure not all of them will.
+
+The users *I* interviewed are not aware that there are manpages and
+despite I told them they probably forgot in the mean time.  However,
+I'm not sure whether I picked a representative set of users.
+
+> Have you sometimes used debconf to spread information?
+
+Extremely rarely if I felt the system admin should know something.  Not
+to be read by users.
+
+> This (or debian/NEWS)
+> gives a chance to reach some end users at the cost of implementing the
+> debconf mechanism / writing a NEWS text. But if they skip the information
+> and do not know about the /usr/share/doc/packagename directory...
+
+I'm using debian/NEWS from time to time if I feel the need but more to
+do my "duty as Debian Developer" not because I hope the message is
+received by those who should know.
+
+> I am interested in ideas or comments on this issue!
+
+I'm interested as well.
+
+Kind regards
+
+      Andreas.
+
+--
+http://fam-tille.de

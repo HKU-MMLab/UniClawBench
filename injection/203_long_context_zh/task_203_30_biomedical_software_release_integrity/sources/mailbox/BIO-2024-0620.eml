@@ -1,0 +1,12 @@
+Message-ID: <bio-2024-0620@biodebian.example>
+X-Clawbench-ID: BIO-2024-0620
+Date: Fri, 19 Jan 2024 14:10:00 +0000
+From: Data Curator <curator@biodebian.example>
+To: debian-med@lists.debian.org
+Subject: manifest corrected
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: synthetic Debian Med-style biomedical release-integrity implant
+
+The missing platform values for NanoPanel were corrected from the original run sheet, not inferred from the README. The checksums match and the release note has been updated.

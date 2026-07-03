@@ -1,0 +1,34 @@
+Message-ID: <5dc9ab67-5d37-7a08-4fed-f8ad41b14dec@tigertech.com>
+X-Clawbench-ID: ASF-2024-1195
+Date: Sun, 12 Jun 2022 08:19:44 -0700
+From: Robert L Mathews <lists@tigertech.com>
+To: dev@httpd.apache.org
+Subject: Expression syntax in Redirects outside <Location>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-06.mbox
+
+I wanted to use expression syntax in a .htaccess redirect, like this
+example:
+
+<If "%{HTTPS} != 'on'">
+  Redirect 301 https://%{HTTP_HOST}%{REQUEST_URI}
+</If>
+
+This doesn't work out of the box, though, due to lines 291-294 of:
+
+http://svn.apache.org/viewvc/httpd/httpd/trunk/modules/mappers/mod_alias.c?annotate=1894034#l291
+
+Those lines restrict expressions in redirects to "<Location> context
+only for now", but it's not clear to me why that restriction is needed.
+
+When I patch httpd to remove that restriction, the above example seems
+to work fine from a .htaccess file.
+
+Does anyone know why that restriction is there -- and what else would
+need to be changed to remove it? Being able to use expression variables
+in redirect targets in a .htaccess file seems generally useful.
+
+--
+Robert L Mathews

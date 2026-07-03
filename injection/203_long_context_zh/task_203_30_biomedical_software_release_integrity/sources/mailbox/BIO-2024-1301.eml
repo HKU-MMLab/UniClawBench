@@ -1,0 +1,127 @@
+Message-ID: <4a146bf155bc643553283f70fa4cd169851dfadd.camel@irisa.fr>
+X-Clawbench-ID: BIO-2024-1301
+Date: Wed, 28 Jun 2023 11:33:22 +0200
+From: olivier sallou <olivier.sallou@irisa.fr>
+To: Steven Robbins <steve@sumost.ca>, debian-med@lists.debian.org
+Subject: Re: help with git errors
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_06_msg00031.html
+
+On Tue, 2023-06-27 at 12:59 -0500, Steven Robbins wrote:
+> Hello,
+>
+> I have a strange problem with Salsa's git repo for ITK.  Today I did
+> a fresh
+> clone and confirmed that it's not something I did locally.  I don't
+> understand
+> what the issue is and hoping someone here can help.
+>
+> After the clone, I did a simple change to the control file, built the
+> source
+> package, uploaded, etc.  The problem comes with trying to push things
+> back to
+> salsa:
+
+I think I fixed the issue.
+
+I deleted upstream/5.3.0 tag on remote , went to upstream branch, and
+put tag again:
+
+debian@c47569f9ce73:/opt/debian/insighttoolkit$ git checkout upstream
+Switched to branch 'upstream'
+Your branch is up to date with 'origin/upstream'.
+debian@c47569f9ce73:/opt/debian/insighttoolkit$ git log
+commit a11490872c9415775783d80704f042d8caeb9452 (HEAD -> upstream, tag:
+upstream/5.3.0, origin/upstream)
+Author: Steve Robbins
+Date:   Sun Jun 18 02:48:25 2023 -0500
+
+    New upstream version 5.3.0
+
+
+I pushed tag back to remote  and gbp is fine now, skipping commit
+b2132ae657fd350bd02946bf95a2fc27240d8efc
+
+as etienne pointed out, there was a diverge state on tag pointing to a
+different commit detached from others. I am not expert but *should* be
+fine now... hoping nothing is broken for next updates  :-(
+
+
+Olivier
+
+
+>
+> steve@riemann:~/Packages/insighttoolkit/salsa$ gbp push
+> gbp:info: Pushing debian/5.3.0-4 to origin
+> gbp:info: Pushing upstream/5.3.0 to origin
+> gbp:info: Pushing refs/heads/master to origin:refs/heads/master
+> gbp:info: Pushing b2132ae657fd350bd02946bf95a2fc27240d8efc to
+> origin:refs/
+> heads/upstream
+> gbp:error: Error running git push: To salsa.debian.org:med-team/
+> insighttoolkit.git
+>  ! [rejected]          b2132ae657fd350bd02946bf95a2fc27240d8efc ->
+> upstream
+> (non-fast-forward)
+> error: failed to push some refs to 'salsa.debian.org:med-team/
+> insighttoolkit.git'
+> hint: Updates were rejected because a pushed branch tip is behind its
+> remote
+> hint: counterpart. Check out this branch and integrate the remote
+> changes
+> hint: (e.g. 'git pull ...') before pushing again.
+> hint: See the 'Note about fast-forwards' in 'git push --help' for
+> details.
+> gbp:error: Failed to push some refs.
+>
+> OK, so just pull, resolve and push ???
+> Let's try:
+>
+> steve@riemann:~/Packages/insighttoolkit/salsa$ git checkout upstream
+> Switched to branch 'upstream'
+> Your branch is up to date with 'origin/upstream'.
+> steve@riemann:~/Packages/insighttoolkit/salsa$ git pull
+> Already up to date.
+> steve@riemann:~/Packages/insighttoolkit/salsa$ git push
+> Everything up-to-date
+> steve@riemann:~/Packages/insighttoolkit/salsa$ git checkout master
+> Switched to branch 'master'
+> Your branch is up to date with 'origin/master'.
+> steve@riemann:~/Packages/insighttoolkit/salsa$ gbp push
+> gbp:info: Pushing debian/5.3.0-4 to origin
+> gbp:info: Pushing upstream/5.3.0 to origin
+> gbp:info: Pushing refs/heads/master to origin:refs/heads/master
+> gbp:info: Pushing b2132ae657fd350bd02946bf95a2fc27240d8efc to
+> origin:refs/
+> heads/upstream
+> gbp:error: Error running git push: To salsa.debian.org:med-team/
+> insighttoolkit.git
+>  ! [rejected]          b2132ae657fd350bd02946bf95a2fc27240d8efc ->
+> upstream
+> (non-fast-forward)
+> error: failed to push some refs to 'salsa.debian.org:med-team/
+> insighttoolkit.git'
+> hint: Updates were rejected because a pushed branch tip is behind its
+> remote
+> hint: counterpart. Check out this branch and integrate the remote
+> changes
+> hint: (e.g. 'git pull ...') before pushing again.
+> hint: See the 'Note about fast-forwards' in 'git push --help' for
+> details.
+> gbp:error: Failed to push some refs.
+>
+> Same error!  Any ideas?
+> Thanks,
+> -Steve
+
+--
+Olivier Sallou
+Univ Rennes, Inria, CNRS, IRISA
+Irisa, Campus de Beaulieu
+F-35042 RENNES - FRANCE
+Tel: 02.99.84.71.95
+
+gpg key id: 4096R/326D8438  (keyring.debian.org)
+Key fingerprint = 5FB4 6F83 D3B9 5204 6335  D26D 78DC 68DB 326D 8438

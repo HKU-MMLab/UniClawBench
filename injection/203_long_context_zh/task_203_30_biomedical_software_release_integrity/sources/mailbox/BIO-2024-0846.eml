@@ -1,0 +1,36 @@
+Message-ID: <YzRD+lyZ0ujgvpn9@an3as.eu>
+X-Clawbench-ID: BIO-2024-0846
+Date: Wed, 28 Sep 2022 14:54:18 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: How to check ? Re: RFS -- autopkgtests for dcmtk
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_09_msg00035.html
+
+Am Wed, Sep 28, 2022 at 02:41:14PM +0200 schrieb Andreas Tille:
+>
+> Hmmm, that sounds a bit weak for testing if the shell that was
+> used has an influence on the result. :-(
+>
+> ...
+>
+> We should make the test independent from this.  IMHO
+> just removing the '-e' option should do the trick.
+>
+> > In this case it might make sense to remove the "-e" to make the script posix compliant, since I do not
+> > particularly see the need to enable backslash interpretation.
+>
+> +1
+
+Thinking twice about it I think we should avoid any bashims in
+run-unit-test scripts and having a lintian warning about bashims
+in autopkgtests would be nice to have.
+
+Kind regards
+
+    Andreas.
+
+--
+http://fam-tille.de

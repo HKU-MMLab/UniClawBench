@@ -1,0 +1,57 @@
+task_id: task_201_34_video_multilang
+category: 201_skill_usage_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我录制了一段简短的 ML 演讲片段，想分享给我们上海办公室的同事——他们
+  需要中文字幕和一份易读的文字稿。视频位于
+  /tmp_workspace/clawbench/sources/talk.mp4，时长大约一分钟。请用
+  语音转文字技能转写并带上时间戳，如果需要分离出音轨就用视频剪辑技能，
+  用翻译技能把所有内容译成中文，再用 Markdown 格式化工具把最终的文字稿
+  排版整洁。视频旁边有一份术语表 cn_terms.json——出现的每一个技术术语都
+  必须严格使用该术语表中给出的中文译法，不得有任何例外。
+
+  在 /tmp_workspace/results/ 下产出两个交付物：
+
+  1. talk.zh.srt——一份格式规范的中文字幕文件，能在标准视频播放器中正常
+     加载。包含数字编号的字幕索引、HH:MM:SS,mmm 格式的时间戳行，且时间戳
+     必须与视频中每个观点实际被说出的位置对齐，而不是占位用的字幕。第一条
+     字幕必须在前五秒内开始。
+
+  2. talk.zh.md——一份逐段呈现的中文文字稿。每一段以一个 [HH:MM:SS] 时间戳
+     开头，与该段在视频中开始的位置相对应，行文应遵循演讲者引入各个观点的
+     相同顺序。
+
+  保持技术性陈述忠于演讲者实际所说的内容——它读起来应该像是这场演讲的真实
+  中文呈现，而不是宽泛的摘要。演讲者提到的每一个 ML 概念都应在两个文件中
+  出现，并位于与其被说出时刻一致的时间戳处。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - talk.mp4
+  - cn_terms.json
+
+skills:
+  - ffmpeg-video-editor
+  - openai-whisper-api
+  - translate
+  - markdown-formatter
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

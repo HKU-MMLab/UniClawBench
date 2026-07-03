@@ -1,0 +1,42 @@
+Message-ID: <002a01c23664$b7326d40$f264a8c0@sabeo.ie>
+X-Clawbench-ID: CAM-2003-1456
+Date: Sun, 28 Jul 2002 19:29:29 +0100
+From: Matthew French <mfrench42@yahoo.co.uk>
+To: ilug@linux.ie
+Subject: Re: [ILUG] Optimizing for Pentium Pt.2
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00134.ff80b3057938bbbbc9e71e71ac7f4bd9
+
+Paul Kelly mentioned:
+> gcc has been as good as or better than pgcc for quite a while. pgcc was
+> was written back in the days when gcc splintered due to a perception of
+> slow progress on the main branch. A number of Linux distributions wound
+> up using egcs, partly derived from the pgcc work as I recall. Happiness
+> was restored to the world with gcc 2.95 and later.
+
+I do not have the time to follow the compiler "wars", but I notice that I
+must use egcs to build 64 bit SPARC code.
+
+GCC 3 should do it, but because it is so "buggy"[1] it is not worth trying
+to use unless you really want to track down those compiler errors... :(
+
+- Matthew
+
+[1] "buggy" in the sense that its a feature. Many of the problems with GCC 3
+seem to be related to stricter syntax checking. More accurate information
+will be appreciated.
+
+
+__________________________________________________
+Do You Yahoo!?
+Everything you'll ever need on one web page
+from News and Sport to Email and Music Charts
+http://uk.my.yahoo.com
+
+
+--
+Irish Linux Users' Group: ilug@linux.ie
+http://www.linux.ie/mailman/listinfo/ilug for (un)subscription information.
+List maintainer: listmaster@linux.ie

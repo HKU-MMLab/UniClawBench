@@ -1,0 +1,34 @@
+Message-ID: <20221106082432.jcp277c7scr3r75m@nileshpatra.info>
+X-Clawbench-ID: BIO-2024-1000
+Date: Sun, 6 Nov 2022 13:54:32 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: Andreas Tille <andreas@an3as.eu>
+Subject: Re: Please update SIMDE patches in new version of kalign
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_11_msg00022.html
+
+On Sun, Nov 06, 2022 at 04:12:18AM +0530, Nilesh Patra wrote:
+> On Fri, Nov 04, 2022 at 11:08:05PM +0100, Andreas Tille wrote:
+> > I injected the new version of kalign into Git.  Unfortunately the file
+> > layout has changed and the files that were patched in the currently
+> > packaged version do not exist any more[1].  It would be great if you
+> > could update the patches to the new version.
+>
+> Michael is probably quite busy, so I took a look at it. This was a non
+> trivial update with many changes.
+>
+> I have uploaded the package which seems to work OK. If you see something
+> is off, please fix it and upload a new revision.
+
+Autopkgtests seem to work fine, there was a FTBFS on i386 because of
+a fallout w/ migrating to cmake layout in d/rules at my end.
+
+Everything seems to be green now! :)
+
+> > [1] https://salsa.debian.org/med-team/kalign/-/jobs/3474689
+
+--
+Best,
+Nilesh

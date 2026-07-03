@@ -1,0 +1,91 @@
+Message-ID: <950982295.20263551.1649251659687.JavaMail.zimbra@inria.fr>
+X-Clawbench-ID: BIO-2024-1397
+Date: Wed, 6 Apr 2022 15:27:39 +0200 (CEST)
+From: Francois Gindraud <francois.gindraud@inria.fr>
+To: Andreas Tille <andreas@fam-tille.de>
+Subject: Re: New kissplice version (2.6.0) and packaging changes
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_04_msg00019.html
+
+Hi,
+
+Thanks for mentioning routine-update, this is the tool I was missing before.
+
+The user_guide.pdf is already installed by CMake along with binaries.
+If I understand correctly, dh_installdocs is only needed for files not already installed by CMake, so it is unneeded here.
+I have removed the docs entry, and the package now builds nicely.
+The user_guide.pdf is correctly included in the CI-generated package.
+
+I have also removed debian/kissplice.manpages which used an old local copy instead of the upstream one.
+
+Looking at the current generated package everything seems good to me, and autopkgtests runs fine.
+I think this is ready for release, but any review would be appreciated.
+
+Regards,
+François Gindraud
+
+----- Mail original -----
+> De: "Andreas Tille"
+> À: "Francois Gindraud"
+> Cc: "debian-med"
+> Envoyé: Mercredi 6 Avril 2022 13:06:34
+> Objet: Re: New kissplice version (2.6.0) and packaging changes
+
+> Hi Francois,
+>
+> Am Tue, Apr 05, 2022 at 08:52:48PM +0200 schrieb Francois Gindraud:
+>> I've added more buildsystem changes as 3 commits, see commit messages for
+>> details :
+>> - update dependencies
+>> - final removal of gcc10 patch (fixed by upstream changes)
+>> - replacing the redirection script with a symlink for bcalm
+>
+> Thanks a lot for your commits.  Please next time make sure you insert
+> pristine-tar as well (which I did now - so nothing to do in terms of
+> this for the moment).
+>
+>> The new gcc compilation errors you noticed are related to an internal hashmap
+>> library ; its code did not age well.
+>> Replacing it with something more modern is planned long-term.
+>> In the meantime I fixed the most worrying warnings in a patch release of
+>> kissplice (2.6.1).
+>> I merged the new release in the salsa repository using `gbp import-orig
+>> --uscan`, and this was sufficient to fix the compilation error.
+>
+> (Here please add `--pristine-tar` to approach what I wrote above)
+>
+>> Unfortunately while using gbp import-orig I did not notice that my upstream
+>> branch was not up-to-date with the gitlab one.
+>> The result is that my upstream branch (merged to master) has diverged with
+>> origin/upstream and cannot be pushed.
+>> What is the best way to fix this rookie mistake ? Force push to upstream, or
+>> merge commit ?
+>> Looking at the git history this kind of error already happened around the 2.5.0
+>> release...
+>
+> I'd recommend to simply use
+>
+>   sudo apt install routine-update
+>   routine-update
+>
+> This does a `git pull` first, than downloads the new upstream
+> source and will inject it properly.
+>
+>> The CI now fails because of dh_installdocs :
+>> https://salsa.debian.org/med-team/kissplice/-/jobs/2642625 .
+>> The current CMake setup will compile and install a user_guide.pdf to
+>> /usr/share/doc/kissplice/user_guide.pdf .
+>> Should the entry in debian/docs be simply removed ?
+>
+> Not if we want to provide that doc.  I tried to add
+>  -DUSER_GUIDE=TRUE
+> but this does not work.  Any other idea how to create the doc?
+>
+> Kind regards
+>
+>     Andreas.
+>
+> --
+> http://fam-tille.de

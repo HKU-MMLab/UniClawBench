@@ -1,0 +1,56 @@
+Message-ID: <20221019132801.GA47584@sanger.ac.uk>
+X-Clawbench-ID: BIO-2024-0948
+Date: Wed, 19 Oct 2022 14:28:01 +0100
+From: James Bonfield <jkb@sanger.ac.uk>
+To: <debian-med@lists.debian.org>
+Subject: Htslib plugins
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00064.html
+
+The rules file for Htslib appear to use an undefined variable $(plugindir).
+
+https://salsa.debian.org/med-team/htslib/-/blob/master/debian/rules
+
+	dh_auto_configure -- --enable-libcurl --enable-gcs --enable-s3
+	--enable-plugins --with-plugin-dir='$(libdir)/htslib'
+	--with-external-htscodecs
+	--with-plugin-path='/usr/local/lib/htslib:/usr/local/libexec/htslib:$(plugindir)'
+
+Note the $(plugindir) at the end.  This doesn't seem to be specified
+anywhere, and has caused a problem for one of our users.  This is
+evidenced by running "samtools version" to dump out the current
+configuration.
+
+It would be a trivial fix to just copy the $(libdir)/htslib definition
+supplied to --with-plugin-dir here instead of $(plugindir).  Or if we
+do define plugindir somewhere, it should be passed into
+--with-plugin-dir so at least the two definitions are in sync.
+
+The consequence of this is that htslib can't find the plugins, and in
+doing so misses out on fetching data via https, S3, GCS and other
+protocols.  This has been verified by my colleague in this github issue:
+
+https://github.com/samtools/htslib/issues/1515#issuecomment-1283876113
+
+Regards,
+
+James
+
+PS.  This Salsa GitLab page is bugged for me, using firefox.  There's
+no horizontal scrollbar until I scroll down to the bottom of the
+screen. That's a very tedious way to scroll a web page right!  I just
+cut and pasted it in the end.
+
+
+--
+James Bonfield (jkb@sanger.ac.uk)
+The Sanger Institute, Hinxton, Cambs, CB10 1SA
+
+
+--
+ The Wellcome Sanger Institute is operated by Genome Research
+ Limited, a charity registered in England with number 1021457 and a
+ company registered in England with number 2742969, whose registered
+ office is 215 Euston Road, London, NW1 2BE.

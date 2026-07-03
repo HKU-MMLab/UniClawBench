@@ -1,0 +1,22 @@
+Message-ID: <CA+7wUswzxHHMDxNksUkt03ro98Sydv4qUHqRy0Gme7H7qvVAhQ@mail.gmail.com>
+X-Clawbench-ID: BIO-2024-0324
+Date: Wed, 29 Jun 2022 08:48:12 +0200
+From: Mathieu Malaterre <malat@debian.org>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: CVEs in DCMTK
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_06_msg00051.html
+
+Hi there,
+
+It turns out there are three CVEs associated with DCMTK version older
+than 3.6.7.
+
+* https://www.hipaajournal.com/warning-issued-about-3-high-severity-vulnerabilities-in-offis-dicom-software/
+
+Should we get in touch with debian-security to have them properly
+reported ? I am not clear about the process.
+
+Thanks,

@@ -1,0 +1,50 @@
+Message-ID: <YWQIHxcPmhoKkckZ@an3as.eu>
+X-Clawbench-ID: BIO-2024-0815
+Date: Mon, 11 Oct 2021 11:47:11 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>,	Shayan Doust <hello@shayandoust.me>
+Subject: Autopkgtest fails in new version of shasta
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00032.html
+
+Hi Shayan,
+
+I tried to upgrade shasta to the latest upstream version.  Unfortunately
+the autopkgtest fails with:
+
+
+Testing /usr/bin/shasta
+0.8.0
+2021-Oct-11 09:38:08.108542 Assembly begins with the following command line:
+shasta --input TinyTest.fasta
+Option "--config" is missing and is now required to run an assembly.
+It must specify either a configuration file
+or one of the following built-in configurations:
+HiFi-Oct2021
+Nanopore-Dec2019
+Nanopore-Jun2020
+Nanopore-Oct2021
+Nanopore-OldGuppy-Sep2020
+Nanopore-Phased-Aug2021
+Nanopore-Plants-Apr2021
+Nanopore-Sep2020
+Nanopore-UL-Dec2019
+Nanopore-UL-Jun2020
+Nanopore-UL-Oct2021
+Nanopore-UL-Phased-Oct2021
+Nanopore-UL-Sep2020
+Nanopore-UL-iterative-Sep2020
+2021-Oct-11 09:38:08.108894 Option "--config" is missing and is now required to run an assembly.
+autopkgtest [09:38:08]: test run-unit-test: -----------------------]
+
+
+Can you (or somebody else) have a look?
+
+Kind regards
+
+      Andreas.
+
+--
+http://fam-tille.de

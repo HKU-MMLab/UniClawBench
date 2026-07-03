@@ -1,0 +1,119 @@
+Message-ID: <579941b1dd9b4bc399200694b154c0b0@3ds.com>
+X-Clawbench-ID: ASF-2024-0834
+Date: Mon, 10 Apr 2023 21:37:30 +0000
+From: BUSH Steve <Steven.BUSH@3ds.com>
+To: "dev@httpd.apache.org" <dev@httpd.apache.org>
+Subject: RE: [VOTE] Release httpd-2.4.57-rc1 as httpd-2.4.57
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-04.mbox
+
+I just downloaded the apache 2.4.57 source code and attempting to compile on Windows, mod_rewrite.c fails with this error:
+
+mod_rewrite.c
+mod_rewrite.c(109): fatal error C1083: Cannot open include file: 'test_char.h': No such file or directory
+NMAKE : fatal error U1077: '"C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.28.29910\bin\HostX64\x64\cl.exe"' : return code '0x2'
+Stop.
+NMAKE : fatal error U1077: '"C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.28.29910\bin\HostX64\x64\nmake.exe"' : return code '0x2'
+Stop.
+NMAKE : fatal error U1077: '"C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.28.29910\bin\HostX64\x64\nmake.exe"' : return code '0x2'
+Stop.
+
+
+Looking at the comparison between mod_rewrite.c in 2.4.56 and 2.4.57, this line was added to 2.4.57:
+#include "mod_rewrite.h"
+#include "ap_expr.h"
+
+#include "test_char.h"
+
+Looking in the build tree, test_char.h is located in server/test_char.h, but the build settings are not picking it up.
+
+I build with
+nmake /f Makefile.win installr XML_PARSER="libexpat"
+
+I fixed it for my local build by editing modules/mapper/mod_rewrite.mak and updating the CPP_PROJ= lines to include the following highlighted additions:
+CPP_PROJ=/nologo /MD /W3 /Zi /O2 /Oy- /I "../../include" /I "../../server" /I "../database" /I "../ssl" /I "../../srclib/apr/include" /I "../../srclib/apr-util/include" /D "NDEBUG" /D "WIN32" /D "_WINDOWS" /Fo"$(INTDIR)\\" /Fd"$(INTDIR)\mod_rewrite_src" /FD /c
+and
+                CPP_PROJ=/nologo /MDd /W3 /Zi /Od /I "../../include" /I "../../server" /I "../database" /I "../ssl" /I "../../srclib/apr/include" /I "../../srclib/apr-util/include" /D "_DEBUG" /D "WIN32" /D "_WINDOWS" /Fo"$(INTDIR)\\" /Fd"$(INTDIR)\mod_rewrite_src" /FD /EHsc /c
+
+Steve
+
+
+From: Eric Covener <covener@gmail.com>
+Sent: Wednesday, April 5, 2023 12:05 PM
+To: Apache HTTP Server Development List <dev@httpd.apache.org>
+Subject: Re: [VOTE] Release httpd-2.4.57-rc1 as httpd-2.4.57
+
+On Sun, Apr 2, 2023 at 12: 10 PM Eric Covener <covener@ gmail. com> wrote: > > Hi all, > > Please find below the proposed release tarball and signatures: > > https: //urldefense. com/v3/__https: //dist. apache. org/repos/dist/dev/httpd/__;!!FbCVDoc3r24SyHFW!8DCCBctTbhX1spkJE4gZ9qtBOb5nXByw5xDUdZZ2airtNqNH4rVWHzx8MyOsxF2kx0RNY2MeA_S38Hk$[dist[. ]apache[. ]org]
+
+
+On Sun, Apr 2, 2023 at 12:10 PM Eric Covener <covener@gmail.com<mailto:covener@gmail.com>> wrote:
+
+>
+
+> Hi all,
+
+>
+
+> Please find below the proposed release tarball and signatures:
+
+>
+
+> https://urldefense.com/v3/__https://dist.apache.org/repos/dist/dev/httpd/__;!!FbCVDoc3r24SyHFW!8DCCBctTbhX1spkJE4gZ9qtBOb5nXByw5xDUdZZ2airtNqNH4rVWHzx8MyOsxF2kx0RNY2MeA_S38Hk$<https://urldefense.com/v3/__https:/dist.apache.org/repos/dist/dev/httpd/__;!!FbCVDoc3r24SyHFW!8DCCBctTbhX1spkJE4gZ9qtBOb5nXByw5xDUdZZ2airtNqNH4rVWHzx8MyOsxF2kx0RNY2MeA_S38Hk$>[dist[.]apache[.]org]
+
+>
+
+> I would like to call a VOTE over the next few days to release
+
+> this candidate tarball httpd-2.4.57-rc1 as 2.4.57:
+
+> [ ] +1: It's not just good, it's good enough!
+
+> [ ] +0: Let's have a talk.
+
+> [ ] -1: There's trouble in paradise. Here's what's wrong.
+
+>
+
+> The computed digests of the tarball up for vote are:
+
+> sha256: bc3e7e540b83ec24f9b847c6b4d7148c55b79b27d102e21227eb65f7183d6b45
+
+> *httpd-2.4.57-rc1.tar.gz
+
+> sha512: 730560d4aab3699aa59716bb75858f8432a902aeab3c380b4d3e0f6813e9ae4e278d3b7fdf63a4e94c07b5100933d8684d76f6095f3d60d48ea0f1458c9ed0b4
+
+> *httpd-2.4.57-rc1.tar.gz
+
+>
+
+> The SVN candidate source is found at tags/2.4.57-rc1-candidate.
+
+
+Vote passes with many binding +1 and no negative votes:
+
++1: covener, rpluem, steffenal, gbechis, jorton, jailletc36, ylavic
+
+
+I will finalize some time over the next day or two.
+
+
+--
+
+Eric Covener
+
+covener@gmail.com<mailto:covener@gmail.com>
+
+This email and any attachments are intended solely for the use of the individual or entity to whom it is addressed and may be confidential and/or privileged.
+
+If you are not one of the named recipients or have received this email in error,
+
+(i) you should not read, disclose, or copy it,
+
+(ii) please notify sender of your receipt by reply email and delete this email and all attachments,
+
+(iii) Dassault Systèmes does not accept or assume any liability or responsibility for any use of or reliance on this email.
+
+
+Please be informed that your personal data are processed according to our data privacy policy as described on our website. Should you have any questions related to personal data protection, please contact 3DS Data Protection Officer https://www.3ds.com/privacy-policy/contact/

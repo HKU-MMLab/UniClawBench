@@ -1,0 +1,37 @@
+Message-ID: <2300413.KKJoZDVNT3@riemann>
+X-Clawbench-ID: BIO-2024-0502
+Date: Tue, 21 Dec 2021 15:12:24 -0600
+From: Steven Robbins <steve@sumost.ca>
+To: Pierre Gruet <pgt@debian.org>, debian-med@lists.debian.org
+Subject: Re: autopkgtest requiring large data sets (pique, hinge)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_12_msg00128.html
+
+On Tuesday, December 21, 2021 10:22:49 A.M. CST Nilesh Patra wrote:
+> On 12/21/21 9:00 PM, Pierre Gruet wrote:
+> > On 21/12/2021 14:33, Lance Lin wrote:
+> >> Debian Medical Team,
+> >>
+> >> I have started looking at adding autopkgtest suites for a variety of
+> >> packages. Two of the packages (hinge, pique) require very large data
+> >> sets to run their included examples.>>
+> >>The sizes are several GB.
+
+> I would second that. If possible, ask upstream for sensible data size that
+> is manageable under a few MBs.
+
+I understand the motivation here -- it is unwieldy and unusual to have GB-
+sized test data.  Irrespective of what I write below, it is always nice to
+have a "small" smoke-test data set so I support asking upstream in that
+spirit.
+
+It may be the case that upstream is able to get the same code coverage out of
+a smaller test data set.  Or maybe they can get a reduced-but-still-useful
+coverage.
+
+But in the days of "big data", it might be the case that testing the software
+really requires a big dataset.  What are Debian's options for this?
+
+-Steve

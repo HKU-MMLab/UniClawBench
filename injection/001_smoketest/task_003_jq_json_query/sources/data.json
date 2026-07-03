@@ -1,0 +1,9 @@
+{
+  "catalog": [
+    {"sku": "A-101", "name": "Screwdriver",    "price":  5.49, "stock": 120},
+    {"sku": "A-102", "name": "Hammer",         "price": 12.99, "stock":  45},
+    {"sku": "A-103", "name": "Cordless Drill", "price": 89.00, "stock":   8},
+    {"sku": "A-104", "name": "Tape Measure",   "price":  7.25, "stock": 200},
+    {"sku": "A-105", "name": "Pipe Wrench",    "price": 34.50, "stock":  17}
+  ]
+}

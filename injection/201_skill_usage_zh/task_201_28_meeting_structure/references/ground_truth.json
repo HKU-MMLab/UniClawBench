@@ -1,0 +1,109 @@
+{
+  "task_id": "task_101_28_meeting_structure",
+  "difficulty": "Hard",
+  "schema": "a",
+  "schema_notes": "concept-level booleans with evidence pointers; complex synthetic Q3 Planning Sync (~10 min audio mp4, 8 agenda items, 5 speakers, multiple debates and dates).",
+  "skills_declared": [
+    "openai-whisper-api",
+    "video-frames",
+    "ffmpeg-video-editor"
+  ],
+  "ground_truth": {
+    "media_duration_s": 642.0,
+    "n_topics": 8,
+    "min_sections": 8,
+    "transcript_anchor_phrases": [
+      "billing revamp",
+      "metering pipeline",
+      "shadow mode",
+      "observability",
+      "tracing",
+      "MTTR",
+      "design system",
+      "customer portal",
+      "onboarding",
+      "unclear pricing",
+      "API key generation",
+      "EU data residency",
+      "Frankfurt",
+      "data warehouse",
+      "dual-writes",
+      "security audit",
+      "critical findings",
+      "SOC2",
+      "Q4 budget",
+      "Alice",
+      "Bob",
+      "Carol",
+      "David",
+      "Erin"
+    ],
+    "min_anchor_hits": 16,
+    "expected_decisions": [
+      "Billing staging cutover proceeds 2026-09-15 conditional on invoice template ship 2026-09-08 and warehouse cutover before Sep 1; production cutover 2026-10-01.",
+      "Observability tracing rollout completes by end of Q3, owner Bob.",
+      "Design system migration uses hybrid approach: customer portal prioritized with deadline 2026-12-15, rest incremental through 2027 Q2.",
+      "Onboarding redesign spec approved, jointly owned by David and Carol, due 2026-09-22.",
+      "Q4 budget allocation approved at 40% engineering, 32% GTM, 18% product research, 10% reserve.",
+      "Critical security audit findings remediation due 2026-06-29 owner Bob; high findings end of Q3, mediums end of Q4."
+    ],
+    "expected_decision_count": 6,
+    "expected_action_items_with_owners": [
+      {"owner": "Bob",   "item": "Billing staging cutover",                 "due": "2026-09-15"},
+      {"owner": "Bob",   "item": "Billing production cutover",              "due": "2026-10-01"},
+      {"owner": "Bob",   "item": "Observability rollout completion",        "due": "end of Q3"},
+      {"owner": "Bob",   "item": "Critical security findings remediation",  "due": "2026-06-29"},
+      {"owner": "Carol", "item": "Invoice template approval / ship",        "due": "2026-09-08"},
+      {"owner": "Carol", "item": "Customer portal migration plan",          "due": "2026-09-15"},
+      {"owner": "Carol", "item": "Customer portal delivery",                "due": "2026-12-15"},
+      {"owner": "David", "item": "EU expansion feasibility analysis",       "due": "2026-10-15"},
+      {"owner": "David", "item": "Data warehouse final cutover",            "due": "2026-09-01"},
+      {"owner": "David and Carol", "item": "Onboarding redesign spec",      "due": "2026-09-22"},
+      {"owner": "Alice", "item": "Finance escalation on warehouse compute", "due": "end of this week"}
+    ],
+    "expected_action_item_count": 11,
+    "expected_specific_dates": [
+      "2026-09-08",
+      "2026-09-15",
+      "2026-09-22",
+      "2026-10-01",
+      "2026-10-15",
+      "2026-12-15",
+      "2026-09-01",
+      "2026-06-29"
+    ],
+    "date_accepted_formats_note": "Each date above may appear in any standard written format: YYYY-MM-DD, 'Month DD, YYYY', 'Mon DD, YYYY', 'Month DDth, YYYY', or MM/DD/YYYY. See eval_rule.md §5 date checkpoint for the full list.",
+    "min_required_dates": 8,
+    "expected_action_owners": ["Alice", "Bob", "Carol", "David"],
+    "expected_topic_timestamps": [
+      {"topic": "Billing revamp",                "start_s":  32.76, "end_s": 148.6,  "label": "T1"},
+      {"topic": "Observability rollout",         "start_s": 149.0,  "end_s": 188.31, "label": "T2"},
+      {"topic": "Design system migration",       "start_s": 188.71, "end_s": 279.74, "label": "T3"},
+      {"topic": "Customer onboarding research",  "start_s": 280.14, "end_s": 351.51, "label": "T4"},
+      {"topic": "EU regional expansion",         "start_s": 351.91, "end_s": 420.54, "label": "T5"},
+      {"topic": "Data warehouse cutover",        "start_s": 420.94, "end_s": 461.58, "label": "T6"},
+      {"topic": "Security audit findings",       "start_s": 461.98, "end_s": 515.36, "label": "T7"},
+      {"topic": "Q4 budget allocation",          "start_s": 515.76, "end_s": 583.0,  "label": "T8"}
+    ],
+    "topic_timestamp_tolerance_s": 15,
+    "expected_open_questions": [
+      "EU expansion timing decision deferred to October leadership offsite."
+    ],
+    "topic_dimensions": {
+      "topic_segmentation": ["agenda", "topic", "discussion of"],
+      "decision_capture": ["decided", "agreed", "approved"],
+      "action_owner": ["owner", "assigned to", "responsible"],
+      "timeline_anchor": ["next week", "by Friday", "Q2", "Q3", "Q4", "MM-DD"],
+      "followup_dependency": ["depends on", "blocked by", "after"]
+    },
+    "min_dimensions_covered": 5,
+    "min_sections_with_thumbnail_anchor": 8,
+    "acceptable_thumbnail_anchor_format": "frame_NNs.png or HH:MM:SS",
+    "controversial_decisions": [
+      "Billing staging cutover date (Bob vs Carol; Carol pushed back on Sep-15 vs invoice template readiness)",
+      "Design system migration approach (Carol's big-bang vs David/Bob's incremental — landed on hybrid)"
+    ],
+    "speaker_count": 5,
+    "speaker_names": ["Alice", "Bob", "Carol", "David", "Erin"]
+  }
+}

@@ -1,0 +1,537 @@
+{
+  "task_id": "task_102_40_go_19x19_best_move",
+  "board_size": 19,
+  "komi": 7,
+  "to_move": "Black (X)",
+  "position_sgf": "(;FF[4]GM[1]SZ[19]PB[]PW[]HA[0]KM[7]RU[TrompTaylor];B[pd];W[dp];B[pp];W[dd];B[fc];W[qq];B[pq];W[qp];B[po];W[rn];B[cf];W[df];B[dg];W[ef];B[cd];W[cc];B[ce];W[dc];B[hc];W[id];B[ic];W[kd];B[ie];W[hd];B[jd];W[je];B[jc];W[if];B[ke];W[he];B[kf];W[ci];B[bh];W[fd];B[bi];W[ld];B[me];W[nc];B[lb];W[md])",
+  "best_move": {
+    "gtp": "O15",
+    "row": 4,
+    "col": 13
+  },
+  "root_eval": {
+    "winrate": 0.483177926,
+    "scoreLead": -0.169378579,
+    "visits": 615
+  },
+  "katago": {
+    "engine": "KataGo v1.16.4 (Eigen/CPU)",
+    "network": "kata1-b28c512nbt-s8209287936-d4596492266",
+    "analysis_visits": 600,
+    "position_from": "KataGo self-play to a balanced midgame"
+  },
+  "normalization": "score(m)=0.5*norm(scoreLead)+0.5*norm(winrate) over all analyzed legal moves; best=1.0, worst=0.0; pass/illegal=0.",
+  "scoring": "final_task_score = move_table[chosen_move_gtp].normalized (clipped [0,1]).",
+  "move_table": {
+    "O15": {
+      "normalized": 1,
+      "winrate": 0.4836,
+      "scoreLead": -0.165,
+      "visits": 525
+    },
+    "P15": {
+      "normalized": 0.6842,
+      "winrate": 0.3205,
+      "scoreLead": -1.797,
+      "visits": 5
+    },
+    "R5": {
+      "normalized": 0.608,
+      "winrate": 0.2921,
+      "scoreLead": -2.374,
+      "visits": 2
+    },
+    "P14": {
+      "normalized": 0.4218,
+      "winrate": 0.2077,
+      "scoreLead": -3.534,
+      "visits": 1
+    },
+    "R6": {
+      "normalized": 0.5756,
+      "winrate": 0.2761,
+      "scoreLead": -2.554,
+      "visits": 1
+    },
+    "P16": {
+      "normalized": 0.6102,
+      "winrate": 0.2892,
+      "scoreLead": -2.295,
+      "visits": 1
+    },
+    "D15": {
+      "normalized": 0.4287,
+      "winrate": 0.2113,
+      "scoreLead": -3.499,
+      "visits": 1
+    },
+    "E17": {
+      "normalized": 0.3593,
+      "winrate": 0.1747,
+      "scoreLead": -3.845,
+      "visits": 1
+    },
+    "P18": {
+      "normalized": 0.4416,
+      "winrate": 0.2058,
+      "scoreLead": -3.227,
+      "visits": 1
+    },
+    "G16": {
+      "normalized": 0.5877,
+      "winrate": 0.2792,
+      "scoreLead": -2.439,
+      "visits": 1
+    },
+    "K14": {
+      "normalized": 0.6117,
+      "winrate": 0.2798,
+      "scoreLead": -2.115,
+      "visits": 1
+    },
+    "S5": {
+      "normalized": 0.6255,
+      "winrate": 0.3117,
+      "scoreLead": -2.462,
+      "visits": 1
+    },
+    "J13": {
+      "normalized": 0.6013,
+      "winrate": 0.278,
+      "scoreLead": -2.23,
+      "visits": 1
+    },
+    "E16": {
+      "normalized": 0.2475,
+      "winrate": 0.1457,
+      "scoreLead": -4.907,
+      "visits": 1
+    },
+    "N14": {
+      "normalized": 0.1872,
+      "winrate": 0.1279,
+      "scoreLead": -5.445,
+      "visits": 1
+    },
+    "F15": {
+      "normalized": 0.2859,
+      "winrate": 0.1676,
+      "scoreLead": -4.744,
+      "visits": 1
+    },
+    "S7": {
+      "normalized": 0.3984,
+      "winrate": 0.2128,
+      "scoreLead": -3.944,
+      "visits": 1
+    },
+    "N18": {
+      "normalized": 0.1303,
+      "winrate": 0.0947,
+      "scoreLead": -5.672,
+      "visits": 1
+    },
+    "D3": {
+      "normalized": 0.3849,
+      "winrate": 0.1895,
+      "scoreLead": -3.739,
+      "visits": 1
+    },
+    "Q14": {
+      "normalized": 0.4358,
+      "winrate": 0.211,
+      "scoreLead": -3.396,
+      "visits": 1
+    },
+    "O14": {
+      "normalized": 0.3393,
+      "winrate": 0.1777,
+      "scoreLead": -4.173,
+      "visits": 1
+    },
+    "C3": {
+      "normalized": 0.4479,
+      "winrate": 0.2195,
+      "scoreLead": -3.372,
+      "visits": 1
+    },
+    "P13": {
+      "normalized": 0.1784,
+      "winrate": 0.1248,
+      "scoreLead": -5.514,
+      "visits": 1
+    },
+    "C4": {
+      "normalized": 0.4343,
+      "winrate": 0.2176,
+      "scoreLead": -3.528,
+      "visits": 1
+    },
+    "D5": {
+      "normalized": 0.2462,
+      "winrate": 0.1457,
+      "scoreLead": -4.925,
+      "visits": 1
+    },
+    "O13": {
+      "normalized": 0.2637,
+      "winrate": 0.1519,
+      "scoreLead": -4.787,
+      "visits": 1
+    },
+    "E4": {
+      "normalized": 0.3055,
+      "winrate": 0.1665,
+      "scoreLead": -4.453,
+      "visits": 1
+    },
+    "E3": {
+      "normalized": 0.284,
+      "winrate": 0.161,
+      "scoreLead": -4.658,
+      "visits": 1
+    },
+    "Q13": {
+      "normalized": 0.3433,
+      "winrate": 0.1816,
+      "scoreLead": -4.182,
+      "visits": 1
+    },
+    "C5": {
+      "normalized": 0.2414,
+      "winrate": 0.1425,
+      "scoreLead": -4.938,
+      "visits": 1
+    },
+    "R14": {
+      "normalized": 0.3051,
+      "winrate": 0.1607,
+      "scoreLead": -4.36,
+      "visits": 1
+    },
+    "E18": {
+      "normalized": 0.2359,
+      "winrate": 0.1269,
+      "scoreLead": -4.749,
+      "visits": 1
+    },
+    "N13": {
+      "normalized": 0.2276,
+      "winrate": 0.138,
+      "scoreLead": -5.052,
+      "visits": 1
+    },
+    "F3": {
+      "normalized": 0.3177,
+      "winrate": 0.1635,
+      "scoreLead": -4.232,
+      "visits": 1
+    },
+    "Q17": {
+      "normalized": 0.2056,
+      "winrate": 0.1225,
+      "scoreLead": -5.097,
+      "visits": 1
+    },
+    "R13": {
+      "normalized": 0.2955,
+      "winrate": 0.1577,
+      "scoreLead": -4.442,
+      "visits": 1
+    },
+    "Q18": {
+      "normalized": 0.2161,
+      "winrate": 0.1213,
+      "scoreLead": -4.932,
+      "visits": 1
+    },
+    "R2": {
+      "normalized": 0.2073,
+      "winrate": 0.1281,
+      "scoreLead": -5.168,
+      "visits": 1
+    },
+    "O16": {
+      "normalized": 0.0335,
+      "winrate": 0.0726,
+      "scoreLead": -6.644,
+      "visits": 1
+    },
+    "Q15": {
+      "normalized": 0.0122,
+      "winrate": 0.0826,
+      "scoreLead": -7.11,
+      "visits": 1
+    },
+    "C6": {
+      "normalized": 0.2981,
+      "winrate": 0.16,
+      "scoreLead": -4.446,
+      "visits": 1
+    },
+    "L12": {
+      "normalized": 0.2187,
+      "winrate": 0.1323,
+      "scoreLead": -5.081,
+      "visits": 1
+    },
+    "R15": {
+      "normalized": 0.3064,
+      "winrate": 0.1604,
+      "scoreLead": -4.338,
+      "visits": 1
+    },
+    "G15": {
+      "normalized": 0.0782,
+      "winrate": 0.1159,
+      "scoreLead": -6.755,
+      "visits": 1
+    },
+    "K4": {
+      "normalized": 0.2604,
+      "winrate": 0.147,
+      "scoreLead": -4.75,
+      "visits": 1
+    },
+    "R7": {
+      "normalized": 0.1702,
+      "winrate": 0.1166,
+      "scoreLead": -5.49,
+      "visits": 1
+    },
+    "R17": {
+      "normalized": 0.3062,
+      "winrate": 0.1535,
+      "scoreLead": -4.224,
+      "visits": 1
+    },
+    "J3": {
+      "normalized": 0.2713,
+      "winrate": 0.1506,
+      "scoreLead": -4.659,
+      "visits": 1
+    },
+    "Q12": {
+      "normalized": 0.2892,
+      "winrate": 0.1579,
+      "scoreLead": -4.533,
+      "visits": 1
+    },
+    "D6": {
+      "normalized": 0.1731,
+      "winrate": 0.1178,
+      "scoreLead": -5.469,
+      "visits": 1
+    },
+    "G3": {
+      "normalized": 0.232,
+      "winrate": 0.1357,
+      "scoreLead": -4.954,
+      "visits": 1
+    },
+    "K3": {
+      "normalized": 0.2638,
+      "winrate": 0.1473,
+      "scoreLead": -4.709,
+      "visits": 1
+    },
+    "R12": {
+      "normalized": 0.2622,
+      "winrate": 0.1464,
+      "scoreLead": -4.714,
+      "visits": 1
+    },
+    "P12": {
+      "normalized": 0.1773,
+      "winrate": 0.1197,
+      "scoreLead": -5.443,
+      "visits": 1
+    },
+    "J4": {
+      "normalized": 0.21,
+      "winrate": 0.1294,
+      "scoreLead": -5.154,
+      "visits": 1
+    },
+    "H3": {
+      "normalized": 0.2553,
+      "winrate": 0.1448,
+      "scoreLead": -4.784,
+      "visits": 1
+    },
+    "E5": {
+      "normalized": 0.1438,
+      "winrate": 0.1132,
+      "scoreLead": -5.797,
+      "visits": 1
+    },
+    "O12": {
+      "normalized": 0.202,
+      "winrate": 0.1292,
+      "scoreLead": -5.26,
+      "visits": 1
+    },
+    "L4": {
+      "normalized": 0.2705,
+      "winrate": 0.1498,
+      "scoreLead": -4.657,
+      "visits": 1
+    },
+    "N12": {
+      "normalized": 0.1216,
+      "winrate": 0.1048,
+      "scoreLead": -5.965,
+      "visits": 1
+    },
+    "F4": {
+      "normalized": 0.1618,
+      "winrate": 0.1141,
+      "scoreLead": -5.563,
+      "visits": 1
+    },
+    "E15": {
+      "normalized": 0.2385,
+      "winrate": 0.153,
+      "scoreLead": -5.155,
+      "visits": 1
+    },
+    "L3": {
+      "normalized": 0.1667,
+      "winrate": 0.1148,
+      "scoreLead": -5.509,
+      "visits": 1
+    },
+    "P17": {
+      "normalized": 0.0486,
+      "winrate": 0.0812,
+      "scoreLead": -6.58,
+      "visits": 1
+    },
+    "K12": {
+      "normalized": 0.1803,
+      "winrate": 0.1184,
+      "scoreLead": -5.379,
+      "visits": 1
+    },
+    "G4": {
+      "normalized": 0.1864,
+      "winrate": 0.1224,
+      "scoreLead": -5.363,
+      "visits": 1
+    },
+    "H4": {
+      "normalized": 0.166,
+      "winrate": 0.1167,
+      "scoreLead": -5.549,
+      "visits": 1
+    },
+    "E2": {
+      "normalized": 0.196,
+      "winrate": 0.1246,
+      "scoreLead": -5.267,
+      "visits": 1
+    },
+    "M12": {
+      "normalized": 0.154,
+      "winrate": 0.1138,
+      "scoreLead": -5.668,
+      "visits": 1
+    },
+    "Q11": {
+      "normalized": 0.1691,
+      "winrate": 0.1163,
+      "scoreLead": -5.5,
+      "visits": 1
+    },
+    "O18": {
+      "normalized": 0.161,
+      "winrate": 0.1018,
+      "scoreLead": -5.366,
+      "visits": 1
+    },
+    "K13": {
+      "normalized": 0.0674,
+      "winrate": 0.0899,
+      "scoreLead": -6.466,
+      "visits": 1
+    },
+    "F18": {
+      "normalized": 0.0976,
+      "winrate": 0.0873,
+      "scoreLead": -6.002,
+      "visits": 1
+    },
+    "R11": {
+      "normalized": 0.1503,
+      "winrate": 0.11,
+      "scoreLead": -5.654,
+      "visits": 1
+    },
+    "R16": {
+      "normalized": 0.0983,
+      "winrate": 0.0923,
+      "scoreLead": -6.077,
+      "visits": 1
+    },
+    "L11": {
+      "normalized": 0.1995,
+      "winrate": 0.1267,
+      "scoreLead": -5.253,
+      "visits": 1
+    },
+    "C7": {
+      "normalized": 0.182,
+      "winrate": 0.1196,
+      "scoreLead": -5.376,
+      "visits": 1
+    },
+    "D2": {
+      "normalized": 0.1817,
+      "winrate": 0.1207,
+      "scoreLead": -5.399,
+      "visits": 1
+    },
+    "M4": {
+      "normalized": 0.1484,
+      "winrate": 0.1086,
+      "scoreLead": -5.657,
+      "visits": 1
+    },
+    "E13": {
+      "normalized": 0.1189,
+      "winrate": 0.0967,
+      "scoreLead": -5.865,
+      "visits": 1
+    },
+    "H13": {
+      "normalized": 0.1698,
+      "winrate": 0.1191,
+      "scoreLead": -5.537,
+      "visits": 1
+    },
+    "M11": {
+      "normalized": 0.1187,
+      "winrate": 0.1016,
+      "scoreLead": -5.951,
+      "visits": 1
+    },
+    "B5": {
+      "normalized": 0.1517,
+      "winrate": 0.1112,
+      "scoreLead": -5.655,
+      "visits": 1
+    },
+    "O11": {
+      "normalized": 0.1964,
+      "winrate": 0.1262,
+      "scoreLead": -5.287,
+      "visits": 1
+    },
+    "D7": {
+      "normalized": 0.1328,
+      "winrate": 0.1048,
+      "scoreLead": -5.809,
+      "visits": 1
+    }
+  }
+}

@@ -1,0 +1,32 @@
+Message-ID: <YYUqj9yR1ChGI5DU@debian>
+X-Clawbench-ID: BIO-2024-0651
+Date: Fri, 5 Nov 2021 18:28:55 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: RFH: Getting fastp building on more archs
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_11_msg00033.html
+
+Following both the advices, I opened an issue in isal upstrem,
+and also opened a RM --ROM.
+If isal is fixed after the FTP removal, we can always extend architecture list.
+
+On Fri, 5 Nov 2021 at 11:26, Andrius Merkys  wrote:
+> Maybe forward the issues with i386 and s390x to the upstream of isal, they are in best
+> position to get these archs working.
+
+Opened https://github.com/intel/isa-l/issues/188
+
+On Sat, Oct 16, 2021 at 01:45:22PM +0200, Andreas Tille wrote:
+> Am Sat, Oct 16, 2021 at 11:24:08AM +0530 schrieb Nilesh Patra:
+> > I am not sure of the best way to proceed in this case, and would appreciate any help.
+>
+> Just file a bug report against ftpmaster asking for removal of the
+> builds for those architectures that are not possible any more.
+
+Opened Bug#998640
+
+Thanks,
+Nilesh

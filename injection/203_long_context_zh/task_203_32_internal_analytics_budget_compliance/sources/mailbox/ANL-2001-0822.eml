@@ -1,0 +1,21 @@
+Message-ID: <a707b7b25adc18d226a50190a066fdd3@enron.com>
+X-Clawbench-ID: ANL-2001-0822
+Date: 2001-05-02T15:48:00-03:00
+From: Bob Lee <Bob Lee/NA/Enron@ENRON>
+To: Mike Maggi <Mike Maggi/Corp/Enron@Enron>
+Subject: Vol Skew No-Arbitrage Constraints
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Enron kaminski-v public mailbox index.json
+X-Original-Folder: kaminski-v_000/kaminski-v/technote/mail/Techmemos
+
+The attached note lists conditions that can be used to verify that a given vol skew curve does not generate arbitrage opportunities in a strip of option prices.
+
+
+If you have questions or want to discuss implementation, please give me a call.
+
+
+Bob Lee
+
+x35163

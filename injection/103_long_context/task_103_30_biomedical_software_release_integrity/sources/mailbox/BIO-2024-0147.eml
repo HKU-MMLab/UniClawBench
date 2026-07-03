@@ -1,0 +1,44 @@
+Message-ID: <654f2682-445e-aadc-e0f4-91c928e46b36@debian.org>
+X-Clawbench-ID: BIO-2024-0147
+Date: Wed, 8 Sep 2021 15:09:23 +0300
+From: Andrius Merkys <merkys@debian.org>
+To: Michael Crusoe <michael.crusoe@gmail.com>
+Subject: Re: Providing components.cif.gz [Was: Re: DeepMind’s AI Advanced Protein Structure Prediction tool Open Sourced]
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_09_msg00011.html
+
+Hi Michael,
+
+On 2021-09-08 11:50, Michael Crusoe wrote:
+> I would advocate for a local copy (if missing) and an environment
+> variable to override so that users can get a newer/different version.
+
+A fallback copy sounds good. Perhaps it would be best to package it in a
+separate source/binary package to maintain its independence. From
+codesearch.d.o [1] it seems that more source packages would be happy to
+use it.
+
+I will talk to the upstream about an environment variable with a
+sensible default.
+
+> I would also encourage upstream to find a way to embed a hash + download
+> date in their logs and outputs, if possible.
+
+Keeping track of such things is usually left for the user, but I agree
+that improving provenance record makes sense.
+
+> We should also ask PDB to version their files. Do they keep old versions
+> around?
+
+This components.cif.gz is a database of chemical compounds, and each
+compound entry has its modification date. Thus the latest date in
+components.cif.gz could be treated as some sort of version
+identification for the database. As for old versions, I need to ask. I
+do not seem to find them on their FTP server.
+
+[1] https://codesearch.debian.net/search?q=components.cif&literal=1
+
+Thanks,
+Andrius

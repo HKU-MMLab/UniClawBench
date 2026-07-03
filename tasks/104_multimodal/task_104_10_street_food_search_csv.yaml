@@ -1,0 +1,48 @@
+task_id: task_104_10_street_food_search_csv
+category: 104_multimodal
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  Go to YouTube, open this Joshua Weissman video, and watch it:
+  `I Tried $1 Street Food Around The World`
+
+  This is the target video to use for this task. Do not switch to another creator,
+  and do not mix in content from other videos.
+  Do not download subtitles, transcripts, or rely on any external recipe summary;
+  you must organize the table based on the video content you actually watched.
+
+  Then organize the street foods that appear in the video into:
+  `/tmp_workspace/results/street_food.csv`
+
+  The CSV must include at least these columns:
+  - `video_id`
+  - `video_title`
+  - `creator`
+  - `country`
+  - `city`
+  - `snack`
+  - `price_text`
+  - `review`
+
+  Requirements:
+  1. Put each snack on its own row.
+  2. In `price_text`, preserve the price expression seen or heard in the video; if
+     it is an approximate price, record it as such.
+  3. `review` must describe the creator's assessment of the food, including at
+     least a clear positive or negative judgment.
+  4. Use `video_id` / `video_title` in the CSV to clearly show that you used this
+     Joshua Weissman video.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+codex:
+  max_user_followups: 2

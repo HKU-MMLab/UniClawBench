@@ -1,0 +1,144 @@
+{
+  "task_id": "task_101_38_resume_upgrade",
+  "difficulty": "Hard",
+  "schema": "a",
+  "schema_notes": "Word resume rewrite plus JD coverage matrix and non-invention checks",
+  "skills_declared": [
+    "resume-assistant",
+    "word-docx",
+    "copywriting",
+    "ui-ux-pro-max"
+  ],
+  "ground_truth": {
+    "must_preserve_companies": [
+      "Meridian Cloud",
+      "Bluebird Logistics",
+      "Northwind Supplies"
+    ],
+    "supported_focus_terms": [
+      "Python",
+      "Go",
+      "Postgres",
+      "Redis",
+      "Kafka",
+      "Kubernetes",
+      "latency",
+      "on-call",
+      "microservices"
+    ],
+    "min_supported_focus_terms": 6,
+    "jd_requirements": [
+      {
+        "requirement": "6+ years production backend experience with Go or Python",
+        "support": "supported"
+      },
+      {
+        "requirement": "PostgreSQL schema design, tuning, or online migration",
+        "support": "supported"
+      },
+      {
+        "requirement": "Kafka or equivalent event stream system",
+        "support": "supported"
+      },
+      {
+        "requirement": "service reliability instincts such as on-call, SLOs, or incident postmortems",
+        "support": "supported"
+      },
+      {
+        "requirement": "Kubernetes at scale",
+        "support": "supported"
+      },
+      {
+        "requirement": "checkout or payments domain experience",
+        "support": "partial_or_adjacent_only"
+      },
+      {
+        "requirement": "OpenTelemetry",
+        "support": "unsupported"
+      },
+      {
+        "requirement": "eBPF",
+        "support": "unsupported"
+      },
+      {
+        "requirement": "Rust",
+        "support": "unsupported"
+      },
+      {
+        "requirement": "Pulsar",
+        "support": "unsupported"
+      }
+    ],
+    "disallowed_resume_additions": [
+      "OpenTelemetry",
+      "eBPF",
+      "Rust",
+      "Pulsar"
+    ],
+    "allowed_adjacent_terms": [
+      "billing",
+      "invoice",
+      "payments-adjacent"
+    ],
+    "jd_must_be_supported_keywords": [
+      "postgresql",
+      "kubernetes",
+      "reliability"
+    ],
+    "must_have_evidence_quote_min_chars": 10,
+    "must_have_evidence_quote_min_rows": 6,
+    "factual_errors": [
+      {
+        "id": "A_date_inversion",
+        "location": "Bluebird Logistics role heading",
+        "original_text_anchor": "Bluebird Logistics (2019-06 – 2018-12)",
+        "defect": "End-date 2018-12 precedes start-date 2019-06; impossible chronology.",
+        "expected_fix": "End-date must be on or after start-date. The original resume in earlier shipping had '(2019–2022)'; an acceptable correction is restoring '2019–2022' or any chronologically valid range whose end >= start.",
+        "verification_rule": "Search rewritten resume_v2.docx text for regex '2019-?0?6.*2018-?12' (case-insensitive) — MUST NOT match. Additionally, parse the Bluebird heading's date range and assert end_year_month >= start_year_month."
+      },
+      {
+        "id": "B_customer_count_contradiction",
+        "location": "Meridian Cloud role bullets",
+        "original_text_anchors": [
+          "billing platform serving 12k customers",
+          "served 8,000 customers across the billing platform"
+        ],
+        "defect": "Two bullets in the same role/period claim different customer counts (12k vs 8,000); cannot both be true.",
+        "expected_fix": "Only one customer-count figure may survive in Meridian Cloud bullets. Acceptable: keep 12k / 12,000 OR keep 8k / 8,000, but not both. Removing both is also acceptable if the rewrite chooses to drop the metric.",
+        "verification_rule": "Within the Meridian Cloud bullets of resume_v2.docx, count occurrences of regex '\\b(12[,\\s]?000|12k)\\b' and '\\b(8[,\\s]?000|8k)\\b' (case-insensitive). At MOST one of the two patterns may have a non-zero count."
+      },
+      {
+        "id": "C_impossible_k8s_tenure",
+        "location": "Professional Summary",
+        "original_text_anchor": "4 years of hands-on Kubernetes experience",
+        "defect": "Resume claims 4 years of Kubernetes experience, but Kubernetes appears only in the Meridian Cloud stack (2022–2023), giving at most ~1–2 years. The 4-year claim is mathematically impossible.",
+        "expected_fix": "Drop the '4 years' claim, restate as '1–2 years' / 'since 2022' / leave Kubernetes mentioned only in skills/stack lines without a year count.",
+        "verification_rule": "Search rewritten resume_v2.docx text for regex '\\b(3|4|5|6|7|8|9|\\d{2,})\\+?\\s*(years?|yrs?)\\s+(of\\s+)?(hands-on\\s+)?Kubernetes' (case-insensitive) — MUST NOT match."
+      }
+    ],
+    "factual_errors_strict_all_or_nothing": true,
+        "min_quantified_bullets": 5,
+        "feedback_max_lines": 15,
+        "coverage_min_rows": 9,
+        "evidence_map": {
+            "path": "/tmp_workspace/results/evidence_map.xlsx",
+            "required_sheets": [
+                "JD_Coverage",
+                "Bullet_Rewrites",
+                "Unsupported_Items"
+            ],
+            "required_columns": [
+                "requirement_or_bullet",
+                "original_resume_quote",
+                "revised_resume_wording",
+                "support_status",
+                "decision"
+            ],
+            "decision_values": [
+                "used",
+                "softened",
+                "omitted"
+            ]
+        }
+    }
+}

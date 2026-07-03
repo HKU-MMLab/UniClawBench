@@ -1,0 +1,48 @@
+Message-ID: <Y+VMu9gdNOCPID6h@an3as.eu>
+X-Clawbench-ID: BIO-2024-0680
+Date: Thu, 9 Feb 2023 20:42:51 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: python-cogent fails to build on armhf - any idea or just removing this architecture?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_02_msg00033.html
+
+Hi,
+
+according to the build logs[1] armhf fails to build (as only
+architecture) with
+
+
+dh_auto_build
+I: pybuild plugin_pyproject:107: Building wheel for python3.11 with "build" module
+I: pybuild base:240: python3.11 -m build --skip-dependency-check --no-isolation --wheel --outdir />/.pybuild/cpython3_3.11_cogent3
+* Building wheel...
+Successfully built cogent3-2022.10.31a1-py3-none-any.whl
+I: pybuild plugin_pyproject:119: Unpacking wheel built for python3.11 with "installer" module
+set -x; cd doc; PYTHONPATH=/> http_proxy='127.0.0.1:9' /usr/bin/make html
++ cd doc
++ PYTHONPATH=/> http_proxy=127.0.0.1:9 /usr/bin/make html
+make[2]: Entering directory '/>/doc'
+sphinx-build -b html -d _build/doctrees   . _build/html
+Running Sphinx v5.3.0
+making output directory... done
+WARNING: html_static_path entry '_static' does not exist
+WARNING: The config value `today' has type `date', defaults to `str'.
+[autosummary] generating autosummary for: api/__init__/cogent3.__init__.available_apps.rst, api/__init__/cogent3.__init__.available_codes.rst, api/__init__/cogent3.__init__.available_models.rst, api/__init__/cogent3.__init__.available_moltypes.rst, api/__init__/cogent3.__init__.get_code.rst, api/__init__/cogent3.__init__.get_model.rst, api/__init__/cogent3.__init__.get_moltype.rst, api/__init__/cogent3.__init__.load_aligned_seqs.rst, api/__init__/cogent3.__init__.load_delimited.rst, api/__init__/cogent3.__init__.load_seq.rst, ..., examples/scope_model_params_on_trees.rst, examples/seq_features.rst, examples/simple.rst, examples/simulate_alignment.rst, examples/testing_multi_loci.rst, general.rst, index.rst, install.rst, licenses.rst, pycogent.rst
+LLVM ERROR: Symbol not found: __sync_fetch_and_add_4
+make[2]: *** [Makefile:39: html] Aborted
+make[2]: Leaving directory '/>/doc'
+
+
+Any idea how to fix this?  I personally would probably simply
+exclude this architecture, to not loose any time.
+
+Kind regards
+    Andreas.
+
+[1] https://buildd.debian.org/status/fetch.php?pkg=python-cogent&arch=armhf&ver=2022.10.31a1%2Bdfsg-1&stamp=1675956652&raw=0
+
+--
+http://fam-tille.de

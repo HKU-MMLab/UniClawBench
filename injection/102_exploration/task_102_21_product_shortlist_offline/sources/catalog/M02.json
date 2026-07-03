@@ -1,0 +1,22 @@
+{
+  "id": "M02",
+  "title": "ViewPro 27\" 4K Monitor with USB-C",
+  "listing": {
+    "size_in": 27,
+    "resolution": "4K",
+    "usb_c": "yes",
+    "price": 399.0,
+    "condition": "new"
+  },
+  "detail": {
+    "size_in": 27,
+    "resolution": "3840x2160",
+    "usb_c_video": false,
+    "usb_c_note": "USB-C for power delivery and data hub only; video via HDMI/DP",
+    "price": 399.0,
+    "price_type": "new_direct",
+    "seller": "ViewPro",
+    "ships_to_us": true,
+    "availability": "in_stock"
+  }
+}

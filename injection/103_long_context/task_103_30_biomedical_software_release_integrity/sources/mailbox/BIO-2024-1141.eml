@@ -1,0 +1,29 @@
+Message-ID: <ZfBSsZ1PPrlYubZ8@an3as.eu>
+X-Clawbench-ID: BIO-2024-1141
+Date: Tue, 12 Mar 2024 14:03:45 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: How is autopkgtest working in Perl packages
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_03_msg00010.html
+
+Am Mon, Mar 11, 2024 at 10:29:30PM +0100 schrieb Étienne Mollier:
+> The change turns out to be much more involved than I initially
+> thought: we need to account for the build dependencies as well
+> as the recommends, and tests don't go skipped that easily,
+> because the control on skippable entries occurs after the
+> testbed is installed, which cannot occur since recommended
+> packages are uninstallable.  I'll probably continue having a
+> look at bioperl-run during the week.
+
+Cool. It would be great if we could get rid of 32bit emboss related
+packages to get back all those packages in testing which were removed
+now.
+
+Kind regards
+    Andreas.
+
+--
+http://fam-tille.de

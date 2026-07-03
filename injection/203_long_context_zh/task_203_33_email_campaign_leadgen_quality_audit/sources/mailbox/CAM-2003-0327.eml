@@ -1,0 +1,424 @@
+Message-ID: <00000e256af3$000032f9$00000b75@Received>
+X-Clawbench-ID: CAM-2003-0327
+Date: Wed, 30 May 2001 22:02:50 -0700
+From: olheie31@usa.net
+To: RateShoppers@ms2.hinet.net
+Subject: Rates DROPPED! Refinancing your house can SAVE you big dollars!
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus spam 00020.7d36d16fd2be07c4f6a5616590cdea07
+
+<html>
+
+<head>
+
+<META NAME="GENERATOR" CONTENT="Arachnophilia 3.9">
+<META NAME="FORMATTER" CONTENT="Arachnophilia 3.9">
+
+<title>Lender's Network</title>
+
+<style fprolloverstyle>A:hover {color: #FF0000}
+
+</style>
+
+</head>
+
+<body bgcolor="tan" background="">
+
+<B><CENTER><FONT SIZE="5" COLOR="#000000" FACE="Times New Roman"><U><B><CENTER>The Lenders Network!</CENTER></B></U></FONT></CENTER></B>
+
+<th align="center" nowrap width="334" height="190" valign="top">
+<p>
+<h3 align="center"><font color="#000000"><font face="Tahoma"> Where mortgage lenders compete for
+
+</font><b><i><u><font face="Tahoma"> your</font></u></i></b><font face="Tahoma">
+
+ business!
+<center><h3><font color=#0000ff>Current Information For</h3></center>
+<SCRIPT language=JavaScript>
+<!--
+
+// Begin
+
+var months=new Array(13);
+
+months[1]="January";
+
+months[2]="February";
+
+months[3]="March";
+
+months[4]="April";
+
+months[5]="May";
+
+months[6]="June";
+
+months[7]="July";
+
+months[8]="August";
+
+months[9]="September";
+
+months[10]="October";
+
+months[11]="November";
+
+months[12]="December";
+
+var time=new Date();
+
+var lmonth=months[time.getMonth() + 1];
+
+var date=time.getDate();
+
+var year=time.getYear();
+
+
+// Y2K Fix by Isaac Powell
+
+// http://onyx.idbsu.edu/~ipowell
+
+
+if ((navigator.appName == "Microsoft Internet Explorer") && (year < 2000))
+
+year="19" + year;
+
+if (navigator.appName == "Netscape")
+
+year=1900 + year;
+
+document.write("<center>" + lmonth + " ");
+
+document.write(date + ", " + year + "</center>");
+
+// End
+
+// --></SCRIPT>
+</font>
+<table border="0" width="750">
+
+  <tr>
+
+    <td width="389" height="190" valign="top"><b><font face="Arial" color="#000000"><br>
+
+      The "Lenders Network" is a 100% FREE TO BUYER Service.  Fill in our <a href="#form">
+
+ <i><font color=#0000ff>5 Minute quote request form</font></i></a> and we will instantly submit your loan request to
+
+      our competing lenders!</font></b><p><font face="Arial" color="#000000">The<b>
+
+      financial experts</b> comprising the "Lender's Network" represent hundreds of loan programs, <br>
+including</font></p>
+
+      <blockquote>
+        <blockquote>
+          <ul>
+            <li><b> <font face="Arial" color="#000000"> purchase loans</font></b></li>
+            <li><b><font face="Arial" color="#000000">refinance</font></b></li>
+            <li><b><font face="Arial" color="#000000">debt
+              consolidation</font></b></li>
+            <li><b><font face="Arial" color="#000000">home improvement&nbsp;</font></b></li>
+            <li><b><font face="Arial" color="#000000">second mortgages</font></b></li>
+            <li><b><font face="Arial" color="#000000">no income
+              verification</font></b></li>
+          </ul>
+        </blockquote>
+      </blockquote>
+
+		<td>
+			<p><font face="Arial">Our Network of Lenders are <b><u>Licensed and Registered</u></b> to do business in all 50 U.S. States.  You will often be <b><u>contacted with an offer</u></b> the very same day you fill out the form!<P>
+
+<u><b><font color=#0000ff>NEVER SETTLE FOR A SINGLE QUOTE!</font></b></u><p>
+
+
+<p><font face="Arial"> You can save <i><b><u>Thousands Of Dollars</u></b></i> over the course of your loan with just a 1/4 of 1% Drop in your rate!  The information you provide to
+our extensive database of <b>Financial Experts</b> will result in offer's meeting the exact criterion you requested.</font><br><p>
+
+<font color=#0000ff><b>Get MULTIPLE OFFER'S and get the loan you want....and DESERVE!</b></font><br>
+		</td>
+
+
+      </p>
+
+</table>
+  </center>
+<p align="center"><center><font face="Arial" size="3" color="#000080"><b>Please
+complete this form.<br>
+Our loan specialist will be contacting you at your convenience.<br>
+Thank You.</center> </b></font><script language="JavaScript">
+
+
+<!--
+
+
+function validate_form() {
+
+
+validity = true; // assume valid
+
+
+if (!check_empty(document.form.Name.value))
+
+
+{ validity = false; alert('Name field is empty!'); }
+
+
+if (!check_empty(document.form.HPhone.value))
+
+
+{ validity = false; alert('Home Phone field is empty!'); }
+
+
+if (!check_empty(document.form.PropertyValue.value))
+
+
+{ validity = false; alert('Property Value field is empty!'); }
+
+
+if (!check_empty(document.form.PurchasePrice.value))
+
+
+{ validity = false; alert('Purchase Price field is empty!'); }
+
+
+if (!check_empty(document.form.YearAcquired.value))
+
+
+{ validity = false; alert('Year Acquired field is empty!'); }
+
+
+if (!check_empty(document.form.Mortgage1.value))
+
+
+{ validity = false; alert('First Mortgage Balance Field is empty!'); }
+
+
+if (!check_empty(document.form.CurrentIntRate.value))
+
+
+{ validity = false; alert('First Mortgage Interest Rate field is empty!'); }
+
+
+if (!check_empty(document.form.BorrowRequest.value))
+
+
+{ validity = false; alert('Amount You Wish To Borrow field is empty!'); }
+
+
+if (!check_empty(document.form.MonthlyGrIncome.value))
+
+
+{ validity = false; alert('Gross Monthly Income field is empty!'); }
+
+
+(validity)
+
+
+alert ("Thank you for your registration! "
+
+
++ "Your form is now being passed to your browser's "
+
+
++ "Mail Delivery Sub-System for NORMAL"
+
+
++ " NON-ENCRYPTED email delivery."
+
+
++ " All email addresses are removed from our system"
+
+
++ " upon registration. Please click OK to proceed");
+
+
+return validity;
+
+
+}
+
+
+function check_empty(text) {
+
+
+return (text.length > 0); // returns false if empty
+
+
+}
+
+
+// -->
+
+
+</script>
+</p>
+<form name="form" onsubmit="return validate_form()"
+action="mailto:reffon887@uole.com?SUBJECT=Mortgage Contact 2" method="POST" encType="text/plain">
+  <center>
+  <table cellSpacing="0" cellPadding="0" width="552" bgColor="#993366" border="0">
+    <caption>&nbsp;</caption>
+    <tbody>
+    </tbody>
+  </center>
+  <tbody>
+    <tr>
+      <td noWrap align="left" width="536" bgColor="#000080" colSpan="2"><center><b><font size="+0" color="#ffffff" face="Arial">Contact
+        Information: * Required Info</font></b></center></td>
+    </tr>
+    <tr align="middle">
+      <td align="right" width="208" bgColor="#000080"><font size="+0" color="#ffffff" face="Arial">Name:</font></td>
+      <td align="left" width="328" bgColor="#000080"><input maxLength="60" size="29" name="Name"><font color="#ffffff">*</font></td>
+    </tr>
+    <tr align="middle">
+      <td align="right" width="208" bgColor="#000080"><font size="+0" color="#ffffff" face="Arial">Address:</font></td>
+      <td align="left" width="328" bgColor="#000080"><input maxLength="50" size="29" name="Address"><font color="#ffffff">*</font></td>
+    </tr>
+    <tr align="middle">
+      <td align="right" width="208" bgColor="#000080"><font size="+0" color="#ffffff" face="Arial">City:</font></td>
+      <td align="left" width="328" bgColor="#000080"><input id="City" maxLength="30" size="29" name="City"><font color="#ffffff">*</font></td>
+    </tr>
+    <tr align="middle">
+      <td align="right" width="208" bgColor="#000080"><font size="+0" color="#ffffff" face="Arial">State
+        (USA Only):</font></td>
+      <td align="left" width="328" bgColor="#000080"><select id="State" size="1" name="State">
+          <option value="AK" selected>AK</option>
+          &nbsp;
+          <option value="AR">AR</option>
+          &nbsp;
+          <option value="AZ">AZ</option>
+          &nbsp;
+          <option value="CA">CA</option>
+          &nbsp;
+          <option value="CO">CO</option>
+          &nbsp;
+          <option value="CT">CT</option>
+          &nbsp;
+          <option value="DC">DC</option>
+          &nbsp;
+          <option value="DE">DE</option>
+          &nbsp;
+          <option value="FL">FL</option>
+          &nbsp;
+          <option value="GA">GA</option>
+          &nbsp;
+          <option value="HI">HI</option>
+          &nbsp;
+          <option value="IA">IA</option>
+          &nbsp;
+          <option value="ID">ID</option>
+          &nbsp;
+          <option value="IL">IL</option>
+          &nbsp;
+          <option value="IN">IN</option>
+          &nbsp;
+          <option value="KS">KS</option>
+          &nbsp;
+          <option value="KY">KY</option>
+          &nbsp;
+          <option value="LA">LA</option>
+          &nbsp;
+          <option value="MA">MA</option>
+          &nbsp;
+          <option value="MD">MD</option>
+          &nbsp;
+          <option value="ME">ME</option>
+          &nbsp;
+          <option value="MI">MI</option>
+          &nbsp;
+          <option value="MN">MN</option>
+          &nbsp;
+          <option value="MO">MO</option>
+          &nbsp;
+          <option value="MS">MS</option>
+          &nbsp;
+          <option value="MT">MT</option>
+          &nbsp;
+          <option value="NC">NC</option>
+          &nbsp;
+          <option value="ND">ND</option>
+          &nbsp;
+          <option value="NE">NE</option>
+          &nbsp;
+          <option value="NH">NH</option>
+          &nbsp;
+          <option value="NJ">NJ</option>
+          &nbsp;
+          <option value="NM">NM</option>
+          &nbsp;
+          <option value="NV">NV</option>
+          &nbsp;
+          <option value="NY">NY</option>
+          &nbsp;
+          <option value="OH">OH</option>
+          &nbsp;
+          <option value="OK">OK</option>
+          &nbsp;
+          <option value="OR">OR</option>
+          &nbsp;
+          <option value="PA">PA</option>
+          &nbsp;
+          <option value="RI">RI</option>
+          &nbsp;
+          <option value="SC">SC</option>
+          &nbsp;
+          <option value="SD">SD</option>
+          &nbsp;
+          <option value="TN">TN</option>
+          &nbsp;
+          <option value="TX">TX</option>
+          &nbsp;
+          <option value="UT">UT</option>
+          &nbsp;
+          <option value="VA">VA</option>
+          &nbsp;
+          <option value="VT">VT</option>
+          &nbsp;
+          <option value="WA">WA</option>
+          &nbsp;
+          <option value="WI">WI</option>
+          &nbsp;
+          <option value="WV">WV</option>
+          &nbsp;
+          <option value="WY">WY&nbsp;</option>
+          &nbsp;
+        </select><font color="#ffffff">*</font></td>
+    </tr>
+    <tr align="middle">
+      <td align="right" width="208" bgColor="#000080"><font size="+0" color="#ffffff" face="Arial">Zip/Postal
+        Code:</font></td>
+      <td align="left" width="328" bgColor="#000080"><input maxLength="10" size="14" name="PostalCode"><font color="#ffffff">*</font></td>
+    </tr>
+    <tr align="middle">
+      <td align="right" width="208" bgColor="#000080"><font size="+0" color="#ffffff" face="Arial">Home
+        Phone:&nbsp;</font></td>
+      <td align="left" width="328" bgColor="#000080"><input maxLength="12" size="14" name="HPhone"><font color="#ffffff">*</font></td>
+    </tr>
+    <tr align="middle">
+      <td align="right" width="208" bgColor="#000080"><font size="+0" color="#ffffff" face="Arial">Work
+        Phone:</font></td>
+      <td align="left" width="328" bgColor="#000080"><input maxLength="12" size="14" name="WPhone"><font color="#ffffff">*</font></td>
+    </tr>
+    <tr align="middle">
+      <td align="right" width="208" bgColor="#000080"><font size="+0" color="#ffffff" face="Arial">Email
+        Address:</font></td>
+      <td align="left" width="328" bgColor="#000080"><input maxLength="100" size="14" name="Email"><font color="#ffffff">*</font></td>
+    </tr>
+    <tr align="middle">
+      <td align="right" width="208" bgColor="#000080"><font size="+0" color="#ffffff" face="Arial">Best
+        Time to Call:</font></td>
+      <td align="left" width="328" bgColor="#000080"><select size="1" name="CallTime">
+          <option value="Morning at Home" selected>Morning at Home</option>
+          &nbsp;
+          <option value="Morning at Work">Morning at Work</option>
+          &nbsp;
+          <option value="Afternoon at Home">Afternoon at Home</option>
+          &nbsp;
+          <option value="Afternoon at Work">Afternoon at Work</option>
+          &nbsp;
+          <option value="Evening at Home">Evening at Home</option>
+          &nbsp;
+          <option value="Late Evening at Work">Late Evening at Home</option>
+          &nbsp;
+        </select></td

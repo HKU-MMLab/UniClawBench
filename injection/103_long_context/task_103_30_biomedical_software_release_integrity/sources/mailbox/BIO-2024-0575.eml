@@ -1,0 +1,54 @@
+Message-ID: <Yosxd+9WYwHygCIC@an3as.eu>
+X-Clawbench-ID: BIO-2024-0575
+Date: Mon, 23 May 2022 09:02:15 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Mohd Bilal <mdbilal@disroot.org>
+Subject: Re: Added autopkgtests for dcm2niix
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_05_msg00011.html
+
+[Mathieu, please see second paragraph]
+Hi Mohd,
+
+thanks a lot for your first official GSoC work.
+
+Am Mon, May 23, 2022 at 01:27:49AM +0530 schrieb Mohd Bilal:
+> I've added autopkgtests for dcm2niix[1]. Requesting someone to review and
+> suggest necessary changes. If it is okay please sponsor or grant me upload
+> permissions for the same.
+
+I'm happy to grant you upload permissions to any package you are working
+on (just done for dcm2niix).  However, for this actual test there is
+some work to be done.  For recent packages ftpmaster has asked us to
+reduce the size of data into the debian/ dir or provide a multi-tarball
+source (as Nilesh has kindly documented in Debian Med policy[4]) and you
+can see for example in the pplacer package (featuring a
+debian/tests/get-test-data script which is always nice to have to enable
+other developers to refresh the data if needed and as a way of documentin
+how the data were obtained).
+
+> Also I've had a look at adding autopkgtests for dcmtk[2] but I'm unable to
+> run any binaries and facing [3]. I'll atleast try fixing it or I'll have to
+> wait until this is fixed.
+
+I've put Mathieu in CC.  I currently do not have time for this but in
+case you find some extra energy you can probably have a lool into the
+according patch which deals with the path.  It should not be to hard to
+fix ... and writing a test + fixing the issues it uncovered scores extra
+points / fame. ;-)
+
+Thanks again for your first success in GSoC
+
+      Andreas.
+
+> [1] - https://salsa.debian.org/med-team/dcm2niix
+> [2] - https://salsa.debian.org/med-team/dcmtk
+> [3] - https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1010729
+
+[4] https://med-team.pages.debian.net/policy/#embedding-large-test-data
+
+
+--
+http://fam-tille.de

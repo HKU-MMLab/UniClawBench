@@ -1,0 +1,34 @@
+Message-ID: <5cfbd551310516d66398b4dad65fd9f65e214dbb.camel@debian.org>
+X-Clawbench-ID: BIO-2024-0237
+Date: Fri, 10 Dec 2021 10:24:20 +0100
+From: Sébastien Villemot <sebastien@debian.org>
+To: debian-science@lists.debian.org
+Subject: Re: suitesparse-graphblas_6.0.0+dfsg-1_amd64.changes ACCEPTED into unstable, unstable
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_12_msg00011.html
+
+Le vendredi 26 novembre 2021 à 19:58 +0100, Vincent Prat a écrit :
+>
+> > I haven’t yet added the new dependencies of libsuitesparse-dev on
+> > libgraphblas-dev (and of libsuitesparse-doc on libgraphblas-doc), to
+> > avoid triggering the file conflict on upgrades. I’m going to wait for
+> > your upload.
+> I just uploaded version 6.0.0+dfsg-3, which breaks and replaces the -dev
+> and -doc packages from src:suitesparse ( > By the way, I’m wondering whether these should be Recommends instead of
+> > Depends. It’s perfectly possible to use the libraries provided by
+> > src:suitesparse without using GraphBLAS, so a Depends might be too
+> > strict. And it seems that no package currently builds against
+> > GraphBLAS, so this should not break stuff. What do you think?
+> I agree with you. Recommends is probably enough.
+
+I’ve added the Recommends in suitesparse 1:5.10.1+dfsg-4.
+
+Best,
+
+--
+⢀⣴⠾⠻⢶⣦⠀  Sébastien Villemot
+⣾⠁⢠⠒⠀⣿⡁  Debian Developer
+⢿⡄⠘⠷⠚⠋⠀  https://sebastien.villemot.name
+⠈⠳⣄⠀⠀⠀⠀  https://www.debian.org

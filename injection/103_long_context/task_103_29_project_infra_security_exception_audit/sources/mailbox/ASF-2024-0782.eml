@@ -1,0 +1,24 @@
+Message-ID: <CAKQ1sVPV=AthmEYokmLdf+5Em5f8Y3N+n0ZGuP4kvyJ4EpxL+Q@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0782
+Date: Wed, 9 Mar 2022 14:25:47 +0100
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: httpd-dev <dev@httpd.apache.org>
+Subject: Re: [VOTE] Release httpd-2.4.53-rc1 as httpd-2.4.53
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-03.mbox
+
+On Tue, Mar 8, 2022 at 6:22 PM Rainer Jung <rainer.jung@kippdata.de> wrote:
+>
+> - configure for APR in the dependency tarball still fails for me due to
+> a bug in autoconf 2.71 used to create the configure script. That problem
+> was already reported by me during another release vote. I replaced the
+> changed three files in the bundled apr and apr-util with the earlier ones.
+
+Does this depend on the RM's autoconf version?
+If so, Stefan could you downgrade to autoconf 2.69 on your system? I
+just did that on mine with:
+$ apt install autoconf=2.69-1
+
+Sorry, I don't have a better idea..

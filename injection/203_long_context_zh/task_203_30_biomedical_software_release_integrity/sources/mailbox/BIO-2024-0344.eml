@@ -1,0 +1,166 @@
+Message-ID: <32034987-ff24-18f7-42cc-06e5caae0c27@debian.org>
+X-Clawbench-ID: BIO-2024-0344
+Date: Mon, 20 Sep 2021 19:52:08 +0200
+From: Christian Kastner <ckk@debian.org>
+To: debian-science@lists.debian.org
+Subject: Re: Datasets downloaded by scikit-learn as separate packages?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_09_msg00027.html
+
+Hi Steffen,
+
+I did a few of the last uploads of scikit-learn, so maybe there is
+something that I can share that might help.
+
+On 19.09.21 19:36, Steffen Möller wrote:
+> Hello,
+>
+> This goes out to the good fellas who care about scikit-learn. There is
+> tutorial for the qiime package that has classifier prepared that only
+> works with the latest stable version (0.24.2). We are at 0.23.2 in Debian.
+>
+> I gave an update of Scikit-Learn a shot and while the main build was
+> fine, I was eventually greeted with many download errors for datasets
+> that it uses as examples, as in
+>
+> /home/steffen/Science/scikit-learn/examples/inspection/plot_partial_dependence.py
+>
+> failed leaving traceback:
+> Traceback (most recent call last):
+>   File
+> "/home/steffen/Science/scikit-learn/examples/inspection/plot_partial_dependence.py",
+>
+> line 50, in
+>     cal_housing = fetch_california_housing()
+>   File
+> "/home/steffen/Science/scikit-learn/.pybuild/cpython3_3.9/build/sklearn/utils/validation.py",
+>
+> line 63, in inner_f
+>     return f(*args, **kwargs)
+>   File
+> "/home/steffen/Science/scikit-learn/.pybuild/cpython3_3.9/build/sklearn/datasets/_california_housing.py",
+>
+> line 134, in fetch_california_housing
+>     archive_path = _fetch_remote(ARCHIVE, dirname=data_home)
+>   File
+> "/home/steffen/Science/scikit-learn/.pybuild/cpython3_3.9/build/sklearn/datasets/_base.py",
+>
+> line 1194, in _fetch_remote
+>     urlretrieve(remote.url, file_path)
+>   File "/usr/lib/python3.9/urllib/request.py", line 239, in urlretrieve
+>     with contextlib.closing(urlopen(url, data)) as fp:
+>   File "/usr/lib/python3.9/urllib/request.py", line 214, in urlopen
+>     return opener.open(url, data, timeout)
+>   File "/usr/lib/python3.9/urllib/request.py", line 517, in open
+>     response = self._open(req, data)
+>   File "/usr/lib/python3.9/urllib/request.py", line 534, in _open
+>     result = self._call_chain(self.handle_open, protocol, protocol +
+>   File "/usr/lib/python3.9/urllib/request.py", line 494, in _call_chain
+>     result = func(*args)
+>   File "/usr/lib/python3.9/urllib/request.py", line 1389, in https_open
+>     return self.do_open(http.client.HTTPSConnection, req,
+>   File "/usr/lib/python3.9/urllib/request.py", line 1349, in do_open
+>     raise URLError(err)
+> urllib.error.URLError:
+>
+>
+> The original data is typically available. But these are classics with
+> often unclear licenses, here as in
+>
+> # The original data can be found at:
+> # https://www.dcc.fc.up.pt/~ltorgo/Regression/cal_housing.tgz
+> ARCHIVE = RemoteFileMetadata(
+>     filename='cal_housing.tgz',
+>     url='https://ndownloader.figshare.com/files/5976036',
+>     checksum=('aaa5c9a6afe2225cc2aed2723682ae40'
+>               '3280c4a3695a2ddda4ffb5d8215ea681'))
+
+I've never noticed these before. The build process generates a ton of
+network errors (especially from documentation builds), but as the cause
+was specific and known (no network access), these have been ignored in
+the past.
+
+> The build currently ends with
+>
+> I: pybuild pybuild:284:   (mv
+> /home/steffen/Science/scikit-learn/sklearn/conftest.py
+> /home/steffen/Science/scikit-learn/sklearn/conftest.py.test; mv
+> /home/steffen/Science/scikit-learn/sklearn/datasets/tests/conftest.py
+> /home/steffen/Science/scikit-learn/sklearn/datasets/tests/conftest.py.test;
+> cd /home/steffen/Science/scikit-learn/.pybuild/cpython3_3.9/build &&
+> python3.9 -c 'import sklearn; sklearn.show_versions()')
+> mv: cannot stat
+> '/home/steffen/Science/scikit-learn/sklearn/conftest.py': No such file
+> or directory
+> mv: cannot stat
+> '/home/steffen/Science/scikit-learn/sklearn/datasets/tests/conftest.py':
+> No such file or directory
+
+This is a different issue, I think. Some of the conftest.py files get
+moved around because pytest can get confused [1] when a build result is
+placed in a subdirectory of the original source (as it's done in the
+.pybuild subdirectory), so debian/rules moves some of them out of the way.
+
+This [2] is probably the cause. You can try removing this and see if it
+changes anything. Oddly enough, it's only some of the conftest.py that
+cause this issue.
+
+[1] https://github.com/pytest-dev/pytest/issues/7223
+
+[2] https://sources.debian.org/src/scikit-learn/0.23.2-5/debian/rules/#L142
+
+> Built with OpenMP: True
+> I: pybuild base:232: cd
+> /home/steffen/Science/scikit-learn/.pybuild/cpython3_3.9/build;
+> python3.9 -m pytest -m "not network" -v -k "not test_old_pickle and not
+> test_ard_accuracy_on_easy_problem"
+> ImportError while loading conftest
+> '/home/steffen/Science/scikit-learn/conftest.py'.
+> ../../../conftest.py:14: in
+>     from sklearn.utils import _IS_32BIT
+> ../../../sklearn/__init__.py:81: in
+>     from . import __check_build  # noqa: F401
+> ../../../sklearn/__check_build/__init__.py:46: in
+>     raise_build_error(e)
+> ../../../sklearn/__check_build/__init__.py:31: in raise_build_error
+>     raise ImportError("""%s
+> E   ImportError: No module named 'sklearn.__check_build._check_build'
+> E
+> ___________________________________________________________________________
+> E   Contents of /home/steffen/Science/scikit-learn/sklearn/__check_build:
+> E   setup.py                  _check_build.c __pycache__
+> E   _check_build.pyx          __init__.py
+> E
+> ___________________________________________________________________________
+> E   It seems that scikit-learn has not been built correctly.
+
+This I haven't looked at yet, but I wouldn't be surprised if it's related.
+
+> E
+> E   If you have installed scikit-learn from source, please do not forget
+> E   to build the package before using it: run `python setup.py install` or
+> E   `make` in the source directory.
+> E
+> E   If you have used an installer, please check that it is suited for your
+> E   Python version, your operating system and your platform.
+> E: pybuild pybuild:353: test: plugin distutils failed with: exit code=4:
+> cd /home/steffen/Science/scikit-learn/.pybuild/cpython3_3.9/build;
+> python3.9 -m pytest -m "not network" -v -k "not test_old_pickle and not
+> test_ard_accuracy_on_easy_problem"
+>
+> What are you all thinking? Should we prepare separate data packages for
+> Debian for those data sets that allow an unrestricted distribution? I
+> did not have a closer look, but I expect these datasets to total to
+> about 100MB with no frequent updates expected if any.
+>
+> Or should we not build these jupyter notebooks for the -doc package?
+
+I don't think anyone would stop you from packaging the datasets but to
+be honest, I think that would be overkill. The -doc package has a popcon
+of 93, and I would assume that (like me) most users of scikit-learn use
+upstream's online documentation directly.
+
+Best,
+Christian

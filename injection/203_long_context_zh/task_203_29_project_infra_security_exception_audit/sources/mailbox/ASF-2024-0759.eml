@@ -1,0 +1,35 @@
+Message-ID: <CALK=YjNLwqJb3wtDJTfrsEdkXfzv6WbCwuyUks50CCyzfdBgDw@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0759
+Date: Thu, 9 Mar 2023 12:59:13 -0500
+From: Eric Covener <covener@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] [VOTE] Release httpd-2.4.56-rc1 as httpd-2.4.56
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-03.mbox
+
+On Thu, Mar 9, 2023 at 12:14 PM <giovanni@paclan.it> wrote:
+>
+> On 3/9/23 05:30, Eric Covener wrote:
+> >
+> >
+> > On Wed, Mar 8, 2023 at 11:02 PM BUSH Steve <Steven.BUSH@3ds.com <mailto:Steven.BUSH@3ds.com>> wrote:
+> >
+> >     Correction!____
+> >
+> >     I used our test template for the rule when I e-mailed just now, but once it is converted to the apache httpd.conf format, the actual rule appears in the httpd.conf as:____
+> >
+> >     RewriteRule ^/zoology/animals/reset/(\d+)$ "/auth/launchjob?Number of Records=$1&__poolid=animal-magic" [B,PT,L,QSA]
+> >
+> >
+> > Thanks for the report.   Time will tell, but I think this is a very fringe case. The space isn't a backreference (where `B` would have fixed it) and a literal with a space in the substitution has to be quite rare (famous last words)
+>
+> I wonder how many websites might have a snippet similar to:
+>
+> RewriteRule ^/search/(.*)$ /search.php?term=$1 [PT,L,QSA]
+
+I do worry about this style a lot more, especially with how much of a
+pain [B] has been for me in the past.
+I think we can wait and see and only look for more problematic
+characters in the mod_rewrite.c change.

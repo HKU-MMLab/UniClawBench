@@ -1,0 +1,35 @@
+Message-ID: <ZYCMU_DadJJBPdEm@fusion>
+X-Clawbench-ID: BIO-2024-0172
+Date: Mon, 18 Dec 2023 19:15:47 +0100
+From: Étienne Mollier <emollier@debian.org>
+To: debian-med@lists.debian.org
+Subject: [Advent bug squashing] Several boost 1.83 transition bugs
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_12_msg00055.html
+
+Hi all,
+
+For today, since boost 1.83 has been introduced into stable,
+there were a couple of packages that needed timely fixes with
+the new version of that library, otherwise they would fail to
+build from source.  These packages were:
+
+  * bali-phy, affected by #1056087 (and also double build bug
+    #1043647),
+  * autodock-vina, affected by #1056089,
+  * rsem, affected by #1056010 (and duplicate #1056011).
+
+There were also a couple of supplementary double build bugs in
+the pot:
+
+  * cassiopee, affected by #1043792,
+  * libgo-perl, affected by #1046227.
+
+Have a nice day,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  gpg: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/1, please excuse my verbosity
+   `-

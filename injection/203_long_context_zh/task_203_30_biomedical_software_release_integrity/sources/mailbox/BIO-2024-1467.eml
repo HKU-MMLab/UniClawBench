@@ -1,0 +1,28 @@
+Message-ID: <YWkasUn8njJa/3gu@an3as.eu>
+X-Clawbench-ID: BIO-2024-1467
+Date: Fri, 15 Oct 2021 08:07:45 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Is there anything blocking pysam update?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00065.html
+
+Am Fri, Oct 15, 2021 at 11:33:39AM +0530 schrieb Nilesh Patra:
+> ===> So for now, I think pyvcf and cnvkit should be fixed, although they look unrelated to this update.
+
++1
+
+> ===> Meanwhile, everything looks good in pseudo-excuses page wrt pysam: https://release.debian.org/britney/pseudo-excuses-experimental.html
+>
+> So I will stem ahead and upload pysam to unstable in a while, after doing a few more tests if you don't have any objections. Let me know.
+
+Yep, thanks a lot for your investigation.
+
+Kind regards
+
+     Andreas.
+
+--
+http://fam-tille.de

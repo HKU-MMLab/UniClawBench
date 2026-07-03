@@ -1,0 +1,24 @@
+task_id: task_203_07_slack_openclaw_assistant_setup
+category: 203_long_context_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我目前在手机上使用 Slack，本地已经安装了 OpenClaw，但这个 OpenClaw 助手尚未在 Slack 内接入。
+
+  我看了这个视频，似乎可以实现 Slack 集成：https://www.youtube.com/watch?v=9QpSkGnfKMk 。请先观看视频，并为我生成一份带截图的 Markdown 教程。然后安装或打开 Slack，使用 Outlook 邮箱地址 `$EMAIL_ADDRESS` 登录；如果需要验证码，请在 Outlook 网页邮箱中查看。如果 Slack 或 Outlook 出现验证码（CAPTCHA）、安全检查或人机验证，请按页面要求自行完成验证。遇到 reCAPTCHA 或类似验证时，自行完成并继续；不要等我手动处理。如果浏览器自动化无法获取可点击元素，请切换到截图、坐标点击、刷新、改用其他浏览器入口或 Slack 客户端入口，并继续尝试。只有当所有这些方法都确实行不通时，才保存一张阻塞截图和说明。登录后，配置或重置一个 OpenClaw 机器人/助手入口，并将本地 OpenClaw 接入 Slack。
+
+  最后，在 Slack 界面中向 OpenClaw 发送一条测试消息，并保存截图，证明消息发送成功且 OpenClaw 正确回复。将教程、配置说明、截图路径，以及遇到的任何验证码/阻塞情况写入 `/tmp_workspace/results/slack_openclaw_setup.md`。不要把邮箱密码或验证码写入结果文件。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/jishuzhan_openclaw_slack_tutorial.md
+codex:
+  max_user_followups: 2

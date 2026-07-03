@@ -1,0 +1,40 @@
+{
+  "task_id": "task_105_39_nasa_audio_ffmpeg_index",
+  "target_segments": [
+    {
+      "source_file": "apollo11_countdown.mp3",
+      "title": "Apollo 11 countdown",
+      "start_seconds": 0.0,
+      "duration_seconds": 6.0,
+      "output_file": "clip_01.mp3"
+    },
+    {
+      "source_file": "eagle_has_landed.mp3",
+      "title": "The Eagle has landed",
+      "start_seconds": 0.0,
+      "duration_seconds": 5.0,
+      "output_file": "clip_02.mp3"
+    },
+    {
+      "source_file": "houston_problem.mp3",
+      "title": "Houston, we've had a problem",
+      "start_seconds": 0.0,
+      "duration_seconds": 7.0,
+      "output_file": "clip_03.mp3"
+    }
+  ],
+  "expected_sequence": [
+    "clip_01.mp3",
+    "clip_02.mp3",
+    "clip_03.mp3"
+  ],
+  "expected_compilation_duration_seconds": 18.0,
+  "duration_tolerance_seconds": 1.25,
+  "required_outputs": {
+    "clip_manifest": "/tmp_workspace/results/clip_manifest.json",
+    "clips_dir": "/tmp_workspace/results/clips/",
+    "compilation": "/tmp_workspace/results/nasa_audio_briefing.mp3",
+    "waveform": "/tmp_workspace/results/nasa_audio_waveform.png",
+    "report": "/tmp_workspace/results/nasa_audio_report.md"
+  }
+}

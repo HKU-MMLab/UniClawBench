@@ -1,0 +1,77 @@
+Message-ID: <1027286117.14701.2.camel@localhost.localdomain>
+X-Clawbench-ID: CAM-2003-0592
+Date: Sun, 21 Jul 2002 16:15:16 -0500
+From: Lance <lance_tt@bellsouth.net>
+To: rpm-zzzlist@freshrpms.net
+Subject: Re: Ximian apt repos?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01149.3ed8d90235a56fd4dae5e66941f574d7
+
+So to update from GNOME 1.4 to 2.0, after modifying
+/etc/apt/sources.list, I just issue 'apt-update' then 'apt-install
+gnome-session' ?  Also Gaim doesn't work with GNOME 2.0 just yet?
+
+On Sun, 2002-07-21 at 14:12, che wrote:
+> On Sun, 21 Jul 2002 14:50:13 -0400
+> che <che666@uni.de> wrote:
+>
+> > On 21 Jul 2002 23:59:59 +1200
+> > Mark Derricutt <mark@talios.com> wrote:
+> >
+> > > On Mon, 2002-07-22 at 06:20, che wrote:
+> > >
+> > > > The server mentioned above works again now :)!
+> > >
+> > > Any problems with the rpm's they provided?
+> > >
+> > >
+> > > _______________________________________________
+> > > RPM-List mailing list <RPM-List@freshrpms.net>
+> > > http://lists.freshrpms.net/mailman/listinfo/rpm-list
+> >
+> > #redhat 7.3
+> > rpm http://apt.sunnmore.net gnome2 73
+> > rpm-src http://apt.sunnmore.net gnome2 73
+> >
+> > #redhat 7.2
+> > rpm http://apt.sunnmore.net gnome2 72
+> > rpm-src http://apt.sunnmore.net gnome2 72
+> >
+> > thats the correct lines to be added to sources.list for the repository
+> >
+> > i just did a apt-get install gnome-session its still progressing :)
+> >
+>
+> after apt-get install gnome-session
+> i did another apt-get upgrade (25 more packages) and it works now... i am in gnome 2.0 wohooooo :) looks very great very "tidy" only error message i got was about a mixer applet on login (no biggie to me) even the old sawfish still works. yet its great and works cant say anythign negative yet :)
+>
+> just btw. if someone knows any other nice repositorys please post em :).
+>
+> thanks in advance,
+> che
+> > _______________________________________________
+> > RPM-List mailing list <RPM-List@freshrpms.net>
+> > http://lists.freshrpms.net/mailman/listinfo/rpm-list
+>
+> _______________________________________________
+> RPM-List mailing list <RPM-List@freshrpms.net>
+> http://lists.freshrpms.net/mailman/listinfo/rpm-list
+--
+:
+####[ Linux One Stanza Tip (LOST) ]###########################
+
+Sub : DOS to Unix conversion (#3)                    LOST #137
+
+DOS text files with ^M can be cleared by pico editor. Load the
+dos text file in pico, Do a small edit job on it.  (e.g. place
+a space and delete it again) .. Save .. Quit. All ^Ms gone !!
+
+####<bish@nde.vsnl.net.in>####################################
+:
+
+
+_______________________________________________
+RPM-List mailing list <RPM-List@freshrpms.net>
+http://lists.freshrpms.net/mailman/listinfo/rpm-list

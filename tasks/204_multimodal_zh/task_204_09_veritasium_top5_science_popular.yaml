@@ -1,0 +1,48 @@
+task_id: task_204_09_veritasium_top5_science_popular
+category: 204_multimodal_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  打开 YouTube 并找到 Veritasium 频道。按观看次数排序
+  (Popular / Most popular)，并使用与本任务固定快照
+  (2026-04-23T01:42:41Z) 对应的该频道 /videos 排序，
+  找出该频道观看次数最高的 5 个属于"科学实验 /
+  科学讲解"类的视频。
+  视频时长不限，只要内容是科学实验或
+  科学讲解即可。
+  你必须逐个打开并观看每个视频。不要下载字幕、
+  转录文本、缓存的排名页面，也不要依赖旧排名或先验知识；
+  最终的科学问题与结论必须来自你实际
+  在视频中看到的内容。
+
+  逐个看完这 5 个视频后，将结果整理到：
+  `/tmp_workspace/results/veritasium_top5.md`
+
+  要求：
+  1. 清晰写出你最终选定的这 5 个视频的标题、链接和你看到的
+     观看次数。
+  2. 对每个视频，至少清晰描述：
+     - 核心科学问题
+     - 实验设计或关键演示（如果有）
+     - 最终结论
+     - 该结论是否反直觉
+     - 一句"直觉 vs 现实"的对比句
+  3. 在文档末尾添加一个简短的对比表，显示这 5 个视频中
+     每一个是否"反直觉"。
+  4. 不要凭记忆写出旧排名；请使用与本任务固定快照对应的
+     Veritasium Popular / Most popular 排序，以及你实际
+     打开并观看的内容。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+codex:
+  max_user_followups: 2

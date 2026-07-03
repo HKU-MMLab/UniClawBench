@@ -1,0 +1,39 @@
+Message-ID: <2madyyyyqa0s.fsf@starship.python.net>
+X-Clawbench-ID: CAM-2003-1188
+Date: Wed, 04 Dec 2002 11:49:23 +0000
+From: Michael Hudson <mwh@python.net>
+To: spambayes@python.org
+Subject: [Spambayes] Re: New Application of SpamBayesian tech?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 02499.b4af165650f138b10f9941f6cc5bce3c
+
+Neale Pickett <neale@woozle.org> writes:
+
+> Skip Montanaro <skip@pobox.com> writes:
+>
+> > Yes.  It also seems to me that web page content filtering proxies (you
+> > know, keeping your kids or employees from visiting XXX websites) would
+> > be another good application of the technology.
+>
+> Not to mention IDS (Intrusion Detection Systems).
+>
+> IANAS but I have a friend who is, and he's suggested to me a few times
+> that it would be very interesting and possibly fruitful to apply
+> Bayesian analysis to network security.  But I think I'm going to have to
+> pull out the probab/stats book from college before I embark on such a
+> thing :)
+
+I have half a mind to see how it works as a replacement for gnus'
+adaptive scoring.  A harder problem than spam filtering, I guess, but
+it might be interesting.
+
+Cheers,
+M.
+
+
+_______________________________________________
+Spambayes mailing list
+Spambayes@python.org
+http://mail.python.org/mailman/listinfo/spambayes

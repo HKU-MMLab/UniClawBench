@@ -1,0 +1,62 @@
+task_id: task_101_02_sales_csv_xlsx
+category: 101_skill_usage
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+recording: none
+headed: auto
+task: |
+  Can you help me wrap up our Q1 retail export? Finance wants the final
+  workbook by EOD and I still haven't wrangled the FX conversions. Use the
+  workspace Excel skill for the heavy lifting here. The two source CSVs live in
+  /tmp_workspace/clawbench/sources/ — retail_sales_q1_2024.csv has the
+  order rows in each store's native currency, and fx_rates_q1_2024.csv
+  has the daily USD conversion rates.
+
+  I need /tmp_workspace/results/sales_q1.xlsx with a Sales sheet that
+  keeps every order row, adds the matched daily FX rate, and adds an
+  amount_usd column converted from amount_native using that row's own
+  currency and fx_date. Please use formulas in the amount_usd cells, the
+  total row, and the reconciliation cells, so finance can audit the
+  workbook instead of just seeing pasted values. Freeze the header row
+  on top and use numeric currency formatting for both native and USD
+  money columns. Add a bottom Total row that sums the converted USD,
+  and add an FX_Reconciliation sheet with one row per currency showing
+  native total, USD total, and order count.
+
+  Please also add an Audit_Checks sheet with the source row count, the
+  unmatched FX row count, the workbook USD total, and at least five
+  representative row-level spot checks. Pick spot checks that span the
+  data's edge cases — for example the smallest-amount order, the
+  largest, the earliest date, the latest date, and one mid-tenor order
+  — using the actual order IDs as they appear in the source data. Each
+  spot check should show the source native amount, the matched FX rate,
+  the workbook USD value, and an OK flag.
+
+  Before you hand it off, drop a short narrative Notes sheet inside the
+  workbook, or a brief notes.md alongside it, where finance can quickly
+  read the headline numbers. I want to see how revenue breaks out per
+  currency, how it moves month over month across Q1, how the stores
+  compare against each other, what FX methodology you used — which date
+  field you joined on and where the per-day rate came from — and how
+  discounts factored in versus the gross figure. Keep it tight, but
+  ground each point in concrete numbers from the workbook so the team
+  can spot check it.
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+sources:
+  - retail_sales_q1_2024.csv
+  - fx_rates_q1_2024.csv
+skills:
+  - excel-xlsx
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+codex:
+  max_user_followups: 2

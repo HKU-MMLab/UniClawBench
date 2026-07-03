@@ -1,0 +1,43 @@
+Message-ID: <64105d0e-64a7-243d-0179-4424bab76bf0@apache.org>
+X-Clawbench-ID: ASF-2024-0647
+Date: Wed, 18 May 2022 12:53:57 +0200
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: strcasecmp raises its...
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-05.mbox
+
+On 5/18/22 12:19 PM, Stefan Eissing wrote:
+> 2022 and we discuss strcasecmp() again?
+>
+> Background: OpenSSL 3.0.3 added OPENSSL_strcasecmp() and friends and there are several issue around their implementation. Up to this version, they relied on the POSIX strcasecmp(). Whatever their reasons for their change...
+>
+> Checking our sources, we have ap_cstr_casecmp() that does the right thing. But
+> - we do not use it everywhere
+> - it is not part of APR which relies on the POSIX strcasecmp(), esp. apr_table does.
+
+It is, but it may not be used where it possibly should:
+
+https://apr.apache.org/docs/apr/1.7/group__apr__cstr.html
+
+>
+> I want to handshake with you regarding this:
+> 1. should we scan our sources for strcasecmp and replace it with ap_cstr_casecmp()?
+
+If I remember correctly ap_cstr_casecmp was only designed to be used for comparisons of HTTP protocol strings as it is locale
+agnostic. Hence I am not sure if it is correct to use it everywhere. From the documentation:
+
+**
+ * Perform a case-insensitive comparison of two strings @a str1 and @a str2,
+ * treating upper and lower case values of the 26 standard C/POSIX alphabetic
+ * characters as equivalent. Extended latin characters outside of this set
+ * are treated as unique octets, irrespective of the current locale.
+
+Hence it might be wrong to use it in cases where you need to respect the locale.
+
+
+Regards
+
+Rüdiger

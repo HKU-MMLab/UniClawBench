@@ -1,0 +1,40 @@
+Message-ID: <udl8ryqbl95.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-1249
+Date: Mon, 18 Oct 2021 07:55:18 -0400
+From: ucko@debian.org (Aaron M. Ucko)
+To: Andreas Tille <andreas@an3as.eu>
+Subject: Re: sortmerna: "/usr/bin/ld: cannot find -lpthreads"
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00099.html
+
+Andreas Tille  writes:
+
+> from time to time I'm stumbling upon cmake based project about this
+> linker error ... and I always forget what to do.  If anybody could have
+> a look at sortmerna I would be happy.
+
+Please look (much) earlier in the log for the actual error, in this case[1]
+
+  CMake Error at src/sortmerna/CMakeLists.txt:15 (find_package):
+    Could not find a package configuration file provided by "RocksDB" with any
+    of the following names:
+      RocksDBConfig.cmake
+      rocksdb-config.cmake
+    Add the installation prefix of "RocksDB" to CMAKE_PREFIX_PATH or set
+    "RocksDB_DIR" to a directory containing one of the above files.  If
+    "RocksDB" provides a separate development package or SDK, be sure it has
+    been installed.
+  -- Configuring incomplete, errors occurred!
+
+In general, the -lpthreads error is harmless noise from standard CMake
+logic, and just appears at the end of the log because debhelper's standard
+practice is to dump the contents of CMakeError.log in the event of any
+errors, since in other cases that file can provide crucial details.
+
+[1] https://salsa.debian.org/med-team/sortmerna/-/jobs/2090520#L1205
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

@@ -1,0 +1,29 @@
+Message-ID: <em6aaafe67-69ac-4911-9221-73ff8a366665@a3b02565.com>
+X-Clawbench-ID: ASF-2024-1128
+Date: Thu, 25 Jan 2024 20:42:55 +0000
+From: "Mario Brandt" <jblond@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: PR #363
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-01.mbox
+
++1 for the change. It is still pretty readable on any edtor.
+
+
+------ Originalnachricht ------
+Von rbowen@rcbowen.com
+An "dev@httpd.apache.org" <dev@httpd.apache.org>
+Datum 24.01.2024 16:06:43
+Betreff PR #363
+
+>I've been poking at some of our open PRs looking for docs-only changes
+>that we can possibly clean up.
+>
+>PR #363 - https://github.com/apache/httpd/pull/363 - converts README
+>from plaintext to markdown, and makes no other changes. This makes it
+>prettier on GitHub.
+>
+>I almost just CTR'ed it, but it occurred to me that someone might find
+>this objectionable, so I thought I'd ask first.

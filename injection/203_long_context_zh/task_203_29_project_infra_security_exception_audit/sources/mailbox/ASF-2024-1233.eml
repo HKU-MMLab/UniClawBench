@@ -1,0 +1,64 @@
+Message-ID: <CABw-3YfDC5=y5ShHCt7E0tnU-KZqALsO1Le5HpMtBw++mgQxzA@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1233
+Date: Thu, 30 Jun 2022 20:14:44 +0300
+From: Ivan Zhakov <ivan@visualsvn.com>
+To: dev@httpd.apache.org
+Subject: [PATCH] Rewrite ap_regexec() without using thread-local storage and  malloc()/free() (was: Issues with shipping apr_thread_current() in APR 1.8.0  and an alternative approach for PCRE2 allocations in HTTPD)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-06.mbox
+
+> > > I think that we could try an alternative approach for that part of the problem. The alternative approach would have the same characteristics as the approach that had been used for PCRE1:
+> > >
+> > > -- Supply PCRE2 with a custom context with malloc and free implementations.
+> > > -- Those implementations would work by either using a stack buffer for small allocations or by doing a malloc().
+> > > -- This allocation scheme would have the same properties as the existing scheme used when compiling with PCRE1.
+> >
+> > For PCRE2, you would malloc()/free() for every ap_regexec(), which can
+> > be quite costly depending on the configuration/modules. This work was
+> > done precisely for this concern, for the switch from PCRE1 to PCRE2 to
+> > be as little costly as possible. The current implementation reuses the
+> > same PCRE2 context per thread for the lifetime of httpd..
+> > Same for PCRE1, besides the stack buffer for small vectors (which is
+> > still there currently btw).
+> >
+> I was thinking about having a custom malloc()/free() implementation
+> that uses stack memory for first N bytes and then falls back to
+> ordinary malloc/free(). So for cases where the allocation fits into
+> the stack threshold there would be no malloc()/free() calls, as it was
+> with PCRE1 and POSIX_MALLOC_THRESHOLD.
+>
+> I'll try to prepare a patch with this approach, to illustrate it better.
+
+Here is a patch with the described alternative approach with custom
+malloc() and free() implementations that use a stack buffer for first
+N bytes and then fall back to an ordinary malloc/free().
+
+Its key properties are:
+
+1) Allocations with PCRE2 happen the same way as they were happening
+with PCRE1 in httpd 2.4.52 and earlier.
+
+2) There are no malloc()/free() calls for typical cases where the
+match data can be kept on stack.
+
+3) The patch avoids a malloc() for the match_data structure itself,
+because the match data is allocated with the provided custom malloc()
+function.
+
+4) Using custom allocation functions should ensure that PCRE is not
+going to use malloc() for any auxiliary allocations, if they are
+necessary.
+
+5) There is no per-thread state.
+
+NOTE: Current behavior in trunk is that we allocate for the number of
+captures in the regular expression (preg->re_nsub). An additional
+improvement would be to cap the allocation size based on the passed-in
+limit (nmatch). I'll try to handle that separately.
+
+Thoughts?
+
+--
+Ivan Zhakov

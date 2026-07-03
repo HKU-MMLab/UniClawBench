@@ -1,0 +1,16 @@
+[
+  {
+    "slug": "meet_john_doe",
+    "title": "Meet John Doe",
+    "identifier": "meet_john_doe",
+    "clip_start_sec": 360,
+    "clip_end_sec": 840,
+    "duration_sec": 480,
+    "clip_video": "clip.mp4",
+    "resolution": [
+      640,
+      480
+    ],
+    "fps": 29.97
+  }
+]

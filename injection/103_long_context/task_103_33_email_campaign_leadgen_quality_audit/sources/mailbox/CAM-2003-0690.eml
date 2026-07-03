@@ -1,0 +1,52 @@
+Message-ID: <14220000.1012602017@spawn.se7en.org>
+X-Clawbench-ID: CAM-2003-0690
+Date: Sat, 02 Feb 2002 11:20:17 +1300
+From: Mark Derricutt <mark@talios.com>
+To: rpm-zzzlist@freshrpms.net
+Subject: problems with apt update
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01074.8590d61ac0aeeadb58dc2f2ba776c406
+
+Hiya, I always seem to get errors when I do an "apt update", is this a
+problem on the repository itself, or on my end, or possibly a timeout in
+the connection due to my connection being a crappy modem?
+
+[root@spawn root]# apt-get update
+Hit http://apt.nixia.no redhat/7.2/i386/base/pkglist.gnomehide
+Hit http://apt.freshrpms.net redhat/7.2/i386/base/pkglist.os
+Ign http://apt.freshrpms.net redhat/7.2/i386 release.os
+Err http://apt.freshrpms.net redhat/7.2/i386/base/pkglist.updates
+  Bad header line
+Hit http://apt.freshrpms.net redhat/7.2/i386 release.updates
+Err http://apt.freshrpms.net redhat/7.2/i386/base/pkglist.freshrpms
+  400 Bad Request
+Err http://apt.freshrpms.net redhat/7.2/i386 release.freshrpms
+  Bad header line
+Hit http://apt.freshrpms.net redhat/7.2/i386/base/srclist.freshrpms
+Ign http://apt.nixia.no redhat/7.2/i386 release.gnomehide
+Ign http://apt.nixia.no redhat/7.2/i386/base/mirrors
+Hit http://apt.freshrpms.net redhat/7.2/i386 release.freshrpms
+Ign http://apt.freshrpms.net redhat/7.2/i386/base/mirrors
+Ign http://apt.freshrpms.net redhat/7.2/i386/base/mirrors
+Ign http://apt.freshrpms.net redhat/7.2/i386/base/mirrors
+Ign http://apt.freshrpms.net redhat/7.2/i386/base/mirrors
+Failed to fetch
+http://apt.freshrpms.net/redhat/7.2/i386/base/pkglist.updates
+  Bad header line
+Failed to fetch
+http://apt.freshrpms.net/redhat/7.2/i386/base/pkglist.freshrpms
+  400 Bad Request
+Failed to fetch
+http://apt.freshrpms.net/redhat/7.2/i386/base/release.freshrpms
+  Bad header line
+
+                                    -- \m/ --
+  "...if I seem super human I have been misunderstood." (c) Dream Theater
+         mark@talios.com - ICQ: 1934853 JID: talios@myjabber.net
+
+
+_______________________________________________
+RPM-List mailing list <RPM-List@freshrpms.net>
+http://lists.freshrpms.net/mailman/listinfo/rpm-list

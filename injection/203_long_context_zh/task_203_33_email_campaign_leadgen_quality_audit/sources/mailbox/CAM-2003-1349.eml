@@ -1,0 +1,20 @@
+Message-ID: <3D3DD633.7010003@sunnmore.net>
+X-Clawbench-ID: CAM-2003-1349
+Date: Wed, 24 Jul 2002 00:18:27 +0200
+From: Roy-Magne Mo <rmo@sunnmore.net>
+To: rpm-zzzlist@freshrpms.net
+Subject: apt repository for irssi
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01155.6f283de255ba0f35b2eabed58815142b
+
+Seems like irssi.org also has an apt-rpm repository for snapshots of irssi:
+
+rpm http://ninja.no/apt 7.3/i386 irssi
+rpm-src http://ninja.no/apt 7.3/i386 irssi
+
+
+_______________________________________________
+RPM-List mailing list <RPM-List@freshrpms.net>
+http://lists.freshrpms.net/mailman/listinfo/rpm-list

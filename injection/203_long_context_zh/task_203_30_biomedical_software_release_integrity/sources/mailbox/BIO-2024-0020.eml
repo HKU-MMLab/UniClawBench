@@ -1,0 +1,41 @@
+Message-ID: <3976857.gfu6YQ1Tfd@riemann>
+X-Clawbench-ID: BIO-2024-0020
+Date: Mon, 03 Jan 2022 18:10:33 -0600
+From: Steven Robbins <steve@sumost.ca>
+To: debian-med@lists.debian.org
+Subject: salsa CI job fails during "uploading artifacts"
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_01_msg00006.html
+
+Hi,
+
+As far as I can discern, the build job for Elastix successfully builds the
+package, but then fails trying to upload artifacts.  Can anyone shed light on
+what's going on or how to fix it?
+
+Uploading artifacts for successful job
+01:11
+Uploading artifacts...
+/builds/med-team/elastix/debian/output/: found 11 matching files and
+directories
+WARNING: Uploading artifacts as "archive" to coordinator... failed  id=2329183
+responseStatus=502 Bad Gateway status=502 token=eGtkP2AF
+WARNING: Retrying...                                context=artifacts-uploader
+error=invalid argument
+WARNING: Uploading artifacts as "archive" to coordinator... failed  id=2329183
+responseStatus=502 Bad Gateway status=502 token=eGtkP2AF
+WARNING: Retrying...                                context=artifacts-uploader
+error=invalid argument
+WARNING: Uploading artifacts as "archive" to coordinator... failed  id=2329183
+responseStatus=502 Bad Gateway status=502 token=eGtkP2AF
+FATAL: invalid argument
+Cleaning up file based variables
+00:01
+ERROR: Job failed: exit code 1
+
+https://salsa.debian.org/med-team/elastix/-/jobs/2329183
+
+Thanks!
+-Steve

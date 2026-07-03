@@ -1,0 +1,54 @@
+Message-ID: <CC7C053E-EA95-44F8-93CE-ABBF60A18634@mail.utoronto.ca>
+X-Clawbench-ID: ASF-2024-1067
+Date: Wed, 22 Mar 2023 15:55:38 +0000
+From: ChenXing Yang <cx.yang@mail.utoronto.ca>
+To: "dev@httpd.apache.org" <dev@httpd.apache.org>
+Subject: Logging Behaviour under server
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-03.mbox
+
+Hi Apache Developers,
+
+I’m an undergrad research student from the University of Toronto. Recently, I’ve been building a static analysis tool to diagnose logging points in a given code base. It is designed to assist C/C++ system software developers in detecting missing or redundant log statements. I tested my tool on Apache Httpd repository, specifically for all files in server folder, and I found some missing log statements in the detected code. I’m writing this email to ask for some feedback about my discovery. Many thanks in advance for your kind help and insight.
+
+I found it is common that a function might return an integer as the error code. The return code will be received and checked by the caller. Depending on how serious the error is, developers might add log statements if an error happens. My tool detected similar patterns in Apache Httpd source code. For example, for function apr_sockaddr_info_get used in alloc_listener from server/listen.c:
+
+if ((status = apr_sockaddr_info_get(&sa, addr, APR_UNSPEC, port, 0,process->pool)) != APR_SUCCESS) {
+    ap_log_perror(APLOG_MARK, APLOG_CRIT, status, process->pool, APLOGNO(00077)
+                  "alloc_listener: failed to set up sockaddr for %s",
+                  addr);
+    return "Listen setup failed";
+}
+
+
+ps: starting from line 347 using the trunk version. For your convenience: <https://github.com/apache/httpd/blob/ba1e5db6961c910c6dce855822563dbfe83ba159/server/listen.c#L347> https://github.com/apache/httpd/blob/ba1e5db6961c910c6dce855822563dbfe83ba159/server/listen.c#L347
+
+In this example, the return code of apr_sockaddr_info_get is checked, and a log statement is added if the status is not successful.
+
+A similar pattern can be found in the following instances as well:
+
+<https://github.com/apache/httpd/blob/ba1e5db6961c910c6dce855822563dbfe83ba159/server/vhost.c#L198>https://github.com/apache/httpd/blob/ba1e5db6961c910c6dce855822563dbfe83ba159/server/vhost.c#L198
+
+<https://github.com/apache/httpd/blob/ba1e5db6961c910c6dce855822563dbfe83ba159/server/util.c#L2466>https://github.com/apache/httpd/blob/ba1e5db6961c910c6dce855822563dbfe83ba159/server/util.c#L2466
+
+<https://github.com/apache/httpd/blob/ba1e5db6961c910c6dce855822563dbfe83ba159/server/config.c#L2249>https://github.com/apache/httpd/blob/ba1e5db6961c910c6dce855822563dbfe83ba159/server/config.c#L2249
+
+<https://github.com/apache/httpd/blob/ba1e5db6961c910c6dce855822563dbfe83ba159/server/listen.c#L884>https://github.com/apache/httpd/blob/ba1e5db6961c910c6dce855822563dbfe83ba159/server/listen.c#L884
+
+HOWEVER, things are different in the following instances. In all below cases, my tool has detected that the source code only checks if an event is successful without logging the failure event, causing developer hard to diagnose the point of failure even though they try to return some error code/string to the caller. I wonder if there are any particular reasons why logging patterns are different for these functions or they are indeed improper logging behaviours.
+
+<https://github.com/apache/httpd/blob/ba1e5db6961c910c6dce855822563dbfe83ba159/server/util_expr_eval.c#L1990>https://github.com/apache/httpd/blob/ba1e5db6961c910c6dce855822563dbfe83ba159/server/util_expr_eval.c#L1990
+
+<https://github.com/apache/httpd/blob/ba1e5db6961c910c6dce855822563dbfe83ba159/server/vhost.c#L191>https://github.com/apache/httpd/blob/ba1e5db6961c910c6dce855822563dbfe83ba159/server/vhost.c#L191
+
+<https://github.com/apache/httpd/blob/ba1e5db6961c910c6dce855822563dbfe83ba159/server/core.c#L962>https://github.com/apache/httpd/blob/ba1e5db6961c910c6dce855822563dbfe83ba159/server/core.c#L962
+
+Interestingly enough, the comment for the first link says “/* maybe log an error if this goes wrong? */”, however, I think I still need someone more familiar with the code base to share more insight as I have found other 60+ warnings using my developed tool. I have attached all warnings along with this email. Please note that my tool is analyzing the source code in release version httpd-2.4.56 instead of trunk, please checkout the correct version if you find discrepancies for the line number.
+
+Once again, thank you so much for your kind help and time. I also found there are many commits whose sole purpose is to add above pattern, such as <https://github.com/apache/httpd/commit/8646e07534b4f115496b154f94ac90aa4f8c5b0c> https://github.com/apache/httpd/commit/8646e07534b4f115496b154f94ac90aa4f8c5b0c. Please reach out to me if you find this tool interesting and can be useful in improving the diagnostic capability of Apache Httpd.
+
+Sincerely,
+
+ChenXing Yang

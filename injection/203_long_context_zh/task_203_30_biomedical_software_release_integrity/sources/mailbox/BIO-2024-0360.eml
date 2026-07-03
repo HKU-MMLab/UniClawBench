@@ -1,0 +1,27 @@
+Message-ID: <YYvT0ApD39tHbcaQ@an3as.eu>
+X-Clawbench-ID: BIO-2024-0360
+Date: Wed, 10 Nov 2021 15:14:40 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: libjung-java needs some love
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_11_msg00053.html
+
+Hi,
+
+I realised that libjung-java "smells"[1] and in fact it was not uploaded
+a long time and has some maintenance issues.  I tried to build the
+current state in Git but it fails the API fails to build.  I hope this is
+not a big issue for a Java educated DD.
+
+Kind regards
+
+      Andreas.
+
+
+[1] https://trends.debian.net/packages-with-smells-sorted-by-maintainer.txt
+
+--
+http://fam-tille.de

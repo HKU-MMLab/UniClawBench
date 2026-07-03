@@ -1,0 +1,25 @@
+Message-ID: <E1mnSvj-0005zm-LH@usper.debian.org>
+X-Clawbench-ID: BIO-2024-1495
+Date: Wed, 17 Nov 2021 21:57:23 +0000
+From: Debian FTP Masters <ftpmaster@ftp-master.debian.org>
+To: debian-science@lists.debian.org
+Subject: Processing of suitesparse-graphblas_6.0.0+dfsg-1_amd64.changes
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_11_msg00108.html
+
+suitesparse-graphblas_6.0.0+dfsg-1_amd64.changes uploaded successfully to localhost
+along with the files:
+  suitesparse-graphblas_6.0.0+dfsg-1.dsc
+  suitesparse-graphblas_6.0.0+dfsg.orig.tar.xz
+  suitesparse-graphblas_6.0.0+dfsg-1.debian.tar.xz
+  libgraphblas-dev_6.0.0+dfsg-1_amd64.deb
+  libgraphblas-doc_6.0.0+dfsg-1_all.deb
+  libgraphblas6-dbgsym_6.0.0+dfsg-1_amd64.deb
+  libgraphblas6_6.0.0+dfsg-1_amd64.deb
+  suitesparse-graphblas_6.0.0+dfsg-1_amd64.buildinfo
+
+Greetings,
+
+	Your Debian queue daemon (running on host usper.debian.org)

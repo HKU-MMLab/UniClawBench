@@ -1,0 +1,82 @@
+task_id: task_205_35_rss_hn_weekly_pdf
+category: 205_cross_platform_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我想生成一份 2026 年 Q1 科技新闻回顾的周报 PDF，排版要规范——封面页、
+  目录、按主题分章、末尾放图表——发给团队当作阅读清单。
+
+  两个数据源：
+
+  RSS——我订阅了这 5 个 feed：
+    - https://news.ycombinator.com/rss
+    - https://lobste.rs/rss
+    - https://feeds.arstechnica.com/arstechnica/index
+    - https://feeds.feedburner.com/TheHackersNews
+    - https://www.wired.com/feed/rss
+  现在已经是 5 月了，所以 RSS 里的 Q1 文章很可能已经被刷掉了——能抓到
+  什么就抓什么，并给落在 Q1 时间窗（2026-01-01 到 2026-04-01）内的任何
+  文章打上标签。
+
+  HN——用 Algolia 的搜索 API 拉取 2026 年 Q1 期间按 points 排名前 20 的
+  story；那段历史数据应该还在。用 curl 抓取 RSS。
+
+  然后运行以下分析：
+
+  检查 HN 前 20 和 RSS 文章之间是否有 URL 重叠，并计算重叠率。根据标题
+  关键词，归纳这 5 个 feed 各自倾向于覆盖什么内容——大致分为 security /
+  tech / business / lifestyle——并为每个 feed 指定一个主导类别。把所有
+  HN + RSS 标题合并起来做一个简单的词频 / 主题分析，挑出 3 个最热门的
+  趋势主题，并检查每个主题是先出现在 RSS 上还是先出现在 HN 上。
+
+  用 pandoc 生成最终的周报 PDF。我希望有：
+  - 一个写着 "2026 Q1 Tech News" 的封面页
+  - 一个目录
+  - 为这 3 个趋势主题各设一章，每章列出几篇相关文章
+  - 一个 "Feed Positioning" 章节，讨论这 5 个 feed 的类别画像
+  - 末尾两张图表：一张主题柱状图，一张按 feed 划分的类别分布堆叠柱状图
+  - 封底放重叠统计数据
+
+  PDF 应至少 3 页且看起来像样。
+
+  另外保留数据文件。把 RSS 文章保存为 feed_articles.json，按 feed 分组
+  （一个 feeds 数组，每项包含 url、q1_articles 和 current_articles——
+  Q1 的可能为空，保留 current 的用于分类）。把 HN 前 20 保存为
+  hn_top_stories.json，包含一个 period 字段和一个 top_stories 数组，每项
+  包含 objectID、title、url、points、num_comments 和 created_at。把重叠
+  统计保存为 overlap_summary.json，包含 hn_total、hn_with_rss_match 和
+  overlap_rate。把主题分析保存为 topics.json，包含一个 top_3_topics 数组，
+  其中每个主题有 rss_first_date、hn_first_date 和 lead_time_days 表示
+  时间，再加一个顶层的 most_rss_first_topic 标明 RSS 在哪个主题上领先。
+  把按 feed 划分的类别细分保存为 feed_positioning.json，包含一个 per_feed
+  数组，每项含 url、category_distribution（四个类别归一化到 1）、
+  dominant_category 和 total_classified。图表方面，把主题柱状图保存为
+  topic_chart.png，堆叠柱状图保存为 feed_positioning_chart.png。把最终
+  报告保存为 weekly_report.pdf，用 evince 打开它，并截图为
+  evince_screenshot.png 让我预览。把所有东西放在 /tmp_workspace/results/
+  下。
+
+  完成后，告诉我重叠率是多少、这 3 个主题是什么、PDF 有多少页，以及这 5
+  个 feed 各自偏向哪个方向。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources: []
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

@@ -1,0 +1,25 @@
+Message-ID: <ZpZZA8cLbtl9jy-w@an3as.eu>
+X-Clawbench-ID: BIO-2024-0924
+Date: Tue, 16 Jul 2024 13:26:59 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: python-questplus FTBFS on i386
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_07_msg00016.html
+
+Hi,
+
+in my attempt to fix #1074664 I upgraded to latest upstream and missed
+the fact that it does not build on i386[1].  I have no capacity to work
+on this - hopefully someone might be able to catch up.
+
+Thanks a lot
+   Andreas.
+
+[1] https://salsa.debian.org/med-team/python-questplus/-/jobs/5980179
+    https://buildd.debian.org/status/package.php?p=python-questplus
+
+--
+https://fam-tille.de

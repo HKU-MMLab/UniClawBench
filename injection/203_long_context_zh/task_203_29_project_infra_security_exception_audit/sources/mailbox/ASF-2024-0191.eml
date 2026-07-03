@@ -1,0 +1,32 @@
+Message-ID: <6212CDA8-A5B5-4966-BA13-02C03986C3B9@eissing.org>
+X-Clawbench-ID: ASF-2024-0191
+Date: Thu, 14 Sep 2023 07:44:09 +0200
+From: "Stefan Eissing via dev" <dev@httpd.apache.org>
+To: dev@httpd.apache.org
+Subject: Re: pytest: 3 minutes gap or long single test runtime
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-09.mbox
+
+> Am 13.09.2023 um 22:14 schrieb Rainer Jung <rainer.jung@kippdata.de>:
+>
+> Hi all,
+>
+> when running the current pytest, I see a gap between two specific test outputs of more than three minutes:
+>
+> ...
+> 13.09.2023 21:47:46.220943 modules/http2/test_712_buffering.py::TestBuffering::test_h2_712_03 PASSED [ 39%]
+> 13.09.2023 21:50:55.456457 modules/md/test_001_store.py::TestStore::test_md_001_001 PASSED [ 39%]
+> ...
+>
+> I assume the lines are written at the end of the respective test, so either modules/md/test_001_store.py::TestStore::test_md_001_001 takes so long, or the teardown after the test before it or startup befor thos test.
+>
+> Before I try to investigate more: is this happening only here, or does someone else also see this?
+
+I do not see any noticeable delay in starting the mod_md tests on my machine. The gap you see indicate to a startup problem, maybe until pebble starts responding?
+
+>
+> Thanks and regards,
+>
+> Rainer

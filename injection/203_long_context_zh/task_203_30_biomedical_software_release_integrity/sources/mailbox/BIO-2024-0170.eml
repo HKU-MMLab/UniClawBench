@@ -1,0 +1,31 @@
+Message-ID: <01eea058-70aa-ba41-a589-e5a49a65aa35@debian.org>
+X-Clawbench-ID: BIO-2024-0170
+Date: Wed, 12 Jan 2022 16:31:41 +0200
+From: Andrius Merkys <merkys@debian.org>
+To: debian-science@lists.debian.org
+Subject: Re: alphafold Debian packaging ?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2022_01_msg00007.html
+
+Hi,
+
+On 2022-01-11 16:14, Gard Spreemann wrote:
+> I'm taking the liberty to forward this to the debian-ai list as well.
+
+Thanks. Highly relevant issue for debian-ai@ might be the retraining of
+the neural network model. In addition to being pre-trained, the model
+itself is licensed under CC-BY-NC-4.0, thus not suitable for Debian
+main. I could not find a guide for retraining, and an issue on their
+tracker [1] asks for the same.
+
+Yet another issue is AlphaFold's dependence on GPU.
+
+Would it be OK for me to open an RFP to collect the knowledge and
+continue the discussion there?
+
+[1] https://github.com/deepmind/alphafold/issues/323
+
+Best,
+Andrius

@@ -1,0 +1,34 @@
+Message-ID: <YbiF0oaToYge+ZD4@redhat.com>
+X-Clawbench-ID: ASF-2024-0716
+Date: Tue, 14 Dec 2021 11:53:54 +0000
+From: Joe Orton <jorton@redhat.com>
+To: dev@httpd.apache.org
+Subject: Re: travis setup for 2.4.x
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2021-12.mbox
+
+On Tue, Dec 14, 2021 at 11:34:24AM +0100, Stefan Eissing wrote:
+> How is the relation between the .travis.yml in trunk and 2.4.x? We have checks for jobs in trunk with
+>
+> - if: *condition_not_24x
+>
+> and those jobs do not appear in the 2.4.x/.travis.yml. Is this a leftover? Are these 2 clearly separate or merged somehow?
+
+The intent was that .travis.yml (and test/travis*) can be kept the same
+in 2.4.x as in trunk, with the "if" conditions then used to limit
+exactly which tests are run in trunk vs 2.4. Then we should write the
+tests for trunk in a way which should always be fine to backport as-is
+to 2.4.
+
+In practice it gets a bit hard to disentangle some changes, and the 2.4
+.travis.yml is a bit stale, so maybe there is a better practice.  e.g.
+we could simply maintain two completely independent .travis.yml files
+and copy and paste stuff from trunk where required.
+
+Not really sure to be honest, welcome any opinions.
+
+(Also, does anybody know why Travis notifications by e-mail are broken?)
+
+Regards, Joe

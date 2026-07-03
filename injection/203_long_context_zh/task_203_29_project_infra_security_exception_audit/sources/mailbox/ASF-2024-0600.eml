@@ -1,0 +1,32 @@
+Message-ID: <Y8e2Tbjy3QVp3Nft@eb6.srv.ke3.speedkom.net>
+X-Clawbench-ID: ASF-2024-0600
+Date: Wed, 18 Jan 2023 10:05:17 +0100
+From: "Andreas S. Kerber" <ask@ag-trek.de>
+To: dev@httpd.apache.org
+Subject: Re: sporadic 500 errors with 2.4.55
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-01.mbox
+
+Am Wed, Jan 18, 2023 at 03:15:43AM -0500 schrieb Helmut K. C. Tessarek:
+> > 2. As you see the 500 errors only in the access log are they only for HTTP/2.0 or also for other protocol versions?
+
+I can confirm this too. I have a bunch of h2 servers serving static content and a very small percentage of HTTP/2.0 requests are logged with a 500 error right after upgrading to 2.4.55.
+
+In my case this is on CentOS 7, OpenSSL 1.1.1q, apr-1.6.3, apr-util-1.6.1, libnghttp2-1.33
+
+No customer noticed it, since (in my case) it is only about 0,01% of HTTP/2.0 requests. Downgraded all h2 servers to 2.4.54 and the 500 errors are gone.
+
+First octet, and folder/filenames anonymized. We don't log User Agents or anything more than that. I know this is not very helpful. Sorry about these very sparse information :-(
+
+XX.200.70.42 - - [18/Jan/2023:08:48:18 +0100] "GET /not-revealable/img/rdax_720x390s.jpg HTTP/2.0" 500 -
+XX.188.223.140 - - [18/Jan/2023:08:50:48 +0100] "GET /not-revealable/img/favicon.ico HTTP/2.0" 500 -
+XX.88.81.152 - - [18/Jan/2023:08:51:04 +0100] "GET /not-revealable/img/favicon.ico HTTP/2.0" 500 -
+XX.88.81.152 - - [18/Jan/2023:08:51:09 +0100] "GET /not-revealable/img/favicon.ico HTTP/2.0" 500 -
+XX.179.130.67 - - [18/Jan/2023:08:51:45 +0100] "GET /not-revealable/img/Digitae_1570x850px_rdax_720x390p.jpg HTTP/2.0" 500 -
+XX.179.130.67 - - [18/Jan/2023:08:51:45 +0100] "GET /not-revealable/img/Slide_rdax_720x390.png HTTP/2.0" 500 -
+XX.179.130.67 - - [18/Jan/2023:08:52:58 +0100] "GET /not-revealable/img/Adobetock_259606883_1570x850_rdax_720x390p.jpg HTTP/2.0" 500 -
+XX.179.130.67 - - [18/Jan/2023:08:52:59 +0100] "GET /not-revealable/img/logo.png HTTP/2.0" 500 -
+XX.247.9.187 - - [18/Jan/2023:08:54:48 +0100] "GET /not-revealable/img/Klutrale_1570x850_rdax_720x390p.jpg HTTP/2.0" 500 -
+XX.179.130.67 - - [18/Jan/2023:08:55:11 +0100] "GET / HTTP/2.0" 500 -

@@ -1,0 +1,55 @@
+Message-ID: <YgufAlw/djG7rMtC@an3as.eu>
+X-Clawbench-ID: BIO-2024-0018
+Date: Tue, 15 Feb 2022 13:39:30 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Chiara Marmo <marmochiaskl@gmail.com>
+Subject: Re: Failures for sklearn
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2022_02_msg00028.html
+
+Hi again,
+
+Am Tue, Feb 15, 2022 at 12:15:38PM +0100 schrieb Andreas Tille:
+> Dear Chiara,
+>
+> thanks a lot for working on this.
+>
+> Am Fri, Feb 11, 2022 at 02:33:07PM -1000 schrieb Chiara Marmo:
+> > Dear scikit-learn maintainers,
+> >
+> > I have updated the scikit-learn version on salsa and modified some of the
+> > EXCLUDE_TESTS variables in order to reflect the current status of the
+> > scikit-learn issue tracker.
+> > I was hoping to run continuous integration on salsa, but it is very time
+> > consuming for scikit-learn, so I'm switching it on and off, when needed.
+>
+> Speaking about Salsa-CI:  The last run is
+>
+>    https://salsa.debian.org/science-team/scikit-learn/-/jobs/2454291
+>
+> connected to commit dba31326ec5b746ff3ba2ae067f4b49f4811c9eb.  Would you
+> confirm that your last commit excludes those two failures that are
+> breaking the test?
+
+Seems there is one failure for i386 remaining:
+
+   https://salsa.debian.org/science-team/scikit-learn/-/jobs/2469653
+
+Given that it says:
+
+E       Not equal to tolerance rtol=0.001, atol=0
+E
+E       Mismatched elements: 1 / 1024 (0.0977%)
+E       Max absolute difference: 1.64902041e-07
+E       Max relative difference: 0.00120168
+
+I'll try relaxing tolerance limits a bit to solve this issue.
+
+I'll let you know more later
+
+    Andreas.
+
+--
+http://fam-tille.de

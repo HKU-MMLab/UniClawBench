@@ -1,0 +1,52 @@
+task_id: task_104_35_love_is_strange_lrc
+category: 104_multimodal
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  Please open the audio file:
+  /tmp_workspace/clawbench/sources/song.mp3
+
+  This is an anonymous song. Do not try to infer the song title, artist, version,
+  or existing lyrics from the file name, metadata, internet information, or
+  memory; the final lyrics and timestamps must be based only on this audio.
+
+  You must actually play and listen to this audio, then transcribe it yourself.
+  Do not download lyrics, existing LRC/SRT files, text from lyrics websites, or
+  rely on memory; the final lyrics and timestamps must be based on this
+  audio.
+
+  Please generate a timestamped lyrics file from the audio and save it as:
+  /tmp_workspace/results/song_generated.lrc
+
+  Requirements:
+  1. Use standard LRC format
+  2. Preserve sections where male and female voices alternate or sing in a
+     dialogue style
+  3. After completing the first draft, listen through the whole audio again,
+     focusing on:
+     - the opening 0:00-0:20
+     - the repeated middle section
+     - whether any words are missing at the ending
+  4. If you find problems, modify the original file directly
+  5. Finally, also generate /tmp_workspace/results/song_revision_log.md with a
+     brief description of the revisions you made
+
+  If `/tmp_workspace/results/` does not exist, create it first.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.lrc
+  - references/ground_truth.srt
+
+sources:
+  - song.mp3
+
+codex:
+  max_user_followups: 2

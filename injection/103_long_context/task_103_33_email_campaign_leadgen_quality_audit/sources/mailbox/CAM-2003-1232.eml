@@ -1,0 +1,40 @@
+Message-ID: <20020721145013.4dc253d6.che666@uni.de>
+X-Clawbench-ID: CAM-2003-1232
+Date: Sun, 21 Jul 2002 14:50:13 -0400
+From: che <che666@uni.de>
+To: rpm-zzzlist@freshrpms.net
+Subject: Re: Ximian apt repos?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01137.e0afde7fc471f626742746c738013750
+
+On 21 Jul 2002 23:59:59 +1200
+Mark Derricutt <mark@talios.com> wrote:
+
+> On Mon, 2002-07-22 at 06:20, che wrote:
+>
+> > The server mentioned above works again now :)!
+>
+> Any problems with the rpm's they provided?
+>
+>
+> _______________________________________________
+> RPM-List mailing list <RPM-List@freshrpms.net>
+> http://lists.freshrpms.net/mailman/listinfo/rpm-list
+
+#redhat 7.3
+rpm http://apt.sunnmore.net gnome2 73
+rpm-src http://apt.sunnmore.net gnome2 73
+
+#redhat 7.2
+rpm http://apt.sunnmore.net gnome2 72
+rpm-src http://apt.sunnmore.net gnome2 72
+
+thats the correct lines to be added to sources.list for the repository
+
+i just did a apt-get install gnome-session its still progressing :)
+
+_______________________________________________
+RPM-List mailing list <RPM-List@freshrpms.net>
+http://lists.freshrpms.net/mailman/listinfo/rpm-list

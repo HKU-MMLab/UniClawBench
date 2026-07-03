@@ -1,0 +1,29 @@
+Message-ID: <2F5394EC-F48D-4F8C-9DF1-9C748975DE42@eissing.org>
+X-Clawbench-ID: ASF-2024-0449
+Date: Mon, 21 Feb 2022 10:13:46 +0100
+From: Stefan Eissing <stefan@eissing.org>
+To: Rich Bowen <rbowen@rcbowen.com>
+Subject: Re: opinion poll, stale issues
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-02.mbox
+
+Thanks all who participated. Almost all of you seem to be happy with the way things are. I rest my case. 😌
+
+Kind Regards,
+Stefan
+
+> Am 19.02.2022 um 23:59 schrieb Rich Bowen <rbowen@rcbowen.com>:
+>
+> Speaking only for the docs bugs, I have recently looked through them, and while many of them are in the "older than a year" basket, almost all of them are still valid - just we haven't had time to address them yet. It would be a shame to lose this information, as it's what I pick away at when I have spare moments now and then.
+>
+> --Rich
+>
+> On 2/16/22 04:32, Stefan Eissing wrote:
+>> How about we close stale issues on our bugzilla after a year without changes with
+>> WONTFIX
+>> We are sorry, but no one found the interest/time to work on this.
+>> ideally as an automated job somewhere?
+>> Kind Regards,
+>> Stefan

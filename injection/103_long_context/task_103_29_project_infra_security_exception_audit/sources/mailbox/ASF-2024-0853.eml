@@ -1,0 +1,30 @@
+Message-ID: <CACsi252aUDgGikb2oNof4yca2-kDQk1_qkbxVRYNgsy5dPnWug@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0853
+Date: Thu, 13 Jan 2022 23:47:28 -0600
+From: William A Rowe Jr <wrowe@rowe-clan.net>
+To: httpd <dev@httpd.apache.org>, APR Developer List <dev@apr.apache.org>
+Subject: Possible apr 1.7.1 showstopper from httpd test framework
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-01.mbox
+
+In addition to a broken release of brotli (where enc/dec don't specify
+-lbrotlicommon,
+even on trunk, for openssl and other consumers to ferret out that binding), and
+lots of fun changes to build flags in curl 7.81 minor release (who does that?)
+there appears to be one test failure with date formatting in httpd 2.4.x branch
+(including release 2.4.52) and apr 1.7.x branch (including release 1.7.0);
+
+t/modules/include.t ................. 56/98 # Failed test 64 in
+t/modules/include.t at line 373
+
+Have not had time to investigate whether this is a change in perl behavior, or
+possibly a regression caused by apr datetime handling in 1.7.x itself., but any
+release apr-side should hold off just a bit to resolve this question.
+
+And there's the issue of pcre 8.x sources no longer available for download from
+ftp.pcre.org. While they still exist, there's already been one
+security release that
+ignored pcre 8.x considerations, so pcre 10.x obviously can't wait for httpd
+release from trunk.

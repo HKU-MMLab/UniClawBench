@@ -1,0 +1,4 @@
+# Env vars required by this auth task.
+# Values are resolved from configs/privacy.local.env at runtime.
+GITHUB_TOKEN
+SNAPSHOT_MODE

@@ -1,0 +1,26 @@
+Message-ID: <e94bc36f-d91c-0c86-0980-02abae8d72f7@debian.org>
+X-Clawbench-ID: BIO-2024-0352
+Date: Mon, 3 Oct 2022 10:19:41 +0300
+From: Andrius Merkys <merkys@debian.org>
+To: 944785@bugs.debian.org
+Subject: pufferfish wants to link with twopaco and ntcard
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00004.html
+
+Hello,
+
+twopaco has entered testing (yay!), thus I gave its reverse dependency,
+pufferfish (ITP bug #944785), a look. pufferfish carries embedded copies
+of twopaco and ntcard with a modified build system to create static (or
+is it shared?) libraries for these two and then links pufferfish with
+them. For Debian twopaco and ntcard have been un-embedded from
+pufferfish and packaged as separate binary packages instead. However,
+they do not build neither shared nor static libraries, just executables.
+
+I think we can get around by patching twopaco and ntcard builds to
+include static libraries in their binary packages. Does this sound right?
+
+Best,
+Andrius

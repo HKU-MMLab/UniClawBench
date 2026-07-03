@@ -1,0 +1,139 @@
+{
+  "task_id": "task_103_22_acled_mena_remote_warfare_report",
+  "created_at": "2026-04-25T09:19:28.130435+00:00",
+  "date_range_requested": [
+    "1997-01-01",
+    "2025-04-18"
+  ],
+  "regions": [
+    "Middle East",
+    "Northern Africa"
+  ],
+  "event_types_requested": [
+    "Battles",
+    "Violence against civilians",
+    "Remote attacks / Explosions / Remote violence"
+  ],
+  "required_variables": [
+    "capital-area event",
+    "border-proximate event"
+  ],
+  "required_charts": [
+    "remote trend",
+    "capital vs border composition",
+    "interactive geo scatterplot",
+    "factor analysis or indicator decomposition"
+  ],
+  "reference_implementation": {
+    "name": "Project-folder ACLED MENA reference",
+    "repository": "https://github.com/lexieliujy/Project-folder.git",
+    "public_report": "references/project_folder_reference/docs/index.html",
+    "commit": "6b8c829e60a0c3d8684feaf254ac7ed131df4321",
+    "reference_files": {
+      "raw_data": "data/ACLED Data_MENA_Raw.csv",
+      "processed_data": "data/acled_mena_processed.csv",
+      "yearly_summary": "data/yearly_shift_summary.csv",
+      "spatial_summary": "data/spatial_bucket_summary.csv",
+      "country_summary": "data/country_pattern_summary.csv",
+      "report": "docs/index.html",
+      "methods_code": "code/01_data_cleaning.ipynb and code/02_analysis.ipynb"
+    },
+    "use_for_grading": "Use as a canonical reference implementation for method shape, expected chart families, and qualitative findings. Do not require exact row counts because ACLED exports and the prompt's 2025-04-18 cutoff can differ from the repository snapshot."
+  },
+  "reference_fit_assessment": {
+    "meets_prompt": [
+      "Uses ACLED MENA records across Middle East and Northern Africa.",
+      "Builds capital-area and border-proximate indicators.",
+      "Analyzes remote violence, air/drone strikes, border-proximate battles, and capital-area remote attacks.",
+      "Produces a self-contained HTML report with a research question, methods, findings, discussion-like interpretation, conclusion, and Plotly charts.",
+      "Includes an interactive geographic map with a yearly time slider."
+    ],
+    "caveats": [
+      "Repository README describes the final analytical sample as 1997-2024, while the public task asks for 1997-01-01 to 2025-04-18.",
+      "The raw repository CSV inspected on 2026-04-25 contains records through 2025-04-19, but the final yearly/report summaries stop at 2024.",
+      "Therefore this reference should anchor methodology and expected qualitative direction, not an exact date-row-count match."
+    ]
+  },
+  "canonical_methods": {
+    "remote_definition": "event_type == 'Explosions/Remote violence'; air/drone strike is tracked via sub_event_type == 'Air/drone strike'",
+    "capital_area_definition": "event location is the national capital or begins with the capital name, e.g. 'Capital - ...'",
+    "border_proximate_definition": "event coordinate is within 50 km of an international land boundary using Natural Earth country boundaries",
+    "overlap_handling": "Capital-area and border-proximate events are not forced to be mutually exclusive; the reference reports 1,531 overlapping events in the 1997-2024 sample."
+  },
+  "reference_snapshot_1997_2024": {
+    "processed_rows": 343901,
+    "all_remote_events": 208461,
+    "air_drone_strike_events": 90520,
+    "capital_remote_events": 5673,
+    "border_proximate_remote_events": 116845,
+    "all_battles": 95174,
+    "border_proximate_battles": 33502,
+    "capital_area_events": 11081,
+    "border_proximate_events": 165192,
+    "capital_and_border_overlap_events": 1531
+  },
+  "reference_spatial_summary_1997_2024": [
+    {
+      "spatial_bucket": "Other areas",
+      "events": 169159,
+      "fatalities": 452934,
+      "remote_events": 86818,
+      "battles": 59056,
+      "remote_share_pct": 51.32,
+      "battle_share_pct": 34.91
+    },
+    {
+      "spatial_bucket": "Border-proximate areas",
+      "events": 163661,
+      "fatalities": 187536,
+      "remote_events": 115970,
+      "battles": 33043,
+      "remote_share_pct": 70.86,
+      "battle_share_pct": 20.19
+    },
+    {
+      "spatial_bucket": "Capital areas",
+      "events": 11081,
+      "fatalities": 17878,
+      "remote_events": 5673,
+      "battles": 3075,
+      "remote_share_pct": 51.2,
+      "battle_share_pct": 27.75
+    }
+  ],
+  "reference_key_findings": [
+    "Remote violence and air/drone strikes rise sharply over the sample period.",
+    "The reference report does not find a clean spatial shift from border-proximate conflict toward capital-area targeting.",
+    "Capital-area remote events are a small share of remote violence; the reference cites 5,673 capital-area remote events, or 2.72% of remote events in the 1997-2024 sample.",
+    "Border-proximate remote events are much more common; the reference cites 116,845 border-proximate remote events, or 56.05% of remote events in the 1997-2024 sample.",
+    "Border-linked space remains a heavier conflict geography, even as remote attack methods expand."
+  ],
+  "quality_check": {
+    "map_requirements": [
+      "Delivered HTML must contain an interactive geographic scatter/map using actual ACLED longitude/latitude coordinates.",
+      "The map must be geographically plausible for Middle East and Northern Africa records: no lat/lon swap, no mass of points at 0/0, no dominant point cloud outside the requested region, and no placeholder/random coordinates.",
+      "The map must expose temporal variation through a year/time slider, animation frame, or equivalent visible temporal control.",
+      "Capital-area and border-proximate status should be visible by color, facet, hover text, filter, or separate layers when practical."
+    ],
+    "chart_quality_requirements": [
+      "Remote violence / air-drone trend and capital-vs-border composition charts must be based on event-level summaries, not hand-written placeholder numbers.",
+      "Chart titles, legends, axes, and hover labels should be readable enough to compare the output to references/project_folder_reference/docs/index.html.",
+      "The report should not earn a high score if the HTML is openable but the charts are blank, visually broken, or contradict the documented data transformations."
+    ],
+    "reference_report_for_manual_quality_check": "references/project_folder_reference/docs/index.html"
+  },
+  "acceptable_variation": [
+    "Executor may use a prompt-compliant ACLED export through 2025-04-18, so exact counts can differ from the 1997-2024 reference snapshot.",
+    "Executor may use equivalent ACLED current event-type labels if the export UI has changed.",
+    "A different substantive conclusion is acceptable only when backed by documented filters, reproducible variable construction, and visible charts from the downloaded data."
+  ],
+  "reference_implementation_sanitized": true,
+  "quality_check_required": true,
+  "report_quality_anchors": [
+    "capital-area/border-proximate variables created from data",
+    "remote/air-drone trend chart populated",
+    "capital vs border composition chart populated",
+    "interactive map points in MENA with time variation",
+    "method and findings broadly align with the reference implementation"
+  ]
+}

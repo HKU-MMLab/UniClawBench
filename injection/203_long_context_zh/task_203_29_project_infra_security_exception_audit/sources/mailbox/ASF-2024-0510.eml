@@ -1,0 +1,25 @@
+Message-ID: <687A061E-1D3C-4DA6-9050-D391DCBA570B@eissing.org>
+X-Clawbench-ID: ASF-2024-0510
+Date: Tue, 25 Jan 2022 12:57:57 +0100
+From: Stefan Eissing <stefan@eissing.org>
+To: dev@httpd.apache.org
+Subject: trunk test failure, SSL handshake
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-01.mbox
+
+Failure in https://app.travis-ci.com/github/apache/httpd/jobs/556778281
+indicates that the SSL handshake timeout no longer is working.
+Also logs mpm:error several times.
+
+The test opens a socket and sends one byte, then waits for
+the connection to close with the configured timeout.
+
+Run locally with:
+> pytest test/modules/http2/ -vvv -k test_h2_105_02
+
+and get a detailed error_log in test/gen/apache/logs
+
+Kind regards,
+Stefan

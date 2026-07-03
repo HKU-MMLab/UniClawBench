@@ -1,0 +1,47 @@
+{
+  "task_id": "task_102_20_ceramics_shop_theme",
+  "note": "Answer key for a candidate-selection task. Each theme manifest (sources/theme_candidates/<id>.json) declares ecommerce features, responsiveness, a 5-color palette, and product_image_area_ratio. Saturation is computed from the palette hex via HSV (references/reference_analysis.py). Offline + frozen -> deterministic. 'Japanese-minimalist' is operationalized as: muted palette (low average HSV saturation) + imagery-forward layout, on top of the practical hard requirements (working store + responsive).",
+
+  "use_case": "Handmade-ceramics online shop, Japanese-minimalist aesthetic.",
+  "hard_constraints": {
+    "HC1_ecommerce": "cart AND checkout present (a real store, not a blog/editorial)",
+    "HC2_responsive": "responsive layout",
+    "HC3_muted_palette": "average HSV saturation of the 5-color palette <= 0.25 (restrained/minimalist, not loud)",
+    "HC4_imagery_forward": "product_image_area_ratio >= 0.45 (ceramics are visual; product imagery must dominate, not dense text)"
+  },
+  "soft_constraints": {
+    "SC1_lower_saturation": "prefer the more restrained (lower avg saturation) palette",
+    "SC2_higher_imagery": "prefer larger product imagery area"
+  },
+
+  "per_candidate": [
+    {"id":"shibui_ceramics","ecommerce":true,"responsive":true,"avg_saturation":0.151,"product_image_area_ratio":0.62,"hard_pass":true,"missing":[],"note":"warm-neutral muted palette + imagery-forward + full responsive store"},
+    {"id":"kinfolk_journal","ecommerce":false,"responsive":true,"avg_saturation":0.071,"product_image_area_ratio":0.70,"hard_pass":false,"missing":["HC1 ecommerce"],"trap":"BEAUTY TRAP: the most beautiful muted-minimalist palette (sat 0.07) and imagery-forward, but it's an editorial/blog theme with NO cart/checkout — cannot sell."},
+    {"id":"wabi_shop_fixed","ecommerce":true,"responsive":false,"avg_saturation":0.147,"product_image_area_ratio":0.58,"hard_pass":false,"missing":["HC2 responsive"],"trap":"NEAR-MISS: perfect aesthetic + full ecommerce, but a fixed-width desktop-only layout (not responsive) — unusable on mobile."},
+    {"id":"muji_living","ecommerce":true,"responsive":true,"avg_saturation":0.101,"product_image_area_ratio":0.28,"hard_pass":false,"missing":["HC4 imagery_forward"],"trap":"NEAR-MISS: muted, responsive, full store, on-brand palette — but a dense text/catalog layout with small product images (ratio 0.28); not imagery-forward for ceramics."},
+    {"id":"bold_bazaar","ecommerce":true,"responsive":true,"avg_saturation":0.526,"product_image_area_ratio":0.50,"hard_pass":false,"missing":["HC3 muted_palette"],"trap":"responsive store but a colorful saturated palette (0.53) — wrong aesthetic."},
+    {"id":"neon_market","ecommerce":true,"responsive":true,"avg_saturation":0.718,"product_image_area_ratio":0.40,"hard_pass":false,"missing":["HC3 muted_palette","HC4 imagery_forward"],"trap":"loud neon palette (0.72), least minimalist."}
+  ],
+
+  "hard_pass_survivors": ["shibui_ceramics"],
+  "gold": {
+    "selected_id": "shibui_ceramics",
+    "uniqueness": "Only theme satisfying all four hard constraints (store + responsive + muted palette + imagery-forward). No tie-break needed.",
+    "acceptable_alternative": "wabi_shop_fixed or muji_living ONLY IF the executor explicitly identifies the specific gap (not-responsive / small-imagery) and proposes a concrete remedy -> up to ~0.85, since they are on-aesthetic",
+    "key_facts": {
+      "kinfolk_is_a_beauty_trap": "must NOT be picked; gorgeous and most muted but not an ecommerce theme",
+      "wabi_near_miss": "great but not responsive",
+      "muji_near_miss": "on-brand but product images too small",
+      "neon_bold_too_saturated": "fail the muted-palette requirement",
+      "optimal": "shibui_ceramics"
+    }
+  },
+
+  "scoring_anchors": {
+    "must_select": "shibui_ceramics",
+    "must_reject_with_reason": ["kinfolk_journal","neon_market","bold_bazaar"],
+    "must_identify_near_miss": ["wabi_shop_fixed","muji_living"],
+    "min_candidates_evaluated": 5,
+    "tolerance_note": "Grade ordinal outcomes: kinfolk fails ecommerce, wabi fails responsive, muji fails imagery ratio, neon/bold fail the muted-palette threshold, only shibui passes all four. Exact saturation numbers may vary slightly by HSV method but the ordering (shibui/kinfolk/muji/wabi muted vs bold/neon loud) is robust."
+  }
+}

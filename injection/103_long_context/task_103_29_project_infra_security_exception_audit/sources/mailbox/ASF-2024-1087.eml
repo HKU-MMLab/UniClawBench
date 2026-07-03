@@ -1,0 +1,81 @@
+Message-ID: <b5eed20a-aee6-d04d-0885-06c9989ccc10@christopherschultz.net>
+X-Clawbench-ID: ASF-2024-1087
+Date: Wed, 18 May 2022 08:14:00 -0400
+From: Christopher Schultz <chris@christopherschultz.net>
+To: Apache HTTP Server Development List <dev@httpd.apache.org>
+Subject: CVE-2022-1388
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-05.mbox
+
+All,
+
+I've been doing some reading about the recently-publicized Big-IP
+vulnerability and I was wondering if httpd is doing the right thing.
+
+According to Randori's analysis[1] of the flaw, there is confusion
+between Apache httpd and Jetty (introduced by Big-IP) as to which
+component is responsible for authentication and authorization.
+
+The root of the problem is that they have two different authentication
+mechanisms for different types of users. It's possible to send a request
+that tells Apache httpd "I will be authenticated by Jetty" and by the
+tie the request gets to Jetty it says "I've already been authenticated".
+This is done using some headers:
+
+   Authorization: Basic YWRtaW46
+   X-F5-Auth-Token: 1
+   Connection: X-Forwarded-Host, X-F5-Auth-Token
+
+Big-IP uses the X-F5-Auth-Token to tell httpd that Jetty will
+authenticate the request, so it proxies the request through to Jetty.
+But the Connection header causes httpd to strip-out the X-F5-Auth-Token
+header as it's being proxied and then Jetty makes a bad decision with
+the Authorization header.
+
+But I'm wondering about why httpd removes that X-F5-Auth-Token header.
+
+RC 2616[1] says that the Connection header contains headers to remove
+from proxied connections, but:
+
+"
+Message headers listed in the Connection header MUST NOT include
+end-to-end headers, such as Cache-Control.
+"
+
+Section 13.5.1[3] defines hop-by-hop and end-to-end headers:
+
+"
+  The following HTTP/1.1 headers are hop-by-hop headers:
+
+       - Connection
+       - Keep-Alive
+       - Proxy-Authenticate
+       - Proxy-Authorization
+       - TE
+       - Trailers
+       - Transfer-Encoding
+       - Upgrade
+
+    All other headers defined by HTTP/1.1 are end-to-end headers.
+"
+
+Given the above, I believe the interpretation of X-F5-Auth-Token should
+be that it is an end-to-end header, and should therefore NOT be removed
+from the proxied request.
+
+The text does say "All other headers *defined by HTTP/1.1* are
+end-to-end headers" (emphasis mine, of course), and the X-F5-Auth-Token
+header isn't defined by HTTP/1.1 (it's a custom one), but I think the
+definition of specific hop-by-hop headers implies that *all* other
+headers should be considered end-to-end.
+
+Have I missed something in my reading of the spec, or the vulnerability
+report itself?
+
+-chris
+
+[1] https://www.randori.com/blog/vulnerability-analysis-cve-2022-1388/
+[2] https://datatracker.ietf.org/doc/html/rfc2616#section-14.10
+[3] https://datatracker.ietf.org/doc/html/rfc2616#section-13.5.1

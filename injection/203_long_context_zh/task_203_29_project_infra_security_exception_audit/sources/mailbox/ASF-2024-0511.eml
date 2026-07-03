@@ -1,0 +1,40 @@
+Message-ID: <CAKQ1sVPTsvt7H70-Bd0brWU2Lix_Hey8fGjiL7Eo-X0_k3pW6Q@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0511
+Date: Fri, 19 Apr 2024 14:21:27 +0200
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: [WIP] mod_authnz_ldap / mod_ldap support for APR v2 LDAP API
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-04.mbox
+
+On Thu, Apr 18, 2024 at 3:21 PM Joe Orton <jorton@redhat.com> wrote:
+>
+> On Thu, Apr 18, 2024 at 09:40:21AM +0100, Graham Leggett via dev wrote:
+> > Hi all,
+> >
+> > The attached patch is a current work in progress patch for httpd-trunk to use the new apr_ldap API that just landing in APR.
+> >
+> > The highlights:
+> >
+> > - Complete replacement of the previous API.
+> > - Will work against apr-2 (just landed) and apr-util-1.7 (after backport).
+> > - Linking to the underlying LDAP API has been removed and is no longer needed.
+>
+> This design decision seems surprising to me, what does this add? Adding
+> another abstraction layer to allow runtime selection of the LDAP library
+> seems like a step backwards (a lot of complexity with no benefit).
+>
+> Unlike with e.g. a database backend selection users don't care about
+> picking/configuring among many LDAP libraries.
+
+FWIW I tried some time ago to avoid the very same kind of complexity
+with apr_crypto vs TLS/SSL library but it was -1'd.
+I would prefer direct linking of those libraries too, databases are a
+special case which we shouldn't generalize for every library used by
+APR (IMHO).
+
+
+Regards;
+Yann.

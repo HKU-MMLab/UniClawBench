@@ -1,0 +1,22 @@
+Message-ID: <20220410200842.1365.43271@mail.envs.net>
+X-Clawbench-ID: BIO-2024-0082
+Date: Sun, 10 Apr 2022 20:08:42 -0000
+From: "Mohd Bilal" <rmb@envs.net>
+To: debian-med@lists.debian.org
+Subject: RFS: added autopkgtest for pplacer
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_04_msg00032.html
+
+Hello team,
+
+I've added autopkgtest for pplacer[1] . As suggested in the matrix room , I've used the test prescribed in the Makefile as well as included some of the commands from the pplacer tutorial[2] .
+
+Requesting someone to review and sponsor my changes.
+
+[1] - https://salsa.debian.org/med-team/pplacer
+[2] - https://fhcrc.github.io/microbiome-demo/
+
+Regards,
+rmb

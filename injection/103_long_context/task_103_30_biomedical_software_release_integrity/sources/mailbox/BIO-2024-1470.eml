@@ -1,0 +1,52 @@
+Message-ID: <Z0wqv4PxgdyhDE_1@emlwks999.eu>
+X-Clawbench-ID: BIO-2024-1470
+Date: Sun, 1 Dec 2024 10:22:07 +0100
+From: Étienne Mollier <emollier@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: December is bug squashing month
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_12_msg00000.html
+
+Greetings all,
+
+Andreas Tille, on 2024-11-30:
+> I'd like to invite everybody to do join our advent calendar bug
+> squashing party.  Its fun ... and if you need help to fix some bug just
+> raise your question on Matrix or here on the list.
+
+Count me in!  :)
+
+> For those who want to squash bugs I recommend the following
+> resources:
+>
+>  1. Classical BTS:
+>      https://bugs.debian.org/debian-med-packaging@lists.alioth.debian.org
+>     Please note that at the end is a list of "Forwarded bugs" which also
+>     might need fixing.
+
+If people look at the page, there are several bugs labelled
+"Python SyntaxWarning", they are good both for newcomers to get
+on tracks and for seasoned developpers who might want some
+warmup.  It would be nice to have all those resolved before
+trixie release.
+
+We also have a sprawl of "Fails to build source after successful
+build" from last year if we were to run out of Python syntax
+warnings.  Those are usually low hanging fruits once one set up
+one's workflow to reproduce the double build errors.  See the
+wiki[1] to easily reproduce the issue with your workflow.
+
+[1]: https://wiki.debian.org/qa.debian.org/FTBFS/DoubleBuild
+
+> Any contribution to increase the quality of our packages is really
+> welcome.  As promised earlier I will join this effort despite my
+> DPL-"vacation" from Debian Med team.
+
+Have a nice Advent period,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  pgp: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/1, please excuse my verbosity
+   `-    on air: IQ - Fallout

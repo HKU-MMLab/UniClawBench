@@ -1,0 +1,36 @@
+Message-ID: <YdWLBoCIUe/7G6of@redhat.com>
+X-Clawbench-ID: ASF-2024-0695
+Date: Wed, 5 Jan 2022 12:11:50 +0000
+From: Joe Orton <jorton@redhat.com>
+To: dev@httpd.apache.org
+Subject: Re: ocsp.t failing
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-01.mbox
+
+On Sat, Dec 25, 2021 at 10:56:59AM +0100, Christophe JAILLET wrote:
+> Hi,
+>
+> the last travis jobs have failed on trunk because of ocsp.t.
+>
+> Unless I missed something, the only change with previous successful build is
+> r1896361:
+>
+> https://github.com/apache/httpd/commit/442b4b167f19e13df918402a7af28fe4a50c2730
+>
+> I can't see any potential link.
+
+I wonder if this is due to change in the OpenSSL version in Ubuntu?
+
+The OpenSSL 3 builds have continued passing consistently.
+
+Can anybody reproduce this on an Ubuntu system?  I don't see a failure
+on Fedora 35 with OpenSSL 1.1.1l.
+
+> BTW, ML don't receive anymore travis failures?
+
+I filed this: https://issues.apache.org/jira/browse/INFRA-22619 but not
+sure how to move it forward, infra have marked it waiting on user.
+
+Regards, Joe

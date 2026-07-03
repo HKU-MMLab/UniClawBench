@@ -1,0 +1,34 @@
+task_id: task_103_01_headphone_review_price_compare
+category: 103_long_context
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I am planning to buy over-ear headphones and want to first check whether two Chinese and international video sources overlap in their recommendations.
+
+  Install the `bilibili-all-in-one` skill from ClawHub, search Bilibili for `2025 headphone recommendations over-ear`, and focus on whether the creator who seems to be called PoorPlayers has a relevant video. Also find the 2025 over-ear headphone recommendation video by `This is Tech Today` on YouTube. Save screenshot evidence for both recommendation sources you find.
+
+  I want to know whether the two sources recommend any brands in common, and which specific products they recommend under that brand. If there is only one common product, directly compare whether Amazon or Walmart is cheaper in the Los Angeles area, and save the product page and price screenshot from the cheaper platform. If the products are not the same, create a specification comparison that includes at least Amazon price, Walmart price, frequency response range, impedance, sensitivity, driver type, and for each product record the cheaper platform and the corresponding product screenshot.
+
+  Finally, write the conclusion, screenshot paths, product links, and recommendation to `/tmp_workspace/results/headphone_compare.md`.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/product_evidence/amazon_sony_ult_wear_product.png
+  - references/product_evidence/amazon_sony_ult_wear_search.png
+  - references/product_evidence/amazon_sony_wh1000xm6_search.png
+  - references/product_evidence/bilibili_poorplayers_video.png
+  - references/product_evidence/sony_ult_wear_specs.png
+  - references/product_evidence/sony_wh1000xm6_specs.png
+  - references/product_evidence/walmart_sony_ult_wear_search.png
+  - references/product_evidence/walmart_sony_wh1000xm6_search.png
+  - references/product_evidence/youtube_this_is_tech_today_video.png
+codex:
+  max_user_followups: 2

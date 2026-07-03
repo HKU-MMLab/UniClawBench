@@ -1,0 +1,36 @@
+Message-ID: <cfa41380-3e0b-86eb-0e1a-f01141510140@apache.org>
+X-Clawbench-ID: ASF-2024-0705
+Date: Fri, 19 Apr 2024 10:07:31 +0200
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: [WIP] mod_authnz_ldap / mod_ldap support for APR v2 LDAP API
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-04.mbox
+
+On 4/18/24 10:40 AM, Graham Leggett via dev wrote:
+> Hi all,
+>
+> The attached patch is a current work in progress patch for httpd-trunk to use the new apr_ldap API that just landing in APR.
+>
+> The highlights:
+>
+> - Complete replacement of the previous API.
+> - Will work against apr-2 (just landed) and apr-util-1.7 (after backport).
+> - Linking to the underlying LDAP API has been removed and is no longer needed.
+> - New LDAP API is based on pool lifetimes.
+>
+> Still to be done:
+>
+> - Rebind needs doing from scratch in APR, the old way blocked on some platforms.
+> - Nested groups needs reimplementing, as we can now do parallel LDAP queries.
+
+Would it be possible to provide this patch as a PR against trunk on Github? I think that would ease reviewing it.
+I am quite aware that this moves some gory detail discussion of that patch away from the dev list here and over
+to the PR where it is likely harder to find later. Nevertheless I think that the easier way to review the patch combined with
+the tests applied to the PR via Github actions outweigh this drawback.
+
+Regards
+
+Rï¿½diger

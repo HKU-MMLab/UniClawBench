@@ -1,0 +1,39 @@
+Message-ID: <ZJ87QFjP+laZNP3A@an3as.eu>
+X-Clawbench-ID: BIO-2024-1477
+Date: Fri, 30 Jun 2023 22:29:52 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: César Pomar <cesarpomar18@gmail.com>
+Subject: Re: Request for Sponsorship: VeryFastTree - Parallelized and Optimized Version of FastTree
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_06_msg00038.html
+
+Hi César,
+
+Am Fri, Jun 30, 2023 at 04:16:05PM +0200 schrieb César Pomar:
+>
+> That will be simple. VeryFastTree has the same interface as FastTree. The
+> test
+> that exists for FastTree in its package should be valid for VeryFastTree as
+> well.
+>
+> https://salsa.debian.org/med-team/fasttree/-/tree/master/debian/tests
+
+Sounds pretty sensible.  I'll implement this soon.
+
+> Based on what you've mentioned, I think it would be best to update xxhash
+> and robin-map to modern versions that can later be replaced by the Debian
+> versions. By doing this, I will also solve the issue with the CMakeLists
+> file.
+> Once everything is correct, I can package it as version 4.0.1.
+
+Very cool!  Thanks a lot for your cooperation
+
+     Andreas.
+
+PS: Hope I get DKIM working quickly since also gmail rejects my mails
+    and I can't CC you.
+
+--
+http://fam-tille.de

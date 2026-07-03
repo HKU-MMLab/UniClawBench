@@ -1,0 +1,63 @@
+Message-ID: <20154.1030531468@munnari.OZ.AU>
+X-Clawbench-ID: CAM-2003-0434
+Date: Wed, 28 Aug 2002 17:44:28 +0700
+From: Robert Elz <kre@munnari.OZ.AU>
+To: exmh-workers@spamassassin.taint.org
+Subject: Patch to enable/disable log
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00224.937d82e92fbb4a21cc11cc49310eff39
+
+While I was playing with the past issues, it annoyed me that there was
+no easy way to make the log stop growing (I don't mean to truncate it,
+I mean to just freeze it for a while).
+
+The following patch adds a new button to the log window, which allows
+the log to be switched on/off (the button says "Disable" when the
+log is enabled, and the button disables it, and "Enable" when the log
+is frozen, and the button enables it again).
+
+kre
+
+--- main.tcl	Wed Aug 21 15:01:48 2002
++++ /usr/local/lib/exmh-2.5/main.tcl	Wed Aug 28 17:36:59 2002
+@@ -385,6 +385,9 @@
+ 	ExmhLogCreate
+ 	wm withdraw $exmh(logTop)
+     }
++    if {! $exmh(logWrite)} {
++	return
++    }
+     if [info exists exmh(log)] {
+ 	catch {
+ #	    $exmh(log) insert end " [bw_delta] "
+@@ -407,6 +410,9 @@
+     set exmh(logWindow) 1
+     Exwin_Toplevel .log "Exmh Log" Log
+     set exmh(logTop) .log
++    set exmh(logDisableBut) \
++	[Widget_AddBut $exmh(logTop).but swap "Disable" ExmhLogToggle]
++    set exmh(logWrite) 1
+     Widget_AddBut $exmh(logTop).but trunc "Truncate" ExmhLogTrunc
+     Widget_AddBut $exmh(logTop).but save "Save To File" ExmhLogSave
+     set exmh(logYview) 1
+@@ -457,6 +463,12 @@
+     } msg] {
+ 	Exmh_Status "Cannot save log: $msg" error
+     }
++}
++proc ExmhLogToggle {} {
++    global exmh
++
++    set exmh(logWrite) [expr ! $exmh(logWrite)]
++    $exmh(logDisableBut) configure -text [lindex {"Enable " Disable} $exmh(logWrite)]
+ }
+ #### Misc
+
+
+
+_______________________________________________
+Exmh-workers mailing list
+Exmh-workers@redhat.com
+https://listman.redhat.com/mailman/listinfo/exmh-workers

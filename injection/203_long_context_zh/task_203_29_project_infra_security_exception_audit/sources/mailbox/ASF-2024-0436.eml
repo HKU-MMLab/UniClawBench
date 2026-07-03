@@ -1,0 +1,79 @@
+Message-ID: <B9D7D52D-9B22-4E4E-B996-F565FD346529@jagunet.com>
+X-Clawbench-ID: ASF-2024-0436
+Date: Mon, 16 Dec 2024 07:22:41 -0500
+From: Jim Jagielski <jim@jagunet.com>
+To: dev@httpd.apache.org
+Subject: Re: httpd 2.4 -> next
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-12.mbox
+
+> On Dec 16, 2024, at 3:12 AM, Ruediger Pluem <rpluem@apache.org> wrote:
+>
+>
+>
+> On 12/14/24 10:05 AM, Thomas Meyer wrote:
+>>
+>>
+>> Am 13. Dezember 2024 22:12:56 MEZ schrieb Eric Covener <covener@gmail.com>:
+>>> On Fri, Dec 13, 2024 at 9:17 AM Jim Jagielski <jim@jagunet.com> wrote:
+>>>>
+>>>> Hi All!
+>>>>
+>>>> Come '25 I'll have some cycles to get back into some serious httpd work, and am looking to find out what our next steps are. I've followed along the lists but have really not been active. Do we have a plan forward, past httpd-2.4? I'd like to see what areas I could look into to help us drive forward. Some things that I want to do is reboot my work on various proxy enhancements, including auto discovery and balancer metrics.
+>>>>
+>>>> Some considerations and potential topics of discussion:
+>>>>
+>>>> 1. On trunk, baseline something newer than c89
+>>>> 2. Update the autoconf suite
+>>>> 3. future roadmap
+>>>>
+>>>> Basically the question is: Is httpd basically in maintenance mode or do we want to try to get some momentum going?
+>>
+>> The project seems to be basically dead from my experience.
+>
+> I disagree that it is dead, but I admit that is has very low activity currently and since quite some time.
+>
+>>
+>>>
+>>> Other than the obvious shortage of contributors, I think one big
+>>
+>> As someone who has tried to get a patch merged for over one year now, my experience is a bit different. Only a few people seem to react on pull requests or mailing list at all, look at all the open GitHub PRs, that are open since month.
+>>
+>> There may be a lack of contributors but there seems to be even a greater lack of maintainers and their time :-(
+>
+> I am sorry about this and I am somewhat guilty to it as well. But as you and others already pointed out it is mainly a lack of
+> time resources which affects me as well. I think none of us doing the development here is currently full time dedicated to this
+> project and hence our main focus is to "keep the lights on" and then spend the remaining time on the things that itches us most.
+>
+>>
+>>> dilemma is that a post-2.4 needs to thread such a tiny needle where
+>>> it's both similar enough for people to be able to move to it (skills,
+>>> compat, migration wise), but different enough to justify the extra
+>>> effort on both sides.
+>>>
+>>> There's also the baggage of httpd and C. While individually this might
+>>> be a strength to you and I (and any other long-time contributors), I
+>>> don't think it is for prospective contributors, possible
+>>> sponsors/partners, or users.
+>>>
+>>> I only follow developments in other servers at a very cursory level,
+>>> but is there something we can do on top of pingora (the rust
+>>> cloudflare library-ish thing) that makes it easier for people who like
+>>> httpd to adopt for example?
+>>
+>
+> I am not sure if writing things in Rust would attract that much more developers.
+> I think our own Rust experience with mod_tls and rustls is a bit mixed and we
+> hit the issue with frequent API changes on the Rust side or more specifically on the
+> rustls side as mentioned in other posts to this thread.
+>
+
+I am also unsure the value of a language change at this point, and especially how many current developers are savvy enough with Rust.
+
+Personally, I think some agreed upon Roadmap might be the more effective route. If people knew the direction we are going, and that we are kind of committed to that direction, then potential contributors would be more apt to join, if they knew that they were joining a project with a future.
+
+--
+Jim
+            "If you can dodge a wrench, you can dodge a ball."

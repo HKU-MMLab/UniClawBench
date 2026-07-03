@@ -1,0 +1,28 @@
+Message-ID: <PR_kwDOFoJrE85chEpL-4d0665bf-5760-4098-87f3-41ebd2c6dd21@gitbox.apache.org>
+X-Clawbench-ID: ASF-2024-0733
+Date: Mon, 23 Oct 2023 13:02:08 -0000
+From: =?utf-8?q?iamamoose_=28via_GitHub=29?= <git@apache.org>
+To: dev@httpd.apache.org
+Subject: =?utf-8?q?Re=3A_=5BPR=5D_Document_non-impact_of_CVE-2023-44487_=5Bhttpd-site?=  =?utf-8?q?=5D?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-10.mbox
+
+iamamoose commented on PR #10:
+URL: https://github.com/apache/httpd-site/pull/10#issuecomment-1775143513
+
+   > Any updates regarding this?
+
+   Hi, see https://httpd.apache.org/security/vulnerabilities_24.html#CVE-2023-45802
+
+
+--
+This is an automated message from the Apache Git Service.
+To respond to the message, please log on to GitHub and use the
+URL above to go to the specific comment.
+
+To unsubscribe, e-mail: dev-unsubscribe@httpd.apache.org
+
+For queries about this service, please contact Infrastructure at:
+users@infra.apache.org

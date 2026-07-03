@@ -1,0 +1,30 @@
+Message-ID: <20021008100959.GL11235@linuxmafia.com>
+X-Clawbench-ID: CAM-2003-1300
+Date: Tue, 08 Oct 2002 03:09:59 -0700
+From: Rick Moen <rick@linuxmafia.com>
+To: ilug@linux.ie
+Subject: Re: [ILUG] packaging risks and the reputation of linux distributions
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00150.a4c5a8aaccd6b54f1000e9fa02f53114
+
+Quoting Brendan Kehoe (brendan@zen.org):
+
+> As a workaround, the various distributions could use a GPG singature
+> to verify correctness of the file.  Since the distributor's secret key
+> is required to create that signature, it would add a pretty
+> significant step that would have to be taken to make it possible to
+> replace both a rpm or apt file and its accompanying signature.
+
+There are complex problems inherent in attempts to implement this.
+http://linuxmafia.com/~rick/linux-info/debian-package-signing
+
+--
+Cheers,                        My pid is Inigo Montoya.  You kill -9
+Rick Moen                      my parent process.  Prepare to vi.
+rick@linuxmafia.com
+--
+Irish Linux Users' Group: ilug@linux.ie
+http://www.linux.ie/mailman/listinfo/ilug for (un)subscription information.
+List maintainer: listmaster@linux.ie

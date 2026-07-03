@@ -1,0 +1,60 @@
+task_id: task_105_36_receipt_packet_gui_audit
+category: 105_cross_platform
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I dropped a small vendor receipt packet here:
+
+      /tmp_workspace/clawbench/sources/receipt_packet/
+
+  Please inspect the receipt images with the desktop file manager and a
+  real image or PDF viewer. The packet was copied from a shared drive,
+  so watch for repeated scans or near-duplicate files that should not be
+  counted twice.
+
+  Create a LibreOffice Calc spreadsheet at:
+
+      /tmp_workspace/results/receipt_packet_audit.ods
+
+  The spreadsheet should have one row per source file with these fields:
+  source file, accepted/excluded, duplicate-of if any, item count,
+  merchant or short receipt label if visible, category, total amount,
+  and notes. Also include a summary section with accepted receipt count,
+  excluded duplicate count, and final approved total across unique
+  receipts.
+
+  Then use LibreOffice Writer to write a short audit memo at:
+
+      /tmp_workspace/results/receipt_packet_memo.odt
+
+  Also export or save a plain text copy at:
+
+      /tmp_workspace/results/receipt_packet_memo.txt
+
+  Save screenshots under `/tmp_workspace/results/gui_evidence/` showing:
+  the source folder or opened receipt image, the Calc spreadsheet, and
+  the Writer memo. Please use the real GUI apps for review and final
+  screenshots; a script-only spreadsheet/memo is not enough.
+
+sources:
+  - receipt_packet/
+
+services:
+  - name: receipt-gui-setup
+    path: receipt-gui-setup
+    start: bash install.sh
+    oneshot: true
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+codex:
+  max_user_followups: 2

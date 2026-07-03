@@ -1,0 +1,17 @@
+task_id: task_105_14_iwatch_web_compare
+category: 105_cross_platform
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+recording: none
+headed: auto
+task: "You are an engineer who travels frequently and also wants to track exercise and health metrics. You want to buy an Apple Watch Series 9, 45mm, Midnight Aluminum Case, Midnight Sport Band, GPS version, shipped to Los Angeles, USA. Use only the browser to complete the following task: find one product page on each of Amazon, eBay, and AliExpress that matches this specification as closely as possible, and also open Apple's official product page to confirm the target configuration.\n\nCompare each ecommerce page on:\n- price\n- shipping / delivery estimate\n- return policy\n- seller/store credibility\n- condition (must distinguish new / renewed / used / open-box)\n- whether the GPS / Cellular version matches\n- whether the case size, color, material, and band match\n- the 2 most common pros and 2 cons from reviews or page information\n\nWrite the final conclusion to:\n\n    /tmp_workspace/results/apple_watch_series9_45mm_midnight_web_compare.md\n\nThe recommendation should consider total cost, seller credibility, return/exchange convenience, whether it is new, whether the GPS version is correct, and consistency with Apple's official specifications, rather than only the lowest price. If a platform cannot provide a sufficiently credible or sufficiently matching product, state that explicitly and explain the missing fields. Do not mix Apple Watch SE, Series 8, Series 10, Ultra, 41mm, different colors, different case materials, Cellular versions, or renewed/used products into the recommendation comparison for a new Apple Watch Series 9 45mm Midnight Aluminum GPS; if only those mismatched items are available, they must be marked as unsuitable for recommendation.\n"
+codex:
+  max_user_followups: 2
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/process_evidence/amazon_iwatch.png

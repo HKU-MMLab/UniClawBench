@@ -1,0 +1,58 @@
+Message-ID: <YkVI7S2vLg2rt886@an3as.eu>
+X-Clawbench-ID: BIO-2024-0409
+Date: Thu, 31 Mar 2022 08:23:41 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Self Introduction
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_03_msg00055.html
+
+Hi,
+
+Am Thu, Mar 31, 2022 at 01:32:31AM +0530 schrieb Nilesh Patra:
+> On Thu, Mar 31, 2022 at 12:43:57AM +0530, Vinay wrote:
+> > I am Vinay from India, a student currently pursuing Computer Science
+> > Engineering.
+>
+> Hello and welcome. I am from India as well so it is nice to
+> see you on this list.
+
+Welcome also from me from Europe. :-)
+
+> > I use GNU/Linux and have been using Debian for 2 years.
+> > I have basic packaging skills, recently I started my journey in packaging a
+> > node module (https://www.npmjs.com/package/prosemirror-view).
+>
+> Cool. But I do not see this package in the archive.
+> Am I misunderstanding something?
+
+I guess Nilesh means that there is no repository on salsa.debian.org.  I
+guess you have a login there and you want to become a member of med-team
+to contribute sensibly.
+
+> > Furthermore, I have little knowledge about biology and medical applications,
+> > and also would like to learn about it to get to started.
+> > I would like to contribute to Debian.
+>
+> Great, what tasks are you interested in doing?
+> If you are not sure, then for newcomer tasks you
+> could look into packages needing autopkgtest[1] pick a package
+> and add an autopkgtest to it.
+
+The list Nilesh linked to[1] is ordering packages without autopkgtests
+in the sequence of their usage number by popcon.  Please note that the
+table contains a column which gives a hint about graphical user interface
+where automated testing is probably quite hard (but might be possible
+if the software contains some command line interface).
+
+Kind regards
+
+     Andreas.
+
+> [1]: https://salsa.debian.org/med-team/community/helper-scripts/-/blob/master/debian-med-tests.txt
+
+
+--
+http://fam-tille.de

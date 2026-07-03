@@ -1,0 +1,53 @@
+task_id: task_202_19_museum_exhibit_template
+category: 202_exploration_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我们这家小型博物馆要把一批历史照片藏品作为数字展览搬到线上，我需要选择
+  一个站点模板。该藏品有实实在在的档案要求：
+
+  - 每件藏品都必须带有出处元数据：一段说明文字（caption）、署名（拍摄者 /
+    来源）、一份权利声明（rights statement），以及入藏编号（accession number）；
+  - 展览是按时间顺序排列的，所以我们需要一条时间线（timeline）；
+  - 扫描件是高分辨率的，所以我们需要 IIIF / 大图支持。
+
+  一组固定的候选模板离线提供，位于：
+
+      /tmp_workspace/clawbench/sources/template_candidates/
+
+  每个模板有一份清单（`<id>.json`），声明其 schema 支持的藏品元数据字段及
+  其功能；`index.json` 列出它们并重述所需的字段/功能。请阅读这些清单——
+  不要凭模板听起来有多漂亮来挑选。
+
+  请判断哪些模板真正能满足所有 hard 要求（四个出处字段 且 一条时间线 且
+  IIIF），然后恰好挑选一个。注意：最吸引人的画廊 / scrollytelling 模板缺少
+  rights 和 accession number 这类档案字段，而有些元数据齐全的模板又缺少
+  时间线。
+
+  请保存：
+  - `/tmp_workspace/results/template_choice.json`：你的 `selected_id`、它如何
+    满足每个必需字段和功能（引用清单），以及加载这批带出处 + 时间线的藏品
+    的最小步骤。
+  - `/tmp_workspace/results/template_evaluation.json`：每个模板对四个必需
+    字段和两项必需功能的覆盖情况、keep/reject，以及对每个被淘汰的模板给出
+    它具体未通过哪一项（或哪几项）要求。
+  - `/tmp_workspace/results/template_method.json`：你阅读了哪些清单，以及
+    你是如何核查每个字段/功能的（可复现）。
+
+  这是完全离线的——不要从网络获取任何内容。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+sources:
+  - template_candidates/
+
+codex:
+  max_user_followups: 2

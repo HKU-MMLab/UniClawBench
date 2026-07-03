@@ -1,0 +1,30 @@
+Message-ID: <Y0GbJ5HHZZ6zjyXw@an3as.eu>
+X-Clawbench-ID: BIO-2024-0103
+Date: Sat, 8 Oct 2022 17:45:43 +0200
+From: Andreas Tille <andreas@fam-tille.de>
+To: Martin Uecker <uecker@tugraz.at>
+Subject: Re: BART 0.8.0
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00023.html
+
+Am Sat, Oct 08, 2022 at 03:41:49PM +0200 schrieb Martin Uecker:
+> > Thanks a lot for preparing these packages which I just uploaded.
+>
+> Thank you! I assume the bart package is still being processed?
+
+Hmmmm, I need to check my upload - thanks for mentioning it.
+Bart-cuda arrived in unstable but bart is pending.  I'll check later.
+
+> I will do this soon, but probably wait in case other issues
+> emerge with the new packages.
+
+Sounds reasonable.
+
+Kind regards
+
+     Andreas.
+
+--
+http://fam-tille.de

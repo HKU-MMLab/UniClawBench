@@ -1,0 +1,44 @@
+Message-ID: <20020206162953.C10950@pihlaja.kotilo>
+X-Clawbench-ID: CAM-2003-1484
+Date: Wed, 06 Feb 2002 16:29:53 +0200
+From: Peter Peltonen <pisara@iki.fi>
+To: rpm-zzzlist@freshrpms.net
+Subject: Apt problems
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01093.a14e2f376790556ad2580f10f761f2cb
+
+Two issues:
+
+--<snip>--
+Sorry, but the following packages have unmet dependencies:
+  openssh: Depends: openssl (= 0.9.5a) but 0.9.6b-8 is installed
+  php-pgsql: Depends: postgresql but it is not installed
+             Depends: libpq.so.2
+E: Unmet dependencies. Try using -f.
+--</snip>--
+
+1. I have the following openssl packages installed:
+
+--<snip>--
+openssl-perl-0.9.6b-8
+openssl-0.9.6b-8
+openssl095a-0.9.5a-11
+openssl-devel-0.9.6b-8
+--</snip>--
+
+The openssl095a package should provide the openssl-0.9.5a compatibility
+but apt doesn't think so?
+
+2. I have postgresql installed from the source. So that's why I need
+php-pgsql. Is there a way to tell apt about packages I don't want it to
+complain about?
+
+--
+Peter
+
+
+_______________________________________________
+RPM-List mailing list <RPM-List@freshrpms.net>
+http://lists.freshrpms.net/mailman/listinfo/rpm-list

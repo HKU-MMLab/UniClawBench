@@ -1,0 +1,21 @@
+Message-ID: <Y+Zdcb2MySqWsUUI@homeworld.netbsd.org>
+X-Clawbench-ID: ASF-2024-0812
+Date: Fri, 10 Feb 2023 15:06:25 +0000
+From: Emmanuel Dreyfus <manu@netbsd.org>
+To: dev@httpd.apache.org
+Subject: Re: MS-WDV and other MS extensions
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-02.mbox
+
+On Fri, Feb 10, 2023 at 09:53:47AM -0500, Eric Covener wrote:
+> I like the third case with an all/on option.  If it will need to be
+> per-directory, maybe an Options like syntax would make sense?
+
+Do you suggests adding values to Options, or to create a DAVoptions
+directive?
+
+--
+Emmanuel Dreyfus
+manu@netbsd.org

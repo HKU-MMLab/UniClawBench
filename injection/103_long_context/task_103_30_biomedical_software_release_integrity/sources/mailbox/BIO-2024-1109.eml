@@ -1,0 +1,75 @@
+Message-ID: <Y9e63xFuEDZfjm6s@an3as.eu>
+X-Clawbench-ID: BIO-2024-1109
+Date: Mon, 30 Jan 2023 13:41:03 +0100
+From: Andreas Tille <tille@debian.org>
+To: Nilesh Patra <nilesh@debian.org>
+Subject: Re: Remaining numpy 1.24 issues on 32bit architectures
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_01_msg00059.html
+
+Hi Nilesh,
+
+Am Mon, Jan 30, 2023 at 05:07:37PM +0530 schrieb Nilesh Patra:
+>
+> On Mon, Jan 30, 2023 at 09:12:57AM +0100, Andreas Tille wrote:
+> > I made some tiny steps forward ("only" 84 failures instead of 89 when I
+> > wrote my first mail) in the numpy 1.24 migration for 32bit architectures
+> > but I'm facing issues I do not have a real clue for.  In
+> >
+> >    https://salsa.debian.org/med-team/python-skbio/-/blob/master/debian/patches/numpy-1.24.patch#L123-L126
+>
+> Apologies for pointing the discussion into an orthogonal direction for
+> once. Ofcourse, we could try fixing these, but if you look closely, skbio
+> has never built on 32 bit archs ever since around 2016 on i386[3] and
+> it has never built on the rest of 32 bit ever since it entered debian[4]
+> and now this new upstream FTBFS that you point to, won't really block
+> migration in any way.
+
+Hmmm, I have checked
+   https://buildd.debian.org/status/package.php?p=python-skbio
+before I started to investigate time into this and it says `uncompiled`
+for the 32bit architectures.
+
+> So my question is this: Why are we trying hard to fix this on 32-bit _now_
+> given that the upstream support has never been solid for this package on
+> 32-bit archs?
+
+I admit the 0.5.8-2 has migrated which I did not expected since when
+I was looking excuses contained those build problems.
+
+> > ...
+> > which obviosly[2] failed.  I wonder whether someone might give some
+> > hints how to get dtypes consistently to one integer representation which
+> > is the background of nearly all these test suite issues.
+>
+> I can think of two alternatives to fix this:
+>
+> 1. There are a few type conversions to "int" (.astype(int)) in the skbio source code.
+> This defaults to 32-bit integer type on 32-bit machines. Explicitly
+> casting them to 64-bit can fix this. I happened to write a similar patch
+> for another package recently, see[5] if it helps.
+>
+> 2. Just ignore datatypes while comparing pandas dataframes with
+> `check_dtype` parameter. An example/reference patch here[6]
+
+Thanks for the additional hints (and have a nice trip).
+
+Kind regards
+   Andreas.
+
+> > > [1] https://buildd.debian.org/status/package.php?p=python-skbio&suite=experimental
+> > [2] https://salsa.debian.org/med-team/python-skbio/-/jobs/3868951
+> [3]: https://buildd.debian.org/status/logs.php?pkg=python-skbio&arch=i386
+> [4]:https://buildd.debian.org/status/logs.php?pkg=python-skbio&arch=armhf
+> [5]: https://salsa.debian.org/med-team/python-bioframe/-/blob/master/debian/patches/32-bits.patch
+> [6]: https://salsa.debian.org/python-team/packages/python-upsetplot/-/blob/master/debian/patches/ignore-dtype-while-asserting.patch
+>
+> --
+> Best,
+> Nilesh
+
+
+--
+http://fam-tille.de

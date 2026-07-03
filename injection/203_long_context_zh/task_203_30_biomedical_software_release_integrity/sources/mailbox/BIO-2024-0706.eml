@@ -1,0 +1,21 @@
+Message-ID: <Y0axlMY9wrxH85jv@hermes.hilbert.loc>
+X-Clawbench-ID: BIO-2024-0706
+Date: Wed, 12 Oct 2022 14:22:44 +0200
+From: Karsten Hilbert <Karsten.Hilbert@gmx.net>
+To: Leonardo M. Ramé <leonardo.rame@informemedico.com.ar>
+Subject: Re: Acquiring Dental RVG on Linux
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00047.html
+
+Am Wed, Oct 12, 2022 at 09:08:47AM -0300 schrieb Leonardo M. Ramé:
+
+> Good news!, Horos shows the image exactly as the software from Carestream. Now it's a matter of looking at their source code.
+
+Ha !  Now *that* is interesting. I am pretty curious as to
+what they do ...
+
+Karsten
+--
+GPG  40BE 5B0E C98E 1713 AFA6  5BC0 3BEA AC80 7D4F C89B

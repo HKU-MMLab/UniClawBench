@@ -1,0 +1,52 @@
+Message-ID: <CACsi252o45mVP+L7HwoqJ7T6UwgO1kP17Jm7PKtX4XSPHY9r-A@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0245
+Date: Tue, 25 Jan 2022 23:11:46 -0600
+From: William A Rowe Jr <wrowe@rowe-clan.net>
+To: dev@httpd.apache.org
+Subject: Re: TLS neverbleed design
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-01.mbox
+
+Considering this from the most extreme example, a hosting service
+where co-parties to using the server container are in contention to
+steal one anothers' identities, it seems the right answer is...
+
+Entirely isolate the network transport to the specific physical or
+SNI-based vhost in a distinct process that knows of only one host key.
+It transports no other party's traffic and has no information of any
+other credentials.
+
+This can be a pooled resource, where busy hosts end up needing several
+threads (marginally more than the number of NICs, depending), but
+httpd can simply launch and manage the to-be-secured traffic through a
+single pipe for control. af_unix pipes can even pass per-request
+socket fd's to that arbiter for single transaction (connection)
+traffic.
+
+Anything short of that really isn't isolation. I wouldn't worry about
+one process for all the keys vs a process for all the transaction
+handling, that's what fcgi is for.
+
+Cheers,
+
+Bill
+
+On Fri, Jan 7, 2022 at 4:35 AM Stefan Eissing <stefan@eissing.org> wrote:
+>
+> A nice new year to everyone!
+>
+> I was looking at the design of https://github.com/h2o/neverbleed which
+> - loads TLS private keys in a separate process
+> - creates EVP_PKEY instances that in the sign callback call into the
+>   separate process to create the TLS handshake signature
+>
+> This is surprisingly simple. With a little overhead, it keeps the keys
+> in a separate address space, inaccessible to any exploits in the traffic
+> serving workers.
+>
+> I wonder if it is worthwhile to add something similar to our server.
+>
+> Kind Regards,
+> Stefan

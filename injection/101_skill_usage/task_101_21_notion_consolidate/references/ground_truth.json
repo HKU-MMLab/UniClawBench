@@ -1,0 +1,267 @@
+{
+  "task_id": "task_101_21_notion_consolidate",
+  "difficulty": "Hard",
+  "schema": "a",
+  "schema_notes": "concept-level booleans with evidence pointers (must-hit findings)",
+  "skills_declared": [
+    "notion-token-api",
+    "local-knowledge-consolidator"
+  ],
+  "ground_truth": {
+    "expected_sections": [
+      "Meetings",
+      "Decisions",
+      "Action Register",
+      "Open Questions",
+      "Risks and Dependencies",
+      "References"
+    ],
+    "decision_log_columns": [
+      "date",
+      "topic",
+      "decision",
+      "status",
+      "source_page_id",
+      "source_excerpt"
+    ],
+    "action_register_columns": [
+      "owner",
+      "action",
+      "due_date",
+      "status_or_blocker",
+      "source_page_id"
+    ],
+    "expected_decisions": [
+      {
+        "date": "2026-02-17",
+        "topic": "event backbone",
+        "decision": "adopt Kafka as the event backbone",
+        "status": "decided",
+        "source_page_id": "p-002"
+      },
+      {
+        "date": "2026-02-17",
+        "topic": "service boundaries",
+        "decision": "split ingest-api and dedup-worker into separate services from day 1",
+        "status": "decided",
+        "source_page_id": "p-002"
+      },
+      {
+        "date": "2026-02-24",
+        "topic": "Kafka client",
+        "decision": "use franz-go",
+        "status": "decided",
+        "source_page_id": "p-002"
+      },
+      {
+        "date": "2026-03-03",
+        "topic": "implementation language",
+        "decision": "use Go 1.23 as the primary language",
+        "status": "decided",
+        "source_page_id": "p-003"
+      },
+      {
+        "date": "2026-03-03",
+        "topic": "dedup cache deployment",
+        "decision": "deploy as a statefulset with local SSD for the dedup LRU cache",
+        "status": "decided",
+        "source_page_id": "p-003"
+      },
+      {
+        "date": "unknown",
+        "topic": "late event handling",
+        "decision": "reject in-flight events older than the dedup window",
+        "status": "decided",
+        "source_page_id": "p-004"
+      },
+      {
+        "date": "2026-03-31",
+        "topic": "observability ownership",
+        "decision": "Dave and Erin co-own the GA dashboard set (supersedes p-001 Erin-solo proposal)",
+        "status": "decided",
+        "source_page_id": "p-007"
+      },
+      {
+        "date": "2026-03-31",
+        "topic": "dedup window size",
+        "decision": "20-minute LRU window for GA (supersedes 10-min from p-001 and 15-min from p-004)",
+        "status": "decided",
+        "source_page_id": "p-007"
+      },
+      {
+        "date": "2026-04-18",
+        "topic": "schema evolution",
+        "decision": "adopt protobuf for the on-wire event envelope (supersedes p-002 tentative JSON-Schema, resolves p-005 open question)",
+        "status": "decided",
+        "source_page_id": "p-008"
+      }
+    ],
+    "expected_actions": [
+      {
+        "owner": "Carol",
+        "action": "spike Kafka client library choice",
+        "due_date": "2026-02-24",
+        "source_page_id": "p-002"
+      },
+      {
+        "owner": "Dave",
+        "action": "draft the ingest-api service contract",
+        "due_date": "",
+        "source_page_id": "p-002"
+      },
+      {
+        "owner": "Dave",
+        "action": "open upstream issue and work around franz-go batch reclaim path with manual flush",
+        "due_date": "2026-03-25",
+        "source_page_id": "p-003"
+      },
+      {
+        "owner": "Dave and Erin",
+        "action": "partner on the GA dashboard set",
+        "due_date": "2026-04-14",
+        "source_page_id": "p-007"
+      },
+      {
+        "owner": "Alice",
+        "action": "enforce the design doc fully written before review rule for beta",
+        "due_date": "",
+        "source_page_id": "p-007"
+      },
+      {
+        "owner": "Carol",
+        "action": "propose a snapshot-to-S3 approach for dedup LRU",
+        "due_date": "2026-04-28",
+        "source_page_id": "p-008"
+      },
+      {
+        "owner": "Dave and Erin",
+        "action": "close out the runbook before GA",
+        "due_date": "",
+        "source_page_id": "p-008"
+      }
+    ],
+    "expected_open_questions": [
+      {
+        "question": "drop or retry on sustained overload",
+        "source_page_id": "p-005"
+      },
+      {
+        "question": "per-region or global multi-region dedup guarantee",
+        "source_page_id": "p-005"
+      },
+      {
+        "question": "GrowthBook feature flags vs env-vars-only runtime config",
+        "source_page_id": "p-005"
+      }
+    ],
+    "expected_risks": [
+      {
+        "risk": "limited Go experience",
+        "mitigation": "pair with platform team for first month",
+        "source_page_id": "p-001"
+      },
+      {
+        "risk": "undocumented behavior in the Python monolith",
+        "mitigation": "shadow-traffic mirror during beta",
+        "source_page_id": "p-001"
+      },
+      {
+        "risk": "franz-go batch reclaim path caused load-test crashes and alpha delay",
+        "mitigation": "manual flush workaround plus upstream issue",
+        "source_page_id": "p-003"
+      },
+      {
+        "risk": "operational readiness dashboards were underestimated",
+        "mitigation": "Dave and Erin partner on GA dashboard set",
+        "source_page_id": "p-007"
+      },
+      {
+        "risk": "dedup LRU loses state on pod restarts",
+        "mitigation": "Carol proposes snapshot-to-S3 persistence",
+        "source_page_id": "p-008"
+      },
+      {
+        "risk": "runbook incomplete before GA",
+        "mitigation": "Dave and Erin close out the runbook",
+        "source_page_id": "p-008"
+      }
+    ],
+    "cross_document_decisions": [
+      {
+        "topic": "schema evolution",
+        "proposed": {
+          "source_page_id": "p-002",
+          "form": "lean toward JSON-Schema for the on-wire event envelope (tentative, pending Carol's benchmark)"
+        },
+        "revised": {
+          "source_page_id": "p-005",
+          "form": "JSON-Schema lean retracted; benchmark favors protobuf, final call deferred"
+        },
+        "final": {
+          "source_page_id": "p-008",
+          "form": "adopt protobuf for the on-wire event envelope",
+          "binding": true
+        },
+        "supersedes": [
+          "p-002"
+        ],
+        "executor_must_report_final_only": true,
+        "executor_must_note_p002_superseded": true
+      },
+      {
+        "topic": "dedup window size",
+        "proposed": {
+          "source_page_id": "p-001",
+          "form": "10-minute LRU window"
+        },
+        "revised": {
+          "source_page_id": "p-004",
+          "form": "15-minute LRU window (design doc draft)"
+        },
+        "final": {
+          "source_page_id": "p-007",
+          "form": "20-minute LRU window for GA",
+          "binding": true
+        },
+        "supersedes": [
+          "p-001",
+          "p-004"
+        ],
+        "executor_must_report_final_only": true,
+        "executor_must_note_earlier_versions_superseded": true
+      },
+      {
+        "topic": "observability ownership",
+        "proposed": {
+          "source_page_id": "p-001",
+          "form": "Erin owns all GA dashboards single-handed"
+        },
+        "revised": {
+          "source_page_id": "p-005",
+          "form": "Erin-solo not realistic; pending decision on shared ownership"
+        },
+        "final": {
+          "source_page_id": "p-007",
+          "form": "Dave and Erin co-own the GA dashboard set",
+          "binding": true
+        },
+        "supersedes": [
+          "p-001"
+        ],
+        "executor_must_report_final_only": true,
+        "executor_must_note_p001_superseded": true
+      }
+    ],
+    "topic_dimensions": [
+      "decisions_made",
+      "action_items_with_owner_and_due_date",
+      "open_questions_unresolved",
+      "risks_or_concerns_surfaced",
+      "blocked_or_dependency_items"
+    ],
+    "min_dimensions_covered": 5,
+    "decisions_min_count": 5,
+    "each_decision_must_have_source_page_id": true,
+    "cross_document_decisions_required": 3
+  }
+}

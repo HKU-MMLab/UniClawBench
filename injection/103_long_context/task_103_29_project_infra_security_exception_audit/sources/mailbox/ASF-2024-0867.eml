@@ -1,0 +1,33 @@
+Message-ID: <3c156d97-77c1-45c4-bfa4-408ddb71e9e4@evermeet.cx>
+X-Clawbench-ID: ASF-2024-0867
+Date: Tue, 25 Jun 2024 22:18:23 -0400
+From: "Helmut K. C. Tessarek" <tessarek@evermeet.cx>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.60-rc1 as httpd-2.4.60
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-06.mbox
+
+On 2024-06-25 19:55, Yann Ylavic wrote:
+> Done in r1918626. Looks good in my manual testing too, there will be
+> two calls to ap_proxy_fixup_uds_filename() when proxying from
+> r->handler, first in proxy_handler() and second in
+> ap_proxy_pre_request(), but since the first will strip the UDS already
+> the other call is a noop. We can eventually rework this after the
+> release.
+
+May I ask what this fixup was supposed to fix? I take it this was
+introduced after 2.4.59, so I guess it must have been added to fix
+something, but broke something else.
+If it's too complicated to explain, that's ok too. I am just curious.
+That's all.
+
+--
+regards Helmut K. C. Tessarek              KeyID 0x172380A011EF4944
+Key fingerprint = 8A55 70C1 BD85 D34E ADBC 386C 1723 80A0 11EF 4944
+
+/*
+    Thou shalt not follow the NULL pointer for chaos and madness
+    await thee at its end.
+*/

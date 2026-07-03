@@ -1,0 +1,122 @@
+{
+  "task_id": "task_101_01_boarding_pass_ocr",
+  "difficulty": "Medium",
+  "schema": "b",
+  "schema_notes": "per-file ground truth (list of boarding passes); executor outputs passes.json as a list of objects",
+  "skills_declared": [
+    "ocr-local"
+  ],
+  "seed": 20260425,
+  "expected_fields": [
+    "passenger_name",
+    "flight",
+    "departure",
+    "arrival",
+    "date"
+  ],
+  "resilience_targets": {
+    "rotated_pass": "pass_04.jpg",
+    "qr_dominant_mobile_pass": "pass_03.jpg"
+  },
+  "resilience_cap_threshold": 3,
+  "resilience_cap_threshold_notes": "Note: if executor misses >= 3 of 5 fields on either pass_03.jpg or pass_04.jpg, supervisor caps total score at 0.70 regardless of rubric math (see eval_rule.md section 6).",
+  "normalization_rules": {
+    "dates": "ISO YYYY-MM-DD",
+    "times": "24h HH:MM",
+    "flight_codes": "uppercase IATA carrier + space + number",
+    "airport_codes": "3-letter IATA uppercase"
+  },
+  "itinerary_review": {
+    "path": "/tmp_workspace/results/itinerary_review.csv",
+    "required_columns": [
+      "file",
+      "passenger_name",
+      "flight",
+      "departure",
+      "arrival",
+      "date",
+      "boarding_time"
+    ]
+  },
+  "per_file": {
+    "pass_01.jpg": {
+      "passenger_name": "CHEN / DAVID MR",
+      "flight": "UA 824",
+      "departure": "SFO",
+      "arrival": "ORD",
+      "date": "2026-05-12",
+      "boarding_time": "06:45"
+    },
+    "pass_02.jpg": {
+      "passenger_name": "RODRIGUEZ/MARIA",
+      "flight": "DL 1342",
+      "departure": "ATL",
+      "arrival": "LAX",
+      "date": "2026-05-11",
+      "boarding_time": "19:20"
+    },
+    "pass_03.jpg": {
+      "passenger_name": "PATEL / RAJESH",
+      "flight": "AA 2051",
+      "departure": "DFW",
+      "arrival": "MIA",
+      "date": "2026-06-02",
+      "boarding_time": "14:15"
+    },
+    "pass_04.jpg": {
+      "passenger_name": "MUELLER / ANNA",
+      "flight": "LH 400",
+      "departure": "FRA",
+      "arrival": "JFK",
+      "date": "2026-04-28",
+      "boarding_time": "08:15"
+    },
+    "pass_05.jpg": {
+      "passenger_name": "TANAKA / HIROSHI MR",
+      "flight": "JL 002",
+      "departure": "HND",
+      "arrival": "SFO",
+      "date": "2026-05-03",
+      "boarding_time": "23:35"
+    },
+    "pass_06.jpg": {
+      "passenger_name": "CHEN / DAVID MR",
+      "flight": "UA 629",
+      "departure": "ORD",
+      "arrival": "SFO",
+      "date": "2026-05-16",
+      "boarding_time": "11:05"
+    }
+  },
+  "accepted_variants": {
+    "passenger_name_separator": [
+      " / ",
+      "/",
+      ", ",
+      " "
+    ],
+    "flight_spacing": [
+      "UA 824",
+      "UA824",
+      "UA-824"
+    ],
+    "date_accepts": [
+      "2026-05-12",
+      "2026/05/12",
+      "12MAY2026",
+      "2026-05-12T00:00:00"
+    ],
+    "time_accepts": [
+      "06:45",
+      "0645",
+      "6:45"
+    ],
+    "airport_accepts_city_form": [
+      "SFO / San Francisco",
+      "San Francisco (SFO)",
+      "Frankfurt (FRA) / FRA",
+      "New York JFK / JFK",
+      "Tokyo Haneda / HND"
+    ]
+  }
+}

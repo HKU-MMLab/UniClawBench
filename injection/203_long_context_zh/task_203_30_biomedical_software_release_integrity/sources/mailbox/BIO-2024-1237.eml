@@ -1,0 +1,28 @@
+Message-ID: <udlcyx9s1fe.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-1237
+Date: Fri, 20 Oct 2023 12:28:53 -0400
+From: "Aaron M. Ucko" <ucko@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: Adding autopkgtest to Orthanc-python
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_10_msg00018.html
+
+Andreas Tille  writes:
+
+> I have no idea what this might mean.  Could you have a look at the
+> test?  I also realised that you are installing
+
+There's a more specific error a few lines up:
+
+  E1020 09:35:18.908283 OrthancException.cpp:61] The TCP port of the DICOM server is privileged or already in use:  (port = 4242) cannot create network: TCP Initialization Error: Address already in use
+
+I don't know what else would be listening there, though, or if the
+actual issue is that the container doesn't allow listening for network
+connections at all, though in that case I might have expected a more
+appropriate error code.
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

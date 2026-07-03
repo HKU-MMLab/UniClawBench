@@ -1,0 +1,45 @@
+Message-ID: <ZLBTid6utdq+q5eH@an3as.eu>
+X-Clawbench-ID: BIO-2024-0449
+Date: Thu, 13 Jul 2023 21:42:01 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: [Help] One remaining build time error in toil
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_07_msg00064.html
+
+Hi folks,
+
+before I switch of my laptop for today I'd like to hand over some
+remaining build time error in toil:
+
+_______________________ WdlToilTest.test_empty_file_path _______________________
+[gw0] linux -- Python 3.11.4 /usr/bin/python3.11
+Traceback (most recent call last):
+  File "/usr/lib/python3.11/unittest/case.py", line 57, in testPartExecutor
+    yield
+  File "/usr/lib/python3.11/unittest/case.py", line 623, in run
+    self._callTestMethod(testMethod)
+  File "/usr/lib/python3.11/unittest/case.py", line 579, in _callTestMethod
+    if method() is not None:
+       ^^^^^^^^
+  File "/builds/med-team/toil/debian/output/source_dir/src/toil/test/wdl/wdltoil_test.py", line 54, in test_empty_file_path
+    assert b'Could not find' in stderr
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
+
+
+see
+
+    https://salsa.debian.org/med-team/toil/-/jobs/4428408
+
+
+Any help would be welcome to enable me starting with some new tasks
+tomorrow, ;-)
+
+Kind regards
+    Andreas.
+
+--
+http://fam-tille.de

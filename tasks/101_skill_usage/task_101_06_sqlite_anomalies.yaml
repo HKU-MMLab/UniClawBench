@@ -1,0 +1,54 @@
+task_id: task_101_06_sqlite_anomalies
+category: 101_skill_usage
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  We're about to import a legacy order dump into the new system and I need
+  to know what's broken before it goes in. The SQLite dump lives at
+  /tmp_workspace/clawbench/sources/orders.db.sql — load it up with the
+  SQL toolkit skill or the database operations skill, poke around, and flag the
+  obvious data-quality problems that would make this risky to import:
+  negative unit prices, duplicated business identifiers, broken
+  relationships between tables, and rows that fall outside the original
+  December 2010 import window.
+
+  Drop the findings in /tmp_workspace/results/anomalies.json, grouped by
+  kind of problem, with enough detail that I can pull up the offending
+  rows myself. Don't over-report — only rows that actually violate the
+  rule.
+
+  Also save:
+  - /tmp_workspace/results/anomaly_rows.csv with one row per offending row
+    and columns anomaly_type, table_name, primary_key, order_number,
+    customer_id, product_id, evidence_value, lookup_sql.
+    If one row violates more than one rule, include one CSV row per rule so
+    each reason is visible.
+  - /tmp_workspace/results/reproduce.sql with the exact SELECT statements
+    you used for each issue type, so I can rerun the checks.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - orders.db.sql
+
+skills:
+  - sql-toolkit
+  - database-operations
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

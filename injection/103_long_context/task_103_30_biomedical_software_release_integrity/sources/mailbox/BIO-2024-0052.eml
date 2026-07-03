@@ -1,0 +1,23 @@
+Message-ID: <YWmGRr8d48XO1P4G@an3as.eu>
+X-Clawbench-ID: BIO-2024-0052
+Date: Fri, 15 Oct 2021 15:46:46 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>,	"Rebecca N. Palmer" <rebecca_palmer@zoho.com>
+Subject: Lagging behind several versions for snakemake - lots of failed tests in latest version
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00070.html
+
+Hi Rebecca
+
+and whoever might care.  As usual snakemake is troublesome to upgrade.
+I have injected the latest version into Git but there are lots of
+failed tests.  It would be great if someone could care about this.
+
+Kind regards
+
+      Andreas.
+
+--
+http://fam-tille.de

@@ -1,0 +1,94 @@
+Message-ID: <CABw-3YfYjAiCWEpjTsVow7WuqMVjZq2+fB+eQ=gjBCFv37RPzw@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0210
+Date: Mon, 11 Jul 2022 19:41:26 +0300
+From: "Ivan Zhakov via dev" <dev@httpd.apache.org>
+To: dev@httpd.apache.org
+Subject: Re: [PATCH] Rewrite ap_regexec() without using thread-local storage  and malloc()/free() (was: Issues with shipping apr_thread_current() in APR  1.8.0 and an alternative approach for PCRE2 allocations in HTTPD)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-07.mbox
+
+On Fri, 8 Jul 2022 at 19:15, Ivan Zhakov <ivan@visualsvn.com> wrote:
+>
+> On Thu, 30 Jun 2022 at 20:14, Ivan Zhakov <ivan@visualsvn.com> wrote:
+> >
+> > > > > I think that we could try an alternative approach for that part of the problem. The alternative approach would have the same characteristics as the approach that had been used for PCRE1:
+> > > > >
+> > > > > -- Supply PCRE2 with a custom context with malloc and free implementations.
+> > > > > -- Those implementations would work by either using a stack buffer for small allocations or by doing a malloc().
+> > > > > -- This allocation scheme would have the same properties as the existing scheme used when compiling with PCRE1.
+> > > >
+> > > > For PCRE2, you would malloc()/free() for every ap_regexec(), which can
+> > > > be quite costly depending on the configuration/modules. This work was
+> > > > done precisely for this concern, for the switch from PCRE1 to PCRE2 to
+> > > > be as little costly as possible. The current implementation reuses the
+> > > > same PCRE2 context per thread for the lifetime of httpd..
+> > > > Same for PCRE1, besides the stack buffer for small vectors (which is
+> > > > still there currently btw).
+> > > >
+> > > I was thinking about having a custom malloc()/free() implementation
+> > > that uses stack memory for first N bytes and then falls back to
+> > > ordinary malloc/free(). So for cases where the allocation fits into
+> > > the stack threshold there would be no malloc()/free() calls, as it was
+> > > with PCRE1 and POSIX_MALLOC_THRESHOLD.
+> > >
+> > > I'll try to prepare a patch with this approach, to illustrate it better.
+> >
+> > Here is a patch with the described alternative approach with custom
+> > malloc() and free() implementations that use a stack buffer for first
+> > N bytes and then fall back to an ordinary malloc/free().
+> >
+> > Its key properties are:
+> >
+> > 1) Allocations with PCRE2 happen the same way as they were happening
+> > with PCRE1 in httpd 2.4.52 and earlier.
+> >
+> > 2) There are no malloc()/free() calls for typical cases where the
+> > match data can be kept on stack.
+> >
+> > 3) The patch avoids a malloc() for the match_data structure itself,
+> > because the match data is allocated with the provided custom malloc()
+> > function.
+> >
+> > 4) Using custom allocation functions should ensure that PCRE is not
+> > going to use malloc() for any auxiliary allocations, if they are
+> > necessary.
+> >
+> > 5) There is no per-thread state.
+> >
+> > NOTE: Current behavior in trunk is that we allocate for the number of
+> > captures in the regular expression (preg->re_nsub). An additional
+> > improvement would be to cap the allocation size based on the passed-in
+> > limit (nmatch). I'll try to handle that separately.
+> >
+With some more thought, I think that it should be fine to keep the
+current approach in trunk where we use stackbuf to preallocate for the
+number of captures in the regexp (preg->re_nsub).
+
+We cannot simply cap this number with nmatch, because if a regexp has
+back references, executing that regexp requires space to store those
+back references, even with nmatch = 0. PCRE will auto-allocate the
+memory for back references [1][2], and that is something we should
+probably avoid:
+[[[
+  However, if the pattern contains back references and the ovector is not
+  big enough to remember the related substrings, PCRE has to get additional
+  memory for use during matching. Thus it is usually advisable to supply an
+  ovector of reasonable size.
+]]]
+
+Potentially we could try getting PCRE[2]_INFO_BACKREFMAX and comparing
+nmatch, regex backref count and regex capture count for an exact
+prealloc size.
+
+But currently I tend to think that it would be pragmatic to keep the
+existing approach in trunk with allocating based on preg->re_nsub --
+as for real-world cases this would result in using the stackbuf
+without malloc().
+
+[1] https://pcre.org/pcre.txt
+[2] https://pcre.org/pcre2.txt
+
+--
+Ivan Zhakov

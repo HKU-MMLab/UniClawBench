@@ -1,0 +1,29 @@
+Message-ID: <003101c239ff$05bf44e0$3d00a8c0@dennis>
+X-Clawbench-ID: CAM-2003-1138
+Date: Fri, 02 Aug 2002 18:31:38 +1000
+From: zenn <zenn@optushome.com.au>
+To: razor-users@example.sourceforge.net
+Subject: [Razor-users] razor-cache ?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00560.c78137c1f7c46d509629b5283860497f
+
+suggestion...
+as I see it, there is a valid need for a "razor-cache" server that is
+available to the local smtp host...
+recursiveness would also be a nice feature, giving us the option to link
+caches to offload the burden on the razor servers...
+it could also allow us to setup local razor caches for private networks that
+can bypass the razor servers all together...
+any commensts ?
+
+
+-------------------------------------------------------
+This sf.net email is sponsored by:ThinkGeek
+Welcome to geek heaven.
+http://thinkgeek.com/sf
+_______________________________________________
+Razor-users mailing list
+Razor-users@lists.sourceforge.net
+https://lists.sourceforge.net/lists/listinfo/razor-users

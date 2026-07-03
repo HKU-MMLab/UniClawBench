@@ -1,0 +1,42 @@
+task_id: task_103_13_san_diego_family_zoo_beach_budget
+category: 103_long_context
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I want to take my family to San Diego for a Zoo + Beach family weekend. The dates are: next Friday to the following Monday (a 3-night Friday-to-Monday stay), family of 4: 2 adults and 2 children, departing from the Bay Area to SAN. Please actually research and create a complete budget and itinerary plan, but do not pay, book flights, book hotels, rent a car, buy zoo or activity tickets, reserve restaurants, or submit any irreversible order. Save all screenshots and documents to `/tmp_workspace/results/`.
+
+  Search round-trip flights from SFO, SJC, or OAK to SAN. The outbound flight must depart the Bay Area on next Friday between 08:00 and 14:00; the return flight must depart SAN on the following Monday between 14:00 and 20:00. Search Google Flights, Southwest's official website, and at least one official website from Alaska or United; record 1 most suitable result from each platform, including departure airport, airline, departure/arrival times, whether nonstop, total fare for a family of 4, baggage/change restrictions, and screenshots.
+
+  For lodging, choose any 3 among Catamaran Resort Hotel and Spa, Bahia Resort Hotel, Hilton San Diego Bayfront, and Kings Inn San Diego. Search Booking.com and each hotel official website for a stay from next Friday to the following Monday, 2 adults and 2 children, 1 room. Record room type, 3-night total price, whether taxes/resort fee/parking fee are included, child policy, cancellation policy, rating/address, and screenshots. If a website blocks the query or cannot show a price, screenshot it and honestly explain it in the final plan; do not invent prices.
+
+  For rental cars, only consider SAN airport pickup and return, pickup at next Friday 12:30 and return at the following Monday 12:30. Search at least two platforms among Enterprise and Hertz or Budget for Economy, Compact, Midsize, SUV, or Minivan, and record the 2 most suitable family-friendly results from each platform, including vehicle model/class, total price, tax/fee notes, visible child-seat fees if any, mileage or restrictions, cancellation/prepay requirements, and screenshots. Do not log in or enter payment information.
+
+  For Zoo/family activities, only consider San Diego Zoo, San Diego Zoo Safari Park, Birch Aquarium, Belmont Park, and Balboa Park Explorer Pass. Use official ticket pages to check tickets or passes for 2 adults and 2 children during the trip. Record ticket type, adult/child ticket price, total price, opening hours, parking fee, cancellation/rescheduling rules, and screenshots.
+
+  For beaches/outdoor activities, only consider La Jolla Cove, Mission Beach, and Coronado Beach. Check official visitor pages or credible travel-information pages, and record parking, opening information, whether free, child-friendly restrictions or notes, and screenshots.
+
+  For restaurants, only check The Crack Shack, Duke's La Jolla, Miguel's Cocina, and Puesto La Jolla, and check whether 4 people can reserve dinner between 17:30 and 19:30 from next Friday to next Sunday. Prefer OpenTable, Yelp Reservations, or the restaurant's official reservation page. Record the best available time, platform, whether a credit card or deposit is required, whether it is clearly child-friendly, and a screenshot, but do not complete the reservation.
+
+  Finally generate `/tmp_workspace/results/san_diego_family_zoo_beach_plan.md`, including a daily family itinerary, a budget table for flights/hotel/rental car/Zoo and activities/restaurants/parking/gas/child-related costs, and two options: budget-saving and comfortable. Try to keep the comfortable option's total budget within $4,800 / 4 people. The final document must list all screenshot paths used and clearly mark any data that was blocked, missing prices, or unavailable.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/process_evidence/Coronado_Beach.png
+  - references/process_evidence/Enterprise.png
+  - references/process_evidence/booking_Bahia_Resort_Hotel.png
+  - references/process_evidence/booking_Catamaran_Resort_Hotel_and_Spa.png
+  - references/process_evidence/booking_Hilton_San_Diego_Bayfront.png
+  - references/process_evidence/google_flight.png
+  - references/process_evidence/opentable_Puesto_La_Jolla.png
+  - references/process_evidence/southwest_flight.png
+  - references/process_evidence/united_flight.png
+codex:
+  max_user_followups: 2

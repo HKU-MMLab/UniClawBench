@@ -1,0 +1,51 @@
+Message-ID: <3668ae11b9079c9d705b0b299ba745f8@ausics.net>
+X-Clawbench-ID: ASF-2024-0979
+Date: Sun, 05 Jun 2022 09:06:36 +1000
+From: Noel Butler <noel.butler@ausics.net>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.54-rc2 as httpd-2.4.54
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-06.mbox
+
+On 05/06/2022 06:21, Eric Covener wrote:
+
+> On Sat, Jun 4, 2022 at 4:17 PM John Doe <ghalleck21@gmail.com> wrote:
+>
+>> Hi,
+>> Eric's fix did not fix because I'm building with APR 1.7.0.
+>>
+>> In apr.hw 1.7.0 there is
+>> /* If we have a TCP implementation that can be "corked", what flag
+>> * do we use?
+>> */
+>> #define APR_TCP_NOPUSH_FLAG       @apr_tcp_nopush_flag@
+>>
+>> /* Is the TCP_NODELAY socket option inherited from listening sockets?
+>>
+>> It looks like Yann has fixed this in apr 1.7 & 1.8. So I guess apr
+>> needs to T&R 1.7.1 minimum.
+>> For the work around until then,httpd needs to look for <= < 1.7, not
+>> 6.
+>
+> Darn, I only checked in SVN.  Thanks for catching it.  I updated httpd
+> just now.
+
+The issue that needs addressing is APR and APR util are  YEARS OLD, this
+requires manual patching to build for wg any of the past 2 years worth
+of mariadb packages. a few piss poor attempts were talked about even as
+earlier this year, but as usual, it went nowhere.
+
+--
+Regards,
+Noel Butler
+
+This Email, including attachments, may contain legally privileged
+information, therefore at all times remains confidential and subject to
+copyright protected under international law. You may not disseminate
+this message without the authors express written authority to do so.
+If you are not the intended recipient, please notify the sender then
+delete all copies of this message including attachments immediately.
+Confidentiality, copyright, and legal privilege are not waived or lost
+by reason of the mistaken delivery of this message.

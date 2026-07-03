@@ -1,0 +1,48 @@
+Message-ID: <Z3ErXpSH1037hDOV@emlwks999.eu>
+X-Clawbench-ID: BIO-2024-0468
+Date: Sun, 29 Dec 2024 11:58:38 +0100
+From: Étienne Mollier <emollier@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: [Advent Calendar] third week bug work
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_12_msg00031.html
+
+Hi Emmanuel,
+
+Emmanuel Arias, on 2024-12-22:
+> This week was a poor work for the team, sorry for that!
+> I still have the intention to continue working on psychopy
+> in the next week
+
+No worries, all bugs tackled count.  Thanks for your help with
+psychopy, it is not an LHF, but I see upstream is willing to
+help via the mailing list in case of difficulties.  I think the
+most concerning issue is #953053, but real blockers are
+autopkgtest failure on s390x (we probably want to drop big
+endian support) and #1084568 (there is a hint from Alexandre
+Detiste about pulling the missing Python module from a side
+package, so the RC bug should be somewhat low hanging fruit
+now).
+
+> Here's my report:
+>
+> * 16-12-2024
+> **  python-dicompylercore: Fix #1090137
+>
+> * 17-12-2024
+> ** Finish deepdiff work #1088239. Waiting for orderly-set.
+>
+> * 19-12-2024
+> ** Finally upload deppdiff.
+
+Acknowledged, I add deepdiff to the count as I won't see it
+appear in Alioth lists.
+
+Have a nice day,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  pgp: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/1, please excuse my verbosity
+   `-    on air: Quantum Fantay - Rimbo

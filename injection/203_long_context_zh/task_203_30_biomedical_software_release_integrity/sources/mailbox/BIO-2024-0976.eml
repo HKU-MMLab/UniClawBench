@@ -1,0 +1,60 @@
+Message-ID: <z4vgehwcpdi4vziaukmnqbbm26r4pzq3iojl6chzbhxjeyw6eh@zv6b5za6egsc>
+X-Clawbench-ID: BIO-2024-0976
+Date: Wed, 28 Aug 2024 20:34:41 -0300
+From: Emmanuel Arias <eamanu@yaerobi.com>
+To: ??tienne Mollier <emollier@debian.org>
+Subject: Re: [help] python-pyani upgrade to 0.2.13.1
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_08_msg00011.html
+
+Aloha!
+
+I started to look this package. It's not so simply :P.
+
+I started to look test_subcmd_06_plot.py, but I began to suspect that
+the tests depend on each other, but I'm not sure, anyway I debuged
+test_subcmd_04_anim,py and I looked that in pyani/run_multiprocessing.py(147)multiprocessing_run()
+we have this error:
+
+```
+CompletedProcess(args='delta_filter_wrapper.py delta-filter -1 tests/test_output/subcmd_anim/nucmer_output/GCF_000331065.1_ASM33106v1_genomic/GCF_000331065.1_ASM33106v1_genomic_vs_GCF_000973545.1_ASM97354v1_genomic.delta tests/test_output/subcmd_anim/nucmer_output/GCF_000331065.1_ASM33106v1_genomic/GCF_000331065.1_ASM33106v1_genomic_vs_GCF_000973545.1_ASM97354v1_genomic.filter', returncode=127, stdout=b'', stderr=b'/bin/sh: 1: delta_filter_wrapper.py: not found\n')
+```
+So seems that delta_filter_wrapper.py must be installed to run this
+tests, maybe this is the issue with other tests?
+
+I can continue looking tomorrow, but if you or someone have some ideas
+go ahead.
+
+
+On Sat, Aug 24, 2024 at 08:05:51PM GMT, ??tienne Mollier wrote:
+> Aloha,
+>
+> I have attempted to bump the version of python-pyani to 0.2.13.1
+> but the test suite of the module is giving me many difficulties,
+> and I don't expect to sort them all by myself timely.  I would
+> welcome help from someone more fluent with Python than I am to
+> finish the job.  The git repository[0] is up to date.  Salsa
+> CI[1] gives an idea of the test items that are failing at the
+> moment.
+>
+> [0]: https://salsa.debian.org/med-team/python-pyani
+> [1]: https://salsa.debian.org/med-team/python-pyani/-/jobs/6176496
+>
+> Have a nice day,  :)
+> --
+>   .''`.  Étienne Mollier
+>  : :' :  pgp: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+>  `. `'   sent from /dev/pts/1, please excuse my verbosity
+>    `-    on air: First Band From Outer Space - Smokin'
+
+
+--
+cheers,
+        Emmanuel Arias
+
+ ⢀⣴⠾⠻⢶⣦⠀
+ ⣾⠁⢠⠒⠀⣿⡁  eamanu@debian.org
+ ⢿⡄⠘⠷⠚⠋⠀  OpenPGP: 13796755BBC72BB8ABE2AEB5 FA9DEC5DE11C63F1
+ ⠈⠳⣄

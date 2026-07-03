@@ -1,0 +1,35 @@
+Message-ID: <2060000.1012684767@spawn.se7en.org>
+X-Clawbench-ID: CAM-2003-1424
+Date: Sun, 03 Feb 2002 10:19:27 +1300
+From: Mark Derricutt <mark@talios.com>
+To: freshrpms <rpm-zzzlist@freshrpms.net>
+Subject: creating rpms with subdirs (install command)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01079.da9e5ee6e70ae459ef6cc777d7b1621f
+
+Hi, I'm building an rpm for the resin webserver, and I basically want to
+install the entire tarball under a diretory, but, the tarball includes
+subdirectorys, in my spec i have:
+
+
+install -s -m 755 %{name}-%{version}.%{release}/* \
+  $RPM_BUILD_ROOT/usr/local/resin
+
+and I'm getting:
+
+install: `resin-2.0.5/bin' is a directory
+install: `resin-2.0.5/conf' is a directory
+
+Is there a proper/nice way I should handle this?
+
+
+                                    -- \m/ --
+  "...if I seem super human I have been misunderstood." (c) Dream Theater
+         mark@talios.com - ICQ: 1934853 JID: talios@myjabber.net
+
+
+_______________________________________________
+RPM-List mailing list <RPM-List@freshrpms.net>
+http://lists.freshrpms.net/mailman/listinfo/rpm-list

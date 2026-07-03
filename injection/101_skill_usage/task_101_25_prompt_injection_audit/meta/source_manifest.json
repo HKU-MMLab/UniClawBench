@@ -1,0 +1,10 @@
+{
+  "task_id": "task_101_25_prompt_injection_audit",
+  "note": "Mixed-format document pack for prompt-injection/security review. Some files are clean business documents and some contain adversarial instructions.",
+  "entries": [
+    {
+      "path": "doc_pack/",
+      "description": "Document pack with Markdown, text, HTML, PDF, and DOCX files for local audit."
+    }
+  ]
+}

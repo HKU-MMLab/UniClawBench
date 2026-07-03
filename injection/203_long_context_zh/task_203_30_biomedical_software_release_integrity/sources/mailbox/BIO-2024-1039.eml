@@ -1,0 +1,43 @@
+Message-ID: <ZQVuEQI2-qMh8hBX@fusion>
+X-Clawbench-ID: BIO-2024-1039
+Date: Sat, 16 Sep 2023 10:57:53 +0200
+From: Étienne Mollier <emollier@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: libcifpp updated, new soname, review requested
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_09_msg00016.html
+
+Hi Maarten,
+
+Étienne Mollier, on 2023-09-15:
+> I will let things rest a bit for now, and will redo the
+> review again later when I will be better focused.
+
+Today is another day.  I had a fresher look at libcifpp and only
+the point 2 of my initial copyright remark applies.  There are a
+couple of files for which the timestamp extends down to 2020, so
+you might want to reflect it in the debian/copyright file.
+
+I also see a couple of files where you still are the copyright
+holder, namely:
+
+	cmake/VersionString.cmake
+	docs/conf.py.in
+
+So it would be worth keeping your name for the range 2021-2023,
+at least for the cmake file and the documentation directory.
+
+With those addressed, I think the package should pass through
+NEW in one go (unless perhaps ftpmaster chokes on the patched
+out embedded copy of the Boost regex library, but in this case
+libcifpp would have to go through some more extensive changes,
+like using the Files-Excluded facility of the copyright file).
+
+Have a nice day,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  gpg: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/4, please excuse my verbosity
+   `-    on air: Thank You Scientist - My Famed Disappearing Act

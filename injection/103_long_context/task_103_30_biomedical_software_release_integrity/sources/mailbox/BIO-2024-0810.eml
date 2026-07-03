@@ -1,0 +1,50 @@
+Message-ID: <CAM8zJQthOiRYPeH4SmtjXjYjpULSYGm=Uy4Ywd_F5uzSUaPbUw@mail.gmail.com>
+X-Clawbench-ID: BIO-2024-0810
+Date: Sat, 16 Oct 2021 12:37:26 +0200
+From: Graham Inggs <ginggs@debian.org>
+To: Thomas Goirand <zigo@debian.org>
+Subject: Re: Why is isal limited to just three archs?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00080.html
+
+Hi
+
+On Sat, 16 Oct 2021 at 10:42, Thomas Goirand  wrote:
+>
+> On 10/16/21 9:09 AM, Nilesh Patra wrote:
+> > Hi Ondřej,
+> >
+> > I see that isal package is limited to amd64, arm64 and kfreebsd-amd64.
+> > Is there a particular reason for this? -- Is it possible to extend
+> > support to other archs?
+> >
+> > Actually, a -med team package fastp has started to depend on
+> > libisal-dev, and this
+> > now is limited to the few archs isal supports. So it would be really
+> > nice if isal
+> > can build on more archs.
+> >
+> > Please do let me know.
+> >
+> > Nilesh
+>
+> Hi,
+>
+> Did you look into the source package? isal is written in assembly
+> language...
+>
+> Cheers,
+>
+> Thomas Goirand (zigo)
+
+I see at least an erasure_code/ppc64le directory.
+
+I did a quick test build in Ubuntu and the package built and passed
+its tests on armhf, ppc64el and riscv64, failing only because of
+missing symbols.  Perhaps the reduced libisal2.symbols.arm64 can be
+used for other architectures as well?
+
+Regards
+Graham

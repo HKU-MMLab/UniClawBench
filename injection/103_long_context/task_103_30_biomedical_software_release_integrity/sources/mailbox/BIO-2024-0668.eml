@@ -1,0 +1,85 @@
+Message-ID: <CAL-m-c3xR=_eaTtVETOboFfUzwJehqkRU9nhHzXnVpp5VRAKvw@mail.gmail.com>
+X-Clawbench-ID: BIO-2024-0668
+Date: Mon, 21 Feb 2022 23:43:50 -0500
+From: Eric Brown <eb@ericebrown.com>
+To: debian-science@lists.debian.org
+Subject: Re: [covid-19] shiny-server (Was: dependencies Re: ITP: streamlit)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2022_02_msg00043.html
+
+Hello,
+
+It appears that significant progress has been made in packaging the
+dependencies of shiny-server. I wonder if anyone is interested and
+able to revisit packaging shiny-server?
+
+ npm2deb depends -r
+https://github.com/rstudio/shiny-server/raw/master/package.json
+Dependencies:
+NPM                                               Debian
+shiny-server (1.5.18)                             None
+├─ bash (0.0.1)                                   node-bash (0.0.1-4)
+├─ client-sessions (^0.8.0)                       node-client-sessions (0.8.0-3)
+├─ compression (^1.7.4)                           node-compression (1.7.4-3)
+├─ express (^4.17.2)                              node-express
+(4.17.3+~4.17.13-1)
+├─ faye-websocket (^0.11.4)                       node-faye-websocket (0.11.4-1)
+├─ graceful-fs (^4.2.9)                           node-graceful-fs
+(4.2.4+repack-1)
+├─ handlebars (^4.7.7)                            node-handlebars
+(3:4.7.7+~4.1.0-1)
+├─ http-proxy (^1.18.1)                           node-http-proxy (1.18.1-6)
+├─ ip-address (^8.1.0)                            node-ip-address (8.1.0-2)
+├─ log4js (^6.4.1)                                node-log4js (6.4.1+~cs8.3.5-1)
+├─ moment (^2.29.1)                               node-moment (2.29.1+ds-3)
+├─ morgan (^1.10.0)                               node-morgan (1.10.0-2)
+├─ nan (^2.15.0)                                  node-nan (2.15.0-1)
+├─ optimist (github:rstudio/node-optimist#dbbadda31e53b63225a57e172a528b1ddc52be52)node-optimist
+(0.6.1+~0.0.30-1)
+├─ pause (0.1.0)                                  node-pause (0.1.0-4)
+├─ q (^1.5.1)                                     node-q (1.5.1-4)
+├─ qs (^6.10.3)                                   node-qs (6.10.3+ds+~6.9.7-1)
+├─ send (^0.17.2)                                 node-send (0.17.2-2)
+├─ shiny-server-client
+(github:rstudio/shiny-server-client#v1.2.0)node-shiny-server-client
+(1.0.0+git20180820.eba5e90+dfsg-5)
+├─ sockjs (^0.3.24)                               None
+│  ├─ faye-websocket (^0.11.3)                    node-faye-websocket (0.11.4-1)
+│  ├─ uuid (^8.3.2)                               node-uuid (8.3.2+~8.3.3-1)
+│  └─ websocket-driver (^0.7.4)
+node-websocket-driver (0.7.4+~cs0.6.7-2)
+├─ sockjs-client (github:jcheng5/sockjs-client#v1.5.2.2-jcheng5)None
+│  ├─ debug (^3.2.6)                              node-debug (4.3.2+~cs4.1.7-1)
+│  ├─ eventsource (^1.0.7)                        node-eventsource
+(1.1.0+~1.1.8-1)
+│  ├─ faye-websocket (^0.11.3)                    node-faye-websocket (0.11.4-1)
+│  ├─ inherits (^2.0.4)                           node-inherits (2.0.4-4)
+│  ├─ json3 (^3.3.3)                              nodejs
+(16.13.2+really14.19.0~dfsg-1)
+│  └─ url-parse (^1.5.3)                          node-url-parse
+(1.5.9+~1.4.8-1)
+├─ split (^1.0.1)                                 node-split (1.0.1-1)
+├─ stable (^0.1.8)                                None
+└─ underscore (^1.13.2)                           underscore (1.13.2~dfsg-2)
+
+Build dependencies:
+NPM                                               Debian
+mocha (^9.2.0)                                    node-mocha
+(9.2.0+ds1+~cs28.5.4-1)
+rewire (^6.0.0)                                   None
+should (^13.2.3)                                  should.js (13.2.3~dfsg-5)
+sinon (^13.0.1)                                   node-sinon
+(13.0.1+ds+~cs71.22.21-2)
+
+Warnings occurred:
+ [warning] stable: stable is included in node-svgo. Package it
+separately and remove it from node-svgo if you need it for another
+module.
+ [error]   json3: No longer maintained, use the native `JSON.parse`
+and `JSON.stringify` instead
+
+
+Warm regards,
+Eric

@@ -1,0 +1,128 @@
+Message-ID: <Z2MOnvI-AL1YGVbt@emlwks999.eu>
+X-Clawbench-ID: BIO-2024-1255
+Date: Wed, 18 Dec 2024 19:04:14 +0100
+From: Étienne Mollier <emollier@debian.org>
+To: debian-med@lists.debian.org
+Subject: [Advent Calendar] bugs closed for the past twelve days
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_12_msg00017.html
+
+Hi all,
+
+You will find the past twelve doors for the Advent Calendar Bug
+Squashing party.  It is worth noting that at least five bugs
+marked as done resulted from packages removal (those affecting
+squizz and igdiscover), but let's make them count.
+
+Thanks to everyone involved in the resolution of the bugs!
+
+Saint Nicholas Day, Friday, December 6th:
+
+35. #1085417: circlator: Python SyntaxWarning
+36. #1085733: nanosv: Python SyntaxWarning
+37. #1085929: python-leidenalg: Python SyntaxWarning
+38. #1085366: bmtk: Python SyntaxWarning
+39. #1085573: fastaq: Python SyntaxWarning
+
+Saturday, December 7th:
+
+40. #1085542: discosnp: Python SyntaxWarning
+41. #1085608: ghmm: Python SyntaxWarning
+42. #1085638: htseq: Python SyntaxWarning
+
+Sunday of the Advent, December 8th:
+
+43. #1077929: praat: flaky autopkgtest on several architectures: test_Formant_slopes.praat times out
+44. #1085723: microbegps: Python SyntaxWarning
+45. #1085726: mirtop: Python SyntaxWarning
+46. #1085786: porechop: Python SyntaxWarning
+47. #1048635: unicycler: Fails to build source after successful build
+48. #1087157: unicycler: Python SyntaxWarning
+
+Monday, December 9th:
+
+49. #1085332: ariba: Python SyntaxWarning
+50. #1081296: squizz: homepage defunct
+51. #1081297: squizz: README.source (reminder?)
+52. #1082507: RM: squizz -- RoM, RoQA, obsolete
+53. #1085745: obitools: Python SyntaxWarning
+54. #1085772: pbsuite: Python SyntaxWarning
+55. #1085789: presto: Python SyntaxWarning
+
+Tuesday, December 10th:
+
+56. #1085822: pyqi: Python SyntaxWarning
+57. #1085915: python-geneimpacts: Python SyntaxWarning
+58. #1089272: snippy: FTBFS with make 4.4.1
+59. #1067374: blasr: autopkgtest failure: core dump
+
+Wednesday, December 11th:
+
+60. #1087041: readucks: Python SyntaxWarning
+61. #1087042: rambo-k: Python SyntaxWarning
+62. #1087092: sortmerna: Python SyntaxWarning
+63. #1032975: RM: igdiscover -- Broken, unusable package due to incomplete code in the binary package
+64. #1081341: igdiscover: FTBFS with Python 3.12 AttributeError: module 'configparser' has no attribute 'SafeConfigParser'
+
+Thursday, December 12th:
+
+65. #1087155: umis: Python SyntaxWarning
+66. #1087194: yanosim: Python SyntaxWarning
+
+Friday, December 13th:
+
+67. #1075545: sumaclust: ftbfs with GCC-14
+68. #1075288: mosdepth: ftbfs with GCC-14
+69. #1043995: baitfisher: Fails to build source after successful build
+70. #1087093: spades: Python SyntaxWarning
+
+Saturday, December 14th:
+
+71. #1075544: sumalibs: ftbfs with GCC-14
+72. #1044305: gwama: Fails to build source after successful build
+73. #1044647: fermi-lite: Fails to build source after successful build
+74. #1049564: fermi-lite: Fails to build binary packages again after successful build
+
+Sunday of the Advent, December 15th:
+
+75. #970497: igraph: FTBFS on mips64el
+76. #1045212: libcolt-free-java: Fails to build source after successful build
+77. #1043837: concavity: Fails to build source after successful build
+
+Monday, December 16th:
+
+78. #1043854: beagle: Fails to build source after successful build
+79. #1045547: ipig: Fails to build source after successful build
+80. #1090162: python-ruffus: FTBFS: ERROR: Invalid value `None` in intersphinx_mapping['http://docs.python.org/']. Expected a two-element tuple or list.
+81. #1090155: python-pbcore: FTBFS: ERROR: Invalid value `None` in intersphinx_mapping['http://docs.python.org/']. Expected a two-element tuple or list.
+
+Tuesday, December 17th:
+
+82. #1090137: python-dicompylercore: FTBFS: ModuleNotFoundError: No module named 'six'
+83. #1090108: nitime: FTBFS: ERROR: Invalid value `None` in intersphinx_mapping['http://docs.python.org/']. Expected a two-element tuple or list.
+84. #1090091: bedops: FTBFS: ERROR: Invalid value `None` in intersphinx_mapping['http://docs.python.org/']. Expected a two-element tuple or list.
+85. #1046067: proalign: Fails to build source after successful build
+86. #1045517: infernal: Fails to build source after successful build
+87. #1044789: gemma: Fails to build source after successful build
+
+There are only 13 bugs left if we want to reach 100 bugs closed
+for this edition of the Advent Calendar Bug Squashing party.
+I've also noted that the Python SyntaxWarning bugs are down to a
+handful of open issues; people after low hanging fruits can
+still have a look at the multiple double source build issues.
+Well done everyone!
+
+The list was still manually deduced from alioth-lists[1],
+although regexes greatly helped.  If your bugs are missing,
+don't hesitate to advertise them and add them to the count.
+
+[1]: https://alioth-lists.debian.net/pipermail/debian-med-packaging/2024-December/date.html
+
+Have a nice day,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  pgp: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/2, please excuse my verbosity
+   `-

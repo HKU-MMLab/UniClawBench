@@ -1,0 +1,40 @@
+Message-ID: <YfAv9O4kY6y49sur@an3as.eu>
+X-Clawbench-ID: BIO-2024-0843
+Date: Tue, 25 Jan 2022 18:14:28 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Sight needs to be ported to insighttoolkit5 [Fwd: sight is marked for autoremoval from testing]
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_01_msg00099.html
+
+Hi Flavien,
+
+Am Tue, Jan 25, 2022 at 03:52:18PM +0100 schrieb Flavien Bridault:
+> I confirm I managed to reproduce the FTBFS before by updating my pbuilder
+> image.
+>
+> Hoping that nothing else is updated up to the time you read this email, this
+> should be fixed thanks to a new patch. :)
+
+Nilesh has beaten me. ;-)
+
+For the next upload release please fix:
+
+W: libsight: unusual-interpreter python [usr/share/sight/viz_scene3d/Media/materials/genDefaultMaterial.py]
+N:
+N:   This package contains a script for an interpreter that is not shipped in the package and is not known to Lintian. It is possible that there is a typo or the interpreter is not
+N:   executable.
+N:
+N:   Visibility: warning
+N:   Show-Always: no
+N:   Check: scripts
+
+
+Kind regards
+
+      Andreas.
+
+--
+http://fam-tille.de

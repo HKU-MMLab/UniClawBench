@@ -1,0 +1,26 @@
+# Prod overlay patch.
+# Sets prod-specific config and a higher replica count.
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: orders-config
+  namespace: shop
+data:
+  LOG_LEVEL: "error"
+  REGION: "us-west-2"
+  MAX_CONNECTIONS: "500"
+  FEATURE_CHECKOUT_V2: "true"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: orders
+  namespace: shop
+spec:
+  replicas: 5
+  template:
+    spec:
+      containers:
+        - name: orders
+          # this patch pins an explicit image tag...
+          image: registry.example.com/orders:1.4.2

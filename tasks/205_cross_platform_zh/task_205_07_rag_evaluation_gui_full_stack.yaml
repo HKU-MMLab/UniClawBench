@@ -1,0 +1,85 @@
+task_id: task_205_07_rag_evaluation_gui_full_stack
+category: 205_cross_platform_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我正在快速评估一篇 RAG 评测基准论文，想要一条完整的
+  桌面 GUI 证据链：PDF 阅读器、Zotero、Obsidian、Calc 和 Writer。
+
+  使用服务安装的真实桌面应用：一个 PDF 阅读器、
+  Zotero、Obsidian、LibreOffice Calc 和 LibreOffice Writer。不要使用本地
+  GUI mock，也不要仅用脚本直接写出最终文件。
+  安装验证记录保存在
+  `/tmp_workspace/clawbench/service_state/real_rag_gui_apps_task_105_07.json`。
+
+  1. 在 PDF Reader GUI 中打开并阅读
+     `/tmp_workspace/clawbench/sources/papers/ragas_evaluation.pdf`。确认论文标题、作者、年份、主要任务、主要
+     指标或指标套件、一条局限性，以及它是否值得进一步
+     阅读。保存一张 PDF 阅读器截图到
+     `/tmp_workspace/results/pdf_reader_screenshot.png`。
+  2. 在真实的 Zotero 中，创建一条文献记录。至少填入标题、
+     作者、年份和出版物，并附上这个 PDF 路径。导出一条标准的
+     Zotero 记录到 `/tmp_workspace/results/zotero_record_export.bib`、`.ris`
+     或 `.rdf`，并保存一张 Zotero 窗口截图到
+     `/tmp_workspace/results/zotero_record_screenshot.png`。截图应
+     显示同一篇论文条目的 PDF 附件或非零附件
+     证据。
+  3. 在真实的 Obsidian 中，创建或打开一个 vault，在其中创建一篇笔记，并将其保存/复制
+     到 `/tmp_workspace/results/obsidian/RAG Evaluation Note.md`。同时导出
+     或复制到 `/tmp_workspace/results/rag_evaluation_note_export.md`。该
+     笔记必须包含以下三个部分：
+     - Main Task
+     - Main Metric
+     - One Limitation
+     保存一张 Obsidian 窗口截图到
+     `/tmp_workspace/results/obsidian_note_screenshot.png`。截图应
+     显示已打开的笔记标题和必需的部分内容。不要只显示
+     Obsidian 启动页或 vault 选择器。
+  4. 在真实的 LibreOffice Calc 中，创建并保存
+     `/tmp_workspace/results/rag_reading_tracker.ods`。不要仅使用 headless
+     转换、手工构建的 zip，或脚本来写出最终的 ODS。使用以下
+     列：
+     Title | Year | Main Task | Main Metric or Metric Suite | Worth reading further (yes/no)
+     保存一张 Calc 窗口截图到
+     `/tmp_workspace/results/calc_tracker_screenshot.png`；截图应
+     显示已打开的 tracker 电子表格。
+  5. 在真实的 LibreOffice Writer 中，创建并保存
+     `/tmp_workspace/results/rag_quick_judgment.odt`。不要仅使用 headless
+     转换、手工构建的 zip，或脚本来写出最终的 ODT。同时从 Writer 内容中保存
+     或导出一份纯文本审计副本：
+     `/tmp_workspace/results/rag_quick_judgment.txt`。该判断必须
+     不超过 80 个中文字符或 80 个英文单词，并且必须说明
+     这篇论文是否值得进一步阅读以及原因。保存一张 Writer 窗口截图
+     到 `/tmp_workspace/results/writer_judgment_screenshot.png`；截图
+     应显示判断文本。ODS/ODT 应为可打开的 OpenDocument 文件，
+     不能用 CSV/TXT 替代。
+  6. 保存 `/tmp_workspace/results/real_gui_evidence.md`，列出你实际启动的真实
+     应用、截图路径、导出文件路径，以及
+     遇到的任何安装或登录问题。
+
+  不要只复制摘要；笔记、表格和 Writer 判断都应
+  反映你阅读 PDF 后的判断。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/ragas_evaluation_source_evidence.md
+
+sources:
+  - papers/
+
+services:
+  - name: real-rag-gui-apps-setup
+    path: real-rag-gui-apps-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

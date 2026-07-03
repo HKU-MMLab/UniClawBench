@@ -1,0 +1,20 @@
+{
+  "display_name": "Shibui \u2014 Ceramics",
+  "ecommerce": {
+    "cart": true,
+    "checkout": true,
+    "product_pages": true,
+    "inventory": true
+  },
+  "responsive": true,
+  "palette": [
+    "#F6F0E8",
+    "#E8DFD3",
+    "#B9825B",
+    "#6E6A63",
+    "#222222"
+  ],
+  "product_image_area_ratio": 0.62,
+  "note": "warm neutral Japanese-minimalist palette, generous whitespace, full ecommerce",
+  "id": "shibui_ceramics"
+}

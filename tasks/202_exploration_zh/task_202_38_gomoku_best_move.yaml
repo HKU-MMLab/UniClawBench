@@ -1,0 +1,38 @@
+task_id: task_202_38_gomoku_best_move
+category: 202_exploration_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  这是一道单一局面的五子棋（Gomoku，Five-in-a-Row）谜题。请找出轮到走子的一方的
+  唯一最佳一手——不是下完整盘棋，只是在这个棋盘上的那一个最优着手。
+
+  局面位于：
+
+      /tmp_workspace/clawbench/sources/board.txt
+
+  它是一个 15x15 的棋盘。`X` 是黑方（轮到走子的一方），`O` 是白方，`.` 是空点。
+  行编号自上而下为 0-14；列编号自左而右为 0-14。轮到黑方走子。黑方通过连成五个 X
+  （横向、纵向或斜向）获胜。
+
+  分析该局面，确定黑方本回合在全局上的最佳一手。请用上述以 0 起始的约定，
+  以 (row, column) 坐标的形式报告它，并解释为何它是最佳的。
+
+  将你的答案保存到 `/tmp_workspace/results/best_move.json`，包含字段
+  `row`、`col` 以及一段简短的 `reasoning`，并在 `/tmp_workspace/results/`
+  下附上任何分析笔记。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+sources:
+  - board.txt
+
+codex:
+  max_user_followups: 2

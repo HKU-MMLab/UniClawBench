@@ -1,0 +1,22 @@
+{
+  "task_id": "task_101_35_en_zh_tech_daily",
+  "notes_visible_to_executor": false,
+  "skill_changes": [
+    {
+      "original_skill": "ai-news-zh",
+      "injected_skill": "news-snapshot-zh",
+      "original_source": "clawhub",
+      "change_type": "local_snapshot_adaptation",
+      "reason": "The task uses real saved news snapshots and should not collect or push live feeds. The fork keeps Chinese digest guidance while removing live collection/delivery assumptions.",
+      "executor_skill_path": "skills/news-snapshot-zh"
+    },
+    {
+      "original_skill": "github-trending-cn",
+      "injected_skill": "repo-snapshot-cn",
+      "original_source": "clawhub",
+      "change_type": "local_snapshot_adaptation",
+      "reason": "The task uses a saved GitHub repository snapshot. The fork keeps repository digest guidance while removing live GitHub Trending/API assumptions.",
+      "executor_skill_path": "skills/repo-snapshot-cn"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+Message-ID: <ZK1nZ/K/fDeg93+P@an3as.eu>
+X-Clawbench-ID: BIO-2024-1343
+Date: Tue, 11 Jul 2023 16:29:59 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: César Pomar <cesarpomar18@gmail.com>
+Subject: Re: Request for Sponsorship: VeryFastTree - Parallelized and Optimized Version of FastTree
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_07_msg00045.html
+
+Hi again,
+
+Am Mon, Jul 10, 2023 at 04:30:14PM +0200 schrieb César Pomar:
+> Copyright ready
+
+Well, it was a bit more complex since Stephane only holds Copyright
+of one File in the code.  I've fixed d/copyright and uploaded to new
+again.
+
+Kind regards
+     Andreas.
+
+--
+http://fam-tille.de

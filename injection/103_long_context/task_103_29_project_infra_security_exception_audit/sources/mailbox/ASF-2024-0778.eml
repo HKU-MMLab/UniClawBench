@@ -1,0 +1,41 @@
+Message-ID: <369e91b8-8dfc-4cf4-878e-f6e6893dd411@wanadoo.fr>
+X-Clawbench-ID: ASF-2024-0778
+Date: Mon, 14 Feb 2022 22:25:50 +0100
+From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+To: dev@httpd.apache.org, Doug Whitfield <dwhitfield@perforce.com>
+Subject: Re: PCRE2 compatibility
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-02.mbox
+
+Le 14/02/2022 à 21:14, Doug Whitfield a écrit :
+> Thanks Jeff, this is exactly what I am talking about!
+>
+> I see that there are some patches out that purport to fix this. Does
+> anybody know if those work and if they are ever going to get merged
+> since pcre is defunct?
+>
+> I saw references to some pcre backports on a httpd mailing list last
+> week (I think dev, but I wouldn’t swear to it). I’m not sure if those
+> were related or not.
+>
+>
+
+Hi,
+
+PCRE2 has been added in trunk some time ago.
+It has never reached the 2.4.x branch so far because of a performance
+issue related to memory allocation.
+
+The backport to 2.4.x has re-surfaced a few weeks or months ago and some
+proposals to workaround the performance issue have also been proposed.
+
+A backport for 2.4.x has been voted, but not merged yet.
+A set of patches have been merged in trunk for the performance issue.
+AFAIK some testing on Windows would be welcomed.
+
+So, yes, PCRE2 *should* be usable with the next version oh httpd, even
+if some performance tuning are merged later on.
+
+CJ

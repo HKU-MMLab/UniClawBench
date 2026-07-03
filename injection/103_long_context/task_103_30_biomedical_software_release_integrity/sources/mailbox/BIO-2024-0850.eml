@@ -1,0 +1,30 @@
+Message-ID: <442a67c3390287e0698f513494e0315f69093953.camel@riseup.net>
+X-Clawbench-ID: BIO-2024-0850
+Date: Mon, 08 Nov 2021 10:30:42 -0500
+From: "M. Zhou" <lumin@debian.org>
+To: Ole Streicher <olebole@debian.org>, debian-science@lists.debian.org
+Subject: Re: Debian Math Team
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_11_msg00061.html
+
+Hi Ole,
+
+On Tue, 2021-11-02 at 08:04 +0100, Ole Streicher wrote:
+> Instead, I would suggest to keep (and improve) the Science Team
+> policy,
+> and then to have a *tiny* Math team policy, which could just be a
+> 5..10-liner, like
+>
+> > We inherit the Science Team policy, except:
+> > * The maintainer field should be set to
+> >   "Debian Math Team ".
+> > * The VCS location is in the Salsa namespace
+> >   https://salsa.debian.org/math-team/
+
+I suggest the same. In practice the deep learning team directly
+adopted science team policy, and ML-Policy is added on top of
+it to address domain-specific issues.
+Maybe I should find some time to write down the policy ...
+explicitly.

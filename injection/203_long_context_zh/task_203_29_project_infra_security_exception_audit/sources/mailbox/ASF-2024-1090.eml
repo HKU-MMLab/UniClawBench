@@ -1,0 +1,48 @@
+Message-ID: <spmufh$756$1@ciao.gmane.io>
+X-Clawbench-ID: ASF-2024-1090
+Date: Sun, 19 Dec 2021 10:36:48 +0100
+From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+To: dev@httpd.apache.org
+Subject: Testing mod_tls
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2021-12.mbox
+
+Hi,
+
+I've been able to build mod_tls
+
+Basically, I've done:
+
+sudo apt install cargo
+sudo apt install cbindgen
+
+git clone https://github.com/rustls/rustls-ffi.git git_rustls-ffi
+sudo make install
+
+I have:
+/usr/local/lib/libcrustls.a
+/usr/local/lib/librustls.a
+/usr/local/include/crustls.h
+/usr/local/include/rustls.h
+
+
+pytest is also (apparently correctly) installed.
+pytest test/modules/http2 works fine.
+
+
+However, when I 'pytest test/modules/tls', I get:
+
+Syntax error on line 31 of
+XXX/svn_httpd_2.4.x/test/gen/apache/conf/modules.conf: Cannot load
+XXX/httpd-2.4/modules/mod_tls.so into server:
+XXX/httpd-2.4/modules/mod_tls.so: undefined symbol: fmaf
+
+
+My understanding is that mod_tls is correctly compiled, but that there
+is a missing library somewhere.
+
+Does it ring some bell to s.o.?
+
+CJ

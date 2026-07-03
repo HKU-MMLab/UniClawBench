@@ -1,0 +1,29 @@
+Message-ID: <3C6030B5.2060106@sunnmore.net>
+X-Clawbench-ID: CAM-2003-0605
+Date: Tue, 05 Feb 2002 20:21:25 +0100
+From: Roy-Magne Mo <rmo@sunnmore.net>
+To: rpm-zzzlist@freshrpms.net
+Subject: Re: Problem with an rpm...
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01092.de7b8468488cc45962d2f2d4882aeb66
+
+Mark Derricutt wrote:
+> Never mind, there was some cron thing doing rpm -qf ???  seems fine now.
+>
+> --On Wednesday, February 06, 2002 07:37:44 +1300 Mark Derricutt
+> <mark@talios.com> wrote:
+>
+>> Fetched 88.1kB in 2m31s (581B/s)
+>> error: cannot get exclusive lock on /var/lib/rpm/Packages
+>> error: cannot open Packages index using db3 - Operation not permitted (1)
+>> E: could not open RPM database:cannot open Packages index using db3 -
+>> Operation not permitted (1)
+
+You can do a rpm --rebuilddb too
+
+
+_______________________________________________
+RPM-List mailing list <RPM-List@freshrpms.net>
+http://lists.freshrpms.net/mailman/listinfo/rpm-list

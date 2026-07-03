@@ -1,0 +1,39 @@
+Message-ID: <D55Z8LDT988O.CY1OZOK6N3DY@riseup.net>
+X-Clawbench-ID: BIO-2024-0333
+Date: Sun, 27 Oct 2024 00:45:54 +0530
+From: "Nilesh Patra" <nilesh@riseup.net>
+To: "Maarten L. Hekkelman" <maarten@hekkelman.com>, "Debian Med Project List" <debian-med@lists.debian.org>
+Subject: Re: autopkgtest with additional data files?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_10_msg00021.html
+
+On Sat Oct 26, 2024 at 1:15 PM IST, Maarten L. Hekkelman wrote:
+> For one of my projects (density-fitness) I'd like to have a better
+> autopkgtest that does not require a full installation of libcifpp along
+> with the 750MB of data in components.cif (CCD). So I rewrote the script
+> to run the executable in order to use a small subset of that CCD file.
+> But the autopkgtest cannot find the file which means the script is not
+> run from within the directory where the test files are located.
+>
+> What is the best approach to fix this? Use the path of the script
+> querying $0? Use some undocumented variable to find the location of the
+> scripts? Include the data into the script and write that out first
+> before running the actual test?
+
+You would need to copy the files to AUTOPKGTEST_TMP dir for them to be
+found. The idea is to do the tests in a tmpdir.
+I have fixed a patch to salsa, LMK if that makes sense.
+
+BTW the cross-builds are failing due to running mrc from build
+architecure. Is this really needed/good to have?
+(adding -DUSE_RSRC=OFF makes cross builds pass)
+
+If it does add value, it is fine to have it as is and let cross-builds
+fail.
+
+> -maarten
+
+Thanks
+Nilesh

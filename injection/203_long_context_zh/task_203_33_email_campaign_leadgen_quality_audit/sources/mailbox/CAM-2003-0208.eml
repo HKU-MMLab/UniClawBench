@@ -1,0 +1,21 @@
+Message-ID: <ac49dabc2f.abc2fac49d@icomcast.net>
+X-Clawbench-ID: CAM-2003-0208
+Date: Tue, 10 Sep 2002 14:26:05 -0400
+From: tim.one@comcast.net
+To: recipient@example.net
+Subject: [Spambayes] timtest broke?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01748.69dcabe5a5fe6ffc5e20522e4c5477e4
+
+[Tim]
+> I never used ConfigParser before, but I read that its read()
+> method silently ignores files that don't exist.  If 'bayes.ini'
+> isn't found, *none* of the options will be defined. ...
+
+Note that I since got rid of bayes.ini (it's embedded in Options.py
+now), so search-path issues won't burn you here anymore.  The intended
+way to customize the tokenizer and testers is via creating your own
+bayescustomize.ini.  You'll get burned by search-path issues wrt that
+instead now <0.7 wink>.

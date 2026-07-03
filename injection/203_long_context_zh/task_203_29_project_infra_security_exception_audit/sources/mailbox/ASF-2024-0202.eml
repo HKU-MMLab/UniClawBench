@@ -1,0 +1,25 @@
+Message-ID: <CAFQGv+aVs=QY72UOn+2NM5+mogULgvinw7HMMUXxbQjC3udTCw@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0202
+Date: Wed, 14 Feb 2024 13:45:37 -0500
+From: Joe Schaefer <joe@sunstarsys.com>
+To: dev@httpd.apache.org
+Subject: release apreq 2.18 and mothball the project
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-02.mbox
+
+Assuming Google hasn't found any more fuzzing vulnerabilities with apreq,
+we should call the subproject done after releasing it, rolling any new
+efforts into httpd's internal copy of the codebase for the next major
+release of httpd.
+
+Sound like a plan?  I can get the ball rolling on the RM process assuming I
+still have working login (or can reacquire it via pw reset.
+
+--
+Joe Schaefer, Ph.D.
+<https://sunstarsys.com/orion/features>
+Orion - The Enterprise Jamstack Wiki <https://sunstarsys.com/orion/features>
+<joe@sunstarsys.com>
+954.253.3732 <//954.253.3732>

@@ -1,0 +1,33 @@
+Message-ID: <udl4k9dbxjv.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-0347
+Date: Mon, 18 Oct 2021 21:41:56 -0400
+From: ucko@debian.org (Aaron M. Ucko)
+To: Andreas Tille <tille@debian.org>
+Subject: Re: sra-sdk is lacking libngs
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00106.html
+
+Andreas Tille  writes:
+
+> I had to exclude the test following MiltipleBuffers as well.  Now the
+> package builds also on Salsa CI.  However, the autopkgtest fails[1].
+> Do you have any more hints?
+
+So I see.  I've concocted and pushed two more patches, which in
+conjunction yield much saner results on my system; let's see how they do
+on Salsa CI.  (Several apps were failing both because they wound up with
+multiple declarations of --help, to which an internal sanity checker
+objected, and because they were then trying to run other tools with
+explicit version suffixes, e.g. srapath-orig.2.11.2 rather than
+srapath-orig.)
+
+> BTW, could you ask upstream to make those tests optional to enable
+> builds even on not that well equiped hardware?
+
+I filed a request in NCBI's internal ticket tracker, no problem.
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

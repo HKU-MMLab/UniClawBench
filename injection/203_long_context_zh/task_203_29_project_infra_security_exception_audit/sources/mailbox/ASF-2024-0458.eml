@@ -1,0 +1,145 @@
+Message-ID: <CAOu7+yLZbst0t9Oi1ikbk__NycMYQUhvWWpdmB2vQnJxasa9JA@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0458
+Date: Wed, 20 Dec 2023 10:07:19 -0500
+From: "Eric Norris via dev" <dev@httpd.apache.org>
+To: Eric Norris via dev <dev@httpd.apache.org>
+Subject: Re: [PATCH] mod_deflate: remove filter after seeing EOS
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-12.mbox
+
+Thanks Joe, and no need to apologize, that's totally understandable.
+
+I also appreciate you taking a look at the chunk filter behavior as that
+was actually going to be the next patch I proposed. I had written it here:
+https://github.com/ericnorris/httpd/commit/5f8fa24786b937ab611160b3c765cededa6dcb12,
+though in retrospect I'm not sure why this (or your patch) alone isn't
+enough, and why I thought the mod_deflate patch was also needed.
+
+If I understand correctly, either patch would send the flush bucket after
+the last chunk marker and before the EOS bucket (i.e. [crlf last-chunk
+FLUSH EOS]), so there's no need for "userspace" to send an additional flush
+after the EOS bucket, and so mod_deflate wouldn't complain. Does that sound
+right?
+
+Apologies on my part if that's the case - it had been a few months since I
+had written the patches, so I might have lost that context by the time I
+was able to investigate submitting the patches. I possibly should have
+submitted the chunk filter patch first. Either way, like I said I
+appreciate your time.
+
+Eric Norris
+Etsy <https://www.etsy.com>
+
+
+On Wed, Dec 20, 2023 at 8:37 AM Joe Orton <jorton@redhat.com> wrote:
+
+> On Mon, Oct 30, 2023 at 10:47:44AM -0400, Eric Norris via dev wrote:
+> > Hello again,
+> >
+> > I'd like to politely bump this message to see if anyone would mind
+> > taking a look at this patch, either here or on GitHub.
+>
+> Apologies, I got quite distracted by the "rapid reset" security stuff
+> earlier in the year. I've merged your patch - thanks!
+>
+> I was surprised this made a difference to the behaviour on the wire. It
+> seems like the chunk filter has suboptimal behaviour here. If you take
+> an output brigade like either:
+>
+> a) [HEAP FLUSH EOS]
+> b) [HEAP FLUSH EOS FLUSH]
+>
+> in both cases the chunk filter would output two brigades:
+>
+> [chunk-hdr HEAP crlf FLUSH] [last-chunk EOS]
+>
+> Significantly there is no FLUSH in the second brigade even for case (b),
+> because the chunk filter also drops everything after EOS. It would be
+> clearly better/correct if the chunk filter produces a single brigade for
+> this very common output pattern:
+>
+> [chunk-hdr HEAP crlf last-chunk FLUSH EOS]
+>
+> correctly preserving the semantics of the FLUSH. I've tried this here:
+>
+> https://github.com/apache/httpd/pull/400
+>
+> Regards, Joe
+>
+> >
+> > Eric Norris
+> > Etsy
+> >
+> > On Mon, Oct 9, 2023 at 2:50 PM Eric Norris <enorris@etsy.com> wrote:
+> > >
+> > > Hello all,
+> > >
+> > > I've submitted a pull request on GitHub here:
+> > > https://github.com/apache/httpd/pull/387, per the instructions I found
+> > > at https://httpd.apache.org/contribute. I figured it may also be
+> > > useful to share the patch here, but please feel free to redirect me as
+> > > this is my first time contributing.
+> > >
+> > > Thanks!
+> > >
+> > > Eric Norris
+> > > Etsy
+> > >
+> > >
+> > > At Etsy, we use mod_php and were investigating what we thought was
+> > > surprising behavior - that code executed during PHP's shutdown phase
+> > > prevented the request from terminating, even if we didn't expect to
+> send
+> > > any additional output to the client.
+> > >
+> > > We determined that this was not surprising given mod_php's
+> > > implementation, but after we developed a proof-of-concept patch that
+> > > sent an EOS bucket and a flush bucket via a "userland" PHP function, we
+> > > were surprised that it didn't work when compression was enabled for the
+> > > request.
+> > >
+> > > I was able to reproduce this behavior with a simple Apache module built
+> > > on top of mod_example_hooks:
+> > >
+> > > https://gist.github.com/ericnorris/37c7dac401b50d270867e82a47bdd294
+> > >
+> > > It seems that this is because mod_deflate receives the EOS bucket and
+> > > then calls `deflateEnd` but remains in the filter chain. This means
+> that
+> > > it receives the next flush bucket and attempts to call
+> > > `flush_libz_buffer`, which of course fails, causing it to print an
+> > > AH01385 error to the Apache error log, and perhaps most importantly, to
+> > > "eat" the flush bucket and not pass it down the bucket brigade.
+> > >
+> > > We found that this patch allows us to successfully send an EOS bucket
+> > > *and* promptly flush the connection so that the client knows the
+> request
+> > > is finished.
+> > > ---
+> > >  modules/filters/mod_deflate.c | 4 ++++
+> > >  1 file changed, 4 insertions(+)
+> > >
+> > > diff --git a/modules/filters/mod_deflate.c
+> b/modules/filters/mod_deflate.c
+> > > index b7a68d2d43..ad753dc618 100644
+> > > --- a/modules/filters/mod_deflate.c
+> > > +++ b/modules/filters/mod_deflate.c
+> > > @@ -941,6 +941,10 @@ static apr_status_t
+> deflate_out_filter(ap_filter_t *f,
+> > >              }
+> > >
+> > >              deflateEnd(&ctx->stream);
+> > > +
+> > > +            /* We've ended the libz stream, so remove ourselves. */
+> > > +            ap_remove_output_filter(f);
+> > > +
+> > >              /* No need for cleanup any longer */
+> > >              apr_pool_cleanup_kill(r->pool, ctx, deflate_ctx_cleanup);
+> > >
+> > > --
+> > > 2.40.1
+> >
+>
+>

@@ -1,0 +1,19 @@
+Message-ID: <A4C339F4-981E-435C-922D-E5EA31AA9975@eissing.org>
+X-Clawbench-ID: ASF-2024-0894
+Date: Thu, 20 Jan 2022 10:53:24 +0100
+From: Stefan Eissing <stefan@eissing.org>
+To: dev@httpd.apache.org
+Subject: event tweaking
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-01.mbox
+
+As seen in https://bz.apache.org/bugzilla/show_bug.cgi?id=65626 we have done optimizations in mpm_event during the last year. It is normal that we risk running into problems with changes in such complicated areas. But it seems difficult to stabilize the code here.
+
+I think it would be nice to have some more control here, so we have confidence that we can improve this code without risking regressions.
+
+Is there any test scenario (verification, stress test) that we can set up to simulate behaviour here? If this is tricky, what do we need to add to the server to enable tests of this?
+
+Kind Regards,
+Stefan

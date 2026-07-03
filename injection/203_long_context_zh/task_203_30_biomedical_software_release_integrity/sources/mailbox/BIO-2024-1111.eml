@@ -1,0 +1,45 @@
+Message-ID: <E6042786-C96C-48F3-9696-2EAAC20509C5@nileshpatra.info>
+X-Clawbench-ID: BIO-2024-1111
+Date: Tue, 07 Nov 2023 08:49:56 +0530
+From: Nilesh Patra <nilesh@nileshpatra.info>
+To: debian-med@lists.debian.org, Sébastien Jodogne <s.jodogne@orthanc-labs.com>
+Subject: Re: Adding autopkgtest to Orthanc-python
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_11_msg00012.html
+
+Gentle ping?
+
+On 4 November 2023 4:23:58 pm IST, Nilesh Patra  wrote:
+>On Sat, Nov 04, 2023 at 11:33:52AM +0100, Sébastien Jodogne wrote:
+>> > I tried doing something similar however the test still seems to fail.
+>> > The failing job can be found at[3].
+>> > [3] https://salsa.debian.org/med-team/orthanc-python/-/jobs/4887512
+>>
+>> The log file of Orthanc indicates that the Python plugin is simply not
+>> loaded:
+>>
+>> >>>>>
+>> I1104 10:12:22.947781 PluginsManager.cpp:280] (plugins) Scanning folder ./.
+>> for plugins
+>> W1104 10:12:22.947999 OrthancInitialization.cpp:420] SQLite index directory:
+>> "./OrthancStorage"
+>> >
+>> The folder "./." should contain the "libOrthancPlugin.so" shared library,
+>> which is visibly not the case, otherwise you would see the following lines
+>> in the logs:
+>
+>I see -- but this seems a little counter-intuitive, no? orthanc-python
+>installs files in /etc/orthanc/ but by what you said above the plugins
+>should be installed only in /usr/share/orthanc/plugins/ to be working
+>(along with a bunch of .so files) - is that correct?
+>
+>Tests pass after manually symlinking the said `.so` file but I am not
+>sure if this is a sensible thing to do for tests, It'd be great if you
+>could comment on that.
+>
+>Thanks for the quick response!
+>
+>Best,
+>Nilesh

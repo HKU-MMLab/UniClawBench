@@ -1,0 +1,17 @@
+Message-ID: <CAFQGv+aNqfOEbWHHGkdHM_inYH6XJEnt9imXps6cE-BLvpOSpA@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0930
+Date: Fri, 27 Jan 2023 13:33:41 -0500
+From: Joe Schaefer <joe@sunstarsys.com>
+To: dev@httpd.apache.org
+Subject: Re: mod_wasm: Contributing Upstream to Apache
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-01.mbox
+
+A native interface outside of CGI compat for apreq would be a killer new
+feature, because it really finishes our vision for apreq as the
+one-HTML-spec-parser for all native apps, regardless of language choice. Of
+course this would be a new opt-in feature for target languages to take
+advantage of, but it will really set apart the speed freaks in your
+userbase.

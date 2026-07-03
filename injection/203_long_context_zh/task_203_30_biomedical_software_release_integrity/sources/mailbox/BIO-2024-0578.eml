@@ -1,0 +1,32 @@
+Message-ID: <ZbieGiWInds-8f-j@an3as.eu>
+X-Clawbench-ID: BIO-2024-0578
+Date: Tue, 30 Jan 2024 07:58:34 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Do we need the Python interface of ghmm
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_01_msg00020.html
+
+Hi Steffen (and two whom it might concern),
+
+when Israel has written the autopkgtest for ghmm it turned
+out that there are several issues with the Python3 interface.
+In Matrix Nilesh raised the perfectly valid question:
+
+   The py interface is living off a patch from py2to3 and is (very)
+   broken. It needs quite a lot of patching. Maybe it's a sensible thing to
+   evaluate if we even need it?
+
+Could you please state your opinion about this?
+
+We should respond in a timely manner to the atlas removal
+effort (patch in Git) and currently it is blocked by the
+test suite issue of the Python3 interface.
+
+Kind regards
+   Andreas.
+
+--
+http://fam-tille.de

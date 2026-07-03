@@ -1,0 +1,86 @@
+{
+  "task_id": "task_105_24_wikipedia_multilang_mermaid",
+  "schema_notes": "Pinned to specific Wikipedia revision oldids — these are immutable forever. Section counts are top-level (toclevel=1). External link sets are extracted via action=parse&prop=externallinks against the same oldid. Jaccard pair values fetched live 2026-05-02 are arithmetically derived from intersection/union of the URL sets and will not drift unless the supervisor deliberately re-pins to a newer oldid. Article-thickness (categories/images/article_length_bytes) via action=query&prop=info|categories|images&revids=<oldid>. Eval grades semantic goal-achievement, NOT exact JSON shape — see eval_rule.md §5.",
+  "reference_date": "2026-05-02",
+  "ground_truth": {
+    "topic": "Next.js",
+    "languages": [
+      {
+        "lang": "en",
+        "title": "Next.js",
+        "revision_id": 1350358134,
+        "url": "https://en.wikipedia.org/wiki/Next.js?oldid=1350358134",
+        "top_level_sections_count": 7,
+        "external_links_count": 51,
+        "category_count": 3,
+        "image_count": 3,
+        "article_length_bytes": 21072,
+        "info_density_per_kb": 0.2916
+      },
+      {
+        "lang": "zh",
+        "title": "Next.js",
+        "revision_id": 91416611,
+        "url": "https://zh.wikipedia.org/wiki/Next.js?oldid=91416611",
+        "top_level_sections_count": 5,
+        "external_links_count": 59,
+        "category_count": 2,
+        "image_count": 3,
+        "article_length_bytes": 18743,
+        "info_density_per_kb": 0.2732
+      },
+      {
+        "lang": "ja",
+        "title": "Next.js",
+        "revision_id": 108911848,
+        "url": "https://ja.wikipedia.org/wiki/Next.js?oldid=108911848",
+        "top_level_sections_count": 6,
+        "external_links_count": 42,
+        "category_count": 3,
+        "image_count": 3,
+        "article_length_bytes": 24279,
+        "info_density_per_kb": 0.2531
+      },
+      {
+        "lang": "de",
+        "title": "Next.js",
+        "revision_id": 262493853,
+        "url": "https://de.wikipedia.org/wiki/Next.js?oldid=262493853",
+        "top_level_sections_count": 5,
+        "external_links_count": 15,
+        "category_count": 4,
+        "image_count": 1,
+        "article_length_bytes": 8736,
+        "info_density_per_kb": 0.5861
+      }
+    ],
+    "external_links_jaccard_pairs": {
+      "en_zh": {"intersection": 34, "union": 76, "jaccard": 0.4474},
+      "en_ja": {"intersection": 30, "union": 63, "jaccard": 0.4762},
+      "en_de": {"intersection":  4, "union": 62, "jaccard": 0.0645},
+      "zh_ja": {"intersection": 29, "union": 72, "jaccard": 0.4028},
+      "zh_de": {"intersection":  4, "union": 70, "jaccard": 0.0571},
+      "ja_de": {"intersection":  4, "union": 53, "jaccard": 0.0755}
+    },
+    "most_similar_pair": ["en", "ja"],
+    "least_similar_pair": ["zh", "de"],
+    "thinnest_lang": "de",
+    "highest_info_density_lang": "de",
+    "key_observations": [
+      "en–ja are the most similar (Jaccard ≈ 0.48)",
+      "zh–de are the least similar (Jaccard ≈ 0.06)",
+      "de is the thinnest version (≈ 8736 bytes, ~41% of English size)",
+      "de paradoxically has the highest info_density_per_kb (0.5861)"
+    ],
+    "tolerances": {
+      "revision_id": "exact (oldid is immutable)",
+      "external_links_count": "+/- 2 (allows for minor URL canonicalisation)",
+      "article_length_bytes": "+/- 100 absolute per lang",
+      "top_level_sections_count": "+/- 1",
+      "jaccard_pair_value": "+/- 0.10 absolute (allows formula variations)",
+      "most_similar_pair": "exact set {en, ja}",
+      "least_similar_pair": "exact set {zh, de}",
+      "thinnest_lang": "exact 'de'"
+    }
+  }
+}

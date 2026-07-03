@@ -1,0 +1,43 @@
+Message-ID: <a305ffc4-b3a6-472b-856c-fe8d1441ac39@wanadoo.fr>
+X-Clawbench-ID: ASF-2024-1426
+Date: Thu, 19 Dec 2024 19:43:21 +0100
+From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+To: dev@httpd.apache.org, =?UTF-8?Q?Andr=C3=A9_Malo?= <nd@perlig.de>
+Subject: Re: Move to git (Was: Re: httpd 2.4 -> next)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-12.mbox
+
+Le 18/12/2024 à 21:06, André Malo a écrit :
+> Eric Covener wrote:
+>>> Are the tasks required to do so known? If so, I can take that on.
+>> Maybe something like this for the must-have tasks:
+>>
+>> - Get with Infra and see if there are general caveats (open PRs for
+>> example?) for converting from r/o to r/w
+>> - Clean up or save whatever might go missing when we convert
+>> - give warning of the above + the upcoming cutover attempt.
+>> - make svn r/o (infra) && make github r/w (infra)
+>> - Do a final check of contents and history (multiple eyes)
+>> - Test basic PR flow and CI still happy
+>> - Port the release scripts and run a non-security release (there are a
+>> few regression fixes queued up i believe). I can take a crack at this
+>> probably any time in 1Q with just a little notice to sync up.
+> The doc translation trackers are based on svn revision numbers. Or at least
+> used to be, I'm actually not entirely sure about the current state :P
+>
+> Cheers,
+> André
+>
+BTW, the link related to "Good to see what has already been translated
+and whether it's up to date or not." at
+https://httpd.apache.org/docs-project/goingfurther.html is broken since
+http://home.apache.org/ has been deprecated.
+
+I have a copy of the script somewhere on my HD if this functionality
+should be revived somewhere.
+The tool was really nice, but I'm not sure it was really (known and) used.
+
+
+CJ

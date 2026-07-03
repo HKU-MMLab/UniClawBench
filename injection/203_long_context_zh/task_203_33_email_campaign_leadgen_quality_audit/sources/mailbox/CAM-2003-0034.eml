@@ -1,0 +1,34 @@
+Message-ID: <F199z1InqBHxQUnsq7Z00022236@hotmail.com>
+X-Clawbench-ID: CAM-2003-0034
+Date: Sun, 11 Aug 2002 17:37:14 +0000
+From: Russell Turpin <deafbox@hotmail.com>
+To: fork@spamassassin.taint.org
+Subject: Re: Forged whitelist spam
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01005.bb6d68846320ecc5bc3dedb02805641a
+
+Eugene Leitl:
+>The original comment's context was digital signatures. A digital signature
+>is worth sqrat if any userspace app or rogue superuser code can grab your
+>keyring in clear
+
+If you have a rogue app on your machine, what
+keeps it from sniffing your passphrase? This is
+one of the reasons I keep harping on the need for
+thin, secure clients.
+
+>A passphrase is a (long, secure) password unlocking (decrypting) your
+>keyring. You don't use a passphrase to read your email.
+
+When I read email, I want to respond to email,
+which means, were I using a digital signature,
+that it needs to be at the ready.
+
+
+_________________________________________________________________
+MSN Photos is the easiest way to share and print your photos:
+http://photos.msn.com/support/worldwide.aspx
+
+http://xent.com/mailman/listinfo/fork

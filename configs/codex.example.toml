@@ -1,0 +1,30 @@
+model_provider = "proxy-example"
+model = "gpt-5.4"
+
+# Global proxy definitions — providers reference these via proxy_ref
+[proxies.ssh-proxy-example]
+type = "ssh"
+ssh_host = "YOUR_SSH_HOST"
+ssh_user = "root"
+local_port = 9000
+remote_host = "127.0.0.1"
+remote_port = 9000
+adapter = "responses_via_chat"
+adapter_port = 9001
+
+[model_providers.direct-responses-example]
+name = "direct-responses-example"
+base_url = "https://api.example.com/v1"
+env_key = "DIRECT_RESPONSES_API_KEY"
+wire_api = "responses"
+supports_websockets = false
+models = ["gpt-5.4-nano"]
+
+[model_providers.proxy-example]
+name = "proxy-example"
+base_url = "http://127.0.0.1:9001/v1/openai/native"
+env_key = "PROXY_EXAMPLE_API_KEY"
+wire_api = "responses"
+supports_websockets = false
+proxy_ref = "ssh-proxy-example"
+models = ["gpt-5.4", "gpt-4.1"]

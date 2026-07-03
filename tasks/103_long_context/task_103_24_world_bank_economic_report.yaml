@@ -1,0 +1,32 @@
+task_id: task_103_24_world_bank_economic_report
+category: 103_long_context
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I have a dataset of real World Bank indicators sitting at `/tmp_workspace/clawbench/sources/worldbank_data/worldbank_indicators_2000_2023.csv`. It covers six countries (China, United States, Japan, Germany, India, Brazil) from 2000 to 2023, with five indicators: GDP (current US$), GDP per capita (current US$), total population, urban population (% of total), and CO2 emissions per capita (tonnes).
+
+  Please write a data-driven comparative economic report based on THIS dataset (not your own prior knowledge — read and compute over the CSV). I want a real analysis, not a summary of what you already think you know about these countries.
+
+  The report should:
+  1. Load the CSV and work directly from its values.
+  2. Compare the countries across multiple indicators, and connect them — for example, how total GDP compares with GDP per capita and population; how per-capita CO2 emissions rank versus what you might expect from total economic size; and how urbanization has changed over time.
+  3. Call out the most interesting findings with concrete numbers, and for each number say which indicator and year it comes from.
+  4. Include at least three charts (PNG images or an interactive HTML chart) saved under `/tmp_workspace/results/`, and reference them from the report. The charts must reflect the actual data (correct trends, axes, and country labels).
+
+  Save the written report to `/tmp_workspace/results/economic_report.md`, with the chart files alongside it. If any value is missing in the dataset for a given country/year, note it rather than inventing a number.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+sources:
+  - worldbank_data/
+
+codex:
+  max_user_followups: 2

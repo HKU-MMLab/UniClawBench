@@ -1,0 +1,27 @@
+Message-ID: <CAMD-=VJVhi9q1U919VAq6k=WmMsHvMj3c82dHOfsCJUVR8dSJw@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0679
+Date: Tue, 21 Dec 2021 11:26:30 +1000
+From: Nick Edwards <nick.z.edwards@gmail.com>
+To: dev <dev@httpd.apache.org>
+Subject: Re: announce mails
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2021-12.mbox
+
+Why would the release system initiate an announce when the mirrors are not
+up to date, they cant be, since rsync.apache still lists 2.4.51 as latest,
+the process is to allow time for mirrors to get the package before
+announcing it
+
+
+On Mon, Dec 20, 2021 at 7:53 PM Stefan Eissing <stefan@eissing.org> wrote:
+
+> The mailings to announce lists continue to bother me. The release
+> announcement is the the moderation queue (hopefully) and the cveprocess
+> mails go right through to the list. This is not the order I prefer.
+>
+> I am holden back the send about the second CVE until I see the release
+> announcement winked through.
+>
+> - Stefan

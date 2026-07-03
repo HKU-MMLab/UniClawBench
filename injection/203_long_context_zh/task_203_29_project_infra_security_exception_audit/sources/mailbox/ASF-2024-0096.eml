@@ -1,0 +1,90 @@
+Message-ID: <CAKQ1sVM+pBH+nSidxpMnvkYm9FMahXy4Yxh1tgLJXZRjREOOQA@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0096
+Date: Wed, 26 Jan 2022 14:34:32 +0100
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: httpd-dev <dev@httpd.apache.org>
+Subject: Re: mpm event assertion failures
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-01.mbox
+
+On Tue, Jan 25, 2022 at 10:26 PM Graham Leggett <minfrin@sharp.fm> wrote:
+>
+> On 25 Jan 2022, at 14:11, Stefan Eissing <stefan@eissing.org> wrote:
+>
+> > Also, while running the http2 test suite, I get repeated assert failures in event.c:1230
+> >
+> > if (rv != APR_SUCCESS && !APR_STATUS_IS_EEXIST(rv)) {
+> > ->  AP_DEBUG_ASSERT(0);
+> >    TO_QUEUE_REMOVE(cs->sc->wc_q, cs);
+> >    apr_thread_mutex_unlock(timeout_mutex);
+> >    ap_log_error(APLOG_MARK, APLOG_ERR, rv, ap_server_conf, APLOGNO(03465)
+> >                 "process_socket: apr_pollset_add failure for "
+> >                 "write completion");
+> >    close_connection(cs);
+> >    signal_threads(ST_GRACEFUL);
+> > }
+>
+> One line above is this:
+>
+>             rv = apr_pollset_add(event_pollset, &cs->pfd);
+>
+> and looking up the log we fail with a bad file descriptor.
+>
+> This looks like it’s being triggered by this:
+>
+> https://github.com/apache/apr/blob/trunk/poll/unix/poll.c#L194
+>
+> which in turn looks like an apr_file_t is being added to the connection. Does that seem familiar?
+
+What system is this with !APR_FILES_AS_SOCKETS and apr_pollset using
+poll() instead of epoll()?
+Is OSX like that? I'd expect it to use kqueue (with APR_FILES_AS_SOCKETS)..
+
+Sorry you will have to debug that, how an apr_file_t different than
+the wakeup pipe can end up being apr_pollset_poll()ed and handled like
+a connection socket, it doesn't sound familiar to me.
+
+Also it seems that travis triggers this too:
+https://app.travis-ci.com/github/apache/httpd/jobs/556994472#L2627
+But there it's with apr-1.7.0, so nothing related to latest apr
+changes it seems.
+
+>
+> To explain what’s changed in mod_ssl, a bug has been fixed.
+
+I wouldn't call it like that..
+
+> In the old mod_ssl, directly after connecting we make one single attempt to read zero bytes in a blocking connection. OpenSSL kicks in and performs reads and writes to finish the handshake. And then if that failed for whatever reason - brokenly - we throw the errors away and pretend nothing happened.
+>
+> https://github.com/apache/httpd/blob/2.4.x/modules/ssl/mod_ssl.c#L695
+
+Well, the handshake and process_connection hooks in general are run in
+blocking mode there.
+The expectation (I suppose) is that the next process_connection hook
+will catch the error too.
+
+Btw, the new ssl_hook_process_connection() in trunk seems to do that
+for AP_FILTER_ERROR still, but not for the other errors.
+
+>
+> We then get into the protocol handler, and in http/1.1 we read the now broken connection a second time here:
+>
+> https://github.com/apache/httpd/blob/2.4.x/modules/http/http_core.c#L148
+
+Yes but is that an issue? It seems that in 2.4.x (and before your
+changes in trunk) this actually catches the former error.
+
+Now it seems that you can't make the handshake nonblocking by just
+s/APR_BLOCK_READ/APR_NONBLOCK_READ/ and pretend it should work. If it
+does not please find the cause (the consequences are shown by the ci
+already).
+
+The AH03465 does not trigger on my machine when running the pytest
+suites (I even tried with apr-1.7.0), but it triggers on travis so I
+suppose there is something with the epoll pollset too?
+
+
+Regards;
+Yann.

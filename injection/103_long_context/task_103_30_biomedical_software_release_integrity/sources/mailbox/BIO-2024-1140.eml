@@ -1,0 +1,27 @@
+Message-ID: <Y9bRE3H99MWnrEMP@an3as.eu>
+X-Clawbench-ID: BIO-2024-1140
+Date: Sun, 29 Jan 2023 21:03:31 +0100
+From: Andreas Tille <tille@debian.org>
+To: Paul Gevers <elbrus@debian.org>
+Subject: Re: Thanks for helping sra-sdk 3 migrate!
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_01_msg00055.html
+
+Am Sun, Jan 29, 2023 at 08:38:22PM +0100 schrieb Paul Gevers:
+>
+> britney2 (our migration software) still refuses to let sra-sdk migrate and
+> replace ngs-sdk. I think that's because with ngs-sdk, paleomix can be build
+> and installed on ppc64el, while with sra-sdk it can't. I'll add a hint to
+> accept this for now to have stuff migrate, but you'll need to fix that in
+> paleomix (probably by asking for it's removal on ppc64el and mips64el as I
+> think they FTBFS there now and can't be installed either).
+
+ACK, perfectly fine to remove paleomix on anything than amd64.
+
+Kind regards
+    Andreas.
+
+--
+http://fam-tille.de

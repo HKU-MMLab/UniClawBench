@@ -1,0 +1,41 @@
+Message-ID: <CAJxCLXqOt0hAszGEMzbPtQXdkPXy_6BsJZoGYma7_4_uj70Lyg@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0287
+Date: Wed, 24 May 2023 12:45:35 -0700
+From: Benjamin Godfrey <mr.benjamingodfrey@gmail.com>
+To: dev@httpd.apache.org
+Subject: Apache2 chroot problem: towards a solution
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-05.mbox
+
+Dear Apache2 team,
+
+Thank you for your help in trying to resolve the issue I am having with the
+Apache server inside of a chroot environment on a Chromebook. I thought I
+had narrowed the problem down to a piece of code in Apache2 that checks if
+the server is running in a chroot. This code causes Apache2 to ignore any
+requests to start, stop, or restart the server.
+
+I have since my previous request learned that the reason that there is a
+check for the chroot is so that Apache2 doesn’t escape from the chroot.
+It seems to me to be an error in logic to ignore requests when the
+conditions indicate that a process should proceed with what it is supposed
+to do.
+
+I have already contacted other developers and I share your frustration they
+have  have not worked with the Apache HTTPD project to resolve this issue.
+
+I am writing to you today to ask for your help in resolving this issue. I
+understand that the Ubuntu package maintainers are not responsible for the
+Apache HTTPD project, but I believe that you may be able to connect me to a
+developer who can help me resolve this issue.
+
+I would be grateful if you could provide me with the contact information
+for a developer who can help me with this issue or other assistance such as
+directing me to a module that might help, or direct me to some
+documentation that would help me solve this technical issue.
+
+Yours truly,
+
+Benjamin Godfrey

@@ -1,0 +1,96 @@
+# ──────────────────────────────────────────────────────────────────────
+# Editor / OS metadata
+# ──────────────────────────────────────────────────────────────────────
+.DS_Store
+.idea/
+.vscode/
+.claude/
+.python-version
+.env
+.env.*
+.envrc
+.cache/
+.venv/
+*.swp
+*.swo
+*.orig
+*.rej
+
+# Auto-generated memory/context dump (claude-mem) — never commit
+AGENTS.md
+
+# ──────────────────────────────────────────────────────────────────────
+# Python build / test artefacts
+# ──────────────────────────────────────────────────────────────────────
+__pycache__/
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.hypothesis/
+.tox/
+.nox/
+coverage/
+.coverage
+.coverage.*
+htmlcov/
+dist/
+build/
+*.egg-info/
+
+# ──────────────────────────────────────────────────────────────────────
+# Bulk downloads + archives.  The negations below put back the per-task
+# corpora that need to ship with fresh clones (their .log / .tar / .zip
+# files are benchmark *inputs*, not run outputs).
+# ──────────────────────────────────────────────────────────────────────
+downloads/
+*.tar
+*.tar.gz
+*.zip
+*.log
+
+!injection/**/*.log
+!injection/**/*.tar
+!injection/**/*.tar.gz
+!injection/**/*.zip
+
+# ──────────────────────────────────────────────────────────────────────
+# Run-time state and benchmark outputs (never committed)
+# ──────────────────────────────────────────────────────────────────────
+runs/
+analysis_runs/
+backend_eval_*/
+manual_eval_*/
+.runtime/
+image-export/
+static-site/
+logs/
+tmp_sync/
+*.stdout.json
+*.pid
+
+# Orchestra runtime state (priority queues, inflight + done ledgers).
+scripts/orchestra/runtime/*
+!scripts/orchestra/runtime/.gitkeep
+
+# ──────────────────────────────────────────────────────────────────────
+# Local config and secrets.  Fresh clones recreate these from the
+# matching configs/*.example.* templates that ARE committed.
+# ──────────────────────────────────────────────────────────────────────
+configs/*.local.json
+configs/*.local.toml
+configs/*.local.env
+configs/*.local.yaml
+configs/*.local.json.bak
+configs/*.local.toml.bak
+configs/*.local.env.bak
+configs/*.local.yaml.bak
+
+# ──────────────────────────────────────────────────────────────────────
+# Per-task service pycache (containers occasionally drop these into the
+# injection tree at runtime — three glob levels match the layout).
+# ──────────────────────────────────────────────────────────────────────
+injection/*/*/services/**/__pycache__/

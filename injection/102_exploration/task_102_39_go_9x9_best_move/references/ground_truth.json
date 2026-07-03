@@ -1,0 +1,286 @@
+{
+  "task_id": "task_102_39_go_9x9_best_move",
+  "board_size": 9,
+  "komi": 7,
+  "to_move": "Black (X)",
+  "position_sgf": "(;FF[4]GM[1]SZ[9]PB[]PW[]HA[0]KM[7]RU[TrompTaylor];B[ee];W[cf];B[dg];W[cd];B[gd];W[dc];B[cg];W[gf];B[gg];W[ge];B[fd];W[fg];B[ff];W[hg];B[gh];W[hh];B[fh];W[hd];B[hc];W[ie];B[ec];W[bg];B[hi];W[hf])",
+  "best_move": {
+    "gtp": "B2",
+    "row": 7,
+    "col": 1
+  },
+  "root_eval": {
+    "winrate": 0.481285046,
+    "scoreLead": -0.0432403892,
+    "visits": 815
+  },
+  "katago": {
+    "engine": "KataGo v1.16.4 (Eigen/CPU)",
+    "network": "kata1-b28c512nbt-s8209287936-d4596492266",
+    "analysis_visits": 800,
+    "position_from": "KataGo self-play to a balanced midgame"
+  },
+  "normalization": "score(m)=0.5*norm(scoreLead)+0.5*norm(winrate) over all analyzed legal moves; best=1.0, worst=0.0; pass/illegal=0.",
+  "scoring": "final_task_score = move_table[chosen_move_gtp].normalized (clipped [0,1]). Map the executor's (row,col) or gtp to a GTP coord and look it up. A move not in the table (very low-visit/illegal) scores ~0.",
+  "move_table_gtp_to_rowcol_note": "GTP col letter uses A-H,J (no I); row counts from bottom (row N at top index 0).",
+  "move_table": {
+    "B2": {
+      "normalized": 1,
+      "winrate": 0.4833,
+      "scoreLead": -0.036,
+      "visits": 491
+    },
+    "E8": {
+      "normalized": 0.9781,
+      "winrate": 0.4663,
+      "scoreLead": -0.115,
+      "visits": 183
+    },
+    "J7": {
+      "normalized": 0.9537,
+      "winrate": 0.4423,
+      "scoreLead": -0.102,
+      "visits": 82
+    },
+    "D8": {
+      "normalized": 0.8936,
+      "winrate": 0.387,
+      "scoreLead": -0.151,
+      "visits": 8
+    },
+    "B5": {
+      "normalized": 0.8359,
+      "winrate": 0.3572,
+      "scoreLead": -0.66,
+      "visits": 7
+    },
+    "D6": {
+      "normalized": 0.8775,
+      "winrate": 0.3766,
+      "scoreLead": -0.251,
+      "visits": 6
+    },
+    "B7": {
+      "normalized": 0.5794,
+      "winrate": 0.1536,
+      "scoreLead": -1.507,
+      "visits": 1
+    },
+    "J4": {
+      "normalized": 0.6203,
+      "winrate": 0.1691,
+      "scoreLead": -1.034,
+      "visits": 1
+    },
+    "J2": {
+      "normalized": 0.8064,
+      "winrate": 0.3041,
+      "scoreLead": -0.165,
+      "visits": 1
+    },
+    "B4": {
+      "normalized": 0.6825,
+      "winrate": 0.208,
+      "scoreLead": -0.619,
+      "visits": 1
+    },
+    "B8": {
+      "normalized": 0.324,
+      "winrate": 0.0357,
+      "scoreLead": -4.037,
+      "visits": 1
+    },
+    "C8": {
+      "normalized": 0.5766,
+      "winrate": 0.1846,
+      "scoreLead": -2.177,
+      "visits": 1
+    },
+    "D4": {
+      "normalized": 0.3947,
+      "winrate": 0.0272,
+      "scoreLead": -2.519,
+      "visits": 1
+    },
+    "C7": {
+      "normalized": 0.3038,
+      "winrate": 0.0468,
+      "scoreLead": -4.644,
+      "visits": 1
+    },
+    "J3": {
+      "normalized": 0.5219,
+      "winrate": 0.1082,
+      "scoreLead": -1.699,
+      "visits": 1
+    },
+    "D9": {
+      "normalized": 0.3226,
+      "winrate": 0.0219,
+      "scoreLead": -3.788,
+      "visits": 1
+    },
+    "E9": {
+      "normalized": 0.3197,
+      "winrate": 0.0234,
+      "scoreLead": -3.875,
+      "visits": 1
+    },
+    "J8": {
+      "normalized": 0.6514,
+      "winrate": 0.1857,
+      "scoreLead": -0.769,
+      "visits": 1
+    },
+    "J6": {
+      "normalized": 0.2122,
+      "winrate": 0.0204,
+      "scoreLead": -5.867,
+      "visits": 1
+    },
+    "D5": {
+      "normalized": 0.2793,
+      "winrate": 0.0148,
+      "scoreLead": -4.474,
+      "visits": 1
+    },
+    "C5": {
+      "normalized": 0.2444,
+      "winrate": 0.0196,
+      "scoreLead": -5.236,
+      "visits": 1
+    },
+    "C2": {
+      "normalized": 0.1478,
+      "winrate": 0.0103,
+      "scoreLead": -6.895,
+      "visits": 1
+    },
+    "B6": {
+      "normalized": 0.1814,
+      "winrate": 0.0183,
+      "scoreLead": -6.414,
+      "visits": 1
+    },
+    "C9": {
+      "normalized": 0.1365,
+      "winrate": 0.0136,
+      "scoreLead": -7.178,
+      "visits": 1
+    },
+    "A3": {
+      "normalized": 0.0723,
+      "winrate": 0.0082,
+      "scoreLead": -8.297,
+      "visits": 1
+    },
+    "F9": {
+      "normalized": 0.1077,
+      "winrate": 0.0099,
+      "scoreLead": -7.655,
+      "visits": 1
+    },
+    "G1": {
+      "normalized": 0.0772,
+      "winrate": 0.0064,
+      "scoreLead": -8.168,
+      "visits": 1
+    },
+    "D1": {
+      "normalized": 0.0632,
+      "winrate": 0.007,
+      "scoreLead": -8.446,
+      "visits": 1
+    },
+    "J1": {
+      "normalized": 0.0157,
+      "winrate": 0.0046,
+      "scoreLead": -9.306,
+      "visits": 1
+    },
+    "A4": {
+      "normalized": 0.098,
+      "winrate": 0.0114,
+      "scoreLead": -7.867,
+      "visits": 1
+    },
+    "pass": {
+      "normalized": 0.0123,
+      "winrate": 0.0053,
+      "scoreLead": -9.385,
+      "visits": 1
+    },
+    "B9": {
+      "normalized": 0.15,
+      "winrate": 0.0151,
+      "scoreLead": -6.95,
+      "visits": 1
+    },
+    "J9": {
+      "normalized": 0,
+      "winrate": 0.0035,
+      "scoreLead": -9.583,
+      "visits": 1
+    },
+    "F8": {
+      "normalized": 0.1946,
+      "winrate": 0.0079,
+      "scoreLead": -5.955,
+      "visits": 1
+    },
+    "E1": {
+      "normalized": 0.0362,
+      "winrate": 0.0053,
+      "scoreLead": -8.929,
+      "visits": 1
+    },
+    "A5": {
+      "normalized": 0.0595,
+      "winrate": 0.0093,
+      "scoreLead": -8.562,
+      "visits": 1
+    },
+    "H9": {
+      "normalized": 0.0408,
+      "winrate": 0.0053,
+      "scoreLead": -8.84,
+      "visits": 1
+    },
+    "B1": {
+      "normalized": 0.1521,
+      "winrate": 0.0106,
+      "scoreLead": -6.819,
+      "visits": 1
+    },
+    "H8": {
+      "normalized": 0.0789,
+      "winrate": 0.0077,
+      "scoreLead": -8.158,
+      "visits": 1
+    },
+    "A6": {
+      "normalized": 0.0479,
+      "winrate": 0.0085,
+      "scoreLead": -8.769,
+      "visits": 1
+    },
+    "E6": {
+      "normalized": 0.091,
+      "winrate": 0.0083,
+      "scoreLead": -7.941,
+      "visits": 1
+    },
+    "A2": {
+      "normalized": 0.0668,
+      "winrate": 0.0077,
+      "scoreLead": -8.391,
+      "visits": 1
+    },
+    "A7": {
+      "normalized": 0.0564,
+      "winrate": 0.0093,
+      "scoreLead": -8.621,
+      "visits": 1
+    }
+  }
+}

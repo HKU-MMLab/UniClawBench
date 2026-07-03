@@ -1,0 +1,25 @@
+Message-ID: <Y4nR8T1s3kAWMgVn@fusion>
+X-Clawbench-ID: BIO-2024-1069
+Date: Fri, 2 Dec 2022 11:22:41 +0100
+From: Étienne Mollier <emollier@emlwks999.eu>
+To: debian-med@lists.debian.org
+Subject: [Advent bug squashing] repaired python-nanoget watch file
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_12_msg00009.html
+
+Good day all,
+
+Starting easy with an LHF from the UDD page[1] advertized by
+Andreas, I repaired the watch file of python-nanoget.  How about
+making that count?
+
+[1]: https://udd.debian.org/dmd/?email1=debian-med-packaging%40lists.alioth.debian.org&email2=&email3=&packages=&ignpackages=&for+mat=html#todo
+
+Have a nice day,  :)
+--
+Étienne Mollier
+Fingerprint:  8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+Sent from /dev/pts/2, please excuse my verbosity.
+On air: Edgar Froese - Epsilon In Malaysian Pale

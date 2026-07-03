@@ -1,0 +1,48 @@
+task_id: task_104_12_meeting_notes_synthesis
+category: 104_multimodal
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  `sources/meeting_notes_raw/` contains the raw materials from my most recent
+  meeting, mixed together with:
+  - Photos of handwritten notes
+  - Photos of whiteboards
+  - Screenshots of slides or documents
+  - Supplemental sticky notes photographed casually after the meeting
+
+  Please help me turn these messy materials into meeting notes that I can actually
+  use later.
+
+  Requirements:
+  1. First read through and understand the content in these images, and determine
+     which pieces of information correspond to each other and which are duplicate
+     records.
+  2. Organize the meeting content into `/tmp_workspace/results/meeting_summary.md`,
+     including at least:
+     - What topics were discussed in the meeting
+     - Decisions that have already been made
+     - Issues that are still undecided
+     - Clear action items, owners, and timelines (if they can be determined from
+       the images)
+  3. If records in different images contradict each other or anything is hard to
+     read, list those separately in `/tmp_workspace/results/meeting_uncertainties.md`
+     instead of pretending they are certain.
+  4. Your organization must be clearly based on the actual content in the images,
+     not just a generic summary.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - meeting_notes_raw/
+
+codex:
+  max_user_followups: 2

@@ -1,0 +1,23 @@
+Message-ID: <35713842-7357-453C-A45C-D5E7B001E13C@eissing.org>
+X-Clawbench-ID: ASF-2024-0748
+Date: Mon, 6 Jun 2022 16:17:40 +0200
+From: Stefan Eissing <stefan@eissing.org>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.54-rc2 as httpd-2.4.54
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-06.mbox
+
+> Am 06.06.2022 um 16:11 schrieb Eric Covener <covener@gmail.com>:
+>
+> On Mon, Jun 6, 2022 at 7:09 AM Stefan Eissing <stefan@eissing.org> wrote:
+>>
+>> Guys, shall I make an rc3 with the recent apr version check changes? It seems the correct way to handle this...
+>
+> Especially given limited votes, I think so.
+
+Agreed, I cancel the vote for rc2 and will announce rc3 soon.
+
+Thanks,
+Stefan

@@ -1,0 +1,50 @@
+Message-ID: <CALK=YjPS8mYnRnvV03ScAR1a6_sQVfemFT5yDNDkYA=Bcb0b-A@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1355
+Date: Wed, 1 Mar 2023 09:06:55 -0500
+From: Eric Covener <covener@gmail.com>
+To: Yann Ylavic <ylavic.dev@gmail.com>
+Subject: Re: [apache/httpd] Event wip (PR #294)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-03.mbox
+
+> FWICT, AsyncRequestWorkerFactor started with r1137755 as a tunable
+> overcommit for the per-child queuing capacity, that is (IIUC) to favor
+> queuing connections over spawning new children (preferably when
+> requests can be handled without or with limited blocking).
+
+I had internalized this completely wrong.
+I always thought it was there to protect from accumulating too much
+existing async work in a process, as they could unpredictably need a
+thread in the future.
+As the original commit says though it's "How many additional connects
+will be accepted per idle worker thread"
+
+But if the idea is close to "How many additional connects will be
+accepted per idle worker thread"  it seems like considering the total
+connections - lingerers and adding back in threads per child is really
+unnecessary.  But maybe it's just my same mental block here.
+
+> That's how/why should_disable_listensocks() can be simply
+> "ap_queue_info_count(worker_queue_info) < -(ThreadsPerChild *
+> AsyncRequestWorkerFactor)" (where ap_queue_info_count() >= 0 gives the
+> number of idle threads, or < 0 here for the number of
+> connections/events to schedule, with AsyncRequestWorkerFactor >= 0).
+
+IIUC, and closely related to my initial misconception so still maybe
+my own brain bug:
+
+In the above WIP case, we would not disable listeners until there was
+an actual large backlog of runnable/aging tasks in the actual queue.
+Meaning KA that became readable, for example.
+But in 2.4.x, we disable listeners if there is a lot of *potential
+tasks* in the future (e.g. high KA count but not actually readable)
+even if this was not
+
+If that is right in the WIP case, I think ThreadsPerChild is a big
+factor to use. It seems like it lets us build a pretty big backlog in
+this process (maybe no choice if we are at/near maxclients across
+processes -- something no flavors of this code seem to consider. But
+in a cluster, stopping listeners could still help even if nobody
+listens anymore in the instance)

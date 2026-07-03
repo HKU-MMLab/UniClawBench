@@ -1,0 +1,41 @@
+Message-ID: <Y9uT3Kz9xLAMbJqv@an3as.eu>
+X-Clawbench-ID: BIO-2024-1044
+Date: Thu, 2 Feb 2023 11:43:40 +0100
+From: Andreas Tille <andreas@fam-tille.de>
+To: "Maarten L. Hekkelman" <maarten@hekkelman.com>
+Subject: Re: We are right before the freeze now - please update anything to latest version that needs updating
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_02_msg00006.html
+
+Am Thu, Feb 02, 2023 at 11:27:38AM +0100 schrieb Maarten L. Hekkelman:
+> Op 02-02-2023 om 10:09 schreef Andreas Tille:
+> > Am Thu, Feb 02, 2023 at 10:01:12AM +0100 schrieb Maarten L. Hekkelman:
+> > > I'll try to update all packages today.
+> > Thanks a lot and please ping here if you need help to coordinate such
+> > help.
+> Well... things are not running as smoothly as I was hoping for.
+>
+> I updated all packages and submitted them both to salsa as well as dput
+> them. But since I updated e.g. libcifpp and dssp depends on this newer
+> version I guess I should have waited with dssp until the libcifpp package
+> was installed? It now fails to build but it did build on my machine using
+> sbuild (with the --extra-package option).
+>
+> So, everything is in salsa.
+
+Can you please make a list we should watch?
+
+> Perhaps someone else might have a look at this?
+> Maybe a binnmu for the failing packages is needed when libcifpp (and
+> libzeep) are installed? Don't know how that is done, sorry.
+
+I do not think that a binNMU is needed since usually the autobuilders
+will wait for packages that are declared in versioned depends.
+
+Thanks in any case for your work
+   Andreas.
+
+--
+http://fam-tille.de

@@ -1,0 +1,26 @@
+Message-ID: <udly25rgzj3.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-0809
+Date: Sat, 13 Nov 2021 22:57:20 -0500
+From: ucko@debian.org (Aaron M. Ucko)
+To: Andreas Tille <tille@debian.org>
+Subject: Re: Accepted ncbi-vdb 2.11.2+dfsg-2 (source) into unstable
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_11_msg00076.html
+
+Andreas Tille  writes:
+
+> it was actually an accident that I uploaded so late.  I pushed the
+> changes way earlier and made skesa depending from that Debian revision
+> ... and forgot to upload.  I only realised since skesa did not build on
+> autobuilders. :-(
+
+Ah, I see.  Strictly speaking, yit might have been more appropriate to
+have skesa build-depend directly on libzstd-dev and libncbi-vdb-dev
+merely recommend it; however, the dependency is lightweight enough that
+it doesn't make much difference, and this approach is more foolproof.
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

@@ -1,0 +1,47 @@
+Message-ID: <006a4f98-92aa-260b-8ace-3ac4568a617b@wanadoo.fr>
+X-Clawbench-ID: ASF-2024-1190
+Date: Sun, 28 Aug 2022 15:48:33 +0200
+From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+To: dev@httpd.apache.org, docs@httpd.apache.org
+Subject: apreq documentation
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-08.mbox
+
+Hi,
+
+with the recent release of apreq 2.17, the documentation ([1]) looked a
+bit out dated.
+The main page speaks about 2.13!
+
+
+It was last generated with Doxygen 1.5.6 nearly 12 years ago.
+The link to the documentation can be found at ([2]).
+
+
+Tweaking things a bit (see my recent commits), and using Doxygen 1.9.1,
+it now looks much better.
+I've tried to re-implement the same layout as before, so the standard
+1.9.1 Doxygen layout has been slightly customized.
+
+You can give it a try at:
+http://home.apache.org/~jailletc36/apreq_doc_2.17/docs/html/index.html
+
+If we reach an agreement on the new look, it can be uploaded on a.o.org
+to refresh the look and be more consistent with the rest of the website.
+
+
+I'm not sure that the 2.17 Changelog is complete.
+If I'm right, this release is mainly about a CVE, but it is not listed
+and [3] gives hints about other changes in the past months/years.
+
+
+Comments and bug hunting welcome :)
+
+CJ
+
+
+[1]: https://httpd.apache.org/apreq/docs/libapreq2/index.html
+|2]: https://httpd.apache.org/apreq/
+[3]: https://svn.apache.org/viewvc/httpd/apreq/trunk/library/?sortby=date

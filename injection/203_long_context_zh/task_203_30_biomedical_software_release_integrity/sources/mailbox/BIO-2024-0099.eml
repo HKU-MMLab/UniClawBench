@@ -1,0 +1,40 @@
+Message-ID: <CCB67164-07A8-4E73-BAF4-21FA2A475B43@riseup.net>
+X-Clawbench-ID: BIO-2024-0099
+Date: Wed, 22 Dec 2021 20:36:43 +0530
+From: Nilesh Patra <nilesh@riseup.net>
+To: Lance Lin <LQi254@protonmail.com>, "debian-med@lists.debian.org" <debian-med@lists.debian.org>
+Subject: Re: Re: autopkgtest requiring large data sets (pique, hinge)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_12_msg00143.html
+
+Hello,
+
+On 22 December 2021 8:06:57 pm IST, Lance Lin  wrote:
+>> No, not really. autopkgtest has a `needs-internet` restriction, so you can access internet to get stuff. See here:
+>>
+>> https://people.debian.org/~eriberto/README.package-tests.html
+>>
+>> But yeah, this is usually better, since the server you fetch data from might choke someday, or might turn unresponsive or maybe block IPs if you do several `get` requests to it (which the CI machines would do) and so on, then that's a problem.
+>
+>Would it be acceptable to create salsa repos that hold the test data for various medical packages (pique-data, hinge-data)? After ensuring that the data sets are public domain with appropriate credit given, we could then reference a fixed salsa repo. It would still require the 'needs-internet' restriction but would ensure the data is available.
+
+We had that discussion many months ago, and for several reasons, I think it's a bad idea.
+I've mentioned all the reasons here [1] please consider to give it a read.
+
+We eventually had a consensus to embed test data, which I then later added to our policy as well[2]
+
+This solved our problem of testing data upto a few MBs which is fine for us.
+But having gigabyte sized data is not very nice in any of our interests since it puts high load for us as contributors, and puts high load on CI machines as well.
+
+Infact, if the size of things you're pulling/testing exceeds many gigabytes, an RC bug will be filed against the package. One prominent example that I remember is tiddit, take a look here[3]
+
+[1]: https://lists.debian.org/debian-med/2020/09/msg00365.html
+[2]:
+https://med-team.pages.debian.net/policy/#embedding-large-test-data
+[3]:
+https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=964101
+
+Hope that helps clarify things a bit,
+Nilesh

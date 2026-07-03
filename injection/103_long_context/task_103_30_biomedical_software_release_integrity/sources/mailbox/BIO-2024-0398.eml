@@ -1,0 +1,31 @@
+Message-ID: <Zgqtzn8DUf-41Wf6@an3as.eu>
+X-Clawbench-ID: BIO-2024-0398
+Date: Mon, 1 Apr 2024 14:51:26 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org, "Shah, Amul" <Amul.Shah@fisglobal.com>,	1034805@bugs.debian.org
+Subject: Re: Upgrading fis-gtm and closing CVE-2021-44496 CVE-2021-44504
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_04_msg00000.html
+
+Ping?
+
+Am Sat, Dec 09, 2023 at 06:13:24PM +0100 schrieb Andreas Tille:
+> Hi Amul,
+>
+> I realised that fis-gtm is lagging behind upstream some versions and the
+> Debian packaged fis-gtm is featuring CVE-2021-44496 and CVE-2021-44504.
+> It would be great if you could upgrade the Debian package to the latest
+> upstream version.
+>
+> Kind regards,
+>     Andreas.
+>
+> --
+> http://fam-tille.de
+>
+>
+
+--
+https://fam-tille.de

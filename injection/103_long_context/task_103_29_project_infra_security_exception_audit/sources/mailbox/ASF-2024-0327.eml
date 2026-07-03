@@ -1,0 +1,77 @@
+Message-ID: <4b4cc207-20bb-8e60-2bcb-f4655230ff0c@apache.org>
+X-Clawbench-ID: ASF-2024-0327
+Date: Fri, 5 Jul 2024 15:44:23 +0200
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: mod_md in 2.4.61 fails to compile with openssl < 1.1.1
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-07.mbox
+
+On 7/5/24 3:26 PM, Yann Ylavic wrote:
+> On Fri, Jul 5, 2024 at 3:16 PM Yann Ylavic <ylavic.dev@gmail.com> wrote:
+>>
+>> On Fri, Jul 5, 2024 at 3:05 PM Ruediger Pluem <rpluem@apache.org> wrote:
+>>>
+>>>
+>>>
+>>> On 7/5/24 2:14 PM, Ruediger Pluem wrote:
+>>>>
+>>>>
+>>>> On 7/5/24 2:11 PM, Ruediger Pluem wrote:
+>>>>>
+>>>>>
+>>>>> On 7/5/24 2:04 PM, Stefan Eissing via dev wrote:
+>>>>>>
+>>>>>>
+>>>>>>> Am 05.07.2024 um 13:51 schrieb Ruediger Pluem <rpluem@apache.org>:
+>>>>>>>
+>>>>>>> I just noticed that mod_md in 2.4.61 fails to compile with openssl < 1.1.1. Below is the output against openssl 1.0.2 on RedHat 7:
+>>>>>>>
+>>>>>>> md_crypt.c: In function 'md_pkey_get_rsa_e64':
+>>>>>>> md_crypt.c:982:5: warning: implicit declaration of function 'EVP_PKEY_get0_RSA' [-Wimplicit-function-declaration]
+>>>>>>>     const RSA *rsa = EVP_PKEY_get0_RSA(pkey->pkey);
+>>>>>>>     ^
+>>>>>>> md_crypt.c:982:22: warning: initialization makes pointer from integer without a cast [enabled by default]
+>>>>>>>     const RSA *rsa = EVP_PKEY_get0_RSA(pkey->pkey);
+>>>>>>>                      ^
+>>>>>>> md_crypt.c: In function 'md_pkey_get_rsa_n64':
+>>>>>>> md_crypt.c:1002:22: warning: initialization makes pointer from integer without a cast [enabled by default]
+>>>>>>>     const RSA *rsa = EVP_PKEY_get0_RSA(pkey->pkey);
+>>>>>>>                      ^
+>>>
+>>> This was already the case with 2.4.59 and openssl 1.0.2. Hence we did not fail to compile but loading of mod_md likely would fail
+>>> as the symbol EVP_PKEY_get0_RSA is not available with openssl 1.0.2.
+>>
+>> This probably comes from r1913912 (2.4.x) which backported r1913616
+>> (trunk) which changed EVP_PKEY_get1_RSA() => EVP_PKEY_get0_RSA(), the
+>> former being probably available in < 1.1.1.
+>> So the check for using EVP_PKEY_get{0,1}_RSA() or the new openssl >= 3
+>> API should probably be something like:
+>>
+>> #if OPENSSL_VERSION_NUMBER < 0x10101000L
+>>     RSA *rsa = EVP_PKEY_get1_RSA(pkey->pkey);
+>>     if (rsa) {
+>>         const char *ret;
+>>         const BIGNUM *e;
+>>         RSA_get0_key(rsa, NULL, &e, NULL);
+>>         ret = bn64(e, p);
+>>         RSA_free(rsa);
+>>         return ret;
+>>     }
+>> #elif OPENSSL_VERSION_NUMBER < 0x30000000L
+>>     ...
+>> #else
+>>     ...
+>> #endif
+>>
+>> ?
+>
+> Patch attached.
+
+Looks good to me. Waiting for Stefan's feedback.
+
+Regards
+
+Rüdiger

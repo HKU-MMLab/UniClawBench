@@ -1,0 +1,45 @@
+task_id: task_201_18_reddit_synthesis
+category: 201_skill_usage_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+recording: none
+headed: auto
+task: |
+  这个问题我总是看到不同的答案，而我厌倦了去猜哪个还是对的。在我自己的 Python 包内部、
+  在运行时，我该如何读取已安装的版本字符串？我用的是 Python 3.11，普通的 pip 安装布局。
+  用工作区的 Reddit 阅读技能拉取相关的 Reddit 帖子，并用数据分析技能
+  交叉比对它们。
+
+  /tmp_workspace/clawbench/sources/ 下有几个涉及这个主题的帖子，另外还有一些你可以忽略的
+  无关噪声帖子。请通读它们全部，综合这些帖子，给我一个针对 2025/2026 年的当前最佳单一
+  答案。如果你注意到各帖子之间有相互冲突或过时的建议，请解释发生了什么变化以及原因。
+
+  把你的最终答案写到 /tmp_workspace/results/answer.md，按以下
+  顺序：
+
+  1. 今天唯一推荐的做法，包括确切的 import 行，以及我应当放进代码里的确切单行代码。
+  2. 如果帖子里有相互冲突或过时的建议，附一段简短说明，解释发生了什么变化以及原因。
+  3. 用几句话注明你的每一项证据来自哪个帖子或哪条评论，方便我核查。
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+sources:
+  - thread_a_2022_pkg_resources.json
+  - thread_b_2025_importlib_metadata.json
+  - thread_c_2024_stdlib_history.json
+  - thread_d_2023_list_comprehensions.json
+  - thread_e_2024_pip_vs_uv.json
+skills:
+  - reddit-readonly
+  - data-analysis
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+codex:
+  max_user_followups: 2

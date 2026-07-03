@@ -1,0 +1,25 @@
+Message-ID: <udlbkmdmot0.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-0458
+Date: Wed, 01 Feb 2023 09:40:43 -0500
+From: ucko@debian.org (Aaron M. Ucko)
+To: debian-med@lists.debian.org
+Subject: Re: We are right before the freeze now - please update anything to latest version that needs updating
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_02_msg00001.html
+
+Andreas Tille  writes:
+
+> as subject says we are right before the freeze since packages need some
+> time to migrate to testing to reach the next stable release.  We should
+> upload what should be in the next release *right now*.  I've explicitly
+
+I've been working on ncbi-entrez-direct, but keeping my changes to
+myself so that I can rebase as needed without affecting anything I've
+published.  My plan is to upload something in a few days even if I'm not
+fully caught up, and then see what additional updates I can get in.
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

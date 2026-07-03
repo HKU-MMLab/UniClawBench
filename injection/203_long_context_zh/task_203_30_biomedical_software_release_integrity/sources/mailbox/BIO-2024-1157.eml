@@ -1,0 +1,98 @@
+Message-ID: <YtekCEkwq/zYI0L7@an3as.eu>
+X-Clawbench-ID: BIO-2024-1157
+Date: Wed, 20 Jul 2022 08:43:20 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: q2cli: FTBFS: dh_auto_test: error: pybuild --test --test-pytest -i python{version} -p 3.10 returned exit code 13
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_07_msg00039.html
+
+Hi Nilesh,
+
+Am Tue, Jul 19, 2022 at 10:47:27PM +0530 schrieb Nilesh Patra:
+> I think at this point we *really* need to update qiime and friends. I am finding
+> it hard to keep q2cli 'limping' by cherry-picking changes from upstream.
+
+Hmmmm, Steffen has updated qiime and I tried to continue the q2-"friendes"
+which is why I stumbled upon q2cli (while other friends worked nicely).
+
+> If no-one volunteers, I will update qiime and q2-* in coming days/weeks.
+
+I'm about to keep on with the remaining q2-* packages and report here
+(or at least in d/changelog TODOs) about failures.
+
+Kind regards
+
+       Andreas.
+
+> On Sat, 16 Jul 2022 15:54:59 +0200 Lucas Nussbaum  wrote:
+> > Source: q2cli
+> > Version: 2021.8.0-2
+> > Severity: serious
+> > Justification: FTBFS
+> > Tags: bookworm sid ftbfs
+> > User: lucas@debian.org
+> > Usertags: ftbfs-20220716 ftbfs-bookworm
+> >
+> > Hi,
+> >
+> > During a rebuild of all packages in sid, your package failed to build
+> > on amd64.
+> >
+> >
+> > Relevant part (hopefully):
+> > >  debian/rules binary
+> > > dh binary --with python3 --buildsystem=pybuild
+> > >    dh_update_autotools_config -O--buildsystem=pybuild
+> > >    dh_autoreconf -O--buildsystem=pybuild
+> > >    dh_auto_configure -O--buildsystem=pybuild
+> > > I: pybuild base:239: python3.10 setup.py config
+> > > running config
+> > >    dh_auto_build -O--buildsystem=pybuild
+> > > I: pybuild base:239: /usr/bin/python3 setup.py build
+> > > running build
+> > > running build_py
+> > > creating />/.pybuild/cpython3_3.10/build/q2cli
+> > > copying q2cli/__init__.py -> />/.pybuild/cpython3_3.10/build/q2cli
+> > > copying q2cli/util.py -> />/.pybuild/cpython3_3.10/build/q2cli
+> > > copying q2cli/__main__.py -> />/.pybuild/cpython3_3.10/build/q2cli
+> > > copying q2cli/commands.py -> />/.pybuild/cpython3_3.10/build/q2cli
+> > > copying q2cli/_version.py -> />/.pybuild/cpython3_3.10/build/q2cli
+> > > creating />/.pybuild/cpython3_3.10/build/q2cli/builtin
+> > > copying q2cli/builtin/__init__.py -> />/.pybuild/cpython3_3.10/build/q2cli/builtin
+> > > copying q2cli/builtin/tools.py -> />/.pybuild/cpython3_3.10/build/q2cli/builtin
+> > > copying q2cli/builtin/dev.py -> />/.pybuild/cpython3_3.10/build/q2cli/builtin
+> > > copying q2cli/builtin/info.py -> />/.pybuild/cpython3_3.10/build/q2cli/builtin
+> > > creating />/.pybuild/cpython3_3.10/build/q2cli/click
+> > > copying q2cli/click/__init__.py -> />/.pybuild/cpython3_3.10/build/q2cli/click
+> > > copying q2cli/click/parser.py -> />/.pybuild/cpython3_3.10/build/q2cli/click
+> > > copying q2cli/click/option.py -> />/.pybuild/cpython3_3.10/build/q2cli/click
+> > > copying q2cli/click/type.py -> />/.pybuild/cpython3_3.10/build/q2cli/click
+> > > copying q2cli/click/command.py -> />/.pybuild/cpython3_3.10/build/q2cli/click
+> > > creating />/.pybuild/cpython3_3.10/build/q2cli/tests
+> > > copying q2cli/tests/__init__.py -> />/.pybuild/cpython3_3.10/build/q2cli/tests
+> > > copying q2cli/tests/test_cli.py -> />/.pybuild/cpython3_3.10/build/q2cli/tests
+> > > copying q2cli/tests/test_dev.py -> />/.pybuild/cpython3_3.10/build/q2cli/tests
+> > > copying q2cli/tests/test_usage.py -> />/.pybuild/cpython3_3.10/build/q2cli/tests
+> > > copying q2cli/tests/test_core.py -> />/.pybuild/cpython3_3.10/build/q2cli/tests
+> > > copying q2cli/tests/test_tools.py -> />/.pybuild/cpython3_3.10/build/q2cli/tests
+> > > creating />/.pybuild/cpython3_3.10/build/q2cli/core
+> > > copying q2cli/core/__init__.py -> />/.pybuild/cpython3_3.10/build/q2cli/core
+> > > copying q2cli/core/usage.py -> />/.pybuild/cpython3_3.10/build/q2cli/core
+> > > copying q2cli/core/cache.py -> />/.pybuild/cpython3_3.10/build/q2cli/core
+> > > copying q2cli/core/config.py -> />/.pybuild/cpython3_3.10/build/q2cli/core
+> > > copying q2cli/core/completion.py -> />/.pybuild/cpython3_3.10/build/q2cli/core
+> > > running egg_info
+> > > creating q2cli.egg-info
+> > > writing q2cli.egg-info/PKG-INFO
+> > > writing dependency_links to q2cli.egg-info/dependency_links.txt
+>
+> --
+> Regards,
+> Nilesh
+
+
+--
+http://fam-tille.de

@@ -1,0 +1,38 @@
+Message-ID: <CALK=YjOT7OioHeCMxGamvH0wvKRAf=unVDXi6ORYDV0tJhME9w@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0060
+Date: Fri, 16 Feb 2024 09:35:32 -0500
+From: Eric Covener <covener@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: libapreq subproject roll call
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-02.mbox
+
+On Fri, Feb 16, 2024 at 9:22 AM Ruediger Pluem <rpluem@apache.org> wrote:
+>
+>
+>
+> On 2/16/24 2:10 PM, Eric Covener wrote:
+> >> Will apreq 2.18 still be released?
+> >
+> > I think we should, but we need someone to do the release work and 3
+> > active PMC members to approve it.  Prior to the recent activity, the
+> > subproject was essentially unchanged and unreleased for 10 years (with
+> > 1 failed release due to lack of votes)
+> >
+> > I would like to understand if libapreq remains viable as a project
+> > managed by the httpd PMC. We had this conversation last year on the
+> > private list and the next step is to bring it here.
+>
+> I reread the thread on the private list. Did the discussed reach out to other
+> PMC's happen?
+
+I don't think so, we just had Steve looped in from mod_perl.
+
+> As we discussed back then I am not sure if it will be possible to move it into the Attic or
+> if there is some other way. In the worst case we just note it at https://httpd.apache.org/apreq/
+
+I later read the full attic process would not be possible, it was
+specifically discussed in some thread that it is n/a for subprojects.
+I think we'd just annnounce and add a README if this is the result.

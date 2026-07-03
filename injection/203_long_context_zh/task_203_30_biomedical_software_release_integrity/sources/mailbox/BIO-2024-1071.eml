@@ -1,0 +1,38 @@
+Message-ID: <ZZCGezXMTthQ0Uff@an3as.eu>
+X-Clawbench-ID: BIO-2024-1071
+Date: Sat, 30 Dec 2023 22:07:07 +0100
+From: Andreas Tille <tille@debian.org>
+To: Étienne Mollier <emollier@debian.org>
+Subject: Re: Please help fixing meson/cmake code of btllib to use Debian packaged libargparse
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_12_msg00092.html
+
+Am Sat, Dec 30, 2023 at 04:28:39PM +0100 schrieb Étienne Mollier:
+>
+> autopkgtest-pkg-python can be requested to use only one python3
+> version by specifying the X-Python3-Version field in d/control,
+> first paragraph.  It is a consequence of autopkgtest-pkg-python
+> using `py3versions --requested`.
+
+Uhmm, I was not aware of this.
+
+> That being said, routine-update looks to drop this field without
+> checking the python3 version selected.  I assume there was a
+> good reason to drop this field extension in the past, but
+> py3versions(1) manual does not really hint that this field is
+> obsolete.  Perhaps switching the build dependency to enforce
+> python3.11 (or python3.12) over generic python3 would be a
+> working alternative.  In any case, both methods will require
+> manual work on python3 version upgrades.
+
+I've fixed routine-update to not remove that field.  I do not
+have more time now - so if you feel like fixing libsbml that
+would be great.
+
+Kind regards
+    Andreas.
+
+--
+http://fam-tille.de

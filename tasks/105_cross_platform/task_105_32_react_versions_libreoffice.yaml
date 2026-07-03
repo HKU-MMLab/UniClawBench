@@ -1,0 +1,63 @@
+task_id: task_105_32_react_versions_libreoffice
+category: 105_cross_platform
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I've collected 8 React tutorial videos to share with the team but I'm
+  worried some might be outdated. Can you make a LibreOffice spreadsheet
+  annotating each video's timeliness?
+
+  Video IDs (in this order):
+
+    uN0dioTiAwI, BnasObkCGtQ, _B7pGf8QJWo, N0DhCV_-Qbg,
+    dCLhUialKPQ, TtPXvEcE11E, 8D-rWP3c088, jLS0TkAHvRg
+
+  Get the latest stable React version as of 2026-04-25 using gh to
+  check facebook/react releases published before 2026-04-25T00:00:00Z.
+  Get video metadata with yt-dlp. Look up react-router major release
+  dates via npm.
+
+  I want to see which major React version each video covers, how many
+  generations behind the 2026-04-25 stable React major it is, and a risk
+  level — same major as the as-of stable = low, one generation behind =
+  medium, two or more = high. Also compute a freshness score where
+  closer to the as-of stable major means higher. Mark how many days since
+  the corresponding release too.
+
+  Also infer which react-router major each video would pair with —
+  based on the upload date and npm publish dates of each major, estimate
+  the compatible version.
+
+  Generate the spreadsheet as .ods using soffice: highlight high-risk
+  rows with conditional formatting in red, add a formula for average
+  freshness, and embed a bar chart as a chart object inside the .ods —
+  use odfpy or direct XML, the key is the chart is actually visible.
+
+  Also produce a verification JSON summarizing the version analysis for
+  each video.
+
+  Put artifacts under /tmp_workspace/results/. When done, tell me what
+  the as-of-2026-04-25 React version is, what the average freshness is,
+  and how many videos match that latest version.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources: []
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

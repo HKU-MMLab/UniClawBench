@@ -1,0 +1,24 @@
+Message-ID: <D79A56AD131896448D0860DEE07CBE1FA7DA@med-core07.med.wayne.edu>
+X-Clawbench-ID: CAM-2003-0548
+Date: Tue, 06 Aug 2002 23:54:09 -0400
+From: "Rose, Bobby" <brose@med.wayne.edu>
+To: razor-users@example.sourceforge.net
+Subject: [Razor-users] Razor report don't seem to be getting logged
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00580.7dd943cb2a791ae9600144dee69f27b1
+
+For the past 2 days, nothing that I'm reporting seems to be in the
+database.  If I report something, and the check the response is coming
+back as none spam.  Is anyone else seeing this?
+
+
+-------------------------------------------------------
+This sf.net email is sponsored by:ThinkGeek
+Welcome to geek heaven.
+http://thinkgeek.com/sf
+_______________________________________________
+Razor-users mailing list
+Razor-users@lists.sourceforge.net
+https://lists.sourceforge.net/lists/listinfo/razor-users

@@ -1,0 +1,51 @@
+task_id: task_203_40_nonogram_25x25
+category: 203_long_context_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+
+recording: none
+headed: auto
+success_threshold: 0.9
+
+task: |
+  一个服务已经为你启动了一个实时的 Nonogram（Picross，数织）终端会话。不要自己启动游戏。
+  先阅读 `/tmp_workspace/results/nonogram_service.log`，从列出的预启动会话中选择当前这次尝试，并把这个正在运行的会话玩完。
+
+  这是一个 25x25 的 nonogram。每个格子要么被填充，要么为空。每行左侧和每列顶部的数字是"线索"（clue）：每条线索按顺序列出该行或该列中连续填充格子段的长度，各段之间以一个或多个空格分隔。线索为 `0` 表示整行/整列为空。
+
+  使用 `row col F` 填充一个格子，`row col X` 把一个格子标记为空，或 `row col C` 把一个格子清回未知。行和列从 0 开始：`0` 到 `24`。标记为空（`X`）只是个人标注——只有填充（`F`）的格子才计入解。
+
+  规则：
+  - 推断哪些格子被填充，使每一行和每一列都恰好匹配其线索。
+  - 该谜题有唯一解；你必须复现它。
+  - 只有当某格子在解中应被填充的位置被填充（`#`）时，它才算正确。填充本应为空的格子会被扣分。
+
+  每条尝试条目会提供给你一个预启动的 stdin fifo、一个棋盘快照 txt、一个终端 transcript 和一个 duration txt。不要启动新的游戏进程、重建启动流程或查看隐藏的运行时服务文件。只使用预启动的服务会话。
+
+  每次尝试都有自己的棋盘 txt 文件，例如 `/tmp_workspace/results/nonogram_sessions/attempt_1_board.txt`。你这次尝试对应的确切路径列在 `/tmp_workspace/results/nonogram_service.log` 和 `/tmp_workspace/results/nonogram_sessions/summary.tsv` 中。每次落子之后，游戏会用最新状态重写同一个棋盘 txt；每次落子后阅读它。
+
+  棋盘 txt 包含当前的 25x25 网格，左侧为行线索，顶部为列线索（`#` 表示填充，`x` 表示标记为空，`.` 表示未知），还包含 `Filled cells correct: K / 338`、`Filled cells that should be empty: W` 和 `Status`。
+
+  每次尝试也有一个 duration txt，记录从游戏启动开始的计时：`game_start_unix`、`first_move_unix`、`last_move_unix`、`end_unix` 和 `duration_seconds`。在做出任何有效落子之前，它显示 `duration_seconds=NOT_STARTED`。在应用基于时间的计分规则时，使用你这次尝试对应的 duration txt。
+
+  计分：
+  - `net_correct = (filled cells matching the solution) - (filled cells that should be empty)`，不低于 0。
+  - `base_score = net_correct / 338`（本棋盘需要填充 338 个格子）。
+  - 如果 `duration_seconds <= 420`，则 `final_score = base_score`；否则 `final_score = base_score * (420 / duration_seconds)`。
+  - 在 420 秒内填充全部 338 个解格子且没有任何错误格子得 1.0 分；耗时更久则适用该时间乘数，因此必然低于 1.0。
+
+  在你最终的 `/tmp_workspace/results/nonogram_result.md` 中，包含：谜题是否被完全解开；正确填充了多少个解格子、错误填充了多少个格子；所需的总格子数（338）；最终分数的计算；以及你所依据的最终棋盘 txt 内容作为证据。
+
+references:
+  - references/eval_rule.md
+  - references/solution.py
+services:
+  - name: nonogram
+    path: nonogram
+    start: bash install.sh
+
+codex:
+  max_user_followups: 2

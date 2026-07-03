@@ -1,0 +1,87 @@
+task_id: task_205_02_week32_receipts_gui_calc_writer
+category: 205_cross_platform_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我把第 32 周的六张收据图片放在了这个文件夹里：
+
+      /tmp_workspace/clawbench/sources/receipts/week_32/
+
+  请使用桌面文件管理器打开该文件夹，并在真实的图片查看器中查看这些
+  收据图片。在此处保存至少一张截图，展示
+  该文件夹或一张打开的收据图片：
+
+      /tmp_workspace/results/gui_evidence/file_manager_or_receipts.png
+
+  然后使用本地 LibreOffice Calc GUI 制作一份费用电子表格，
+  每张收据一行，包含这些列：
+
+      Date, Merchant, Category, Amount
+
+  在 Category 列中只使用这些类别标签：
+
+      Groceries, Meals, Transportation
+
+  添加一个总费用值和一个类别汇总，以便清楚地看出哪个
+  类别的总支出最高。在此处保存该电子表格：
+
+      /tmp_workspace/results/week32_expenses.ods
+
+  该 ODS 本身必须包含六行收据、总计、各类别合计，以及
+  最高类别的计算结果。一个正确的 CSV/TSV 旁附文件对审核有用，
+  但不能替代一个其表格内容缺失的必需 ODS。
+
+  在此处保存打开的 Calc 电子表格的截图：
+
+      /tmp_workspace/results/gui_evidence/calc_week32_expenses.png
+
+  之后，使用本地 LibreOffice Writer GUI 创建一份简短的汇总
+  文档。它应当包含周次、以紧凑的列表或表格形式列出的全部六张收据、
+  总计、各类别合计，以及支出最高的
+  类别。在此处保存它：
+
+      /tmp_workspace/results/week32_summary.odt
+
+  在此处保存打开的 Writer 汇总文档的截图：
+
+      /tmp_workspace/results/gui_evidence/writer_week32_summary.png
+
+  同时在此处导出或保存该 Writer 汇总的纯文本副本：
+
+      /tmp_workspace/results/week32_summary.txt
+
+  请通过文件管理器或图片查看器、Calc 和 Writer
+  桌面应用来完成此任务，而不是用纯脚本写出最终文件。该
+  setup 服务会将其状态写入
+  `/tmp_workspace/clawbench/service_state/libreoffice-gui-setup.json`；如果
+  你开始时 LibreOffice 仍在安装中，请稍等片刻后再次尝试
+  启动它。不要用命令行生成或脚本创建的
+  电子表格/汇总文件来替代真实的文件管理器、
+  图片查看器、Calc 和 Writer 工作流。
+
+  最终的 Calc 和 Writer 截图应当在 LibreOffice 中显示相关的电子表格或
+  汇总内容。当首次运行的弹窗或对话框遮挡了审核所需的数据时，
+  应在最终截图之前将其关闭。
+
+sources:
+  - receipts/week_32/
+
+services:
+  - name: libreoffice-gui-setup
+    path: libreoffice-gui-setup
+    start: bash install.sh
+    oneshot: true
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+codex:
+  max_user_followups: 2

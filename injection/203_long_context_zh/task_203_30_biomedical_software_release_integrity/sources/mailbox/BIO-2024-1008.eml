@@ -1,0 +1,47 @@
+Message-ID: <3efd4080-6e5f-7dea-7f14-2009434a4882@debian.org>
+X-Clawbench-ID: BIO-2024-1008
+Date: Sun, 16 Jan 2022 10:47:39 +0200
+From: Andrius Merkys <merkys@debian.org>
+To: "Maarten L. Hekkelman" <maarten@hekkelman.com>
+Subject: libcifpp transition
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_01_msg00024.html
+
+Hi Maarten,
+
+libcifpp 2.0.4-1 has just been accepted to experimental (yay!). This
+means now we have to carry out its transition [1] (libcifpp1 -> libcifpp2).
+
+I see you have in the meantime released libcifpp with soversion of 3.
+Thus instead of doing libcifpp1 -> libcifpp2 we may skip to libcifpp1 ->
+libcifpp3, but this will again require to clear NEW queue which may take
+quite some time again. I personally would like transitioning libcifpp1
+-> libcifpp2 as libcifpp 2.0.4-1 would unblock my plans to work on
+openstructure which needs components.cif as provided by libcifpp-data
+2.0.4-1 (but I can play with this in experimental for now).
+
+To complete libcifpp1 -> libcifpp2 we need to ensure we can build all
+reverse dependencies with new libcifpp. The list of these dependencies
+is conveniently given in [1]. I have attempted building cif-tools
+1.0.0-4, but failed due to the following:
+
+In file included from src/cif2pdb.cpp:28:
+src/cif-tools.hpp:34:10: fatal error: cif++/Config.hpp: No such file or
+directory
+   34 | #include "cif++/Config.hpp"
+      |          ^~~~~~~~~~~~~~~~~~
+
+>From this I gather the API has changed substantially. To complete such
+transition we need to either have new releases or just patches to make
+them build with libcifpp 2.0.4. Could you prepare them? Please do not
+upload them to unstable yet as libcifpp 2.0.4 is not yet in unstable
+(for this we need ACK from the Release Team). Alternatively, if you
+think we should go directly to libcifpp1 -> libcifpp3, could you prepare
+a package for libcifpp 3.0.2?
+
+[1] https://release.debian.org/transitions/html/auto-libcifpp.html
+
+Best wishes,
+Andrius

@@ -1,0 +1,37 @@
+Message-ID: <YZU3AgpUj8SJLE51@lena.dartmouth.edu>
+X-Clawbench-ID: BIO-2024-0926
+Date: Wed, 17 Nov 2021 12:08:18 -0500
+From: Yaroslav Halchenko <debian@onerussian.com>
+To: debian-med@lists.debian.org
+Subject: Re: Heudiconv moved to Debian Med repository
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_11_msg00103.html
+
+On Wed, 17 Nov 2021, Andreas Tille wrote:
+
+> > I thought we were up to date with connectome-workbench ... yeap - we
+> > are.  Upstream is "involved" with uploads so we keep it uptodate afaik.
+> > Also upstream (in both cases, we are the upstream of heudiconv) is
+> > interested in neurodebian backports, at least for the most recent debian
+> > stable -- so ideally those packages should not jump onto bleeding edge
+> > packaging changes which would make them incompatible with debhelper etc
+> > in debian stable.
+
+> Nilesh asked me to move this one and I guess he has some reason to pick
+> this.  Current Debian stable has debhelper 13 so this should be no
+> issue.  Debhelper 13 is also backported for old-stable - so I do not see
+> any potential breaks here.
+
+if need comes (e.g. upstream wants backports on older
+debian/ubuntu), I just would like to reserve the right to provide
+"dsc" patches under debian/patches -- they would not be listed in
+debian/patches/series, so will not interfere but would simplify building
+backports for neurodebian
+
+--
+Yaroslav O. Halchenko
+Center for Open Neuroscience     http://centerforopenneuroscience.org
+Dartmouth College, 419 Moore Hall, Hinman Box 6207, Hanover, NH 03755
+WWW:   http://www.linkedin.com/in/yarik

@@ -1,0 +1,51 @@
+Message-ID: <ZSt9MS5nUYycXAUG@an3as.eu>
+X-Clawbench-ID: BIO-2024-0379
+Date: Sun, 15 Oct 2023 07:48:33 +0200
+From: Andreas Tille <andreas@fam-tille.de>
+To: "Rebecca N. Palmer" <rebecca_palmer@zoho.com>
+Subject: Re: Fixed? Re: video meeting technical issues
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_10_msg00003.html
+
+HI Rebecca,
+
+Am Sat, Oct 14, 2023 at 10:50:58PM +0100 schrieb Rebecca N. Palmer:
+> I think at least my problem (participant list+chat but no video/audio, and
+> frequent disconnects) was at my end, not the server's, and is now fixed.  I
+> don't know whether the other people with issues had the same issue.
+>
+> I think the cause was that I had AppArmor blocking it (with my own profile,
+> but I think the profile in apparmor-profiles also has this bug) - if you're
+> using that, allow all of these.  This became an issue in bookworm, because
+> earlier versions of Debian apparmor didn't actually enforce network rules.
+>
+>   network inet stream,
+>   network inet6 stream,
+>   network inet dgram,
+>   network inet6 dgram,
+>   network netlink raw,
+>
+> Other security tools might have similar issues.  This probably affects all
+> in-browser video calls, not just Jitsi.
+
+Thank you for this analysis.
+
+> Testing: this issue is easy to miss because it isn't visible when there's
+> only 1 in the call (the your-own-video window still works). Jitsi doesn't
+> work between tabs/windows of the same Firefox instance, but it *does* work
+> between two Firefox instances using different profiles (-P option of
+> firefox-esr) on the same computer.
+
+I admit I used Chromium for Jitsi sessions before.  Since I was told
+that Firefox is fine now I tried it yesterday with the result that I
+have seen no video from any other participant.  Next time I will use
+Chromium again.  I also think we should try meet.jit.si whether it
+works more relieable.
+
+Kind regards
+     Andreas.
+
+--
+http://fam-tille.de

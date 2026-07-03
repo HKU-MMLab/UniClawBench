@@ -1,0 +1,29 @@
+Message-ID: <YzStH3/ZbH4l7emf@an3as.eu>
+X-Clawbench-ID: BIO-2024-0682
+Date: Wed, 28 Sep 2022 22:22:55 +0200
+From: Andreas Tille <tille@debian.org>
+To: "Aaron M. Ucko" <ucko@debian.org>
+Subject: Re: Finishing ncbi-vdb and sra-sdk
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_09_msg00042.html
+
+Am Wed, Sep 28, 2022 at 04:01:41PM -0400 schrieb Aaron M. Ucko:
+> Andreas Tille  writes:
+>
+> > ping about this NCBI suite?
+>
+> I've continued to have a lot going on outside Debian, but will try to
+> find time to get back to it soon.
+
+This would be really helpful since we are approaching the next freeze
+with an unpredictable migration time through new queue due to name
+change of the library package.
+
+Thanks a lot
+
+     Andreas.
+
+--
+http://fam-tille.de

@@ -1,0 +1,49 @@
+Message-ID: <ECTQGOIA9WQGBIHXR63DBGDIGZU42LH.3d3c15f8@holger>
+X-Clawbench-ID: CAM-2003-1352
+Date: Mon, 22 Jul 2002 15:26:00 +0100
+From: Richard Eibrand <richard.eibrand@dit.ie>
+To: ilug <ilug@linux.ie>
+Subject: [ILUG] Dell Inspiron 2650 X problem
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00082.b0ca31a7482b5c60906aa29a9fa6e9df
+
+Howdy all,
+
+I have a friend with the problem outlined below, suggestions anyone?
+
+
+"I have a dell inspirion 2650 laptop, with a P4 1.6GHz proc., an Nvidia Geforce II graphics card (8Mb) and am trying  to
+install redhat 7.3 .
+The installation goes nicely until the Xwindows setup. My graphics card IS detected but not the monitor. I have
+randomly chosen various LCD laptop display monitors but none seem to work, problem is that when i test a  particular
+monitor the screen doesn't default back to the nice clear picture  i have become acustomed to but  remains fuzzy and
+flashy so it is impossible to test another monitor type. rebooting allows me to run in text mode  where i try to configure X
+again with Xconfigurator but i run into the same problem again.
+
+Very annoying..."
+
+Ta very,
+
+R
+
+----------------------------------------
+Richard Eibrand,
+School of Computing
+Dublin Institute of Technology
+Kevin Street, Dublin 8
+Ireland
+
+Office : 	+353 1 402 4682
+Mobile : 	+353 87 618 1793
+Email  : 	richard.eibrand@dit.ie,
+         	reibrand@maths.kst.dit.ie
+
+
+
+
+--
+Irish Linux Users' Group: ilug@linux.ie
+http://www.linux.ie/mailman/listinfo/ilug for (un)subscription information.
+List maintainer: listmaster@linux.ie

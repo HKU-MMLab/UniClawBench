@@ -1,0 +1,43 @@
+Message-ID: <ZeTiX2aBjul6A2qR@an3as.eu>
+X-Clawbench-ID: BIO-2024-0315
+Date: Sun, 3 Mar 2024 21:49:35 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Paul Gevers <elbrus@debian.org>,	Debian Med Project List <debian-med@lists.debian.org>
+Subject: Re: regarding filtering architectures
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_03_msg00000.html
+
+Hi,
+
+Paul has sent me a valuable hint.  I totally missed this information
+but will try to fix all our packages that are only available for 64 bit
+architectures according to this.  I'm just bouncing this information
+to the list in case I'm not the only one who missed this simple option
+to exclude 32bit.
+
+Kind regards
+    Andreas.
+
+Am Sun, Mar 03, 2024 at 07:28:57AM +0100 schrieb Paul Gevers:
+> Hi Andreas,
+>
+> I just spotted two of you packages [1] where you stopped supporting 32 bits.
+> I'm not going to judge on that (I don't even look at the reason), but
+> instead of hard-coding the list of architectures, could you use a
+> Build-Dependens on architecture-is-64-bit (from
+> https://packages.debian.org/unstable/architecture-properties).
+>
+> Rationale: https://lists.debian.org/debian-devel/2022/09/msg00105.html
+>
+> Paul
+>
+> [1] https://tracker.debian.org/media/packages/e/emboss/control-6.6.0dfsg-13
+> [2] https://tracker.debian.org/media/packages/r/r-bioc-rhtslib/control-2.4.1dfsg-2
+>
+> Paul
+
+
+--
+http://fam-tille.de

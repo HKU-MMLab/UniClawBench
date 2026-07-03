@@ -1,0 +1,22 @@
+Message-ID: <29643a0f-9e91-7c1e-c53c-62d26f8181e8@paclan.it>
+X-Clawbench-ID: ASF-2024-0394
+Date: Wed, 8 Dec 2021 19:37:16 +0100
+From: Giovanni Bechis <giovanni@paclan.it>
+To: dev@httpd.apache.org
+Subject: Re: release vibes?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2021-12.mbox
+
+On 12/8/21 13:56, Joe Orton wrote:
+> On Mon, Dec 06, 2021 at 11:36:51AM +0100, Stefan Eissing wrote:
+>> Friends of httpd, how do you feel about a release in the next two weeks?
+>
+> Sounds good to me. We may have fewer people around to test it, but at
+> least trying to get a release out is better than definitely having no
+> release IMO.
+>
++1
+let's try to cook a release.
+ Giovanni

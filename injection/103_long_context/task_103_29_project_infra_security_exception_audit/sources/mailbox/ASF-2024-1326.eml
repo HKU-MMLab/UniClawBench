@@ -1,0 +1,28 @@
+Message-ID: <9C75C022-DFBB-4CD0-93D6-494090413E29@sharp.fm>
+X-Clawbench-ID: ASF-2024-1326
+Date: Mon, 7 Feb 2022 00:00:27 +0200
+From: Graham Leggett <minfrin@sharp.fm>
+To: dev@httpd.apache.org
+Subject: Re: mpm event assertion failures
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-02.mbox
+
+On 25 Jan 2022, at 23:25, Graham Leggett <minfrin@sharp.fm> wrote:
+
+> Is the http2 code doing anything to work around mod_ssl trying to read, failing, throwing away the error, and then pretending nothing happened?
+
+The http2 code doesn't try to work around mod_ssl, instead it does the same as mod_ssl, which is that it performs an operation but throws away the error:
+
+https://github.com/apache/httpd/blob/1598f7aebd59acc7494389a3903a33c5e38a5460/modules/http2/h2_c2.c#L632
+
+This hook is sorted APR_HOOK_FIRST, which means h2_c2_hook_process() runs first, then passes the connection to mod_ssl, which then returns AGAIN, but AGAIN is now thrown away inside h2_c2_hook_process(), and now we’re off the rails from this point on and we can expect our socket to be stuck in a weird state.
+
+The http1 code has the same problem, but runs APR_HOOK_LAST, which means mod_ssl’s handshake is completely done before http1 touches the connection.
+
+I think to fix this test, we need to make sure http2 runs after mod_ssl.
+
+Regards,
+Graham
+—

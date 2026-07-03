@@ -1,0 +1,36 @@
+Message-ID: <CA+7wUswp0UDe9=EwS3H1YE1G1YOYhz8WtOuTqavroJjcraZqWA@mail.gmail.com>
+X-Clawbench-ID: BIO-2024-0113
+Date: Wed, 26 Oct 2022 08:10:42 +0200
+From: Mathieu Malaterre <malat@debian.org>
+To: Andreas Tille <andreas@an3as.eu>
+Subject: Re: gdcm: vtk[6,7] removal
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00087.html
+
+On Wed, Oct 26, 2022 at 7:53 AM Andreas Tille  wrote:
+>
+> Hi,
+>
+> in the bug log there is some discussion to drop C# and Java VTK
+> bindings.  This would mean to drop the packages libvtkgdcm-cil and
+> libvtkgdcm-java.  I'm perfectly fine with this and I just pushed
+> a change in d/control where I replaced s/vtk7/vtk9/ globally.  The
+> build[1] is currently failing at a probably simple Java issue:
+>
+> /usr/lib/jvm/default-java/include/jni.h:45:10: fatal error: jni_md.h: No such file or directory
+>    45 | #include "jni_md.h"
+>       |          ^~~~~~~~~~
+> compilation terminated.
+>
+> I have no idea whether we might keep on supporting the Java bindings if
+> this can be solved.  But I'm pretty sure we should act on droping
+> what needs to be droped in a timely manner to make sure gdcm will
+> remain in testing.
+>
+> Any help is welcome.
+
+See my original work at:
+
+https://salsa.debian.org/med-team/gdcm/-/commits/debian/experimental/

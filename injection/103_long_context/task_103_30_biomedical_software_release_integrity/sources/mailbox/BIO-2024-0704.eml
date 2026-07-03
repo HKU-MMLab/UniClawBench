@@ -1,0 +1,32 @@
+Message-ID: <Y8sNpCBTXtgqtF7q@an3as.eu>
+X-Clawbench-ID: BIO-2024-0704
+Date: Fri, 20 Jan 2023 22:54:44 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Help needed for bioperl-run autopkgtest error
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_01_msg00040.html
+
+Hi,
+
+in our sprint I've fixed two issues in bioperl-run autopkgtest.
+Unfortunately there is a remaining issue as you can see in Salsa CI[1]
+
+
+Test Summary Report
+-------------------
+/usr/share/pkg-perl-autopkgtest/runtime-deps-and-recommends.d/syntax.t (Wstat: 256 (exited 1) Tests: 8 Failed: 1)
+  Failed test:  8
+  Non-zero exit status: 1
+Files=1, Tests=8,  7 wallclock secs ( 0.05 usr  0.00 sys +  6.25 cusr  0.82 csys =  7.12 CPU)
+Result: FAIL
+
+Any help would be welcome
+   Andreas.
+
+[1] https://salsa.debian.org/med-team/bioperl-run/-/jobs/3826591
+
+--
+http://fam-tille.de

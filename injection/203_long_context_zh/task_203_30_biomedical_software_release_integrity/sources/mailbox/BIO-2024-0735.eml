@@ -1,0 +1,134 @@
+Message-ID: <YyIFRTnyoBf1iNag@an3as.eu>
+X-Clawbench-ID: BIO-2024-0735
+Date: Wed, 14 Sep 2022 18:45:57 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: [GSoC 2022 Final Report] Quality assurance for biological and medical applications inside Debian
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_09_msg00013.html
+
+Hi Bilal,
+
+thanks a lot for all your work!  I would be very happy if you would stay
+in the team and contribute as long as your time permits.
+
+Kind regards
+
+    Andreas.
+
+Am Wed, Sep 14, 2022 at 08:31:23PM +0530 schrieb Mohd Bilal:
+> Hello team \o/ ,
+>
+> I'm Mohammed Bilal and I've been the GSoC intern working with the Debian Med
+> Team during 2022 and the one who've been bugging this mailing list for the
+> past few months.This is my final report for the GSoC project "Quality
+> Assurance and Continuous Integration for Applications in Life Sciences and
+> Medicine". This is an overview of the work done during my GSoC period with
+> the team.
+>
+> ** About the project
+>
+> The Debian Med project has packaged several applications in life sciences
+> and medicine. Continuous integration for these packages is essential to
+> ensure reproducible results and that all components work together. These,
+> tests often uncover bugs in the code and the packaging process that can
+> cause failures on end-user machines. The aim of my project was to write
+> autopkgtests for Debian Med packages, fix existing tests, any pipeline
+> failures and fix the bugs uncovered by these tests.
+>
+> ** Statistics:
+>
+> Autopkgtests added: 30
+> Updates : 7
+> Bugs fixed: 5
+>
+>
+> Autopkgtests added:
+>
+> 	*python-datacache
+> 	*parallel-fastq-dump
+> 	*nifticlib
+> 	*gifticlib
+> 	*dicomnifti
+> 	*openslide
+> 	*minc-tools
+> 	*dcm2niix
+> 	*atropos
+> 	*python-bioblend
+> 	*python-cobra
+> 	*intake
+> 	*bmtk
+> 	*nifti2dicom
+> 	*biomaj3-cli
+> 	*gdcm
+> 	*megadepth
+> 	*rockhopper
+> 	*emmax
+> 	*zalign
+> 	*plastimatch
+> 	*delly
+> 	*dcmtk
+> 	*nipype
+> 	*emperor
+> 	*python-wdlparse
+> 	*libbigwig
+> 	*libncl
+> 	*gatb-core
+> 	*tvc
+>
+>
+> Package Updates:
+>
+> 	*q2-dada2
+> 	*q2-feature-classifier
+> 	*q2-fragment-insertion
+> 	*q2-metadata
+> 	*q2-phylogeny
+> 	*delly
+> 	*q2-sample-classifier
+>
+>
+> RC Bugs fixed
+>
+> 	*dcm2niix (Closes: #1012336)
+> 	*dicomnifti (Closes: #1013364)
+> 	*gdcm (Closes: #1016450)
+> 	*mothur (Closes: #1014104)
+> 	*megadepth (Closes: #1016454)
+>
+>
+> I became a Debian Maintainer right before the start of my gsoc journey and
+> I'm thankful to my mentors for giving me access to upload some of my work on
+> my own. Also during gsoc I got the chance to use some of the Debain
+> Project's Infra like I got access to a s390 porterbox for fixing a bug in
+> one of the packages I've worked on
+>
+> I would like to thank my mentors, Andreas Tille and Nilesh Patra for their
+> constant support and encouragement. I had a wonderful experience working
+> with these amazing DDs. They were very quick to respond to my queries,
+> sponsoring uploads and were very supportive. Also I would like to thank
+> other Debian-Med members on this mailing list and the matrix room who guided
+> me during my GSoC period. You all were super supportive and provided much
+> needed feedback for my work. I plan to stick around and continue my
+> contributions to Debian Med in the near feature.
+>
+> A snippet containing the links of all packages I've worked can be found
+> here[1]
+>
+> Finally thanking the Debian Project for giving me this opportunity.I had a
+> fun and productive summer with Debian 😃
+>
+>
+> [1] - https://salsa.debian.org/-/snippets/609
+>
+> Thanks
+> --
+> Mohammed Bilal
+> 2D65 BC1E B966 5A6E 97F9 730A B3F5 9452 8521 9E1F
+>
+
+
+--
+http://fam-tille.de

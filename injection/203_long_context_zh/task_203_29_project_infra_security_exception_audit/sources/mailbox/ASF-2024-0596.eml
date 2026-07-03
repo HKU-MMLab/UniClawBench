@@ -1,0 +1,39 @@
+Message-ID: <CABD8fLWvwZqg8zjEbmho5mqCBHT18rDkpCL54V5x7EeX+bBvqA@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0596
+Date: Wed, 10 May 2023 13:59:24 -0500
+From: Greg Stein <gstein@gmail.com>
+To: Stefan Sperling <stsp@apache.org>
+Subject: Re: [VOTE] Switch read/write repository from Subversion to Git
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-05.mbox
+
+On Wed, May 10, 2023 at 5:18 AM Stefan Sperling <stsp@apache.org> wrote:
+>...
+
+> I did have some hope that we would see individual self-motivated
+> contributors
+> arriving via various ASF projects because they are all using SVN every day
+> on svn.apache.org, are programmers, might have itches to scratch, already
+> have
+> commit access to ^/subversion, and there is some sense of shared ownership
+> across the ASF community. I was reminded of all this by Graham's remark.
+> It's the lack of such interactions that I find disappointing in retrospect.
+> There certainly have been some, but relatively few.
+>
+
+IMO, it is because Subversion is successful.
+
+It just works. Zero friction. It doesn't cause developers a headache or an
+"itch to scratch".
+
+One doesn't think to improve their dishwasher. It just works. Why change
+your hammer? It works.
+
+I believe that Subversion hit its goal, and then some. I believe that is
+why the *use* of Subversion did not lead to a desire to work/fix/change
+Subversion.
+
+Cheers,
+-g

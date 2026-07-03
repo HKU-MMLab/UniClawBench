@@ -1,0 +1,93 @@
+task_id: task_201_17_todoist_weekly_plan
+category: 201_skill_usage_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我老是揽太多活，然后又掉链子——这次帮我真正现实地规划一下我的一周吧。用工作区的
+  Todoist 技能抓取我的任务，并用日程规划技能排出时间块。
+  Todoist API token 在 $TODOIST_API_TOKEN 中。
+
+  规划从周六 2026-04-25 到周五 2026-05-01（含）这个 7 天窗口。在你的计划和日历中，请用
+  这确切的七个日期作为每天的标签。
+
+  保存 /tmp_workspace/results/weekly.md，每天一个小节，从 2026-04-25 到 2026-05-01 按时间
+  顺序排列。每个小节必须为当天包含 1 到 3 个时间块，且每个块都带时长。优先级更高的任务
+  应当获得更早、更长的时间块。每天的第一个块必须指向当天到期的最重要任务。跳过 Todoist 中
+  任何已标记为完成的任务。
+
+  保存 /tmp_workspace/results/weekly_schedule.csv，每个已排定的块一行。列按这个确切顺序：
+  date、start_time、end_time、duration_minutes、task_title、project、priority、due_date、
+  reason。在 Todoist 时长可用时使用它，每天保持 1 到 3 个块，且同一日期内的块不得重叠。
+
+  保存 /tmp_workspace/results/weekly.ics，把相同的已排定块作为 VEVENT 条目。事件的 SUMMARY
+  必须包含任务标题和 project。DESCRIPTION 必须包含优先级和到期日期。
+  DTSTART 和 DTEND 必须使用 UTC 格式 YYYYMMDDTHHMMSSZ。每个 VEVENT 的
+  UID 必须遵循 task_<id>@todoist-weekly-plan 模式，其中
+  <id> 是 Todoist 任务 id。
+
+  如果你不得不把某个任务推到比其原始到期日期更晚的某一天，对应的块必须同时记录原始到期日期
+  和一句移动它的理由。
+
+task_snapshot: |
+  我老是揽太多活，然后又掉链子——这次帮我真正现实地规划一下我的一周吧。用工作区的
+  Todoist 技能抓取我的任务，并用 day-planning 技能排出时间块。
+  我的 Todoist 导出在 /tmp_workspace/clawbench/sources/todoist_snapshot.json
+  ——从那里读取任务，并忽略任何实时 API。
+
+  规划从周六 2026-04-25 到周五 2026-05-01（含）这个 7 天窗口。在你的计划和
+  日历中，请用这确切的七个日期作为每天的标签。
+
+  保存 /tmp_workspace/results/weekly.md，每天一个小节，从 2026-04-25 到 2026-05-01
+  按时间顺序排列。每个小节必须为当天包含 1 到 3 个时间块，且每个块都带时长。
+  优先级更高的任务应当获得更早、更长的时间块。每天的第一个块必须指向当天到期的
+  最重要任务。跳过快照中任何已标记为完成的任务。
+
+  保存 /tmp_workspace/results/weekly_schedule.csv，每个已排定的块一行。
+  列按这个确切顺序：date、start_time、end_time、duration_minutes、task_title、
+  project、priority、due_date、reason。在 Todoist 时长可用时使用它，每天保持
+  1 到 3 个块，且同一日期内的块不得重叠。
+
+  保存 /tmp_workspace/results/weekly.ics，把相同的已排定块作为 VEVENT 条目。
+  事件的 SUMMARY 必须包含任务标题和 project。DESCRIPTION 必须包含优先级和到期日期。
+  DTSTART 和 DTEND 必须使用 UTC 格式 YYYYMMDDTHHMMSSZ。每个 VEVENT 的
+  UID 必须遵循 task_<id>@todoist-weekly-plan 模式，其中
+  <id> 是快照中的 Todoist 任务 id。
+
+  如果你不得不把某个任务推到比其原始到期日期更晚的某一天，对应的块必须同时记录
+  原始到期日期和一句移动它的理由。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - todoist_snapshot.json
+
+skills:
+  - todoist
+  - plan-my-day
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+pre_exec:
+  - ops/populate.py
+
+# Populator audit: Todoist fixture upsert is pure create-if-missing with
+# a `content` key as the idempotency anchor; no delete sequence that
+# another worker could observe mid-flight. Safe under workers>1 behind
+# the populator_lock.
+pre_exec_parallel_safe: true
+
+codex:
+  max_user_followups: 2

@@ -1,0 +1,36 @@
+{
+  "source_accessed_on": "2026-04-23",
+  "half_dome": {
+    "url": "https://www.nps.gov/yose/planyourvisit/halfdome.htm",
+    "round_trip_distance_miles": "14-16",
+    "elevation_gain_feet": 4800,
+    "typical_time_hours": "10-12",
+    "permit_required_when_cables_up": true,
+    "day_hiker_permit": "March lottery, with a limited number of permits available two days in advance.",
+    "safety_notes": [
+      "Do not attempt the cables in rain, thunderstorms, or when the rock surface is wet.",
+      "Bring proper footwear, gloves, enough water, and a real flashlight or headlamp.",
+      "This hike is not appropriate for unprepared hikers, people uncomfortable with exposure, or people without the endurance for a very long day."
+    ]
+  },
+  "camping": {
+    "url": "https://www.nps.gov/yose/planyourvisit/camping.htm",
+    "core_facts": [
+      "Yosemite has 13 popular campgrounds on reservation systems from April through October.",
+      "Only Upper Pines Campground is on reservations all year.",
+      "Upper Pines, Lower Pines, and North Pines are Yosemite Valley options released five months in advance, with North Pines using a 2026 early access lottery.",
+      "Camp 4 is a Yosemite Valley campground with reservations one week in advance in the main season and first-come, first-served in winter."
+    ]
+  },
+  "trip_assessment": {
+    "suited_for_half_dome_this_trip": false,
+    "reasons": [
+      "No Half Dome permit is listed in the source JSON.",
+      "The group is only comfortable with 5-6 hour hikes, while Half Dome is typically a 10-12 hour day.",
+      "The group lacks gloves for the cables, enough headlamps, and enough water capacity.",
+      "One traveler is anxious with exposed heights."
+    ],
+    "recommended_campground": "Upper Pines",
+    "secondary_note": "Camp 4 is a reasonable budget / backpacker-style fallback but is less ideal for a first Yosemite car-camping trip."
+  }
+}

@@ -1,0 +1,31 @@
+Message-ID: <DDFBFCA4-4CEE-4A88-B61D-F488FC5DF93C@sharp.fm>
+X-Clawbench-ID: ASF-2024-0361
+Date: Fri, 19 Apr 2024 11:09:09 +0100
+From: "Graham Leggett via dev" <dev@httpd.apache.org>
+To: dev@httpd.apache.org
+Subject: Re: [WIP] mod_authnz_ldap / mod_ldap support for APR v2 LDAP API
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-04.mbox
+
+On 19 Apr 2024, at 09:07, Ruediger Pluem <rpluem@apache.org> wrote:
+
+> Would it be possible to provide this patch as a PR against trunk on Github? I think that would ease reviewing it.
+> I am quite aware that this moves some gory detail discussion of that patch away from the dev list here and over
+> to the PR where it is likely harder to find later. Nevertheless I think that the easier way to review the patch combined with
+> the tests applied to the PR via Github actions outweigh this drawback.
+
+Take a look here:
+
+https://github.com/apache/httpd/pull/438
+
+The key change is that the new apr-ldap API is 100% asynchronous, with helpful patterns to make it easy to use in synchronous code like present httpd. The intention is that future code will allow us to have an LDAP connection controlled by the MPM, with "guest" requests added by httpd requests and removed by pool cleanups. This is useful by anybody, not just httpd.
+
+RFC1823 is 30-ish years old, we're not exposing this old API any more.
+
+https://www.rfc-editor.org/rfc/rfc1823.html
+
+Regards,
+Graham
+--

@@ -1,0 +1,39 @@
+Message-ID: <ZUvSytbPplfzCt5w@an3as.eu>
+X-Clawbench-ID: BIO-2024-0719
+Date: Wed, 8 Nov 2023 19:26:18 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: migration to htslib ecosystem 1.18
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_11_msg00022.html
+
+Am Wed, Nov 08, 2023 at 06:50:25PM +0100 schrieb Étienne Mollier:
+>
+> I reran three or four times the autopkgtest on arm64 on my host
+> with no issues.  The rerun on official CI also went fine in a
+> very reasonable time[1].  CI history of jellyfish[2] reveals two
+> occurrences of this issue lately, and the run from 2023-10-09
+> happens to have a mismatching run time reported in the test
+> log[3].  There is one much older occurrence from last year, on
+> 2022-10-02, but no log associated given its age.  The hundreds
+> of other runs were not affected by this issue.  I'm tempted to
+> put that on a momentary hardware glitch at this point.
+
+OK, so nothing to worry about hopefully.
+
+Do you have time to look for the metabat issue I've posted on
+matrix (in contrast to my habit to post relevant things here,
+sorry about this).
+
+Thanks a lot for your investigation
+
+     Andreas.
+
+> [1]: https://ci.debian.net/data/autopkgtest/testing/arm64/j/jellyfish/39695945/log.gz
+> [2]: https://ci.debian.net/packages/j/jellyfish/testing/arm64/
+> [3]: https://ci.debian.net/data/autopkgtest/testing/arm64/j/jellyfish/38825944/log.gz
+
+--
+http://fam-tille.de

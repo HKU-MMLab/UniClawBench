@@ -1,0 +1,153 @@
+{
+  "task_id": "task_105_35_rss_hn_weekly_pdf",
+  "schema_notes": "anchored to Q1 2026 HN top 20 (immutable historical objectIDs/points after 2026-04-01) + 5 stable RSS feed URLs + ImageMagick topic-frequency bar chart + per-feed editorial-slant classification (4 categories: security/tech/business/lifestyle) into a stacked bar chart + pandoc xelatex multi-section PDF (cover + TOC + topic chapters + Feed Positioning section + 2 embedded charts). RSS Q1 articles are EXPECTED to be empty by 2026-05-02 since feeds only carry the latest ~10 entries — overlap_rate near 0 is intentional. The platform value is the polished PDF formatting (≥3 pages, cover + TOC + chapters + Feed Positioning section + ≥2 embedded images), not just a flat markdown→PDF conversion. Feed positioning uses live current titles per feed (not Q1) since Q1 is empty by reference date — this is acceptable because the dominant-category anchors (TheHackersNews → security, Wired → lifestyle) are extreme enough to remain stable under future feed drift.",
+  "reference_date": "2026-05-02",
+  "ground_truth": {
+    "period": "2026-Q1",
+    "period_unix_range": {
+      "start_inclusive": 1767225600,
+      "end_exclusive": 1775001600
+    },
+    "rss_feed_urls_ordered": [
+      "https://news.ycombinator.com/rss",
+      "https://lobste.rs/rss",
+      "https://feeds.arstechnica.com/arstechnica/index",
+      "https://feeds.feedburner.com/TheHackersNews",
+      "https://www.wired.com/feed/rss"
+    ],
+    "rss_feed_count": 5,
+    "hn_top_20_q1_2026_object_ids_set": [
+      "47340079",
+      "47173121",
+      "46579864",
+      "47188473",
+      "46541892",
+      "46497712",
+      "47214645",
+      "46990729",
+      "46902223",
+      "47091419",
+      "47584540",
+      "47136179",
+      "46945663",
+      "47324054",
+      "47247645",
+      "47202708",
+      "47582220",
+      "47193478",
+      "46795864",
+      "46829147"
+    ],
+    "hn_top_20_q1_2026_ordered_by_points_desc_then_created_at_desc": [
+      {"rank":  1, "objectID": "47340079", "points": 4229, "title": "Don't post generated/AI-edited comments. HN is for conversation between humans"},
+      {"rank":  2, "objectID": "47173121", "points": 2920, "title": "Statement from Dario Amodei on our discussions with the Department of War"},
+      {"rank":  3, "objectID": "46579864", "points": 2752, "title": "The struggle of resizing windows on macOS Tahoe"},
+      {"rank":  4, "objectID": "47188473", "points": 2645, "title": "We Will Not Be Divided"},
+      {"rank":  5, "objectID": "46541892", "points": 2532, "title": "Bose has released API docs and opened the API for its EoL SoundTouch speakers"},
+      {"rank":  6, "objectID": "46497712", "points": 2487, "title": "It's hard to justify Tahoe icons"},
+      {"rank":  7, "objectID": "47214645", "points": 2358, "title": "Motorola announces a partnership with GrapheneOS"},
+      {"rank":  8, "objectID": "46990729", "points": 2346, "title": "An AI agent published a hit piece on me"},
+      {"rank":  9, "objectID": "46902223", "points": 2346, "title": "Claude Opus 4.6"},
+      {"rank": 10, "objectID": "47091419", "points": 2258, "title": "Keep Android Open"},
+      {"rank": 11, "objectID": "47584540", "points": 2095, "title": "Claude Code's source code has been leaked via a map file in their NPM registry"},
+      {"rank": 12, "objectID": "47136179", "points": 2084, "title": "IDF killed Gaza aid workers at point blank range in 2025 massacre: Report"},
+      {"rank": 13, "objectID": "46945663", "points": 2046, "title": "Discord will require a face scan or ID for full access next month"},
+      {"rank": 14, "objectID": "47324054", "points": 2043, "title": "Tony Hoare has died"},
+      {"rank": 15, "objectID": "47247645", "points": 1974, "title": "MacBook Neo"},
+      {"rank": 16, "objectID": "47202708", "points": 1936, "title": "Microgpt"},
+      {"rank": 17, "objectID": "47582220", "points": 1934, "title": "Axios compromised on NPM – Malicious versions drop remote access trojan"},
+      {"rank": 18, "objectID": "47193478", "points": 1929, "title": "OpenAI – How to delete your account"},
+      {"rank": 19, "objectID": "46795864", "points": 1871, "title": "Microsoft forced me to switch to Linux"},
+      {"rank": 20, "objectID": "46829147", "points": 1844, "title": "Antirender: remove the glossy shine on architectural renderings"}
+    ],
+    "ranking_tied_pairs_swap_allowed": [["46990729", "46902223"]],
+    "expected_overlap_rate": {
+      "value": 0.0,
+      "tolerance_abs": 0.20,
+      "accepted_range_inclusive": [0.0, 0.20],
+      "rationale": "By 2026-05-02 the live RSS feeds only carry ~10 most-recent items each, all dated April or May 2026; none are in Q1 2026, so q1_articles per feed will be empty for almost every feed and the principled answer is overlap_rate = 0/20 = 0.0. Accepted range widened to [0.0, 0.20] in 2026-05-03 update to tolerate executors that match HN URLs against current_articles (live feed contents, not Q1-filtered) — that variant may produce a small non-zero overlap from URL coincidences. Any value > 0.20 indicates fabrication and fails the checkpoint."
+    },
+    "expected_top_3_topics_keywords_any_2_required": [
+      "AI", "LLM", "Apple", "Google", "OpenAI", "Anthropic",
+      "Claude", "macOS", "Tahoe", "Android", "Microsoft",
+      "GPT", "NPM", "GrapheneOS", "MacBook"
+    ],
+    "topic_temporal_precedence_methodology": {
+      "rationale": "By 2026-05-02 the live RSS feeds carry only the most-recent ~10 entries (April-May 2026), so most/all topics will have rss_first_date null and the most_rss_first_topic answer is null. This checkpoint validates the EXECUTOR'S METHODOLOGY (records the 3 fields per topic and a top-level most_rss_first_topic; if both dates non-null then lead_time_days = hn_first_date - rss_first_date in days), NOT a specific value answer. Both null and any non-null defensible answer accepted as long as arithmetic holds.",
+      "required_per_topic_fields": ["rss_first_date", "hn_first_date", "lead_time_days"],
+      "required_top_level_field": "most_rss_first_topic",
+      "lead_time_days_arithmetic_tolerance_days": 2,
+      "expected_most_rss_first_topic_under_default_state": null,
+      "any_non_null_answer_accepted_if_arithmetic_holds": true
+    },
+    "topic_frequency_chart": {
+      "rationale": "Bar chart of topic frequencies derived from /tmp_workspace/results/topics.json. Bars one per topic; chart embedded into the pandoc PDF.",
+      "deliverable_path": "/tmp_workspace/results/topic_chart.png",
+      "min_width_px": 400,
+      "min_height_px": 200,
+      "must_be_embedded_in_pdf": true
+    },
+    "feed_positioning": {
+      "rationale": "Per-feed editorial slant analysis. Each of the 5 RSS feeds is classified along 4 categories (security / tech / business / lifestyle) by simple keyword matching against the feed's current titles. The dominant_category is the one with the highest fraction. Verified 2026-05-02 — these dominant-category anchors are stable enough that even with future feed drift the dominant call is unlikely to flip (especially TheHackersNews → security and Wired → lifestyle which are extreme).",
+      "deliverable_path": "/tmp_workspace/results/feed_positioning.json",
+      "expected_per_feed_count": 5,
+      "expected_categories": ["security", "tech", "business", "lifestyle"],
+      "expected_dominant_categories": {
+        "https://news.ycombinator.com/rss":               "tech",
+        "https://lobste.rs/rss":                          "tech",
+        "https://feeds.arstechnica.com/arstechnica/index": "tech",
+        "https://feeds.feedburner.com/TheHackersNews":     "security",
+        "https://www.wired.com/feed/rss":                  "lifestyle"
+      },
+      "anchor_dominant_call_required_count": 2,
+      "anchor_dominant_call_required_feeds_2026_05_02": [
+        "https://feeds.feedburner.com/TheHackersNews",
+        "https://www.wired.com/feed/rss"
+      ],
+      "rationale_anchor_required_feeds": "TheHackersNews is 100%-security in current titles (Trellix Confirms Source Code Breach, 30,000 Facebook Accounts Hacked, Cybercrime Groups, etc.); Wired's RSS is dominated by reviews/gifts/promo (Tovala Family Meals, Best Travel Adapters, Editor's Picks for Bird Lovers, Promo Codes). The other 3 feeds (HN/Lobsters/Ars Technica) are mixed but tech-leaning; their dominant call may drift between tech and other categories depending on the executor's keyword list, so we do NOT require anchor matches there.",
+      "category_distribution_min_dominant_share_for_TheHackersNews": 0.5,
+      "category_distribution_min_dominant_share_for_Wired": 0.4
+    },
+    "feed_positioning_chart": {
+      "rationale": "Stacked bar chart of feed_positioning per-feed category distribution. 5 bars, each stacked across 4 categories; embedded into the pandoc PDF as the second image.",
+      "deliverable_path": "/tmp_workspace/results/feed_positioning_chart.png",
+      "min_width_px": 500,
+      "min_height_px": 300,
+      "must_be_embedded_in_pdf": true
+    },
+    "weekly_report_pdf_format_requirements": {
+      "rationale": "The PDF formatting is the platform value here. Pandoc + xelatex with --toc, polished multi-section layout — not a flat 1-page text dump.",
+      "deliverable_path": "/tmp_workspace/results/weekly_report.pdf",
+      "min_pages": 3,
+      "must_extract_substrings_via_pdftotext": [
+        "2026",
+        "Q1"
+      ],
+      "must_extract_at_least_2_of_3_topics": true,
+      "must_extract_overlap_substring": [
+        "overlap",
+        "Overlap",
+        "OVERLAP",
+        "overlap_rate"
+      ],
+      "must_extract_feed_positioning_section": [
+        "Feed Positioning",
+        "feed positioning",
+        "FEED POSITIONING"
+      ],
+      "must_have_embedded_image_count_at_least": 2,
+      "renderer_command_hint": "pandoc input.md -o weekly_report.pdf --pdf-engine=xelatex --toc -V CJKmainfont='Noto Sans CJK SC'"
+    },
+    "deliverables": {
+      "feed_articles_json":          "/tmp_workspace/results/feed_articles.json",
+      "hn_top_stories_json":         "/tmp_workspace/results/hn_top_stories.json",
+      "overlap_summary_json":        "/tmp_workspace/results/overlap_summary.json",
+      "topics_json":                 "/tmp_workspace/results/topics.json",
+      "topic_chart_png":             "/tmp_workspace/results/topic_chart.png",
+      "feed_positioning_json":       "/tmp_workspace/results/feed_positioning.json",
+      "feed_positioning_chart_png":  "/tmp_workspace/results/feed_positioning_chart.png",
+      "weekly_report_pdf":           "/tmp_workspace/results/weekly_report.pdf",
+      "evince_screenshot_png":       "/tmp_workspace/results/evince_screenshot.png"
+    }
+  }
+}

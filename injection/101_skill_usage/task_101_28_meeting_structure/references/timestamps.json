@@ -1,0 +1,389 @@
+{
+  "total_duration_s": 642.02,
+  "turns": [
+    {
+      "idx": 0,
+      "transcript_label": "00:00:00",
+      "speaker": "Alice",
+      "actual_start_s": 0.0,
+      "actual_end_s": 32.36,
+      "text_preview": "Good morning everyone, this is the Q3 Platform Planning Sync recorded on April 3"
+    },
+    {
+      "idx": 1,
+      "transcript_label": "00:00:42",
+      "speaker": "Alice",
+      "actual_start_s": 32.76,
+      "actual_end_s": 37.63,
+      "text_preview": "First topic, agenda item one, the billing revamp. Bob, where are we?"
+    },
+    {
+      "idx": 2,
+      "transcript_label": "00:00:50",
+      "speaker": "Bob",
+      "actual_start_s": 38.03,
+      "actual_end_s": 61.32,
+      "text_preview": "We finished the prototype last sprint. The new metering pipeline is running in s"
+    },
+    {
+      "idx": 3,
+      "transcript_label": "00:01:18",
+      "speaker": "Carol",
+      "actual_start_s": 61.72,
+      "actual_end_s": 76.26,
+      "text_preview": "Wait, I want to push back on the September fifteenth date. The design refresh fo"
+    },
+    {
+      "idx": 4,
+      "transcript_label": "00:01:38",
+      "speaker": "Bob",
+      "actual_start_s": 76.66,
+      "actual_end_s": 92.35,
+      "text_preview": "That's fair, but slipping the cutover means we miss the Q3 revenue recognition w"
+    },
+    {
+      "idx": 5,
+      "transcript_label": "00:01:55",
+      "speaker": "Alice",
+      "actual_start_s": 92.75,
+      "actual_end_s": 97.77,
+      "text_preview": "Okay let's debate this. Carol, what's the soonest the invoice template can be ap"
+    },
+    {
+      "idx": 6,
+      "transcript_label": "00:02:03",
+      "speaker": "Carol",
+      "actual_start_s": 98.17,
+      "actual_end_s": 107.92,
+      "text_preview": "If legal signs off this week, we can ship the new template by 2026-09-08. That g"
+    },
+    {
+      "idx": 7,
+      "transcript_label": "00:02:18",
+      "speaker": "David",
+      "actual_start_s": 108.32,
+      "actual_end_s": 122.25,
+      "text_preview": "I want to flag something. The metering pipeline depends on the data warehouse cu"
+    },
+    {
+      "idx": 8,
+      "transcript_label": "00:02:36",
+      "speaker": "Alice",
+      "actual_start_s": 122.65,
+      "actual_end_s": 148.6,
+      "text_preview": "Got it. So decision: we proceed with billing staging cutover on 2026-09-15 condi"
+    },
+    {
+      "idx": 9,
+      "transcript_label": "00:03:08",
+      "speaker": "Alice",
+      "actual_start_s": 149.0,
+      "actual_end_s": 153.42,
+      "text_preview": "Okay topic two, observability rollout. Bob, this is yours too."
+    },
+    {
+      "idx": 10,
+      "transcript_label": "00:03:14",
+      "speaker": "Bob",
+      "actual_start_s": 153.82,
+      "actual_end_s": 179.33,
+      "text_preview": "Quick update. We've rolled out distributed tracing to forty percent of services."
+    },
+    {
+      "idx": 11,
+      "transcript_label": "00:03:42",
+      "speaker": "Alice",
+      "actual_start_s": 179.73,
+      "actual_end_s": 188.31,
+      "text_preview": "Any objections or questions? No? Decided: complete observability rollout by end "
+    },
+    {
+      "idx": 12,
+      "transcript_label": "00:03:54",
+      "speaker": "Alice",
+      "actual_start_s": 188.71,
+      "actual_end_s": 191.98,
+      "text_preview": "Topic three, design system migration. Carol."
+    },
+    {
+      "idx": 13,
+      "transcript_label": "00:04:00",
+      "speaker": "Carol",
+      "actual_start_s": 192.38,
+      "actual_end_s": 209.23,
+      "text_preview": "We're at a fork in the road and I want the group's input. Option A is migrate ev"
+    },
+    {
+      "idx": 14,
+      "transcript_label": "00:04:25",
+      "speaker": "Erin",
+      "actual_start_s": 209.63,
+      "actual_end_s": 222.55,
+      "text_preview": "From a sales perspective the customer-facing screens need the refresh by Q4 beca"
+    },
+    {
+      "idx": 15,
+      "transcript_label": "00:04:42",
+      "speaker": "David",
+      "actual_start_s": 222.95,
+      "actual_end_s": 233.59,
+      "text_preview": "I'll push back on big bang. Last time we did big bang on the analytics rewrite w"
+    },
+    {
+      "idx": 16,
+      "transcript_label": "00:04:58",
+      "speaker": "Bob",
+      "actual_start_s": 233.99,
+      "actual_end_s": 241.03,
+      "text_preview": "Agreed with David. Big bang is too risky. We're already absorbing billing and wa"
+    },
+    {
+      "idx": 17,
+      "transcript_label": "00:05:08",
+      "speaker": "Carol",
+      "actual_start_s": 241.43,
+      "actual_end_s": 259.76,
+      "text_preview": "Okay so the room is leaning incremental. How about a hybrid: customer portal get"
+    },
+    {
+      "idx": 18,
+      "transcript_label": "00:05:30",
+      "speaker": "Alice",
+      "actual_start_s": 260.16,
+      "actual_end_s": 279.74,
+      "text_preview": "Approved. Decision recorded: hybrid migration, customer portal prioritized, dead"
+    },
+    {
+      "idx": 19,
+      "transcript_label": "00:05:58",
+      "speaker": "Alice",
+      "actual_start_s": 280.14,
+      "actual_end_s": 284.25,
+      "text_preview": "Topic four, customer onboarding research. David, your turn."
+    },
+    {
+      "idx": 20,
+      "transcript_label": "00:06:04",
+      "speaker": "David",
+      "actual_start_s": 284.65,
+      "actual_end_s": 307.3,
+      "text_preview": "We ran a hundred-and-forty-person survey last month. The headline is that thirty"
+    },
+    {
+      "idx": 21,
+      "transcript_label": "00:06:38",
+      "speaker": "Erin",
+      "actual_start_s": 307.7,
+      "actual_end_s": 314.4,
+      "text_preview": "This matches what I'm hearing from sales. We lose deals because prospects can't "
+    },
+    {
+      "idx": 22,
+      "transcript_label": "00:06:48",
+      "speaker": "Alice",
+      "actual_start_s": 314.8,
+      "actual_end_s": 316.22,
+      "text_preview": "What's the proposed fix?"
+    },
+    {
+      "idx": 23,
+      "transcript_label": "00:06:51",
+      "speaker": "David",
+      "actual_start_s": 316.62,
+      "actual_end_s": 336.28,
+      "text_preview": "I want to propose a redesigned onboarding flow with three changes. One, a pricin"
+    },
+    {
+      "idx": 24,
+      "transcript_label": "00:07:18",
+      "speaker": "Carol",
+      "actual_start_s": 336.68,
+      "actual_end_s": 343.15,
+      "text_preview": "I can pair with David on the spec. We'll deliver jointly by 2026-09-22."
+    },
+    {
+      "idx": 25,
+      "transcript_label": "00:07:26",
+      "speaker": "Alice",
+      "actual_start_s": 343.55,
+      "actual_end_s": 351.51,
+      "text_preview": "Approved. Action item: David and Carol jointly own onboarding redesign spec, due"
+    },
+    {
+      "idx": 26,
+      "transcript_label": "00:07:38",
+      "speaker": "Alice",
+      "actual_start_s": 351.91,
+      "actual_end_s": 355.23,
+      "text_preview": "Topic five, regional expansion to Europe. Erin."
+    },
+    {
+      "idx": 27,
+      "transcript_label": "00:07:44",
+      "speaker": "Erin",
+      "actual_start_s": 355.63,
+      "actual_end_s": 369.15,
+      "text_preview": "We have signed letters of intent from four enterprise customers in Germany and F"
+    },
+    {
+      "idx": 28,
+      "transcript_label": "00:08:03",
+      "speaker": "Bob",
+      "actual_start_s": 369.55,
+      "actual_end_s": 386.26,
+      "text_preview": "EU data residency is a six-month infrastructure project at minimum. Frankfurt re"
+    },
+    {
+      "idx": 29,
+      "transcript_label": "00:08:20",
+      "speaker": "Erin",
+      "actual_start_s": 386.66,
+      "actual_end_s": 392.73,
+      "text_preview": "I know but if we don't commit by Q3 we lose the deals. Can we at least commit to"
+    },
+    {
+      "idx": 30,
+      "transcript_label": "00:08:30",
+      "speaker": "Alice",
+      "actual_start_s": 393.13,
+      "actual_end_s": 407.22,
+      "text_preview": "This is the kind of decision I can't make in the room. David, can you put togeth"
+    },
+    {
+      "idx": 31,
+      "transcript_label": "00:08:52",
+      "speaker": "David",
+      "actual_start_s": 407.62,
+      "actual_end_s": 413.41,
+      "text_preview": "Yes I can do that. Feasibility analysis by 2026-10-15."
+    },
+    {
+      "idx": 32,
+      "transcript_label": "00:09:00",
+      "speaker": "Alice",
+      "actual_start_s": 413.81,
+      "actual_end_s": 420.54,
+      "text_preview": "Open question recorded: EU expansion timing decision deferred to October offsite"
+    },
+    {
+      "idx": 33,
+      "transcript_label": "00:09:12",
+      "speaker": "Alice",
+      "actual_start_s": 420.94,
+      "actual_end_s": 424.03,
+      "text_preview": "Topic six, data warehouse cutover. David."
+    },
+    {
+      "idx": 34,
+      "transcript_label": "00:09:18",
+      "speaker": "David",
+      "actual_start_s": 424.43,
+      "actual_end_s": 442.7,
+      "text_preview": "We're on track. The new warehouse is live, dual-writes are working, and we've va"
+    },
+    {
+      "idx": 35,
+      "transcript_label": "00:09:42",
+      "speaker": "Alice",
+      "actual_start_s": 443.1,
+      "actual_end_s": 443.97,
+      "text_preview": "Any blockers?"
+    },
+    {
+      "idx": 36,
+      "transcript_label": "00:09:44",
+      "speaker": "David",
+      "actual_start_s": 444.37,
+      "actual_end_s": 454.96,
+      "text_preview": "Just one. We need finance to approve the new warehouse compute costs, which are "
+    },
+    {
+      "idx": 37,
+      "transcript_label": "00:09:58",
+      "speaker": "Alice",
+      "actual_start_s": 455.36,
+      "actual_end_s": 461.58,
+      "text_preview": "I'll escalate today. Action item, mine: get finance approval on warehouse comput"
+    },
+    {
+      "idx": 38,
+      "transcript_label": "00:10:08",
+      "speaker": "Alice",
+      "actual_start_s": 461.98,
+      "actual_end_s": 490.59,
+      "text_preview": "Topic seven, security audit findings. This is sensitive so let me cover it. The "
+    },
+    {
+      "idx": 39,
+      "transcript_label": "00:10:48",
+      "speaker": "Bob",
+      "actual_start_s": 490.99,
+      "actual_end_s": 504.51,
+      "text_preview": "Yes. Critical findings remediation, owner Bob, deadline 2026-06-29. The four hig"
+    },
+    {
+      "idx": 40,
+      "transcript_label": "00:11:02",
+      "speaker": "Alice",
+      "actual_start_s": 504.91,
+      "actual_end_s": 515.36,
+      "text_preview": "Approved. Decision: critical security findings due 2026-06-29 owner Bob, high fi"
+    },
+    {
+      "idx": 41,
+      "transcript_label": "00:11:16",
+      "speaker": "Alice",
+      "actual_start_s": 515.76,
+      "actual_end_s": 532.32,
+      "text_preview": "Last topic, Q4 budget allocation. We have one-point-eight million in discretiona"
+    },
+    {
+      "idx": 42,
+      "transcript_label": "00:11:40",
+      "speaker": "Erin",
+      "actual_start_s": 532.72,
+      "actual_end_s": 541.39,
+      "text_preview": "GTM should be higher. We're heading into renewals season and we're under-resourc"
+    },
+    {
+      "idx": 43,
+      "transcript_label": "00:11:52",
+      "speaker": "Bob",
+      "actual_start_s": 541.79,
+      "actual_end_s": 552.1,
+      "text_preview": "I disagree. We have critical infra work in Q4 and cutting engineering hiring wil"
+    },
+    {
+      "idx": 44,
+      "transcript_label": "00:12:05",
+      "speaker": "David",
+      "actual_start_s": 552.5,
+      "actual_end_s": 559.63,
+      "text_preview": "I'm neutral on the split but I want to flag that product research at twenty perc"
+    },
+    {
+      "idx": 45,
+      "transcript_label": "00:12:18",
+      "speaker": "Alice",
+      "actual_start_s": 560.03,
+      "actual_end_s": 583.0,
+      "text_preview": "Okay let's land this. Final decision: forty percent engineering, thirty-two perc"
+    },
+    {
+      "idx": 46,
+      "transcript_label": "00:12:50",
+      "speaker": "Alice",
+      "actual_start_s": 583.4,
+      "actual_end_s": 632.09,
+      "text_preview": "Okay, summary of action items. Bob owns billing staging cutover 2026-09-15 and p"
+    },
+    {
+      "idx": 47,
+      "transcript_label": "00:13:48",
+      "speaker": "Alice",
+      "actual_start_s": 632.49,
+      "actual_end_s": 642.02,
+      "text_preview": "Open questions deferred: EU expansion timing, decided at October offsite. Any fi"
+    }
+  ]
+}

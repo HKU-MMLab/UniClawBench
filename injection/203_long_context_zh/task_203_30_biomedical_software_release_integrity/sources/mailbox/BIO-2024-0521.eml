@@ -1,0 +1,32 @@
+Message-ID: <ae4fa594-acce-59c9-af64-13b6efe601b6@debian.org>
+X-Clawbench-ID: BIO-2024-0521
+Date: Fri, 18 Feb 2022 18:21:58 +0200
+From: Andrius Merkys <merkys@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: Datasets to design autopkgtests for our packages
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_02_msg00076.html
+
+Hi Pierre,
+
+On 2022-02-18 17:52, Pierre Gruet wrote:
+> To give a bit of context: I am currently writing autopkgtests for
+> htsjdk, which is one Java library we maintain in the team. Those
+> autopkgtests should test reverse-dependencies to ease upgrades of htsjdk.
+>
+> When designing such tests, I would need data to run, let's say, artemis
+> or igv which process FASTA, or whatever, files.
+> Do you have some idea of a place to get data files that can be safely
+> included in our packages for such uses? Maybe some website with open data?
+
+It depends whether you need simple protein FASTA sequences or
+alignments. You may find simple sequences in PDB, for example [1], go to
+"Download Files" and FASTA format is just there. AFAIR, PDB data is
+freely distributable.
+
+[1] https://www.rcsb.org/structure/6fti
+
+Best,
+Andrius

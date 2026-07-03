@@ -1,0 +1,65 @@
+task_id: task_205_39_nasa_audio_ffmpeg_index
+category: 205_cross_platform_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我这里有三段简短的 NASA 历史音频文件：
+
+      /tmp_workspace/clawbench/sources/nasa_audio/
+
+  请使用诸如 ffmpeg/ffprobe 这样的命令行媒体工具，制作一个紧凑的简报
+  音频包。
+
+  剪切以下片段：
+  - `apollo11_countdown.mp3`：前 6 秒
+  - `eagle_has_landed.mp3`：前 5 秒
+  - `houston_problem.mp3`：前 7 秒
+
+  将各个片段保存为：
+
+      /tmp_workspace/results/clips/clip_01.mp3
+      /tmp_workspace/results/clips/clip_02.mp3
+      /tmp_workspace/results/clips/clip_03.mp3
+
+  按该顺序将它们拼接成：
+
+      /tmp_workspace/results/nasa_audio_briefing.mp3
+
+  另外为最终的简报在以下位置生成一张波形图或频谱图 PNG：
+
+      /tmp_workspace/results/nasa_audio_waveform.png
+
+  在以下位置写一份机器可读的 manifest：
+
+      /tmp_workspace/results/clip_manifest.json
+
+  该 manifest 应为每个片段包含源文件、title、start_seconds、
+  duration_seconds、output_file、measured_duration，以及 sha256 或文件
+  大小。最后在以下位置写一份简短的来源/编辑报告：
+
+      /tmp_workspace/results/nasa_audio_report.md
+
+  说明源文件来自 NASA 历史音效，并包含最终的实测时长。
+
+sources:
+  - nasa_audio/
+
+services:
+  - name: media-cli-setup
+    path: media-cli-setup
+    start: bash install.sh
+    oneshot: true
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+codex:
+  max_user_followups: 2

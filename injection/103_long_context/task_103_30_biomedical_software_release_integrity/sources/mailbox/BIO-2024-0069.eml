@@ -1,0 +1,27 @@
+Message-ID: <20221012112857.gjbkauuide4nnemr@localhost>
+X-Clawbench-ID: BIO-2024-0069
+Date: Wed, 12 Oct 2022 16:58:57 +0530
+From: Mayuresh <mayuresh@acm.org>
+To: Leonardo M. Ramé <leonardo.rame@informemedico.com.ar>
+Subject: Re: Acquiring Dental RVG on Linux
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00044.html
+
+On Tue, Oct 11, 2022 at 11:22:20AM -0300, Leonardo M. Ramé wrote:
+> I would like to reach Mayuresh hoping to find a solution to this.
+
+Hi. Glad to see your interest in this problem.
+
+Unfortunately I do not still have a solution. I tried some brute force
+method like machine learning, the results somewhat improve, but still far
+from being usable.
+
+I wonder and someone said this on this thread before, there is some
+secrete sauce in the raw data that only the vendor knows - some noise
+correction, something non linear that can't be matched by simple
+transformations.
+
+--
+Mayuresh

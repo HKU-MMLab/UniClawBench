@@ -1,0 +1,36 @@
+Message-ID: <4d60e817-aa7d-687e-906c-c14fe7a72468@apache.org>
+X-Clawbench-ID: ASF-2024-0852
+Date: Mon, 31 Oct 2022 17:33:40 +0100
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: [libapreq2] nits to pick about the patches to util.c over the  past few years
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-10.mbox
+
+On 10/31/22 5:21 PM, Ruediger Pluem wrote:
+>
+>
+> On 10/30/22 4:28 PM, Joe Schaefer wrote:
+>> And to be frank- framing my input as me slagging on Yann is grotesque. ï¿½You ship GA releases as a team, and so when you ship a dud
+>> like 2.17 you should take your lumps as a team.
+>
+> I admit that the libapreq2 codebase doesn't get that much review attention as other parts of httpd and does not draw that much
+> developer interest. Hence we were very grateful that Yann took some time to do the needful, fixed the security issue and took it
+> to a release to get that issue fixed for the users. Thank you Yann for this. The fact that at least the existing tests still
+> passed after the changes was at least for me a good indicator that the changes don't break stuff and are fine.
+> I also understand if you feel upset if the codebase you wrote and regard as better was changed and if you feel that the code
+> deserves more love and care.
+> The way to fix this is to participate here in a constructive way to get it in the direction you want it to be.
+> If you feel that this isn't the correct community for this codebase we can also talk about this as Eric indicated.
+> I am with Joe Orton and Greg that you are around for long enough to know that the way you started this brought attention to your
+> desires but was counterproductive in many ways (tone of the emails, number of emails, top postings, too broad statements) to get
+> things were you want them to be.
+
+Having said this, lets move forward and get into the details which cases are broken and what parts of the code cause this and
+should be different.
+
+Regards
+
+Rï¿½diger

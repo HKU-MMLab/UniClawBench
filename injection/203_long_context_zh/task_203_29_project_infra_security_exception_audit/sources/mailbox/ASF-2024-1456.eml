@@ -1,0 +1,64 @@
+Message-ID: <CAB84uBWMayubMQXzexq3JwqA0t60UAJM=khS+npv0JnzuZagwQ@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1456
+Date: Tue, 18 Jan 2022 22:24:07 +0100
+From: Johan Corveleyn <jcorvel@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: httpd test framework svn repo borked?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-01.mbox
+
+On Sat, Jan 15, 2022 at 12:56 AM William A Rowe Jr <wrowe@rowe-clan.net> wrote:
+>
+> On Fri, Jan 14, 2022 at 4:08 AM Stefan Sperling <stsp@apache.org> wrote:
+> >
+> > On Thu, Jan 13, 2022 at 07:17:27PM -0600, William A Rowe Jr wrote:
+> > > Thanks Stefan, it's attempting [locally] to replace a file, which was
+> > > just created during the
+> > > checkout (which might even be open).
+> >
+> > Hmm. I assume SVN would close such files based on APR pool lifetime.
+> >
+> > Handling of the pristine installation step has been changed in SVN trunk:
+> > https://svn.apache.org/r1886490
+> > In particular:
+> > """
+> > On Windows, it uses the existing mechanism of installing the files
+> > by handle, without having to reopen them.
+> > """
+>
+> As indicated, this is in the ubuntu 18.04 SFU on windows, the msys2-64
+> current distribution, as well as Windows "native". Very consistent.
+
+Was browsing some mails and just saw this thread.
+
+Not sure I'm doing the right thing, but I don't see this issue on my
+Windows 10 machine (with standard NTFS filesystem, just your regular
+Windows laptop), with a standard 1.14.0 SVN client (from TortoiseSVN).
+
+[[[
+C:\research>svn --version -q
+1.14.0
+
+C:\research>svn co  -q -r 1896892
+https://svn.apache.org/repos/asf/httpd/test/framework/trunk
+
+C:\research>cd trunk
+
+C:\research\trunk>dir /b
+Apache-Test
+build
+c-modules
+LICENSE
+Makefile.PL
+Misc.pm
+NOTICE
+README
+scripts
+STATUS
+t
+]]]
+
+--
+Johan

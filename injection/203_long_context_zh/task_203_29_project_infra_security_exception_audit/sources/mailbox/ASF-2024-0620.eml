@@ -1,0 +1,12 @@
+Message-ID: <asf-2024-0620@httpd.apache.org>
+X-Clawbench-ID: ASF-2024-0620
+Date: Fri, 19 Jan 2024 14:10:00 +0000
+From: Release Audit <release-audit@apache.org>
+To: dev@httpd.apache.org
+Subject: separate release credentials approved
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: synthetic Apache-style project infrastructure review implant
+
+The extra named release credentials for the maintenance branch were approved and added to the release checklist. Please stop using the shared fallback login by Friday.

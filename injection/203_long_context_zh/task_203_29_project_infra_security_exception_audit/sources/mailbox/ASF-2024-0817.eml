@@ -1,0 +1,270 @@
+Message-ID: <c9104fa4-3525-4599-8f66-c2ace708037e@linux.ibm.com>
+X-Clawbench-ID: ASF-2024-0817
+Date: Mon, 27 Nov 2023 16:02:22 +0100
+From: Ingo Franzki <ifranzki@linux.ibm.com>
+To: dev@httpd.apache.org
+Subject: mod_ssl: Add support for loading keys from OpenSSL 3.x providers via  STORE
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-11.mbox
+
+Hi all,
+
+The mod_ssl module has support for loading keys and certificates from OpenSSL engines via PKCS#11 URIs at SSLCertificateFile and SSLCertificateKeyFile, e.g. using the PKCS#11 engine part of libp11 (https://github.com/OpenSC/libp11).
+
+This works fine, but with OpenSSL 3.0 engines got deprecated, and a new provider concept is used.
+OpenSSL 1.1.1 is no longer supported by the OpenSSL organization (https://www.openssl.org/blog/blog/2023/09/11/eol-111/),
+and newer distributions all have OpenSSL 3.x included.
+Currently, engines do still work, bit since they are deprecated, they will at some point in time no longer be working.
+
+With OpenSSL 3.x providers one can implements loading of keys and certificates by implementing a STORE method.
+With this, keys and certificates can be loaded for example from PKCS#11 modules via PKCS#11 URIs, just like it was possible with an PKCS#11 engine.
+
+Please find below some code changes required to support loading the server private key and certificates from a PKCS#11 provider using OpenSSL STORE providers.
+
+The usage is very similar to how it was with engines. You can specify a PKCS#11 URI with SSLCertificateFile and SSLCertificateKeyFile, exactly how it is with engines. The only difference is that you must specify 'SSLCryptoDevice provider' as crypto device, instead of specifying the engine name.
+That way, the code continues to support working with engines. So SSLCryptoDevice accepts either 'builtin' or an engine name as before, but now also 'provider' to enable the OpenSSL provider STORE API. Instead of choosing this approach, we could just replace the engine support by the provider support, but this might break existing installations that are still using engines.
+
+The provider(s) to be used with httpd must be configured via the OpenSSL config file in the provider section.
+Most providers need additional, provider specific settings that can only be supplied via the OpenSSL config file.
+If one does not like to configure the providers globally, one can have a separate OpenSSL config file and use environment variable OPENSSL_CONF to specify the config file to use. That way one can have an OpenSSL config file just for httpd.
+
+Currently there exist 2 PKCS#11 provider projects:
+- https://github.com/latchset/pkcs11-provider
+- https://github.com/opencryptoki/openssl-pkcs11-sign-provider
+Both do support loading keys via PKCS#11 URI via their STORE support, but the code below is not limited to just those two.
+Any provider that supports a STORE implementation for URIs with the 'pkcs11' scheme can be used.
+
+BTW: my ICLA is on file.
+
+Index: docs/manual/mod/mod_ssl.html.en.utf8
+===================================================================
+--- docs/manual/mod/mod_ssl.html.en.utf8	(revision 1914150)
++++ docs/manual/mod/mod_ssl.html.en.utf8	(working copy)
+@@ -666,7 +666,7 @@
+ files, a certificate identifier can be used to identify a certificate
+ stored in a token.  Currently, only <a href="https://tools.ietf.org/html/rfc7512">PKCS#11 URIs</a> are
+ recognized as certificate identifiers, and can be used in conjunction
+-with the OpenSSL <code>pkcs11</code> engine.  If <code class="directive"><a href="#sslcertificatekeyfile">SSLCertificateKeyFile</a></code> is omitted, the
++with the OpenSSL <code>pkcs11</code> engine or provider.  If <code class="directive"><a href="#sslcertificatekeyfile">SSLCertificateKeyFile</a></code> is omitted, the
+ certificate and private key can be loaded through the single
+ identifier specified with <code class="directive">SSLCertificateFile</code>.</p>
+
+@@ -754,7 +754,7 @@
+ identifier can be used to identify a private key stored in a
+ token.  Currently, only <a href="https://tools.ietf.org/html/rfc7512">PKCS#11 URIs</a> are recognized as private key
+ identifiers, and can be used in conjunction with the OpenSSL
+-<code>pkcs11</code> engine.</p>
++<code>pkcs11</code> engine or provider.</p>
+
+ <div class="example"><h3>Example</h3><pre class="prettyprint lang-config"># To use a private key from a PEM-encoded file:
+ SSLCertificateKeyFile "/usr/local/apache2/conf/ssl.key/server.key"
+@@ -988,6 +988,12 @@
+ SSLCryptoDevice ubsec</pre>
+ </div>
+
++With OpenSSL 3.0 or later, specify <code>provider</code> to load keys and
++certificates from a provider using <a href="https://tools.ietf.org/html/rfc7512">PKCS#11 URIs</a>.
++The provider to use must be defined and configured in the OpenSSL config file,
++and it must support the <a href="https://www.openssl.org/docs/man3.0/man7/provider-storemgmt.html">STORE method</a>
++for <a href="https://tools.ietf.org/html/rfc7512">PKCS#11 URIs</a></p>
++
+ </div>
+ <div class="top"><a href="#page-header"><img alt="top" src="../images/up.gif" /></a></div>
+ <div class="directive-section"><h2><a name="SSLEngine" id="SSLEngine">SSLEngine</a> <a name="sslengine" id="sslengine">Directive</a> <a title="Permanent link" href="#sslengine" class="permalink">&para;</a></h2>
+Index: modules/ssl/ssl_engine_config.c
+===================================================================
+--- modules/ssl/ssl_engine_config.c	(revision 1914150)
++++ modules/ssl/ssl_engine_config.c	(working copy)
+@@ -689,6 +689,11 @@
+     if (strcEQ(arg, "builtin")) {
+         mc->szCryptoDevice = NULL;
+     }
++#if MODSSL_USE_OPENSSL_STORE
++    else if (strcEQ(arg, "provider")) {
++        mc->szCryptoDevice = arg;
++    }
++#endif
+ #if MODSSL_HAVE_ENGINE_API
+     else if ((e = ENGINE_by_id(arg))) {
+         mc->szCryptoDevice = arg;
+@@ -697,7 +702,11 @@
+ #endif
+     else {
+         err = "SSLCryptoDevice: Invalid argument; must be one of: "
++#if MODSSL_USE_OPENSSL_STORE
++              "'builtin' (none), 'provider' (use OpenSSL >= 3.0 provider STORE)";
++#else
+               "'builtin' (none)";
++#endif
+ #if MODSSL_HAVE_ENGINE_API
+         e = ENGINE_get_first();
+         while (e) {
+Index: modules/ssl/ssl_engine_init.c
+===================================================================
+--- modules/ssl/ssl_engine_init.c	(revision 1914150)
++++ modules/ssl/ssl_engine_init.c	(working copy)
+@@ -506,7 +506,7 @@
+     SSLModConfigRec *mc = myModConfig(s);
+     ENGINE *e;
+
+-    if (mc->szCryptoDevice) {
++    if (mc->szCryptoDevice && !strcEQ(mc->szCryptoDevice, "provider")) {
+         if (!(e = ENGINE_by_id(mc->szCryptoDevice))) {
+             ap_log_error(APLOG_MARK, APLOG_EMERG, 0, s, APLOGNO(01888)
+                          "Init: Failed to load Crypto Device API `%s'",
+@@ -1476,7 +1476,11 @@
+             if (cert) {
+                 if (SSL_CTX_use_certificate(mctx->ssl_ctx, cert) < 1) {
+                     ap_log_error(APLOG_MARK, APLOG_EMERG, 0, s, APLOGNO(10137)
++#if MODSSL_USE_OPENSSL_STORE
++                                 "Failed to configure engine/provider certificate %s, check %s",
++#else
+                                  "Failed to configure engine certificate %s, check %s",
++#endif
+                                  key_id, certfile);
+                     ssl_log_ssl_error(SSLLOG_MARK, APLOG_EMERG, s);
+                     return APR_EGENERAL;
+@@ -1488,7 +1492,11 @@
+
+             if (SSL_CTX_use_PrivateKey(mctx->ssl_ctx, pkey) < 1) {
+                 ap_log_error(APLOG_MARK, APLOG_EMERG, 0, s, APLOGNO(10130)
++#if MODSSL_USE_OPENSSL_STORE
++                             "Failed to configure private key %s from engine/provider",
++#else
+                              "Failed to configure private key %s from engine",
++#endif
+                              keyfile);
+                 ssl_log_ssl_error(SSLLOG_MARK, APLOG_EMERG, s);
+                 return APR_EGENERAL;
+Index: modules/ssl/ssl_engine_pphrase.c
+===================================================================
+--- modules/ssl/ssl_engine_pphrase.c	(revision 1914150)
++++ modules/ssl/ssl_engine_pphrase.c	(working copy)
+@@ -31,6 +31,9 @@
+ #include "ssl_private.h"
+
+ #include <openssl/ui.h>
++#if MODSSL_USE_OPENSSL_STORE
++#include <openssl/store.h>
++#endif
+
+ typedef struct {
+     server_rec         *s;
+@@ -576,7 +579,7 @@
+     return (len);
+ }
+
+-#if MODSSL_HAVE_ENGINE_API
++#if MODSSL_HAVE_ENGINE_API || MODSSL_USE_OPENSSL_STORE
+
+ /* OpenSSL UI implementation for passphrase entry; largely duplicated
+  * from ssl_pphrase_Handle_CB but adjusted for UI API. TODO: Might be
+@@ -793,13 +796,14 @@
+ }
+ #endif
+
+-
+-apr_status_t modssl_load_engine_keypair(server_rec *s, apr_pool_t *p,
+-                                        const char *vhostid,
+-                                        const char *certid, const char *keyid,
+-                                        X509 **pubkey, EVP_PKEY **privkey)
+-{
+ #if MODSSL_HAVE_ENGINE_API
++static apr_status_t modssl_load_keypair_engine(server_rec *s, apr_pool_t *p,
++                                               const char *vhostid,
++                                               const char *certid,
++                                               const char *keyid,
++                                               X509 **pubkey,
++                                               EVP_PKEY **privkey)
++{
+     const char *c, *scheme;
+     ENGINE *e;
+     UI_METHOD *ui_method = get_passphrase_ui(p);
+@@ -873,6 +877,133 @@
+     ENGINE_free(e);
+
+     return APR_SUCCESS;
++}
++#endif
++
++#if MODSSL_USE_OPENSSL_STORE
++static apr_status_t modssl_load_keypair_store(server_rec *s, apr_pool_t *p,
++                                              const char *vhostid,
++                                              const char *certid,
++                                              const char *keyid,
++                                              X509 **pubkey,
++                                              EVP_PKEY **privkey)
++{
++    OSSL_STORE_CTX *sctx;
++    UI_METHOD *ui_method = get_passphrase_ui(p);
++    pphrase_cb_arg_t ppcb;
++
++    memset(&ppcb, 0, sizeof ppcb);
++    ppcb.s = s;
++    ppcb.p = p;
++    ppcb.bPassPhraseDialogOnce = TRUE;
++    ppcb.key_id = vhostid;
++    ppcb.pkey_file = keyid;
++
++    *privkey = NULL;
++    sctx = OSSL_STORE_open(keyid, ui_method, &ppcb, NULL, NULL);
++    if (!sctx) {
++        ap_log_error(APLOG_MARK, APLOG_EMERG, 0, s, APLOGNO(10131)
++                     "Init: OSSL_STORE_open failed for private key identifier `%s'",
++                     keyid);
++        return ssl_die(s);
++    }
++
++    while (!OSSL_STORE_eof(sctx)) {
++        OSSL_STORE_INFO *info = OSSL_STORE_load(sctx);
++        if (!info) {
++            ap_log_error(APLOG_MARK, APLOG_EMERG, 0, s, APLOGNO(10131)
++                         "Init: OSSL_STORE_load failed for private key identifier `%s'",
++                         keyid);
++            OSSL_STORE_close(sctx);
++            return ssl_die(s);
++        }
++
++        switch (OSSL_STORE_INFO_get_type(info)) {
++        case OSSL_STORE_INFO_PKEY:
++            *privkey = OSSL_STORE_INFO_get1_PKEY(info);
++            break;
++        default:
++            OSSL_STORE_INFO_free(info);
++            continue;
++        }
++
++        OSSL_STORE_INFO_free(info);
++        break;
++    }
++
++    OSSL_STORE_close(sctx);
++
++    if (!*privkey) {
++        ap_log_error(APLOG_MARK, APLOG_EMERG, 0, s, APLOGNO(10131)
++                     "Init: OSSL_STORE_INFO_PKEY lookup failed for private key identifier `%s'",
++                     keyid);
++        OSSL_STORE_close(sctx);
++        return ssl_die(s);
++    }
++
++    if (certid) {
++        *pubkey = NULL;
++
++        sctx = OSSL_STORE_open(certid, ui_method, &ppcb, NULL, NULL);
++        if (!sctx) {
++            ap_log_error(APLOG_MARK, APLOG_EMERG, 0, s, APLOGNO(10131)
++                         "Init: OSSL_STORE_open failed for certificate identifier `%s'",
++                         certid);
++            return ssl_die(s);
++        }
++
++        while (!OSSL_STORE_eof(sctx)) {
++            OSSL_STORE_INFO *info = OSSL_STORE_load(sctx);
++            if (!info) {
++                ap_log_error(APLOG_MARK, APLOG_EMERG, 0, s, APLOGNO(10131)
++                             "Init: OSSL_STORE_load failed for certificate identifier `%s'",
++                             certid);
++                OSSL_STORE_close(sctx);

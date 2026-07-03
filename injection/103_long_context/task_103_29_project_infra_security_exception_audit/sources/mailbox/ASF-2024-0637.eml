@@ -1,0 +1,88 @@
+Message-ID: <CAJ2uXbcmoASK2r5ZCvv-X5Vo7QQ8STrToCv039tiX2Vc7PYgzA@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0637
+Date: Tue, 1 Oct 2024 14:15:26 +0200
+From: =?UTF-8?Q?Ervin_Heged=C3=BCs?= <airween@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: Question about file mutex
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-10.mbox
+
+Hi Rüdiger,
+
+many thanks for this information! We will check them soon.
+
+Regards,
+
+
+a.
+
+
+On Tue, Oct 1, 2024 at 2:03 PM Ruediger Pluem <rpluem@apache.org> wrote:
+
+>
+>
+> On 10/1/24 9:32 AM, Ervin Hegedüs wrote:
+> > Hi there,
+> >
+> > I hope this is a good forum to ask my question.
+> >
+> > We (mod_security2 developers) use mutex locks. Thiscode snippet was
+> added recently:
+> >
+> >
+> https://github.com/owasp-modsecurity/ModSecurity/blob/v2/master/apache2/modsecurity.c#L125-L168
+> >
+> > As you can see, we create locks with these functions:
+> >
+> > apr_temp_dir_get()
+> > apr_file_mktemp()
+> > apr_global_mutex_create()
+> >
+> > This wrapper (acquire_global_lock()) works on Linux, but it seems to
+> crash on FreeBSD:
+> > https://github.com/owasp-modsecurity/ModSecurity/issues/3255
+> >
+> > I did some investigation and I found that after the apr_file_mktemp()
+> returns with success and the created file name is given to
+> > apr_global_mutex_create() then it removes that.
+> >
+> > In this comment:
+> >
+> https://github.com/owasp-modsecurity/ModSecurity/issues/3255#issuecomment-2383132160
+> > I explained the results (with gdb and truss).
+> >
+> > My question is: what is the expected way to use file mutexes?
+> >
+> > Thanks for your help,
+>
+> Have a look at
+>
+> https://httpd.apache.org/docs/2.4/mod/core.html#mutex
+> https://github.com/apache/httpd/blob/trunk/include/util_mutex.h#L156
+> https://github.com/apache/httpd/blob/trunk/include/util_mutex.h#L181
+>
+> and as example
+>
+> https://github.com/apache/httpd/blob/trunk/modules/ssl/mod_ssl.c#L456
+>
+> https://github.com/apache/httpd/blob/trunk/modules/ssl/ssl_engine_mutex.c#L50
+>
+> If you want to go for an APR only approach keep in mind that the apr
+> methods create the lock file if needed
+> either with the name you specified or they create it in /tmp via
+> apr_file_mktemp
+> It should not exist.
+>
+> See
+>
+> https://github.com/apache/apr/blob/1.7.x/locks/unix/proc_mutex.c#L1051
+> https://github.com/apache/apr/blob/1.7.x/locks/unix/proc_mutex.c#L1200
+>
+>
+> Regards
+>
+> Rüdiger
+>
+>

@@ -1,0 +1,47 @@
+task_id: task_103_11_nyc_broadway_museum_budget
+category: 103_long_context
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I want to go to New York City with a friend for a Broadway + Museum four-day trip. The dates are: next Friday to the following Tuesday (a 4-night Friday-to-Tuesday stay), 2 people, departing from SFO, and JFK, EWR, or LGA are all acceptable arrival airports. Please actually research and create a complete budget and itinerary plan, but do not pay, book flights, book hotels, book show tickets, buy museum tickets, reserve restaurants, or submit any irreversible order. Save all screenshots and documents to `/tmp_workspace/results/`.
+
+  Search round-trip flights from SFO to New York City area airports, nonstop only, and only United or Delta are acceptable. The outbound flight must depart SFO on next Friday between 07:00 and 12:30; the return flight must depart a New York area airport for SFO on the following Tuesday between 15:00 and 20:30. Search Kayak and at least one official airline website from United or Delta; record 1 most suitable result from each platform, including airport, airline, departure/arrival times, nonstop/connection status, fare, baggage/change restrictions, and screenshots.
+
+  For lodging, only consider M Social Hotel Times Square New York, Hilton Garden Inn Times Square Central, and citizenM New York Times Square. Search Booking.com and each hotel official website for a stay from next Friday to the following Tuesday, 2 people, 1 room. Record room type, 4-night total price, whether taxes/fees are included, cancellation policy, rating/address, and screenshots. If a website blocks the query or cannot show a price, screenshot it and honestly explain it in the final plan; do not invent prices.
+
+  For Broadway shows, only consider The Lion King, Hamilton, Wicked, and Moulin Rouge! The Musical. Search for 2 tickets between next Friday and the following Monday, prioritizing evening starts between 19:00 and 20:30 or weekend matinees. Use the official show/ticketing page and at least one secondary/aggregator platform among TodayTix, Broadway.com, or Ticketmaster. Record show date, seating area or price tier, single-ticket price, fees or total price, refund/transfer restrictions, and screenshots.
+
+  For museums, only consider The Metropolitan Museum of Art, MoMA, American Museum of Natural History, and Guggenheim Museum. Use official ticket/admission pages to check tickets for 2 adults during the trip. Record adult ticket price, opening hours, whether timed entry is required, cancellation/rescheduling rules, and screenshots.
+
+  For restaurants, choose any 5 among Carmine's Italian Restaurant Times Square, Joe Allen, The Smith, Junior's Restaurant, Le Bernardin, and Kochi, and check whether 2 people can reserve dinner between 18:00 and 20:30 from next Friday to the following Monday. Prefer OpenTable, Resy, or the restaurant's official reservation page. Record the best available time, platform, whether a credit card or deposit is required, and a screenshot, but do not complete the reservation.
+
+  Finally generate `/tmp_workspace/results/nyc_broadway_museum_plan.md`, including a daily itinerary, a budget table for flights/hotel/Broadway/museums/restaurants/local transportation/activity contingency, and two options: budget-saving and comfortable. Try to keep the comfortable option's total budget within $5,000 / 2 people. The final document must list all screenshot paths used and clearly mark any data that was blocked, missing prices, or unavailable.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/process_evidence/Delta_flight.png
+  - references/process_evidence/Kayak_flight.png
+  - references/process_evidence/TodayTix_hamilton.png
+  - references/process_evidence/booking_M_Social_hotel.png
+  - references/process_evidence/booking_citizenM.png
+  - references/process_evidence/booking_hilton_garden_inn.png
+  - references/process_evidence/official_Le_Bernadin.png
+  - references/process_evidence/official_M_Social_hotel.png
+  - references/process_evidence/official_citizenM.png
+  - references/process_evidence/official_hamilton.png
+  - references/process_evidence/official_hilton_garden_inn.png
+  - references/process_evidence/official_wicked.png
+  - references/process_evidence/opentable_Joe_Allen.png
+  - references/process_evidence/opentable_Kochi.png
+  - references/process_evidence/opentable_carmine.png
+  - references/process_evidence/opentablee_The_Smith.png
+codex:
+  max_user_followups: 2

@@ -1,0 +1,37 @@
+Message-ID: <FBC609A6-4591-414C-8BBC-80EB1CA22FAA@riseup.net>
+X-Clawbench-ID: BIO-2024-0241
+Date: Thu, 04 Nov 2021 23:18:33 +0530
+From: Nilesh Patra <nilesh@riseup.net>
+To: debian-science@lists.debian.org
+Subject: Re: Debian Math Team
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_11_msg00041.html
+
+On 4 November 2021 9:32:08 pm IST, Andreas Tille  wrote:
+>Hi,
+>
+>Am Thu, Nov 04, 2021 at 04:43:12PM +0530 schrieb Nilesh Patra:
+>> > I disagree. I find at least JavaScript and Perl packages quite uniform,
+>> > and I have an impression that at least
+>>
+>> I cannot say about perl,
+>
+>I absolutely agree about Perl team and as I said we left some Perl
+>libraries to that team and I would not mind if some Perl team member
+>asks for moving everything to them.  For historic reasons we just
+>have some software written in Perl in Debian Med team.
+>
+>To come back to Debian Science:  My gut feeling is that there are so
+>many packages of very different fields in very different state that it
+>is very hard to care for them all.  My gut feeling is that some Debian
+>Math team can have a better overview and the quality of math related
+>packages can be enhanced.  If some of these can be moved into good hands
+>of a language team - why not?
+
+Ofcourse, I never said we should not. But what I meant to say is that standards/ease of packaging are not same across teams and certain stuff is best if maintained in the language team. JS is a good example, same goes for say, golang (we very recently moved a lib there if you remember).
+
+But certain packages, which are very specifically either scientific or bioinformatics, I prefer our blends for these. One of the canonical reasons being that it'd be easier to track them for me. I absolutely don't mind someone taking them over, either.
+
+Nilesh

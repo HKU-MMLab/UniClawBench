@@ -1,0 +1,22 @@
+Message-ID: <YY/Sf2iC9DKIE6EB@debian>
+X-Clawbench-ID: BIO-2024-0693
+Date: Sat, 13 Nov 2021 20:28:07 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: debian-med@lists.debian.org
+Subject: Progress in merging neurodebian team?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_11_msg00071.html
+
+Hi,
+
+It was decided that the neurodeb team will be merged into
+-med going forward.
+I see 19 packages there (18 free, 1 non-free) few of them have
+already been removed from the archive, which means even less packages to move.
+
+Do we have a, sort of ETA to do this?
+
+Regards,
+Nilesh

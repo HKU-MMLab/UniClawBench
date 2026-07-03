@@ -1,0 +1,59 @@
+task_id: task_105_38_ics_conflict_calendar
+category: 105_cross_platform
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I need help turning a messy planning request into a real calendar for
+  the week of 2026-07-06. The packet is here:
+
+      /tmp_workspace/clawbench/sources/scheduling_packet/
+
+  It contains two existing calendars and a team lead request. Please
+  parse the request, respect America/Los_Angeles timezone and 09:00-17:00
+  working hours, choose the first feasible candidate slot for each of the
+  six requested meetings, and avoid conflicts with the existing busy
+  blocks.
+
+  Save a structured JSON summary at:
+
+      /tmp_workspace/results/parsed_schedule.json
+
+  Save the new calendar at:
+
+      /tmp_workspace/results/planning_week_schedule.ics
+
+  Write a short report at:
+
+      /tmp_workspace/results/planning_week_report.md
+
+  The JSON/report must include selected meetings, skipped candidate
+  reasons, hard_conflicts, near_conflicts, source calendars used, and a
+  parse/validation note for the generated ICS.
+
+  Finally open or import the ICS in the real calendar application and
+  save a screenshot at:
+
+      /tmp_workspace/results/planning_week_calendar.png
+
+sources:
+  - scheduling_packet/
+
+services:
+  - name: calendar-ics-setup
+    path: calendar-ics-setup
+    start: bash install.sh
+    oneshot: true
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+codex:
+  max_user_followups: 2

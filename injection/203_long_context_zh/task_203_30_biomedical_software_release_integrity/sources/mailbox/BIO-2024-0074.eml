@@ -1,0 +1,42 @@
+Message-ID: <Yp95vscILULGDRmd@debian>
+X-Clawbench-ID: BIO-2024-0074
+Date: Tue, 7 Jun 2022 21:45:58 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: Added autopkgtest for busco - Closes #1010653
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_06_msg00014.html
+
+On Tue, Jun 07, 2022 at 10:31:23AM +0300, Andrius Merkys wrote:
+> > This is perfectly in line with the request of ftpmaster to keep the
+> > debian/ dir "sensibly" small and I'm pretty sure ftpmaster would have
+> > been rejected the package if the data[...]
+> To me this looks like an intricate evasion of unclear policy
+> requirements.
+
+FTP masters and discussion on -devel@ suggested this solution. It
+is not an evasion.
+
+> 26 MB of uncompressed textual data is "sensibly" small to
+> me.
+
+But not to FTP masters.
+We started getting rejects and had to adjust accordingly.
+
+> Are there any actual guidelines from ftpmaster on what is not
+> "sensible"?
+
+Not really.
+
+> > You probably did not followed all GSoC mails we exchanged with Bilal
+> > but it was one of the first lessons we teached him. ;-)
+>
+> If they were exchanged in debian-med@, I clearly missed them.
+
+Full discussion: https://lists.debian.org/debian-devel/2020/09/msg00197.html
+
+--
+Best,
+Nilesh

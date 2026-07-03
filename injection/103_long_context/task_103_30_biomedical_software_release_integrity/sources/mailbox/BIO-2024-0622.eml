@@ -1,0 +1,38 @@
+Message-ID: <447e9e8e96a2ae1e73e64f8ae2fe8880d54dc47e.camel@med.uni-goettingen.de>
+X-Clawbench-ID: BIO-2024-0622
+Date: Thu, 30 Dec 2021 07:17:43 +0000
+From: "Uecker, Martin" <Martin.Uecker@med.uni-goettingen.de>
+To: "debian-med@lists.debian.org" <debian-med@lists.debian.org>
+Subject: Re: bart: version 0.7.00
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_12_msg00186.html
+
+Am Dienstag, den 26.10.2021, 18:06 +0200 schrieb Martin Uecker:
+> Hi Andreas,
+>
+> I pushed changes for a the version of bart. Maybe you could
+> take a look?  There are some failures in the CI on salsa.
+>
+> The i386 build triggers a compiler crash. I will try to
+> look into this later (I am a GCC contributor myself), but
+> this is a compiler problem.
+>
+> The other failures may be related to the build environment
+> not being up-to-date.
+
+I added a workaround for the compiler crash, and also
+added code to run the test suite as autopkgtest, and
+made some other changes. From my side, this seems good
+for uploading.
+
+The reproduction test on salsa still fails for reasons
+I do not understand.
+
+Also the identical bart-cuda package (in master-contrib)
+fails to build on salsa because it says the
+nvidia-cuda-toolkit  is uninstallable. But I guess one
+could give it a try.
+
+Martin

@@ -1,0 +1,67 @@
+task_id: task_101_26_arxiv_metadata_pack
+category: 101_skill_usage
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I'm prepping the reading list for our robotics reading group and I
+  realized a few papers got mis-filed into the folder at
+  /tmp_workspace/clawbench/sources/arxiv_papers/. Some have titles that
+  sound robotics-adjacent but the actual content is a totally different
+  field, so titles alone won't cut it. I need you to read through each
+  PDF with the workspace's PDF parser skill, use the
+  document processing skill to write the summary report, and the Excel creation skill
+  to produce the spreadsheet. Figure out which papers are genuinely about
+  robotics or embodied AI based on the actual content, and separate the
+  mis-filed ones into an off-topic group.
+
+  Two outputs:
+    1. /tmp_workspace/results/metadata.xlsx — a sheet called "Papers"
+       with one row per genuinely-robotics paper, covering the arxiv id,
+       title, primary authors, year, abstract, page count, and a BibTeX
+       citation. The mis-filed papers must NOT appear as rows in this
+       sheet.
+    2. /tmp_workspace/results/summary.md — one bullet per
+       genuinely-robotics paper of the form
+       "- [arxiv_id] title: 1-sentence takeaway", followed by a clearly
+       labelled "Excluded" or "Off-topic" section that lists every
+       mis-filed paper by arxiv id with a one-line reason explaining why
+       it does not belong with the robotics set.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - arxiv_papers/paper_a3f.pdf
+  - arxiv_papers/paper_b9k.pdf
+  - arxiv_papers/paper_c1m.pdf
+  - arxiv_papers/paper_d7q.pdf
+  - arxiv_papers/paper_e2t.pdf
+  - arxiv_papers/paper_f5h.pdf
+  - arxiv_papers/paper_g8w.pdf
+  - arxiv_papers/paper_h2n.pdf
+  - arxiv_papers/paper_i6r.pdf
+  - arxiv_papers/paper_j4y.pdf
+  - arxiv_papers/paper_k7l.pdf
+  - arxiv_papers/paper_m9z.pdf
+
+skills:
+  - pymupdf-pdf-parser-clawdbot-skill
+  - document-pro
+  - xlsx-cn
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

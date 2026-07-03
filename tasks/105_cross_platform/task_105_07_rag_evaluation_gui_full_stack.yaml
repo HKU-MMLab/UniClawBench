@@ -1,0 +1,85 @@
+task_id: task_105_07_rag_evaluation_gui_full_stack
+category: 105_cross_platform
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I am quickly evaluating a RAG evaluation benchmark paper and want a complete
+  desktop GUI evidence chain: PDF reader, Zotero, Obsidian, Calc, and Writer.
+
+  Use the real desktop applications installed by the service: a PDF reader,
+  Zotero, Obsidian, LibreOffice Calc, and LibreOffice Writer. Do not use a local
+  GUI mock, and do not only use scripts to write the final files directly. The
+  installation verification record is saved at
+  `/tmp_workspace/clawbench/service_state/real_rag_gui_apps_task_105_07.json`.
+
+  1. Open and read `/tmp_workspace/clawbench/sources/papers/ragas_evaluation.pdf`
+     in a PDF Reader GUI. Confirm the paper title, authors, year, main task, main
+     metric or metric suite, one limitation, and whether it is worth reading
+     further. Save a PDF reader screenshot to
+     `/tmp_workspace/results/pdf_reader_screenshot.png`.
+  2. In real Zotero, create one literature record. Fill in at least title,
+     authors, year, and publication, and attach this PDF path. Export a standard
+     Zotero record to `/tmp_workspace/results/zotero_record_export.bib`, `.ris`,
+     or `.rdf`, and save a Zotero window screenshot to
+     `/tmp_workspace/results/zotero_record_screenshot.png`. The screenshot should
+     show the PDF attachment or nonzero attachment evidence for the same paper
+     item.
+  3. In real Obsidian, create or open a vault, create a note in it, and save/copy
+     it to `/tmp_workspace/results/obsidian/RAG Evaluation Note.md`. Also export
+     or copy it to `/tmp_workspace/results/rag_evaluation_note_export.md`. The
+     note must contain these three sections:
+     - Main Task
+     - Main Metric
+     - One Limitation
+     Save an Obsidian window screenshot to
+     `/tmp_workspace/results/obsidian_note_screenshot.png`. The screenshot should
+     show the opened note title and required section content. Do not show only
+     the Obsidian startup page or vault picker.
+  4. In real LibreOffice Calc, create and save
+     `/tmp_workspace/results/rag_reading_tracker.ods`. Do not only use headless
+     conversion, a hand-built zip, or a script to write the final ODS. Use these
+     columns:
+     Title | Year | Main Task | Main Metric or Metric Suite | Worth reading further (yes/no)
+     Save a Calc window screenshot to
+     `/tmp_workspace/results/calc_tracker_screenshot.png`; the screenshot should
+     show the opened tracker spreadsheet.
+  5. In real LibreOffice Writer, create and save
+     `/tmp_workspace/results/rag_quick_judgment.odt`. Do not only use headless
+     conversion, a hand-built zip, or a script to write the final ODT. Also save
+     or export a plain-text audit copy from the Writer content:
+     `/tmp_workspace/results/rag_quick_judgment.txt`. The judgment must be at
+     most 80 Chinese characters or 80 English words, and it must state whether
+     the paper is worth reading further and why. Save a Writer window screenshot
+     to `/tmp_workspace/results/writer_judgment_screenshot.png`; the screenshot
+     should show the judgment text. ODS/ODT should be openable OpenDocument files
+     and cannot be replaced by CSV/TXT.
+  6. Save `/tmp_workspace/results/real_gui_evidence.md`, listing the real
+     applications you actually launched, screenshot paths, export file paths, and
+     any installation or login issues encountered.
+
+  Do not only copy the abstract; the note, table, and Writer judgment should all
+  reflect your judgment from reading the PDF.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/ragas_evaluation_source_evidence.md
+
+sources:
+  - papers/
+
+services:
+  - name: real-rag-gui-apps-setup
+    path: real-rag-gui-apps-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

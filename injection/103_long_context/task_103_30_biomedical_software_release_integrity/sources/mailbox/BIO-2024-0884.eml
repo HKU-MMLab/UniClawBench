@@ -1,0 +1,71 @@
+Message-ID: <0bb13549-1326-7142-eaab-495ae32c3193@debian.org>
+X-Clawbench-ID: BIO-2024-0884
+Date: Thu, 9 Sep 2021 16:14:42 +0300
+From: Andrius Merkys <merkys@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: Providing components.cif.gz [Was: Re: DeepMind’s AI Advanced Protein Structure Prediction tool Open Sourced]
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_09_msg00018.html
+
+Hi Maarten,
+
+On 2021-09-08 22:50, Maarten L. Hekkelman wrote:
+>
+> Op 8-9-2021 om 09:07 schreef Andrius Merkys:
+>> I am aware of solutions to similar problems, for example, libcifpp
+>> package, which keeps an up-to-date mmcif_pdbx_v50.dic.gz at
+>> /var/cache/libcifpp/mmcif_pdbx_v50.dic.gz. This could work for
+>> components.cif.gz as well, but my main concern is whether keeping
+>> system-wide components.cif.gz up-to-date is what every user would want.
+>
+> The latest incarnation of libcifpp already caches a copy of
+> components.cif.gz in the exact same location. Not in Debian yet, will
+> upload when I have the time.
+>
+> The way I do it in libcifpp is place a distribution provided copy in
+> /usr/share/libcifpp/ I also install a script that weekly fetches a fresh
+> copy that is then installed in /var/cache/libcifpp. For both the mmcif
+> dictionary as well as the CCD components.cif file.
+>
+> The update script runs only when the accompanying settings file
+> /etc/libcifpp.conf contains the line 'update = yes'.
+>
+> The installation of this script is also a dpkg configuration option.
+
+That is great news! I think I will use libcifpp-provided
+components.cif.gz as a fallback for the time being. Most likely I will
+stick with the distribution-provided copy, but it is probably best
+inquiring the OpenStructure/ProMod3 community about what they deem to be
+the best approach. Nevertheless, I will ask about an environment
+variable to control the choice.
+
+> I thought that covered all cases.
+>
+> But I would not mind having a system wide service to update data files
+> like these. Perhaps with a log with version info, so you can look up
+> what version was used at what date.
+
+Indeed, it would be nice to find a generic solution, but this might be
+tricky. There are conflicting needs of stability (no updates), freshness
+(updates every day) and multi-user support (no updates and updates
+everyday all at once on the same machine). The only solution I can think
+of now is keeping all the downloaded versions with version/date in their
+names like:
+
+/var/cache/pdb/components/components-20210814.cif.gz
+/var/cache/pdb/components/components-20210820.cif.gz
+/var/cache/pdb/components/components-20210826.cif.gz
+...
+(maybe /var/cache/pdb/components/components.cif.gz symlink to the latest)
+
+Then a user would use environment variable, say, PDB_COMPONENTS to point
+to a file with version in its name should they need a specific stable
+database, and would use /var/cache/pdb/components/components.cif.gz
+should they need the most up-to-date one.
+
+Does this sound reasonable?
+
+Best,
+Andrius

@@ -1,0 +1,86 @@
+task_id: task_101_13_pdf_invoices_structure
+category: 101_skill_usage
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  AP close is tomorrow and I still haven't processed this batch of
+  engineering invoices. I need you to run the intake end-to-end — use the
+  workspace's PDF extraction skill for extraction and the PDF generation
+  skill to produce the summary report. The PDF files for this run live at
+  /tmp_workspace/clawbench/sources/invoices/, named invoice_001.pdf onward.
+
+  Heads up: not every PDF in that folder belongs in this engineering AP
+  run. Some of them have body text indicating they are reissues of
+  invoices that have already been paid, and some are misrouted from
+  another department. Read each PDF's body carefully and filter those out
+  — only the genuinely-payable engineering invoices should land in the
+  structured deliverables.
+
+  Our AP payment export is at
+  /tmp_workspace/clawbench/sources/ap_payments_ledger.csv.
+
+  For each in-scope invoice I want a complete picture: the header info up
+  top with vendor, invoice number, invoice date, and payment terms, the
+  full set of line items with sku, description, qty, unit price, and line
+  total, the monetary footer reconciled internally so subtotal plus tax
+  plus any shipping ties out to grand total, the payment status against
+  our ledger, and a flag if the currency or unit-of-measure looks
+  inconsistent across line items within the same invoice. Drop that full
+  set into /tmp_workspace/results/invoices.json. The out-of-scope PDFs
+  must not appear in invoices.json.
+
+  Then build a one-page summary of the in-scope invoices at
+  /tmp_workspace/results/summary.pdf showing the key header fields side
+  by side in a table so I can eyeball totals quickly.
+
+  Save /tmp_workspace/results/ap_reconciliation.csv comparing each
+  in-scope invoice total against the payment ledger. Include
+  invoice_number, vendor, currency, invoice_total, paid_total,
+  payment_ids, status, and variance. Classify the payment status
+  consistently from the invoice total and the ledger entries rather than
+  assuming one payment per invoice. Use a compact set of snake_case status
+  tokens — at minimum four distinct states covering fully paid, unpaid,
+  short payment, and over-payment — and pick the shortest tokens you
+  would standardize on across the AP team.
+
+  Finally, I need a clear audit trail of every PDF you decided to skip.
+  Write /tmp_workspace/results/excluded.md listing every out-of-scope
+  PDF by its filename, its invoice number, and a one-sentence reason for
+  exclusion grounded in that PDF's actual body text. Every PDF in the
+  inbox that you did not include in invoices.json must appear in
+  excluded.md with its reason. I want to be able to audit your scoping
+  decision and confirm nothing was silently dropped.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - invoices/invoice_001.pdf
+  - invoices/invoice_002.pdf
+  - invoices/invoice_003.pdf
+  - invoices/invoice_004.pdf
+  - invoices/invoice_005.pdf
+  - invoices/invoice_006.pdf
+  - invoices/invoice_007.pdf
+  - ap_payments_ledger.csv
+
+skills:
+  - pdf
+  - pdf-generator
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

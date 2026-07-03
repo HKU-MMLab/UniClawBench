@@ -1,0 +1,36 @@
+Message-ID: <ZYNFxnjudNjV9OJu@fusion>
+X-Clawbench-ID: BIO-2024-0779
+Date: Wed, 20 Dec 2023 20:51:34 +0100
+From: Étienne Mollier <emollier@debian.org>
+To: debian-med@lists.debian.org
+Subject: [Advent bug squashing] newer bmtk version, and other niceties
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_12_msg00058.html
+
+Hi all,
+
+After some head scratching, bmtk is finally available in its new
+upstream version 1.0.8 in Debian sid.  I took that opportunity
+to resolve two cases of double build failure (source and binary)
+that were #1043949 and #1049671, which were a bit more involved
+than usual.
+
+Also for today:
+
+  * #1059139: a release critical failure to build from source
+    affecting shasta;
+  * #1059092: a request to add support for loong64 architecture
+    in gmap, that was an opportunity to fix manual pages I broke
+    in my previous upload.
+
+And with this, I will probably wind down my activity for the
+remaining of the year
+
+Have a nice day,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  gpg: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/1, please excuse my verbosity
+   `-

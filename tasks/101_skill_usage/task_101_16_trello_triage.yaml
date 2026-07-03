@@ -1,0 +1,127 @@
+task_id: task_101_16_trello_triage
+category: 101_skill_usage
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I'm drowning in cards and standup is in an hour. My Trello board
+  "Clawbench Triage" needs a proper triage pass — pull the live board
+  state with the Trello integration skill, then use the summarization skill
+  to turn the card evidence into a clean work order with one-line reasons
+  for each ranking decision.
+
+  Hit the live Trello REST API: board id is in $TRELLO_BOARD_ID, auth
+  is $TRELLO_API_KEY and $TRELLO_API_TOKEN. Fetch the lists and all
+  cards on the board yourself — I want you to actually see the live
+  state, not assume it. Treat whatever timestamp the API returns / your
+  current time as "now" when you compute due-date urgency.
+
+  Once you have the board, label every card as urgent, blocked, done,
+  or routine based on which list it sits in, how close each card is to
+  breaching its due date or SLA commitment, the priority labels, client
+  impact, and any blocker or dependency note. Factor in how urgent each
+  card is based on due dates and SLA commitments — cards about to blow
+  past their SLA window should bubble up hard. For each card I want to
+  see what it's called, which list it's in, its due date, the Trello
+  labels / priority, owner, the blocker or dependency note if there is
+  one, how many SLA hours remain, a due-pressure score reflecting how
+  urgent the deadline is, the label you picked, and a one-line suggested
+  next action.
+
+  I want two separate ranked lists so I can grind through real work
+  without conflating it with chasing other people:
+  - The cards I should actually grind through today, ranked by urgency,
+    priority, and client impact. These should explicitly be the ones I
+    can move forward myself — not anything I'm waiting on someone else
+    for.
+  - A separate unblockers list of the cards I need to chase down so
+    they don't stay stuck. For each one, also tell me the chase action:
+    who I email, what ticket I bump, what decision I need from whom.
+
+  Save /tmp_workspace/results/triage.json as an object with:
+  - cards: the full triaged list of every card on the board.
+  - top_work_order: the actionable cards I should deal with first today,
+    sorted by urgency, priority, and client impact, with a short reason
+    for each ordering choice. Each entry's bucket must be urgent or
+    routine — never blocked, never done.
+  - unblockers: the blocked cards, ranked by chase priority, with a
+    chase_action string describing the outreach plan — who I email,
+    what ticket I bump, what decision I need.
+
+task_snapshot: |
+  I'm drowning in cards and standup is in an hour. My Trello board
+  "Clawbench Triage" needs a proper triage pass — read the board state
+  with the trello skill, then use the summarize-pro skill to turn the
+  card evidence into a clean work order with one-line reasons for each
+  ranking decision.
+
+  I've exported the board to /tmp_workspace/clawbench/sources/trello_snapshot.json
+  — read from there. Each card carries name, idList, due, list_name,
+  and there is a top-level generated_at timestamp on the snapshot.
+  Treat that generated_at as "now" when you compute due-date urgency.
+
+  Once you have the board, label every card as urgent, blocked, done,
+  or routine based on which list it sits in, how close each card is to
+  breaching its due date or SLA commitment, the priority labels, client
+  impact, and any blocker or dependency note. Factor in how urgent each
+  card is based on due dates and SLA commitments — cards about to blow
+  past their SLA window should bubble up hard. For each card I want to
+  see what it's called, which list it's in, its due date, the Trello
+  labels / priority, owner, the blocker or dependency note if there is
+  one, how many SLA hours remain, a due-pressure score reflecting how
+  urgent the deadline is, the label you picked, and a one-line suggested
+  next action.
+
+  I want two separate ranked lists so I can grind through real work
+  without conflating it with chasing other people:
+  - The cards I should actually grind through today, ranked by urgency,
+    priority, and client impact. These should explicitly be the ones I
+    can move forward myself — not anything I'm waiting on someone else
+    for.
+  - A separate unblockers list of the cards I need to chase down so
+    they don't stay stuck. For each one, also tell me the chase action:
+    who I email, what ticket I bump, what decision I need from whom.
+
+  Save /tmp_workspace/results/triage.json as an object with:
+  - cards: the full triaged list of every card on the board.
+  - top_work_order: the actionable cards I should deal with first today,
+    sorted by urgency, priority, and client impact, with a short reason
+    for each ordering choice. Each entry's bucket must be urgent or
+    routine — never blocked, never done.
+  - unblockers: the blocked cards, ranked by chase priority, with a
+    chase_action string describing the outreach plan — who I email,
+    what ticket I bump, what decision I need.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - trello_snapshot.json
+
+skills:
+  - trello
+  - summarize-pro
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+pre_exec:
+  - ops/populate.py
+
+# Populator audit: the bootstrap read ("list cards, short-circuit if 25
+# already present") plus the idempotent create-missing-only path make
+# this populator safe to run under workers>1 behind the populator_lock.
+pre_exec_parallel_safe: true
+
+codex:
+  max_user_followups: 2

@@ -1,0 +1,40 @@
+Message-ID: <2e8f2543-91d4-7e87-f5ed-69ed49e73234@apache.org>
+X-Clawbench-ID: ASF-2024-0013
+Date: Tue, 17 Jan 2023 17:29:48 +0100
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: [httpd-site] branch main updated: publishing release httpd-2.4.55
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-01.mbox
+
+On 1/17/23 5:16 PM, covener@apache.org wrote:
+> This is an automated email from the ASF dual-hosted git repository.
+>
+> covener pushed a commit to branch main
+> in repository https://gitbox.apache.org/repos/asf/httpd-site.git
+>
+>
+> The following commit(s) were added to refs/heads/main by this push:
+>      new 83e7062  publishing release httpd-2.4.55
+> 83e7062 is described below
+>
+> commit 83e7062476d4a912f20ab275137b9587d441fdf0
+> Author: Eric Covener <ecovener@us.ibm.com>
+> AuthorDate: Tue Jan 17 11:16:01 2023 -0500
+>
+>     publishing release httpd-2.4.55
+> ---
+>  content/doap.rdf                          |   4 +-
+>  content/download.md                       |  24 +++----
+>  content/index.md                          |   6 +-
+>  content/security/json/CVE-2006-20001.json | 110 ++++++++++++++++++++++++++++++
+>  content/security/json/CVE-2022-36760.json | 103 ++++++++++++++++++++++++++++
+>  content/security/json/CVE-2022-37436.json |  88 ++++++++++++++++++++++++
+
+Looks like something went wrong as https://httpd.apache.org/security/vulnerabilities_24.html now results in a 404.
+
+Regards
+
+Rüdiger

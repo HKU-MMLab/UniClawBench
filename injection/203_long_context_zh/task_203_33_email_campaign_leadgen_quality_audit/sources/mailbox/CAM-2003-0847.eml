@@ -1,0 +1,29 @@
+Message-ID: <200210081142.39259.donncha.ocaoimh@tradesignals.com>
+X-Clawbench-ID: CAM-2003-0847
+Date: Tue, 08 Oct 2002 11:42:39 +0100
+From: Donncha O Caoimh <donncha.ocaoimh@tradesignals.com>
+To: aj.mckee@nmtbmedia.com, webdev@linux.ie
+Subject: Re: [Webdev] mod_usertrack
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00152.703c271de3d42fb8bf266db6f77a0dda
+
+Thanks for the info AJ, I found "weblog" at
+http://awsd.com/scripts/weblog/index.shtml which has some click-path
+reporting. It's simple, but works. Report generation takes a bit though, even
+with dns resolution turned off..
+
+Donncha.
+
+
+On Monday 07 October 2002 23:35, AJ McKee wrote:
+> Donncha,
+>
+> I've been using mod_usertrack for a good while now. I use in by default in
+> every vhost that I set up. I assign a cookie name and set the expiry for
+> about a year. I have to say it looks ok. A few things to note though. If a
+_______________________________________________
+Webdev mailing list
+Webdev@linux.ie
+http://www.linux.ie/mailman/listinfo/webdev

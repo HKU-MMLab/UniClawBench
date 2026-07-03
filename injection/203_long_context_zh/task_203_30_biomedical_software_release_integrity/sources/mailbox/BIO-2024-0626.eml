@@ -1,0 +1,72 @@
+Message-ID: <e5b2a535-db4a-69ef-b676-c0fc86d24e22@tchncs.de>
+X-Clawbench-ID: BIO-2024-0626
+Date: Tue, 14 Sep 2021 00:06:32 +0530
+From: Nilesh Patra <nilesh@tchncs.de>
+To: Steffen Möller <steffen_moeller@gmx.de>, Andreas Tille <tille@debian.org>
+Subject: Re: Is pigx-rnaseq ready to be uploaded?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_09_msg00026.html
+
+On 9/13/21 11:07 PM, Steffen Möller wrote:
+>
+> On 13.09.21 18:27, Nilesh Patra wrote:
+>> r-cran-gprofiler2, last missing dep of pigx-rnaseq has been accepted some hours ago.
+> This is great news. Thank you for the upload. I just installed it. Was
+> not aware that gprofiler2 removes an already installed gprofiler.
+
+You ACKed a Breaks+Replaces here[1], and that was the plan, I believe.
+
+[1]: https://lists.debian.org/debian-med/2021/07/msg00106.html
+
+>> However, I see that you've added this line in d/ch: "hisat2 - upstream changed default genomic aligner"
+>> What would this mean? There's no upstream release for hisat2, as I saw, what needs to be done to get this in then?
+>
+> The package already ships in Debian. This was just that d/changelog is
+> also meant to summarize what is new in the respective release.
+
+OK, so this was for summary, and not for any TODO, right?
+
+> d/control
+> put it as
+>                hisat2|rna-star ,
+> which is not perfectly correct, I tend to think, since one would need to
+> adjust the testing for rna-star if I get this right.
+
+I don't know about the software myself, if you could take a look and push what
+you deem sensible, that'd be very cool.
+
+> I just wanted to build this but went into
+>
+> The following packages have unmet dependencies:
+>  r-bioc-deseq2 : Depends: r-api-bioc-3.1
+> Once that is in I can do the cowbuilding. But otherwise it is just fine.
+
+Ah, yes. This is bit with the bioconductor transition as well. I'll hopefully upload this one in a while.
+Maybe by tomorrow evening, I hope.
+
+
+>> Also, with r-cran-gprofiler2, r-cran-grofiler is now obsolete. pigx-rnaseq was the last package which was needing it,
+>> and with the new release this will also go away. I don't see a point in keeping cran-grpofiler around anymore.
+>> Would you object it's removal?
+>> Also, @Andreas, what d'you think?
+>
+> r-cran-gprofiler should not make it into the next release. But I do not
+> see a point into removing it from testing. I suggest to file an RC bug
+> against it, so we do not forget about it.
+> But do not immediately ask for
+> its removal.
+
+Filed #994212
+
+Cheers,
+
+--
+Nilesh Patra
+
+Debian Developer, Uploading
+  ⢀⣴⠾⠻⢶⣦⠀
+  ⣾⠁⢠⠒⠀⣿⡁
+  ⢿⡄⠘⠷⠚⠋   nilesh@debian.org / nileshpatra.info / tchncs.de
+  ⠈⠳⣄

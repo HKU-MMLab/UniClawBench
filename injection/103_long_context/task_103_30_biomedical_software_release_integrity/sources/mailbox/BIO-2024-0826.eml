@@ -1,0 +1,31 @@
+Message-ID: <udl1qwce09x.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-0826
+Date: Sun, 29 May 2022 13:06:34 -0400
+From: ucko@debian.org (Aaron M. Ucko)
+To: Pino Toscano <pino@debian.org>
+Subject: Re: Accepted ebook-tools 0.2.2-5 (source) into unstable
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_05_msg00030.html
+
+Debian FTP Masters  writes:
+
+>    * Make epub-utils conflict with ncbi-entrez-direct, as both ship the einfo
+>      executable & manpage.
+
+I appreciate the thought, but ncbi-entrez-direct goes out of its way to
+avoid any such conflict: it diverts epub-utils' instances of those
+files, substituting a wrapper script that takes advantage of major
+command-line syntax differences to determine which tool the user
+presumably meant to run (and a manpage that notes the diversion).
+AFAICT, this arrangement works fine; have you found otherwise?
+
+FTR, there's a similar situation around efetch, where both executables
+come from biology-related packages where a conflict would be more of a
+problem: acedb-other and ncbi-entrez-direct (with the latter taking care
+of deconflicting in the same fashion).
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

@@ -1,0 +1,87 @@
+Message-ID: <82F60E57-C28C-458C-8D27-B43B524D3168@eissing.org>
+X-Clawbench-ID: ASF-2024-0212
+Date: Fri, 3 Dec 2021 13:37:32 +0100
+From: Stefan Eissing <stefan@eissing.org>
+To: dev@httpd.apache.org
+Subject: Re: 2.4.51 scoreboard
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2021-12.mbox
+
+> Am 03.12.2021 um 13:18 schrieb Niklas Edmundsson <nikke@acc.umu.se>:
+>
+> On Thu, 2 Dec 2021, Stefan Eissing wrote:
+>
+>> Thinking out loud here. Reading the source of mod_status and event some more:
+>>
+>> - mpm_event: process_socket gets an available worker yanked and that means
+>> that connections walk all over the server slots during processing.
+>> - Columns in the Extended status really tell what the slot was doing and are not
+>> about a connection as such. The same connection will appear in different snapshots
+>> on many slots during its lifetime.
+>>
+>> This works nice for connections that rarely enter KEEPALIVE, e.g. process_connection() returns to the MPM.
+>>
+>> The new mod_http2 implementation now *often* returns to the MPM. Which means that connections "walk" across scoreboard slots in "server-status" and it is a bit hard to follow.
+>
+> FWIW, we see a lot of this on servers mainly transferring large files as well, async transfers also walk across the scoreboard so it generally shows the current file(s) transferred all over the place. The slower the clients the more all-over-the-place it gets.
+>
+>> hmmm...what to do?
+>
+> What I'd like is some way to tell which *transfers* are currently in progress, which is essentially what /server-status provides with good old prefork (and I think worker) mpm. That function has kinda gotten lost with the event mpm as /server-status has kept the "what are the workers/processes doing" scope which is now decoupled from the user/admin interest in the transfer scope of things.
+
+Agree. If the connection process stays in one slot, as with prefork and worker, one can follow server-status to see what a connection does. Especially, I guess, if something strange is going on and one wants to track down if that is somehow related to a particular vhost or proxy setup.
+
+With event, the current design makes it very hard to track that.
+
+> I'd suggest going drastic and just rip out the current (IMHO broken) "what are workers doing" scope (perhaps add a separate config knob to enable it for those who want it) and think up some way to get back the transfer status when in ExtendedStatus On mode.
+>
+> The overview table with slot/pid/stopping/connection/thread summary is good, but the per-worker breakdown is more of a debugging tool than useful, IMHO.
+
+We like our debugging tools, of course, but for an Admin there should be better tools to track down/analyze a problem. I'd imaging just getting extended info for a specific PID would also be useful on a large installation.
+
+Thanks for your feedback. I currently try to improve the HTTP/2 implementation as best as possible in the current scoreboard. But this is definitely an area where the server can improve.
+
+Kind Regards,
+Stefan
+
+>>> Am 02.12.2021 um 10:40 schrieb Stefan Eissing <stefan@eissing.org>:
+>>>
+>>> Friends of the scoreboard,
+>>>
+>>> trying to improve the mod_http2 information available on our scoreboard, I am not sure I can interpret correctly what I see. Maybe someone can help me?
+>>>
+>>> I run a 2.4.51 and see what worker are busy with. That#s fine. But I also see slots where the connection has been closed a while ago and still this is listed.
+>>>
+>>> The overall stats are
+>>>
+>>> Slot	PID	Stopping	Connections	Threads	Async connections
+>>> total	accepting	busy	idle	writing	keep-alive	closing
+>>> 0	69336	no	1	yes	1	24	0	0	0
+>>> 1	69338	no	0	yes	0	25	0	0	0
+>>> Sum	2	0	1	 	1	49	0	0	0
+>>>
+>>> which means only the connection who reads server-status is active. But I also see listings as in:
+>>>
+>>> Srv  PID   Acc    M CPU  SS  Req Dur Conn Child Slot Client        Protocol VHost         Request
+>>> ...
+>>> 1-1  69338 0/0/10 _ 0.00 948 0   5   0.0  0.00  0.04 195.133.18.60 http/1.1 domain.com:80 GET /up.php HTTP/1.1
+>>>
+>>> The "SS" of 948 keeps on climbing, but the connection is long gone. How is one supposed to read that? Is that a side effect of an MPM event change that switches slots on re-activation?
+>>>
+>>> Any help appreciated.
+>>>
+>>> Cheers,
+>>> Stefan
+>>>
+>>
+>
+>
+> /Nikke
+> --
+> -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+> Niklas Edmundsson, Admin @ {acc,hpc2n}.umu.se      |     nikke@acc.umu.se
+> ---------------------------------------------------------------------------
+> There is no man so blind as he who will not see.
+> =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=

@@ -1,0 +1,67 @@
+Message-ID: <63c9099b.b04.2d28.464@land10.nl>
+X-Clawbench-ID: ASF-2024-0694
+Date: Thu, 19 Jan 2023 10:12:59 +0100
+From: SteffenAL <info@apachelounge.com>
+To: <dev@httpd.apache.org>
+Subject: Re: sporadic 500 errors with 2.4.55
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-01.mbox
+
+No unnecessary 500  seen anymore in the access log.
+
+Steffen
+
+>
+> --- Original message ---
+> Subject: Re: sporadic 500 errors with 2.4.55
+> From: Stefan Eissing via dev <dev@httpd.apache.org>
+> To: <dev@httpd.apache.org>
+> Date: Wednesday, 18/01/2023 21:06
+>
+> Thanks for the fast confirmation. Added as r1906775 to trunk, proposed
+> for backport to 2.4.x
+>
+> Kind Regards,
+> Stefan
+>
+>>
+>> Am 18.01.2023 um 20:12 schrieb Helmut K. C. Tessarek
+>> <tessarek@evermeet.cx>:
+>>
+>> On 2023-01-18 13:40, Stefan Eissing via dev wrote:
+>>>
+>>> Thanks for the logs. That was really helpful. If you can build a
+>>> 2.4.55 yourself, could you try the following patch?
+>>
+>> Yep, the patch fixed it. I don't see any 500 errors anymore.
+>>
+>>>
+>>> The 500 in the access log happens when a client RST (resets) a stream
+>>> before the response has really started. The HTTP/2 processing of this
+>>> is totally fine and as should be. We just have an entry in the access
+>>> log where there should be none.
+>>
+>> It's also generating a 500 that can be seen by the server. e.g. I
+>> found this by using a php file as an ErrorDocument that sends an email
+>> when encountering a 500.
+>>
+>> Thus this 500 is not only in the logs but must also trigger the
+>> ErrorDocument 500. Those are also gone now.
+>>
+>> Thanks a bunch for fixing this.
+>>
+>> Cheers,
+>>    K. C.
+>>
+>> --
+>> regards Helmut K. C. Tessarek              KeyID 0x172380A011EF4944
+>> Key fingerprint = 8A55 70C1 BD85 D34E ADBC 386C 1723 80A0 11EF 4944
+>>
+>> /*
+>>      Thou shalt not follow the NULL pointer for chaos and madness
+>>      await thee at its end.
+>> */
+>>
+>

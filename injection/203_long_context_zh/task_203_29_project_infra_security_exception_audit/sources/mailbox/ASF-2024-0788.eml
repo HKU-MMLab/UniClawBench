@@ -1,0 +1,44 @@
+Message-ID: <C95A76A5-01C9-481A-8D9A-184ED1D345D1@eissing.org>
+X-Clawbench-ID: ASF-2024-0788
+Date: Mon, 7 Feb 2022 18:14:03 +0100
+From: Stefan Eissing <stefan@eissing.org>
+To: dev@httpd.apache.org
+Subject: Re: mpm event assertion failures
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-02.mbox
+
+> Am 07.02.2022 um 17:13 schrieb Yann Ylavic <ylavic.dev@gmail.com>:
+>
+> On Mon, Feb 7, 2022 at 3:41 PM Stefan Eissing <stefan@eissing.org> wrote:
+>>
+>>
+>>
+>>> Am 07.02.2022 um 14:44 schrieb Stefan Eissing <stefan@eissing.org>:
+>>>
+>>>
+>>>
+>>>> Am 07.02.2022 um 13:47 schrieb Yann Ylavic <ylavic.dev@gmail.com>:
+>>>>
+>>>> On Mon, Feb 7, 2022 at 1:29 PM Yann Ylavic <ylavic.dev@gmail.com> wrote:
+>>>>>
+>>>>> On Mon, Feb 7, 2022 at 1:01 PM Stefan Eissing <stefan@eissing.org> wrote:
+>>>>>>
+>>>> []
+>>>>>
+>>>>> there are still failures for
+>>>>> mod_md still I haven't looked at (I think I don't have all the mod_md
+>>>>> dependencies to test on my machine)..
+>>>>
+>>>> Namely this failure:
+>>>> https://app.travis-ci.com/github/apache/httpd/jobs/558512606#L2522
+>>>> Does it ring a bell for you?
+>>>
+>>> Hmm, no, but I can have a look. There might be some timing involved...
+>>
+>> Should be fixed in r1897819.
+>
+> All green: https://app.travis-ci.com/github/apache/httpd/builds/246021482  \o/
+
+👍🏻

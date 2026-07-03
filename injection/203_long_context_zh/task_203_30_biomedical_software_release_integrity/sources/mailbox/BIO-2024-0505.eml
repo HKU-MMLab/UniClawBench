@@ -1,0 +1,45 @@
+Message-ID: <Y3+wrFmNSjqAQPN7@fusion>
+X-Clawbench-ID: BIO-2024-0505
+Date: Thu, 24 Nov 2022 18:58:04 +0100
+From: Étienne Mollier <emollier@emlwks999.eu>
+To: Andreas Tille <andreas@an3as.eu>
+Subject: Re: python3-biopython: incompatible with muscle >= 5
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_11_msg00091.html
+
+Hi Andreas,
+
+Andreas Tille, on 2022-11-24:
+> Am Thu, Nov 24, 2022 at 10:28:43AM +0900 schrieb Charles Plessy:
+> > I have read the Muscle5 paper and it is a totally different program than
+> > Muscle3.
+> >
+> >     https://pubmed.ncbi.nlm.nih.gov/36379955/
+> >
+> > Reintroducing muscle3 as a separate package might be useful not only to
+> > Biopython, but also to the people who need it in pipelines, etc.
+>
+> I've created a new git repository[1] and filed an ITP bug report.  Will
+> upload to new soon.
+
+Thanks for the upload, I further adjusted the muscle wrapper so
+it would catch the muscle3 binary if it finds it in the path, as
+I see your new package provides the executable /usr/bin/muscle3.
+If no such executable is available, the default switches to
+plain muscle.  In any case it is possible for a user of the
+biopython wrapper to enforce a given executable name by setting
+the cmd argument of the constructor.  Changes are available in
+the muscle3 patch[2] on salsa.  I'm hopeful to upload biopython
+1.80 to experimental this evening.
+
+> [1] https://salsa.debian.org/med-team/muscle3
+[2]: https://salsa.debian.org/med-team/python-biopython/-/blob/master/debian/patches/muscle3.patch
+
+Have a nice day,  :)
+--
+Étienne Mollier
+Fingerprint:  8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+Sent from /dev/pts/2, please excuse my verbosity.
+On air: Phideaux - Dormouse Escapes

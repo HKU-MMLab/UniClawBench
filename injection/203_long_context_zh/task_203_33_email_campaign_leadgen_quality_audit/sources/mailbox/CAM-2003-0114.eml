@@ -1,0 +1,45 @@
+Message-ID: <02072223091100.01082@scrap>
+X-Clawbench-ID: CAM-2003-0114
+Date: Mon, 22 Jul 2002 23:09:11 +0200
+From: "Securiteinfo.com" <webmaster@securiteinfo.com>
+To: bugtraq@securityfocus.com
+Subject: [VulnWatch] Pablo Sofware Solutions FTP server Directory Traversal Vulnerability
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01294.7f208bf4ae152863fd40f25e2e121d49
+
+Pablo Sofware Solutions FTP server Directory Traversal Vulnerability
+
+
+.oO  Overview Oo.
+Pablo Software Solutions FTP server version 1.0 build 9 shows files and
+directories that reside outside the normal FTP root directory.
+Discovered on 2002, July, 20th
+Vendor: Pablo Software Solutions
+
+Pablo's FTP Server is a multi threaded FTP server for Windows 98/NT/XP.
+It comes with an easy to use interface and can be accessed from the system
+tray.
+The server handles all basic FTP commands and offers easy user account
+management and support for virtual directories.
+This FTP server can shows file and directory content that reside outside the
+normal FTP root directory.
+
+
+.oO  Details Oo.
+The vulnerability can be done using the MS-DOS ftp client. When you are
+logged on the server, you can send a dir \..\, or a dir \..\WINNT, supposed
+your root directory is c:\ftp_server
+
+
+.oO  Solution Oo.
+The vendor has been informed and has solved the problem.
+Download Pablo's FTP Server Build 10 at :
+http://www.pablovandermeer.nl/ftp_server.html
+
+
+.oO  Discovered by Oo.
+Arnaud Jacques
+webmaster@securiteinfo.com
+http://www.securiteinfo.com

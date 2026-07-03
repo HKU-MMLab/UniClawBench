@@ -1,0 +1,28 @@
+Message-ID: <Y/85LoPrzJAcdSKf@homeworld.netbsd.org>
+X-Clawbench-ID: ASF-2024-0052
+Date: Wed, 1 Mar 2023 11:38:22 +0000
+From: Emmanuel Dreyfus <manu@netbsd.org>
+To: dev@httpd.apache.org
+Subject: Re: Why is my merge_dir_config not called
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-03.mbox
+
+On Wed, Mar 01, 2023 at 05:29:28AM -0500, Eric Covener wrote:
+> Does your config have directives from dav_fs in two overlapping sections?
+
+Like this, you mean?
+    <Directory "/htdocs/dav/C">
+        DavQuota 4444
+    </Directory>
+    <Directory "/htdocs/dav/C/D">
+        DavQuota None
+    </Directory>
+    <Directory "/htdocs/dav/C/D/E">
+        DavQuota 222
+    </Directory>
+
+--
+Emmanuel Dreyfus
+manu@netbsd.org

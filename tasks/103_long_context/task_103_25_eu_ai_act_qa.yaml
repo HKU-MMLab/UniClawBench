@@ -1,0 +1,31 @@
+task_id: task_103_25_eu_ai_act_qa
+category: 103_long_context
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  The full text of the EU AI Act (Regulation (EU) 2024/1689) is provided in `/tmp_workspace/clawbench/sources/regulation/` as both a PDF (`eu_ai_act_2024_1689.pdf`) and a plain-text extract (`eu_ai_act_2024_1689.txt`). Answer the following questions by reading THIS text. These are precise figures and dates, so look them up in the provided regulation rather than answering from memory, and cite the relevant article or annex for each answer.
+
+  1. What is the maximum administrative fine for infringing the prohibited-AI-practices rules (Article 5), expressed both as a fixed euro amount and as a percentage of worldwide annual turnover?
+  2. What is the maximum fine for supplying incorrect, incomplete, or misleading information to notified bodies or competent authorities?
+  3. There is an intermediate penalty tier for non-compliance with provisions other than Article 5. What is its fixed-amount cap and turnover percentage?
+  4. From what date does the Regulation generally apply?
+  5. The application is phased. By when do (a) the prohibitions and general provisions (Chapters I and II) apply, and (b) the rules on general-purpose AI models, governance, and penalties apply? Note any provisions with a later date.
+  6. Which annex lists the high-risk AI system use-cases, and what are the high-level risk categories the Act uses to classify AI systems?
+
+  Write your answers, each with the relevant article/annex cited, to `/tmp_workspace/results/eu_ai_act_qa.md`. If a value is genuinely not stated in the provided text, say so rather than inventing it.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+sources:
+  - regulation/
+
+codex:
+  max_user_followups: 2

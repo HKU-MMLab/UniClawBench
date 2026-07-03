@@ -1,0 +1,22 @@
+Message-ID: <0128E67A-B630-496C-95CF-A708077FE1BE@disroot.org>
+X-Clawbench-ID: BIO-2024-1162
+Date: Wed, 17 Jul 2024 04:45:11 +0000
+From: weepingclown <weepingclown@disroot.org>
+To: debian-med@lists.debian.org, Étienne Mollier <emollier@debian.org>, Jon Peirce <jon@opensciencetools.org>
+Subject: Re: python-questplus FTBFS on i386
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_07_msg00019.html
+
+Hi,
+
+while I haven't given it a thorough look, the comment "Rounding errors make the algorithm behave differently on different platforms" can be spotted very easily from the failed salsa job itself. I am not sure, but perhaps this test wasn't supposed to be run on several architechtures to begin with?
+
+Best,
+Ananthu
+
+On 16 July 2024 9:06:07 pm UTC, "Étienne Mollier"  wrote:
+>Quick lookup at the test item
+>shows numpy code, which I believe is sensitive to floating point
+>unit precision of the underlying hardware.

@@ -1,0 +1,27 @@
+Message-ID: <2a249223-57f8-e6f4-286b-cef05a167aed@debian.org>
+X-Clawbench-ID: BIO-2024-0840
+Date: Tue, 21 Sep 2021 17:32:19 +0200
+From: Christian Kastner <ckk@debian.org>
+To: debian-science@lists.debian.org
+Subject: Re: Datasets downloaded by scikit-learn as separate packages?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_09_msg00029.html
+
+On 21.09.21 16:06, M. Zhou wrote:
+> I refrained from uploading any datasets except for
+>
+>  $ apt list dataset\*
+>  Listing... Done
+>  dataset-fashion-mnist/unstable,unstable,now
+>
+> as it can be used as a universal sanity test dataset for any machine
+> learning tool sanity test dataset. (in academics, people use the
+> dataset named MNIST. the above Fashion-MNIST is an MIT-licensed
+> alternative).
+
+I think the universal sanity test is a great idea!
+
+Thanks for pointing this dataset out. I'll try to add an autopkgtest to
+my next ML-related upload.

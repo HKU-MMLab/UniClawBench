@@ -1,0 +1,254 @@
+{
+  "task_id": "task_103_21_VLM_blog",
+  "created_at": "2026-05-02T00:00:00+00:00",
+  "expected_output_dir": "/tmp_workspace/results/VLM_blog/",
+  "expected_blog_file": "/tmp_workspace/results/VLM_blog/vlm_mainline.html",
+  "expected_selection_note": "/tmp_workspace/results/selection_note.md",
+  "paper_mapping_reference": "references/paper_mapping.json",
+  "reference_blog": "references/VLM_blog/vlm_mainline.html",
+  "expected_main_papers": [
+    {
+      "file": "papers/paper_01.pdf",
+      "title": "VisualBERT: A Simple and Performant Baseline for Vision and Language",
+      "authors": "Li et al.",
+      "year": 2019,
+      "url": "https://arxiv.org/pdf/1908.03557",
+      "sections": [
+        "2. Joint image-text pretraining"
+      ],
+      "note": "Provides a baseline for joint image-region and text-token transformer pretraining."
+    },
+    {
+      "file": "papers/paper_02.pdf",
+      "title": "SimVLM: Simple Visual Language Model Pretraining with Weak Supervision",
+      "authors": "Wang et al.",
+      "year": 2022,
+      "url": "https://arxiv.org/pdf/2108.10904",
+      "sections": [
+        "2. Joint image-text pretraining"
+      ],
+      "note": "Uses a simple prefix language modeling objective for weakly supervised VLM pretraining."
+    },
+    {
+      "file": "papers/paper_03.pdf",
+      "title": "Multimodal Few-Shot Learning with Frozen Language Models",
+      "authors": "Tsimpoukelli et al.",
+      "year": 2021,
+      "url": "https://arxiv.org/pdf/2106.13884",
+      "sections": [
+        "3. Image embeddings as language-model prefixes"
+      ],
+      "note": "Shows how image embeddings can condition a frozen language model."
+    },
+    {
+      "file": "papers/paper_04.pdf",
+      "title": "ClipCap: CLIP Prefix for Image Captioning",
+      "authors": "Mokady et al.",
+      "year": 2021,
+      "url": "https://arxiv.org/pdf/2111.09734",
+      "sections": [
+        "3. Image embeddings as language-model prefixes"
+      ],
+      "note": "Maps CLIP image embeddings into a language-model prefix for captioning."
+    },
+    {
+      "file": "papers/paper_05.pdf",
+      "title": "Flamingo: a Visual Language Model for Few-Shot Learning",
+      "authors": "Alayrac et al.",
+      "year": 2022,
+      "url": "https://arxiv.org/pdf/2204.14198",
+      "sections": [
+        "4. Cross-attention fusion"
+      ],
+      "note": "Uses gated cross-attention to inject visual features into a language model."
+    },
+    {
+      "file": "papers/paper_06.pdf",
+      "title": "CoCa: Contrastive Captioners are Image-Text Foundation Models",
+      "authors": "Yu and Wang et al.",
+      "year": 2022,
+      "url": "https://arxiv.org/pdf/2205.01917",
+      "sections": [
+        "5. Contrastive captioner foundation models"
+      ],
+      "note": "Combines contrastive image-text learning with caption generation."
+    },
+    {
+      "file": "papers/paper_07.pdf",
+      "title": "An Empirical Study of GPT-3 for Few-Shot Knowledge-Based VQA",
+      "authors": "Yang et al.",
+      "year": 2021,
+      "url": "https://arxiv.org/pdf/2109.05014",
+      "sections": [
+        "6. No-training and tool-composition approaches"
+      ],
+      "note": "Uses prompting and GPT-3 for knowledge-based visual question answering."
+    },
+    {
+      "file": "papers/paper_08.pdf",
+      "title": "Socratic Models: Composing Zero-Shot Multimodal Reasoning with Language",
+      "authors": "Zeng et al.",
+      "year": 2022,
+      "url": "https://arxiv.org/pdf/2204.00598",
+      "sections": [
+        "6. No-training and tool-composition approaches",
+        "7. Practical synthesis"
+      ],
+      "note": "Composes vision and language models through language as a multimodal interface."
+    }
+  ],
+  "expected_concept_sections": [
+    {
+      "name": "1. Why combine vision and language",
+      "required_ideas": [
+        "motivate connecting visual perception with language reasoning",
+        "explain the central question of how image representations enter a language model",
+        "set up tradeoffs among joint fusion, prefixing, cross-attention, contrastive-captioning, and tool composition"
+      ],
+      "papers": [
+        "paper_01.pdf",
+        "paper_03.pdf",
+        "paper_05.pdf"
+      ]
+    },
+    {
+      "name": "2. Joint image-text pretraining",
+      "required_ideas": [
+        "jointly model image regions/features and text tokens",
+        "VisualBERT as an early joint transformer baseline",
+        "SimVLM as weakly supervised simple visual-language pretraining"
+      ],
+      "papers": [
+        "paper_01.pdf",
+        "paper_02.pdf"
+      ]
+    },
+    {
+      "name": "3. Image embeddings as language-model prefixes",
+      "required_ideas": [
+        "map image embeddings into LM prefix/prompt space",
+        "freeze or lightly train the language model",
+        "Frozen and ClipCap as prefix-conditioning examples"
+      ],
+      "papers": [
+        "paper_03.pdf",
+        "paper_04.pdf"
+      ]
+    },
+    {
+      "name": "4. Cross-attention fusion",
+      "required_ideas": [
+        "inject visual features through cross-attention layers",
+        "Flamingo-style gated cross-attention over visual tokens",
+        "support few-shot multimodal learning"
+      ],
+      "papers": [
+        "paper_05.pdf"
+      ]
+    },
+    {
+      "name": "5. Contrastive captioner foundation models",
+      "required_ideas": [
+        "combine contrastive image-text learning with captioning",
+        "support retrieval and generation in a single model family",
+        "CoCa as contrastive-captioning foundation model"
+      ],
+      "papers": [
+        "paper_06.pdf"
+      ]
+    },
+    {
+      "name": "6. No-training and tool-composition approaches",
+      "required_ideas": [
+        "use prompting or external model composition instead of retraining a monolithic model",
+        "PICa/GPT-3-style few-shot VQA",
+        "Socratic Models compose vision and language modules through language"
+      ],
+      "papers": [
+        "paper_07.pdf",
+        "paper_08.pdf"
+      ]
+    },
+    {
+      "name": "7. Practical synthesis",
+      "required_ideas": [
+        "summarize where visual information enters the language model",
+        "compare joint fusion, prefix, cross-attention, contrastive-captioning, and tool composition",
+        "explain tradeoffs in training cost, flexibility, and reasoning ability"
+      ],
+      "papers": [
+        "paper_01.pdf",
+        "paper_03.pdf",
+        "paper_05.pdf",
+        "paper_06.pdf",
+        "paper_08.pdf"
+      ]
+    }
+  ],
+  "expected_figures": [
+    {
+      "file": "assets/images/VisualBERT-arch.png",
+      "source": "Li et al. 2019",
+      "purpose": "VisualBERT architecture"
+    },
+    {
+      "file": "assets/images/SimVLM-arch.png",
+      "source": "Wang et al. 2022",
+      "purpose": "SimVLM architecture"
+    },
+    {
+      "file": "assets/images/Frozen-arch.png",
+      "source": "Tsimpoukelli et al. 2021",
+      "purpose": "Frozen LM with image prefix"
+    },
+    {
+      "file": "assets/images/ClipCap-arch.png",
+      "source": "Mokady et al. 2021",
+      "purpose": "CLIP prefix captioning"
+    },
+    {
+      "file": "assets/images/Flamingo-cross-attention.png",
+      "source": "Alayrac et al. 2022",
+      "purpose": "Flamingo cross-attention fusion"
+    },
+    {
+      "file": "assets/images/CoCa-arch.png",
+      "source": "Yu et al. 2022",
+      "purpose": "CoCa contrastive captioner"
+    },
+    {
+      "file": "assets/images/PICa-fewshot.png",
+      "source": "Yang et al. 2021",
+      "purpose": "PICa few-shot VQA prompting"
+    },
+    {
+      "file": "assets/images/VC-GPT.png",
+      "source": "Zeng et al. 2022 / Socratic Models",
+      "purpose": "tool-composed visual-language reasoning"
+    }
+  ],
+  "required_assets": [
+    "assets/css/stylesheet.min.css",
+    "assets/js/highlight.min.js",
+    "assets/js/tex-chtml.js",
+    "assets/js/input/tex/extensions/ams.js",
+    "assets/js/input/tex/extensions/newcommand.js",
+    "assets/js/input/tex/extensions/boldsymbol.js",
+    "assets/js/input/tex/extensions/color.js",
+    "assets/js/input/tex/extensions/configmacros.js",
+    "assets/js/input/tex/extensions/html.js",
+    "assets/js/input/tex/extensions/noerrors.js",
+    "assets/js/input/tex/extensions/noundefined.js",
+    "assets/js/output/chtml/fonts/tex.js",
+    "assets/js/output/chtml/fonts/woff-v2/*.woff"
+  ],
+  "quality_checks": [
+    "HTML opens in a local HTTP server with visible styling from stylesheet.min.css",
+    "LaTeX formulas render through MathJax rather than appearing as raw TeX when formulas are present",
+    "Blog is image-rich and every included figure has a visible source-paper attribution",
+    "The blog explains paper selection and section-paper mapping in selection_note.md",
+    "The final result directory includes the HTML and all referenced assets needed for offline viewing",
+    "The blog should be a coherent paper-reading article, not just a bullet list or copied abstracts",
+    "All HTML-referenced assets resolve relative to the delivered HTML path and return 200 under a local HTTP server"
+  ]
+}

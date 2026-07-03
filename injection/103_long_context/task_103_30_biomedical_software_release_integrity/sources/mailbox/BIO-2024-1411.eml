@@ -1,0 +1,27 @@
+Message-ID: <YuAwGSdXQioQODrN@fusion>
+X-Clawbench-ID: BIO-2024-1411
+Date: Tue, 26 Jul 2022 20:19:05 +0200
+From: Étienne Mollier <emollier@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: GCC-12 bugs became RC - some low hanging fruits remaining + one or two harder ones
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_07_msg00074.html
+
+Étienne Mollier, on 2022-07-25:
+> I'm also checking also the status of itk5.  There are no open
+> reports at the moment, but in doubt…
+
+insighttoolkit5 builds great, nothing to see here.  :)
+
+Whichever condition triggers the build failure with gcc-12, it
+is not enabled in this ITK version.  That's possibly a clue for
+the test failure in the itk-4.y branch.
+
+Have a nice day,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  gpg: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/2, please excuse my verbosity
+   `-    on air: Animals As Leaders - Nephele

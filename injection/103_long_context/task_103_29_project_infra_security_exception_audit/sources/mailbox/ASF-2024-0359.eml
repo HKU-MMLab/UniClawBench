@@ -1,0 +1,19 @@
+Message-ID: <CALK=YjMjt9xdutirrFuSb9MZRk75Ho-kjrFUcuycOp1KwUmZww@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0359
+Date: Fri, 2 Aug 2024 07:05:21 -0400
+From: Eric Covener <covener@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: [Bug 69203] proxy error from php-fpm backend for paths containing spaces
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-08.mbox
+
+> Yeah, if not under DocumentRoot I don't see how ProxyPass could work,
+> but SetHandler should since it's following the whole request
+> processing to resolve the filesystem r->filename?
+
+In the examples I am seeing spot-checking google results, people who
+use ProxyPass + FPM hard-code the document root (or wherever the stuff
+is) in the 2nd parameter. This includes our own manual and the
+unofficial confluence wiki.

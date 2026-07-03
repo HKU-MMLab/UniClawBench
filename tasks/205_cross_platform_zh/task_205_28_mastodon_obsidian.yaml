@@ -1,0 +1,64 @@
+task_id: task_205_28_mastodon_obsidian
+category: 205_cross_platform_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我想把一些喜欢的 Mastodon 帖子整理进我的 Obsidian 知识库。这次我从
+  @Mastodon 官方账号挑了 5 条,从创始人 @Gargron 挑了 3 条——一共 8 条
+  帖子,全都在 mastodon.social 上。
+
+  把每条帖子变成一张 Obsidian 风格的 markdown 卡片——开头是 YAML
+  frontmatter,使用对 Dataview 友好的简短字段名(id、author、date、
+  url、replies、reblogs——不要用原始的 API 字段名)。把 HTML 正文转成
+  markdown,并用 Obsidian 标签语法渲染 hashtag。每条帖子一个文件,以
+  帖子 ID 命名。
+
+  通过 Mastodon 的公开 API 用 curl 获取数据——不需要 token。
+
+  还要给我一个索引页 INDEX.md,分成 @Mastodon 和 @Gargron 两个部分,
+  按日期降序排列,用 Obsidian wiki-link 指向每个卡片文件,每条条目旁边
+  附上日期和一句话摘要。
+
+  另外,生成一个 cards.json 作为元数据索引。顶层应有一个按日期降序排列的
+  posts 数组,包含全部 8 条记录,每条包含 id、author、url、created_at、
+  replies_count、reblogs_count、card_filename 和 primary_language。还要
+  包含顶层的 hashtag_freq 频次统计和 language_distribution。
+
+  卡片和 INDEX.md 放在 /tmp_workspace/results/vault/ 下;cards.json
+  放在 /tmp_workspace/results/ 下。
+
+  Status ID:
+
+    @Mastodon:
+      116494498602625362
+      116402716327956884
+      116296392095869320
+      116160846932470950
+      116086899600949599
+
+    @Gargron:
+      116460783363908188
+      116373951728885118
+      116342823659882398
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources: []
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

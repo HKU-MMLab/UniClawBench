@@ -1,0 +1,83 @@
+Message-ID: <trinity-eeed4f0f-0a67-4e8e-860e-7e7c7011b709-1723116574911@3c-app-gmx-bap46>
+X-Clawbench-ID: BIO-2024-1488
+Date: Thu, 8 Aug 2024 13:29:34 +0200
+From: Steffen Möller <steffen_moeller@gmx.de>
+To: Urmas Rist <urmas@leil.io>
+Subject: Aw: Re: Re: Shared cluster storage for bioinformatics
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_08_msg00006.html
+
+Thank you, Urmas! This sounds great. I am not sure about how much help I can be when it comes to maintaining/packaging work that is such close to the kernel, but just shout out whenever you need help.
+Best,
+Steffen
+
+> Gesendet: Montag, 29. Juli 2024 um 11:57 Uhr
+> Von: "Urmas Rist"
+> An: "Steffen Möller" , "Tony Travis"
+> Cc: "Aleksandr Ragel" , "Debian Med Project List" , "Andreas Tille" , "Piotr Modrzyk" , "David Gerstein"
+> Betreff: Re: Re: Shared cluster storage for bioinformatics
+>
+> > Would there be a away to have you SaunaFS folks maintain a Debian package directly? Debian has this "Maintainer" concept that grants individuals the right to update packages - you need a sponsor for the initial upload but then you can help yourselves
+>
+> I've been thinking about during the weekend. So our company's position is that
+> if the community wants to package for specific distro, that's completely fine
+> by us, but we won't provide support for those packages (as that's the
+> maintainers job).
+>
+> However, I could be willing to volunteer personally to help maintain the Debian
+> package if there's nobody else who could do it. I would do it in my personal
+> capacity and spare time after work.
+>
+> Regards,
+> ---
+> Urmas Rist
+> SaunaFS Maintainer
+>
+> ________________________________________
+> From: Steffen Möller
+> Sent: Friday, July 26, 2024 11:51 AM
+> To: Tony Travis
+> Cc: Urmas Rist ; Aleksandr Ragel ; Debian Med Project List ; Andreas Tille ; Piotr Modrzyk
+> Subject: Aw: Re: Shared cluster storage for bioinformatics
+>
+> Hello,
+>
+> Would there be a away to have you SaunaFS folks maintain a Debian package directly? Debian has this "Maintainer" concept that grants individuals the right to update packages - you need a sponsor for the initial upload but then you can help yourselves
+> https://wiki.debian.org/DebianMaintainer ;.
+>
+> Debian has a steady influx of new packages https://ircbots.debian.net/stats/ but from what I observe the number of Debian developers is mostly steady https://github.com/jwilk/dd-num-graph, so extra hands are important.
+>
+> Best,
+> Steffen
+>
+> > Gesendet: Mittwoch, 24. Juli 2024 um 14:01 Uhr
+> > Von: "Tony Travis"
+> > An: "Urmas Rist" , "Aleksandr Ragel" , "Debian Med Project List"
+> > Cc: "Andreas Tille" , "Piotr Modrzyk"
+> > Betreff: Re: Shared cluster storage for bioinformatics
+> >
+> > On 24/07/2024 12:13, Urmas Rist wrote:
+> > >> I followed this up and took a look at the "SaunaFS" GitHub" repo:
+> > >
+> > >>> https://github.com/aNeutrino/open-saunafs
+> > >
+> > > Quick correction: The official repository is here:
+> > >
+> > >> https://github.com/leil-io/saunafs
+> >
+> > Hi, Urmas.
+> >
+> > Sorry - Thanks for correcting my mistake,
+> >
+> >    Tony.
+> >
+> > --
+> > Minke Informatics Limited, Registered in Scotland - Company No. SC419028
+> > Registered Office: 3 Donview, Bridge of Alford, AB33 8QJ, Scotland (UK)
+> > tel. +44(0)19755 63548                    http://minke-informatics.co.uk
+> > mob. +44(0)7985 078324        mailto:tony.travis@minke-informatics.co.uk
+> >
+> >
+>

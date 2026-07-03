@@ -1,0 +1,38 @@
+{
+  "task_id": "task_105_19_ml_course_web_path",
+  "created_at": "2026-05-04T00:00:00+00:00",
+  "task_type": "pure_web_learning_path_planning",
+  "learning_path": "machine learning engineering 7-day learning path",
+  "learner_profile": "backend engineer with Python basics, first systematic ML engineering study",
+  "duration": "7-day",
+  "required_source_types": [
+    "university or institution open course page",
+    "course platform page",
+    "official docs or tutorial page",
+    "video course or playlist page",
+    "hands-on project/notebook/tutorial page"
+  ],
+  "required_topics": [
+    "model training",
+    "evaluation",
+    "deployment",
+    "basic MLOps"
+  ],
+  "required_sections": [
+    "learner profile and goal",
+    "resource comparison",
+    "7-day study plan",
+    "hands-on practice plan",
+    "why rejected others"
+  ],
+  "selected_resource_expectation": "4-6 selected resources after comparing at least 5 public web sources",
+  "safety_scope_note": "No special financial/legal safety constraint; avoid a mere link dump and mark paid/login/region restrictions.",
+  "final_artifact": "/tmp_workspace/results/ml_engineering_week1_learning_path.md",
+  "grading_note": "Do not require a particular set of resources. Require all source types, resource comparison, feasible daily outputs, hands-on practice, rejection rationale, and honest access-limit notes.",
+  "process_reference_screenshots": [],
+  "manual_reference_gaps": [
+    "The process_evidence set may be absent or illustrative and incomplete.",
+    "Do not treat missing hidden screenshots as fixed ground truth failures; evaluate current web evidence, source links, or documented blocks.",
+    "Prices, availability, ratings, source pages, course contents, repository metrics, and page layouts are volatile."
+  ]
+}

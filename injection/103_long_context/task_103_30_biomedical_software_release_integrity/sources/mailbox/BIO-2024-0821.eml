@@ -1,0 +1,27 @@
+Message-ID: <Yqja2UTjGtE5dRv7@an3as.eu>
+X-Clawbench-ID: BIO-2024-0821
+Date: Tue, 14 Jun 2022 21:00:41 +0200
+From: Andreas Tille <andreas@fam-tille.de>
+To: Gregory Sharp <gregsharp.geo@yahoo.com>
+Subject: Re: DCM_DICT_DEFAULT_PATH
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_06_msg00031.html
+
+Hi Greg,
+
+Am Tue, Jun 14, 2022 at 03:27:10PM +0000 schrieb Gregory Sharp:
+> I finally got around to debugging the plastimatch test failures, and found that libdcmtk-dev seems to ship with an incorrect dictionary path.  In osconfig.h, we find DCM_DICT_DEFAULT_PATH is "/usr/share/dicom.dic", but the dictionary is installed to /usr/share/libdcmtk17/dicom.dic.  And indeed, setting DCMDICTPATH=/usr/share/libdcmtk17/dicom.dic fixes the plastimatch build.
+>
+> Looking at patches/03_datadic_insall.patch, this gets set to "${DCMTK_PREFIX}/${CMAKE_INSTALL_DATADIR}/dcmtk/dicom.dic".   But rules sets CMAKE_INSTALL_DATADIC.  Note those variables differ by only a single letter.  CMAKE_INSTALL_DATADIR is never set in rules, and retains its default value.
+>
+> How best to proceed?  It seems editing rules and patches/03_datadic_insall.patch to use CMAKE_INSTALL_DATADIR would make most sense, but I haven't tested it.
+
+It would be great if you could propose (and test) a patch.  I'm basically offline for two days.
+
+Kind regards
+      Andreas.
+
+--
+http://fam-tille.de

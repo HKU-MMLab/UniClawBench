@@ -1,0 +1,45 @@
+task_id: task_204_15_trip_packing_choice
+category: 204_multimodal_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  这周我要外出 3 天，
+  `/tmp_workspace/clawbench/sources/trip_packing/` 包含：
+  - 我想带的衣服、洗漱用品和电子产品的照片
+  - 我现有的两个包和一个行李箱的照片
+  - 行程截图和天气截图
+  - 一个 `notes.json` 文件
+
+  请帮我决定这次该带哪个包 / 行李箱，并把
+  所有东西整理成一份真正可以照着执行的打包方案。
+
+  要求：
+  1. 根据图片，判断哪些物品体积大、易碎、需要随身
+     携带，或容易被遗忘。
+  2. 从我现有的包和行李箱中选出最合适的主选项，并
+     说明原因。
+  3. 生成 `/tmp_workspace/results/packing_plan.md`，至少包含：
+     - 最终选择哪个包 / 行李箱
+     - 必带物品清单
+     - 哪些物品应放入主仓、外侧口袋，或需要单独
+       保护
+     - 哪些物品其实不需要带
+  4. 如果你认为我现有的物品装不下，或者某些物品之间明显
+     冲突，请直接指出来。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - trip_packing/
+
+codex:
+  max_user_followups: 2

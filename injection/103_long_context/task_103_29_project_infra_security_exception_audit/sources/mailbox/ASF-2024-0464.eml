@@ -1,0 +1,93 @@
+Message-ID: <642aaf0a.d34.31fc.2ffd@land10.nl>
+X-Clawbench-ID: ASF-2024-0464
+Date: Mon, 03 Apr 2023 12:48:42 +0200
+From: SteffenAL <info@apachelounge.com>
+To: <dev@httpd.apache.org>
+Subject: Re: [VOTE] Release httpd-2.4.57-rc1 as httpd-2.4.57
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-04.mbox
+
+Since VS17 you cannot use/convert .dsp files anymore to projectfiles.
+
+So now using  the standard/native VCXPROJ files, that after converted
+with VS16.
+
+Steffen
+
+
+On Monday 03/04/2023 at 12:39, Ruediger Pluem  wrote:
+>
+>
+> On 4/3/23 12:19 PM, SteffenAL wrote:
+>>
+>> vcxproj  files since a few years . They where generated from the dsp
+>> files.
+>
+> But these are not part of the source, but your local ones?
+>
+>>
+>>
+>> can I just include the test_char.h generated from gen_test_char.c
+>> /.exe ?
+>
+> Yes you can.
+>
+> Regards
+>
+> Rüdiger
+>
+>>
+>>
+>> On Monday 03/04/2023 at 11:26, Ruediger Pluem wrote:
+>>>
+>>> How do you build it? Via cmake or via the mak files?
+>>>
+>>> Regards
+>>>
+>>> Rüdiger
+>>>
+>>> On 4/3/23 10:51 AM, SteffenAL wrote:
+>>>>
+>>>> Build no go:
+>>>>
+>>>>
+>>>> ErrorC1083Cannot open include file: 'test_char.h': No such file or
+>>>> directorymod_rewriteC:\VS17\Win64\httpd-2.4\modules\mappers\mod_rewrite.c109
+>>>>
+>>>> Is it ok that I include the test_char.h generated from
+>>>> gen_test_char.exe ?
+>>>>
+>>>> Steffen
+>>>>
+>>>>
+>>>> On Sunday 02/04/2023 at 18:11, Eric Covener wrote:
+>>>>>
+>>>>> Hi all,
+>>>>>
+>>>>> Please find below the proposed release tarball and signatures:
+>>>>>
+>>>>> https://dist.apache.org/repos/dist/dev/httpd/
+>>>>>
+>>>>> I would like to call a VOTE over the next few days to release
+>>>>> this candidate tarball httpd-2.4.57-rc1 as 2.4.57:
+>>>>> [ ] +1: It's not just good, it's good enough!
+>>>>> [ ] +0: Let's have a talk.
+>>>>> [ ] -1: There's trouble in paradise. Here's what's wrong.
+>>>>>
+>>>>> The computed digests of the tarball up for vote are:
+>>>>> sha256:
+>>>>> bc3e7e540b83ec24f9b847c6b4d7148c55b79b27d102e21227eb65f7183d6b45
+>>>>> *httpd-2.4.57-rc1.tar.gz
+>>>>> sha512:
+>>>>> 730560d4aab3699aa59716bb75858f8432a902aeab3c380b4d3e0f6813e9ae4e278d3b7fdf63a4e94c07b5100933d8684d76f6095f3d60d48ea0f1458c9ed0b4
+>>>>> *httpd-2.4.57-rc1.tar.gz
+>>>>>
+>>>>> The SVN candidate source is found at tags/2.4.57-rc1-candidate.
+>>>>>
+>>>>> --
+>>>>> Eric Covener
+>>>>> covener@gmail.com
+>>>>
+>>

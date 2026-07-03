@@ -1,0 +1,36 @@
+Message-ID: <CALK=YjO+hXJyCe+xYhm5dRx_VVb8etgCWto7HYAuj5i8x7Js+A@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1041
+Date: Wed, 18 Dec 2024 12:56:55 -0500
+From: Eric Covener <covener@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: Move to git (Was: Re: httpd 2.4 -> next)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-12.mbox
+
+> Are the tasks required to do so known? If so, I can take that on.
+
+I don't think the full tasks (or even requirements) are known.
+
+I had started a scratchpad here
+https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=311628229
+but didn't get far, the focus was on what was absolutely needed to
+cutover.  Maybe it just really isn't that much if we'll continue to
+use external processes for release/bugs/voting etc and we can chip
+away at that stuff later.
+
+Maybe something like this for the must-have tasks:
+
+- Get with Infra and see if there are general caveats (open PRs for
+example?) for converting from r/o to r/w
+- Clean up or save whatever might go missing when we convert
+- give warning of the above + the upcoming cutover attempt.
+- make svn r/o (infra) && make github r/w (infra)
+- Do a final check of contents and history (multiple eyes)
+- Test basic PR flow and CI still happy
+- Port the release scripts and run a non-security release (there are a
+few regression fixes queued up i believe). I can take a crack at this
+probably any time in 1Q with just a little notice to sync up.
+
+Then anything else is just gravy (developer doc, issues vs bugzilla, STATUS)

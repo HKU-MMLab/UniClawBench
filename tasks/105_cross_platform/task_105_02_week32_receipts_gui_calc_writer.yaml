@@ -1,0 +1,87 @@
+task_id: task_105_02_week32_receipts_gui_calc_writer
+category: 105_cross_platform
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I put six receipt images for week 32 in this folder:
+
+      /tmp_workspace/clawbench/sources/receipts/week_32/
+
+  Please use the desktop file manager to open that folder and review the
+  receipt images in a real image viewer. Save at least one screenshot showing
+  that folder or an opened receipt image here:
+
+      /tmp_workspace/results/gui_evidence/file_manager_or_receipts.png
+
+  Then use the local LibreOffice Calc GUI to make an expense spreadsheet with
+  one row per receipt and these columns:
+
+      Date, Merchant, Category, Amount
+
+  Use only these category labels in the Category column:
+
+      Groceries, Meals, Transportation
+
+  Add a total expenses value and a category summary so it is clear which
+  category had the highest total spending. Save the spreadsheet here:
+
+      /tmp_workspace/results/week32_expenses.ods
+
+  The ODS itself must contain the six receipt rows, total, category totals, and
+  highest-category calculation. A correct CSV/TSV sidecar is useful for audit
+  but does not replace a required ODS whose sheet content is missing.
+
+  Save a screenshot of the open Calc spreadsheet here:
+
+      /tmp_workspace/results/gui_evidence/calc_week32_expenses.png
+
+  After that, use the local LibreOffice Writer GUI to create a short summary
+  document. It should include the week number, all six receipts in a compact
+  list or table, the overall total, the category totals, and the highest
+  spending category. Save it here:
+
+      /tmp_workspace/results/week32_summary.odt
+
+  Save a screenshot of the open Writer summary here:
+
+      /tmp_workspace/results/gui_evidence/writer_week32_summary.png
+
+  Also export or save a plain-text copy of that Writer summary here:
+
+      /tmp_workspace/results/week32_summary.txt
+
+  Please do this through the file manager or image viewer, Calc, and Writer
+  desktop apps rather than writing the final files with a pure script. The
+  setup service writes its status to
+  `/tmp_workspace/clawbench/service_state/libreoffice-gui-setup.json`; if
+  LibreOffice is still installing when you start, wait briefly and try
+  launching it again. Do not use command-line generation or script-created
+  spreadsheet/summary files to substitute for the real file-manager,
+  image-viewer, Calc, and Writer workflow.
+
+  Final Calc and Writer screenshots should show the relevant spreadsheet or
+  summary content in LibreOffice. First-run popups or dialogs should be closed
+  before the final screenshot when they block the data needed for review.
+
+sources:
+  - receipts/week_32/
+
+services:
+  - name: libreoffice-gui-setup
+    path: libreoffice-gui-setup
+    start: bash install.sh
+    oneshot: true
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+codex:
+  max_user_followups: 2

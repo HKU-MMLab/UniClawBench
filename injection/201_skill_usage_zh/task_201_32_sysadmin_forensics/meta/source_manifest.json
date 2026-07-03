@@ -1,0 +1,22 @@
+{
+  "task_id": "task_201_32_sysadmin_forensics",
+  "provenance": "Synthetic but realistic Linux staging-host forensics fixture built from common auth.log, syslog, cron, and shell-history patterns. The files are task inputs, not answer keys.",
+  "entries": [
+    {
+      "path": "history.txt",
+      "description": "Shell history fragment from the affected staging account."
+    },
+    {
+      "path": "auth.log",
+      "description": "Authentication log fragment for the incident window."
+    },
+    {
+      "path": "syslog",
+      "description": "System log fragment for the incident window."
+    },
+    {
+      "path": "cron.log",
+      "description": "Cron log fragment for the incident window."
+    }
+  ]
+}

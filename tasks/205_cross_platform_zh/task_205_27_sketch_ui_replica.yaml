@@ -1,0 +1,40 @@
+task_id: task_205_27_sketch_ui_replica
+category: 205_cross_platform_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我在练习设计系统,想把一个真实的网页复刻成一个 .sketch 文件,以便之后
+  在 Sketch / Lunacy 里微调。我们就拿 https://www.python.org/ 作为起点
+  ——它有一个 hero banner、导航、功能轮播幻灯片和一个 footer;结构很干净,
+  而且不需要登录。
+
+  大致思路是这样:先用 chromium 给首页截一张整页截图作为参考(桌面分辨率
+  就行),然后用 curl 获取 HTML,用 htmlq 提取关键 UI 元素——页面标题、
+  hero 标语文字、导航链接、主色调等等。把这些整理成一个 design-spec JSON,
+  再用 sketch-cli 生成 .sketch 文件。最后写一段简短的中文对比说明,讨论
+  哪些被忠实复刻了、哪些无法 100% 复现(字体、折叠导航等)。
+
+  把所有东西放在 /tmp_workspace/results/ 下——大致包括:截图、design spec
+  JSON、.sketch 文件,以及对比 markdown。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources: []
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

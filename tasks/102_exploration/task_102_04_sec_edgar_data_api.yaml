@@ -1,0 +1,39 @@
+task_id: task_102_04_sec_edgar_data_api
+category: 102_exploration
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I need to track a company's SEC filings programmatically. I keep landing on
+  the human filings browser, but I'd like the structured JSON behind it.
+
+  Here's the company's filings page on SEC's EDGAR:
+
+      https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000320193&type=10-K&owner=include&count=10
+
+  SEC publishes a structured data API (separate host from the human site) that
+  serves a company's filing history as JSON, keyed by its CIK. Please find that
+  API and use it (not by scraping the browse-edgar HTML) to determine, for this
+  company:
+
+  - the company name and ticker(s),
+  - its most recent annual report (form 10-K): the filing date, the accession
+    number, and the primary document file name.
+
+  Note: SEC requires a descriptive User-Agent header on these API requests.
+
+  Save the result to `/tmp_workspace/results/sec_latest_10k.json`, and save the
+  exact request URL(s) you called plus their raw JSON response(s) to
+  `/tmp_workspace/results/sec_evidence/` so the pull is reproducible.
+
+references:
+  - references/eval_rule.md
+
+codex:
+  max_user_followups: 2

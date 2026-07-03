@@ -1,0 +1,140 @@
+{
+  "task_id": "task_101_12_csv_pipeline_merge",
+  "difficulty": "Medium",
+  "schema": "b",
+  "schema_notes": "strict exact-match aggregates; only total_revenue_usd permits a ±0.01 float-rounding window",
+  "skills_declared": [
+    "csv-pipeline",
+    "python-dataviz"
+  ],
+  "ground_truth": {
+    "source_files_total": 15,
+    "source_files_obscured_naming": "data_001.csv .. data_015.csv",
+    "source_file_role_map": {
+      "customers_v1": "data_001.csv",
+      "customers_v3": "data_002.csv",
+      "products_na": "data_003.csv",
+      "customers_v2": "data_004.csv",
+      "orders_may": "data_005.csv",
+      "reconciliation_q3": "data_006.csv",
+      "products_eu": "data_007.csv",
+      "reconciliation_q2": "data_008.csv",
+      "orders_mar": "data_009.csv",
+      "products_latam": "data_010.csv",
+      "orders_jan": "data_011.csv",
+      "products_apac": "data_012.csv",
+      "orders_apr": "data_013.csv",
+      "reconciliation_q1": "data_014.csv",
+      "orders_feb": "data_015.csv"
+    },
+    "source_files_by_kind": {
+      "customers": [
+        "data_001.csv",
+        "data_002.csv",
+        "data_004.csv"
+      ],
+      "orders": [
+        "data_005.csv",
+        "data_009.csv",
+        "data_011.csv",
+        "data_013.csv",
+        "data_015.csv"
+      ],
+      "products": [
+        "data_003.csv",
+        "data_007.csv",
+        "data_010.csv",
+        "data_012.csv"
+      ],
+      "reconciliation": [
+        "data_006.csv",
+        "data_008.csv",
+        "data_014.csv"
+      ]
+    },
+    "master_row_count": 8000,
+    "master_row_count_strict": true,
+    "unique_customer_count": 1246,
+    "unique_customer_count_strict": true,
+    "total_revenue_usd": 9130438.08,
+    "total_revenue_usd_tolerance": 0.01,
+    "total_revenue_usd_tolerance_note": "float-rounding only; not a soft window",
+    "top_5_products_by_revenue": [
+      {
+        "sku": "SKU-0134",
+        "revenue_usd": 142865.78
+      },
+      {
+        "sku": "SKU-0011",
+        "revenue_usd": 134950.81
+      },
+      {
+        "sku": "SKU-0087",
+        "revenue_usd": 133251.15
+      },
+      {
+        "sku": "SKU-0141",
+        "revenue_usd": 131837.87
+      },
+      {
+        "sku": "SKU-0017",
+        "revenue_usd": 131750.01
+      }
+    ],
+    "conflict_customer_ids": [
+      "C00040",
+      "C00061",
+      "C00102",
+      "C00188",
+      "C00249",
+      "C00277",
+      "C00337",
+      "C00345",
+      "C00422",
+      "C00487",
+      "C00523",
+      "C00608",
+      "C00633",
+      "C00676",
+      "C00715",
+      "C00806",
+      "C00855"
+    ],
+    "conflict_count": 17,
+    "conflict_count_strict": true,
+    "conflict_review_csv": "/tmp_workspace/results/conflict_review.csv",
+    "conflict_review_columns": [
+      "customer_id",
+      "distinct_names",
+      "source_files",
+      "chosen_name_if_any",
+      "why_it_needs_review"
+    ],
+    "duplicate_order_rows_present": 68,
+    "notes": [
+      "15 input files use obscured names data_001.csv .. data_015.csv; executor must identify file roles by inspecting headers.",
+      "master.csv must dedup by order_id (exactly 68 duplicates exist across the monthly order files).",
+      "Customer files have divergent schemas; the id-style column in each maps to a unified customer_id.",
+      "conflicts.json must list customer_ids whose values differ across versions (name, email, phone, address, etc.).",
+      "Only customer_ids present in source customer tables may appear in master.csv."
+    ],
+    "false_positive_customer_ids": [
+      "C00080",
+      "C00150",
+      "C00200",
+      "C00400",
+      "C00500"
+    ],
+    "false_positive_count": 5,
+    "false_positive_count_strict": true,
+    "false_positive_note": "These IDs have rows that differ ONLY in whitespace or case (not real semantic conflicts) — flagging them as conflicts WITHOUT a false_positive classification is a precision violation.",
+    "topic_dimensions": {
+      "conflict_taxonomy": ["address", "phone", "email", "name spelling"],
+      "temporal_priority": ["latest", "most recent", "as of"],
+      "data_lineage": ["source file", "from", "originated in"],
+      "volume_summary": ["total rows", "merged", "deduped"],
+      "exception_summary": ["false positive", "review needed", "manual"]
+    },
+    "min_dimensions_covered": 5
+  }
+}

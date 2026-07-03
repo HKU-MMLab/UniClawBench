@@ -1,0 +1,58 @@
+Message-ID: <ZJs+a2TXHMJ7yeBG@fusion>
+X-Clawbench-ID: BIO-2024-0066
+Date: Tue, 27 Jun 2023 21:54:19 +0200
+From: Étienne Mollier <emollier@emlwks999.eu>
+To: debian-med@lists.debian.org
+Subject: Re: help with git errors
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_06_msg00027.html
+
+Hi Steve,
+
+> Am Tue, Jun 27, 2023 at 12:59:46PM -0500 schrieb Steven Robbins:
+> > steve@riemann:~/Packages/insighttoolkit/salsa$ gbp push
+> > gbp:info: Pushing debian/5.3.0-4 to origin
+> > gbp:info: Pushing upstream/5.3.0 to origin
+> > gbp:info: Pushing refs/heads/master to origin:refs/heads/master
+> > gbp:info: Pushing b2132ae657fd350bd02946bf95a2fc27240d8efc to origin:refs/
+> > heads/upstream
+> > gbp:error: Error running git push: To salsa.debian.org:med-team/
+> > insighttoolkit.git
+> >  ! [rejected]          b2132ae657fd350bd02946bf95a2fc27240d8efc -> upstream
+> > (non-fast-forward)
+> > error: failed to push some refs to 'salsa.debian.org:med-team/
+> > insighttoolkit.git'
+> > hint: Updates were rejected because a pushed branch tip is behind its remote
+> > hint: counterpart. Check out this branch and integrate the remote changes
+> > hint: (e.g. 'git pull ...') before pushing again.
+> > hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+> > gbp:error: Failed to push some refs.
+
+Andreas Tille, on 2023-06-27:
+> I admit I have no solution, but my attempt
+[…]
+> failed with the same issue you reported here.
+
+Same on my end sadly.
+
+The upstream branch looks to have diverged at the commit tagged
+upstream/5.2.1 between 669ec86484a4a862c2e0f774ea77df66bbd10507
+which has no tag, and your commit tagged upstream/5.3.0, which
+appears on my end in detached HEAD.  I tried merging your tag in
+the upstream branch, then the other way around with the runnaway
+commit, but to no meaningful results so far, as gbp persists to
+attempt to push b2132ae657fd350bd02946bf95a2fc27240d8efc no
+matter what.
+
+I'm short of options that wouldn't involve a force push.
+
+In any case, thanks for having pushed ITK 5.3.0!
+
+Have a nice day,  :)
+--
+Étienne Mollier
+Fingerprint:  8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+Sent from /dev/pts/2, please excuse my verbosity.
+On air: Blind Guardian - Secrets Of The American Gods

@@ -1,0 +1,42 @@
+Message-ID: <CAGmQQQ4w33tzpE8A4QmrJDY=Ub=Qx6y_CnkmERE80t2x2xUJCw@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0545
+Date: Sun, 1 Oct 2023 11:25:00 +0530
+From: General Email <general.email.12341234@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: Please support/enable https by default in the Apache web sever.
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-10.mbox
+
+On Sat, 30 Sep, 2023, 9:32 pm Joe Schaefer, <joe@sunstarsys.com> wrote:
+
+> It is insane to ask this project to cater to the interests of 10 people
+> who are so PKI illiterate, the PMC needs to put the rest of the user base
+> at risk just to accommodate them.
+>
+> Certs require mandatory user serviceable parts.  There is no meaningful
+> way to  provide a default.
+>
+> Thanks.
+>
+
+
+Well, if you don't want to do this, its fine.
+
+But you can't abuse the developers by calling them illiterate.
+
+Your words are abusive and offensive for no reason.
+
+I don't like abusive people like you.
+
+I will now not continue this discussion.
+
+By the way, I asked for this change in apache http server. But, may be
+thousands of web developers also want the same change but they didn't
+approach the dev people of apache http server.
+
+But anyways, this discussion has become abusive now. So I am no more
+interested in this discussion.
+
+GE

@@ -1,0 +1,32 @@
+Message-ID: <CAM8zJQtfKoV2SAGywa8WUa7HpcBAjfiQKf1Ze1N6Ur3mjxPmPg@mail.gmail.com>
+X-Clawbench-ID: BIO-2024-1148
+Date: Sun, 8 Jan 2023 10:54:23 +0200
+From: Graham Inggs <ginggs@debian.org>
+To: tony mancill <tmancill@debian.org>
+Subject: Re: Packages in non-free can be autobuilt
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_01_msg00014.html
+
+Hi
+
+I was reminded of this thread now that cluster3 needs another rebuild
+for Python 3.11 (#1028186).
+
+On Wed, 30 Mar 2022 at 06:48, tony mancill  wrote:
+> Thanks for the reminder.  It's unfortunate, but the link to the full
+> license that causes the package to be non-free is broken and I don't see
+> a full copy of the license in either the package (neither in the sources
+> nor in d/copyright) or in the email thread about the license [1].
+...
+> [1] https://lists.debian.org/debian-med/2016/02/msg00000.html
+
+I think I found a copy of the full license on the Internet Archive's
+WayBackMachine [2].  Could it be included in the next upload?
+
+Regards
+Graham
+
+
+[2] https://web.archive.org/web/20150509003045/http://rana.lbl.gov/EisenSoftwareSource.htm

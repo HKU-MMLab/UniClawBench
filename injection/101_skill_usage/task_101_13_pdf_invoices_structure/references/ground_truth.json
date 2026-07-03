@@ -1,0 +1,107 @@
+{
+  "task_id": "task_101_13_pdf_invoices_structure",
+  "difficulty": "Medium",
+  "schema": "b",
+  "schema_notes": "row-level expected values with accepted variants",
+  "skills_declared": [
+    "pdf",
+    "pdf-generator"
+  ],
+  "ground_truth": {
+    "invoice_count": 5,
+    "total_pdf_count": 7,
+    "expected_out_of_scope_pdfs": [
+      {
+        "filename": "invoice_006.pdf",
+        "invoice_number": "BL-00184-R",
+        "canonical_reason": "Reissue of already-paid BL-00184 (covered by PAY-1002 + PAY-1003); the PDF body explicitly says 'do NOT submit a second payment'.",
+        "accepted_reason_keywords": ["reissue", "duplicate", "already paid", "do not pay", "BL-00184"]
+      },
+      {
+        "filename": "invoice_007.pdf",
+        "invoice_number": "LCS-2025-0314",
+        "canonical_reason": "Marketing-department invoice (cost center 4200, vendor Lumen Creative Studio) misrouted to Engineering AP; the PDF body explicitly says 'route to Marketing AP queue, NOT to Engineering AP'.",
+        "accepted_reason_keywords": ["marketing", "wrong department", "cost center 4200", "route to Marketing", "Lumen Creative", "misrouted"]
+      }
+    ],
+    "out_of_scope_invoices": {
+      "invoice_006.pdf": {
+        "invoice_number": "BL-00184-R",
+        "out_of_scope_reason": "Reissue of BL-00184 (which is already paid in full per ledger PAY-1002 + PAY-1003). The PDF explicitly says 'do NOT submit a second payment'. Including it in invoices.json or ap_reconciliation.csv as a new payable is wrong.",
+        "expected_marker_keywords": ["BL-00184-R", "reissue", "already paid", "BL-00184"]
+      },
+      "invoice_007.pdf": {
+        "invoice_number": "LCS-2025-0314",
+        "out_of_scope_reason": "Marketing-department invoice (cost center 4200, vendor Lumen Creative Studio). The PDF explicitly says 'route to Marketing AP queue, NOT to Engineering AP'. Including in this engineering AP run is wrong.",
+        "expected_marker_keywords": ["LCS-2025-0314", "marketing", "wrong department", "cost center 4200", "Lumen Creative"]
+      }
+    },
+    "out_of_scope_handling_note": "Note: added 2 distractor PDFs (invoice_006 = reissue of already-paid BL-00184; invoice_007 = marketing dept invoice). The executor must (a) NOT include them in invoices.json (5 in-scope invoices only); (b) NOT include them as rows in ap_reconciliation.csv; (c) acknowledge them in an 'Excluded' note (in summary.pdf bottom or a separate excluded.md) with a one-line reason for each. Both PDFs contain explicit disqualifying text. Listing either as a real payable triggers §6 scope-leakage cap 0.50.",
+    "required_keys": [
+      "invoice_number",
+      "date",
+      "vendor",
+      "line_items",
+      "subtotal",
+      "tax",
+      "total",
+      "currency"
+    ],
+    "accepted_key_aliases": {
+      "date": [
+        "invoice_date",
+        "invoiceDate"
+      ]
+    },
+    "ap_reconciliation": {
+      "INV-2025-0001": {
+        "currency": "USD",
+        "invoice_total": 329.08,
+        "paid_total": 329.08,
+        "status": "paid",
+        "variance": 0.0,
+        "payment_ids": ["PAY-1001"]
+      },
+      "BL-00184": {
+        "currency": "EUR",
+        "invoice_total": 691.09,
+        "paid_total": 691.09,
+        "status": "paid",
+        "variance": 0.0,
+        "payment_ids": ["PAY-1002", "PAY-1003"]
+      },
+      "2025-Q1-117": {
+        "currency": "USD",
+        "invoice_total": 251.65,
+        "paid_total": 0.0,
+        "status": "unpaid",
+        "variance": -251.65,
+        "payment_ids": []
+      },
+      "HCG-2025-0041": {
+        "currency": "USD",
+        "invoice_total": 13082.18,
+        "paid_total": 12000.0,
+        "status": "short_paid",
+        "variance": -1082.18,
+        "payment_ids": ["PAY-1004"]
+      },
+      "SL-2025-00876": {
+        "currency": "CNY",
+        "invoice_total": 19266.5,
+        "paid_total": 19466.5,
+        "status": "over_paid",
+        "variance": 200.0,
+        "payment_ids": ["PAY-1005"]
+      }
+    },
+    "topic_dimensions": [
+      "header_fields_vendor_number_date_payment_terms",
+      "line_items_sku_description_qty_unit_price_total",
+      "monetary_totals_reconciliation_subtotal_tax_shipping_grand_total",
+      "payment_status_and_outstanding_balance_vs_ledger",
+      "currency_or_unit_consistency_check_per_invoice"
+    ],
+    "min_dimensions_covered": 5
+  }
+}

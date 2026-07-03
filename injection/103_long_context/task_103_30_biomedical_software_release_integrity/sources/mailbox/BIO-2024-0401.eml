@@ -1,0 +1,46 @@
+Message-ID: <YhTxxV/xDrB3WuXs@an3as.eu>
+X-Clawbench-ID: BIO-2024-0401
+Date: Tue, 22 Feb 2022 15:23:01 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Lance Lin <lq27267@gmail.com>
+Subject: Re: PIQUE
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_02_msg00104.html
+
+Hi Lance,
+
+Am Tue, Feb 22, 2022 at 08:45:40PM +0700 schrieb Lance Lin:
+> Yes, this is the case. When I was looking at setting up autopkgtest, the
+> built-in test wanted to download very large data sets (several GB). Nilesh
+> and I discussed this and the topic has come up before.
+
+Several GB is in fact problematic.
+
+> Using wget can be problematic in the future as links can die or change,
+
+Very true.
+
+> downloading very large files could be problematic for the minimalist
+> autopkgtest VM, checking in a large file for test isn't great either,
+> neither is making a repo to hold test data.
+> In short, I just noted my progress on the mailing list and stopped. I
+> believe Tony said the test set he was using was the smallest possible, so
+> it may not be feasible to have an autopkgtest for PIQUE.
+
+I do not like to say that it is the method of choice for several GB of
+data in this specific case.  However, featuring decently large datasets
+can be stored as described in team policy[1] and you can see it
+implemented for instance in the package python-treetime.
+
+Just for the sake of completeness and possibly for others who might
+wonder about this topic.
+
+Kind regards
+    Andreas.
+
+[1] https://med-team.pages.debian.net/policy/#embedding-large-test-data
+
+--
+http://fam-tille.de

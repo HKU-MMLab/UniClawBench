@@ -1,0 +1,29 @@
+Message-ID: <YX1AlvMGOCYExKUi@debian>
+X-Clawbench-ID: BIO-2024-1465
+Date: Sat, 30 Oct 2021 18:24:46 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: debian-science@lists.debian.org
+Subject: Re: Debian Math Team
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_10_msg00046.html
+
+Hi,
+
+On Sat, Oct 30, 2021 at 02:52:25PM +0300, Andrius Merkys wrote:
+> On 2021-10-30 14:45, Anton Gladky wrote:
+>>From my point of view, we have enough really useful work in Debian which
+>> needs to be done (fixing bugs, adding autopkgtests, setting-up
+>> CI-pipelines etc.)
+>> instead of moving packages between teams.
+
+... and setting up a separate team could ease-off looking at those issues,
+and fixing them quicky, making better quality math software for end users.
+While otherwise I'd be looking up for specific packages in a huge pile..
+
+> Couldn't agree more. Uploader agreement to moving is a must, IMO.
+
+Ofcourse, no-one is doing a hostile takeover here.
+
+Nilesh

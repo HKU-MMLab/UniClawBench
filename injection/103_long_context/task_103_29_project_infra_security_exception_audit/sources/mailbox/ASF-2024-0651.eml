@@ -1,0 +1,44 @@
+Message-ID: <f6beb73f-4326-94cc-b4b2-a04c9cc62ea8@wanadoo.fr>
+X-Clawbench-ID: ASF-2024-0651
+Date: Wed, 16 Feb 2022 20:35:33 +0100
+From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+To: dev@httpd.apache.org, Stefan Eissing <stefan@eissing.org>
+Subject: Re: opinion poll, stale issues
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-02.mbox
+
+Le 16/02/2022 à 10:32, Stefan Eissing a écrit :
+> How about we close stale issues on our bugzilla after a year without changes with
+>
+> WONTFIX
+> We are sorry, but no one found the interest/time to work on this.
+>
+> ideally as an automated job somewhere?
+>
+> Kind Regards,
+> Stefan
+
+Hi,
+
+I share Rüdiger point of view.
+
+However, in the past, there has already been some mass updates (random
+example BZ 55039)
+It has been done more than 1 year after the official EOL of the 2.2.x
+branch and only targeted 2.0.x and 2.2.x bugs.
+
+I'm fine with the extensive explanation added and with the timing, long
+enough after EOL.
+
+This approach could be refined with mass closing old entries tagged
+against HEAD.
+For example in BZ 41088, 2.5-HEAD was certainly not against the actual
+2.5 when opened in 2006.
+
+Such mass-updates can be done directly within the bugzilla HMI. Not sure
+if it requires some special rights, but should it need some special
+karma, some of us already have it.
+
+CJ

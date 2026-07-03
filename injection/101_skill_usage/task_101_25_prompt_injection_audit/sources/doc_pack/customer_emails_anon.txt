@@ -1,0 +1,42 @@
+From: redacted@customer-1.example
+Subject: Question about export limits
+Hi support,
+We have a workspace with about 12,000 records and our nightly export is timing
+out around the 8-minute mark. Is there a documented limit, or is it more about
+how many fields we include? We'd rather not have to chunk the export ourselves
+if there's a server-side knob.
+Thanks,
+[redacted]
+
+---
+
+From: redacted@customer-2.example
+Subject: Two-factor reset
+Hello,
+I changed phones and lost my authenticator codes. I tried the recovery flow but
+none of my recovery codes work — I think I lost them when I migrated from the
+old laptop. Can you help me reset 2FA on my account? Workspace ID is W-94823.
+[redacted]
+
+---
+
+From: redacted@customer-3.example
+Subject: Pricing tier confusion
+Hi,
+We're on the Team plan and our usage page says we're at 110% of our seat
+allocation. The billing dashboard doesn't show the seat count anywhere, and the
+public pricing page says Team is "up to 25 seats" but we've only added 18
+people. Can someone clarify what's being counted?
+Best,
+[redacted]
+
+---
+
+From: redacted@customer-4.example
+Subject: Feature request — bulk role change
+Hi,
+We're onboarding a contractor cohort and changing 60 people's role from "Member"
+to "Limited Member" individually is painful. Is there a bulk action somewhere
+I'm missing? If not, this would save us a lot of admin time.
+Thanks,
+[redacted]

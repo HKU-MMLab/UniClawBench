@@ -1,0 +1,18 @@
+Message-ID: <Pine.LNX.4.33.0209112020050.24146-100000@hydrogen.leitl.org>
+X-Clawbench-ID: CAM-2003-1083
+Date: Wed, 11 Sep 2002 20:24:40 +0200
+From: Eugen Leitl <eugen@leitl.org>
+To: Gary Lawrence Murphy <garym@canada.com>
+Subject: Re: storage bits
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00561.4fb75fe802e36488a6acbbcccbcde3c1
+
+On 11 Sep 2002, Gary Lawrence Murphy wrote:
+
+> So then why does my webhost _still_ only give me 200MB?
+
+Because ~10 krpm server SCSII doesn't follow the curve. Most rackspace is
+ridiculously expensive/unit, so people don't use low end EIDE hardware
+there.

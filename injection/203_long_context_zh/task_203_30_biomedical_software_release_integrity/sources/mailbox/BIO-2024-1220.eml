@@ -1,0 +1,32 @@
+Message-ID: <YYUKNjYxLgtZwrAS@an3as.eu>
+X-Clawbench-ID: BIO-2024-1220
+Date: Fri, 5 Nov 2021 11:40:54 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-science@lists.debian.org
+Subject: Re: Blends framework for Debian Math (Was: Science Subgroups [was Re: Debian Math Team])
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_11_msg00045.html
+
+Am Fri, Nov 05, 2021 at 10:22:32AM +0100 schrieb Gard Spreemann:
+>
+> I will try to categorize the few packages I maintain myself, and issue a
+> merge request so that there are examples for people to go by.
+
+I merged your commits but the proper way to go would to create say two
+new tasks files either named with the cryptical names (like 55n31 and
+65k10 ... which would end up in metapackages math-55n31 and math-65k10
+respectively) or somehow speaking names like persistent-homology and
+numerical-optimization (or something better!)  Than you add your
+binary packages to those tasks files.
+
+All 'X-*' fields in tasks files are pure comments for editors of the
+tasks files and are technically ignored (as well as in d/control files).
+
+Kind regards
+
+      Andreas.
+
+--
+http://fam-tille.de

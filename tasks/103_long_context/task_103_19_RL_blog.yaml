@@ -1,0 +1,57 @@
+task_id: task_103_19_RL_blog
+category: 103_long_context
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I need to make a paper-reading HTML blog on the topic of Reward Hacking in Reinforcement Learning.
+  Please organize it around the following main thread:
+  1. Reward functions and specification gaps
+    - Define reward hacking: the model optimizes the written reward but deviates from the true objective.
+    - Introduce the gap between proxy reward and true intent.
+
+  2. Shortcut learning as a source of hacking
+    - Explain how shortcut learning lets models exploit spurious correlations to obtain high reward.
+
+  3. Reward hacking in RL environments
+    - Use reward misspecification in RL environments to explain how agents exploit environment loopholes.
+
+  4. Reward hacking in RLHF for LLMs
+    - Explain that the reward model in RLHF is also a proxy objective.
+    - Explain that LLMs may learn to flatter, mislead, or optimize the evaluator.
+
+  5. Evaluator and in-context reward hacking
+    - Discuss biases and exploitability of LLM-as-judge.
+    - Introduce in-context reward hacking: the model infers the scoring rule from context and games it.
+
+  6. Generalization of hacking skills
+    - Discuss whether reward-hacking behaviors transfer across tasks.
+
+  7. Detection and mitigation
+    - Summarize mitigation directions: improving RL algorithms, auditing reward models, detecting anomalous feature use, and analyzing RLHF data bias.
+
+  The candidate papers are all in `/tmp_workspace/clawbench/sources/papers/`, and I renamed the files to non-semantic numbers, so do not guess from filenames. Read these papers and select the papers that should be discussed for each section, including the opening problem introduction.
+
+  Make the blog rich in both text and figures. You may screenshot figures/tables from the papers, but the screenshots must be complete, clear, matched to the content, and detailed enough to read text and details. Formulas may be written as screenshots or LaTeX. Use the prepared `/tmp_workspace/clawbench/sources/assets/`, which contains the CSS, JavaScript, and MathJax formula-rendering dependencies needed by the page template.
+
+  Save the final blog to `/tmp_workspace/results/RL_blog/`; it should contain the HTML file and corresponding assets. Put images referenced by the HTML into `/tmp_workspace/clawbench/results/assets/images`, and cite the source paper for every figure in the blog.
+
+  Also save `/tmp_workspace/results/selection_note.md` explaining why each section selected these papers.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/RL_blog/
+  - references/paper_mapping.json
+sources:
+  - papers/
+  - assets/
+
+codex:
+  max_user_followups: 2

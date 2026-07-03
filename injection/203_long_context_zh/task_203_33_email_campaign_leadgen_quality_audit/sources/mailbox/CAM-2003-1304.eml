@@ -1,0 +1,30 @@
+Message-ID: <001701c23c8a$edd2be00$7c640f0a@mfc.corp.mckee.com>
+X-Clawbench-ID: CAM-2003-1304
+Date: Mon, 05 Aug 2002 10:18:11 -0400
+From: Fox <lds0062@cdc.net>
+To: razor-users@example.sourceforge.net
+Subject: Re: [Razor-users] Reliability of the razor servers?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00569.76b6e6837716e2abd44bd173abeca99b
+
+I use a perl script that disables Razor for thirty minutes any time it times out.  Not a true fix, but a workaround.
+
+Fox
+  ----- Original Message -----
+  From: Daniel Higgins
+  To: razor-users@example.sourceforge.net
+  Sent: Monday, August 05, 2002 9:49 AM
+  Subject: [Razor-users] Reliability of the razor servers?
+
+
+  ok so after waiting all this time before upgrading to V2 (just did it this morning because V1 isn't effective at all anymore) i ran into problems with reliability of the servers. it took me about half an hour to do a razor-admin -create and razor-admin -register constantly retrying because it kept timing out
+
+  connect1: nextserver: Could not get valid info from Discovery Servers
+
+  is it a problem just now or is that standard issue? up until now i've been advocating razor to all, but i it starts to have reliability issues we might as well look for another way to catch the spam, we can't afford to have one anti spam trick, no matter how effective, bog down the entire mail server
+
+  --
+  Daniel Higgins
+  Netcommunications Inc.

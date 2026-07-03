@@ -1,0 +1,21 @@
+task_id: task_203_35_2048_h5_play
+category: 203_long_context_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我想看看你能否认真地玩一个 H5 小游戏。打开这个 2048 页面：https://hyhang.github.io/2048/ 。目标是你必须完成 2048。达到一个高数字方块是我最在意的，如果你最终没有达到 2048，那一部分的分数会按你最终的最高方块除以 2048 来折算。但我也在意你实际是怎么玩的：是否有真正的游戏过程（而不只是开局截图）、你的最终报告是否完整，以及你是否诚实地游玩、没有篡改棋盘。
+
+  不要只截图起始棋盘就停下；要真正去尝试游玩。游玩过程中你可以自行决定策略。最后，把最高方块、分数、最终棋盘截图和关键进度截图保存到 `/tmp_workspace/results/2048_result.md`，图片保存在 `/tmp_workspace/results/` 下。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+codex:
+  max_user_followups: 2

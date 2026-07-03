@@ -1,0 +1,15 @@
+name = "Ananke Theme for Hugo"
+license = "MIT"
+licenselink = "https://github.com/gohugo-ananke/ananke/blob/master/LICENSE.md"
+description = "A Base theme for building full featured Hugo sites"
+homepage = "https://github.com/gohugo-ananke/ananke"
+demosite = "https://ananke-theme.netlify.app/"
+tags = ["website", "starter", "responsive", "Disqus", "blog", "Tachyons", "Multilingual"]
+features = ["posts", "shortcodes", "related content", "comments"]
+min_version = "0.160.0"
+
+authors = [
+  {name = "Patrick Kollitsch", homepage = "https://github.com/davidsneighbour"},
+  {name = "Regis Philibert", homepage = "https://github.com/regisphilibert"},
+  {name = "Bud Parr", homepage = "https://github.com/budparr"}
+]

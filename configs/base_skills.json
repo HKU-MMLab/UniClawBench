@@ -1,0 +1,12 @@
+{
+  "skills": [
+    "apt-package-manager",
+    "agent-browser-control",
+    "web-search",
+    "duckduckgo-search",
+    "desktop-control"
+  ],
+  "fallback_skills": [
+    "desktop-control"
+  ]
+}

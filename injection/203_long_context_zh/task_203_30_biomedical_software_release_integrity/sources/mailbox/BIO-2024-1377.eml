@@ -1,0 +1,30 @@
+Message-ID: <1ef13b76a7abf963c602c3fa2246017eae820cbd.camel@mzf.fr>
+X-Clawbench-ID: BIO-2024-1377
+Date: Sun, 3 Oct 2021 11:50:43 +0200
+From: François Mazen <francois@mzf.fr>
+To: debian-science <debian-science@lists.debian.org>
+Subject: Update Ceres Solver to 2.0.0
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_10_msg00008.html
+
+Hello science team,
+
+I've just packaged the last version of ceres package and I've pushed it
+to the salsa repo [1], and to mentors [2].
+
+Could someone review the package? The tricky part may be the transition
+of the lib package from libceres1 to libceres2. For now, I've just
+renamed the binary package but maybe some additional actions are
+required?
+
+In addition, could you please grant me right to upload the package as
+I'm DM?
+
+Thanks,
+François
+
+
+[1] https://salsa.debian.org/science-team/ceres-solver
+[2] https://mentors.debian.net/package/ceres-solver/

@@ -1,0 +1,46 @@
+Message-ID: <20240906130525.GR8029@beskar.mdcc.cx>
+X-Clawbench-ID: BIO-2024-0475
+Date: Fri, 6 Sep 2024 15:05:25 +0200
+From: Joost van Baal-Ilić <joostvb-debian@mdcc.cx>
+To: Urmas Rist <urmas@leil.io>
+Subject: Re: Re: Re: Shared cluster storage for bioinformatics
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_09_msg00003.html
+
+Hi Urmas,
+
+[should some of the Cc's get dropped?  Maybe this should get redirected to
+1080956@bugs.debian.org ? ]
+
+On Fri, Sep 06, 2024 at 10:41:11AM +0000, Urmas Rist wrote:
+> Sorry for the delay, I also wanted to talk with the former LizardFS
+> maintainer as well. I've now finally submitted a ITP for SaunaFS
+> (https://lists.debian.org/debian-devel/2024/09/msg00115.html). Since it was my
+> first ITP, I don't know if I missed anything (I may have been too detailed,
+> after now reading other ITP's). As said there, I will need a sponsor, but I'll
+> start working on packages for it.
+>
+> > Thank you, Urmas! This sounds great. I am not sure about how much help I can be
+> > when it comes to maintaining/packaging work that is such close to the kernel,
+> > but just shout out whenever you need help.
+>
+> It's not actually part of the kernel in any way. It uses FUSE (fuse3), which
+> means all of the program is written in userspace. The only thing close
+> to the kernel is the client, which handles the filesystem calls from the
+> kernel in userspace.
+
+The "Description: " in your ITP ends in a dot, and the section below it is a
+bit too terse.  The idea is these will be used as Description and long
+description in the packages debian/control file.  See
+https://www.debian.org/doc/debian-policy/ch-binary.html#s-descriptions for some
+hints.
+
+Of course, this can all get fixed later when you really start the packaging work.
+
+Thanks for your work & welcome to Debian Packaging!
+
+Bye,
+
+Joost

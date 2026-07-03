@@ -1,0 +1,24 @@
+Message-ID: <udl8rv711hu.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-1355
+Date: Sun, 23 Jan 2022 00:10:05 -0500
+From: ucko@debian.org (Aaron M. Ucko)
+To: Andreas Tille <andreas@an3as.eu>
+Subject: Re: [Help] librostlab-blast fails its autopkgtest with C++ issue
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_01_msg00071.html
+
+Andreas Tille  writes:
+
+> Any idea how to fix
+[...]
+> [1] https://salsa.debian.org/med-team/librostlab-blast/-/jobs/2383360
+
+Please try the attached patch, which eliminates the need to force an old
+C++ standard version (which this package can't expect callers to use) in
+debian/rules.
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

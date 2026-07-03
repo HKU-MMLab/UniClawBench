@@ -1,0 +1,66 @@
+Message-ID: <Y+NKNZ1ZXC77bIfE@an3as.eu>
+X-Clawbench-ID: BIO-2024-1483
+Date: Wed, 8 Feb 2023 08:07:33 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: "Rebecca N. Palmer" <rebecca_palmer@zoho.com>
+Subject: Re: Switching repository branch name from master to main (Was: [Git][med-team/snakemake] Pushed new branch main)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_02_msg00023.html
+
+Dear Rebecca,
+
+Am Tue, Feb 07, 2023 at 08:04:01AM +0000 schrieb Rebecca N. Palmer:
+> On 07/02/2023 07:00, Andreas Tille wrote:
+> > Thanks for explaining your reason for the change.  I admit I have not
+> > heard about this
+>
+> I don't know how widely accepted this currently is, either within Debian or
+> more generally.
+
+Ahhh, I assumed you might have refered to some Debian discussion I might
+have missed.  As long as you feel responsible for this repository and
+prefer this layout I'm fine with whatever you decide.  If it was just
+your goal to not use the term "master" I admit I would suggest to rather
+follow DEP14[1] and use "debian/unstable".  While I'm not sure if and
+when Debian Med will follow DEP14 (it became a bit silent around this
+DEP) its IMHO better to use something that is documented somewhere in
+the Debian universe.  This is in line with the idea of doing some
+automatic migration of our repositories since we could simply test whether
+a repository is migrated or not by checking this branch name.  Diverging
+from documented repository layouts is IMHO not a good idea.
+
+> > our metadata should just reflect
+> > this reality.
+>
+> I agree.  (The main reason most of my packages still have nominal Uploaders
+> who haven't touched them in years is that leaving them there was free while
+> hurriedly asking them if they still wanted it would risk accidentally
+> offending them.)
+
+I can perfectly understand that you are hesitating here.  This is a
+situation I'm facing quite frequently since in more than 100 packages I
+touched the Uploaders are inactive for years.  Some of them somewhere
+confirmed they are inactive and than I remove / replace them and to make
+really sure they will not be offended or even more to reward their
+contribution I do this explicitly in d/changelog.
+
+> > > I'm probably not the best person to maintain snakemake
+>
+> I do intend to continue maintaining snakemake for the time being (including
+> packaging the new upstream release that just happened).  This was intended
+> to be a statement that I'm happy to give it up if a more suitable person
+> does volunteer.
+
+I'm really happy you are caring for snakemake!  My personal experience
+to find volunteers this way is that its not very promising. ;-)
+
+Thanks again for all your work
+   Andreas.
+
+
+[1] https://dep-team.pages.debian.net/deps/dep14/
+
+--
+http://fam-tille.de

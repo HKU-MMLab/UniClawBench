@@ -1,0 +1,39 @@
+Message-ID: <YYOar7UFiopNySUh@an3as.eu>
+X-Clawbench-ID: BIO-2024-1435
+Date: Thu, 4 Nov 2021 09:32:47 +0100
+From: Andreas Tille <tille@debian.org>
+To: Anton Gladky <gladk@debian.org>
+Subject: Re: Debian Math Team
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_11_msg00030.html
+
+Dear Anton,
+
+Am Wed, Nov 03, 2021 at 09:09:15PM +0100 schrieb Anton Gladky:
+> I think we all have a very limited free time to work on Debian.
+> At least it is my situation.
+>
+> ...
+>
+> I will probably need to request membership in other teams due to
+> some QA or release-transition work, but....
+
+I can fully understand you doubt and please let me use this chance to
+explicitly thank you for all your work in Debian Science.  I'm pretty
+convinced that Debian Science would be in a worse shape without all your
+work.  Thanks a lot for this!
+
+Regarding Debian Math I personally hope that moving mathematics packages
+from Debian Science repository to Debian Math repository which also
+means that these packages are taken from your todo list since I fully
+trust the members of the Debian Math team to take over the role to care
+for all packages under this scope.
+
+Kind regards
+
+      Andreas.
+
+--
+http://fam-tille.de

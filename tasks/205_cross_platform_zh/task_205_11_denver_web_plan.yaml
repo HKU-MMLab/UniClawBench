@@ -1,0 +1,44 @@
+task_id: task_205_11_denver_web_plan
+category: 205_cross_platform_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+recording: none
+headed: auto
+task: |
+  你是一名工程师，第一次到丹佛出差。
+  请为下周六制定计划，那天你只有 13:30-18:30 有空，而且固定
+  出发点是 Denver Union Station。如果下周六是公共假日、
+  闭馆日、特殊营业时间日、售罄，或者官方页面没有提供
+  足够的针对该日期的开放/入场信息，则改用再下一个
+  周六并说明原因。仅使用浏览器制定一份半日游
+  计划。固定的候选景点是 Denver Art Museum、Denver
+  Botanic Gardens、Museum of Nature & Science 和 Meow Wolf Denver。
+
+  你需要：
+  1. 查看各景点的官方网站，了解所选日期的开放时间、最后入场
+     时间以及预约/购票规则。
+  2. 使用地图网页查看从出发点出发以及
+     景点之间的通行时间。
+  3. 找一个候选咖啡馆网页，确认其在所选日期的营业状态和
+     位置。
+  4. 在这个文件中提供完整路线：
+
+         /tmp_workspace/results/denver_sat_trip.md
+
+  最终路线必须选择 2 个景点外加 1 个咖啡休息点，并且必须
+  满足：总时长不超过 5 小时，每段单独的换乘
+  最好不超过 35 分钟，且没有预约状态
+  不明确的地点。Markdown 必须包含：候选检查、所选路线、定时
+  行程、为何拒绝其他选项。在最终计划中注明所选日期。
+codex:
+  max_user_followups: 2
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/process_evidence/denver_art_museum.png
+  - references/process_evidence/google_map_DAM_to_DBG.png
+  - references/process_evidence/google_map_DUS_to_DAM.png

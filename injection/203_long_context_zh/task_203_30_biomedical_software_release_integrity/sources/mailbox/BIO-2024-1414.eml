@@ -1,0 +1,22 @@
+Message-ID: <YauHLxanpd9Z0MsE@debian>
+X-Clawbench-ID: BIO-2024-1414
+Date: Sat, 4 Dec 2021 20:50:15 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: dparsons@debian.org
+Subject: Failures for sklearn
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_12_msg00003.html
+
+Hi Drew,
+
+You uploaded new version of sklearn a week ago, but unfortunately it seems
+to not build on several architectures and also has a failing autopkgtest on amd64.
+
+Would you have any plans to fix the situation?
+
+[1]: https://qa.debian.org/excuses.php?package=scikit-learn
+
+Regards,
+Nilesh

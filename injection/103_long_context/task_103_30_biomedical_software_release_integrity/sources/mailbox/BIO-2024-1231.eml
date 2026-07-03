@@ -1,0 +1,47 @@
+Message-ID: <87fssfxcl3.fsf@burgos>
+X-Clawbench-ID: BIO-2024-1231
+Date: Tue, 02 Nov 2021 08:04:40 +0100
+From: Ole Streicher <olebole@debian.org>
+To: debian-science@lists.debian.org
+Subject: Re: Debian Math Team
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_11_msg00011.html
+
+"Torrance, Douglas"  writes:
+> I went ahead and started a draft of a team policy including this as
+> the Maintainer address [1].  It's just a fork of the Debian Science
+> policy and still needs a lot of work.  The source is at [2].  Please
+> feel free to suggest/make changes!
+
+I'd really disagree here. We should avoid a fragmentation of the policy
+without a really good reason. This makes it difficult for people to step
+in, as they have to learn all the small differences in the team
+policy. And it is hard to find them in the full text.
+
+Instead, I would suggest to keep (and improve) the Science Team policy,
+and then to have a *tiny* Math team policy, which could just be a
+5..10-liner, like
+
+| We inherit the Science Team policy, except:
+| * The maintainer field should be set to
+|   "Debian Math Team ".
+| * The VCS location is in the Salsa namespace
+|   https://salsa.debian.org/math-team/
+
+Having many nearly-identical policies for relatively small teams
+otherwise creates problems in consistency, and I am afraid that useful
+changes are not always "upstreamed" to the science umbrella otherwise.
+
+I would also suggest (also for the science team policy) that a package
+under team maintainance *must* be git version controlled and under the
+team's namespace.
+
+I would (again, also for science team) not put the metapackages into the
+policy, as the policy should remain rather stable, but the metapackages
+are ongoing work.
+
+Cheers
+
+Ole

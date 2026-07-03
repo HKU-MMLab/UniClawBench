@@ -1,0 +1,61 @@
+Message-ID: <f1846bf8-b216-b7da-3b33-801892f1caa2@kippdata.de>
+X-Clawbench-ID: ASF-2024-1092
+Date: Thu, 12 Jan 2023 14:35:19 +0100
+From: Rainer Jung <rainer.jung@kippdata.de>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.55-rc1 as httpd-2.4.55
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-01.mbox
+
+Not a showstopper, but: srclib/apr/configure was again generated with
+autoconf 2.70+ (2.71). This triggers a bug which is fixed in APR 1.7.x
+head, but the fix has not been released as there was not APR release vor
+almost 4 years now.
+
+Since the bundled APR/APU are not actually part of the release, for me
+this is not a show stopper. I just wanted to note the defect in case
+others are wondering, why the bundled APR can not be build using configure.
+
+Technical details:
+
+configure: error: could not determine the string function for int64_t
+
+It comes from defining some things once in conftest.c and again in the
+included confdefs.h.
+
+Some pointers:
+
+https://github.com/apache/apr/pull/25
+https://github.com/apache/apr/commit/a15958a37a06f71c42c690278f9c958b93b7ee20
+https://github.com/apache/apr/commit/e0197912a5438b3836ce2e76371f01e289d82931
+
+https://www.mail-archive.com/bug-autoconf@gnu.org/msg04695.html
+
+https://gcc.gnu.org/bugzilla/show_bug.cgi?id=97998
+
+Best regards,
+
+Rainer
+
+Am 10.01.23 um 14:40 schrieb Eric Covener:
+> Hi all,
+>
+> Please find below the proposed release tarball and signatures:
+>
+> https://dist.apache.org/repos/dist/dev/httpd/
+>
+> I would like to call a VOTE over the next few days to release
+> this candidate tarball httpd-2.4.55-rc1 as 2.4.55:
+> [ ] +1: It's not just good, it's good enough!
+> [ ] +0: Let's have a talk.
+> [ ] -1: There's trouble in paradise. Here's what's wrong.
+>
+> The computed digests of the tarball up for vote are:
+> sha256: 5276ea8bc6fff31eed5c82132ae51a0b2ee05f9e6b61a00fa877f6cadab3b638
+> *httpd-2.4.55-rc1.tar.gz
+> sha512: ca0d03b5e74078977378fe711ca3ed8cf63c109b7dbe73f2c43f7f30f7e522bbe46f93189a183b7675394d57fffb0c2526facd8d40508be984a7a8f64d18f8d6
+> *httpd-2.4.55-rc1.tar.gz
+>
+> The SVN candidate source is found at tags/2.4.55-rc1-candidate.

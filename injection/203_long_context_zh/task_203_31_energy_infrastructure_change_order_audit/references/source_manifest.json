@@ -1,0 +1,107 @@
+{
+  "task_id": "task_103_31_energy_infrastructure_change_order_audit",
+  "real_email_source": "Enron public mailbox shackleton-s index.json from mail.enroncorp.com",
+  "source_mailbox": "shackleton-s",
+  "source_total_emails": 33266,
+  "source_index_emails_loaded": 14258,
+  "candidate_real_email_count_after_cleaning": 5482,
+  "real_email_count": 1456,
+  "synthetic_implant_count": 44,
+  "total_email_count": 1500,
+  "construction": "1500-message mailbox: Enron shackleton-s public mailbox emails plus sparse controlled implants. Surface issues are intentionally small; the deep Red Mesa / Harbor Field Services chain requires cross-linking contract scope, field tickets, invoices, delivery quantities, photos, DBA/payment routing, conflict certification, retainage release, and records handling clues.",
+  "surface_issues": {
+    "surface_01_material_purchase_splitting": {
+      "theme": "small material purchases split across requisitions to stay below project approval threshold",
+      "ids": [
+        "ENP-2001-0156",
+        "ENP-2001-0476",
+        "ENP-2001-0731",
+        "ENP-2001-0895"
+      ],
+      "minimum_ids_for_credit": 2
+    },
+    "surface_02_equipment_overtime_miscoding": {
+      "theme": "equipment rental or overtime charges coded as general project support instead of change-order cost",
+      "ids": [
+        "ENP-2001-0214",
+        "ENP-2001-0588",
+        "ENP-2001-1022",
+        "ENP-2001-1376"
+      ],
+      "minimum_ids_for_credit": 2
+    },
+    "surface_03_acceptance_photo_gap": {
+      "theme": "site acceptance photos or field signoff records lack date, location, or inspector confirmation",
+      "ids": [
+        "ENP-2001-0332",
+        "ENP-2001-0644",
+        "ENP-2001-1181"
+      ],
+      "minimum_ids_for_credit": 2
+    },
+    "surface_04_expired_subcontractor_certificate": {
+      "theme": "subcontractor insurance/safety certificate expired while work continued pending renewal",
+      "ids": [
+        "ENP-2001-0448",
+        "ENP-2001-0910",
+        "ENP-2001-1329"
+      ],
+      "minimum_ids_for_credit": 2
+    }
+  },
+  "deep_issue": {
+    "theme": "Red Mesa Civil / Harbor Field Services change-order overbilling concern involving scope overlap with base contract, approval-threshold splitting, delivery ticket and invoice quantity mismatches, reused acceptance photos, oral field approvals later backfilled, early retainage release, possible relationship between field supervisor and subcontractor contact, and records separated across project controls and procurement folders.",
+    "core_ids": [
+      "ENP-2001-0037",
+      "ENP-2001-0084",
+      "ENP-2001-0129",
+      "ENP-2001-0176",
+      "ENP-2001-0223",
+      "ENP-2001-0284",
+      "ENP-2001-0341",
+      "ENP-2001-0404",
+      "ENP-2001-0469",
+      "ENP-2001-0532",
+      "ENP-2001-0611",
+      "ENP-2001-0688",
+      "ENP-2001-0746",
+      "ENP-2001-0823",
+      "ENP-2001-0914",
+      "ENP-2001-0977",
+      "ENP-2001-1058",
+      "ENP-2001-1116",
+      "ENP-2001-1194",
+      "ENP-2001-1267",
+      "ENP-2001-1338",
+      "ENP-2001-1410",
+      "ENP-2001-1463",
+      "ENP-2001-1492"
+    ],
+    "minimum_ids_for_credit": 12,
+    "strong_credit_ids": 18,
+    "critical_link_ids": [
+      "ENP-2001-0084",
+      "ENP-2001-0223",
+      "ENP-2001-0284",
+      "ENP-2001-0404",
+      "ENP-2001-0469",
+      "ENP-2001-0532",
+      "ENP-2001-0688",
+      "ENP-2001-0914",
+      "ENP-2001-1116",
+      "ENP-2001-1194",
+      "ENP-2001-1463",
+      "ENP-2001-1492"
+    ]
+  },
+  "distractor_ids": [
+    "ENP-2001-0260",
+    "ENP-2001-0620",
+    "ENP-2001-0869",
+    "ENP-2001-0990",
+    "ENP-2001-1088",
+    "ENP-2001-1244"
+  ],
+  "updated_at": "2026-05-03T00:00:00+08:00",
+  "format_note": "During construction, raw public Enron JSON and a cleaned 1456-message real pool were used as intermediate inputs; these are NOT shipped. Only the final mixed corpus under sources/mailbox ships to the executor. Synthetic implant IDs are distributed across ENP-2001 numeric positions."
+}

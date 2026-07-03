@@ -1,0 +1,58 @@
+Message-ID: <Y9ZUU2fp/l9FNID0@an3as.eu>
+X-Clawbench-ID: BIO-2024-0005
+Date: Sun, 29 Jan 2023 12:11:15 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>,	Debian Python <debian-python@lists.debian.org>
+Subject: Remaining numpy 1.24 issues on 32bit architectures
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_01_msg00053.html
+
+Hi,
+
+I think there are some remaining issues with numpy 1.24 migration on 32
+bit architectures[1].
+
+Here is one example:
+
+_________ TestSequence.test_getitem_with_slice_has_positional_metadata _________
+
+self =
+
+    def test_getitem_with_slice_has_positional_metadata(self):
+        s = "0123456789abcdef"
+        length = len(s)
+        seq = Sequence(s, metadata={'id': 'id3', 'description': 'dsc3'},
+                       positional_metadata={'quality': np.arange(length)})
+
+        eseq = Sequence("012", metadata={'id': 'id3', 'description': 'dsc3'},
+                        positional_metadata={'quality': np.arange(3)})
+        self.assertEqual(seq[0:3], eseq)
+        self.assertEqual(seq[:3], eseq)
+        self.assertEqual(seq[:3:1], eseq)
+
+        eseq = Sequence("def", metadata={'id': 'id3', 'description': 'dsc3'},
+                        positional_metadata={'quality': [13, 14, 15]})
+>       self.assertEqual(seq[-3:], eseq)
+E       AssertionError: Seque[128 chars]: int32>
+E       Stats:
+E           length: 3
+E       ----------------[14 chars]0 def != Seque[128 chars]: int64>
+E       Stats:
+E           length: 3
+E       ----------------[14 chars]0 def
+
+skbio/sequence/tests/test_sequence.py:748: AssertionError
+
+How can I ensure that in both cases the arrays have the same type (I think it makes
+no difference whether it is np.int32 or np.int64 as long as they are of same type.
+
+Kind regards
+
+     Andreas.
+
+[1] https://buildd.debian.org/status/package.php?p=python-skbio&suite=experimental
+
+--
+http://fam-tille.de

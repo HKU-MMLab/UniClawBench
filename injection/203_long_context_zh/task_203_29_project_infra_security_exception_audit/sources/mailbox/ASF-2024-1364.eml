@@ -1,0 +1,30 @@
+Message-ID: <CAKQ1sVN+9zYOGq0iu_uk2D86v_meTHWW5LVaPQHERoxN3o1GKA@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1364
+Date: Fri, 12 Apr 2024 15:06:48 +0200
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: pytest results for 2.4.59
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-04.mbox
+
+On Sat, Apr 6, 2024 at 10:46 AM jean-frederic clere <jfclere@gmail.com> wrote:
+>
+> It seems pthread_kill(t, 0) returns 0 even the thread t has exited...
+> older version of fedora will return 3 (I have tried fc28)
+>
+> The small example (taken from the internet) seems to behave like httpd
+> reporting running threads that have exited...
+>
+> I have created https://bugzilla.redhat.com/show_bug.cgi?id=2273757 in
+> case it is a fedora/rhel bug.
+
+FWIW I find the new pthread_kill() behaviour completely useless. ESRCH
+was for threads that exited already but were not joined (i.e.
+"inactive" per POSIX), but for threads that are joined/detached (i.e.
+"dead" or "end of lifetime") as documented by POSIX it's completely
+useless because any pthread_ function usage is already undefined
+behaviour on those (IOW, no one should do this).
+So glibc conforming to POSIX here by removing ESRCH is just pointless,
+they just killed pthread_kill(, 0) for no/bad reasons..

@@ -1,0 +1,72 @@
+{
+  "description": "Offline catalog of Library-of-Congress-style records. Select records with a genuinely usable, openly-licensed FULL image. Each <id>.json has: type, collection_rights (collection-level), item_rights (item-level \u2014 AUTHORITATIVE for this item), image{thumbnail,full_image,iiif,width}, and a dedup_group (records sharing a dedup_group are the SAME image).",
+  "requirements": {
+    "item_level_rights_open": "item_rights must be clearly open: 'No known restrictions' or 'Public domain'. Restricted, undetermined, or advisory-only rights do NOT qualify, even if the collection-level rights look open.",
+    "full_image_available": "a full/high-res image must actually be available (image.full_image == true); thumbnail-only does NOT count",
+    "is_an_image": "the item must be a visual image (type 'photograph' or similar); OCR'd text/manuscripts, sound recordings, etc. do NOT count even if they have a scan",
+    "deduplicated": "records sharing a dedup_group are the same image and must be counted only ONCE"
+  },
+  "select_count": 5,
+  "records": [
+    {
+      "id": "R01",
+      "file": "R01.json",
+      "title": "Migrant Mother, California"
+    },
+    {
+      "id": "R02",
+      "file": "R02.json",
+      "title": "Migrant Mother (alternate catalog record)"
+    },
+    {
+      "id": "R03",
+      "file": "R03.json",
+      "title": "Brooklyn Bridge under construction"
+    },
+    {
+      "id": "R04",
+      "file": "R04.json",
+      "title": "Dust Bowl farm, Oklahoma"
+    },
+    {
+      "id": "R05",
+      "file": "R05.json",
+      "title": "Studio portrait, 1940s"
+    },
+    {
+      "id": "R06",
+      "file": "R06.json",
+      "title": "Coney Island beach crowd"
+    },
+    {
+      "id": "R07",
+      "file": "R07.json",
+      "title": "Letter from a soldier, transcribed"
+    },
+    {
+      "id": "R08",
+      "file": "R08.json",
+      "title": "Grand Central Terminal interior"
+    },
+    {
+      "id": "R09",
+      "file": "R09.json",
+      "title": "Unidentified street scene"
+    },
+    {
+      "id": "R10",
+      "file": "R10.json",
+      "title": "Lincoln Memorial dedication"
+    },
+    {
+      "id": "R11",
+      "file": "R11.json",
+      "title": "Brooklyn Bridge (duplicate scan)"
+    },
+    {
+      "id": "R12",
+      "file": "R12.json",
+      "title": "Field recording with album-cover photo"
+    }
+  ]
+}

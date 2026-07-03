@@ -1,0 +1,17 @@
+task_id: task_105_16_screen_web_compare
+category: 105_cross_platform
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+recording: none
+headed: auto
+task: "You are a programmer who frequently travels and uses a MacBook. You want to buy a lightweight portable monitor with USB-C connectivity for mobile work and second-screen use, shipped to Toronto, Canada. Use only the browser to complete the following task: use the ASUS ZenScreen MB16ACV portable monitor as the target model, find one product page on each of Amazon, eBay, and AliExpress that matches this model as closely as possible; confirm the target specifications on ASUS's official product page; and find one public review page to confirm common pros and cons.\n\nWrite the price, shipping, returns, 2 pros / 2 cons from reviews, and the main impression from the third-party review to:\n\n    /tmp_workspace/results/asus_zenscreen_mb16acv_5p_compare.md\n\nThe recommendation must consider total cost, review reputation, return/exchange convenience, and review impressions; do not mix in MB16A, MB16AC, MB16ACE, MB16AMT, different-size models, or renewed/used products. If a platform cannot provide a sufficiently credible or sufficiently matching product, state that explicitly and explain the missing fields.\n"
+codex:
+  max_user_followups: 2
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/process_evidence/amazon_asus.png

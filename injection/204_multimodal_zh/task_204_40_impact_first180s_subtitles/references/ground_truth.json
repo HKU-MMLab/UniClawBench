@@ -1,0 +1,61 @@
+{
+  "task_id": "task_104_40_impact_first180s_subtitles",
+  "difficulty": "Easy",
+  "schema": "b",
+  "schema_notes": "first-180-seconds subtitle transcription with content spot checks",
+  "ground_truth": {
+    "source_clip": "clip.mp4",
+    "reference_srt": "references/reference_clip.srt",
+    "requested_time_range_seconds": {
+      "start": 0,
+      "end": 180
+    },
+    "expected_output_files": [
+      "/tmp_workspace/results/clip.srt"
+    ],
+    "reference_metrics": {
+      "reference_cues_within_requested_range": 63,
+      "acceptable_cue_count_min": 40,
+      "acceptable_cue_count_max": 85,
+      "first_cue_start_max_sec": 3,
+      "last_cue_end_min_sec": 170,
+      "last_cue_end_max_sec": 182
+    },
+    "semantic_acceptance": {
+      "minimum_anchor_windows_hit": 3,
+      "minimum_semantic_coverage_ratio": 0.8,
+      "interpretation": "The transcript should hit all 3 semantic anchor windows and capture roughly 80% or more of the dialogue content inside those matched windows for pass-level scoring."
+    },
+    "semantic_anchor_windows": [
+      {
+        "window": "00:00:00-00:01:10",
+        "keywords_any": [
+          "Williams",
+          "witness",
+          "silence",
+          "Torrence"
+        ]
+      },
+      {
+        "window": "00:01:18-00:01:55",
+        "keywords_any": [
+          "street shoes",
+          "coat",
+          "pocket",
+          "door key",
+          "hotel"
+        ]
+      },
+      {
+        "window": "00:02:20-00:03:00",
+        "keywords_any": [
+          "room 302",
+          "three hundred two",
+          "airport hotel",
+          "Oakland",
+          "J Burns"
+        ]
+      }
+    ]
+  }
+}

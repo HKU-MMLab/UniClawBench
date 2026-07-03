@@ -1,0 +1,61 @@
+task_id: task_205_21_nextjs_learning_path
+category: 205_cross_platform_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我一直想好好学一下 Next.js v15.3.1。你能把这个版本和
+  上一个补丁版本 v15.3.0 做个对比，告诉我有哪些变化吗？
+  我很好奇 peer dependencies 是否有变动，release
+  notes 是否从一大篇 changelog 变成了一条小小的补丁说明，以及
+  这两个版本之间间隔了多长时间。
+
+  我还存了 5 个 YouTube 教程，希望把它们按上传日期
+  从新到旧排序，作为一条学习路径。最接近
+  v15.3.1 发布日期的那些应该反映了最新的 API 模式，
+  而较旧的那些可能仍在讲 13/14 的 API。如果你还能
+  查一下每个视频实际覆盖了多少个 v15 核心主题——async、
+  react 19、fetch、cookies、headers、params、router cache——并挑出
+  最适合作为起点的那一个，那就太好了。
+
+  不要只凭时长来猜内容——把每个视频的英文自动
+  字幕拉下来，统计那 7 个 v15 关键词每个在字幕中
+  出现了多少次。我想要一个 每视频 × 每关键词 的
+  频次表，这样我就能区分"顺带提了一句"
+  和"专门用了一整节来讲"。基于该关键词
+  频次，告诉我哪个视频对 v15 的覆盖最深入（覆盖的
+  关键词最多 + 总频次最高）。
+
+  最后，给我一份学习路径文档，把版本
+  对比和推荐的视频顺序结合在一起。
+
+  把字幕 .vtt 文件留在 /tmp_workspace/results/ 下，方便我
+  以后交叉核对；其他数据文件你可以自行命名。
+
+  视频 ID（全部在 youtu.be 上）：
+    Sklc_fQBmcs
+    _w0Ikk4JY7U
+    ZVnjOPwW4ZA
+    mTz0GXj8NN0
+    Zq5fmkH0T78
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources: []
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

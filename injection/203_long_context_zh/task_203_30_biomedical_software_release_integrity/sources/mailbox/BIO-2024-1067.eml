@@ -1,0 +1,25 @@
+Message-ID: <Ytm0rIm507HowRRD@an3as.eu>
+X-Clawbench-ID: BIO-2024-1067
+Date: Thu, 21 Jul 2022 22:18:52 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Added autopkgtest for zalign
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_07_msg00059.html
+
+Hi Bilal,
+
+Am Thu, Jul 21, 2022 at 10:10:34PM +0530 schrieb Mohd Bilal:
+> I've added autopkgtest for zaling[1]. Requesting someone to review and
+> sponsor/grant permissions for the same.
+
+Sponsored the package and also granted permissions for future uploads.
+
+Thanks a lot for your work on this package
+
+     Andreas.
+
+--
+http://fam-tille.de

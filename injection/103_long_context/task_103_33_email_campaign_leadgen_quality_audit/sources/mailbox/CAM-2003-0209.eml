@@ -1,0 +1,32 @@
+Message-ID: <3D9AB394.F7C2C9A4@eecs.berkeley.edu>
+X-Clawbench-ID: CAM-2003-0209
+Date: Wed, 02 Oct 2002 01:51:32 -0700
+From: Ben Liblit <liblit@eecs.berkeley.edu>
+To: rpm-zzzlist@freshrpms.net
+Subject: Re: alsa-driver.spec tweak for homemade kernels
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01219.45cd32c7d6ff5dcbc288797d8e8d7514
+
+Matthias Saou wrote:
+> Well, I don't really find it consistent at all to use an rpm package
+> built against something that wasn't installed through rpm :-/
+
+Oh well.  Fair enough.
+
+> What I'd recommend in your case [...]
+
+Ugh, way too much manual labor.  :-)
+
+What I've done instead is to create a tiny little "kernel.spec" that
+installs no files but claims to produce a kernel package having version
+number `uname -r` for architecture `uname -p`.  It also claims to
+provide kernel-sources at the same version.  That is enough to make
+alsa-driver.spec happy, and at least forms a reasonable representation
+of what my homemade kernel provides to the system.  I should have
+thought of this approach sooner.
+
+_______________________________________________
+RPM-List mailing list <RPM-List@freshrpms.net>
+http://lists.freshrpms.net/mailman/listinfo/rpm-list

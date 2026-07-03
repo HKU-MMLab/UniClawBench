@@ -1,0 +1,29 @@
+task_id: task_203_34_match_stream_event_monitor
+category: 203_long_context_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我有一个比赛视频流，想让你替我观看。打开 `http://match-stream.local:8129/stream`，像看直播一样从头观看该视频。
+
+  统计视频中显示的进球、进球时间、红/黄牌以及其他重大纪律事件，并尽可能精确到比赛分钟数。如果换人或其他关键中断在画面上清晰显示，也请记录下来。在观看过程中保存几张支持你判断的截图。最后将结果写入 `/tmp_workspace/results/match_stream_report.md`，并包含一段简短的关键段落总结。如果视频有加载问题，也请截图并说明你实际能看到什么。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/source_evidence/match_report.png
+  - references/source_evidence/match_report_events.png
+  - references/source_evidence/match_report_late_events.png
+  - references/source_evidence/global_sports_archive_timeline.png
+pre_exec:
+  - ops/start_stream.py
+pre_exec_parallel_safe: true
+
+codex:
+  max_user_followups: 2

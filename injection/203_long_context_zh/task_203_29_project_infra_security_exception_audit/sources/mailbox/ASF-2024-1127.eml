@@ -1,0 +1,26 @@
+Message-ID: <I_kwDOEjVygM6QDRuL-dea7aced-d486-4b6f-8b00-30338b6335a0@gitbox.apache.org>
+X-Clawbench-ID: ASF-2024-1127
+Date: Thu, 18 Jul 2024 19:57:03 -0000
+From: =?utf-8?q?JBlond_=28via_GitHub=29?= <git@apache.org>
+To: dev@httpd.apache.org
+Subject: =?utf-8?q?Re=3A_=5BI=5D_x64_win_compilation_=5Bhttpd-mod=5Ffcgid=5D?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-07.mbox
+
+JBlond commented on issue #2:
+URL: https://github.com/apache/httpd-mod_fcgid/issues/2#issuecomment-2237458160
+
+   At https://www.apachelounge.com/viewtopic.php?t=8609 is a very simple tutorial using cmake
+
+
+--
+This is an automated message from the Apache Git Service.
+To respond to the message, please log on to GitHub and use the
+URL above to go to the specific comment.
+
+To unsubscribe, e-mail: dev-unsubscribe@httpd.apache.org
+
+For queries about this service, please contact Infrastructure at:
+users@infra.apache.org

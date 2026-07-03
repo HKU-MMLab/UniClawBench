@@ -1,0 +1,42 @@
+task_id: task_204_37_dressed_to_kill_dialogue_subtitles
+category: 204_multimodal_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  请打开视频文件：
+  /tmp_workspace/clawbench/sources/clip.mp4
+
+  你必须真正播放、观看并聆听本地视频片段，然后自己转写。不要下载已有的字幕、
+  剧本、电影对白文稿，也不要依赖对电影的了解；最终的字幕和时间轴必须基于这段
+  本地视频。
+
+  请为这段电影片段生成一个字幕文件，并保存为：
+  /tmp_workspace/results/clip.srt
+
+  要求：
+  1. 使用 SRT 格式
+  2. 如果同一段落中不同角色连续说话，请按照自然停顿合理地切分字幕
+  3. 不要只写概要；按照你所听到的内容把每一句都写出来
+  4. 完成后，再次检查开头 0:00-0:30 和结尾的同步情况
+  5. 如果你做了修正，直接覆盖原文件
+
+  如果 `/tmp_workspace/results/` 不存在，请先创建它。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/reference_clip.srt
+  - references/selected_clips_manifest.json
+
+sources:
+  - clip.mp4
+
+codex:
+  max_user_followups: 2

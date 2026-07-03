@@ -1,0 +1,40 @@
+Message-ID: <200207240142.23673@malte.stretz.eu.org>
+X-Clawbench-ID: CAM-2003-1219
+Date: Wed, 24 Jul 2002 01:42:23 +0200
+From: "Malte S. Stretz" <msquadrat.nospamplease@gmx.net>
+To: SpamAssassin Talk ML <spamassassin-talk@example.sourceforge.net>
+Subject: [SAtalk] Why not upgrade to 2.40 today? (was: Re: [Fwd: Re: [Razor-users] can't find Razor/Client.pm])
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01305.0dd9ad5503a8fd6b3678fe480ca4df68
+
+On Wednesday 24 July 2002 01:13 CET Theo Van Dinter wrote:
+> On Tue, Jul 23, 2002 at 03:55:35PM -0700, Kevin Gagel wrote:
+> > I'm thinking of following this advise too. Is there a good reason that
+> > I should not upgrad to the 2.40 at this time?
+>
+> Unless you feel like doing some development, the answer is: it's not
+> released and is considered "use at your own risk".   :)
+
+And maybe because there isn't an official 2.40 yet. It's 2.40-cvs and
+changes from day to day. Or, to cite the page [1]: "these are built nightly
+from CVS. They may be unstable!". One and a half good reason :o)
+
+Malte
+
+[1]http://spamassassin.org/downloads.html
+
+--
+-- Coding is art.
+--
+
+
+-------------------------------------------------------
+This sf.net email is sponsored by:ThinkGeek
+Welcome to geek heaven.
+http://thinkgeek.com/sf
+_______________________________________________
+Spamassassin-talk mailing list
+Spamassassin-talk@lists.sourceforge.net
+https://lists.sourceforge.net/lists/listinfo/spamassassin-talk

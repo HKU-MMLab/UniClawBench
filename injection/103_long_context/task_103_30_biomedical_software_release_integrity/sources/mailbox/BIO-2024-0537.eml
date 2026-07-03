@@ -1,0 +1,41 @@
+Message-ID: <20221124043147.i427oeq64uwhocaf@nileshpatra.info>
+X-Clawbench-ID: BIO-2024-0537
+Date: Thu, 24 Nov 2022 10:01:47 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: Andreas Tille <andreas@an3as.eu>
+Subject: Re: Help needed with python-cobra and python-pyani
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_11_msg00081.html
+
+On Wed, Nov 23, 2022 at 09:01:40PM +0100, Andreas Tille wrote:
+> python-cobra
+
+It seems like that the interpreter is having trouble referencing the
+name variable. I tried using getName instead of that which gets the
+test passing but I'm not very sure if it serves the purpose well.
+
+Pushed this change to salsa, but please review.
+
+> python-pyani
+
+This is because python3-biopython does not vendor shared object libs
+for python3.11 yet
+
+$ apt-file list python3-biopython | grep '_align'
+...
+python3-biopython: /usr/lib/python3/dist-packages/Bio/Align/_aligners.cpython-310-x86_64-linux-gnu.so
+python3-biopython: /usr/lib/python3/dist-packages/Bio/Align/_aligners.cpython-39-x86_64-linux-gnu.so
+
+There are two ways to fix this:
+
+1. Run tests only for default python3-dev version
+2. Re-compile biopython to vendor 3.11 bindings, but this has issues
+at present due to t-coffee bug.
+
+I have pushed something that implements 1.) to salsa, please check.
+
+--
+Best,
+Nilesh

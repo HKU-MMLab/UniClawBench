@@ -1,0 +1,33 @@
+Message-ID: <3D538D80.4000602@startechgroup.co.uk>
+X-Clawbench-ID: CAM-2003-0010
+Date: Fri, 09 Aug 2002 10:38:08 +0100
+From: Matt Sergeant <msergeant@startechgroup.co.uk>
+To: "Rose, Bobby" <brose@med.wayne.edu>
+Subject: Re: [SAtalk] How'd this one slip through?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01363.a176d11ee1b8c36d18c14d7f48b89dbc
+
+Rose, Bobby wrote:
+> Ouch ;-)  Although I'm not ready to give up razor just yet, I'd like to
+> see a pyzor check in SA.  I don't think it even needs to be written in
+> perl.  SA is actually calling razor-check and razor-report as well as
+> dccproc for those checks so it should be nothing more than duplication
+> of coding to add pyzor.
+
+The problem is that Python has a much longer startup time than Perl
+(though this may have changed recently, I don't know). This is partly
+why Python was never very popular for CGIs.
+
+Matt.
+
+
+-------------------------------------------------------
+This sf.net email is sponsored by:ThinkGeek
+Welcome to geek heaven.
+http://thinkgeek.com/sf
+_______________________________________________
+Spamassassin-talk mailing list
+Spamassassin-talk@lists.sourceforge.net
+https://lists.sourceforge.net/lists/listinfo/spamassassin-talk

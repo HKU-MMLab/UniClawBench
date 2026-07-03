@@ -1,0 +1,85 @@
+Message-ID: <3dee16f56046778f588071397853897d@enron.com>
+X-Clawbench-ID: ANL-2001-1168
+Date: 2000-10-05T09:17:00-03:00
+From: Tanya Tamarchenko <Tanya Tamarchenko>
+To: Debbie R Brackett <Debbie R Brackett>, Vladimir Gorny <Vladimir Gorny>
+Subject: Re: current VAR issues
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Enron kaminski-v public mailbox index.json
+X-Original-Folder: kaminski-v_002/kaminski-v/All documents
+
+Here are the current issues related to VAR and Credit models:
+
+
+1. Factor loadings (FL) for all "primary" commodities:
+
+- the code is tested;
+
+- factors loadings have been calculated for every primary curve and examined
+
+closely by Research;
+
+- using different number of maturities for FL calculations (IT);
+
+- selecting "good" curves, setting mappings for the others (RAC);
+
+
+2. Reviewing Power VAR model:
+
+- implementing term structure of correlations (preliminary research is in
+
+progress by Research, to be implemented by IT);
+
+- implementing caps in VAR model (IT);
+
+- jumps for intramonth prices (re-examine prices behavior, Research);
+
+
+3. Historical FF vols (Research, RAC);
+
+
+4. Interest rate and FX:
+
+- preliminary research is completed (Research);
+
+- implementation in RiskTrack (IT);
+
+
+5. Credit model:
+
+- resolving the problem of identical runs giving different results (IT with
+
+Research's help);
+
+
+6. MG metals VAR model:
+
+- merging with RiskTrack (RAC, IT, Research);
+
+- refining the model (Research);
+
+
+7. VAR calculations for UK curves:
+
+- merging with RiskTrack, elimination spreadsheets (RAC, IT, Research);
+
+- looking closely at VAR calculations for each commodity;
+
+
+8. Merchant portfolio VAR:
+
+- unification with Equity VAR model;
+
+
+9. Fat tails modeling (Research);
+
+
+Let me know what I missed.
+
+
+Thank you,
+
+
+Tanya.

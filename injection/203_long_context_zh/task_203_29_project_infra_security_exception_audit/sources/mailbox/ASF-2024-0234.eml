@@ -1,0 +1,20 @@
+Message-ID: <ZFNyvdUT0r5jL6KL@homeworld.netbsd.org>
+X-Clawbench-ID: ASF-2024-0234
+Date: Thu, 4 May 2023 08:54:21 +0000
+From: Emmanuel Dreyfus <manu@netbsd.org>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Switch read/write repository from Subversion to Git
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-05.mbox
+
+On Thu, May 04, 2023 at 10:34:32AM +0200, Ruediger Pluem wrote:
+> [ ]: Move the read/write repository from Subversion to Git and leverage the features of Github (for now Actions and PR).
+> [ ]: Move the read/write repository from Subversion to Git, but I don't want to work with Github and I will only work with
+>      what gitbox.apache.org offers.
+> [X]: Leave everything as is.
+
+--
+Emmanuel Dreyfus
+manu@netbsd.org

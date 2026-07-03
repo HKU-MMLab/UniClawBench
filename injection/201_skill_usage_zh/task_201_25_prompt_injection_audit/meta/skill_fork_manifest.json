@@ -1,0 +1,31 @@
+{
+  "task_id": "task_101_25_prompt_injection_audit",
+  "notes_visible_to_executor": false,
+  "skill_family_note": "The three injected skills (security-scanner, skill-scanner, clawsec) are top-1000 ClawHub security tools the executor adapts to a static document corpus. None is a dedicated content-level prompt-injection scanner; the task expects the executor to (a) read SKILL.md from at least one of them to understand the threat patterns each tool detects, and (b) apply those patterns (especially the INJECTION patterns documented in clawsec) to the doc_pack content. The §6 score cap requires evidence of reading at least one declared skill and is consistent with this expectation.",
+  "skill_changes": [
+    {
+      "original_skill": "security-scanner",
+      "injected_skill": "security-scanner",
+      "original_source": "clawhub",
+      "change_type": "benchmark environment adaptation",
+      "reason": "Upstream skill kept as-is; task-setup install.sh handles any optional dependencies so the executor does not need to install nmap/nuclei.",
+      "executor_skill_path": "skills/security-scanner"
+    },
+    {
+      "original_skill": "skill-scanner",
+      "injected_skill": "skill-scanner",
+      "original_source": "clawhub",
+      "change_type": "benchmark environment adaptation",
+      "reason": "The scanner is already injected and its CLI uses the standard library, so executor-facing docs were changed to avoid clone/install and optional Streamlit installation during the task.",
+      "executor_skill_path": "skills/skill-scanner"
+    },
+    {
+      "original_skill": "clawsec",
+      "injected_skill": "clawsec",
+      "original_source": "clawhub",
+      "change_type": "benchmark environment adaptation",
+      "reason": "Upstream skill kept as-is. Its INJECTION-pattern catalog (system-prompt overrides, role hijacks, exfil instructions) is the most directly transferable to the static doc_pack scan; the executor is expected to read this catalog and apply it offline rather than running the live HTTP/HTTPS proxy.",
+      "executor_skill_path": "skills/clawsec"
+    }
+  ]
+}

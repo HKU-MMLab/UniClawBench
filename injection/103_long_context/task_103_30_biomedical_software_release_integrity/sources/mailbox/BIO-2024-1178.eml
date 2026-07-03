@@ -1,0 +1,37 @@
+Message-ID: <2067404.kfMagFqtEs@riemann>
+X-Clawbench-ID: BIO-2024-1178
+Date: Tue, 04 Jan 2022 07:05:11 -0600
+From: Steven Robbins <steve@sumost.ca>
+To: debian-med@lists.debian.org, Nilesh Patra <nilesh@onenetbeyond.org>
+Subject: Re: salsa CI job fails during "uploading artifacts"
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_01_msg00008.html
+
+Hi Nilesh,
+
+On Tuesday, January 4, 2022 1:32:37 A.M. CST Nilesh Patra wrote:
+> On 1/4/22 5:40 AM, Steven Robbins wrote:
+> > Hi,
+> >
+> > As far as I can discern, the build job for Elastix successfully builds the
+> > package, but then fails trying to upload artifacts.  Can anyone shed light
+> > on what's going on or how to fix it?
+> >
+> > Uploading artifacts for successful job
+>
+> I have seen it happening usually when the artifacts are (very) large in
+> size. Is that the case with elastix?
+
+That's a good question.  I did not set up this job so I don't even know what
+the artifacts are.  How can I find out their size?  Are the artifacts even
+required for uploading?  Where are they getting uploaded to?  Can this be
+disabled?
+
+> You could also check once with salsa CI folks at #salsaci on OFTC
+
+I don't use IRC.  Is there an email?
+
+Thanks,
+-Steve

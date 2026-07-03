@@ -1,0 +1,23 @@
+Message-ID: <udlr0ztn9i7.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-0765
+Date: Thu, 29 Sep 2022 17:41:52 -0400
+From: amu@alum.mit.edu (Aaron M. Ucko)
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Re: [Help] anfo: ftbfs with GCC-12
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_09_msg00054.html
+
+Étienne Mollier  writes:
+
+> I believe in the case of anfo, that warnings about auto_ptr /
+> unique_ptr are red herrings.  If I search for "error:"s, then I
+> get some errors about no match for operator by rvalue reference
+rather than by value:
+
+  std::unique_ptr&& is
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

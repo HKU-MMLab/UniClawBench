@@ -1,0 +1,38 @@
+Message-ID: <5adb4c51-06a1-2865-98fc-f88025e3604d@debian.org>
+X-Clawbench-ID: BIO-2024-0769
+Date: Mon, 4 Oct 2021 09:29:03 +0300
+From: Andrius Merkys <merkys@debian.org>
+To: debian-science@lists.debian.org, francois@mzf.fr
+Subject: Re: Update Ceres Solver to 2.0.0
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_10_msg00009.html
+
+Hi François,
+
+On 2021-10-03 12:50, François Mazen wrote:
+> I've just packaged the last version of ceres package and I've pushed it
+> to the salsa repo [1], and to mentors [2].
+>
+> Could someone review the package? The tricky part may be the transition
+> of the lib package from libceres1 to libceres2. For now, I've just
+> renamed the binary package but maybe some additional actions are
+> required?
+
+Transitions for libs packages in Debian indeed have to proceed a certain
+workflow [3]. To start with, you should target experimental instead of
+unstable in debian/changelog.
+
+> In addition, could you please grant me right to upload the package as
+> I'm DM?
+
+It would be best if Anton could help you with upload and rights.
+
+> [1] https://salsa.debian.org/science-team/ceres-solver
+> [2] https://mentors.debian.net/package/ceres-solver/
+
+[3] https://wiki.debian.org/Teams/ReleaseTeam/Transitions
+
+Best,
+Andrius

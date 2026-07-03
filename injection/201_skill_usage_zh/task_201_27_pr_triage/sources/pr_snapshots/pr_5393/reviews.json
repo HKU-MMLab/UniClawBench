@@ -1,0 +1,7 @@
+[
+  {
+    "reviewer": "davidism",
+    "state": "APPROVED",
+    "comment": "Confirmed regression vs Python <3.12. Test covers the regression path; merging into 3.0.x for 3.0.2."
+  }
+]

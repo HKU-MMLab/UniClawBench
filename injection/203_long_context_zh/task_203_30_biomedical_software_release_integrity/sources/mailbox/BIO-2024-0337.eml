@@ -1,0 +1,74 @@
+Message-ID: <YeSYyaKU8CyIZi6s@fusion>
+X-Clawbench-ID: BIO-2024-0337
+Date: Sun, 16 Jan 2022 23:14:33 +0100
+From: Étienne Mollier <emollier@emlwks999.eu>
+To: debian-med@lists.debian.org
+Subject: Re: [Help] intake faile dh_auto_test
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_01_msg00029.html
+
+Hi Andreas,
+
+Andreas Tille, on 2022-01-16:
+> Hi,
+>
+> I would be really happy if someone could have a look into intake
+> dh_auto_test[1]
+>
+> Kind regards
+>
+>        Andreas.
+
+You might have wanted to point to:
+
+[1]: https://salsa.debian.org/med-team/intake/-/jobs/2373341
+
+I'm not sure what the purpose of the test is, but the root cause
+seems to be that the value passed 'hello' chokes on the function
+ast.literal_eval().  This can be reproduced in the interpreter:
+
+	>>> import ast
+	>>> ast.literal_eval('hello')
+	Traceback (most recent call last):
+	  File "", line 1, in
+	  File "/usr/lib/python3.10/ast.py", line 108, in literal_eval
+	    return _convert(node_or_string)
+	  File "/usr/lib/python3.10/ast.py", line 107, in _convert
+	    return _convert_signed_num(node)
+	  File "/usr/lib/python3.10/ast.py", line 81, in _convert_signed_num
+	    return _convert_num(node)
+	  File "/usr/lib/python3.10/ast.py", line 72, in _convert_num
+	    _raise_malformed_node(node)
+	  File "/usr/lib/python3.10/ast.py", line 69, in _raise_malformed_node
+	    raise ValueError(msg + f': {node!r}')
+	ValueError: malformed node or string on line 1:
+
+This seems to be mostly the expected behavior by the test, but
+it seems to expect a TypeEror instead of a ValueError:
+
+	def test_mlist_parameter():
+	    up = UserParameter("", "", "mlist", allowed=["a", "b"])
+	    up.validate([])
+	    up.validate(['b'])
+	    up.validate(['b', 'a'])
+	    with pytest.raises(ValueError):
+	        up.validate(["c"])
+	    with pytest.raises(ValueError):
+	        up.validate(["a", "c"])
+	    with pytest.raises(TypeError):
+	        #              ^^^^^^^^^
+	        up.validate("hello")
+
+Quick test with a patch to change the expected pytest.raise to
+ValueError fixes the issue.  I'm not certain why our test suite
+differs that much with upstream.  The change is pushed on Salsa.
+
+In hope this helps,
+Have a good evening,  :)
+--
+Étienne Mollier
+Fingerprint:  8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+Sent from /dev/pts/4, please excuse my verbosity.
+On air: Overhead - Metaepitome

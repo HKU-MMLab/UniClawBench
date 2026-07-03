@@ -1,0 +1,39 @@
+{
+  "task_id": "task_103_06_self_hosted_rss_landscape",
+  "created_at": "2026-06-20T00:00:00+00:00",
+  "task_type": "live enumeration research with verification",
+  "note": "This task requires live web/GitHub research. The values below are a snapshot taken 2026-06-20 to anchor grading; star counts and rankings change over time, so judge methodology, correct identification of genuine self-hostable RSS/feed readers, verification quality, and enumeration discipline rather than exact star numbers.",
+  "definition": "A self-hosted RSS/feed reader is an open-source application you can run on your own server to subscribe to and read RSS/Atom feeds. The task is to enumerate genuine SELF-HOSTABLE FEED READERS - not SaaS-only readers (e.g. Feedly, Inoreader) and not read-it-later/bookmarking apps that are not feed readers.",
+  "real_anchors_snapshot": [
+    {"repo": "FreshRSS/FreshRSS", "lang": "PHP", "what": "free self-hostable news aggregator / RSS reader", "license_hint": "AGPL"},
+    {"repo": "miniflux/v2", "lang": "Go", "what": "minimalist, opinionated self-hosted feed reader", "license_hint": "Apache-2.0"},
+    {"repo": "Athou/commafeed", "lang": "Java", "what": "Google Reader inspired self-hosted RSS reader"},
+    {"repo": "fossar/selfoss", "lang": "PHP/HTML", "what": "multipurpose RSS reader / aggregation web app"},
+    {"repo": "nkanaev/yarr", "lang": "Go", "what": "yet another RSS reader, single-binary self-hosted"},
+    {"repo": "0x2E/fusion", "lang": "TypeScript", "what": "lightweight self-hosted RSS aggregator and reader"},
+    {"repo": "stringer-rss/stringer", "lang": "Ruby", "what": "self-hosted, anti-social RSS reader"}
+  ],
+  "also_acceptable": [
+    "Tiny Tiny RSS (tt-rss)",
+    "NewsBlur (open-source, self-hostable)",
+    "Stringer",
+    "Feedbin (open-source server)"
+  ],
+  "distractors_to_exclude": [
+    {"name": "Feedly / Inoreader", "why": "SaaS-only, not self-hostable"},
+    {"repo": "wallabag/wallabag", "why": "a read-it-later / save-web-pages app, not a feed reader"},
+    {"name": "Pocket / Instapaper", "why": "read-it-later, not RSS feed readers"}
+  ],
+  "expected_fields_per_tool": [
+    "repo / project link",
+    "primary language",
+    "license (open-source license)",
+    "approximate stars or activity signal (e.g. recent commits)",
+    "deployment method (Docker, binary, source) - confirming it is genuinely self-hostable",
+    "one line on features / scope"
+  ],
+  "required_outputs": ["/tmp_workspace/results/self_hosted_rss_landscape.md"],
+  "minimum_tools": 10,
+  "scoring_notes": "Reward >=10 genuine self-hostable feed readers correctly identified and verified (license, language, deployment, activity), with SaaS-only readers and read-it-later apps correctly EXCLUDED or flagged. Penalize listing SaaS-only readers as self-hostable, listing read-it-later apps as feed readers, fabricated repos, or unverified entries with no deployment/license check. Exact stars need not match the snapshot.",
+  "dynamic_content_note": "GitHub stars and project activity change continuously. The snapshot anchors are illustrative; judge live findings on correctness, verification, and enumeration discipline, not on matching the snapshot exactly."
+}

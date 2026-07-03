@@ -1,0 +1,39 @@
+Message-ID: <YbM4V3i+qKe3rq4e@fusion>
+X-Clawbench-ID: BIO-2024-1103
+Date: Fri, 10 Dec 2021 12:21:59 +0100
+From: Étienne Mollier <emollier@emlwks999.eu>
+To: Mathieu Malaterre <malat@debian.org>
+Subject: Re: Any help to get pydicom build welcome
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_12_msg00060.html
+
+Hi Mathieu,
+
+Mathieu Malaterre, on 2021-12-08:
+> Could you re-run the above test within gdb ? I would need a `bt full`
+> to have some idea to get started.
+>
+> Eg:
+>
+> $ gdb python3 ....path/to/pytdicom/test
+
+Sure, the backtrace is half a meg large, so compressed and
+attached.  Obtained from pydicom source code directory using:
+
+	$ export DEBUGINFOD_URLS='https://debuginfod.debian.net'
+	$ export PYTHONPATH=.
+	$ gdb --args python3 -m pytest pydicom/tests/test_encoders.py
+	(gdb) run
+	(gdb) bt full
+
+My impression by looking at it to unroll is that something seems
+caught in a recursive loop.
+
+In hope this helps,
+Have a nice day,  :)
+--
+Étienne Mollier
+Fingerprint:  8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+Sent from /dev/pts/2, please excuse my verbosity.

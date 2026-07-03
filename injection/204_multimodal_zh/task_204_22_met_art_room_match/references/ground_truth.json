@@ -1,0 +1,62 @@
+{
+  "source_accessed_on": "2026-04-23",
+  "artworks": [
+    {
+      "object_id": 437133,
+      "title": "Garden at Sainte-Adresse",
+      "artist": "Claude Monet",
+      "object_date": "1867",
+      "visual_notes": [
+        "buoyant sunlit seaside garden scene",
+        "elevated viewpoint with terrace, sea, and sky arranged in broad horizontal bands",
+        "high-key colors with yellow sunlight and blue-gray shadow"
+      ]
+    },
+    {
+      "object_id": 436535,
+      "title": "Wheat Field with Cypresses",
+      "artist": "Vincent van Gogh",
+      "object_date": "1889",
+      "visual_notes": [
+        "vibrant greens, blues, and yellows",
+        "rich impasto and lively brushwork",
+        "energetic, wind-swept, high-motion landscape"
+      ]
+    },
+    {
+      "object_id": 438417,
+      "title": "Two Men Contemplating the Moon",
+      "artist": "Caspar David Friedrich",
+      "object_date": "ca. 1825–30",
+      "visual_notes": [
+        "dusky, muted palette with deep blues, browns, and moonlit highlights",
+        "two figures seen from behind in quiet communion with nature",
+        "calm, contemplative, low-noise atmosphere"
+      ]
+    }
+  ],
+  "room_profile": {
+    "wall_color": "desaturated blue-gray",
+    "light": "soft north-facing daylight",
+    "mood": [
+      "quiet",
+      "contemplative",
+      "low-contrast",
+      "dusk-like"
+    ],
+    "display_constraint": "one medium horizontal print above a low bookshelf"
+  },
+  "expected_best_choice": {
+    "object_id": 438417,
+    "title": "Two Men Contemplating the Moon",
+    "reasons": [
+      "Its subdued dusk palette fits the room's blue-gray wall and soft north light.",
+      "Its contemplative mood matches the quiet reading-corner brief.",
+      "Its horizontal composition suits the wall placement better than a more visually loud choice."
+    ],
+    "rejected_notes": {
+      "Garden at Sainte-Adresse": "Too sunlit, airy, and bright for the requested subdued mood.",
+      "Wheat Field with Cypresses": "Too energetic and visually intense for the intended calm corner."
+    }
+  }
+}

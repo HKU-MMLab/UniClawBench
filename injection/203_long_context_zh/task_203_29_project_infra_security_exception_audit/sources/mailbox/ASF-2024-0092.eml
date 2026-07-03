@@ -1,0 +1,109 @@
+Message-ID: <0f1ae1d4-73ac-0360-bffa-dcd4c1352bd8@mvine.com>
+X-Clawbench-ID: ASF-2024-0092
+Date: Tue, 4 Jul 2023 12:36:33 +0100
+From: "Raymond Field via dev" <dev@httpd.apache.org>
+To: dev@httpd.apache.org
+Subject: libapreq 2.17 POST upload with empty filename parameter
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-07.mbox
+
+Hi,
+
+I don't know if this is the correct place to report an issue with
+libapreq2, please let me know where I should sent this report if this
+isn't the correct place.
+
+If I POST a form to the server that contains unfilled file upload fields, the
+library seems to give up processing at the first empty filename, e.g. if
+I POST
+
+-----------------------------15448443913271751721417945010
+Content-Disposition: form-data; name="postticket"
+
+
+-----------------------------15448443913271751721417945010
+Content-Disposition: form-data; name="uid"
+
+1263741688468911
+-----------------------------15448443913271751721417945010
+Content-Disposition: form-data; name="new_doc_file";
+filename="some_test.txt"
+Content-Type: text/plain
+
+this is some text
+
+
+-----------------------------15448443913271751721417945010
+Content-Disposition: form-data; name="new_doc_type"
+
+Document
+-----------------------------15448443913271751721417945010
+Content-Disposition: form-data; name="vidlinkhtml"
+
+
+-----------------------------15448443913271751721417945010
+Content-Disposition: form-data; name="new_doc_thumbnail"; filename=""
+Content-Type: application/octet-stream
+
+
+-----------------------------15448443913271751721417945010
+Content-Disposition: form-data; name="new_doc_file_thumbnail"; filename=""
+Content-Type: application/octet-stream
+
+
+-----------------------------15448443913271751721417945010
+Content-Disposition: form-data; name="new_doc_title"
+
+joe_wicks_crispy_sesame_chicken
+-----------------------------15448443913271751721417945010
+Content-Disposition: form-data; name="new_access"
+
+General
+-----------------------------15448443913271751721417945010
+Content-Disposition: form-data; name="new_port_name"
+
+
+-----------------------------15448443913271751721417945010
+Content-Disposition: form-data; name="new_doc_desc"
+
+
+-----------------------------15448443913271751721417945010
+Content-Disposition: form-data; name="role_7_priv_2"
+
+21
+-----------------------------15448443913271751721417945010
+Content-Disposition: form-data; name="new_comments"
+
+YES
+-----------------------------15448443913271751721417945010
+Content-Disposition: form-data; name="new_notify"
+
+YES
+-----------------------------15448443913271751721417945010
+Content-Disposition: form-data; name="add_submit"
+
+Submit
+-----------------------------15448443913271751721417945010
+Content-Disposition: form-data; name="add_submit_button"
+
+Submit
+-----------------------------15448443913271751721417945010--
+
+When looking at $apr->param I only see the following names: postticket
+uid new_doc_file vidlinkhtml
+
+i.e. up to but not including the first parameter with filename=""
+
+If I submit the form without the parameters that have empty filenames I
+see all of the parameter names.
+
+This started happening when I upgraded a server from Debian 11 to Debian
+12, so it worked OK in libapreq 2.13.  The libapreq libraries are not
+currently included in the Bookwork package list, so I added them from
+testing.  I've also tried installing directly from CPAN, but the same issue.
+
+Kind regards,
+
+Raymond Field

@@ -1,0 +1,55 @@
+Message-ID: <20020807005953.B1213@rover.vipul.net>
+X-Clawbench-ID: CAM-2003-0786
+Date: Wed, 07 Aug 2002 00:59:53 -0700
+From: Vipul Ved Prakash <mail@vipul.net>
+To: Marc Perkel <marc@perkel.com>
+Subject: Re: [Razor-users] False Positives on EFF Messages
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00582.eb99fccc8d6528aa1e2b1b7a1f0d4160
+
+Marc,
+
+The likelyhood of EFF or other mailing lists getting filtered will
+decrease over time as these mails are revoked whenever they get filtered
+out. Revocations help the system to punish reporters who report legit bulk
+mail such that their future reports are automatically considered suspect.
+As such, with all the new changes to TeS, the likelyhood of filtering
+mailing list posts has decreased dramatically. Please keep me posted if
+you see false positives on the EFF newsletter again.
+
+cheers,
+vipul.
+
+On Fri, Aug 02, 2002 at 03:22:13PM -0700, Marc Perkel wrote:
+> Thanks - but it almost looks like someone is deliberately trying to
+> poison EFF messages. If this is so I want to look into it. It's odd that
+> most all the razor errors were people talking about free speech issies
+> and intellectual property. It make me wonder if someone is doing
+> something on purpose.
+>
+> I am also active in the development of Spam Assassin rules. Spam
+> filtering has been a hot topic at EFF for quite some time and is even
+> hotter now that I'm actually using it. For what it's worth - your system
+> is considered to be the cleanest method - but with any system, people at
+> EFF are concerned about free speech issues and that spam filtering can
+> become a censorship issue. One of our newsletters got flagged as spam
+> because it had list removal instructions at the bottom.
+
+
+--
+
+Vipul Ved Prakash          |   "The future is here, it's just not
+Software Design Artist     |    widely distributed."
+http://vipul.net/          |              -- William Gibson
+
+
+-------------------------------------------------------
+This sf.net email is sponsored by:ThinkGeek
+Welcome to geek heaven.
+http://thinkgeek.com/sf
+_______________________________________________
+Razor-users mailing list
+Razor-users@lists.sourceforge.net
+https://lists.sourceforge.net/lists/listinfo/razor-users

@@ -1,0 +1,44 @@
+Message-ID: <Y1e1cpdiAMtM/fMF@an3as.eu>
+X-Clawbench-ID: BIO-2024-1323
+Date: Tue, 25 Oct 2022 12:07:46 +0200
+From: Andreas Tille <tille@debian.org>
+To: Nilesh Patra <nilesh@debian.org>
+Subject: Re: Probably simple cmake help needed for nthash
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00084.html
+
+Hi Nilesh,
+
+Am Tue, Oct 25, 2022 at 02:49:25PM +0530 schrieb Nilesh Patra:
+> On Tue, Oct 25, 2022 at 09:36:33AM +0200, Andreas Tille wrote:
+> > Hi,
+> >
+> > the new version of nthash needs btllib which was luckily accepted very
+> > quickly by ftpmaster.  Now I "just" need to declare in CMakeLists.txt
+> > that the Debian packaged btllib should be used and as usually I failed
+> > in doing so[1].
+> >
+> > Any cmake knowledged person who can submit a better patch to Git?
+>
+> I got the build proceed beyond that point but it still does not build
+> and I am not sure why not.
+> It probably stems from cmake itself but at the moment I am out of ideas.
+>
+> Changes on salsa.
+
+I've added DEP3 header.  The issue seems to be in debian/argparse.hpp.
+Thus I've updated the code copy we are shipping which seems to solve the
+issue you observed ... but there are more things to fix, thought...
+
+I can't work on this[1] in the next couple of hours.
+
+Kind regards
+
+     Andreas.
+
+[1] https://salsa.debian.org/med-team/nthash/-/jobs/3424638
+
+--
+http://fam-tille.de

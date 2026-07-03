@@ -1,0 +1,34 @@
+{
+  "source_page": "https://www.nasa.gov/historical-sounds/",
+  "rights_note": "NASA media are generally not copyrighted and are used here as public historical audio fixtures; see NASA media usage guidelines.",
+  "files": [
+    {
+      "file": "apollo11_countdown.mp3",
+      "url": "https://www.nasa.gov/wp-content/uploads/2015/01/590320main_ringtone_apollo11_countdown.mp3",
+      "title": "Apollo 11 countdown",
+      "segment_start": 0.0,
+      "segment_duration": 6.0,
+      "sha256": "9f14d326e95356e096b181c807136dd460f5a30afae02d55135e84d5e3c0a6f0",
+      "source_duration_seconds": null
+    },
+    {
+      "file": "eagle_has_landed.mp3",
+      "url": "https://www.nasa.gov/wp-content/uploads/2015/01/569462main_eagle_has_landed.mp3",
+      "title": "The Eagle has landed",
+      "segment_start": 0.0,
+      "segment_duration": 8.0,
+      "sha256": "c2cf9c2754ec3c2f7315acd4fcdd7d892fb2027919c1a80adf90a49f63c0316c",
+      "source_duration_seconds": null
+    },
+    {
+      "file": "houston_problem.mp3",
+      "url": "https://www.nasa.gov/wp-content/uploads/2015/01/574928main_houston_problem.mp3",
+      "title": "Houston, we've had a problem",
+      "segment_start": 0.0,
+      "segment_duration": 7.0,
+      "sha256": "d71d23e3a166277d13e414cb45d495da4eba793d975430f34471003e16f0afb1",
+      "source_duration_seconds": null
+    }
+  ],
+  "generated_at_utc": "2026-06-18T06:32:16.489104+00:00"
+}

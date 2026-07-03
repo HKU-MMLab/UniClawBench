@@ -1,0 +1,38 @@
+task_id: task_202_11_ecb_fx_xml_feed
+category: 202_exploration_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我需要欧洲央行（European Central Bank）今天的官方欧元外汇参考汇率，以编程方式
+  拉取以便我能复用——而不是从网页上手工抄。
+
+  从 ECB 的欧元参考汇率页面开始：
+
+      https://www.ecb.europa.eu/stats/eurofxref/eurofxref-graph-usd.en.html
+
+  （或者总体上的 ECB 统计站点）。ECB 把这些汇率以一个机器可读的 feed 发布，面向
+  人工的页面就是基于它构建的，但该 feed 的 URL 从页面文字上看并不明显——你需要
+  找到它。使用那个 feed（而不是抓取渲染出来的 HTML 表格），获取最新发布那一天
+  的：
+
+  - 这些汇率所发布的参考日期，
+  - EUR->USD、EUR->JPY 和 EUR->GBP 的参考汇率，
+  - 以及作为派生校验，由这些 EUR 汇率隐含推出的 USD->JPY 交叉汇率。
+
+  把你的发现保存到 `/tmp_workspace/results/ecb_fx.json`（日期、三个 EUR 汇率，以
+  及派生的 USD/JPY 交叉汇率），并把你调用的确切 feed URL 连同它的原始响应保存到
+  `/tmp_workspace/results/ecb_evidence/`，以便此次拉取可复现。欢迎附上一段关于你
+  如何发现该 feed 的简短说明。
+
+references:
+  - references/eval_rule.md
+
+codex:
+  max_user_followups: 2

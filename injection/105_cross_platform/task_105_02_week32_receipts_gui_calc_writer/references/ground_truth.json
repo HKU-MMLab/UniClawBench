@@ -1,0 +1,83 @@
+{
+  "task_id": "task_105_02_week32_receipts_gui_calc_writer",
+  "week": "week_32",
+  "currency": "USD",
+  "category_labels": [
+    "Groceries",
+    "Meals",
+    "Transportation"
+  ],
+  "receipts": [
+    {
+      "file": "receipt_01.jpg",
+      "date": "2021-08-18",
+      "merchant": "99 Cents Only Stores",
+      "category": "Groceries",
+      "amount": 23.17
+    },
+    {
+      "file": "receipt_02.jpg",
+      "date": "2021-06-12",
+      "merchant": "Harpoon Harry's",
+      "category": "Meals",
+      "amount": 13.92
+    },
+    {
+      "file": "receipt_03.jpg",
+      "date": "2025-01-04",
+      "merchant": "L'Oro Di Napoli",
+      "category": "Meals",
+      "amount": 52.45
+    },
+    {
+      "file": "receipt_04.jpg",
+      "date": "2011-12-31",
+      "merchant": "Love's #207",
+      "category": "Transportation",
+      "amount": 47.26
+    },
+    {
+      "file": "receipt_05.jpg",
+      "date": "2007-02-18",
+      "merchant": "Shell",
+      "category": "Transportation",
+      "amount": 20.87
+    },
+    {
+      "file": "receipt_06.jpg",
+      "date": "2012-01-02",
+      "merchant": "Smith's #190",
+      "category": "Transportation",
+      "amount": 48.12
+    }
+  ],
+  "total_expenses": 205.79,
+  "category_totals": {
+    "Groceries": 23.17,
+    "Meals": 66.37,
+    "Transportation": 116.25
+  },
+  "highest_category": {
+    "category": "Transportation",
+    "amount": 116.25
+  },
+  "accepted_merchant_aliases": {
+    "receipt_05.jpg": [
+      "Shell",
+      "NB Oil Co",
+      "NB Oil Co Inc #1",
+      "Shell NB Oil Co",
+      "Shell / NB Oil Co Inc #1"
+    ]
+  },
+  "accepted_category_aliases": {
+    "Transportation": [
+      "Transport"
+    ]
+  },
+  "expected_result_files": [
+    "/tmp_workspace/results/week32_expenses.ods",
+    "/tmp_workspace/results/week32_summary.odt",
+    "/tmp_workspace/results/week32_summary.txt"
+  ]
+}

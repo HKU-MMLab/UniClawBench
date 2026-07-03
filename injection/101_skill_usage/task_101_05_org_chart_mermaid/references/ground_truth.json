@@ -1,0 +1,263 @@
+{
+  "task_id": "task_101_05_org_chart_mermaid",
+  "difficulty": "Medium",
+  "schema": "b",
+  "schema_notes": "row-level expected values with accepted variants; counts reflect the expanded Alphabet 2024 DEF 14A excerpt in sources/. Current directors: 14 (Page, Brin, Pichai, Hennessy, Arnold, Chávez, Doerr, Ferguson, Shriram, Washington, Mather, Reddy, Park, Salazar; Pichai counted once across roster + executive). Non-CEO executive officers: 6 (Porat, Raghavan, Schindler, Walker, Ashkenazi, Ito). Total unique person-nodes that must appear in org.mmd: 14 directors + 6 non-CEO executive officers + 2 advisors/observers (Schmidt, Bowers Liang) = 22. Recently-departed directors (Mulally, Bourgeois) MUST NOT appear as nodes. Advisors/observers are non-voting and rendered via dotted advisory edges only — they ARE expected to appear as nodes but they receive no solid roster edges. Scores board/executive roster edges and committee memberships without inferring executive-to-CEO reporting relationships not stated in the source.",
+  "skills_declared": [
+    "diagram-local-mermaid"
+  ],
+  "source_fixture": {
+    "filer": "Alphabet Inc.",
+    "form_type": "DEF 14A",
+    "accession_number": "0001308179-24-000612",
+    "filing_date": "2024-04-26"
+  },
+  "ground_truth": {
+    "nodes_expected": [
+      "Larry Page",
+      "Sergey Brin",
+      "Sundar Pichai",
+      "John L. Hennessy",
+      "Frances H. Arnold",
+      "R. Martin \"Marty\" Chávez",
+      "L. John Doerr",
+      "Roger W. Ferguson Jr.",
+      "K. Ram Shriram",
+      "Robin L. Washington",
+      "Ann Mather",
+      "Sundeep Reddy",
+      "Yolanda Park",
+      "Diego Salazar",
+      "Ruth M. Porat",
+      "Prabhakar Raghavan",
+      "Philipp Schindler",
+      "Kent Walker",
+      "Anat Ashkenazi",
+      "Hiroshi Ito",
+      "Eric E. Schmidt",
+      "Ann S. Bowers Liang"
+    ],
+    "node_count": 22,
+    "current_director_count": 14,
+    "current_executive_officer_count_excl_ceo": 6,
+    "advisor_observer_count": 2,
+    "must_not_appear": [
+      "Alan R. Mulally",
+      "Étienne Bourgeois",
+      "Etienne Bourgeois"
+    ],
+    "node_surname_aliases": {
+      "Larry Page": ["Page", "Larry", "L. Page", "Larry Page"],
+      "Sergey Brin": ["Brin", "Sergey", "S. Brin", "Sergey Brin"],
+      "Sundar Pichai": ["Pichai", "Sundar", "S. Pichai", "Sundar Pichai"],
+      "John L. Hennessy": ["Hennessy", "John L. Hennessy", "John Hennessy", "J. Hennessy", "J. L. Hennessy"],
+      "Frances H. Arnold": ["Arnold", "Frances", "Frances Arnold", "Frances H. Arnold", "F. Arnold", "F. H. Arnold"],
+      "R. Martin \"Marty\" Chávez": ["Chávez", "Chavez", "Marty", "Marty Chavez", "Marty Chávez", "R. Martin Chávez", "Martin Chávez", "R. M. Chávez", "R. Martin \"Marty\" Chávez"],
+      "L. John Doerr": ["Doerr", "John Doerr", "L. John Doerr", "J. Doerr", "L. J. Doerr"],
+      "Roger W. Ferguson Jr.": ["Ferguson", "Roger", "Roger Ferguson", "Roger W. Ferguson Jr.", "Roger Ferguson Jr.", "R. Ferguson", "R. W. Ferguson Jr."],
+      "K. Ram Shriram": ["Shriram", "Ram", "Ram Shriram", "K. Ram Shriram", "K. Shriram", "K. R. Shriram"],
+      "Robin L. Washington": ["Washington", "Robin", "Robin Washington", "Robin L. Washington", "R. Washington", "R. L. Washington"],
+      "Ann Mather": ["Mather", "Ann Mather", "A. Mather"],
+      "Sundeep Reddy": ["Reddy", "Sundeep", "Sundeep Reddy", "S. Reddy"],
+      "Yolanda Park": ["Park", "Yolanda", "Yolanda Park", "Y. Park"],
+      "Diego Salazar": ["Salazar", "Diego", "Diego Salazar", "D. Salazar"],
+      "Ruth M. Porat": ["Porat", "Ruth", "Ruth Porat", "Ruth M. Porat", "R. Porat", "R. M. Porat"],
+      "Prabhakar Raghavan": ["Raghavan", "Prabhakar", "Prabhakar Raghavan", "P. Raghavan"],
+      "Philipp Schindler": ["Schindler", "Philipp", "Philipp Schindler", "P. Schindler"],
+      "Kent Walker": ["Walker", "Kent", "Kent Walker", "K. Walker"],
+      "Anat Ashkenazi": ["Ashkenazi", "Anat", "Anat Ashkenazi", "A. Ashkenazi"],
+      "Hiroshi Ito": ["Ito", "Hiroshi", "Hiroshi Ito", "H. Ito"],
+      "Eric E. Schmidt": ["Schmidt", "Eric", "Eric Schmidt", "Eric E. Schmidt", "E. Schmidt", "E. E. Schmidt"],
+      "Ann S. Bowers Liang": ["Bowers Liang", "Bowers-Liang", "Ann Bowers Liang", "Ann S. Bowers Liang", "Bowers", "Liang"]
+    },
+    "permitted_nodes": [
+      {"canonical": "Larry Page", "alternates": ["Page", "Larry", "L. Page", "Larry Page"]},
+      {"canonical": "Sergey Brin", "alternates": ["Brin", "Sergey", "S. Brin", "Sergey Brin"]},
+      {"canonical": "Sundar Pichai", "alternates": ["Pichai", "Sundar", "S. Pichai", "Sundar Pichai"]},
+      {"canonical": "John L. Hennessy", "alternates": ["Hennessy", "John Hennessy", "J. Hennessy", "J. L. Hennessy", "John L. Hennessy"]},
+      {"canonical": "Frances H. Arnold", "alternates": ["Arnold", "Frances", "Frances Arnold", "F. Arnold", "F. H. Arnold", "Frances H. Arnold"]},
+      {"canonical": "R. Martin \"Marty\" Chávez", "alternates": ["Chávez", "Chavez", "Marty", "Marty Chavez", "Marty Chávez", "Martin Chávez", "R. Martin Chávez", "R. M. Chávez"]},
+      {"canonical": "L. John Doerr", "alternates": ["Doerr", "John Doerr", "J. Doerr", "L. J. Doerr", "L. John Doerr"]},
+      {"canonical": "Roger W. Ferguson Jr.", "alternates": ["Ferguson", "Roger", "Roger Ferguson", "Roger Ferguson Jr.", "R. Ferguson", "R. W. Ferguson Jr.", "Roger W. Ferguson Jr."]},
+      {"canonical": "K. Ram Shriram", "alternates": ["Shriram", "Ram", "Ram Shriram", "K. Shriram", "K. R. Shriram", "K. Ram Shriram"]},
+      {"canonical": "Robin L. Washington", "alternates": ["Washington", "Robin", "Robin Washington", "R. Washington", "R. L. Washington", "Robin L. Washington"]},
+      {"canonical": "Ann Mather", "alternates": ["Mather", "Ann Mather", "A. Mather"]},
+      {"canonical": "Sundeep Reddy", "alternates": ["Reddy", "Sundeep", "Sundeep Reddy", "S. Reddy"]},
+      {"canonical": "Yolanda Park", "alternates": ["Park", "Yolanda", "Yolanda Park", "Y. Park"]},
+      {"canonical": "Diego Salazar", "alternates": ["Salazar", "Diego", "Diego Salazar", "D. Salazar"]},
+      {"canonical": "Ruth M. Porat", "alternates": ["Porat", "Ruth", "Ruth Porat", "R. Porat", "R. M. Porat", "Ruth M. Porat"]},
+      {"canonical": "Prabhakar Raghavan", "alternates": ["Raghavan", "Prabhakar", "P. Raghavan", "Prabhakar Raghavan"]},
+      {"canonical": "Philipp Schindler", "alternates": ["Schindler", "Philipp", "P. Schindler", "Philipp Schindler"]},
+      {"canonical": "Kent Walker", "alternates": ["Walker", "Kent", "K. Walker", "Kent Walker"]},
+      {"canonical": "Anat Ashkenazi", "alternates": ["Ashkenazi", "Anat", "Anat Ashkenazi", "A. Ashkenazi"]},
+      {"canonical": "Hiroshi Ito", "alternates": ["Ito", "Hiroshi", "Hiroshi Ito", "H. Ito"]},
+      {"canonical": "Eric E. Schmidt", "alternates": ["Schmidt", "Eric", "Eric Schmidt", "Eric E. Schmidt", "E. Schmidt", "E. E. Schmidt"]},
+      {"canonical": "Ann S. Bowers Liang", "alternates": ["Bowers Liang", "Bowers-Liang", "Ann Bowers Liang", "Ann S. Bowers Liang", "Bowers", "Liang"]}
+    ],
+    "solid_reporting_edges": [
+      ["Larry Page", "Board of Directors"],
+      ["Sergey Brin", "Board of Directors"],
+      ["Sundar Pichai", "Board of Directors"],
+      ["John L. Hennessy", "Board of Directors"],
+      ["Frances H. Arnold", "Board of Directors"],
+      ["R. Martin \"Marty\" Chávez", "Board of Directors"],
+      ["L. John Doerr", "Board of Directors"],
+      ["Roger W. Ferguson Jr.", "Board of Directors"],
+      ["K. Ram Shriram", "Board of Directors"],
+      ["Robin L. Washington", "Board of Directors"],
+      ["Ann Mather", "Board of Directors"],
+      ["Sundeep Reddy", "Board of Directors"],
+      ["Yolanda Park", "Board of Directors"],
+      ["Diego Salazar", "Board of Directors"],
+      ["Ruth M. Porat", "Executive Officers"],
+      ["Prabhakar Raghavan", "Executive Officers"],
+      ["Philipp Schindler", "Executive Officers"],
+      ["Kent Walker", "Executive Officers"],
+      ["Anat Ashkenazi", "Executive Officers"],
+      ["Hiroshi Ito", "Executive Officers"]
+    ],
+    "solid_edge_count": 20,
+    "solid_edge_core_ceo_reports": [],
+    "solid_edge_accept_alternatives": {
+      "note": "Accept any board container node name whose identifier contains 'board' (case-insensitive), and any executive-officer roster container whose identifier contains both 'executive' and 'officer'. The 14 director-to-board edges and 6 non-CEO executive-officer-to-roster edges count if the executor introduces containers or nests people under corresponding subgraphs. Do not require executive-to-CEO reporting edges because the public source does not state them as solid lines."
+    },
+    "committee_memberships": {
+      "Audit and Compliance Committee": {
+        "chair": "Roger W. Ferguson Jr.",
+        "vice_chair": null,
+        "members": [
+          "Roger W. Ferguson Jr.",
+          "Robin L. Washington",
+          "R. Martin \"Marty\" Chávez",
+          "Ann Mather",
+          "Diego Salazar"
+        ],
+        "advisors_observers": ["Ann S. Bowers Liang"],
+        "aliases": ["Audit Committee", "Audit and Compliance Committee", "Audit"]
+      },
+      "Leadership Development, Inclusion and Compensation Committee": {
+        "chair": "Robin L. Washington",
+        "vice_chair": null,
+        "members": [
+          "Robin L. Washington",
+          "L. John Doerr",
+          "K. Ram Shriram",
+          "Yolanda Park"
+        ],
+        "advisors_observers": [],
+        "aliases": ["Compensation Committee", "Leadership Development, Inclusion and Compensation Committee", "Compensation", "Leadership and Compensation Committee", "Leadership Dev & Comp"]
+      },
+      "Nominating and Corporate Governance Committee": {
+        "chair": "John L. Hennessy",
+        "vice_chair": null,
+        "members": [
+          "John L. Hennessy",
+          "Frances H. Arnold",
+          "Sundeep Reddy"
+        ],
+        "advisors_observers": [],
+        "aliases": ["Governance Committee", "Nominating and Corporate Governance Committee", "Nominating", "Nominating/Governance", "Nominating & Corp Governance"]
+      },
+      "Executive Committee": {
+        "chair": "Larry Page",
+        "vice_chair": null,
+        "members": [
+          "Larry Page",
+          "Sergey Brin",
+          "Sundar Pichai"
+        ],
+        "advisors_observers": ["Eric E. Schmidt"],
+        "aliases": ["Executive Committee", "Executive"]
+      }
+    },
+    "committee_chairs": {
+      "Audit": "Roger W. Ferguson Jr.",
+      "Leadership Dev & Comp": "Robin L. Washington",
+      "Nominating & Corp Governance": "John L. Hennessy",
+      "Executive": "Larry Page"
+    },
+    "committee_chairs_edges": [
+      ["Roger W. Ferguson Jr.", "Audit and Compliance Committee"],
+      ["Robin L. Washington", "Leadership Development, Inclusion and Compensation Committee"],
+      ["John L. Hennessy", "Nominating and Corporate Governance Committee"],
+      ["Larry Page", "Executive Committee"]
+    ],
+    "dotted_committee_edges_expected": [
+      ["Roger W. Ferguson Jr.", "Audit and Compliance Committee"],
+      ["Robin L. Washington", "Audit and Compliance Committee"],
+      ["R. Martin \"Marty\" Chávez", "Audit and Compliance Committee"],
+      ["Ann Mather", "Audit and Compliance Committee"],
+      ["Diego Salazar", "Audit and Compliance Committee"],
+      ["Robin L. Washington", "Leadership Development, Inclusion and Compensation Committee"],
+      ["L. John Doerr", "Leadership Development, Inclusion and Compensation Committee"],
+      ["K. Ram Shriram", "Leadership Development, Inclusion and Compensation Committee"],
+      ["Yolanda Park", "Leadership Development, Inclusion and Compensation Committee"],
+      ["John L. Hennessy", "Nominating and Corporate Governance Committee"],
+      ["Frances H. Arnold", "Nominating and Corporate Governance Committee"],
+      ["Sundeep Reddy", "Nominating and Corporate Governance Committee"],
+      ["Larry Page", "Executive Committee"],
+      ["Sergey Brin", "Executive Committee"],
+      ["Sundar Pichai", "Executive Committee"]
+    ],
+    "dotted_edge_count": 15,
+    "advisor_observer_edges_expected": [
+      ["Eric E. Schmidt", "Executive Committee"],
+      ["Ann S. Bowers Liang", "Audit and Compliance Committee"]
+    ],
+    "advisor_observer_edge_count": 2,
+    "governance_matrix": {
+      "path": "/tmp_workspace/results/governance_matrix.csv",
+      "required_columns": [
+        "person",
+        "source_role",
+        "governance_group_or_board",
+        "committee",
+        "committee_role",
+        "edge_type",
+        "source_quote"
+      ],
+      "solid_rows_expected": 20,
+      "committee_rows_expected": 15,
+      "advisor_observer_rows_expected": 2,
+      "chair_count_expected": 4,
+      "edge_types": [
+        "solid",
+        "committee",
+        "advisor",
+        "observer"
+      ]
+    },
+    "required_styling_classes": {
+      "minimum_distinct_classes": 2,
+      "example_class_names": ["board", "executive", "committee", "chair"],
+      "notes": "Rubric accepts any prompt-aligned shape or styling method that creates ≥2 observable visual treatment groups, including classDef/class syntax, inline style lines, distinct Mermaid node shapes, or explicit role text annotations such as chair/member/executive suffixes.",
+      "detection_patterns": [
+        "classDef\\s+\\w+\\s+",
+        ":::\\w+",
+        "class\\s+[\\w, ]+\\s+\\w+;?",
+        "style\\s+\\w+\\s+",
+        "\\{\\{.*\\}\\}",
+        "\\[\\[.*\\]\\]",
+        "\\(\\(.*\\)\\)",
+        "\\b(Chair|chair|Executive|executive|Member|member|Advisor|advisor|Observer|observer)\\b"
+      ]
+    },
+    "topic_dimensions": [
+      "reporting_lines_solid_hierarchy",
+      "committee_membership_rolls",
+      "dotted_line_or_advisor_relationships",
+      "chair_or_head_designations",
+      "vacant_interim_or_recently_filled_seats"
+    ],
+    "min_dimensions_covered": 5,
+    "expected_individuals": [
+      {"surname": "Pichai", "expected_role_anchors": ["CEO", "Chief Executive Officer", "Executive Committee"]},
+      {"surname": "Hennessy", "expected_role_anchors": ["Chair of the Board", "Chair", "Governance"]},
+      {"surname": "Page", "expected_role_anchors": ["Executive Committee", "co-founder", "Chair"]},
+      {"surname": "Brin", "expected_role_anchors": ["Executive Committee", "co-founder", "Director"]},
+      {"surname": "Porat", "expected_role_anchors": ["CFO", "Chief Financial Officer", "Executive Officer"]}
+    ],
+    "expected_individuals_min": 4,
+    "expected_individuals_note": "Each surname must appear in org.mmd AND in governance_matrix.csv with a role attribution that matches at least one of the listed anchors (case-insensitive substring match). ≥4/5 correct → full credit; 3/5 → half credit; ≤2 → 0."
+  }
+}

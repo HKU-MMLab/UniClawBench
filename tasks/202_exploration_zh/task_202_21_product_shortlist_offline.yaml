@@ -1,0 +1,55 @@
+task_id: task_202_21_product_shortlist_offline
+category: 202_exploration_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我在选购一台桌面显示器，并把一份候选目录保存下来以便离线比较。请帮我
+  把真正符合我需求的那些筛选出来。
+
+  我的要求：
+  - 大约 27 英寸（26-28 都可以），
+  - 真正的 4K（3840x2160）——不是 1440p/QHD，
+  - 带可传输视频的 USB-C（DisplayPort Alt Mode），这样我就能用一根 USB-C
+    线从笔记本驱动它——仅用于充电/数据的 USB-C 口不算数，
+  - 可直接买到全新品（不接受二手、准新、翻新、优惠券或第三方分销商的价格），
+  - 全新价必须不超过 $500，
+  - 发往美国，且当前有货。
+
+  目录位于：
+
+      /tmp_workspace/clawbench/sources/catalog/
+
+  每个产品 `<id>.json` 都有一个 `listing`（搜索结果摘要）和一个 `detail`
+  （权威的产品页）。重要：当 listing 和 detail 不一致时，以 detail 页为准——
+  有些 listing 看起来没问题，但 detail 会暴露其中的猫腻。
+
+  请逐一查看每个产品，按 detail 页应用这些要求，并产出所有合格显示器的
+  候选名单。
+
+  请保存：
+  - `/tmp_workspace/results/monitor_shortlist.json`：合格的显示器，每个附上
+    id、title、全新直购价，以及它通过的证据（分辨率、USB-C 视频、状态/价格
+    类型、美国配送、库存）。
+  - `/tmp_workspace/results/monitor_rejections.json`：每个被淘汰的产品，附上
+    它未通过的具体原因（例如 USB-C 仅充电、QHD 而非 4K、二手/翻新价、尺寸
+    不对、不发往美国、超预算、缺货），并引用 detail 页字段。
+  - `/tmp_workspace/results/monitor_method.json`：你是如何应用 listing-vs-detail
+    的权威性规则以及每项要求的（可复现）。
+
+  这是完全离线的——不要从网络获取任何内容。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+sources:
+  - catalog/
+
+codex:
+  max_user_followups: 2

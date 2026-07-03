@@ -1,0 +1,31 @@
+Message-ID: <CALK=YjNkmdDBp9eSQCupxXTi27kNJUjoxuHB+2f72N+UjfuWng@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0658
+Date: Wed, 18 May 2022 08:15:58 -0400
+From: Eric Covener <covener@gmail.com>
+To: Jim Jagielski <jim@jagunet.com>
+Subject: Re: Named shared memory on macOS Monterey
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-05.mbox
+
+Is this what breaks the test framework with heartmonitor loaded? I've
+lost the errors, ended up commenting out the mod and re-running
+Makefiles.PL to get unblocked.
+
+On Tue, May 17, 2022 at 3:26 PM Jim Jagielski <jim@jagunet.com> wrote:
+>
+> Anyone else notice that the later version of macOS really prefer
+> that APR use posix for shared memory for both anon and name-based,
+> instead of posix for anon and sysv/ipc for name?
+>
+> The issue seems to be that the kernel params are much lower than
+> previous versions as well as it being nigh-impossible to reset
+> those sysctl params on each boot, due to SIP.
+>
+> Shouldn't we prefer posix over sysv in any case?
+
+
+--
+Eric Covener
+covener@gmail.com

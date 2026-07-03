@@ -1,0 +1,63 @@
+task_id: task_101_29_flask_hotspots_2yr
+category: 101_skill_usage
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I'm building an onboarding guide for new engineers joining our Flask
+  work and I want to highlight the 10 hottest files — the ones that
+  change the most and break the most. The tarball is at
+  /tmp_workspace/clawbench/sources/flask_repo.tar.gz and I want the
+  answer based purely on that snapshot. Use the workspace's
+  code-analysis skill for the static analysis, the git skill to
+  walk the commit history, and the log-analysis skill to parse and
+  aggregate the log output.
+
+  Look at the most recent 2 years of commit history in the repo. Score
+  each file with
+    hotspot = churn * log(1 + bugfix)
+  where churn is insertions plus deletions over that window, and bugfix
+  is the number of commits whose message contains "fix" or "bug",
+  case-insensitive. Sort descending by hotspot, and break ties on the
+  rounded hotspot value by file path alphabetically.
+
+  Save the result to /tmp_workspace/results/hotspots.md. Lead with a
+  10-row markdown table with columns Rank, File, Churn, BugFix, Hotspot.
+  After the table, give me a short read on the surrounding picture so I
+  can answer the follow-up questions onboarding folks always ask.
+  Specifically I want a quick note on which contributors are concentrated
+  where — is one or two committers carrying everything, or is it
+  distributed — where the churn really lives, long-tail across many
+  files versus a spike on a few; what subsystems get the most bug fixes,
+  for example extensions, blueprints, templating, routing; and whether
+  the picture has shifted between the early half and the recent half of
+  the 2-year window. A few short paragraphs or a small table per topic
+  is fine, just keep it tight.
+
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - flask_repo.tar.gz
+
+skills:
+  - code-analysis-skills
+  - git
+  - log-analyzer
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

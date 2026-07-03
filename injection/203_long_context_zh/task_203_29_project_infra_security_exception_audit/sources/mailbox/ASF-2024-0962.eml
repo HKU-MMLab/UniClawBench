@@ -1,0 +1,32 @@
+Message-ID: <339fee1d-1871-817f-6a45-2df4f1e2103b@wanadoo.fr>
+X-Clawbench-ID: ASF-2024-0962
+Date: Sun, 4 Sep 2022 08:29:08 +0200
+From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+To: dev@httpd.apache.org, docs@httpd.apache.org
+Subject: Re: apreq documentation
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-09.mbox
+
+Le 04/09/2022 à 08:18, Christophe JAILLET a écrit :
+
+> I've commited the change yesterday on
+> https://github.com/apache/httpd-site, but the site has not been updated
+> (mail to the csv mailing list about the commit neither)
+>
+> I've contacted infra this morning about it.
+>
+> If s.o. has an idea of what I did wrong or if something is broken
+> somewhere, it is welcomed.
+>
+> CJ
+>
+
+I saw that yesterday there has been some issues with a GitBox. This is
+maybe related to my problem.
+
+I made a dummy change this morning on github and all changes have been
+applied.
+
+CJ

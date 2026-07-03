@@ -1,0 +1,31 @@
+Message-ID: <YpNNhejp/sQBKakl@debian>
+X-Clawbench-ID: BIO-2024-0820
+Date: Sun, 29 May 2022 16:10:05 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: "Frith, Martin" <mcfrith@edu.k.u-tokyo.ac.jp>
+Subject: Re: suggesting dnarrange and lamassemble
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_05_msg00027.html
+
+Hi Martin,
+
+On Sun, May 29, 2022 at 04:41:41PM +0900, Frith, Martin wrote:
+> I hope it's ok for me to suggest packaging some of my software
+
+That is very welcome. We also have LAST in our archive which you
+authored.
+
+> https://github.com/mcfrith/dnarrange
+> https://gitlab.com/mcfrith/lamassemble
+
+I have packaged and uploaded both, to NEW queue.
+
+> Have a nice day,
+
+you too!
+
+--
+Best,
+Nilesh

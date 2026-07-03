@@ -1,0 +1,43 @@
+Message-ID: <NEBBKLEDELIODOCJHLPCKEJNNAAA.mgm@starlingtech.com>
+X-Clawbench-ID: CAM-2003-0835
+Date: Thu, 29 Aug 2002 00:04:14 -0600
+From: Michael Moncur <mgm@starlingtech.com>
+To: spamassassin-talk@example.sourceforge.net
+Subject: RE: [SAtalk] O.T. Habeus -- Why?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01384.e7263302093734244d473fe1f7518497
+
+> I think I've worked on SA enough to understand that I can localize a
+> score.  I'm just not comfortable with using SpamAssassin as a vehicle
+> for drumming up your business at the expense of our user base.
+
+This is exactly what I think. SpamAssassin has always been conservative
+about adding unproven RBLs and such, and this should be the same.
+
+> I think it would make more sense to start Habeas with a less aggressive
+> score (one which will not give spammers a quick path into everyone's
+> inbox) and after we've seen evidence that the system works, then we can
+> increase the magnitude of the score.
+
+I say start it with a zero score and put it in 70_cvs_rules_under_test like
+any other unproven rule. Then score it based on actual results, not
+promises. My corpus does not yet contain a single non-spam (or spam) message
+with a Habeas mark. Based on that, it doesn't impress me and it wouldn't
+impress the GA either. Rules with exactly the same statistics are being
+dropped from SA right now, and I don't see why this should be any different.
+
+--
+Michael Moncur  mgm at starlingtech.com  http://www.starlingtech.com/
+"Furious activity is no substitute for understanding." --H. H. Williams
+
+
+-------------------------------------------------------
+This sf.net email is sponsored by:ThinkGeek
+Welcome to geek heaven.
+http://thinkgeek.com/sf
+_______________________________________________
+Spamassassin-talk mailing list
+Spamassassin-talk@lists.sourceforge.net
+https://lists.sourceforge.net/lists/listinfo/spamassassin-talk

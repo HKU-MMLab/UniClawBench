@@ -1,0 +1,26 @@
+{
+  "task_id": "task_101_30_xz_backdoor_audit",
+  "notes_visible_to_executor": false,
+  "skill_family_note": "Both injected skills (security-auditor, pentest) are top-1000 ClawHub security tools whose canonical scope is OWASP-Web / SAST review. The task applies them to a supply-chain audit context (an unpacked tarball of a release package). The executor is expected to (a) read SKILL.md from at least one of them to anchor the audit methodology — file-system walk, dependency review, secret scan, build-script inspection — and (b) extend that methodology to the supply-chain artifacts at hand (build scripts, bundled test artifacts, runtime resolver, generated release files, release-vs-source diff). Both source skills explicitly include 'auditing file permissions' / 'reviewing code for injection' in their canonical scope, which transfers naturally; the §6 score cap requires evidence of reading at least one declared skill.",
+  "skills": [
+    {
+      "original_skill": "security-auditor",
+      "injected_skill": "security-auditor",
+      "change_type": "benchmark environment adaptation",
+      "changes": [
+        "Kept upstream content; only stripped install instructions that conflicted with the pre-installed task environment."
+      ],
+      "reason": "Upstream `security-auditor` (top-1000) is kept verbatim; its OWASP/security-review heuristics transfer to supply-chain inspection."
+    },
+    {
+      "original_skill": "pentest",
+      "injected_skill": "pentest",
+      "change_type": "path repair",
+      "changes": [
+        "Updated the internal reference table to point at the markdown files that are actually shipped in the skill directory.",
+        "Changed pentest reference docs so optional scanner examples only use tools already available in the task environment and do not instruct the executor to install packages."
+      ],
+      "reason": "The injected skill package keeps its reference markdown files at the skill root, so the original references/*.md paths were broken in this task environment."
+    }
+  ]
+}

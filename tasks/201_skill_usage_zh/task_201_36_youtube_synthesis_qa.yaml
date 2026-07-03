@@ -1,0 +1,61 @@
+task_id: task_201_36_youtube_synthesis_qa
+category: 201_skill_usage_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我一直在看关于 macOS Sonoma 上 Python virtualenv 管理的 YouTube
+  视频，结果比开始时更困惑了——每个视频都和上一个互相矛盾。我只需要一个
+  明确的答案。请用 YouTube 文字稿技能通读
+  /tmp_workspace/clawbench/sources/transcripts/ 下的五份文字稿，并综合
+  出当前真正最佳的工作流，而不是孤立地总结每个视频。这些视频上传于 2022
+  到 2024 年之间，且彼此意见不一。
+
+
+  情况一团乱：2022 年的视频说直接用 python -m venv。一个 2023 年的视频
+  说那条建议已经过时，推荐 pyenv 加 Poetry。然后另一个 2023 年的视频
+  警告说 pyenv 加 Poetry 在 macOS Sonoma 上有一个已知的兼容性问题。一个
+  2024 年的视频声称一个更新的工具解决了所有问题。第五个更像是一堂历史课，
+  但对于背景了解可能仍然有用。
+
+  我现在用的就是 Sonoma。我想要今天就该采用的那一个推荐工作流，并清楚
+  注明哪些较早的推荐现在已被取代以及原因，外加任何注意事项。给出一个
+  确定的答案——不要用五个选项来含糊其辞。
+
+  把综合结果写入 /tmp_workspace/results/answer.md。要具体：点名我应该
+  安装的具体工具，逐步讲解安装以及首个项目的搭建，并对每条较早的推荐用
+  一两句话说明为什么它对我而言已不再是最佳选择。如果某条推荐因某个具体
+  原因而过时——比如一个 macOS Sonoma 兼容性 bug——就点名指出，而不是
+  含糊地说"它比较老"。
+
+  引用你所依据的视频。使用每份文字稿文件中的视频标题或 video_id，以便
+  我能把你的推理追溯到具体来源。
+
+  在 answer.md 底部加入一个简短的 "Caveats" 部分，记录视频中提到的推荐
+  工具的任何局限性——即便是总体上推荐了它的视频也算。我不想只看到好的
+  一面；如果某个视频指出了一个真实的局限，就把它呈现出来。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - transcripts/
+
+skills:
+  - youtube-watcher
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

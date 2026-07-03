@@ -1,0 +1,32 @@
+Message-ID: <2E3510DA-3FFD-40F4-AE74-E07FF402CB36@jaguNET.com>
+X-Clawbench-ID: ASF-2024-0583
+Date: Fri, 4 Mar 2022 09:05:19 -0500
+From: Jim Jagielski <jim@jaguNET.com>
+To: dev@httpd.apache.org
+Subject: Re: backports
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-03.mbox
+
+A question: Would it be easier for all this if we moved to being Github canon?
+
+> On Mar 4, 2022, at 5:08 AM, Stefan Eissing <stefan@eissing.org> wrote:
+>
+> We should improve our backport procedure and provide guidance on how to use it after the next release.
+>
+> Post-mortem dbm backport:
+> - the patch pointed to the in 2.4.x/STATUS was incomplete, lacking APLOGNO()
+> - the incomplete patch was voted on and accepted, as local tests do not have the full CI checks
+> - Jim applied the voted on backport patch
+> - CI failed
+> No one did anything really wrong. We did just not apply the CI tools available until the damage was done.
+>
+> As noted in the related thread, backport proposal should really be PRs on github. Those are checked by
+> our CI and a PR can easily be improved by adding submits to the branch it is based on. In addition, we
+> get the github UI for review and comments. Should be a win for all.
+>
+> Kind Regards,
+> Stefan
+>
+>

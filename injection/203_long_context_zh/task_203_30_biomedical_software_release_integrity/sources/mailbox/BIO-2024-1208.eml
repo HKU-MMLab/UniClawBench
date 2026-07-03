@@ -1,0 +1,23 @@
+Message-ID: <20220711063606.vojzxzaotoqb7b5e@debian>
+X-Clawbench-ID: BIO-2024-1208
+Date: Mon, 11 Jul 2022 12:06:06 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: "Frith, Martin" <mcfrith@edu.k.u-tokyo.ac.jp>
+Subject: Re: suggesting dnarrange and lamassemble
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_07_msg00011.html
+
+Hi again,
+
+On Sun, May 29, 2022 at 10:10:14PM +0900, Frith, Martin wrote:
+> Wow, amazingly fast!!!
+
+lamassemble fails its tests on i386 (see here[1]) -- could you fix accordingly?
+
+[1]: https://ci.debian.net/data/autopkgtest/testing/i386/l/lamassemble/22546451/log.gz
+
+--
+Best,
+Nilesh

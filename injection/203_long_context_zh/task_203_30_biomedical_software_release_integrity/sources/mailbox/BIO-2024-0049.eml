@@ -1,0 +1,34 @@
+Message-ID: <YZV1UM4YDCQW8WOo@lena.dartmouth.edu>
+X-Clawbench-ID: BIO-2024-0049
+Date: Wed, 17 Nov 2021 16:34:08 -0500
+From: Yaroslav Halchenko <debian@onerussian.com>
+To: debian-med@lists.debian.org
+Subject: Re: Heudiconv moved to Debian Med repository
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_11_msg00106.html
+
+On Wed, 17 Nov 2021, Nilesh Patra wrote:
+
+> > Argh, that was what I intended to mention: I just uploaded heudiconv
+> > 0.9.0-3.  I checked 0.10.0 but there were build time issues thus I did
+> > not bumped the version to be able to upload.
+
+> I fixed the tests an uploaded.
+
+coolio, thanks! will check the fixes out if anything to upstream
+
+> However, I noticed that the binary heudiconv_monitor, which had always
+> been there is unusable (ever since again) due to inotify not being in
+> the archive, so if someone has free cycles ....
+> (and no, it is not compatible with pyinotify)
+
+FWIW I don't think it is use by anyone, should be safe to strip away if
+really not usable
+
+--
+Yaroslav O. Halchenko
+Center for Open Neuroscience     http://centerforopenneuroscience.org
+Dartmouth College, 419 Moore Hall, Hinman Box 6207, Hanover, NH 03755
+WWW:   http://www.linkedin.com/in/yarik

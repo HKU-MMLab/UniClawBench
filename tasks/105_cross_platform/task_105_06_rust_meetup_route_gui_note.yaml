@@ -1,0 +1,80 @@
+task_id: task_105_06_rust_meetup_route_gui_note
+category: 105_cross_platform
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  Please prepare a short planning note for Rust Global: Tokyo using real public
+  websites, not a local simulated event page.
+
+  Use these real sources:
+
+  - Event page: https://rustfoundation.org/event/rust-global-tokyo/
+  - Event background: https://rustfoundation.org/media/rust-global-tokyo-connecting-the-rust-ecosystem-across-industries-regions/
+  - Venue/travel page: https://events.linuxfoundation.org/open-source-summit-japan/attend/venue-travel/
+  - Route estimate from Shibuya Station to Toranomon Station:
+    https://www.rome2rio.com/s/Shibuya-Station/Toranomon-Station
+
+  Also create a calendar event yourself in the real desktop calendar application
+  installed by the service, preferably GNOME Calendar. Do not use a mock
+  calendar, a local event simulator, or any script that creates/records the
+  event for you.
+
+  The calendar event should start exactly 40 minutes before the event start time.
+  Save auditable calendar evidence under `/tmp_workspace/results/`:
+
+  - `/tmp_workspace/results/rust_meetup_calendar_event.json`
+  - `/tmp_workspace/results/rust_meetup_calendar_export.ics`
+  - `/tmp_workspace/results/rust_meetup_calendar_screenshot.png`
+
+  The calendar screenshot should show the saved event in the real calendar
+  application or a saved event-details view. An import preview or unsaved
+  dialog is not enough by itself.
+
+  Then use a real graphical text editor to write:
+
+      /tmp_workspace/results/rust_meetup_route_note.md
+
+  Preserve auditable evidence that a real graphical editor was used by saving a
+  screenshot of the note open in that editor:
+
+  - `/tmp_workspace/results/rust_meetup_note_editor_screenshot.png`
+
+  Also save browser evidence showing the real public pages you used:
+
+  - `/tmp_workspace/results/browser_event_page.png`
+  - `/tmp_workspace/results/browser_route_page.png`
+
+  The note must have exactly these three sections:
+
+  1. Event info
+  2. Route estimate
+  3. Arrival plan
+
+  Include the event time, venue, registration/cost requirement, the commute
+  estimate from Shibuya Station, and a practical arrival/departure plan. Do not
+  just copy the event-page introduction; synthesize the details into a useful
+  note. Use the route values from the real route and venue pages, not a generic
+  map estimate or guess.
+
+  Finally save `/tmp_workspace/results/gui_evidence.md` listing the real browser,
+  calendar, and text-editor windows you used and the screenshot paths.
+
+services:
+  - name: real-route-gui-apps-setup
+    path: real-route-gui-apps-setup
+    start: bash install.sh
+    oneshot: true
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+codex:
+  max_user_followups: 2

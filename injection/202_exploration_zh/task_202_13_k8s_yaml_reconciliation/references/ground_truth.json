@@ -1,0 +1,129 @@
+{
+  "task_id": "task_102_13_k8s_yaml_reconciliation",
+  "fixture_root": "/tmp_workspace/clawbench/sources/k8s_config",
+  "note": "All values below were computed with a real YAML parser (PyYAML safe_load) and strategic-merge semantics. They are deterministic and offline; nothing depends on the network.",
+
+  "conflicts": [
+    {
+      "id": "C1_duplicate_key_log_level",
+      "type": "duplicate_key_same_mapping",
+      "file": "base/configmap.yaml",
+      "object": "ConfigMap/orders-config",
+      "key": "data.LOG_LEVEL",
+      "detail": "LOG_LEVEL is defined twice in the same mapping: first \"info\", then \"debug\". YAML keeps the LAST occurrence.",
+      "effective_value_in_base": "debug",
+      "shadowed_value": "info",
+      "severity": "high",
+      "why_it_matters": "A reader skimming the top of the file sees LOG_LEVEL=info, but the object actually carries LOG_LEVEL=debug. Silent key shadowing."
+    },
+    {
+      "id": "C2_anchor_alias_shared_resources",
+      "type": "yaml_anchor_alias",
+      "file": "base/deployment.yaml",
+      "object": "Deployment/orders",
+      "detail": "container[0] (orders) defines resources with anchor &default-resources; container[1] (metrics-sidecar) reuses it via *default-resources. The two containers therefore share an identical resource block (requests cpu 250m / mem 256Mi, limits cpu 500m / mem 512Mi).",
+      "resolved_resources": {
+        "requests": {"cpu": "250m", "memory": "256Mi"},
+        "limits": {"cpu": "500m", "memory": "512Mi"}
+      },
+      "severity": "medium",
+      "why_it_matters": "The alias is not a separate copy — editing the anchor changes both containers. A correct audit must note that the sidecar inherits the orders container's resources via the alias, not as an independent value."
+    },
+    {
+      "id": "C3_unquoted_no_boolean",
+      "type": "yaml_type_coercion",
+      "file": "base/deployment.yaml",
+      "object": "Deployment/orders",
+      "key": "spec.template.spec.containers[0].env[TLS_ENABLED].value",
+      "detail": "TLS_ENABLED value is the unquoted token `no`. Under YAML 1.1 (and PyYAML) this parses as the boolean False, not the string \"no\". Kubernetes env var values must be strings, so this is also schema-invalid (a bool where a string is required).",
+      "parsed_as": false,
+      "intended_string": "no",
+      "severity": "high",
+      "why_it_matters": "The value silently becomes a boolean. It must be quoted (\"no\" or \"false\") to be a valid env value; the bug is invisible unless you actually parse the file."
+    },
+    {
+      "id": "C4_image_tag_transformer_vs_patch_staging",
+      "type": "cross_file_value_conflict",
+      "files": ["base/deployment.yaml", "overlays/staging/patch.yaml", "overlays/staging/kustomization.yaml"],
+      "object": "Deployment/orders (container orders image)",
+      "detail": "base image is registry.example.com/orders:1.4.0. staging patch.yaml re-states image :1.4.0, but staging kustomization.yaml has an images transformer setting newTag 1.5.0-rc.1. The kustomize images transformer is applied after patches, so it WINS.",
+      "effective_image_staging": "registry.example.com/orders:1.5.0-rc.1",
+      "severity": "high",
+      "why_it_matters": "The image tag literally written in the patch (1.4.0) is NOT what gets deployed; the transformer overrides it. Reading only the patch misleads."
+    },
+    {
+      "id": "C5_image_tag_transformer_vs_patch_prod",
+      "type": "cross_file_value_conflict",
+      "files": ["overlays/prod/patch.yaml", "overlays/prod/kustomization.yaml"],
+      "object": "Deployment/orders (container orders image)",
+      "detail": "prod patch.yaml pins image :1.4.2, but prod kustomization.yaml images transformer sets newTag 1.6.0. Transformer wins.",
+      "effective_image_prod": "registry.example.com/orders:1.6.0",
+      "loser_value": "registry.example.com/orders:1.4.2",
+      "severity": "high",
+      "why_it_matters": "Same trap as staging: the explicit image line in the prod patch (1.4.2) is overridden by the transformer (1.6.0)."
+    },
+    {
+      "id": "C6_replicas_vs_hpa_prod",
+      "type": "semantic_conflict_replicas_under_hpa",
+      "files": ["overlays/prod/patch.yaml", "overlays/prod/hpa.yaml"],
+      "objects": ["Deployment/orders", "HorizontalPodAutoscaler/orders"],
+      "detail": "prod patch.yaml pins Deployment spec.replicas: 5, while prod/hpa.yaml defines an HPA targeting the same Deployment with minReplicas 4 / maxReplicas 10. When an HPA governs a Deployment, a static replicas value should NOT be pinned — the HPA owns the replica count and will fight a hardcoded value.",
+      "pinned_replicas": 5,
+      "hpa_min": 4,
+      "hpa_max": 10,
+      "correct_resolution": "Remove the static spec.replicas from the prod Deployment (or leave it unmanaged); the HPA's min/max (4..10) governs scaling. Pinning replicas:5 under an HPA is the conflict to flag.",
+      "severity": "high",
+      "why_it_matters": "This is a real-world footgun: replicas pinned under an HPA causes thrash. Must be detected as a cross-object semantic conflict, not just a value diff."
+    }
+  ],
+
+  "effective_configmaps": {
+    "base": {
+      "LOG_LEVEL": "debug",
+      "MAX_CONNECTIONS": "100",
+      "FEATURE_CHECKOUT_V2": "false",
+      "REGION": "us-east-1",
+      "CACHE_TTL_SECONDS": "300"
+    },
+    "staging": {
+      "LOG_LEVEL": "warn",
+      "MAX_CONNECTIONS": "150",
+      "FEATURE_CHECKOUT_V2": "true",
+      "REGION": "us-east-1",
+      "CACHE_TTL_SECONDS": "300"
+    },
+    "prod": {
+      "LOG_LEVEL": "error",
+      "MAX_CONNECTIONS": "500",
+      "FEATURE_CHECKOUT_V2": "true",
+      "REGION": "us-west-2",
+      "CACHE_TTL_SECONDS": "300"
+    }
+  },
+
+  "effective_images": {
+    "base": "registry.example.com/orders:1.4.0",
+    "staging": "registry.example.com/orders:1.5.0-rc.1",
+    "prod": "registry.example.com/orders:1.6.0"
+  },
+
+  "effective_replicas": {
+    "base": 2,
+    "staging": 3,
+    "prod": "governed by HPA (min 4 / max 10); static replicas:5 in the patch is a conflict and should not be pinned"
+  },
+
+  "scoring_anchors": {
+    "must_find_conflicts": ["C1_duplicate_key_log_level", "C3_unquoted_no_boolean", "C4_image_tag_transformer_vs_patch_staging", "C5_image_tag_transformer_vs_patch_prod", "C6_replicas_vs_hpa_prod"],
+    "nice_to_find_conflicts": ["C2_anchor_alias_shared_resources"],
+    "minimum_conflicts_for_credit": 4,
+    "key_effective_values": {
+      "staging.LOG_LEVEL": "warn",
+      "prod.LOG_LEVEL": "error",
+      "base.LOG_LEVEL": "debug",
+      "staging.image": "registry.example.com/orders:1.5.0-rc.1",
+      "prod.image": "registry.example.com/orders:1.6.0",
+      "TLS_ENABLED.parsed_as": false
+    }
+  }
+}

@@ -1,0 +1,12 @@
+Message-ID: <cam-2003-0260@campaign-audit.example>
+X-Clawbench-ID: CAM-2003-0260
+Date: Thu, 06 Mar 2003 15:00:00 -0500
+From: List Operations <listops@acme-mail.example>
+To: ops@acme-mail.example
+Subject: suppression merge complete
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: synthetic email campaign lead-gen quality audit implant
+
+The suppression merge for the spring newsletter completed before send. Counts reconcile to the opt-out export and no suppressed addresses were mailed.

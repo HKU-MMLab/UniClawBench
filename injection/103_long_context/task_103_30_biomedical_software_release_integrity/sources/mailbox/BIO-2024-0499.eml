@@ -1,0 +1,28 @@
+Message-ID: <7qc36sfrt34w567qxmsmdntvtmqlipid2uu7dz6pdxvlwkm6fn@wot23huvgygz>
+X-Clawbench-ID: BIO-2024-0499
+Date: Tue, 16 Apr 2024 17:34:27 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: Emboss not migrating due to autopkgtest error on s390x
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_04_msg00033.html
+
+On Tue, Apr 16, 2024 at 02:40:40PM +0300, Andrius Merkys wrote:
+> On 2024-04-16 03:23, Aaron M. Ucko wrote:
+> > s390x is a 64-bit architure, so the time_t64 transition was a pure
+> > formality there.  (The old s390 architecture would have been affected
+> > but retired several years ago.)
+>
+> Oh, right, it really is.
+>
+> Just checked on a porterbox, apparently all emboss executables segfault on
+> s390x since bullseye. I believe this deserves a proper BTS bug now.
+
+I suppose you meant "RM" instead of "BTS" here. Thanks for filing a report.
+OTOH, does anyone actually use s390x for any med team package? If not, can we
+consider to add this too along with other 32-bit archs to our policy?
+
+Best,
+Nilesh

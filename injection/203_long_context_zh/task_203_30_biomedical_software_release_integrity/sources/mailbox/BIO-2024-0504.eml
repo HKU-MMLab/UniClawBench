@@ -1,0 +1,41 @@
+Message-ID: <Y4uTaCHd4mXRbJVA@fusion>
+X-Clawbench-ID: BIO-2024-0504
+Date: Sat, 3 Dec 2022 19:20:24 +0100
+From: Étienne Mollier <emollier@emlwks999.eu>
+To: Mohd Bilal <mdbilal@disroot.org>
+Subject: Re: [Advent bug squashing] fixed bug #1018377 in insilicoseq
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_12_msg00020.html
+
+Hi Bilal,
+
+Mohd Bilal, on 2022-12-03:
+> I just pushed a a fix for porting insilicoseq's test to pytest. I would
+> request someone from the team to take a look and sponsor my changes
+
+I have reviewed through your changes, and they look even better
+than what I think I might have wrapped up.  There is only one
+thing I spotted: some time ago I made adjustments to my build
+environment to remove resolver configuration, and it seems to
+have caught a test which tries to access the network:
+
+	iss/test/test_download.py::test_ncbi FAILED
+	[…]
+	E               urllib.error.URLError:
+
+	/usr/lib/python3.10/urllib/request.py:1351: URLError
+
+test_ncbi needs to be skipped.
+
+> [1] - https://salsa.debian.org/med-team/insilicoseq
+
+Thank you for your contributions!
+
+Have a nice day,  :)
+--
+Étienne Mollier
+Fingerprint:  8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+Sent from /dev/pts/2, please excuse my verbosity.
+On air: Isildurs Bane - The Day Is Done

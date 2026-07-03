@@ -1,0 +1,52 @@
+Message-ID: <7003d70c67f1c6aae9aaf513d89f74d5@enron.com>
+X-Clawbench-ID: ANL-2001-0563
+Date: 2000-11-16T08:43:00-03:00
+From: Michael Curran <mcurran@riskcare.com>
+To: vkamins@enron.com <vkamins@enron.com>
+Subject: Monte Carlo results
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Enron kaminski-v public mailbox index.json
+X-Original-Folder: kaminski-v_001/kaminski-v/Notes inbox
+
+Hi Vince -
+
+
+Here are some results of our new deterministic Monte Carlo method,
+
+called Pathstar, against Sobol points.  As you can see, the improvement
+
+is very significant and increases with dimension.  Would you be
+
+interested in discussing this product?
+
+
+Regards,
+
+
+Michael Curran
+
+Head of Research
+
+RiskCare - Financial Technology Services
+
+Piercy House
+
+7 Copthall Avenue
+
+London EC2R 7NJ
+
+
+Tel: +44 (0)20 7562 3419
+
+Fax: +44 (0)20 7562 3401
+
+
+mailto:mcurran@riskcare.com
+
+
+http://www.riskcare.com
+
+
+ - VsSobolGraph.doc

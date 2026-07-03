@@ -1,0 +1,45 @@
+Message-ID: <udlo81xa2pg.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-0695
+Date: Tue, 22 Mar 2022 21:15:55 -0400
+From: ucko@debian.org (Aaron M. Ucko)
+To: <debian-med@lists.debian.org>
+Subject: Re: ncbi-igblast - compiles so much redundant general NCBI bits - wrong source tree?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_03_msg00028.html
+
+Andreas Tille  writes:
+
+> This hint enabled me to finally build the package.  Unfortunately there
+
+Glad to hear it!
+
+> are lots of lintian errors[1].  I think I'll be able to deal with the
+> RUNPATH issues (if I would have time which is not the case the next
+> three days).
+
+Please try adding --without-runpath to the configuration flags.
+
+> I'm more concerned about
+
+Long story short, these are all false positives; I'd suggest copying
+debian/source/lintian-overrides from ncbi-blastplus.
+
+> E: ncbi-igblast source: license-problem-json-evil c++/include/misc/jsonwrapp/rapidjson11/license.txt
+
+As this file explains, the problematic JSON license applies only to a
+jsonchecker subtree NCBI already doesn't redistribute.
+
+> E: ncbi-igblast source: source-is-missing c++/src/html/ncbi_menu.js
+> E: ncbi-igblast source: source-is-missing c++/src/html/ncbi_menu_dnd.js
+> E: ncbi-igblast source: source-is-missing c++/src/html/ncbi_menu_dyn.js
+
+These (short!) files have somewhat long lines, but TTBOMK are meant to
+be edited directly as needed.
+
+Thanks for checking!
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

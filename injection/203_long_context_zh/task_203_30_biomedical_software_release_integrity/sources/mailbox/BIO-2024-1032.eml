@@ -1,0 +1,30 @@
+Message-ID: <ZpupbzKISjrBdWPd@an3as.eu>
+X-Clawbench-ID: BIO-2024-1032
+Date: Sat, 20 Jul 2024 14:11:27 +0200
+From: Andreas Tille <tille@debian.org>
+To: Étienne Mollier <emollier@debian.org>
+Subject: Re: PyMol 3.0 is out - salsa upload works for me
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_07_msg00027.html
+
+Hi Étienne,
+
+Am Sat, Jul 20, 2024 at 12:16:19AM +0200 schrieb Étienne Mollier:
+> Thanks, I was going to proceed to the upload, but it occurred to
+> me that pymol is a debichem team package, team which I am not
+> part of.  I requested salsa access to at least be able to push a
+> tag and pinged the alioth list.  I thought it would be more
+> appropriate that I join before begining to sponsor uploads and
+> push tags.
+
+It makes sense to join DebiChem team in any case since in its repository
+are some packages which are shared with Debian Med tasks.  I'm very
+positive that mbanck will give permission very easily.
+
+Kind regards
+    Andreas, preparing for the trip to Busan.
+
+--
+https://fam-tille.de

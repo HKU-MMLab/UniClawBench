@@ -1,0 +1,34 @@
+Message-ID: <YfuhCZUTH8sjPxIk@an3as.eu>
+X-Clawbench-ID: BIO-2024-1147
+Date: Thu, 3 Feb 2022 10:31:53 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: New version of snpeff in Git (Was: snpeff_4.3t+dfsg1-1_amd64.changes REJECTED)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_02_msg00022.html
+
+Hi,
+
+Am Sat, Jan 22, 2022 at 09:49:32PM +0100 schrieb Pierre Gruet:
+> I did the upload -- I agree autopkgtests would be valuable, still. Yet I
+> remember the tests I did when designing the package last Spring, and I feel
+> providing a dataset is necessary for even a basic use of snpeff, which, I
+> think, makes the design of an autopkgtest difficult.
+> But if anyone has specific ideas -- maybe you, Steffen? -- I would be really
+> happy to implement them. Or else, I will have a look again!
+
+I realised that you commited 5.1+dfsg which builds nicely for me and
+also fixes the watch file (which I'm hunting for in all our packages).
+Do you have any reason to wait with uploading the current status in Git?
+
+I mean, if we can't provide an autopkgtest yet the current Git has a
+lot of advantages for our users.
+
+Kind regards
+
+      Andreas.
+
+--
+http://fam-tille.de

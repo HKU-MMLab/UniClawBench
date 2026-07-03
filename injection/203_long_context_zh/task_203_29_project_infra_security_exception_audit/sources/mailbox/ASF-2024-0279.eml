@@ -1,0 +1,21 @@
+Message-ID: <SA1PR05MB796637FCEAE38FDBB3E6D2BCDFB59@SA1PR05MB7966.namprd05.prod.outlook.com>
+X-Clawbench-ID: ASF-2024-0279
+Date: Thu, 9 Mar 2023 15:33:06 +0000
+From: =?iso-8859-1?Q?Jes=FAs_Gonz=E1lez?= <jesusgm@vmware.com>
+To: "dev@httpd.apache.org" <dev@httpd.apache.org>
+Subject: Re: mod_wasm: Contributing Upstream to Apache
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-03.mbox
+
+Hola!
+
+We just released a mod_wasm security update (v0.10.3<https://github.com/vmware-labs/mod_wasm/releases/tag/v0.10.3>) to address two recently disclosed CVEs (one critical) of Wasmtime, the WebAssembly runtime mod_wasm uses.
+
+Further details can be found in this article<https://wasmlabs.dev/articles/wasmtime-6-0-1-security-update/> and in the mod_wasm changelog<https://github.com/vmware-labs/mod_wasm/blob/main/CHANGELOG.md>.
+
+Let us know if you find any issues.
+
+Cheers!
+Jesús

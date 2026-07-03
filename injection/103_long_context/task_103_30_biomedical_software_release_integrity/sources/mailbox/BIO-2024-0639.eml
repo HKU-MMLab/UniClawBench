@@ -1,0 +1,55 @@
+Message-ID: <YXxaAx69tbProqVI@debian>
+X-Clawbench-ID: BIO-2024-0639
+Date: Sat, 30 Oct 2021 02:00:59 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: debian-science@lists.debian.org,	"debian-science-sagemath@alioth-lists.debian.net" <debian-science-sagemath@alioth-lists.debian.net>,	Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>
+Subject: Re: Debian Math Team
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_10_msg00035.html
+
+Hi Doug,
+
+Thanks for doing this!
+
+On Fri, Oct 29, 2021 at 05:31:20PM +0000, Torrance, Douglas wrote:
+> During the Debian Science BoF at this year's DebConf, there was some
+> discussion of creating a team devoted to packaging mathematical software.
+>
+> This seemed like a pretty good idea, so I figured that I'd go ahead and
+> start working on getting it set up.  I've already created a Salsa group [1]
+> and a team on the Debian Package Tracker [2].
+>  If you're interested in
+> joining, then you should be able to sign up at these links.
+
+I requested access on salsa, please consider adding me with access level >= maintainer
+and signed up at the tracker too.
+
+> I figured next would be applying for a mailing list, putting together a team policy, etc.  Any thoughts?
+
+As discussed privately as well, I think these are the tasks:
+
+== Main tasks ==
+
+* Creating a debian-math@lists.debian.org mailing list
+* If possible, ask for an alioth mailing list for tracking packaging changes
+* Setting up a wiki page about the team, pointing to various links (mailing list, salsa, policy et. al.)
+* Moving math related packages from science -> math team on salsa and on tracker
+  + We need to make a list here. Some math packages in science team, some in R team
+  + Sagemath has a separate mailing list, and it might make sence to merge them
+* Setting up a policy -- which we could largely inherit from the science-team one
+* Updating and uploading math-team packages
+* Seek more volunteers :)
+
+== Additional tasks for blends ==
+
+* Creating a debian-math metapackage
+* Add math to blends team and track the qa stuff
+
+@Andreas (in CC), can you help setting up the latter part?
+
+If someone has more suggestions, and would like helping, please let us know.
+
+Kind Regards,
+Nilesh

@@ -1,0 +1,63 @@
+Message-ID: <ZPrV6O7KI/Sl9MEI@fusion>
+X-Clawbench-ID: BIO-2024-0691
+Date: Fri, 8 Sep 2023 10:06:00 +0200
+From: Étienne Mollier <emollier@debian.org>
+To: César Pomar <cesarpomar18@gmail.com>,	cesaralfredo.pineiro@usc.es
+Subject: Re: Request for Sponsorship: VeryFastTree - Parallelized and Optimized Version of FastTree
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_09_msg00005.html
+
+Hi César,
+
+César Pomar, on 2023-09-07:
+> The latest version of VeryFastTree is now available
+> in the Salsa repository. It should pass all Debian tests now.
+
+Thanks for your work on this, I'm open to proceed to an upload,
+but I wanted to point out a few things first:
+
+  * from lintian's automatic review, there are a couple of
+    warnings about the baseline specific executables caught
+    without manual pages:
+
+        W: veryfasttree: no-manual-page [usr/bin/VeryFastTree-avx2]
+        W: veryfasttree: no-manual-page [usr/bin/VeryFastTree-avx512f]
+        W: veryfasttree: no-manual-page [usr/bin/VeryFastTree-avx]
+        W: veryfasttree: no-manual-page [usr/bin/VeryFastTree-sse2]
+        W: veryfasttree: no-manual-page [usr/bin/VeryFastTree-sse4_1]
+
+    so maybe it would be worth either moving these executables
+    out of the path, canonically under libexec/ so the dispatch
+    script finds them there, unless you want to provide the
+    alternate baseline programs in the path, in which case you
+    might consider applying a lintian override for those
+    warnings; or third option, you can modify the manual page to
+    answer to all the variants;
+
+  * from lintian's pedantic checks, I see also one instance of:
+
+        P: veryfasttree source: maintainer-manual-page [debian/VeryFastTree.1]
+
+    which makes me wonder whether it would make sense to ship
+    the manual page straight in your upstream code, for the
+    benfit of your users not installing veryfasttree through the
+    Debian package;
+
+  * pristine-tar branch ends with a commit from root: I don't
+    have strong opinions whether this should be left as-is or
+    force-pushed with a proper user ID, however I would strongly
+    suggest not running any packaging step with elevated
+    privileges in general.
+
+The package is in otherwise good shape.  Please let me know at
+least how you would like to address the lintian warnings, and I
+will proceed to a sponsored upload.
+
+Have a nice day,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  gpg: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/tty1, please excuse my verbosity
+   `-

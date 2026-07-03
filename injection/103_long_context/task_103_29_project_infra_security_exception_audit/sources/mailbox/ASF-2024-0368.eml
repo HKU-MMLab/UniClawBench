@@ -1,0 +1,102 @@
+Message-ID: <0c4601da1588$e9613b50$bc23b1f0$@pdinc.us>
+X-Clawbench-ID: ASF-2024-0368
+Date: Sun, 12 Nov 2023 11:54:33 -0500
+From: "Jason Pyeron" <jpyeron@pdinc.us>
+To: <dev@httpd.apache.org>
+Subject: using string from apr_pstrdup results in httpd segfault, error 4 in libc.so.6 - I was doing something wrong... (solved, sharing for others)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-11.mbox
+
+While I was preparing my questions in the below email (rebooting resulted in error 5 too) - I found my own answer.
+
+I found out that I was missing an include at the top of the file when I saw:
+
+mod_certs.c:81:22: warning: assignment to 'char *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   81 |         config->name = apr_pstrdup(parms->pool, v);
+
+Which made no sense, then I remembered that C defaults to return type of int, if it does not know the declaration. So I looked harder and found:
+
+mod_certs.c:43:16: warning: implicit declaration of function 'apr_pstrdup' [-Wimplicit-function-declaration]
+   43 |     char* test=apr_pstrdup(parms->pool, arg);
+      |                ^~~~~~~~~~~
+
+Which was fixed by:
+
+#include "apr_strings.h"
+
+
+Going forward, I have -Wc,-Werror=implicit-function-declaration on apxs
+
+
+-Jason
+
+
+Was going to send below...
+
+(my environment, Rocky 9 - httpd-devel-2.4.53-11.el9_2.5.x86_64)
+
+Test case code fragment:
+
+const char *process_directives(cmd_parms *parms, void *mconfig, const char *arg)
+{
+    ap_log_error(APLOG_MARK, APLOG_INFO, 0, parms->server, "works");
+    if (arg) ap_log_error(APLOG_MARK, APLOG_INFO, 0, parms->server, "we see this, arg is %s",arg);
+    char* test=apr_pstrdup(parms->pool, arg);
+    if (test)
+    {
+        ap_log_error(APLOG_MARK, APLOG_INFO, 0, parms->server, "test is not null, we see this - segfault next");
+        ap_log_error(APLOG_MARK, APLOG_INFO, 0, parms->server, "test is: %s", test);
+    }
+    ap_log_error(APLOG_MARK, APLOG_INFO, 0, parms->server, "we never get here");
+
+
+Nov 12 10:48:02 localhost systemd[1]: Starting The Apache HTTP Server...
+Nov 12 10:48:02 localhost httpd[45938]: [Sun Nov 12 10:48:02.206339 2023] [:info] [pid 45938:tid 45938] works
+Nov 12 10:48:02 localhost httpd[45938]: [Sun Nov 12 10:48:02.206584 2023] [:info] [pid 45938:tid 45938] we see this, arg is header:Ssl-Client-Cert
+Nov 12 10:48:02 localhost httpd[45938]: [Sun Nov 12 10:48:02.206608 2023] [:info] [pid 45938:tid 45938] test is not null, we see this - segfault next
+Nov 12 10:48:02 localhost kernel: httpd[45938]: segfault at 28e3cb48 ip 00007fbd5d8bce7d sp 00007ffe28b41ae8 error 4 in libc.so.6[7fbd5d828000+175000]
+Nov 12 10:48:02 localhost kernel: Code: e1 c5 f8 77 c3 0f 1f 84 00 00 00 00 00 f3 0f 1e fa 89 f8 48 89 fa c5 f9 ef c0 25 ff 0f 00 00 3d e0 0f 00 00 0f 87 33 01 00 00 <c5> fd 74 0f c5 fd d7 c1 85 c0 74 57 f3 0f bc c0 c5 f8 77 c3 66 66
+Nov 12 10:48:02 localhost systemd[1]: Started Process Core Dump (PID 45940/UID 0).
+Nov 12 10:48:02 localhost systemd-coredump[45941]: Resource limits disable core dumping for process 45938 (httpd).
+Nov 12 10:48:02 localhost systemd-coredump[45941]: Process 45938 (httpd) of user 0 dumped core.
+Nov 12 10:48:02 localhost systemd[1]: httpd.service: Main process exited, code=dumped, status=11/SEGV
+Nov 12 10:48:02 localhost systemd[1]: httpd.service: Failed with result 'core-dump'.
+Nov 12 10:48:02 localhost systemd[1]: Failed to start The Apache HTTP Server.
+Nov 12 10:48:02 localhost systemd[1]: systemd-coredump@34-45940-0.service: Deactivated successfully.
+
+
+Even checking the first character results in a seg fault:
+
+        ap_log_error(APLOG_MARK, APLOG_INFO, 0, parms->server, "*test is: %x", test);
+        ap_log_error(APLOG_MARK, APLOG_INFO, 0, parms->server, "*pool is: %x", parms->pool);
+        ap_log_error(APLOG_MARK, APLOG_INFO, 0, parms->server, "X     is: %c", 'X');
+        char t=test[0];
+        ap_log_error(APLOG_MARK, APLOG_INFO, 0, parms->server, "we never get here");
+
+Nov 12 11:14:45 localhost httpd[2042]: [Sun Nov 12 11:14:45.226362 2023] [:info] [pid 2042:tid 2042] *test is: c36efb58
+Nov 12 11:14:45 localhost httpd[2042]: [Sun Nov 12 11:14:45.226378 2023] [:info] [pid 2042:tid 2042] *pool is: c36143e8
+Nov 12 11:14:45 localhost httpd[2042]: [Sun Nov 12 11:14:45.226391 2023] [:info] [pid 2042:tid 2042] X     is: X
+Nov 12 11:14:45 localhost kernel: httpd[2042]: segfault at ffffffffc36efb58 ip 00007fba3c664356 sp 00007ffc0ee286f8 error 5 in mod_certs.so[7fba3c664000+1000]
+
+Build commands:
+/usr/lib64/apr-1/build/libtool --silent --mode=link gcc -Wl,-z,relro,-z,now   -o mod_certs.la  -rpath /usr/lib64/httpd/modules -module -avoid-version    mod_certs.lo
+(left off here on draft email ...)
+
+Things I have read:
+
+https://apr.apache.org/docs/apr/trunk/group__apr__strings.html#gabc79e99ff19abbd7cfd18308c5f85d47
+https://nightlies.apache.org/httpd/trunk/doxygen/group__APACHE__CORE__LOG.html#ga83397d991e162cb611864767c1bc0c54
+https://httpd.apache.org/docs/2.4/developer/modguide.html
+
+
+--
+Jason Pyeron  | Architect
+PD Inc        | Certified SBA 8(a)
+10 w 24th St  | Certified SBA HUBZone
+Baltimore, MD | CAGE Code: 1WVR6
+
+.mil: jason.j.pyeron.ctr@mail.mil
+.com: jpyeron@pdinc.us
+tel : 202-741-9397

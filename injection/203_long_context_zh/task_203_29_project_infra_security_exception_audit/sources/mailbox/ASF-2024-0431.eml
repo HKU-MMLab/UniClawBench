@@ -1,0 +1,33 @@
+Message-ID: <CAKQ1sVMRdPw392p=JwhB4wdbkVTEvgeC82NCayJ-646MY1gNiA@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0431
+Date: Wed, 12 Oct 2022 15:47:31 +0200
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: [RESULT: PASS] Re: [VOTE] Release libapreq2-2.17
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-10.mbox
+
+On Thu, Sep 29, 2022 at 1:16 PM Steve Hay <steve.m.hay@googlemail.com> wrote:
+>
+> On Thu, 25 Aug 2022 at 09:58, Joe Orton <jorton@redhat.com> wrote:
+> >
+> > Thanks for testing. The release is approved:
+> >
+> > PMC votes: +1 from ylavic, jfclere, jorton
+> >
+> > I will promote the release and announce it.
+> >
+>
+> Thanks for this release. I didn't get round to uploading it to CPAN
+> yet, but a bug report has come in for it anyway:
+>
+> https://rt.cpan.org/Public/Bug/Display.html?id=144470
+
+Do we have an example of a payload/upload which does not pass apreq's
+multipart parsing in 2.17?
+
+
+Regards;
+Yann.

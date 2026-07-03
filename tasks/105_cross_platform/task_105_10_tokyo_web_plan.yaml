@@ -1,0 +1,55 @@
+task_id: task_105_10_tokyo_web_plan
+category: 105_cross_platform
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+recording: none
+headed: auto
+task: |
+  You are an office worker visiting Tokyo on a business trip for the first
+  time. Plan for next Saturday, when you only have 13:30-18:30 free, and
+  the fixed starting point is Tokyo Station Marunouchi North Exit. If next
+  Saturday is a public holiday, closed day, special-hours day, sold out, or
+  the official pages do not provide enough date-specific opening/admission
+  information, use the following Saturday instead and explain why. Use only
+  the browser and webpage information to create a half-day travel plan, and
+  save it to:
+
+      /tmp_workspace/results/tokyo_saturday_afternoon_plan.md
+
+  The candidate attractions are limited to: Tokyo National Museum, Ueno Zoo,
+  teamLab Planets TOKYO, and Tokyo Skytree. You must first check the official
+  website for all four candidate attractions for opening hours, last admission
+  time, and reservation/ticket rules for the selected date, then use a map
+  webpage to check travel time from the starting point to attractions and
+  between attractions. The final plan must select exactly two attractions.
+
+  The final route must satisfy:
+  - Total sightseeing time plus transportation time is no more than 5 hours.
+  - Each individual transfer should preferably be no more than 35 minutes.
+  - Do not choose an attraction that requires complex same-day reservations
+    when admission cannot be confirmed.
+  - Include one 15-30 minute coffee or rest break in the itinerary.
+
+  The Markdown must contain and be organized only around these five top-level
+  sections:
+  - chosen attractions
+  - official rule summary
+  - travel times
+  - final schedule
+  - why not choose the others
+
+  State the selected date in the final plan. Do not only provide links or list
+  attraction descriptions; provide an executable schedule and tradeoff
+  rationale.
+codex:
+  max_user_followups: 2
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/process_evidence/google_map_TNM_to_Zoo.png
+  - references/process_evidence/google_map_tokyo_station_to_TNM.png
+  - references/process_evidence/official_tokyo_national_museum.png

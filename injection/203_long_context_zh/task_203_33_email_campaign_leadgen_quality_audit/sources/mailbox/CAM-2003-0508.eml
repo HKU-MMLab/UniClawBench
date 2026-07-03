@@ -1,0 +1,28 @@
+Message-ID: <20020204143329.B2626@pihlaja.kotilo>
+X-Clawbench-ID: CAM-2003-0508
+Date: Mon, 04 Feb 2002 14:33:29 +0200
+From: Peter Peltonen <pisara@iki.fi>
+To: rpm-zzzlist@freshrpms.net
+Subject: Re: http://apt.nixia.no/
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01080.b8d12c010e45434e95f67889e26ba456
+
+On Fri, Feb 01, 2002 at 05:41:32PM +0200, Harri Haataja wrote:
+> I have a local one for the main and upgrades from somewhere plus my own
+> at $ORKPLACE.
+
+Olen ajatellut pystyttää itselleni lokaalin apt-varaston, kun Suomesta ei
+tunnu löytyvän julkista peiliä. Osaisitko avittaa hiukan asiassa, eli
+kuinka lähteä liikkeelle? Ensin kannattanee peilata varsinainen RH:n rpm:t
+jostain, vaan millä softalla (rsync?) ja mistä (funet?) tuo kannattaa
+tehdä, ajatuksia?
+
+--
+Peter
+
+
+_______________________________________________
+RPM-List mailing list <RPM-List@freshrpms.net>
+http://lists.freshrpms.net/mailman/listinfo/rpm-list

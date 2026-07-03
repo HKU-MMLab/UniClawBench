@@ -1,0 +1,26 @@
+Message-ID: <20210927152652.GF29524@an3as.eu>
+X-Clawbench-ID: BIO-2024-0016
+Date: Mon, 27 Sep 2021 17:26:52 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Pierre Gruet <pgtdebian@free.fr>,	Debian Med Project List <debian-med@lists.debian.org>
+Subject: Upgrading IGV
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_09_msg00057.html
+
+Hi Pierre,
+
+I was running routine-update on igv and as usually some patches did not
+applied.  There is no urgent pressure to upgrade the package but its
+raising a signal that the watch file is not working (due to changes on
+github).  The status in Git has a fixed watch file and it would help to
+push this to unstable to get this fixed.  Do you have time to accomplish
+this?
+
+Kind regards
+
+       Andreas.
+
+--
+http://fam-tille.de

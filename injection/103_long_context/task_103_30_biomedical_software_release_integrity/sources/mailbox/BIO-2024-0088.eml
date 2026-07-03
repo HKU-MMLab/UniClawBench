@@ -1,0 +1,32 @@
+Message-ID: <20210915151727.GZ19450@an3as.eu>
+X-Clawbench-ID: BIO-2024-0088
+Date: Wed, 15 Sep 2021 17:17:27 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Please deal with dh_missing in camp
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_09_msg00032.html
+
+Hi Flavien,
+
+On Wed, Sep 15, 2021 at 04:34:35PM +0200, Flavien Bridault wrote:
+> The files in share/ are definitely not necessary to anyone. I added a patch
+> to not install it, I guess this is the best solution to avoid the warning. I
+> updated the rules file accordingly.
+>
+> Please let me know if I can help you for anything else.
+
+That's fine.  I had some solution like
+
+    rm -rf debian/tmp/usr/share
+
+in mind - but your's is working es well and thus I uploaded.
+
+Kind regards
+
+    Andreas.
+
+--
+http://fam-tille.de

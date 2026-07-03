@@ -1,0 +1,33 @@
+Message-ID: <D85395DA-B3EB-4E3C-8457-4EF43B1C2A8E@nileshpatra.info>
+X-Clawbench-ID: BIO-2024-0880
+Date: Thu, 29 Sep 2022 15:43:58 +0530
+From: Nilesh Patra <nilesh@nileshpatra.info>
+To: debian-med@lists.debian.org
+Subject: Re: Help needed for watch file after bitbucket changed download page
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_09_msg00046.html
+
+Hi,
+
+I don't know how to go about it, but I suspect -devel might be a better list for this since this is a general question and many package maintainers could be using bitbucket sources.
+
+On 29 September 2022 12:54:47 pm IST, Andreas Tille  wrote:
+>Hi,
+>
+>the watch file for metabat[1] used to work nicely until some point in
+>time when bitbucket replaced `v@ANY_VERSION@` by the commit ID which is
+>not sensibly sorting any more.  Is there any trick how I can get
+>bitbucket pages working again?
+>
+>Kind regards
+>
+>     Andreas.
+>
+>[1] https://salsa.debian.org/med-team/metabat/-/blob/master/debian/watch
+>
+
+--
+Best,
+Nilesh

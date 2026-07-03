@@ -1,0 +1,4 @@
+PO4A-HEADER: position=^\.\\" Author; mode=after; beginboundary=^\.\\"$
+.\"
+.\" Ukrainian translation for xz-man.
+.\" Yuri Chornoivan <yurchor@ukr.net>, 2019, 2022, 2023, 2024.

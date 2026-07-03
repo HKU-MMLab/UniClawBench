@@ -1,0 +1,96 @@
+Message-ID: <CAN0Gg1dxv88anayAu1nSurvNh7wWH736adtVovbmntHAvTNrAw@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0310
+Date: Fri, 31 Dec 2021 12:37:51 +0100
+From: Gavin McDonald <gmcdonald@apache.org>
+To: builds <builds@apache.org>
+Subject: [IMPORTANT] - ci.apache.org and CMS Shutdown end of January 2022
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2021-12.mbox
+
+Hi All,
+
+(This email is BCC many (19) lists, please reply to builds@apache.org only)
+
+Infra has set a FINAL date of January 31st 2022 for the turn off of
+ci.apache.org. This includes all of its nodes , of which the CMS node is
+one. Therefore the CMS is also going to be gone on the 31st January 2022.
+
+Any project that still uses the CMS in any way shape or form, MUST migrate
+to another build and publish method.
+
+Any project using ci.apache.org for the building and testing/publishing of
+CI builds MUST also migrate away to another CI - the direct replacement is
+ci2.apache.org the new Buildbot 3.2 based instance. Publishing of Javadocs
+and versioned websites etc that normally publish to ci.apache.org/projects
+will need to migrate their jobs to ci2.apache.org and publish results to
+nightlies.apache.org instead (via an rsync step).
+
+Projects have been repeatedly informed of the deprecation of both
+ci.apache.org and also the CMS itself, so this notice should not be a
+surprise to anybody.
+
+If you don't  have an INFRA ticket already open, or you don't know if there
+is an INFRA ticket already open for your project, please open one
+immediately so that we can get working on your migration ASAP. One or two
+projects I know of have a non-standard setup of publishing and so the
+earlier we get started the better.
+
+Below is a list of projects I know to still be using either the CMS (in
+whole or in part) and ci.apache.org for CI builds, there may be more.
+
+Projects fully using the CMS
+======================
+
+Commons
+DB (and subprojects)
+Hive
+Oozie
+
+Projects partially using the CMS
+=========================
+
+Lucene
+CXF
+Tapestry
+Santuario
+Geronimo
+Nutch
+
+All the above except Nutch I believe are exporting from Confluence and
+committing to
+svn.apache.org/repos/infra/websites/production/ - I have been working on an
+alternate
+method that does not involve the CMS agent (or its dependents like
+build_external.pl)
+CXF and Tapestry at least have INFRA tickets open regarding this.
+
+Projects using ci.apache.org for CI jobs
+================================
+
+The Board - board-site build.
+Perl/mod_perl - several test builds.
+AsterixDB - docs build
+HTTPD - test builds
+Juddi - Several test builds
+OpenJPA - Several test builds
+Creadur - Several test builds
+JMeter - test builds
+OpenNLP - site build ?
+Commons - site build ?
+Ponymail - site build ?
+TrafficServer - Test Build + site build ?
+Tapestry - test build
+
+All builds that need migrating can be seen on this page:
+
+https://ci.apache.org/buildslaves
+
+Ok, those are the details, lets get started please people
+
+Oh, and Happy New Year!
+
+Gavin McDonald
+Systems Administrator
+ASF Infrastructure Team

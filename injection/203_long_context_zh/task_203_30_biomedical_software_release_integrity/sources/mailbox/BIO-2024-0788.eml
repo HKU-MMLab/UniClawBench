@@ -1,0 +1,56 @@
+Message-ID: <YYKi9fKKWCBVMIMz@an3as.eu>
+X-Clawbench-ID: BIO-2024-0788
+Date: Wed, 3 Nov 2021 15:55:49 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Steffen Möller <steffen_moeller@gmx.de>
+Subject: Re: no report generation, likely not only for pigx-rnaseq Re: What happened to r-cran-jquerylib ?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_11_msg00018.html
+
+Hi Steffen,
+
+Am Wed, Nov 03, 2021 at 12:58:53PM +0100 schrieb Steffen Möller:
+> Hi Andreas et al.,
+>
+> We should think about what it means for us not to have a current version
+> of the DT cran package. For one, it kills the PIGX RNA-seq workflow.
+
+What do you mean by "we should think"?  All we need to do is getting
+r-cran-jquerylib *properly*.  Uploading a rejected package to new
+without fixing the reasons for a reject is not speeding up things.
+
+I layed out what I consider to have good chances to pass ftpmaster
+inspection (see below).  Before I start working on this please confirm
+that you asked for rejection of the current upload.
+
+Kind regards
+
+     Andreas.
+
+> On 03.11.21 12:01, Andreas Tille wrote:
+> > Hi again Steffen,
+> >
+> > I'd strongly recommend to ask for rejection of your upload to NEW
+> > to not create extra hassle for ftpmaster.
+> >
+> > Kind regards
+> >       Andreas.
+> >
+> > Am Tue, Nov 02, 2021 at 09:43:07PM +0100 schrieb Andreas Tille:
+> > > Hi
+> > >
+> > > Am Sun, Oct 31, 2021 at 07:16:44PM +0100 schrieb Steffen Möller:
+> > > > I just found there is a new upstream version. I'll upload it and then
+> > > > likely see it in new.
+> > > That will be not successfully, thought.  My idea was to remove jquery
+> > > 1.x and 2.x from the package and symlink to the Debian packaged version
+> > > of jquerylib 3.x.
+> > >
+> > > Unfortunately I did not managed to do this up to now.  Feel free to
+> > > beat me in it - but simply uploading a new version to new will just
+> > > annoy ftpmaster.
+
+--
+http://fam-tille.de

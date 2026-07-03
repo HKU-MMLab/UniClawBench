@@ -1,0 +1,98 @@
+Message-ID: <ee9b2d61-23ab-45ef-a697-93e79cea5b8c@gmail.com>
+X-Clawbench-ID: ASF-2024-0472
+Date: Wed, 2 Oct 2024 09:36:18 +0200
+From: Nick Gearls <nickgearls@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: Question about file mutex
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-10.mbox
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  </head>
+  <body>
+    <font face="Roboto Slab">Am I right that we can call
+      apr_global_mutex_create() with a NULL filename and
+      APR_LOCK_DEFAULT?<br>
+      In case the underlying locking mechanism needs a filename, it will
+      generate one.<br>
+      Moreover, if we only support Unix &amp; Windows, the preferred
+      mechanism won't use a file at all.<br>
+      Is that correct?<br>
+      <br>
+      In all cases, we don't have to generate a mktemp name ourselves,
+      it'll be done in APR. Right?<br>
+      <br>
+    </font>
+    <div class="moz-cite-prefix">On 01/10/2024 14:02, Ruediger Pluem
+      wrote:<br>
+    </div>
+    <blockquote type="cite"
+      cite="mid:d3a60803-de4e-aac1-443d-2e78475101d3@apache.org">
+      <pre class="moz-quote-pre" wrap="">
+On 10/1/24 9:32 AM, Ervin Hegedüs wrote:
+</pre>
+      <blockquote type="cite">
+        <pre class="moz-quote-pre" wrap="">Hi there,
+
+I hope this is a good forum to ask my question.
+
+We (mod_security2 developers) use mutex locks. Thiscode snippet was added recently:
+
+<a class="moz-txt-link-freetext" href="https://github.com/owasp-modsecurity/ModSecurity/blob/v2/master/apache2/modsecurity.c#L125-L168">https://github.com/owasp-modsecurity/ModSecurity/blob/v2/master/apache2/modsecurity.c#L125-L168</a>
+
+As you can see, we create locks with these functions:
+
+apr_temp_dir_get()
+apr_file_mktemp()
+apr_global_mutex_create()
+
+This wrapper (acquire_global_lock()) works on Linux, but it seems to crash on FreeBSD:
+<a class="moz-txt-link-freetext" href="https://github.com/owasp-modsecurity/ModSecurity/issues/3255">https://github.com/owasp-modsecurity/ModSecurity/issues/3255</a>
+
+I did some investigation and I found that after the apr_file_mktemp() returns with success and the created file name is given to
+apr_global_mutex_create() then it removes that.
+
+In this comment:
+<a class="moz-txt-link-freetext" href="https://github.com/owasp-modsecurity/ModSecurity/issues/3255#issuecomment-2383132160">https://github.com/owasp-modsecurity/ModSecurity/issues/3255#issuecomment-2383132160</a>
+I explained the results (with gdb and truss).
+
+My question is: what is the expected way to use file mutexes?
+
+Thanks for your help,
+</pre>
+      </blockquote>
+      <pre class="moz-quote-pre" wrap="">Have a look at
+
+<a class="moz-txt-link-freetext" href="https://httpd.apache.org/docs/2.4/mod/core.html#mutex">https://httpd.apache.org/docs/2.4/mod/core.html#mutex</a>
+<a class="moz-txt-link-freetext" href="https://github.com/apache/httpd/blob/trunk/include/util_mutex.h#L156">https://github.com/apache/httpd/blob/trunk/include/util_mutex.h#L156</a>
+<a class="moz-txt-link-freetext" href="https://github.com/apache/httpd/blob/trunk/include/util_mutex.h#L181">https://github.com/apache/httpd/blob/trunk/include/util_mutex.h#L181</a>
+
+and as example
+
+<a class="moz-txt-link-freetext" href="https://github.com/apache/httpd/blob/trunk/modules/ssl/mod_ssl.c#L456">https://github.com/apache/httpd/blob/trunk/modules/ssl/mod_ssl.c#L456</a>
+<a class="moz-txt-link-freetext" href="https://github.com/apache/httpd/blob/trunk/modules/ssl/ssl_engine_mutex.c#L50">https://github.com/apache/httpd/blob/trunk/modules/ssl/ssl_engine_mutex.c#L50</a>
+
+If you want to go for an APR only approach keep in mind that the apr methods create the lock file if needed
+either with the name you specified or they create it in /tmp via apr_file_mktemp
+It should not exist.
+
+See
+
+<a class="moz-txt-link-freetext" href="https://github.com/apache/apr/blob/1.7.x/locks/unix/proc_mutex.c#L1051">https://github.com/apache/apr/blob/1.7.x/locks/unix/proc_mutex.c#L1051</a>
+<a class="moz-txt-link-freetext" href="https://github.com/apache/apr/blob/1.7.x/locks/unix/proc_mutex.c#L1200">https://github.com/apache/apr/blob/1.7.x/locks/unix/proc_mutex.c#L1200</a>
+
+
+Regards
+
+Rüdiger
+
+</pre>
+    </blockquote>
+    <br>
+  </body>
+</html>

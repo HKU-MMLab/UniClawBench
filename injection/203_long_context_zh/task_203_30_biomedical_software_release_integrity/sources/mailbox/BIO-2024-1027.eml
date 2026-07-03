@@ -1,0 +1,42 @@
+Message-ID: <Yexn6rDu4bIQGxuX@an3as.eu>
+X-Clawbench-ID: BIO-2024-1027
+Date: Sat, 22 Jan 2022 21:24:10 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: snpeff_4.3t+dfsg1-1_amd64.changes REJECTED
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_01_msg00068.html
+
+Hi Pierre,
+
+Am Sat, Jan 22, 2022 at 08:37:54PM +0100 schrieb Pierre Gruet:
+> Le 22/01/2022 à 16:43, Andreas Tille a écrit :
+> > Thanks a lot Pierre for fixing it quickly in a new upload.  Its a
+> > great step forward if we have this package.
+> >
+> > Thanks also to Thorsten for checking
+>
+> You're welcome! Thanks for taking time to write this.
+
+I usually inform ftpmaster about a re-upload.  This seems to enhance the
+chances to get processed quickly (but there are few counter-examples).
+
+> Maybe you saw the package eventually got accepted quickly after the second
+> upload to NEW. Now we have snpeff, cool!
+
+Yes, very cool.
+
+> There are a few things to tweak in the source-only upload, but not that
+> much. I shall make it soon!
+
+Some autopkgtest would be cool - but feel free to do the changes you
+planed and upload without a test.
+
+Thanks again
+
+     Andreas.
+
+--
+http://fam-tille.de

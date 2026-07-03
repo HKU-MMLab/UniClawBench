@@ -1,0 +1,49 @@
+Message-ID: <ab23aaf0482565d1ed4ea09821458023@enron.com>
+X-Clawbench-ID: ANL-2001-0229
+Date: 2000-01-21T08:10:00-03:00
+From: Zimin Lu <Zimin Lu>
+To: Shelley Corman <Shelley Corman>, Chris Gaskill <Chris Gaskill>
+Subject: Template for pricing the right of first refusal
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Enron kaminski-v public mailbox index.json
+X-Original-Folder: kaminski-v_000/kaminski-v/technote/mail/Techmemos
+
+Shelley and Chris,
+
+
+I have set up a template for pricing ROFRs.  The ROFR is priced as a series
+
+forward start options.
+
+
+A forward start option gives the holder the right to exercise the option but
+
+the strike price
+
+is set at the money in future before the option expiration.  The feature
+
+mimics the "matching the best bid"
+
+in the ROFR.  The underlying for the option is the "best bid", which should
+
+be closely related to the
+
+price differential between the two hubs that the pipeline connects. Therefore
+
+the ROFR is case dependent,
+
+as Vince pointed out.  The volatility can be estimated from the "best bid"
+
+price history.
+
+
+With these inputs we can estimate the value of ROFR.  If you have any
+
+questions concerning the model
+
+please feel free to call me or Vince.
+
+
+Zimin Lu

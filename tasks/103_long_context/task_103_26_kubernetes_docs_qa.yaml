@@ -1,0 +1,32 @@
+task_id: task_103_26_kubernetes_docs_qa
+category: 103_long_context
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  There are four Kubernetes documentation pages in `/tmp_workspace/clawbench/sources/k8s_docs/`: `deployment.md`, `service.md`, `pod-lifecycle.md`, and `configmap.md`. Answer the following questions by reading THESE documents. The questions target specific fields, default values, and limits, so look them up in the provided docs rather than answering from memory — and for each answer, say which document it came from.
+
+  1. For a Deployment using the RollingUpdate strategy, what are the default values of `maxUnavailable` and `maxSurge`?
+  2. What does `.spec.replicas` default to if not set? What does `.spec.revisionHistoryLimit` default to, and what happens if you set it to 0?
+  3. What is the default Service type, and what does setting `.spec.clusterIP` to `"None"` create?
+  4. What is the default Pod termination grace period?
+  5. What are the possible values of a Pod's `restartPolicy` field, and what is the default?
+  6. What is the maximum size of a ConfigMap?
+  7. In a rolling update of a Deployment with 10 replicas, `maxSurge=3` and `maxUnavailable=2`: at most how many Pods can be running during the update, and at least how many must remain available?
+
+  Write your answers, each with the source document named, to `/tmp_workspace/results/k8s_docs_qa.md`. If a value is genuinely not stated in the provided docs, say so rather than inventing it.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+sources:
+  - k8s_docs/
+
+codex:
+  max_user_followups: 2

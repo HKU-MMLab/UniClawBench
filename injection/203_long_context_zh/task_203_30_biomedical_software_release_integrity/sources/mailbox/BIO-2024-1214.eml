@@ -1,0 +1,40 @@
+Message-ID: <ZhTn2SK2R-5eeJlE@ramacher.at>
+X-Clawbench-ID: BIO-2024-1214
+Date: Tue, 9 Apr 2024 09:01:45 +0200
+From: Sebastian Ramacher <sramacher@debian.org>
+To: Steven Eker <eker@csl.sri.com>
+Subject: Re: [EXTERNAL] Re: [[maude-bugs]] Maude fails to build on armhf
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_04_msg00015.html
+
+Hi Steven
+
+On 2024-04-08 15:38:50 -0700, Steven Eker wrote:
+> Hi Nilish,
+>
+> I don't have a 32-bit machine to test on, but my understanding is that Linux
+> has moved to a 64-bit signed integer for time_t and this is a long long on
+> 32-bit machines which is explicitly not supported by GMP's C++ API.
+
+This sounds like it needs to fixed in GMP then.
+
+>
+> https://en.wikipedia.org/wiki/Year_2038_problem
+> https://gmplib.org/manual/C_002b_002b-Interface-Integers
+>
+> I'm not happy converting a signed value to an unsigned value for all
+> architectures. But
+>
+>   mpz_class nanoSeconds(static_cast(timeValue.tv_sec));
+>
+> should fix the problem, at least until 2038. Can you check that this works?
+> If so I'll put it in the next public alpha.
+
+And this does not sound like a fix which we want.
+
+Best
+Sebastian
+--
+Sebastian Ramacher

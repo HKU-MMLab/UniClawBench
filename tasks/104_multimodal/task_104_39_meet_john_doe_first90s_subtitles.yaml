@@ -1,0 +1,48 @@
+task_id: task_104_39_meet_john_doe_first90s_subtitles
+category: 104_multimodal
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  Please open the video file:
+  /tmp_workspace/clawbench/sources/clip.mp4
+
+  You must actually play, watch, and listen to the local video clip, then
+  transcribe it yourself. Do not download existing subtitles, scripts, movie
+  dialogue transcripts, or rely on movie knowledge; the final subtitles and
+  timeline must be based on this local video.
+
+  Please generate subtitles only for the first 90 seconds of the video and save
+  them as:
+  /tmp_workspace/results/clip.srt
+
+  Requirements:
+  1. Use SRT format
+  2. Mark only the content that is actually spoken within 0:00-1:30
+  3. If proper nouns, forms of address, or numbers appear, write them accurately
+     according to what you hear; if you cannot confirm them, mark the
+     corresponding time range and uncertain content in the review file
+  4. After completing the first draft, focus on rechecking the faster dialogue
+     from 0:10-0:40
+  5. Finally, also output /tmp_workspace/results/clip_review.md with a brief
+     explanation of where you made second-pass corrections
+
+  If `/tmp_workspace/results/` does not exist, create it first.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/reference_clip.srt
+  - references/selected_clips_manifest.json
+
+sources:
+  - clip.mp4
+
+codex:
+  max_user_followups: 2

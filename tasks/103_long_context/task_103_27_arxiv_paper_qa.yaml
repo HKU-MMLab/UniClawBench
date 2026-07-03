@@ -1,0 +1,34 @@
+task_id: task_103_27_arxiv_paper_qa
+category: 103_long_context
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  There are three research-paper PDFs in `/tmp_workspace/clawbench/sources/papers/`: `paper_a.pdf`, `paper_b.pdf`, and `paper_c.pdf`. I renamed them to non-semantic names on purpose, so do not guess from the filenames — read the actual contents to identify each paper.
+
+  Answer the following questions by reading the PDFs. These are specific number-level questions, so look them up in the papers rather than answering from memory. For each answer, say which paper it came from and, where you can, which table or section.
+
+  1. (paper_a) What BLEU score does the big model achieve on WMT 2014 English-to-German, and what BLEU on English-to-French?
+  2. (paper_a) How many identical layers N are stacked in the encoder, and what is the model dimension d_model of the base model?
+  3. (paper_b) What top-5 error does the ensemble achieve on the ImageNet test set, and what is the maximum network depth reported?
+  4. (paper_b) How many FLOPs (multiply-adds) does the 34-layer baseline have, and how many parameters does ResNet-110 have?
+  5. (paper_c) Give the layer count L, hidden size H, number of attention heads A, and total parameters for both the BASE and LARGE configurations.
+  6. (paper_c) What overall GLUE score does the paper report, and what SQuAD v1.1 test F1?
+  7. (cross-paper) Identify what each of the three papers is about (one is NLP machine translation, one is image recognition, one is language-understanding pre-training), and rank the flagship models by parameter count where the papers state it.
+
+  Write your answers, with paper attribution and section/table references, to `/tmp_workspace/results/paper_qa.md`. If a value genuinely is not stated in a paper, say so rather than inventing it.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+sources:
+  - papers/
+
+codex:
+  max_user_followups: 2

@@ -1,0 +1,75 @@
+Message-ID: <CAFQGv+ZWGd-tm8=mAFizBSEQdOE64bWkmpaf-Yd8aNidwKSyLQ@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1260
+Date: Thu, 15 Feb 2024 16:46:59 -0500
+From: Joe Schaefer <joe@sunstarsys.com>
+To: Yann Ylavic <ylavic.dev@gmail.com>
+Subject: Re: release apreq 2.18 and mothball the project
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-02.mbox
+
+Let's be honest for once Yann. You came up with this hairbrained patch over
+2 years ago right here:
+
+https://svn.apache.org/viewvc?view=revision&revision=1895107
+
+Yet the first time anyone actually ran the unit tests for apreq was during
+the 2.17 release process **8 months later**.  And because you are such a
+prima donna Yann, Joe Orton (who I always respect) would rather remove the
+test that flagged your patch, just so he could get the damned thing out the
+door without dealing with you further.
+
+Instead, he had to deal with me.   Tradeoffs are everywhere in life.
+
+
+On Thu, Feb 15, 2024 at 2:41 PM Joe Schaefer <joe@sunstarsys.com> wrote:
+
+> You mean the 2.17 release, where Joe Orton actually patched the test suite
+> out of your coercion?
+>
+> Great engineering.
+>
+> http://svn.apache.org/viewvc?view=revision&revision=1903489
+>
+>
+> Joe Schaefer, Ph.D.
+> <https://sunstarsys.com/orion/features>
+> Orion - The Enterprise Jamstack Wiki
+> <https://sunstarsys.com/orion/features>
+> <joe@sunstarsys.com>
+> 954.253.3732 <//954.253.3732>
+>
+>
+>
+>
+> On Thu, Feb 15, 2024 at 2:13 PM Yann Ylavic <ylavic.dev@gmail.com> wrote:
+>
+>> On Thu, Feb 15, 2024 at 5:12 AM Joe Schaefer wrote:
+>> >
+>> > I gave you beta males an entire year
+>>
+>> His Alpha Most Serene Highness is too kind to us..
+>>
+>> > to find an excuse for completely boning the modperl user community for
+>> no good reason,
+>>
+>> _You_ did that (boning the modperl user community), by spitting your
+>> venom on everyone here (and in all the forums) and nothing else.
+>> You, as a member of the httpd team, could have fixed it and
+>> started/encouraged a new release with the one-liner fix, yet your
+>> first/primary point was to insult others for having touched your
+>> (alphally broken) code and introduced a (betally edge) regression,
+>> which His Alpha Most Serene Highness' test suite didn't caught btw.
+>>
+>> > So far, the only thing to come of putting apreq inside httpd is that
+>> third party quality control teams put some elbow grease into fuzzing its
+>> various parsers and found a sore spot that you bland engineers felt put
+>> upon to fix.  And so you botched that patch too, largely out of spite for
+>> the makework.
+>>
+>> Actually it did find multiple sore spots, otherwise you can imagine
+>> that we plebs would never have dared to touch as much of His Alpha
+>> Most Serene Highness' code.
+>>
+>

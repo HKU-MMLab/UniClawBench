@@ -1,0 +1,64 @@
+Message-ID: <trinity-199803aa-28f1-4084-a889-b5c36acf0a99-1721473455735@3c-app-gmx-bap33>
+X-Clawbench-ID: BIO-2024-0268
+Date: Sat, 20 Jul 2024 13:04:15 +0200
+From: Steffen Möller <steffen_moeller@gmx.de>
+To: Nilesh Patra <nilesh@debian.org>
+Subject: Aw: Re: PyMol 3.0 is out - salsa upload works for me
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_07_msg00026.html
+
+> Gesendet: Donnerstag, 18. Juli 2024 um 14:16 Uhr
+> Von: "Nilesh Patra"
+> An: "Nilesh Patra"
+> Cc: "Steffen Möller" , debian-med@lists.debian.org, mbanck@debian.org
+> Betreff: Re: PyMol 3.0 is out - salsa upload works for me
+>
+> On Thu, Jul 18, 2024 at 05:29:55PM +0530, Nilesh Patra wrote:
+> > On Thu, Jul 18, 2024 at 01:21:15PM +0200, Steffen Möller wrote:
+> > > Thank you, Étienne, well done!
+> > >
+> > > I addressed the lintian errors/warnings and introduced d/u/edam besides
+> > > updating d/u/metadata.
+> > >
+> > > Did not find anything to contribute to the problem of the reproducibility test but did not want to just disable it either. IMHO we should just raise an issue with upstream and let them fix that :) Sadly, reprotest is not indicating the exact files that are contributing to the difference, I only know it is in the python3-pymol package. Hm.
+> >
+> > Maybe this helps you:
+> >
+> > $ debdiff control/source-root/pymol-data_3.0.0+dfsg-1+salsaci+20240718+11_all.deb experiment-1/source-root/pymol_3.0.0+dfsg-1+salsaci+20240718+11_all.deb
+>
+> Minutes after sending this I realised I compared the wrong files in a hurry.
+> Oops :/
+>
+> I tried to diff again and everything is identical. Only diff is in dbgsym.
+> Seems like some embedded buildpath issue.
+>
+> However, I suppose you could upload pymol w/o worrying about reprotest too much.
+>
+> $ debdiff control/source-root/pymol_3.0.0+dfsg-1+salsaci+20240718+11_all.deb experiment-1/source-root/pymol_3.0.0+dfsg-1+salsaci+20240718+11_all.deb
+> File lists identical (after any substitutions)
+>
+> No differences were encountered between the control files
+>
+> $ debdiff control/source-root/python3-pymol-dbgsym_3.0.0+dfsg-1+salsaci+20240718+11_amd64.deb experiment-1/source-root/python3-pymol-dbgsym_3.0.0+dfsg-1+salsaci+20240718+11_amd64.deb
+> [The following lists of changes regard files as different if they have
+> different names, permissions or owners.]
+>
+> Files in second .deb but not in first
+> -------------------------------------
+> -rw-r--r--  root/root   /usr/lib/debug/.build-id/4b/5e2a027f16472d3b95853614c4eaa660ed8b57.debug
+>
+> Files in first .deb but not in second
+> -------------------------------------
+> -rw-r--r--  root/root   /usr/lib/debug/.build-id/8f/96a303f475db3232c7e1917efe4367cc6de3b7.debug
+>
+> Control files: lines which differ (wdiff format)
+> ------------------------------------------------
+> Build-Ids: 3ffe872e7f5ee161663ee5c288b17c3967f5b75b [-8f96a303f475db3232c7e1917efe4367cc6de3b7-] {+4b5e2a027f16472d3b95853614c4eaa660ed8b57+}
+
+I feel a bit bad for not having addressed that myself. Thank you, Nilesh.
+Am not ultimately sure though what the consequence should be. To me it reads a bit like a false positive that may warrant a change to reprotest.
+
+Best,
+Steffen

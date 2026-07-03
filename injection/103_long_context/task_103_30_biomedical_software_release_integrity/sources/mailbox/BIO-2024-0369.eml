@@ -1,0 +1,84 @@
+Message-ID: <ZP9YW4nEu3oB7_Dy@fusion>
+X-Clawbench-ID: BIO-2024-0369
+Date: Mon, 11 Sep 2023 20:11:39 +0200
+From: Étienne Mollier <emollier@debian.org>
+To: César Pomar <cesarpomar18@gmail.com>
+Subject: Re: Request for Sponsorship: VeryFastTree - Parallelized and Optimized Version of FastTree
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_09_msg00009.html
+
+Hi César,
+
+César Pomar, on 2023-09-11:
+> >   * from lintian's automatic review, there are a couple of
+> >     warnings about the baseline specific executables caught
+> >     without manual pages:
+> >
+> >         W: veryfasttree: no-manual-page [usr/bin/VeryFastTree-avx2]
+> >         W: veryfasttree: no-manual-page [usr/bin/VeryFastTree-avx512f]
+> >         W: veryfasttree: no-manual-page [usr/bin/VeryFastTree-avx]
+> >         W: veryfasttree: no-manual-page [usr/bin/VeryFastTree-sse2]
+> >         W: veryfasttree: no-manual-page [usr/bin/VeryFastTree-sse4_1]
+> >
+> >     so maybe it would be worth either moving these executables
+> >     out of the path, canonically under libexec/ so the dispatch
+> >     script finds them there, unless you want to provide the
+> >     alternate baseline programs in the path, in which case you
+> >     might consider applying a lintian override for those
+> >     warnings; or third option, you can modify the manual page to
+> >     answer to all the variants;
+>
+> Any options seem fine to me, although I don't
+> see any scenario where a user would want to run the binaries directly.
+> Which option do you recommend?
+
+Given your scenario, I would recommend moving the baseline
+specific executables out of the path to libexec/, because it is
+not intended that they will be called manually by end users.
+
+The lintian override would be the path of least resistance, but
+also a bit boring, and some might consider these binaries might
+clutter the Debian binaries namespace.  The third option about
+adjusting the manual so the baseline specific programs can be
+queried with man is definitely overkill in your context.
+
+> >   * from lintian's pedantic checks, I see also one instance of:
+> >
+> >         P: veryfasttree source: maintainer-manual-page [debian/VeryFastTree.1]
+> >
+> >     which makes me wonder whether it would make sense to ship
+> >     the manual page straight in your upstream code, for the
+> >     benfit of your users not installing veryfasttree through the
+> >     Debian package;
+>
+> Andreas had already mentioned it to me; the man page is basically the help
+> displayed by the binary, so I didn't see the need to distribute it
+> outside of Debian.
+
+Acknowledged, oops it looks like I should have had another look
+at previous mail exchanges then.  In this case, it may be a good
+idea to override the pedantic notice so this doesn't show up on
+the radar anymore.
+
+> >   * pristine-tar branch ends with a commit from root: I don't
+> >     have strong opinions whether this should be left as-is or
+> >     force-pushed with a proper user ID, however I would strongly
+> >     suggest not running any packaging step with elevated
+> >     privileges in general.
+>
+> Sorry, I didn't know that could be considered an issue.
+> I ran the build inside a Docker container.
+
+Fair enough…
+
+Please proceed with the two changes I suggested, and the package
+should be good for upload.
+
+Cheers,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  gpg: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/tty1, please excuse my verbosity
+   `-

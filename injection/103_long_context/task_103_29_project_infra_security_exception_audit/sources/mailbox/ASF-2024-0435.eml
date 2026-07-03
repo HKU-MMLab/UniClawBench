@@ -1,0 +1,37 @@
+Message-ID: <CALK=YjOSwFt4tJp3GWkheLfnFagLMwwNEWzZJNvGB+T0c9Sk4g@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0435
+Date: Fri, 23 Dec 2022 14:15:18 -0500
+From: Eric Covener <covener@gmail.com>
+To: Apache HTTP Server Development List <dev@httpd.apache.org>
+Subject: rotatelogs tweak?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-12.mbox
+
+I've had a few recent offline questions about rotatelogs that
+surprisingly hit this same limitation I hadn't seen before.
+
+Currently, without a post-rotate program, you can't have a different
+behavior for truncation of the initial log file and rotated log files.
+Either both are truncated or neither are.
+
+This means a config like error_log.%d (day of month) is not really
+usable, because you will either lose data during a restart or end up
+with January 1 and Feb 1 in the same file.
+
+Is it reasonable to add a -T for "truncate all but the initial file"
+or is this too confusing for its value?
+
+This would allow e.g. bin/rotatelogs -T error_log.%d ... which gives
+you a nice sliding month long window that doesn't require external
+cleanup -- it's an example I'd like to add. Same for day of week --
+you don't want logs from all Tuesdays, but when you restart, you don't
+want to truncate.
+
+This would also replace some of the "misuse" of the confusing -n I
+added that is very prickly to make intuitive without -t.
+
+--
+Eric Covener
+covener@gmail.com

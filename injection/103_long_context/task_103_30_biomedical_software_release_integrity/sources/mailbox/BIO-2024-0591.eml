@@ -1,0 +1,35 @@
+Message-ID: <20230715153514.g3cehsjism34vwq3@office.mailbox.org>
+X-Clawbench-ID: BIO-2024-0591
+Date: Sat, 15 Jul 2023 21:05:14 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: Sébastien Jodogne <s.jodogne@orthanc-labs.com>
+Subject: Re: Fwd: civetweb_1.15+dfsg-5_source.changes REJECTED
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_07_msg00073.html
+
+On Sat, Jul 15, 2023 at 01:46:57PM +0200, Sébastien Jodogne wrote:
+> On another topic, it looks like I've been kicked off the
+> "debian-med-packaging" mailing list, and I'm unable to register back using
+> my "s.jodogne@orthanc-labs.com" e-mail. Is there currently a known issue on
+> the Debian mailing lists?
+
+What exactly does "unable to register back" translate to? is it that you
+never get the 'subscribe' mail?
+
+Do you happen to use gmail with @orthanc-labs.com by any chance? From
+your mail headers I got a hint that you use ovh mail and somewhere in
+the loop you use a MS server - is that correct?
+
+gmail has started rejecting emails which do not contain a DKIM signature
+or fail their SPF checks. It is likely similar for outlook and other
+providers too (alioth subscribe mails are not dkim signed).
+Check your spam in case it has your address. If you had ever setup login for
+https://alioth-lists.debian.net/cgi-bin/mailman/listinfo/debian-med-packaging
+
+then going there to login with your creds and re-subscribing your mail
+could help. If not, you'll have to reach out to the list admins.
+
+Best,
+Nilesh

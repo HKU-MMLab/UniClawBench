@@ -1,0 +1,58 @@
+task_id: task_102_17_api_docs_framework
+category: 102_exploration
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I need to choose a framework for our public REST API documentation site.
+  Requirements (all of these matter):
+
+  - syntax-highlighted code blocks in authored guide pages,
+  - light/dark mode,
+  - full-text search,
+  - documentation VERSIONING so that /v1 and /v2 of the API docs can coexist,
+  - rendering our OpenAPI/Swagger spec as an interactive API reference.
+
+  A fixed set of candidate frameworks is provided offline at:
+
+      /tmp_workspace/clawbench/sources/candidates.json
+
+  Each candidate lists, per capability, whether it is `builtin`, available only
+  via a `plugin` (extra install/config), or `no` (unsupported), with an
+  evidence note. A capability counts as satisfied if it's builtin OR available
+  via a plugin; `no` means it can't meet that requirement.
+
+  Work out which frameworks satisfy ALL five requirements, then pick exactly
+  ONE. When two frameworks both qualify, prefer the one where the most
+  structurally painful requirement to retrofit — VERSIONING — is built in
+  rather than bolted on. Be careful: the tool that is purpose-built for OpenAPI
+  is not necessarily a full docs site, and some very trendy options are missing
+  versioning.
+
+  Save:
+  - `/tmp_workspace/results/framework_choice.json`: your `selected_id`, why it
+    meets every requirement (note which are builtin vs plugin), the tie-break
+    reasoning, and a brief note on configuring the OpenAPI rendering + the
+    versioning.
+  - `/tmp_workspace/results/framework_evaluation.json`: per-candidate capability
+    coverage against the five requirements, keep/reject, and for each rejected
+    framework exactly which requirement it fails (with builtin/plugin/no).
+  - `/tmp_workspace/results/framework_method.json`: which fields/evidence you
+    used and how you decided the tie-break (reproducible).
+
+  This is fully offline — do not fetch anything from the network.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+sources:
+  - candidates.json
+
+codex:
+  max_user_followups: 2

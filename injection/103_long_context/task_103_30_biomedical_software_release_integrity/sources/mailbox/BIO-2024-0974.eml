@@ -1,0 +1,25 @@
+Message-ID: <Yks+dZbqBWs/19W+@debian>
+X-Clawbench-ID: BIO-2024-0974
+Date: Tue, 5 Apr 2022 00:22:37 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: Help Required : Add autopkgtest for atropos
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_04_msg00011.html
+
+On Mon, Apr 04, 2022 at 08:16:07PM +0200, Andreas Tille wrote:
+> In general I'd recommend to follow the packaging example of our team:
+>
+>     https://salsa.debian.org/med-team/community/package_template/-/tree/master/debian/tests
+
+Yes, the template is very helpful. But it should not be used when you want to run tests in-place.
+For example:
+
+	[intake] https://salsa.debian.org/med-team/intake/-/blob/master/debian/tests/run-unit-test
+	[python-pyani] https://salsa.debian.org/med-team/python-pyani/-/blob/master/debian/tests/run-unit-test
+	[biomaj3-core] https://salsa.debian.org/med-team/biomaj3-core/-/blob/master/debian/tests/run-unit-test
+
+Best,
+Nilesh

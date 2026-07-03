@@ -1,0 +1,27 @@
+Message-ID: <f30d1c67-2a86-fb84-43f1-79ba645648c9@apache.org>
+X-Clawbench-ID: ASF-2024-0982
+Date: Tue, 20 Aug 2024 10:04:28 +0200
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org, APR Developer List <dev@apr.apache.org>
+Subject: Re: [VOTE CLOSED] Switch read/write repository from Subversion to Git
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-08.mbox
+
+On 8/20/24 9:01 AM, Vladimir Chlup wrote:
+> Hello,
+>
+> It's not necessarily related, but some time ago, I created a PR (https://github.com/apache/httpd/pull/437) that adds git commands
+> for apr checkout to INSTALL. Given that everything is also on git, svn is not needed. Especially if the switch happens, I think it
+> would be nice to have it in.
+
+Cross posting as this affects APR.
+Just for clarification: The move to use git for RW is just for httpd, not for APR. Nevertheless the git instructions can be useful
+for people who do not want to / cannot commit back directly into the repository either because they just want to build the latest
+code or if they want to prepare a PR on Github.
+Hence I see value in the change, but it should be noted that git in the APR case is a read only clone of the Subversion repository.
+
+Regards
+
+Rüdiger

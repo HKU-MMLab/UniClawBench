@@ -1,0 +1,59 @@
+Message-ID: <0f2091e7-784a-5f41-5628-42b2941e8ab0@apache.org>
+X-Clawbench-ID: ASF-2024-1243
+Date: Fri, 5 Jul 2024 15:03:00 +0200
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: mod_md in 2.4.61 fails to compile with openssl < 1.1.1
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-07.mbox
+
+On 7/5/24 2:14 PM, Ruediger Pluem wrote:
+>
+>
+> On 7/5/24 2:11 PM, Ruediger Pluem wrote:
+>>
+>>
+>> On 7/5/24 2:04 PM, Stefan Eissing via dev wrote:
+>>>
+>>>
+>>>> Am 05.07.2024 um 13:51 schrieb Ruediger Pluem <rpluem@apache.org>:
+>>>>
+>>>> I just noticed that mod_md in 2.4.61 fails to compile with openssl < 1.1.1. Below is the output against openssl 1.0.2 on RedHat 7:
+>>>>
+>>>> md_crypt.c: In function 'md_pkey_get_rsa_e64':
+>>>> md_crypt.c:982:5: warning: implicit declaration of function 'EVP_PKEY_get0_RSA' [-Wimplicit-function-declaration]
+>>>>     const RSA *rsa = EVP_PKEY_get0_RSA(pkey->pkey);
+>>>>     ^
+>>>> md_crypt.c:982:22: warning: initialization makes pointer from integer without a cast [enabled by default]
+>>>>     const RSA *rsa = EVP_PKEY_get0_RSA(pkey->pkey);
+>>>>                      ^
+>>>> md_crypt.c: In function 'md_pkey_get_rsa_n64':
+>>>> md_crypt.c:1002:22: warning: initialization makes pointer from integer without a cast [enabled by default]
+>>>>     const RSA *rsa = EVP_PKEY_get0_RSA(pkey->pkey);
+>>>>                      ^
+
+This was already the case with 2.4.59 and openssl 1.0.2. Hence we did not fail to compile but loading of mod_md likely would fail
+as the symbol EVP_PKEY_get0_RSA is not available with openssl 1.0.2.
+
+>>>> md_crypt.c: In function 'md_cert_get_ct_scts':
+>>>> md_crypt.c:2071:5: error: unknown type name 'SCT'
+>>>>     SCT *sct_handle;
+
+This one is caused by r1918195 in >= 2.4.60. Before r1918195 OPENSSL_NO_CT was defined when openssl was < 1.1.1. Now it is not any
+longer and hence md_cert_get_ct_scts gets a real function body as
+
+#ifndef OPENSSL_NO_CT
+
+(line 2068) is now true. Hence we error out on the non presence of the SCT struct (line 2071).
+
+https://github.com/apache/httpd/blob/ecc67450d2da42d8724a5f5e8ef4cb92d4336ff2/modules/md/md_crypt.c#L2066-L2077
+
+To summarize: With 2.4.59 it was already broken with openssl < 1.1.1 and not loadable but it still compiled. With 2.4.60+ it
+now fails to compile.
+Hence I think that checking the openssl version in configure is the correct thing to do.
+
+Regards
+
+Rüdiger

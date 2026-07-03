@@ -1,0 +1,42 @@
+Message-ID: <udlk0cvj4bi.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-1104
+Date: Mon, 14 Mar 2022 23:13:37 -0400
+From: ucko@debian.org (Aaron M. Ucko)
+To: <debian-med@lists.debian.org>
+Subject: Re: Please review ncbi-vdb
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_03_msg00011.html
+
+Andreas Tille  writes:
+
+> If you think the package structure is OK I might upload to new.
+> Any other fine tuning that might be needed could be done in some
+> source-only upload.
+
+Good point, but I did already find two other things that would be best
+to fix before any upload:
+
+- dpkg-source errors concerning formal line-ending mismatches for Visual
+  Studio files under vdb3/jwt-tool/googletest; I'm inclined to drop that
+  subtree altogether, formally calling for 3.0.0+dfsg2 to avoid the need
+  for force-pushes.
+
+- Even with that subtree out of the picture, debian/copyright is out of
+  date on various fronts, to which the FTP Team may well object.
+
+> I absolutely agree ... but I have no idea about a test.  We might
+> re-use the build time test partly.  Or can you get some hints from
+> upstream?
+
+Reusing the build-time test could work, and might call for an additional
+binary package, which I suppose is another reason to hold off on
+uploading.
+
+Also, as you noted in another thread, we are still fairly early in the
+release cycle.
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

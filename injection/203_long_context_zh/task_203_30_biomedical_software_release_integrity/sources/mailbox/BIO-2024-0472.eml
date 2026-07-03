@@ -1,0 +1,39 @@
+Message-ID: <ZN8EeNdV7NJc/7Hb@an3as.eu>
+X-Clawbench-ID: BIO-2024-0472
+Date: Fri, 18 Aug 2023 07:41:12 +0200
+From: Andreas Tille <tille@debian.org>
+To: Andrius Merkys <merkys@debian.org>,	Debian Med Project List <debian-med@lists.debian.org>
+Subject: Re: provean: incompatible with cd-hit >= 4.8.1-4
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_08_msg00007.html
+
+Hi Andrius,
+
+trying to find more readers on Debian Med list to possibly reach some
+cd-hit users.
+
+Am Fri, Aug 18, 2023 at 07:01:08AM +0300 schrieb Andrius Merkys:
+> Hi Andreas,
+>
+> On 2023-08-17 10:49, Andreas Tille wrote:
+> > thanks for reporting this issue.  You were mentioning you want to come
+> > up with a patch.  Since you seem to have dived into this issue deeper
+> > I assume you will care for this bug.  If not please clarify the status
+> > (or may be set the "help" tag).
+>
+> I feel like working on it myself as I have a setup for reproducing it (it
+> needs a version of NR database, ~100 GB) and I have located the approximate
+> location in the code (cd-hit output parsing). It could help me a lot if
+> someone knew the changes in cd-hit output since 4.8.1, though, as I am not a
+> frequent user.
+
+I'm not using cd-hit at all.  If nobody might respond here asking upstream
+might help.
+
+Kind regards
+    Andreas.
+
+--
+http://fam-tille.de

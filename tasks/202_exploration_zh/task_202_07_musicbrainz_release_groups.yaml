@@ -1,0 +1,39 @@
+task_id: task_202_07_musicbrainz_release_groups
+category: 202_exploration_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我正在编录一支乐队的录音室专辑，我想通过 MusicBrainz 的 API 获取规范化的数
+  据，而不是从网站上复制。
+
+  这是该乐队的 MusicBrainz 页面：
+
+      https://musicbrainz.org/artist/5b11f4ce-a62d-471e-81fc-a69a8278c7da
+
+  MusicBrainz 有一个 Web 服务（即 "ws/2" API）。请使用它（而不是抓取
+  musicbrainz.org 的 HTML）来拉取这位艺人的**专辑**类发行组（release groups），
+  并告诉我：
+
+  - 艺人的名字（从 API 中确认它），
+  - 按首次发行日期排序的最早的三张录音室专辑（标题 + 年份），
+  - API 为这位艺人报告的专辑（album）类型发行组的总数量。
+
+  注意：MusicBrainz 要求客户端发送一个有意义的 User-Agent，用以标识应用及一个联
+  系方式，并遵守其速率限制（大约每秒一个请求）。
+
+  把结果保存到 `/tmp_workspace/results/musicbrainz_albums.json`，并把你调用的确
+  切请求 URL 连同它们的原始 JSON 响应保存到
+  `/tmp_workspace/results/musicbrainz_evidence/`。
+
+references:
+  - references/eval_rule.md
+
+codex:
+  max_user_followups: 2

@@ -1,0 +1,23 @@
+Message-ID: <YVbtcSTDxSlHQbka@an3as.eu>
+X-Clawbench-ID: BIO-2024-0906
+Date: Fri, 1 Oct 2021 13:13:53 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>,	Flavien Bridault <fbridault@ircad.fr>
+Subject: Please update sight packaging
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00003.html
+
+Hi Flavien,
+
+sight watch file needed to be fixed which I did and I realised there is
+a new upstream version.  Please update the patches (if needed) and ping
+here once the package is ready for uploading.
+
+Kind regards and thanks for caring for this package
+
+     Andreas.
+
+--
+http://fam-tille.de

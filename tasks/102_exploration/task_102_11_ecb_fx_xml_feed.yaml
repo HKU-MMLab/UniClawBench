@@ -1,0 +1,40 @@
+task_id: task_102_11_ecb_fx_xml_feed
+category: 102_exploration
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I need today's official euro foreign-exchange reference rates from the
+  European Central Bank, pulled programmatically so I can reuse them — not
+  copied by hand off a webpage.
+
+  Start from the ECB's euro reference rates page:
+
+      https://www.ecb.europa.eu/stats/eurofxref/eurofxref-graph-usd.en.html
+
+  (or the ECB stats site generally). The ECB publishes these rates as a
+  machine-readable feed that the human pages are built from, but the feed URL
+  isn't obvious from the page text — you'll need to find it. Use that feed (not
+  by scraping the rendered HTML table) to get, for the latest published day:
+
+  - the reference date the rates are published for,
+  - the EUR->USD, EUR->JPY, and EUR->GBP reference rates,
+  - and, as a derived check, the USD->JPY cross rate implied by the EUR rates.
+
+  Save your findings to `/tmp_workspace/results/ecb_fx.json` (the date, the
+  three EUR rates, and the derived USD/JPY cross), and save the exact feed URL
+  you called plus its raw response to `/tmp_workspace/results/ecb_evidence/` so
+  the pull is reproducible. A short note on how you discovered the feed is
+  welcome.
+
+references:
+  - references/eval_rule.md
+
+codex:
+  max_user_followups: 2

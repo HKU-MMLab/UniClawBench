@@ -1,0 +1,44 @@
+Message-ID: <20211110141220.9259A204B3@bendel.debian.org>
+X-Clawbench-ID: BIO-2024-1461
+Date: Wed, 10 Nov 2021 19:42:05 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: debian-science@lists.debian.org
+Subject: Re: What means "unmaintained" (Was: What should be moved to math-team)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_11_msg00073.html
+
+On Wed, Nov 10, 2021 at 09:55:47AM +0100, Andreas Tille wrote:
+> Hi,
+>
+> Am Tue, Nov 09, 2021 at 08:50:08PM +0530 schrieb Nilesh Patra:
+> > Maybe, it is also a fine idea to move packages which are important in the science team,
+> > but are unmaintained.
+>
+> But first we need a definition of unmaintained.  I think we get some
+> hints if
+>
+>   * A package smells[1]
+>   * Has long standing unanswered bugs of severity RC or important
+
+ACK.
+
+>   * Is outdated / has a non-working watch file
+
+True in general, but one exception being the github URLs changing tags/releases.
+A lot of packages (even mine) have 'non-working' watch because of this change, but IMO they are well maintained.
+
+> What else?
+
+   * Packages effectively "maintained" by NMUs
+   * Packages with ancient dh versions (< 8) and standards version (<= 3.9.x)
+   * Packages not using debhelper for no good reason, but rather because nobody
+     has the time to work on it.
+   * Packages with DDs being MIA (for a very long while)
+   * Packages which have not seen uploads in like a decade or so
+
+These are some more pointers I could think of.
+Does this sound fair enough to you?
+
+Nilesh

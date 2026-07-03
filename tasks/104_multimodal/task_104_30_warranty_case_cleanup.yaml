@@ -1,0 +1,57 @@
+task_id: task_104_30_warranty_case_cleanup
+category: 104_multimodal
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  My downloads folder is completely disorganized. `/tmp_workspace/clawbench/sources/downloads_clutter/`
+  contains a mix of:
+  - Shopping order screenshots
+  - Electronic invoice PDFs
+  - Product manuals
+  - Warranty page screenshots
+  - Delivery tracking screenshots
+  - Product photos
+  - Chat screenshots
+  - Some old files unrelated to shopping
+
+  I want to organize the materials related to "after-sales service / warranty / returns and exchanges"
+  so they are ready for future claims or warranty applications. Please do the following:
+
+  1. Browse these files and find the ones related to after-sales service, returns and exchanges, or warranty.
+     Do not keep only cases where the evidence is already complete. If a product / order has only some
+     of the order screenshot, invoice, delivery tracking, manual, or warranty materials, but appears
+     potentially useful for later after-sales service, also organize it as an "insufficient information /
+     possible after-sales case" and explain what is missing in the missing evidence notes.
+  2. Archive the files by product or order under `/tmp_workspace/results/warranty_cases/`,
+     with one subfolder per product / order.
+  3. Keep the most important evidence files in each subfolder and rename them clearly.
+  4. Extract key information for each product / order and generate `/tmp_workspace/results/warranty_index.csv`,
+     including at least:
+     - Product name
+     - Order number (required; if it cannot be identified, write `UNKNOWN` and explain in `missing_evidence.md`)
+     - Purchase date
+     - Amount
+     - Platform / merchant
+     - Current status (delivered, return pending, under warranty, insufficient information, etc.)
+     - Corresponding evidence files
+  5. If an order is missing key evidence (for example, no order screenshot, no invoice, or no delivery tracking),
+     list it in `/tmp_workspace/results/missing_evidence.md`.
+  6. Finally, generate `/tmp_workspace/results/claims_overview.md` telling me which orders already have
+     complete after-sales materials and which ones cannot yet be used directly for an after-sales claim.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - downloads_clutter/
+
+codex:
+  max_user_followups: 2

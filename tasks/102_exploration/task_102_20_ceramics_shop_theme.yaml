@@ -1,0 +1,57 @@
+task_id: task_102_20_ceramics_shop_theme
+category: 102_exploration
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I'm launching an online shop for handmade ceramics and I want a Japanese-
+  minimalist look. I need to choose a site theme. Requirements:
+
+  - it has to be a real store: working shopping cart and checkout;
+  - responsive (most of my customers are on phones);
+  - a restrained, muted Japanese-minimalist palette (not loud or colorful);
+  - imagery-forward — the ceramics should dominate the page, not dense text.
+
+  A fixed set of candidate themes is provided offline at:
+
+      /tmp_workspace/clawbench/sources/theme_candidates/
+
+  Each theme has a manifest (`<id>.json`) declaring its ecommerce features,
+  whether it's responsive, its 5-color palette (hex), and
+  `product_image_area_ratio` (how much of the homepage above the fold is given
+  to product imagery). `index.json` restates the requirements (treat "muted" as
+  average HSV color saturation <= 0.25, and "imagery-forward" as
+  product_image_area_ratio >= 0.45).
+
+  Evaluate the themes objectively — compute each palette's average saturation
+  from the hex values rather than guessing — decide which themes satisfy ALL
+  the hard requirements, and pick exactly ONE. Be careful: the most beautiful
+  minimalist theme may not be a store at all, and an on-brand muted theme may
+  be desktop-only or too text-heavy.
+
+  Save:
+  - `/tmp_workspace/results/theme_choice.json`: your `selected_id`, the computed
+    metrics that justify it (ecommerce, responsive, avg palette saturation,
+    product image ratio), and the tie-break/decision reasoning.
+  - `/tmp_workspace/results/theme_evaluation.json`: per-theme values for the four
+    hard requirements with pass/fail and the failing requirement(s) named.
+  - `/tmp_workspace/results/theme_method.json`: how you computed saturation and
+    checked each requirement (reproducible).
+
+  This is fully offline — do not fetch anything from the network.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/reference_analysis.py
+sources:
+  - theme_candidates/
+
+codex:
+  max_user_followups: 2

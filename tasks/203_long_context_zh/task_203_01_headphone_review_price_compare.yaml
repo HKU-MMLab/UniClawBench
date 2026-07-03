@@ -1,0 +1,34 @@
+task_id: task_203_01_headphone_review_price_compare
+category: 203_long_context_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我打算购买头戴式耳机，想先看看中文和国外两个视频来源在推荐上是否有重合。
+
+  从 ClawHub 安装 `bilibili-all-in-one` skill，在 Bilibili 上搜索 `2025 headphone recommendations over-ear`，重点关注一个看起来叫 PoorPlayers 的创作者是否有相关视频。同时找到 YouTube 上 `This is Tech Today` 发布的 2025 头戴式耳机推荐视频。为你找到的这两个推荐来源都保存截图证据。
+
+  我想知道这两个来源是否推荐了任何共同的品牌，以及它们在该品牌下分别推荐了哪些具体产品。如果只有一款共同产品，就直接比较在洛杉矶地区 Amazon 和 Walmart 哪个更便宜，并保存较便宜平台的产品页面和价格截图。如果产品不相同，则制作一份规格对比，至少包含 Amazon 价格、Walmart 价格、频响范围、阻抗、灵敏度、驱动单元类型，并为每款产品记录较便宜的平台及对应的产品截图。
+
+  最后将结论、截图路径、产品链接和推荐建议写入 `/tmp_workspace/results/headphone_compare.md`。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/product_evidence/amazon_sony_ult_wear_product.png
+  - references/product_evidence/amazon_sony_ult_wear_search.png
+  - references/product_evidence/amazon_sony_wh1000xm6_search.png
+  - references/product_evidence/bilibili_poorplayers_video.png
+  - references/product_evidence/sony_ult_wear_specs.png
+  - references/product_evidence/sony_wh1000xm6_specs.png
+  - references/product_evidence/walmart_sony_ult_wear_search.png
+  - references/product_evidence/walmart_sony_wh1000xm6_search.png
+  - references/product_evidence/youtube_this_is_tech_today_video.png
+codex:
+  max_user_followups: 2

@@ -1,0 +1,93 @@
+{
+  "task_id": "task_105_40_pypi_upgrade_web_audit",
+  "target_versions": [
+    {
+      "package": "requests",
+      "current_pin": "2.32.3",
+      "target_version": "2.32.5"
+    },
+    {
+      "package": "fastapi",
+      "current_pin": "0.110.0",
+      "target_version": "0.111.0"
+    },
+    {
+      "package": "uvicorn",
+      "current_pin": "0.29.0",
+      "target_version": "0.30.1"
+    },
+    {
+      "package": "pydantic",
+      "current_pin": "2.7.1",
+      "target_version": "2.8.2"
+    },
+    {
+      "package": "httpx",
+      "current_pin": "0.27.0",
+      "target_version": "0.27.2"
+    }
+  ],
+  "expected_release_info": [
+    {
+      "package": "requests",
+      "version": "2.32.5",
+      "project_url": "https://pypi.org/project/requests/2.32.5/",
+      "json_url": "https://pypi.org/pypi/requests/2.32.5/json",
+      "requires_python": ">=3.9",
+      "file_count": 2,
+      "has_wheel": true,
+      "has_sdist": true,
+      "first_upload_time_iso": "2025-08-18T20:46:00.542304Z"
+    },
+    {
+      "package": "fastapi",
+      "version": "0.111.0",
+      "project_url": "https://pypi.org/project/fastapi/0.111.0/",
+      "json_url": "https://pypi.org/pypi/fastapi/0.111.0/json",
+      "requires_python": ">=3.8",
+      "file_count": 2,
+      "has_wheel": true,
+      "has_sdist": true,
+      "first_upload_time_iso": "2024-05-03T00:21:41.784007Z"
+    },
+    {
+      "package": "uvicorn",
+      "version": "0.30.1",
+      "project_url": "https://pypi.org/project/uvicorn/0.30.1/",
+      "json_url": "https://pypi.org/pypi/uvicorn/0.30.1/json",
+      "requires_python": ">=3.8",
+      "file_count": 2,
+      "has_wheel": true,
+      "has_sdist": true,
+      "first_upload_time_iso": "2024-06-02T08:21:11.992792Z"
+    },
+    {
+      "package": "pydantic",
+      "version": "2.8.2",
+      "project_url": "https://pypi.org/project/pydantic/2.8.2/",
+      "json_url": "https://pypi.org/pypi/pydantic/2.8.2/json",
+      "requires_python": ">=3.8",
+      "file_count": 2,
+      "has_wheel": true,
+      "has_sdist": true,
+      "first_upload_time_iso": "2024-07-04T02:59:45.330287Z"
+    },
+    {
+      "package": "httpx",
+      "version": "0.27.2",
+      "project_url": "https://pypi.org/project/httpx/0.27.2/",
+      "json_url": "https://pypi.org/pypi/httpx/0.27.2/json",
+      "requires_python": ">=3.8",
+      "file_count": 2,
+      "has_wheel": true,
+      "has_sdist": true,
+      "first_upload_time_iso": "2024-08-27T12:53:59.653912Z"
+    }
+  ],
+  "required_outputs": {
+    "json": "/tmp_workspace/results/pypi_upgrade_audit.json",
+    "markdown": "/tmp_workspace/results/pypi_upgrade_report.md",
+    "screenshots_dir": "/tmp_workspace/results/pypi_screenshots/"
+  },
+  "live_web_policy": "Use official PyPI project/version pages and/or official PyPI JSON API. Target versions are fixed historical anchors; do not grade against current latest."
+}

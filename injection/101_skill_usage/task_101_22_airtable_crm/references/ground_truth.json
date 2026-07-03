@@ -1,0 +1,278 @@
+{
+  "task_id": "task_101_22_airtable_crm",
+  "difficulty": "Hard",
+  "schema": "a",
+  "schema_notes": "concept-level booleans with evidence pointers (must-hit findings)",
+  "skills_declared": [
+    "airtable-pat-rest",
+    "database-operations"
+  ],
+  "ground_truth": {
+    "total_deals": 64,
+    "stage_stuck_threshold_days": 21,
+    "active_stages": [
+      "Lead",
+      "Negotiation",
+      "Proposal",
+      "Qualified"
+    ],
+    "terminal_stages": [
+      "Lost",
+      "Won"
+    ],
+    "expected_active_stuck_deal_ids": [
+      "D0001",
+      "D0002",
+      "D0005",
+      "D0007",
+      "D0011",
+      "D0013",
+      "D0017",
+      "D0018",
+      "D0019",
+      "D0021",
+      "D0023",
+      "D0025",
+      "D0026",
+      "D0027",
+      "D0028",
+      "D0031",
+      "D0033",
+      "D0034",
+      "D0035",
+      "D0037",
+      "D0039",
+      "D0043",
+      "D0046",
+      "D0048",
+      "D0049",
+      "D0052",
+      "D0054",
+      "D0056",
+      "D0060",
+      "D0063"
+    ],
+    "expected_moving_active_deal_ids": [
+      "D0003",
+      "D0008",
+      "D0010",
+      "D0012",
+      "D0020",
+      "D0022",
+      "D0032",
+      "D0036",
+      "D0041",
+      "D0042",
+      "D0044",
+      "D0047",
+      "D0051",
+      "D0055",
+      "D0058",
+      "D0061",
+      "D0062"
+    ],
+    "expected_terminal_aged_deal_ids": [
+      "D0004",
+      "D0006",
+      "D0009",
+      "D0014",
+      "D0015",
+      "D0016",
+      "D0030",
+      "D0040",
+      "D0045",
+      "D0050",
+      "D0057",
+      "D0059",
+      "D0064"
+    ],
+    "stage_counts": {
+      "Negotiation": 17,
+      "Won": 10,
+      "Proposal": 9,
+      "Qualified": 13,
+      "Lost": 7,
+      "Lead": 8
+    },
+    "active_pipeline_value_usd": 1857271.16,
+    "terminal_value_usd": 685405.48,
+    "owner_followups_columns": [
+      "owner",
+      "active_stuck_count",
+      "active_stuck_value_usd",
+      "oldest_active_stuck_deal",
+      "oldest_days_in_stage",
+      "next_action"
+    ],
+    "expected_owner_followups": {
+      "Alice P.": {
+        "active_stuck_count": 3,
+        "active_stuck_value_usd": 142500.0,
+        "oldest_active_stuck_deal": "D0001",
+        "oldest_days_in_stage": 42
+      },
+      "Bob K.": {
+        "active_stuck_count": 4,
+        "active_stuck_value_usd": 181426.26,
+        "oldest_active_stuck_deal": "D0023",
+        "oldest_days_in_stage": 55
+      },
+      "Erin Y.": {
+        "active_stuck_count": 5,
+        "active_stuck_value_usd": 253642.17,
+        "oldest_active_stuck_deal": "D0026",
+        "oldest_days_in_stage": 55
+      },
+      "Grace T.": {
+        "active_stuck_count": 4,
+        "active_stuck_value_usd": 233353.56,
+        "oldest_active_stuck_deal": "D0028",
+        "oldest_days_in_stage": 70
+      },
+      "Dave R.": {
+        "active_stuck_count": 4,
+        "active_stuck_value_usd": 220069.22,
+        "oldest_active_stuck_deal": "D0011",
+        "oldest_days_in_stage": 45
+      },
+      "Frank L.": {
+        "active_stuck_count": 4,
+        "active_stuck_value_usd": 197780.61,
+        "oldest_active_stuck_deal": "D0027",
+        "oldest_days_in_stage": 65
+      },
+      "Carol M.": {
+        "active_stuck_count": 3,
+        "active_stuck_value_usd": 97525.35,
+        "oldest_active_stuck_deal": "D0052",
+        "oldest_days_in_stage": 38
+      },
+      "Diana K.": {
+        "active_stuck_count": 2,
+        "active_stuck_value_usd": 61160.0,
+        "oldest_active_stuck_deal": "D0048",
+        "oldest_days_in_stage": 33
+      },
+      "Bob H.": {
+        "active_stuck_count": 1,
+        "active_stuck_value_usd": 44100.0,
+        "oldest_active_stuck_deal": "D0049",
+        "oldest_days_in_stage": 23
+      }
+    },
+    "expected_priority_queue": [
+      {
+        "deal_id": "D0028",
+        "account": "Zorg Industries",
+        "owner": "Grace T.",
+        "stage": "Proposal",
+        "value_usd": 95000.0,
+        "days_in_stage": 70,
+        "risk_score": 6650.0,
+        "rank": 1
+      },
+      {
+        "deal_id": "D0027",
+        "account": "Cogswell Cogs",
+        "owner": "Frank L.",
+        "stage": "Qualified",
+        "value_usd": 85000.0,
+        "days_in_stage": 65,
+        "risk_score": 5525.0,
+        "rank": 2
+      },
+      {
+        "deal_id": "D0026",
+        "account": "Sirius Cybernetics",
+        "owner": "Erin Y.",
+        "stage": "Negotiation",
+        "value_usd": 88000.0,
+        "days_in_stage": 55,
+        "risk_score": 4840.0,
+        "rank": 3
+      },
+      {
+        "deal_id": "D0023",
+        "account": "Parr Technologies",
+        "owner": "Bob K.",
+        "stage": "Qualified",
+        "value_usd": 78000.0,
+        "days_in_stage": 55,
+        "risk_score": 4290.0,
+        "rank": 4
+      },
+      {
+        "deal_id": "D0011",
+        "account": "Massive Dynamic",
+        "owner": "Dave R.",
+        "stage": "Proposal",
+        "value_usd": 92000.0,
+        "days_in_stage": 45,
+        "risk_score": 4140.0,
+        "rank": 5
+      },
+      {
+        "deal_id": "D0005",
+        "account": "Umbrella Health",
+        "owner": "Erin Y.",
+        "stage": "Proposal",
+        "value_usd": 75000.0,
+        "days_in_stage": 50,
+        "risk_score": 3750.0,
+        "rank": 6
+      },
+      {
+        "deal_id": "D0001",
+        "account": "Acme Logistics",
+        "owner": "Alice P.",
+        "stage": "Negotiation",
+        "value_usd": 80000.0,
+        "days_in_stage": 42,
+        "risk_score": 3360.0,
+        "rank": 7
+      }
+    ],
+    "topic_dimensions": [
+      "active_stuck_deals",
+      "owner_workload_imbalance",
+      "stage_flow_bottlenecks",
+      "value_at_risk_concentration",
+      "lapsed_terminal_accounts"
+    ],
+    "min_dimensions_covered": 4,
+    "sla_marker_required_owners": [
+      "Grace T.",
+      "Frank L."
+    ],
+    "top_priority_risk_scores": {
+      "D0028": 6650.0,
+      "D0027": 5525.0,
+      "D0026": 4840.0
+    },
+    "moving_active_required_velocity_fields": [
+      "last_stage_change_days_ago",
+      "velocity_class"
+    ],
+    "velocity_class_thresholds": {
+      "fast_max_days": 5,
+      "slow_min_days": 14
+    },
+    "moving_active_min_with_velocity": 5,
+    "next_action_canonical_verbs": [
+      "Email",
+      "Call",
+      "Schedule",
+      "Send",
+      "Submit",
+      "Review",
+      "Confirm",
+      "Escalate",
+      "Follow-up",
+      "Follow up"
+    ],
+    "min_owners_with_verb_action": 5,
+    "min_stuck_deals_with_stage_history_length": 4,
+    "min_owners_in_followups": 5,
+    "min_priority_queue_match_count": 6
+  }
+}

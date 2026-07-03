@@ -1,0 +1,64 @@
+Message-ID: <d8dbd944-9b02-fa51-4ffa-b65786799326@gatewaygeomatics.com>
+X-Clawbench-ID: ASF-2024-0959
+Date: Mon, 14 Feb 2022 16:10:03 -0400
+From: Jeff McKenna <jmckenna@gatewaygeomatics.com>
+To: dev@httpd.apache.org
+Subject: Re: PCRE2 compatibility
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-02.mbox
+
+Hi Doug,
+
+If by "incompatible" you mean to ask if one can point to PCRE2 with
+CMake with Apache 2.4.51 & build successfully, I can tell you that yes
+it is incompatible, I was not able to build 2.4.51 with PCRE2 through
+CMake, with Visual Studio 2019.
+
+(at the time I found many reporting this online, and a long list of
+"workarounds", not easy to implement, so for my distribution I chose to
+remain at PCRE 8.45, for now, unfortunately)
+
+Thanks,
+
+-jeff
+
+
+--
+Jeff McKenna
+GatewayGeo: Developers of MS4W, MapServer Consulting and Training
+co-founder of FOSS4G
+http://gatewaygeo.com/
+
+
+On 2022-02-14 3:57 p.m., Doug Whitfield wrote:
+> Hi folks,
+>
+> Apologies is this is better suited for the user mailing list, but I’m
+> digging into the source do thought this might be best. I have read a
+> number of reports that pcre2 is not compatible with httpd.
+>
+>
+> However, it looks like pcre2 code went in in 2016:
+> https://github.com/apache/httpd/blob/12cfcf08fffc6e4ec597e0396016d09afdb89fa8/server/util_pcre.c
+>
+> Is pcre2 incompatible? Is there a specific set of circumstance where
+> individuals are running into this issue?
+>
+> Best Regards,
+>
+> --
+>
+>
+>
+> *Doug Whitfield | Enterprise Architect, **_OpenLogic_*
+>
+> _Perforce Software_
+>
+>
+> This e-mail may contain information that is privileged or confidential.
+> If you are not the intended recipient, please delete the e-mail and any
+> attachments and notify us immediately.
+>
+>

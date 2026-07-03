@@ -1,0 +1,355 @@
+{
+  "source_accessed_on": "2026-04-23",
+  "evidence_basis": [
+    "Kate Elisabeth YouTube channel RSS feed snapshot for current uploads.",
+    "Current YouTube search-result page for London weekly-spending queries on 2026-04-23.",
+    "Current watch-page metadata for the selected video and the nearest older competitor.",
+    "Manual review of the selected video frames and audio for visible price overlays and spoken totals."
+  ],
+  "channel": {
+    "name": "kate elisabeth",
+    "channel_id": "UCETIvuUwho7qMJpr_H366Bw",
+    "url": "https://www.youtube.com/channel/UCETIvuUwho7qMJpr_H366Bw"
+  },
+  "selection_snapshot": {
+    "query_used": "kate elisabeth how much i spend in a week london",
+    "latest_matching_video": {
+      "video_id": "YQOhJE2pA9E",
+      "url": "https://www.youtube.com/watch?v=YQOhJE2pA9E",
+      "title": "How much I Spend £ in a Week as a 25 year-old Living in London 🇬🇧",
+      "published_date": "2025-09-21",
+      "view_snapshot": "43K views",
+      "duration": "22:39",
+      "selection_rationale": "On the 2026-04-23 snapshot, this is the newest Kate Elisabeth long-form upload whose title explicitly states a London weekly-spending framing."
+    },
+    "older_relevant_candidates": [
+      {
+        "video_id": "Nk4ZeczQGwk",
+        "url": "https://www.youtube.com/watch?v=Nk4ZeczQGwk",
+        "title": "What I Spend £ in a Week as a 25 year old Living and Working in London 🇬🇧 (bills, transport, food)",
+        "published_date": "2025-07-06",
+        "view_snapshot": "52K views",
+        "duration": "19:01",
+        "status": "Relevant but older than the hidden baseline selection."
+      }
+    ]
+  },
+  "video_framing": {
+    "currency": "GBP",
+    "theme": "weekly personal spending while living in London",
+    "description_hint": "if you’ve read this far comment: 'she didn't need to spend that much'",
+    "page_summary_snapshot": "A 25-year-old documents a week of spending in London, from chai lattes to fitness/gym spending, shopping trips, transport, meals, and nights out."
+  },
+  "spend_row_policy": {
+    "amount_tolerance_gbp": 0.15,
+    "full_credit_minimum_rows": 16,
+    "strong_credit_minimum_rows": 14,
+    "must_not_invent_rows": true,
+    "remainder_policy": "The video states a grand total of £542.94. The visible/explicit itemized rows below sum to £520.68, leaving £22.26 unitemized or not confidently visible in the sampled evidence. A candidate may report this as unitemized_or_unconfirmed_remainder, but should not invent a named spend category for it without video evidence."
+  },
+  "canonical_spend_rows": [
+    {
+      "ordinal": 1,
+      "item_id": "breakfast_chai_latte",
+      "item": "breakfast chai latte / coffee",
+      "amount": 9.95,
+      "accepted_amounts": [9.95, 10.0],
+      "currency": "GBP",
+      "category": "meals_or_coffee",
+      "approx_timestamp": "00:00:42",
+      "evidence_type": "visible_and_spoken",
+      "evidence_frame": "references/evidence_frames/spend_01.jpg",
+      "evidence_notes": "Visible overlay is £9.95; creator later rounds it verbally to £10."
+    },
+    {
+      "ordinal": 2,
+      "item_id": "m_and_s_aardo_food_shop",
+      "item": "M&S / Aardo food shop",
+      "amount": 91.0,
+      "accepted_amounts": [91.0],
+      "currency": "GBP",
+      "category": "groceries",
+      "approx_timestamp": "00:02:21",
+      "evidence_type": "visible_and_spoken",
+      "evidence_frame": "references/evidence_frames/spend_02.jpg",
+      "evidence_notes": "Food shop amount appears as a £91 overlay and is discussed again later."
+    },
+    {
+      "ordinal": 3,
+      "item_id": "oyster_top_up",
+      "item": "Oyster / TfL top-up",
+      "amount": 85.0,
+      "accepted_amounts": [85.0],
+      "currency": "GBP",
+      "category": "transport",
+      "approx_timestamp": "00:03:06",
+      "evidence_type": "visible_price_overlay",
+      "evidence_frame": "references/evidence_frames/spend_03.jpg",
+      "evidence_notes": "Payment machine shows Please pay: £85.00 and pay-as-you-go credit top-up."
+    },
+    {
+      "ordinal": 4,
+      "item_id": "tube_fare_to_class",
+      "item": "Tube fare to class",
+      "amount": 2.9,
+      "accepted_amounts": [2.9],
+      "currency": "GBP",
+      "category": "transport",
+      "approx_timestamp": "00:03:16",
+      "evidence_type": "visible_price_overlay",
+      "evidence_frame": "references/evidence_frames/spend_04.jpg",
+      "evidence_notes": "Visible £2.90 overlay at the Tube gate."
+    },
+    {
+      "ordinal": 5,
+      "item_id": "gym_food_and_drink",
+      "item": "Natural Fitness Food wrap and drink",
+      "amount": 11.95,
+      "accepted_amounts": [11.95],
+      "currency": "GBP",
+      "category": "meals_or_coffee",
+      "approx_timestamp": "00:03:21",
+      "evidence_type": "visible_price_overlay",
+      "evidence_frame": "references/evidence_frames/spend_05.jpg",
+      "evidence_notes": "Visible £11.95 overlay on the gym food and drink shot."
+    },
+    {
+      "ordinal": 6,
+      "item_id": "third_space_membership_daily_allocation",
+      "item": "Third Space membership daily allocation",
+      "amount": 8.3,
+      "accepted_amounts": [8.3],
+      "currency": "GBP",
+      "category": "fitness_or_wellness",
+      "approx_timestamp": "00:03:28",
+      "evidence_type": "visible_price_overlay",
+      "evidence_frame": "references/evidence_frames/spend_06.jpg",
+      "evidence_notes": "On-screen calculation: Third Space membership = £250/month; 250 ÷ 30 = £8.30."
+    },
+    {
+      "ordinal": 7,
+      "item_id": "zara_smart_tshirt",
+      "item": "Zara smart T-shirt purchase",
+      "amount": 24.98,
+      "accepted_amounts": [24.98],
+      "currency": "GBP",
+      "category": "shopping",
+      "approx_timestamp": "00:03:55",
+      "evidence_type": "visible_price_overlay",
+      "evidence_frame": "references/evidence_frames/spend_07.jpg",
+      "evidence_notes": "Checkout/price screen shows 2 articles and £24.98."
+    },
+    {
+      "ordinal": 8,
+      "item_id": "dumplings_dinner",
+      "item": "Dumplings dinner",
+      "amount": 35.0,
+      "accepted_amounts": [35.0],
+      "currency": "GBP",
+      "category": "meals_or_coffee",
+      "approx_timestamp": "00:04:18",
+      "evidence_type": "visible_price_overlay",
+      "evidence_frame": "references/evidence_frames/spend_08.jpg",
+      "evidence_notes": "Visible £35 overlay on the dumpling dinner."
+    },
+    {
+      "ordinal": 9,
+      "item_id": "sweet_bun",
+      "item": "Sweet bun / bakery treat",
+      "amount": 4.95,
+      "accepted_amounts": [4.95],
+      "currency": "GBP",
+      "category": "meals_or_coffee",
+      "approx_timestamp": "00:04:43",
+      "evidence_type": "visible_and_spoken",
+      "evidence_frame": "references/evidence_frames/spend_09.jpg",
+      "evidence_notes": "Visible and spoken £4.95 for the bakery item."
+    },
+    {
+      "ordinal": 10,
+      "item_id": "tube_fare_after_dinner",
+      "item": "Tube fare after dinner",
+      "amount": 2.9,
+      "accepted_amounts": [2.9],
+      "currency": "GBP",
+      "category": "transport",
+      "approx_timestamp": "00:04:55",
+      "evidence_type": "visible_price_overlay",
+      "evidence_frame": "references/evidence_frames/spend_10.jpg",
+      "evidence_notes": "Visible £2.90 overlay during the return journey."
+    },
+    {
+      "ordinal": 11,
+      "item_id": "lime_bike_home",
+      "item": "Lime bike ride home",
+      "amount": 2.16,
+      "accepted_amounts": [2.16],
+      "currency": "GBP",
+      "category": "transport",
+      "approx_timestamp": "00:05:06",
+      "evidence_type": "visible_price_overlay",
+      "evidence_frame": "references/evidence_frames/spend_11.jpg",
+      "evidence_notes": "Visible £2.16 overlay on the bike ride shot."
+    },
+    {
+      "ordinal": 12,
+      "item_id": "clothes_shopping_brandy_urban",
+      "item": "Clothes shopping at Brandy / Urban",
+      "amount": 150.0,
+      "accepted_amounts": [150.0],
+      "currency": "GBP",
+      "category": "shopping",
+      "approx_timestamp": "00:09:25",
+      "evidence_type": "visible_and_spoken",
+      "evidence_frame": "references/evidence_frames/spend_12.jpg",
+      "evidence_notes": "Creator discusses shopping and visible overlay shows £150."
+    },
+    {
+      "ordinal": 13,
+      "item_id": "waterstones_books",
+      "item": "Waterstones books",
+      "amount": 14.95,
+      "accepted_amounts": [14.95, 15.0],
+      "currency": "GBP",
+      "category": "shopping",
+      "approx_timestamp": "00:09:58",
+      "evidence_type": "visible_and_spoken",
+      "evidence_frame": "references/evidence_frames/spend_13.jpg",
+      "evidence_notes": "Visible book overlay is £14.95; creator rounds to basically £15."
+    },
+    {
+      "ordinal": 14,
+      "item_id": "tube_fare_to_events",
+      "item": "Tube fare to events",
+      "amount": 2.9,
+      "accepted_amounts": [2.9],
+      "currency": "GBP",
+      "category": "transport",
+      "approx_timestamp": "00:15:29",
+      "evidence_type": "visible_price_overlay",
+      "evidence_frame": "references/evidence_frames/spend_14.jpg",
+      "evidence_notes": "Visible £2.90 overlay at a Tube gate later in the vlog."
+    },
+    {
+      "ordinal": 15,
+      "item_id": "black_cab_to_event",
+      "item": "Black cab to event",
+      "amount": 21.73,
+      "accepted_amounts": [21.73],
+      "currency": "GBP",
+      "category": "transport",
+      "approx_timestamp": "00:15:43",
+      "evidence_type": "visible_price_overlay",
+      "evidence_frame": "references/evidence_frames/spend_15.jpg",
+      "evidence_notes": "Visible £21.73 overlay in a cab scene."
+    },
+    {
+      "ordinal": 16,
+      "item_id": "second_cab_or_taxi",
+      "item": "Second cab / taxi ride",
+      "amount": 22.36,
+      "accepted_amounts": [22.36],
+      "currency": "GBP",
+      "category": "transport",
+      "approx_timestamp": "00:15:56",
+      "evidence_type": "visible_price_overlay",
+      "evidence_frame": "references/evidence_frames/spend_16.jpg",
+      "evidence_notes": "Visible £22.36 overlay inside another taxi/cab."
+    },
+    {
+      "ordinal": 17,
+      "item_id": "pres_shop_mixer_energy_drinks",
+      "item": "Pre-drinks shop / mixers and energy drinks",
+      "amount": 13.15,
+      "accepted_amounts": [13.15],
+      "currency": "GBP",
+      "category": "entertainment_or_social",
+      "approx_timestamp": "00:19:48",
+      "evidence_type": "visible_price_overlay",
+      "evidence_frame": "references/evidence_frames/spend_17.jpg",
+      "evidence_notes": "Self-checkout subtotal shows £13.15 for two items."
+    },
+    {
+      "ordinal": 18,
+      "item_id": "pasta_dinner",
+      "item": "Pasta dinner",
+      "amount": 16.5,
+      "accepted_amounts": [16.5],
+      "currency": "GBP",
+      "category": "meals_or_coffee",
+      "approx_timestamp": "00:20:39",
+      "evidence_type": "visible_price_overlay",
+      "evidence_frame": "references/evidence_frames/spend_18.jpg",
+      "evidence_notes": "Visible £16.50 overlay on the pasta dinner."
+    }
+  ],
+  "totals": {
+    "known_exact_itemized_total": 520.68,
+    "stated_video_grand_total": 542.94,
+    "stated_video_grand_total_timestamp": "00:21:48",
+    "unitemized_remainder_amount": 22.26,
+    "grand_total_note": "The creator states the grand total as £542.94 for the documented days and says this does not include mortgage, water, or electricity."
+  },
+  "non_spend_mentions": [
+    {
+      "item": "Shard lunch",
+      "policy": "Do not count as a spend row unless a candidate finds a video-supported price; it appears as hosted/free context rather than an explicit personal spend."
+    },
+    {
+      "item": "Brand events / free drinks",
+      "policy": "Do not count as a spend row unless a candidate finds a video-supported price; free/hosted events should be described as non-spend context."
+    }
+  ],
+  "expected_output_contract": {
+    "required_files": [
+      "london_week_spending.csv",
+      "london_week_spending_pie.png",
+      "london_week_spending.md",
+      "spending_evidence/"
+    ],
+    "required_columns": [
+      "item",
+      "amount",
+      "currency",
+      "category",
+      "timestamp",
+      "evidence_frame",
+      "evidence_type",
+      "note"
+    ],
+    "preferred_normalization_categories": [
+      "transport",
+      "groceries",
+      "meals_or_coffee",
+      "shopping",
+      "fitness_or_wellness",
+      "entertainment_or_social",
+      "misc"
+    ],
+    "must_compute_csv_total": true,
+    "must_report_stated_video_grand_total": true,
+    "must_reconcile_remainder": true,
+    "pie_chart_should_aggregate_categories": true,
+    "currency_expectation": "Rows should use GBP / £ unless the creator explicitly quotes another currency and converts it."
+  },
+  "subtitle_policy": {
+    "downloaded_subtitle_or_transcript_files_are_disallowed": true,
+    "disallowed_file_patterns": [
+      "*.vtt",
+      "*.srt",
+      "*subtitle*",
+      "*transcript*"
+    ],
+    "allowed_auxiliary_use": "Browser captions while watching may help disambiguate spoken words, but downloaded subtitles/transcripts are not valid evidence and cannot compensate for missing video-frame or audio-timestamp evidence.",
+    "why_strict": "Many canonical spend rows are visible price overlays only and do not appear in captions. Subtitle-only extraction misses Oyster top-up, several TfL fares, gym food, Third Space allocation, Zara, taxi rides, mixers, and dinner overlays."
+  },
+  "common_mistakes": [
+    "Selecting the older July 2025 London spending video instead of the newer September 2025 one.",
+    "Using downloaded subtitles or a transcript as the primary data source.",
+    "Producing the old 5-6 row answer containing only breakfast, groceries, bun, clothes, books, and maybe dumplings.",
+    "Missing visible price-overlay rows for transport, gym/fitness, taxi, Zara, mixers, or pasta dinner.",
+    "Treating the stated £542.94 grand total as fully itemized without explaining the £22.26 remainder.",
+    "Mixing inferred budget categories with explicit spend mentions without labeling them."
+  ],
+  "supervisor_note": "This task should grade video-grounded extraction. Subtitles alone are insufficient because the critical benchmark behavior is finding and reading visual price overlays across the vlog."
+}

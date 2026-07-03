@@ -1,0 +1,77 @@
+Message-ID: <fc63351b-4a8f-0118-bbdb-b6f7f40b47b1@apache.org>
+X-Clawbench-ID: ASF-2024-1490
+Date: Tue, 25 Apr 2023 08:45:07 +0200
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: ci vs PR approvals? (was: [apache/httpd] Fix a possible NULL  pointer dereference in hook_uri2file (PR #355))
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-04.mbox
+
+On 4/12/23 2:02 PM, Yann Ylavic wrote:
+> On Wed, Apr 12, 2023 at 1:31 PM Eric Covener <covener@gmail.com> wrote:
+>>
+>> On Wed, Apr 12, 2023 at 6:36 AM Yann Ylavic <ylavic.dev@gmail.com> wrote:
+>>>
+>>> On Wed, Apr 12, 2023 at 12:26 PM Yann Ylavic <ylavic.dev@gmail.com> wrote:
+>>>>
+>>>> On Wed, Apr 12, 2023 at 12:18 PM ylavic <notifications@github.com> wrote:
+>>>>>
+>>>>> @ylavic approved this pull request.
+>>>>>
+>>>>> Three approvals to get ci started?
+>>>>
+>>>> Nope.. It seems that gh actions don't run for PRs whatever we do.
+>>>> The docs[1] say that there should be an "Approve and run" button near
+>>>> the "workflow awaiting approval" text, but it's not the case for httpd
+>>>> mirror, while approving the whole PR looks inefficient..
+>>>
+>>> We (PMC/committers) once had the right to close any PRs, but that
+>>> seems to not be the case anymore either.
+>>> Something changed since
+>>> https://lists.apache.org/thread/g7bb70ymlmkzjlx1rpvq46dwz54qcpdb
+>>> probably.
+>>>
+>>>>
+>>>> Any more ideas? Help from infra needed?
+>>>>
+>>>> Regards;
+>>>> Yann.
+>>>>
+>>>> [1] https://docs.github.com/en/actions/managing-workflow-runs/approving-workflow-runs-from-public-forks
+>>
+>>
+>> We are chatting with Daniel about it on ASF slack.
+>
+> Ah ok, I created https://issues.apache.org/jira/browse/INFRA-24457 FWIW..
+>
+
+I would like to bring this back here, now that we have an answer in the ticket.
+The root cause for the current situation seems to be that our Github repository is just a read only mirror of our Subversion
+repository. Approving PR's requires write permissions to the Github repository.
+
+As far as I understand from the ticket we have two options:
+
+1. We establish a monitoring process on PR's that ensures that we detect misuse of Github actions by non committers.
+   Then Infra could set the PR's back to "auto-approval".
+
+2. We switch from Subversion to Git and use Git as our read / write main repository.
+
+My 2 cents on the options:
+
+1. I am not sure which exact monitoring will be sufficient, but it may put some larger burden on us to ensure that we
+   detect misuse in a timely manner. Furthermore the question to me will be what we can do to stop misuse quickly if we
+   detect it.
+
+2. Switching from Subversion to Git is mostly an emotional problem for me. We have some closer ties to Subversion by some
+   overlaps in the community and via mod_dav_svn we kind of partially eat our very own dogfood here by using Subversion.
+   We wouldn't do that any longer with Git. Plus it would switch another of our development tools from an Apache license to GPL.
+   Apart from technical aspects that this change would create we should check if all of the current active committers are fine
+   using Github. While people could use Gitbox and thus avoid Github when we use Git I would like us to leverage the features of
+   Github when we would do this switch and I think this cannot be done if active committers would have issues with Github.
+
+
+Regards
+
+Rüdiger

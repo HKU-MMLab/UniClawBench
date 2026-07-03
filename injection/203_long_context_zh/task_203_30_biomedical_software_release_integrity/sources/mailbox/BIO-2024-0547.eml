@@ -1,0 +1,42 @@
+Message-ID: <ZG45eAveokXFSASu@fusion>
+X-Clawbench-ID: BIO-2024-0547
+Date: Wed, 24 May 2023 18:21:12 +0200
+From: Étienne Mollier <emollier@emlwks999.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Please review release notes patch
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_05_msg00012.html
+
+Moin,
+
+Pierre Gruet, on 2023-05-24:
+> Hello Andreas,
+>
+> Le 24/05/2023 à 08:25, Andreas Tille a écrit :
+> > Hi,
+> >
+> > as for every release we want to increase or visibility to show
+> > up in the release notes.  I've drafted a patch
+> >
+> >    https://salsa.debian.org/med-team/community/communication/-/blob/master/releasenotes/bookworm/release-notes.patch
+> >
+> > Please review and comment on it (or just push fixes and enhancements)!
+>
+> Thanks for this patch, I reviewed it and I don't mean to change anything.
+
+I reviewed through the patch, and I think it already summarizes
+well the activity as I perceived in Debian Med during this
+release cycle.  This is my perception of the situation, so the
+below still holds:
+
+> Is there any important piece of software we packaged during this release
+> cycle and that could be worth highlighting? From my limited perspective I
+> have none that comes to mind, but maybe it will for someone else.
+
+Have a nice day,  :)
+--
+Étienne Mollier
+Fingerprint:  8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+Sent from /dev/pts/2, please excuse my verbosity.

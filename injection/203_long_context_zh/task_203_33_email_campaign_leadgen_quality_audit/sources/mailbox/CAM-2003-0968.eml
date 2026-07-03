@@ -1,0 +1,37 @@
+Message-ID: <E17YOzl-0005M5-00@weasel>
+X-Clawbench-ID: CAM-2003-0968
+Date: Sat, 27 Jul 2002 11:39:20 +0100
+From: Robert Synnott <r.synnott@oceanfree.net>
+To: Liam Bedford <lbedford@netnoteinc.com>, ilug@linux.ie
+Subject: Re: [ILUG] [OT] Oceanfree Dial-up Number
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00121.4c398f0106848ae9f9d3462c2296de17
+
+Actually, they do; though they aren't case sensitive. It seems to have some
+trouble wtih PAP/CHAP authentication  as well; you might have to do it by
+script?
+
+On Friday 26 July 2002 12:37, Liam Bedford wrote:
+> On Fri, 26 Jul 2002 12:23:24 +0100
+>
+> HAMILTON,DAVID (HP-Ireland,ex2) claiming to think:
+> > Hi All,
+> >
+> > I am trying to find the Oceanfree ISDN dialup number for Dublin.
+> > http://iiu.taint.org/ appears to be down, or at least I can't get to it,
+> > and I don't want to pay oceanfree €10 per second for tech support :-).
+>
+> 01-2434321
+> username: oceanfree
+> password: oceanfree
+>
+> don't think the username and password matter much though.
+>
+> L.
+
+--
+Irish Linux Users' Group: ilug@linux.ie
+http://www.linux.ie/mailman/listinfo/ilug for (un)subscription information.
+List maintainer: listmaster@linux.ie

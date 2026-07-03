@@ -1,0 +1,20 @@
+{
+  "task_id": "task_201_05_org_chart_mermaid",
+  "note": "Real Alphabet Inc. DEF 14A excerpt, verbatim prose from SEC EDGAR. No pre-parsing — executor must identify nodes, board/executive rosters, and committee memberships from narrative text.",
+  "upstream": {
+    "filer": "Alphabet Inc.",
+    "cik": "0001652044",
+    "form_type": "DEF 14A",
+    "accession_number": "0001308179-24-000612",
+    "filing_date": "2024-04-26",
+    "document_filename": "lgoog2024_def14a.htm",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/1652044/000130817924000612/lgoog2024_def14a.htm",
+    "filing_index_url": "https://www.sec.gov/Archives/edgar/data/1652044/000130817924000612/0001308179-24-000612-index.htm"
+  },
+  "entries": [
+    {
+      "path": "alphabet_def14a_excerpt.md",
+      "description": "Verbatim prose excerpt covering the Directors, Executive Officers, Board Leadership Structure, and Board Committees sections of Alphabet's 2024 Proxy Statement. 10 directors + 4 non-CEO executive officers + 4 standing committees with chair-and-member composition. Intentionally unstructured: no pre-parsed tree, no explicit edge list, and no inferred reporting relationships beyond the rosters stated in the filing."
+    }
+  ]
+}

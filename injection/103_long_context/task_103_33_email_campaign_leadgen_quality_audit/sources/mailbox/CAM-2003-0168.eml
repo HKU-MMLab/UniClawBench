@@ -1,0 +1,55 @@
+Message-ID: <20020814111509.1d51dbca.matthias@egwn.net>
+X-Clawbench-ID: CAM-2003-0168
+Date: Wed, 14 Aug 2002 11:15:09 +0200
+From: Matthias Saou <matthias@egwn.net>
+To: rpm-zzzlist@freshrpms.net
+Subject: Re: Problem with my spec file
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01225.71c8590849d96555fde5e7808616b484
+
+Once upon a time, Victor wrote :
+
+> Can someone tell me what I am doing wrong? it's like make doesn't take
+> the PREFIX override... It's crazy. I don't get it...
+> OS: TurboLinux6 rmp3.0.6 make 3.79.1
+>
+> I just don't get this. It should work...
+>
+[...]
+>
+> %build
+>    %{__perl} Makefile.PL LOCAL_RULES_DIR=/etc/spamassassin
+> INSTALLDIRS=vendor PREFIX=%{_prefix}
+>    make OPTIMIZE="$RPM_OPT_FLAGS" PREFIX=%{_prefix}
+> %install
+>    rm -rf $RPM_BUILD_ROOT
+>    %makeinstall PREFIX=%{buildroot}%{_prefix} \
+>                 INSTALLMAN1DIR=%{buildroot}%{_mandir}/man1 \
+>                 INSTALLMAN3DIR=%{buildroot}%{_mandir}/man3 \
+>                 LOCAL_RULES_DIR=%{buildroot}%{_sysconfdir}/spamassassin
+[...]
+
+Well, first you need to look at the Makefile.PL to see if it uses the
+PREFIX you're trying to pass to it or not. Maybe you'll need to "override"
+other paths when doing the "make".
+Second, the "%makeinstall" macro automatically overrides many common values
+like "prefix=" or "datadir=", so it's completely redundant with the
+"PREFIX=" you're passing to it. Take a look at the "Makefile" you have at
+that point to see how the "install" target is, and what it uses.
+
+Last, as Chris suggested, you can take a look at an existing package, like
+the one in Rawhide ;-)
+
+Matthias
+
+--
+Matthias Saou                                World Trade Center
+-------------                                Edificio Norte 4 Planta
+System and Network Engineer                  08039 Barcelona, Spain
+Electronic Group Interactive                 Phone : +34 936 00 23 23
+
+_______________________________________________
+RPM-List mailing list <RPM-List@freshrpms.net>
+http://lists.freshrpms.net/mailman/listinfo/rpm-list

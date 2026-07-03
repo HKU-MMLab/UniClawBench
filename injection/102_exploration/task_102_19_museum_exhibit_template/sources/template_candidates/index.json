@@ -1,0 +1,45 @@
+{
+  "description": "Candidate digital-exhibit site templates for a small museum/archive online exhibition. Each <id>.json manifest declares the item-metadata fields its schema supports and its features. The collection has photographs that REQUIRE provenance metadata: caption, credit (photographer/source), rights statement, and accession number; the exhibition is chronological so a timeline is needed; images are high-resolution so IIIF/large-image support is needed.",
+  "required_item_fields": [
+    "caption",
+    "credit",
+    "rights",
+    "accession_number"
+  ],
+  "required_features": [
+    "timeline",
+    "iiif_large_images"
+  ],
+  "templates": [
+    {
+      "id": "collectionbuilder_archive",
+      "file": "collectionbuilder_archive.json",
+      "display_name": "CollectionBuilder \u2014 Archive"
+    },
+    {
+      "id": "wax_minimal_archive",
+      "file": "wax_minimal_archive.json",
+      "display_name": "Wax \u2014 Minimal Archive"
+    },
+    {
+      "id": "photofolio_gallery",
+      "file": "photofolio_gallery.json",
+      "display_name": "PhotoFolio \u2014 Gallery"
+    },
+    {
+      "id": "exhibit_timeline_story",
+      "file": "exhibit_timeline_story.json",
+      "display_name": "ExhibitStory \u2014 Timeline"
+    },
+    {
+      "id": "omeka_classic_exhibit",
+      "file": "omeka_classic_exhibit.json",
+      "display_name": "Omeka \u2014 Classic Exhibit"
+    },
+    {
+      "id": "blogfolio_grid",
+      "file": "blogfolio_grid.json",
+      "display_name": "BlogFolio \u2014 Grid"
+    }
+  ]
+}

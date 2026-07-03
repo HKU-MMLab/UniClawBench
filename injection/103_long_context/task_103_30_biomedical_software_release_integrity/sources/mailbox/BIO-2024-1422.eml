@@ -1,0 +1,57 @@
+Message-ID: <CA+7wUszfogCrAu37xpKX-CUaNNJ9d0o1Fx5E8isxbGoaf3e0Xg@mail.gmail.com>
+X-Clawbench-ID: BIO-2024-1422
+Date: Thu, 4 Aug 2022 08:21:56 +0200
+From: Mathieu Malaterre <malat@debian.org>
+To: Nilesh Patra <nilesh@nileshpatra.info>
+Subject: Re: Help required for fixing build failure - gdcm
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_08_msg00017.html
+
+On Thu, Aug 4, 2022 at 6:47 AM Nilesh Patra  wrote:
+>
+> CCing Mathieu for help on this.
+>
+> On 8/4/22 1:32 AM, Mohd Bilal wrote:
+> > gdcm[1] had an autopkgtest regression on s390x[2] which was preventing its migration to testing. This was possibly due to the test data being encoded for little endian hardware based on my understanding. So I've changed the test data and now the test passes on s390.
+> >
+> > [...]
+> > I've pushed the appropriate changes to salsa. But the CI build which was passing earlier now fails[3]. Can anyone take a look at it and suggest a fix ?
+>
+> This is not due to your changes, but it was failing already[4].
+>
+> | $ pdflatex refman.tex
+> | This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex)
+> | restricted \write18 enabled.
+> | entering extended mode
+> | (./refman.tex
+> | LaTeX2e
+> | L3 programming layer
+> | $ echo $?
+> | 1
+>
+> It seems that pdflatex is exiting with exit code 1.
+> However, the pdf is rendered just fine, when I tried to compile and open it.
+> I am seeing a bunch of warnings in refman.log but no show stoppers/errors.
+
+I do not remember from the top of my head. But doxygen generate a
+makefile for you, which may not propagate properly the error (??)...
+
+In any case the trick is to play with doxygen/LATEX_BATCH option and
+figure out what is the actual error.
+
+Give me one sec and I'll fix it.
+
+Thanks for the report
+
+> > [1] - https://salsa.debian.org/med-team/gdcm
+> > [2] - https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1016450
+> > [3] - https://salsa.debian.org/med-team/gdcm/-/jobs/3066892#L2469
+> [4]: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1016331
+>
+>
+> --
+> Best,
+> Nilesh
+>

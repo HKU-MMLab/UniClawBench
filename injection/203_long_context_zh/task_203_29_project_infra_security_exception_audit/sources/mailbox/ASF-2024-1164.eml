@@ -1,0 +1,27 @@
+Message-ID: <92be1231-91d1-4383-b6f2-413718201bdf@paclan.it>
+X-Clawbench-ID: ASF-2024-1164
+Date: Wed, 3 Apr 2024 16:35:14 +0200
+From: giovanni@paclan.it
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.59-rc1 as httpd-2.4.59
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-04.mbox
+
+On 4/3/24 14:26, Eric Covener wrote:
+> Hi all,
+>
+> (After only minor embarrassment of patching tags/2.4.55 instead of 2.4.x...)
+>
+> Please find below the proposed release tarball and signatures:
+>
+> https://dist.apache.org/repos/dist/dev/httpd/
+>
+> I would like to call a SHORTENED VOTE to release
+> this candidate tarball httpd-2.4.59-rc1 as 2.4.59:
+>+1
+tested on OpenBSD 7.5 (LibreSSL 3.9.0) and Fedora39
+
+Thanks for RMing
+  Giovanni

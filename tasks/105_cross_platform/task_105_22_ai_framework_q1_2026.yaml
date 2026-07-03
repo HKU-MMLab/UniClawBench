@@ -1,0 +1,62 @@
+task_id: task_105_22_ai_framework_q1_2026
+category: 105_cross_platform
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  Our team has a meeting next week to decide which LLM agent orchestration
+  framework to adopt. The candidates are langchain, llama_index, crewAI,
+  pydantic-ai, and langgraph. Star counts alone don't mean much — I want
+  to see which of these five was actually maintained during Q1 2026
+  (2026-01-01 to 2026-03-31), whose community is growing, and who still
+  gets discussed on Hacker News and Stack Overflow.
+
+  Could you pull all those dimensions and give me an evaluation report?
+  A few lines of numbers per framework, a composite ranking, and a final
+  recommendation backed by data.
+
+  For ranking I'd like something simple: take the Q1 PR count, release
+  count, issue count, and HN story count as 4 signals. Rank each
+  dimension, then average the ranks — lowest average wins.
+
+  Also, if a framework's core contributor owns dozens of other repos on
+  GitHub, that signals a broad ecosystem from the team — include that
+  info too.
+
+  Additionally, check how much Python dependency overlap there is among
+  these 5 frameworks. Pull each repo's pyproject.toml (langchain and
+  langgraph are monorepos — the actual packages are under
+  libs/langchain/ and libs/langgraph/ respectively; crewAI is under
+  lib/crewai/; pydantic-ai is under pydantic_ai_slim/; llama_index
+  mainly look at llama-index-core/) and extract each framework's runtime
+  dependencies list. Then do set operations: which packages appear in ≥3
+  frameworks as "shared infrastructure"? Which appear in all 5? I'm
+  guessing pydantic and similar are universal — this tells me what the
+  "ecosystem hubs" of the LLM agent space are, and also reflects how
+  similar the five teams' design philosophies are.
+
+  Repos: langchain-ai/langchain, run-llama/llama_index,
+  crewAIInc/crewAI, pydantic/pydantic-ai, langchain-ai/langgraph.
+
+  Put the report and data files under /tmp_workspace/results/.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources: []
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

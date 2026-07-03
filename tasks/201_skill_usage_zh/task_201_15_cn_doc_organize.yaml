@@ -1,0 +1,58 @@
+task_id: task_201_15_cn_doc_organize
+category: 201_skill_usage_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我们正在把共享盘迁移到一套正规的 DMS，而有人刚把一百多份中文 Word 文档不加任何整理地
+  倒进了 /tmp_workspace/clawbench/sources/cn_docs/。文件名一团糟——有的带时间戳，有的是乱码
+  占位符，有的只是一串数字，还有的是英文。我需要你用中文 DOCX 阅读技能和文档处理技能，真正
+  去读文档内容，按每份文档实际在做什么来分类，而不是从文件名去猜类别。
+
+  请把所有文档整理到 /tmp_workspace/results/organized/<category>/ 之下，并把每个文件重命名为
+  <YYYYMMDD>_<short_topic>.docx 格式。日期优先取自文档正文中提取到的日期，如果找不到，则回退
+  到今天的日期。
+
+  分类必须严格使用以下 4 个固定的桶，目录名必须逐字符完全一致：
+  - 合同 —— 任何涉及合同关系的文档，包括正式合同（合作协议、采购合同、服务合同）、合同草案
+    和附录、与合同相关的笔记，以及关于合同事务的内部或个人笔记（续约提醒、条款备忘、与某份
+    合同挂钩的供应商跟进）
+  - 会议纪要 —— 更广义的会议纪要及会议轨迹产物：例会、评审会、复盘会的纪要；跨会议的汇总；
+    跨部门协调备忘；以及其他记录某个群体达成共识内容的讨论轨迹文档，即使没有指明某一次正式
+    会议
+  - 项目报告 —— 正式的业务报告或培训产出，例如季度报告、年度报告、培训材料和培训效果评估
+  - 其他 —— 确实无法归类的个人笔记、日记条目、没有明确业务主题的零散想法。这个桶最多放 10 份
+    文档。超过 10 份就说明你偷懒了，没有真正去读内容来分类
+
+  其他要求：
+  - 不要删除任何源文件，也不要覆盖目标文件。当两个文件分类后出现同名时，加一个后缀以避免覆盖。
+    每一份源文档都必须在 organized/ 下有对应的文件。
+  - 在 /tmp_workspace/results/organized/index.md 中，每份文档一行，每行包含：新文件名、原始
+    文件名、类别，以及一句话的主题摘要。原始文件名必须按字节原样保留——不要规范化、音译或
+    替换乱码（mojibake）字符。我需要这份索引能精确映射回磁盘上的每个原始文件。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - cn_docs/
+
+skills:
+  - docx-cn
+  - document-pro
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

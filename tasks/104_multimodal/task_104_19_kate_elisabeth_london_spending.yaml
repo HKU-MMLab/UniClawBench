@@ -1,0 +1,72 @@
+task_id: task_104_19_kate_elisabeth_london_spending
+category: 104_multimodal
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  Please find kate elisabeth's channel on YouTube and identify the "latest published" video as of the 2026-04-23 baseline snapshot whose topic is clearly in the category of "how much I spend in a week in London / spend a week in London /
+  weekly London cost".
+  You must actually open the channel and watch the latest relevant video. Do not piece the answer together from subtitle files, transcripts, channel summaries, or your own
+  assumptions about spending; the spending items must come from the video frames or audio you observe this time.
+
+  Explicit restrictions: do not download, save, read, or parse subtitle files, VTT/SRT files, YouTube transcript,
+  third-party transcripts, or webpage summaries. Captions displayed during browser playback may only be used as an aid for understanding spoken audio, and cannot be
+  the sole evidence for any spending item. Do not generate subtitle,
+  transcript, `.vtt`, or `.srt` files in `/tmp_workspace/results/`.
+
+  Based on the latest relevant video content for that snapshot that you actually observe this time:
+
+  1. Extract every explicit spending item mentioned in the video.
+  2. Generate the following in `/tmp_workspace/results/`:
+     - `london_week_spending.csv`
+     - `london_week_spending_pie.png`
+     - `london_week_spending.md`
+     - a `spending_evidence/` directory containing one corresponding video screenshot or key frame for each CSV row
+  3. `london_week_spending.csv` must contain at least:
+     `item,amount,currency,category,timestamp,evidence_frame,evidence_type,note`
+     where `timestamp` is the time point of the spending item in the video, `evidence_frame` is the relative path to the screenshot you saved,
+     and `evidence_type` should be a verifiable source such as `visible_price_overlay`, `spoken_in_video`, or
+     `visible_and_spoken`.
+  4. `london_week_spending.md` must explain:
+     - The title and link of the selected video, and why you judge it to be the latest topic-matching video as of the 2026-04-23 snapshot
+     - The categorization logic for each spending item
+     - The CSV itemized total
+     - The total spending spoken or shown by the creator in the video
+     - If the itemized total differs from the video's total spending, separately list
+       `unitemized_or_unconfirmed_remainder` and explain that it is not a fabricated specific purchase
+
+  Do not write from old impressions; use the channel content you actually observe this time. If the current YouTube page shows
+  drift after 2026-04-23, note it in the explanation and do not treat post-snapshot new content as the target for this task.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/reference_video_selection.md
+  - references/spending_evidence_reference_sheet.jpg
+  - references/evidence_frames/spend_01.jpg
+  - references/evidence_frames/spend_02.jpg
+  - references/evidence_frames/spend_03.jpg
+  - references/evidence_frames/spend_04.jpg
+  - references/evidence_frames/spend_05.jpg
+  - references/evidence_frames/spend_06.jpg
+  - references/evidence_frames/spend_07.jpg
+  - references/evidence_frames/spend_08.jpg
+  - references/evidence_frames/spend_09.jpg
+  - references/evidence_frames/spend_10.jpg
+  - references/evidence_frames/spend_11.jpg
+  - references/evidence_frames/spend_12.jpg
+  - references/evidence_frames/spend_13.jpg
+  - references/evidence_frames/spend_14.jpg
+  - references/evidence_frames/spend_15.jpg
+  - references/evidence_frames/spend_16.jpg
+  - references/evidence_frames/spend_17.jpg
+  - references/evidence_frames/spend_18.jpg
+
+codex:
+  max_user_followups: 2

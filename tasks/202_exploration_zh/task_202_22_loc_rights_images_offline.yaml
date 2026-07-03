@@ -1,0 +1,55 @@
+task_id: task_202_22_loc_rights_images_offline
+category: 202_exploration_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我正在从一个档案馆的目录中收集真正可以再利用的历史图像。请帮我挑选 5 条
+  记录，每条都要有一张真正可用、采用开放许可的完整图像。
+
+  一条记录只有在以下条件全部成立时才算可用：
+  - 条目级（ITEM-level）权利明确开放（"No known restrictions" 或 "Public
+    domain"）。注意：藏品集级（collection-level）权利可能看起来开放，而具体
+    条目其实是受限的——以条目级权利为准。
+  - 确实有一张完整/高分辨率的图像可用，而不只是缩略图。
+  - 该条目真的是一张视觉图像（一张照片），而不是经过 OCR 的文本手稿，或
+    碰巧附带扫描件的录音。
+  - 折叠重复项：有些记录是同一张图像被编目了两次（它们共享同一个
+    `dedup_group`）——这样的图像只计一次。
+
+  目录位于：
+
+      /tmp_workspace/clawbench/sources/records/
+
+  每条记录 `<id>.json` 都有 `type`、`collection_rights`、`item_rights`、一个
+  `image` 块（`thumbnail`、`full_image`、`iiif`、`width`），以及一个
+  `dedup_group`。`index.json` 重述了这些规则。
+
+  请逐一查看每条记录，应用这四条规则，并选出 5 张各不相同的可用图像。
+
+  请保存：
+  - `/tmp_workspace/results/usable_images.json`：选中的 5 条记录，每条附上
+    id、title、条目级权利的证据、完整图像的证据、type，以及它所代表的
+    dedup_group。
+  - `/tmp_workspace/results/rejected_records.json`：每条被淘汰/重复的记录，
+    附上具体原因（thumbnail-only、item-level restricted、not-an-image、
+    rights-undetermined，或 duplicate-of-<id>），并引用相应字段。
+  - `/tmp_workspace/results/selection_method.json`：你是如何应用条目级 vs
+    藏品集级权利规则以及去重规则的（可复现）。
+
+  这是完全离线的——不要从网络获取任何内容。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+sources:
+  - records/
+
+codex:
+  max_user_followups: 2

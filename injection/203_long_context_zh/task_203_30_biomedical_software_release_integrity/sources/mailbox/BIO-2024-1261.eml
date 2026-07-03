@@ -1,0 +1,26 @@
+Message-ID: <Y1d1rRAuPtgtrY17@an3as.eu>
+X-Clawbench-ID: BIO-2024-1261
+Date: Tue, 25 Oct 2022 07:35:41 +0200
+From: Andreas Tille <tille@debian.org>
+To: Pierre Gruet <pgt@debian.org>
+Subject: Re: Please have a look at beast2-mcmc in Git
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00081.html
+
+Hi Pierre,
+
+Am Mon, Oct 24, 2022 at 10:30:09PM +0200 schrieb Pierre Gruet:
+>
+> It seems upstream changed its build process and kind of relies on another
+> project of theirs, BeastFX. I believe we can make a build without BeastFX,
+> though, but maybe some of the test failures show one should tweak a bit the
+> packaging... I will have another look soon.
+
+Thanks a lot
+
+      Andreas.
+
+--
+http://fam-tille.de

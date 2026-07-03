@@ -1,0 +1,30 @@
+Message-ID: <ZotGdXWXZaWvFvMe@kumo.plessy.net>
+X-Clawbench-ID: BIO-2024-0167
+Date: Mon, 8 Jul 2024 10:52:53 +0900
+From: Charles Plessy <plessy@debian.org>
+To: Pierre Gruet <pgt@debian.org>
+Subject: Re: sra-sdk: drop B-D on markdown
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_07_msg00002.html
+
+Le Sat, Jul 06, 2024 at 03:54:21PM +0200, Pierre Gruet a écrit :
+>
+> As this B-D has alternatives (markdown | libtext-markdown-perl | discount),
+> we should just remove markdown from the alternatives to prevent sra-sdk and
+> its rdeps from being removed.
+
+Actually, I wonder if the whole line can just be reomved... I do not see
+anything in the package that uses the markdown command to build
+documentation.
+
+Have a nice day,
+
+Charles
+
+--
+Charles Plessy                         Nagahama, Yomitan, Okinawa, Japan
+Debian Med packaging team         http://www.debian.org/devel/debian-med
+Tooting from home                  https://framapiaf.org/@charles_plessy
+- You  do not have  my permission  to use  this email  to train  an AI -

@@ -1,0 +1,28 @@
+Message-ID: <3a9feef5-bbd4-3aa8-c2bf-9a3e5a8c80c9@apache.org>
+X-Clawbench-ID: ASF-2024-1272
+Date: Thu, 19 May 2022 11:04:00 +0200
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: strcasecmp raises its...
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-05.mbox
+
+On 5/18/22 7:17 PM, Nick Kew wrote:
+>
+>> On 18 May 2022, at 16:34, Ruediger Pluem <rpluem@apache.org> wrote:
+>>
+>> Rüdiger
+>
+> What locale are YOU in there?  Any attempt at locale is going to have to draw lines:
+
+de_DE.UTF-8
+
+> what are the rules for when Ruediger == Rüdiger?
+
+There can be none. Because I can transcribe ü to ue , but not every ue is an ü the other way around.
+
+Regards
+
+Rüdiger

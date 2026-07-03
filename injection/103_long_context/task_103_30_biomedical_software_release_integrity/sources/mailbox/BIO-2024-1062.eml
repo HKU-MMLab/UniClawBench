@@ -1,0 +1,27 @@
+Message-ID: <YWVAc1PrMJfvHpRs@an3as.eu>
+X-Clawbench-ID: BIO-2024-1062
+Date: Tue, 12 Oct 2021 09:59:47 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>,	Pierre Gruet <pgtdebian@free.fr>
+Subject: New upstream version of drop-seq does not build
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00033.html
+
+Hi Pierre,
+
+I realised that you updated Git of drop-seq to fix the watch file.  I
+simply uploaded basically as is to have a proper signal in our tools
+that there is a new upstream version.  Unfortunately I realised that
+there seems to be an issue with the new version 2.4.1 and Debian's
+biojava.  I did not investigated deeper since I want to move on with
+other packages with broken watch files.  So just droping a note here
+to let others know.
+
+Kind regards
+
+     Andreas.
+
+--
+http://fam-tille.de

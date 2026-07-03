@@ -1,0 +1,41 @@
+Message-ID: <ZI1Jy2mI9eSkZWok@an3as.eu>
+X-Clawbench-ID: BIO-2024-1019
+Date: Sat, 17 Jun 2023 07:51:07 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: pychopper has switched to a non-free license in new upstream version
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_06_msg00003.html
+
+Hi,
+
+Am Fri, Jun 16, 2023 at 12:44:51PM +0200 schrieb Michael R. Crusoe:
+> That's a shame. The 2.7.3 release (which is quite small) is still under the
+> original license
+>
+> https://github.com/epi2me-labs/pychopper/compare/v2.7.2...v2.7.3
+> https://github.com/epi2me-labs/pychopper/releases/tag/v2.7.3
+>
+> > '''
+> > 1.10. "Research Purposes" means use for internal research and not intended
+> > for or directed towards commercial advantages or monetary compensation;
+> > provided, however, that monetary compensation does not include sponsored
+> > research of research funded by grants.
+> > '''
+
+What about opening an upstream to the consequence that this change of
+the license will remove the package from Debian.
+
+At the bottom of our libieration page[1] there is a nice link to some
+upstream opinion.
+
+Kind regards
+    Andreas.
+
+
+[1] https://wiki.debian.org/DebianMed/SoftwareLiberation
+
+--
+http://fam-tille.de

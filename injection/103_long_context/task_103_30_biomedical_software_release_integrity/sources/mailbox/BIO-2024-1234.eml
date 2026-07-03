@@ -1,0 +1,57 @@
+Message-ID: <Y4IOSf20rozjs6uS@fusion>
+X-Clawbench-ID: BIO-2024-1234
+Date: Sat, 26 Nov 2022 14:02:01 +0100
+From: Étienne Mollier <emollier@emlwks999.eu>
+To: Andreas Tille <andreas@an3as.eu>
+Subject: Re: python3-biopython: incompatible with muscle >= 5
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_11_msg00099.html
+
+Control: severity 1022307 normal
+
+Hi Andreas,
+
+Andreas Tille, on 2022-11-25:
+> Am Thu, Nov 24, 2022 at 10:35:06PM +0100 schrieb Étienne Mollier:
+> >
+> > python-biopython 1.80 is uploaded to experimental and should
+> > build soon[1], if this is not the case already.  I haven't had a
+> > lot of opportunities to extensively test interactions between
+> > muscle3 and 5; I guess the situation will be clearer when
+> > muscle3 makes it through NEW.  It would be nice that people
+> > using biopython and muscle give this a try as early as possible.
+>
+> Thanks a lot for this.
+>
+> I've just reverted the version of t-coffee and have uploaded
+> t-coffee_13.45.0.4846264+really13.41.0.28bdc39+dfsg-1 - not proud about
+> this name, but well, it should do the trick without an epoch.
+>
+> Hope this will settle the situation with biopython soonish.
+
+Thanks, this should reduce the noise on the t_coffee front.
+Since python-biopython 1.79 doesn't fail to build from source
+anymore, I reduce the severity already.  I don't close just yet
+to avoid forgetting to bring back t-coffee in the build time
+test dependencies when migrating biopython 1.80 to unstable.
+There is also a FIXME item related to muscle3 support, that can
+be brought back once muscle3 passes through the NEW queue.
+
+Speaking of biopython 1.80, pseudo-excuses are looking good[1].
+I fixed the autopkgtest regression in python-faidx yesterday.
+When trying to rebuild reverse dependencies, I also noted an
+issue in python-pauvre[2], which I forwarded upstream, since it
+didn't look easy to fix on first sight.  Once sorted, I suppose
+it would be feasible to upgrade biopython 1.80 in unstable.
+
+[1]: https://qa.debian.org/excuses.php?experimental=1&package=python-biopython
+[2]: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1024835
+
+Have a nice day,  :)
+--
+Étienne Mollier
+Fingerprint:  8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+Sent from /dev/pts/3, please excuse my verbosity.
+On air: Chicago - Make Me Smile

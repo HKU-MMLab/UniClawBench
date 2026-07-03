@@ -1,0 +1,87 @@
+Message-ID: <3D3ED2B9.866CC459@cnc.bc.ca>
+X-Clawbench-ID: CAM-2003-1333
+Date: Wed, 24 Jul 2002 09:15:53 -0700
+From: Kevin Gagel <gagel@cnc.bc.ca>
+To: Theo Van Dinter <felicity@kluge.net>, "spamassassin-talk@lists.sourceforge.net" <spamassassin-talk@lists.sourceforge.net>
+Subject: Re: [SAtalk] Spam through - insanefunnies - clairification of X-Spam-Status fi elds?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01391.00e6f3a6dc816f22335f1b0fd6098eda
+
+Amis-v or there is another prefs file that SA is using. I had a heck of a time
+figuring out where to find my site wide file because of my configuration.
+
+If your using spamd and you want your users to have some control using
+user_prefs then check their ~/spamassassin file.
+If your using spamd and you have a site wide only policy then make sure that
+spamd is started with the -x option.
+If you used the -x option then the only place that it should get the rules from
+would be from the local.cf in the /etc/mail/spamassassin directory. Assuming a
+default install.
+
+Theo Van Dinter wrote:
+>
+> On Wed, Jul 24, 2002 at 10:18:28AM -0500, Stewart, John wrote:
+> > X-Virus-Scanned: by amavisd-new amavisd-new-20020630
+> > X-Spam-Status: No, hits=6.5 tagged_above=5.1 required=6.9 tests=PLING,
+> > MONEY_BACK, CLICK_BELOW, POR
+> > N_14, CLICK_HERE_LINK, FREQ_SPAM_PHRASE
+> > X-Razor-id: d92173a8dfc60567e55efcf6bf264fd7f7a7369a
+> >
+> > Doesn't hits=6.5 mean that it should be tagged as spam? Why the
+> > X-Spam-Status of no then?
+>
+> required is 6.9, it only scored 6.5, so it's not spam according to SA.
+>
+> > Why is required=6.9 if I have required_hits at 5 in the local.cf? Where the
+> > heck does that number come from?
+> >
+> > Also, what is tagged_above=? I cannot find any information about it on the
+> > SpamAssassin site.
+>
+> Good questions...  "tagged_above" doesn't appear anywhere in SA (at
+> least according to `find`).  I would guess it's amavis doing some
+> hacking around.
+>
+> --
+> Randomly Generated Tagline:
+> D'oh!  English!  Who needs that?  I'm never going to England. Come on,
+>  let's smoke.
+>
+>                 -- Homer Simpson, talking Barney into cutting class
+>                    The Way We Was
+>
+> -------------------------------------------------------
+> This sf.net email is sponsored by:ThinkGeek
+> Welcome to geek heaven.
+> http://thinkgeek.com/sf
+> _______________________________________________
+> Spamassassin-talk mailing list
+> Spamassassin-talk@lists.sourceforge.net
+> https://lists.sourceforge.net/lists/listinfo/spamassassin-talk
+
+--
+========================
+Kevin W. Gagel
+Network Administrator
+College of New Caledonia
+gagel@cnc.bc.ca
+postmaster@cnc.bc.ca
+(250)562-2131 loc. 448
+========================
+
+--------------------------------
+The College of New Caledonia
+Visit us at http://www.cnc.bc.ca
+--------------------------------
+
+
+-------------------------------------------------------
+This sf.net email is sponsored by:ThinkGeek
+Welcome to geek heaven.
+http://thinkgeek.com/sf
+_______________________________________________
+Spamassassin-talk mailing list
+Spamassassin-talk@lists.sourceforge.net
+https://lists.sourceforge.net/lists/listinfo/spamassassin-talk

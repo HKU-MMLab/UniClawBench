@@ -1,0 +1,15 @@
+{
+  "task_id": "task_201_11_obsidian_vault_audit",
+  "data_origin": "synthetic_vault_fixture",
+  "reason_for_synthetic_data": "The task needs a compact Obsidian-style vault with controlled broken wikilinks, orphan notes, tag drift, stale references, and cleanup opportunities. The fixture is generated to resemble a small real team vault while keeping ground truth auditable.",
+  "entries": [
+    {
+      "path": "vault/",
+      "description": "Markdown vault containing projects, daily notes, meetings, people notes, references, checklists, runbooks, drafts, inbox, archive, and index/MOC notes. Round-9 (2026-04-30) expansion from 27 to 52 notes broadens the audit surface: 9 genuine orphans (Drafts/Archive/Inbox cleanup candidates), 10 genuine broken wikilinks, 5 tag-drift clusters (case/hyphen variants), and v8's 3 pseudo-orphan + 2 pseudo-broken-link false-positive traps preserved unchanged. Executor-visible task data; does not include hidden answer keys."
+    }
+  ],
+  "hidden_references": [
+    "references/ground_truth.json",
+    "references/eval_rule.md"
+  ]
+}

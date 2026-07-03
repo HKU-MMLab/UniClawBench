@@ -1,0 +1,88 @@
+Message-ID: <YWkUWFOeuIqQcQEw@an3as.eu>
+X-Clawbench-ID: BIO-2024-1462
+Date: Fri, 15 Oct 2021 07:40:40 +0200
+From: Andreas Tille <tille@debian.org>
+To: "Aaron M. Ucko" <ucko@debian.org>
+Subject: Re: sra-sdk is lacking libngs
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00063.html
+
+Hi Aaron,
+
+Am Thu, Oct 14, 2021 at 12:24:29PM -0400 schrieb Aaron M. Ucko:
+> Andreas Tille  writes:
+>
+> > Ahhhm my failure.  Usually I do it in this sequence.
+>
+> No problem; thanks for getting ngs-sdk now.
+
+:-)
+
+> I'll push fixes for both complications shortly.
+
+Thanks a lot.  Unfortunately there are some remaining problems
+with the test suite.  Salsa CI fails to build[1]:
+
+
+Run VDB_CONFIG=/builds/med-team/sra-sdk/debian/output/source_dir/test/fastq-loader /builds/med-team/sra-sdk/debian/output/source_dir/debian/tmp/usr/sra-tools/linux/gcc/x86_64/rel/test-bin/test-id2name
+Running 14 test cases...
+Init_NullSelf (0 s)
+Whack_NullSelf (0 s)
+Init_Whack (0 s)
+Add_NullSelf (0 s)
+Add_NullName (0 s)
+Get_NullSelf (0 s)
+Get_NullRes (0 s)
+Get_Empty (0 s)
+Get_Found (0 s)
+Get_NotFound (0 s)
+AddMultiple_Get (0 s)
+AddRealloc (0 s)
+Killed
+make[4]: *** [/builds/med-team/sra-sdk/debian/output/source_dir/build/Makefile.env:380: runtests] Error 137
+make[4]: Leaving directory '/builds/med-team/sra-sdk/debian/output/source_dir/test/fastq-loader'
+
+
+However, this works in my local pbuilder, where I get:
+
+Run VDB_CONFIG=/build/sra-sdk-2.11.2+dfsg/test/fastq-loader /build/sra-sdk-2.11.2+dfsg/debian/tmp/usr/sra-tools/linux/gcc/x86_64/rel/test-bin/test-id2name
+Running 14 test cases...
+Init_NullSelf (0 s)
+Whack_NullSelf (0 s)
+Init_Whack (0 s)
+Add_NullSelf (0 s)
+Add_NullName (0 s)
+Get_NullSelf (0 s)
+Get_NullRes (0 s)
+Get_Empty (0 s)
+Get_Found (0 s)
+Get_NotFound (0 s)
+AddMultiple_Get (0 s)
+AddRealloc (0 s)
+MiltipleBuffers (6 s)
+NameTooLong (345 s)
+
+*** No errors detected (352 s total)
+
+
+Any idea what might be wrong here?
+
+I was checking Salsa CI since in my local pbuilder autopkgtest fails
+later (but this was due to some
+
+  2021-10-15T05:11:56 vdb-config.2.11.2 err: condition violated while updating node - Warning: normally this application should not be run as root/superuser
+
+... which is most probably a flaw of running autopkgtest in the
+pbuilder chroot.  Thus I expect autopkgtest in Salsa CI passing
+... once it builds there.
+
+Kind regards
+
+    Andreas.
+
+[1] https://salsa.debian.org/med-team/sra-sdk/-/jobs/2074700#L1700
+
+--
+http://fam-tille.de

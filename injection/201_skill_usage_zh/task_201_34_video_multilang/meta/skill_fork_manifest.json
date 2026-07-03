@@ -1,0 +1,38 @@
+{
+  "task_id": "task_101_34_video_multilang",
+  "notes_visible_to_executor": false,
+  "skill_changes": [
+    {
+      "original_skill": "openai-whisper-api",
+      "injected_skill": "openai-whisper-api",
+      "original_source": "clawhub",
+      "change_type": "benchmark API adaptation",
+      "reason": "The benchmark may run against OpenAI-compatible transcription gateways whose default model differs from OpenAI. The helper keeps the original curl-based workflow, adds provider-aware default model selection for Groq/vveai-style gateways, falls back from WHISPER_* to OPENAI_* only when needed, and fails loudly on HTTP/API error payloads instead of treating error JSON as a transcript.",
+      "executor_skill_path": "skills/openai-whisper-api"
+    },
+    {
+      "original_skill": "translate",
+      "injected_skill": "translate",
+      "original_source": "clawhub",
+      "change_type": "benchmark environment adaptation",
+      "reason": "Translation skill kept as-is for English→Chinese rendering with the user-supplied glossary; runtime is provided by the task setup service so executor-facing docs avoid install instructions.",
+      "executor_skill_path": "skills/translate"
+    },
+    {
+      "original_skill": "ffmpeg-video-editor",
+      "injected_skill": "ffmpeg-video-editor",
+      "original_source": "clawhub",
+      "change_type": "task_fit_adaptation",
+      "reason": "Replaces the prior video-transcript-downloader injection (yt-dlp / YouTube tooling — irrelevant for a local mp4). ffmpeg-video-editor provides the natural-language → ffmpeg command guidance the executor actually needs to extract audio from /tmp_workspace/clawbench/sources/talk.mp4 before feeding it to the Whisper helper.",
+      "executor_skill_path": "skills/ffmpeg-video-editor"
+    },
+    {
+      "original_skill": "markdown-formatter",
+      "injected_skill": "markdown-formatter",
+      "original_source": "clawhub",
+      "change_type": "benchmark environment adaptation",
+      "reason": "Replaces the prior video-subtitles injection (Hebrew / English-only ivrit.ai+Whisper tooling — wrong language for English→Chinese subtitling). markdown-formatter directly supports producing the bilingual paragraph-by-paragraph talk.zh.md the prompt asks for.",
+      "executor_skill_path": "skills/markdown-formatter"
+    }
+  ]
+}

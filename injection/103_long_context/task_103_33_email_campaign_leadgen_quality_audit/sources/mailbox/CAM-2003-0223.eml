@@ -1,0 +1,12 @@
+Message-ID: <cam-2003-0223@campaign-audit.example>
+X-Clawbench-ID: CAM-2003-0223
+Date: Wed, 05 Mar 2003 09:22:00 -0500
+From: Nina Morales <nina@acme-mail.example>
+To: treasury@acme-mail.example
+Subject: BrightWave remittance detail
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: synthetic email campaign lead-gen quality audit implant
+
+The vendor name is BrightWave Leads LLC, but the ACH form lists Northstar Reach d/b/a BrightWave. AP can enter it, but treasury normally asks for an exception when the legal name and payee title do not match.

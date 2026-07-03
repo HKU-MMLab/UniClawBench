@@ -1,0 +1,83 @@
+Message-ID: <88586495-f948-d9ea-0810-e57a7b991de1@debian.org>
+X-Clawbench-ID: BIO-2024-0762
+Date: Wed, 8 Dec 2021 16:21:30 +0200
+From: Andrius Merkys <merkys@debian.org>
+To: Guido Rovera <guidorovera90@gmail.com>
+Subject: Packaging TechneNotes [Was: Re: Project proposal for the Debian Med group]
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_12_msg00041.html
+
+Dear Guido,
+
+On 2021-11-20 13:48, Guido Rovera wrote:
+> According to the wiki page that you linked, the only "upstream" tasks
+> that I would need to perform are:
+> - Create an official tarball
+> - Add licence details to the repo
+
+Yes, these are absolutely necessary requirements for the source package.
+
+> - Improve the already-existing list of required dependencies by adding
+> minimum version numbers
+
+This is surely nice to have. If well-maintained, such lists greatly help
+in case Debian package maintenance is undertaken by people other than
+the upstream.
+
+> Note: I've used "Meson" to handle user installation and I've already
+> created an "install.sh" script (please refer to the Github README file
+> for a quick overview of software installation:
+> https://github.com/grovera-md/TechneNotes
+> https://github.com/grovera-md/TechneNotes>).
+
+Great. I have worked on packages using Meson, and debhelper seems to
+understand them well.
+
+> I'd like to package the software myself, however I can't find a
+> brief/clear overview of the steps required for my specific case (Python
+> GTK software).
+> As I'm sure you understand, before digging in the wiki/documentation
+> (which I've already tried once), I would need a preliminary general
+> understanding of the whole process and the steps required to package my
+> software. Just like when you start using a new software or programming
+> language, you first go through a brief video or cheat-sheet, and only
+> then you start selectively reading the in-depth documentation about what
+> you need.
+> Does anyone have a good suggestion?
+
+You may start from Debian packaging portal [1], but I cannot seem to
+find it presenting the modern tools which highly simplify packaging
+(git-buildpackage, debhelper, sbuild, ...). I ended up describing the
+steps I take myself to package any new source package [2], you may start
+from this small tutorial and see where it takes you to.
+
+> Finally, my software (TechneNotes) is substantially different from
+> Cherry Tree, with key improvements in terms of:
+> - user interface: most note-taking app display a vertical tree in the
+> sidebar, which is definitely not suitable for managing large volumes of
+> notes; although it required a lot more effort, TechneNotes was
+> implemented with a database-table view with treeview functionalities
+
+As I am not using any note-taking software myself, I cannot comment on
+the pros and cons of this, however.
+
+> - content management: TechneNotes was built to surpass the limitations
+> of standard text-documents, with links to files/folders/web-pages but
+> also image/video galleries etc. Moreover, everything is done with
+> standard extended-markdown (no custom syntax), so the user will never be
+> tied to a specific software. I think that being able to only export
+> notes as HTML/PDF/etc is not enough future-proof, while using markdown
+> ensures a wider future-compatibility
+
++1 for using standard formats.
+
+How the notes are stored? Are they added to relational databases
+(SQLite) or kept in plain files?
+
+[1] https://wiki.debian.org/Packaging
+[2] https://wiki.debian.org/AndriusMerkys/PackagingInSeconds
+
+Best,
+Andrius

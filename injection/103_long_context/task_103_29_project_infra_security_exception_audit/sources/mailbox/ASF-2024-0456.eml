@@ -1,0 +1,31 @@
+Message-ID: <6b749762-3160-4270-975b-17c1adb7e26b@codeit.pro>
+X-Clawbench-ID: ASF-2024-0456
+Date: Thu, 12 Oct 2023 18:39:15 +0300
+From: "Alexander Gerasimov via dev" <dev@httpd.apache.org>
+To: dev@httpd.apache.org
+Subject: Re: [PR] Document non-impact of CVE-2023-44487 [httpd-site]
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-10.mbox
+
+Hi All,
+
+FYI CVE-2023-44487fixed in nghttp2 1.57.0
+https://github.com/nghttp2/nghttp2/releases/tag/v1.57.0
+
+
+Best regards,
+Alexander Gerasimov
+
+On 12.10.2023 18:31, wdormann (via GitHub) wrote:
+> wdormann commented on PR #10:
+> URL:https://github.com/apache/httpd-site/pull/10#issuecomment-1759858696
+>
+>     OK, so in testing Apache 2.4.57 (with the same nghttp2) I can no longer reproduce the OOM condition.
+>     I suggest rather than using `Apache HTTP Server is not impacted`, perhaps `As of version <version>, Apache HTTP Server is not impacted`.  Assuming you know when this protection was put in place.
+>     I'd also possibly reconsider using the `long-standing measures we have in place` language, especially depending on which version has protections against CVE-2023-44487.
+>
+>     e.g. if the protections came into play with 2.4.55 (as an example... I don't know if this is when protections were put in place), then Apache might only be protected against CVE-2023-44487 for less than a year.  Which wouldn't count as long-standing by a stretch.
+>
+>

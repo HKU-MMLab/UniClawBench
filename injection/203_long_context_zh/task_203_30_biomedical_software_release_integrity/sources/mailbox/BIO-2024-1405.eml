@@ -1,0 +1,93 @@
+Message-ID: <20221012110114.GD54343@sanger.ac.uk>
+X-Clawbench-ID: BIO-2024-1405
+Date: Wed, 12 Oct 2022 12:01:14 +0100
+From: James Bonfield <jkb@sanger.ac.uk>
+To: Nilesh Patra <nilesh@debian.org>
+Subject: Re: [Help] New version of htslib does not build [EXT]
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00043.html
+
+On Wed, Oct 12, 2022 at 03:24:17PM +0530, Nilesh Patra wrote:
+> > Does it have the ability to
+> > specify a whitelist of known symbols, which can be written once and
+> > then you're only notified when something new appears?
+>
+> Yes, that is the way it happens. We add in this symbols file because there
+> are upstream projects that break the ABI without bumping SOVERSION, even in
+> patch releases (!!)
+> So this is the whole point of adding in that file. Another take is to
+> also check which new symbols got added in new version.
+>
+> In case of htscodecs it broke the build because your new version added in
+> AVX2/AVX512/SSSE3 etc. specific symbols which were not present in previous
+> versions.
+> These symbols (i.e. symbols above arch baseline) have been marked optional
+> for now, so they don't choke on machines where this is not present.
+
+So there is a mechanism at least for keeping the benefits from ABI
+compatibility checking (which I totally agree is a useful feature),
+while permitting known internal symbols.
+
+As John points out, there is a difference between can-access and
+should-access, which we control by the existance of public prototypes
+in header files.  Failing ABI checking because of that basically it
+falls into much the same category as failing when an internal only
+structure changes layout.  The only difference is your tool can detect
+one and not the other.  And indeed it's hard to not detect the former
+(and vice versa the latter) so I see where the infrastructure is
+coming from.
+
+I do wonder though whether the ABI checker should be grepping for
+symbols in the public headers to distinguish the two cases so at least
+it can flag them to the maintainer as "may be internal".
+
+> I agree with you. But I'd like to give you a bit more context.
+> We are a few volunteers working in 1000+ packages just in the med team
+> well.... err, even more if you add in a few more teams where we are involved.
+>
+> And it becomes humanely impossible to engage with upstream for each and every
+> patch and each and every issue. We all are volunteers and have limited availability.
+>
+> While I don't mean to say that engaging with upstream is something we should't be
+> doing -- we absolutely should be involved. But I hope this helps you understand
+> the wider picture a little better.
+
+I appreciate that, and assumed as much.
+
+I don't think it necessarily requires much effort.  Just a
+notification for "something you may be interested in".  In this case
+the whole conversation has probably consumed more time than simply
+raising an issue would have done.
+
+> Honestly, I have not seen many library-only packages providing AVX based optimizations.
+> Usually it is binary packages doing so, where there are no symbols file involved because
+> there is no library.
+>
+> In other cases, I mark this optional. My guess is if you could hide in these symbols
+> by marking this as private, that could help.
+>
+> I have added in @Etienne in case he has seen such libs earlier and would have some input.
+
+I wasn't thinking about SIMD specifically, but the general principle
+of marking things as internal only via e.g. gcc -fvisibility=hidden.
+
+We have an m4 macro for this already in htslib so I could probably
+just copy that.  However Debian build on many more systems than we
+have available so I was just checking if there is experience /
+guidance.  I guess if you don't find issues with this on htslib then
+that's obviously sufficient. :)
+
+James
+
+--
+James Bonfield (jkb@sanger.ac.uk)
+The Sanger Institute, Hinxton, Cambs, CB10 1SA
+
+
+--
+ The Wellcome Sanger Institute is operated by Genome Research
+ Limited, a charity registered in England with number 1021457 and a
+ company registered in England with number 2742969, whose registered
+ office is 215 Euston Road, London, NW1 2BE.

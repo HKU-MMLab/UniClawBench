@@ -1,0 +1,32 @@
+task_id: task_103_08_hk_jpop_calendar_ticketing
+category: 103_long_context
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I live in Singapore and recently need to take a business trip. I want to see a local concert during the middle of this trip.
+
+  Use Google Calendar / gcalcli directly to inspect my calendar, determine where this business trip goes, where I am staying, and which evening is suitable for arranging a concert. gcalcli OAuth configuration has already been provided to the tool through environment variables. The account hint is in `$GOOGLE_CALENDAR_ACCOUNT`, but the account value should only be used to select the account; do not write it in the final result, and do not write any token or authorization cache content in the result. If the current environment does not have gcalcli, install and verify it yourself with available apt or pip; do not switch directly to another data source just because it is not preinstalled. Pay special attention to normalizing calendar times to the local time of this business trip. If gcalcli output looks like UTC or the timezone is unclear, re-check using the calendar event timezone/location and do not simply copy it. Then search broadly across at least 10 ticketing or performance-information websites. If a website has a suitable concert, save a page screenshot; if it has no suitable result, also save the search/no-result screenshot.
+
+  I am a serious J-pop fan, so prioritize J-pop/J-rock/Japanese music-related performances. Finally recommend one concert, list its time, venue, ticket price, original link, and screenshot path, and save it to `/tmp_workspace/results/concert_recommendation.md`. Also, based on my itinerary and your recommended performance, organize a complete Markdown schedule and save it to `/tmp_workspace/results/concert_calendar.md`: cover the main plan for each day from 6/3 to 6/9, the best evening to see a concert, and the recommended concert's time, venue, ticket price, link, and screenshot path. I only need these two Markdown results; do not add, delete, or modify my Google Calendar events.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/target_calendar.md
+pre_exec:
+  - ops/populate.py
+pre_exec_parallel_safe: true
+
+skills:
+  - apt-package-manager
+  - google-calendar-gcalcli
+
+codex:
+  max_user_followups: 2

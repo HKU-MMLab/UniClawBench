@@ -1,0 +1,31 @@
+Message-ID: <udlfsse7jnk.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-0791
+Date: Tue, 02 Nov 2021 09:48:47 -0400
+From: ucko@debian.org (Aaron M. Ucko)
+To: Nilesh Patra <nilesh@nileshpatra.info>
+Subject: Re: [Help needed] eegdev: FTBFS: ./doc/examples/library-usage/eegdev_acq.c:214: undefined reference to `rpl_free'
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_11_msg00009.html
+
+Nilesh Patra  writes:
+
+> I have no idea why it can not find free() -- looks like something changed with new autotools.
+> I don't know much about autotools, and need help to figure out what might be wrong -- would you have any pointers?
+
+These errors look like fallout from a new check:
+
+> checking whether free is known to preserve errno... no
+
+Please try patching doc/examples/Makefile.am to add
+
+  $(top_builddir)/lib/libgnu.la
+
+to both eegdev_acq_LDADD and recinxdf_LDADD.  (libeegdev incorporates
+rpl_free and other needed rpl_* functions with hidden visibility, so
+purely for its own use.)
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

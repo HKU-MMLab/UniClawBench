@@ -1,0 +1,47 @@
+task_id: task_104_21_figma_config_briefing
+category: 104_multimodal
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  Please open the Figma Config official website:
+  https://config.figma.com/
+
+  I want to create a Config conference briefing related to my career development. Please do the following:
+
+  1. Browse the official homepage and extract the conference theme, dates, location, participation options, and main content sections explicitly shown on the page.
+  2. Capture at least 2 page screenshots that best represent the conference's visual style and save them to `/tmp_workspace/results/`; recommended coverage:
+     - Main visual / hero area
+     - An area that reflects the conference content sections or atmosphere
+  3. Read my public materials:
+     - `/tmp_workspace/clawbench/sources/my_design_interests.json`
+     - `/tmp_workspace/clawbench/sources/my_portfolio_screenshots/`
+  4. Based on the official website information and my materials, determine which themes, content directions, or participation options at this conference are most worth my attention, and clearly explain:
+     - What style or direction my current work leans toward
+     - How the visual language of the Config website is similar to or different from my work
+     - Which content would best help me fill gaps or expand my direction
+  5. Generate the following in `/tmp_workspace/results/`:
+     - `config_highlights.md`
+     - `config_moodboard.html`
+     - `config_hero.png`
+     - `config_sections.png`
+
+  `config_highlights.md` must include a conference overview, a list of key content, screenshot references, and recommendations for me.
+  `config_moodboard.html` must be a one-page visual briefing that summarizes the official website's main visual style and highlights the 3-5 focus points most suitable for me.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - my_design_interests.json
+  - my_portfolio_screenshots/
+
+codex:
+  max_user_followups: 2

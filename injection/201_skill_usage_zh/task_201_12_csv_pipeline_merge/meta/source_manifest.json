@@ -1,0 +1,66 @@
+{
+  "task_id": "task_201_12_csv_pipeline_merge",
+  "note": "Hybrid CRM/order pipeline fixture. Customer, order, product, and reconciliation CSVs are synthesized around realistic ecommerce keys, region splits, duplicate customer revisions, and quarter-end reconciliation defects so the task exercises merge logic without exposing proprietary customer data. The 15 inputs ship with obscured filenames data_001.csv .. data_015.csv; the executor must identify each file's role by inspecting its header. The original-name → obscured-name map below is supervisor-only.",
+  "entries": [
+    {
+      "path": "data_001.csv",
+      "description": "Customer export revision 1 (was customers_v1.csv)"
+    },
+    {
+      "path": "data_002.csv",
+      "description": "Customer export revision 3 (was customers_v3.csv)"
+    },
+    {
+      "path": "data_003.csv",
+      "description": "North America product mapping (was products_na.csv)"
+    },
+    {
+      "path": "data_004.csv",
+      "description": "Customer export revision 2 (was customers_v2.csv)"
+    },
+    {
+      "path": "data_005.csv",
+      "description": "May order export (was orders_may.csv)"
+    },
+    {
+      "path": "data_006.csv",
+      "description": "Q3 finance reconciliation export (was reconciliation_q3.csv)"
+    },
+    {
+      "path": "data_007.csv",
+      "description": "Europe product mapping (was products_eu.csv)"
+    },
+    {
+      "path": "data_008.csv",
+      "description": "Q2 finance reconciliation export (was reconciliation_q2.csv)"
+    },
+    {
+      "path": "data_009.csv",
+      "description": "March order export (was orders_mar.csv)"
+    },
+    {
+      "path": "data_010.csv",
+      "description": "LATAM product mapping (was products_latam.csv)"
+    },
+    {
+      "path": "data_011.csv",
+      "description": "January order export (was orders_jan.csv)"
+    },
+    {
+      "path": "data_012.csv",
+      "description": "APAC product mapping (was products_apac.csv)"
+    },
+    {
+      "path": "data_013.csv",
+      "description": "April order export (was orders_apr.csv)"
+    },
+    {
+      "path": "data_014.csv",
+      "description": "Q1 finance reconciliation export (was reconciliation_q1.csv)"
+    },
+    {
+      "path": "data_015.csv",
+      "description": "February order export (was orders_feb.csv)"
+    }
+  ]
+}

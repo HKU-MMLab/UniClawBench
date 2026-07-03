@@ -1,0 +1,46 @@
+Message-ID: <177893434.599165.1659032936669.JavaMail.zimbra@cti.gov.br>
+X-Clawbench-ID: BIO-2024-0310
+Date: Thu, 28 Jul 2022 15:28:56 -0300 (BRT)
+From: Thiago Franco de Moraes <thiago.moraes@cti.gov.br>
+To: Andreas Tille <andreas@an3as.eu>
+Subject: Re: Upgrading invesalius
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_07_msg00087.html
+
+Hi Andreas,
+
+Thanks for the upload, Andreas! I fixed that problem with wxPython some days ago. I just got the fixed AUIBAR from wxPython Github repository and added to InVesalius. I added that as patch (debian/patches/11_add_auibar.patch). Today I fixed more two (or three) problems on InVesalius with wxPython from Debian and appended to debian/patches/11_wxpython_int_fix.patch.
+
+About the autpkgtest I'll try to write a test.
+
+Thanks again! Best regards.
+
+
+----- Original Message -----
+From: "Andreas Tille"
+To: "debian-med"
+Sent: Thursday, July 28, 2022 2:33:22 AM
+Subject: Re: Upgrading invesalius
+
+Hi Thiago,
+
+I noticed that you pushed some patch and have build invesalius.  When
+I've started the executable it seems to work. Thus I uploaded now.
+
+I've also added a superficial autopkgtest.  When doing so I've spotted
+the --no-gui option.  This makes me wonder whether you could rather add
+a *real* test which works without GUI and just does some useful stuff
+to test the package properly.
+
+Kind regards
+
+      Andreas.
+
+--
+http://fam-tille.de
+--
+Ressalva: Esta mensagem de correio eletrônico do Centro de Tecnologia da Informação Renato Archer - CTI é enviada exclusivamente a seu(s) destinatário(s) e pode conter informações confidenciais, protegidas por sigilo profissional. Sua utilização desautorizada é ilegal e sujeita o infrator às penas da lei. Se você a recebeu indevidamente, queira, por gentileza, reenviá-la ao remetente, esclarecendo o equívoco.
+
+Disclaimer: This e-mail message from Centro de Tecnologia da Informação Renato Archer - CTI is directed exclusively to its addressee(s) and may contain confidential data, protected under professional secrecy rules. Its unauthorized use is illegal and may subject the transgressor to the law's penalties. If you are not the addressee, please send it back, clarifying the failure.

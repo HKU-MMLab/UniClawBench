@@ -1,0 +1,34 @@
+Message-ID: <77730da8b02b914dc88554423c28036c1f0a10d2.camel@ghic.org>
+X-Clawbench-ID: BIO-2024-0081
+Date: Sun, 19 May 2024 21:47:07 -0700
+From: Diane Trout <diane@ghic.org>
+To: Andreas Tille <andreas@an3as.eu>, Debian Science List	 <debian-science@lists.debian.org>, Debian Med Project List	 <debian-med@lists.debian.org>, debian-hpc@lists.debian.org, 	debian-astro@lists.debian.org, DebiChem Project	 <debichem-devel@lists.alioth.debian.org>, debian-math@lists.debian.org, 	debian-ai@lists.debian.org
+Subject: Re: Any input for some talk about usage of Debian in HPC
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_05_msg00006.html
+
+On Sun, 2024-05-19 at 13:12 +0200, Andreas Tille wrote:
+> Hi,
+>
+> I have an invitation to have some talk with the title
+>
+>    Debian GNU/Linux for Scientific Research
+>
+>
+
+I learned from some of the LIGO sysadmins at Caltech that some of the
+LIGO systems are using Debian.
+
+The LIGO documentation
+https://computing.docs.ligo.org/guide/software/debian/
+
+mentions a server for their custom apt repository, and I thought I'd
+look around which gives this information page about their cluster.
+https://hypatia.aei.mpg.de/cgi-bin/hypatia-index.cgi?p=main
+
+Which looks like a fairly large HPC cluster running Debian, and using
+Debian tool FAI.
+
+Diane

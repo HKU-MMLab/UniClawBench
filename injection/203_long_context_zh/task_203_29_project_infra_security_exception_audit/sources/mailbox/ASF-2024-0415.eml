@@ -1,0 +1,32 @@
+Message-ID: <Y1/kliJikVAOJXPv@redhat.com>
+X-Clawbench-ID: ASF-2024-0415
+Date: Mon, 31 Oct 2022 15:07:02 +0000
+From: Joe Orton <jorton@redhat.com>
+To: dev@httpd.apache.org
+Subject: Re: [libapreq2] nits to pick about the patches to util.c over the  past few years
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-10.mbox
+
+On Sun, Oct 30, 2022 at 12:09:02AM -0400, Joe Schaefer wrote:
+> Forgive me for summarizing, but I didn’t come here expecting help, much
+> less collaboration on a solution.  I came here expecting to be scolded for
+> having the temerity to critique the quality of the patch sets you’ve been
+> shipping of late In libapreq2.  None of my opinions have changed on that
+> subject, and won’t for some time.
+>
+> The point is I’m part of your extended support channels for libapreq2,
+> because it’s easy and fun to help people who use the code.  I’m not here to
+> complain, I’m here expecting more empathy for people like me who give their
+> time graciously without expecting anything in return other than some
+> measure of respect for the effort involved.
+
+Joe, please dial down both the rhetoric and rate of fire.
+
+Constructive criticism is always welcome here, we are quite used to
+doing patch reviews. You've come in with a torrent of not very
+constructive messages, unsurprisingly that won't get a hugely
+sympathetic response from others. We all participate here voluntarily.
+
+Regards, Joe

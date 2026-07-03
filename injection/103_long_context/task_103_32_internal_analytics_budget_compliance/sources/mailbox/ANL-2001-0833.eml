@@ -1,0 +1,24 @@
+Message-ID: <18f96cfd667e6687a1839744a7428120@enron.com>
+X-Clawbench-ID: ANL-2001-0833
+Date: 2001-10-25T20:27:29-03:00
+From: Issler  Paulo <Paulo.Issler@ENRON.com>
+To: White  Bill <Bill.White@ENRON.com>, De La Ossa  Mario <Mario.De.La.Ossa@ENRON.com>, Griffith  John <John.Griffith@ENRON.com>, Moon  Eric <Eric.Moon@ENRON.com>, Garcia  Santiago <Santiago.Garcia@ENRON.com>, Breese  Mark <Mark.Breese@ENRON.com>
+Subject: Historical Correlation Calculator
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Enron kaminski-v public mailbox index.json
+X-Original-Folder: kaminski-v_001/kaminski-v/Inbox
+
+I finished a spreadsheet for calculating historical correlations on forward curves. It gives the correlation matrix for contracts going out an arbritary number of months out. I think it might be a handy tool for some of you.
+
+
+You may get that on O:\RESEARCH\CUSTOM\CORRELMATRIX\
+
+
+It demands that you have access to our EGSPROD32 database. You must have that configured in your ODBC. It is a large spreadsheet, so it may take some computing resorces. Let me know if you find any problem.
+
+
+Thanks.
+
+Paulo Issler

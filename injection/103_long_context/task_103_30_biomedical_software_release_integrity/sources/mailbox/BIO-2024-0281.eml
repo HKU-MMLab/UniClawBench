@@ -1,0 +1,36 @@
+Message-ID: <YbWVRhg/OVvHotn4@an3as.eu>
+X-Clawbench-ID: BIO-2024-0281
+Date: Sun, 12 Dec 2021 07:23:02 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Steven Robbins <steve@sumost.ca>
+Subject: Re: How to do 32-bit build in AMD64 chroot -- problem with SSE instructions?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_12_msg00075.html
+
+Hi Steven,
+
+Am Sat, Dec 11, 2021 at 05:12:50PM -0600 schrieb Steven Robbins:
+> Hi,
+>
+> I've built the ITK package on my AMD64 machine without trouble, but the 32-bit
+> build is failing with the error below.
+>
+> The errors seem to point to using SSE instructions.  Is there a recommended
+> set of flags to use when building for x86?  I tried "-march=i686" but it gives
+> the same error.
+
+I once created an i386 chroot as described here
+
+    https://wiki.ubuntu.com/PbuilderHowto#Building_an_i386_pbuilder_on_amd64
+
+This *sometimes* helps reproducing i386 errors locally but it does not fully
+behave like an i386 machine in every case.
+
+Hope this helps
+
+       Andreas.
+
+--
+http://fam-tille.de

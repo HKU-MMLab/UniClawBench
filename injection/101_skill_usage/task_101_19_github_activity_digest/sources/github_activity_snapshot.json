@@ -1,0 +1,515 @@
+{
+  "generated_at": "2026-04-26T23:08:18Z",
+  "repo": "HKU-AI-Forum/clawbench-activity-fixture",
+  "window_days": 16,
+  "pull_requests": [
+    {
+      "number": 1,
+      "title": "fix: handle null tenant_id in billing path",
+      "user": "dave",
+      "state": "merged",
+      "merged_at": "2026-04-10"
+    },
+    {
+      "number": 2,
+      "title": "refactor: extract invoice formatter into shared lib",
+      "user": "dave",
+      "state": "merged",
+      "merged_at": "2026-04-11"
+    },
+    {
+      "number": 3,
+      "title": "feat: add bulk-import endpoint for customer sync",
+      "user": "bob",
+      "state": "merged",
+      "merged_at": "2026-04-12"
+    },
+    {
+      "number": 4,
+      "title": "chore: bump python 3.11 -> 3.12 in CI matrix",
+      "user": "erin",
+      "state": "closed",
+      "closed_at": "2026-04-13",
+      "merged_at": null
+    },
+    {
+      "number": 5,
+      "title": "fix: flaky test in auth/test_tokens.py",
+      "user": "dave",
+      "state": "closed",
+      "closed_at": "2026-04-14",
+      "merged_at": null
+    },
+    {
+      "number": 6,
+      "title": "perf: batch DB writes in metric ingest",
+      "user": "carol",
+      "state": "closed",
+      "closed_at": "2026-04-15",
+      "merged_at": null
+    },
+    {
+      "number": 7,
+      "title": "docs: add runbook for staging rollback",
+      "user": "carol",
+      "state": "closed",
+      "closed_at": "2026-04-16",
+      "merged_at": null
+    },
+    {
+      "number": 8,
+      "title": "fix: 500 on /api/v2/users when pagination token is missing",
+      "user": "dave",
+      "state": "closed",
+      "closed_at": "2026-04-17",
+      "merged_at": null
+    },
+    {
+      "number": 9,
+      "title": "WIP: experimental OpenTelemetry trace sampler",
+      "user": "carol",
+      "state": "open",
+      "created_at": "2026-04-18",
+      "closed_at": null,
+      "merged_at": null
+    },
+    {
+      "number": 10,
+      "title": "fix: race condition in webhook dispatcher",
+      "user": "alice",
+      "state": "merged",
+      "merged_at": "2026-04-19"
+    },
+    {
+      "number": 11,
+      "title": "feat: add slow-query alert rule (Prometheus)",
+      "user": "erin",
+      "state": "closed",
+      "closed_at": "2026-04-20",
+      "merged_at": null
+    },
+    {
+      "number": 12,
+      "title": "feat: soft-delete for customer records",
+      "user": "carol",
+      "state": "merged",
+      "merged_at": "2026-04-21"
+    },
+    {
+      "number": 13,
+      "title": "refactor: split billing.py into submodules",
+      "user": "carol",
+      "state": "merged",
+      "merged_at": "2026-04-22"
+    },
+    {
+      "number": 14,
+      "title": "fix: timezone bug in invoice generator (UTC vs local)",
+      "user": "bob",
+      "state": "merged",
+      "merged_at": "2026-04-23"
+    },
+    {
+      "number": 15,
+      "title": "revert: revert #109 due to regression in webhook retries",
+      "user": "alice",
+      "state": "closed",
+      "closed_at": "2026-04-10",
+      "merged_at": null
+    }
+  ],
+  "issues": [
+    {
+      "number": 16,
+      "title": "Latency spike in /api/v2/search after 2026-04-10 deploy",
+      "user": "alice",
+      "state": "open",
+      "created_at": "2026-04-11",
+      "closed_at": null
+    },
+    {
+      "number": 17,
+      "title": "Deprecate legacy v1 billing endpoints",
+      "user": "alice",
+      "state": "closed",
+      "closed_at": "2026-04-12"
+    },
+    {
+      "number": 18,
+      "title": "Onboarding doc references an outdated CLI flag",
+      "user": "bob",
+      "state": "open",
+      "created_at": "2026-04-13",
+      "closed_at": null
+    },
+    {
+      "number": 19,
+      "title": "Dashboard times out when tenant has >10k invoices",
+      "user": "erin",
+      "state": "open",
+      "created_at": "2026-04-14",
+      "closed_at": null
+    },
+    {
+      "number": 20,
+      "title": "Cannot reset password — email never sent",
+      "user": "carol",
+      "state": "closed",
+      "closed_at": "2026-04-15"
+    },
+    {
+      "number": 21,
+      "title": "Feature request: CSV export of customer list",
+      "user": "alice",
+      "state": "open",
+      "created_at": "2026-04-16",
+      "closed_at": null
+    },
+    {
+      "number": 22,
+      "title": "Memory leak in background worker (daily cron)",
+      "user": "bob",
+      "state": "closed",
+      "closed_at": "2026-04-17"
+    },
+    {
+      "number": 23,
+      "title": "Add OIDC support for SAML-only customers",
+      "user": "bob",
+      "state": "open",
+      "created_at": "2026-04-18",
+      "closed_at": null
+    },
+    {
+      "number": 24,
+      "title": "Test coverage regression — drop from 82% to 74%",
+      "user": "carol",
+      "state": "closed",
+      "closed_at": "2026-04-19"
+    },
+    {
+      "number": 25,
+      "title": "Slack webhook intermittently missing messages",
+      "user": "alice",
+      "state": "open",
+      "created_at": "2026-04-20",
+      "closed_at": null
+    },
+    {
+      "number": 26,
+      "title": "Fix broken permalink in the v3 release notes",
+      "user": "bob",
+      "state": "open",
+      "created_at": "2026-04-21",
+      "closed_at": null
+    },
+    {
+      "number": 27,
+      "title": "pg_stat_statements is off in prod replica",
+      "user": "dave",
+      "state": "closed",
+      "closed_at": "2026-04-22"
+    },
+    {
+      "number": 28,
+      "title": "Feature-flag key conflict in GrowthBook config",
+      "user": "dave",
+      "state": "open",
+      "created_at": "2026-04-23",
+      "closed_at": null
+    },
+    {
+      "number": 29,
+      "title": "Admin UI: 'active' filter should persist across refresh",
+      "user": "dave",
+      "state": "closed",
+      "closed_at": "2026-04-24"
+    },
+    {
+      "number": 30,
+      "title": "CSV upload times out at 10MB — raise server limit",
+      "user": "alice",
+      "state": "open",
+      "created_at": "2026-04-11",
+      "closed_at": null
+    },
+    {
+      "number": 31,
+      "title": "Metric billing.failed_charges never emitted",
+      "user": "alice",
+      "state": "closed",
+      "closed_at": "2026-04-12"
+    },
+    {
+      "number": 32,
+      "title": "Sentry PII: redact tenant_id in error breadcrumbs",
+      "user": "carol",
+      "state": "closed",
+      "closed_at": "2026-04-13"
+    },
+    {
+      "number": 33,
+      "title": "README: add docker-compose quickstart",
+      "user": "bob",
+      "state": "closed",
+      "closed_at": "2026-04-14"
+    },
+    {
+      "number": 34,
+      "title": "JWT expiry edge case when clock skew > 30s",
+      "user": "bob",
+      "state": "open",
+      "created_at": "2026-04-15",
+      "closed_at": null
+    },
+    {
+      "number": 35,
+      "title": "Cloudflare WAF blocks legitimate /api/webhook traffic",
+      "user": "erin",
+      "state": "closed",
+      "closed_at": "2026-04-16"
+    }
+  ],
+  "commits": [
+    {
+      "sha": "03041b96987139",
+      "user": "alice",
+      "date": "2026-04-12",
+      "message": "fix: connection-pool exhaustion under load"
+    },
+    {
+      "sha": "1bc18ece69e991",
+      "user": "alice",
+      "date": "2026-04-12",
+      "message": "docs: update CHANGELOG for 2.3.1 release"
+    },
+    {
+      "sha": "8cbe161e2bce7e",
+      "user": "erin",
+      "date": "2026-04-12",
+      "message": "wip: prototype OTel sampler"
+    },
+    {
+      "sha": "021c09b1ad8970",
+      "user": "carol",
+      "date": "2026-04-13",
+      "message": "feat: add metric background_worker_lag_seconds"
+    },
+    {
+      "sha": "1e1b6c17fe86f8",
+      "user": "dave",
+      "date": "2026-04-13",
+      "message": "fix: handle utf-8 BOM in CSV upload"
+    },
+    {
+      "sha": "36146ac5c92e42",
+      "user": "alice",
+      "date": "2026-04-13",
+      "message": "test: cover null tenant_id path"
+    },
+    {
+      "sha": "95a8159b6153b4",
+      "user": "carol",
+      "date": "2026-04-14",
+      "message": "refactor: move settings into config package"
+    },
+    {
+      "sha": "c7a237543fecaa",
+      "user": "carol",
+      "date": "2026-04-14",
+      "message": "rename billing_service -> billing"
+    },
+    {
+      "sha": "ebd5997f6778b7",
+      "user": "alice",
+      "date": "2026-04-14",
+      "message": "fix: raise QuotaError instead of generic Exception"
+    },
+    {
+      "sha": "11e8a671cbf036",
+      "user": "erin",
+      "date": "2026-04-15",
+      "message": "test: add happy-path for webhook retry"
+    },
+    {
+      "sha": "1ae0418276118d",
+      "user": "erin",
+      "date": "2026-04-15",
+      "message": "docs: fix typo in README"
+    },
+    {
+      "sha": "281faa7128ba96",
+      "user": "alice",
+      "date": "2026-04-15",
+      "message": "fix: retry loop on 429 from Stripe API"
+    },
+    {
+      "sha": "2c4f3f050d1100",
+      "user": "dave",
+      "date": "2026-04-16",
+      "message": "chore: bump ruff to 0.5"
+    },
+    {
+      "sha": "2cd0e85f77543b",
+      "user": "erin",
+      "date": "2026-04-16",
+      "message": "lint: apply black + ruff"
+    },
+    {
+      "sha": "e499b529027bf5",
+      "user": "dave",
+      "date": "2026-04-16",
+      "message": "chore: renovate bot dependency bump"
+    },
+    {
+      "sha": "01c853fce63819",
+      "user": "alice",
+      "date": "2026-04-17",
+      "message": "fix: normalize email on signup (lowercase, trim)"
+    },
+    {
+      "sha": "c4630fd22132c6",
+      "user": "dave",
+      "date": "2026-04-17",
+      "message": "chore: remove dead code in utils.py"
+    },
+    {
+      "sha": "fd5e665f5c9550",
+      "user": "bob",
+      "date": "2026-04-17",
+      "message": "perf: precompute aggregates for admin dashboard"
+    },
+    {
+      "sha": "370fd7fb40136b",
+      "user": "alice",
+      "date": "2026-04-18",
+      "message": "bump sdk version to 2.3.1"
+    },
+    {
+      "sha": "45b8c657d2e803",
+      "user": "alice",
+      "date": "2026-04-18",
+      "message": "fix: off-by-one in pagination cursor"
+    },
+    {
+      "sha": "804165aa0ca744",
+      "user": "alice",
+      "date": "2026-04-18",
+      "message": "docs: add ADR-017 for event sourcing decision"
+    },
+    {
+      "sha": "412b6c8c50ff99",
+      "user": "carol",
+      "date": "2026-04-19",
+      "message": "feat: soft-delete sql migration (customers)"
+    },
+    {
+      "sha": "70a6545805f97a",
+      "user": "bob",
+      "date": "2026-04-19",
+      "message": "revert: metric change caused false alerts"
+    },
+    {
+      "sha": "a4f86730b83d4e",
+      "user": "carol",
+      "date": "2026-04-19",
+      "message": "docs: add operator runbook for staging rollback"
+    },
+    {
+      "sha": "6447eb186105b5",
+      "user": "bob",
+      "date": "2026-04-20",
+      "message": "chore: remove deprecated feature flag billing_v1"
+    },
+    {
+      "sha": "8f6478fc2e9373",
+      "user": "carol",
+      "date": "2026-04-20",
+      "message": "perf: index on invoices(tenant_id, created_at)"
+    },
+    {
+      "sha": "f5c060e2ffc903",
+      "user": "alice",
+      "date": "2026-04-20",
+      "message": "fix: avoid panic on empty iterator in aggregator"
+    },
+    {
+      "sha": "378fb6248c6ec9",
+      "user": "carol",
+      "date": "2026-04-21",
+      "message": "docs: clarify retry semantics for webhook dispatcher"
+    },
+    {
+      "sha": "ca731b85c2f190",
+      "user": "bob",
+      "date": "2026-04-21",
+      "message": "test: add integration test for bulk import endpoint"
+    },
+    {
+      "sha": "fc17149c3bb73c",
+      "user": "dave",
+      "date": "2026-04-21",
+      "message": "perf: cache DB introspection queries"
+    },
+    {
+      "sha": "0d603aff2c089e",
+      "user": "bob",
+      "date": "2026-04-22",
+      "message": "feat: add CLI completion for bash/zsh"
+    },
+    {
+      "sha": "62bcfae0d67b4d",
+      "user": "carol",
+      "date": "2026-04-22",
+      "message": "fix: flaky test due to time.monotonic()"
+    },
+    {
+      "sha": "62f771c8722077",
+      "user": "carol",
+      "date": "2026-04-22",
+      "message": "chore: delete legacy v1 billing routes"
+    },
+    {
+      "sha": "bdb1abb1951aee",
+      "user": "bob",
+      "date": "2026-04-23",
+      "message": "fix: guard against nil plan in trial-upgrade flow"
+    },
+    {
+      "sha": "c63dbf108c7502",
+      "user": "carol",
+      "date": "2026-04-23",
+      "message": "fix: race when two migrations run in parallel"
+    },
+    {
+      "sha": "e66df07cac02ab",
+      "user": "bob",
+      "date": "2026-04-23",
+      "message": "feat: add --dry-run flag to migrate CLI"
+    },
+    {
+      "sha": "69bd7e3ad4a8cf",
+      "user": "dave",
+      "date": "2026-04-24",
+      "message": "chore: remove unused fixture in test_auth"
+    },
+    {
+      "sha": "c8f040da0932a9",
+      "user": "dave",
+      "date": "2026-04-24",
+      "message": "test: cover timezone edge-case in invoice gen"
+    },
+    {
+      "sha": "45d1f767d7f396",
+      "user": "erin",
+      "date": "2026-04-25",
+      "message": "refactor: pull EmailClient out of SignupService"
+    },
+    {
+      "sha": "99c2538ba7e6e2",
+      "user": "alice",
+      "date": "2026-04-25",
+      "message": "feat: add /healthz endpoint with DB probe"
+    }
+  ]
+}

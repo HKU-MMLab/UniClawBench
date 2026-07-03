@@ -1,0 +1,40 @@
+Message-ID: <Y/ITSb1sKNg11BO2@an3as.eu>
+X-Clawbench-ID: BIO-2024-1485
+Date: Sun, 19 Feb 2023 13:17:13 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Bioconductor 400MB packages in Debian?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_02_msg00045.html
+
+Hi Steffen,
+
+Am Fri, Feb 17, 2023 at 04:43:20PM +0100 schrieb Steffen Möller:
+> Hello,
+>
+> Some expression data crossed my way and while
+>
+> conda install -c bioconda bioconductor-clariomdhumantranscriptcluster.db
+>
+> is no big deal (unless when it is), we do not support it in Debian - it is big. Well, at least there was a time when this was considered big, I am not so sure any more, so here I ask.
+>
+> https://bioconductor.org/packages/release/data/annotation/html/pd.clariom.d.human.html
+>
+> comes in a ~400MB tarball, which is mostly a SQLite database.
+>
+> I would support a decision according to which anybody interested would just go and run the installer, but the dependencies are non-trivial, so you effectively end up in installing all of BioConductor in parallel to what Debian already offers, which I am not a fan of.
+>
+> What do you think?
+
+If you think that this kind of large packages are helpful for our
+users just upload it to new and see what happens.  I admit from your
+description I see more issues which license and copyright rather
+than size.
+
+Kind regards
+   Andreas.
+
+--
+http://fam-tille.de

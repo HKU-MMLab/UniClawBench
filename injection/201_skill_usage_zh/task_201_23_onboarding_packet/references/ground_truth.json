@@ -1,0 +1,247 @@
+{
+  "task_id": "task_101_23_onboarding_packet",
+  "difficulty": "Hard",
+  "schema": "a",
+  "schema_notes": "mixed-format onboarding packet with form tracker, source conflicts, and dependency handoff",
+  "skills_declared": [
+    "pdf-ocr-local",
+    "office",
+    "data-analysis"
+  ],
+  "ground_truth": {
+    "sections": [
+      "Day 1",
+      "Week 1",
+      "Month 1"
+    ],
+    "expected_checklist_items": [
+      {
+        "section": "Day 1",
+        "phrase_keywords": ["laptop"],
+        "source_files": ["welcome.pdf", "it_setup_checklist.txt"]
+      },
+      {
+        "section": "Day 1",
+        "phrase_keywords": ["okta", "sso", "mfa"],
+        "source_files": ["welcome.pdf", "it_setup_checklist.txt"]
+      },
+      {
+        "section": "Day 1",
+        "phrase_keywords": ["buddy"],
+        "source_files": ["welcome.pdf", "welcome_guide.docx"]
+      },
+      {
+        "section": "Day 1",
+        "phrase_keywords": ["code of conduct"],
+        "source_files": ["policies.pdf", "hr_policy_code_of_conduct.pdf"]
+      },
+      {
+        "section": "Day 1",
+        "phrase_keywords": ["i-9", "i9"],
+        "source_files": ["policies.pdf", "form_i9_blank.pdf", "signed_form_i9.pdf"]
+      },
+      {
+        "section": "Week 1",
+        "phrase_keywords": ["security", "compliance training"],
+        "source_files": ["policies.pdf", "welcome.pdf"]
+      },
+      {
+        "section": "Week 1",
+        "phrase_keywords": ["benefits election"],
+        "source_files": ["benefits.docx"]
+      },
+      {
+        "section": "Week 1",
+        "phrase_keywords": ["intro", "team-welcome"],
+        "source_files": ["team_directory.docx"]
+      },
+      {
+        "section": "Month 1",
+        "phrase_keywords": ["401(k)", "401k"],
+        "source_files": ["benefits.docx"]
+      },
+      {
+        "section": "Month 1",
+        "phrase_keywords": ["demo", "independent task"],
+        "source_files": ["welcome.pdf"]
+      }
+    ],
+    "min_checklist_items_required": 10,
+    "min_forms_rows": 8,
+    "expected_form_rows": [
+      {
+        "source": "direct_deposit_form.jpg",
+        "form_name_keywords": ["direct deposit"],
+        "due_date_required": false,
+        "signature_required": "Yes",
+        "status": "TODO",
+        "notes_keywords": ["blank", "photo", "template", "unsigned"]
+      },
+      {
+        "source": "emergency_contact_form.jpg",
+        "form_name_keywords": ["emergency contact"],
+        "due_date_required": false,
+        "signature_required": "Yes",
+        "status": "TODO",
+        "notes_keywords": ["blank", "photo", "template", "unsigned", "missing"]
+      },
+      {
+        "source": "form_i9_blank.pdf",
+        "form_name_keywords": ["i-9", "i9"],
+        "due_date_required": true,
+        "signature_required": "Yes",
+        "status": "TODO",
+        "notes_keywords": ["blank", "template", "unsigned"]
+      },
+      {
+        "source": "form_w4_blank.pdf",
+        "form_name_keywords": ["w-4", "w4"],
+        "due_date_required": false,
+        "signature_required": "Yes",
+        "status": "TODO",
+        "notes_keywords": ["blank", "template", "unsigned"]
+      },
+      {
+        "source": "signed_direct_deposit.pdf",
+        "form_name_keywords": ["direct deposit"],
+        "due_date_required": false,
+        "signature_required": "Yes",
+        "status": "DONE",
+        "notes_keywords": ["signed", "alex morgan", "2025-04-14"]
+      },
+      {
+        "source": "signed_form_i9.pdf",
+        "form_name_keywords": ["i-9", "i9"],
+        "due_date_required": true,
+        "signature_required": "Yes",
+        "status": "DONE",
+        "notes_keywords": ["signed", "alex morgan", "2025-04-14"]
+      },
+      {
+        "source": "signed_form_w4.pdf",
+        "form_name_keywords": ["w-4", "w4"],
+        "due_date_required": false,
+        "signature_required": "Yes",
+        "status": "DONE",
+        "notes_keywords": ["signed", "alex morgan", "2025-04-14"]
+      },
+      {
+        "source": "signed_nda.pdf",
+        "form_name_keywords": ["nda", "non-disclosure"],
+        "due_date_required": false,
+        "signature_required": "Yes",
+        "status": "DONE",
+        "notes_keywords": ["signed", "alex morgan", "2025-04-14"]
+      }
+    ],
+    "expected_form_rows_due_date_note": "Only the I-9 forms (form_i9_blank.pdf and signed_form_i9.pdf) have a due date that can be derived from the bundle. policies.pdf states 'Submit your I-9 verification form within 3 business days of start (Day 1)'. The other 6 form files have no due date stated anywhere in the bundle (W-4, Direct Deposit, Emergency Contact, NDA — neither the blank/photo templates nor the signed counterparts), so the due_date cell on those rows may be empty, 'N/A', 'Not stated in bundle', or any reasonable placeholder. Setting due_date_required: true on the I-9 rows means the cell must be non-empty; due_date_required: false on the other 6 rows means the cell may be empty or any plausible value.",
+    "expected_handoff_conflicts": [
+      {
+        "topic": "company_name",
+        "files": [
+          "welcome.pdf",
+          "welcome_guide.docx",
+          "signed_nda.pdf",
+          "hr_policy_code_of_conduct.pdf"
+        ],
+        "expected_note": "welcome.pdf calls the employer Acme Corp while welcome_guide.docx, signed_nda.pdf, and hr_policy_code_of_conduct.pdf use BrightWater / BrightWater Industries"
+      },
+      {
+        "topic": "laptop_pickup_location",
+        "files": [
+          "welcome.pdf",
+          "it_setup_checklist.txt"
+        ],
+        "expected_note": "welcome.pdf says laptop pickup is at the IT desk on the 3rd floor, but it_setup_checklist.txt says 14th floor"
+      },
+      {
+        "topic": "missing_benefits_election_form",
+        "files": [
+          "benefits.docx"
+        ],
+        "expected_note": "benefits.docx references a Benefits Election Form due Week 1 but no physical form file is present in the bundle"
+      },
+      {
+        "topic": "missing_security_training_asset",
+        "files": [
+          "policies.pdf",
+          "welcome.pdf",
+          "manager_followup_notes.txt"
+        ],
+        "expected_note": "policies.pdf and welcome.pdf require a security / compliance training module by end of Week 1, but the training module asset itself is not in the bundle"
+      },
+      {
+        "topic": "remote_week_laptop_handling",
+        "files": [
+          "it_setup_checklist.txt",
+          "manager_followup_notes.txt"
+        ],
+        "expected_note": "manager_followup_notes.txt says Alex is remote for week 1, so the in-person 14th-floor pickup in it_setup_checklist.txt needs a buddy or shipping handoff instead"
+      },
+      {
+        "topic": "signed_direct_deposit_confirmation",
+        "files": [
+          "direct_deposit_form.jpg",
+          "signed_direct_deposit.pdf",
+          "manager_followup_notes.txt"
+        ],
+        "expected_note": "both the photographed blank direct_deposit_form.jpg and the signed_direct_deposit.pdf are present; payroll should confirm the bank details on the signed copy before marking payroll setup complete"
+      },
+      {
+        "topic": "missing_emergency_contact_completion",
+        "files": [
+          "emergency_contact_form.jpg"
+        ],
+        "expected_note": "the emergency contact form is only present as a blank photograph; no signed counterpart exists in the bundle"
+      }
+    ],
+    "dependency_anchors": [
+      "pick up laptop before local software setup",
+      "Okta/SSO and MFA before Slack/Zoom/1Password or access requests",
+      "access requests before VPN/Datadog/PagerDuty/AWS work can proceed",
+      "repo clone before bootstrap script",
+      "I-9 verification due on Day 1 or within 3 business days",
+      "security/compliance training due by end of Week 1",
+      "401(k) enrollment deadline by end of Month 1",
+      "repo bootstrap depends on Okta/MFA, GitHub access, and VPN profile",
+      "remote week laptop handoff must be resolved before first-day setup"
+    ],
+    "min_conflicts": 7,
+    "min_dependency_items": 9,
+    "controls_workbook": {
+      "required_sheets": [
+        "Conflicts",
+        "Dependency_Order"
+      ],
+      "conflicts_columns": [
+        "issue",
+        "source_files",
+        "impact",
+        "owner_to_resolve"
+      ],
+      "dependency_columns": [
+        "action",
+        "blocked_by",
+        "due_window",
+        "source_files"
+      ],
+      "min_conflict_rows": 7,
+      "min_dependency_rows": 9
+    },
+    "topic_dimensions": [
+      "mandatory_forms",
+      "equipment_requests",
+      "training_schedule",
+      "access_provisioning",
+      "buddy_mentorship"
+    ],
+    "topic_dimension_keywords": {
+      "mandatory_forms": ["I-9", "W-4", "NDA", "code of conduct"],
+      "equipment_requests": ["laptop", "monitor", "headset", "badge"],
+      "training_schedule": ["onboarding", "compliance", "tools", "kickoff"],
+      "access_provisioning": ["VPN", "okta", "github", "slack", "email"],
+      "buddy_mentorship": ["buddy", "mentor", "shadow", "peer"]
+    },
+    "min_topic_dimensions_covered": 5
+  }
+}

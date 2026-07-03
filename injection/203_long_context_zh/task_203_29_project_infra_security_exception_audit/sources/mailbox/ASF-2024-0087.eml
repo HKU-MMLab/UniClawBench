@@ -1,0 +1,35 @@
+Message-ID: <CALK=YjOXBm1EvUvC02Lwj1oqNSY=172PufxtbxBTaH7Xn-KYww@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0087
+Date: Fri, 16 Feb 2024 08:10:57 -0500
+From: Eric Covener <covener@gmail.com>
+To: Apache HTTP Server Development List <dev@httpd.apache.org>
+Subject: libapreq subproject roll call
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-02.mbox
+
+> Will apreq 2.18 still be released?
+
+I think we should, but we need someone to do the release work and 3
+active PMC members to approve it.  Prior to the recent activity, the
+subproject was essentially unchanged and unreleased for 10 years (with
+1 failed release due to lack of votes)
+
+I would like to understand if libapreq remains viable as a project
+managed by the httpd PMC. We had this conversation last year on the
+private list and the next step is to bring it here.
+
+It is possible the next release comes with an end-of-life date in the
+future. If this codebase has a community elsewhere, they should join
+us or take it over.If there is anyone out there who wants to get more
+involved, please speak up.
+
+
+I count myself as a release vote of last resort only, but i don't
+think we should be committing to future fixes/releases if nearly
+everyone is in this category.
+
+--
+Eric Covener
+covener@gmail.com

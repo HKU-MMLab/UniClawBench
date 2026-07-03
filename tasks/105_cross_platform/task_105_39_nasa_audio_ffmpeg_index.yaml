@@ -1,0 +1,66 @@
+task_id: task_105_39_nasa_audio_ffmpeg_index
+category: 105_cross_platform
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I have three short NASA historical audio files here:
+
+      /tmp_workspace/clawbench/sources/nasa_audio/
+
+  Please use command-line media tools such as ffmpeg/ffprobe to make a
+  compact briefing audio package.
+
+  Cut these segments:
+  - `apollo11_countdown.mp3`: first 6 seconds
+  - `eagle_has_landed.mp3`: first 5 seconds
+  - `houston_problem.mp3`: first 7 seconds
+
+  Save the individual clips as:
+
+      /tmp_workspace/results/clips/clip_01.mp3
+      /tmp_workspace/results/clips/clip_02.mp3
+      /tmp_workspace/results/clips/clip_03.mp3
+
+  Concatenate them in that order into:
+
+      /tmp_workspace/results/nasa_audio_briefing.mp3
+
+  Also create a waveform or spectrogram PNG for the final briefing at:
+
+      /tmp_workspace/results/nasa_audio_waveform.png
+
+  Write a machine-readable manifest at:
+
+      /tmp_workspace/results/clip_manifest.json
+
+  The manifest should include source file, title, start_seconds,
+  duration_seconds, output_file, measured_duration, and sha256 or file
+  size for each clip. Finally write a short provenance/editing report at:
+
+      /tmp_workspace/results/nasa_audio_report.md
+
+  Mention that the source files came from NASA historical sounds and
+  include the final measured duration.
+
+sources:
+  - nasa_audio/
+
+services:
+  - name: media-cli-setup
+    path: media-cli-setup
+    start: bash install.sh
+    oneshot: true
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+codex:
+  max_user_followups: 2

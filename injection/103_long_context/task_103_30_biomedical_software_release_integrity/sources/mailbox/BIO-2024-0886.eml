@@ -1,0 +1,36 @@
+Message-ID: <YYv921oVEMm+s0Qm@an3as.eu>
+X-Clawbench-ID: BIO-2024-0886
+Date: Wed, 10 Nov 2021 18:14:03 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Science List <debian-science@lists.debian.org>
+Subject: Upgrading pandas
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_11_msg00076.html
+
+Hi,
+
+pandas is lagging behind upstream by several versions.  I guess we
+should try to get in sync with upstream a bit more.  Thus I upgraded Git
+and tried to adapt the patches (not sure whether I succeeded completely
+- checking would be really welcome).
+
+The package does not build yet since the documentation needs sphinx_panels.
+Simply patching it out leads to
+
+   nbsphinx.NotebookError: TypeError in user_guide/style.ipynb:
+   'coroutine' object is not subscriptable
+
+and I stopped here.  I wonder what you think here whether it makes sense
+to stop providing the docs for this package.  Packaging itself is complex
+enough and spending extra amounts of work for something users can easily
+lookup online could be at least discussed.  If the answer is:  Yes, lets
+keep the docs we should start packaging sphinx-panels first.
+
+Kind regards
+
+     Andreas.
+
+--
+http://fam-tille.de

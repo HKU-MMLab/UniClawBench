@@ -1,0 +1,12 @@
+Message-ID: <cam-2003-0869@campaign-audit.example>
+X-Clawbench-ID: CAM-2003-0869
+Date: Fri, 14 Mar 2003 10:04:00 -0500
+From: Analytics <analytics@acme-mail.example>
+To: billing@acme-mail.example
+Subject: attribution window explained
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: synthetic email campaign lead-gen quality audit implant
+
+The dashboard/export difference is due to a seven-day attribution window in the screenshot and a one-day window in the raw CSV. The invoice uses the raw CSV, so this is low risk.

@@ -1,0 +1,22 @@
+Message-ID: <Y44cZBw6OQuENqqp@an3as.eu>
+X-Clawbench-ID: BIO-2024-0801
+Date: Mon, 5 Dec 2022 17:29:24 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: [Advent bug squashing] #1021423 of qtltools, #1011021 of libdeflate-dev
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_12_msg00054.html
+
+Hi,
+
+the qtltools bug was a very simple one (thanks for the additional hint
+Étienne) and libdeflate-dev simply had to be closed since it was done
+several versions of the package earlier.
+
+Kind regards
+   Andreas.
+
+--
+http://fam-tille.de

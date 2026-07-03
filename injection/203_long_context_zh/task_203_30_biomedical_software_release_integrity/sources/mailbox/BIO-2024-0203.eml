@@ -1,0 +1,22 @@
+Message-ID: <20230716141540.hkv4sqawnjfmtm3x@office.mailbox.org>
+X-Clawbench-ID: BIO-2024-0203
+Date: Sun, 16 Jul 2023 19:45:40 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: What is the point of B-D-I in a package that has no arch:any component?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_07_msg00080.html
+
+On Sun, Jul 16, 2023 at 03:43:10PM +0200, Andreas Tille wrote:
+> > (Combining these into one would likely fix the bug as well)
+>
+> Feel free to fix it.
+
+This was indeed the fix. I've merged B-D with B-D-I and uploaded.
+
+> > [1]: https://lists.debian.org/debian-devel/2023/07/msg00188.html
+
+Best,
+Nilesh

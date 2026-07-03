@@ -1,0 +1,19 @@
+# Gomoku (Five-in-a-Row), 15x15. X = Black (you, to move), O = White, . = empty.
+# Rows 0-14 top to bottom, columns 0-14 left to right. It is Black's turn.
+# Black wins by getting five X in a row (horizontal, vertical, or diagonal).
+
+. . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . .
+. . . . . O . X . . . . . . .
+. . . . . . . . O . . . . . .
+. . . O X X X X . . . . . . .
+. . . . X . O . . . . . . . .
+. . . . . . . . . O . . . . .
+. . . . . . . . . . X . . . .
+. . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . .

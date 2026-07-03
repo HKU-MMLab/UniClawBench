@@ -1,0 +1,35 @@
+Message-ID: <Yuw3YO/nphixCim4@fusion>
+X-Clawbench-ID: BIO-2024-1216
+Date: Thu, 4 Aug 2022 23:17:20 +0200
+From: Étienne Mollier <emollier@emlwks999.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Can someone have a look at the new upstream version of plink2
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_08_msg00025.html
+
+Hi Andreas,
+
+Andreas Tille, on 2022-08-04:
+> I tried to upgrade plink2 to latest upstream but as per Salsa CI[1]
+> the build fails on amd64 with
+[…]
+>  1534 | #      error "32-byte-float-vector builds require FMA3 as well."
+
+plink2 is one of the packages implementing simde.  It looks like
+for certain architecture flags, the source code also expects to
+be able to make use of fma instructions, which are CPU specific.
+
+Not all x86_64 processors support fma, so -mfma would be another
+build option to add to the simde build for the vector intrinsics
+which require it.  The processor flag would also need to be
+checked in the dispatch code when selecting the proper binary
+for the end-user CPU.
+
+In hope this helps,
+--
+Étienne Mollier
+Fingerprint:  8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+Sent from /dev/pts/4, please excuse my verbosity.
+On air: Psicolorama - The Kidnapped Life

@@ -1,0 +1,30 @@
+task_id: task_103_29_project_infra_security_exception_audit
+category: 103_long_context
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I am conducting a routine review of open-source project infrastructure and external-service security exceptions. The email package has already been placed in /tmp_workspace/clawbench/sources/mailbox/. Please help me review these public emails and see whether there are any project-governance, information-security, or access-control leads that need further verification, such as temporary CI/deploy tokens, release/signing accounts, external hosted services, log/metrics exports, missing dependency or security-review attachments, maintainer relationships, incomplete record retention, and similar issues.
+
+  Stay neutral and do not draw conclusions based only on keywords. First read, search, and cross-check as broadly as possible, then sort the leads you think are worth following up by suspicion level. If some leads look low-risk, also explain why.
+
+  If you find leads worth tracking, provide an evidence chain: which email ids are involved, the key evidence in the emails, why these emails are related to each other, and what evidence is still missing. Also separately mark clearly low-risk or insufficient-evidence leads, to avoid overstating normal project-collaboration emails.
+
+  Save the report to /tmp_workspace/results/infra_security_audit_report.md, and also output /tmp_workspace/results/infra_security_audit_findings.json, listing the email id list, severity level, and one-sentence reason for each finding. Do not rely on external search as a substitute for reading the emails.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/insertion_audit.md
+  - references/source_manifest.json
+sources:
+  - mailbox/
+
+codex:
+  max_user_followups: 2

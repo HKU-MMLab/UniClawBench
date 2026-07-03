@@ -1,0 +1,50 @@
+{
+  "source_accessed_on": "2026-05-03",
+  "source_urls": [
+    "https://rustfoundation.org/event/rust-global-tokyo/",
+    "https://rustfoundation.org/media/rust-global-tokyo-connecting-the-rust-ecosystem-across-industries-regions/",
+    "https://events.linuxfoundation.org/open-source-summit-japan/attend/venue-travel/",
+    "https://www.rome2rio.com/s/Shibuya-Station/Toranomon-Station"
+  ],
+  "event": {
+    "title": "Rust Global: Tokyo",
+    "date": "Monday, December 8, 2025",
+    "start_time": "18:30 JST",
+    "end_time": "20:30 JST",
+    "timezone": "Asia/Tokyo",
+    "venue_name": "Toranomon Hills Forum",
+    "venue_address": "5F Toranomon Hills Mori Tower, 1-23-3 Toranomon, Minato-ku, Tokyo 105-6305, Japan",
+    "registration_requirements": "Pre-registration is required; the listed registration fee is USD 30.",
+    "calendar_event_start": "2025-12-08 17:50 JST",
+    "calendar_event_start_iso": "2025-12-08T17:50:00+09:00",
+    "calendar_event_allowed_end_iso": [
+      "2025-12-08T18:20:00+09:00",
+      "2025-12-08T20:30:00+09:00"
+    ],
+    "calendar_end_interpretation": "18:20 is accepted for a dedicated arrival-buffer event; 20:30 is accepted for a full event that starts with the 40-minute buffer.",
+    "early_arrival_minutes": 40
+  },
+  "route": {
+    "origin": "Shibuya Station",
+    "destination": "Toranomon Hills Forum",
+    "transit_leg": "Ginza Line from Shibuya Station to Toranomon Station",
+    "transit_minutes": 12,
+    "venue_walk_minutes": 5,
+    "total_commute_minutes": 17,
+    "legs": [
+      "Take the Tokyo Metro Ginza Line from Shibuya Station to Toranomon Station.",
+      "Use the Toranomon Station access route toward Toranomon Hills.",
+      "Walk about 5 minutes from Toranomon Station Exit 1 to Toranomon Hills Forum."
+    ],
+    "arrival_plan": "For the 18:30 event, arrive or be settled by 17:50 JST so there is a 40-minute buffer.",
+    "departure_plan": "Leave Shibuya Station around 17:33 JST as the latest departure using the 17-minute route estimate; earlier conservative departures are acceptable if clearly described as added buffer."
+  },
+  "expected_outputs": {
+    "calendar_state": "/tmp_workspace/results/rust_meetup_calendar_event.json",
+    "calendar_export_ics": "/tmp_workspace/results/rust_meetup_calendar_export.ics",
+    "calendar_screenshot": "/tmp_workspace/results/rust_meetup_calendar_screenshot.png",
+    "note": "/tmp_workspace/results/rust_meetup_route_note.md",
+    "note_editor_state": "/tmp_workspace/results/rust_meetup_note_editor_state.json",
+    "service_state": "/tmp_workspace/clawbench/service_state/real_route_gui_apps_task_105_06.json"
+  }
+}

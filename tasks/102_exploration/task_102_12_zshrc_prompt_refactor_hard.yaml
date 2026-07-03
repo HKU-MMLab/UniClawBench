@@ -1,0 +1,73 @@
+task_id: task_102_12_zshrc_prompt_refactor_hard
+category: 102_exploration
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I inherited a messy legacy `.zshrc` that has accreted across several
+  laptops and SSH boxes. It "works" but the prompt behaves badly on servers
+  and I'm pretty sure the top of the file lies about what actually runs —
+  there are several spots where a later line silently overrides an earlier
+  one. The file is at:
+
+      /tmp_workspace/sources/existing_zshrc
+
+  This is NOT about writing a fresh prompt from scratch. You must preserve the
+  real behaviors the config depends on and eliminate the conflicts it already
+  contains. Concretely, while refactoring you must keep working: the aliases
+  (`ll`, `gs`, `k`, `gp`), the oh-my-zsh plugins (`git`, `docker`, `kubectl`,
+  `python`, `npm`) — so oh-my-zsh must still load — the conda hook, the nvm
+  sourcing, and the PATH prepends.
+
+  Audit the legacy config first and explain every conflict you find and which
+  write currently wins: the multiple competing `PROMPT` definitions, the theme
+  vs. no-Nerd-Font requirement, the raw `precmd()` that replaces oh-my-zsh's
+  own precmd hook, duplicated PATH entries, a startup line that leaks into
+  non-interactive shells, and any runtime spam (time, user@host, python
+  version) in the prompt.
+
+  Then produce the final `.zshrc`. The prompt must be concise and show the
+  current path and git status, but by default must NOT show: username,
+  hostname, wall-clock time, Python/Node/Ruby runtime versions, full
+  un-compressed deep paths, or Nerd-Font-only glyphs. The right prompt should
+  be removed by default.
+
+  The result must be VALIDATED by actually loading zsh and rendering the
+  prompt — not by describing what it would look like. Cover all eight
+  scenarios and save the real rendered prompt for each: plain shell, git
+  clean, git dirty, detached HEAD, rebase/merge state, deep path, Python venv
+  active, and non-interactive `zsh -ic true` (capture its stdout/stderr — it
+  must be silent).
+
+  Save:
+  - `/tmp_workspace/results/zshrc_final`
+  - `/tmp_workspace/results/zsh_prompt_audit.json`: every legacy conflict, which
+    write wins, what you preserved, what you removed, and the load-order
+    explanation.
+  - `/tmp_workspace/results/zsh_prompt_patch_notes.json`
+  - Eight render files (one per scenario, containing the actual rendered
+    prompt / captured output) and
+    `/tmp_workspace/results/zsh_prompt_verification.log`.
+  - `/tmp_workspace/results/startup_time.txt` documenting startup time has not
+    noticeably degraded.
+
+  This is an offline task — do not fetch anything from the network.
+
+references:
+  - references/eval_rule.md
+  - references/expected_prompts.json
+sources:
+  - existing_zshrc
+services:
+  - name: ohmyzsh-bootstrap
+    path: ohmyzsh-bootstrap
+    start: bash install.sh
+
+codex:
+  max_user_followups: 2

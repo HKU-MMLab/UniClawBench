@@ -1,0 +1,31 @@
+{
+  "main_problems": [
+    "usable floor area is limited",
+    "the seating side already carries most of the visual weight",
+    "the space needs to preserve a walking path",
+    "the window / frosted-panel side is the best natural light source, so seating should relate to it"
+  ],
+  "reference_strong_combo": [
+    "furn_04.png",
+    "furn_07.png",
+    "furn_02.png",
+    "furn_08.png"
+  ],
+  "core_functional_items": [
+    "furn_04.png",
+    "furn_07.png",
+    "furn_02.png"
+  ],
+  "rug_policy": "furn_08.png is the reference cozy choice, but furn_03.png can be acceptable if the plan gives a grounded visual/space reason and still preserves comfort and walkway clearance.",
+  "avoid_items": [
+    "furn_06.png",
+    "furn_05.png",
+    "furn_01.png"
+  ],
+  "layout": {
+    "chair": "angle the lounge chair toward the window side without blocking the walking path",
+    "table": "place the round side table on the open side of the chair for a book or drink",
+    "lamp": "put the floor lamp on the darker side behind or beside the chair",
+    "rug": "center the wool rug to define the nook but keep the path clear"
+  }
+}

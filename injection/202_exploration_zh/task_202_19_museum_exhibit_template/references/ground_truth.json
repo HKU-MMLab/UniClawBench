@@ -1,0 +1,40 @@
+{
+  "task_id": "task_102_19_museum_exhibit_template",
+  "note": "Answer key for a candidate-selection task. Each template's shipped manifest (sources/template_candidates/<id>.json) declares its item-metadata schema fields and features. Offline + frozen -> deterministic. The conflict: the prettiest gallery/scrollytelling templates lack archival provenance fields, the full-metadata templates lack a timeline, and only one template has BOTH the complete provenance schema AND a timeline AND IIIF.",
+
+  "use_case": "Small museum/archive online photo exhibition. Photos require provenance metadata; exhibition is chronological (timeline); images are high-res (IIIF).",
+  "required_item_fields": ["caption", "credit", "rights", "accession_number"],
+  "required_features": ["timeline", "iiif_large_images"],
+  "hard_rule": "a template is eligible only if its schema includes ALL four required fields AND its features include both timeline and IIIF large images",
+
+  "per_candidate": [
+    {"id":"collectionbuilder_archive","has_all_fields":true,"timeline":true,"iiif":true,"hard_pass":true,"missing":[],"note":"only template with full provenance schema (caption/credit/rights/accession) + timeline + IIIF"},
+    {"id":"omeka_classic_exhibit","has_all_fields":true,"timeline":false,"iiif":true,"hard_pass":false,"missing":["timeline"],"trap":"NEAR-MISS: full Dublin-Core metadata incl rights+accession and IIIF, but the base exhibit theme has no built-in timeline (needs the separate Neatline plugin). Must be rejected unless that gap is resolved."},
+    {"id":"wax_minimal_archive","has_all_fields":true,"timeline":false,"iiif":true,"hard_pass":false,"missing":["timeline"],"trap":"NEAR-MISS: full provenance schema + IIIF, but no timeline component."},
+    {"id":"exhibit_timeline_story","has_all_fields":false,"timeline":true,"iiif":false,"hard_pass":false,"missing":["rights","accession_number","iiif_large_images"],"trap":"BEAUTY TRAP: gorgeous scrollytelling timeline, but the schema has no rights and no accession_number, and no IIIF large images — provenance-incomplete."},
+    {"id":"photofolio_gallery","has_all_fields":false,"timeline":false,"iiif":true,"hard_pass":false,"missing":["credit","rights","accession_number","timeline"],"trap":"BEAUTY TRAP: stunning lightbox gallery, but only title/caption/date/tags — no credit, rights, or accession; unusable for archival provenance."},
+    {"id":"blogfolio_grid","has_all_fields":false,"timeline":false,"iiif":false,"hard_pass":false,"missing":["credit","rights","accession_number","timeline","iiif_large_images"],"trap":"blog grid; fails almost everything"}
+  ],
+
+  "hard_pass_survivors": ["collectionbuilder_archive"],
+  "gold": {
+    "selected_id": "collectionbuilder_archive",
+    "uniqueness": "Only template satisfying all required provenance fields AND timeline AND IIIF. No tie-break needed.",
+    "acceptable_alternative": "omeka_classic_exhibit or wax_minimal_archive ONLY IF the executor explicitly identifies the missing timeline and proposes a concrete way to add it (e.g. Neatline for Omeka) -> up to ~0.85, because they have the full provenance schema",
+    "key_facts": {
+      "photofolio_is_a_beauty_trap": "must NOT be picked; missing credit/rights/accession",
+      "exhibit_timeline_story_is_a_beauty_trap": "has the timeline but missing rights/accession + IIIF",
+      "omeka_wax_near_miss": "full metadata but no timeline — only acceptable with an explicit fix",
+      "optimal": "collectionbuilder_archive"
+    }
+  },
+
+  "scoring_anchors": {
+    "must_select": "collectionbuilder_archive",
+    "must_reject_with_reason": ["photofolio_gallery","exhibit_timeline_story"],
+    "must_identify_near_miss": ["omeka_classic_exhibit","wax_minimal_archive"],
+    "key_required_fields": ["credit","rights","accession_number"],
+    "min_candidates_evaluated": 5,
+    "note": "The discriminator is the archival provenance schema (rights + accession + credit), which the pretty gallery/scrollytelling templates lack, combined with the timeline requirement that the full-metadata templates lack. Only collectionbuilder_archive has all of it. Executors should cite each manifest's item_metadata_fields and features as evidence."
+  }
+}

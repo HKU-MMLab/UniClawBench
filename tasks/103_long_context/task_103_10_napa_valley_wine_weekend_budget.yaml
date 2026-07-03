@@ -1,0 +1,47 @@
+task_id: task_103_10_napa_valley_wine_weekend_budget
+category: 103_long_context
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I want to go to Napa Valley with a friend for a weekend wine-country trip. The dates are: next Friday to the following Monday (a 3-night Friday-to-Monday stay), 2 people, departing from SFO and returning to SFO. Please actually research and create a complete budget and itinerary plan, but do not pay, book hotels, rent a car, book tastings, reserve restaurants, or submit any irreversible order. Save all screenshots and documents to `/tmp_workspace/results/`.
+
+  For lodging, only consider Archer Hotel Napa, Napa River Inn, and Andaz Napa. Search Booking.com and each hotel official website for a stay from next Friday to the following Monday, 2 people, 1 room. Record room type, 3-night total price, whether taxes/fees are included, cancellation policy, rating/address, and screenshots. If a website blocks the query or cannot show a price, screenshot it and honestly explain it in the final plan; do not invent prices.
+
+  For rental cars, only consider SFO pickup and return, pickup at next Friday 10:00 and return at the following Monday 16:00. Search Enterprise and Hertz for Economy, Compact, and Midsize. Record the 2 most suitable results from each platform, including vehicle model/class, total price, tax/fee notes, mileage or restrictions, cancellation/prepay requirements, and screenshots. Do not log in or enter payment information.
+
+  For winery tastings, only consider Domaine Carneros, V. Sattui Winery, Robert Mondavi Winery, Castello di Amorosa, and Frog's Leap. Search tasting or tour availability for 2 people from next Friday to next Sunday, prioritizing feasible time slots between 11:00 and 16:00. For each winery, record tasting name, per-person price, available time, duration, cancellation policy or important restrictions, and screenshots. If you need to enter a booking flow to see times, proceed only as far as no payment/login is required.
+
+  For restaurants, only check FARM at Carneros, Bistro Don Giovanni, Bottega Napa Valley, Angele Restaurant and Bar, and Morimoto Napa, and check whether 2 people can reserve dinner between 18:00 and 20:30 from next Friday to next Sunday. Prefer OpenTable; if OpenTable is unavailable, use the restaurant's official reservation page. Record the best available time, platform, whether a credit card or deposit is required, and a screenshot, but do not complete the reservation.
+
+  Finally generate `/tmp_workspace/results/napa_valley_wine_weekend_plan.md`, including a daily itinerary, a budget table for hotel/rental car/winery tastings/restaurants/parking/gas/activity contingency, and two options: budget-saving and comfortable. Try to keep the comfortable option's total budget within $4,200 / 2 people. The final document must list all screenshot paths used and clearly mark any data that was blocked, missing prices, or unavailable.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/process_evidence/booking_andaz_napa.png
+  - references/process_evidence/booking_archer_napa.png
+  - references/process_evidence/booking_napa_river_inn.png
+  - references/process_evidence/castello_di_amorosa_tasting.png
+  - references/process_evidence/domaine_carneros_tasting.png
+  - references/process_evidence/enterprise_sfo.png
+  - references/process_evidence/frogs_leap_tasting.png
+  - references/process_evidence/hertz_sfo.png
+  - references/process_evidence/official_andaz_napa.png
+  - references/process_evidence/official_angele.png
+  - references/process_evidence/official_archer_napa.png
+  - references/process_evidence/official_morimoto_napa.png
+  - references/process_evidence/official_napa_river_inn.png
+  - references/process_evidence/opentable_bistro_don_giovanni.png
+  - references/process_evidence/opentable_bottega_napa.png
+  - references/process_evidence/opentable_farm_carneros.png
+  - references/process_evidence/robert_mondavi_tasting.png
+  - references/process_evidence/v_sattui_tasting.png
+codex:
+  max_user_followups: 2

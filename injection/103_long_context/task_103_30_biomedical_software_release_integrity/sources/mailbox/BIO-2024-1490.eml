@@ -1,0 +1,29 @@
+Message-ID: <Y8k8QJf7BQFdv2vQ@an3as.eu>
+X-Clawbench-ID: BIO-2024-1490
+Date: Thu, 19 Jan 2023 13:49:04 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>,	Sebastien Jodogne <s.jodogne@gmail.com>
+Subject: Uscan error for orthanc-wsi
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_01_msg00031.html
+
+Hi Sebastien,
+
+I realised that the watch file for orthanc-wsi does not work any more.
+It points to the web page
+
+   https://www.orthanc-server.com/browse.php?path=/whole-slide-imaging
+
+which simply returns
+
+   Unable to create the table:
+
+Could you fix this please?
+
+Kind regards
+    Andreas.
+
+--
+http://fam-tille.de

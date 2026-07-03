@@ -1,0 +1,32 @@
+Message-ID: <20221106141445.h3chob3ct6ycspgz@nileshpatra.info>
+X-Clawbench-ID: BIO-2024-0451
+Date: Sun, 6 Nov 2022 19:44:45 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: Andreas Tille <andreas@fam-tille.de>
+Subject: Re: Build time error in new version of Proteinortho
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_11_msg00025.html
+
+On Sun, Nov 06, 2022 at 03:45:30PM +0530, Nilesh Patra wrote:
+> On Fri, Nov 04, 2022 at 10:23:25PM +0100, Andreas Tille wrote:
+> > Hi,
+> >
+> > I tried to update the Debian package of proteinortho to 6.1.2 but I'm running
+> > into a failure:
+> > [...]
+>
+> This was an issue w/ building in parallel. I have fixed it, but the last test in
+> autopkgtest does not work, which tries to check results with and without lapack.
+>
+> I am thinking about disabling this one and uploading but I am not sure if this is
+> right to do. Can you take a look?
+
+I have opened an issue upstream in a hope that paul sees this soon-ish, since this looks like a regression
+
+	https://gitlab.com/paulklemm_PHD/proteinortho/-/issues/67
+
+--
+Best,
+Nilesh

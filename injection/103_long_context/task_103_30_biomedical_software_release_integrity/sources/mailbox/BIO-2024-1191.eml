@@ -1,0 +1,46 @@
+Message-ID: <20220914125358.iomufp5r5n54whul@nileshpatra.info>
+X-Clawbench-ID: BIO-2024-1191
+Date: Wed, 14 Sep 2022 18:23:58 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: Andreas Tille <andreas@an3as.eu>
+Subject: Re: RM pinfish?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_09_msg00010.html
+
+On Wed, Sep 14, 2022 at 02:07:51PM +0200, Andreas Tille wrote:
+> Am Sun, Sep 04, 2022 at 11:07:12PM +0530 schrieb Nilesh Patra:
+> > I am not a user of the package, nor a bioinformatics guy, hence looking for opinions
+> > if this is useful.
+>
+> In case you are bored to be specified as Uploader
+
+I am partly bored because I have so many packages under my name and I have personal
+interest in only a few.
+But I also strongly belive in removing software that no-one is using. I agree
+that our packages usually have low popcon values, but if some package is _never_
+gonna be used, and is abandoned upstream, I think it is an absolute waste of
+my time to keep maintaining it. Frankly, I'd do something else.
+
+The purpose of this mail is not to only push myself out of equation, but to also
+rm something that isn't useful for anyone in debian as such.
+
+> I'd volunteer to exchange our names and upload.
+
+This is a go package and you have told me several times that you aren't the best
+person to work on golang-related tasks, most recently on -hpc list[3]
+So if going forward a bug is reported against pinfish, you'd probably have to spend
+more time on it that you'd like.
+So I don't think just exchanging names is a very optimal thing to do here.
+
+If I don't hear from Steffen, or no-one raises an objection in the next three weeks, I'll
+proceed to file an RM bug.
+
+> > [1]: https://github.com/nanoporetech/pinfish
+> [2] https://docs.google.com/spreadsheets/d/1tApLhVqxRZ2VOuMH_aPUgFENQJfbLlB_PFH_Ah_q7hM/edit?ts=5eb957ba#gid=543782716
+[3]: https://lists.debian.org/debian-hpc/2022/08/msg00020.html
+
+--
+Best,
+Nilesh

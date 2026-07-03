@@ -1,0 +1,68 @@
+Message-ID: <ZvRhQacGvynT4mIB@emlwks999.eu>
+X-Clawbench-ID: BIO-2024-1258
+Date: Wed, 25 Sep 2024 21:15:13 +0200
+From: Étienne Mollier <emollier@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: GNUmed (-client/-server): new upstream available
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_09_msg00026.html
+
+Hi Karsten,
+
+Karsten Hilbert, on 2024-09-25:
+> > Thanks, it looks like there are no changes too involved.  I saw
+> > in the gnumed packages extensive logic to deal with various
+> > issues and dispatch files in several locations and documentation
+> > packages, but it seems most of the heavy lifting is already
+> > done.
+>
+> It should be. Andreas had been packaging GNUmed for the last
+> ten years or so. Off the top of my head I don't recall
+> changes that would ask for a change in packaging
+> infrastructure, this being a maintenance release.
+>
+> > > 	https://www.gnumed.de/downloads/client/1.8/
+> >
+> > I could get gnumed-client 1.8.19, no problem so far.
+> >
+> > > 	https://www.gnumed.de/downloads/server/v22
+> >
+> > I'm a bit confused by the gnumed-server 22.28 refresh I see on
+> > your web page.  Is the 22.28 source code from January already in
+> > sid sufficient, or are there substancial changes?
+> >
+> > (I'm just checking I'm not assuming wrongly.  With #1082672 and
+> > the changelog only covering gnumed-client, I'd suppose only the
+> > client is needed.  But if not, a server version bump to 22.29
+> > would have been less confusing and would have had a chance to be
+> > caught by our uscan tool.)
+>
+> I should have been more precise.
+>
+> 1) yes, the existing 22.28 gnumed-server package _should_
+>    suffice because there are no semantic changes
+>
+> 2) however, there might be code cleanup in gnumed-common code
+>    which would also "affect" the -server package
+>
+> 3) yes it would have been less ambigous to bump the version
+>
+> Theoretically, only the client is needed.
+>
+> I'll upload 22.29 for good measure ;-)
+>
+> Nevertheless, for the record: any 1.8.19 client will work
+> just fine with a 22.28 database, old or new...
+
+Great, thank you for the clarifications!  I'll focus on the
+client, and gnumed-server 22.29 will be captured by uscan in
+good time when it's out.
+
+Have a nice day,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  pgp: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/1, please excuse my verbosity
+   `-    on air: Hemina - Romancing the Ether

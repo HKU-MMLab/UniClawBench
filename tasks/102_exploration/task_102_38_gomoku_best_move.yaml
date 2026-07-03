@@ -1,0 +1,41 @@
+task_id: task_102_38_gomoku_best_move
+category: 102_exploration
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  This is a single-position Gomoku (Five-in-a-Row) puzzle. Find the single best
+  move for the side to play — not a whole game, just the one optimal move on
+  this board.
+
+  The position is at:
+
+      /tmp_workspace/clawbench/sources/board.txt
+
+  It is a 15x15 board. `X` is Black (the side to move), `O` is White, `.` is an
+  empty point. Rows are 0-14 top to bottom; columns are 0-14 left to right. It
+  is Black's turn. Black wins by making five X in a row (horizontal, vertical,
+  or diagonal).
+
+  Analyze the position and determine Black's globally best move this turn.
+  Report it as a (row, column) coordinate using the 0-indexed convention above,
+  and explain why it is best.
+
+  Save your answer to `/tmp_workspace/results/best_move.json` with fields
+  `row`, `col`, and a short `reasoning`, plus any analysis notes under
+  `/tmp_workspace/results/`.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+sources:
+  - board.txt
+
+codex:
+  max_user_followups: 2

@@ -1,0 +1,22 @@
+Message-ID: <200210060800.g96805K15046@dogma.slashnull.org>
+X-Clawbench-ID: CAM-2003-0418
+Date: Sun, 06 Oct 2002 08:00:05 -0000
+From: diveintomark <rssfeeds@spamassassin.taint.org>
+To: yyyy@spamassassin.taint.org
+Subject: Perl programmers are so cute
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 02307.d9d5e8536e4c12d3571e099f5fec2d07
+
+URL: http://diveintomark.org/archives/2002/10/05.html#perl_programmers_are_so_cute
+Date: 2002-10-05T21:33:22-05:00
+
+_Ian Hickson_: #include web-log.txt[1]. &#8220;I used some of Perl's niftier
+features, such as using method lookup instead of a switch statement for the
+preprocessing instruction dispatching, and exceptions instead of passing error
+codes back and forth.&#8221; He he. Perl programmers are so cute when they
+imitate Python programmers.
+
+
+[1] http://ln.hixie.ch/?start=1033841933&count=1

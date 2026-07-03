@@ -1,0 +1,42 @@
+Message-ID: <trinity-c8038d09-1123-4de7-a436-946102e8e64b-1640537971251@3c-app-gmx-bap22>
+X-Clawbench-ID: BIO-2024-0965
+Date: Sun, 26 Dec 2021 17:59:31 +0100
+From: Karsten Hilbert <Karsten.Hilbert@gmx.net>
+To: Mayuresh <mayuresh@acm.org>
+Subject: Aw: Re: [Karsten.Hilbert@gmx.net: Re: Acquiring Dental RVG on Linux]
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_12_msg00172.html
+
+> Printing a map between raw and transformed pixel values shows that for a
+> given raw pixel value there are multiple transformed values i.e. the
+> transformation is not a function of pixel's value alone. It seems some
+> sort of filtering where the neighboring pixels also influence the
+> resultant value.
+
+Given that insight, and rhkramers assertion that there do
+exist "standard" image transformation algorithms based on
+this aspect (local context dependant), and the fact that
+it is thought to be a virtue of a programmer to be lazy (in
+other words, re-use code) I would try to read up on a list
+of "typical" image transforms using that approach and try
+out a few using a standard library, say, opencv, PIL, ...
+looking at what "comes close".
+
+Again, ramping down the gamma value with imagemagick already
+did go in the right direction for me.
+
+Likely, it is not just one algorithm, but several for different
+aspects (sharpness vs brightness vs grayscale distribution etc).
+
+Maybe it helps to get someone with artistic (?) or (or best: and)
+graphics processing experience to look at both images. A
+seasoned digital photographer is likely to have a good idea
+as to what transforms to apply in their favourite photo
+processing application to make one more like the other.
+
+Finding out exactly what the vendor application does is
+probably very hard without reverse-engineering their code.
+
+Karsten

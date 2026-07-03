@@ -1,0 +1,30 @@
+Message-ID: <udlczdhythe.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-1200
+Date: Wed, 03 Aug 2022 16:14:53 -0400
+From: ucko@debian.org (Aaron M. Ucko)
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Re: igblast accepted - how can it be used to test igdiscover
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_08_msg00012.html
+
+Andreas Tille  writes:
+
+>> --with-vdb=/usr VDB_INCLUDE=-I/usr/include/ncbi-vdb
+>
+> Hmmm, this was running into an error which I tried to fix with
+
+Do you happen to remember what the error was?  It worked for me, albeit
+in a rather non-minimal build environment.
+
+> I've cleared most of the --without options and added --with-openmp with
+> the according Build-Depends.
+
+Thanks!  However, please note that OpenMP is a compiler feature and
+doesn't require any special build dependencies; OpenMPI, meanwhile, is a
+third-party library that doesn't come into play here.
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

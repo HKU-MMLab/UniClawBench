@@ -1,0 +1,29 @@
+Message-ID: <B52C2242-AA94-11D6-8E39-000393A46DEA@alumni.caltech.edu>
+X-Clawbench-ID: CAM-2003-0345
+Date: Wed, 07 Aug 2002 23:04:32 -0700
+From: Rohit Khare <khare@alumni.caltech.edu>
+To: fork@spamassassin.taint.org
+Subject: Perhaps Apple isn't as user-friendly as we thought...
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00976.c475b7528cdb3355527518b6104e6a03
+
+Sounds like the land of UNIX for the PC (Politically Correct) still has
+some ways to go in becoming UNIX for the Rest of Us...
+
+Quoted from Mac OS X man page for sudoers(5):
+>
+>        insults     If set, sudo will insult users when they enter
+>                    an incorrect password.  This flag is off by
+>                    default.
+>
+
+Hey, at least Apple set the default to no-insults! :-)
+
+Rohit
+
+---
+My permanent email address is khare@alumni.caltech.edu
+
+http://xent.com/mailman/listinfo/fork

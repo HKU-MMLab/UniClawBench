@@ -1,0 +1,66 @@
+Message-ID: <641d82b00fb049cb99ccc63c281a268c@wellsfargo.com>
+X-Clawbench-ID: ASF-2024-0369
+Date: Fri, 8 Jul 2022 20:36:21 +0000
+From: "jonmcalexander.wellsfargo.com via dev" <dev@httpd.apache.org>
+To: <dev@httpd.apache.org>
+Subject: RE: mod-proxy with sticky JSESSIONID and SiteMinder.
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-07.mbox
+
+Wilco!
+
+Dream * Excel * Explore * Inspire
+Jon McAlexander
+Senior Infrastructure Engineer
+Asst. Vice President
+He/His
+
+Middleware Product Engineering
+Enterprise CIO | EAS | Middleware | Infrastructure Solutions
+
+8080 Cobblestone Rd | Urbandale, IA 50322
+MAC: F4469-010
+Tel 515-988-2508 | Cell 515-988-2508
+
+jonmcalexander@wellsfargo.com
+This message may contain confidential and/or privileged information. If you are not the addressee or authorized to receive this for the addressee, you must not use, copy, disclose, or take any action based on this message or any information herein. If you have received this message in error, please advise the sender immediately by reply e-mail and delete this message. Thank you for your cooperation.
+
+
+> -----Original Message-----
+> From: Christopher Schultz <chris@christopherschultz.net>
+> Sent: Friday, July 8, 2022 3:35 PM
+> To: dev@httpd.apache.org
+> Subject: Re: mod-proxy with sticky JSESSIONID and SiteMinder.
+>
+> Jon,
+>
+> On 7/8/22 13:52, jonmcalexander.wellsfargo.com via dev wrote:
+> >> Another dumb question: I've been assuming we are talking about:
+> >>
+> >> client (e.g. browser) -> mod_proxy -> Tomcat -> application
+> >
+> > The application on Tomcat does the communicating to SiteMinder with
+> > the credentials from the .fcc siteminder stuff.
+> Then the problem is between the application and SiteMinder, and has
+> nothing to do with either Tomcat or mod_proxy.
+>
+> >> This is because you said "this was working with mod_jk" and mod_jk
+> >> doesn't do forward-proxying, only reverse-proxying.
+>  >
+> > Apparently something with the mod_proxy is working right as the login
+> > page comes up. This is not hosted on the Apache HTTPD.
+> Further corroborating evidence. Your mod_proxy->Tomcat setup is probably
+> working as expected.
+>
+> Since it's likely Java-specific, feel free to move this conversation to
+> users@tomcat, but mark it as [OT] since it's not a problem with Tomcat.
+> I have a thought that you may have configured something in a way that could
+> have affected your SiteMinder configuration, but I won't pollute the
+> dev@http list with it.
+>
+> BTW next time, ask on users@httpd.apache.org. This is the dev list, to discuss
+> development, not get user-help.
+>
+> -chris

@@ -1,0 +1,28 @@
+Message-ID: <20211012034558.GA4010@hjemme.reinholdtsen.name>
+X-Clawbench-ID: BIO-2024-1280
+Date: Tue, 12 Oct 2021 05:45:58 +0200
+From: Petter Reinholdtsen <pere@hungry.com>
+To: Kurt Kremitzki <kurt@kwk.systems>
+Subject: Re: ITP: opencamlib -- C++ library for creating 3D toolpaths for CNC machines
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_10_msg00021.html
+
+[Kurt Kremitzki 2018-08-08]
+> Hello all, I've prepared this package and it's ready for
+> review/sponsorship for any who would like to take a look:
+>
+> https://salsa.debian.org/kkremitzki-guest/opencamlib
+>
+> (By the way, could someone create the science-team/opencamlib repository
+> on salsa?)
+
+Hm, look like no-one took your offer.  Is it too late?
+
+If not, I would be happy to sponsor the upload, see
+http://www.hungry.com/~pere/debian-sponsoring.html > for my
+preferences.
+--
+Happy hacking
+Petter Reinholdtsen

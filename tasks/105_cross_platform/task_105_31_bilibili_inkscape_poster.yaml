@@ -1,0 +1,57 @@
+task_id: task_105_31_bilibili_inkscape_poster
+category: 105_cross_platform
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I want to make a collection poster for 3 favorite Bilibili videos to
+  hang at my desk:
+
+    BV1tt411a7Tt
+    BV1Vt411X7sa
+    BV1ev411s7QU
+
+  The poster should show each video's cover thumbnail, title, UP主
+  (uploader), and duration.
+
+  For data collection, use the browser flow — open each Bilibili video
+  page in chromium and take a screenshot, use curl to fetch the HTML,
+  and use htmlq to extract the title, UP主, cover image URL, and
+  duration. Also download the cover images with curl.
+
+  Use inkscape to create a composite SVG arranging all 3 covers and
+  their info as a single poster, then export a PNG at least 800px wide.
+  All 3 videos in one poster — don't split into 3 files.
+
+  Put artifacts under /tmp_workspace/results/. Save the poster source as
+  poster.svg and the exported PNG as poster.png. Place the 3 cover
+  images in a thumbs/ subdirectory named by BV number; place the 3
+  browser screenshots in a browser_screenshots/ subdirectory, also named
+  by BV number.
+
+  Format each video's duration as "Xm Ys" (e.g. "3m 45s"), and mark the
+  longest video with a label (like ★ or "最长") so it's immediately
+  obvious.
+
+  When done, just tell me which video is the longest.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources: []
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

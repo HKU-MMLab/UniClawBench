@@ -1,0 +1,23 @@
+Message-ID: <1858418335.117064.1689490424873@office.mailbox.org>
+X-Clawbench-ID: BIO-2024-0120
+Date: Sun, 16 Jul 2023 12:23:44 +0530 (IST)
+From: Nilesh Patra <nilesh@mailbox.org>
+To: "debian-med@lists.debian.org" <debian-med@lists.debian.org>
+Subject: What is the point of B-D-I in a package that has no arch:any component?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_07_msg00074.html
+
+Hi,
+
+There has been a recent pre-MBF mail sent[1] to -devel and I saw that is has jaligner mentioned there.
+I see in d/control that it vendors only one arch:all binary package (jaligner), and it has both Build-Depends and Build-Depends-Indep, and I'm confused why that is so?
+
+What exactly is the point of having two separate fields in an arch:all package?
+(Combining these into one would likely fix the bug as well)
+
+[1]: https://lists.debian.org/debian-devel/2023/07/msg00188.html
+
+Best,
+Nilesh

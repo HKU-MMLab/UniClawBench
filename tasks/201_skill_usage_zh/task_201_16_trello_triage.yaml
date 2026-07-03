@@ -1,0 +1,103 @@
+task_id: task_201_16_trello_triage
+category: 201_skill_usage_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我被一堆卡片淹没了，而站会还有一个小时就开始。我的 Trello 看板
+  "Clawbench Triage" 需要做一次正经的分诊——用 Trello 集成技能拉取看板的实时
+  状态，然后用摘要技能把卡片证据整理成一份干净的工单，并为每个排序决策附上一句话的理由。
+
+  请直接调用实时的 Trello REST API：board id 在 $TRELLO_BOARD_ID 中，鉴权用
+  $TRELLO_API_KEY 和 $TRELLO_API_TOKEN。请你自己去抓取看板上的所有 list 和全部
+  卡片——我要你真正看到实时状态，而不是去假设它。在计算截止日期的紧迫程度时，把 API 返回的
+  时间戳／你的当前时间当作"现在"。
+
+  拿到看板后，根据每张卡片所在的 list、距离突破其截止日期或 SLA 承诺有多近、优先级标签、
+  客户影响，以及任何阻塞或依赖说明，把每张卡片标记为 urgent、blocked、done
+  或 routine。请根据截止日期和 SLA 承诺把每张卡片的紧迫程度纳入考量——即将冲破其 SLA 窗口的
+  卡片应当被大幅提到前面。对每张卡片，我想看到：它叫什么、在哪个 list 里、它的截止日期、
+  Trello 的标签／优先级、负责人、如果有的话阻塞或依赖说明、还剩多少 SLA 小时、一个反映截止
+  期限有多紧迫的截止压力分数、你选定的标签，以及一句话的建议下一步行动。
+
+  我要两份各自独立的排序列表，好让我能埋头处理真正的工作，而不至于把它和催别人混在一起：
+  - 我今天真正应该埋头啃完的卡片，按紧迫程度、优先级和客户影响排序。这些必须明确是我自己
+    就能推进的——而不是任何在等别人的事项。
+  - 另一份独立的 unblockers 列表，列出我需要去催、好让它们别一直卡住的卡片。对每一张，也
+    告诉我催办动作：我给谁发邮件、我顶哪个工单、我需要从谁那里拿到什么决定。
+
+  把 /tmp_workspace/results/triage.json 保存为一个对象，包含：
+  - cards：看板上每一张卡片的完整分诊列表。
+  - top_work_order：我今天应当首先处理的可执行卡片，按紧迫程度、优先级和客户影响排序，并为
+    每个排序选择附上一句简短理由。每一条的 bucket 必须是 urgent 或
+    routine——绝不能是 blocked，也绝不能是 done。
+  - unblockers：被阻塞的卡片，按催办优先级排序，并附一个 chase_action 字符串，描述外联计划——
+    我给谁发邮件、我顶哪个工单、我需要什么决定。
+
+task_snapshot: |
+  我被一堆卡片淹没了，而站会还有一个小时就开始。我的 Trello 看板
+  "Clawbench Triage" 需要做一次正经的分诊——用 trello 技能读取看板的
+  状态，然后用 summarize-pro 技能把卡片证据整理成一份干净的工单，并为每个
+  排序决策附上一句话的理由。
+
+  我已经把看板导出到 /tmp_workspace/clawbench/sources/trello_snapshot.json
+  ——请从那里读取。每张卡片都带有 name、idList、due、list_name，
+  并且快照在顶层有一个 generated_at 时间戳。
+  在计算截止日期的紧迫程度时，把那个 generated_at 当作"现在"。
+
+  拿到看板后，根据每张卡片所在的 list、距离突破其截止日期或 SLA 承诺有多近、
+  优先级标签、客户影响，以及任何阻塞或依赖说明，把每张卡片标记为 urgent、blocked、done
+  或 routine。请根据截止日期和 SLA 承诺把每张卡片的紧迫程度纳入考量——即将
+  冲破其 SLA 窗口的卡片应当被大幅提到前面。对每张卡片，我想看到：它叫什么、
+  在哪个 list 里、它的截止日期、Trello 的标签／优先级、负责人、如果有的话
+  阻塞或依赖说明、还剩多少 SLA 小时、一个反映截止期限有多紧迫的截止压力分数、
+  你选定的标签，以及一句话的建议下一步行动。
+
+  我要两份各自独立的排序列表，好让我能埋头处理真正的工作，而不至于把它
+  和催别人混在一起：
+  - 我今天真正应该埋头啃完的卡片，按紧迫程度、优先级和客户影响排序。这些必须
+    明确是我自己就能推进的——而不是任何在等别人的事项。
+  - 另一份独立的 unblockers 列表，列出我需要去催、好让它们别一直卡住的卡片。
+    对每一张，也告诉我催办动作：我给谁发邮件、我顶哪个工单、我需要从谁那里拿到什么决定。
+
+  把 /tmp_workspace/results/triage.json 保存为一个对象，包含：
+  - cards：看板上每一张卡片的完整分诊列表。
+  - top_work_order：我今天应当首先处理的可执行卡片，按紧迫程度、优先级和客户影响排序，
+    并为每个排序选择附上一句简短理由。每一条的 bucket 必须是 urgent 或
+    routine——绝不能是 blocked，也绝不能是 done。
+  - unblockers：被阻塞的卡片，按催办优先级排序，并附一个 chase_action 字符串，
+    描述外联计划——我给谁发邮件、我顶哪个工单、我需要什么决定。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - trello_snapshot.json
+
+skills:
+  - trello
+  - summarize-pro
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+pre_exec:
+  - ops/populate.py
+
+# Populator audit: the bootstrap read ("list cards, short-circuit if 25
+# already present") plus the idempotent create-missing-only path make
+# this populator safe to run under workers>1 behind the populator_lock.
+pre_exec_parallel_safe: true
+
+codex:
+  max_user_followups: 2

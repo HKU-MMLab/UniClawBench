@@ -1,0 +1,57 @@
+task_id: task_203_18_diffusion_video_blog
+category: 203_long_context_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我需要制作一篇关于 Diffusion Models for Video Generation 主题的论文阅读 HTML 博客。
+  请围绕以下主线来组织：
+  1. Why video generation is harder than image generation
+    - 解释把图像生成扩展到视频生成的挑战：时间一致性、运动建模、长程依赖和计算成本。
+
+  2. Diffusion parameterization and sampling
+    - 介绍 video diffusion 的基本建模方法。
+    - 解释 noise / data / velocity prediction 等参数化方式如何影响训练和采样的稳定性。
+
+  3. Architectures for spatiotemporal generation
+    - 解释 3D U-Net、space-time U-Net 等设计如何对空间和时间进行联合建模。
+
+  4. Scaling text-to-video systems
+    - 讨论 Imagen Video 和 Make-A-Video 等大规模 text-to-video 系统。
+    - 重点关注级联生成、文本条件化，以及使用图像/视频数据的策略。
+
+  5. Latent video diffusion
+    - 解释为什么像素空间的 video diffusion 代价高昂。
+    - 讨论 latent video diffusion 如何降低高分辨率视频生成的成本。
+
+  6. Adapting image diffusion models to video
+    - 讨论 Tune-A-Video 和 Text2Video-Zero 等把图像 diffusion 模型迁移到视频的方法。
+
+  7. Practical synthesis
+    - 总结 video diffusion 的关键：稳定的参数化、时空架构、隐空间表示，以及图像到视频的适配。
+
+  候选论文都在 `/tmp_workspace/clawbench/sources/papers/` 中，我把文件重命名成了没有语义的数字，所以不要从文件名猜测。阅读这些论文，并为每一节（包括开篇的问题引言）选出应当讨论的论文。
+
+  让博客图文并茂。你可以从论文中截取图/表，但截图必须完整、清晰、与内容相符，且细节足够清楚到能读出文字和细节。公式可以写成截图或 LaTeX。使用已准备好的 `/tmp_workspace/clawbench/sources/assets/`，其中包含页面模板所需的 CSS、JavaScript 和 MathJax 公式渲染依赖。
+
+  将最终博客保存到 `/tmp_workspace/results/diffusion_video_blog/`；它应包含 HTML 文件和对应的 assets。把 HTML 引用的图片放到 `/tmp_workspace/clawbench/results/assets/images`，并为博客中的每一张图注明来源论文。
+
+  同时保存 `/tmp_workspace/results/selection_note.md`，说明每一节为什么选择了这些论文。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/diffusion_video_blog/
+  - references/paper_mapping.json
+sources:
+  - papers/
+  - assets/
+
+codex:
+  max_user_followups: 2

@@ -1,0 +1,33 @@
+Message-ID: <769c7b93-487c-c21b-144c-b575ec9a697b@kippdata.de>
+X-Clawbench-ID: ASF-2024-1250
+Date: Thu, 9 Mar 2023 11:22:32 +0100
+From: Rainer Jung <rainer.jung@kippdata.de>
+To: dev@httpd.apache.org
+Subject: Re: Current pytest failures
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-03.mbox
+
+Puzzle partially solved: once I add "--header 'content-type:
+application/x-www-form-urlencoded'" to the nghttp call, the problem
+seems fixed - with and without deflate. No more hang, no more status
+500, no double requests. I still don't know, which side is influenced,
+nghttp or http, so I am still not sure, whether the odd behavior without
+the header is a bug.
+
+Am 09.03.23 um 11:03 schrieb Rainer Jung:
+> OK, I can test in a standalone situation now.
+>
+> The problem goes away, once I use curl, even with h2.
+>
+> The problem also goes away, once I disable deflate compression for the
+> response. But curl and nghttp behave different: nghttp hangs after
+> receiving the response body (no deflate), curl normally terminates.
+> nghttp does not hang if I call some normal production site.
+>
+> Will investigate further.
+>
+> Thanks and regards,
+>
+> Rainer

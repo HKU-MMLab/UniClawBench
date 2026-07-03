@@ -1,0 +1,122 @@
+Message-ID: <CALF6qJnQ+DPaeELWZG+t6w385+q0qCvtY50ws4U34WXPXiU+bQ@mail.gmail.com>
+X-Clawbench-ID: BIO-2024-0559
+Date: Fri, 28 Jan 2022 19:12:23 +0100
+From: Anton Gladky <gladk@debian.org>
+To: Markus Blatt <markus@dr-blatt.de>, 	Debian Science List <debian-science@lists.debian.org>
+Subject: Re: RFS: opm-common/2021.10-3 [QA] -- Tools for Eclipse reservoir simulation files
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2022_01_msg00030.html
+
+Uploaded as well.
+
+I had almost no questions about your technical packaging level. I would
+encourage you to apply to a DM-role, if you are interested. I will
+definitely advocate your application and then give you permissions
+to upload opm-stuff if you apply.
+
+Cheers
+
+Anton
+
+Am Fr., 28. Jan. 2022 um 09:17 Uhr schrieb Markus Blatt :
+>
+> Hi Anton,
+>
+> thanks a lot for the work. Highly appreciated.
+>
+> Did you also upload opm-upscaling to NEW?
+>
+> opm-upscaling/2021.10-1  https://salsa.debian.org/science-team/opm-upscaling
+>
+> Did not receibve any notification and can't see. Maybe it just needs more
+> time for processing?
+>
+> Markus
+>
+> Am Thu, Jan 27, 2022 at 07:14:45PM +0100 schrieb Anton Gladky:
+> >Hi Markus,
+> >
+> >done!
+> >
+> >Best regards
+> >
+> >Anton
+> >
+> >Am Mi., 26. Jan. 2022 um 14:44 Uhr schrieb Markus Blatt :
+> >>
+> >> Hi,
+> >> Am Wed, Jan 26, 2022 at 07:26:09AM +0100 schrieb Anton Gladky:
+> >> >
+> >> >I will upload it in the evening. Please prepare all other involved
+> >> >packages if any. Thanks. Regards
+> >> >
+> >>
+> >> cool. Thanks in advance.
+> >>
+> >> Source uploads needed for migration to testing:
+> >> - opm-common/2021.10-3 https://salsa.debian.org/science-team/opm-common
+> >> - opm-material/2021.10-2 https://salsa.debian.org/science-team/opm-material
+> >> - opm-models/2021.10-2  https://salsa.debian.org/science-team/opm-models
+> >>
+> >>
+> >> These are the ones that were rejected by ftpmaster and copyright should be fixed now.
+> >> Please upload to new
+> >> - opm-grid/2021.10-1  https://salsa.debian.org/science-team/opm-grid
+> >> - opm-simulators/2021.10-1  https://salsa.debian.org/science-team/opm-simulators
+> >> - opm-upscaling/2021.10-1  https://salsa.debian.org/science-team/opm-upscaling
+> >>
+> >> Cheers,
+> >>
+> >> Markus
+> >>
+> >>
+> >> >
+> >> >Am Di., 25. Jan. 2022 um 00:00 Uhr schrieb Markus Blatt :
+> >> >>
+> >> >> Hi,
+> >> >>
+> >> >> I am looking for a sponsor for my package "opm-common" to do a source upload:
+> >> >>
+> >> >>   * Package name    : opm-common
+> >> >>     Version         : 2021.10-3
+> >> >>     Upstream Author : opm@opm-project.org
+> >> >>   * URL             : http://opm-project.org
+> >> >>   * License         : GPL-2.0+, GPL-3.0+, ODBL-1.0 and DBCL-1.0
+> >> >>   * Vcs             : https://salsa.debian.org/science-team/opm-common
+> >> >>     Section         : libs
+> >> >>
+> >> >> The package was still not good enough.
+> >> >> We had limited the architectures in d/control to 64bit, but not in d/tests/control and
+> >> >> that would have prevented the source package from migrating to testing as the autopkgtests
+> >> >> for 32bit would still be executed and fail due to missing binary packages.
+> >> >>
+> >> >> After a fruitful discussions on the mentors list, see
+> >> >> https://lists.debian.org/debian-mentors/2022/01/msg00185.html, I have now
+> >> >>
+> >> >> - used "Architecture: any" in d/control to let buildd try to build all (32bit builds will fail due to failing ctest)
+> >> >> - limited to 64bit architectures in d/tests/control to prevent failing autopkgtest
+> >> >>
+> >> >> I hope that this will allow for migration to testing.
+> >> >>
+> >> >> Thanks a lot.
+> >> >>
+> >> >> Cheers,
+> >> >>
+> >> >> Markus
+> >> >>
+> >> >
+> >>
+> >> --
+> >>
+> >> Dr. Markus Blatt - HPC-Simulation-Software & Services http://www.dr-blatt.de
+> >> Pedettistr. 38, 85072 Eichstätt, Germany,  USt-Id: DE279960836
+> >> Tel.: +49 (0) 160 97590858
+> >
+>
+> --
+>
+> Dr. Markus Blatt - HPC-Simulation-Software & Services http://www.dr-blatt.de
+> Pedettistr. 38, 85072 Eichstätt, Germany,  USt-Id: DE279960836
+> Tel.: +49 (0) 160 97590858

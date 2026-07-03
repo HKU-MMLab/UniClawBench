@@ -1,0 +1,1256 @@
+{
+  "generated_at": "2026-04-24T14:10:11Z",
+  "channel": "#general",
+  "messages": [
+    {
+      "ts": "1776746608.990609",
+      "user": "U01ALICE",
+      "channel": "C0AUL4C5F41",
+      "text": "any update on whether we're cutting v2.3 this Thursday?"
+    },
+    {
+      "ts": "1776746608.079339",
+      "user": "U02BOB",
+      "channel": "C0AUL4C5F41",
+      "text": "heads up — we're missing the onboarding copy refresh in v2.3"
+    },
+    {
+      "ts": "1776746607.063109",
+      "user": "U03CAROL",
+      "channel": "C0AUL4C5F41",
+      "text": "FYI Globex opened escalation #8821 — latency regression on /api/v2/search, p95 jumped from 180ms to 720ms after Friday's deploy"
+    },
+    {
+      "ts": "1776746606.147209",
+      "user": "U04DAVE",
+      "channel": "C0AUL4C5F41",
+      "text": "Reminder: planning offsite is May 18-20 in Tahoe, travel forms due 2026-04-28"
+    },
+    {
+      "ts": "1776746605.208969",
+      "user": "U05ERIN",
+      "channel": "C0AUL4C5F41",
+      "text": "The build is red again on main, looks like the flaky auth test"
+    },
+    {
+      "ts": "1776746604.266089",
+      "user": "U01ALICE",
+      "channel": "C0AUL4C5F41",
+      "text": "lunch at the new ramen place at 12:30, who's in?"
+    },
+    {
+      "ts": "1776746603.999000",
+      "user": "U03CAROL",
+      "channel": "C0AUL4C5F41",
+      "text": "kicking off the Q3 budget planning thread — finance handed us a target of $1.85M total opex for Q3, which is a 6% lift over Q2's $1.745M. let's land allocations by 2026-06-15. (msg 1/8)"
+    },
+    {
+      "ts": "1776746603.240469",
+      "user": "U02BOB",
+      "channel": "C0AUL4C5F41",
+      "text": "@carol finance needs Q3 budget numbers by 2026-04-30"
+    },
+    {
+      "ts": "1776746604.000000",
+      "user": "U04DAVE",
+      "channel": "C0AUL4C5F41",
+      "text": "re: Q3 budget — quoting Carol's $1.85M target above, infra is asking for $620K (datadog renewal $145K + new clickhouse cluster $230K + AWS reserved instances $245K). that's already 33.5% of the envelope, fyi. (msg 2/8)",
+      "thread_ts": "1776746603.999000",
+      "reply_to_ts": "1776746603.999000"
+    },
+    {
+      "ts": "1776746602.203989",
+      "user": "U03CAROL",
+      "channel": "C0AUL4C5F41",
+      "text": "Quick Q about the API retry semantics — do we retry 5xx on POST?"
+    },
+    {
+      "ts": "1776746601.354199",
+      "user": "U04DAVE",
+      "channel": "C0AUL4C5F41",
+      "text": "thx"
+    },
+    {
+      "ts": "1776746601.293659",
+      "user": "U05ERIN",
+      "channel": "C0AUL4C5F41",
+      "text": "testing in staging is green since Monday, I think we're clear unless @dave finds something"
+    },
+    {
+      "ts": "1776746605.000000",
+      "user": "U02BOB",
+      "channel": "C0AUL4C5F41",
+      "text": "re Dave's $620K infra ask — that's tight. headcount needs $980K for the 4 open reqs (2 SWE @ $185K base + 1 SRE @ $210K + 1 PM @ $200K, plus ~15% loaded benefits). leaves only $250K for everything else. (msg 3/8)",
+      "thread_ts": "1776746603.999000",
+      "reply_to_ts": "1776746602.882000"
+    },
+    {
+      "ts": "1776746600.445429",
+      "user": "U01ALICE",
+      "channel": "C0AUL4C5F41",
+      "text": ":white_check_mark:"
+    },
+    {
+      "ts": "1776746600.348509",
+      "user": "U02BOB",
+      "channel": "C0AUL4C5F41",
+      "text": "@dave can you take point on that? you own the flow"
+    },
+    {
+      "ts": "1776746606.000000",
+      "user": "U01ALICE",
+      "channel": "C0AUL4C5F41",
+      "text": "Bob's $250K residual won't cover marketing+ops+travel. last year's remaining bucket was $310K and we ended Q2 over by 4%. proposing we defer 1 SWE hire to Q4 to free $53K. (msg 4/8)",
+      "thread_ts": "1776746603.999000",
+      "reply_to_ts": "1776746600.831000"
+    },
+    {
+      "ts": "1776746599.514629",
+      "user": "U03CAROL",
+      "channel": "C0AUL4C5F41",
+      "text": ":+1:"
+    },
+    {
+      "ts": "1776746599.423509",
+      "user": "U04DAVE",
+      "channel": "C0AUL4C5F41",
+      "text": "that's the same thing CS was asking about earlier?"
+    },
+    {
+      "ts": "1776746598.576119",
+      "user": "U05ERIN",
+      "channel": "C0AUL4C5F41",
+      "text": "queued for tomorrow"
+    },
+    {
+      "ts": "1776746598.512599",
+      "user": "U01ALICE",
+      "channel": "C0AUL4C5F41",
+      "text": "do we have the venue confirmed?"
+    },
+    {
+      "ts": "1776746597.663119",
+      "user": "U02BOB",
+      "channel": "C0AUL4C5F41",
+      "text": "ack"
+    },
+    {
+      "ts": "1776746597.575719",
+      "user": "U03CAROL",
+      "channel": "C0AUL4C5F41",
+      "text": "I'll look — this is the third time this week"
+    },
+    {
+      "ts": "1776746596.751579",
+      "user": "U04DAVE",
+      "channel": "C0AUL4C5F41",
+      "text": "will follow up tomorrow"
+    },
+    {
+      "ts": "1776746596.614759",
+      "user": "U05ERIN",
+      "channel": "C0AUL4C5F41",
+      "text": "in"
+    },
+    {
+      "ts": "1776746607.000000",
+      "user": "U05ERIN",
+      "channel": "C0AUL4C5F41",
+      "text": "re Alice's deferral idea — ops can also trim $40K by switching to annual contracts on three SaaS tools (Notion, Linear, PagerDuty). that gives $93K of headroom on top of the SWE deferral. (msg 5/8)",
+      "thread_ts": "1776746603.999000",
+      "reply_to_ts": "1776746599.651000"
+    },
+    {
+      "ts": "1776746595.820489",
+      "user": "U01ALICE",
+      "channel": "C0AUL4C5F41",
+      "text": "noted, logged in the doc"
+    },
+    {
+      "ts": "1776746595.042329",
+      "user": "U02BOB",
+      "channel": "C0AUL4C5F41",
+      "text": "already on it, working with Priya to reconcile the vendor contracts first"
+    },
+    {
+      "ts": "1776746594.911269",
+      "user": "U03CAROL",
+      "channel": "C0AUL4C5F41",
+      "text": "fair point"
+    },
+    {
+      "ts": "1776746594.018119",
+      "user": "U04DAVE",
+      "channel": "C0AUL4C5F41",
+      "text": "no, only on idempotent verbs. POST never retries unless the request carries an Idempotency-Key header"
+    },
+    {
+      "ts": "1776746593.994849",
+      "user": "U05ERIN",
+      "channel": "C0AUL4C5F41",
+      "text": "done"
+    },
+    {
+      "ts": "1776746593.103229",
+      "user": "U01ALICE",
+      "channel": "C0AUL4C5F41",
+      "text": "I want to hold on the webhook-dispatcher fix for one more day; saw a weird retry pattern last night"
+    },
+    {
+      "ts": "1776746593.029099",
+      "user": "U02BOB",
+      "channel": "C0AUL4C5F41",
+      "text": "brb coffee"
+    },
+    {
+      "ts": "1776746608.000000",
+      "user": "U03CAROL",
+      "channel": "C0AUL4C5F41",
+      "text": "great signals from Erin. one risk: the clickhouse migration consulting engagement isn't in the $620K — that's another $75K SOW with Acme. we either fold it in or carry it as a Q3 contingency. (msg 6/8)",
+      "thread_ts": "1776746603.999000",
+      "reply_to_ts": "1776746596.318000"
+    },
+    {
+      "ts": "1776746592.202239",
+      "user": "U03CAROL",
+      "channel": "C0AUL4C5F41",
+      "text": "yeah, I'll own the onboarding copy rewrite. aiming to ship by Friday 2026-04-24"
+    },
+    {
+      "ts": "1776746592.114229",
+      "user": "U04DAVE",
+      "channel": "C0AUL4C5F41",
+      "text": "back"
+    },
+    {
+      "ts": "1776746591.259899",
+      "user": "U05ERIN",
+      "channel": "C0AUL4C5F41",
+      "text": "yeah, started after Friday's deploy"
+    },
+    {
+      "ts": "1776746591.202109",
+      "user": "U01ALICE",
+      "channel": "C0AUL4C5F41",
+      "text": "2 min late to standup"
+    },
+    {
+      "ts": "1776746609.000000",
+      "user": "U02BOB",
+      "channel": "C0AUL4C5F41",
+      "text": "putting Carol's $75K Acme SOW in the contingency line, not the main allocation. CFO call tomorrow at 11am PT to walk through. final numbers I'll send: infra $620K, headcount $927K (deferring 1 SWE saves $53K), ops $210K, contingency $93K. totals $1.85M exact. (msg 7/8)",
+      "thread_ts": "1776746603.999000",
+      "reply_to_ts": "1776746592.717000"
+    },
+    {
+      "ts": "1776746590.351629",
+      "user": "U02BOB",
+      "channel": "C0AUL4C5F41",
+      "text": "yes — Squaw Valley Lodge, 2 meeting rooms booked"
+    },
+    {
+      "ts": "1776746590.285739",
+      "user": "U03CAROL",
+      "channel": "C0AUL4C5F41",
+      "text": "on a call, will ping when free"
+    },
+    {
+      "ts": "1776746589.413899",
+      "user": "U04DAVE",
+      "channel": "C0AUL4C5F41",
+      "text": "it's the tz-sensitive test, gets flaky when CI runner is in a non-UTC zone"
+    },
+    {
+      "ts": "1776746589.377739",
+      "user": "U05ERIN",
+      "channel": "C0AUL4C5F41",
+      "text": "lgtm"
+    },
+    {
+      "ts": "1776746610.000000",
+      "user": "U03CAROL",
+      "channel": "C0AUL4C5F41",
+      "text": "decision: Q3 budget locked at $1.85M with Bob's split (infra $620K / headcount $927K / ops $210K / contingency $93K). 1 SWE req deferred to Q4. submitting to finance by 2026-04-30 deadline. closing the thread. (msg 8/8 — FINAL)",
+      "thread_ts": "1776746603.999000",
+      "reply_to_ts": "1776746590.892000"
+    },
+    {
+      "ts": "1776746588.496099",
+      "user": "U01ALICE",
+      "channel": "C0AUL4C5F41",
+      "text": "can't, lunch meeting, save me some takoyaki"
+    },
+    {
+      "ts": "1776746588.433649",
+      "user": "U02BOB",
+      "channel": "C0AUL4C5F41",
+      "text": "reviewing now"
+    },
+    {
+      "ts": "1776746587.573979",
+      "user": "U03CAROL",
+      "channel": "C0AUL4C5F41",
+      "text": "thanks, lmk if you need air cover"
+    },
+    {
+      "ts": "1776746587.523099",
+      "user": "U04DAVE",
+      "channel": "C0AUL4C5F41",
+      "text": "thx"
+    },
+    {
+      "ts": "1776746586.605149",
+      "user": "U05ERIN",
+      "channel": "C0AUL4C5F41",
+      "text": "got it, thanks — the billing flow needs the key added then"
+    },
+    {
+      "ts": "1776746586.602579",
+      "user": "U01ALICE",
+      "channel": "C0AUL4C5F41",
+      "text": ":white_check_mark:"
+    },
+    {
+      "ts": "1776746585.688749",
+      "user": "U02BOB",
+      "channel": "C0AUL4C5F41",
+      "text": "can we bake in the null-tenant fix too? Priya merged it this morning"
+    },
+    {
+      "ts": "1776746585.582719",
+      "user": "U03CAROL",
+      "channel": "C0AUL4C5F41",
+      "text": ":+1:"
+    },
+    {
+      "ts": "1776746584.658859",
+      "user": "U04DAVE",
+      "channel": "C0AUL4C5F41",
+      "text": "queued for tomorrow"
+    },
+    {
+      "ts": "1776746584.567669",
+      "user": "U05ERIN",
+      "channel": "C0AUL4C5F41",
+      "text": "thanks @dave — mocks are linked in #product-design"
+    },
+    {
+      "ts": "1776746583.628429",
+      "user": "U01ALICE",
+      "channel": "C0AUL4C5F41",
+      "text": "anyone have bandwidth for the Globex review today? they want a 30-min sync"
+    },
+    {
+      "ts": "1776746583.571569",
+      "user": "U02BOB",
+      "channel": "C0AUL4C5F41",
+      "text": "ack"
+    },
+    {
+      "ts": "1776746582.715289",
+      "user": "U03CAROL",
+      "channel": "C0AUL4C5F41",
+      "text": "agenda is in the shared doc, feel free to add topics"
+    },
+    {
+      "ts": "1776746582.639319",
+      "user": "U04DAVE",
+      "channel": "C0AUL4C5F41",
+      "text": "will follow up tomorrow"
+    },
+    {
+      "ts": "1776746581.792009",
+      "user": "U05ERIN",
+      "channel": "C0AUL4C5F41",
+      "text": "can we just pin the test to UTC?"
+    },
+    {
+      "ts": "1776746581.619369",
+      "user": "U01ALICE",
+      "channel": "C0AUL4C5F41",
+      "text": "noted, logged in the doc"
+    },
+    {
+      "ts": "1776746580.898289",
+      "user": "U02BOB",
+      "channel": "C0AUL4C5F41",
+      "text": "also in, will meet you there"
+    },
+    {
+      "ts": "1776746580.689699",
+      "user": "U03CAROL",
+      "channel": "C0AUL4C5F41",
+      "text": "fair point"
+    },
+    {
+      "ts": "1776746579.983909",
+      "user": "U04DAVE",
+      "channel": "C0AUL4C5F41",
+      "text": "budget draft sent to @bob, would love one pass before I send to finance"
+    },
+    {
+      "ts": "1776746579.776789",
+      "user": "U05ERIN",
+      "channel": "C0AUL4C5F41",
+      "text": "done"
+    },
+    {
+      "ts": "1776746578.859259",
+      "user": "U01ALICE",
+      "channel": "C0AUL4C5F41",
+      "text": "yeah, that's the ticket from last week — #4088"
+    },
+    {
+      "ts": "1776746578.835789",
+      "user": "U02BOB",
+      "channel": "C0AUL4C5F41",
+      "text": "brb coffee"
+    },
+    {
+      "ts": "1776746577.926519",
+      "user": "U03CAROL",
+      "channel": "C0AUL4C5F41",
+      "text": "agreed, let's bundle it. updating the release ticket"
+    },
+    {
+      "ts": "1776746577.921669",
+      "user": "U04DAVE",
+      "channel": "C0AUL4C5F41",
+      "text": "back"
+    },
+    {
+      "ts": "1776746576.990059",
+      "user": "U05ERIN",
+      "channel": "C0AUL4C5F41",
+      "text": "2 min late to standup"
+    },
+    {
+      "ts": "1776746576.987519",
+      "user": "U01ALICE",
+      "channel": "C0AUL4C5F41",
+      "text": "would love to review before it ships, I caught a couple of tone issues last round"
+    },
+    {
+      "ts": "1776746576.020659",
+      "user": "U02BOB",
+      "channel": "C0AUL4C5F41",
+      "text": "on a call, will ping when free"
+    },
+    {
+      "ts": "1776746575.973129",
+      "user": "U03CAROL",
+      "channel": "C0AUL4C5F41",
+      "text": "I can take it if it's before 3pm"
+    },
+    {
+      "ts": "1776746575.099579",
+      "user": "U04DAVE",
+      "channel": "C0AUL4C5F41",
+      "text": "lgtm"
+    },
+    {
+      "ts": "1776746575.009879",
+      "user": "U05ERIN",
+      "channel": "C0AUL4C5F41",
+      "text": "can we carve out time for the architecture review? we keep pushing it"
+    },
+    {
+      "ts": "1776746574.161399",
+      "user": "U01ALICE",
+      "channel": "C0AUL4C5F41",
+      "text": "reviewing now"
+    },
+    {
+      "ts": "1776746573.997679",
+      "user": "U02BOB",
+      "channel": "C0AUL4C5F41",
+      "text": "yeah, PR incoming"
+    },
+    {
+      "ts": "1776746573.213259",
+      "user": "U03CAROL",
+      "channel": "C0AUL4C5F41",
+      "text": "thx"
+    },
+    {
+      "ts": "1776746572.986859",
+      "user": "U04DAVE",
+      "channel": "C0AUL4C5F41",
+      "text": "sorry team, skipping — back-to-back calls"
+    },
+    {
+      "ts": "1776746572.276449",
+      "user": "U05ERIN",
+      "channel": "C0AUL4C5F41",
+      "text": ":white_check_mark:"
+    },
+    {
+      "ts": "1776746572.025929",
+      "user": "U01ALICE",
+      "channel": "C0AUL4C5F41",
+      "text": "looked good, one Q on the infra line — bumped by 14%?"
+    },
+    {
+      "ts": "1776746571.366859",
+      "user": "U02BOB",
+      "channel": "C0AUL4C5F41",
+      "text": ":+1:"
+    },
+    {
+      "ts": "1776746571.106469",
+      "user": "U03CAROL",
+      "channel": "C0AUL4C5F41",
+      "text": "opened PR #4133 to add Idempotency-Key to billing POST"
+    },
+    {
+      "ts": "1776746570.438049",
+      "user": "U04DAVE",
+      "channel": "C0AUL4C5F41",
+      "text": "queued for tomorrow"
+    },
+    {
+      "ts": "1776746570.191699",
+      "user": "U05ERIN",
+      "channel": "C0AUL4C5F41",
+      "text": "release notes draft is in Notion, ping me if something's missing"
+    },
+    {
+      "ts": "1776746569.519299",
+      "user": "U01ALICE",
+      "channel": "C0AUL4C5F41",
+      "text": "ack"
+    },
+    {
+      "ts": "1776746569.242679",
+      "user": "U02BOB",
+      "channel": "C0AUL4C5F41",
+      "text": "will send you a draft Wednesday"
+    },
+    {
+      "ts": "1776746568.533679",
+      "user": "U03CAROL",
+      "channel": "C0AUL4C5F41",
+      "text": "will follow up tomorrow"
+    },
+    {
+      "ts": "1776746568.319529",
+      "user": "U04DAVE",
+      "channel": "C0AUL4C5F41",
+      "text": "thanks dave, scheduled for 1:30"
+    },
+    {
+      "ts": "1776746567.540799",
+      "user": "U05ERIN",
+      "channel": "C0AUL4C5F41",
+      "text": "noted, logged in the doc"
+    },
+    {
+      "ts": "1776746567.348869",
+      "user": "U01ALICE",
+      "channel": "C0AUL4C5F41",
+      "text": "added a 2-hour block on day 2"
+    },
+    {
+      "ts": "1776746566.405959",
+      "user": "U02BOB",
+      "channel": "C0AUL4C5F41",
+      "text": "fair point"
+    },
+    {
+      "ts": "1776746566.385329",
+      "user": "U03CAROL",
+      "channel": "C0AUL4C5F41",
+      "text": "#4129 up, pins the auth test to UTC"
+    },
+    {
+      "ts": "1776746565.459689",
+      "user": "U04DAVE",
+      "channel": "C0AUL4C5F41",
+      "text": "done"
+    },
+    {
+      "ts": "1776746565.380229",
+      "user": "U05ERIN",
+      "channel": "C0AUL4C5F41",
+      "text": "ramen was :fire:, dave crushed two bowls"
+    },
+    {
+      "ts": "1776746564.528039",
+      "user": "U01ALICE",
+      "channel": "C0AUL4C5F41",
+      "text": "brb coffee"
+    },
+    {
+      "ts": "1776746564.464879",
+      "user": "U02BOB",
+      "channel": "C0AUL4C5F41",
+      "text": "yeah, it's the datadog renewal plus the new clickhouse cluster"
+    },
+    {
+      "ts": "1776746561.980089",
+      "user": "U03CAROL",
+      "channel": "C0AUL4C5F41",
+      "text": "back"
+    },
+    {
+      "ts": "1776746561.264589",
+      "user": "U04DAVE",
+      "channel": "C0AUL4C5F41",
+      "text": "LGTM, one nit on the error message"
+    },
+    {
+      "ts": "1776746561.023309",
+      "user": "U05ERIN",
+      "channel": "C0AUL4C5F41",
+      "text": "2 min late to standup"
+    },
+    {
+      "ts": "1776746560.344979",
+      "user": "U01ALICE",
+      "channel": "C0AUL4C5F41",
+      "text": "customer success has been asking about CSV export — is that in 2.3 or slipping to 2.4?"
+    },
+    {
+      "ts": "1776746559.383399",
+      "user": "U02BOB",
+      "channel": "C0AUL4C5F41",
+      "text": "draft is in the Notion doc, open for comments"
+    },
+    {
+      "ts": "1776746559.215789",
+      "user": "U03CAROL",
+      "channel": "C0AUL4C5F41",
+      "text": "on a call, will ping when free"
+    },
+    {
+      "ts": "1776746558.450799",
+      "user": "U04DAVE",
+      "channel": "C0AUL4C5F41",
+      "text": "globex call done — root cause is the new query plan on invoices_search, we're going to add a partial index"
+    },
+    {
+      "ts": "1776746558.219689",
+      "user": "U05ERIN",
+      "channel": "C0AUL4C5F41",
+      "text": "lgtm"
+    },
+    {
+      "ts": "1776746557.530609",
+      "user": "U01ALICE",
+      "channel": "C0AUL4C5F41",
+      "text": "dietary restrictions — please fill out the form by 2026-04-25 so catering has time"
+    },
+    {
+      "ts": "1776746556.541359",
+      "user": "U02BOB",
+      "channel": "C0AUL4C5F41",
+      "text": "merged, let's see if tomorrow's runs are clean"
+    },
+    {
+      "ts": "1776746555.598949",
+      "user": "U03CAROL",
+      "channel": "C0AUL4C5F41",
+      "text": "worth it"
+    },
+    {
+      "ts": "1776746554.666249",
+      "user": "U04DAVE",
+      "channel": "C0AUL4C5F41",
+      "text": "ok, LGTM, send it"
+    },
+    {
+      "ts": "1776746553.736599",
+      "user": "U05ERIN",
+      "channel": "C0AUL4C5F41",
+      "text": "nit addressed, merged"
+    },
+    {
+      "ts": "1776746552.805329",
+      "user": "U01ALICE",
+      "channel": "C0AUL4C5F41",
+      "text": "slipping to 2.4 unless you want to de-scope the OIDC work"
+    },
+    {
+      "ts": "1776746551.904749",
+      "user": "U02BOB",
+      "channel": "C0AUL4C5F41",
+      "text": "left ~15 comments, mostly nits + two real blockers around the first-run flow"
+    },
+    {
+      "ts": "1776746550.979339",
+      "user": "U03CAROL",
+      "channel": "C0AUL4C5F41",
+      "text": "@priya can you own the index PR? I'll handle customer comms"
+    },
+    {
+      "ts": "1776746550.009819",
+      "user": "U04DAVE",
+      "channel": "C0AUL4C5F41",
+      "text": "form filled"
+    },
+    {
+      "ts": "1776746549.106469",
+      "user": "U05ERIN",
+      "channel": "C0AUL4C5F41",
+      "text": "builds green all day — looks fixed"
+    },
+    {
+      "ts": "1776746548.190529",
+      "user": "U01ALICE",
+      "channel": "C0AUL4C5F41",
+      "text": "reminder that Friday is Priya's last day — cake at 3pm in the main kitchen"
+    },
+    {
+      "ts": "1776746547.213039",
+      "user": "U02BOB",
+      "channel": "C0AUL4C5F41",
+      "text": "submitted to finance"
+    },
+    {
+      "ts": "1776746546.278819",
+      "user": "U03CAROL",
+      "channel": "C0AUL4C5F41",
+      "text": "ok, green on webhook fix after one more night of soak"
+    },
+    {
+      "ts": "1776746545.367639",
+      "user": "U04DAVE",
+      "channel": "C0AUL4C5F41",
+      "text": "addressed, second pass please when you have 10 min"
+    },
+    {
+      "ts": "1776746544.419399",
+      "user": "U05ERIN",
+      "channel": "C0AUL4C5F41",
+      "text": "+1, nice turnaround"
+    },
+    {
+      "ts": "1776746543.448019",
+      "user": "U01ALICE",
+      "channel": "C0AUL4C5F41",
+      "text": "I won't make it — conflict with my kid's recital. will join remote for the arch review"
+    },
+    {
+      "ts": "1776746542.507789",
+      "user": "U02BOB",
+      "channel": "C0AUL4C5F41",
+      "text": "whose turn for cake this week?"
+    },
+    {
+      "ts": "1776746541.588779",
+      "user": "U03CAROL",
+      "channel": "C0AUL4C5F41",
+      "text": "cutting release branch tomorrow morning then, please get any last PRs in by EOD 2026-04-21"
+    },
+    {
+      "ts": "1776746540.676379",
+      "user": "U04DAVE",
+      "channel": "C0AUL4C5F41",
+      "text": "LGTM"
+    },
+    {
+      "ts": "1776746539.731729",
+      "user": "U05ERIN",
+      "channel": "C0AUL4C5F41",
+      "text": "index PR up: #4131 — please review"
+    },
+    {
+      "ts": "1776746538.745989",
+      "user": "U01ALICE",
+      "channel": "C0AUL4C5F41",
+      "text": "noted, we'll set up a dial-in for day 2"
+    },
+    {
+      "ts": "1776746537.816679",
+      "user": "U02BOB",
+      "channel": "C0AUL4C5F41",
+      "text": "I've got it, picking up from that place on 5th"
+    },
+    {
+      "ts": "1776746536.904309",
+      "user": "U03CAROL",
+      "channel": "C0AUL4C5F41",
+      "text": "roger, I'll pin it in #eng-announce"
+    },
+    {
+      "ts": "1776746535.989519",
+      "user": "U04DAVE",
+      "channel": "C0AUL4C5F41",
+      "text": "merged, will deploy with the release tomorrow"
+    },
+    {
+      "ts": "1776746535.050899",
+      "user": "U05ERIN",
+      "channel": "C0AUL4C5F41",
+      "text": "reviewed, one nit on the migration backfill order, otherwise LGTM"
+    },
+    {
+      "ts": "1776746534.124959",
+      "user": "U01ALICE",
+      "channel": "C0AUL4C5F41",
+      "text": "travel booked, staying through Sunday for hiking"
+    },
+    {
+      "ts": "1776746533.211509",
+      "user": "U02BOB",
+      "channel": "C0AUL4C5F41",
+      "text": "happy birthday @dave!! :birthday:"
+    },
+    {
+      "ts": "1776746532.261049",
+      "user": "U03CAROL",
+      "channel": "C0AUL4C5F41",
+      "text": "release build kicked off — takes ~40m, will post link when ready"
+    },
+    {
+      "ts": "1776746531.255519",
+      "user": "U04DAVE",
+      "channel": "C0AUL4C5F41",
+      "text": "nit addressed, merging"
+    },
+    {
+      "ts": "1776746530.310119",
+      "user": "U05ERIN",
+      "channel": "C0AUL4C5F41",
+      "text": ":tada: happy bday dave"
+    },
+    {
+      "ts": "1776746529.369339",
+      "user": "U01ALICE",
+      "channel": "C0AUL4C5F41",
+      "text": "release build passed, sign-offs please: @dave @carol"
+    },
+    {
+      "ts": "1776746528.416849",
+      "user": "U02BOB",
+      "channel": "C0AUL4C5F41",
+      "text": "thanks team :heart:"
+    },
+    {
+      "ts": "1776746527.412229",
+      "user": "U03CAROL",
+      "channel": "C0AUL4C5F41",
+      "text": "signed off on my side"
+    },
+    {
+      "ts": "1776746526.478539",
+      "user": "U04DAVE",
+      "channel": "C0AUL4C5F41",
+      "text": "did anyone see Patriots game yesterday? brutal"
+    },
+    {
+      "ts": "1776746525.492639",
+      "user": "U05ERIN",
+      "channel": "C0AUL4C5F41",
+      "text": "signed off"
+    },
+    {
+      "ts": "1776746524.500599",
+      "user": "U01ALICE",
+      "channel": "C0AUL4C5F41",
+      "text": "don't @ me"
+    },
+    {
+      "ts": "1776746523.584879",
+      "user": "U02BOB",
+      "channel": "C0AUL4C5F41",
+      "text": "shipping :rocket:"
+    },
+    {
+      "ts": "1776746522.615839",
+      "user": "U03CAROL",
+      "channel": "C0AUL4C5F41",
+      "text": "pls no"
+    },
+    {
+      "ts": "1776746521.699089",
+      "user": "U04DAVE",
+      "channel": "C0AUL4C5F41",
+      "text": "nice work team"
+    },
+    {
+      "ts": "1776746520.779659",
+      "user": "U05ERIN",
+      "channel": "C0AUL4C5F41",
+      "text": "brb coffee"
+    },
+    {
+      "ts": "1776746519.841549",
+      "user": "U01ALICE",
+      "channel": "C0AUL4C5F41",
+      "text": "back"
+    },
+    {
+      "ts": "1776746518.889619",
+      "user": "U02BOB",
+      "channel": "C0AUL4C5F41",
+      "text": "2 min late to standup"
+    },
+    {
+      "ts": "1776746517.929509",
+      "user": "U03CAROL",
+      "channel": "C0AUL4C5F41",
+      "text": "on a call, will ping when free"
+    },
+    {
+      "ts": "1776746516.978469",
+      "user": "U04DAVE",
+      "channel": "C0AUL4C5F41",
+      "text": "lgtm"
+    },
+    {
+      "ts": "1776746516.035669",
+      "user": "U05ERIN",
+      "channel": "C0AUL4C5F41",
+      "text": "reviewing now"
+    },
+    {
+      "ts": "1776746515.118859",
+      "user": "U01ALICE",
+      "channel": "C0AUL4C5F41",
+      "text": "thx"
+    },
+    {
+      "ts": "1776746514.208159",
+      "user": "U02BOB",
+      "channel": "C0AUL4C5F41",
+      "text": ":white_check_mark:"
+    },
+    {
+      "ts": "1776746513.247849",
+      "user": "U03CAROL",
+      "channel": "C0AUL4C5F41",
+      "text": ":+1:"
+    },
+    {
+      "ts": "1776746512.347569",
+      "user": "U04DAVE",
+      "channel": "C0AUL4C5F41",
+      "text": "queued for tomorrow"
+    },
+    {
+      "ts": "1776746511.436169",
+      "user": "U05ERIN",
+      "channel": "C0AUL4C5F41",
+      "text": "ack"
+    },
+    {
+      "ts": "1776746510.523209",
+      "user": "U01ALICE",
+      "channel": "C0AUL4C5F41",
+      "text": "will follow up tomorrow"
+    },
+    {
+      "ts": "1776746509.577649",
+      "user": "U02BOB",
+      "channel": "C0AUL4C5F41",
+      "text": "noted, logged in the doc"
+    },
+    {
+      "ts": "1776746508.638969",
+      "user": "U03CAROL",
+      "channel": "C0AUL4C5F41",
+      "text": "fair point"
+    },
+    {
+      "ts": "1776746507.717589",
+      "user": "U04DAVE",
+      "channel": "C0AUL4C5F41",
+      "text": "done"
+    },
+    {
+      "ts": "1776746506.767719",
+      "user": "U05ERIN",
+      "channel": "C0AUL4C5F41",
+      "text": "brb coffee"
+    },
+    {
+      "ts": "1776746505.738539",
+      "user": "U01ALICE",
+      "channel": "C0AUL4C5F41",
+      "text": "back"
+    },
+    {
+      "ts": "1776746504.582729",
+      "user": "U02BOB",
+      "channel": "C0AUL4C5F41",
+      "text": "2 min late to standup"
+    },
+    {
+      "ts": "1776746503.605649",
+      "user": "U03CAROL",
+      "channel": "C0AUL4C5F41",
+      "text": "on a call, will ping when free"
+    },
+    {
+      "ts": "1776746501.738589",
+      "user": "U04DAVE",
+      "channel": "C0AUL4C5F41",
+      "text": "lgtm"
+    },
+    {
+      "ts": "1776746500.571939",
+      "user": "U05ERIN",
+      "channel": "C0AUL4C5F41",
+      "text": "reviewing now"
+    },
+    {
+      "ts": "1776746499.587799",
+      "user": "U01ALICE",
+      "channel": "C0AUL4C5F41",
+      "text": "thx"
+    },
+    {
+      "ts": "1776746498.656079",
+      "user": "U02BOB",
+      "channel": "C0AUL4C5F41",
+      "text": ":white_check_mark:"
+    },
+    {
+      "ts": "1776746497.655859",
+      "user": "U03CAROL",
+      "channel": "C0AUL4C5F41",
+      "text": ":+1:"
+    },
+    {
+      "ts": "1776746496.725809",
+      "user": "U04DAVE",
+      "channel": "C0AUL4C5F41",
+      "text": "queued for tomorrow"
+    },
+    {
+      "ts": "1776746495.800269",
+      "user": "U05ERIN",
+      "channel": "C0AUL4C5F41",
+      "text": "ack"
+    },
+    {
+      "ts": "1776746494.840539",
+      "user": "U01ALICE",
+      "channel": "C0AUL4C5F41",
+      "text": "will follow up tomorrow"
+    },
+    {
+      "ts": "1776746493.647709",
+      "user": "U02BOB",
+      "channel": "C0AUL4C5F41",
+      "text": "noted, logged in the doc"
+    },
+    {
+      "ts": "1776746492.705089",
+      "user": "U03CAROL",
+      "channel": "C0AUL4C5F41",
+      "text": "fair point"
+    },
+    {
+      "ts": "1776746491.576229",
+      "user": "U04DAVE",
+      "channel": "C0AUL4C5F41",
+      "text": "done"
+    },
+    {
+      "ts": "1776746490.641019",
+      "user": "U05ERIN",
+      "channel": "C0AUL4C5F41",
+      "text": "brb coffee"
+    },
+    {
+      "ts": "1776746489.700379",
+      "user": "U01ALICE",
+      "channel": "C0AUL4C5F41",
+      "text": "back"
+    },
+    {
+      "ts": "1776746488.769339",
+      "user": "U02BOB",
+      "channel": "C0AUL4C5F41",
+      "text": "2 min late to standup"
+    },
+    {
+      "ts": "1776746487.650819",
+      "user": "U03CAROL",
+      "channel": "C0AUL4C5F41",
+      "text": "on a call, will ping when free"
+    },
+    {
+      "ts": "1776746486.719949",
+      "user": "U04DAVE",
+      "channel": "C0AUL4C5F41",
+      "text": "lgtm"
+    },
+    {
+      "ts": "1776746485.566979",
+      "user": "U05ERIN",
+      "channel": "C0AUL4C5F41",
+      "text": "reviewing now"
+    },
+    {
+      "ts": "1776746484.615949",
+      "user": "U01ALICE",
+      "channel": "C0AUL4C5F41",
+      "text": "thx"
+    },
+    {
+      "ts": "1776746483.704289",
+      "user": "U02BOB",
+      "channel": "C0AUL4C5F41",
+      "text": ":white_check_mark:"
+    },
+    {
+      "ts": "1776746482.731579",
+      "user": "U03CAROL",
+      "channel": "C0AUL4C5F41",
+      "text": ":+1:"
+    },
+    {
+      "ts": "1776746481.773539",
+      "user": "U04DAVE",
+      "channel": "C0AUL4C5F41",
+      "text": "queued for tomorrow"
+    },
+    {
+      "ts": "1776746480.641389",
+      "user": "U05ERIN",
+      "channel": "C0AUL4C5F41",
+      "text": "ack"
+    },
+    {
+      "ts": "1776746479.692999",
+      "user": "U01ALICE",
+      "channel": "C0AUL4C5F41",
+      "text": "will follow up tomorrow"
+    },
+    {
+      "ts": "1776746478.715409",
+      "user": "U02BOB",
+      "channel": "C0AUL4C5F41",
+      "text": "noted, logged in the doc"
+    },
+    {
+      "ts": "1776746477.577619",
+      "user": "U03CAROL",
+      "channel": "C0AUL4C5F41",
+      "text": "fair point"
+    },
+    {
+      "ts": "1776746476.625259",
+      "user": "U04DAVE",
+      "channel": "C0AUL4C5F41",
+      "text": "done"
+    },
+    {
+      "ts": "1776746475.685529",
+      "user": "U05ERIN",
+      "channel": "C0AUL4C5F41",
+      "text": "brb coffee"
+    },
+    {
+      "ts": "1776746474.765639",
+      "user": "U01ALICE",
+      "channel": "C0AUL4C5F41",
+      "text": "back"
+    },
+    {
+      "ts": "1776746473.803759",
+      "user": "U02BOB",
+      "channel": "C0AUL4C5F41",
+      "text": "2 min late to standup"
+    },
+    {
+      "ts": "1776746472.811919",
+      "user": "U03CAROL",
+      "channel": "C0AUL4C5F41",
+      "text": "on a call, will ping when free"
+    },
+    {
+      "ts": "1776746471.888429",
+      "user": "U04DAVE",
+      "channel": "C0AUL4C5F41",
+      "text": "lgtm"
+    },
+    {
+      "ts": "1776746470.896969",
+      "user": "U05ERIN",
+      "channel": "C0AUL4C5F41",
+      "text": "reviewing now"
+    },
+    {
+      "ts": "1776746469.987329",
+      "user": "U01ALICE",
+      "channel": "C0AUL4C5F41",
+      "text": "thx"
+    },
+    {
+      "ts": "1776746469.063719",
+      "user": "U02BOB",
+      "channel": "C0AUL4C5F41",
+      "text": ":white_check_mark:"
+    },
+    {
+      "ts": "1776746468.120199",
+      "user": "U03CAROL",
+      "channel": "C0AUL4C5F41",
+      "text": ":+1:"
+    },
+    {
+      "ts": "1776746467.204599",
+      "user": "U04DAVE",
+      "channel": "C0AUL4C5F41",
+      "text": "queued for tomorrow"
+    },
+    {
+      "ts": "1776746466.285919",
+      "user": "U05ERIN",
+      "channel": "C0AUL4C5F41",
+      "text": "ack"
+    },
+    {
+      "ts": "1776746465.361409",
+      "user": "U01ALICE",
+      "channel": "C0AUL4C5F41",
+      "text": "will follow up tomorrow"
+    },
+    {
+      "ts": "1776746464.443799",
+      "user": "U02BOB",
+      "channel": "C0AUL4C5F41",
+      "text": "noted, logged in the doc"
+    },
+    {
+      "ts": "1776746463.512209",
+      "user": "U03CAROL",
+      "channel": "C0AUL4C5F41",
+      "text": "fair point"
+    },
+    {
+      "ts": "1776746462.562669",
+      "user": "U04DAVE",
+      "channel": "C0AUL4C5F41",
+      "text": "done"
+    },
+    {
+      "ts": "1776746461.624239",
+      "user": "U05ERIN",
+      "channel": "C0AUL4C5F41",
+      "text": "brb coffee"
+    },
+    {
+      "ts": "1776746460.680599",
+      "user": "U01ALICE",
+      "channel": "C0AUL4C5F41",
+      "text": "back"
+    },
+    {
+      "ts": "1776746459.657149",
+      "user": "U02BOB",
+      "channel": "C0AUL4C5F41",
+      "text": "2 min late to standup"
+    },
+    {
+      "ts": "1776746458.733189",
+      "user": "U03CAROL",
+      "channel": "C0AUL4C5F41",
+      "text": "on a call, will ping when free"
+    }
+  ]
+}

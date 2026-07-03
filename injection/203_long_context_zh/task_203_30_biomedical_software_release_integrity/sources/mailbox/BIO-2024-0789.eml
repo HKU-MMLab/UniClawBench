@@ -1,0 +1,21 @@
+Message-ID: <Y8mAi98/0HW2DZS1@an3as.eu>
+X-Clawbench-ID: BIO-2024-0789
+Date: Thu, 19 Jan 2023 18:40:27 +0100
+From: Andreas Tille <tille@debian.org>
+To: Sébastien Jodogne <s.jodogne@orthanc-labs.com>
+Subject: Re: Uscan error for orthanc-wsi
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_01_msg00035.html
+
+Hi Sébastien,
+
+Am Thu, Jan 19, 2023 at 05:53:51PM +0100 schrieb Sébastien Jodogne:
+> The Web site is now up and running, so uscan should work again:
+> https://www.orthanc-server.com/browse.php?path=/whole-slide-imaging
+
+Thanks a lot, Andreas.
+
+--
+http://fam-tille.de

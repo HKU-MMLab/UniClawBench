@@ -1,0 +1,10 @@
+{
+  "task_id": "task_201_09_git_digest",
+  "note": "Operator populates these paths with real binary assets before running the task. The executor expects them under /tmp_workspace/clawbench/sources/.",
+  "entries": [
+    {
+      "path": "flask_repo.tar.gz",
+      "description": "Tarball of github.com/pallets/flask main branch at a fixed commit; ~2 MB"
+    }
+  ]
+}

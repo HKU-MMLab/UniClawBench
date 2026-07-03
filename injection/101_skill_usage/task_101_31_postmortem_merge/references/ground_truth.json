@@ -1,0 +1,221 @@
+{
+  "task_id": "task_101_31_postmortem_merge",
+  "difficulty": "Hard",
+  "schema": "a",
+  "schema_notes": "six-incident synthesis with bounded root-cause set, full taxonomy matrix, and required action register coverage",
+  "skills_declared": [
+    "runesleo-systematic-debugging",
+    "markdown-formatter",
+    "memory-manager",
+    "daily-digest"
+  ],
+  "ground_truth": {
+    "pm_files": [
+      "pm_2022_q2_bgp_misconfig.md",
+      "pm_2019_q3_waf_regex.md",
+      "pm_2017_q1_db_outage.md",
+      "pm_2025_q1_outage.md",
+      "pm_2025_q2_db_migration.md",
+      "pm_2025_q3_config_drift.md"
+    ],
+    "expected_sections": [
+      "Common Root Causes",
+      "Incident Taxonomy Matrix",
+      "Prevention Checklist",
+      "Open Gaps"
+    ],
+    "allowed_domains": [
+      "infra",
+      "db",
+      "release",
+      "monitoring",
+      "process"
+    ],
+    "matrix_columns": [
+      "incident",
+      "trigger",
+      "blast radius",
+      "detection gap",
+      "rollback/recovery gap",
+      "prevention owner"
+    ],
+    "expected_root_causes": [
+      {
+        "id": "rc_unsafe_rollout",
+        "label": "unsafe rollout / change validation gap",
+        "required_keyword_groups": [
+          ["rollout", "change", "deploy", "stagger", "canary", "validation", "smoke"],
+          ["unsafe", "untested", "unverified", "skipped", "missing", "gap", "without", "no "]
+        ],
+        "supporting_pms": [
+          "pm_2022_q2_bgp_misconfig.md",
+          "pm_2019_q3_waf_regex.md",
+          "pm_2017_q1_db_outage.md",
+          "pm_2025_q1_outage.md",
+          "pm_2025_q2_db_migration.md",
+          "pm_2025_q3_config_drift.md"
+        ],
+        "min_supporting_pms": 3
+      },
+      {
+        "id": "rc_missing_guardrail",
+        "label": "missing automated guardrail or policy / lint check",
+        "required_keyword_groups": [
+          ["guardrail", "policy", "OPA", "lint", "automated check", "automated guardrail", "policy check", "automation"],
+          ["missing", "no ", "absent", "lack", "without"]
+        ],
+        "supporting_pms": [
+          "pm_2025_q1_outage.md",
+          "pm_2025_q2_db_migration.md",
+          "pm_2025_q3_config_drift.md",
+          "pm_2017_q1_db_outage.md",
+          "pm_2019_q3_waf_regex.md"
+        ],
+        "min_supporting_pms": 3
+      },
+      {
+        "id": "rc_observability_blindspot",
+        "label": "observability / dashboard blind spot",
+        "required_keyword_groups": [
+          ["observability", "dashboard", "alert", "monitoring", "telemetry", "metric", "panel", "signal"],
+          ["blind", "missing", "gap", "no ", "absent", "not surfaced", "did not", "did not surface", "lacked", "lack"]
+        ],
+        "supporting_pms": [
+          "pm_2025_q1_outage.md",
+          "pm_2025_q2_db_migration.md",
+          "pm_2025_q3_config_drift.md",
+          "pm_2017_q1_db_outage.md",
+          "pm_2022_q2_bgp_misconfig.md"
+        ],
+        "min_supporting_pms": 3
+      },
+      {
+        "id": "rc_unexercised_recovery",
+        "label": "rollback / backup / fallback path never exercised",
+        "required_keyword_groups": [
+          ["rollback", "backup", "fallback", "recovery", "restore", "revert", "runbook"],
+          ["unexercised", "untested", "not exercised", "not drilled", "never tested", "never exercised", "never drilled", "broken", "failed", "did not", "no "]
+        ],
+        "supporting_pms": [
+          "pm_2017_q1_db_outage.md",
+          "pm_2025_q2_db_migration.md",
+          "pm_2022_q2_bgp_misconfig.md",
+          "pm_2019_q3_waf_regex.md",
+          "pm_2025_q1_outage.md"
+        ],
+        "min_supporting_pms": 3
+      }
+    ],
+    "min_root_causes": 4,
+    "min_sources_per_cause": 3,
+    "min_matrix_rows": 6,
+    "min_checklist_entries": 10,
+    "min_open_gaps": 4,
+    "min_incidents_per_gap": 2,
+    "expected_matrix_incidents": [
+      "pm_2022_q2_bgp_misconfig.md",
+      "pm_2019_q3_waf_regex.md",
+      "pm_2017_q1_db_outage.md",
+      "pm_2025_q1_outage.md",
+      "pm_2025_q2_db_migration.md",
+      "pm_2025_q3_config_drift.md"
+    ],
+    "action_register": {
+      "path": "/tmp_workspace/results/action_register.csv",
+      "min_actions": 10,
+      "required_columns": [
+        "action_id",
+        "prevention_action",
+        "domain",
+        "owner",
+        "source_incidents",
+        "root_cause_addressed",
+        "dependency",
+        "due_window",
+        "success_signal"
+      ]
+    },
+    "expected_action_register_entries": {
+      "by_root_cause": [
+        {
+          "root_cause_id": "rc_unsafe_rollout",
+          "must_appear_in_root_cause_addressed_keywords": ["rollout", "change", "stagger", "canary", "validation", "smoke", "deploy"],
+          "min_actions": 1
+        },
+        {
+          "root_cause_id": "rc_missing_guardrail",
+          "must_appear_in_root_cause_addressed_keywords": ["guardrail", "policy", "OPA", "lint", "automation", "automated check"],
+          "min_actions": 1
+        },
+        {
+          "root_cause_id": "rc_observability_blindspot",
+          "must_appear_in_root_cause_addressed_keywords": ["observability", "dashboard", "alert", "monitoring", "telemetry", "metric"],
+          "min_actions": 1
+        },
+        {
+          "root_cause_id": "rc_unexercised_recovery",
+          "must_appear_in_root_cause_addressed_keywords": ["rollback", "backup", "fallback", "recovery", "restore", "revert", "runbook"],
+          "min_actions": 1
+        }
+      ],
+      "by_incident": [
+        {
+          "pm_file": "pm_2022_q2_bgp_misconfig.md",
+          "min_actions": 1
+        },
+        {
+          "pm_file": "pm_2019_q3_waf_regex.md",
+          "min_actions": 1
+        },
+        {
+          "pm_file": "pm_2017_q1_db_outage.md",
+          "min_actions": 1
+        },
+        {
+          "pm_file": "pm_2025_q1_outage.md",
+          "min_actions": 1
+        },
+        {
+          "pm_file": "pm_2025_q2_db_migration.md",
+          "min_actions": 1
+        },
+        {
+          "pm_file": "pm_2025_q3_config_drift.md",
+          "min_actions": 1
+        }
+      ]
+    },
+    "incident_specific_facts": {
+      "pm_2022_q2_bgp_misconfig.md": ["BGP", "prefix", "withdrawn", "Multi-Colo PoP", "19 data centers"],
+      "pm_2019_q3_waf_regex.md": ["WAF", "regex", "regular expression", "CPU exhaustion", "27 minute", "502", "backtracking"],
+      "pm_2017_q1_db_outage.md": ["GitLab", "primary database", "5,000 projects", "January 31", "rm -rf"],
+      "pm_2025_q1_outage.md": ["Auto Scaling", "min_size", "Terraform", "OPA", "ASG"],
+      "pm_2025_q2_db_migration.md": ["ALTER", "MDL", "INPLACE", "gh-ost", "pt-osc"],
+      "pm_2025_q3_config_drift.md": ["FEATURE_FLAG_URL", "env-diff", "checkout", "hotfix", "staging"]
+    },
+    "incident_specific_facts_note": "For each PM file, the listed strings are concrete details that appear in that PM's text (case-insensitive substring match). Each of the six PMs MUST have at least one of its listed facts surfaced in either insights.md or action_register.csv (6/6 strict).",
+    "topic_dimensions": [
+      "root_cause_patterns",
+      "detection_gap_patterns",
+      "response_comms_gaps",
+      "prevention_coverage",
+      "systemic_vs_one_off_classification"
+    ],
+    "min_dimensions_covered": 5,
+    "pm_citation_set": [
+      "pm_2022_q2_bgp_misconfig.md",
+      "pm_2019_q3_waf_regex.md",
+      "pm_2017_q1_db_outage.md",
+      "pm_2025_q1_outage.md",
+      "pm_2025_q2_db_migration.md"
+    ],
+    "pm_citation_anchors": {
+      "pm_2022_q2_bgp_misconfig.md": ["BGP", "prefix withdrawal", "Multi-Colo PoP"],
+      "pm_2019_q3_waf_regex.md": ["WAF", "regex backtracking", "CPU exhaustion"],
+      "pm_2017_q1_db_outage.md": ["GitLab", "primary database", "rm -rf"],
+      "pm_2025_q1_outage.md": ["Auto Scaling", "min_size", "Terraform", "OPA"],
+      "pm_2025_q2_db_migration.md": ["ALTER", "MDL", "gh-ost", "pt-osc"]
+    },
+    "min_pm_citations_with_anchor": 5
+  }
+}

@@ -1,0 +1,4 @@
+# Compatibility shim only. Prefer:
+#   python3 -m pip install -e .
+#   python3 -m pip install -e .[dev]
+-e .

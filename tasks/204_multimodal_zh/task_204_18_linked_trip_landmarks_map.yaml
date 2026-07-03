@@ -1,0 +1,42 @@
+task_id: task_204_18_linked_trip_landmarks_map
+category: 204_multimodal_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  请打开这个 YouTube 视频：
+  https://www.youtube.com/watch?v=ndAJTy8X3eU
+
+  基于该链接当前指向的旅行视频，完成一个"地标顺序地图"任务。
+  你必须直接观看视频，并根据画面中展示的游览顺序确定地标顺序。不要先下载字幕，也不要依赖
+  旅行攻略页面；地图和顺序都必须来自视频。
+
+  要求：
+  1. 提取视频中明确出现的至少 5 个地标/景点，并记录它们的名称和大致的游览顺序。
+  2. 你必须为每个可识别的地标找到对应的位置，并使用 Python 生成一个交互式 HTML 地图；
+     如果有任何地标无法确认，请在报告中单独说明原因。
+     - 用标记点标出每个地标
+     - 按游览顺序用线条把它们连接起来
+  3. 在 `/tmp_workspace/results/` 中生成以下文件：
+     - `linked_trip_map.html`
+     - `landmarks_order.csv`
+     - `landmarks_notes.md`
+
+  `landmarks_order.csv` 至少必须包含：
+  `order,landmark_name,location_text,lat,lng`
+
+  `landmarks_notes.md` 必须简要说明你是如何从视频画面中识别出这些地标及其顺序的；
+  每个已确认的地标都应包含逐行的视频证据，例如大致的时间戳、截图/画面描述、屏幕上的文字，
+  或可辨认的视觉特征。
+
+references:
+  - references/eval_rule.md
+
+codex:
+  max_user_followups: 2

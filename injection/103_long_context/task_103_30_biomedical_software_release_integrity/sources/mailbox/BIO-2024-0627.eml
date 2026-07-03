@@ -1,0 +1,61 @@
+Message-ID: <Y1pB0XDhuBbdIMUe@an3as.eu>
+X-Clawbench-ID: BIO-2024-0627
+Date: Thu, 27 Oct 2022 10:31:13 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Watch file github mode pointing to certain branch issue (Was: cmake help for minimac4 needed)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00100.html
+
+Hi again,
+
+Am Thu, Oct 27, 2022 at 08:23:43AM +0200 schrieb Andreas Tille:
+> > According to requirements.txt [1], minimac4 depends on omp [2], so it seems
+> > this message warns about omp not being found on the system.
+
+Unfortunately its not just omp but the latest commit from the
+development branch.  Thus I tried gitmode[1] according to the docs:
+
+$ cat debian/watch
+version=4
+
+opts="mode=git,gitmode=full,pgpmode=none,pretty=0.0+git%cd.%h" \
+    https://github.com/jonathonl/omp refs/heads/develop
+
+
+but I do not get any helpful result:
+
+$ uscan --verbose
+uscan info: uscan (version 2.22.2) See uscan(1) for help
+uscan info: Scan watch files in .
+uscan info: Check debian/watch and debian/changelog in .
+uscan info: package="libomp-jonathonl" version="0.0+git20181221.506f3e5-1" (as seen in debian/changelog)
+uscan info: package="libomp-jonathonl" version="0.0+git20181221.506f3e5" (no epoch/revision)
+uscan info: ./debian/changelog sets package="libomp-jonathonl" version="0.0+git20181221.506f3e5"
+uscan info: Process watch file at: debian/watch
+    package = libomp-jonathonl
+    version = 0.0+git20181221.506f3e5
+    pkg_dir = .
+uscan info: opts: mode=git,gitmode=full,pgpmode=none,pretty=0.0+git%cd.%h
+uscan info: line: https://github.com/jonathonl/omp refs/heads/develop
+uscan info: Parsing mode=git
+uscan info: Parsing gitmode=full
+uscan info: Parsing pgpmode=none
+uscan info: Parsing pretty=0.0+git%cd.%h
+uscan info: line: https://github.com/jonathonl/omp refs/heads/develop
+uscan warn: Tag pattern missing version delimiters () in debian/watch, skipping:
+  https://github.com/jonathonl/omp refs/heads/develop
+uscan info: Scan finished
+
+
+Any idea what might went wrong?
+
+Kind regards
+   Andreas.
+
+[1] https://salsa.debian.org/med-team/libomp-jonathonl/-/blob/master/debian/watch
+
+--
+http://fam-tille.de

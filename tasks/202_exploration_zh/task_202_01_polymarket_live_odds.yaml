@@ -1,0 +1,38 @@
+task_id: task_202_01_polymarket_live_odds
+category: 202_exploration_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我经常在 Polymarket 上做一点交易，我想以编程方式拉取某个特定市场的*当前*
+  赔率，而不是去网站上肉眼查看。
+
+  这个市场的 URL 如下：
+
+      https://polymarket.com/event/new-rhianna-album-before-gta-vi
+
+  Polymarket 在 https://docs.polymarket.com/ 发布了开发者文档。请阅读这些
+  文档，弄清楚究竟哪些 API 真正提供实时市场数据，并使用它们（而不是抓取
+  polymarket.com 页面渲染后的 HTML）来获取该市场的以下信息：
+
+  - 市场问题及其两个结果标签，
+  - 每个结果对应的链上 CLOB token id，
+  - 每个结果的当前价格／中间价（实时赔率）。
+
+  将你的发现保存到 `/tmp_workspace/results/polymarket_odds.json`（市场问题、
+  各结果、每个结果的 token id，以及每个结果的当前价格），并将你调用的确切
+  请求 URL 及其原始响应保存到 `/tmp_workspace/results/polymarket_evidence/`，
+  以便我可以重现这次拉取。如果能附上一段简短说明，讲讲你是如何从文档中发现
+  正确的接口的，那就更好了。
+
+references:
+  - references/eval_rule.md
+
+codex:
+  max_user_followups: 2

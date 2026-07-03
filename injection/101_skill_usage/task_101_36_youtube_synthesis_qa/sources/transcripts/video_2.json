@@ -1,0 +1,35 @@
+{
+  "video_id": "Lp4xR9zT2mE",
+  "url": "https://www.youtube.com/watch?v=Lp4xR9zT2mE",
+  "title": "Why Plain venv Is Not Enough Anymore — Switch to pyenv + Poetry in 2023",
+  "channel": "ModernPython",
+  "published_at": "2023-08-22",
+  "duration_seconds": 824,
+  "view_count": 256000,
+  "tags": ["python", "pyenv", "poetry", "virtualenv", "dependency-management"],
+  "transcript_format": "json_segments",
+  "transcript": [
+    {"start": 0.0, "end": 22.0, "text": "Welcome back. If you're still using plain python -m venv to manage your Python environments in 2023, I want to push back on that. Today I'll show you the pyenv plus Poetry workflow and why it's a strict upgrade for almost every developer."},
+    {"start": 22.0, "end": 60.0, "text": "Let's start with the problem. Plain venv works, but it does not manage Python versions. If your project needs Python 3.11 and your system ships 3.9, venv won't help you. You're stuck installing Python yourself, and that's where the macOS conflicts start."},
+    {"start": 60.0, "end": 105.0, "text": "I want to specifically call out the older video tutorials — including some popular ones from 2022 — that recommend pure venv as the canonical solution. That advice has aged badly. It was correct for simple cases but it does not handle the version-and-dependency combination that real projects need today."},
+    {"start": 105.0, "end": 158.0, "text": "Enter pyenv. pyenv lets you install and switch between multiple Python versions per project. Install with brew install pyenv, then pyenv install 3.11.6 to grab a specific Python version. pyenv local 3.11.6 in your project directory pins it."},
+    {"start": 158.0, "end": 215.0, "text": "Now combine pyenv with Poetry. Poetry replaces pip plus requirements.txt with a proper dependency resolver and a lockfile. brew install poetry, then poetry init in your project to generate a pyproject.toml."},
+    {"start": 215.0, "end": 268.0, "text": "Run poetry env use $(pyenv which python) to tell Poetry to use the pyenv-managed Python. Then poetry install reads pyproject.toml, resolves transitive dependencies properly, and writes poetry.lock for reproducibility."},
+    {"start": 268.0, "end": 325.0, "text": "Why is this better than venv plus pip? Three reasons. One: real dependency resolution — pip's resolver is naive and ships broken dep trees. Two: lockfiles — poetry.lock pins your transitive deps so a teammate gets the exact same install. Three: Python version management built into the workflow."},
+    {"start": 325.0, "end": 388.0, "text": "Let me address the typical objection: 'but my old venv setup works fine.' Sure, it works for hello-world projects. The moment you have one transitive conflict — for example numpy 1.x versus a library that needs numpy 2.x — pip will happily install something broken. Poetry refuses, surfaces the conflict, and asks you to resolve it. That's a feature."},
+    {"start": 388.0, "end": 445.0, "text": "Migration from a venv-based project is straightforward. Delete your .venv, run poetry init --no-interaction, edit pyproject.toml to list your top-level deps, then poetry install. Your old requirements.txt becomes obsolete."},
+    {"start": 445.0, "end": 510.0, "text": "Common questions. Should you use pipx? pipx is for installing CLI tools globally and is orthogonal to this. Should you use Conda? Conda is heavier and primarily useful if you need non-Python deps like CUDA libraries. For pure Python projects, pyenv plus Poetry is leaner."},
+    {"start": 510.0, "end": 575.0, "text": "About macOS PATH conflicts. With pyenv, the shim system handles PATH for you. You don't need to manually edit .zshrc to put homebrew earlier than /usr/bin/python3. pyenv inserts itself first and resolves which Python to use based on .python-version files in each directory."},
+    {"start": 575.0, "end": 640.0, "text": "I'll be honest: the pyenv plus Poetry combo has a steeper learning curve than plain venv. But once you set it up once, every new project gets the same predictable workflow. pyenv local, poetry init, poetry install — done."},
+    {"start": 640.0, "end": 705.0, "text": "If you are watching this in 2023 and someone is telling you 'just use venv,' please push back. That advice is from a different era. Modern Python projects need both Python-version management and proper dependency resolution, and the standard library does not provide either."},
+    {"start": 705.0, "end": 770.0, "text": "I'll link my pyenv-poetry starter template in the description. Clone it and you have a working baseline in 30 seconds. Like and subscribe if this saved you an afternoon of debugging."},
+    {"start": 770.0, "end": 824.0, "text": "Quick note for the next video: I'll cover migrating an existing legacy codebase from requirements.txt to Poetry. Stay tuned. Bye for now!"}
+  ],
+  "key_points": [
+    "Plain venv does NOT manage Python versions — that's the gap",
+    "Recommends pyenv + Poetry combo as 2023 best practice",
+    "Explicitly calls older venv-only advice as outdated",
+    "Three benefits: real resolver, lockfile, version management",
+    "pyenv's shim system replaces manual PATH editing on macOS"
+  ]
+}

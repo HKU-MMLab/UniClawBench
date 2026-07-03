@@ -1,0 +1,53 @@
+Message-ID: <CAKQ1sVOZuXKGqtVrFr9U-qQZc9P3K=_=_Qe8_XBPNX=KetNYWw@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0367
+Date: Wed, 24 Jan 2024 17:20:10 +0100
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: PR #363
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-01.mbox
+
+On Wed, Jan 24, 2024 at 5:07 PM <rbowen@rcbowen.com> wrote:
+>
+> On Wed, 2024-01-24 at 17:01 +0100, Yann Ylavic wrote:
+> > On Wed, Jan 24, 2024 at 4:56 PM Mads Toftum <mads@toftum.dk> wrote:
+> > >
+> > > On Wed, Jan 24, 2024 at 10:06:43AM -0500, rbowen@rcbowen.com wrote:
+> > > > I've been poking at some of our open PRs looking for docs-only
+> > > > changes
+> > > > that we can possibly clean up.
+> > > >
+> > > > PR #363 - https://github.com/apache/httpd/pull/363 - converts
+> > > > README
+> > > > from plaintext to markdown, and makes no other changes. This
+> > > > makes it
+> > > > prettier on GitHub.
+> > > >
+> > > > I almost just CTR'ed it, but it occurred to me that someone might
+> > > > find
+> > > > this objectionable, so I thought I'd ask first.
+> > >
+> > > I don't have strong opinions on this, but we'll end up with a
+> > > READNE
+> > > that's less readable for those not viewing it through github.
+> >
+> > Maybe we could keep the line breaks as before for the text to keep it
+> > as readable as before w/o a markdown viewer?
+>
+> Yeah, I've done that in my local copy of the patch.
+>
+> So this is basically changing:
+>
+> Whossname
+> ---------
+>
+> to
+>
+> ## Whossname
+>
+> Which really doesn't change much in plain text mode.
+
+Agreed, the main readability issue (in plain text mode) is long lines
+IMHO, headings/links do not read so bad.

@@ -1,0 +1,28 @@
+Message-ID: <87tuea2waw.fsf@nonempty.org>
+X-Clawbench-ID: BIO-2024-0726
+Date: Tue, 11 Jan 2022 15:14:33 +0100
+From: Gard Spreemann <gspr@nonempty.org>
+To: debian-science@lists.debian.org
+Subject: Re: alphafold Debian packaging ?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2022_01_msg00004.html
+
+Hi,
+
+I'm taking the liberty to forward this to the debian-ai list as well.
+
+ -- Gard
+
+PICCA Frederic-Emmanuel  writes:
+
+> Hello guyes,
+>
+> I would like to know if you are aware of an effort to package alphafold[1] on Debian ?
+>
+> Cheers
+>
+> Frederic
+>
+> [1] https://alphafold.com/

@@ -1,0 +1,42 @@
+Message-ID: <udlcyvd1vra.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-1005
+Date: Sun, 10 Dec 2023 18:30:01 -0500
+From: "Aaron M. Ucko" <ucko@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: Attempt to upgrade sra-sdk
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_12_msg00029.html
+
+Andreas Tille  writes:
+
+> No mbedtls libs found installed in the system, using local copy...
+
+Because env/common.cmake doesn't actually try to use a system
+installation:
+
+  #check_include_file_cxx(mbedtls/md.h HAVE_MBEDTLS_H)
+  set(HAVE_MBEDTLS_H 0) # TODO: disabling system mbedtls since it may be outdated
+
+Patching that logic to enable and honor the check reveals that its
+concerns are legitimate, with upstream bundling and evidently relying on
+a 3.x version whereas Debian still ships 2.28.5; arranging to use the
+Debian version yields several compilation errors in libs/cloud/gcp.c's
+Sign_RSA_SHA256, and quite possibly more errors elsewhere.
+
+Per https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1036231, Debian
+packaging of mbed TLS 3.x is waiting on a long-term-support release
+series thereof, so our options are either backporting ncbi-vdb to build
+against 2.28. (perhaps with the help of reverse cherry-picks) or
+reinstating the bundled 3.x copy.
+
+> Hope my preparation is some welcome kick-start.  I wonder whether some
+> of our patches could be forwarded upstream to reduce the number of edits
+> for any new version.
+
+Upstream still has bigger fish to fry. :-/
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

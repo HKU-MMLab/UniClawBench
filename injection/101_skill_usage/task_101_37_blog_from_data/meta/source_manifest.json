@@ -1,0 +1,11 @@
+{
+  "task_id": "task_101_37_blog_from_data",
+  "note": "UCI Online Retail II (Chen 2019, CC-BY 4.0). Aggregated 2010 calendar-year data by month and store/country; revenue converted GBP to USD using a documented 2010 reference rate.",
+  "source_citation": "Chen, D. (2019). Online Retail II [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C5CG6D",
+  "entries": [
+    {
+      "path": "monthly_sales_2010.csv",
+      "description": "Monthly aggregate sales data for three stores/countries across the 2010 calendar year."
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+Message-ID: <CALK=YjPVBjdJg4BLv+H8KupPYtGv1c7-AoivwrpHsD=DnNL+BQ@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0873
+Date: Fri, 10 Jun 2022 11:27:44 -0400
+From: Eric Covener <covener@gmail.com>
+To: Apache HTTP Server Development List <dev@httpd.apache.org>
+Subject: Re: [httpd-site] branch main updated: add inline details
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-06.mbox
+
+On Fri, Jun 10, 2022 at 11:23 AM Ruediger Pluem <rpluem@apache.org> wrote:
+>
+>
+>
+> On 6/10/22 3:51 PM, covener@apache.org wrote:
+> > This is an automated email from the ASF dual-hosted git repository.
+> >
+> > covener pushed a commit to branch main
+> > in repository https://gitbox.apache.org/repos/asf/httpd-site.git
+> >
+> >
+> > The following commit(s) were added to refs/heads/main by this push:
+> >      new de34c89  add inline details
+> > de34c89 is described below
+> >
+> > commit de34c893c06b0a65a23bc4684a5eaf2f85c29881
+> > Author: Eric Covener <ecovener@us.ibm.com>
+> > AuthorDate: Fri Jun 10 09:51:42 2022 -0400
+> >
+> >     add inline details
+> > ---
+> >  content/security/json/CVE-2022-28614.json | 14 +++++++-------
+> >  1 file changed, 7 insertions(+), 7 deletions(-)
+> >
+> > diff --git a/content/security/json/CVE-2022-28614.json b/content/security/json/CVE-2022-28614.json
+> > index 911b151..c47c580 100644
+> > --- a/content/security/json/CVE-2022-28614.json
+> > +++ b/content/security/json/CVE-2022-28614.json
+>
+> >      ]
+> > @@ -108,15 +108,15 @@
+> >      "CVE_list": [],
+> >      "internal_comments": "",
+> >      "todo": [],
+> > -    "emailed": "",
+> > -    "userslist": "",
+> > +    "emailed": "yes",
+> > +    "userslist": "dev@httpd.apache.org",
+> >      "email": ""
+> >    },
+> >    "timeline": [
+> >      {
+> > -      "lang": "eng",
+> >        "time": "2022-06-08",
+> > -      "value": "2.4.54 released"
+> > +      "lang": "eng",
+> > +      "value": "released in 2.4.54"
+>
+> This killed it. Version needs to be at the beginning of the string.
+> See https://github.com/apache/httpd-site/blob/f3bc5a7395d1de48daf32a15de7922b91a4a0a05/content/security/cvejsontohtml.py#L36
+
+Thanks, I reverted a few minutes ago and will re-apply it this afternoon.
+
+I see release/r4-stage-release.sh fixes these up after they leave
+cve.a.o, so the re-export blew away that fixup.

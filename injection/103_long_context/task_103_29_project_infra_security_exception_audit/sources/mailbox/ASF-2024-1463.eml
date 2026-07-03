@@ -1,0 +1,12 @@
+Message-ID: <asf-2024-1463@httpd.apache.org>
+X-Clawbench-ID: ASF-2024-1463
+Date: Fri, 23 Feb 2024 16:28:00 +0000
+From: Paige Rutter <paige@apache.org>
+To: Nina Morales <nina@apache.org>
+Subject: records folder cleanup
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: synthetic Apache-style project infrastructure review implant
+
+I am reconciling the February service review folder. I found Peregrine token approvals under build support and a separate folder named nightjar-west with validation drafts and rsync notes. Should these stay together for records, or should the draft folder remain with dev?

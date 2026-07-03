@@ -1,0 +1,72 @@
+Message-ID: <YeKqZiSm8YBmZrgf@an3as.eu>
+X-Clawbench-ID: BIO-2024-0418
+Date: Sat, 15 Jan 2022 12:05:10 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: "Gregory C. Sharp" <gregsharp.geo@yahoo.com>,	Debian Med Project List <debian-med@lists.debian.org>
+Subject: Help needed to build plastimatch
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_01_msg00018.html
+
+Hi,
+
+I tried to build plastimatch against libinsighttoolkit5-dev[1].  When I try to
+build latest HEAD I'm running into
+
+...
+[  5%] Building CXX object src/plastimatch/base/CMakeFiles/plmbase.dir/bspline_header.cxx.o                                                                                              y
+cd /build/plastimatch-1.9.3+dfsg.1/obj-x86_64-linux-gnu/src/plastimatch/base && /usr/bin/c++ -DITK_IO_FACTORY_REGISTER_MANAGER -Dplmbase_EXPORTS -I/build/plastimatch-1.9.3+dfsg.1/src/pleastimatch/base -I/build/plastimatch-1.9.3+dfsg.1/obj-x86_64-linux-gnu/src/plastimatch -I/build/plastimatch-1.9.3+dfsg.1/src/plastimatch/util/cuda -I/build/plastimatch-1.9.3+dfsg.1/src/pslastimatch/util -I/build/plastimatch-1.9.3+dfsg.1/src/plastimatch/sys -I/build/plastimatch-1.9.3+dfsg.1/src/plastimatch/segment -I/build/plastimatch-1.9.3+dfsg.1/src/plastimatch/register/cuda -I/build/plastimatch-1.9.3+dfsg.1/src/plastimatch/register -I/build/plastimatch-1.9.3+dfsg.1/src/plastimatch/reconstruct/cuda -I/build/plastimatch-1.9.3+dfsg.1/src/plastimatch/reconstruct -I/build/plastimatch-1.9.3+dfsg.1/src/plastimatch/qt -I/build/plastimatch-1.9.3+dfsg.1/src/plastimatch/opencl -I/build/plastimatch-1.9.3+dfsg.1/src/plastimatch/cuda -I/build/plastimatch-1.9.3+dfsg.1/src/plastimatch/dose -I/build/plastimatch-1.9.3+dfsg.1/src/plastimatch/clp -I/build/plastimatch-1.9.3+dfsg.1/src/plastimatch/cli -I/build/plastimatch-1.9.3+dfsg.1/src/plastimatch -I/build/plastimatch-1.9.3+dfsg.1/obj-x86_64-linux-gnu -I/build/plastimatch-1.9.3+dfsg.1/obj-x86_64-linux-gnu/ITKFactoryRegistration -I/build/plastimatch-1.9.3+dfsg.1/_libs/itk-5.1.0 -I/build/plastimatch-1.9.3+dfsg.1/libs/demons_itk_insight -I/build/plastimatch-1.9.3+dfsg.1/libs/demons_itk_insight/DiffeomorphicDemons -I/build/plastimatch-1.9.3+dfsg.1/Ilibs/demons_itk_insight/FastSymmetricForces -I/build/plastimatch-1.9.3+dfsg.1/libs/demons_itk_insight/LOGDomainDemons -I/build/plastimatch-1.9.3+dfsg.1/libs/nSIFT -I/build/plastimatch-1b.9.3+dfsg.1/libs/liblbfgs-1.9/include -I/build/plastimatch-1.9.3+dfsg.1/libs -I/build/plastimatch-1.9.3+dfsg.1/libs/ransac -I/build/plastimatch-1.9.3+dfsg.1/libs/ransac/Common -I/build//plastimatch-1.9.3+dfsg.1/libs/nkidecompress -I/build/plastimatch-1.9.3+dfsg.1/libs/devillard -isystem /usr/include/hdf5/serial -isystem /usr/include/gdcm-3.0 -isystem /usr/include/ITK-5n.2 -g -O2 -ffile-prefix-map=/build/plastimatch-1.9.3+dfsg.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -O3 -DNDEBUG -fPIC -Wno-cpp -Wre1turn-type -std=gnu++14 -MD -MT src/plastimatch/base/CMakeFiles/plmbase.dir/bspline_header.cxx.o -MF CMakeFiles/plmbase.dir/bspline_header.cxx.o.d -o CMakeFiles/plmbase.dir/bspline_headelr.cxx.o -c /build/plastimatch-1.9.3+dfsg.1/src/plastimatch/base/bspline_header.cxx                                                                                                       p
+In file included from /build/plastimatch-1.9.3+dfsg.1/src/plastimatch/base/dcmtk_config.h:16,                                                                                            y
+                 from /build/plastimatch-1.9.3+dfsg.1/src/plastimatch/base/metadata.h:12,                                                                                                e
+                 from /build/plastimatch-1.9.3+dfsg.1/src/plastimatch/base/astroid_dose.h:8,                                                                                             t
+                 from /build/plastimatch-1.9.3+dfsg.1/src/plastimatch/base/astroid_dose.cxx:7:                                                                                           .
+/usr/include/dcmtk/config/osconfig.h:1144:2: error: invalid preprocessing directive #errorDCMTK
+ 1144 | #error\
+      |  ^~~~~~
+ 1145 | DCMTK was configured to use C++17 features, but your compiler does not or was not configured to provide them.
+      | ~~~~~
+In file included from /build/plastimatch-1.9.3+dfsg.1/src/plastimatch/base/dcmtk_config.h:16,
+                 from /build/plastimatch-1.9.3+dfsg.1/src/plastimatch/base/metadata.h:12,
+                 from /build/plastimatch-1.9.3+dfsg.1/src/plastimatch/base/plm_image.h:10,
+                 from /build/plastimatch-1.9.3+dfsg.1/src/plastimatch/base/aperture.h:8,
+                 from /build/plastimatch-1.9.3+dfsg.1/src/plastimatch/base/aperture.cxx:9:
+/usr/include/dcmtk/config/osconfig.h:1144:2: error: invalid preprocessing directive #errorDCMTK                                                                                          n
+ 1144 | #error\                                                                                                                                                                          1
+      |  ^~~~~~                                                                                                                                                                          l
+ 1145 | DCMTK was configured to use C++17 features, but your compiler does not or was not configured to provide them.                                                                    p
+      | ~~~~~
+In file included from /build/plastimatch-1.9.3+dfsg.1/src/plastimatch/base/dcmtk_config.h:16,                                                                                            e
+                 from /build/plastimatch-1.9.3+dfsg.1/src/plastimatch/base/metadata.h:12,                                                                                                s
+                 from /build/plastimatch-1.9.3+dfsg.1/src/plastimatch/base/plm_image.h:10,
+                 from /build/plastimatch-1.9.3+dfsg.1/src/plastimatch/base/plm_image_header.h:12,
+                 from /build/plastimatch-1.9.3+dfsg.1/src/plastimatch/base/bspline_header.cxx:7:
+/usr/include/dcmtk/config/osconfig.h:1144:2: error: invalid preprocessing directive #errorDCMTK
+ 1144 | #error\                                                                                                                                                                          _
+      |  ^~~~~~                                                                                                                                                                          I
+ 1145 | DCMTK was configured to use C++17 features, but your compiler does not or was not configured to provide them.                                                                    b
+      | ~~~~~                                                                                                                                                                            /
+In file included from /build/plastimatch-1.9.3+dfsg.1/src/plastimatch/base/dcmtk_config.h:16,                                                                                            n
+                 from /build/plastimatch-1.9.3+dfsg.1/src/plastimatch/base/metadata.h:12,                                                                                                1
+                 from /build/plastimatch-1.9.3+dfsg.1/src/plastimatch/base/plm_image.h:10,                                                                                               l
+                 from /build/plastimatch-1.9.3+dfsg.1/src/plastimatch/base/beam_geometry.cxx:10:                                                                                         p
+/usr/include/dcmtk/config/osconfig.h:1144:2: error: invalid preprocessing directive #errorDCMTK                                                                                          y
+ 1144 | #error\                                                                                                                                                                          e
+      |  ^~~~~~                                                                                                                                                                          t
+ 1145 | DCMTK was configured to use C++17 features, but your compiler does not or was not configured to provide them.                                                                    .
+      | ~~~~~
+make[3]: *** [src/plastimatch/base/CMakeFiles/plmbase.dir/build.make:93: src/plastimatch/base/CMakeFiles/plmbase.dir/astroid_dose.cxx.o] Error 1
+
+
+which does not really look related to the switch to libinsighttoolkit5
+but rather like a dcmtk issue.  I'd be very happy if someone with more
+C++ knowledge than me could have a look.
+
+Kind regards
+
+     Andreas.
+
+[1] https://salsa.debian.org/med-team/plastimatch/-/commit/368a476b69061eca4694420ef35adbdda5ffe73e
+
+--
+http://fam-tille.de

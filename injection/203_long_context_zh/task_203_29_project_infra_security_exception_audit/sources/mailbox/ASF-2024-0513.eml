@@ -1,0 +1,52 @@
+Message-ID: <CACsi251MDTUXuPjW0JYMBZAiNjR=aF3BaOtepSRMJeDWgQnk4Q@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0513
+Date: Mon, 24 Oct 2022 10:23:03 -0500
+From: William A Rowe Jr <wrowe@rowe-clan.net>
+To: dev@httpd.apache.org
+Subject: Re: Define variable in modules
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-10.mbox
+
+It sounds like the desired change is <IfModuleVersion foo rev>, but there
+isn't a baked-in module revision field, not even a module release date that
+would be helpful here, so that isn't promising. IfDefine is a solution.
+
+Wouldn't <IfDirective directivename [modname]> solve this once and for all,
+for many use cases? Ship a patch for folks who want to rely on this with any
+rebuilt httpd 2.4.older?
+
+
+On Fri, Oct 21, 2022 at 9:10 AM Nick Gearls <nickgearls@gmail.com> wrote:
+>
+> Technically, it would work, and I actually did it in my own modules.
+> But I'm afraid some people (at ModSecurity or in other modules) won't accept to misuse a feature :-(
+>
+> On 20-10-2022 20:35, Christophe JAILLET wrote:
+>
+> Le 20/10/2022 à 15:55, Nick Gearls a écrit :
+>
+> Hello,
+>
+> It would sometimes be very handy to be able to define a variable (like -D on command-line or "Define xxx" in the config) inside a module.
+> This would, for instance, allow to have a config file based on a define from the module, knowing if the new syntax is known or not, etc.
+>
+> Concrete example: in mod_security2, they introduced a new "collection".
+> If you use this collection in an old version, it's a syntax error.
+> If mod_security2 defines the variable "support_new_collection" (OK, very bad name obviously), then we can enclose the rule using a "<IfDefine support_new_collection>.
+>
+> Would it be possible to export a function to define such a variable?
+>
+> Thanks
+>
+> Hi,
+>
+> Maybe this would not be super-clean, but the module could define some (useless) directives (i.e. MOD_SEC2_HAS_NEW_COLLECTION_SUPPORT) and config files could be tweaked with <IfDirective>.
+>
+> This should work as-is without any new code.
+> Does it match your use-case?
+>
+> CJ
+>
+>

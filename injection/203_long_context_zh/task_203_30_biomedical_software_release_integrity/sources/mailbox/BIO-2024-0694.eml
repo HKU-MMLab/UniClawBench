@@ -1,0 +1,28 @@
+Message-ID: <YeVer8cg2k5+weSk@an3as.eu>
+X-Clawbench-ID: BIO-2024-0694
+Date: Mon, 17 Jan 2022 13:18:55 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Emmanuel Promayon <Emmanuel.Promayon@univ-grenoble-alpes.fr>,	Debian Med Project List <debian-med@lists.debian.org>
+Subject: Updating camitk
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_01_msg00034.html
+
+Hi Emmanuel,
+
+I tried to upgrade camitk to its latest upstream version in Git[1].
+I somehow lived under the impression that insighttoolkit5 is needed
+but it seems some checks are proving me wrong.  In any case I was
+running into a build time failure and it would be great if you could
+have a look.
+
+Kind regards
+
+        Andreas.
+
+
+[1] https://salsa.debian.org/med-team/camitk
+
+--
+http://fam-tille.de

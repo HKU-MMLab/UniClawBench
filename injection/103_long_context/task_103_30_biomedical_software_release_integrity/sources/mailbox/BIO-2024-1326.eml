@@ -1,0 +1,29 @@
+Message-ID: <5c5fc864-d7e4-26a2-af37-23761bffe04c@debian.org>
+X-Clawbench-ID: BIO-2024-1326
+Date: Wed, 29 Sep 2021 17:13:47 +0300
+From: Andrius Merkys <merkys@debian.org>
+To: Andreas Tille <tille@debian.org>
+Subject: Re: libcifpp
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_09_msg00067.html
+
+On 2021-09-29 17:10, Andreas Tille wrote:
+> On Wed, Sep 29, 2021 at 04:24:28PM +0300, Andrius Merkys wrote:
+>> On 2021-09-29 16:19, Maarten L. Hekkelman wrote:
+>>> I cannot upload anyway, there will be new libs with new SONAMES and thus
+>>> new binary packages.
+>> I see. @Andreas: Maybe it is worth to ask ftpmaster to REJECT your
+>> upload of 1.0.1-4 in order not to make libcifpp get through NEW two
+>> times in a row?
+> Hmmm, I could ask for another reject, but well, I hope things will go
+> fast now.  It might make sense to upload libcifpp 2.0 to experimental
+> first and see whether all its dependencies will work properly?
+
+Absolutely. Since this is a SONAME change, it requires a transition, so
+libs package with new SONAME has to go to experimental first. Thanks for
+reminding me this.
+
+Best,
+Andrius

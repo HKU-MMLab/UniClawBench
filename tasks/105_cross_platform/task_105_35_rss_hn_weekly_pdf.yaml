@@ -1,0 +1,92 @@
+task_id: task_105_35_rss_hn_weekly_pdf
+category: 105_cross_platform
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I want to produce a 2026 Q1 tech news retrospective weekly-report PDF
+  with proper formatting — cover page, table of contents, chapters by
+  topic, charts at the end — to send the team as a reading list.
+
+  Two data sources:
+
+  RSS — I follow these 5 feeds:
+    - https://news.ycombinator.com/rss
+    - https://lobste.rs/rss
+    - https://feeds.arstechnica.com/arstechnica/index
+    - https://feeds.feedburner.com/TheHackersNews
+    - https://www.wired.com/feed/rss
+  It's already May, so Q1 articles in RSS are probably flushed — grab
+  whatever's available and tag anything that falls within the Q1 window
+  (2026-01-01 to 2026-04-01).
+
+  HN — use Algolia's search API to pull the top 20 stories by points
+  during Q1 2026; that historical data should still be there. Fetch RSS
+  with curl.
+
+  Then run these analyses:
+
+  Check whether any URLs overlap between the HN top 20 and the RSS
+  articles, and compute an overlap rate. Categorize what each of the 5
+  feeds tends to cover — roughly security / tech / business / lifestyle
+  — based on title keywords, and assign each feed a dominant category.
+  Combine all HN + RSS titles for a simple word-frequency / topic
+  analysis, pick out the 3 hottest trending topics, and check whether
+  each topic appeared first in RSS or first on HN.
+
+  Generate the final weekly-report PDF with pandoc. I'd like:
+  - A cover page with "2026 Q1 Tech News"
+  - A table of contents
+  - Chapters for each of the 3 trending topics, listing a few related
+    articles per chapter
+  - A "Feed Positioning" chapter discussing the 5 feeds' category
+    profiles
+  - Two charts at the end: a topic bar chart and a stacked bar chart of
+    per-feed category distribution
+  - Back cover with the overlap statistics
+
+  The PDF should be at least 3 pages and look decent.
+
+  Also keep the data files. Save RSS articles as feed_articles.json
+  grouped by feed (a feeds array, each entry containing url,
+  q1_articles, and current_articles — Q1 ones might be empty, keep
+  current ones for classification). Save the HN top 20 as
+  hn_top_stories.json with a period field and a top_stories array, each
+  entry containing objectID, title, url, points, num_comments, and
+  created_at. Save overlap stats as overlap_summary.json with hn_total,
+  hn_with_rss_match, and overlap_rate. Save topic analysis as
+  topics.json with a top_3_topics array where each topic has
+  rss_first_date, hn_first_date, and lead_time_days indicating timing,
+  plus a top-level most_rss_first_topic noting which topic RSS led on.
+  Save per-feed category breakdown as feed_positioning.json with a
+  per_feed array, each containing url, category_distribution (four
+  categories normalized to 1), dominant_category, and total_classified.
+  For charts, save the topic bar chart as topic_chart.png and the
+  stacked bar chart as feed_positioning_chart.png. Save the final report
+  as weekly_report.pdf, open it with evince, and take a screenshot as
+  evince_screenshot.png so I can preview. Put everything under
+  /tmp_workspace/results/.
+
+  When done, tell me the overlap rate, what the 3 topics are, how many
+  pages the PDF has, and which direction each of the 5 feeds leans.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources: []
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

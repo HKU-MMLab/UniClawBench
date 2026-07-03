@@ -1,0 +1,50 @@
+task_id: task_105_12_nyc_web_plan
+category: 105_cross_platform
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+recording: none
+headed: auto
+task: |
+  You are a tourist visiting New York for the first time. Plan for next Sunday,
+  when you only have 09:30-14:30 for a half-day cultural activity, and the
+  fixed starting point is Grand Central Terminal. If next Sunday is a public
+  holiday, closed day, special-hours day, sold out, or the official pages do
+  not provide enough date-specific opening/admission information, use the
+  following Sunday instead and explain why. Use only the browser and webpages
+  to create a museum itinerary. Candidate attractions are limited to: The Met,
+  MoMA, American Museum of Natural History, and Whitney Museum.
+
+  You need to check each candidate's official website for opening hours and
+  same-day ticketing or reservation rules for the selected date, and combine
+  that with map webpage route times from the starting point and between
+  attractions. Finally, select the 2 most suitable attractions and provide a
+  concrete schedule in this file:
+
+      /tmp_workspace/results/nyc_sunday_museum_plan.md
+
+  The itinerary must satisfy:
+  - Total duration is no more than 5 hours.
+  - Include at least one meal or coffee rest window of 20-40 minutes.
+  - Do not schedule attractions whose official rules are clearly uncertain or
+    unavailable for same-day admission.
+  - Each individual transfer should preferably be no more than 30 minutes.
+
+  The Markdown must include four top-level sections:
+  - candidate check
+  - route timing
+  - final itinerary
+  - why rejected others
+
+  State the selected date in the final plan.
+codex:
+  max_user_followups: 2
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/process_evidence/Whitney_museum.png
+  - references/process_evidence/google_map_GCT_to_WM.png
+  - references/process_evidence/google_map_WM_to_AMNH.png

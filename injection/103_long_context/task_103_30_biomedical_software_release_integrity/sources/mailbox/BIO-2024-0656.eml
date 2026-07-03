@@ -1,0 +1,23 @@
+Message-ID: <YV6KSoyx7q96DWNE@debian>
+X-Clawbench-ID: BIO-2024-0656
+Date: Thu, 7 Oct 2021 11:18:58 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: Julien Lamy <lamy@unistra.fr>
+Subject: xsimd portability to other archs?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_10_msg00014.html
+
+Hi Julien,
+
+xsimd was accepted into the archive many weeks back[1]
+Since you had access to the porter boxes for debugging this,
+did you have any luck/any progress debugging it and getting this
+built on the archs it doesn't go well on?
+
+Let me know
+
+[1]: https://tracker.debian.org/news/1247736/accepted-xsimd-750-1-source-amd64-all-into-unstable-unstable/
+
+Nilesh

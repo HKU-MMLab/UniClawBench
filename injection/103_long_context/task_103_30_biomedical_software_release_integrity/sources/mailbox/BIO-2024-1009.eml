@@ -1,0 +1,24 @@
+Message-ID: <Y4L+oG1VxrNy3Geh@an3as.eu>
+X-Clawbench-ID: BIO-2024-1009
+Date: Sun, 27 Nov 2022 07:07:28 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>,	Pierre Gruet <pgtdebian@free.fr>
+Subject: [help] vdjtools autopkgtest fails
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_11_msg00102.html
+
+Hi Pierre,
+
+when fixing the watch file I stumbled upon an autopkgtest error[1].
+Do you have an idea what might be wrong here?
+
+Kind regards
+
+       Andreas.
+
+[1] https://salsa.debian.org/med-team/vdjtools/-/jobs/3581757
+
+--
+http://fam-tille.de

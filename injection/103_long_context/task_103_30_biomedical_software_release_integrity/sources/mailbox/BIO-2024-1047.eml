@@ -1,0 +1,48 @@
+Message-ID: <1a76314bb293dd166fea5be6de9d85befa5b18bb.camel@gmail.com>
+X-Clawbench-ID: BIO-2024-1047
+Date: Sun, 31 Oct 2021 16:15:28 +0100
+From: Julien Puydt <julien.puydt@gmail.com>
+To: "Torrance, Douglas" <dtorrance@piedmont.edu>, 	"debian-science@lists.debian.org"	 <debian-science@lists.debian.org>, 	"debian-science-sagemath@alioth-lists.debian.net"	 <debian-science-sagemath@alioth-lists.debian.net>
+Subject: Re: Debian Math Team
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_10_msg00053.html
+
+Hi,
+
+Le vendredi 29 octobre 2021 à 17:31 +0000, Torrance, Douglas a écrit :
+> During the Debian Science BoF at this year's DebConf, there was some
+> discussion of creating a team devoted to packaging mathematical
+> software.
+>
+> This seemed like a pretty good idea, so I figured that I'd go ahead
+> and
+> start working on getting it set up.  I've already created a Salsa
+> group [1]
+> and a team on the Debian Package Tracker [2].  If you're interested
+> in
+> joining, then you should be able to sign up at these links.
+>
+> I figured next would be applying for a mailing list, putting together
+> a team policy, etc.  Any thoughts?
+>
+> [1] https://salsa.debian.org/math-team
+> [2] https://tracker.debian.org/teams/math/
+
+
+Count me in on this team (on salsa & mailing-list).
+
+But about moving things, my feelings are mixed. Indeed, this very week,
+I joined the OCaml Team and packaged src:elpi there -- which is
+mathematics software. But since it's written in OCaml, I feel it's
+better to keep it in the language-specific team.
+
+For all packages in the debian science team, I'm ok with them moving to
+the new team. [I have no clue how to move them]
+
+Perhaps the debian sagemath team should be merged in the math team?
+
+Cheers,
+
+J.Puydt

@@ -1,0 +1,19 @@
+Message-ID: <CA+Rg+VzKc6TFvFdCpmm8Kqte0qRqBkMRq12OhVnHAiCyw+tVGg@mail.gmail.com>
+X-Clawbench-ID: BIO-2024-0278
+Date: Mon, 6 Feb 2023 10:18:00 +0100
+From: Sébastien Jodogne <s.jodogne@gmail.com>
+To: Andreas Tille <andreas@an3as.eu>
+Subject: Re: Latest version of orthanc fails
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_02_msg00019.html
+
+> I did not upgrade, just pushed to Git to prepare for future
+> uploads.  I will not upload any orthan* package without your
+> confirmation.
+
+Great! Be sure that as soon as a new suitable is available, I'll take
+care of the upload.
+
+Sébastien-

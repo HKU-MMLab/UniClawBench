@@ -1,0 +1,28 @@
+Message-ID: <78173830-0732-4E67-AEB5-2B0A221B2800@eissing.org>
+X-Clawbench-ID: ASF-2024-0496
+Date: Fri, 8 Apr 2022 12:41:37 +0200
+From: Stefan Eissing <stefan@eissing.org>
+To: dev@httpd.apache.org
+Subject: REQUEST buckets in core
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-04.mbox
+
+With
+
+https://github.com/apache/httpd/pull/311
+
+I present my PR for using REQUEST meta buckets in
+httpd core to split HTTP from HTTP/1.x processing
+and have core ready for all HTTP versions.
+
+7 files are affected by this PR. Most changed lines
+are moved from server/protocol.c to modules/http
+
+I invited some of you for review on github, but
+that is no obligation. And, of course, feedback
+is welcome from anyone.
+
+Kind Regards,
+Stefan

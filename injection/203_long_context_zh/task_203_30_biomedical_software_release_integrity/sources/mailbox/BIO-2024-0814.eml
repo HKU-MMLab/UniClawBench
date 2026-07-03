@@ -1,0 +1,49 @@
+Message-ID: <4448f6dc-d6c6-7787-7eef-c9b8ebb23f5e@free.fr>
+X-Clawbench-ID: BIO-2024-0814
+Date: Sat, 20 Nov 2021 13:11:59 +0100
+From: Vincent Prat <vinceprat@free.fr>
+To: debian-science@lists.debian.org
+Subject: Re: suitesparse-graphblas_6.0.0+dfsg-1_amd64.changes is NEW
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_11_msg00112.html
+
+Hi,
+
+> Could you possibly send me a notification when suitesparse-graphblas is
+> accepted, so that I adapt src:suitesparse to stop building it?
+Yes, sure.
+
+> Also, do you think we should add a Depends of libsuitesparse-dev on
+> libgraphblas-dev (and of libsuitesparse-doc on libgraphblas-doc), to
+> preserve the current behaviour?
+It makes sense to do that, indeed.
+
+Best regards,
+
+Vincent
+>> Le 17/11/2021 à 23:06, Debian FTP Masters a écrit :
+>>> binary:libgraphblas-dev is NEW.
+>>> binary:libgraphblas-doc is NEW.
+>>> binary:libgraphblas6 is NEW.
+>>> binary:libgraphblas-dev is NEW.
+>>> binary:libgraphblas-doc is NEW.
+>>> binary:libgraphblas6 is NEW.
+>>> source:suitesparse-graphblas is NEW.
+>>>
+>>> Your package has been put into the NEW queue, which requires manual action
+>>> from the ftpteam to process. The upload was otherwise valid (it had a good
+>>> OpenPGP signature and file hashes are valid), so please be patient.
+>>>
+>>> Packages are routinely processed through to the archive, and do feel
+>>> free to browse the NEW queue[1].
+>>>
+>>> If there is an issue with the upload, you will receive an email from a
+>>> member of the ftpteam.
+>>>
+>>> If you have any questions, you may reply to this email.
+>>>
+>>> [1]: https://ftp-master.debian.org/new.html
+>>>      or https://ftp-master.debian.org/backports-new.html for *-backports
+>>

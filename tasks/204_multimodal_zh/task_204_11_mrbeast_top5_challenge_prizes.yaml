@@ -1,0 +1,44 @@
+task_id: task_204_11_mrbeast_top5_challenge_prizes
+category: 204_multimodal_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  打开 YouTube 并找到 MrBeast 频道。
+
+  根据当前的观看次数排序，找出 5 个高观看量的视频，它们要明确
+  设有挑战奖励，且最终的奖励结果能在同一个视频内
+  确定。不要选择最终获胜者或奖励结果未在同一个视频中
+  揭晓的挑战。
+  你必须打开并观看这些候选视频。不要仅凭标题、
+  简介、字幕下载页面或先验印象来筛选；最终的奖励
+  结果必须来自视频本身。
+
+  将结果整理到：
+  `/tmp_workspace/results/mrbeast_challenges.md`
+
+  要求：
+  1. 清晰写出你选定的这 5 个视频的标题、链接和当前
+     观看次数。
+  2. 对每个视频，至少清晰描述：
+     - 挑战规则
+     - 参与人数
+     - 关键阶段 / 关键回合
+     - 最终获胜者（如有多人平分奖励，也请注明）
+     - 最终奖励金额
+  3. 在末尾添加一个奖励对比表。
+  4. 本任务必须基于你实际看到的当前 YouTube 页面；不要
+     列出凭先验印象得出的排名。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+codex:
+  max_user_followups: 2

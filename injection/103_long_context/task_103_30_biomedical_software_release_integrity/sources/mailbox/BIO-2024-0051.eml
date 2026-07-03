@@ -1,0 +1,170 @@
+Message-ID: <Y9d8CSG9uCmhVGrA@an3as.eu>
+X-Clawbench-ID: BIO-2024-0051
+Date: Mon, 30 Jan 2023 09:12:57 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>,	Debian Python <debian-python@lists.debian.org>
+Subject: Re: Remaining numpy 1.24 issues on 32bit architectures
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_01_msg00057.html
+
+Hi,
+
+I made some tiny steps forward ("only" 84 failures instead of 89 when I
+wrote my first mail) in the numpy 1.24 migration for 32bit architectures
+but I'm facing issues I do not have a real clue for.  In
+
+   https://salsa.debian.org/med-team/python-skbio/-/blob/master/debian/patches/numpy-1.24.patch#L123-L126
+
+I tried three variants how I could fix
+
+_______________________ AlphaDiversityTests.test_no_ids ________________________
+self =
+    def test_no_ids(self):
+        # expected values hand-calculated
+        expected = pd.Series([3, 3, 3, 3])
+        # All this does not help
+        # expected = pd.Series(np.array([3, 3, 3, 3], int32))
+        # actual = np.int64(alpha_diversity('observed_otus', self.table1))
+        # actual = np.dtype('int64').type(alpha_diversity('observed_otus', self.table1))
+        actual = alpha_diversity('observed_otus', self.table1)
+>       assert_series_almost_equal(actual, expected)
+skbio/diversity/tests/test_driver.py:260:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+left = 0    3
+1    3
+2    3
+3    3
+dtype: int32
+right = 0    3
+1    3
+2    3
+3    3
+dtype: int64
+    def assert_series_almost_equal(left, right):
+        # pass all kwargs to ensure this function has consistent behavior even if
+        # `assert_series_equal`'s defaults change
+>       pdt.assert_series_equal(left, right,
+                                check_dtype=True,
+                                check_index_type=True,
+                                check_series_type=True,
+                                check_names=True,
+                                check_exact=False,
+                                check_datetimelike_compat=False,
+                                obj='Series')
+E       AssertionError: Attributes of Series are different
+E
+E       Attribute "dtype" are different
+E       [left]:  int32
+E       [right]: int64
+skbio/util/_testing.py:323: AssertionError
+____________________ AlphaDiversityTests.test_observed_otus ____________________
+self =
+    def test_observed_otus(self):
+        # expected values hand-calculated
+        expected = pd.Series([3, 3, 3, 3], index=self.sids1)
+        actual = alpha_diversity('observed_otus', self.table1, self.sids1)
+>       assert_series_almost_equal(actual, expected)
+skbio/diversity/tests/test_driver.py:223:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+left = A    3
+B    3
+C    3
+D    3
+dtype: int32
+right = A    3
+B    3
+C    3
+D    3
+dtype: int64
+    def assert_series_almost_equal(left, right):
+        # pass all kwargs to ensure this function has consistent behavior even if
+        # `assert_series_equal`'s defaults change
+>       pdt.assert_series_equal(left, right,
+                                check_dtype=True,
+                                check_index_type=True,
+                                check_series_type=True,
+                                check_names=True,
+                                check_exact=False,
+                                check_datetimelike_compat=False,
+                                obj='Series')
+E       AssertionError: Attributes of Series are different
+E
+E       Attribute "dtype" are different
+E       [left]:  int32
+E       [right]: int64
+skbio/util/_testing.py:323: AssertionError
+______________________ AlphaDiversityTests.test_optimized ______________________
+self =
+    def test_optimized(self):
+        # calling optimized faith_pd gives same results as calling unoptimized
+        # version
+>       optimized = alpha_diversity('faith_pd', self.table1, tree=self.tree1,
+                                    otu_ids=self.oids1)
+skbio/diversity/tests/test_driver.py:265:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+
+which obviosly[2] failed.  I wonder whether someone might give some
+hints how to get dtypes consistently to one integer representation which
+is the background of nearly all these test suite issues.
+
+Kind regards
+    Andreas.
+
+[2] https://salsa.debian.org/med-team/python-skbio/-/jobs/3868951
+
+Am Sun, Jan 29, 2023 at 12:11:15PM +0100 schrieb Andreas Tille:
+> Hi,
+>
+> I think there are some remaining issues with numpy 1.24 migration on 32
+> bit architectures[1].
+>
+> Here is one example:
+>
+> _________ TestSequence.test_getitem_with_slice_has_positional_metadata _________
+>
+> self =
+>
+>     def test_getitem_with_slice_has_positional_metadata(self):
+>         s = "0123456789abcdef"
+>         length = len(s)
+>         seq = Sequence(s, metadata={'id': 'id3', 'description': 'dsc3'},
+>                        positional_metadata={'quality': np.arange(length)})
+>
+>         eseq = Sequence("012", metadata={'id': 'id3', 'description': 'dsc3'},
+>                         positional_metadata={'quality': np.arange(3)})
+>         self.assertEqual(seq[0:3], eseq)
+>         self.assertEqual(seq[:3], eseq)
+>         self.assertEqual(seq[:3:1], eseq)
+>
+>         eseq = Sequence("def", metadata={'id': 'id3', 'description': 'dsc3'},
+>                         positional_metadata={'quality': [13, 14, 15]})
+> >       self.assertEqual(seq[-3:], eseq)
+> E       AssertionError: Seque[128 chars]: int32>
+> E       Stats:
+> E           length: 3
+> E       ----------------[14 chars]0 def != Seque[128 chars]: int64>
+> E       Stats:
+> E           length: 3
+> E       ----------------[14 chars]0 def
+>
+> skbio/sequence/tests/test_sequence.py:748: AssertionError
+>
+> How can I ensure that in both cases the arrays have the same type (I think it makes
+> no difference whether it is np.int32 or np.int64 as long as they are of same type.
+>
+> Kind regards
+>
+>      Andreas.
+>
+> [1] https://buildd.debian.org/status/package.php?p=python-skbio&suite=experimental
+>
+> --
+> http://fam-tille.de
+>
+>
+
+--
+http://fam-tille.de

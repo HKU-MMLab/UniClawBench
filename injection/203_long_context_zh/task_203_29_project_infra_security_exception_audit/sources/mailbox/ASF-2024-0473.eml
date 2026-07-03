@@ -1,0 +1,107 @@
+Message-ID: <6e29567a-b6b0-c0b6-9540-c7887c658238@apache.org>
+X-Clawbench-ID: ASF-2024-0473
+Date: Fri, 5 Apr 2024 07:55:36 +0200
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: pytest results for 2.4.59
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-04.mbox
+
+On 4/5/24 12:59 AM, Rainer Jung wrote:
+> I think I fixed all test failures, hopefully in the correct way. More eyes welcome.
+>
+> I have a few additional sporadic ERRORS:
+>
+> A] ERROR during teardown check for log file errors or warnings (twice):
+>
+> 04.04.2024 21:14:42.205465 _______________ ERROR at teardown of TestStatus.test_md_920_020 ________________
+> 04.04.2024 21:14:42.205465 ERROR modules/md/test_920_status.py::TestStatus::test_md_920_020 - AssertionE...
+>
+> 04.04.2024 21:14:42.205465 E       AssertionError: apache logged 1 errors and 0 warnings:
+> 04.04.2024 21:14:42.205465 E         [Thu Apr 04 21:12:29.381511 2024] [md:error] [pid 4169] (22)Invalid argument: no certificates
+> in non-empty chain /path/to/gen/apache/md/staging/one.test.test-md-702-070-1712257797.org/pubcert.pem
+>
+>
+> 04.04.2024 21:03:26.382051 _______________ ERROR at teardown of TestStatus.test_md_920_020 ________________
+> 04.04.2024 21:03:26.382360 ERROR modules/md/test_920_status.py::TestStatus::test_md_920_020 - AssertionE...
+>
+> 04.04.2024 21:03:26.382051 E       AssertionError: apache logged 1 errors and 1 warnings:
+> 04.04.2024 21:03:26.382051 E         [Thu Apr 04 21:00:48.924286 2024] [md:error] [pid 8717:tid 139629962274560] (20014)Internal
+> error (specific information not available): test-md-702-041-1712256790.org: asked to retrieve chain, but no order in context
+> 04.04.2024 21:03:26.382051 E         [Thu Apr 04 21:00:48.924229 2024] [md:warn] [pid 8717:tid 139629962274560] error generate
+> pkey RSA 3072
+>
+> B] Hanging httpd child processes
+>
+> This happens only on RHEL 9 with worker MPM and can be notices by a dramatic slowdown of the tests. There's a lot of messages
+>
+> AH00045: child process 1067703 still did not exit, sending a SIGTERM
+>
+> and
+>
+> AH00276: the listener thread didn't exit
+>
+> It happened in
+>
+> modules/core/test_001_encoding.py::TestEncoding::test_core_001_20[test2-/10%25abnormal.txt-200]
+>
+> modules/md/test_920_status.py::TestStatus::test_md_920_020
+>
+> modules/proxy/test_02_unix.py::TestProxyUds::test_proxy_02_003[mixed-500]
+>
+> but I don't know, whether it might happen elsewhere also, because it is sporadic.
+>
+> What I see in the error logs for one hanging child process:
+>
+> - most threads terminate with
+>
+> [Thu Apr 04 22:42:59.617953 2024] [ssl:trace3] [pid 1067703:tid 140619680433728] ssl_engine_kernel.c(2223): [client
+> 127.0.0.1:40686] OpenSSL: Write: SSL negotiation finished successfully
+> [Thu Apr 04 22:42:59.617972 2024] [ssl:trace6] [pid 1067703:tid 140619680433728] ssl_engine_io.c(154): [client 127.0.0.1:40686]
+> bio_filter_out_write: flush
+> [Thu Apr 04 22:42:59.617981 2024] [ssl:debug] [pid 1067703:tid 140619680433728] ssl_engine_io.c(1146): [client 127.0.0.1:40686]
+> AH02001: Connection closed to child 0 with standard shutdown (server test1.tests.httpd.apache.org:443)
+>
+> - watchdog thread terminates (?) with
+>
+> [Thu Apr 04 22:43:00.902666 2024] [md:debug] [pid 1067703:tid 140619697219136] md_reg.c(1163): test-md-810-003a-1712260944.org:
+> staging done
+> [Thu Apr 04 22:43:00.903951 2024] [md:notice] [pid 1067703:tid 140619697219136] AH10059: The Managed Domain
+> test-md-810-003a-1712260944.org has been setup and changes will be activated on next (graceful) server restart.
+> [Thu Apr 04 22:43:00.904418 2024] [md:debug] [pid 1067703:tid 140619697219136] mod_md_drive.c(229): AH10107: next run in 11 hours
+> 59 minutes 58 seconds
+> [Thu Apr 04 22:43:01.204981 2024] [md:debug] [pid 1067703:tid 140619697219136] mod_md_drive.c(236): AH10058: md watchdog stopping
+> [Thu Apr 04 22:43:01.205094 2024] [watchdog:debug] [pid 1067703:tid 140619697219136] mod_watchdog.c(257): AH02973: Singleton
+> Watchdog (_md_renew_) stopping
+>
+> - one worker thread seems not to stop:
+>
+> [Thu Apr 04 22:42:59.768569 2024] [core:trace5] [pid 1067703:tid 140619672041024] protocol.c(714): [client 127.0.0.1:48748]
+> Request received from client: GET /.well-known/acme-challenge/3VAiCadJ5do2TuwIbbh3w2foMGfnCspnm0eYejBSC9E HTTP/1.1
+> [Thu Apr 04 22:42:59.768667 2024] [md:debug] [pid 1067703:tid 140619672041024] mod_md.c(1385): [client 127.0.0.1:48748] loading
+> challenge for test-md-810-003a-1712260944.org (/.well-known/acme-challenge/3VAiCadJ5do2TuwIbbh3w2foMGfnCspnm0eYejBSC9E)
+> [Thu Apr 04 22:42:59.768698 2024] [http:trace3] [pid 1067703:tid 140619672041024] http_filters.c(1141): [client 127.0.0.1:48748]
+> Response sent with status 200, headers:
+> [Thu Apr 04 22:42:59.768706 2024] [http:trace5] [pid 1067703:tid 140619672041024] http_filters.c(1150): [client 127.0.0.1:48748]
+> Date: Thu, 04 Apr 2024 20:42:59 GMT
+> [Thu Apr 04 22:42:59.768712 2024] [http:trace5] [pid 1067703:tid 140619672041024] http_filters.c(1153): [client 127.0.0.1:48748]
+> Server: Apache/2.4.59 (Unix) OpenSSL/3.1.5
+> [Thu Apr 04 22:42:59.768718 2024] [http:trace4] [pid 1067703:tid 140619672041024] http_filters.c(971): [client 127.0.0.1:48748]
+> Content-Length: 88
+> [Thu Apr 04 22:42:59.768724 2024] [http:trace4] [pid 1067703:tid 140619672041024] http_filters.c(971): [client 127.0.0.1:48748]
+> Connection: close
+> [Thu Apr 04 22:42:59.769616 2024] [core:trace6] [pid 1067703:tid 140619672041024] core_filters.c(828): [client 127.0.0.1:48748]
+> writev_nonblocking: 227/227
+>
+> I do not know, whether it is always this request, but that is one example I could extract from the (trace8) error log.
+>
+> No idea, why I can only observe this (until now) on RHEL 9 with worker. Not woth event or prefork, not on RHEL 7 and 8 and SLES 12
+> and 15.
+
+Are you able to provide a stacktrace of the hanging process (thread apply all bt full)?
+
+Regards
+
+Rüdiger

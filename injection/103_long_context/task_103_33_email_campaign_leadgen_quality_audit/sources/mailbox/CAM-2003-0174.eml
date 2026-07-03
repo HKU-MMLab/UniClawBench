@@ -1,0 +1,41 @@
+Message-ID: <20021003110510.1c619b15.matthias@rpmforge.net>
+X-Clawbench-ID: CAM-2003-0174
+Date: Thu, 03 Oct 2002 11:05:10 +0200
+From: Matthias Saou <matthias@rpmforge.net>
+To: rpm-zzzlist@freshrpms.net
+Subject: Re: Mplayer
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01230.8ff878325b7c108b20c4d9d609c511b6
+
+Once upon a time, Roi wrote :
+
+> Since I upgraded to redhat8 mplayer -vo sdl isnt working for me
+> It gives me black screen and I only hear sound.
+>
+> can anyone help me with this ?
+
+I'll test this as soon as I can.
+
+> btw,
+> also the source rpm specified that I can do --without libdv
+> but it didn't work, worked for lirc and arts.
+
+Should be fixed : You probably had libdv-devel installed and MPlayer
+automatically detected it. The new spec file explicitely passes
+--disable-libdv when the package is rebuilt with --without libdv.
+
+Grab the "fr2.1" spec from here :
+http://freshrpms.net/builds/index.html?build=mplayer
+
+Matthias
+
+--
+Clean custom Red Hat Linux rpm packages : http://freshrpms.net/
+Red Hat Linux release 7.3 (Valhalla) running Linux kernel 2.4.18-10acpi
+Load : 0.02 0.10 0.15
+
+_______________________________________________
+RPM-List mailing list <RPM-List@freshrpms.net>
+http://lists.freshrpms.net/mailman/listinfo/rpm-list

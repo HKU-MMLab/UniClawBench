@@ -1,0 +1,32 @@
+Message-ID: <CAKZYK4_FMRmCSYeyqY+q86SR9kEnmReaXd5cjZyfWoEstrFuNA@mail.gmail.com>
+X-Clawbench-ID: BIO-2024-0209
+Date: Tue, 22 Feb 2022 17:19:33 +0100
+From: Stephan Lachnit <stephanlachnit@debian.org>
+To: Debian Science List <debian-science@lists.debian.org>
+Subject: Re: Google Summer of Code, Debian Science
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2022_02_msg00057.html
+
+On Mon, Feb 21, 2022 at 5:43 PM Anton Gladky  wrote:
+>
+> If somebody wants to be a co-mentor or if you have better ideas
+> for the project, please let me know.
+
+I would love to have a student to bring up packaging of common HEP
+packages (High Energy Physics), most notably ROOT [1] and Geant4 [2].
+I've already done a bit ([3] resp. [4]), but I'm currently not working
+actively on it anymore.
+
+If anyone would be interested to co-mentor this, I would consider
+mentoring this. However it's unlikely that I will do it alone as I'm
+hopefully a Summer Student myself (not at GSoC).
+
+Regards,
+Stephan
+
+[1] https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=981113
+[2] https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=965964
+[3] https://salsa.debian.org/science-team/root
+[4] https://salsa.debian.org/science-team/geant4

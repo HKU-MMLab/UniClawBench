@@ -1,0 +1,24 @@
+Message-ID: <06A0907F-D648-485E-A347-C734D87CA1BB@eissing.org>
+X-Clawbench-ID: ASF-2024-0576
+Date: Thu, 6 Oct 2022 13:26:12 +0200
+From: "Stefan Eissing via dev" <dev@httpd.apache.org>
+To: dev@httpd.apache.org
+Subject: 2.4.x CI fail
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-10.mbox
+
+It seems a change in the setup env causes the ASAN tests to fail on 2.4.x. Could someone have a look at this?
+
+Tracer caught signal 11: addr=0x0 pc=0x7f13f80a34f0 sp=0x7f13f29dece0
+4492==64589==LeakSanitizer has encountered a fatal error.
+4493==64589==HINT: For debugging, try setting environment variable LSAN_OPTIONS=verbosity=1:log_threads=1
+4494==64589==HINT: LeakSanitizer does not work under ptrace (strace, gdb, etc)
+4495++ls asan.log.64589
+4496+grep -q 'ERROR: AddressSanitizer:' asan.log.64589
+4497++ls test/perl-framework/t/core 'test/perl-framework/t/core.*'
+4498+exit 2
+4499The command "./test/travis_run_${TRAVIS_OS_NAME}.sh" exited with 2.
+cache.2
+4500store build cache

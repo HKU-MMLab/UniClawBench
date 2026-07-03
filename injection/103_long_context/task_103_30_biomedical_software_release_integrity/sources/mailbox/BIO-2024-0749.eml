@@ -1,0 +1,40 @@
+Message-ID: <Yt99zGj60uCfaVJa@an3as.eu>
+X-Clawbench-ID: BIO-2024-0749
+Date: Tue, 26 Jul 2022 07:38:20 +0200
+From: Andreas Tille <tille@debian.org>
+To: Étienne Mollier <emollier@debian.org>
+Subject: Re: GCC-12 bugs became RC - some low hanging fruits remaining + one or two harder ones
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_07_msg00069.html
+
+Hi Étienne,
+
+Am Mon, Jul 25, 2022 at 07:57:52PM +0200 schrieb Étienne Mollier:
+> Andreas Tille, on 2022-07-25:
+> > I think the insighttoolkit one is a
+> > hard one any may be there is another harder one amongst the remainings.
+>
+> Thanks for the reminder, I realized I forgot to push a first
+> step to fix the failure to build from source in itk4.  This is
+> not sufficient to make the package pass through buildd though,
+> since I recall I hit a test failure after that.  I don't expect
+> the fix for the test failure will be an easy one.
+
+I'd consider ignoring a single test a sensible option.  ITK4 is in
+maintenance mode.  It has some rdepends which should migrate to ITK5
+sooner or later and hopefully the test issue will not affect these
+rdepends.
+
+> I'm also checking also the status of itk5.  There are no open
+> reports at the moment, but in doubt…
+
+Thanks a lot for caring for ITK*!
+
+Kind regards
+
+       Andreas.
+
+--
+http://fam-tille.de

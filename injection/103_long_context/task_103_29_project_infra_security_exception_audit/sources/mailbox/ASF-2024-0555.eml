@@ -1,0 +1,109 @@
+Message-ID: <a847f8f2-717c-499c-aaaa-0899a98b84cd@kippdata.de>
+X-Clawbench-ID: ASF-2024-0555
+Date: Thu, 8 Aug 2024 12:35:59 +0200
+From: Rainer Jung <rainer.jung@kippdata.de>
+To: "dev@httpd.apache.org" <dev@httpd.apache.org>
+Subject: httpd proxy heartbeat-Loadbalacing
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-08.mbox
+
+Hi there,
+
+I had a look at mod_lbmethod_heartbeat and want to suggest some changes
+or improvements.
+
+How does it work currently:
+
+- module mod_heartmonitor opens a port and listens for incoming UDP messages
+
+- a balancing backend can send UDP packets with a string content of the
+form "v=1&busy=<NUMBER1>&idle=<NUMBER2>" (NUMBER1 and NUMBER2 are
+numbers) to that UDP port.
+
+   - an example would be mod_heartbeat, which can be used as a sender on
+an httpd backend. But one can implement such a simple UDP sender per
+backend oneself.
+
+- mod_heartmonitor puts the information per sender into a shared memory
+
+- when a proxy balancer uses lbmethod=heartbeat, module
+mod_lbmethod_heartbeat makes the balancing decisions based on the shared
+memory contents. Data older than 10 seconds is discarded.
+
+Now how does it make this decision? Since the busy/idle information can
+not be updated by the balancer itself on a continuous basis, it does not
+simply use e.g. the backend with the smallest busy value. If it would
+do, it would send all requests there until an update UDP message changes
+the busy values.
+
+Instead it wants to distribute on all backends based on weights it gives
+them calculated via busy and idle.
+
+Currently it does not use the busy value at all and instead simply uses
+the idle values as the weights.
+
+Now often we deploy httpd with a lot of spare thread capacity. That
+means idle values are often relatively high unless we have a traffic jam
+(httpd or more likely something behind it got stuck). But high idle
+values mean, that the weights are not differentiating much between the
+backends. The more spare threads we configure for them the more the
+balancing ends up roughly being round-robin, at least between all
+backends that do not get stuck.
+
+Example: all backends having 1000 max threads configured, current
+busyness being 10, 15, 20 and 5. So idleness is 990, 985, 980 and 995.
+That leads almost to a round-robin distribution.
+
+So I was thinking about a balancing focusing more on busyness instead of
+the often high idleness and finding more differentiating weights.
+Changes could be mad configurable though for compatibility reasons. I
+would expect not many users using the heartbeat based balancing, but as
+often we don't actually know.
+
+First approximation would be to use MAX(busy)-busy_i as the weight for
+backend i. It is almost like idle, but doesn't use the probably
+configured high max idleness but instead the maximum observed busyness
+as the capacity limit. That would be much more differentiating.
+
+A problem would be, if some backends get stuck. Then they push this
+fictitious idleness again to high numbers for any other backends. So I
+would introduce a configurable limit above which we ignore the busy
+counts of targets when determining the max. One would eg. set this limit
+as an optimization to double the max busyness that one would expect
+during normal operations.
+
+Finally one has to make sure, that one doesn't end up in a corner case.
+E.g. every node has the same busy value, so all weights would be
+MAX-busy = 0. So end up one to all weights or similar.
+
+Another configurable item could be a fixed number which gets added to
+each weight. That would level a bit the strong differentiating when busy
+numbers are very small. The desired behavior of course depends on what
+busyness means to the application and how sensitive it is.
+
+Finally the current idleness based approach handles backends special,
+that show up for the first time in order to not overwhelm them. One
+would adjust the new approach for them as well (have not yet thought
+about it in detail).
+
+Any thoughts on such a change in concept?
+
+I guess we want to keep the current idleness based approach as the
+default in 2.4.x. For trunk I would think we could drop it.
+
+Of course the concept needs an appropriate explanation in the docs,
+that's missing currently for the idleness based balancing.
+
+By the way: I'd like to also make the 10 seconds "timeout" for data
+configurable. Some situations might be fine with less frequent updates
+and measuring the busy count might be a bit to expensive to do it every
+5 seconds or so. Thinking about other application specific senders than
+just mod_heartbeat.
+
+Thanks for following my thoughts! Feel free to ask or correct me!
+
+Best regards,
+
+Rainer

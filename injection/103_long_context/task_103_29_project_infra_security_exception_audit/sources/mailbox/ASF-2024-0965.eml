@@ -1,0 +1,80 @@
+Message-ID: <54EA7EF0-6290-4BEF-982B-2064585063B9@eissing.org>
+X-Clawbench-ID: ASF-2024-0965
+Date: Fri, 5 Jul 2024 14:04:50 +0200
+From: "Stefan Eissing via dev" <dev@httpd.apache.org>
+To: dev@httpd.apache.org
+Subject: Re: mod_md in 2.4.61 fails to compile with openssl < 1.1.1
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-07.mbox
+
+> Am 05.07.2024 um 13:51 schrieb Ruediger Pluem <rpluem@apache.org>:
+>
+> I just noticed that mod_md in 2.4.61 fails to compile with openssl < 1.1.1. Below is the output against openssl 1.0.2 on RedHat 7:
+>
+> md_crypt.c: In function 'md_pkey_get_rsa_e64':
+> md_crypt.c:982:5: warning: implicit declaration of function 'EVP_PKEY_get0_RSA' [-Wimplicit-function-declaration]
+>     const RSA *rsa = EVP_PKEY_get0_RSA(pkey->pkey);
+>     ^
+> md_crypt.c:982:22: warning: initialization makes pointer from integer without a cast [enabled by default]
+>     const RSA *rsa = EVP_PKEY_get0_RSA(pkey->pkey);
+>                      ^
+> md_crypt.c: In function 'md_pkey_get_rsa_n64':
+> md_crypt.c:1002:22: warning: initialization makes pointer from integer without a cast [enabled by default]
+>     const RSA *rsa = EVP_PKEY_get0_RSA(pkey->pkey);
+>                      ^
+> md_crypt.c: In function 'md_cert_get_ct_scts':
+> md_crypt.c:2071:5: error: unknown type name 'SCT'
+>     SCT *sct_handle;
+>     ^
+> In file included from /usr/include/openssl/crypto.h:129:0,
+>                 from /usr/include/openssl/bio.h:69,
+>                 from /usr/include/openssl/err.h:124,
+>                 from md_crypt.c:28:
+> md_crypt.c:2084:29: error: 'SCT' undeclared (first use in this function)
+>                sct_handle = sk_SCT_value(sct_list, i);
+>                             ^
+> md_crypt.c:2084:29: note: each undeclared identifier is reported only once for each function it appears in
+> md_crypt.c:2084:29: error: expected expression before ')' token
+>                sct_handle = sk_SCT_value(sct_list, i);
+>                             ^
+> md_crypt.c:2087:21: warning: implicit declaration of function 'SCT_get_version' [-Wimplicit-function-declaration]
+>                     sct->version = SCT_get_version(sct_handle);
+>                     ^
+> md_crypt.c:2088:21: warning: implicit declaration of function 'SCT_get_timestamp' [-Wimplicit-function-declaration]
+>                     sct->timestamp = apr_time_from_msec(SCT_get_timestamp(sct_handle));
+>                     ^
+> md_crypt.c:2089:21: warning: implicit declaration of function 'SCT_get0_log_id' [-Wimplicit-function-declaration]
+>                     len = SCT_get0_log_id(sct_handle, (unsigned char**)&data);
+>                     ^
+> md_crypt.c:2091:21: warning: implicit declaration of function 'SCT_get_signature_nid' [-Wimplicit-function-declaration]
+>                     sct->signature_type_nid = SCT_get_signature_nid(sct_handle);
+>                     ^
+> md_crypt.c:2092:21: warning: implicit declaration of function 'SCT_get0_signature' [-Wimplicit-function-declaration]
+>                     len = SCT_get0_signature(sct_handle,  (unsigned char**)&data);
+>                     ^
+> make[4]: *** [md_crypt.slo] Error 1
+> make[4]: *** Waiting for unfinished jobs....
+> make[4]: Leaving directory `/home/devil/rpmbuild/BUILD/WAO-apache-2.4.61/httpd-2.4.61/modules/md'
+> make[3]: *** [shared-build-recursive] Error 1
+> make[3]: Leaving directory `/home/devil/rpmbuild/BUILD/WAO-apache-2.4.61/httpd-2.4.61/modules/md'
+> make[2]: *** [shared-build-recursive] Error 1
+> make[2]: Leaving directory `/home/devil/rpmbuild/BUILD/WAO-apache-2.4.61/httpd-2.4.61/modules'
+> make[1]: *** [shared-build-recursive] Error 1
+> make[1]: Leaving directory `/home/devil/rpmbuild/BUILD/WAO-apache-2.4.61/httpd-2.4.61'
+> make: *** [all-recursive] Error 1
+>
+> I am not sure if we can do without these functions or the SCT structure and in the end mod_md is still experimental for 2.4.x.
+> But if we want to keep the code of mod_md as is in 2.4.x we probably should add checks in the autoconf stuff that prevents it
+> from being enabled on openssl < 1.1.1.
+
+Ok, the code is from 2019, meaning we did not have that combination working for a long time. I think checking the openssl version in configure seems the best approach.
+
+Cheers,
+Stefan
+
+>
+> Regards
+>
+> Rüdiger

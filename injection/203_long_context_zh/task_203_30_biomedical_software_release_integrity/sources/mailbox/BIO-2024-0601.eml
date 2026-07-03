@@ -1,0 +1,34 @@
+Message-ID: <234242ba-51ed-d9b0-9f96-4dd0f1071f4b@debian.org>
+X-Clawbench-ID: BIO-2024-0601
+Date: Mon, 8 Nov 2021 14:11:18 +0200
+From: Andrius Merkys <merkys@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: libpdb-redo
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_11_msg00039.html
+
+Hi Maarten,
+
+On 2021-11-08 13:59, Maarten L. Hekkelman wrote:
+> A new version of libpdb-redo is ready for upload to experimental (new
+> SONAME, new package libpdb-redo2).
+>
+> Could someone have a look and upload this, please?
+
+Does libpdb-redo require new libcifpp? I could give it a look. I have
+never done interdependent transitions, but I have not read anything
+forbidding them too.
+
+> And what is the procedure for packages in experimental? Do they transfer
+> to unstable by itself or is there someone who has to push some knob or
+> something?
+
+Someone will have to upload them to unstable after receiving a green
+light from release maintainers (I guess you will be able to do so
+yourself). But first a package has to be accepted to experimental and a
+transition bug opened.
+
+Best,
+Andrius

@@ -1,0 +1,39 @@
+Message-ID: <YYuJE2nkftWvbsIx@an3as.eu>
+X-Clawbench-ID: BIO-2024-0236
+Date: Wed, 10 Nov 2021 09:55:47 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-science@lists.debian.org
+Subject: What means "unmaintained" (Was: What should be moved to math-team)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_11_msg00068.html
+
+Hi,
+
+Am Tue, Nov 09, 2021 at 08:50:08PM +0530 schrieb Nilesh Patra:
+> Maybe, it is also a fine idea to move packages which are important in the science team,
+> but are unmaintained.
+
+But first we need a definition of unmaintained.  I think we get some
+hints if
+
+  * A package smells[1]
+  * Is outdated / has a non-working watch file
+  * Has long standing unanswered bugs of severity RC or important
+
+What else?
+
+> Ofcourse, only if some volunteer is willing to take care of it.
+
+Yep, that's for granted.  We should always empower volunteers.
+
+Kind regards
+
+    Andreas.
+
+[1] https://trends.debian.net/packages-with-smells-sorted-by-maintainer.txt
+    (Seek for Debian Science Maintainers )
+
+--
+http://fam-tille.de

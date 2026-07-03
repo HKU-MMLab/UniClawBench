@@ -1,0 +1,110 @@
+task_id: task_201_21_notion_consolidate
+category: 201_skill_usage_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  本周我要把一个项目交接给一位新负责人，我需要一份单一的、整合好的简报，让他第一天就能读。
+  这个项目分散在一个 Notion 页面及其 8 个子页面里——用工作区的
+  Notion API 技能拉取整个页面树，把一切都抓下来，然后用
+  knowledge-consolidation 技能把它们汇总成一份文档。
+  从这个项目页面开始，并用 $NOTION_API_TOKEN 进行鉴权：
+  https://www.notion.so/ClawBench-34808720dfd48081b333d54b7fc54025?pvs=12
+
+  把所有内容整合进 /tmp_workspace/results/consolidated.md，让新负责人读完后清楚：我们到目前
+  为止决定了什么、有哪些待办行动项及其负责人和到期日期、还有哪些悬而未决的开放问题、团队
+  浮现出了哪些风险或顾虑，以及当前有什么被阻塞或在等待某个依赖。
+
+  有一点要特别留意：有些决策出现在不止一个页面里——在某个页面里较早被提出，在后一个页面里
+  被修订，最后在某个复盘或跟进页面里被确认。对于这些，只有最终形态才属于 Decisions 小节，
+  并且该条目必须明确注明早先的版本已被取代，以免新负责人依据过时的指引行事。在锁定最终形态
+  之前，要把全部 8 个页面都读一遍。
+
+  格式方面：
+  - H1：项目名称
+  - H2：Meetings —— 去重后的摘要，按月分组
+  - H2：Decisions —— date、topic、decision、status、source-page-id 的表格
+  - H2：Action Register —— owner、action、若有注明则 due date、status/blocker、source-page-id
+  - H2：Open Questions —— question、owner 或待定 owner、next step、source-page-id
+  - H2：Risks and Dependencies —— risk/dependency、evidence、mitigation/next action、owner、source-page-id
+  - H2：References
+
+  在 Action Register 内，被阻塞或在等待某个依赖的项应当在 status_or_blocker 列中加以标记，
+  例如 "blocked: waiting on X"，而不要只是留作 open——我希望能一眼看出什么卡住了、卡在
+  什么上。
+
+  另外保存两个用于跟进的跟踪文件：
+  - /tmp_workspace/results/decision_log.csv，列为 date,topic,decision,status,source_page_id,source_excerpt
+  - /tmp_workspace/results/action_register.csv，列为 owner,action,due_date,status_or_blocker,source_page_id
+
+  在每个小节和跟踪文件中都保留来源 page_id，方便我交叉链接回去。
+
+task_snapshot: |
+  本周我要把一个项目交接给一位新负责人，我需要一份单一的、整合好的简报，让他第一天就能读。
+  这个项目的 Notion 页面树——主页面及其 8 个子页面——已经导出到
+  /tmp_workspace/clawbench/sources/notion_snapshot.json，所以请从
+  那里读取。本次运行不要尝试调用实时的 Notion API；快照就是权威输入。用工作区的
+  notion-token-api 技能来了解 Notion 数据的形态，并用 local-knowledge-consolidator
+  技能把一切汇总成一份文档。
+
+  把所有内容整合进 /tmp_workspace/results/consolidated.md，让新负责人读完后清楚：我们到目前
+  为止决定了什么、有哪些待办行动项及其负责人和到期日期、还有哪些悬而未决的开放问题、团队
+  浮现出了哪些风险或顾虑，以及当前有什么被阻塞或在等待某个依赖。
+
+  有一点要特别留意：有些决策出现在不止一个页面里——在某个页面里较早被提出，在后一个页面里
+  被修订，最后在某个复盘或跟进页面里被确认。对于这些，只有最终形态才属于 Decisions 小节，
+  并且该条目必须明确注明早先的版本已被取代，以免新负责人依据过时的指引行事。在锁定最终形态
+  之前，要把全部 8 个页面都读一遍。
+
+  格式方面：
+  - H1：项目名称
+  - H2：Meetings —— 去重后的摘要，按月分组
+  - H2：Decisions —— date、topic、decision、status、source-page-id 的表格
+  - H2：Action Register —— owner、action、若有注明则 due date、status/blocker、source-page-id
+  - H2：Open Questions —— question、owner 或待定 owner、next step、source-page-id
+  - H2：Risks and Dependencies —— risk/dependency、evidence、mitigation/next action、owner、source-page-id
+  - H2：References
+
+  在 Action Register 内，被阻塞或在等待某个依赖的项应当在 status_or_blocker 列中加以标记，
+  例如 "blocked: waiting on X"，而不要只是留作 open——我希望能一眼看出什么卡住了、卡在
+  什么上。
+
+  另外保存两个用于跟进的跟踪文件：
+  - /tmp_workspace/results/decision_log.csv，列为 date,topic,decision,status,source_page_id,source_excerpt
+  - /tmp_workspace/results/action_register.csv，列为 owner,action,due_date,status_or_blocker,source_page_id
+
+  在每个小节和跟踪文件中都保留来源 page_id，方便我交叉链接回去。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - notion_snapshot.json
+
+skills:
+  - notion-token-api
+  - local-knowledge-consolidator
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+pre_exec:
+  - ops/populate.py
+
+# Populator audit: Notion page tree is created-if-absent, then the
+# populator writes the snapshot/ground_truth atomically; no partial
+# rewrite of live pages. Safe under workers>1 behind the populator_lock.
+pre_exec_parallel_safe: true
+
+codex:
+  max_user_followups: 2

@@ -1,0 +1,38 @@
+Message-ID: <ZXIuwfouKRUq6FSF@fusion>
+X-Clawbench-ID: BIO-2024-0070
+Date: Thu, 7 Dec 2023 21:44:49 +0100
+From: Étienne Mollier <emollier@debian.org>
+To: Emmanuel.Promayon@univ-grenoble-alpes.fr
+Subject: Re: [Advent bug squashing] double source build failures #1043957 and #1047043
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_12_msg00019.html
+
+Hi Emmanuel,
+
+> On 05/12/2023 00:24, Étienne Mollier  wrote:
+> > Still counting for December 4th if counting from UTC+0000, I
+> > fixed two minor cases of double source build failures for today.
+> > #1047043 notably affected insighttoolkit5 which is rather heavy
+> > to build, so people running on laptops do not lose too much time
+> > on it.
+
+Emmanuel.Promayon@univ-grenoble-alpes.fr, on 2023-12-07:
+> Thanks! That might also have solved/positively affected bug #1056953, no (probably requires a rebuild of camitk too)?
+
+Looks like the rebuild has triggered itk5 to link without the
+missing gdcm symbol indeed.  In the meantime I see Mathieu
+Malaterre uploaded gdcm with a patch reintroducing the missing
+symbol, thus fixing the issue for good while avoiding a mostly
+unnecessary soversion bump.
+
+I suppose #1056953 closure would be well worth one Advent bug
+squashing sprint entry for Mathieu.  Thank you!
+
+Have a good evening,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  gpg: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/4, please excuse my verbosity
+   `-    on air: Dream Theater - The Path That Divides

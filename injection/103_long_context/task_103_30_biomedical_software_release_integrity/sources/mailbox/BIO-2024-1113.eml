@@ -1,0 +1,62 @@
+Message-ID: <20211219192926.lc3lq7rpt4yffxjg@lark>
+X-Clawbench-ID: BIO-2024-1113
+Date: Sun, 19 Dec 2021 11:29:26 -0800
+From: tony mancill <tmancill@debian.org>
+To: Andreas Tille <andreas@an3as.eu>
+Subject: Re: [Help needed] Racon
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_12_msg00111.html
+
+Hi Andreas, hi Nilesh,
+
+I notice that libedlib0 [1] exported the edlibAlign symbol, but not
+libedlib1, which is what is pulled in by libedlib-dev.  Could that be
+the source of the problem?
+
+Cheers,
+tony
+
+[1] https://salsa.debian.org/med-team/libedlib/-/blob/master/debian/libedlib0.symbols
+
+On Sun, Dec 19, 2021 at 08:00:35PM +0100, Andreas Tille wrote:
+> Hi,
+>
+> I've got the same in parallel and have no spontaneous idea how to
+> fix it.
+>
+> Kind regard
+>    Andreas.
+>
+> Am Sun, Dec 19, 2021 at 11:50:33PM +0530 schrieb Nilesh Patra:
+> > Hi,
+> >
+> > The new version of racon got released, and I believe I made the adjustments in patches accordingly.
+> > However, the build chokes with the log given below.
+> >
+> > I have linked edlib as needed, and the dependency is also satisfied. The functions mentioned (edlibAlign, edlibAlignmentToCigar etc)
+> > are mentioned in /usr/include/edlib.h as well, so I am not sure what is triggering this.
+> > All my changes are in salsa.
+> >
+> > Any help is welcome.
+> >
+> > Regards,
+> > Nilesh
+> >
+> >
+> > [ 80%] Building CXX object CMakeFiles/racon_test.dir/test/racon_test.cpp.o
+> > /usr/bin/c++ -DTEST_DATA=\"/home/nilesh/packages/racon/racon/test/data/\" -I/home/nilesh/packages/racon/racon/src -g -O2 -ffile-prefix-map=/home/nilesh/packages/racon/racon=. -fstack-protector-strong -Wformat -Werror=format-security -I/usr/include -Wdate-time -D_FORTIFY_SOURCE=2 -Wall -Wextra -pedantic -DGTEST_HAS_PTHREAD=1 -std=c++11 -MD -MT CMakeFiles/racon_test.dir/test/racon_test.cpp.o -MF CMakeFiles/racon_test.dir/test/racon_test.cpp.o.d -o CMakeFiles/racon_test.dir/test/racon_test.cpp.o -c /home/nilesh/packages/racon/racon/test/racon_test.cpp
+> > /usr/bin/c++ -DVERSION=\"1.5.0\" -I/home/nilesh/packages/racon/racon/src -g -O2 -ffile-prefix-map=/home/nilesh/packages/racon/racon=. -fstack-protector-strong -Wformat -Werror=format-security -I/usr/include -Wdate-time -D_FORTIFY_SOURCE=2 -Wall -Wextra -pedantic -std=c++11 -MD -MT CMakeFiles/racon_exe.dir/src/main.cpp.o -MF CMakeFiles/racon_exe.dir/src/main.cpp.o.d -o CMakeFiles/racon_exe.dir/src/main.cpp.o -c /home/nilesh/packages/racon/racon/src/main.cpp
+> > [ 90%] Linking CXX executable bin/racon
+> > /usr/bin/cmake -E cmake_link_script CMakeFiles/racon_exe.dir/link.txt --verbose=1
+> > /usr/bin/c++ -g -O2 -ffile-prefix-map=/home/nilesh/packages/racon/racon=. -fstack-protector-strong -Wformat -Werror=format-security -I/usr/include -Wdate-time -D_FORTIFY_SOURCE=2 -Wall -Wextra -pedantic -Wl,-z,relro -Wl,-z,now CMakeFiles/racon_exe.dir/src/main.cpp.o -o bin/racon  lib/libracon.a -lspoa -ledlib -lpthread -lz
+> > /usr/bin/ld: lib/libracon.a(overlap.cpp.o): in function `racon::Overlap::align_overlaps(char const*, unsigned int, char const*, unsigned int)':
+> > ./obj-x86_64-linux-gnu/./src/overlap.cpp:210: undefined reference to `edlibNewAlignConfig'
+> > /usr/bin/ld: ./obj-x86_64-linux-gnu/./src/overlap.cpp:210: undefined reference to `edlibAlign'
+> > /usr/bin/ld: ./obj-x86_64-linux-gnu/./src/overlap.cpp:213: undefined reference to `edlibAlignmentToCigar'
+> > /usr/bin/ld: ./obj-x86_64-linux-gnu/./src/overlap.cpp:223: undefined reference to `edlibFreeAlignResult'
+> > collect2: error: ld returned 1 exit status
+> > make[3]: *** [CMakeFiles/racon_exe.dir/build.make:101: bin/racon] Error 1
+> > make[3]: Leaving directory '/home/nilesh/packages/racon/racon/obj-x86_64-linux-gnu'
+> > make[2]: *** [CMakeFiles/Makefile2:116: CMakeFiles/racon_exe.dir/all] Error 2

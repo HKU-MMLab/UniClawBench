@@ -1,0 +1,25 @@
+Message-ID: <Y3+DoZ1VKshhMVEY@an3as.eu>
+X-Clawbench-ID: BIO-2024-0294
+Date: Thu, 24 Nov 2022 15:45:53 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: "Maarten L. Hekkelman" <maarten@hekkelman.com>,	Debian Med Project List <debian-med@lists.debian.org>
+Subject: Race condition in uploading libmcfp
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_11_msg00088.html
+
+Hi Maarten,
+
+it seems there is a race condition in uploading / pushing to git for
+libmcfp (1.2.2-2).  I was by chance stumbling upon the short description
+that was broken and fixed it besides other routine-update based fixes.
+I think I've won with pushing to Salsa but you won on uploading which
+is probably the worst situation.  I suggest I will download what you
+uploaded, merge it into Git and will upload libmcfp (1.2.2-3) later.
+
+Kind regards
+    Andreas.
+
+--
+http://fam-tille.de

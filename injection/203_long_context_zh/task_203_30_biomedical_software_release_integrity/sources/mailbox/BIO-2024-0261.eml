@@ -1,0 +1,30 @@
+Message-ID: <YW0sCKQH6Y0OizNP@an3as.eu>
+X-Clawbench-ID: BIO-2024-0261
+Date: Mon, 18 Oct 2021 10:10:48 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Filippo Rusconi <lopippo@debian.org>,	Debian Med Project List <debian-med@lists.debian.org>
+Subject: Where can we find latest upstream source of beads
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00095.html
+
+Hi Filippo,
+
+you uploaded beads 1.1.19 and 1.1.20 but the watch file points to some
+location[1] where only 1.1.18 is listed.  The Homepage field even points
+to some URL[2] where only 1.1.13 is advertised.
+
+Could you please fix the watch file and Homepage (or at least point us
+to the new location of the latest source)?
+
+Kind regards
+
+      Andreas.
+
+
+[1] https://sourcesup.renater.fr/projects/beads/
+[2] http://pappso.inrae.fr/bioinfo/beads
+
+--
+http://fam-tille.de

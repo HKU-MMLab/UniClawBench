@@ -1,0 +1,45 @@
+task_id: task_001_outlook_login
+category: 001_smoketest
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200                  # per-turn executor budget: 20 min
+max_total_seconds: 1800                # cumulative executor budget across all turns: 30 min
+success_threshold: 1.0
+
+# Browser-only login smoketest — supervisor grades from saved screenshots.
+# Headless keeps the per-container footprint small even when the
+# Microsoft login flow shows extra verification pages.
+recording: none
+headed: auto
+
+task: |
+  I want to check whether my Outlook mailbox can still be accessed normally on the web.
+  The login credentials are available as environment variables inside the container:
+
+      $OUTLOOK_URL        — the Outlook web entry URL
+      $EMAIL_ADDRESS      — the account email
+      $EMAIL_PASSWORD     — the account password
+
+  Please use the browser to open Outlook on the web and try signing in with that account.
+  If Microsoft shows its own email verification, password, or stay-signed-in
+  pages along the way, follow whichever path can continue into the inbox.
+
+  If you can reach the inbox, save one inbox screenshot and a short status note.
+  If the login ultimately fails, also save a screenshot of the failure page and
+  a short explanation to `/tmp_workspace/results/` so I can debug it later.
+
+  The password is sensitive. Do not write it into `results/`, do not pass it as
+  a command-line argument, and do not let it appear in screenshots in plain text.
+
+references:
+  - references/eval_rule.md
+  - references/outlook_reference_trajectory_2026-04-15.md
+  - references/outlook_signin_email_prompt_2026-04-15.png
+  - references/outlook_signin_verification_branch_2026-04-15.png
+  - references/outlook_signin_password_prompt_2026-04-15.png
+  - references/outlook_signin_stay_signed_in_prompt_2026-04-15.png
+  - references/outlook_mail_inbox_2026-04-15.png
+
+codex:
+  max_user_followups: 2

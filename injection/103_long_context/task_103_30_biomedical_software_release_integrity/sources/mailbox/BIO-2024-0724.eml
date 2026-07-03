@@ -1,0 +1,67 @@
+Message-ID: <Zdg19GQBS-Gy7YCO@an3as.eu>
+X-Clawbench-ID: BIO-2024-0724
+Date: Fri, 23 Feb 2024 07:06:44 +0100
+From: Andreas Tille <andreas@fam-tille.de>
+To: Emmanuel Promayon <Emmanuel.Promayon@univ-grenoble-alpes.fr>
+Subject: Re: New CamiTK 5.2.0 release
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_02_msg00023.html
+
+Dear Emmanuel,
+
+Am Thu, Feb 22, 2024 at 04:07:25PM +0100 schrieb Emmanuel Promayon:
+> Thank for your time, patience and explanations!
+
+You are welcome.
+
+> Thank you very much for the explanation, the wiki update and the link to
+> routine-update, that will probably my saviour in the future!
+
+Routine-update is saving me a lot of time and I hope it will do so
+for others. ;-)
+
+> > The repository has the line with "lib/x86_64-linux-gnu" while the
+> > downloaded tarball has only "lib".  If you really need to adapt the
+> > original tarball to some Debian specific things this needs to be done in
+> > a quilt patch.  Please also note:  This change only works for amd64
+> > architecture which currently is the only architecture where the Debian
+> > package is built.  However, this restriction is only due to the fact
+> > that libinsighttoolkit5-dev is only available for this architecture.  In
+> > case it might be available for other architectures as well your patch
+> > above will fail on those.
+> Understood. Now that the correct libDir variable is set back to just "lib",
+> the multiarch support should be taken into account directly in the
+> debian/rules.
+> The first instruction of the target override_dh_auto_configure target is:
+> sed -i 's+libDir = "lib";+libDir = "lib/$(DEB_HOST_MULTIARCH)";+g'
+> sdk/libraries/core/CamiTKVersion.h
+
+Just a general think I do not understand:  Why is it necessary that a
+header file knows about the location of the (shared/static?) library?
+
+> Which, from what I understand, should replace the libDir variable with the
+> specific architecture version, hopefully making it ready for when/if
+> libinsighttoolkit5-dev supports other architectures.
+> Let me know if that sounds correct for you.
+
+Using the correct lib dir on different architectures is probably the
+right way to support these architectures.  But its the first time I see
+that a header file needs to know the location of the lib.
+
+> I pushed the fix to salsa, let me know if that solved the problem.
+
+I've uploaded yesterday.
+
+> Best
+> regards, Emmanuel PS : I added Manik Bhattacharjee in cc who joined me in
+> the CamiTK project team.
+
+Welcome Manik.
+
+Kind regards
+   Andreas.
+
+--
+http://fam-tille.de

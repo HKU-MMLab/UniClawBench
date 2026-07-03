@@ -1,0 +1,49 @@
+Message-ID: <YdBr+IH5li9q+f0A@an3as.eu>
+X-Clawbench-ID: BIO-2024-0325
+Date: Sat, 1 Jan 2022 15:58:00 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: [Bug 1956094] Re: deborphan guess-work removes too many files
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_01_msg00003.html
+
+Hi Tony,
+
+Am Sat, Jan 01, 2022 at 01:18:40PM +0000 schrieb Tony Travis:
+>
+> The Debian/Ubuntu "upgrade-system" package automates updating the APT
+> package list, installing updated packages and removing 'orphaned' packages.
+> It is very convenient for unattended upgrades of multiple computers because
+> it can either be run interactively, or without a controlling terminal.
+
+Ahhh, I was not aware of this package. ;-)
+
+> It appears that a recent upgrade unconditionally overwrote my edited
+> "upgrade-system.conf",
+
+Hmmm, that should not happen by definition of "config file" since these
+should not be overridden,
+
+> which resulted in most of the packages installed by
+> "med-bio-dev" being removed from five of my bioinformatics servers.
+
+That should also not happen even if you do not configure anything.  As
+far as I understood `deborphan` it reports only those packages that are
+installed via dependencies while the package that needed those
+dependencies was removed.  So if your system is featuring med-bio-dev
+none of its dependencies should be reported by deborphan.
+
+To track down the issue you should probably report
+
+    apt policy med-bio-dev
+
+and also report what packages were reported by deborphan.
+
+Kind regards
+
+      Andreas.
+
+--
+http://fam-tille.de

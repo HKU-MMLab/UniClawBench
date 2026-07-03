@@ -1,0 +1,47 @@
+Message-ID: <YVjA8aBzhuR0LetI@an3as.eu>
+X-Clawbench-ID: BIO-2024-0101
+Date: Sat, 2 Oct 2021 22:28:33 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Project proposal for the Debian Med group
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00015.html
+
+Hi Guido,
+
+Am Sat, Oct 02, 2021 at 08:23:35PM +0200 schrieb Guido Rovera:
+>  Dear Debian Med members,
+> my name is Guido Rovera and I am a medical doctor but also a linux user and
+> an enthusiast developer.
+> I was referenced to the Debian Med group by a member of the debian-devel
+> IRC channel.
+> *I would like to submit a project proposal to the Debian Med group.*
+> I have recently developed a linux-native open-source software called
+> "TechneNotes" (https://grovera.gitlab.io/technenotes/ - see details below)
+> that can greatly help medical doctors / scientists / researchers and
+> developers to better organize their knowledge / research material and
+> results.
+> ...
+
+Thanks a lot for this interesting program.  I agree that this might be
+an interesting package for us.  As I promises in our video conference
+I'd like to point you to the Mentoring of the Month effort:
+
+  https://salsa.debian.org/med-team/community/MoM/-/wikis/home
+
+I hope the introductory text is helpful for the moment.  I also promised
+links to packaging workshop videos - I'll simply add these later to that
+Wiki.
+
+Thanks again for your intend to contribute and I'm happy to guide
+you kindly into packaging details.
+
+Kind regards
+
+       Andreas.
+
+
+--
+http://fam-tille.de

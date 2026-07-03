@@ -1,0 +1,22 @@
+Message-ID: <AMEPKEBLDJJCCDEJHAMIEEGIFFAA.ejw@cse.ucsc.edu>
+X-Clawbench-ID: CAM-2003-0481
+Date: Wed, 28 Aug 2002 14:57:00 -0700
+From: Jim Whitehead <ejw@cse.ucsc.edu>
+To: Gary Lawrence Murphy <garym@canada.com>
+Subject: RE: Java is for kiddies
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00361.6a215262fed7b15f657b22c65107eafd
+
+> For example, take the recent CBC Olympics site: I needed to roll
+> together a telnet client with a tokenizer, perl-regex preprocessing a
+> stream to produce parseable XML, project that XML into relational
+> databases using only the DTD to generate the rdbms schema, and open an
+> XMLRPC interface to read and post items into the news stream.  Where
+> can I find C libs for those components?
+
+You open sourced the new components you developed for this project, so the
+next person who comes along won't have to reimplement them, right?
+
+- Jim

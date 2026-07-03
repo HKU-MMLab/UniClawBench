@@ -1,0 +1,76 @@
+Message-ID: <b209bacf-068e-eec9-06e8-81494af1c9e0@apache.org>
+X-Clawbench-ID: ASF-2024-0582
+Date: Wed, 4 Jan 2023 13:56:13 +0100
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: A little help with a patch for mod_proxy and friends
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-01.mbox
+
+On 11/29/22 6:04 PM, Christopher Schultz wrote:
+> All,
+>
+> On 11/29/22 09:20, Christopher Schultz wrote:
+>> All,
+>>
+>> I've recently come back to bug 64338 (https://bz.apache.org/bugzilla/show_bug.cgi?id=64338) which is an enhancement I filed back
+>> in 2020 with a patch. I got some good feedback and I have an updated patch (not yet posted) but I'm finding that while there are
+>> no errors or crashes, the behavior I'm seeing is just not what I'm expecting.
+>>
+>> Could someone with mod_proxy dev experience have a quick look at the existing patch on the bug and my most-recent comment?
+>>
+>> It looks to me like the balancer worker doesn't have the expected status. Maybe I'm looking in the wrong place?
+>
+> *facepalm*
+>
+> I got confused between my localhost and remote hosting environments. I had reconfigured my localhost and was testing the results
+> in the remote.
+>
+> :D
+>
+> Nothing to see here.
+>
+> Except, I now have a question about how mod_proxy works versus mod_jk (which is where I'm coming from, trying to get mod_proxy to
+> have feature-parity with mod_jk before I switch).
+>
+> When we set a mod_jk worker to "disabled", it means that the worker will veto any new requests that don't include a session
+> identifier. Any session identifier present (valid or not) will be routed through the appropriate worker for that session
+> identifier. (With Java-based app servers, this is a JSESSIONID=sessionid.workername cookie or ;jsessionid=sessionid.workername URL
+> parameter.)
+>
+> I'm finding that when I put my (one and only one) mod_proxy worker into "drain" or "disabled" mode, I get a 503 response instead
+> of my (perhaps incorrectly) expected usual pass-through to the back-end server.
+
+When exactly do you get a 503?
+
+Request with session id and worker info, worker in drain mode?
+Request with session id and worker info, worker in disabled mode?
+Request without session id and worker info, worker in drain mode?
+Request without session id and worker info, worker in disabled mode?
+
+>
+> Here's my httpd configuration:
+>
+>         <Proxy "balancer://myapp">
+>                 # worker.template.connection_pool_timeout=60
+>                 # worker.template.socket_timeout=300
+>                 BalancerMember "ajp://localhost:8215" timeout=300 ping=5 ttl=60
+>         </Proxy>
+>
+>         ProxyPassMatch /myapp/(.+) balancer://myapp/myapp/$1
+>         ProxyPassReverse /myapp/(.+) balancer://myapp/myapp/$1
+>
+>
+> Hmm. It looks like maybe I need to set the following:
+>
+> - worker name
+> - session stickiness
+
+Yes. You need to set the route parameter of the BalancerMember to the worker name and the sticksession parameter on the
+ProxyPassMatch or in the Proxy block via ProxySet.
+
+Regards
+
+Rüdiger

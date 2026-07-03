@@ -1,0 +1,23 @@
+{
+  "id": "M05",
+  "title": "BenQ 27\" 4K USB-C Designer Monitor",
+  "listing": {
+    "size_in": 27,
+    "resolution": "4K",
+    "usb_c": "yes",
+    "price": 429.0,
+    "condition": "new"
+  },
+  "detail": {
+    "size_in": 27,
+    "resolution": "3840x2160",
+    "usb_c_video": true,
+    "usb_c_note": "USB-C DP Alt Mode",
+    "price": 429.0,
+    "price_type": "used_like_new",
+    "new_price": 560.0,
+    "seller": "third_party_reseller",
+    "ships_to_us": true,
+    "availability": "in_stock"
+  }
+}

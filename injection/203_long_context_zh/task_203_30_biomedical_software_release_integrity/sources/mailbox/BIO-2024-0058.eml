@@ -1,0 +1,23 @@
+Message-ID: <YW06QlbEfVr3uvJr@an3as.eu>
+X-Clawbench-ID: BIO-2024-0058
+Date: Mon, 18 Oct 2021 11:11:30 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: sortmerna: "/usr/bin/ld: cannot find -lpthreads"
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00096.html
+
+Hi,
+
+from time to time I'm stumbling upon cmake based project about this
+linker error ... and I always forget what to do.  If anybody could have
+a look at sortmerna I would be happy.
+
+Thank you
+
+     Andreas.
+
+--
+http://fam-tille.de

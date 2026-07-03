@@ -1,0 +1,43 @@
+Message-ID: <4dc805ca93201eeffe54615cae2055c6c4c26dfd.camel@gmail.com>
+X-Clawbench-ID: BIO-2024-0380
+Date: Mon, 01 Nov 2021 21:20:18 +0100
+From: Julien Puydt <julien.puydt@gmail.com>
+To: debian-science@lists.debian.org
+Subject: Re: Debian Math Team
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_11_msg00008.html
+
+Le lundi 01 novembre 2021 à 15:28 +0100, Andreas Tille a écrit :
+> Hi Julien,
+>
+> Am Sun, Oct 31, 2021 at 04:15:28PM +0100 schrieb Julien Puydt:
+> > For all packages in the debian science team, I'm ok with them
+> > moving to
+> > the new team. [I have no clue how to move them]
+>
+> How to move a package:
+>
+>  In Salsa:
+>
+>     Settings
+>       -> General
+>            -> Advanced [Expand]
+>                 -> Transfer project
+>
+> This redirects users who are using the old URL.  For sure you need
+> the
+> according permissions in both teams (not sure whether maintainer is
+> sufficient or whether you need owner).
+>
+>
+
+Hmmmm... for each package, the Maintainer field in d/control should
+probably be changed to -- "Debian Math Team
+<debian-math@lists.debian.org" ? [Probably the mailing-list should
+exist first]
+
+Cheers,
+
+J.Puydt

@@ -1,0 +1,62 @@
+[
+  {
+    "file": "papers/doc_01.pdf",
+    "title": "Hi Robot",
+    "url": "https://arxiv.org/pdf/2502.19417",
+    "note": "Hierarchical VLM/VLA instruction following with feedback."
+  },
+  {
+    "file": "papers/doc_02.pdf",
+    "title": "Interactive Task Planning",
+    "url": "https://arxiv.org/pdf/2310.10645",
+    "note": "Language-model task planning with interactive replanning."
+  },
+  {
+    "file": "papers/doc_03.pdf",
+    "title": "Voyager",
+    "url": "https://arxiv.org/pdf/2305.16291",
+    "note": "Open-ended embodied agent with language models."
+  },
+  {
+    "file": "papers/doc_04.pdf",
+    "title": "VoxPoser",
+    "url": "https://arxiv.org/pdf/2307.05973",
+    "note": "Composable 3D value maps for robotic manipulation with language models."
+  },
+  {
+    "file": "papers/doc_05.pdf",
+    "title": "MEM",
+    "url": "https://www.pi.website/download/Mem.pdf",
+    "note": "Multi-scale embodied memory for VLA long-horizon tasks."
+  },
+  {
+    "file": "papers/doc_06.pdf",
+    "title": "Recover",
+    "url": "https://arxiv.org/pdf/2404.00756",
+    "note": "Neuro-symbolic failure detection and recovery."
+  },
+  {
+    "file": "papers/doc_07.pdf",
+    "title": "ADAM",
+    "url": "https://proceedings.iclr.cc/paper_files/paper/2025/file/392aae924264f2c56d1895b232bb46b6-Paper-Conference.pdf",
+    "note": "Embodied causal agent in open-world environments."
+  },
+  {
+    "file": "papers/doc_08.pdf",
+    "title": "ReKep",
+    "url": "https://arxiv.org/pdf/2409.01652",
+    "note": "Spatio-temporal relational keypoint constraints for manipulation."
+  },
+  {
+    "file": "papers/doc_09.pdf",
+    "title": "RACER",
+    "url": "https://arxiv.org/pdf/2409.14674",
+    "note": "Language-guided failure recovery policies for imitation learning."
+  },
+  {
+    "file": "papers/doc_10.pdf",
+    "title": "LLM3",
+    "url": "https://arxiv.org/pdf/2403.11552",
+    "note": "Task and motion planning with motion failure reasoning."
+  }
+]

@@ -1,0 +1,4 @@
+PO4A-HEADER: position=^\.\\" Author; mode=after; beginboundary=^\.\\"$
+.\"
+.\" Korean translation for the xz-man
+.\" Seong-ho Cho <darkcircle.0426@gmail.com>, 2023, 2024.

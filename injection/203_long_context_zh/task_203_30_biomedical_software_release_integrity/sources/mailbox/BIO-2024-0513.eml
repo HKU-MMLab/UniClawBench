@@ -1,0 +1,32 @@
+Message-ID: <20210915184918.GA26592@an3as.eu>
+X-Clawbench-ID: BIO-2024-0513
+Date: Wed, 15 Sep 2021 20:49:18 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian R <debian-r@lists.debian.org>
+Subject: Re: RFS: r-bioc-stringdb and deps r-cran-gsubfn,r-cran-sqldf
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_09_msg00033.html
+
+Hi Steffen,
+
+On Wed, Sep 15, 2021 at 04:39:52PM +0200, Steffen Möller wrote:
+> I needed the STRINGdb package locally. Was a bit surprised that we did
+> not have it already in our archive, I must admit. It comes with some
+> interesting dependencies.
+
+I've uploaded r-cran-gsubfn to new but for r-cran-sqldf I get an error
+in the autopkgtest:
+
+In library(package, lib.loc = lib.loc, character.only = TRUE, logical.return = TRUE,  :
+  there is no package called ‘svUnit’
+> require(pkg, character.only = TRUE)  # Needed if run from R CMD BATCH
+Loading required package: sqldf
+Loading required package: gsubfn
+Loading required package: proto
+Loading required package: RSQLite
+Warning message:
+no DISPLAY variable so Tk is not available
+> # unlink("mypkgTest.txt")  # Make sure we generate a new report
+> mypkgSuite http://fam-tille.de

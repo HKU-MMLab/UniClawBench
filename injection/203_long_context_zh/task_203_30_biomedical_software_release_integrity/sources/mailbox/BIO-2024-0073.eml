@@ -1,0 +1,56 @@
+Message-ID: <f188454d-511d-dc34-b22e-e1209e1bc49f@debian.org>
+X-Clawbench-ID: BIO-2024-0073
+Date: Mon, 13 Sep 2021 09:22:12 +0300
+From: Andrius Merkys <merkys@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: Providing components.cif.gz [Was: Re: DeepMind’s AI Advanced Protein Structure Prediction tool Open Sourced]
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_09_msg00022.html
+
+Hi Maarten,
+
+On 2021-09-09 17:54, Maarten L. Hekkelman wrote:
+> Op 09-09-2021 om 15:14 schreef Andrius Merkys:
+>>> But I would not mind having a system wide service to update data files
+>>> like these. Perhaps with a log with version info, so you can look up
+>>> what version was used at what date.
+>> Indeed, it would be nice to find a generic solution, but this might be
+>> tricky. There are conflicting needs of stability (no updates), freshness
+>> (updates every day) and multi-user support (no updates and updates
+>> everyday all at once on the same machine). The only solution I can think
+>> of now is keeping all the downloaded versions with version/date in their
+>> names like:
+>>
+>> /var/cache/pdb/components/components-20210814.cif.gz
+>> /var/cache/pdb/components/components-20210820.cif.gz
+>> /var/cache/pdb/components/components-20210826.cif.gz
+>> ...
+>> (maybe /var/cache/pdb/components/components.cif.gz symlink to the latest)
+>>
+>> Then a user would use environment variable, say, PDB_COMPONENTS to point
+>> to a file with version in its name should they need a specific stable
+>> database, and would use /var/cache/pdb/components/components.cif.gz
+>> should they need the most up-to-date one.
+>>
+>> Does this sound reasonable?
+>
+> I think a bit more is required, when looking at the FAIR principles[1] I
+> can see a few other issues coming up. What would be nice is to have e.g.
+> a JSON file along with the data containing a hash, download date and
+> other meta data for the data files available. Then if you store the hash
+> (and perhaps more meta data) for the data file along with your results,
+> you can always recover what version of the datafile was used.
+>
+> In the PDB-REDO database we're trying to do this for e.g. the version of
+> all the tools used to create a record.
+
+I agree that additional persistent download log would be beneficial. I
+would prefer linear comma-separated or tab-separated value list to
+simplify reading and writing, but the format is more of a matter of taste :)
+
+> [1] https://en.wikipedia.org/wiki/FAIR_data
+
+Best,
+Andrius

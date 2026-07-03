@@ -1,0 +1,29 @@
+Message-ID: <ZXzOhJGT3A7HG0eR@fusion>
+X-Clawbench-ID: BIO-2024-1205
+Date: Fri, 15 Dec 2023 23:09:08 +0100
+From: Étienne Mollier <emollier@debian.org>
+To: debian-med@lists.debian.org
+Subject: [Advent bug squashing] Bugs #1058252, #1043881, #1044949 and #1049574
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_12_msg00051.html
+
+Hi all,
+
+For today's entry:
+
+  * #1043881, #1044949 and #1049574 were double build bugs
+    affecting bamtools and fastqtl;
+  * a little more interesting, #1058252 was a release critical
+    bug affecting pynn, a problem of test suite crashing with
+    Python 3.12, for which I sidetracked fixes until the next
+    pynn upstream version, which should not be affected anymore,
+    can make it to the archive.
+
+Have a nice day,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  gpg: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/2, please excuse my verbosity
+   `-    on air: King Gizzard & The Lizard Wizard - Sadie Sorce…

@@ -1,0 +1,43 @@
+Message-ID: <20221001062125.ijitgrs7tbo3zipk@posteo.in>
+X-Clawbench-ID: BIO-2024-0183
+Date: Sat, 1 Oct 2022 11:51:25 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: Andreas Tille <tille@debian.org>
+Subject: Re: [Help] New version of htslib does not build
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00000.html
+
+On Fri, Sep 30, 2022 at 09:52:55PM +0200, Andreas Tille wrote:
+> Am Fri, Sep 30, 2022 at 02:46:38PM +0000 schrieb Nilesh Patra:
+> >
+> > I have just pushed a fix, which hopefully should fix this. You might want to
+> > re-upload.
+>
+> I can't do this before Tuesday.
+>
+> > BTW, I noticed that the SOVERSION has "+ds" appended -- is that really
+> > intended?
+> >
+> > ./usr/lib/x86_64-linux-gnu/libhts.so.3 -> libhts.so.1.16+ds
+> > ./usr/lib/x86_64-linux-gnu/libhts.so.1.16+ds
+>
+> No, that's definitely a bug!
+>
+> > I am seeing this in older version too
+> >
+> > /usr/lib/x86_64-linux-gnu/libhts.so.1.13+ds
+>
+> This is just wrong.
+
+I have fixed a bunch of things with htscodecs and htslib, both
+of which were not building on !amd64. Hopefully it is
+fine now.
+
+But please fix pysam which is blocking htslib transition. I am
+_absolutely_ out of time now.
+
+--
+Best,
+Nilesh

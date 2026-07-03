@@ -1,0 +1,47 @@
+task_id: task_104_20_daisy_keech_abs_workout_guide
+category: 104_multimodal
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  Please find Daisy Keech's abs workout video on YouTube and watch in full the video that best matches the following title:
+
+  `Daisy Keech hourglass abs workout but just the exercises (with timer and breaks)`
+
+  For this task, it is enough to identify the resource by title; it does not have to come from Daisy Keech's official channel.
+  If you ultimately use Daisy Keech's official original version to cross-check the exercises, clearly state in the results which video you used,
+  and explain how it corresponds to this edited version with the timer.
+  You must directly watch the video frames and timer content. Do not download subtitles or transcripts, and do not guess from an exercise list elsewhere;
+  the exercise order and durations must come from the video you actually watched.
+
+  Task requirements:
+  1. Extract the following for each exercise:
+     - Exercise name (in English)
+     - Duration or number of reps
+     - Rest time
+  2. Capture at least one screenshot of a standard posture for each exercise and save it to
+     `/tmp_workspace/results/abs_workout_frames/`.
+  3. Generate an illustrated workout guide at `/tmp_workspace/results/abs_workout_guide.md`.
+
+  The final document must include:
+  - A full exercise table
+  - Screenshot references for each exercise
+  - A brief explanation of how you confirmed this is the target video
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/reference_exercise_table.csv
+  - references/reference_abs_workout_guide.md
+  - references/reference_abs_workout_report.md
+  - references/source_frames/
+  - references/source_frames_reference_sheet.jpg
+
+codex:
+  max_user_followups: 2

@@ -1,0 +1,71 @@
+task_id: task_201_13_pdf_invoices_structure
+category: 201_skill_usage_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  应付账款（AP）明天就要结账了，而我还没处理完这批工程类发票。我需要你把整个录入流程
+  端到端跑完——用工作区的 PDF 提取技能做提取，用 PDF 生成技能产出汇总报告。本次运行的
+  PDF 文件位于 /tmp_workspace/clawbench/sources/invoices/，从 invoice_001.pdf 开始命名。
+
+  提醒一下：那个文件夹里并不是每个 PDF 都属于这次工程类 AP 运行。其中有些的正文文字表明
+  它们是已付发票的重开件，还有些是从其他部门误投过来的。请仔细阅读每个 PDF 的正文，把这些
+  过滤掉——只有真正应付的工程类发票才应进入结构化交付物。
+
+  我们的 AP 付款导出文件位于
+  /tmp_workspace/clawbench/sources/ap_payments_ledger.csv。
+
+  对每张在范围内的发票，我想要一份完整的画像：顶部的表头信息，含 vendor、invoice number、
+  invoice date 和 payment terms；完整的行项目集合，含 sku、description、qty、unit price 和
+  line total；内部对账的金额页脚，使 subtotal 加 tax 加任何 shipping 能与 grand total 对得上；
+  对照我们台账的付款状态；以及当同一张发票内各行项目之间的币种或计量单位看起来不一致时给出
+  标记。把这整套内容放进 /tmp_workspace/results/invoices.json。范围外的 PDF 不得出现在
+  invoices.json 中。
+
+  然后在 /tmp_workspace/results/summary.pdf 生成一页式的在范围内发票汇总，用表格把关键表头
+  字段并排展示，方便我快速核对各项总额。
+
+  保存 /tmp_workspace/results/ap_reconciliation.csv，将每张在范围内发票的总额与付款台账作比对。
+  包含 invoice_number、vendor、currency、invoice_total、paid_total、payment_ids、status 和
+  variance。请基于发票总额和台账条目一致地划分付款状态，而不要假定每张发票只对应一笔付款。
+  使用一组紧凑的 snake_case 状态标记——至少四个不同状态，涵盖全额已付、未付、付款不足和
+  超额付款——并选用你愿意在整个 AP 团队中统一沿用的最短标记。
+
+  最后，我需要一份清晰的审计轨迹，记录你决定跳过的每一个 PDF。请写出
+  /tmp_workspace/results/excluded.md，逐一列出每个范围外 PDF 的文件名、其发票号，以及一句
+  基于该 PDF 实际正文文字的排除理由。收件箱中你没有纳入 invoices.json 的每个 PDF，都必须
+  连同其理由出现在 excluded.md 中。我希望能够审计你的范围划定决策，确认没有任何内容被悄无
+  声息地丢弃。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - invoices/invoice_001.pdf
+  - invoices/invoice_002.pdf
+  - invoices/invoice_003.pdf
+  - invoices/invoice_004.pdf
+  - invoices/invoice_005.pdf
+  - invoices/invoice_006.pdf
+  - invoices/invoice_007.pdf
+  - ap_payments_ledger.csv
+
+skills:
+  - pdf
+  - pdf-generator
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

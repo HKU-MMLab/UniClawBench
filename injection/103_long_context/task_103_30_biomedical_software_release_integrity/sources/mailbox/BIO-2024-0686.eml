@@ -1,0 +1,27 @@
+Message-ID: <Y6IbMglrlgbBzDI+@an3as.eu>
+X-Clawbench-ID: BIO-2024-0686
+Date: Tue, 20 Dec 2022 21:29:38 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Any idea how to fix the UTF-8 errors in augur?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_12_msg00094.html
+
+Hi,
+
+I've upgraded augur after python3-pyfastx is available.  Unfortunately there
+are three remaining errors - two of them definitely related to UTF-8  issues
+the third one possibly[1]
+
+Any idea how to fix this?
+
+Kind regards
+   Andreas.
+
+
+[1] https://salsa.debian.org/med-team/augur/-/jobs/3684088
+
+--
+http://fam-tille.de

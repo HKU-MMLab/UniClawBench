@@ -1,0 +1,31 @@
+Message-ID: <CACsi251DXSa=D+6eM39Pn9qE3zJRxv5jHwTPoJQZkHHw4+emeg@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1063
+Date: Thu, 13 Jan 2022 15:14:55 -0600
+From: William A Rowe Jr <wrowe@rowe-clan.net>
+To: httpd <dev@httpd.apache.org>
+Subject: httpd test framework svn repo borked?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-01.mbox
+
+I'm trying to work out how trunk on httpd test framework is busted on
+Windows, irrespective
+of using an msys2, sfl-ubuntu, or older win32 native svn build. The
+problem always devolves
+to something like shown below;
+
+svn co -q -r 1896892
+https://svn.apache.org/repos/asf/httpd/test/framework/trunk
+httpdtest-1896892
+svn: E000013: Can't move
+'/c/Users/wrowe/dev/oss-httpd-build/src/httpdtest-1896892/.svn/tmp/svn-yIVLxQ'
+to '/c/Users/wrowe/dev/oss-httpd-build/src/httpdtest-1896892/.svn/pristine/b4/b4648076d6b2a3dfab889875d892252d5ed2594c.svn-base':
+Permission denied
+make: *** [../mak/Makefile.download:36: httpdtest-1896892] Error 1
+
+The file it is attempting to move to already exists (why?) Any
+guidance is appreciated, since
+it is painful to grab this on a native ubuntu vm and slough it back to
+windows to be able
+to run the framework on windows.

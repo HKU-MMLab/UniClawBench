@@ -1,0 +1,29 @@
+Message-ID: <CALK=YjMpjZd=sWKfLdH0KGYbVVpivADzO-dNjMGgbMj7-Y5P6w@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0906
+Date: Fri, 10 Feb 2023 09:53:47 -0500
+From: Eric Covener <covener@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: MS-WDV and other MS extensions
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-02.mbox
+
+On Fri, Feb 10, 2023 at 9:17 AM Emmanuel Dreyfus <manu@netbsd.org> wrote:
+>
+> Hello
+>
+> I am ready to commit MS-WDV support for mod_dav.  There are many other
+> MS extensions, and I just wonder if we should prepare to configure MS
+> extensions one by one or as a whole
+>
+> I mean, what directive makes more sense in httpd.conf?
+> DAVMSext on (and if we add new MS extensions, this enables all of them)
+> DAVMSWDV on (and if we implement MS-FOO, we will add DAVMSFOO directive)
+> DAVMSext WDV (if we implemnt MS-FOO, it could become DAVMSext WDV FOO)
+>
+> We can also use the first cas, and turn it into the third case later,
+> with "on" being a shortcut for all implemented MS extensions.
+
+I like the third case with an all/on option.  If it will need to be
+per-directory, maybe an Options like syntax would make sense?

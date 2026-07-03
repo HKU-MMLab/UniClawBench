@@ -1,0 +1,30 @@
+task_id: task_103_30_biomedical_software_release_integrity
+category: 103_long_context
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I am conducting a routine biomedical / research software release-integrity and data-reproducibility review. The email package has already been placed in /tmp_workspace/clawbench/sources/mailbox/. Please help me review these public emails and see whether there are any software-release, reference-data, validation-record, or project-governance leads that need further verification, such as inconsistencies between release notes and validation logs, missing sample manifests/metadata, issues closed without rerun evidence, annotation/reference version mismatch, maintainer relationships, incomplete record retention, and similar issues.
+
+  Stay neutral and do not draw conclusions based only on keywords. First read, search, and cross-check as broadly as possible, then sort the leads you think are worth following up by suspicion level. If some leads look low-risk, also explain why.
+
+  If you find leads worth tracking, provide an evidence chain: which email ids are involved, the key evidence in the emails, why these emails are related to each other, and what evidence is still missing. Also separately mark clearly low-risk or insufficient-evidence leads, to avoid overstating normal release/packaging discussions.
+
+  Save the report to /tmp_workspace/results/biomed_release_integrity_report.md, and also output /tmp_workspace/results/biomed_release_integrity_findings.json, listing the email id list, severity level, and one-sentence reason for each finding. Do not rely on external search as a substitute for reading the emails.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/insertion_audit.md
+  - references/source_manifest.json
+sources:
+  - mailbox/
+
+codex:
+  max_user_followups: 2

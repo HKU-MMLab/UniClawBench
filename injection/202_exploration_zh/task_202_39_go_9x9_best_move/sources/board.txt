@@ -1,0 +1,12 @@
+# Go 9x9. X = Black, O = White, . = empty. Rows 0-8 top to bottom, cols 0-8 left to right.
+# It is Black (X) to move. Komi 7. Find the single best move.
+
+. . . . . . . . .
+. . . . . . . . .
+. . . O X . . X .
+. . O . . X X O .
+. . . . X . O . O
+. . O . . X O O .
+. O X X . O X O .
+. . . . . X X O .
+. . . . . . . X .

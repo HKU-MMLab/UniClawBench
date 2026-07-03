@@ -1,0 +1,64 @@
+task_id: task_105_40_pypi_upgrade_web_audit
+category: 105_cross_platform
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I am preparing a dependency upgrade note for a small Python service.
+  The current pins and target versions are here:
+
+      /tmp_workspace/clawbench/sources/pypi_upgrade/requirements.in
+      /tmp_workspace/clawbench/sources/pypi_upgrade/upgrade_targets.json
+
+  Please verify each target version using official PyPI project/version
+  pages in the browser. You may also use the official PyPI JSON API for
+  metadata, but save browser evidence from real PyPI pages.
+
+  For each package, collect:
+  - package name
+  - current pin
+  - target version
+  - official PyPI target-version URL
+  - first upload date/time for the target version
+  - requires_python
+  - file count
+  - whether a wheel exists
+  - whether an sdist exists
+  - a short upgrade risk note
+
+  Save structured data at:
+
+      /tmp_workspace/results/pypi_upgrade_audit.json
+
+  Save a Markdown report at:
+
+      /tmp_workspace/results/pypi_upgrade_report.md
+
+  Save at least two PyPI browser screenshots under:
+
+      /tmp_workspace/results/pypi_screenshots/
+
+  Do not compare against whatever is currently latest on PyPI. The
+  target versions in `upgrade_targets.json` are the audit anchors.
+
+sources:
+  - pypi_upgrade/
+
+services:
+  - name: pypi-web-setup
+    path: pypi-web-setup
+    start: bash install.sh
+    oneshot: true
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+codex:
+  max_user_followups: 2

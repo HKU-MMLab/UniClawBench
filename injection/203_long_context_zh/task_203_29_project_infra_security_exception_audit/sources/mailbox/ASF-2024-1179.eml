@@ -1,0 +1,64 @@
+Message-ID: <CC8B5F35-6D36-46BD-BB9A-5C374C70E04D@apachelounge.com>
+X-Clawbench-ID: ASF-2024-1179
+Date: Tue, 17 Oct 2023 11:30:11 +0200
+From: Steffen <info@apachelounge.com>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.58-rc3 as httpd-2.4.58
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-10.mbox
+
+Same error on win64.
+Yes the reported mod_http2 errors on 32 and 64.
+Yes, I am not able to tell what is wrong, only I can report the errors. I am not a developer, just building and testing.
+
+Regards, Steffen
+
+> Op 17 okt 2023 om 11:08 heeft Stefan Eissing via dev <dev@httpd.apache.org> het volgende geschreven:
+>
+> ﻿
+>
+>> Am 17.10.2023 um 08:41 schrieb Steffen <info@apachelounge.com>:
+>>
+>> -1 does not build on windows.
+>
+> If I understood your reports from yesterday correctly, the situation is
+> - you can build on win64
+> - you get compiler errors on your win32 build
+> - you are not able to tell us what is wrong
+>
+> Correct?
+>
+> Cheers,
+> Stefan
+>
+>>
+>> Steffen
+>>
+>>>> Op 16 okt 2023 om 17:10 heeft Stefan Eissing via dev <dev@httpd.apache.org> het volgende geschreven:
+>>>
+>>> ﻿Hi all,
+>>>
+>>> after fixing my merge mistake in rc2 (sorry!), we go again:
+>>>
+>>> Please find below the proposed release tarball and signatures:
+>>>
+>>> https://dist.apache.org/repos/dist/dev/httpd/
+>>>
+>>> I would like to call a VOTE over the next few days to release
+>>> this candidate tarball httpd-2.4.58-rc3 as 2.4.58:
+>>> [ ] +1: It's not just good, it's good enough!
+>>> [ ] +0: Let's have a talk.
+>>> [ ] -1: There's trouble in paradise. Here's what's wrong.
+>>>
+>>> The computed digests of the tarball up for vote are:
+>>> sha256: 503a7da4a4a27fd496037998b17078dc9fe004db32c657c96cce8356b8aa2eb6 *httpd-2.4.58-rc3.tar.gz
+>>> sha512: 5c11faf0572035ef67b27775d975999411c689cb774553175299a9e99b63d3d7138b0c7f15048ec28038494d8513689f916202c2289d557947d8b190d46ca9f3 *httpd-2.4.58-rc3.tar.gz
+>>>
+>>> The SVN candidate source is found at tags/2.4.58-rc3-candidate.
+>>>
+>>> Cheers,
+>>> Stefan
+>>
+>

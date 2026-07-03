@@ -1,0 +1,32 @@
+Message-ID: <PR_kwDOFoJrE85chEpL-d22366f7-8bef-4e65-bf3b-aa28c079c5d4@gitbox.apache.org>
+X-Clawbench-ID: ASF-2024-0015
+Date: Thu, 12 Oct 2023 13:36:35 -0000
+From: =?utf-8?q?wdormann_=28via_GitHub=29?= <git@apache.org>
+To: dev@httpd.apache.org
+Subject: =?utf-8?q?Re=3A_=5BPR=5D_Document_non-impact_of_CVE-2023-44487_=5Bhttpd-site?=  =?utf-8?q?=5D?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-10.mbox
+
+wdormann commented on PR #10:
+URL: https://github.com/apache/httpd-site/pull/10#issuecomment-1759629482
+
+   I'm not sure that I'd suggest that CVE-2023-44487 doesn't have an impact on Apache.
+   Using a simple python-based PoC exploit from a **single** attacking host with fast bandwidth against Apache (default Ubuntu 22.04 install with http2 enabled) running on a 32GB machine will OOM kill the apache2 process in about 6 minutes in my testing.  I suppose this assumes that Ubuntu isn't disabling whatever default protections might be in place against CVE-2023-44487, if those protections are indeed a thing.
+
+   ```
+   [Thu Oct 12 13:09:58 2023] Out of memory: Killed process 1328 (apache2) total-vm:63798416kB, anon-rss:31847208kB, file-rss:1332kB, shmem-rss:64kB, UID:33 pgtables:122424kB oom_score_adj:0
+   ```
+
+
+
+--
+This is an automated message from the Apache Git Service.
+To respond to the message, please log on to GitHub and use the
+URL above to go to the specific comment.
+
+To unsubscribe, e-mail: dev-unsubscribe@httpd.apache.org
+
+For queries about this service, please contact Infrastructure at:
+users@infra.apache.org

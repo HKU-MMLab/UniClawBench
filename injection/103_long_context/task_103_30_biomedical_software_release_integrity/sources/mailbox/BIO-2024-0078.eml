@@ -1,0 +1,41 @@
+Message-ID: <udl35bnqhvo.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-0078
+Date: Sun, 16 Oct 2022 22:54:51 -0400
+From: ucko@debian.org (Aaron M. Ucko)
+To: Pierre Gruet <pgt@debian.org>
+Subject: Re: Finishing ncbi-vdb and sra-sdk
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00060.html
+
+Pierre Gruet  writes:
+
+> Hmm, I did not have in mind that the package is ready for amd64
+> only. If this is the case, then yes, we should not use Architecture:
+> all at the moment (which is otherwise the general rule for -java
+> packages).
+
+Ah, never mind, I misunderstood what you meant by "it"; sorry for the
+confusion.
+
+> After giving it some thoughts, I convinced myself it would be better
+> to fit Multi-Arch: same and put the symlink in /usr/lib//jni,
+> which only violates a "should" in the Java policy but is nevertheless
+> done for many packages. Also this architecture-specific path is
+> searched when loads shared libraries from Java code, so I have pushed
+> the change to Salsa.
+
+Great, thanks again!
+
+Meanwhile, I pushed some more tuneups, mostly related to tests; in
+particular, I arranged to label and exclude all online tests, including
+for better or worse some tests that were failing even with Internet
+access.  I also made the Python binary package Architecture: any in the
+same binNMU-safe fashion as the main Java package.  The source package
+still needs a bit more work before uploading, even to experimental, but
+it's getting late in the day.
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

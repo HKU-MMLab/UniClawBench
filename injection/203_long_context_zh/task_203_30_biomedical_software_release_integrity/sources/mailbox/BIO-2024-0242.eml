@@ -1,0 +1,40 @@
+Message-ID: <Y+X0Uql7K8S59G9o@an3as.eu>
+X-Clawbench-ID: BIO-2024-0242
+Date: Fri, 10 Feb 2023 08:37:54 +0100
+From: Andreas Tille <tille@debian.org>
+To: "Aaron M. Ucko" <ucko@debian.org>
+Subject: Re: python-cogent fails to build on armhf - any idea or just removing this architecture?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_02_msg00036.html
+
+Hi Aaron,
+
+Am Thu, Feb 09, 2023 at 03:14:50PM -0500 schrieb Aaron M. Ucko:
+> > Any idea how to fix this?  I personally would probably simply
+> > exclude this architecture, to not loose any time.
+>
+> I see that debian/rules already skips building docs on armel and mipsel,
+> presumably for similar reasons; extending the exclusion to armhf ought
+> to work.
+
+Yep, thanks for opening my eyes for the obvious.
+
+> For that matter, why not just change override_dh_auto_build to
+> override_dh_auto_build-indep and drop the conditional exclusion?  The
+> latter approach would probably also let you move some build dependencies
+> to Build-Depends-Indep.  (Offhand, pandoc and python3-*sphinx* look like
+> plausible candidats to move, though it's of course better to err on the
+> side of overstrict build dependencies.)
+
+While I agree I decided to stick to a minimum of changes since we are
+de-facto to late for even the version bump.  I hope to convince release
+team that the version bump is the most sensible way to cope with numpy /
+scipy issues.
+
+Kind regards
+   Andreas.
+
+--
+http://fam-tille.de

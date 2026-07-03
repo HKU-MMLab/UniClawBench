@@ -1,0 +1,87 @@
+Message-ID: <85c7b99f-3353-4f1c-2b9d-120c429b7167@apache.org>
+X-Clawbench-ID: ASF-2024-0712
+Date: Mon, 19 Aug 2024 11:24:50 +0200
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: [Bug 69235] unable to connect to backend with existing rewrite  rules.
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-08.mbox
+
+On 8/7/24 2:09 PM, Ruediger Pluem wrote:
+>
+>
+> On 7/31/24 7:03 PM, Yann Ylavic wrote:
+>> On Wed, Jul 31, 2024 at 6:57 PM <bugzilla@apache.org> wrote:
+>>>
+>>> https://bz.apache.org/bugzilla/show_bug.cgi?id=69235
+>>>
+>>> --- Comment #2 from Yann Ylavic <ylavic.dev@gmail.com> ---
+>>> Created attachment 39832
+>>>   --> https://bz.apache.org/bugzilla/attachment.cgi?id=39832&action=edit
+>>> mod_proxy fixup after mod_rewrite's
+>>
+>> What could be the issue with mod_proxy fixing up / canonicalizing all
+>> mod_rewrite [P] URLs (including perdir)?
+>> Looks sensible to me..
+>>
+>
+> Just to reconfirm the current state:
+>
+> 1. If we have a server level rewrite rule with a [P] flag then the mod_proxy fixup is run on it.
+> 2. If we have a directory level rewrite rule with a [P] flag then the mod_proxy fixup is not applied to this rewritten URL as the
+> URL is rewritten after the mod_proxy fixup was run.
+>
+> The original commit r98707 (https://github.com/apache/httpd/commit/6f1e0d8307e0c874938b2a9881373ddb8564c84c) seems to be a fix for
+> PR16368 (https://bz.apache.org/bugzilla/show_bug.cgi?id=16368).
+> I guess the different behavior is currently needed because of
+> https://github.com/apache/httpd/blob/3e87e2ba980f6ba2a47c5d860ba6545087b35b21/modules/mappers/mod_rewrite.c#L5392-L5401
+>
+> In the directory context case we add the query string to r->filename whereas we don't in the server context (at least not for
+> reverse proxies):
+>
+> https://github.com/apache/httpd/blob/3e87e2ba980f6ba2a47c5d860ba6545087b35b21/modules/mappers/mod_rewrite.c#L5087-L5093
+>
+> The original code for the directory case seems to be there since ages:
+> https://github.com/apache/httpd/commit/e3e87d34a0280b4e88c87b86b715d2c710ffb7ec
+>
+> Maybe we should apply the same conditions for adding the query string in directory context like in server context?
+>
+> I guess r->proxyreq == PROXYREQ_PROXY is always false in the directory context which leaves us with the additional condition of
+> rulestatus == ACTION_NOESCAPE.
+>
+> So something like
+>
+> Index: modules/mappers/mod_rewrite.c
+> ===================================================================
+> --- modules/mappers/mod_rewrite.c	(revision 1919056)
+> +++ modules/mappers/mod_rewrite.c	(working copy)
+> @@ -5303,12 +5303,13 @@
+>                  return HTTP_FORBIDDEN;
+>              }
+>
+> -            /* make sure the QUERY_STRING and
+> -             * PATH_INFO parts get incorporated
+> +            /* make sure the QUERY_STRING gets incorporated, but only
+> +             * if we do not escape the target. Otherwise the mod_proxy
+> +             * canon handler will take care to do this.
+>               * (r->path_info was already appended by the
+>               * rewriting engine because of the per-dir context!)
+>               */
+> -            if (r->args != NULL) {
+> +            if ((r->args != NULL) && (rulestatus == ACTION_NOESCAPE)) {
+>                  /* see proxy_http:proxy_http_canon() */
+>                  r->filename = apr_pstrcat(r->pool, r->filename,
+>                                            "?", r->args, NULL);
+>
+>
+> Plus the above patch proposed in PR 69235.
+
+Further possible issues not yet analyzed, just as a heads up:
+
+https://github.com/apache/httpd/blob/fe4ade610c750d63c3bbfe0d07c5a37f2d5cb9f0/modules/mappers/mod_rewrite.c#L4530-L4542
+
+Regards
+
+Rüdiger

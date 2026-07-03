@@ -1,0 +1,24 @@
+Message-ID: <Y02cR6oNqmJlEmKK@an3as.eu>
+X-Clawbench-ID: BIO-2024-0177
+Date: Mon, 17 Oct 2022 20:17:43 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: python3-biopython: incompatible with muscle >= 5
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00063.html
+
+Am Mon, Oct 17, 2022 at 10:32:05AM +0300 schrieb Andrius Merkys:
+>
+> This might work, if it is not too much effort to maintain both muscle
+> versions in bookworm. I would prefer B+C for simplicity.
+
+Muscle4 did not made any mentionable work and its packaged since we
+just had it.  I could do this once back from vacation.
+
+Kind regards
+    Andreas.
+
+--
+http://fam-tille.de

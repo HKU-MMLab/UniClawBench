@@ -1,0 +1,24 @@
+Message-ID: <9056f8ae-1311-d1f4-19f0-6a7b824b3575@apache.org>
+X-Clawbench-ID: ASF-2024-0018
+Date: Tue, 8 Feb 2022 12:44:44 +0100
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: release vibes?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-02.mbox
+
+On 2/8/22 12:20 PM, Eric Covener wrote:
+> On Tue, Feb 8, 2022 at 4:43 AM Stefan Eissing <stefan@eissing.org> wrote:
+>>
+>> Is there any consensus in doing a release this month?
+> +1
+>
+
++1. There is one backport for mod_dav that misses 1 vote. Who is brave enough to backport the PCRE stuff that is accepted for
+backport?
+
+Regards
+
+Rüdiger

@@ -1,0 +1,43 @@
+Message-ID: <Zh4thKn20tmuFPpD@redhat.com>
+X-Clawbench-ID: ASF-2024-1077
+Date: Tue, 16 Apr 2024 08:49:25 +0100
+From: Joe Orton <jorton@redhat.com>
+To: dev@httpd.apache.org
+Subject: mod_cgi/cgid unification for 2.4.x
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-04.mbox
+
+I proposed the monster mod_cgi/cgid unification backport for 2.4.x, but
+wanted to give a bit more context here rather than in STATUS. PR is
+here: https://github.com/apache/httpd/pull/209
+
+1) stderr handling is a significant regression in mod_cgid compared to
+mod_cgi so it is worth fixing this IMO (PR 54221)
+
+2) we have shipped this patch in Fedora&RHEL for a few years, so I am
+quite confident that the file descriptor passing feature works well *on
+Linux*. I have no idea how well it works on non-Linux platforms, hence
+keeping it opt-in (./configure --enable-cgid-fdpassing).
+
+3) there should be no behaviour changes to mod_cgi or mod_cgid if the
+fdpassing feature is not enabled, except where bug fixes to either were
+missing and are provided by the unification of common code.
+
+4) because the bulk of the patch is de-duplication, this is a net
+reduction in lines of code shipped despite the new fd-passing code.
+diffstat:
+
+ .github/workflows/linux.yml     |    8 -
+ changes-entries/pr54221.txt     |    3
+ modules/generators/cgi_common.h |  639 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ modules/generators/config5.m4   |   11 +
+ modules/generators/mod_cgi.c    |  586 ++++----------------------------------------------------------------------------------------------------
+ modules/generators/mod_cgid.c   |  642 +++++++++++++++++++++++++++++++++++++++++-------------------------------------------------------------------------
+ 6 files changed, 913 insertions(+), 976 deletions(-)
+
+Since the github PR link is a series of patches, attached the complete
+patch here as well in case that's preferred for review.
+
+Regards, Joe

@@ -1,0 +1,41 @@
+task_id: task_102_26_nasa_image_crop_provenance
+category: 102_exploration
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I came across this cropped close-up of a space image with no caption and I
+  want to know exactly what astronomical object it shows and find the original
+  NASA image record (not a blog or news copy). The image is here:
+
+      /tmp_workspace/clawbench/sources/crop.jpg
+
+  It's only a detail of a larger image, with no text or labels, so identify the
+  object from the picture itself and then trace it back to NASA's authoritative
+  source.
+
+  Tell me:
+  - what astronomical object this is,
+  - which NASA telescope/instrument took it (if determinable),
+  - the NASA image id and the canonical NASA image-library / JPL record URL,
+  - the approximate release date.
+
+  Save your conclusion and the supporting evidence (how you identified it, and
+  the canonical NASA record URL) to
+  `/tmp_workspace/results/image_provenance.json`, plus notes/screenshots under
+  `/tmp_workspace/results/`.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+sources:
+  - crop.jpg
+
+codex:
+  max_user_followups: 2

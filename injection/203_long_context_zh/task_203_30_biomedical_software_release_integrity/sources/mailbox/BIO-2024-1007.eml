@@ -1,0 +1,60 @@
+Message-ID: <87lf23rmcs.fsf@nonempty.org>
+X-Clawbench-ID: BIO-2024-1007
+Date: Fri, 05 Nov 2021 10:19:15 +0100
+From: Gard Spreemann <gspr@nonempty.org>
+To: debian-science@lists.debian.org
+Subject: Re: Blends framework for Debian Math (Was: Science Subgroups [was Re: Debian Math Team])
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_11_msg00043.html
+
+Andreas Tille  writes:
+
+> Hi Gard,
+>
+> Am Thu, Nov 04, 2021 at 11:02:49AM +0100 schrieb Gard Spreemann:
+>> > I've pushed the code for the metapackages to
+>> >
+>> >     https://salsa.debian.org/blends-team/math/
+>> >
+>> > and made
+>> >
+>> >     Doug Torrance
+>> >     Julien Puydt
+>> >     Timo Röhling
+>> >
+>> > members of the Blends team to enable currating these files (which should
+>> > be **really** done before announcing anything since its just a copy of the
+>> > two tasks from debian-science and does not make any sense in this form.)
+>>
+>> Stupid questions: What packages should go into the task?
+>
+> That's not a stupid question but the key question!
+>
+>> All mathematics
+>> packages? How do the categories work, and what conditions warrant a new
+>> category?
+>
+> You need to ask the mathematicians what might be sensible tasks.
+
+The reason I said the question was stupid is that I am in fact one of
+the mathematicians ;-)
+
+> The tasks mathematics and mathematics-dev are definitely non-sense
+> but it was the easiest way for me to kickstart something.
+>
+> Please keep in mind that tasks should be user oriented and should fit
+> the work ... the tasks! ... users are doing.  Its extremely important to
+> understand that one package can be in *several* tasks.
+
+See, I didn't even know this last part. Thanks for the pointers!
+
+> So you can start with your own work, what you need and find a good
+> field / category for your own work and put all these into a task.
+
+Makes sense.
+
+
+ Best,
+ Gard

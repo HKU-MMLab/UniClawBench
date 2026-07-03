@@ -1,0 +1,20 @@
+Message-ID: <20240127225056.bwuloddwqcz7yza6@office.mailbox.org>
+X-Clawbench-ID: BIO-2024-0212
+Date: Sun, 28 Jan 2024 04:20:56 +0530
+From: Nilesh Patra <nilesh@iki.fi>
+To: Matthias Klumpp <matthias@tenstral.net>
+Subject: Moving neuron and nmodl to Debian Med?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_01_msg00014.html
+
+Hi Matthias,
+
+You're currently listed as an Uploader for neuron and nmodl package
+which are maintained in the science team.
+Since both of them look related to medicine/bioinformatics, do you
+have any objection if they are moved to med team instead?
+
+Best,
+Nilesh

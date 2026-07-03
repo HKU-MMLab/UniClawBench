@@ -1,0 +1,46 @@
+Message-ID: <CACsi250bae_dn=ihbVxjDqC5TniALe5_q1t3-Nvp-FSf=2c9KA@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0619
+Date: Fri, 14 Jan 2022 17:55:28 -0600
+From: William A Rowe Jr <wrowe@rowe-clan.net>
+To: dev@httpd.apache.org
+Subject: Re: httpd test framework svn repo borked?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-01.mbox
+
+On Fri, Jan 14, 2022 at 4:08 AM Stefan Sperling <stsp@apache.org> wrote:
+>
+> On Thu, Jan 13, 2022 at 07:17:27PM -0600, William A Rowe Jr wrote:
+> > Thanks Stefan, it's attempting [locally] to replace a file, which was
+> > just created during the
+> > checkout (which might even be open).
+>
+> Hmm. I assume SVN would close such files based on APR pool lifetime.
+>
+> Handling of the pristine installation step has been changed in SVN trunk:
+> https://svn.apache.org/r1886490
+> In particular:
+> """
+> On Windows, it uses the existing mechanism of installing the files
+> by handle, without having to reopen them.
+> """
+
+As indicated, this is in the ubuntu 18.04 SFU on windows, the msys2-64
+current distribution, as well as Windows "native". Very consistent.
+
+> If you are running 1.14 or an older release, perhaps try a client
+> built from trunk to see if this issue has already been fixed for
+> a future SVN 1.15 release?
+
+I'm happy to have a look next week.
+
+> > So it looks like some hash
+> > collision or other
+> > duplication issue where there are two attempts to emplace the same
+> > hash svn-base image,
+> > and linux is letting this happen without complaint, while windows refuses.
+>
+> Does the same file content (ignoring expanded keywords, if any) exist at
+> multiple paths? If so, such paths would naturally share the same pristine
+> based on the hash of file contents.

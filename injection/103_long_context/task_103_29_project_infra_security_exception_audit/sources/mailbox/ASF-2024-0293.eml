@@ -1,0 +1,31 @@
+Message-ID: <4729A076-A617-4166-8653-01D1EA762644@eissing.org>
+X-Clawbench-ID: ASF-2024-0293
+Date: Wed, 1 Dec 2021 18:19:50 +0100
+From: Stefan Eissing <stefan@eissing.org>
+To: dev@httpd.apache.org
+Subject: added mod_tls to trunk and CI
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2021-12.mbox
+
+FYI: mod_tls is in trunk.
+
+A travis test image is added and runs the pytest suite in test/modules/tls.
+First success: https://app.travis-ci.com/github/apache/httpd/builds/242716933
+
+The module builds via configure, if it finds a librustls present in the system.
+Building can explicitly be requested by the usual configure options.
+
+CMake or other build systems I have not touched, as I am unable to test those.
+Since this is experimental, it should not be a problem. Perhaps someone well
+versed in other platforms and interested in rustls may tackle this in the future.
+
+Missing is the manual page for the module which is on my TODO list.
+
+Otherwise, since this builds and runs against a 2.4.x as well, we are able
+to offer a "memory safe" TLS to anyone who desires. (quotation marks as the
+non Rust parts, written by me, are not).
+
+Cheers,
+Stefan

@@ -1,0 +1,38 @@
+Message-ID: <ZgbPvwy5W4g5Lmis@an3as.eu>
+X-Clawbench-ID: BIO-2024-0025
+Date: Fri, 29 Mar 2024 15:27:11 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Debian-Med policy proposal: 64-bit & little-endian only* for new packages
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_03_msg00037.html
+
+Hi Charles,
+
+Am Fri, Mar 29, 2024 at 03:48:07PM +0900 schrieb Charles Plessy:
+> > For the moment it would be easy to make sure at least new r-bioc-*
+> > packages are restricted to the said architectures by adding this to
+> > dh-r.
+>
+> I fully agree.
+
+I've pushed an (only weakly tested) patch to dh-r[1] implementing this.
+If you think this is fine, feel free to upload a new version of dh-r
+which enables wider testing.
+
+> By the way the next Bioconductor is scheduled for May 1st, shortly after
+> the R 4.4 release.
+
+Thanks for the information.  I'd be super happy if this would be managed
+without my help in case I might become elected as DPL.  I'm willing to
+take part but I have no idea how much my Debian time will be occupied.
+
+Kind regards
+    Andreas.
+
+[1] https://salsa.debian.org/r-pkg-team/dh-r/-/commit/72571478f4bc889675a60a9a05d7ef31e8bbba15
+
+--
+https://fam-tille.de

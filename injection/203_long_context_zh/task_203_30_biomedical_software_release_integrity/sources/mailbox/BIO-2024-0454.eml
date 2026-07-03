@@ -1,0 +1,60 @@
+Message-ID: <f5e68040cf7213ef7c935be2145cf1adf257c1e1.camel@irisa.fr>
+X-Clawbench-ID: BIO-2024-0454
+Date: Tue, 19 Oct 2021 16:45:26 +0200
+From: olivier sallou <olivier.sallou@irisa.fr>
+To: Andreas Tille <andreas@an3as.eu>, Debian Med Project List	 <debian-med@lists.debian.org>
+Subject: Re: Any volunteer to check two (hdf5 relatet?) issues with python-biom-format
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00111.html
+
+On Mon, 2021-10-18 at 12:30 +0200, Andreas Tille wrote:
+> Hi,
+>
+> I wanted to update python-biom-format, but the build time test ends
+> up in
+>
+>
+> FAILED
+> biom/tests/test_table.py::TableTests::test_from_hdf5_custom_parsers -
+
+can be fixed with:
+
+            self.assertIn(m['BODY_SITE'], ('GUT', 'SKIN'))
+=>
+            self.assertIn(m['BODY_SITE'], (b'GUT', b'SKIN'))
+
+> ...
+> FAILED
+> biom/tests/test_table.py::TableTests::test_to_hdf5_missing_metadata_s
+> ample
+this second test issue seems to be linked with hdf5 library.
+Seems it does not accept NULL values:
+
+	"E   ValueError: VLEN strings do not support embedded NULLs"
+
+while test tries to set some null values and see if converted to empty
+strings.
+
+I am not hdf5 user so cannot really test,  but if h5py dep does not
+accept null.... maybe we should just skip the test.
+
+Olivier
+>
+>
+> Any help would be welcome
+>
+>        Andreas.
+>
+>
+
+--
+Olivier Sallou
+Univ Rennes, Inria, CNRS, IRISA
+Irisa, Campus de Beaulieu
+F-35042 RENNES - FRANCE
+Tel: 02.99.84.71.95
+
+gpg key id: 4096R/326D8438  (keyring.debian.org)
+Key fingerprint = 5FB4 6F83 D3B9 5204 6335  D26D 78DC 68DB 326D 8438

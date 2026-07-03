@@ -1,0 +1,51 @@
+Message-ID: <CB5F85B3-2CC9-418E-84EE-606224E2B833@sharp.fm>
+X-Clawbench-ID: ASF-2024-0635
+Date: Mon, 7 Mar 2022 13:28:19 +0200
+From: Graham Leggett <minfrin@sharp.fm>
+To: dev@httpd.apache.org
+Subject: Re: backports
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-03.mbox
+
+On 07 Mar 2022, at 11:21, Stefan Eissing <stefan@eissing.org> wrote:
+
+> I'd really like, as a reviewer of backports, you can:
+> - see that it passes all our tests. No need to patch/compile/test locally.
+
+“No need to patch/compile locally" is not a good idea - currently the travis tests target Ubuntu only, and this is a practical limitation forced upon us by the nature of the Travis service. I want to see reviewers try out the patch on different architectures. I for example work on MacOS, but deploy to Redhat, so those are my two environments. Others will have different environments.
+
+Our testing needs to be wide and diverse.
+
+> - see the diff and comment/question on specific lines
+
+We do that now.
+
+I am very happy to be inclusive and allow the use of tools like Github, but I’d like the those comments for example gated into our mailing lists so that it is not required to use Github.
+
+> - have exactly merged what you looked at
+
+We do that now.
+
+> This is a fair point. github has suspended accounts in the past
+> based on criteria the ASF may not find agreeable.
+
+Going further, if we mandate Github as part of our workflow, we’re telling our contributors that they must accept the terms and conditions of an arbitrary commercial corporation that is in no way related to us, and has its own mission and values. It is not fair on our contributors to force this decision upon them.
+
+> With the 2.4.* and trunk* patterns, we should run the Travis CIs for
+> all matching branches. In STATUS, we link the branch/PR.
+
+What I want[1] is to skip Github entirely and run CI off the STATUS file.
+
+It would be far more useful to run each build as 2.4.x branch + proposed patch on every v2.4 change. That proposed patch can be a Github PR with no problem, but does not have to be.
+
+This way we learn far more than what Github will give to us. Has my patch been broken by another backport ahead of it and is now stale? Very useful to know. It would be nice to be told “your patch is stale” in CI rather than finding that out when the backport is applied.
+
+Right now (to my knowledge) Github runs CI on changes to the PR, not changes to the underlying branch.
+
+[1] I am up to my eyeballs in bugs right now, so I recognise talk is cheap and I can’t make this happen right now. I do however run CI hardware that can be used for this, but will need time to make it happen.
+
+Regards,
+Graham
+—

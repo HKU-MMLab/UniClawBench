@@ -1,0 +1,43 @@
+Message-ID: <Y9zfNDlpC9gElpSO@an3as.eu>
+X-Clawbench-ID: BIO-2024-0563
+Date: Fri, 3 Feb 2023 11:17:24 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>,	Pierre Gruet <pgtdebian@free.fr>
+Subject: Snippy autopkgtest claims that snpeff is version 0
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_02_msg00007.html
+
+Hi,
+
+I realised that snippy autopkgtest is failing for i386 and s390x[1]
+
+The log for i386[2] says:
+
+Get:310 http://deb.debian.org/debian testing/main i386 libsnpeff-java all 5.1+d+dfsg-3 [2,150 kB]
+...
+[16:13:15] Found snpEff - /usr/bin/snpEff
+...
+[16:13:15] Found snippy-vcf_to_tab - /usr/bin/snippy-vcf_to_tab
+[16:13:15] Found snippy-vcf_report - /usr/bin/snippy-vcf_report
+[16:13:15] Checking version: samtools --version is >= 1.7 - ok, have 1.16
+[16:13:15] Checking version: bcftools --version is >= 1.7 - ok, have 1.16
+[16:13:15] Checking version: freebayes --version is >= 1.1 - ok, have 1.3.6
+[16:13:15] Need snpEff -version >= 4.3 but you have 0 - please upgrade it.
+autopkgtest [16:13:16]: test run-unit-test: -----------------------]
+
+I have no idea what this might mean.
+
+Meanwhile I've pushed a change to ignore s390x architecture for debci since
+the required bcftools does not exist here.
+
+Kind regards
+   Andreas.
+
+[1] https://qa.debian.org/excuses.php?package=snippy
+[2] https://ci.debian.net/data/autopkgtest/testing/i386/s/snippy/30738457/log.gz
+
+
+--
+http://fam-tille.de

@@ -1,0 +1,36 @@
+Message-ID: <20230928162822.pfivahebachja4u4@office.mailbox.org>
+X-Clawbench-ID: BIO-2024-1286
+Date: Thu, 28 Sep 2023 21:58:22 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: Andrius Merkys <merkys@debian.org>
+Subject: Re: Passing on maintenance of node-shiny-server dependencies
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_09_msg00021.html
+
+[[ Switching to new js team list ]]
+
+Hi Andrius,
+
+On Thu, Sep 28, 2023 at 10:28:31AM +0300, Andrius Merkys wrote:
+> I ended up never using shiny-server and/or
+> node-shiny-server, but with the responsibility for its dependencies. I would
+> be happy if someone from Med or JS teams could step up and replace me as the
+> uploader for these packages:
+
+Thanks a lot for your work on these dependencies so far!
+
+> The packages are in a good shape, most of them have no open bugs and are
+> up-to-date with their upstreams. I will wait for responses for a couple of
+> weeks before orphaning them.
+
+Do note that as the "maintainer" of these packages is a team, you were
+never maintaining them yourself in the first place. So orphaning
+packages is a wrong course of action. Sending a mail like the one you
+did and reflecting uploaders field in salsa should suffice.
+
+Thanks again for your work!
+
+Best,
+Nilesh

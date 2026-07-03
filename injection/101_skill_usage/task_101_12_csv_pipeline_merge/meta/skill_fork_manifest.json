@@ -1,0 +1,14 @@
+{
+  "task_id": "task_101_12_csv_pipeline_merge",
+  "skills": [
+    {
+      "original_skill": "python-dataviz",
+      "injected_skill": "python-dataviz",
+      "change_type": "benchmark environment adaptation",
+      "changes": [
+        "Changed the setup/troubleshooting sections so the executor uses preinstalled Python packages instead of creating a venv or running pip install."
+      ],
+      "reason": "The task setup service provides the required libraries and executor-side installs add avoidable network and time variance."
+    }
+  ]
+}

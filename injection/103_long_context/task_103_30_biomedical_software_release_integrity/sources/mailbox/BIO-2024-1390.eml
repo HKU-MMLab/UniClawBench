@@ -1,0 +1,32 @@
+Message-ID: <udlv8p5n9ql.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-1390
+Date: Thu, 29 Sep 2022 17:36:50 -0400
+From: ucko@debian.org (Aaron M. Ucko)
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Re: [Help] New version of htslib does not build
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_09_msg00053.html
+
+Andreas Tille  writes:
+
+> I tried to catch up with htslib since we are lagging behind two releases
+> (counted from experimental - its three release in unstable).
+> Unfortunately it does not build since the linker does not find some
+> symbols ... despite these are inside libhts.a when grepping the strings
+> output for it.  Interestingly the missing symbols are mentioned in some
+> warnings higher up in the changelog![1]  Any idea what might be wrong
+> here?
+
+Looks like a library order issue, with libhtscodec needing symbols from
+libhts.  I suspect the reverse is also true, so you'll likely need to
+repeat at least one library on the command line; with any luck,
+
+    ... libhts.a -ldeflate -lhtscodecs libhts.a ...
+
+will do the job.
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

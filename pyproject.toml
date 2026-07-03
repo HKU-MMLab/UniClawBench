@@ -1,0 +1,52 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "clawbench"
+version = "0.1.0"
+description = "Reference implementation and WebUI for the UniClawBench proactive-agent benchmark."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "UniClawBench Authors" }]
+dependencies = ["PyYAML>=6.0"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+# Only ``lib`` is an installable Python package. ``docker/`` holds build
+# assets, ``configs/`` and ``injection/`` are data dirs, ``webui/`` is a
+# standalone HTTP server loaded via the ``scripts/run_webui.py`` shim
+# (which puts the repo root on sys.path), and ``tests/`` is not shipped.
+# Declare the package list explicitly so the PEP 517 backend does not try
+# to auto-include every top-level directory.
+[tool.setuptools.packages.find]
+include = ["lib*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = ["-ra", "--strict-markers"]
+markers = [
+    "integration: end-to-end tests that exercise multiple components (deselect with '-m \"not integration\"')",
+    "slow: tests slower than ~1s (deselect with '-m \"not slow\"')",
+]
+
+# Minimal ruff config — focused on the noisy, low-risk checks first. The
+# package facade (lib/runner/__init__.py) is intentionally allowed to
+# carry compat re-exports that look unused; everything else must stay
+# clean of unused imports / unused variables / empty f-strings.
+[tool.ruff]
+line-length = 120
+extend-exclude = ["downloads", "webui/node_modules", "webui/dist"]
+
+[tool.ruff.lint]
+select = ["F401", "F841", "F541", "E9"]
+
+[tool.ruff.lint.per-file-ignores]
+# Facade keeps compat re-exports under an `__all__`; the F401 cleanup
+# happens explicitly in lib/runner/__init__.py rather than via auto-fix.
+"lib/runner/__init__.py" = ["F401"]
+# Re-export umbrellas in the supervision package; same reasoning.
+"lib/supervision/__init__.py" = ["F401"]
+"lib/supervision/common.py" = ["F401"]

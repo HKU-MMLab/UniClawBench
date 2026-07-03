@@ -1,0 +1,21 @@
+Message-ID: <200209260801.g8Q81TC06444@dogma.slashnull.org>
+X-Clawbench-ID: CAM-2003-0306
+Date: Thu, 26 Sep 2002 08:01:29 -0000
+From: scripting <rssfeeds@spamassassin.taint.org>
+To: yyyy@spamassassin.taint.org
+Subject: Jon Hanna, on the RSS-DEV list, says that RSS, was "not designed    to be of a
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01916.927341170e7ab60892b8ad1294be7454
+
+URL: http://scriptingnews.userland.com/backissues/2002/09/25#When:6:25:23AM
+Date: Wed, 25 Sep 2002 13:25:23 GMT
+
+Jon Hanna, on the RSS-DEV list, says[1] that RSS, was "not designed to be of
+any particular use to bloggers, aggregators, or metadata providers." This is
+not true. Half of RSS 0.91 was scriptingNews format[2], which was totally
+designed to model a weblog in XML.
+
+[1] http://groups.yahoo.com/group/rss-dev/message/4023
+[2] http://my.userland.com/stories/storyReader$11

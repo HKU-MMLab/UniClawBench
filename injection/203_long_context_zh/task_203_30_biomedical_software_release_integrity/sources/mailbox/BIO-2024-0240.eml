@@ -1,0 +1,74 @@
+Message-ID: <8603ac6e-e1c8-2670-cc82-4f60f98a8c56@debian.org>
+X-Clawbench-ID: BIO-2024-0240
+Date: Thu, 9 Jun 2022 18:34:20 +0300
+From: Andrius Merkys <merkys@debian.org>
+To: Andreas Tille <tille@debian.org>
+Subject: Re: Added autopkgtest for busco - Closes #1010653
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_06_msg00020.html
+
+Hi Andreas,
+
+On 2022-06-07 12:34, Andreas Tille wrote:
+>>>>> [1] - https://salsa.debian.org/med-team/busco
+>>>>> [2] - https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1010653
+>>>>> [3] - https://gitlab.com/ezlab/busco/-/issues/566
+>>>> Thanks a lot for pushing forward with this. Can you tell me why you
+>>>> decided to add 'debian-tests-data' component instead of just putting
+>>>> test files somewhere under debian/? IMO this unnecessarily complicates
+>>>> the source package, but I would like to hear other opinions too.
+>>> This is perfectly in line with the request of ftpmaster to keep the
+>>> debian/ dir "sensibly" small and I'm pretty sure ftpmaster would have
+>>> been rejected the package if the data would have been under debian/
+>>> (we had such cases in the past).  There are borderline cases where
+>>> only a "few" data files are needed but in this case the debian-tests-data
+>>> tarball is even an order of magnitude larger than the actual source
+>>> package - so this case is pretty clear.
+>>>
+>>> Its actually also not that complicated and documented in Debian Med
+>>> policy[4] (thanks to Nilesh).
+>> To me this looks like an intricate evasion of unclear policy
+>> requirements. 26 MB of uncompressed textual data is "sensibly" small to
+>> me. Are there any actual guidelines from ftpmaster on what is not
+>> "sensible"?
+> The only guideline *I* know is that the limit is way lower than you
+> think. :-(  I've seen rejects for **way** lower data sets - in this case
+> even my gut feeling says here a multi-source tarball is the right way to
+> go.
+
+Interesting. I maintain a package with ~80 MBs in debian/. But again,
+maybe I will get a REJECT next time it has to clear NEW. It would be
+nice to have a rule of thumb to implement in lintian, but from [5] I
+gather this is not that easy.
+
+I understand that I am probably not seeing the whole picture, thus
+please do not take me questioning the status quo personally. I ACK your
+efforts to find the solution that works.
+
+I personally find multi-source tarballs (MUT) tricky to use (for
+example, will gbp import-orig handle them?). Actions to make one as per
+[4] are just way too many. I know MUTs are widely used in JS team, but
+again I mostly managed to avoid them and always got my packages ACCEPTED
+(I have heard about REJECTs of packages that are too small, though).
+Furthermore, I think MUTs have to be properly documented. Policy [4]
+does not say where should I find the source for debian-tests-data/ or
+how to update it. In JS team usually there is some automation, mostly in
+debian/watch. For both busco and stringtie the descriptions are in
+debian/tests/README. Could this also be referenced in [4] then?
+
+I personally much more like Russ's suggestion of a Debian binary package
+for various test data [6]. Maybe there is not much of an overlap between
+packages, indeed. I frequently reuse datasets from other packages for
+tests, but maybe this is because I concentrate on a specific area.
+
+Again, pardon my ignorance. Most of what you and @Nilesh said was new to
+me. I should have kept myself up-to-date with the policy.
+
+[4] https://med-team.pages.debian.net/policy/#embedding-large-test-data
+[5] https://lists.debian.org/debian-devel/2020/09/msg00197.html
+[6] https://lists.debian.org/debian-devel/2020/09/msg00198.html
+
+Best wishes,
+Andrius

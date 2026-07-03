@@ -1,0 +1,62 @@
+Message-ID: <Zpgtzx38zhWtg_SE@fusion.emlwks999.eu>
+X-Clawbench-ID: BIO-2024-0254
+Date: Wed, 17 Jul 2024 22:47:11 +0200
+From: Étienne Mollier <emollier@debian.org>
+To: Steffen Möller <steffen_moeller@gmx.de>
+Subject: Re: PyMol 3.0 is out - salsa upload works for me
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_07_msg00021.html
+
+Hi Steffen,
+
+Steffen Möller, on 2024-07-17:
+> I just updated
+> https://salsa.debian.org/debichem-team/pymol
+> to version 3.0. This works for me but another review would be nice.
+
+Continuous integration[1] went mostly through, which is good
+omen.  Note there are a couple of lintian errors[2] which you
+may want to investigate, to ensure no source files are missing
+(I often end up having to override lintian warnings tripping on
+long lines in html files which turned out to be typewritten, but
+this may not be always the case).  I would suggest these errors
+to be resolved or overriden as deemed adequate before upload.
+
+I would have suggested to check the status of autopkgtest of
+cctbx when running it against the new version of python3-pymol,
+but it is affected by the removal of distutils in Python 3.12
+(and this is already reported as #1076084).
+
+If you have the spare cycles, you may also have a look at the
+build reproducibility failure, but the test item has a long
+history of failing, so this may be difficult to fix and not
+strictly needed (in which case it might be worth to flag the
+Salsa CI reprotest so it ceases causing a failure of the CI
+pipeline).
+
+[1]: https://salsa.debian.org/debichem-team/pymol/-/pipelines/702792
+[2]: https://salsa.debian.org/debichem-team/pymol/-/jobs/5985845
+
+> My Debian key expired earlier this year, so a sponsoring would be much appreciated, too.
+
+Regarding sponsoring, I may have a look back tomorrow evening.
+In the meantime there is room if you want to investigate my
+suggestions.  And if you ping early the mailing list once you're
+happy with the changes, someone faster than I am may even be
+able to upload for you.  ;)
+
+I'm probably a bit far to do it myself, and upcoming olympic
+games make it particularly complicated to travel in the upcoming
+weeks, but if you need people to sign your new key, you can have
+a look at key signing offers[3] in your neighborhood.
+
+[3]: https://wiki.debian.org/Keysigning/Offers
+
+Have a nice day,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  pgp: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/2, please excuse my verbosity
+   `-    on air: D'virgilio, Morse & Jennings - Right Where You…

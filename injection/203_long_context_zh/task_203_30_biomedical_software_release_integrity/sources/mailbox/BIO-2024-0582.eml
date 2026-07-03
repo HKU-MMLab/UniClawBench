@@ -1,0 +1,26 @@
+Message-ID: <d962caaf-58c9-749f-17a2-6e89883f7589@debian.org>
+X-Clawbench-ID: BIO-2024-0582
+Date: Tue, 9 Nov 2021 10:39:39 +0200
+From: Andrius Merkys <merkys@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: libpdb-redo
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_11_msg00047.html
+
+Hi Maarten,
+
+On 2021-11-08 14:39, Maarten L. Hekkelman wrote:
+> Yes, the new libcifpp is required. But mainly because I've switched to
+> cmake entirely for building software, and the cmake file of libpdb-redo
+> requires the  cmake config files from libcifpp.
+>
+> I could build and test the package using sbuild and the --extra-package
+> flag in order to pick up the libcifpp deb's.
+
+Thanks for the information. I have just uploaded libpdb-redo to
+experimental to clear NEW.
+
+Best,
+Andrius

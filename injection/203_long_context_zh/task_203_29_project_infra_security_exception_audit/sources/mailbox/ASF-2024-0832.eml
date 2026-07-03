@@ -1,0 +1,29 @@
+Message-ID: <DB4651E7-54F8-438C-8996-F2BCA5492F31@eissing.org>
+X-Clawbench-ID: ASF-2024-0832
+Date: Thu, 9 Mar 2023 11:29:16 +0100
+From: "Stefan Eissing via dev" <dev@httpd.apache.org>
+To: dev@httpd.apache.org
+Subject: Re: Current pytest failures
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-03.mbox
+
+> Am 09.03.2023 um 11:22 schrieb Rainer Jung <rainer.jung@kippdata.de>:
+>
+> Puzzle partially solved: once I add "--header 'content-type: application/x-www-form-urlencoded'" to the nghttp call, the problem seems fixed - with and without deflate. No more hang, no more status 500, no double requests. I still don't know, which side is influenced, nghttp or http, so I am still not sure, whether the odd behavior without the header is a bug.
+
+Hmm, never seen that. Is this a current nghttp? Normally, calling "nghttp --data=file" will do all that.
+
+I think, since it stabilizes the test, please add the forced content-type header to the test suite. It should do no harm (famous last words),
+
+- Stefan
+
+>
+> Am 09.03.23 um 11:03 schrieb Rainer Jung:
+>> OK, I can test in a standalone situation now.
+>> The problem goes away, once I use curl, even with h2.
+>> The problem also goes away, once I disable deflate compression for the response. But curl and nghttp behave different: nghttp hangs after receiving the response body (no deflate), curl normally terminates. nghttp does not hang if I call some normal production site.
+>> Will investigate further.
+>> Thanks and regards,
+>> Rainer

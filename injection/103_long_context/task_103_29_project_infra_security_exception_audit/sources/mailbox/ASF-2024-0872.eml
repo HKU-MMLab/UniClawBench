@@ -1,0 +1,55 @@
+Message-ID: <B2CEE88B-494E-4A24-85FB-EAA1693AA7B4@eissing.org>
+X-Clawbench-ID: ASF-2024-0872
+Date: Fri, 4 Feb 2022 13:49:47 +0100
+From: Stefan Eissing <stefan@eissing.org>
+To: dev@httpd.apache.org
+Subject: SSL handshake nonblocking as PR
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-02.mbox
+
+https://github.com/apache/httpd/pull/293
+
+is the PR that contains the changes I just reverted
+in trunk regarding the non-blocking SSL handshake.
+
+I did not like to revert a set of changes by anyone
+here. But our trunk CI is failing for some time now
+and I felt this needs to be analyzed without interfering
+with other ongoing work.
+
+CI FAILURES observed:
+
+1. test_h2_105_02 in test/modules/http2 fails reliably.
+   Background: the test verifies that the mod_reqtimeout
+     handshake configuration works.
+   Failure: mod_reqtimeout has no chance to apply its
+     timeout in the nonblocking ssl handshake.
+
+2. test_h2_106_02 in test/modules/http2 fails sometimes.
+   Background: the test sets "MaxRequestsPerChild 3" and
+     "ServerLimit 2" and fires a sequence of requests on
+     each time a new connection. The expected outcome is
+     that all requests succeed, even though the server
+     is restarting child processes.
+   Failure: sometimes, request fail during the SSL
+     handshake. I assume the connection gets accepted, but
+     is not honored in regard to a graceful shutdown of
+     the child.
+
+ 3. Travis CI test report errors in the log that seem to
+    be caused by the changes. The errors are:
+
+ [,,,] [mpm_event:error] [pid 51102:tid 140555589760768] (9)Bad file descriptor: AH03465: process_socket: apr_pollset_add failure for write completion
+
+    Isolating the changes in a separate branch will allow
+    us to see if these changes are connected to this or if
+    another trunk revision caused this.
+
+I hope we can have a working CI in trunk soon and find a
+way forward to apply these changes.
+
+Thank you,
+
+Stefan

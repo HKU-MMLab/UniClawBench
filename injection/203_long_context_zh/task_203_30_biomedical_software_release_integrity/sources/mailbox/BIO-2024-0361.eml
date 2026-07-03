@@ -1,0 +1,21 @@
+Message-ID: <F4B77F39-ED46-49B5-8804-06A7A691BB62@riseup.net>
+X-Clawbench-ID: BIO-2024-0361
+Date: Tue, 07 Dec 2021 19:55:35 +0530
+From: Nilesh Patra <nilesh@riseup.net>
+To: debian-med@lists.debian.org, Andreas Tille <andreas@an3as.eu>
+Subject: Re: [Advent bug squashing] r-bioc-dropletutils: autopkgtest failures ... fixed with new version thus closing the bug
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_12_msg00030.html
+
+On 7 December 2021 7:12:57 pm IST, Andreas Tille  wrote:
+>Hi,
+>
+>this issue i solved in version 1.14.1+ds-1 thus closing the bug.
+
+
+Just wished to ask: are R package bug fixes also candidates for advent calendar?
+
+Meow,
+Nilesh

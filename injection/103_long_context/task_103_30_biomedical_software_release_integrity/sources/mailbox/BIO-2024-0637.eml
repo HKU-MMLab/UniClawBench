@@ -1,0 +1,31 @@
+Message-ID: <Y5+B8UEdOD/+atse@fusion>
+X-Clawbench-ID: BIO-2024-0637
+Date: Sun, 18 Dec 2022 22:11:13 +0100
+From: Étienne Mollier <emollier@emlwks999.eu>
+To: debian-med@lists.debian.org
+Subject: [Advent bug squashing] fixed bug #921566 in deepnano
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_12_msg00089.html
+
+Good day,
+
+Under certain circumstances (still yet to be determined), the
+deepnano autopkgtest used to crash in timeout.  This led to a
+ban of the package on CI infrastructure.  When trying to bring
+the package back into adequate shape to allow for lifting the
+ban, I noticed that said autopkgtest was raising a number of
+failures worth RC bugs.  I fixed those so the software should be
+usable again in time for bookworm.
+
+Otherwise, deepnano autopkgtest now has some safeguards against
+hoging a Debian CI slot for the maximum duration of the timeout,
+which should be sufficient to address #921566 hopefully.
+
+Have a nice day,  :)
+--
+Étienne Mollier
+Fingerprint:  8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+Sent from /dev/pts/1, please excuse my verbosity.
+On air: Bjørn Riis - Descending

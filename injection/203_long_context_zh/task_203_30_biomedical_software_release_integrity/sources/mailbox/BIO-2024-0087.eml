@@ -1,0 +1,91 @@
+Message-ID: <Z3EtyG0gTX8FLTzx@emlwks999.eu>
+X-Clawbench-ID: BIO-2024-0087
+Date: Sun, 29 Dec 2024 12:08:56 +0100
+From: Étienne Mollier <emollier@debian.org>
+To: debian-med@lists.debian.org
+Subject: [Advent Calendar] doors for the last week
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_12_msg00032.html
+
+Hi everyone,
+
+Somewhate late, I collated all bugs squashed from Friday 19th to
+Christmas from Alioth lists[1].  Here are all the remaining
+doors for the 2024 edition of the Debian Med Advent Calendar Bug
+Squashing Party:
+
+Tuesday, December 19th:
+
+ 96. #1088239: deepdiff: autopkgtest failure with Python 3.13
+ 97. #1089249: allelecount: FTBFS with make 4.4.1
+ 98. #1046372: librcsb-core-wrapper: Fails to build source after successful build
+ 99. #1089265: librcsb-core-wrapper: FTBFS with make 4.4.1
+100. #1090794: src:loki: fails to migrate to testing for too long
+101. #1043870: concurrentqueue: Fails to build source after successful build
+
+Friday, December 20th:
+
+102. #1088427: orthanc-dicomweb: move from twitter-bootstrap{3, 4} to bootstrap-html (v5)
+103. #1046208: libmialm: Fails to build source after successful build
+104. #1043738: biomaj3-process: Fails to build source after successful build
+105. #1043846: biomaj3-download: Fails to build source after successful build
+106. #1043846: biomaj3-download: Fails to build source after successful build
+107. #1045354: nxtrim: Fails to build source after successful build
+
+Saturday, December 21st:
+
+108. #1043640: beast-mcmc: Fails to build source after successful build
+109. #1045364: oscar: Fails to build source after successful build
+110. #1045461: reapr: Fails to build source after successful build
+
+Sunday, December 22nd:
+
+111. #1079788: python-questplus: test_thurstone_scaling fails on arm64 with scipy 1.14
+112. #1045535: jellyfish1: Fails to build source after successful build
+113. #1045607: python-pyspoa: Fails to build source after successful build
+114. #1091149: ants: FTBFS on arm64: unsatisfiable build-dependencies: libinsighttoolkit5-dev, libitkadaptivedenoising-dev, libitkgenericlabelinterpolator-dev
+115. #1045897: reprof: Fails to build source after successful build
+116. #1049597: reprof: Fails to build binary packages again after successful build
+
+Monday, December 23rd:
+
+117. #1046152: mcl: Fails to build source after successful build
+118. #1046238: qrisk2: Fails to build source after successful build
+119. #1046485: libbitarray: Fails to build source after successful build
+
+Tuesday, December 24th:
+
+120. #1046593: hunspell-en-med: Fails to build source after successful build
+121. #1047025: librostlab: Fails to build source after successful build
+122. #1090283: python-pybedtools: FTBFS: NameError: name 'iterator' is not defined
+
+I also tried to include a couple of bugs mentioned in the
+mailing list or in Matrix that were not in Debian Med Packaging
+list, but nevertheless were helpful for the Debian Med team, but
+I fear I might have missed some.  Don't hesitate to add them to
+the count if they turn out to be missing.
+
+The bug squashing marathon resulted in 122 bugs closed.  This
+reduced the amount of open issues down below 300; I counted 284
+open issues today, but some bugs were reported and some other
+bugs were closed since Christmas, so my count may be off a bit.
+
+People who want to carry on squashing bugs may refer to the
+Debian Med bug tracker[2].  There are still many double build
+failures among 90 minor bugs that are usually low hanging
+fruits, but also 17 packages still pending upload, and 11
+packages with a patch available.  197 bugs are still
+unclassified, and it may be helpful to have a look and see
+whether they are still affecting us today.
+
+[1]: https://alioth-lists.debian.net/pipermail/debian-med-packaging/2024-December/date.html
+[2]: https://bugs.debian.org/cgi-bin/pkgreport.cgi?maint=debian-med-packaging@lists.alioth.debian.org
+
+Merry Christmas and Happy New Year,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  pgp: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/1, please excuse my verbosity
+   `-    on air: Quantum Fantay - Rimbo

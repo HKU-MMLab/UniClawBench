@@ -1,0 +1,30 @@
+task_id: task_103_02_robot_vacuum_review_price_compare
+category: 103_long_context
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I'm trying to buy a robot vacuum, and I got interested because two very different reviews both spoke highly of Dreame (追觅) — but I couldn't tell which specific Dreame model each one actually focused on, or why each reviewer rated it so well. I want you to read both reviews carefully and help me make sense of them before I buy.
+
+  Install the `bilibili-all-in-one` skill from ClawHub, search Bilibili for `2026 robot vacuum comparison` (扫地机器人 横评), and find the no-ad, self-funded round-up by a creator I think is called something like `Mona's Home` (莫娜) — she tests about a dozen new machines at once, and I want her first episode of that comparison. Also find the Vacuum Wars video on YouTube that reviews a single Dreame robot vacuum and calls it the best robot vacuum of 2025 so far. Save screenshot evidence for both sources.
+
+  Then actually work through the content of both videos and produce the following:
+  1. Identify the specific Dreame model that each source highlights (note that the two sources focus on different Dreame models, tested in very different ways — one is a single-product deep-dive, the other a head-to-head round-up).
+  2. For each of those two Dreame models, summarize what that review actually said — the concrete strengths, weaknesses, and any specific test results or numbers the reviewer reported (for example carpet/pet-hair pickup scores, threshold-climbing height, navigation/obstacle scores, battery efficiency, mopping system and cleaning-time observations). Make clear which claim comes from which review; do not blur the two models together.
+  3. Build a side-by-side spec comparison of the two models covering at least: suction power (Pa), mopping method (vibrating vs spinning vs roller/track pad), maximum threshold-climbing height, navigation/obstacle-avoidance approach (LiDAR/camera/laser), and battery capacity or rated runtime. Some of these (for example suction in Pa) may not be mentioned in the videos — pull those from the manufacturer or retailer product page and cite where each spec came from. If a spec genuinely cannot be found, say so rather than guessing.
+  4. Check current US retail pricing for each model on Amazon and Walmart in the Los Angeles area, record the cheaper platform, links, and price screenshots. If a model is not actually sold on a US retailer, say so honestly and screenshot the "no result / not available" page rather than inventing a price.
+  5. Give a practical recommendation for two buyer types — someone who mainly cares about carpets, and someone who wants the best all-round performer — grounded in what the reviews said.
+
+  Save the conclusion, the per-review summaries, the spec comparison, screenshot paths, and product links to `/tmp_workspace/results/robot_vacuum_compare.md`.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+codex:
+  max_user_followups: 2

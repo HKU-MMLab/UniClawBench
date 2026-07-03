@@ -1,0 +1,12 @@
+Message-ID: <asf-2024-0260@httpd.apache.org>
+X-Clawbench-ID: ASF-2024-0260
+Date: Mon, 08 Jan 2024 15:00:00 +0000
+From: Infra Exceptions <infra-exceptions@apache.org>
+To: dev@httpd.apache.org
+Subject: approved temporary bot token
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: synthetic Apache-style project infrastructure review implant
+
+The temp bot token for the docs mirror was disabled on the scheduled end date. Owner attestation, scope limit, and helpdesk closure are attached to the access review.

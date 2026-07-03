@@ -1,0 +1,41 @@
+Message-ID: <ZikMEItv1_c0Geqm@an3as.eu>
+X-Clawbench-ID: BIO-2024-0302
+Date: Wed, 24 Apr 2024 15:41:36 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-devel@lists.debian.org
+Subject: Re: Binary conflict between Midnight Commander and MinIO Client
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_04_msg00047.html
+
+Hi,
+
+Am Mon, Apr 22, 2024 at 09:28:29AM +0200 schrieb Philip Hands:
+> >> /usr/libexec/minio-client/bin/mc -> /usr/bin/mcli
+>
+> Might I suggest that the link goes the other way, so that the symlink
+> lives in /usr/bin?  That way the existence of the lib directory is
+> somewhat self-documenting.
+
+That's an interesting hint.  In Debian Med we are using a common
+directories
+
+    /usr/lib/debian-med/bin/
+    /usr/lib/debian-med/man/
+
+where those binaries will be moved to and have some kind of a
+README.Debian template[1].  Changing this to have the real executable /
+manpage to /usr/lib/debian-med/* makes sense.
+
+We simply advise Debian Med users to set PATH to that dir and have
+all the name-clashed binaries inside Debian Med without additional
+interaction.
+
+Kind regards
+    Andreas.
+
+[1] https://salsa.debian.org/med-team/ea-utils/-/blob/master/debian/README.Debian?ref_type=heads
+
+--
+https://fam-tille.de

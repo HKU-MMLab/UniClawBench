@@ -1,0 +1,31 @@
+Message-ID: <Y3+TFbLErOZjd1oi@an3as.eu>
+X-Clawbench-ID: BIO-2024-0163
+Date: Thu, 24 Nov 2022 16:51:49 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: "Maarten L. Hekkelman" <maarten@hekkelman.com>
+Subject: Re: Race condition in uploading libmcfp
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_11_msg00090.html
+
+Hi Maarten,
+
+Am Thu, Nov 24, 2022 at 03:52:16PM +0100 schrieb Maarten L. Hekkelman:
+> I must learn to get my actions in the correct order, that's clear.
+
+Well, this kind of race conditions are *extremely* rare - it was really
+by pure chance that I stumbled upon the description and felt a need to
+just take action instead of talking to you.  So I wouldn't blame you
+at all that you did something wrong. ;-)
+
+> Go ahead, I promise I won't touch it in the next couple of days.
+
+Yup.
+
+Kind regards
+
+    Andreas.
+
+--
+http://fam-tille.de

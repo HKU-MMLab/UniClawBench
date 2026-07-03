@@ -1,0 +1,30 @@
+Message-ID: <20021007230521.0f1727aa.matthias@rpmforge.net>
+X-Clawbench-ID: CAM-2003-0087
+Date: Mon, 07 Oct 2002 23:05:21 +0200
+From: Matthias Saou <matthias@rpmforge.net>
+To: rpm-zzzlist@freshrpms.net
+Subject: Re: Nessus?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01282.8a72fa3979269299eadf8f9742cc4ab6
+
+I've put up a new Red Hat Linux 8.0 build of nessus here :
+http://ftp.freshrpms.net/pub/freshrpms/testing/nessus/
+
+It's 100% untested, although the build should be ok. The new menu was
+added, but some configuration files may be better with new or different
+defaults.
+
+Feedback is very welcome!
+
+Matthias
+
+--
+Clean custom Red Hat Linux rpm packages : http://freshrpms.net/
+Red Hat Linux release 7.3 (Valhalla) running Linux kernel 2.4.18-10acpi
+Load : 0.06 0.12 0.17
+
+_______________________________________________
+RPM-List mailing list <RPM-List@freshrpms.net>
+http://lists.freshrpms.net/mailman/listinfo/rpm-list

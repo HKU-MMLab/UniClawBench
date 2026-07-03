@@ -1,0 +1,36 @@
+Message-ID: <5F33D8B6C1DCD511B5940010B5C520F0175ABB@ALTAEXCHANGE>
+X-Clawbench-ID: CAM-2003-1003
+Date: Tue, 30 Jul 2002 11:01:50 +0100
+From: Gavin Costello <GCostello@altamedius.com>
+To: "'dneary@wanadoo.fr'" <dneary@wanadoo.fr>
+Subject: [ILUG] mutt replies
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00153.9ef75a752f258bc5e32f8d2be702a7c7
+
+Hi David,
+
+Try putting "set reverse_name" in your .muttrc.
+
+Regards,
+
+Gavin.
+
+
+**********************************************************************
+This email and any files transmitted with it are confidential and
+intended solely for the use of the individual or entity to whom they
+are addressed. If you have received this email in error please notify
+the system manager.
+
+This footnote also confirms that this email message has been swept by
+MIMEsweeper for the presence of computer viruses.
+
+www.mimesweeper.com
+**********************************************************************
+
+--
+Irish Linux Users' Group: ilug@linux.ie
+http://www.linux.ie/mailman/listinfo/ilug for (un)subscription information.
+List maintainer: listmaster@linux.ie

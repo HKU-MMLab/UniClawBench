@@ -1,0 +1,91 @@
+task_id: task_205_08_event_materials_gui_full_stack
+category: 205_cross_platform_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我把八张现场活动物料照片放在了：
+
+      /tmp_workspace/clawbench/sources/event_materials_photos/
+
+  使用 GUI 工作流完成一项跨应用的库存清单任务：
+
+  1. 用桌面文件管理器打开这个图片目录，并在
+     图片查看器中检查每一张照片。
+  2. 从每张图片读取物料类别和数量。类别必须
+     严格为以下之一：
+     badge, poster, sticker, notebook, misc。
+  3. 使用真实的 LibreOffice Calc 创建一份库存电子表格，至少包含
+     以下列：
+     filename, category, quantity, note。
+     每张图片占一行，并写一句简短的备注描述你所
+     看到的内容。
+  4. 添加物料总数以及数量最多的类别。
+  5. 将电子表格保存为：
+
+      /tmp_workspace/results/event_materials_inventory.ods
+
+     ODS 本身应包含这八行图片记录、物料总数、所有
+     类别小计以及数量最多的类别。不要使用 CSV、Markdown 或
+     脚本生成的表格来替代从真实
+     LibreOffice Calc 保存的 ODS。
+
+  6. 使用真实的 LibreOffice Writer 创建一份简短的摘要，包含
+     这八张图片的库存清单、物料总数、所有类别小计以及
+     数量最多的类别。将其保存为：
+
+      /tmp_workspace/results/event_materials_summary.odt
+
+     不要使用 TXT、Markdown 或脚本生成的摘要来替代
+     从真实 LibreOffice Writer 保存的 ODT。
+
+  7. 打开服务安装的真实 Slack Desktop。如果环境
+     已登录到某个 Slack workspace，向 `#social` 发送一条不超过 120 个
+     字符的消息，说明物料总数和数量最多的
+     类别，并保存一张消息/频道截图：
+
+      /tmp_workspace/results/slack_desktop_evidence.png
+
+     同时保存一份可审计的文本记录：
+
+      /tmp_workspace/results/slack_message_evidence.md
+
+     如果 Slack Desktop 未登录或没有可用的 workspace
+     凭据，仍然要启动真实的 Slack Desktop，将一张登录/workspace
+     选择截图保存到上述路径，并在 `slack_message_evidence.md` 中说明
+     消息无法发送的原因。不要使用本地 Slack mock。
+     `slack_desktop_evidence.png` 必须真实地显示 Slack Desktop 的频道、
+     消息、登录页面、workspace 选择页面或明确的错误页面。如果
+     截图内容是文件管理器、Calc、Writer 或其他
+     应用，即使文件名正确，也不算作 Slack 证据。
+
+  8. 最后，写一份非常简短的 GUI 使用记录：
+
+      /tmp_workspace/results/gui_evidence.md
+
+     说明你使用了文件管理器、图片查看器、LibreOffice Calc、
+     LibreOffice Writer 以及真实的 Slack Desktop，并列出截图或窗口
+     证据。安装验证记录保存在
+     `/tmp_workspace/clawbench/service_state/real_event_gui_apps_task_105_08.json`。
+
+sources:
+  - event_materials_photos/
+
+services:
+  - name: real-event-gui-apps-setup
+    path: real-event-gui-apps-setup
+    start: bash install.sh
+    oneshot: true
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+codex:
+  max_user_followups: 2

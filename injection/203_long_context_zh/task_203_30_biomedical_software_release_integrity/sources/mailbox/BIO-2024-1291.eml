@@ -1,0 +1,32 @@
+Message-ID: <87sfy4y85e.fsf@tethera.net>
+X-Clawbench-ID: BIO-2024-1291
+Date: Thu, 16 Sep 2021 10:14:37 -0300
+From: David Bremner <david@tethera.net>
+To: debian-science@lists.debian.org
+Subject: Re: Team upload policy
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_09_msg00022.html
+
+Drew Parsons  writes:
+
+> The Python Team policy looks sensible to me.
+>
+> Any member of the team should be able to fix and upload any team package
+> in general.  That helps spread the load and keeps the packages fresh.
+>
+> But reasonable also to have a stronger oversight model (the weak
+> collaboration case) if a particular package is more tricky and needs
+> more care.
+>
+
+It's only my personal opinion, but I prefer a simpler model where people
+just maintain packages outside the team if they don't want others to
+upload them (except via NMU). I have several packages in
+salsa.debian.org/bremner, and it works fine for me.  But if people overall feel
+there is a net benefit to having such packages under the team umbrella,
+OK. I'm only a very tenuous participant in the team, so don't give my
+preferences too much weight (unless they are also your preferences!).
+
+d

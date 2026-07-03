@@ -1,0 +1,33 @@
+task_id: task_103_04_ai_coding_plan_subscription
+category: 103_long_context
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I want to subscribe to an AI coding plan/subscription, with the goal of having a reasonably stable model provider that can be connected to Claude Code.
+
+  Direct API usage is too expensive and does not seem cost-effective to me, so do not recommend pure APIs, token-based billing, compute-rental platforms, model gateways, or API aggregation platforms for this task. Find fixed-monthly-fee plans, package-based plans, or coding plans/subscriptions that explicitly say they are for AI coding tools, and organize at least 10 options. I have heard that Chinese coding plans are also quite good, so please seriously investigate whether China has good coding plans/subscriptions and recommend at least 3 China-related coding plans. Note that I am not talking about plain IDEs, plugins, editors, product-native subscriptions, compute-rental platforms, or model API aggregators. These can be used as horizontal references, but if a plan can only be used inside its own product, or is just metered model API usage, do not count it as a provider plan that can be connected to Claude Code. For each option, record at least: original link, page screenshot, billing method, usage method, available quota or usage limits, whether it can be connected as a Claude Code model provider, whether it can only be used inside the official product, and whether it supports any additional features.
+
+  I want you to find at least 3 provider plans that can be used directly in Claude Code, so that I can choose from them. For these connectable plans, continue to official documentation or help pages to confirm how to connect them to Claude Code, for example whether they provide Claude Code configuration, an Anthropic-compatible endpoint, a dedicated key, or equivalent instructions, and save screenshots of the documentation showing that they can be connected to Claude Code. This screenshot is important; do not conclude from the pricing page alone.
+
+  I may develop tens of thousands of lines of code each month. Analyze which plan is best for me. Finally give your recommendation and open the official subscription entry page for the recommended plan as a screenshot so I can confirm it myself. Save the results, comparison table, screenshot paths, and connection-instruction screenshot paths to `/tmp_workspace/results/coding_plan_recommendation.md`.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/provider_evidence/alibaba_coding_plan.png
+  - references/provider_evidence/claude_max_plan.png
+  - references/provider_evidence/claude_pricing.png
+  - references/provider_evidence/kimi_benefits.png
+  - references/provider_evidence/kimi_third_party_agents.png
+  - references/provider_evidence/minimax_claude_code.png
+  - references/provider_evidence/zai_configuration.png
+  - references/provider_evidence/zai_quick_start.png
+codex:
+  max_user_followups: 2

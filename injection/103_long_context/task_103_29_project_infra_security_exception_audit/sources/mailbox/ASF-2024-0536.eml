@@ -1,0 +1,86 @@
+Message-ID: <0b3c8cd7-10f3-4b1e-b9f0-d61b1a90f62b@kippdata.de>
+X-Clawbench-ID: ASF-2024-0536
+Date: Tue, 16 Jul 2024 00:45:41 +0200
+From: Rainer Jung <rainer.jung@kippdata.de>
+To: "dev@httpd.apache.org" <dev@httpd.apache.org>
+Subject: pytest failure test_tls_11_get_base
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-07.mbox
+
+Hi there,
+
+I started to run pytest also on modules/tls, now that it also supports
+mod_ssl. It works pretty well, but one test is failing: test_tls_11_get_base
+
+The httpd error log mentions a config error:
+
+[Mon Jul 15 23:22:33.210906 2024] [md:debug] [pid 27612:tid 27612]
+mod_md.c(612): AH10041: Server a.mod-tls.test:0 matches md
+a.mod-tls.test (config srv[default], match-mode=0) for domain
+a.mod-tls.test, has now 1 MDs
+[Mon Jul 15 23:22:33.210933 2024] [md:debug] [pid 27612:tid 27612]
+mod_md.c(612): AH10041: Server a.mod-tls.test:0 matches md
+a.mod-tls.test (config a.mod-tls.test[default, default], match-mode=0)
+for domain a.mod-tls.test, has now 1 MDs
+[Mon Jul 15 23:22:33.210950 2024] [md:debug] [pid 27612:tid 27612]
+md_reg.c(842): sync MDs, start
+[Mon Jul 15 23:22:33.211083 2024] [md:debug] [pid 27612:tid 27612]
+md_reg.c(905): sync MDs, 1 existing, 0 moved, 0 new.
+[Mon Jul 15 23:22:33.211126 2024] [ssl:info] [pid 27612:tid 27612]
+AH01883: Init: Initialized OpenSSL library
+[Mon Jul 15 23:22:33.213227 2024] [ssl:debug] [pid 27612:tid 27612]
+ssl_engine_init.c(365): AH01886: OpenSSL has FIPS mode disabled
+[Mon Jul 15 23:22:33.213322 2024] [ssl:info] [pid 27612:tid 27612]
+AH01887: Init: Initializing (virtual) servers for SSL
+[Mon Jul 15 23:22:33.213344 2024] [ssl:info] [pid 27612:tid 27612]
+AH01914: Configuring server a.mod-tls.test:443 for SSL protocol
+[Mon Jul 15 23:22:33.213351 2024] [md:debug] [pid 27612:tid 27612]
+mod_md.c(1130): AH10113: get_certificates called for vhost a.mod-tls.test.
+[Mon Jul 15 23:22:33.213357 2024] [md:debug] [pid 27612:tid 27612]
+mod_md.c(1225): AH10077: a.mod-tls.test[state=0]: providing certificates
+for server a.mod-tls.test
+[Mon Jul 15 23:22:33.214481 2024] [ssl:debug] [pid 27612:tid 27612]
+ssl_engine_init.c(537): AH01893: Configuring TLS extension handling
+[Mon Jul 15 23:22:33.215615 2024] [ssl:debug] [pid 27612:tid 27612]
+ssl_util_ssl.c(451): AH02412: [a.mod-tls.test:443] Cert matches for name
+'a.mod-tls.test' [subject: O=tests.httpd.apache.org,CN=a.mod-tls.test /
+issuer: O=tests.httpd.apache.org / serial:
+67FB2E0AAA0B3201399C3332D4729AC1E06C9EF3 / notbefore: Jul 14 22:55:14
+2024 GMT / notafter: Oct 12 22:55:14 2024 GMT]
+[Mon Jul 15 23:22:33.215638 2024] [ssl:info] [pid 27612:tid 27612]
+AH02568: Certificate and private key a.mod-tls.test:443:0 configured
+from
+/tmp/esupport-testdir/pytest-worker-330/gen/apache/ca/a.mod-tls.test.rsa4096.cert.pem
+and
+/tmp/esupport-testdir/pytest-worker-330/gen/apache/ca/a.mod-tls.test.rsa4096.pkey.pem
+[Mon Jul 15 23:22:33.215950 2024] [ssl:info] [pid 27612:tid 27612]
+AH01914: Configuring server b.mod-tls.test:443 for SSL protocol
+[Mon Jul 15 23:22:33.215964 2024] [md:debug] [pid 27612:tid 27612]
+mod_md.c(1130): AH10113: get_certificates called for vhost b.mod-tls.test.
+[Mon Jul 15 23:22:33.215972 2024] [md:debug] [pid 27612:tid 27612]
+mod_md.c(1130): AH10113: get_certificates called for vhost b.mod-tls.test.
+[Mon Jul 15 23:22:33.216449 2024] [ssl:debug] [pid 27612:tid 27612]
+ssl_engine_init.c(537): AH01893: Configuring TLS extension handling
+[Mon Jul 15 23:22:33.216474 2024] [ssl:emerg] [pid 27612:tid 27612]
+AH02572: Failed to configure at least one certificate and key for
+b.mod-tls.test:443
+[Mon Jul 15 23:22:33.216507 2024] [ssl:emerg] [pid 27612:tid 27612] SSL
+Library Error: error:1E08010C:DECODER routines::unsupported (No
+supported data to decode. Input type: PEM)
+[Mon Jul 15 23:22:33.216521 2024] [ssl:emerg] [pid 27612:tid 27612] SSL
+Library Error: error:0480006C:PEM routines::no start line -- Bad file
+contents or format - or even just a forgotten SSLCertificateKeyFile?
+[Mon Jul 15 23:22:33.216534 2024] [ssl:emerg] [pid 27612:tid 27612] SSL
+Library Error: error:0A0000B1:SSL routines::no certificate assigned
+[Mon Jul 15 23:22:33.216540 2024] [ssl:emerg] [pid 27612:tid 27612]
+AH02312: Fatal error initialising mod_ssl, exiting.
+AH00016: Configuration Failed
+
+I am not sure, how to repair this, but for now I assume it is just a bug
+in the test (or my setup).
+
+Best regards,
+
+Rainer

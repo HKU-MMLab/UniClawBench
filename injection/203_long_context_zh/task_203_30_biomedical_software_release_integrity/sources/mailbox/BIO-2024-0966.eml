@@ -1,0 +1,31 @@
+Message-ID: <20230714045515.dggf6rzxpmcm2tfy@office.mailbox.org>
+X-Clawbench-ID: BIO-2024-0966
+Date: Fri, 14 Jul 2023 10:25:15 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: [Help] One remaining build time error in toil
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_07_msg00066.html
+
+On Thu, Jul 13, 2023 at 09:42:01PM +0200, Andreas Tille wrote:
+> Hi folks,
+>
+> before I switch of my laptop for today I'd like to hand over some
+> remaining build time error in toil:
+
+On running the command that the test tries to run by hand, I see:
+
+| Traceback (most recent call last):
+|  File "", line 198, in _run_module_as_main
+|  File "", line 88, in _run_code
+|  File "/build/toil-INKUvz/toil-5.11.0/.pybuild/cpython3_3.11_toil/build/toil/wdl/wdltoil.py", line 38, in
+|    import WDL
+| ModuleNotFoundError: No module named 'WDL
+
+I think we don't have miniwdl in the archive at this point, so you'd
+need to package it.
+
+Best,
+Nilesh

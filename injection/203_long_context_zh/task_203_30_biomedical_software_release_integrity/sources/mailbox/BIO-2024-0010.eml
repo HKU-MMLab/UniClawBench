@@ -1,0 +1,34 @@
+Message-ID: <YZFiPlneUq+KXUj6@debian>
+X-Clawbench-ID: BIO-2024-0010
+Date: Mon, 15 Nov 2021 00:53:42 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: Progress in merging neurodebian team?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_11_msg00080.html
+
+On Sun, Nov 14, 2021 at 10:06:53AM +0100, Andreas Tille wrote:
+> Hi Nilesh,
+>
+> Am Sun, Nov 14, 2021 at 01:03:08AM +0530 schrieb Nilesh Patra:
+> > On Sat, Nov 13, 2021 at 06:19:18PM +0100, Andreas Tille wrote:
+> > > Feel free to pick one (and do not hesitate to ask me to transfer a
+> > > repository and when doing so bring it in Debian Med policy conform
+> > > shape).
+> >
+> > Please move imbalanced-learn to -med.
+>
+> Moved and injected new upstream which requires patches - handing over
+> from here to whoever wants to volunteer.
+
+It cannot be easily updated to a new release now, since it needs a newer sklearn.
+And having ternsorflow and keras both is a plus, since it has utilities for both.
+Need to patch it. I wonder if I should just create another branch and upload to address
+bug#999515?
+
+In any case, please consider to not version bump packages when you move namespaces, provided
+they are maintained fine already.
+
+Nilesh

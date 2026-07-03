@@ -1,0 +1,33 @@
+Message-ID: <CALK=YjMmwxNAyhpOUmOQ7V7GDR1xaxhWaBvg2cWgG9Z6dARKfw@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1462
+Date: Mon, 9 Jan 2023 09:37:37 -0500
+From: Eric Covener <covener@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: stable branch
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-01.mbox
+
+On Mon, Jan 9, 2023 at 9:23 AM Emmanuel Dreyfus <manu@netbsd.org> wrote:
+>
+> On Mon, Jan 09, 2023 at 08:05:30AM -0500, Eric Covener wrote:
+> > Yes. Most times, the person who proposed it does the final backport.
+> > Sometimes, the last person to vote or someone preparing a release will
+> > apply it.
+>
+> Um, sorry for the noob questions, but I ma stick with
+> svn: E195023: Commit failed (details follow):
+> svn: E195023: Changing directory '/scratch/httpd-trunk/httpd/branches/2.4.x' is forbidden by the server
+> svn: E175013: Access to '/repos/asf/!svn/me' forbidden
+>
+> I do svn commit --username manu --password ***
+> What am I doing wrong?
+>
+
+I think this is the "You need to switch your SVN checkout URL to https
+to commit" symptom.
+
+I think this does it:
+
+svn relocate http://svn.apache.org https://svn.apache.org

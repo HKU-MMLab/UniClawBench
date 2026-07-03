@@ -1,0 +1,30 @@
+Message-ID: <253B1BDA4E68D411AC3700D0B77FC5F80771934B@patsydan.dublin.hp.com>
+X-Clawbench-ID: CAM-2003-0018
+Date: Mon, 29 Jul 2002 10:12:38 +0100
+From: "HAMILTON,DAVID (HP-Ireland,ex2)" <david_hamilton3@hp.com>
+To: "'ilug@linux.ie'" <ilug@linux.ie>
+Subject: [ILUG] [OT] Renaming Cookies
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00141.aec902144f2d18dce81d4a5dd84e11bf
+
+Hi All,
+
+Does anyone know if it is possible to just rename the cookie files, as in
+user1@site.com -> user2@site.com?
+If so, what's the easiest way to do this.
+The cookies are on a windows box, but I can smbmount the hard disk if this
+is the best way to do it.
+
+Thanks,
+	David.
+
+David Hamilton
+Senior Technical Consultant
+HP Ireland
+
+--
+Irish Linux Users' Group: ilug@linux.ie
+http://www.linux.ie/mailman/listinfo/ilug for (un)subscription information.
+List maintainer: listmaster@linux.ie

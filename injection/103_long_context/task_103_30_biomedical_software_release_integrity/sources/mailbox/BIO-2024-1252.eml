@@ -1,0 +1,40 @@
+Message-ID: <Y9RMOsn6zJGDTtkW@fusion>
+X-Clawbench-ID: BIO-2024-1252
+Date: Fri, 27 Jan 2023 23:12:10 +0100
+From: Étienne Mollier <emollier@emlwks999.eu>
+To: Andreas Tille <andreas@an3as.eu>
+Subject: Re: Help needed to finalise the oneTBB migration of flexbar
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_01_msg00050.html
+
+Hi Andreas,
+
+Andreas Tille, on 2023-01-24:
+> Hi,
+>
+> I made some progress[1] in converting flexbar (which seems to be
+> orphaned upstream[2] so we are on our own with the migration - but the
+> program ist interesting anyway) but finally have hit a blocker which
+> you can see in the build in Salsa CI[3].
+>
+> It would be great if someone could help me over this blocker.
+
+I begun attempting to move the port further and I believe that I
+managed to clear issues in the Paired* classes, but I hit
+further blockers in Flexbar.h, where the porting effort looks
+fairly non-trivial (moving away from class tbb::pipeline in
+favor of funtion tbb::parallel_pipeline).  I'm a bit dry for the
+moment and will have the weekend busy, so if someone wants to
+take over from here, please go ahead.
+
+> [1] https://salsa.debian.org/med-team/flexbar/-/blob/master/debian/patches/onetbb.patch
+> [2] https://github.com/seqan/flexbar/issues/38
+> [3] https://salsa.debian.org/med-team/flexbar/-/jobs/3820125
+
+Hope this helps,
+--
+Étienne Mollier
+Fingerprint:  8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+Sent from /dev/pts/1, please excuse my verbosity.

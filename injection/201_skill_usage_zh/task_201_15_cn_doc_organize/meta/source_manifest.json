@@ -1,0 +1,10 @@
+{
+  "task_id": "task_201_15_cn_doc_organize",
+  "note": "Hybrid realism: 168 synthesized Chinese office .docx files across several common corporate document types (v7 had 150; v8 added 18 cross-genre adversarial docs whose filenames mislead and whose content carries the true category). Content uses natural corporate phrasing; names and figures are synthetic because real company documents contain PII. Some files intentionally require reading primary intent instead of classifying from filenames alone.",
+  "entries": [
+    {
+      "path": "cn_docs/",
+      "description": "168 synthesized Chinese corporate .docx files with messy filenames, timestamp variants, English placeholders, and mojibake-style names. The 18 v8 additions are all cross-genre — filename hint and body content disagree."
+    }
+  ]
+}

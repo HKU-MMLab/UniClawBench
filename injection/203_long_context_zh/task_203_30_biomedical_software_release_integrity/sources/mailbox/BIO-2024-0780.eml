@@ -1,0 +1,32 @@
+Message-ID: <ZK6WBME07d7mSa8Y@an3as.eu>
+X-Clawbench-ID: BIO-2024-0780
+Date: Wed, 12 Jul 2023 14:01:08 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: [Help] Could someone please have a look at gmap build failure
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_07_msg00052.html
+
+Hi,
+
+I admit I'm bad in such hardware internals that seem to break the
+build of gmap:
+
+intersect-uint2.c:409:21: error: incompatible types when initializing type '__m128i' using type 'int'
+  409 |         __m128i p = _mm_shuffle_epi8(v_a, * (__m128i *) &(shuffle_mask16[r*16]));
+      |                     ^~~~~~~~~~~~~~~~
+intersect-uint2.c:427:17: error: incompatible types when assigning to type '__m128i' from type 'int'
+  427 |           v_b = _mm_lddqu_si128((const __m128i *) &B[i_b]);
+      |                 ^~~~~~~~~~~~~~~
+
+See
+   https://salsa.debian.org/med-team/gmap/-/jobs/4423598
+for the full build log.
+
+Any help would be welcome
+    Andreas.
+
+--
+http://fam-tille.de

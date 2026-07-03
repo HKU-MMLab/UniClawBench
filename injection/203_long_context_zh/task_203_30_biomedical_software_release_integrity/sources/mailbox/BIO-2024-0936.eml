@@ -1,0 +1,35 @@
+Message-ID: <20230524164622.dkdnoaoitawjzlse@office.mailbox.org>
+X-Clawbench-ID: BIO-2024-0936
+Date: Wed, 24 May 2023 22:16:22 +0530
+From: Nilesh Patra <nilesh@mailbox.org>
+To: debian-med@lists.debian.org
+Subject: Re: Please review release notes patch
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_05_msg00013.html
+
+On Wed, May 24, 2023 at 11:28:13AM +0200, Pierre Gruet wrote:
+> Le 24/05/2023 à 08:25, Andreas Tille a écrit :
+> >    https://salsa.debian.org/med-team/community/communication/-/blob/master/releasenotes/bookworm/release-notes.patch
+> >
+> > Please review and comment on it (or just push fixes and enhancements)!
+> Is there any important piece of software we packaged during this release
+> cycle and that could be worth highlighting? From my limited perspective I
+> have none that comes to mind, but maybe it will for someone else.
+
+I do remember that during the bullseye release, we were looking forward
+to get nextflow into bookworm. AFAICS, that did not happen but I do see
+a capsule-nextflow package.
+Although it is mostly a deployment tool, _maybe_ it is worth a mention?
+
+I've CC'ed Steffen for any inputs about the same.
+
+Another package that should be mentioned is shiny-server -- we were
+looking forward to have it for quite a while and it is finally there.
+That said, it is a science team package and maybe deserves a mention
+with the release-notes patch of that team.
+
+--
+Best,
+Nilesh

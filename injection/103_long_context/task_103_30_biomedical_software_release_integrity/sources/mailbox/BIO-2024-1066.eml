@@ -1,0 +1,32 @@
+Message-ID: <ZfDTK_awrdnfy2sr@fusion>
+X-Clawbench-ID: BIO-2024-1066
+Date: Tue, 12 Mar 2024 23:11:55 +0100
+From: Étienne Mollier <emollier@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: How is autopkgtest working in Perl packages
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_03_msg00013.html
+
+Hi Andreas,
+
+Andreas Tille, on 2024-03-12:
+> Cool. It would be great if we could get rid of 32bit emboss related
+> packages to get back all those packages in testing which were removed
+> now.
+
+In the particular case of bioperl-run, there are only single
+Architecture: all "binary" packages, so nothing to remove from
+archives per se.  I uploaded a revision that relaxes
+dependencies and recommendations so builds and tests should pass
+on every architectures, at the cost of not testing as many
+things as usual outside amd64, and sacrificing some checks for
+the autodep8 perl recommends test.
+
+Have a good evening,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  pgp: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/1, please excuse my verbosity
+   `-

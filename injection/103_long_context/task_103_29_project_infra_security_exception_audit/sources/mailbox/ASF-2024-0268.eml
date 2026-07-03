@@ -1,0 +1,23 @@
+Message-ID: <59478913-7C2E-4163-9BE6-81CA3CEA16D9@m3y3r.de>
+X-Clawbench-ID: ASF-2024-0268
+Date: Mon, 09 Sep 2024 08:41:44 +0200
+From: Thomas Meyer <thomas@m3y3r.de>
+To: dev@httpd.apache.org
+Subject: Re: Json support for httpd log
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-09.mbox
+
+Am 30. Juli 2024 23:28:20 MESZ schrieb Thomas Meyer <thomas@m3y3r.de>:
+>Am Sun, Jun 02, 2024 at 04:08:06PM +0200 schrieb Thomas Meyer:
+
+Good day!
+
+Summer seems to come to an end this week in Germany, a lot of rain and colder weather is forecasted this week, so a good chance to greet the beginning autumn and to make yourself a cup of hot chocolate and review some pull requests, like this one:
+
+>> https://github.com/apache/httpd/pull/429
+
+
+>> Mfg
+>> Thomas

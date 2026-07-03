@@ -1,0 +1,71 @@
+Message-ID: <Z2PDtHPTcWxF3ZeW@an3as.eu>
+X-Clawbench-ID: BIO-2024-0979
+Date: Thu, 19 Dec 2024 07:56:52 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: htslib ecosystem 1.21
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_12_msg00020.html
+
+Hi Étienne,
+
+Am Wed, Dec 18, 2024 at 07:55:04PM +0100 schrieb Étienne Mollier:
+> It seems the htslib ecosystem upgrade to version 1.21 stalled.
+>
+> Andreas, I hope you don't mind I follow up by email to your
+> question on #debian-med:matrix.org?
+
+Perfectly fine!  I simply had no spoons left yesterday.
+
+> I felt more comfortable
+> analysing the issue closely than throwing a quick answer in the
+> chat:
+> > The [pysam issue] was closed but there is no new release. Do
+> > we want to fetch the according patch or rather pinging for the
+> > promised new upstream release?
+> >
+> > [pysam issue]: https://github.com/pysam-developers/pysam/issues/1317
+>
+> I begun to dig into changes necessary to get pysam support for
+> htslib 1.21 and friends, and they seem to involve several
+> upstream commits.  I noted at least:
+>
+>   * 6147f5da869065c141aa8235ecbeb251d6e09bbe
+>   * 923aad9a9477bca02bd6838d63e59e7f0101dc8d (possibly)
+>   * b1e87ef6f22d0b9177d513891e0f4a4b84457200
+>   * d3d2733e77e8db3ece4cd44ff5f9fee23e1342d2
+>   * f4319112d89654ec862b832488315bb3657514a1
+>
+> Waiting for a newer upstream sounds more prudent in my opinion.
+
+Surely some official release is the best option.
+
+> Keeping these commits at hand may be helpful in case we were to
+> run into Trixie release freeze; synchronizing to the current
+> state of the master branch may be a fine option too, at least
+> better than cherry picking upstream commits.
+
+This somehow sounds like a good option.  Given that the author
+considered a release "soon" it might have some "nearly ready" state and
+will save us the work from cherry picking single patches.  Uploading the
+current status of upstream Git to experimental might be some sensible
+intermediate step.  Just let me know if you manage to do this or if I
+should step in.
+
+> In the meantime, it may be useful to follow up with other
+> components upgrades into Debian experimental, this would
+> facilitate further testing from various parties.
+
+Definitely.
+
+> Have a nice day,  :)
+
+Same to you and thank you for caring for complex transitions
+
+    Andreas.
+
+
+--
+https://fam-tille.de

@@ -1,0 +1,26 @@
+Message-ID: <03b898c8a96b5bac2feba5f8c6b82de7@tchncs.de>
+X-Clawbench-ID: BIO-2024-0092
+Date: Mon, 24 Jan 2022 20:25:34 +0000
+From: "Nilesh Patra" <nilesh@tchncs.de>
+To: debian-med@lists.debian.org
+Subject: Re: [Request for review] plast
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_01_msg00092.html
+
+January 25, 2022 12:24 AM, "Andreas Tille"  wrote:
+> Thanks a lot for working on this
+
+Thanks for uploading!
+
+> PS: Another package in need of pcre3 -> pcre2 migration is pftools.
+> IMHO we should rewrite its test first (which is needed due to new
+> upstream way to run test and do the pcre-rewrite *afterwards*
+> to make sure we have a sensible comparison for the tests.
+
+This has been (virtually) fixed.
+I just sent out an email to upstream and CC'ed this list regarding the same :)
+
+Regards,
+Nilesh

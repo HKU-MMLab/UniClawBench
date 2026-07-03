@@ -1,0 +1,53 @@
+task_id: task_104_29_trip_mess_archive
+category: 104_multimodal
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I recently returned from a business trip, and the files related to this trip are very messy on my computer.
+  They are scattered under `/tmp_workspace/clawbench/sources/trip_mess/`, mixed with:
+  - Hotel booking screenshots
+  - Flight ticket / boarding pass screenshots
+  - Taxi and meal receipt photos
+  - Attraction ticket screenshots
+  - Trip-related PDFs and email screenshots
+  - Some unrelated images and duplicate files
+
+  Please help me organize these files clearly:
+
+  1. First browse and understand the contents of these files, then select the files that are truly related
+     to this business trip.
+  2. Organize them by category under `/tmp_workspace/results/trip_archive/`, with at least these categories:
+     - flights
+     - hotel
+     - transport
+     - meals
+     - tickets
+     - other
+  3. Rename each retained file consistently. The filename must include any identifiable date, category,
+     and key information; when the date or key information cannot be identified, mark it with `unknown`
+     and explain it in the cleanup notes.
+  4. Extract every identifiable expense and generate `/tmp_workspace/results/expense_summary.csv`,
+     including at least: date, category, merchant / item, amount, currency, and original filename.
+  5. If you find files that are clearly duplicates, too blurry to read, or unrelated to this business trip,
+     record the reason separately in `/tmp_workspace/results/cleanup_notes.md`.
+  6. Finally, generate `/tmp_workspace/results/trip_report.md` summarizing the main itinerary and total expenses
+     of this business trip.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/source_document_reference_sheet.jpg
+  - references/source_provenance.md
+
+sources:
+  - trip_mess/
+
+codex:
+  max_user_followups: 2

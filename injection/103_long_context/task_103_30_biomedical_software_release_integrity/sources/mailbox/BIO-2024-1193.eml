@@ -1,0 +1,27 @@
+Message-ID: <Ya9/xwfsFdC77Cv9@an3as.eu>
+X-Clawbench-ID: BIO-2024-1193
+Date: Tue, 7 Dec 2021 16:37:43 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: New versions of htslib, samtools, bcftools and python-pysam in experimental - at least one package jellyfish does not work with these
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_12_msg00032.html
+
+Hi,
+
+we probably need to do some htslib and friends transition.  I tried to
+run `ratt` on the new htslib version but my bad luck to setup sbuild is
+beating me all the time and I failed.  However, I manually tried to
+rebuild jellyfish which has a high popcon and this fails with two build
+time tests with the new libhts-dev package.
+
+Anyone with some spare cycles is welcome to check and fix the issue.
+
+Kind regards
+
+     Andreas.
+
+--
+http://fam-tille.de

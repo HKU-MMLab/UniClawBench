@@ -1,0 +1,52 @@
+task_id: task_101_18_reddit_synthesis
+category: 101_skill_usage
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+recording: none
+headed: auto
+task: |
+  I keep seeing different answers for this and I'm tired of guessing
+  which one is still correct. Inside my own Python package, at runtime,
+  how should I read the installed version string? I'm on Python 3.11,
+  normal pip-installed layout. Use the workspace's Reddit reading skill
+  to pull the relevant Reddit threads and the data-analysis skill to
+  cross-reference them.
+
+  There are several threads under /tmp_workspace/clawbench/sources/ that
+  touch this topic, along with some unrelated noise threads you can
+  ignore. Read across all of them, synthesize the threads, and give me
+  the single best current answer for 2025/2026. If you notice conflicting
+  or outdated advice across threads, explain what changed and why.
+
+  Write your final answer to /tmp_workspace/results/answer.md with, in
+  this order:
+
+  1. The single recommended way to do it today, including the exact
+     import line and the exact one-liner I should put in my code.
+  2. If there's conflicting or outdated advice in the threads, a short
+     note explaining what changed and why.
+  3. A couple of sentences citing which thread or comment you got
+     each piece of evidence from, so I can audit it.
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+sources:
+  - thread_a_2022_pkg_resources.json
+  - thread_b_2025_importlib_metadata.json
+  - thread_c_2024_stdlib_history.json
+  - thread_d_2023_list_comprehensions.json
+  - thread_e_2024_pip_vs_uv.json
+skills:
+  - reddit-readonly
+  - data-analysis
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+codex:
+  max_user_followups: 2

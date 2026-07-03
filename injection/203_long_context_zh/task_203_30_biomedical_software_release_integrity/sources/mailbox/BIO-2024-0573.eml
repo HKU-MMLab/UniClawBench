@@ -1,0 +1,20 @@
+Message-ID: <20220213143118.g6tczgn5x4dthlvw@localhost>
+X-Clawbench-ID: BIO-2024-0573
+Date: Sun, 13 Feb 2022 20:01:18 +0530
+From: Mayuresh <mayuresh@acm.org>
+To: debian-med@lists.debian.org
+Subject: Re: Acquiring Dental RVG on Linux
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_02_msg00063.html
+
+On Sun, Feb 13, 2022 at 12:15:13AM +0530, Mayuresh wrote:
+> - Will possibly try an LUT now. Again not very elegant, but might be more
+>   accurate than neural net and less costly. But not sure, whether across
+>   images the lookup table would be uniform or not.
+
+Ruled this out. Across images, LUT idea doesn't hold.
+
+--
+Mayuresh

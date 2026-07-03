@@ -1,0 +1,33 @@
+Message-ID: <ZJdb3h8MPlpGaubO@an3as.eu>
+X-Clawbench-ID: BIO-2024-0571
+Date: Sat, 24 Jun 2023 23:10:54 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Nilesh Patra <nilesh@mailbox.org>
+Subject: Re: phylonium 1.7 build fails on 32-bit archs
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_06_msg00020.html
+
+Am Sat, Jun 24, 2023 at 10:43:39PM +0530 schrieb Nilesh Patra:
+> In this particular case, it should be relatively straight forward to get
+> this working on 32-bit, w/o too much debugging etc.
+
+Fine for me.
+
+> > I do not say it does not make any sense to support 32bit - but we simply
+> > have more important stuff to do IMHO.
+>
+> On an un-related note - do we have any new packages that we should work
+> on for trixie?
+
+Highest ranking would be
+
+    python3-tensorflow
+
+Kind regards
+
+      Andreas.
+
+--
+http://fam-tille.de

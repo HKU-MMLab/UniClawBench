@@ -1,0 +1,38 @@
+Message-ID: <420374d1-0561-1b25-09b1-64fca90968bd@debian.org>
+X-Clawbench-ID: BIO-2024-0322
+Date: Sat, 30 Oct 2021 10:33:02 +0300
+From: Andrius Merkys <merkys@debian.org>
+To: debian-science@lists.debian.org
+Subject: Re: Debian Math Team
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_10_msg00039.html
+
+Hi,
+
+On 2021-10-29 20:31, Torrance, Douglas wrote:
+> During the Debian Science BoF at this year's DebConf, there was some
+> discussion of creating a team devoted to packaging mathematical software.
+
+I agree with Anton here. I do not see how further fragmentation of
+debian-science could benefit it. I missed the BoF, but maybe there are
+notes reflecting this decision?
+
+Separate team and separate mailing list will have less members than
+debian-science. Furthermore, from my experience one does not need domain
+knowledge to successfully package and maintain packages in Debian.
+
+What makes more sense to me, is organizing packages into teams based on
+programming languages and build/test systems, as such teams indeed
+possess specific knowledge. I think most of the mails asking for help in
+debian-med concern language and build system problems, not
+domain-specific issues. Thus I am very comfortable keeping my math
+packages in per-language teams knowing that these teams will take good
+care of them if needed.
+
+I am worried reading about R packages being moved from debian-r to new
+debian-math. I am afraid doing so might negatively impact their quality.
+
+Best,
+Andrius

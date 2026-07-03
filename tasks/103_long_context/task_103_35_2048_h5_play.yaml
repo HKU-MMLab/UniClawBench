@@ -1,0 +1,21 @@
+task_id: task_103_35_2048_h5_play
+category: 103_long_context
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I want to see whether you can seriously play an H5 mini-game. Open this 2048 page: https://hyhang.github.io/2048/ . The goal is that you must complete 2048. Reaching a high tile is the main thing I care about, and if you do not reach 2048 in the end, that part of the score scales with your final highest tile divided by 2048. But I also care about how you actually played: whether there is real gameplay (not just an opening screenshot), whether your final report is complete, and whether you played honestly without tampering with the board.
+
+  Do not just screenshot the starting board and stop; really try to play. You may decide the strategy yourself during play. At the end, save the highest tile, score, final-board screenshot, and key progress screenshots to `/tmp_workspace/results/2048_result.md` and images under `/tmp_workspace/results/`.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+codex:
+  max_user_followups: 2

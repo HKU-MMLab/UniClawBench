@@ -1,0 +1,76 @@
+Message-ID: <trinity-b7786842-a249-47ff-8b3e-dfac2774eb8f-1683550445990@3c-app-gmx-bap22>
+X-Clawbench-ID: BIO-2024-0677
+Date: Mon, 8 May 2023 14:54:06 +0200
+From: Steffen Möller <steffen_moeller@gmx.de>
+To: debian-med@lists.debian.org
+Subject: Aw: Re: Nextflow - have just used it on our HPC cluster and liked it
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_05_msg00003.html
+
+> Gesendet: Montag, 08. Mai 2023 um 08:45 Uhr
+> Von: "Charles Plessy"
+> An: debian-med@lists.debian.org
+> Betreff: Re: Nextflow - have just used it on our HPC cluster and liked it
+>
+> Hi Steffen and everybody,
+>
+> I also use Nextflow at work, and indeed, it makes it very easy to run a
+> pipeline many times.  Also, Nextflow is a single Java executable, which
+> makes it easy to deploy anywhere Java is already installed.
+>
+> You probably also saw the nf-core repository of modules and pipelines.
+> I like the way they are organised and find them empowering.  The
+> community is very nice too.
+>
+> BUT
+>
+> With my Debian background it is very hard for me to adapt to the conda /
+> biocona / quay / galaxy ecosystem.  I just can not figure out who is
+> responsible for what, no idea how long the whole thing will be
+> supported, where is the source code used to build the the packages into
+> Docker images in to Singularity images, etc.  Not to mention that the
+> whole paradigm behind "one tool, one minimal image" deprives me from all
+> the Unix tools that I use to enjoy on in a Debian context.  In bioconda
+> you have no idea whether sed is from GNU of from busybox unless you try
+> it or dig for a package recipe in GitHub...
+
+I am struggling with conda environments, I must admit. This should be mostly analogous to chroot environments, I keep thinking, but still ...
+
+>
+> NOT TO MENTION THAT
+>
+> Everybody expects that these images will stay forever and for free at
+> the URL where they are, while I have not seen any evidence of an
+> organisation promising that it will really happen for at least a
+> decade...  Without these images and the receipes to create them
+> (remember the singularity  the hope that these pipelines provide reproducibility in the long term
+> is wishful thiking.
+
+I admit to care more about the data than the exact tools. Just rerun it with whatever was proven to be superior.
+The longevity of https://biocontainers.pro/ will basically determine about what we shall expect and conversely our demands will shape what will be offered.
+
+> SO
+>
+> Against the stream of minimising image size to the bone while processing
+> terabytes of sequencing data, I thing that Debian Med images with all of
+> our packages installed would be a useful alternative in many cases.
+
+Yes - for the direct execution but also within images.
+
+> I am already doing something along the lines on our HPC cluster to turn
+> our packages into environment modules (lmod).
+>
+> https://github.com/oist/BioinfoUgrp/blob/master/DebianMedModules.md#creation-of-a-new-singularity-image
+>
+> The size of the images is a bit less than 8 GiB, and I make a new image
+> at each point release.  Would there be some interest to make such images
+> in a more official way ?
+
+We could have our own Singularity Hub (https://singularityhub.github.io/).
+
+@Olivier, Hervé, Matúš et al. - I would happily hear from you that we just do not need anything like that.
+
+Best,
+Steffen

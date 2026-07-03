@@ -1,0 +1,43 @@
+Message-ID: <87zgo1ufmi.fsf@nonempty.org>
+X-Clawbench-ID: BIO-2024-0200
+Date: Wed, 12 Jan 2022 16:34:19 +0100
+From: Gard Spreemann <gspr@nonempty.org>
+To: Andrius Merkys <merkys@debian.org>
+Subject: Re: alphafold Debian packaging ?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2022_01_msg00008.html
+
+Andrius Merkys  writes:
+
+> Hi,
+>
+> On 2022-01-11 16:14, Gard Spreemann wrote:
+>> I'm taking the liberty to forward this to the debian-ai list as well.
+>
+> Thanks. Highly relevant issue for debian-ai@ might be the retraining of
+> the neural network model.
+
+Indeed! I was thinking that it might be an interesting – and
+complicated! – test case for Mo Zhou's draft ML policy [2].
+
+[2] https://salsa.debian.org/deeplearning-team/ml-policy
+
+> In addition to being pre-trained, the model itself is licensed under
+> CC-BY-NC-4.0, thus not suitable for Debian main. I could not find a
+> guide for retraining, and an issue on their tracker [1] asks for the
+> same.
+
+Hmm, interesting! Where did you see this? Regarding the output
+predictions, alphafold.com states CC-BY-4.0 (in two different places):
+
+> All of the data provided is freely available for both academic and commercial use under Creative Commons Attribution 4.0 (CC-BY 4.0) license terms. If you use this resource please cite the following papers:
+> […]
+
+And their code repository is Apache. Or did you find the actual
+pretrained models somewhere under CC-BY-NC?
+
+
+ Best,
+ Gard

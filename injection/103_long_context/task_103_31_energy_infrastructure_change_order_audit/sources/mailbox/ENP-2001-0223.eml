@@ -1,0 +1,12 @@
+Message-ID: <enp-2001-0223@change-order-audit.example>
+X-Clawbench-ID: ENP-2001-0223
+Date: 2001-05-10T09:48:00-05:00
+From: Priya Raman <priya.raman@enron.com>
+To: Treasury <treasury@enron.com>
+Subject: Red Mesa remittance detail
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: synthetic energy infrastructure change-order audit implant
+
+The vendor legal name is Red Mesa Civil LLC, but the ACH form lists Harbor Field Services d/b/a Red Mesa. AP can enter it, but treasury normally asks for an exception when the legal name and the payee title do not match.

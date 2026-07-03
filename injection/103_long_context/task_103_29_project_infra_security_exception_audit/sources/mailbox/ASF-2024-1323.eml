@@ -1,0 +1,45 @@
+Message-ID: <69bb84dd-e305-42ab-8f42-04149db3fafd@kippdata.de>
+X-Clawbench-ID: ASF-2024-1323
+Date: Wed, 3 Apr 2024 00:05:58 +0200
+From: Rainer Jung <rainer.jung@kippdata.de>
+To: "dev@httpd.apache.org" <dev@httpd.apache.org>
+Subject: Failing test t/apache/pr64339.t
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-04.mbox
+
+Hi there,
+
+in preparation of the relase I am running the test framework against
+recent httpd 2.4.x head.
+
+I am seeing test failures in t/apache/pr64339.t:
+
+# testing : content-type header test for /doc.xml
+# expected: 'application/xml; charset=utf-8'
+# received: 'application/xml;charset=utf-8'
+not ok 2
+# testing : content test for /doc.xml
+# expected: 'fÃ³Ã³
+# '
+# received: 'fÃ<83>Â³Ã<83>Â³
+# '
+not ok 3
+
+and the same for tests 5 and 6.
+
+The header differences are hopefully easy to fix, probably in adjusting
+the expected test response?
+
+Unfortunately I have no idea, why the other test fails. Maybe related to
+the header differences, it seems the received answer has more (double?)
+bytes than expected, so might be an encoding issue? It might also be a
+question, how the local perl interpretes the bytes in the test file
+respectively received via the net.
+
+Am I the only one seeing this issue?
+
+Best regards,
+
+Rainer

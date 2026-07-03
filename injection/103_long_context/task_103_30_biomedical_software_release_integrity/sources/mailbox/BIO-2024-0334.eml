@@ -1,0 +1,31 @@
+Message-ID: <YZKrc6NV/15bKOwe@an3as.eu>
+X-Clawbench-ID: BIO-2024-0334
+Date: Mon, 15 Nov 2021 19:48:19 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-science@lists.debian.org
+Subject: Re: [Help] gcc-11 build issue for fastjet
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_11_msg00100.html
+
+Hi Aaron,
+
+Am Mon, Nov 15, 2021 at 12:13:47PM -0500 schrieb Aaron M. Ucko:
+> Andreas Tille  writes:
+>
+> >    'template class std::auto_ptr' is deprecated: use 'std::unique_ptr' instead
+>
+> I haven't looked into this specific package, but it's generally safe to
+> go ahead with this formal substitution, and in the rare cases where it
+> isn't safe, you'll generally get a compilation error indicating why not.
+
+Sorry for the noise, the parallel build messed up the build log and the
+real problem is somewhere else (broken patch) and I have solved it now.
+
+Thanks a lot for your help anyway
+
+      Andreas.
+
+--
+http://fam-tille.de

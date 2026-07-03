@@ -1,0 +1,25 @@
+Message-ID: <Y3SDSKjngq2tbmPR@an3as.eu>
+X-Clawbench-ID: BIO-2024-1482
+Date: Wed, 16 Nov 2022 07:29:28 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Build time error in new version of Proteinortho
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_11_msg00040.html
+
+Am Wed, Nov 16, 2022 at 09:26:12AM +0530 schrieb Nilesh Patra:
+> >I have opened an issue upstream in a hope that paul sees this soon-ish, since this looks like a regression
+> >
+> >	https://gitlab.com/paulklemm_PHD/proteinortho/-/issues/67
+>
+>
+> This is resolved. Some issue with autopkgtest code -- upstream was kind to help.
+> I had uploaded the new version, which should migrate soon to testing.
+
+Thanks a lot
+   Andreas.
+
+--
+http://fam-tille.de

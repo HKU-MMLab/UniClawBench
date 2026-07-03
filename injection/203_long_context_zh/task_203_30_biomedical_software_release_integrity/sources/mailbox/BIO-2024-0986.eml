@@ -1,0 +1,25 @@
+Message-ID: <udl35p2scsr.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-0986
+Date: Fri, 15 Oct 2021 08:16:52 -0400
+From: ucko@debian.org (Aaron M. Ucko)
+To: Andreas Tille <tille@debian.org>
+Subject: Re: sra-sdk is lacking libngs
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00069.html
+
+Andreas Tille  writes:
+
+> AddRealloc (0 s)
+> Killed
+
+The following "MiltipleBuffers" (sic) test needs a *lot* of memory -- at
+least 4G, quite possibly 8G if there's copying involved.  As such, I
+suspect it simply ran afoul of the CI host's OOM killer.
+
+Thanks for checking!
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

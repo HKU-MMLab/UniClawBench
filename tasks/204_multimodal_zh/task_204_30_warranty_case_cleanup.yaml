@@ -1,0 +1,56 @@
+task_id: task_204_30_warranty_case_cleanup
+category: 204_multimodal_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我的下载文件夹完全没有条理。`/tmp_workspace/clawbench/sources/downloads_clutter/`
+  里混杂着：
+  - 购物订单截图
+  - 电子发票 PDF
+  - 产品说明书
+  - 保修页面截图
+  - 物流跟踪截图
+  - 产品照片
+  - 聊天截图
+  - 一些与购物无关的旧文件
+
+  我想整理与"售后服务 / 保修 / 退换货"相关的材料，
+  以便将来用于理赔或保修申请。请完成以下事项：
+
+  1. 浏览这些文件，找出与售后服务、退换货或保修相关的文件。
+     不要只保留证据已经齐全的情况。如果某个产品 / 订单只有订单截图、发票、物流跟踪、
+     说明书或保修材料中的一部分，但看起来对日后售后服务可能有用，
+     也要将其整理为"信息不足 / 可能的售后案例"，并在缺失证据说明中解释缺少了什么。
+  2. 在 `/tmp_workspace/results/warranty_cases/` 下按产品或订单归档文件，
+     每个产品 / 订单一个子文件夹。
+  3. 在每个子文件夹中保留最重要的证据文件，并对其进行清晰的重命名。
+  4. 提取每个产品 / 订单的关键信息并生成 `/tmp_workspace/results/warranty_index.csv`，
+     至少包含：
+     - 产品名称
+     - 订单号（必填；如果无法识别，写 `UNKNOWN` 并在 `missing_evidence.md` 中解释）
+     - 购买日期
+     - 金额
+     - 平台 / 商家
+     - 当前状态（已送达、待退货、保修期内、信息不足等）
+     - 对应的证据文件
+  5. 如果某个订单缺少关键证据（例如没有订单截图、没有发票或没有物流跟踪），
+     请将其列入 `/tmp_workspace/results/missing_evidence.md`。
+  6. 最后，生成 `/tmp_workspace/results/claims_overview.md`，告诉我哪些订单已经具备
+     完整的售后材料，哪些订单还无法直接用于售后理赔。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - downloads_clutter/
+
+codex:
+  max_user_followups: 2

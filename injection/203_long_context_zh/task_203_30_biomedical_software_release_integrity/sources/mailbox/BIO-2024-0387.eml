@@ -1,0 +1,93 @@
+Message-ID: <CA+7wUszUA8=TOy7Fq-FrdU+uHMOamH2Gsn-bQ2BxmCqEqciBJQ@mail.gmail.com>
+X-Clawbench-ID: BIO-2024-0387
+Date: Mon, 31 Jan 2022 08:29:09 +0100
+From: Mathieu Malaterre <mathieu.malaterre@gmail.com>
+To: Andreas Tille <andreas@an3as.eu>
+Subject: Re: Problems finding RocksDBConfig.cmake (Was: sortmerna: "/usr/bin/ld: cannot find -lpthreads")
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_01_msg00118.html
+
+Andreas,
+
+On Sun, Jan 30, 2022 at 8:48 PM Andreas Tille  wrote:
+>
+> Hi,
+>
+> Am Mon, Oct 18, 2021 at 03:28:05PM +0200 schrieb Andreas Tille:
+> >
+> > Ahhh, thanks a lot for the helpful hint.  Unfortunately librocksdb-dev
+> > is lacking the needed cmake input files (bug filed[1] - argh, the
+> > packaging is neither team maintained nor in Salsa :-().  Is anybody able
+> > to convice cmake to set the according variables anyway so that we can
+> > continue without waiting for the maintainer?
+>
+> librocksdb-dev (>= 6.25.3) arrived in experimental and it contains
+>
+>    /usr/lib/$(DEB_HOST_MULTIARCH)/cmake/RocksDBConfig.cmake
+
+That looks right.
+
+> I've even set this in d/rules as CMAKE_PREFIX_PATH but the issue
+>
+> CMake Error at src/sortmerna/CMakeLists.txt:15 (find_package):
+>   Could not find a package configuration file provided by "RocksDB" with any
+>   of the following names:
+>
+>     RocksDBConfig.cmake
+>     rocksdb-config.cmake
+>
+>   Add the installation prefix of "RocksDB" to CMAKE_PREFIX_PATH or set
+>   "RocksDB_DIR" to a directory containing one of the above files.  If
+>   "RocksDB" provides a separate development package or SDK, be sure it has
+>   been installed.
+>
+>
+> -- Configuring incomplete, errors occurred!
+
+The following cmake works for me:
+
+```
+% cat CMakeLists.txt
+cmake_minimum_required(VERSION 3.22)
+project(p)
+find_package(RocksDB)
+```
+
+Gives:
+
+% cmake ..
+-- The C compiler identification is GNU 10.2.1
+-- The CXX compiler identification is GNU 10.2.1
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found ZLIB: /usr/lib/x86_64-linux-gnu/libz.so (found version "1.2.11")
+-- Found BZip2: /usr/lib/x86_64-linux-gnu/libbz2.so (found version "1.0.8")
+-- Looking for BZ2_bzCompressInit
+-- Looking for BZ2_bzCompressInit - found
+-- Found zstd: /usr/lib/x86_64-linux-gnu/libzstd.so
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+-- Looking for pthread_create in pthreads
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Looking for pthread_create in pthread - found
+-- Found Threads: TRUE
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /tmp/p/bin
+
+
+What's the exact cmake command used in sortmerna? Maybe the error is
+somewhere above (like a missing zlib, bzip2, zstd ...)

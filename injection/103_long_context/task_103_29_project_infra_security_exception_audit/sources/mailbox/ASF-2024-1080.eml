@@ -1,0 +1,29 @@
+Message-ID: <88C80B1C-1597-493F-A134-FB6051FC0580@sharp.fm>
+X-Clawbench-ID: ASF-2024-1080
+Date: Wed, 9 Feb 2022 20:32:58 +0200
+From: Graham Leggett <minfrin@sharp.fm>
+To: dev@httpd.apache.org
+Subject: Re: mpm event assertion failures
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-02.mbox
+
+On 09 Feb 2022, at 15:08, Ruediger Pluem <rpluem@apache.org> wrote:
+
+> Probably you get hit by this?
+>
+> https://github.com/apache/httpd/blob/46a9db4c6f9fadca4e362872021fa62a37908ece/server/mpm/event/event.c#L2096-L2101
+>
+> If a client sends a request on a keepalive connection it should be prepared that the connection gets closed without a reply and it
+> should retry if the request is idempotent. This is how I read RFC7230 6.3.1:
+>
+> https://datatracker.ietf.org/doc/html/rfc7230#section-6.3.1
+
+This seems to be it - ab was trying to test whether the current request was keepalive, which it could never be given the request had been closed before read. The fix is to keep track of whether this connection has ever been kept alive, and check that instead.
+
+Fixed in r1897912.
+
+Regards,
+Graham
+—

@@ -1,0 +1,29 @@
+task_id: task_103_34_match_stream_event_monitor
+category: 103_long_context
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I have a match video stream that I want you to watch for me. Open `http://match-stream.local:8129/stream` and observe the video from the beginning as if watching a live broadcast.
+
+  Count the goals, goal times, red/yellow cards, and other major disciplinary events shown in the video, as accurately as possible to the match minute. If substitutions or other key interruptions are clearly shown on screen, record them as well. Save several screenshots during viewing that support your judgments. Finally write the results to `/tmp_workspace/results/match_stream_report.md` and include a short key-paragraph summary. If the video has loading issues, also screenshot and explain what you can actually see.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/source_evidence/match_report.png
+  - references/source_evidence/match_report_events.png
+  - references/source_evidence/match_report_late_events.png
+  - references/source_evidence/global_sports_archive_timeline.png
+pre_exec:
+  - ops/start_stream.py
+pre_exec_parallel_safe: true
+
+codex:
+  max_user_followups: 2

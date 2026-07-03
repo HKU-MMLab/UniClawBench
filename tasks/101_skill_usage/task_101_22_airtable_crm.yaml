@@ -1,0 +1,149 @@
+task_id: task_101_22_airtable_crm
+category: 101_skill_usage
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  Our quarterly pipeline review is tomorrow and I need a clean sanity
+  check on the whole deals funnel before I walk in. Pull every row from
+  base $AIRTABLE_BASE_ID table $AIRTABLE_TABLE_NAME using $AIRTABLE_PAT
+  — use the workspace's Airtable integration skill for the data pull and
+  the database operations skill to crunch the numbers.
+
+  What I really want to see at a glance: which deals are actually stuck
+  versus just moving normally, where my people are over-loaded versus
+  not, which stage is the worst traffic jam right now, where the
+  dollar exposure is really concentrated, and which Won/Lost rows have
+  gotten so old we should treat them as cold and stop pretending
+  they're still in play. Whatever you decide to put in the writeup,
+  make sure those angles all come through.
+
+  Give me /tmp_workspace/results/audit.json with a quick health read:
+  - active_stuck_deals: every non-terminal deal in Lead, Qualified,
+    Proposal, or Negotiation that has been sitting in its current
+    stage for more than 21 days. List them all.
+  - moving_active_deals: all active non-terminal deals at 21 days or
+    less.
+  - terminal_aged_deals: all Won/Lost deals older than 21 days, kept
+    separate so they do not pollute active follow-up.
+  - stage_counts for all rows.
+  - active_pipeline_value_usd and terminal_value_usd.
+  - owner_followups: for every owner that has at least one active
+    stuck deal, give me their stuck count, total stuck value, the
+    oldest stuck deal id, the oldest days in stage, and a short next
+    action. Each next action should start with an imperative verb
+    like Email / Call / Schedule / Send / Submit / Review / Confirm /
+    Escalate / Follow-up so it reads like a directive, and for owners
+    whose oldest stuck deal is well past SLA you should call out the
+    overdue duration explicitly with a day count, e.g. "45 days".
+
+  Also save /tmp_workspace/results/owner_followups.csv with columns
+  owner,active_stuck_count,active_stuck_value_usd,oldest_active_stuck_deal,
+  oldest_days_in_stage,next_action. For every stuck or terminal-aged
+  deal, include enough identifying info — deal_id, account, owner,
+  stage, value, days_in_stage — so I can chase it down without having
+  to crack open Airtable.
+
+  Please add /tmp_workspace/results/priority_queue.csv that lists the
+  most dangerous active stuck deals only — the ones with the largest
+  combination of dollars and time wasted. Compute risk_score as
+  value_usd * days_in_stage / 1000, rounded to one decimal, sort
+  descending by that score, and show me only the top tier of the
+  riskiest seven. Each row needs deal_id, account, owner, stage,
+  value_usd, days_in_stage, risk_score, and a short reason.
+
+  Feel free to weave the broader read-out into audit.json or a short
+  summary block in it so the picture across stuck deals, owner load,
+  stage flow, dollar concentration, and lapsed terminal accounts is
+  clear in one place — I want to skim once and know where to push next.
+
+task_snapshot: |
+  Our quarterly pipeline review is tomorrow and I need a clean sanity
+  check on the whole deals funnel. I've exported the deals to
+  /tmp_workspace/clawbench/sources/airtable_snapshot.json — read from
+  there and run the analysis below over all the deals. Use the
+  workspace's airtable-pat-rest skill alongside the database-operations
+  skill so the audit follows the documented workflow even though you're
+  reading from the offline snapshot.
+
+  Honestly the thing I want most is a sanity check on the whole
+  pipeline. I want to see at a glance which deals are actually stuck
+  versus just moving normally, where my people are over-loaded versus
+  not, which stage is the worst traffic jam right now, where the
+  dollar exposure is really concentrated, and which Won/Lost rows have
+  gotten so old we should treat them as cold and stop pretending
+  they're still in play. Whatever you decide to put in the writeup,
+  make sure those angles all come through.
+
+  Give me /tmp_workspace/results/audit.json with a quick health read:
+  - active_stuck_deals: every non-terminal deal in Lead, Qualified,
+    Proposal, or Negotiation that has been sitting in its current
+    stage for more than 21 days. List them all.
+  - moving_active_deals: all active non-terminal deals at 21 days or
+    less.
+  - terminal_aged_deals: all Won/Lost deals older than 21 days, kept
+    separate so they do not pollute active follow-up.
+  - stage_counts for all rows.
+  - active_pipeline_value_usd and terminal_value_usd.
+  - owner_followups: for every owner that has at least one active
+    stuck deal, give me their stuck count, total stuck value, the
+    oldest stuck deal id, the oldest days in stage, and a short next
+    action. Each next action should start with an imperative verb
+    like Email / Call / Schedule / Send / Submit / Review / Confirm /
+    Escalate / Follow-up so it reads like a directive, and for owners
+    whose oldest stuck deal is well past SLA you should call out the
+    overdue duration explicitly with a day count, e.g. "45 days".
+
+  Also save /tmp_workspace/results/owner_followups.csv with columns
+  owner,active_stuck_count,active_stuck_value_usd,oldest_active_stuck_deal,
+  oldest_days_in_stage,next_action. For every stuck or terminal-aged
+  deal, include enough identifying info — deal_id, account, owner,
+  stage, value, days_in_stage — so I can chase it down without having
+  to dig through the snapshot.
+
+  Please add /tmp_workspace/results/priority_queue.csv that lists the
+  most dangerous active stuck deals only — the ones with the largest
+  combination of dollars and time wasted. Compute risk_score as
+  value_usd * days_in_stage / 1000, rounded to one decimal, sort
+  descending by that score, and show me only the top tier of the
+  riskiest seven. Each row needs deal_id, account, owner, stage,
+  value_usd, days_in_stage, risk_score, and a short reason.
+
+  Feel free to weave the broader read-out into audit.json or a short
+  summary block in it so the picture across stuck deals, owner load,
+  stage flow, dollar concentration, and lapsed terminal accounts is
+  clear in one place — I want to skim once and know where to push next.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - airtable_snapshot.json
+
+skills:
+  - airtable-pat-rest
+  - database-operations
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+pre_exec:
+  - ops/populate.py
+
+# Populator audit: Airtable rows are upserted by deterministic deal_id;
+# no delete-then-rewrite sequence, no cross-row dependency. Safe under
+# workers>1 behind the populator_lock.
+pre_exec_parallel_safe: true
+
+codex:
+  max_user_followups: 2

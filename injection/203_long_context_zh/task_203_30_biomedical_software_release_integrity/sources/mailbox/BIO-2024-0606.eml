@@ -1,0 +1,46 @@
+Message-ID: <YkbqTPgh1IW86riV@an3as.eu>
+X-Clawbench-ID: BIO-2024-0606
+Date: Fri, 1 Apr 2022 14:04:28 +0200
+From: Andreas Tille <andreas@fam-tille.de>
+To: Francois Gindraud <francois.gindraud@inria.fr>
+Subject: Re: New kissplice version (2.6.0) and packaging changes
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_04_msg00003.html
+
+Hi Francois,
+
+Am Thu, Mar 31, 2022 at 11:28:16AM +0200 schrieb Francois Gindraud:
+> The new version of kissplice (2.6.0) has been published upstream.
+> Due to internal build system and infrastructure changes, the packaging infrastructure requires a few changes.
+> I had initially contacted Andreas Tille to signal that ahead of time ( [ https://alioth-lists.debian.net/pipermail/debian-med-packaging/2022-March/098822.html | https://alioth-lists.debian.net/pipermail/debian-med-packaging/2022-March/098822.html ] ).
+>
+> I've prepared a commit with changes to [ https://salsa.debian.org/med-team/kissplice | https://salsa.debian.org/med-team/kissplice ] which should handle all build-system changes.
+>
+> I have not retrieved the new version from the upstream gitlab, as it seems to rely on automated git scripts I am not familiar with.
+
+Huh, a simple `git clone` should work.
+
+> In his reply, Andreas said to simply push my changes to master, but this seem to require access that I do not yet have. I've sent an access request to DebianMed.
+
+Ups, sorry, it seems the new gitlab did not sent any information mail
+about the pending access request.  I confirmed now.  Please note that
+I've meanwhile pushed some changes for the new upstream version.  Please
+also note that it does not build due to gcc errors:
+
+  https://salsa.debian.org/med-team/kissplice/-/jobs/2627463
+
+I've deactivated the gcc-10.patch
+
+  https://salsa.debian.org/med-team/kissplice/-/blob/master/debian/patches/gcc10.patch
+
+which did not apply any more but it might read that the code you are
+using now is not fit for gcc-12.
+
+Kind regards
+
+      Andreas.
+
+--
+http://fam-tille.de

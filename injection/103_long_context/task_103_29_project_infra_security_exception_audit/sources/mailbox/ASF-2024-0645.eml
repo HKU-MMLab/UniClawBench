@@ -1,0 +1,35 @@
+Message-ID: <Y72BTg79mOIJGMac@redhat.com>
+X-Clawbench-ID: ASF-2024-0645
+Date: Tue, 10 Jan 2023 15:16:30 +0000
+From: Joe Orton <jorton@redhat.com>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.55-rc1 as httpd-2.4.55
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-01.mbox
+
+On Tue, Jan 10, 2023 at 08:40:52AM -0500, Eric Covener wrote:
+> Hi all,
+>
+> Please find below the proposed release tarball and signatures:
+>
+> https://dist.apache.org/repos/dist/dev/httpd/
+>
+> I would like to call a VOTE over the next few days to release
+> this candidate tarball httpd-2.4.55-rc1 as 2.4.55:
+> [X] +1: It's not just good, it's good enough!
+> [ ] +0: Let's have a talk.
+> [ ] -1: There's trouble in paradise. Here's what's wrong.
+>
+> The computed digests of the tarball up for vote are:
+> sha256: 5276ea8bc6fff31eed5c82132ae51a0b2ee05f9e6b61a00fa877f6cadab3b638
+> *httpd-2.4.55-rc1.tar.gz
+> sha512: ca0d03b5e74078977378fe711ca3ed8cf63c109b7dbe73f2c43f7f30f7e522bbe46f93189a183b7675394d57fffb0c2526facd8d40508be984a7a8f64d18f8d6
+> *httpd-2.4.55-rc1.tar.gz
+
++1 for release, thank you for RMing!
+
+Test suite passes on RHEL 8 and 9 (x86_64).
+
+Regards, Joe

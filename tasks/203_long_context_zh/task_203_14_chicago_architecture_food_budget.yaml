@@ -1,0 +1,38 @@
+task_id: task_203_14_chicago_architecture_food_budget
+category: 203_long_context_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我想和一位朋友去芝加哥进行一次三晚的建筑 + 美食之旅。日期是：下周五到再下周一（周五到周一共住 3 晚），2 人，从 SFO 出发，ORD 或 MDW 均可接受。请实际调研并制定一份完整的预算和行程方案，但不要支付、不要订机票、不要订酒店、不要买建筑游船或博物馆门票、不要预订餐厅，也不要提交任何不可逆的订单。把所有截图和文档保存到 `/tmp_workspace/results/`。
+
+  搜索从 SFO 飞往 ORD 或 MDW 的往返航班。去程航班必须在下周五 07:00 到 12:30 之间从 SFO 出发；返程航班必须在再下周一 15:00 到 20:30 之间从芝加哥飞往 SFO。在 Google Flights、United 官网，以及 American Airlines 或 Southwest 至少一家航空公司的官网上搜索；从每个平台记录 1 个最合适的结果，包括机场、航空公司、出发/到达时间、直飞/中转情况、票价、行李/改签限制和截图。
+
+  住宿方面，从 Hyatt Place Chicago/River North、citizenM Chicago Downtown、Hampton Inn Chicago Downtown/N Loop/Michigan Ave 和 LondonHouse Chicago 中任选 3 家。在 Booking.com 和每家酒店官网搜索从下周五到再下周一、2 人、1 间房的住宿。记录房型、3 晚总价、是否含税费或设施费、取消政策、评分/地址和截图。如果某网站拦截了查询或无法显示价格，就截图并在最终方案中如实说明；不要编造价格。
+
+  建筑活动方面，只考虑 Chicago Architecture Center River Cruise、Wendella Architecture Boat Tour、Shoreline Sightseeing Architecture River Tour 和 Chicago Architecture Center 的入场。使用官方页面查询从下周五到再下周一、2 名成人可预约的场次，记录日期、场次时间、票价、总价、集合地点、取消/改期政策和截图。
+
+  博物馆/景点方面，只考虑 Art Institute of Chicago、Skydeck Chicago、360 Chicago 和 Field Museum。使用官方门票/入场页面查询行程期间 2 名成人的门票。记录成人票价、开放时间、是否需要分时入场、取消/改期规则和截图。
+
+  美食部分必须涵盖三类：deep dish、休闲餐和需预订的晚餐。deep dish 方面，只考虑 Lou Malnati's、Giordano's 和 Pequod's Pizza；记录菜单价格、营业时间、是否可预订或排队，以及截图。休闲餐方面，只考虑 Portillo's；记录菜单价格、地址/营业时间和截图。需预订的晚餐方面，从 Bavette's Bar & Boeuf、The Purple Pig、Girl & the Goat 和 RPM Steak 中任选 3 家，并查询从下周五到再下周一、2 人能否在 18:00 到 20:30 之间预订晚餐。优先使用 OpenTable、Resy 或餐厅的官方预订页面，记录最佳可用时间以及是否需要信用卡或押金，并截图，但不要完成预订。
+
+  城市交通方面，查询 CTA 票价页面以及从 ORD 或 MDW 到市中心的官方交通信息，记录 1 日或 3 日通票价格、机场到市中心的票价和预计时间并截图。默认不租车，除非你发现行程明显需要租车；如果你建议租车，必须说明停车成本和替代方案。
+
+  最后生成 `/tmp_workspace/results/chicago_architecture_food_plan.md`，包含每日行程、一张涵盖机票/酒店/建筑活动/博物馆/餐饮/当地交通/活动备用金的预算表，以及两套方案：省钱版和舒适版。尽量把舒适版的总预算控制在 $3,600 / 2 人以内。最终文档必须列出所用的所有截图路径，并清晰标注任何被拦截、缺少价格或不可用的数据。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/process_evidence/booking_Art_Institute_of_Chicago.png
+  - references/process_evidence/booking_citizenM_Chicago_Downtown.png
+  - references/process_evidence/google_flight.png
+  - references/process_evidence/opentable_Lou_Malnatis.png
+  - references/process_evidence/ticket_Chicago_Architecture_Center_River_Cruise.png
+codex:
+  max_user_followups: 2

@@ -1,0 +1,25 @@
+{
+  "task_id": "task_101_21_notion_consolidate",
+  "notes_visible_to_executor": false,
+  "skill_changes": [
+    {
+      "original_skill": "notion",
+      "injected_skill": "notion-token-api",
+      "original_source": "clawhub",
+      "change_type": "api_credential_adaptation",
+      "reason": "The task provides NOTION_API_TOKEN directly. The fork keeps live Notion API usage but removes account setup and credential-file assumptions.",
+      "executor_skill_path": "skills/notion-token-api"
+    },
+    {
+      "original_skill": "second-brain",
+      "injected_skill": "local-knowledge-consolidator",
+      "original_source": "clawhub",
+      "change_type": "local_replacement_for_external_api",
+      "reason": "The original skill depends on an external memory-service API. The fork keeps the project-note consolidation behavior while avoiding an additional API credential requirement.",
+      "executor_skill_path": "skills/local-knowledge-consolidator",
+      "removed_executor_exposed_files": [
+        "skills/local-knowledge-consolidator/scripts/ensue-api.sh"
+      ]
+    }
+  ]
+}

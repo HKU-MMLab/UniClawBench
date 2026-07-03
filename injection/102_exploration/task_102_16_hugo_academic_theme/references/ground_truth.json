@@ -1,0 +1,42 @@
+{
+  "task_id": "task_102_16_hugo_academic_theme",
+  "note": "Answer key for a candidate-selection task. Feature flags are normalized from each theme's real upstream theme.toml/docs (raw manifests shipped under sources/theme_candidates/raw_theme_manifests/). Offline + frozen -> deterministic. The conflict: the use case needs THREE features together (multilingual + team_members + publications) and only ONE candidate has all three; the name-tempting and popularity-tempting candidates each miss a hard requirement.",
+
+  "use_case_hard_requirements": {
+    "HR1_multilingual": "built-in i18n (English + Chinese)",
+    "HR2_team_members": "a team/people profile system for a multi-person lab",
+    "HR3_publications": "an academic publication / BibTeX listing system",
+    "HR4_static_hostable_permissive": "Hugo static site, free hosting, permissive (MIT/Apache) license"
+  },
+  "soft_preferences": {
+    "SC1_events_talks": "also having an events/talks/news system is a plus for a research group"
+  },
+
+  "per_candidate": [
+    {"id":"research_group","multilingual":true,"team_members":true,"publications":true,"events_talks":true,"permissive":true,"hard_pass":true,"missing":[],"note":"only candidate satisfying all of HR1+HR2+HR3+HR4, plus the events/talks soft plus"},
+    {"id":"academic_cv","multilingual":true,"team_members":false,"publications":true,"events_talks":false,"permissive":true,"hard_pass":false,"missing":["HR2_team_members"],"trap":"NAME TRAP: 'Academic' in the name, has publications + i18n, but it is a single-person CV/résumé — no team/members system for a multi-person lab."},
+    {"id":"papermod","multilingual":true,"team_members":false,"publications":false,"events_talks":false,"permissive":true,"hard_pass":false,"missing":["HR2_team_members","HR3_publications"],"trap":"POPULARITY TRAP: one of the most popular Hugo themes, multilingual + fast, but no members and no publications system."},
+    {"id":"ananke","multilingual":true,"team_members":false,"publications":false,"events_talks":false,"permissive":true,"hard_pass":false,"missing":["HR2_team_members","HR3_publications"],"trap":"general starter/blog theme"},
+    {"id":"hugo_book","multilingual":true,"team_members":false,"publications":false,"events_talks":false,"permissive":true,"hard_pass":false,"missing":["HR2_team_members","HR3_publications"],"trap":"documentation theme; i18n yes but no academic features"},
+    {"id":"terminal","multilingual":true,"team_members":false,"publications":false,"events_talks":false,"permissive":true,"hard_pass":false,"missing":["HR2_team_members","HR3_publications"],"trap":"retro blog theme"}
+  ],
+
+  "hard_pass_survivors": ["research_group"],
+  "gold": {
+    "selected_id": "research_group",
+    "uniqueness": "It is the ONLY candidate that satisfies all hard requirements (multilingual + team_members + publications + permissive). No tie-break is needed.",
+    "key_facts": {
+      "academic_cv_is_a_name_trap": "must NOT be selected as the primary; it lacks a team/members system (single-person CV) even though it's 'Academic' and has publications",
+      "papermod_is_a_popularity_trap": "must NOT be selected; most popular but lacks members AND publications",
+      "all_candidates_are_multilingual_and_MIT": "so i18n and license do NOT discriminate — the discriminators are HR2 (team members) and HR3 (publications)"
+    }
+  },
+
+  "scoring_anchors": {
+    "must_select": "research_group",
+    "must_reject_with_reason": ["academic_cv","papermod"],
+    "key_discriminators": ["HR2_team_members","HR3_publications"],
+    "min_candidates_evaluated": 5,
+    "note": "Every candidate is multilingual + MIT, so an executor that justifies its pick only by 'it supports Chinese' or 'it's open source' has not done the real comparison. The decisive evidence is that only research_group has BOTH a team/members system AND a publications system. Executors should cite the theme.toml feature lists as evidence."
+  }
+}

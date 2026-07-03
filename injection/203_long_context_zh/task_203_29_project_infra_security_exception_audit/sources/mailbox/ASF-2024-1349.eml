@@ -1,0 +1,112 @@
+Message-ID: <fc326efaa7c04481bda1ef43b7331020@3ds.com>
+X-Clawbench-ID: ASF-2024-1349
+Date: Wed, 8 Mar 2023 21:57:24 +0000
+From: BUSH Steve <Steven.BUSH@3ds.com>
+To: "dev@httpd.apache.org" <dev@httpd.apache.org>
+Subject: RE: [VOTE] [VOTE] Release httpd-2.4.56-rc1 as httpd-2.4.56
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-03.mbox
+
+Please remember to send the release announcement to announce@httpd.apache.org
+
+From: Eric Covener <covener@gmail.com>
+Sent: Tuesday, March 7, 2023 3:51 AM
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] [VOTE] Release httpd-2.4.56-rc1 as httpd-2.4.56
+
+I am going to call this one early and proceed with the release. 9 binding +1 and no other votes. fielding, covener, icing, gbechis, ylavic, jblond, jorton, steffenAL, rpluem On Tue, Mar 7, 2023 at 3: 18 AM Ruediger Pluem <rpluem@ apache. org>
+
+
+I am going to call this one early and proceed with the release. 9
+
+binding +1 and no other votes.
+
+
+fielding, covener, icing, gbechis, ylavic, jblond, jorton, steffenAL, rpluem
+
+
+On Tue, Mar 7, 2023 at 3:18 AM Ruediger Pluem <rpluem@apache.org<mailto:rpluem@apache.org>> wrote:
+
+>
+
+>
+
+>
+
+> On 3/5/23 10:31 PM, Eric Covener wrote:
+
+> > Hi all,
+
+> >
+
+> > Please find below the proposed release tarball and signatures:
+
+> >
+
+> > https://urldefense.com/v3/__https://dist.apache.org/repos/dist/dev/httpd/__;!!FbCVDoc3r24SyHFW!4XFRouSU1jZhSNWbdncMG2fbqx5jgbylu1lrmT3TcHgZF4isGV_f5UyJUDBZ5vwW8drNCig33VLluiM$<https://urldefense.com/v3/__https:/dist.apache.org/repos/dist/dev/httpd/__;!!FbCVDoc3r24SyHFW!4XFRouSU1jZhSNWbdncMG2fbqx5jgbylu1lrmT3TcHgZF4isGV_f5UyJUDBZ5vwW8drNCig33VLluiM$>[dist[.]apache[.]org]
+
+> >
+
+> > I would like to call a VOTE over the next few days to release
+
+> > this candidate tarball httpd-2.4.56-rc1 as 2.4.56:
+
+> > [X] +1: It's not just good, it's good enough!
+
+> > [ ] +0: Let's have a talk.
+
+> > [ ] -1: There's trouble in paradise. Here's what's wrong.
+
+> >
+
+> > The computed digests of the tarball up for vote are:
+
+> > sha256: db0d4c76007b231fd3ab41b580548dc798ae3844bb7c3d5ce1e4174ca2364698
+
+> > *httpd-2.4.56-rc1.tar.gz
+
+> > sha512: 68b1e8c3e3436e6947c0ccfeee6fea83254560e4d43bddbc79a4206d804a6dda6662cf5734e0b2f4019ab5c1fff40141a16dd7698e8fe72b7fd343fbebd42724
+
+> > *httpd-2.4.56-rc1.tar.gz
+
+> >
+
+> > The SVN candidate source is found at tags/2.4.56-rc1-candidate.
+
+> >
+
+>
+
+> Sigs and Hashes ok
+
+> Tested on RedHat 8 x86_64 with apr 1.7.2 / apr-util 1.6.3
+
+>
+
+> Regards
+
+>
+
+> Rüdiger
+
+
+--
+
+Eric Covener
+
+covener@gmail.com<mailto:covener@gmail.com>
+
+This email and any attachments are intended solely for the use of the individual or entity to whom it is addressed and may be confidential and/or privileged.
+
+If you are not one of the named recipients or have received this email in error,
+
+(i) you should not read, disclose, or copy it,
+
+(ii) please notify sender of your receipt by reply email and delete this email and all attachments,
+
+(iii) Dassault Systèmes does not accept or assume any liability or responsibility for any use of or reliance on this email.
+
+
+Please be informed that your personal data are processed according to our data privacy policy as described on our website. Should you have any questions related to personal data protection, please contact 3DS Data Protection Officer https://www.3ds.com/privacy-policy/contact/

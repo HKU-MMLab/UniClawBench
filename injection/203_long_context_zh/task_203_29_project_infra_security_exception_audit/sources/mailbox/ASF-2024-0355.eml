@@ -1,0 +1,75 @@
+Message-ID: <SA1PR05MB7966913557141F78EC87EB9FDF879@SA1PR05MB7966.namprd05.prod.outlook.com>
+X-Clawbench-ID: ASF-2024-0355
+Date: Thu, 23 Mar 2023 16:21:55 +0000
+From: =?Windows-1252?Q?Jes=FAs_Gonz=E1lez?= <jesusgm@vmware.com>
+To: "dev@httpd.apache.org" <dev@httpd.apache.org>
+Subject: Re: Logging Behaviour under server
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-03.mbox
+
+Hi ChenXing,
+
+I’m not an Apache committer but I’m subscribed to the list.
+This seems interesting. Is your tool published somewhere? Also, did you try running that into the /modules directory?
+
+Best,
+Jesús
+
+De: ChenXing Yang <cx.yang@mail.utoronto.ca>
+Fecha: miércoles, 22 de marzo de 2023, 16:57
+Para: dev@httpd.apache.org <dev@httpd.apache.org>
+Asunto: Logging Behaviour under server
+!! External Email
+
+Hi Apache Developers,
+
+I’m an undergrad research student from the University of Toronto. Recently, I’ve been building a static analysis tool to diagnose logging points in a given code base. It is designed to assist C/C++ system software developers in detecting missing or redundant log statements. I tested my tool on Apache Httpd repository, specifically for all files in server folder, and I found some missing log statements in the detected code. I’m writing this email to ask for some feedback about my discovery. Many thanks in advance for your kind help and insight.
+
+I found it is common that a function might return an integer as the error code. The return code will be received and checked by the caller. Depending on how serious the error is, developers might add log statements if an error happens. My tool detected similar patterns in Apache Httpd source code. For example, for function apr_sockaddr_info_get used in alloc_listener from server/listen.c:
+
+if ((status = apr_sockaddr_info_get(&sa, addr, APR_UNSPEC, port, 0,process->pool)) != APR_SUCCESS) {
+
+    ap_log_perror(APLOG_MARK, APLOG_CRIT, status, process->pool, APLOGNO(00077)
+
+                  "alloc_listener: failed to set up sockaddr for %s",
+
+                  addr);
+
+    return "Listen setup failed";
+
+}
+
+ps: starting from line 347 using the trunk version. For your convenience: https://github.com/apache/httpd/blob/ba1e5db6961c910c6dce855822563dbfe83ba159/server/listen.c#L347<https://nam04.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fapache%2Fhttpd%2Fblob%2Fba1e5db6961c910c6dce855822563dbfe83ba159%2Fserver%2Flisten.c%23L347&data=05%7C01%7Cjesusgm%40vmware.com%7C06b05f11311c4b655f9f08db2aee17c9%7Cb39138ca3cee4b4aa4d6cd83d9dd62f0%7C0%7C0%7C638150974329765687%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=DgI0LjI%2FHPbFKEBCPwC7kX83sUWWmptE5sL1ZTViUQE%3D&reserved=0>
+
+In this example, the return code of apr_sockaddr_info_get is checked, and a log statement is added if the status is not successful.
+
+A similar pattern can be found in the following instances as well:
+
+https://github.com/apache/httpd/blob/ba1e5db6961c910c6dce855822563dbfe83ba159/server/vhost.c#L198<https://nam04.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fapache%2Fhttpd%2Fblob%2Fba1e5db6961c910c6dce855822563dbfe83ba159%2Fserver%2Fvhost.c%23L198&data=05%7C01%7Cjesusgm%40vmware.com%7C06b05f11311c4b655f9f08db2aee17c9%7Cb39138ca3cee4b4aa4d6cd83d9dd62f0%7C0%7C0%7C638150974329765687%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=DGlzggVtfe7Druq%2FAo6cD90%2Fqohxrsyo91XChnjgB%2Fk%3D&reserved=0>
+
+https://github.com/apache/httpd/blob/ba1e5db6961c910c6dce855822563dbfe83ba159/server/util.c#L2466<https://nam04.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fapache%2Fhttpd%2Fblob%2Fba1e5db6961c910c6dce855822563dbfe83ba159%2Fserver%2Futil.c%23L2466&data=05%7C01%7Cjesusgm%40vmware.com%7C06b05f11311c4b655f9f08db2aee17c9%7Cb39138ca3cee4b4aa4d6cd83d9dd62f0%7C0%7C0%7C638150974329765687%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=7sWKWVu%2BFBVRcvJcLuk%2FLyFuCslpuWb1r4qhAUoe5%2BE%3D&reserved=0>
+
+https://github.com/apache/httpd/blob/ba1e5db6961c910c6dce855822563dbfe83ba159/server/config.c#L2249<https://nam04.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fapache%2Fhttpd%2Fblob%2Fba1e5db6961c910c6dce855822563dbfe83ba159%2Fserver%2Fconfig.c%23L2249&data=05%7C01%7Cjesusgm%40vmware.com%7C06b05f11311c4b655f9f08db2aee17c9%7Cb39138ca3cee4b4aa4d6cd83d9dd62f0%7C0%7C0%7C638150974329765687%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=Veeb8TacsBV%2B%2FiOQCVa%2Fffb2GFwo%2FK8VZALHhYO2Sew%3D&reserved=0>
+
+https://github.com/apache/httpd/blob/ba1e5db6961c910c6dce855822563dbfe83ba159/server/listen.c#L884<https://nam04.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fapache%2Fhttpd%2Fblob%2Fba1e5db6961c910c6dce855822563dbfe83ba159%2Fserver%2Flisten.c%23L884&data=05%7C01%7Cjesusgm%40vmware.com%7C06b05f11311c4b655f9f08db2aee17c9%7Cb39138ca3cee4b4aa4d6cd83d9dd62f0%7C0%7C0%7C638150974329765687%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=mDRYFri9%2BIkzBFGkweFQBgKkyntIvXXSB3XW3q0ZckA%3D&reserved=0>
+
+HOWEVER, things are different in the following instances. In all below cases, my tool has detected that the source code only checks if an event is successful without logging the failure event, causing developer hard to diagnose the point of failure even though they try to return some error code/string to the caller. I wonder if there are any particular reasons why logging patterns are different for these functions or they are indeed improper logging behaviours.
+
+https://github.com/apache/httpd/blob/ba1e5db6961c910c6dce855822563dbfe83ba159/server/util_expr_eval.c#L1990<https://nam04.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fapache%2Fhttpd%2Fblob%2Fba1e5db6961c910c6dce855822563dbfe83ba159%2Fserver%2Futil_expr_eval.c%23L1990&data=05%7C01%7Cjesusgm%40vmware.com%7C06b05f11311c4b655f9f08db2aee17c9%7Cb39138ca3cee4b4aa4d6cd83d9dd62f0%7C0%7C0%7C638150974329765687%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=jtQ31At4rnqSr6V6pLDrv1e2jzq%2FZr%2BTaRJwGZ3AeAo%3D&reserved=0>
+
+https://github.com/apache/httpd/blob/ba1e5db6961c910c6dce855822563dbfe83ba159/server/vhost.c#L191<https://nam04.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fapache%2Fhttpd%2Fblob%2Fba1e5db6961c910c6dce855822563dbfe83ba159%2Fserver%2Fvhost.c%23L191&data=05%7C01%7Cjesusgm%40vmware.com%7C06b05f11311c4b655f9f08db2aee17c9%7Cb39138ca3cee4b4aa4d6cd83d9dd62f0%7C0%7C0%7C638150974329765687%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=9hhUADuThmC%2Fp8LaFAjVSNY1SBoVaComtF4SPN7Vi4g%3D&reserved=0>
+
+https://github.com/apache/httpd/blob/ba1e5db6961c910c6dce855822563dbfe83ba159/server/core.c#L962<https://nam04.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fapache%2Fhttpd%2Fblob%2Fba1e5db6961c910c6dce855822563dbfe83ba159%2Fserver%2Fcore.c%23L962&data=05%7C01%7Cjesusgm%40vmware.com%7C06b05f11311c4b655f9f08db2aee17c9%7Cb39138ca3cee4b4aa4d6cd83d9dd62f0%7C0%7C0%7C638150974329921479%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=sTz2ZRcZhTZKNxhUSoJTj4jIXuZrwTOh8y9%2FHdxW0Ow%3D&reserved=0>
+
+Interestingly enough, the comment for the first link says “/* maybe log an error if this goes wrong? */”, however, I think I still need someone more familiar with the code base to share more insight as I have found other 60+ warnings using my developed tool. I have attached all warnings along with this email. Please note that my tool is analyzing the source code in release version httpd-2.4.56 instead of trunk, please checkout the correct version if you find discrepancies for the line number.
+
+Once again, thank you so much for your kind help and time. I also found there are many commits whose sole purpose is to add above pattern, such as https://github.com/apache/httpd/commit/8646e07534b4f115496b154f94ac90aa4f8c5b0c<https://nam04.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fapache%2Fhttpd%2Fcommit%2F8646e07534b4f115496b154f94ac90aa4f8c5b0c&data=05%7C01%7Cjesusgm%40vmware.com%7C06b05f11311c4b655f9f08db2aee17c9%7Cb39138ca3cee4b4aa4d6cd83d9dd62f0%7C0%7C0%7C638150974329921479%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=6vdFnl1mqxxRtjUgQIYT6eRaJgbNdEhVlGZ3LcqX8xo%3D&reserved=0>. Please reach out to me if you find this tool interesting and can be useful in improving the diagnostic capability of Apache Httpd.
+
+Sincerely,
+
+ChenXing Yang
+
+
+!! External Email: This email originated from outside of the organization. Do not click links or open attachments unless you recognize the sender.

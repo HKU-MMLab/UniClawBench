@@ -1,0 +1,24 @@
+Message-ID: <CA+7wUszQLFY2cRSRYwRvJh0L2mvoU9uB5wW=USrq_p8hD9D51Q@mail.gmail.com>
+X-Clawbench-ID: BIO-2024-0817
+Date: Mon, 22 Aug 2022 17:10:36 +0200
+From: Mathieu Malaterre <malat@debian.org>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Re: RFS -- autopkgtests for dcmtk
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_08_msg00047.html
+
+On Sun, Aug 21, 2022 at 6:44 AM Andreas Tille  wrote:
+>
+> Am Sat, Aug 20, 2022 at 07:59:28PM +0530 schrieb Mohd Bilal:
+> > I've included python3-pydicom as a test dependency for the testbed, Regular
+> > users of dcmtk wont need this to install dcmtk. I thought of using the
+> > example dicom file that comes with pydicom instead of including the same
+> > with the dcmtk source.
+>
+> IHM this is fine
+
+I've uploaded -6 a minute ago.
+
+Thanks all.

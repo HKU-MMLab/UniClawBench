@@ -1,0 +1,39 @@
+task_id: task_202_06_nasa_images_api
+category: 202_exploration_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我想以编程方式抓取一张著名 NASA 图像的原始高分辨率版本，连同它的元数据——
+  直接从 NASA 获取，而不是从某个随便的博客。
+
+  从 NASA 的图像库网站开始：
+
+      https://images.nasa.gov/
+
+  这个网站背后有一个公开的 API。请找到那个 API 并使用它（而不是抓取图库的网页
+  UI），完成：
+
+  - 搜索 "Pillars of Creation" 这张图像，
+  - 挑选最相关的结果并报告它的 NASA id 和标题，
+  - 然后解析该条目的资源清单（asset manifest），找到真正的原始/最大图像文件的
+    URL（资源列表是第二次调用，与搜索结果分开），
+  - 下载那张原始图像并确认它确实是一张图像（content type + 文件大小非平凡地
+    大）。
+
+  把元数据 + 选定的原始资源 URL 保存到
+  `/tmp_workspace/results/nasa_pillars.json`，把下载的图像保存到
+  `/tmp_workspace/results/` 下，并把你调用的确切请求 URL 连同它们的原始 JSON
+  响应保存到 `/tmp_workspace/results/nasa_evidence/`。
+
+references:
+  - references/eval_rule.md
+
+codex:
+  max_user_followups: 2

@@ -1,0 +1,25 @@
+Message-ID: <2f2cf06f-3326-63c6-d5ca-4254f141c711@apache.org>
+X-Clawbench-ID: ASF-2024-1470
+Date: Tue, 8 Mar 2022 10:14:08 +0100
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: backports
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-03.mbox
+
+On 3/7/22 12:23 PM, Joe Orton wrote:
+
+>
+> AIUI you can configure github to allow merges even if tests fail, though
+> I'm not familiar with that, has anybody played with the settings there?
+>
+
+Haven't played with them, but the below looks like a good starting point:
+
+https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests
+
+Regards
+
+Rüdiger

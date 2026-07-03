@@ -1,0 +1,26 @@
+Message-ID: <7E49F98F-9FC0-411A-AC4B-D7C7DB0836B4@eissing.org>
+X-Clawbench-ID: ASF-2024-0484
+Date: Fri, 4 Mar 2022 11:08:48 +0100
+From: Stefan Eissing <stefan@eissing.org>
+To: dev@httpd.apache.org
+Subject: backports
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-03.mbox
+
+We should improve our backport procedure and provide guidance on how to use it after the next release.
+
+Post-mortem dbm backport:
+- the patch pointed to the in 2.4.x/STATUS was incomplete, lacking APLOGNO()
+- the incomplete patch was voted on and accepted, as local tests do not have the full CI checks
+- Jim applied the voted on backport patch
+- CI failed
+No one did anything really wrong. We did just not apply the CI tools available until the damage was done.
+
+As noted in the related thread, backport proposal should really be PRs on github. Those are checked by
+our CI and a PR can easily be improved by adding submits to the branch it is based on. In addition, we
+get the github UI for review and comments. Should be a win for all.
+
+Kind Regards,
+Stefan

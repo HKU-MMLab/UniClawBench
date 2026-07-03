@@ -1,0 +1,138 @@
+{
+  "task_id": "task_105_33_calendar_scheduling",
+  "schema_notes": "Zoom-only design (no Jitsi fallback). Anchored to the messy schedule fixture written by install.sh into ~/clawbench-schedule.txt. The fixture has exactly 6 events, all dated in May 2026 with weekdays cross-checked (Wed 5/13, Fri 5/15, Mon 5/18, Tue 5/19, Thu 5/21, Fri 5/22). The agent must (a) parse the messy text into structured JSON, (b) self-configure ~/.cli-anything-zoom/{config,tokens}.json from env vars ZOOM_CLIENT_ID/ZOOM_CLIENT_SECRET/ZOOM_REFRESH_TOKEN (install.sh deliberately wipes that dir after using the same credentials to reset the test account to zero meetings), then `zoom auth status` to verify, (c) call `zoom meeting create --topic ... --start-time ... --duration ...` for each of 6 events and embed the returned join_url in the corresponding VEVENT's LOCATION/DESCRIPTION, (d) emit a valid RFC-5545 ICS file with one VEVENT per event, (e) actually launch gnome-calendar (Linux GUI calendar, preinstalled by install.sh) with these events visible and capture a scrot screenshot of the calendar window, (f) write a narrative scheduling_report.md. install.sh fails fast if any of the three Zoom env vars are empty (no Jitsi fallback path).",
+  "reference_date": "2026-05-03",
+  "ground_truth": {
+    "schedule_fixture_path": "~/clawbench-schedule.txt",
+    "expected_event_count": 6,
+    "events": [
+      {
+        "title_keywords": ["q2", "planning"],
+        "start_datetime": "2026-05-13T14:00:00",
+        "duration_minutes": 60,
+        "evidence_in_fixture": "\"Q2 planning sync, Wed May 13 2026 at 14:00, 60 min, w/ Alice and Bob\"",
+        "weekday": "Wed"
+      },
+      {
+        "title_keywords": ["bug", "triage"],
+        "start_datetime": "2026-05-15T10:00:00",
+        "duration_minutes": 30,
+        "evidence_in_fixture": "\"Bug triage — Friday May 15, 10am, half an hour\"",
+        "weekday": "Fri"
+      },
+      {
+        "title_keywords": ["tech", "review"],
+        "start_datetime": "2026-05-18T15:00:00",
+        "duration_minutes": 45,
+        "evidence_in_fixture": "\"Tech review of the new pipeline, May 18 (Mon) 3pm, 45 minutes\"",
+        "weekday": "Mon"
+      },
+      {
+        "title_keywords": ["1:1"],
+        "start_datetime": "2026-05-19T11:30:00",
+        "duration_minutes": 30,
+        "evidence_in_fixture": "\"1:1 with manager, Tuesday next week (May 19) 11:30, 30 min\"",
+        "weekday": "Tue"
+      },
+      {
+        "title_keywords": ["customer", "demo"],
+        "start_datetime": "2026-05-21T16:00:00",
+        "duration_minutes": 60,
+        "evidence_in_fixture": "\"Customer demo (acme corp), Thursday May 21 16:00, runs 1 hour\"",
+        "weekday": "Thu"
+      },
+      {
+        "title_keywords": ["retro"],
+        "start_datetime": "2026-05-22T16:00:00",
+        "duration_minutes": 45,
+        "evidence_in_fixture": "\"Retro / sprint close, Fri May 22 2026 4pm, 45 min\"",
+        "weekday": "Fri"
+      }
+    ],
+    "deliverables": {
+      "parsed_events_json":      "/tmp_workspace/results/parsed_events.json",
+      "schedule_ics":            "/tmp_workspace/results/schedule.ics",
+      "calendar_screenshot_png": "/tmp_workspace/results/calendar_screenshot.png",
+      "scheduling_report_md":    "/tmp_workspace/results/scheduling_report.md"
+    },
+    "ics_requirements": {
+      "wrapper_lines":         ["BEGIN:VCALENDAR", "END:VCALENDAR"],
+      "expected_vevent_count": 6,
+      "required_vevent_props": ["SUMMARY", "DTSTART", "DTEND"],
+      "datetime_format_hint":  "floating local YYYYMMDDTHHMMSS (no Z, no TZID)",
+      "meeting_url_required_per_vevent": true,
+      "meeting_url_acceptable_fields":   ["LOCATION", "DESCRIPTION"],
+      "meeting_url_pattern":             "https?://(?:[a-z0-9-]+\\.)?zoom\\.us/(?:j|w|s)/\\d+",
+      "meeting_url_min_distinct_ids":    6,
+      "rationale": "Each VEVENT carries a Zoom join_url returned by `zoom meeting create`; the numeric meeting ID in the URL must be unique across the 6 events (one fresh Zoom meeting per event, no room reuse)."
+    },
+    "zoom": {
+      "auth_dir":               "~/.cli-anything-zoom",
+      "config_file":            "~/.cli-anything-zoom/config.json",
+      "tokens_file":            "~/.cli-anything-zoom/tokens.json",
+      "redirect_uri":           "http://localhost:4199/callback",
+      "config_required_keys":   ["client_id", "client_secret", "redirect_uri"],
+      "tokens_required_keys":   ["refresh_token"],
+      "tokens_recommended_keys": ["access_token", "expires_in", "saved_at"],
+      "env_vars_passed_to_executor": ["ZOOM_CLIENT_ID", "ZOOM_CLIENT_SECRET", "ZOOM_REFRESH_TOKEN"],
+      "executor_self_config_steps": [
+        "Read ZOOM_CLIENT_ID / ZOOM_CLIENT_SECRET / ZOOM_REFRESH_TOKEN from env",
+        "mkdir -p ~/.cli-anything-zoom (chmod 700)",
+        "Write ~/.cli-anything-zoom/config.json with {client_id, client_secret, redirect_uri='http://localhost:4199/callback'}",
+        "Write ~/.cli-anything-zoom/tokens.json with {refresh_token, access_token='placeholder', expires_in=3600, saved_at=1}",
+        "chmod 600 on both files",
+        "Run `zoom auth status` to trigger refresh of access_token and validate"
+      ],
+      "cli_install_root":       "/opt/cli-anything/zoom/agent-harness",
+      "cli_binary":             "zoom",
+      "create_command_pattern": "zoom meeting create --topic <title> --start-time <ISO8601-local> --duration <minutes>",
+      "list_command":           "zoom --json meeting list (also accepts -s upcoming/scheduled/live/pending)",
+      "delete_command_pattern": "zoom meeting delete <meeting_id> --confirm",
+      "reset_in_install_sh":    true,
+      "post_install_state":     "~/.cli-anything-zoom/ wiped clean — executor must re-create from env vars",
+      "supervisor_check": {
+        "command": "zoom --json meeting list",
+        "expect_min_meetings": 6,
+        "per_event_match_rules": {
+          "topic_substring_keywords_from": "ground_truth.events[].title_keywords (case-insensitive, all required)",
+          "start_time_tolerance_minutes": 5,
+          "start_time_basis": "Zoom returns start_time in UTC; treat the ICS local-floating DTSTART as the same wall-clock moment in the executor's local timezone — supervisor can normalise via `date -d '<DTSTART local>' --utc` or just compare HH:MM if the test env runs UTC"
+        },
+        "infra_error_fallback": "If `zoom meeting list` errors at eval time (network, revoked token), drop the live verification (b) and grade only the ICS-side URL pattern (a) + the executor's own create-call evidence in trace; treat topic/start match as +0.05 bonus instead of hard requirement",
+        "trace_evidence_required": "Executor's trace MUST show self-configuration of ~/.cli-anything-zoom/{config,tokens}.json (file writes / `zoom auth setup` / equivalent) followed by a `zoom auth status` invocation; missing this evidence => 0.18 checkpoint scores 0 (cap 0.55)"
+      },
+      "user_one_time_setup_doc": "/tmp/clawbench_user_actions.md (Zoom OAuth bootstrap section)"
+    },
+    "calendar_screenshot": {
+      "rationale": "After parsing + ICS emit + Zoom create, the agent imports the events into gnome-calendar (or another running GUI calendar) under Xvfb and uses scrot to capture the calendar window. The screenshot proves an actual GUI calendar showed the events on screen — not just an ICS file on disk. We do not pixel-diff the screenshot; we only require valid PNG and minimum dimensions, plus a calendar-app invocation in the trace.",
+      "path": "/tmp_workspace/results/calendar_screenshot.png",
+      "expected_min_width_px": 1024,
+      "expected_min_height_px": 600,
+      "accepted_calendar_apps": ["gnome-calendar", "evolution", "korganizer", "thunderbird"]
+    },
+    "scheduling_report": {
+      "path": "/tmp_workspace/results/scheduling_report.md",
+      "min_distinct_h2_or_h3_headings": 4,
+      "expected_sections_hint": ["Parsed events", "ICS export", "Calendar import", "Zoom meeting links"]
+    },
+    "post_state": {
+      "input_fixture_must_be_unchanged": true,
+      "results_dir": "/tmp_workspace/results"
+    },
+    "meeting_path_note": "Zoom-only design. install.sh resets the test account to zero meetings before the task starts (using the same env-var credentials), then wipes ~/.cli-anything-zoom/. Executor must self-configure config + tokens from env vars and run `zoom auth status` to validate before any `zoom meeting create`. Each of 6 events corresponds to a single fresh Zoom meeting (one meeting id per event, all 6 distinct). Eval verifies via `zoom meeting list --json` against the test account post-execution: ≥6 meetings present, each ground-truth event matched by at least one Zoom meeting (topic keywords + start_time within ±5 min). install.sh fails fast (exit 1) if ZOOM_REFRESH_TOKEN is empty / invalid → run treated as infra_error.",
+    "conflict_check": {
+      "rationale": "User wants a sanity check on the scheduled events: no two should overlap (hard conflict), and same-day adjacent events should have at least 60min gap (near-conflict). Logic: hard_conflicts = pairs (i,j) where start_i < end_j AND start_j < end_i; near_conflicts = same-day consecutive pairs sorted by start where (next.start - prev.end).total_minutes is in [0, 60). For the fixture written by install.sh — 6 events on 6 distinct weekdays in May 2026 — both counts are 0 by construction.",
+      "expected_hard_conflicts_count": 0,
+      "expected_near_conflicts_count": 0,
+      "expected_hard_conflicts": [],
+      "expected_near_conflicts": [],
+      "report_section_match_keywords_any_of": ["conflict", "冲突", "overlap", "sanity"],
+      "zero_conflict_statement_keywords_any_of": [
+        "no conflicts", "no hard conflicts", "no near-conflicts", "no near conflicts",
+        "零冲突", "无冲突", "没有冲突", "无重叠", "no overlap"
+      ],
+      "data_field_required": "conflict_check object in parsed_events.json with hard_conflicts (or events_with_overlap) array AND near_conflicts (or near_conflict_pairs) array",
+      "tolerance": "Both arrays must be present and non-fabricated. For this fixture both must be empty (or equivalent zero-count). A non-zero count would indicate the executor's conflict logic is broken — the fixture is conflict-free by construction (verified across the 6 weekday-distinct dates 5/13 Wed 14:00+60, 5/15 Fri 10:00+30, 5/18 Mon 15:00+45, 5/19 Tue 11:30+30, 5/21 Thu 16:00+60, 5/22 Fri 16:00+45)."
+    }
+  }
+}

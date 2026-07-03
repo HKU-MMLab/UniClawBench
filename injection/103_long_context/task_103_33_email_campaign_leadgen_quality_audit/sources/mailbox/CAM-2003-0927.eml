@@ -1,0 +1,35 @@
+Message-ID: <20020723221601.GF24778@fsckit.net>
+X-Clawbench-ID: CAM-2003-0927
+Date: Tue, 23 Jul 2002 18:16:02 -0400
+From: "Tabor J. Wells" <razor-users@fsckit.net>
+To: Scott Henderson <boyhowdy@cyberspace.org>
+Subject: Re: [Razor-users] can't find Razor/Client.pm
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00532.f28f9c07ed2a6925cdfc4eb6454901f9
+
+On Tue, Jul 23, 2002 at 06:06:05PM -0400,
+Scott Henderson <boyhowdy@cyberspace.org> is thought to have said:
+
+> Thanks, Tabor.  How do I install v1 over v2, and where does one
+> get it?  (I don't see it at razor.sourceforge.net)
+
+It's there. Scroll down on the downloads page. However you might
+consider going the other way and installing SpamAssassin's 2.40
+bleeding-edge code as Razor v2 has a lot of nice features over v1.
+
+--
+--------------------------------------------------------------------
+Tabor J. Wells                                razor-users@fsckit.net
+Fsck It!                 Just another victim of the ambient morality
+
+
+-------------------------------------------------------
+This sf.net email is sponsored by:ThinkGeek
+Welcome to geek heaven.
+http://thinkgeek.com/sf
+_______________________________________________
+Razor-users mailing list
+Razor-users@lists.sourceforge.net
+https://lists.sourceforge.net/lists/listinfo/razor-users

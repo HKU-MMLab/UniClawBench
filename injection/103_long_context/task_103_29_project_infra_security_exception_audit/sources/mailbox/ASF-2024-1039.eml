@@ -1,0 +1,59 @@
+Message-ID: <CALK=YjNtPk9CkwmrGeKxtf9FN0ORDxbGXptzAXpdJvxvJ3_j3w@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1039
+Date: Fri, 2 Aug 2024 00:02:16 -0400
+From: Eric Covener <covener@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: [Bug 69203] proxy error from php-fpm backend for paths containing spaces
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-08.mbox
+
+On Thu, Aug 1, 2024 at 9:22 PM Yann Ylavic <ylavic.dev@gmail.com> wrote:
+>
+> On Fri, Aug 2, 2024 at 3:12 AM Yann Ylavic <ylavic.dev@gmail.com> wrote:
+> >
+> > On Fri, Aug 2, 2024 at 12:18 AM Yann Ylavic <ylavic.dev@gmail.com> wrote:
+> > >
+> > > So we probably should keep encoding r->filename with ProxyPass, and
+> > > come back to my previous patch which skipped it only for SetHandler?
+> > > Possibly FCGI_MAY_BE_FPM() only too because for "ProxyFCGIBackendType
+> > > GENERIC" we don't send the "proxy:scheme://host" part and
+> > > SCRIPT_NAME/FILENAME are supposed to be the real decoded paths?
+> >
+> > So I did this in r1919629.
+> >
+> > >
+> > > But it's going to be an endless issue if we can't fix or align
+> > > ProxyPass and SetHandler because of workarounds there, we have to
+> > > remain bug compatible..
+> >
+> > For this how about this attached patch?
+> > With it I can get the correct env vars (I think), and since we'd not
+> > send a "proxy:" SCRIPT_FILENAME anymore, php-fpm would not flag
+> > "apache_was_there" and work straight with the raw vars? I'm probably
+> > having a sweet dream :)
+> > Just in case..
+>
+> PS: the script needs to exist in the DOCUMENT_ROOT for this to work,
+> but that's how php-fpm works I suppose.
+
+This is somewhat over my head (despite writing and forgetting some of
+those fcgi kludges) but tell me if I am close.
+
+- proxy-fcgi-pathinfo was only meant to be used with ProxyPass, not
+SetHandler, but this is not explicit in the code.
+ - The current code to generate SCRIPT_FILENAME (supposed to be a
+filename) and PATH_INFO probably doesn't work for the ProxyPass path
+where it's actually needed.  This is because r->filename won't even be
+docroot-prefixed if mod_proxy handles translate_name early.
+-  Your addition gets it to at least work for stuff that is under the
+DocumentRoot, as the directory walk will now split into r->filename
+and r->path_info based on what was on disk
+- Your addition also causes all ProxyPass configs that didn't tell us
+non-FPM backend type explicitly to act like proxy-fcgi-pathinfo=full
+(dirwalk).
+
+Does the latest patch still leave us with proxy:fcgi:// in the env for
+FPM or Unknown or is it part of the dream scenario?  I ran out of time
+before being able to apply it and run it through tests.

@@ -1,0 +1,54 @@
+{
+  "task_id": "task_101_08_receipts_reconcile",
+  "difficulty": "Medium",
+  "schema": "a",
+  "schema_notes": "concept-level booleans with evidence pointers (must-hit findings)",
+  "skills_declared": [
+    "image-ocr",
+    "xlsx-cn"
+  ],
+  "ground_truth": {
+    "expected_item_rows": 17,
+    "stores": [
+      "dm",
+      "kaisers",
+      "penny"
+    ],
+    "summary_rows": 3,
+    "expected_source_images": [
+      "receipt_dm_2014-12-11.jpg",
+      "receipt_kaisers_2015-08-31.jpg",
+      "receipt_penny_2014-10-18.jpg"
+    ],
+    "review_flags_rows": 3,
+    "tolerance_eur": 0.1,
+    "printed_total_tolerance_eur": 0.02,
+    "store_summaries": {
+      "dm": {
+        "date": "2014-12-11",
+        "printed_total_eur": 11.52,
+        "item_rows": 5
+      },
+      "kaisers": {
+        "date": "2015-08-31",
+        "printed_total_eur": 12.38,
+        "item_rows": 6
+      },
+      "penny": {
+        "date": "2014-10-18",
+        "printed_total_eur": 7.13,
+        "item_rows": 6
+      }
+    },
+    "topic_dimensions": {
+      "per_line_extraction": ["line item", "qty", "unit price"],
+      "discount_handling": ["discount", "rabatt", "promo", "club"],
+      "tax_breakdown": ["tax", "VAT", "Mwst", "USt"],
+      "payment_method": ["cash", "card", "EC", "Visa"],
+      "reconciliation_check": ["matches", "discrepancy", "off by", "rounding", "agree", "gap", "reconcil"]
+    },
+    "min_dimensions_covered": 5,
+    "min_receipts_with_mwst_classification": 3,
+    "acceptable_mwst_rates": [7, 19, 0]
+  }
+}

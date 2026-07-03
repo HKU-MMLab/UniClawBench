@@ -1,0 +1,40 @@
+Message-ID: <YlQ6rDPKXP8aQwTY@an3as.eu>
+X-Clawbench-ID: BIO-2024-0012
+Date: Mon, 11 Apr 2022 16:26:52 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: RFS: added autopkgtest for pplacer
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_04_msg00037.html
+
+Hi again,
+
+Am Mon, Apr 11, 2022 at 01:43:57PM -0000 schrieb Mohd Bilal:
+> >Sounds good.  I&#39;ll test once you&#39;ve pushed
+> >pplacer_1.1~alpha19.orig-debian-tests-data.tar.gz  .
+>
+> I've already pushed the tarball to the pristine-tar branch - https://salsa.debian.org/med-team/pplacer/-/tree/pristine-tar
+
+Works here now - may be it was my fault in the first place.  Sorry for
+the noise.
+
+> >You are welcome.  We need to make sure to add some paragraph about the
+> >license of the data since the change in the source package will probably
+> >require passing the new queue which means license and copright will be
+> >re-checked.  As I said above an issue in the upstream Github repository
+> >might be a promising way to find this out.
+>
+> I've opened an issue[7] upstream. Hoping they'll respond soon
+
+Looks sensible - hoping the same.
+
+Thanks a lot for your nice work
+
+      Andreas.
+
+> [7] - https://github.com/fhcrc/microbiome-demo/issues/7
+
+--
+http://fam-tille.de

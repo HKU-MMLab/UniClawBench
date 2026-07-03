@@ -1,0 +1,56 @@
+Message-ID: <CALK=YjOjm5m3X0p=aLFGnVS0WpN-_u2c5dN6p9nHkiqgdVTJNA@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0112
+Date: Thu, 1 Aug 2024 11:50:59 -0400
+From: Eric Covener <covener@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: [Bug 69203] proxy error from php-fpm backend for paths containing spaces
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-08.mbox
+
+On Thu, Aug 1, 2024 at 10:58 AM Yann Ylavic <ylavic.dev@gmail.com> wrote:
+>
+> On Wed, Jul 31, 2024 at 7:34 PM Eric Covener <covener@gmail.com> wrote:
+> >
+> > On Tue, Jul 23, 2024 at 5:35 AM Yann Ylavic <ylavic.dev@gmail.com> wrote:
+> > >
+> > > On Wed, Jul 17, 2024 at 6:22 PM <bugzilla@apache.org> wrote:
+> > > >
+> > > > https://bz.apache.org/bugzilla/show_bug.cgi?id=69203
+> > > >
+> > > > --- Comment #6 from Yann Ylavic <ylavic.dev@gmail.com> ---
+> > > > Created attachment 39817
+> > > >   --> https://bz.apache.org/bugzilla/attachment.cgi?id=39817&action=edit
+> > > > Proxy FCGI nocanon from SetHandler
+> > >
+> > > I'm not sure how we should proceed here, this patch would avoid
+> > > encoding SCRIPT_FILENAME for "SetHandler proxy:fcgi:..." but not
+> > > "ProxyPass fcgi:..." which looks awkward. SetHandler is the
+> > > recommended/most used way to proxy fcgi which is probably why people
+> > > start noticing now that we do the same as with ProxyPass, but I don't
+> > > see why they should be different in this regard..
+> > >
+> > > If SCRIPT_FILENAME should be decoded (per the spec) I wonder if
+> > > proxy_fcgi_canon() should not encode at all, or maybe only when
+> > > FCGI_MAY_BE_FPM() (so to have an opt-out)?
+> >
+> > > And like in the above patch forbid controls still but not space/tab, WDYT?
+> >
+> > Based on the bug and the japanese path, maybe set the bar even lower
+> > and just ratchet it all the way back to the character we know is
+> > problematic?
+>
+> So I went with r1919620 which makes the most sense for me.
+> This will forbid control characters (hence allow for space only, not
+> tab anymore) but mainly will *not* re-encode r->filename, irrespective
+> of ProxyPass vs SetHandler (I think that if users want the encoding we
+> should have an opt with ProxyFCGIBackendType, ProxyPass vs SetHandler
+> makes no sense here..). WDYT?
+
+Makes sense, even the japanese example in the bug is UTF-8.
+
+But does it leave the splitting problem with decoded %3F?
+--
+Eric Covener
+covener@gmail.com

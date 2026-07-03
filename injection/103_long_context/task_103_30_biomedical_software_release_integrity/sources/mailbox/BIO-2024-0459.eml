@@ -1,0 +1,32 @@
+Message-ID: <YeUQklAmPAduhRL7@an3as.eu>
+X-Clawbench-ID: BIO-2024-0459
+Date: Mon, 17 Jan 2022 07:45:38 +0100
+From: Andreas Tille <tille@debian.org>
+To: "Aaron M. Ucko" <ucko@debian.org>
+Subject: Re: Any idea how to deal with multiple definitions in new version of genometester?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_01_msg00031.html
+
+Hi Aaron,
+
+Am Sun, Jan 16, 2022 at 09:32:08PM -0500 schrieb Aaron M. Ucko:
+>
+> It looks like this code base still goes by an old non-standard notion of
+> the semantics of "inline" with vs. without "extern" in C [1].  Please
+> try building with -fgnu89-inline or changing all occurrences of "inline
+> extern" in headers to just "inline" (or perhaps "static inline").
+
+Thanks a lot for your hint.  I tried with just "inline" and "static inline"
+(which I finally commited) with no success[2].  Any further ideas?
+
+Kind regards
+
+      Andreas.
+
+> [1] https://blahg.josefsipek.net/?p=529
+[2] https://salsa.debian.org/med-team/genometester/-/pipelines/338257
+
+--
+http://fam-tille.de

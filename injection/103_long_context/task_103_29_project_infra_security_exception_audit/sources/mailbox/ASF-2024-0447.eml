@@ -1,0 +1,198 @@
+Message-ID: <03ED58E8-1BD6-4A91-AC51-26905B4A04F6@eissing.org>
+X-Clawbench-ID: ASF-2024-0447
+Date: Tue, 25 Jun 2024 10:33:11 +0200
+From: "Stefan Eissing via dev" <dev@httpd.apache.org>
+To: dev@httpd.apache.org
+Subject: Re: httpd-2.4.60-rc1: pytest http2 failures w.r.t. assets
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-06.mbox
+
+> Am 25.06.2024 um 09:43 schrieb Rainer Jung <rainer.jung@kippdata.de>:
+>
+> Hi Rüdiger et al.,
+>
+> Am 25.06.24 um 08:50 schrieb Ruediger Pluem:
+>> On 6/25/24 1:12 AM, Rainer Jung wrote:
+>>> I am getting some pytest failures when checking for assets (leading "/" missing):
+>>>
+>>> =================================== FAILURES ===================================
+>>> __________________________ TestAssets.test_h2_006_03 ___________________________
+>>>
+>>> self = <http2.test_006_assets.TestAssets object at 0x7fe70af578e0>
+>>> env = <http2.env.H2TestEnv object at 0x7fe70ac94be0>
+>>>
+>>>     def test_h2_006_03(self, env):
+>>>         # create the tiles files we originally had checked in
+>>>         exp_assets = [
+>>>             {"status": 200, "size": "10K", "path": "/004.html"},
+>>>             {"status": 200, "size": "742", "path": "/004/gophertiles.jpg"},
+>>>         ]
+>>>         for i in range(2, 181):
+>>>             with open(f"{env.server_docs_dir}/test1/004/gophertiles_{i:03d}.jpg", "w") as fd:
+>>>                 fd.write("0123456789\n")
+>>>             exp_assets.append(
+>>>                 {"status": 200, "size": "11", "path": f"/004/gophertiles_{i:03d}.jpg"},
+>>>             )
+>>>
+>>>         url = env.mkurl("https", "test1", "/004.html")
+>>>         r = env.nghttp().assets(url, options=["-Haccept-encoding: none"])
+>>>         assert 0 == r.exit_code
+>>>         assert 181 == len(r.assets)
+>>>>        assert r.assets == exp_assets
+>>> E       AssertionError: assert [{'path': '/0...s': 200}, ...] == [{'path': '/0...s': 200}, ...]
+>>> E         At index 1 diff: {'path': '004/gophertiles.jpg', 'status': 200, 'size': '742'} != {'status': 200, 'size': '742', 'path':
+>>> '/004/gophertiles.jpg'}
+>>> E         Full diff:
+>>> E           [
+>>> E            {'path': '/004.html', 'size': '10K', 'status': 200},
+>>> E         -  {'path': '/004/gophertiles.jpg', 'size': '742', 'status': 200},
+>>> E         ?            -
+>>> E         +  {'path': '004/gophertiles.jpg', 'size': '742', 'status': 200},...
+>>> E
+>>> E         ...Full output truncated (539 lines hidden), use '-vv' to show
+>>>
+>>> modules/http2/test_006_assets.py:52: AssertionError
+>>> ----------------------------- Captured stdout call -----------------------------
+>>> execute: nghttp --header=host: test1.tests.httpd.apache.org:5001 -Haccept-encoding: none -ans https://127.0.0.1:5001//004.html
+>>> __________________________ TestAssets.test_h2_006_04 ___________________________
+>>>
+>>> self = <http2.test_006_assets.TestAssets object at 0x7fe70af54d90>
+>>> env = <http2.env.H2TestEnv object at 0x7fe70ac94be0>
+>>>
+>>>     def test_h2_006_04(self, env):
+>>>         url = env.mkurl("https", "test1", "/006.html")
+>>>         r = env.nghttp().assets(url, options=["-Haccept-encoding: none"])
+>>>         assert 0 == r.exit_code
+>>>         assert 3 == len(r.assets)
+>>>>        assert r.assets == [
+>>>             {"status": 200, "size": "543", "path": "/006.html"},
+>>>             {"status": 200, "size": "216", "path": "/006/006.css"},
+>>>             {"status": 200, "size": "839", "path": "/006/006.js"}
+>>>         ]
+>>> E       AssertionError: assert [{'path': '/0...status': 200}] == [{'path': '/0...status': 200}]
+>>> E         At index 1 diff: {'path': '006/006.css', 'status': 200, 'size': '216'} != {'status': 200, 'size': '216', 'path':
+>>> '/006/006.css'}
+>>> E         Full diff:
+>>> E           [
+>>> E            {'path': '/006.html', 'size': '543', 'status': 200},
+>>> E         -  {'path': '/006/006.css', 'size': '216', 'status': 200},
+>>> E         ?            -
+>>> E         +  {'path': '006/006.css', 'size': '216', 'status': 200},...
+>>> E
+>>> E         ...Full output truncated (5 lines hidden), use '-vv' to show
+>>>
+>>> modules/http2/test_006_assets.py:60: AssertionError
+>>> ----------------------------- Captured stdout call -----------------------------
+>>> execute: nghttp --header=host: test1.tests.httpd.apache.org:5001 -Haccept-encoding: none -ans https://127.0.0.1:5001//006.html
+>>> __________________________ TestAssets.test_h2_006_05 ___________________________
+>>>
+>>> self = <http2.test_006_assets.TestAssets object at 0x7fe70af54be0>
+>>> env = <http2.env.H2TestEnv object at 0x7fe70ac94be0>
+>>>
+>>>     def test_h2_006_05(self, env):
+>>>         url = env.mkurl("https", "test1", "/003.html")
+>>>         r = env.nghttp().assets(url, options=["--window-bits=24", "-Haccept-encoding: none"])
+>>>         assert 0 == r.exit_code
+>>>         assert 2 == len(r.assets)
+>>>>        assert r.assets == [
+>>>             {"status": 200, "size": "316", "path": "/003.html"},
+>>>             {"status": 200, "size": "88K", "path": "/003/003_img.jpg"}
+>>>         ]
+>>> E       AssertionError: assert [{'path': '/0...status': 200}] == [{'path': '/0...status': 200}]
+>>> E         At index 1 diff: {'path': '003/003_img.jpg', 'status': 200, 'size': '88K'} != {'status': 200, 'size': '88K', 'path':
+>>> '/003/003_img.jpg'}
+>>> E         Full diff:
+>>> E           [
+>>> E            {'path': '/003.html', 'size': '316', 'status': 200},
+>>> E         -  {'path': '/003/003_img.jpg', 'size': '88K', 'status': 200},
+>>> E         ?            -
+>>> E         +  {'path': '003/003_img.jpg', 'size': '88K', 'status': 200},...
+>>> E
+>>> E         ...Full output truncated (2 lines hidden), use '-vv' to show
+>>>
+>>> modules/http2/test_006_assets.py:72: AssertionError
+>>> ----------------------------- Captured stdout call -----------------------------
+>>> execute: nghttp --header=host: test1.tests.httpd.apache.org:5001 --window-bits=24 -Haccept-encoding: none -ans
+>>> https://127.0.0.1:5001//003.html
+>>>
+>>>
+>>> These seem to happen consistently.
+>>>
+>>> Currently I don't know, whether it is a problem with the test, or a real problem.
+>>>
+>>> If it isn't reproducible for others, I can try to investigate deeper.
+>> I don't have the correct setup here to run the test but maybe it is an issue / change in your nghttp binary.
+>> Did you use a new version? I guess the following patch to the tests should fix this, but I am still not sure
+>> if this is a failure on server side or with the test setup:
+>
+> Thanks for the patch to fix the test.
+>
+> Never say never, but in this case I doubt its an nghttp version thing: I am using
+>
+> - rhel 8+9: 1.62.0
+> - rhel 7: 1.34.0
+> - sles 15: 1.61.0
+> - sles12: 1.34.0
+>
+> Fpr RHEL 7 and SLES 12 these are the same versions as when testing 2.4.59 where I did not get these failures (and the test file test_006_assets.py seems to not have changed).
+>
+> But I did rebuild nghttp2 in all cases to make it use the latest versions of OpenSSL, C-Ares and libxml2. Something might have changed in my build setup but it looks a bit unlikely, that this will have introduced this behavior.
+>
+> What I also updated is curl to 8.8.0. that curl is using nghttp2 1.62.0 on all platforms. But it seems curl is not used as a cloient for these tests.
+>
+> The failures happen consistently with OpenSSL 3.3.1, 3.2.2, 3.1.6, 3.0.14 and 1.1.1w.
+>
+> My python setup has not changed.
+>
+> It is interesting, that the missing "/" comes up always for the second (and maybe third) requests in each test method, which are the ones with URI with and additional path component.
+>
+> Let's see, whether Stefan has an opinion.
+
+Just updated my 2.4.x env to nghttp2 v1.62.1 and ran the pytest on 2.4.60 without any problems. But I noticed that the tests generate an URL to the server with a double slash. Maybe that confuses things for you?
+
+Could you try if the following change?
+
+Index: test/pyhttpd/nghttp.py
+===================================================================
+--- test/pyhttpd/nghttp.py	(Revision 1918543)
++++ test/pyhttpd/nghttp.py	(Arbeitskopie)
+@@ -60,7 +60,7 @@
+             args.extend(options)
+         for xurl in url:
+             xu = urlparse(xurl)
+-            nurl = "%s://%s:%s/%s" % (u.scheme, connect_host, xu.port, xu.path)
++            nurl = "%s://%s:%s%s" % (u.scheme, connect_host, xu.port, xu.path)
+             if xu.query:
+                 nurl = "%s?%s" % (nurl, xu.query)
+             args.append(nurl)
+@@ -224,7 +224,7 @@
+         if 0 == r.exit_code:
+             lines = re.findall(r'[^\n]*\n', r.stdout, re.MULTILINE)
+             for lidx, l in enumerate(lines):
+-                m = re.match(r'\s*(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+/(.*)', l)
++                m = re.match(r'\s*(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(/.*)', l)
+                 if m:
+                     assets.append({
+                         "path": m.group(7),
+>
+> Thanks and best regards,
+>
+> Rainer
+>
+>> Index: test/pyhttpd/nghttp.py
+>> ===================================================================
+>> --- test/pyhttpd/nghttp.py (revision 1918546)
+>> +++ test/pyhttpd/nghttp.py (working copy)
+>> @@ -224,7 +224,7 @@
+>>          if 0 == r.exit_code:
+>>              lines = re.findall(r'[^\n]*\n', r.stdout, re.MULTILINE)
+>>              for lidx, l in enumerate(lines):
+>> -                m = re.match(r'\s*(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+/(.*)', l)
+>> +                m = re.match(r'\s*(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+/*(/.*)', l)
+>>                  if m:
+>>                      assets.append({
+>>                          "path": m.group(7),
+>> Regards
+>> Rüdiger

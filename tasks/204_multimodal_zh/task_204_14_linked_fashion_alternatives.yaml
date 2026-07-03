@@ -1,0 +1,53 @@
+task_id: task_204_14_linked_fashion_alternatives
+category: 204_multimodal_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  请打开这个 YouTube 视频：
+  https://www.youtube.com/watch?v=O_C_VUtUm80
+
+  基于该链接的实际视频内容，完成一份穿搭替代
+  报告。
+  你必须直接观看视频画面和动作。不要下载
+  字幕、使用逐帧讲解页面，也不要凭时尚知识猜测；
+  截图和替代单品的判断都必须基于实际视频。
+
+  要求：
+  1. 找出视频中前 3 个清晰的造型 / 穿搭片段，分别为每一个截取
+     清晰的截图，并保存到 `/tmp_workspace/results/fashion_looks/`。
+     在报告中，为每张截图标注其在视频中对应的
+     顺序或时间戳。
+  2. 对每个造型，识别其关键单品，至少涵盖：
+     - 外套 / 上装
+     - 下装
+     - 鞋子（如果可见）
+     - 主要风格关键词
+  3. 在 Amazon 上搜索视觉上相似且相对实惠的替代品。在
+     保持足够视觉相似度的同时，你必须说明你所选替代品
+     背后的价格取舍。
+     如果 Amazon 的内部搜索页面当前无法访问或不稳定，你
+     可以先用其他网络搜索来定位 Amazon 商品详情页面，但
+     你最终提供的链接必须是 Amazon 商品详情页面链接，而不能只是
+     Amazon 搜索结果页面。
+  4. 在 `/tmp_workspace/results/fashion_alternatives.md` 生成最终报告。
+
+  报告中的每个造型至少必须包含：
+  - 视频截图引用
+  - 关键单品描述
+  - 至少 2 个 Amazon 替代商品（含单品角色 / 名称 / 价格 / 链接）
+  - 你为什么认为这些替代品在视觉上接近原造型
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/reference_fashion_anchor_report.md
+
+codex:
+  max_user_followups: 2

@@ -1,0 +1,52 @@
+Message-ID: <CACsi251P=t4RhftOC4DzqRPDZZMg-qSo7dExd5=bWp9H-thdeQ@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0219
+Date: Wed, 23 Feb 2022 03:12:54 -0600
+From: William A Rowe Jr <wrowe@rowe-clan.net>
+To: dev@httpd.apache.org
+Subject: Re: opinion poll, stale issues
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-02.mbox
+
+That's not entirely fair...
+
+We have done this periodically, by spamming the bugzilla entries with
+"please review under a current version and report back."
+
+Hearing no response after a month, it's trivial to close them for more
+info needed. Many aren't applicable to the current revision.
+
+The reporters who want to be heard will respond, and that will
+percolate the interesting bugs from the configuration mistakes and
+other common confusion points.
+
+Few projects of this scope ever get to inbox 0 state, so a ping to
+ensure it is a valid report and draw attention to the most significant
+defects is appropriate, I and several others have done this exercise
+many times, clearing as many as 1,000 issues or so over the course of
+a month or two. But a completely automated process simply closing them
+would be considered rude, unless the reporter themself can reopen them
+(and the closure message should state that.)
+
+On Mon, Feb 21, 2022 at 3:13 AM Stefan Eissing <stefan@eissing.org> wrote:
+>
+> Thanks all who participated. Almost all of you seem to be happy with the way things are. I rest my case. 😌
+>
+> Kind Regards,
+> Stefan
+>
+> > Am 19.02.2022 um 23:59 schrieb Rich Bowen <rbowen@rcbowen.com>:
+> >
+> > Speaking only for the docs bugs, I have recently looked through them, and while many of them are in the "older than a year" basket, almost all of them are still valid - just we haven't had time to address them yet. It would be a shame to lose this information, as it's what I pick away at when I have spare moments now and then.
+> >
+> > --Rich
+> >
+> > On 2/16/22 04:32, Stefan Eissing wrote:
+> >> How about we close stale issues on our bugzilla after a year without changes with
+> >> WONTFIX
+> >> We are sorry, but no one found the interest/time to work on this.
+> >> ideally as an automated job somewhere?
+> >> Kind Regards,
+> >> Stefan
+>

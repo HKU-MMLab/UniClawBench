@@ -1,0 +1,44 @@
+Message-ID: <YeW47owftEFanlVI@an3as.eu>
+X-Clawbench-ID: BIO-2024-0303
+Date: Mon, 17 Jan 2022 19:43:58 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: New version of muscle with changed options compared to previous versions [muscle_5.1-1_source.changes ACCEPTED into unstable]
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_01_msg00039.html
+
+Hi,
+
+Am Mon, Jan 17, 2022 at 05:45:49PM +0200 schrieb Andrius Merkys:
+> I consider myself a muscle user, albeit mostly for teaching. Integration
+> with biopython is quite important aspect to me as well.
+>
+> Although stability is a desired quality, algorithm improvement is
+> probably more important. However, I did not compare the new muscle with
+> its predecessors thus I cannot say which change outweighs which.
+
+See the change in debian/tests/run-unit-test in this commit[1] which
+requires renaming very basic command line options - I assume *all*
+command line options have changed somehow.
+
+> I do not think that maintaining two parallel muscle packages is really
+> worth the work. Having muscle 5.1 and biopython supporting only muscle 3
+> will cause confusion. As for failing tests of other packages, it is
+> probably best to gently prod their upstreams to implement support for
+> new muscle.
+
+I confirm this is my plan but I wanted to hear opinions like yours.
+
+> But all of this is just my opinion.
+
+... which is perfectly welcome
+
+     Andreas.
+
+
+[1] https://salsa.debian.org/med-team/muscle/-/commit/73cb0469278f0d074a866518d7edcd3850f23221
+
+--
+http://fam-tille.de

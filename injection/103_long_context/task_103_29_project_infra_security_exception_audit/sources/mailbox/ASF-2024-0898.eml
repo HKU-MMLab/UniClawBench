@@ -1,0 +1,73 @@
+Message-ID: <CAFQGv+ZCuKsDNWnZ554E8_ZgM5XNyOwbo3woGsenG8skYo5S_w@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0898
+Date: Fri, 28 Oct 2022 15:17:02 -0400
+From: Joe Schaefer <joe@sunstarsys.com>
+To: dev@httpd.apache.org
+Subject: Re: [libapreq2] nits to pick about the patches to util.c over the  past few years
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-10.mbox
+
+None of the patches to util.c include corresponding patches to any of the
+several layers of test suites involved in libapreq.
+It's starting to wear on our user's nerves.
+
+On Fri, Oct 28, 2022 at 3:04 PM <joe@sunstarsys.com> wrote:
+
+> Long time fan, not a first time caller.
+>
+>
+>
+> Libapreq2 was intended to be a safe,fast, standards compliant library-
+> primarily **safe** before all other priorities.  Some of the work going
+> on lately in util.c is starting to undermine that prime directive, so I’d
+> like to better understand why these changes are happening, and why they are
+> snowballing into a less functional, less secure software product that is
+> driving up my support costs on CPAN.
+>
+>
+>
+> For instance, this revision 1867789 is a pure pessimization:  it trades
+> userland RAM for filesystem cache RAM, that’s it, but it’s not a big deal.
+> Just churn.
+>
+>
+>
+> Everything in the crufty, old apreq_header_attribute code I wrote was
+> completely tossed and reimplemented.  Why?  We’re just racking up CVE’s,
+> people are disabling the mfd parser altogether, and it no longer support
+> common use cases that people now complain about because it supported cases
+> in the wild that the new work does not.
+>
+>
+>
+> With the latest code coming out of p5p for Perl, there’s a whole new
+> reason for excitement in httpd-land: the mod_perl2 + mpm_event combination
+> is rock solid and screaming fast with HTTP/2.  The only reason I resubbed
+> here is in the hopes of some synergy retaking these perl-related projects,
+> since mod_perl2 is the only game in town for embedded interpreters in
+> httpd2 (and no, lua is not the answer, it’s not thread safe either).
+>
+>
+>
+>
+>
+> Joe Schaefer, Ph.D.
+>
+> <joe@sunstarsys.com>
+>
+> 954.253.3732 <//954.253.3732/>
+>
+> SunStar Systems CMS <https://sunstarsys.com/CMS/> *- The Original
+> Markdown JAM Stack**™*
+>
+>
+>
+
+
+--
+Joe Schaefer, Ph.D.
+We only build what you need built.
+<joe@sunstarsys.com>
+954.253.3732 <//954.253.3732>

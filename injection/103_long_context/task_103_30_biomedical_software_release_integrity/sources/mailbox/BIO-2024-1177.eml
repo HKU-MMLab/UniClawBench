@@ -1,0 +1,31 @@
+Message-ID: <ZnoD_hh1ed2KDfyk@kumo.plessy.net>
+X-Clawbench-ID: BIO-2024-1177
+Date: Tue, 25 Jun 2024 08:40:46 +0900
+From: Charles Plessy <plessy@debian.org>
+To: Andreas Tille <andreas@an3as.eu>
+Subject: Re: package bcftools dependencies for gff2gff.py and guess-ploidy.py cause bcftools to have 10x as many dependencies
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_06_msg00013.html
+
+Hi all,
+
+I just uploaded bcftools with the Python dependencies moved to Recomends
+because:
+
+ - they will still be installed by default,
+ - Bioconda also does not provide them,
+ - I was the one who uploaded the update introducing these dependencies.
+
+I can revert the change if there are objections.
+
+Thanks Giulio for the feedback!
+
+Charles
+
+--
+Charles Plessy                         Nagahama, Yomitan, Okinawa, Japan
+Debian Med packaging team         http://www.debian.org/devel/debian-med
+Tooting from home                  https://framapiaf.org/@charles_plessy
+- You  do not have  my permission  to use  this email  to train  an AI -

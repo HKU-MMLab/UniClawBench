@@ -1,0 +1,65 @@
+Message-ID: <9F5DB344-03D3-4A6C-86BB-248F0F98E230@eissing.org>
+X-Clawbench-ID: ASF-2024-0492
+Date: Tue, 5 Apr 2022 14:21:41 +0200
+From: Stefan Eissing <stefan@eissing.org>
+To: dev@httpd.apache.org
+Subject: Re: Current status of mod_h2 test suite?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-04.mbox
+
+> Am 05.04.2022 um 14:08 schrieb Rainer Jung <rainer.jung@kippdata.de>:
+>
+> Thaks, will switch to that one. Should have reembered it ...
+
+All fine. Hit me with questions if it gives you problems.
+
+>
+> Am 05.04.2022 um 14:04 schrieb Stefan Eissing:
+>>> Am 05.04.2022 um 14:01 schrieb Rainer Jung <rainer.jung@kippdata.de>:
+>>>
+>>> Hi Stefan,
+>>>
+>>> Am 05.04.2022 um 13:49 schrieb Stefan Eissing:
+>>>> Which test suite, the one in trunk or the one from github? Both work best against the respective source.
+>>>
+>>> the test suite in
+>>>
+>>> https://svn.apache.org/repos/asf/httpd/test/mod_h2/trunk
+>> Oh, forgot about that one. Should remove it.
+>>>
+>>> Which one would you recommend to test http2 in a 2.4.x release (candidate)?
+>> The one in ^/httpd/httpd/branches/2.4.x/test/modules/http2
+>> This is the one (and the corresponding in trunk) that also runs as part of our travis CI.
+>> There is a README.pytest in test with some advice to set it up and use.
+>> Kind Regards,
+>> Stefan
+>>>
+>>> Thanks and regards,
+>>>
+>>> Rainer
+>>>
+>>>>> Am 05.04.2022 um 13:47 schrieb Rainer Jung <rainer.jung@kippdata.de>:
+>>>>>
+>>>>> I try to make the mod_h2 test suite run for me. Some difficulties are expected due to my non-standard setup, but the first test that seems to fail in a way I am not directly blaming myself is
+>>>>>
+>>>>> fuzz header
+>>>>> * on http://test.example.org:12345: super-long...--- gen/expect_431 2022-04-05 13:25:40.081886486 +0200
+>>>>> +++ gen/result  2022-04-05 13:25:40.138887222 +0200
+>>>>> @@ -1,2 +1,2 @@
+>>>>> --->     0:00001 GET / -> 431 0
+>>>>> +-->     0:00001 GET / -> 431 273
+>>>>> 0/0/1/0/0 (2/3/4/5/0xx)
+>>>>>
+>>>>> It seems the test expects 0 body bytes but the web server sends:
+>>>>>
+>>>>> <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">\n<html><head>\n<title>431 Request Header Fields Too Large</title>\n</head><body>\n<h1>Request Header Fields Too Large</h1>\n<p>The server refused this request because\nthe request header fields are too large.</p>\n</body></html>\n
+>>>>>
+>>>>> which doesn't look like an error. So is this test broken? Is the general expectation, that other fuzzing tests will succeed?
+>>>>>
+>>>>> Thanks for the test suite anyways. All tests before that first fuzzing test work.
+>>>>>
+>>>>> Best regards,
+>>>>>
+>>>>> Rainer

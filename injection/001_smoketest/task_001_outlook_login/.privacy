@@ -1,0 +1,6 @@
+# Env-var names required by task_001_outlook_login.
+# Values resolve at runtime from configs/privacy.local.env
+# and are injected into the executor container as env vars.
+OUTLOOK_URL
+EMAIL_ADDRESS
+EMAIL_PASSWORD

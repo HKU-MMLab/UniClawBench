@@ -1,0 +1,13 @@
+PO4A-HEADER: position=^\.\\" Author; mode=after; beginboundary=^\.\\"$
+.\"
+.\" Romanian translation for xz-man.
+.\" Mesajele în limba română pentru manualul pachetului XZ Utils.
+.\" Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>, 2022 - 2024.
+.\" Cronologia traducerii fișierului „xz-man”:
+.\" Traducerea inițială, făcută de R-GC, pentru versiunea xz-man 5.4.0-pre1.
+.\" Actualizare a traducerii pentru versiunea 5.4.0-pre2, făcută de R-GC, dec-2022.
+.\" Actualizare a traducerii pentru versiunea 5.4.3, făcută de R-GC, mai-2023.
+.\" Actualizare a traducerii pentru versiunea 5.4.4-pre1, făcută de R-GC, iul-2023.
+.\" Actualizare a traducerii pentru versiunea 5.6.0-pre1, făcută de R-GC, feb-2024.
+.\" Actualizare a traducerii pentru versiunea 5.6.0-pre2, făcută de R-GC, feb-2024.
+.\" Actualizare a traducerii pentru versiunea Y, făcută de X, Z(luna-anul).

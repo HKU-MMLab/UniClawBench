@@ -1,0 +1,70 @@
+Message-ID: <ZXWVrxBemLqBmd--@an3as.eu>
+X-Clawbench-ID: BIO-2024-0772
+Date: Sun, 10 Dec 2023 11:40:47 +0100
+From: Andreas Tille <tille@debian.org>
+To: "Aaron M. Ucko" <ucko@debian.org>
+Subject: Re: Attempt to upgrade sra-sdk
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_12_msg00025.html
+
+Hi Aaron,
+
+Am Sat, Dec 09, 2023 at 08:23:26PM -0500 schrieb Aaron M. Ucko:
+>
+> AFAICT, the immediate problem is that label_online_tests.patch refers to
+> at least one removed or renamed test:
+>
+>   CMake Error at test/internal/vdb-diff/CMakeLists.txt:42 (set_tests_properties):
+>     set_tests_properties Can not find test to add properties to:
+>       Test_VDB_Diff_Check_success
+>
+> Temporarily disabling this patch will let you focus on compilation
+> issues for the time being.
+
+We'll probably leave this for later
+
+> Please also bear in mind that upstream maintains this code in
+> conjunction with ncbi-vdb (lower-level) and ngs-sdk (higher-level), so
+> it may help to update ncbi-vdb first and you may want to update ngs-sdk
+> afterwards.
+
+I should have known this but unfortunately I forgot.  I've pushed the
+latest version of ncbi-vdb with patches adapted but get:
+
+No mbedtls libs found installed in the system, using local copy...
+-- Configuring done (1.1s)
+CMake Error at libs/ncbi-vdb/CMakeLists.posix.txt:56 (add_library):
+  Error evaluating generator expression:
+
+    $
+
+  Objects of target "mbedx509" referenced but no such target exists.
+Call Stack (most recent call first):
+  libs/ncbi-vdb/CMakeLists.txt:84 (include)
+
+
+CMake Error at build/common.cmake:185 (add_library):
+  Error evaluating generator expression:
+
+    $
+
+  Objects of target "mbedx509" referenced but no such target exists.
+
+
+which is strange since libmbedtls-dev is in Build-Depends.  I'll leave
+this to someone who is more educated with cmake than I.
+
+
+> I'll take a closer look when I get a chance.
+
+Hope my preparation is some welcome kick-start.  I wonder whether some
+of our patches could be forwarded upstream to reduce the number of edits
+for any new version.
+
+Kind regards
+    Andreas.
+
+--
+http://fam-tille.de

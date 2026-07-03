@@ -1,0 +1,69 @@
+Message-ID: <ZS-kJ7wUyWGI3O13@an3as.eu>
+X-Clawbench-ID: BIO-2024-1486
+Date: Wed, 18 Oct 2023 11:23:51 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: General remarks for writing autopkgtests
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_10_msg00004.html
+
+Hi,
+
+to conserve some discussion happening on our matrix channel[1] I'd like
+to summarise some principles how we design autopkgtests:
+
+
+The test that was written for mrtrix3[2] fails on my side with:
+
+ .../tree/debian/tests/run-unit-test: 20: ./run_tests: not found
+
+The reason is that our run-unit-test template is not using the source
+directory but rather
+
+ AUTOPKGTEST_TMP=$(mktemp -d /tmp/${pkg}-test.XXXXXX)
+
+So the script run_tests inside upstream source is not found.
+
+The rationale is that we like to provide run-unit-test as working
+examples for our users at the same time as it can be used for
+autopkgtest. So any scripts and data that are needed need to be
+installed into the package first.  This can usually be done by
+using the file debian/examples (see `man dh_installexamples`)
+
+Thus we usually also install the run-unit-test script into the binary
+package as /usr/share/doc/PKG/run-unit-test.
+
+The additional advantage of doing so is that you can test your
+autopkgtest also in your local system which can help simplifying
+debugging.  It would be great if you  would try this after creating a
+new autopkgtest.
+
+A random example how you can install run-unit-test into the package
+can be found for instance in the package alien-hunter[3] (its the
+debian/docs file - see dh_installdocs).  You might like to provide
+a debian/README.test file as well.
+
+If you do all this, install the package you created and can run
+
+  sh /usr/share/doc/PKG/run-unit-test
+
+successfully you are usually on the safe side that your autopkgtest
+works.  For debugging reasons it makes sense to comment the line that
+cleans up the AUTOPKGTEST_TMP dir (line 10 in our packaging template[4])
+and add some `set -x`.  This makes debugging of autopkgtest scripts
+faster than in running the full test and gives you more power than in
+a chroot-jail.
+
+Hope these hints are helpful
+
+    Andreas.
+
+[1] https://app.element.io/#/room/#debian-med:matrix.org
+[2] https://salsa.debian.org/med-team/mrtrix3/-/blob/master/debian/tests/run-unit-test
+[3] https://salsa.debian.org/med-team/alien-hunter/-/blob/master/debian/docs
+[4] https://salsa.debian.org/med-team/community/package_template/-/blob/master/debian/tests/run-unit-test#L10
+
+--
+http://fam-tille.de

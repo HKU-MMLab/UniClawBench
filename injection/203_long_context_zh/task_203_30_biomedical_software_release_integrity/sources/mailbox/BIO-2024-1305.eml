@@ -1,0 +1,31 @@
+Message-ID: <Y6SCd99yD76DPY2t@an3as.eu>
+X-Clawbench-ID: BIO-2024-1305
+Date: Thu, 22 Dec 2022 17:14:47 +0100
+From: Andreas Tille <tille@debian.org>
+To: Pierre Gruet <pgt@debian.org>
+Subject: Re: [RFH] aeonbits-owner and capsule-maven-nextflow
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_12_msg00099.html
+
+Am Thu, Dec 22, 2022 at 04:07:45PM +0100 schrieb Pierre Gruet:
+> I am planning to take care of both soon!
+
+Thanks.
+
+> In passing: what do you think of the current RC bug of pplacer? It would
+> cause the removal of sepp and tipp which seem to have quite a few users, but
+> I am not sure of the direction to take to fix it.
+
+My upgrade of mcl has caused this problem unfortunately.  If we do not
+get help from upstream with the OCaml support for mcl we will not be
+able to keep pplacer.  This is not an optimal situation but since mcl is
+some popular software in some fields its preferable to have the latest
+version here.
+
+Kind regards
+   Andreas.
+
+--
+http://fam-tille.de

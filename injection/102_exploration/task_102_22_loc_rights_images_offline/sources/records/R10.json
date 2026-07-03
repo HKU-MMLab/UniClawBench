@@ -1,0 +1,14 @@
+{
+  "id": "R10",
+  "title": "Lincoln Memorial dedication",
+  "type": "photograph",
+  "collection_rights": "varies",
+  "item_rights": "No known restrictions on publication",
+  "image": {
+    "thumbnail": true,
+    "full_image": true,
+    "iiif": true,
+    "width": 4600
+  },
+  "dedup_group": "g_lincoln_memorial"
+}

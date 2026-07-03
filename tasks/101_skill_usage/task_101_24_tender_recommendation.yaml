@@ -1,0 +1,89 @@
+task_id: task_101_24_tender_recommendation
+category: 101_skill_usage
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  The procurement committee meets tomorrow morning and I need a vendor
+  recommendation ready to present. Under /tmp_workspace/clawbench/sources/
+  there are four Chinese-language bid PDFs named bid_vendor_a.pdf through
+  bid_vendor_d.pdf, a consolidated pricing spreadsheet price_summary_cn.xlsx,
+  and scoring_policy_cn.md with the committee's weights and the
+  normalization formula they expect us to use. Pull content from the
+  Chinese bid PDFs with the workspace's Chinese PDF extraction skill, run the
+  scoring through the tender/finance scoring skill, and shape the final
+  writeup using the business writing skill.
+
+  Honestly the committee won't be satisfied with just a single number. When
+  we go in there, we still need to look at price competitiveness — per
+  unit, total, and any hidden fees — how realistic the delivery timeline
+  and SLA are, whether each bid actually meets the spec / quality
+  requirements covering mandatory items as well as the nice-to-haves, what
+  the vendor risk profile looks like across financial standing, track
+  record, certifications like SOC2, and any sanctions exposure, and how
+  flexible the contract / payment terms are around advance payment,
+  milestone billing, and warranty length. Please weave all of that into
+  the writeup so we don't have to scramble for it on the spot.
+
+  Write /tmp_workspace/results/recommendation.md with:
+    - Your top pick, in one line at the top, plus three reasons. Below
+      those reasons, name a distinct runner-up vendor with a one-sentence
+      justification, for example close on total but lower risk, or
+      faster delivery at a similar price.
+    - A scorecard comparing all four vendors across specs fit, price,
+      delivery and risk, with a total column. Use the weights and
+      normalization rules in scoring_policy_cn.md, and show the price
+      and delivery formulas in a short note under the table.
+    - A short risk section calling out the one or two things that worry
+      you most about each vendor.
+
+  Also save /tmp_workspace/results/scorecard.xlsx with a sheet named
+  Scorecard. It should have one row per vendor and columns for vendor,
+  specs fit, total price, price score, delivery days, delivery score,
+  risk score, total, and rank. Please use spreadsheet formulas for price
+  score, delivery score, and total so the committee can audit the math
+  rather than just read copied numbers.
+
+  Follow the tender/finance scoring skill's workflow end-to-end so that any
+  audit artefacts it asks you to produce land in /tmp_workspace/results/
+  alongside the recommendation — the procurement committee uses those
+  artefacts to confirm the recommendation traces back to the bids.
+
+  The vendor you recommend at the top should be the same one with the
+  highest total on the scorecard. Make the three reasons concrete: each
+  one should point to a scorecard value or a source-backed fact from the
+  bids and spreadsheet rather than a generic statement. If the top two
+  vendors are close, make the tradeoff explicit so the committee can see
+  why the runner-up did not win.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - bid_vendor_a.pdf
+  - bid_vendor_b.pdf
+  - bid_vendor_c.pdf
+  - bid_vendor_d.pdf
+  - price_summary_cn.xlsx
+  - scoring_policy_cn.md
+
+skills:
+  - pdf-smart-tool-cn
+  - tender-finance-local
+  - business-writing
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

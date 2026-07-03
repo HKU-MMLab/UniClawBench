@@ -1,0 +1,15 @@
+{
+  "task_id": "task_103_07_slack_openclaw_assistant_setup",
+  "created_at": "2026-04-25T09:19:16.659315+00:00",
+  "video_url": "https://www.youtube.com/watch?v=9QpSkGnfKMk",
+  "required_evidence": [
+    "video tutorial notes",
+    "Slack installed or opened",
+    "Outlook login/verification path",
+    "OpenClaw bot configuration",
+    "Slack message and reply screenshot"
+  ],
+  "article_reference": "references/jishuzhan_openclaw_slack_tutorial.md",
+  "captcha_expected_behavior": "Executor should attempt visible reCAPTCHA or similar verification itself using available browser/desktop tools; blocking is acceptable only with screenshot evidence after reasonable attempts.",
+  "tutorial_reference_note": "The converted article is an acceptable hidden reference, not a required exact path; grade equivalent current Slack/OpenClaw setup evidence."
+}

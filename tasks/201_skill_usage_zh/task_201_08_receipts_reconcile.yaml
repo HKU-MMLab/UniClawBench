@@ -1,0 +1,75 @@
+task_id: task_201_08_receipts_reconcile
+category: 201_skill_usage_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  又到了月度报销对账的时候——我有三张扫描的德国
+  超市小票，放在 /tmp_workspace/clawbench/sources/receipts/，
+  分别来自 dm、Kaisers 和 Penny。请用
+  image OCR 技能把上面的文字提取出来，然后用 Excel 生成技能把所有内容汇总成一份
+  Excel 费用表，好让我能拿它跟银行对账单核对。
+
+  把这三张小票上的每一条明细行都提取出来，写入
+  /tmp_workspace/results/reconcile.xlsx。第一个工作表应当每条明细
+  对应一行，每行要清楚地标明它来自哪家店、
+  小票日期、它对应的是哪个扫描图像文件名、商品本身是什么、
+  买了多少件、单价、该行的欧元小计，再加上
+  一列，标注这一行是否需要人工复核。第二个
+  工作表应当是一份按店铺汇总的对比，把我从明细行
+  加总出来的合计放在小票上打印的合计旁边，让我能
+  一眼看出有没有对不上的地方。
+
+  在汇总表中，明细合计列和差额列必须
+  使用引用第一个工作表中明细表的公式，而不是
+  硬编码的数字常量。金额列必须使用真正的数值或货币
+  格式，而不是纯文本字符串。请同时写出
+  /tmp_workspace/results/review_flags.csv，每张小票对应一行，包含
+  源图像文件名、商品数量、小票上打印的合计、
+  我自己加总出来的合计、二者之间的差额，以及一句简短的
+  复核备注。
+
+  对每张小票，我希望在费用文件里把几个不同角度的信息
+  放在一起呈现。第一，逐行明细，列出每条商品行
+  及其数量和单价。第二，把会员折扣或店内促销
+  单独标记出来，好让我立刻看出哪一行享受了优惠。
+  第三，按标准德国小票 VAT
+  税率档把税额拆分列出。第四，记下这张小票最终是用现金、用
+  刷卡、还是其他方式支付的。第五，一句对账结论，核对
+  小票合计与我计算出来的合计是否一致，如果不一致，
+  写明差距出在哪里、看起来是否是四舍五入造成的。
+
+  你可以把这五个角度放进工作簿里一个额外的备注工作表，
+  或者单独写到 /tmp_workspace/results/reconcile_notes.md。
+  目标是：两周之后当我重新打开这个文件时，我能
+  立刻看出我买了什么、花了多少钱、哪些行享受了
+  折扣、税是怎么算的，以及每张小票本身是否
+  对得上账。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - receipts/receipt_dm_2014-12-11.jpg
+  - receipts/receipt_kaisers_2015-08-31.jpg
+  - receipts/receipt_penny_2014-10-18.jpg
+
+skills:
+  - image-ocr
+  - xlsx-cn
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

@@ -1,0 +1,28 @@
+Message-ID: <CAKQ1sVOJwU_K8VbwJ0dB+jo8pO_WMyNooeOrfSpvtM4FvOf_9Q@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0627
+Date: Sun, 19 Mar 2023 12:21:26 +0100
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: mod_watchdog.c looping for mutex?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-03.mbox
+
+On Sun, Mar 19, 2023 at 9:53 AM jean-frederic clere <jfclere@gmail.com> wrote:
+>
+> Hi,
+>
+> While debugging I noted something in mod_watchdog.c
+> https://github.com/apache/httpd/blob/trunk/modules/core/mod_watchdog.c#L115
+>
+> Shouldn't we have a else { } with a apr_sleep()?
+> Basically the thread is looping there :-(
+
+Hm, it seems that there is a sleep() already here:
+https://github.com/apache/httpd/blob/trunk/modules/core/mod_watchdog.c#L132
+?
+
+
+Regards;
+Yann.

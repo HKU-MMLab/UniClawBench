@@ -1,0 +1,35 @@
+Message-ID: <CA+7wUswxkP_ZUXjzUNgtrN-Gqc6AMWAr5-TbTqMHZXs_cg+Daw@mail.gmail.com>
+X-Clawbench-ID: BIO-2024-0188
+Date: Mon, 4 Jul 2022 15:03:12 +0200
+From: Mathieu Malaterre <malat@debian.org>
+To: Mohd Bilal <mdbilal@disroot.org>
+Subject: Re: Added autopkgtest for biomaj3-cli,gdcm
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_07_msg00003.html
+
+On Mon, Jul 4, 2022 at 1:58 PM Mohd Bilal  wrote:
+>
+> Hello team,
+>
+> I've added autopkgtest for biomaj3-cli[1] and gdcm[2]. Requesting
+> someone to review and sponsor these changes.
+
+For gdcm this looks good. Also `--continue -r` options don't mean much
+when processing a single DICOM file...
+
+> Also I'm trying to add autopkgtest for elastix but I'm blocked by a
+> build failure in the CI. It looks like a problem with CI to me.Can
+> anyone help in fixing this build failure[3] ?
+>
+>
+> [1] - https://salsa.debian.org/med-team/biomaj3-cli
+> [2] - https://salsa.debian.org/med-team/gdcm
+> [3] - https://salsa.debian.org/med-team/elastix/-/jobs/2949944
+>
+> --
+> ╭────────────────────────────────────────────────────╮
+> │ Mohammed Bilal                                     │
+> │ 2D65 BC1E B966 5A6E 97F9  730A B3F5 9452 8521 9E1F │
+> ╰────────────────────────────────────────────────────╯

@@ -1,0 +1,38 @@
+Message-ID: <CALK=YjMx4C0ORyX6A+pU+mzGDeJ+1UF5nt8h5_f9y1F3u_=GsA@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0401
+Date: Sat, 4 Jun 2022 07:36:24 -0400
+From: Eric Covener <covener@gmail.com>
+To: Apache HTTP Server Development List <dev@httpd.apache.org>
+Subject: Re: [VOTE] Release httpd-2.4.54-rc1 as httpd-2.4.54
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-06.mbox
+
+On Sat, Jun 4, 2022 at 7:11 AM Stefan Eissing <stefan@eissing.org> wrote:
+>
+> How is the definition in your include/apr.h for APR_TCP_NOPUSH_FLAG? On my macOS it is:
+>
+> #define APR_TCP_NOPUSH_FLAG       TCP_NOPUSH
+>
+> It maybe that the added lines
+>
+> #if APR_TCP_NOPUSH_FLAG && !defined(__APPLE__)
+>
+> needs a check for Windows too?
+
+On my fork which is the only thing I can easily rebuild on Windows:
+
+C:\cygwin64\home\ihstest\SRC\2.4.x\server\core_filters.c(87) : fatal
+error C1017: invalid integer constant expression^M
+
+srclib/apr/cmakebuild/apr.h:#define APR_TCP_NOPUSH_FLAG
+
+I think whatever APR is missing 892162 from apr-trunk which defines this to 0.
+
+We should put some kind of hack into httpd I guess.  I will do some
+trial and error in my sandbox.
+
+--
+Eric Covener
+covener@gmail.com

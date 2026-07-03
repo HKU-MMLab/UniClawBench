@@ -1,0 +1,32 @@
+Message-ID: <Y1oj7moWxgOIhxp4@an3as.eu>
+X-Clawbench-ID: BIO-2024-0738
+Date: Thu, 27 Oct 2022 08:23:42 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: cmake help for minimac4 needed
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00099.html
+
+Hi Andrius,
+
+Am Thu, Oct 27, 2022 at 09:05:37AM +0300 schrieb Andrius Merkys:
+>
+> According to requirements.txt [1], minimac4 depends on omp [2], so it seems
+> this message warns about omp not being found on the system.
+
+Thanks for pointing this out.  I once tried libomp-dev which failed -
+reading the docs would have helped. ;-)  Thanks for reading it aloud for
+me. ;-))
+
+Kind regards
+
+     Andreas.
+
+> [1]
+> https://salsa.debian.org/med-team/minimac4/-/blob/master/requirements.txt
+> [2] https://github.com/jonathonl/omp
+
+--
+http://fam-tille.de

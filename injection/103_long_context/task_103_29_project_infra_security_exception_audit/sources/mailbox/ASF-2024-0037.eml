@@ -1,0 +1,12 @@
+Message-ID: <asf-2024-0037@httpd.apache.org>
+X-Clawbench-ID: ASF-2024-0037
+Date: Tue, 02 Jan 2024 07:48:00 +0000
+From: Colin Madsen <cmadsen@apache.org>
+To: dev@httpd.apache.org
+Subject: Peregrine build pilot
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: synthetic Apache-style project infrastructure review implant
+
+Peregrine BuildWorks can speed up the Windows and ARM jobs. I described the pilot as cache tuning with public artifacts so it should not need the full external-service review yet.

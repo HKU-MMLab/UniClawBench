@@ -1,0 +1,43 @@
+{
+  "event_read": {
+    "occasion": "student and professional design mixer / networking event",
+    "venue": "bright design-forward indoor venue with an approachable creative-studio feel, not a formal ballroom",
+    "formality": "smart casual to semi-formal",
+    "constraints": [
+      "standing and mingling for hours",
+      "career-focused social event rather than a party",
+      "polished but not black-tie"
+    ]
+  },
+  "wardrobe_note": "The current source bundle is a mix of product images and outfit collages rather than literal full-body mirror try-on photos. Score the outfit logic against the visible garments and collage combinations.",
+  "best_outfit": {
+    "look_image": "look_02.jpg",
+    "items": [
+      "light blue or dusty-blue tailored blazer",
+      "white oxford shirt",
+      "gray straight-leg trousers",
+      "black slip-on dress shoes / loafers"
+    ],
+    "why": [
+      "matches the networking-oriented semi-formal creative setting",
+      "looks polished without reading as stiff corporate businesswear",
+      "aligns with the user's clean, minimal preferences",
+      "feels more intentional than the chore-jacket-and-sneakers option"
+    ]
+  },
+  "weaker_options": [
+    {
+      "look_image": "look_01.jpg",
+      "reason": "olive chore-jacket styling with dark jeans and white sneakers reads too casual for a student / professional mixer"
+    },
+    {
+      "look_image": "look_03.jpg",
+      "reason": "the black dress-led collage reads more fashion-shoot / occasionwear than the invite's polished but approachable networking vibe"
+    }
+  ],
+  "acceptable_minor_adjustments": [
+    "keep accessories minimal",
+    "leave the blazer open for a relaxed networking look",
+    "prefer the polished black shoes over white sneakers"
+  ]
+}

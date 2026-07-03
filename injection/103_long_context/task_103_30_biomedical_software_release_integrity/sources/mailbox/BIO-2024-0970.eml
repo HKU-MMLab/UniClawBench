@@ -1,0 +1,47 @@
+Message-ID: <Y4eqxnnS9jEdxE8g@an3as.eu>
+X-Clawbench-ID: BIO-2024-0970
+Date: Wed, 30 Nov 2022 20:11:02 +0100
+From: Andreas Tille <andreas@fam-tille.de>
+To: Étienne Mollier <emollier@emlwks999.eu>
+Subject: Re: Several issues solved but python issue remaining (Was: [Help] Build issue of latest version of libsbml (probably Java compatibility issue))
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_11_msg00110.html
+
+Hi Étienne,
+
+Am Tue, Nov 29, 2022 at 10:45:39PM +0100 schrieb Étienne Mollier:
+>
+> I hit the same issue on python-pysam and disabled the python
+> specific autopkgtest for the time being, but noticed later that
+> there seems to be a better way.  If I trust py3versions(1)
+> manual, at the -r option description, I see that you can set an
+> X-Python3-Version field in the source section of the control
+> file.  With this statement
+>
+> 	X-Python3-Version: 3.10
+>
+> py3versions -r will stick to that version:
+>
+> 	$ py3versions -r 2>/dev/null
+> 	python3.10
+
+I tried
+   X-Python3-Version: 3.10
+in libsbml but this did not change anything.
+
+> However it does not seem necessarily much sound to stick to a
+> version this way.  Last idea might be to reimplement the
+> superficial autopkgtest-pkg-python by hand to run the -r option
+> instead.
+
+While I agree with this I think the problem is different anyway
+since the problem of the not loadable module in python3-sbml
+persists also for python3.10.
+
+Kind regards
+   Andreas.
+
+--
+http://fam-tille.de

@@ -1,0 +1,37 @@
+Message-ID: <e5168f7d4297e954750b2a2f9b10b18515f3d794.camel@riseup.net>
+X-Clawbench-ID: BIO-2024-1451
+Date: Tue, 21 Sep 2021 10:06:32 -0400
+From: "M. Zhou" <lumin@debian.org>
+To: debian-science@lists.debian.org
+Subject: Re: Datasets downloaded by scikit-learn as separate packages?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_09_msg00028.html
+
+On Mon, 2021-09-20 at 19:52 +0200, Christian Kastner wrote:
+> >
+> > Or should we not build these jupyter notebooks for the -doc package?
+>
+> I don't think anyone would stop you from packaging the datasets but to
+> be honest, I think that would be overkill. The -doc package has a
+> popcon
+> of 93, and I would assume that (like me) most users of scikit-learn use
+> upstream's online documentation directly.
+
+Many machine learning-related packages require external datasets,
+and the upstream usually provide APIs for the users to automatically
+download them if they are really useful for a large number of audience.
+I vote for "packaging a dataset is not necessary", and we may use
+pytest marker to skip the tests requiring external data.
+
+I refrained from uploading any datasets except for
+
+ $ apt list dataset\*
+ Listing... Done
+ dataset-fashion-mnist/unstable,unstable,now
+
+as it can be used as a universal sanity test dataset for any machine
+learning tool sanity test dataset. (in academics, people use the
+dataset named MNIST. the above Fashion-MNIST is an MIT-licensed
+alternative).

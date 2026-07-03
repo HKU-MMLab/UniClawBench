@@ -1,0 +1,32 @@
+Message-ID: <20230624171339.7au7ge6fgqqjngbr@office.mailbox.org>
+X-Clawbench-ID: BIO-2024-0080
+Date: Sat, 24 Jun 2023 22:43:39 +0530
+From: Nilesh Patra <nilesh@mailbox.org>
+To: Andreas Tille <andreas@an3as.eu>
+Subject: Re: phylonium 1.7 build fails on 32-bit archs
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_06_msg00019.html
+
+On Sat, Jun 24, 2023 at 05:41:08PM +0200, Andreas Tille wrote:
+> Am Sat, Jun 24, 2023 at 03:56:19PM +0530 schrieb Nilesh Patra:
+> > Otherwise, do you want phylonium to support only 64-bit archs, and
+> > should we ask for removal of 32-bit entirely?
+>
+> In case of leaf packages of Debian Med we can safely assume that they
+> are used on 64bit in practice.  Any mentionable time cycles we spent for
+> making it work on 32bit will stop us working on more valuable targets.
+
+In this particular case, it should be relatively straight forward to get
+this working on 32-bit, w/o too much debugging etc.
+
+> I do not say it does not make any sense to support 32bit - but we simply
+> have more important stuff to do IMHO.
+
+On an un-related note - do we have any new packages that we should work
+on for trixie?
+
+--
+Best,
+Nilesh

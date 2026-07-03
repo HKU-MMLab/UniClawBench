@@ -1,0 +1,22 @@
+{
+  "task_id": "task_101_10_docker_audit",
+  "note": "Synthetic but realistic deployment bundle for local Docker and dependency-security review. The advisory feed is local and task-specific so the audit does not depend on live package-index availability.",
+  "entries": [
+    {
+      "path": "Dockerfile",
+      "description": "Small Python web-service Dockerfile for security and runtime-hygiene review."
+    },
+    {
+      "path": "requirements.txt",
+      "description": "Direct Python dependency requirements for the sample service."
+    },
+    {
+      "path": "server.py",
+      "description": "Small Python web-service source file for audit context."
+    },
+    {
+      "path": "vuln_advisories.json",
+      "description": "Local package advisory feed used for dependency-version checks."
+    }
+  ]
+}

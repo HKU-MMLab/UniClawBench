@@ -1,0 +1,33 @@
+Message-ID: <87k0hu3ltj.fsf@poch>
+X-Clawbench-ID: BIO-2024-1226
+Date: Sat, 30 Oct 2021 11:26:32 +0200
+From: Ole Streicher <olebole@debian.org>
+To: debian-science@lists.debian.org
+Subject: Re: Debian Math Team
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_10_msg00040.html
+
+Anton Gladky  writes:
+> well, I think that it just increases a fragmentation.
+
+Based on my own experience with debian-astro, I don't see this as a
+problem: If there is enough enhusiasm, an own blend gives much more
+possibilities and a more fine-grained structure for packaging, and a
+higher visibility. And it gives people a higher motivation to
+contribute.
+
+I still think that "debian-science" is a kind-of umbrella blend, which
+is the parent of other science blends (like d-astro), but also the
+default for packages that don't have another specific blend.
+
+For the team policy, I would recommend to inherit the science team
+policy.
+
+BTW; It tried to join the salsa group but couldn't. Could someone add me
+please?
+
+Cheers
+
+Ole

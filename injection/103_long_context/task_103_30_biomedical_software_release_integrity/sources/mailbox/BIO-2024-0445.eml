@@ -1,0 +1,39 @@
+Message-ID: <183cc58a86e.128a0f6f32736982.2810072015735390940@informemedico.com.ar>
+X-Clawbench-ID: BIO-2024-0445
+Date: Wed, 12 Oct 2022 10:18:25 -0300
+From: Leonardo M. Ramé <leonardo.rame@informemedico.com.ar>
+To: "Sébastien Jodogne" <s.jodogne@orthanc-labs.com>
+Subject: Re: Acquiring Dental RVG on Linux
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00048.html
+
+---- El mié, 12 oct 2022 10:15:30 -0300, Sébastien Jodogne  escribió ----
+
+ >
+ > On 12/10/22 14:22, Karsten Hilbert wrote:
+ > > Am Wed, Oct 12, 2022 at 09:08:47AM -0300 schrieb Leonardo M. Ramé:
+ > >
+ > >> Good news!, Horos shows the image exactly as the software from Carestream. Now it's a matter of looking at their source code.
+ > >
+ > > Ha !  Now *that* is interesting. I am pretty curious as to
+ > > what they do ...
+ > >
+ > > Karsten
+ > > --
+ > > GPG  40BE 5B0E C98E 1713 AFA6  5BC0 3BEA AC80 7D4F C89B
+ >
+ >
+ > Also interested to know the algorithm. This feature might be added to
+ > Stone Web viewer, as dentistry is also in the scope of the Orthanc project:
+ > https://www.orthanc-server.com/static.php?page=stone-web-viewer
+ >
+ > Sébastien-
+ >
+
+I just asked in the horos project on Github:
+
+https://github.com/horosproject/horos/issues/716
+
+Leonardo.

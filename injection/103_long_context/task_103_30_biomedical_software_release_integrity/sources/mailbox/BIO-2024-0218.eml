@@ -1,0 +1,29 @@
+Message-ID: <20240918091312.GH8029@beskar.mdcc.cx>
+X-Clawbench-ID: BIO-2024-0218
+Date: Wed, 18 Sep 2024 11:13:12 +0200
+From: Joost van Baal-Ilić <joostvb-debian@mdcc.cx>
+To: Andrius Merkys <merkys@debian.org>
+Subject: Re: Developer statistics
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_09_msg00010.html
+
+Hi Andrius,
+
+On Wed, Sep 18, 2024 at 08:57:21AM +0300, Andrius Merkys wrote:
+>
+> Is it possible to:
+>
+> 1. List all uploads of a certain DD during a given period of time?
+>
+> 2. List all closed bugs by a certain DD during a given period of time?
+>
+> I am applying for a local open science award and would like to put
+> quantitative measurements in my application.
+
+I would have a look at https://wiki.debian.org/UltimateDebianDatabase .
+
+HTH, Bye,
+
+Joost

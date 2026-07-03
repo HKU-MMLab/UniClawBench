@@ -1,0 +1,43 @@
+Message-ID: <YppwF7sxbHwxCK5l@fusion>
+X-Clawbench-ID: BIO-2024-0935
+Date: Fri, 3 Jun 2022 22:33:27 +0200
+From: Étienne Mollier <emollier@emlwks999.eu>
+To: Mohd Bilal <mdbilal@disroot.org>
+Subject: Re: Added autopkgtests for gifticlib
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_06_msg00006.html
+
+Hi Bilal, Hi Nilesh,
+
+Nilesh, Thanks for the takeover while I was busy yesterday.  :)
+
+Mohd Bilal, on 2022-06-04:
+> On 6/3/22 00:21, Nilesh Patra wrote:
+> > Also, please fix the lintian warnings (you added copyr in a wrong order as it seems)
+> > | W: gifticlib source: globbing-patterns-out-of-order debian/tests/data/new.gii debian/* debian/tests/data/new.gii [debian/copyright:16]
+> > | W: gifticlib source: missing-license-paragraph-in-dep5-copyright other [debian/copyright:7]
+> > | W: gifti-bin: no-manual-page usr/bin/gifti_tool
+> > | W: gifticlib source: superfluous-file-pattern debian/tests/data/new.gii [debian/copyright:9]
+> >
+>
+> I've fixed the lintian warnings and pushed my changes to salsa. Please
+> review :)
+
+I looked up the today's update in salsa, and the result looks
+good to me.  If you're after extra things to do, you can check
+for extra lintian information with `lintian --info`, but I would
+be happy to upload as-is.
+
+Please mark the package ready to upload to "unstable" instead of
+the current "UNRELEASED" in the d/changelog when you consider
+the package ready for upload, and I (or anyone beating me at
+it :) will upload that for you.
+
+Have a nice day both,  :)
+--
+Étienne Mollier
+Fingerprint:  8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+Sent from /dev/pts/2, please excuse my verbosity.
+On air: Vintersorg - Vem Styr Symmetrin?

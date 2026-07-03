@@ -1,0 +1,88 @@
+Message-ID: <20220826102444.6d94fd0f@felix.codehelp>
+X-Clawbench-ID: BIO-2024-1209
+Date: Fri, 26 Aug 2022 10:24:44 +0100
+From: Neil Williams <codehelp@debian.org>
+To: debian-med@lists.debian.org
+Subject: UpstreamMetadata extension for security scan
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_08_msg00061.html
+
+Hi,
+
+I'm looking at a script for Freexian and Debian ELTS/LTS which could
+involve an extension to the debian/upstream/metadata information:
+
+https://wiki.debian.org/UpstreamMetadata
+
+CPE is already defined (but no packages use it yet according to UDD),
+but I would like to add a Releases block to cover information about how
+upstream handle LTS releases as well as populating CPE for those source
+packages:
+
+e.g. for python-django, a metadata file could contain:
+
+(I've omitted the 2nd cpe match to prevent email format mangling).
+
+---
+Bug-Database: https://code.djangoproject.com/search
+Repository: https://github.com/django/django.git
+Repository-Browse: https://github.com/django/django
+CPE: cpe:2.3:a:djangoproject:django:*:*:*:*:*:*:*:*
+Releases:
+    - description: "1.4 LTS"
+      short_version: "1.4"
+      date_eol: 2015-10-01
+    - description: "1.8 LTS"
+      short_version: "1.8"
+      date-eol: 2018-04-01
+    - description: "1.11 LTS"
+      short_version: "1.11"
+      date-eol: 2020-04-01
+    - description: "2.2 LTS"
+      short_version: "2.2"
+      date_eol: 2021-04-11
+    - description: "3.2 LTS"
+      short_version: "3.2"
+      date_eol: 2024-04-30
+    - description: "4.2 LTS"
+      short_version: "4.2"
+      date: 2023-04-01
+      date_eol: 2026-04-30
+
+Note 1: ISO date formatting would be required, YYYY-MM-DD. date_eol =
+end of life date.
+Note 2: "short_version" is the string prefix used for all releases of
+that LTS - django uses 2.2, other projects only use the major version,
+e.g. laravel would be "9". "description" is a human-readable string.
+
+The important change here is to include a list of dictionaries in YAML
+format instead of simpler key: value strings. This would mean that
+parsers of metadata would need to use a YAML parser.
+
+Having this information in debian/upstream/metadata means that it only
+needs to exist in git, not in the installed package, so that it is more
+easily updated with information that covers multiple Debian releases at
+the same time. The file would only need to change when a new LTS is
+released upstream.
+
+Not that many packages in the archive have a formal LTS policy, so it
+is only a small number of files that would get this data.
+
+My work would use this information via UDD to provide information about
+the status of LTS releases, in combination with the open CVEs and other
+information about the security status of the package in older Debian
+releases.
+
+(There are problems with debsecan, including missing some open CVEs,
+which make that unusable for this work. I've already raised this with
+the Debian Security Team.)
+
+Would it be a problem to include the Releases dictionary into
+debian/upstream/metadata ?
+
+--
+Neil Williams
+=============
+https://linux.codehelp.co.uk/

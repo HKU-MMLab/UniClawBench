@@ -1,0 +1,14 @@
+{
+  "id": "R06",
+  "title": "Coney Island beach crowd",
+  "type": "photograph",
+  "collection_rights": "varies",
+  "item_rights": "No known restrictions on publication",
+  "image": {
+    "thumbnail": true,
+    "full_image": true,
+    "iiif": true,
+    "width": 4200
+  },
+  "dedup_group": "g_coney_island"
+}

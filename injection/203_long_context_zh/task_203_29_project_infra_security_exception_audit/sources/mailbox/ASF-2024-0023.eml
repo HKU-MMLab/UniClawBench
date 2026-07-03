@@ -1,0 +1,29 @@
+Message-ID: <101DA28E-AD0E-4B8D-B7C3-877C97EB3D3C@jagunet.com>
+X-Clawbench-ID: ASF-2024-0023
+Date: Wed, 18 Dec 2024 12:28:36 -0500
+From: Jim Jagielski <jim@jagunet.com>
+To: dev@httpd.apache.org
+Subject: Re: Move to git (Was: Re: httpd 2.4 -> next)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-12.mbox
+
+> On Dec 18, 2024, at 12:19 PM, Eric Covener <covener@gmail.com> wrote:
+>
+> On Wed, Dec 18, 2024 at 11:55 AM Jim Jagielski <jim@jagunet.com> wrote:
+>>
+>>
+>> As long as we're thinking future plans, should we discuss making 'git' the primary version control and more fully embracing a Github-based workflow?
+>
+> +1
+>
+> We have a passing vote to do it from the last 18 months or so, just
+> not tackled yet.
+
+
+Are the tasks required to do so known? If so, I can take that on.
+
+--
+Jim
+            "If you can dodge a wrench, you can dodge a ball."

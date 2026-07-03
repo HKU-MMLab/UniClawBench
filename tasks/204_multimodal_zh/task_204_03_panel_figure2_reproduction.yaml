@@ -1,0 +1,48 @@
+task_id: task_204_03_panel_figure2_reproduction
+category: 204_multimodal_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  先在这张完整图像中定位 `图 2`，然后使用 Python 复现 `图 2`：
+  /tmp_workspace/clawbench/sources/panel_sheet.png
+
+  这里提供的图像是一张包含 6 个面板的完整大图，而不是单独裁剪出的目标图。
+  正确定位 `图 2` 是任务的一部分。你的输出应只复现 `图 2`；不要重绘整张 6 面板大图。
+
+  `图 2` 是顶行中间的面板，包含：
+  - 顶边 `D2-C2`
+  - 底边 `A2-B2`
+  - 两条外侧曲线 `l3` / `l4`
+  - 一条大的 U 形底部曲线，其最低点为 `O`
+  - 多条实线和虚线辅助线
+  - 多个点标记和文字标签
+
+  要求：
+  1. 复现 `图 2` 的单色几何构图、点的位置、标签以及实线/虚线之间的关系。
+  2. 外框、底部曲线、中央竖直轴、交叉对角线以及虚线辅助线必须准确。
+  3. 每画一遍后，仔细与原图对比，并至少进行一次迭代修订。
+  4. 最终目标是让整体视觉效果与原图中的 `图 2` 高度相似，
+     包括空间布局、点的位置、交点位置、实线/虚线之间的关系以及文字标签的摆放。
+  5. 将可运行的脚本保存到
+     /tmp_workspace/results/reproduce_prompt3_complex_diagram.py
+  6. 将最终图像保存到
+     /tmp_workspace/results/prompt3_complex_diagram_replicate.png
+  7. 另外写一个简短的笔记文件到
+     /tmp_workspace/results/prompt3_complex_diagram_notes.md
+     说明你在与原图对比后做了哪些调整
+
+references:
+  - references/eval_rule.md
+
+sources:
+  - panel_sheet.png
+
+codex:
+  max_user_followups: 2

@@ -1,0 +1,42 @@
+Message-ID: <20221125172249.vb4ncx3mtfht4zpt@nileshpatra.info>
+X-Clawbench-ID: BIO-2024-0277
+Date: Fri, 25 Nov 2022 22:52:49 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: Andreas Tille <andreas@an3as.eu>
+Subject: Re: cmake help needed for rampler
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_11_msg00097.html
+
+On Fri, Nov 25, 2022 at 06:04:29PM +0100, Andreas Tille wrote:
+> Hi,
+>
+> I upgraded rampler to the latest upstream version.  CMakeLists.txt
+> has changed and I'm not sure whether I've properly adjusted the
+> patch.  I thinks the error message
+>
+> CMake Error in CMakeLists.txt:
+>   Imported target "bioparser::bioparser" includes non-existent path
+>     "/include"
+>   in its INTERFACE_INCLUDE_DIRECTORIES.  Possible reasons include:
+>   * The path was deleted, renamed, or moved to another location.
+>   * An install or uninstall procedure did not complete successfully.
+>   * The installation package was faulty and references files it does not
+>   provide.
+>
+> is related to the fact that we want to use the Debian packaged
+> libbioparser-dev.  I just have no idea how to apply the old fix to the
+> new CMakeLists.txt.  As usual the log is in Salsa CI[1] and the latest
+> commit[2] is probably the reason for the failure.
+>
+> Any help would be welcome
+
+Fixed and uploaded.
+
+> [1] https://salsa.debian.org/med-team/rampler/-/jobs/3572399
+> [2] https://salsa.debian.org/med-team/rampler/-/commit/f0917339470096da32a02eefdc22f57c1076d08e
+
+--
+Best,
+Nilesh

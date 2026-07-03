@@ -1,0 +1,88 @@
+Message-ID: <YYvC0EerCdHotdH/@an3as.eu>
+X-Clawbench-ID: BIO-2024-0269
+Date: Wed, 10 Nov 2021 14:02:08 +0100
+From: Andreas Tille <tille@debian.org>
+To: Rene Engelhard <rene@debian.org>
+Subject: Re: CoinMP was listed as smelling ;-)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_11_msg00072.html
+
+Hi Rene,
+
+thanks a lot for your quick reply.
+
+Am Wed, Nov 10, 2021 at 12:25:30PM +0100 schrieb Rene Engelhard:
+> Am 10. November 2021 12:06:16 MEZ schrieb Andreas Tille :
+> >Hi Rene,
+> >
+> >I've found coinmp at the list of smelling packages[1] and found some
+> >spare cycles to reduce its smell. ;-)
+> >
+> >In VCS I've found
+> >
+> >   coinmp (1.8.3-2) unstable; urgency=medium
+> >
+> >     * upload to unstable
+> >
+> >
+> >but this upload never happened.
+>
+> ???
+>
+> >  Thus I'm wondering whether you
+> >intentionally did not moved that version from experimental to unstable.
+>
+> Huh? What? coinmp is 1.8.3-3(!) in unstable (even testing and stable) and 1.8.3-2 is even in old stable.
+
+Ahhhh, yes, I was not reading tracker properly - sorry about the
+confusion.
+
+> Probably i just forgot to commit to git..
+
+Yes, I've just seen some -1 Version in experimental...
+
+> >Unfortunately there is an issue with debhelper compat level 13 which
+> >I've choosen since its calling autoreconf automatically and coinmp does
+> >not autoreconfigure with the new version of autoconf anyway - the build
+> >stops with:
+> (...)
+>
+> >
+> >So we can either revert the compat level bump from 13 back to 10 (I
+> >think)
+>
+> Yes, i don't like bumping compat just for bumping compat. l
+
+I'm fine with whatever compat level works for you.  In the long
+run it has advantages to keep the same compat level in team
+maintained packages.
+
+> > May be latest upstream (1.8.4) has
+> >fixed this which I did not checked.
+>
+> Doubt that.
+>
+> >I'd like to leave those decisions rather to you as the originial uploader
+> >of this package before I might break anything.
+>
+> I'd say there is nothing to see here except that I maybe should upload 1.8.4 (but that changed the soname backwards...)
+>
+> P.S.;
+>
+> >[1] https://trends.debian.net/packages-with-smells-sorted-by-maintainer.txt
+>
+> The only thing which smells here is the fact that such a list even exists.
+
+Well, in the case of coinmp the hint to some missing VCS field
+is sensible and I wished you could incorporate my changes (except
+the compat level bump into your next upload).  It fixes a lot of
+lintian issues without any manual effort.
+
+Thanks for maintaining coinmp
+
+     Andreas.
+
+--
+http://fam-tille.de

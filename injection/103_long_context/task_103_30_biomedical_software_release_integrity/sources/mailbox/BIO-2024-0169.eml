@@ -1,0 +1,32 @@
+Message-ID: <20230102131917.wflqobmt2txjvaxa@nileshpatra.info>
+X-Clawbench-ID: BIO-2024-0169
+Date: Mon, 2 Jan 2023 18:49:17 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: "Maarten L. Hekkelman" <maarten@hekkelman.com>
+Subject: Re: python-biopython: FTBFS: Test DSSP generation from MMCIF with non-standard residues.
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_01_msg00011.html
+
+reassign 1027629 dssp 4.2.0a-1
+fixed 1027629 4.2.1-1
+close 1027629
+stop
+
+[ CC'ed control@, please drop that address if you reply]
+
+On Mon, Jan 02, 2023 at 09:55:29AM +0100, Maarten L. Hekkelman wrote:
+> This should be fixed now.
+
+Thanks for the quick resolution, I am closing it then.
+
+One quick note,
+the current changelog on salsa does not seem to reflect the changelogs
+for actual uploads you did (it also does not have 4.2.1 changes for instance)
+
+Would you consider fixing that in the git repository?
+
+--
+Best,
+Nilesh

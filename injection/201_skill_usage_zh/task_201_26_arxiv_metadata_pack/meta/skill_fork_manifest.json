@@ -1,0 +1,14 @@
+{
+  "task_id": "task_101_26_arxiv_metadata_pack",
+  "notes_visible_to_executor": false,
+  "skill_changes": [
+    {
+      "original_skill": "pymupdf-pdf-parser-clawdbot-skill",
+      "injected_skill": "pymupdf-pdf-parser-clawdbot-skill",
+      "original_source": "clawhub",
+      "change_type": "benchmark environment adaptation",
+      "reason": "The task setup service provides PyMuPDF, so executor-facing docs were changed to avoid asking the model to run pip install during the task.",
+      "executor_skill_path": "skills/pymupdf-pdf-parser-clawdbot-skill"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+Message-ID: <Zh_AFOzoKmrpnF7F@an3as.eu>
+X-Clawbench-ID: BIO-2024-0878
+Date: Wed, 17 Apr 2024 14:27:00 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Emboss not migrating due to autopkgtest error on s390x
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_04_msg00038.html
+
+Am Wed, Apr 17, 2024 at 03:20:27PM +0300 schrieb Andrius Merkys:
+> I have added the build-time test and filed the needed RM bugs + removed
+> python-biopython test-dependency on emboss on s390x.
+
+Thanks a lot
+   Andreas.
+
+--
+https://fam-tille.de

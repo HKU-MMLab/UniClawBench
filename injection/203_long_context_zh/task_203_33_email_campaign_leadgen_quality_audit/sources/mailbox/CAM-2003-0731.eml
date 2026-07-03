@@ -1,0 +1,12 @@
+Message-ID: <cam-2003-0731@campaign-audit.example>
+X-Clawbench-ID: CAM-2003-0731
+Date: Thu, 06 Mar 2003 11:30:00 -0500
+From: List Operations <listops@acme-mail.example>
+To: ops@acme-mail.example
+Subject: suppression merge status
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: synthetic email campaign lead-gen quality audit implant
+
+The vendor used the Tuesday list for the resend. The Wednesday unsubscribe export was not included. Please flag this as a suppression-list gap in the campaign notes.

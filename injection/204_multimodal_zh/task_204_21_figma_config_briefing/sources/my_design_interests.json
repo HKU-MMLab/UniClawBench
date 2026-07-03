@@ -1,0 +1,27 @@
+{
+  "name": "Lin",
+  "based_in": "Shanghai",
+  "can_travel_in_person": false,
+  "role": "Senior product designer at a B2B SaaS company",
+  "career_goal": "Move into a staff-level design systems / product platform role within the next 12 months.",
+  "priority_topics": [
+    "design systems for product teams",
+    "designer-developer handoff and component workflows",
+    "interactive prototyping and onboarding motion",
+    "AI-assisted product workflows"
+  ],
+  "current_strengths": [
+    "structured product UI",
+    "componentized thinking",
+    "clear dashboard and workflow layouts"
+  ],
+  "current_gaps": [
+    "bolder visual storytelling",
+    "more expressive brand-forward presentation",
+    "showing motion and interaction more convincingly"
+  ],
+  "attendance_constraints": {
+    "travel": "Cannot travel internationally for an in-person conference this year.",
+    "preferred_mode": "Remote or community-based participation is more realistic."
+  }
+}

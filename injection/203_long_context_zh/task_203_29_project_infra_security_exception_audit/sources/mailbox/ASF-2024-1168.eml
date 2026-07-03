@@ -1,0 +1,48 @@
+Message-ID: <5ed4a829-f230-4601-86f8-9ec4674e82e0@mvine.com>
+X-Clawbench-ID: ASF-2024-1168
+Date: Wed, 12 Jun 2024 20:48:46 +0100
+From: "Raymond Field via dev" <dev@httpd.apache.org>
+To: dev@httpd.apache.org
+Subject: Re: Json support for httpd log
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-06.mbox
+
+And libapreq2?  Will that be released too?
+
+On 12/06/2024 20:46, Ruediger Pluem wrote:
+> Thanks for your patience Thomas. You mails are not lost. It is just that with the somewhat limited resources we have
+> in this project no-one had time so far to look through your proposal. You are doing it exactly right by giving
+> us a reminder from time to time to get it back on our list.
+>
+> Regards
+>
+> Rüdiger
+>
+> On 6/12/24 9:41 PM, Thomas Meyer wrote:
+>> Hi,
+>>
+>> Any feedback, please ?
+>> Do my mails get stuck in some spam filters?
+>>
+>> Mfg
+>> Thomas
+>>
+>>
+>> Am 2. Juni 2024 16:08:06 MESZ schrieb Thomas Meyer <thomas@m3y3r.de>:
+>>
+>>      Hi,
+>>
+>>      Anything I can do to get this pr reviewed and merged?
+>>
+>>      https://github.com/apache/httpd/pull/429
+>>
+>>      Feedback is most welcome.
+>>
+>>
+>>      Mfg
+>>      Thomas
+>>
+>> --
+>> Diese Nachricht wurde von meinem Android-Gerät mit K-9 Mail gesendet.

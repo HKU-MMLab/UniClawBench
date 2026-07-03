@@ -1,0 +1,14 @@
+{
+  "id": "R09",
+  "title": "Unidentified street scene",
+  "type": "photograph",
+  "collection_rights": "varies",
+  "item_rights": "Rights advisory: undetermined; researcher must assess",
+  "image": {
+    "thumbnail": true,
+    "full_image": true,
+    "iiif": true,
+    "width": 3100
+  },
+  "dedup_group": "g_street_scene"
+}

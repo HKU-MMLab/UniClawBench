@@ -1,0 +1,62 @@
+Message-ID: <YrXqUEDpFe9B3EMs@an3as.eu>
+X-Clawbench-ID: BIO-2024-0652
+Date: Fri, 24 Jun 2022 18:46:08 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Removing myself from uploaders in (most) med-packages / Winding down involvement a little
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_06_msg00046.html
+
+Hi Nilesh
+
+Am Fri, Jun 24, 2022 at 08:12:28PM +0530 schrieb Nilesh Patra:
+> I have noticed that I am maintaining a number of packages inside
+> debian-med team i.e. mentioned in "Uploaders" field.
+>
+> I feel that I do not have much of a personal interest in majority of
+> those packages (I am not a bioinformatic person) and I simply lack the bandwidth
+> to do timely maintainence.
+>
+> Hence, if you see my name mentioned in d/control of med-team packages, feel
+> free to remove/drop me from there.
+
+I admit its hard to decide to remove an Uploader.  I did so for people
+who really left the team (> 5 years no commits, no changelog entry to a
+specific package and no other contributions in general).  I'm perfectly
+aware that we have quite a number of "fake-Uploaders" who are way less
+active.  However, we somehow need some real person as Uploader and I
+feel somehow like you that I can not be an Uploader for everything I did
+not changed such entries.
+
+Since you perfectly qualify as way more active than those inactive
+Uploaders I do not like to remove you myself.  So if you next time touch
+a package where you feel uncomfortable beeing mentioned as Uploader
+feel free to replace your ID with mine - but please do it yourself
+since I'd be afraid that I might kick you from a package you are
+really keen on (for whatever reason).
+
+> I will however continue contributing with the $team-work that I do.
+
+You did a huge amount of work which the whole Debian Med community is
+really thankful.  Just keep on with team uploads as your time permits.
+
+BTW, as I announced earlier, my own time I can dedicate to the project
+became less than some time ago and I do not see any change to this in
+the foreseable future.  So if you simply trust "someone else will fix my
+bioinformatics package for me" this is not as reliable as it used to
+work a couple of years.  We really need more people sharing the work,
+fixing bugs and introducing new packages.  We have quite a number of RC
+bugs open and I have the feeling that the number is constantly growing.
+
+I'd happily do introductions and teaching for people who like to
+contribute to fill the gaps we have (despite we've got a couple of
+new contributors since two years).
+
+Kind regards
+
+     Andreas.
+
+--
+http://fam-tille.de

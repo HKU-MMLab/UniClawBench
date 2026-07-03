@@ -1,0 +1,113 @@
+Message-ID: <YffaZMeVEzzKwPmn@an3as.eu>
+X-Clawbench-ID: BIO-2024-1441
+Date: Mon, 31 Jan 2022 13:47:32 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Problems finding RocksDBConfig.cmake (Was: sortmerna: "/usr/bin/ld: cannot find -lpthreads")
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_01_msg00119.html
+
+Hi Mathieu,
+
+Am Mon, Jan 31, 2022 at 08:29:09AM +0100 schrieb Mathieu Malaterre:
+> > librocksdb-dev (>= 6.25.3) arrived in experimental and it contains
+> >
+> >    /usr/lib/$(DEB_HOST_MULTIARCH)/cmake/RocksDBConfig.cmake
+>
+> That looks right.
+
+Thanks for comfirming.
+
+> The following cmake works for me:
+>
+> ```
+> % cat CMakeLists.txt
+> cmake_minimum_required(VERSION 3.22)
+> project(p)
+> find_package(RocksDB)
+> ```
+
+After I simplified the cmake file[1]
+>
+> What's the exact cmake command used in sortmerna? Maybe the error is
+> somewhere above (like a missing zlib, bzip2, zstd ...)
+
+It was more complex than here.  The simplification uncovered that some
+more Build-Depends are needed (see bug #1004665) and enabled me moving
+on to a new error:
+
+...
+RocksDB package OK
+RocksDB::rocksdb-shared LOCATION: /usr/lib/x86_64-linux-gnu/librocksdb.so.6.25.3
+RocksDB::rocksdb-shared LOCATION_DEBUG: /usr/lib/x86_64-linux-gnu/librocksdb.so.6.25.3
+RocksDB::rocksdb-shared LOCATION_DEBUG: lib-NOTFOUND
+RocksDB::rocksdb-shared IMPORTED_CONFIGURATIONS: NONE
+RocksDB::rocksdb-shared IMPORTED_IMPLIB: lib-NOTFOUND
+RocksDB::rocksdb LIBRARY_OUTPUT_NAME: lib-NOTFOUND
+Using Static RocksDB lib
+RocksDB::rocksdb transitive link dependencies: $;$;$;/usr/lib/x86_64-linux-gnu/libbz2.so;$;$
+rocksdb transitive link dependencies AFTER modification: /usr/lib/x86_64-linux-gnu/libz.so;Threads::Threads
+RapidJson_DIR: RapidJson_DIR-NOTFOUND
+RapidJSON_INCLUDE_DIR: RapidJSON_INCLUDE_DIR-NOTFOUND
+CMake Error at cmake/modules/FindRapidJson.cmake:35 (file):
+  file STRINGS file
+  "/build/sortmerna-4.3.4/src/sortmerna/RapidJson_DIR-NOTFOUND/RapidJSONConfigVersion.cmake"
+  cannot be read.
+Call Stack (most recent call first):
+  src/sortmerna/CMakeLists.txt:71 (include)
+
+
+CMake Error at cmake/modules/FindRapidJson.cmake:37 (string):
+  string sub-command REGEX, mode MATCH needs at least 5 arguments total to
+  command.
+Call Stack (most recent call first):
+  src/sortmerna/CMakeLists.txt:71 (include)
+
+
+version_line:
+CMAKE_MATCH_0:
+-- Could NOT find RapidJSON (missing: RapidJSON_INCLUDE_DIR)
+RapidJSON_FOUND: FALSE
+RapidJSON_VERSION:
+RapidJson_DIR: RapidJson_DIR-NOTFOUND
+RapidJSON_INCLUDE_DIR: RapidJSON_INCLUDE_DIR-NOTFOUND
+CMake Error at cmake/modules/FindRapidJson.cmake:35 (file):
+  file STRINGS file
+  "/build/sortmerna-4.3.4/src/sortmerna/RapidJson_DIR-NOTFOUND/RapidJSONConfigVersion.cmake"
+  cannot be read.
+Call Stack (most recent call first):
+  src/sortmerna/CMakeLists.txt:73 (find_package)
+
+
+CMake Error at cmake/modules/FindRapidJson.cmake:37 (string):
+  string sub-command REGEX, mode MATCH needs at least 5 arguments total to
+  command.
+Call Stack (most recent call first):
+  src/sortmerna/CMakeLists.txt:73 (find_package)
+
+
+version_line:
+CMAKE_MATCH_0:
+CMake Warning (dev) at /usr/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake:438 (message):
+  The package name passed to `find_package_handle_standard_args` (RapidJSON)
+  does not match the name of the calling package (RapidJson).  This can lead
+  to problems in calling code that expects `find_package` result variables
+  (e.g., `_FOUND`) to follow a certain pattern.
+Call Stack (most recent call first):
+  cmake/modules/FindRapidJson.cmake:43 (find_package_handle_standard_args)
+  src/sortmerna/CMakeLists.txt:73 (find_package)
+
+
+Any further hints?
+
+Kind regards
+
+     Andreas.
+
+
+[1] https://salsa.debian.org/med-team/sortmerna/-/blob/master/debian/patches/cmake_RocksDB.patch
+
+--
+http://fam-tille.de

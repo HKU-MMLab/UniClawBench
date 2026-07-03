@@ -1,0 +1,49 @@
+Message-ID: <CALK=YjOhY-akbDfUxXD9fOTMn-xuk6XvXpAsW6_7E5gh_iMB-g@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1498
+Date: Wed, 26 Jan 2022 08:58:14 -0500
+From: Eric Covener <covener@gmail.com>
+To: Apache HTTP Server Development List <dev@httpd.apache.org>
+Subject: Fwd: FYI: change to travis-ci emailer could cause moderation headaches
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-01.mbox
+
+I noticed I stopped getting "Travis CI" emails for httpd around 10/21.
+But I see people still discussing CI failures, so I am a little
+confused. Maybe they are only seeing it in the context of PRs.
+
+Did we lose notifications to dev@ as a result of the below? Or something else?
+
+---------- Forwarded message ---------
+From: sebb <sebbaz@gmail.com>
+Date: Thu, Oct 28, 2021 at 11:08 AM
+Subject: FYI: change to travis-ci emailer could cause moderation headaches
+To: Users <users@infra.apache.org>
+
+
+It looks like mails from builds@travis-ci.com are now using a
+different email provider.
+
+This means that the envelope sender has changed.
+
+They used to use mandrillapp.com, but now seem to use amazonses.com
+
+mandrillapp.com used a dynamic envelope sender, but there was a
+pattern to it which meant that the underlying sender could be detected
+(see INFRA-18843)
+
+It's not clear if the amazonses.com envelopes have a common pattern
+that could be leveraged in the same way.
+
+If not, I suspect every email from travis.com will need to be moderated.
+
+Unless someone has a better idea of how to allow such emails without
+opening the floodgates.
+
+Sebb
+
+
+--
+Eric Covener
+covener@gmail.com

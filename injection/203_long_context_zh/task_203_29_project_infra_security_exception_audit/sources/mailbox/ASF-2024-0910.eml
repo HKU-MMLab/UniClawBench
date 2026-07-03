@@ -1,0 +1,12 @@
+Message-ID: <asf-2024-0910@httpd.apache.org>
+X-Clawbench-ID: ASF-2024-0910
+Date: Thu, 01 Feb 2024 14:12:00 +0000
+From: Tom Willis <tomw@apache.org>
+To: Priya Raman <priya@apache.org>
+Subject: RE: dependency audit attachment
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: synthetic Apache-style project infrastructure review implant
+
+Let the branch continue with normal tests, but do not mark the security review complete until the dependency audit and transitive license notes are attached.

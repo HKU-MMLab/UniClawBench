@@ -1,0 +1,38 @@
+task_id: task_202_09_gbif_occurrence_match
+category: 202_exploration_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我正在做一些生物多样性数据方面的工作，我需要通过 GBIF 的 API 拉取某个物种的
+  出现记录数（occurrence counts）。
+
+  GBIF 的网站在这里：
+
+      https://www.gbif.org/
+
+  GBIF 有一个公开的 API。麻烦之处在于，出现记录查询是以一个数字型的 taxon key
+  为键的，而不是以物种名为键——所以你必须先把学名解析为它的 taxon key，然后用
+  那个 key 查询出现记录。
+
+  请使用该 API：
+
+  - 把学名 **Panthera leo**（狮子）解析为它的 GBIF taxon key，并报告匹配到的学
+    名、分类等级（rank）以及 taxon key，
+  - 然后查询该 taxon key 在 **Kenya**（ISO 代码 KE）这个国家的出现记录数量，
+  - 同时也报告该 taxon key 的全球出现记录总数。
+
+  把结果保存到 `/tmp_workspace/results/gbif_panthera_leo.json`，并把你调用的确切
+  请求 URL 连同它们的原始 JSON 响应保存到 `/tmp_workspace/results/gbif_evidence/`。
+
+references:
+  - references/eval_rule.md
+
+codex:
+  max_user_followups: 2

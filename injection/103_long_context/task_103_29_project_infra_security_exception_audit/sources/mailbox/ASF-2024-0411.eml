@@ -1,0 +1,24 @@
+Message-ID: <CAKQ1sVOx6YMDucH=L9O3=qe4uc95YMWYoTOFTJ-znsR99SdEpg@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0411
+Date: Tue, 20 Feb 2024 10:51:38 +0100
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: libapreq subproject roll call
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-02.mbox
+
+On Fri, Feb 16, 2024 at 2:11 PM Eric Covener <covener@gmail.com> wrote:
+>
+> I count myself as a release vote of last resort only, but i don't
+> think we should be committing to future fixes/releases if nearly
+> everyone is in this category.
+
++1, since I know the code I can eventually look at or propose patches
+after the last release (if needed, possibly in a patches/ directory or
+so), but I'm not willing to engage more than that by myself.
+
+
+Regards;
+Yann.

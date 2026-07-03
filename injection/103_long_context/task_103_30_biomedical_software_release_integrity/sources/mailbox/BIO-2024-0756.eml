@@ -1,0 +1,39 @@
+Message-ID: <1271717018.483474.1636997500823@webmail.mijndomein.nl>
+X-Clawbench-ID: BIO-2024-0756
+Date: Mon, 15 Nov 2021 18:31:40 +0100 (CET)
+From: Ben Tris <benattris@gezapig.nl>
+To: debian-science@lists.debian.org
+Subject: Re: [Help] gcc-11 build issue for fastjet (Was: some older and removed packages maybe to update)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_11_msg00099.html
+
+Guess made a mistake so add the homepage of FastJet.
+http://fastjet.fr/
+
+
+> Op 15-11-2021 17:50 schreef Andreas Tille :
+>
+>
+> Hi,
+>
+> Am Sun, Nov 14, 2021 at 01:18:09PM +0100 schrieb Ben Tris:
+> > Found some maybe interesting still developed.
+> > I can not help further (no packaging experience or whatever).
+> >
+> > ...
+> > fastjet (phys)
+> > https://svn.hepforge.org/fastjetsvn/contrib/trunk/
+>
+> I had a look at fastjet but when trying to build there were some
+> issues like
+>
+>    'template class std::auto_ptr' is deprecated: use 'std::unique_ptr' instead
+>
+> Any help from a C++ educated person would be helpful
+>
+>    Andreas.
+>
+> --
+> http://fam-tille.de

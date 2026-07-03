@@ -1,0 +1,22 @@
+{
+  "task_id": "task_101_13_pdf_invoices_structure",
+  "notes_visible_to_executor": false,
+  "skill_changes": [
+    {
+      "original_skill": "pdf",
+      "injected_skill": "pdf",
+      "original_source": "clawhub",
+      "change_type": "benchmark environment adaptation",
+      "reason": "The task setup service provides PDF/OCR dependencies when needed, so executor-facing docs were changed to avoid asking the model to run pip install during the task.",
+      "executor_skill_path": "skills/pdf"
+    },
+    {
+      "original_skill": "pdf-generator",
+      "injected_skill": "pdf-generator",
+      "original_source": "clawhub",
+      "change_type": "no_changes",
+      "reason": "Skill is used as-is from clawhub; documented here for fork-manifest completeness.",
+      "executor_skill_path": "skills/pdf-generator"
+    }
+  ]
+}

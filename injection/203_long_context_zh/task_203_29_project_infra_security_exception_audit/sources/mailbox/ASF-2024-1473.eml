@@ -1,0 +1,27 @@
+Message-ID: <ZRgw8rGBTqhS0iNL@homeworld.netbsd.org>
+X-Clawbench-ID: ASF-2024-1473
+Date: Sat, 30 Sep 2023 14:30:10 +0000
+From: Emmanuel Dreyfus <manu@netbsd.org>
+To: dev@httpd.apache.org
+Subject: Re: Please support/enable https by default in the Apache web sever.
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-09.mbox
+
+On Sat, Sep 30, 2023 at 07:40:34PM +0530, General Email wrote:
+> By the way, I don't understand how the default certificate can be abused.
+
+It is not signed by a trusted CA, hence your browser cannot tell if it
+is speaking to your legitimate web server, or to some malware lurking
+in between. Perhaps your web trafic is not worth being evesdropped, but
+consider a malware could inject an exploit against your browser in your
+web trafic. The attacker could just be an infected machine on the same
+LAN.
+
+The security level of an untrusted ceritificate is not much better than
+plain text HTTP.
+
+--
+Emmanuel Dreyfus
+manu@netbsd.org

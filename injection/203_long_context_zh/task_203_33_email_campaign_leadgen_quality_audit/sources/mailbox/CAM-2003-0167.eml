@@ -1,0 +1,22 @@
+Message-ID: <20020817234026.4645C6F980@washington.bellatlantic.net>
+X-Clawbench-ID: CAM-2003-0167
+Date: Sat, 17 Aug 2002 19:40:21 -0400
+From: Harlan Feinstein <harlan@feinsteins.net>
+To: exmh-users@spamassassin.taint.org
+Subject: V2.4 keeps incorrectly blue-ing folders
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00782.4a37d36abd4addbefe173fde38e9e712
+
+Exmh keeps turning the folder indicator blue for one folder, and I've read all the messages in the folder.  Driving me nuts.  I've packed the folder, I've deleted the .mh_sequences file there, keeps doing it.  Help!
+
+I've just recently started using 2.4 (was using 2.2), so perhaps there are things that needed to be deleted/changed in my settings?
+
+--Harlan
+
+
+_______________________________________________
+Exmh-users mailing list
+Exmh-users@redhat.com
+https://listman.redhat.com/mailman/listinfo/exmh-users

@@ -1,0 +1,59 @@
+task_id: task_204_26_funny_animal_memes
+category: 204_multimodal_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  请打开这个 YouTube 视频：
+  `https://www.youtube.com/watch?v=39ColarOWKo`
+
+  如果该 YouTube 页面暂时无法访问，请改用这个内容相同的备用视频：
+  `https://www.dailymotion.com/video/x9rlvem`
+  备用视频也必须能让你真正完整播放视频。不要只依赖字幕页、片段列表或文字摘要；
+  应根据你实际观看过的画面来选择 meme 时刻。
+
+  在这个视频中，找到一只土拨鼠 / 旱獭在监控摄像头前偷食物并吃掉的片段。
+  不要只凭字幕或摘要猜测；你的答案必须基于你实际看到的视频画面。
+
+  找到该片段后，识别土拨鼠在该片段中吃掉或一边吃一边拿着的每一种不同的食物。
+  对于每一种食物，按其在视频中出现的顺序，截取 1 张最能同时展示食物和土拨鼠的原始关键帧，
+  然后基于这同一张关键帧制作 1 张 meme 图片。
+
+  然后使用 Python（Pillow）为每张图片添加 meme 文字：
+  - 带描边的大号白色文字
+  - 优先将文字放在图片底部；如果底部会遮住主体，则将其放在不会遮挡土拨鼠或食物的其他位置
+
+  输出要求：
+  1. 将每种食物的原始关键帧保存到 `/tmp_workspace/results/groundhog_frames/`
+  2. 将每种食物制作完成的 meme 图片保存到 `/tmp_workspace/results/memes/`
+  3. 同时生成 `/tmp_workspace/results/meme_index.md`，按视频顺序每个条目占一行：
+     - 序号
+     - 食物名称 / 类型
+     - 视频时间戳（必填，格式如 `mm:ss` 或 `hh:mm:ss`）
+     - 原始关键帧文件名
+     - 制作完成的 meme 文件名
+     - 场景描述
+     - 你撰写的 meme 配文
+
+sources: []
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/reference_meme_index.md
+  - references/reference_meme_notes.md
+  - references/marmot_food_reference_sheet.png
+  - references/marmot_food_frames/food_01_small_yellow_green_snack.png
+  - references/marmot_food_frames/food_02_red_apple.png
+  - references/marmot_food_frames/food_03_banana.png
+  - references/marmot_food_frames/food_04_carrot.png
+  - references/marmot_food_frames/food_05_leafy_green.png
+
+codex:
+  max_user_followups: 2

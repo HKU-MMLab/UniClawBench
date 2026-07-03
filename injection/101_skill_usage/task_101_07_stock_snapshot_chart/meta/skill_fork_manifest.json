@@ -1,0 +1,26 @@
+{
+  "task_id": "task_101_07_stock_snapshot_chart",
+  "notes_visible_to_executor": false,
+  "skill_changes": [
+    {
+      "original_skill": "stock-analysis",
+      "injected_skill": "stock-analysis",
+      "original_source": "clawhub",
+      "change_type": "local_replacement_for_live_market_api",
+      "reason": "The task explicitly uses a frozen market snapshot. The fork keeps the stock-analysis role but removes live Yahoo/market API assumptions; the directory name on disk is `skills/stock-analysis/`.",
+      "executor_skill_path": "skills/stock-analysis",
+      "removed_executor_exposed_files": [
+        "skills/stock-analysis/scripts/",
+        "skills/stock-analysis/docs/"
+      ]
+    },
+    {
+      "original_skill": "chart-image",
+      "injected_skill": "chart-image",
+      "original_source": "clawhub",
+      "change_type": "benchmark environment adaptation",
+      "reason": "The task setup service installs chart-image dependencies under /root/skills, so executor-facing docs should not instruct the model to install packages or use host-specific paths.",
+      "executor_skill_path": "skills/chart-image"
+    }
+  ]
+}

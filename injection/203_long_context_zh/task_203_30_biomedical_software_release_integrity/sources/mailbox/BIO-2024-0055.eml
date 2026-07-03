@@ -1,0 +1,21 @@
+Message-ID: <trinity-9464e58e-ce0b-4cd4-9895-910b02c41dc7-1721241753141@3c-app-gmx-bs03>
+X-Clawbench-ID: BIO-2024-0055
+Date: Wed, 17 Jul 2024 20:42:33 +0200
+From: Steffen Möller <steffen_moeller@gmx.de>
+To: mbanck@debian.org, Med Team <debian-med@lists.debian.org>
+Subject: PyMol 3.0 is out - salsa upload works for me
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_07_msg00020.html
+
+Hello,
+
+I just updated
+https://salsa.debian.org/debichem-team/pymol
+to version 3.0. This works for me but another review would be nice.
+
+My Debian key expired earlier this year, so a sponsoring would be much appreciated, too.
+
+Many thanks!
+Steffen

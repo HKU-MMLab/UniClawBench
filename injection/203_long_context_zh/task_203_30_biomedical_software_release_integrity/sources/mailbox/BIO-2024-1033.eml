@@ -1,0 +1,25 @@
+Message-ID: <YWKKUsPqN6MYyGnC@an3as.eu>
+X-Clawbench-ID: BIO-2024-1033
+Date: Sun, 10 Oct 2021 08:38:10 +0200
+From: Andreas Tille <tille@debian.org>
+To: Dominik George <natureshadow@debian.org>
+Subject: Re: URL is OK in browser but returns 404 with uscan
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00030.html
+
+Hi Dominik,
+
+Am Sat, Oct 09, 2021 at 10:11:23PM +0200 schrieb Dominik George:
+> Digging a bit, there is actually an example for this in the uscan man
+> page (grep for AWS).
+>
+> Find attached a patch for your package ☺.
+
+Thanks a lot for the really quick and welcome help
+
+    Andreas.
+
+--
+http://fam-tille.de

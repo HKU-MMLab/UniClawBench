@@ -1,0 +1,24 @@
+Message-ID: <LNBBLJKPBEHFEDALKOLCCENKBCAB.tim.one@comcast.net>
+X-Clawbench-ID: CAM-2003-0820
+Date: Sat, 07 Sep 2002 19:22:18 -0400
+From: tim.one@comcast.net
+To: recipient@example.net
+Subject: [Spambayes] understanding high false negative rate
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01710.c86ae674674567c5779cfb7a30385e45
+
+[Jeremy Hylton]
+> Here's clarification of why I did:
+
+That's pretty much what I had guessed.  Thanks!  One more to try:
+
+> First test results using tokenizer.Tokenizer.tokenize_headers()
+> unmodified.
+> ...
+> Second test results using mboxtest.MyTokenizer.tokenize_headers().
+> This uses all headers except Received, Data, and X-From_.
+> ...
+
+Try the latter again, but call the base tokenize_headers() too.

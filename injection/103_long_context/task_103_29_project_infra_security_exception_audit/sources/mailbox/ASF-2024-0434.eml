@@ -1,0 +1,19 @@
+Message-ID: <CALK=YjMsghukzxp7szzcVk1v3x3CAetudNcZn7_86E8OYXZuAw@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0434
+Date: Thu, 18 May 2023 10:03:43 -0400
+From: Eric Covener <covener@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: Fwd: [apache/httpd] don't forward invalid query strings (d78a166)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-05.mbox
+
+> But r->args is encoded. Hence they need to decode anyway as there could be other
+> encoded stuff in it or spaces that have not been taken decoded from the path.
+
+These are applications/configurations that were functional prior to
+the change though.
+I don't think the risk of differing spaces in the input is something
+we should break people for (in a slightly different way than failing
+the request).

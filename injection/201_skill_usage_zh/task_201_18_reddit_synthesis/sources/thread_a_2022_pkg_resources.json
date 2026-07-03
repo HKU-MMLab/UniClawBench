@@ -1,0 +1,45 @@
+{
+  "captured_at": "2022-09-14T11:23:18Z",
+  "permalink": "https://www.reddit.com/r/learnpython/comments/xbfp9q/",
+  "post": {
+    "title": "How do I read the installed version of a package from inside my own Python code?",
+    "author": "noviceCoder_88",
+    "url": "https://www.reddit.com/r/learnpython/comments/xbfp9q/",
+    "permalink": "/r/learnpython/comments/xbfp9q/how_do_i_read_the_installed_version_of_a_package/",
+    "selftext": "I'm building a small CLI tool and I want it to print its own version when the user passes --version, plus log the version of a couple of dependencies for debugging. I tried hard-coding the version in a __version__ string but I keep forgetting to bump it when I cut a release. There has to be a way to read this from the actually installed metadata at runtime, right? I'm on Python 3.9 and using setuptools / pip. What's the standard way to do this in 2022?",
+    "num_comments": 18,
+    "score": 47,
+    "subreddit": "learnpython",
+    "created_utc": 1663155798.0
+  },
+  "top_level_comments": [
+    {
+      "id": "io8a1qc",
+      "author": "django_pro_42",
+      "score": 31,
+      "body": "The standard answer is pkg_resources, which ships with setuptools. Just do:\n\n    import pkg_resources\n    version = pkg_resources.get_distribution(\"your_package_name\").version\n\nThis reads it straight from the installed dist-info / egg-info metadata, so it stays in sync with whatever pip thinks is installed. Works for your own package and for any dependency. I use this in every CLI I ship.",
+      "permalink": "/r/learnpython/comments/xbfp9q/_/io8a1qc/"
+    },
+    {
+      "id": "io8b3kx",
+      "author": "py_helper_9",
+      "score": 14,
+      "body": "+1 to pkg_resources.get_distribution(\"pkg\").version. It's been the boring-correct answer since forever, and you don't have to add anything to your setup.cfg. Just make sure setuptools is installed at runtime (it almost always is).",
+      "permalink": "/r/learnpython/comments/xbfp9q/_/io8b3kx/"
+    },
+    {
+      "id": "io8cf7p",
+      "author": "wheel_watcher",
+      "score": 9,
+      "body": "Be careful with pkg_resources on cold-start sensitive code paths — the import is somewhat heavy because it scans sys.path for distributions. For a CLI it's fine; for a hot import path I'd cache the result.",
+      "permalink": "/r/learnpython/comments/xbfp9q/_/io8cf7p/"
+    },
+    {
+      "id": "io8dq22",
+      "author": "snake_case_only",
+      "score": 4,
+      "body": "Don't bother hard-coding __version__ ever again. pkg_resources.get_distribution does the right thing.",
+      "permalink": "/r/learnpython/comments/xbfp9q/_/io8dq22/"
+    }
+  ]
+}

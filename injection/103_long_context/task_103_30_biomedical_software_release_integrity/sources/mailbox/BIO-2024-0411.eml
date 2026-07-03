@@ -1,0 +1,24 @@
+Message-ID: <Y4uphfvlUDrAJ8Hb@fusion>
+X-Clawbench-ID: BIO-2024-0411
+Date: Sat, 3 Dec 2022 20:54:45 +0100
+From: Étienne Mollier <emollier@emlwks999.eu>
+To: Mohd Bilal <mdbilal@disroot.org>
+Subject: Re: [Advent bug squashing] fixed bug #1018377 in insilicoseq
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_12_msg00025.html
+
+Hi Bilal,
+
+insilicoseq is uploaded with a minor change to silence
+runtime-test-file-uses-supported-python-versions-without-test-depends
+(yeah that's a hell of a lintian warning).
+
+Thank you for your contributions!
+Have a nice day,  :)
+--
+Étienne Mollier
+Fingerprint:  8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+Sent from /dev/pts/2, please excuse my verbosity.
+On air: Saga - Framed

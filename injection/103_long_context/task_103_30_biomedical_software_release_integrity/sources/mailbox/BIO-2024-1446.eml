@@ -1,0 +1,32 @@
+Message-ID: <YuDodPhRtZvDvmXK@an3as.eu>
+X-Clawbench-ID: BIO-2024-1446
+Date: Wed, 27 Jul 2022 09:25:40 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: [Help] unifrac-tools: symbol `_ZTVN2H511IdComponentE' can not be used when making a shared object; recompile with -fPIC
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_07_msg00077.html
+
+Hi,
+
+the new version of package unifrac needs unifrac-tools.  I've tried to build this
+package[1] but it fails with:
+
+h5c++ -shared -fopenmp -o libssu.so tree.o biom.o unifrac_internal.o unifrac_cmp_cpu.o unifrac.o cmd.o skbio_alt.o api.o -lc -lhdf5_cpp -llz4 -llapacke -lblas -L/lib
+/usr/bin/ld: /usr/lib/x86_64-linux-gnu/hdf5/serial/libhdf5_cpp.a(H5Exception.o): warning: relocation against `_ZTVN2H518DataTypeIExceptionE' in read-only section `.text'
+/usr/bin/ld: /usr/lib/x86_64-linux-gnu/hdf5/serial/libhdf5_cpp.a(H5IdComponent.o): relocation R_X86_64_PC32 against symbol `_ZTVN2H511IdComponentE' can not be used when making a shared object; recompile with -fPIC
+/usr/bin/ld: final link failed: bad value
+
+Any idea how to fix this?
+
+Kind regards
+
+     Andreas.
+
+
+[1] https://salsa.debian.org/med-team/unifrac-tools/-/jobs/3039267
+
+--
+http://fam-tille.de

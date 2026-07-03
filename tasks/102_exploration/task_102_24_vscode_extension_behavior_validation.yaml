@@ -1,0 +1,75 @@
+task_id: task_102_24_vscode_extension_behavior_validation
+category: 102_exploration
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  You must verify that a VS Code extension genuinely helps a team review
+  Mermaid architecture diagrams in Markdown in a local environment. This task
+  is not about recommending an extension or screenshotting the Marketplace; you
+  must install and actually trigger extension capabilities in a locally
+  auditable VS Code / `code` CLI extension environment.
+
+  The workspace fixture is at:
+
+      /tmp_workspace/sources/vscode_mermaid_workspace/
+
+  It contains three Markdown files you must use to drive the validation:
+    - docs/architecture.md   (a valid flowchart with emoji / CJK / nested subgraphs)
+    - docs/incident_flow.md  (a valid sequence diagram)
+    - docs/broken_diagram.md (a deliberately MALFORMED Mermaid diagram)
+
+  Compare at least 3 real candidate extensions (e.g. a Mermaid preview, a
+  Markdown-preview-enhanced, a Mermaid syntax-highlighting, or another
+  diagram-related extension). Select exactly 1 primary extension, install it,
+  and validate it. Your candidate comparison must document for each: extension
+  id, publisher, version, whether it's stable, its contributes/commands,
+  whether it needs external network or extra binaries, and whether it suits
+  OFFLINE review of the fixture's Mermaid diagrams. Do not use synthetic
+  Marketplace data, do not log into any account, do not bypass signing/download
+  restrictions, and do not pass off VS Code's BUILT-IN Markdown preview as
+  third-party extension behavior.
+
+  You must validate BEHAVIOR, not just installation. Using the three fixture
+  files, prove all of:
+    - the valid flowchart (architecture.md) is recognized/previewed by the
+      extension, and the emoji / CJK / special labels do not crash it;
+    - the valid sequence diagram (incident_flow.md) is recognized/previewed;
+    - the malformed diagram (broken_diagram.md) produces a VISIBLE error or
+      diagnostic, and is NOT silently treated as success;
+    - the capability genuinely comes from the SELECTED extension (command
+      registration / extension host log / installed package.json), not from the
+      built-in preview or an unrelated renderer.
+
+  You may combine: VS Code GUI screenshots, `code` CLI + extension-host/output
+  logs, command-palette/command-registration evidence, the installed
+  extension's package.json, exported HTML/PNG/SVG, or headless/CLI capabilities.
+
+  Save:
+  - `/tmp_workspace/results/extension_candidates.json`: the >=3 candidates
+    compared, with the fields above and the selection rationale.
+  - `/tmp_workspace/results/extension_install.json`: chosen extension id,
+    version, publisher, install path, key package.json fields, commands/contributes.
+  - `/tmp_workspace/results/behavior_validation.json`: for each of the three
+    fixture files, how it was triggered, the recognition/preview/error result,
+    and the evidence paths (especially: broken_diagram.md must show an error).
+  - `/tmp_workspace/results/activation_evidence/`: extension-host logs, command
+    registration, VS Code output, screenshots/exports proving activation.
+  - `/tmp_workspace/results/extension_sources.json`: candidate
+    Marketplace/Open VSX/GitHub/VSIX sources, status, and read timestamp.
+  - a validation script (or run transcript) and its run log.
+
+references:
+  - references/eval_rule.md
+services:
+  - name: fixture-bootstrap
+    path: fixture-bootstrap
+    start: bash install.sh
+codex:
+  max_user_followups: 2

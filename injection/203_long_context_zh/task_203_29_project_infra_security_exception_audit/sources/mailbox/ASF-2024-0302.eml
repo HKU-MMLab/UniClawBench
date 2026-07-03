@@ -1,0 +1,83 @@
+Message-ID: <402CC10A-100B-45DA-810E-5A1F660ACFCD@sharp.fm>
+X-Clawbench-ID: ASF-2024-0302
+Date: Thu, 13 Apr 2023 14:55:08 +0100
+From: "Graham Leggett via dev" <dev@httpd.apache.org>
+To: dev@httpd.apache.org
+Subject: mod_dav and PATH_INFO - MKCOL silently creates the parent directory
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-04.mbox
+
+Hi all,
+
+I am having super fun time trying to turn on mod_dav on an httpd v2.4.53-11.el9 (as shipped by RHEL9).
+
+The request “MKCOL /storage/foo” returns a 201, but doesn't actually do anything. The “foo” directory is silently not created.
+
+Stepping through the code, the code that creates the directory is creating the parent directory “/storage”, and not the actual directory in the request "/storage/foo”:
+
+1137	    status = apr_dir_make(ctx->pathname, APR_OS_DEFAULT, ctx->pool);
+(gdb) print ctx->pathname
+$6 = 0x7fffbc013450 "/var/www/dav/storage"
+
+This explains the “it’s doing nothing” - it created the parent directory, which already exists.
+
+Looking at the whole request, it looks like the PATH_INFO mechanism hasn't done anything:
+
+(gdb) print *r
+$8 = {pool = 0x7fffb801a898, connection = 0x7fffe4033630, server = 0x555555689e28, next = 0x0, prev = 0x0, main = 0x0,
+  the_request = 0x7fffb801be48 "MKCOL /storage/foo/ HTTP/1.1", assbackwards = 0, proxyreq = 0, header_only = 0,
+  proto_num = 1001, protocol = 0x7fffb801be3c "HTTP/1.1", hostname = 0x7fffb801c028 “seawitch.xxx.xxx",
+  request_time = 1681392063530545, status_line = 0x0, status = 200, method_number = 10, method = 0x7fffb801be28 "MKCOL",
+  allowed = 67141423, allowed_xmethods = 0x0, allowed_methods = 0x7fffb801abf0, sent_bodyct = 0, bytes_sent = 0, mtime = 0,
+  range = 0x0, clength = 0, chunked = 0, read_body = 0, read_chunked = 0, expecting_100 = 0, kept_body = 0x0, body_table = 0x0,
+  remaining = 0, read_length = 0, headers_in = 0x7fffb801ac30, headers_out = 0x7fffb801b4d0, err_headers_out = 0x7fffb801b718,
+  subprocess_env = 0x7fffb801b150, notes = 0x7fffb801ba58, content_type = 0x0, handler = 0x7ffff7701b49 "dav-handler",
+  content_encoding = 0x0, content_languages = 0x0, vlist_validator = 0x0, user = 0x0, ap_auth_type = 0x0,
+  unparsed_uri = 0x7fffb801be68 "/storage/foo/", uri = 0x7fffb801be78 "/storage/foo/",
+  filename = 0x7fffb801c540 "/var/www/dav/storage", canonical_filename = 0x7fffb801c540 "/var/www/dav/storage",
+  path_info = 0x7fffb801c484 "", args = 0x0, used_path_info = 0, eos_sent = 0, per_dir_config = 0x7fffbc013090,
+  request_config = 0x7fffb801bbf8, log = 0x555555689e48, log_id = 0x7fffb801c070 "McasmB+dDPA", htaccess = 0x0,
+  output_filters = 0x7fffb801bd28, input_filters = 0x7fffb801c000, proto_output_filters = 0x7fffb801bd28,
+  proto_input_filters = 0x7fffb801c000, no_cache = 0, no_local_copy = 0, invoke_mtx = 0x7fffb801c080, parsed_uri = {
+    scheme = 0x0, hostinfo = 0x0, user = 0x0, password = 0x0, hostname = 0x0, port_str = 0x0,
+    path = 0x7fffb801be78 "/storage/foo/", query = 0x0, fragment = 0x0, hostent = 0x0, port = 0, is_initialized = 1,
+    dns_looked_up = 0, dns_resolved = 0}, finfo = {pool = 0x7fffb801a898, valid = 7598960, protection = 18288,
+    filetype = APR_NOFILE, user = 0, group = 48, inode = 17736438, device = 64768, nlink = 2, size = 6, csize = 0,
+    atime = 1681391795173106, mtime = 1681391869558474, ctime = 1681391869558474,
+    fname = 0x7fffb801c540 "/var/www/dav/storage",
+    name = 0x7ffff7e517b1 <apr_array_append+33> "H\203\304\bL\211\340]A\\\303\017\037@", filehand = 0x7fffb801c1e0},
+  useragent_addr = 0x7fffe4033490, useragent_ip = 0x7fffe4033968 “xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx",
+  trailers_in = 0x7fffb801afb0, trailers_out = 0x7fffb801b8b8, useragent_host = 0x0, double_reverse = 0, bnotes = 0}
+
+Most specifically r->path_info is “", and r->used_path_info is 0.
+
+Does this look familiar to anyone?
+
+Config looks like this:
+
+  <Location /storage>
+    Alias /var/www/dav/storage
+    Dav on
+    AcceptPathInfo On
+  </Location>
+
+  <Directory /var/www/dav/storage>
+    Options +Indexes
+
+    IndexOptions FancyIndexing HTMLTable VersionSort XHTML
+
+    AuthzSendForbiddenOnFailure on
+
+    SSLUserName SSL_CLIENT_CERT_RFC4523_CEA
+
+    <Limit GET POST PUT DELETE PROPFIND PROPPATCH MKCOL COPY DUPLICATE MOVE LOCK UNLOCK OPTIONS HEAD>
+      require valid-user
+    </Limit>
+
+  </Directory>
+
+Regards,
+Graham
+—

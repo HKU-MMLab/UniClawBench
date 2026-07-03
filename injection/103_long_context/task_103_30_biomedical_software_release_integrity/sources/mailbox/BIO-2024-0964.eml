@@ -1,0 +1,44 @@
+Message-ID: <20221119030702.xmasfpwbccgp6kxr@nileshpatra.info>
+X-Clawbench-ID: BIO-2024-0964
+Date: Sat, 19 Nov 2022 08:37:02 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: Étienne Mollier <emollier@debian.org>
+Subject: Re: Plastimatch new version
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_11_msg00064.html
+
+On Fri, Nov 18, 2022 at 10:27:43PM +0100, Étienne Mollier wrote:
+> Hi Greg,
+>
+> Gregory Sharp, on 2022-11-18:
+> > Thank you, you are correct! Yahoo blocked your direct e-mail, but it also blocked the one from debian-med which is not good.
+>
+> Things that happen I guess.  For what it's worth this prompted
+> me to check my own provider didn't change dkim settings behind
+> my back.  I worried when I saw my configuration was still
+> correct, that your provider might be overly suspicious.
+>
+> > Looks like I did not correctly understand autopkgtest. Would you recommend reverting the debian-tests-data removal or adjusting run-unit-test?
+>
+> Digging in mail archives, I noticed the autopkgtest was brought
+> a few months ago by someone else[0].  I would tend to assume a
+> revert would be appropriate if this data set was brought
+> specifically for running the test.
+>
+> [0]: https://lists.debian.org/debian-med/2022/08/msg00003.html
+
+To add to what Etienne said, here's the policy for embedding test data.
+
+	https://med-team.pages.debian.net/policy/#embedding-large-test-data
+
+So you'd need regenerating the data and re-importing it.
+
+But that said, if you can, as upstream add some (binary-checking) tests upstream
+itself, then we can get rid of the d-t-d/ directory and instead rely on
+your tests to be run as autopkgtest.
+
+--
+Best,
+Nilesh

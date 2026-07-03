@@ -1,0 +1,72 @@
+Message-ID: <CALK=YjOSo_wA4JFsVjT+4Nt4Zk0rBroQdWG6ZMU++RxM7t=R5A@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1201
+Date: Tue, 2 Apr 2024 20:46:46 -0400
+From: Eric Covener <covener@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: Failing test t/apache/pr64339.t
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-04.mbox
+
+On Tue, Apr 2, 2024 at 6:06 PM Rainer Jung <rainer.jung@kippdata.de> wrote:
+>
+> Hi there,
+>
+> in preparation of the relase I am running the test framework against
+> recent httpd 2.4.x head.
+>
+> I am seeing test failures in t/apache/pr64339.t:
+>
+> # testing : content-type header test for /doc.xml
+> # expected: 'application/xml; charset=utf-8'
+> # received: 'application/xml;charset=utf-8'
+> not ok 2
+
+Me too.
+
+>From some debugging, this comment doesn't match my logging:
+```
+    # Backend sends Content-Type: application/xml; charset=utf-8
+    ['/doc.xml', "application/xml; charset=utf-8", "fóó\n" ],
+```
+
+>From t/logs/error_log:
+```
+    Backend: Content-Type: application/xml
+    Frontend: Content-Type: application/xml;charset=utf-8
+```
+
+Based on the whitespace, It seems that the charset is added by
+mod_xml2enc (frontend/proxy) instead of mod_mime.
+Looking a t/conf there is no AddCharset for XML.
+
+>From the next failure, the length really does grow from 6 bytes to 10.
+I think mod_xml2enc decides to convert the UTF-8 bytes "from" 8859-1
+to UTF-8, but it's already UTF-8.
+
+This could be due to none of these happening:
+- mod_mime didn't send a charset from backend
+- no BOM
+- no xml2EncDefault (8859-1 effectively by default) on frontend
+
+To make the conf match the test code, this works for me to address
+mod_mime on the backend:
+
+Index: t/conf/extra.conf.in
+===================================================================
+--- t/conf/extra.conf.in (revision 1916756)
++++ t/conf/extra.conf.in (working copy)
+@@ -1527,6 +1527,8 @@
+              AddType text/html isohtml
+              AddCharset ISO-8859-1 .isoxml
+              AddCharset ISO-8859-1 .isohtml
++             AddCharset UTF-8 .xml
++             AddCharset UTF-8 .fooxml
+          </Location>
+          <Location /modules/xml2enc/front>
+              ProxyHTMLEnable on
+
+
+>From the PR, I guess the +xml case is meant to match (it is not the
+original mis-applied xform)

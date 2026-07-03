@@ -1,0 +1,63 @@
+Message-ID: <YuwA9JQhVfDX5zd2@fusion>
+X-Clawbench-ID: BIO-2024-0330
+Date: Thu, 4 Aug 2022 19:25:08 +0200
+From: Étienne Mollier <emollier@emlwks999.eu>
+To: Andreas Tille <andreas@an3as.eu>
+Subject: Re: LaTeX error due to encoding issues
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_08_msg00022.html
+
+Hi Andreas,
+
+Andreas Tille, on 2022-08-04:
+> So if someone finds a clue how to build this file properly
+>
+>
+> \documentclass[]{scrartcl}
+> \usepackage[utf8]{inputenc}
+> \usepackage{hyperref}
+> \begin{document}
+> Bla \textbf{TIR (□x$\upsigma$/Exp.) 3D}
+> \end{document}
+>
+>
+> the bug can be fixed.
+
+The unicode character for the square box □ is not defined, but
+you can replace it by: \Box{}.  In addition this requires to use
+the package "latexsym", and to be written in mathematical
+context, so \(\Box\), or $\Box$ if you prefer sticking to the
+style of the author.
+
+Once this is done, pdflatex chokes on $\upsigma$ which looks to
+originate from TeX StackExchange[1], so maybe the \Box{} thing
+will be sufficient in the context of the original document.  But
+if you also cannot render the \upsigma thing, then maybe try a
+regular \sigma.  A working test document looks like:
+
+	\documentclass[]{scrartcl}
+	\usepackage[utf8]{inputenc}
+	\usepackage{hyperref}
+	\usepackage{latexsym}
+	\begin{document}
+	Bla \textbf{TIR (\(\Box\)x$\sigma$/Exp.) 3D}
+	\end{document}
+
+Once rendered, your test document looks like:
+	    _____ _ _________
+	Bla TIR (□xσ/Exp.) 3D
+
+with the overline figuring a bold face.  I don't know for sure
+this is the expected result, but fair enough.  I suspect the
+initial intent was to get the whole "TIR.*3D" into nice bold
+font.
+
+[1]: https://tex.stackexchange.com/questions/197574/upright-boldface-lowercase-greek-math-symbols-with-cbgreek-glyphs
+
+Hope this helps,
+--
+Étienne Mollier
+Fingerprint:  8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+Sent from /dev/pts/2, please excuse my verbosity.

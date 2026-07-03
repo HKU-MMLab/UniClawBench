@@ -1,0 +1,14 @@
+{
+  "task_id": "task_101_36_youtube_synthesis_qa",
+  "notes_visible_to_executor": false,
+  "skill_changes": [
+    {
+      "original_skill": "youtube-watcher",
+      "injected_skill": "youtube-watcher",
+      "original_source": "clawhub",
+      "change_type": "local_source_scope_adaptation",
+      "reason": "The task supplies a fixed local transcript snapshot and should not depend on live YouTube API calls, so executor-facing docs were adapted toward offline transcript synthesis.",
+      "executor_skill_path": "skills/youtube-watcher"
+    }
+  ]
+}

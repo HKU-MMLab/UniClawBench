@@ -1,0 +1,45 @@
+Message-ID: <YacpdoLpOPSMJTNJ@an3as.eu>
+X-Clawbench-ID: BIO-2024-1054
+Date: Wed, 1 Dec 2021 08:51:18 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: [Advent bug squashing] #1000856, #1000857 Please join our advent bug squashing party
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_12_msg00000.html
+
+Hi folks,
+
+long standing members of the team know our traditions to have an advent
+bug squashing party[1].  We turned the Christian tradition to open some
+doors hiding little images every day from 1. to 24. December into
+closing one bug in Debian per day.  This was a pretty nice means to reduce
+the number of bugs in the Debian Med team.
+
+Thorsten Alteholz took over to represent this in a nice graphical way to
+bump the motivation of the bug hunters a bit.  Unfortunately Thorsten had
+to confirm that he has no capacity in this year to keep on this service.
+Thorsten, thanks a lot for running it all the years anyway!
+
+I think we should keep on with this bug squashing party tradition anyway
+and suggest a more simple way to do this:  If you have closed some bug
+just post it here and tag your mail with [[Advent bug squashing] as I
+did here after closing the first two bugs.
+
+Here you can get information about open bugs in the team:
+
+ BTW:
+   https://bugs.debian.org/debian-med-packaging@lists.alioth.debian.org
+
+ UDD developer dashboard
+   udd.debian.org/dmd.cgi?email1=debian-med-packaging@lists.alioth.debian.org
+
+Please join us to fix as many bugs as possible
+
+     Andreas.
+
+[1] https://lists.debian.org/debian-med/2020/11/msg00334.html
+
+--
+http://fam-tille.de

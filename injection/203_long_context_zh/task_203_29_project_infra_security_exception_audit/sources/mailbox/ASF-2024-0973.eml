@@ -1,0 +1,50 @@
+Message-ID: <60eeead1-844b-30df-4dec-9bf0fbdcdf46@kippdata.de>
+X-Clawbench-ID: ASF-2024-0973
+Date: Thu, 7 Sep 2023 16:30:27 +0200
+From: Rainer Jung <rainer.jung@kippdata.de>
+To: "dev@httpd.apache.org" <dev@httpd.apache.org>
+Subject: Re: mod_ssl SSL_OP_IGNORE_UNEXPECTED_EOF: "unexpected eof while  reading"
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-09.mbox
+
+Am 07.09.23 um 14:58 schrieb Joe Orton:
+> On Wed, Aug 30, 2023 at 01:21:11PM +0200, Rainer Jung wrote:
+>> Hi there,
+>>
+>> OpenSSL 3 flags some abortive shutdowns as an error different to what 1.1.1
+>> did. This results in info log output in httpd:
+>>
+>> [Tue Aug 29 12:33:06.787210 2023] [ssl:info] [pid 1994673:tid 1994737] SSL
+>> Library Error: error:0A000126:SSL routines::unexpected eof while reading
+>> [Tue Aug 29 12:33:06.787374 2023] [ssl:info] [pid 1994673:tid 1994737]
+>> [client 1.2.3.4:54790] AH01998: Connection closed to child 215 with abortive
+>> shutdown (server myserver:443)
+>>
+>> Some background is given in
+>>
+>>    https://github.com/openssl/openssl/issues/18866
+>>
+>> They introduced a new context option "SSL_OP_IGNORE_UNEXPECTED_EOF" to
+>> suppress this. Some other software now sets it with SSL_CTX_set_options():
+>
+> Interesting! Just wondering, is there a reason why we'd only want to
+> enable this for server-side operation (mctx->pkp == NULL) not also for
+> client-side/proxy operation? Seems like it might be better to enable it
+> unconditionally.
+>
+> Regards, Joe
+
+Hi Joe,
+
+I just wanted to be a bit cautious. I had observed it on the server side
+and have no real knowledge about the client side. But I am OK, to enable
+this "compatibility" flag in both cases.
+
+I'll wait abit for more feedback and then adjust trunk and the backport
+proposal.
+
+Thanks for the feedback,
+
+Rainer

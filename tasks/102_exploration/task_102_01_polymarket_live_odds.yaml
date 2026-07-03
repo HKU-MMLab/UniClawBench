@@ -1,0 +1,40 @@
+task_id: task_102_01_polymarket_live_odds
+category: 102_exploration
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I trade a bit on Polymarket and I want to pull the *current* odds for one
+  specific market programmatically instead of eyeballing the website.
+
+  The market is the one at this URL:
+
+      https://polymarket.com/event/new-rhianna-album-before-gta-vi
+
+  Polymarket publishes developer docs at https://docs.polymarket.com/ . Please
+  read the docs, figure out which API(s) actually serve live market data, and
+  use them (not by scraping the rendered HTML of the polymarket.com page) to
+  get, for this market:
+
+  - the market question and its two outcome labels,
+  - the on-chain CLOB token id for each outcome,
+  - the current price / midpoint for each outcome (the live odds).
+
+  Save your findings to `/tmp_workspace/results/polymarket_odds.json` (the
+  market question, outcomes, each outcome's token id, and each outcome's
+  current price), and save the exact request URLs you called plus their raw
+  responses to `/tmp_workspace/results/polymarket_evidence/` so I can
+  reproduce the pull. A short note on how you discovered the right endpoints
+  from the docs is welcome.
+
+references:
+  - references/eval_rule.md
+
+codex:
+  max_user_followups: 2

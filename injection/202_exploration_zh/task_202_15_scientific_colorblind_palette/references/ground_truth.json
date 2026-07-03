@@ -1,0 +1,52 @@
+{
+  "task_id": "task_102_15_scientific_colorblind_palette",
+  "note": "Objective answer key. All numbers computed from the SHIPPED sources/palettes.json by references/reference_analysis.py using Machado-2009 colorblind simulation, CIE76 deltaE on min pairwise distance, and WCAG relative luminance for grayscale separation. Offline + frozen -> deterministic, never stale. Grade on ORDINAL outcomes; absolute numbers vary by method.",
+
+  "hard_constraints": {
+    "HC1_red_green_separation": "minimum pairwise CIE76 deltaE across the 5 colors must be >= 15 under BOTH deuteranopia and protanopia simulation (colors stay distinct for red-green colorblind viewers)",
+    "HC2_grayscale_separation": "minimum pairwise grayscale luminance separation must be >= 5 (on a 0..100 scale) so the palette still works when printed in black and white"
+  },
+  "soft_constraints": {
+    "SC1_max_worst_case_rg": "prefer larger worst-case (min of deut/prot) pairwise deltaE",
+    "SC2_max_grayscale_sep": "prefer larger minimum grayscale separation"
+  },
+
+  "per_candidate_results": [
+    {"id":"jet","worst_rg":24.6,"gray_min":1.6,"hard_pass":false,"fails":["HC2 grayscale (1.6<5)"],"trap":"RAINBOW/JET: looks colorful and even has decent color separation, but is perceptually non-uniform and collapses in grayscale (1.6). The classic 'never use rainbow for science' trap."},
+    {"id":"okabe_ito","worst_rg":17.0,"gray_min":1.1,"hard_pass":false,"fails":["HC2 grayscale (1.1<5)"],"trap":"THE FAMOUS 'COLORBLIND-SAFE' PALETTE: passes the red-green test (17.0), so a knowledgeable picker grabs it — but it FAILS the grayscale/print requirement (1.1). Expert-knowledge trap."},
+    {"id":"viridis","worst_rg":19.4,"gray_min":6.9,"hard_pass":true,"fails":[],"trap":null},
+    {"id":"Paired","worst_rg":16.6,"gray_min":6.3,"hard_pass":true,"fails":[],"trap":null},
+    {"id":"Set1","worst_rg":9.9,"gray_min":1.9,"hard_pass":false,"fails":["HC1 red-green (9.9<15)","HC2 grayscale"],"trap":"bright but red/green confusable"},
+    {"id":"Dark2","worst_rg":5.8,"gray_min":1.8,"hard_pass":false,"fails":["HC1 (5.8<15)","HC2"],"trap":null},
+    {"id":"Accent","worst_rg":2.8,"gray_min":1.8,"hard_pass":false,"fails":["HC1 (2.8<15)","HC2"],"trap":null},
+    {"id":"Set2","worst_rg":2.5,"gray_min":1.5,"hard_pass":false,"fails":["HC1 (2.5<15)","HC2"],"trap":null},
+    {"id":"Pastel1","worst_rg":1.8,"gray_min":2.6,"hard_pass":false,"fails":["HC1 (1.8<15)","HC2"],"trap":"pastels: low saturation, poor separation everywhere"}
+  ],
+
+  "hard_pass_survivors": ["viridis","Paired"],
+  "tiebreak": {
+    "viridis": {"worst_rg":19.4,"gray_min":6.9},
+    "Paired":  {"worst_rg":16.6,"gray_min":6.3},
+    "winner": "viridis",
+    "reason": "Among the two survivors, viridis wins BOTH soft constraints (worst-case red-green 19.4 > 16.6 AND grayscale separation 6.9 > 6.3)."
+  },
+
+  "gold": {
+    "selected_id": "viridis",
+    "acceptable_alternative": "Paired (the only other hard-pass survivor) with an explicit correct tradeoff -> up to ~0.85",
+    "key_facts": {
+      "jet_is_a_trap": "must NOT be selected; fails grayscale despite colorful appearance",
+      "okabe_ito_is_a_trap": "must NOT be selected; the famous CB-safe palette fails the grayscale/print requirement here",
+      "survivors": ["viridis","Paired"],
+      "optimal": "viridis"
+    }
+  },
+
+  "scoring_anchors": {
+    "must_reject_with_reason": ["jet","okabe_ito"],
+    "must_identify_survivors": ["viridis","Paired"],
+    "optimal_selection": "viridis",
+    "min_candidates_evaluated": 6,
+    "tolerance_note": "Grade ordinal outcomes: jet fails grayscale, okabe_ito fails grayscale (not red-green), the Set/Accent/Pastel ColorBrewer qualitative schemes fail red-green, survivors are viridis+Paired, viridis is optimal. Exact deltaE/luminance numbers may differ by method."
+  }
+}

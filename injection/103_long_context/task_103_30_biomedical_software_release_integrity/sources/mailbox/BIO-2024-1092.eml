@@ -1,0 +1,32 @@
+Message-ID: <YcIOWi/CHHia4pLC@an3as.eu>
+X-Clawbench-ID: BIO-2024-1092
+Date: Tue, 21 Dec 2021 18:26:50 +0100
+From: Andreas Tille <tille@debian.org>
+To: Steffen Möller <steffen_moeller@gmx.de>
+Subject: Re: RFS: r-cran-sparql - dependency for a more typical Med package
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_12_msg00125.html
+
+Hi Steffen,
+
+Am Tue, Dec 21, 2021 at 04:05:17PM +0100 schrieb Steffen Möller:
+> I would appreciate some extra scrutiny for
+>
+> https://salsa.debian.org/r-pkg-team/r-cran-sparql
+>
+> Please kindly upload if you consider this "ready-enough" or pass the
+> token back to me, please.
+
+Uploaded after enhancing description a bit.
+
+> This https://www.disgenet.org/disgenet2r is why I (and Debian at large,
+> you would have thought that we long feature a SPARQL package) am after it.
+
+Sounds good.  Thanks for your work on it
+
+    Andreas.
+
+--
+http://fam-tille.de

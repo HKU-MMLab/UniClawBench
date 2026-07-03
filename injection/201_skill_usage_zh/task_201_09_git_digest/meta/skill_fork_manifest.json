@@ -1,0 +1,14 @@
+{
+  "task_id": "task_101_09_git_digest",
+  "notes_visible_to_executor": false,
+  "skill_changes": [
+    {
+      "original_skill": "markdown-formatter",
+      "injected_skill": "markdown-formatter",
+      "original_source": "clawhub",
+      "change_type": "benchmark environment adaptation",
+      "reason": "The skill is already injected for the task, so executor-facing docs were changed to use /root/skills/markdown-formatter instead of asking the model to install it.",
+      "executor_skill_path": "skills/markdown-formatter"
+    }
+  ]
+}

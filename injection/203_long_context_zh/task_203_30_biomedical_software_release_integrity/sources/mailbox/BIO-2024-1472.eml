@@ -1,0 +1,32 @@
+Message-ID: <Y4JCgO/CyjlxRtjn@an3as.eu>
+X-Clawbench-ID: BIO-2024-1472
+Date: Sat, 26 Nov 2022 17:44:48 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: [Help] Build issue of latest version of libsbml (probably Java compatibility issue)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_11_msg00101.html
+
+Hi Pierre,
+
+Am Sat, Nov 26, 2022 at 03:30:27PM +0100 schrieb Pierre Gruet:
+> Done! Indeed there was an import of an empty set of Java classes, I repaired
+> this. Also I added a missing #include in another set of bindings. I
+> submitted my patches upstream.
+
+Thanks a lot!
+
+> Now dh_auto_build succeeds but there is a whole bunch of reports for
+> dh_missing, see relevant excerpt at the end of this email (Salsa CI job
+> stopped outputting before this step).
+> Would you like to take over?
+
+Sure I'll take it.
+
+Thanks again,
+    Andreas.
+
+--
+http://fam-tille.de

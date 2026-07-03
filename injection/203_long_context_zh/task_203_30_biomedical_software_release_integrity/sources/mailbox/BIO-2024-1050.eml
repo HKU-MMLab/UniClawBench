@@ -1,0 +1,45 @@
+Message-ID: <DB9P192MB15409174432FF8189DA094FBA64E2@DB9P192MB1540.EURP192.PROD.OUTLOOK.COM>
+X-Clawbench-ID: BIO-2024-1050
+Date: Thu, 24 Oct 2024 06:57:04 +0000
+From: Urmas Rist <urmas@leil.io>
+To: Tony Travis <tony.travis@minke-informatics.co.uk>,	"debian-med@lists.debian.org" <debian-med@lists.debian.org>
+Subject: Re: SaunaFS
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_10_msg00018.html
+
+Hello Tony!
+
+> https://github.com/leil-io/debian-package
+
+Sorry for the confusion, but that URL is going to be mostly used by ourselves
+for building our own binaries targeting Ubuntu 22.04 and 24.04, it's not meant
+for Debian despite the confusing name (I went with the technical term since
+it's possible to use this on any system with the Debian package manager,
+provide you probably do some patching). The package was taken from the source
+repository to re-organize our building process in preparation for a new
+delivery pipeline I'm developing.
+
+I have however worked in my spare time on a package specifically for Debian,
+especially during the previous week (in fact, the re-organization above was
+inspired by this). I heavily used the previous LizardFS package to work on
+this, which aligns with Debian rules much better than the above URL.
+
+I've managed to get it to compile on sid, but there's still some lintian issues
+to work on and one binary (saunafs-uraft) is still missing. I haven't uploaded
+this package anywhere since it's completely ready yet, however I might upload
+it for (early) review and testing if there's interest.
+
+My main question is where to upload it? Would mentors.debian.net be fine even
+if unfinished or is there somewhere better? I might just temporarily upload to
+Github until a better place is found.
+
+Also, maybe #1080956
+(https://lists.debian.org/debian-devel/2024/09/msg00115.html) would be a better
+thread for this?
+
+Best regards,
+
+Urmas Rist
+SaunaFS Maintainer

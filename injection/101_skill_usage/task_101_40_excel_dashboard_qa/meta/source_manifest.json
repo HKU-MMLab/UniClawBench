@@ -1,0 +1,10 @@
+{
+  "task_id": "task_101_40_excel_dashboard_qa",
+  "note": "Synthetic but realistic Excel dashboard QA workbook built from raw 2024 sales records. It is used for local spreadsheet QA.",
+  "entries": [
+    {
+      "path": "sales_dashboard_2024.xlsx",
+      "description": "Sales-dashboard Excel workbook with raw data plus pivot/chart/summary sheets for QA."
+    }
+  ]
+}

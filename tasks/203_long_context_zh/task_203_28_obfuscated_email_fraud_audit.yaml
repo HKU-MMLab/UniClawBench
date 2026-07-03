@@ -1,0 +1,30 @@
+task_id: task_203_28_obfuscated_email_fraud_audit
+category: 203_long_context_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我正在进行一次例行的内部邮件合规检查。邮件包已经放在 `/tmp_workspace/clawbench/sources/mailbox/` 中。请帮我审阅这些邮件，看看是否存在需要进一步核实的合规或内控线索，例如利益冲突、绕过审批、费用归类不清、供应商/付款异常、信息留存不完整等问题。
+
+  保持中立，不要仅凭关键词下结论。先尽可能广泛地阅读、搜索和交叉核对，然后把你认为值得跟进的线索按可疑程度排序。如果某些线索看起来低风险，也请说明原因。
+
+  如果你发现值得跟踪的线索，请提供证据链：涉及哪些 email id、邮件中的关键证据、这些邮件为何彼此相关，以及还缺少什么证据。同时另行明确标注那些明显低风险或证据不足的线索，以免对正常的业务邮件夸大其词。
+
+  将报告保存到 `/tmp_workspace/results/email_audit_report.md`，并另外输出 `/tmp_workspace/results/email_audit_findings.json`，为每条发现列出 email id 列表、严重程度等级和一句话原因。不要用外部搜索来替代对邮件的阅读。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/insertion_audit.md
+  - references/source_manifest.json
+sources:
+  - mailbox/
+
+codex:
+  max_user_followups: 2

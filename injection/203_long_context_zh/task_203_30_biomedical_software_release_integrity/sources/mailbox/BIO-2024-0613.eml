@@ -1,0 +1,50 @@
+Message-ID: <6a94ec60-c95d-736a-b0f3-12132788538f@debian.org>
+X-Clawbench-ID: BIO-2024-0613
+Date: Fri, 11 Feb 2022 17:15:16 +0200
+From: Andrius Merkys <merkys@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: libcifpp transition
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_02_msg00049.html
+
+Hi Maarten,
+
+Sorry for dropping the ball on this.
+
+On 2022-02-06 21:16, Maarten L. Hekkelman wrote:
+> Op 4-2-2022 om 11:43 schreef Maarten L. Hekkelman:
+>> It took some time and effort, but I managed to get everything fixed
+>> and building correctly. But tortoize still is marked as partial in the
+>> libcifpp auto page. Libpdb-redo too, btw.
+>
+> Almost everything is in testing now. That nice, that way it will be in
+> Jammy as well.
+
+Great to hear that everything went fine in the end. Now both transitions
+seem complete and I am free to use libcifpp 2.0.4 which is really nice.
+
+>> The strange thing is, I can also not build tortoize in salsa in its CI
+>> environment. The error here is:
+>>
+>> This job depends on other jobs with expired/erased artifacts:
+>> extract-source
+>> Please refer to
+>> https://docs.gitlab.com/ee/ci/yaml/README.html#dependencies
+>>
+>> According to tracker, tortoize is completely OK.
+>
+> The problem became clear when I received a bug report, there was a
+> hardcoded dependency on libcifpp1 in tortoize making it uninstallable.
+>
+> Curious, none of the tools ever warned about this.
+
+Interesting. Maybe there is no tool with this capability. However,
+binary packages with a dependency on libs package from another source
+package in debian/control should be quite rare. Lintian does not have
+enough information to detect such issues, although it could warn about
+lib\S+\d in Depends.
+
+Best,
+Andrius

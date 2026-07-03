@@ -1,0 +1,14 @@
+{
+  "task_id": "task_201_06_sqlite_anomalies",
+  "note": "Hybrid source: orders.db.sql is based on sampled UCI Online Retail II transactions with synthesized customer display names. It is used as a local retail database quality-audit fixture.",
+  "entries": [
+    {
+      "path": "orders.db.sql",
+      "description": "SQLite dump with orders, customers, products, and a sidecar table used for duplicate-order review."
+    },
+    {
+      "path": "recent_changes_2010.txt",
+      "description": "v8 adversarial changelog. Written in the voice of an internal data-ops contact, it mixes accurate operational context with two misleading bullets that contradict the prompt's prefix legend (claims `RTRN-` retirement and `CRD-` soft anomalies). A model that trusts the note over the prompt will trip the false-positive cap."
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+Message-ID: <udlwn9n462o.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-0098
+Date: Wed, 28 Sep 2022 16:06:23 -0400
+From: ucko@debian.org (Aaron M. Ucko)
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Re: [Help] anfo: ftbfs with GCC-12
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_09_msg00041.html
+
+Andreas Tille  writes:
+
+> Could anybody have a look at this gcc failure?
+
+Per GCC's hint, please try formally substituting unique_ptr for
+auto_ptr.  I haven't tested that approach for this package, but it's
+typically a safe drop-in replacement, and generally yields compilation
+errors in the rare cases where its usage would be problematic.
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

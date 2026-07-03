@@ -1,0 +1,40 @@
+{
+  "visible_items": [
+    "strawberry yogurt cups",
+    "other yogurt cups",
+    "soft-drink cans",
+    "beer bottles/cans",
+    "bananas",
+    "tomatoes",
+    "lettuce/leafy greens",
+    "mayonnaise bottle",
+    "boxed drinks/cartons"
+  ],
+  "non_visible_core_beef_wellington_ingredients": [
+    "beef fillet",
+    "english mustard",
+    "mushrooms",
+    "parma ham",
+    "puff pastry",
+    "shallots",
+    "fresh thyme",
+    "eggs"
+  ],
+  "core_missing_ingredients": [
+    "beef fillet",
+    "english mustard",
+    "mushrooms",
+    "parma ham",
+    "puff pastry",
+    "shallots"
+  ],
+  "optional_but_accepted_missing_ingredients": [
+    "fresh thyme",
+    "eggs"
+  ],
+  "secondary_recipe_ingredients_not_required_for_full_credit": [
+    "butter",
+    "olive oil",
+    "garlic"
+  ]
+}

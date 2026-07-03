@@ -1,0 +1,31 @@
+Message-ID: <20231205203052.hhheufuj45hwxynw@office.mailbox.org>
+X-Clawbench-ID: BIO-2024-1303
+Date: Wed, 6 Dec 2023 02:00:52 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: Andreas Tille <andreas@an3as.eu>
+Subject: Re: Could some SnpEff user from the community please ping authors
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_12_msg00014.html
+
+On Tue, Nov 28, 2023 at 05:54:30PM +0100, Andreas Tille wrote:
+> I wonder whether some people from the community might be able to join
+> our attempt to get this issue fixed and raise their voice inside the
+> Github issue (or use other channels) to get this finally fixed.  I guess
+> the problem does not only occure in snippy test suite but also in other
+> pipelines so the community might be affected by this issue.
+>
+>
+> [1] https://github.com/pcingola/SnpEff/issues/455
+
+Sometimes just tagging upstream author does wonders :)
+
+They have replied and the (upstream) bug has been closed.
+BTW, are you able to still reproduce (without any fixes for snpeff/snippy) #1031465?
+
+For me, it is working fine in an unstable chroot (including autopkgtests)
+and maybe could be closed.
+
+Best,
+Nilesh

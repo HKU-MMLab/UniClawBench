@@ -1,0 +1,15 @@
+{
+  "task_id": "task_101_11_obsidian_vault_audit",
+  "skills": [
+    {
+      "original_skill": "obsidian",
+      "injected_skill": "obsidian",
+      "change_type": "offline workspace adaptation",
+      "changes": [
+        "Removed the obsidian-cli binary requirement and GUI/URI workflow.",
+        "Replaced it with direct Markdown vault audit guidance for the provided local vault path."
+      ],
+      "reason": "The task provides a local vault under sources/ and should not require installing or launching Obsidian tooling inside the executor container."
+    }
+  ]
+}

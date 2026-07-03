@@ -1,0 +1,23 @@
+{
+  "id": "M10",
+  "title": "HP 27\" 4K USB-C (Renewed)",
+  "listing": {
+    "size_in": 27,
+    "resolution": "4K",
+    "usb_c": "yes",
+    "price": 389.0,
+    "condition": "new"
+  },
+  "detail": {
+    "size_in": 27,
+    "resolution": "3840x2160",
+    "usb_c_video": true,
+    "usb_c_note": "USB-C DP Alt Mode",
+    "price": 389.0,
+    "price_type": "renewed",
+    "new_price": 499.0,
+    "seller": "third_party_reseller",
+    "ships_to_us": true,
+    "availability": "out_of_stock"
+  }
+}

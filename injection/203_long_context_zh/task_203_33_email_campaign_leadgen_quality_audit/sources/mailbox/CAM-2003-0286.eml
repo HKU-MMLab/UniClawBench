@@ -1,0 +1,47 @@
+Message-ID: <003301c22f2f$b722ba30$3864a8c0@sabeo.ie>
+X-Clawbench-ID: CAM-2003-0286
+Date: Fri, 19 Jul 2002 15:22:26 +0100
+From: Matthew French <mfrench42@yahoo.co.uk>
+To: ilug@linux.ie
+Subject: Re: [ILUG] How to copy some files
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00061.2a9530684abd71525821e8bc2c8019ec
+
+Niall asked:
+> I have about 60G of data which I need to copy from one disk to another.
+> However, I'm not sure how I should best copy it. The problem is the bulk
+of
+> the data is images and most of these image have two directory entries i.e.
+> there is a hard link to each file. If I copy them using cp -a or my usual
+> favourite of find .|cpio -pmd other_dir it's going to copy each file
+twice,
+> which is not what I want. dump / restore would take care of this if the
+> source filesystem wasn't reiserfs :-( Any suggestions ?
+
+How about something like:
+
+cd {dest.dir}
+tar -C {source.dir} cf - | tar xf -
+
+tar cf - will pipe the tar file to stdout and tar xf - will untar it. This
+should keep permissions and links, and if you do it as root you will keep
+the owners too... :)
+
+Not tested, though. You may need other flags as well.
+
+- Matthew
+
+
+__________________________________________________
+Do You Yahoo!?
+Everything you'll ever need on one web page
+from News and Sport to Email and Music Charts
+http://uk.my.yahoo.comm
+
+
+--
+Irish Linux Users' Group: ilug@linux.ie
+http://www.linux.ie/mailman/listinfo/ilug for (un)subscription information.
+List maintainer: listmaster@linux.ie

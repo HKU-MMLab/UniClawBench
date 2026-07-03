@@ -1,0 +1,130 @@
+{
+  "task_id": "task_101_33_exhibitor_compare",
+  "difficulty": "Hard",
+  "schema": "a",
+  "schema_notes": "PDF prospectus comparison plus CSV-backed ROI model",
+  "skills_declared": [
+    "pdf-extract",
+    "business-writing",
+    "imap-smtp-email"
+  ],
+  "ground_truth": {
+    "dimensions": [
+      "booth_fee",
+      "deposit",
+      "cancellation",
+      "package_includes",
+      "schedule"
+    ],
+    "roi_dimensions": [
+      "total_cash_outlay",
+      "expected_gross_margin",
+      "expected_net_contribution",
+      "break_even_deals",
+      "break_even_qualified_leads"
+    ],
+    "roi_workbook": {
+      "required_sheet": "ROI",
+      "required_columns": [
+        "show",
+        "booth_fee",
+        "staff_travel_cost",
+        "total_cash_outlay",
+        "expected_gross_margin",
+        "expected_net_contribution",
+        "break_even_deals",
+        "break_even_qualified_leads"
+      ],
+      "formula_columns": [
+        "total_cash_outlay",
+        "expected_gross_margin",
+        "expected_net_contribution",
+        "break_even_deals",
+        "break_even_qualified_leads"
+      ]
+    },
+    "accepted_recommendation_pairs": [
+      [
+        "CDA Anaheim 2025",
+        "ACVO 2025"
+      ],
+      [
+        "ACVO 2025",
+        "CDA Anaheim 2025"
+      ]
+    ],
+    "show_facts": {
+      "ACVO 2025": {
+        "booth_fee": "USD 4,500",
+        "deposit": "USD 1,500",
+        "cancellation": "50% before 2025-05-01; no refund after",
+        "package_includes": "1 table, 2 chairs, Wi-Fi, 2 full-conference badges",
+        "schedule_anchor": "2025-07-16"
+      },
+      "CDA Anaheim 2025": {
+        "booth_fee": "USD 3,800",
+        "deposit": "USD 1,000",
+        "cancellation": "Full refund before 2025-04-15; 50% before 2025-06-01; no refund after",
+        "package_includes": "1 table, 2 chairs, carpet, 4 exhibitor-hall badges",
+        "schedule_anchor": "2025-09-11"
+      },
+      "Texas Charter Industry Expo 2025": {
+        "booth_fee": "USD 5,200",
+        "deposit": "USD 2,000",
+        "cancellation": "25% refund before 2025-05-15; no refund after",
+        "package_includes": "draped booth, 1 table, 2 chairs, power strip, 3 full-conf badges",
+        "schedule_anchor": "2025-10-06"
+      }
+    },
+    "roi_facts": {
+      "ACVO 2025": {
+        "expected_qualified_leads": 55,
+        "lead_to_deal_rate": 0.08,
+        "gross_margin_per_deal_usd": 1800,
+        "staff_travel_usd": 2600,
+        "total_cash_outlay_usd": 7100,
+        "expected_gross_margin_usd": 7920,
+        "expected_net_contribution_usd": 820,
+        "break_even_deals": 4,
+        "break_even_qualified_leads": 50
+      },
+      "CDA Anaheim 2025": {
+        "expected_qualified_leads": 95,
+        "lead_to_deal_rate": 0.07,
+        "gross_margin_per_deal_usd": 1600,
+        "staff_travel_usd": 3100,
+        "total_cash_outlay_usd": 6900,
+        "expected_gross_margin_usd": 10640,
+        "expected_net_contribution_usd": 3740,
+        "break_even_deals": 5,
+        "break_even_qualified_leads": 62
+      },
+      "Texas Charter Industry Expo 2025": {
+        "expected_qualified_leads": 70,
+        "lead_to_deal_rate": 0.06,
+        "gross_margin_per_deal_usd": 2200,
+        "staff_travel_usd": 4200,
+        "total_cash_outlay_usd": 9400,
+        "expected_gross_margin_usd": 9240,
+        "expected_net_contribution_usd": -160,
+        "break_even_deals": 5,
+        "break_even_qualified_leads": 72
+      }
+    },
+    "topic_dimensions": [
+      "booth_economics",
+      "traffic_estimate",
+      "vertical_alignment",
+      "timing_logistics",
+      "roi_break_even"
+    ],
+    "topic_dimension_keywords": {
+      "booth_economics": ["booth fee", "deposit", "package"],
+      "traffic_estimate": ["attendance", "leads", "conversion"],
+      "vertical_alignment": ["pet", "veterinary", "animal", "vet med"],
+      "timing_logistics": ["schedule", "setup", "teardown"],
+      "roi_break_even": ["break-even", "ROI", "leads needed"]
+    },
+    "min_topic_dimensions_covered": 5
+  }
+}

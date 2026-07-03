@@ -1,0 +1,121 @@
+Message-ID: <CAKQ1sVNcLMtceSnySPrcbaYACW+pL4=Z3SraRrJMg=sLaAE8iA@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1133
+Date: Thu, 14 Apr 2022 15:43:08 +0200
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: httpd-dev <dev@httpd.apache.org>
+Subject: Re: Faster start children after fatal signals?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-04.mbox
+
+On Thu, Apr 14, 2022 at 1:44 PM Ruediger Pluem <rpluem@apache.org> wrote:
+>
+> On 4/14/22 1:16 PM, Yann Ylavic wrote:
+> > On Thu, Apr 14, 2022 at 12:09 PM Ruediger Pluem <rpluem@apache.org> wrote:
+> >>
+> >> On 4/14/22 11:52 AM, Yann Ylavic wrote:
+> >>>
+> >>> Any signal that killed the process would mean something unexpected
+> >>> happened since we clean_child_exit() otherwise?
+> >>
+> >> Hm. You mean that the case for
+> >>
+> >>         case SIGTERM:
+> >>         case SIGHUP:
+> >>         case AP_SIG_GRACEFUL:
+> >>
+> >> in ap_process_child_status
+> >> never triggers as the child catches these and does a clean_child_exit()?
+> >
+> > Yes
+> >
+> >>
+> >> If yes, the above seems to be a simple solution, but it would also capture SIGKILL which might
+> >> have been issued by our parent. Does this matter?
+> >
+> > I think our SIGKILLs (for ungraceful restart) are "captured" by
+> > ap_reclaim_child_processes(), that is outside server_main_loop() so it
+> > should be OK..
+>
+> Good point. Then I am fine with your proposed patch.
+
+Thinking more about it, I came to something like this:
+
+Index: server/mpm/event/event.c
+===================================================================
+--- server/mpm/event/event.c    (revision 1899818)
++++ server/mpm/event/event.c    (working copy)
+@@ -3382,6 +3382,7 @@ static void server_main_loop(int remaining_childre
+ {
+     int num_buckets = retained->mpm->num_buckets;
+     int max_daemon_used = 0;
++    int successive_children_signaled = 0;
+     int child_slot;
+     apr_exit_why_e exitwhy;
+     int status, processed_status;
+@@ -3460,11 +3461,26 @@ static void server_main_loop(int remaining_childre
+             /* Don't perform idle maintenance when a child dies,
+              * only do it when there's a timeout.  Remember only a
+              * finite number of children can die, and it's pretty
+-             * pathological for a lot to die suddenly.
++             * pathological for a lot to die suddenly.  If that happens
++             * anyway, protect against pathological segfault flood by not
++             * restarting more than 3 children if no timeout happened in
++             * between, otherwise we let the usual maintenance go.
+              */
+-            continue;
++            if (child_slot < 0 || !APR_PROC_CHECK_SIGNALED(exitwhy)) {
++                continue;
++            }
++            if (++successive_children_signaled >= 3) {
++                apr_sleep(apr_time_from_sec(1));
++            }
++            else {
++                remaining_children_to_start++;
++            }
+         }
+-        else if (remaining_children_to_start) {
++        else {
++            successive_children_signaled = 0;
++        }
++
++        if (remaining_children_to_start) {
+             /* we hit a 1 second timeout in which none of the previous
+              * generation of children needed to be reaped... so assume
+              * they're all done, and pick up the slack if any is left.
+--
+
+I have not tested it yet but possibly without this if many children
+segfault successively we might enter a busy fork() loop.
+The above would restart killed children immediately (using the
+remaining_children_to_start mechanism) only if there are less than 3
+successively, otherwise sleep 1s and
+perform_idle_server_maintenance().
+
+WDYT?
+
+> >
+> >>
+> >> Do we need something for processes that die due to MaxConnectionsPerChild or do we expect them to die at a slow path where the
+> >> current approach is fine?
+> >
+> > Hm, good question. Restarting them if not necessary from a maintenance
+> > metrics perspective is no better/worse than waiting for a maintenance
+> > cycle, so I'd say let them be maintained as we do now..
+> > Ideally (maybe) we'd pass a timeout to ap_wait_or_timeout() to make
+> > sure that maintenance cycles really happen every 1s, regardless of
+> > exited processes in the meantime (i.e. handle a "remaining" timeout
+> > instead of the hardcoded 1s which currently may result in
+> > 0.9s+waitpid()+0.9s+waitpid()+timeout thus here ~2s but possibly more
+> > between two maintenance cycles).
+>
+> Hm, but ap_wait_or_timeout only waits if there is nothing to reap, which would mean we would wait at max 1 s (+ processing time
+> for multiple ap_wait_or_timeout calls) until we perform the idle server maintenance, or do I miss your point?
+
+Yeah, I should have looked at ap_wait_or_timeout() better, it's
+actually an ap_wait_or_sleep()..
+
+
+Regards;
+Yann.

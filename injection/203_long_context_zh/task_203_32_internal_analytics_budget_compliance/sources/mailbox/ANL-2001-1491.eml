@@ -1,0 +1,96 @@
+Message-ID: <37694f6f5a641ba92143bd8c452a1a48@enron.com>
+X-Clawbench-ID: ANL-2001-1491
+Date: 2001-10-12T19:11:26-03:00
+From: Neale  Nelson <Nelson.Neale@ENRON.com>
+To: Shanbhogue  Vasant <Vasant.Shanbhogue@ENRON.com>
+Subject: RATS License Update
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Enron kaminski-v public mailbox index.json
+X-Original-Folder: kaminski-v_001/kaminski-v/Inbox
+
+Vasant,
+
+
+I had a chance to speak today with a representative from Estima, the maker of RATS.  Evidently, our current license is as follows:
+
+
+                Version:  RATS 4.0 (original license cost of $ 1,200.00)
+
+                Max. No. of Users: 4
+
+
+The following options outline the costs of upgrading the software:
+
+
+Option 1
+
+
+Version:  RATS 5.0
+
+Users: Site license for Houston/unlimited
+
+
+        RATS 5.0        $ 5,100.00
+
+        CATS module     $ 1,200.00      (cointegration module)
+
+        X-11 module     $ 1,200.00      (RATS implementation of Census Bureau's seasonal adjustment--aids in                    $ 7,500.00              adjusting quarterly and monthly data as well as options for identifying                                         trading days and holidays in time series)
+
+
+Option 2
+
+
+Version:  RATS 5.0
+
+Users: 100
+
+
+        RATS 5.0        $ 4,500.00
+
+        CATS module     $ 1,200.00
+
+        X-11 module     $ 1,200.00
+
+                        $ 6,900.00
+
+
+Option 3
+
+
+Version: RATS 5.0
+
+Users: 50
+
+
+        RATS 5.0        $ 3,600.00
+
+        CATS module     $ 1,200.00
+
+        X-11 module     $ 1,200.00
+
+                        $ 6,000.00
+
+
+Option 4
+
+
+Version RATS 5.0
+
+Users: 25
+
+
+        RATS 5.0        $ 2,500.00
+
+        CATS module     $ 1,100.00
+
+        X-11 module     $ 1,100.00
+
+                        $ 4,700.00
+
+
+Note that we currently have a number of users of RATS both within Research and throughout EGM (Equities, Freight, Fundamentals, Crude Products).  I would recommend, at a minimum, that we upgrade our license to 50 users with base RATS 5.0.  Cointegration can obviously be performed without the automated CATS module--I am not too certain of the utility of the X-11 module.
+
+
+Nelson

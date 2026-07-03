@@ -1,0 +1,54 @@
+Message-ID: <ZY8wbbrdbMWIRp-B@fusion>
+X-Clawbench-ID: BIO-2024-0944
+Date: Fri, 29 Dec 2023 21:47:41 +0100
+From: Étienne Mollier <emollier@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: [Advent bug squashing] Bugs from the past couple weeks
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_12_msg00085.html
+
+Hi all,
+
+Thanks Lin for the additional entries.  I counted bug entries
+closed between December first and twenty fourth on the Debian
+Med Packaging Alioth mailing list[1], and there were 179 closed
+bugs.  That is between 7 and 8 bugs closed per day, which is a
+non negligible fraction of the team's open issues.  With those,
+we went from almost 500 entries down to below 400.
+
+That being said, we still have 200 more bugs to go to get back
+to the figures we left last year; this is caused by various
+waves of mass-bugs-filings, the notable culprit being the wave
+of failures to build source or binaries after a successful
+build.  While the Advent is finished, there are still many
+targets to squash[2].  Happy hunting!  ;)
+
+[1]: https://alioth-lists.debian.net/pipermail/debian-med-packaging/2023-December/date.html
+[2]: https://bugs.debian.org/cgi-bin/pkgreport.cgi?maint=debian-med-packaging@lists.alioth.debian.org
+
+Andreas Tille, on 2023-12-29:
+> Am Fri, Dec 29, 2023 at 10:36:54PM +0700 schrieb Lin Qigang:
+> > While I do not plan to close any more before the new year, I enjoyed joining
+> > this year's bug squashing advent. Thank you again to all of my sponsors and
+> > those who offered help.
+>
+> It was a pleasure to work with you.  In future I'd prefer to grant you
+> DM upload permissions for the packages you worked on.
+
+Seconded, I happen to have searched for your pgp key at some
+point to grant DM permissions, because somehow I thought you
+already were.
+
+> > I hope everyone is enjoying their holidays. I wish
+> > you all a Happy New Year!
+>
+> Same to you
+
+Happy new year everyone,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  pgp: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/2, please excuse my verbosity
+   `-    on air: Antimatter - Eternity Part 24

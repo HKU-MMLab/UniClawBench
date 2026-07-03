@@ -1,0 +1,92 @@
+Message-ID: <YYJgX2ZYPQMohMZa@debian>
+X-Clawbench-ID: BIO-2024-1439
+Date: Wed, 3 Nov 2021 15:41:43 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: debian-science@lists.debian.org
+Subject: Re: Science Subgroups [was Re: Debian Math Team]
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_11_msg00017.html
+
+Hi Stuart,
+
+Thanks for replying, see below:-
+
+On Wed, Nov 03, 2021 at 08:38:10PM +1100, Stuart Prescott wrote:
+
+I'll start from here,
+
+> However, the disadvantages of separate teams are
+>
+> - differing conventions in each team around VCS layout, interactions etc
+
+We adopt the policy of the science team, so the VCS layout will essentially
+be the same. So this will not have any delta with what science team is doing
+currently.
+
+> - niceties around team upload vs NMU reduces the number of people who feel
+> able to help with the packages
+
+I already added several active and interested DDs to the salsa group already,
+and added you just now.
+I also have owner permissions in other teams, and from time to time me and others
+keep looking at pending requests so I expect it to be a low friction process here.
+
+> - fewer people looking at packages across the inevitably-smaller teams
+
+That's a valid point, but I think we need to see the other side of the story here as well.
+There are a few people who are really interested in maintaining math software, and having
+a separate team makes our work easier in seeking for those packages and fixing, rather than say,
+searching for math software in a huge pile, right.
+
+I could agree that there will initially be a few people looking after, but I do expect
+this team to grow, like several other teams in Debian have too. Maybe Andreas could give
+better pointers here.
+
+> Separate teams are optimised for the "main" maintainer of a handful of
+> packages who doesn't routinely work on any other packages; they are optimised
+> _against_ bugsquashers, generalists or people trying to land big projects
+> across large sets of packages.
+
+I'm not sure how that's true, would you mind explaining a bit?
+
+> Collectively, we need to make big changes on a regular basis (GCC bumps, large
+> transitions, Python 2 removal, ...) and for each of them we need people to be
+> able to work on lots of packages with minimal friction. In the recent Python 2
+> removal work, for instance, it was easy for me to work on debian-science
+> packages as I've been a team member since the dawn of time. Working with
+> packages in the smaller teams was *much* more work involving additional git
+> dances, MRs or BTS round-trips.
+
+Okay, I see. But since we adopt essentially the same policy, and the same layout,
+it'd be painless for most folks to do any changes here, with minimal efforts.
+
+> There were also fewer people looking at those
+> packages and it was more likely that there was lots of outstanding QA work,
+> unpackaged upstream versions and packages effectively maintained by NMU.
+
+I think this is repeating the same argument made above again, that we've fewer people,
+I'd simply say that many active people in other blends projects (like -med, -science et. al.) are also
+involved here, and there are good chances that it grows with time.
+I can very well understand your fears that some of our packages undergo bitrot, but then I've two thinsg to point at.
+
+First, its not like the science team has all packages in excellent condition - from my experience of contributing in the science
+team for around two years, I've found several packages lying around, broken. It's not an opinion, its a fact UDD and bug tracker
+show proofs. I'm not pointing fingers at anyone here, please assume my best of intentions here.
+Second, having a separate team with dedicated set of people working on it can make the condition better. In the best case,
+we will see nice QA, in the worst case, I don't expect stuff to change drastically.
+Again, please consider good intention here.
+
+> We should remember that having blends packages, blends web pages and
+> informative wiki pages are completely independent of having a defined team with
+> separate VCS and mailing list. All that needs is one or more people to curate
+> them.
+
+That's correct. I talked with Andreas yesterday on the debian-med bi-weekly call, and
+tasks for math packages should be done soonish :)
+
+Let me know if you need more explanation and/or discussion, and I'll be more than happy to do so.
+
+With best regards,
+Nilesh

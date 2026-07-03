@@ -1,0 +1,25 @@
+Message-ID: <391CF67F-B77C-47C1-918B-0AA621EC2D48@eissing.org>
+X-Clawbench-ID: ASF-2024-0467
+Date: Wed, 18 May 2022 12:19:16 +0200
+From: Stefan Eissing <stefan@eissing.org>
+To: dev@httpd.apache.org
+Subject: strcasecmp raises its...
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-05.mbox
+
+2022 and we discuss strcasecmp() again?
+
+Background: OpenSSL 3.0.3 added OPENSSL_strcasecmp() and friends and there are several issue around their implementation. Up to this version, they relied on the POSIX strcasecmp(). Whatever their reasons for their change...
+
+Checking our sources, we have ap_cstr_casecmp() that does the right thing. But
+- we do not use it everywhere
+- it is not part of APR which relies on the POSIX strcasecmp(), esp. apr_table does.
+
+I want to handshake with you regarding this:
+1. should we scan our sources for strcasecmp and replace it with ap_cstr_casecmp()?
+2. should we talk to the ARP people about their use? I heard that some of them are here as well.
+
+Kind Regards,
+Stefan

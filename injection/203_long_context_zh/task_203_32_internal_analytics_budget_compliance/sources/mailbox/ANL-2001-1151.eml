@@ -1,0 +1,74 @@
+Message-ID: <b74bc097718539d7e297753c8ca28577@enron.com>
+X-Clawbench-ID: ANL-2001-1151
+Date: 2000-10-12T04:11:00-03:00
+From: Brad Horn <Brad Horn>
+To: Zimin Lu <Zimin Lu>, Stinson Gibner <Stinson Gibner>
+Subject: Option P&L
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Enron kaminski-v public mailbox index.json
+X-Original-Folder: kaminski-v_001/kaminski-v/Discussion threads
+
+Gentleman:
+
+        The ERMS system, as you know, has an excellent capability for
+
+decomposing option P&L into the following components:
+
+
+new deals
+
+curve shift
+
+gamma
+
+vega
+
+theta
+
+rho
+
+drift
+
+2nd order adjustments
+
+
+What i dont understand is the gamma component which is reported in dollars.
+
+The unit of measure suggests that incremental changes in a contract position
+
+is being associated with specific prices.  These prices are the effective buy
+
+or sell prices associated with the dynamic delta position.
+
+
+Stated differently, the standard taylor expansion has incorporated a price
+
+variable in such a way as to convert the unit of measure from gamma's
+
+standard contract count to total gamma dolalrs.  This is something I dont
+
+understand.  To date, inquiries to the risk management accounting group has
+
+further revealed that the gamma component of P&L is not well understood.
+
+
+This is what concerns me: Bridgeline has 2 books with option exposures (NYMEX
+
+and Gas Daily).  Both books dynamically hedged its positions during
+
+yesterdays large price move and, through anticipitory hedging in advance or
+
+during the large price move, secured sufficient coverage to neutralize
+
+expected changes in delta.  However, our P&L from our underlying position did
+
+not offset our gamma P&L.  Consequently, I have to ask WHY?  Im hoping that a
+
+brief look at the why gamma dollars are calculated may reveal something which
+
+will better guide our hedging decisions.
+
+
+Any help is appreciated

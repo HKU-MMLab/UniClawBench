@@ -1,0 +1,33 @@
+Message-ID: <32EC12E7-946C-44B6-9ED6-3DDCF2F9F43C@m3y3r.de>
+X-Clawbench-ID: ASF-2024-1344
+Date: Thu, 06 Jun 2024 21:01:02 +0200
+From: Thomas Meyer <thomas@m3y3r.de>
+To: dev@httpd.apache.org
+Subject: Re: Json support for httpd log
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-06.mbox
+
+Hi,
+
+After a review comment I added another commit to the pr to address the review comment.
+
+Mfg
+Thomas
+
+
+Am 2. Juni 2024 16:08:06 MESZ schrieb Thomas Meyer <thomas@m3y3r.de>:
+>Hi,
+>
+>Anything I can do to get this pr reviewed and merged?
+>
+>https://github.com/apache/httpd/pull/429
+>
+>Feedback is most welcome.
+>
+>
+>Mfg
+>Thomas
+--
+Diese Nachricht wurde von meinem Android-Gerät mit K-9 Mail gesendet.

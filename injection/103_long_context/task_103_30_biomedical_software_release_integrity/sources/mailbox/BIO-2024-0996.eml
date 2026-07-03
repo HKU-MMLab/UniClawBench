@@ -1,0 +1,52 @@
+Message-ID: <YktJ7dq/lVVriGZD@an3as.eu>
+X-Clawbench-ID: BIO-2024-0996
+Date: Mon, 4 Apr 2022 21:41:33 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: pigx-rnaseq now depends on megadepth
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_04_msg00012.html
+
+Uploaded the R packages as well as megadepth.
+Kind regards
+     Andreas.
+
+Am Thu, Mar 31, 2022 at 05:22:42PM +0200 schrieb Steffen Möller:
+> Hello,
+>
+> I just also prepared
+>
+> https://salsa.debian.org/med-team/megadepth
+>
+> Comments and/or upload would be lovely.
+>
+> Many thanks and regards,
+> Steffen
+>
+> On 31.03.22 15:35, Steffen Möller wrote:
+> > I was not aware of megadepth - but that is why to pick some experts'
+> > workflow system in the first place as a reference.
+> >
+> > https://salsa.debian.org/r-pkg-team/r-bioc-megadepth
+> >
+> > needs
+> >
+> > https://salsa.debian.org/r-pkg-team/r-cran-cmdfun
+> >
+> > and I am still working on the megadepth binary that is wrapped. So, for
+> > the moment this needs to be installed independently. I suggest to
+> > nonetheless upload the package already.
+> >
+> > I would love to see the package(s) reviewed.
+> >
+> > Many thanks
+> >
+> > Steffen
+> >
+>
+>
+
+--
+http://fam-tille.de

@@ -1,0 +1,58 @@
+Message-ID: <YerIFO+qIAULUC1S@an3as.eu>
+X-Clawbench-ID: BIO-2024-0089
+Date: Fri, 21 Jan 2022 15:49:56 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: [Help] Any idea how to patch cmake code of terraphast properly to get shared libraries
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_01_msg00054.html
+
+Hi Aaron,
+
+Am Fri, Jan 21, 2022 at 08:09:03AM -0500 schrieb Aaron M. Ucko:
+> > Any hint how to fix this would be welcome
+>
+> I see some more target-specific settings towards the bottom of
+> CMakeLists.txt; please try extending the use of
+> TERRAPHAST_PLATFORM_INCLUDE and TERRAPHAST_COMPILE_FLAGS to the new
+> targets.
+
+Ahhh, this leads to some progress and I get some *.so files now.
+But there is some remaining syntax error[1]:
+
+
+[ 44%] Building CXX object CMakeFiles/terraces_c_static.dir/c_lib/terraces.cpp.o
+/usr/lib/ccache/c++  -I/builds/med-team/terraphast/debian/output/source_dir/c_include -I/builds/med-team/terraphast/debian/output/source_dir/include -I/builds/med-team/terraphast/debian/output/source_dir/lib/gcc_clang -g -O2 -ffile-prefix-map=/builds/med-team/terraphast/debian/output/source_dir=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -march=native -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Werror -std=gnu++11 -MD -MT CMakeFiles/terraces_c_static.dir/c_lib/terraces.cpp.o -MF CMakeFiles/terraces_c_static.dir/c_lib/terraces.cpp.o.d -o CMakeFiles/terraces_c_static.dir/c_lib/terraces.cpp.o -c /builds/med-team/terraphast/debian/output/source_dir/c_lib/terraces.cpp
+/builds/med-team/terraphast/debian/output/source_dir/c_lib/terraces.cpp: In function 'int terraceAnalysis(missingData*, const char*, int, const char*, __mpz_struct*)':
+/builds/med-team/terraphast/debian/output/source_dir/c_lib/terraces.cpp:127:59: error: request for member 'get_mpz_t' in 'size.terraces::checked_uint::value()', which is of non-class type 'terraces::index_t' {aka 'long unsigned int'}
+  127 |                         mpz_set(terraceSize, size.value().get_mpz_t());
+      |                                                           ^~~~~~~~~
+/builds/med-team/terraphast/debian/output/source_dir/c_lib/terraces.cpp:136:17: error: 'mpz_class' was not declared in this scope; did you mean 'mpz_clears'?
+  136 |                 mpz_class size;
+      |                 ^~~~~~~~~
+      |                 mpz_clears
+/builds/med-team/terraphast/debian/output/source_dir/c_lib/terraces.cpp:139:33: error: 'size' was not declared in this scope
+  139 |                                 size = terraces::print_terrace_compressed(data, names, ofs).value();
+      |                                 ^~~~
+/builds/med-team/terraphast/debian/output/source_dir/c_lib/terraces.cpp:141:33: error: 'size' was not declared in this scope
+  141 |                                 size = terraces::print_terrace(data, names, ofs).value();
+      |                                 ^~~~
+/builds/med-team/terraphast/debian/output/source_dir/c_lib/terraces.cpp:144:54: error: 'size' was not declared in this scope
+  144 |                                 mpz_set(terraceSize, size.get_mpz_t());
+      |                                                      ^~~~
+make[3]: *** [CMakeFiles/terraces_c_static.dir/build.make:79: CMakeFiles/terraces_c_static.dir/c_lib/terraces.cpp.o] Error
+
+
+Any further hints?
+
+Kind regards
+
+      Andreas.
+
+
+[1] https://salsa.debian.org/med-team/terraphast/-/jobs/2386305#L857
+
+--
+http://fam-tille.de

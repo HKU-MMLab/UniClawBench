@@ -1,0 +1,38 @@
+Message-ID: <9bf12e17-3eed-839a-44b1-a4d048e83e9e@blastwave.org>
+X-Clawbench-ID: ASF-2024-1451
+Date: Wed, 18 Oct 2023 17:44:14 -0400
+From: Dennis Clarke <dclarke@blastwave.org>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.58-rc3 as httpd-2.4.58
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-10.mbox
+
+On 10/17/23 20:58, Yann Ylavic wrote:
+> On Mon, Oct 16, 2023 at 5:10 PM Stefan Eissing via dev
+> <dev@httpd.apache.org> wrote:
+>>
+>> I would like to call a VOTE over the next few days to release
+>> this candidate tarball httpd-2.4.58-rc3 as 2.4.58:
+>
+> [X] +1: It's not just good, it's good enough!
+>
+> Tested on Debian 12 and 13.
+>
+> Thanks for RMing Stefan!
+>
+
+     I don't want to be picky here but when folks report the goodness
+of a build on a given Linux or UNIX can we also please include the
+architecture? I personally run stuff all the time on Itanium and the
+IBM POWER9 and IBM POWER7 big-endian as well as some weird stuff like
+the SiFive RISC-V and yes ... even some old SPARCv9 stuff.  I would
+love to be the geek running a web site on PA-RISC but that is really
+just being obscure on purpose :)
+
+
+--
+Dennis Clarke
+RISC-V/SPARC/PPC/ARM/CISC
+UNIX and Linux spoken

@@ -1,0 +1,28 @@
+Message-ID: <YhHwa/AJ1I3eXhh2@an3as.eu>
+X-Clawbench-ID: BIO-2024-0701
+Date: Sun, 20 Feb 2022 08:40:27 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>,	Steffen Möller <steffen_moeller@gmx.de>
+Subject: Autodocksuite not available at Sourceforge any more
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_02_msg00087.html
+
+Hi Steffen,
+
+I realised that
+
+   https://sourceforge.net/projects/autodocksuite/files/
+
+has no files any more.  Could you shade some light into what we should
+package and what we should rather drop?  Does it help to keep the
+current autodocksuite code inside Debian (but provide a fake watch file
+to reduce noise about failed uscan)?
+
+Kind regards
+
+      Andreas.
+
+--
+http://fam-tille.de

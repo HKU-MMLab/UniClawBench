@@ -1,0 +1,185 @@
+Message-ID: <td57xomarfcnu6hv6fbwdujr57f5bvt572uduoou25syhpo6mf@5slzrocl3ceq>
+X-Clawbench-ID: BIO-2024-1121
+Date: Thu, 18 Jul 2024 17:29:45 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: Steffen Möller <steffen_moeller@gmx.de>
+Subject: Re: PyMol 3.0 is out - salsa upload works for me
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_07_msg00023.html
+
+On Thu, Jul 18, 2024 at 01:21:15PM +0200, Steffen Möller wrote:
+> Thank you, Étienne, well done!
+>
+> I addressed the lintian errors/warnings and introduced d/u/edam besides
+> updating d/u/metadata.
+>
+> Did not find anything to contribute to the problem of the reproducibility test but did not want to just disable it either. IMHO we should just raise an issue with upstream and let them fix that :) Sadly, reprotest is not indicating the exact files that are contributing to the difference, I only know it is in the python3-pymol package. Hm.
+
+Maybe this helps you:
+
+$ debdiff control/source-root/pymol-data_3.0.0+dfsg-1+salsaci+20240718+11_all.deb experiment-1/source-root/pymol_3.0.0+dfsg-1+salsaci+20240718+11_all.deb
+
+[The following lists of changes regard files as different if they have
+different names, permissions or owners.]
+
+Files in second .deb but not in first
+-------------------------------------
+-rw-r--r--  root/root   /usr/lib/mime/packages/pymol
+-rw-r--r--  root/root   /usr/share/applications/pymol.desktop
+-rw-r--r--  root/root   /usr/share/doc-base/pymol.pymol-ref-card
+-rw-r--r--  root/root   /usr/share/doc/pymol/AUTHORS
+-rw-r--r--  root/root   /usr/share/doc/pymol/DEVELOPERS
+-rw-r--r--  root/root   /usr/share/doc/pymol/README.Debian
+-rw-r--r--  root/root   /usr/share/doc/pymol/README.gz
+-rw-r--r--  root/root   /usr/share/doc/pymol/README.test
+-rw-r--r--  root/root   /usr/share/doc/pymol/TODO.Debian
+-rw-r--r--  root/root   /usr/share/doc/pymol/call-pymol-scripts
+-rw-r--r--  root/root   /usr/share/doc/pymol/changelog.Debian.gz
+-rw-r--r--  root/root   /usr/share/doc/pymol/changelog.gz
+-rw-r--r--  root/root   /usr/share/doc/pymol/copyright
+-rw-r--r--  root/root   /usr/share/doc/pymol/pymol-ref-card.pdf.gz
+-rw-r--r--  root/root   /usr/share/man/man1/pymol.1.gz
+-rw-r--r--  root/root   /usr/share/pixmaps/pymol.xpm
+-rwxr-xr-x  root/root   /usr/bin/pymol
+
+Files in first .deb but not in second
+-------------------------------------
+-rw-r--r--  root/root   /usr/share/doc/pymol-data/changelog.Debian.gz
+-rw-r--r--  root/root   /usr/share/doc/pymol-data/changelog.gz
+-rw-r--r--  root/root   /usr/share/doc/pymol-data/copyright
+-rw-r--r--  root/root   /usr/share/pymol/data/chem_comp_bond-top100.cif
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/ace.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/acetylene.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/ala.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/arg.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/argn.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/asn.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/asp.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/asph.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/atp.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/atpA.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/atpB.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/atp_ttpA.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/atp_ttpB.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/benzene.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/benzocycloheptane.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/butane.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/ct_ala.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/ct_arg.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/ct_argn.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/ct_asn.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/ct_asp.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/ct_asph.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/ct_cys.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/ct_gln.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/ct_glu.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/ct_gluh.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/ct_gly.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/ct_hid.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/ct_hie.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/ct_hip.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/ct_his.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/ct_ile.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/ct_leu.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/ct_lys.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/ct_lysn.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/ct_met.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/ct_phe.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/ct_pro.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/ct_ser.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/ct_thr.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/ct_trp.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/ct_tyr.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/ct_val.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/ctp.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/ctpA.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/ctpB.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/ctp_gtpA.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/ctp_gtpB.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/cyanide.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/cyclobutane.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/cycloheptane.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/cyclohexane.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/cyclopentadiene.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/cyclopentane.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/cyclopropane.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/cys.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/ethylene.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/formaldehyde.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/formamide.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/formic.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/gln.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/glu.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/gluh.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/gly.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/gtp.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/gtpA.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/gtpB.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/gtp_ctpA.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/gtp_ctpB.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/hid.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/hie.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/hip.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/his.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/ile.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/indane.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/leu.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/lys.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/lysn.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/met.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/methane.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/methanol.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/napthylene.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/nhh.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/nitro.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/nme.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/nt_ala.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/nt_arg.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/nt_argn.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/nt_asn.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/nt_asp.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/nt_asph.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/nt_cys.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/nt_gln.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/nt_glu.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/nt_gluh.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/nt_gly.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/nt_hid.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/nt_hie.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/nt_hip.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/nt_his.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/nt_ile.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/nt_leu.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/nt_lys.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/nt_lysn.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/nt_met.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/nt_phe.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/nt_pro.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/nt_ser.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/nt_thr.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/nt_trp.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/nt_tyr.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/nt_val.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/peptide.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/phe.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/phosphite.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/pro.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/realtime.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/ser.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/sulfone.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/thr.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/trifluoromethane.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/trp.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/ttp.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/ttpA.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/ttpB.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/ttp_atpA.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/ttp_atpB.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/tyr.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/utp.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/utpA.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/fragments/val.pkl
+-rw-r--r--  root/root   /usr/share/pymol/data/chempy/sidechains/generate1.py
+-rw-r--r-

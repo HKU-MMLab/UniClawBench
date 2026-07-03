@@ -1,0 +1,28 @@
+{
+  "id": "pr_5393",
+  "repo": "pallets/flask",
+  "number": 5393,
+  "title": "fix super call in list comprehension",
+  "body": "Per Python docs, the zero-argument form of `super()` only functions within a class definition scope. List comprehensions operate in a separate scope without class context, breaking such calls on Python <3.12. Reverts the problematic change and adds a regression test. Fixes #5391.",
+  "author": "r04922101",
+  "author_association": "CONTRIBUTOR",
+  "prior_merged_prs": 2,
+  "first_contributed_at": "2022-09-30T00:00:00Z",
+  "additions": 10,
+  "deletions": 1,
+  "files_changed": 3,
+  "changed_files": [
+    "CHANGES.rst",
+    "src/flask/cli.py",
+    "tests/test_cli.py"
+  ],
+  "base_ref": "3.0.x",
+  "head_ref": "fix-super-listcomp",
+  "created_at": "2024-01-26T13:10:00Z",
+  "merged_at": "2024-02-03T16:55:48Z",
+  "closed_at": "2024-02-03T16:55:48Z",
+  "state": "closed",
+  "merged": true,
+  "milestone": "3.0.2",
+  "labels": []
+}

@@ -1,0 +1,12 @@
+Message-ID: <bio-2024-0156@biodebian.example>
+X-Clawbench-ID: BIO-2024-0156
+Date: Thu, 04 Jan 2024 09:12:00 +0000
+From: Marta Lee <marta@biodebian.example>
+To: debian-med@lists.debian.org
+Subject: validation log for 2.3.1
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: synthetic Debian Med-style biomedical release-integrity implant
+
+The release note for GeneMatrix says 2.3.1, but the validation log attached to the candidate still has run_id gm-2.3.0-r4. The numerical output is close, but I do not want to cite the wrong validation version.

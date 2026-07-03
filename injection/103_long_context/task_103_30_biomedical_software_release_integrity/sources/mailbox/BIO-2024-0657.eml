@@ -1,0 +1,46 @@
+Message-ID: <e0029c5c7e4bab580f2f0470951935fef4e81719.camel@43-1.org>
+X-Clawbench-ID: BIO-2024-0657
+Date: Mon, 21 Feb 2022 17:16:40 +0100
+From: Ansgar <ansgar@43-1.org>
+To: Markus Blatt <markus@dr-blatt.de>
+Subject: Re: RFS: source-only upload of opm-{grid,simulators,upscaling}/2021.10-2
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2022_02_msg00040.html
+
+Hi Markus,
+
+On Mon, 2022-02-21 at 15:55 +0100, Markus Blatt wrote:
+> > > opm-upscaling build-depends on missing:
+> > > - libsuperlu3-dev:amd64 (>= 3.0)
+> >
+> > Can you check+fix this?
+> >
+[...]
+>
+> No need to list it again and I removed the offending entry:
+>
+> Build-Depends: ..., libsuperlu3-dev (>= 3.0) | libsuperlu-dev (>=
+> 4.3), ...
+>
+> Maybe buildd is different and does not allow packages that do not
+> exist?
+
+To get reliable build results, the buildd network removes alternative
+build dependencies when building for unstable; only the first
+alternative is used.  They are only used for the *-backports and
+experimental suites (I admit I'm not sure about stable uploads, but
+they should *not* be used there).
+
+As usual there is a small exception: if you have
+
+  Build-Depends: a [i386] | b | c
+
+then the `a [i386]` is discarded on non-i386 earlier, that is, one
+would get "a" on i386 and "b" everywhere else.
+
+See the `RESOLVE_ALTERNATIVES` option in man:sbuild.conf(5) for more
+details.
+
+Ansgar

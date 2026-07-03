@@ -1,0 +1,140 @@
+Message-ID: <bd1273a0-4ced-4710-ab9e-6f3bd232f551@kippdata.de>
+X-Clawbench-ID: ASF-2024-0578
+Date: Thu, 4 Apr 2024 20:27:35 +0200
+From: Rainer Jung <rainer.jung@kippdata.de>
+To: "dev@httpd.apache.org" <dev@httpd.apache.org>
+Subject: pytest results for 2.4.59
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-04.mbox
+
+Hi there,
+
+first although I saw very few pytest failures, I think the results are
+overall fine and good enough for release.
+
+I first had to find out, that I need to build the h2ws websocket client
+during httpd build (for websocket tests) and use the right multipart
+python module ("python-multipart" instead of "multipart").
+
+I see 4 failures:
+
+A] two with "AssertionError: request not found in
+/tmp/esupport-testdir/pytest-event-310/gen/apache/logs/test_...":
+
+__________________________ TestTiming.test_h2_009_01
+___________________________
+self = <http2.test_009_timing.TestTiming object at 0x7f01935bdb10>
+env = <http2.env.H2TestEnv object at 0x7f019305cdf0>
+
+     def test_h2_009_01(self, env):
+...
+
+ >       assert found, f'request not found in {TestTiming.LOGFILE}'
+E       AssertionError: request not found in
+/tmp/esupport-testdir/pytest-event-310/gen/apache/logs/test_009
+E       assert False
+
+modules/http2/test_009_timing.py:46: AssertionError
+
+and
+
+__________________________ TestTiming.test_h2_009_02
+___________________________
+
+self = <http2.test_009_timing.TestTiming object at 0x7f01935bdd20>
+env = <http2.env.H2TestEnv object at 0x7f019305cdf0>
+
+     def test_h2_009_02(self, env):
+...
+ >       assert found, f'request not found in {TestTiming.LOGFILE}'
+E       AssertionError: request not found in
+/tmp/esupport-testdir/pytest-event-310/gen/apache/logs/test_009
+E       assert False
+
+modules/http2/test_009_timing.py:74: AssertionError
+
+
+I need to further investigate, whether the log file is missing, or does
+not have the right contents. The failure should not be critical in itself.
+
+
+B] buffer test failure TestBuffering.test_h2_712_02
+
+self = <http2.test_712_buffering.TestBuffering object at 0x7f01934b2410>
+env = <http2.env.H2TestEnv object at 0x7f019305cdf0>
+
+     def test_h2_712_02(self, env):
+...
+ >       piper.stutter_check(chunks, stutter)
+
+modules/http2/test_712_buffering.py:48:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+_ _ _ _
+
+self = CurlPiper[exitcode=0, stderr=['14:46:27.261890 == Info: Added
+cgi.tests.httpd.apache.org:5001:127.0.0.1 to DNS
+cache\n....tests.httpd.apache.org left intact\n'],
+stdout=['chunk-000-0123456789\nchunk-001-0123456789\nchunk-002-0123456789\n']]
+chunks = ['chunk-000-0123456789\n', 'chunk-001-0123456789\n',
+'chunk-002-0123456789\n']
+stutter = datetime.timedelta(seconds=1)
+
+     def stutter_check(self, chunks: [str], stutter: datetime.timedelta):
+...
+         # received as many chunks as we sent
+ >       assert len(chunks) == len(recv_times), "received response not
+in {0} chunks, but {1}".format(
+             len(chunks), len(recv_times))
+E       AssertionError: received response not in 3 chunks, but 4
+
+pyhttpd/curl.py:118: AssertionError
+----------------------------- Captured stderr call
+-----------------------------
+starting: ['curl', '-s', '--path-as-is', '-D',
+'/tmp/esupport-testdir/pytest-event-310/gen/curl.headers.438',
+'--cacert',
+'/tmp/esupport-testdir/pytest-event-310/gen/apache/ca/ca.rsa4096.cert.pem',
+'--resolve', 'cgi.tests.httpd.apache.org:5001:127.0.0.1', '-H',
+'AP-Test-Name: test_h2_712_02', '--connect-timeout', '5', '-T', '-',
+'-X', 'POST', '--trace-ascii', '%', '--trace-time',
+'https://cgi.tests.httpd.apache.org:5001/h2proxy/h2test/echo']
+
+
+Here I have no idea where the difference in the chunk numbers come from.
+Maybe the test assumptions are to strict?
+
+
+C] a single websocket test failure
+TestWebSockets.test_h2_800_04_non_ws_resource
+
+self = <http2.test_800_websockets.TestWebSockets object at 0x7f01934e56c0>
+env = <http2.env.H2TestEnv object at 0x7f019305cdf0>, ws_server = None
+
+     def test_h2_800_04_non_ws_resource(self, env: H2TestEnv, ws_server):
+         r, infos, frames = ws_run(env, path='/alive.json')
+         assert r.exit_code == 0, f'{r}'
+ >       assert infos == ['[1] :status: 502', '[1] EOF'], f'{r}'
+E       AssertionError: ExecResult[code=0, args=['/path/to/h2ws', '-vv',
+'-c', 'localhost:5002',
+'ws://cgi.tests.httpd.apache.org:5002/alive.json', 'ws-stdin']
+E         ----stdout---------------------------------------
+E         ----stderr---------------------------------------
+E
+E       assert ['[1] :status...F', '[1] RST'] == ['[1] :status...2',
+'[1] EOF']
+E         Left contains one more item: '[1] RST'
+E         Full diff:
+E         - ['[1] :status: 502', '[1] EOF']
+E         + ['[1] :status: 502', '[1] EOF', '[1] RST']
+E         ?                               +++++ ++++++
+
+modules/http2/test_800_websockets.py:178: AssertionError
+
+All in all the results are mich better than what I achieved for the
+previous releases!
+
+Best regards,
+
+Rainer

@@ -1,0 +1,22 @@
+Message-ID: <OFEGLPGPCHPACFLJPAILIECKECAA.macarthy@iol.ie>
+X-Clawbench-ID: CAM-2003-0860
+Date: Thu, 29 Aug 2002 16:37:26 +0100
+From: Justin MacCarthy <macarthy@iol.ie>
+To: "Ilug@Linux.Ie" <ilug@linux.ie>
+Subject: [ILUG] Looking for a file / directory in zip file
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00051.03dcdb0e4e6100cfcf0eddbf78fbae17
+
+Is there a way to look for a particular file or directory in 100's of zip
+files??
+Something like zgrep but for the filename instead of a word
+
+Thanks Justin
+
+
+--
+Irish Linux Users' Group: ilug@linux.ie
+http://www.linux.ie/mailman/listinfo/ilug for (un)subscription information.
+List maintainer: listmaster@linux.ie

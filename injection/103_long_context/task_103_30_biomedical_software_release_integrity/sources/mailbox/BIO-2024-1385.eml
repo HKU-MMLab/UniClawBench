@@ -1,0 +1,56 @@
+Message-ID: <5b808e938324e50e0b784c778ea6e29b1d775196.camel@debian.org>
+X-Clawbench-ID: BIO-2024-1385
+Date: Mon, 27 Sep 2021 17:26:54 +0200
+From: Sébastien Villemot <sebastien@debian.org>
+To: debian-science@lists.debian.org
+Subject: Re: GraphBLAS and SuiteSparse
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_09_msg00037.html
+
+Hi Vincent,
+
+Le samedi 25 septembre 2021 à 17:57 +0200, Vincent Prat a écrit :
+> I recently started packaging python-suitesparse-graphblas [1], which is
+> a Python binding of SuiteSparse:GraphBLAS [2].
+> The version of GraphBLAS packaged in Debian comes from a different
+> repository that includes many other pieces of software, SuiteSparse [3].
+> My problem is that the version included in SuiteSparse (currently 5.0.5)
+> is out of date compared to the standalone version (currently 5.1.7) used
+> by python-suitesparse-graphblas.
+>
+> What is the best option?
+> a) packaging the standalone version with a different name
+> b) packaging the standalone version instead of the one included in
+> SuiteSparse
+> c) packaging an outdated version of python-suitesparse-graphblas to fit
+> the version of GraphBLAS included in SuiteSparse
+>
+> As far as I know, other pieces included in SuiteSparse do not depend on
+> GraphBLAS, so I would rather go for option b.
+> Sébastien, can you confirm this ?
+
+I was not aware that GraphBLAS was also distributed independently of
+SuiteSparse.
+
+I am perfectly fine with option b.
+
+Just note that you will have to be careful with version numbers,
+especially since suitesparse currently has an epoch. The libgraphblas5
+binary package that will be produced by your new source package must
+have a greater version number than the current one.
+
+What I would suggest is to not put the epoch in the new source package
+version, and to only add the epoch on the libgraphblas5 binary package
+(this is technically possible, see e.g. gcc-defaults).
+
+And when libgraphblas bumps its SOVERSION (whichs happens quite
+frequently), then you will be able to drop the epoch and revert to a
+standard versioning scheme.
+
+--
+⢀⣴⠾⠻⢶⣦⠀  Sébastien Villemot
+⣾⠁⢠⠒⠀⣿⡁  Debian Developer
+⢿⡄⠘⠷⠚⠋⠀  https://sebastien.villemot.name
+⠈⠳⣄⠀⠀⠀⠀  https://www.debian.org

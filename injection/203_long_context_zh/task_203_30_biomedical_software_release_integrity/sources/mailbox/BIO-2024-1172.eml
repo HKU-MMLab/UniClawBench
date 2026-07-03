@@ -1,0 +1,58 @@
+Message-ID: <20221224131204.ltdjuoolfq43syjk@nileshpatra.info>
+X-Clawbench-ID: BIO-2024-1172
+Date: Sat, 24 Dec 2022 18:42:04 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: debian-med@lists.debian.org
+Subject: [Advent Bug Squashing] My bug fixes during advent calendar
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_12_msg00104.html
+
+Hi,
+
+Instead of sending each bug fix mail to the list, I thought of sending
+a consolidated list instead, for the advent BSP, starting Dec 1.
+
+Here are the bugs that I have fixed in debian-med team during this time:
+
+╔═════════╤════════════════╤═══════════╗
+║ Bug     │ Package        │ Severity  ║
+╠═════════╪════════════════╪═══════════╣
+║ 1018365 │ gfapy          │ Important ║
+╟─────────┼────────────────┼───────────╢
+║ 1026297 │ unifrac-tools  │ RC        ║
+╟─────────┼────────────────┼───────────╢
+║ 1026590 │ svim           │ RC        ║
+╟─────────┼────────────────┼───────────╢
+║ 1026474 │ python-skbio   │ RC        ║
+╟─────────┼────────────────┼───────────╢
+║ 1026484 │ nipy           │ RC        ║
+╟─────────┼────────────────┼───────────╢
+║ 1026472 │ kineticstools  │ RC        ║
+╟─────────┼────────────────┼───────────╢
+║ 1026815 │ ball           │ RC        ║
+╟─────────┼────────────────┼───────────╢
+║ 1018317 │ biomaj3-daemon │ Important ║
+╟─────────┼────────────────┼───────────╢
+║ 1018316 │ biomaj3-cli    │ Important ║
+╚═════════╧════════════════╧═══════════╝
+
+Admittedly, I have been more fixated on squashing bugs affecting key packages[1] and I
+did fix a bunch of bugs on that front, since we are closer to freeze, and un-surprisingly
+most of these bugs are not in packes maintained by debian-med, and the day job has been quite
+draining in the initial weeks of Dec as well; and so this was all I could manage.
+
+I hope to do more on the med-team front in the coming months.
+
+I'd probbaly not do much for the rest of the year, since it's (holiday?) season.
+
+Merry Christmas to y'all, and I hope to see you next year!
+
+[1]: https://udd.debian.org/dev/bugs.cgi?release=bookworm_and_sid&merged=ign&keypackages=only&fnewerval=7&flastmodval=7&rc=1&ctags=1&cdeferred=1&clastupload=1&cwhykey=1&sortby=last_modified&sorto=asc&format=html#results
+
+Cheers!
+
+--
+Best,
+Nilesh

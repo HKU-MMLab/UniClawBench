@@ -1,0 +1,48 @@
+Message-ID: <YW/GVn+B16fmAsXQ@an3as.eu>
+X-Clawbench-ID: BIO-2024-0752
+Date: Wed, 20 Oct 2021 09:33:42 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Flavien Bridault <flavien.bridault@ircad.fr>
+Subject: Re: Please update sight packaging
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00126.html
+
+Hi Flavien,
+
+Am Wed, Oct 20, 2021 at 08:45:34AM +0200 schrieb Flavien Bridault:
+> Thank you for this precious advice. The tip to run pdebuild when calling gbp
+> buildpackage definitely helps.
+>
+> My next step was to try to build sight in pbuilder but I did not know how to
+> do so without camp being uploaded in unstable first...
+
+I uploaded it yesterday:
+
+$ apt-cache policy libcamp-dev
+libcamp-dev:
+  Installiert:           (keine)
+  Installationskandidat: 0.8.4-1
+  Versionstabelle:
+     0.8.4-3 50
+         50 http://deb.debian.org/debian unstable/main amd64 Packages
+         50 http://incoming.debian.org/debian-buildd buildd-unstable/main amd64 Packages
+
+A frequent trick is to add http://incoming.debian.org/debian-buildd to
+your sources.list inside the pbuilder environment to get this sooner
+before it hits unstable.
+
+> Actually I think I messed up when I rebased my changes above yours, because
+> of course, I have the list of dependencies since we have it on our internal
+> CI/CD pipeline. However I need to ensure that I provide a strict minimal
+> set. Let me fix this today.
+
+Feel free to take the time you need. ;-)
+
+Thanks a lot for maintaining sight
+
+    Andreas.
+
+--
+http://fam-tille.de

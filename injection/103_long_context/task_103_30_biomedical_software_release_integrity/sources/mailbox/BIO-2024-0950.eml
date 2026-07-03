@@ -1,0 +1,41 @@
+Message-ID: <3de52297b0df0ba7ea8f203d25dd1d1c7f4a4a19.camel@irisa.fr>
+X-Clawbench-ID: BIO-2024-0950
+Date: Wed, 07 Dec 2022 09:02:26 +0100
+From: olivier sallou <olivier.sallou@irisa.fr>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Re: Seqan2 FTBFS
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_12_msg00067.html
+
+On Wed, 2022-12-07 at 07:42 +0100, Andreas Tille wrote:
+> Hi,
+>
+> I just wanted to do some polishing changes (watch file + lintian-
+> brush)
+> but I realised seqan2 is failing to build[1].
+
+
+Is it really failing ? [1] link only shows failure due to max execution
+time in CI and job was killed by CI.
+
+Olivier
+
+>  I wonder whether we need
+> to care for this library and thus need to fix it or whether it is
+> time
+> to remove it from Debian.
+>
+> Kind regards
+>    Andreas.
+>
+>
+> [1] https://salsa.debian.org/med-team/seqan2/-/jobs/3622896
+>
+
+
+--
+
+gpg key id: 4096R/326D8438  (keyring.debian.org)
+Key fingerprint = 5FB4 6F83 D3B9 5204 6335  D26D 78DC 68DB 326D 8438

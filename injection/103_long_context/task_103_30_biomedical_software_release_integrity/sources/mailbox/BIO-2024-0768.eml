@@ -1,0 +1,21 @@
+Message-ID: <6d0f35531775ab68362040d800cc402d@disroot.org>
+X-Clawbench-ID: BIO-2024-0768
+Date: Sat, 02 Apr 2022 23:16:07 +0000
+From: "Mohd Bilal" <mdbilal@disroot.org>
+To: debian-med@lists.debian.org
+Subject: RFS: added autopkgtest for intake
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_04_msg00005.html
+
+Hello team,
+
+I've added autopkgtest for the package intake[1]. I've opened an MR[2] and would like someone to review my changes. I would also require sponsoring for my changes.
+
+Thanks & Regards,
+rmb
+
+
+[1] - https://salsa.debian.org/med-team/intake
+[2] - https://salsa.debian.org/med-team/intake/-/merge_requests/1

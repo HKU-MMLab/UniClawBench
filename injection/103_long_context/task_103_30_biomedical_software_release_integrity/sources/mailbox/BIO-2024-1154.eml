@@ -1,0 +1,27 @@
+Message-ID: <YktLmtlHswC7GOEP@an3as.eu>
+X-Clawbench-ID: BIO-2024-1154
+Date: Mon, 4 Apr 2022 21:48:42 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Help Required : Add autopkgtest for atropos
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_04_msg00014.html
+
+Am Tue, Apr 05, 2022 at 12:22:37AM +0530 schrieb Nilesh Patra:
+> On Mon, Apr 04, 2022 at 08:16:07PM +0200, Andreas Tille wrote:
+> > In general I'd recommend to follow the packaging example of our team:
+> >
+> >     https://salsa.debian.org/med-team/community/package_template/-/tree/master/debian/tests
+>
+> Yes, the template is very helpful. But it should not be used when you want to run tests in-place.
+
+That's true.  The template was designed to make sure people will not run
+tests in-place. ;-)
+
+Kind regards
+     Andreas.
+
+--
+http://fam-tille.de

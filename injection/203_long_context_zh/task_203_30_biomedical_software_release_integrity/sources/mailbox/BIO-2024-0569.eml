@@ -1,0 +1,68 @@
+Message-ID: <1935714696.486738.1636999390520@webmail.mijndomein.nl>
+X-Clawbench-ID: BIO-2024-0569
+Date: Mon, 15 Nov 2021 19:03:10 +0100 (CET)
+From: Ben Tris <benattris@gezapig.nl>
+To: debian-med@lists.debian.org
+Subject: Re: Progress in merging neurodebian team?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_11_msg00085.html
+
+On pymc Debian I think that was PyMC(2) witch is now renamed PyMC2 now obsolete.
+While there was a PyMC3 in development witch in turn renamed to PyMC(3).
+
+
+> Op 15-11-2021 12:46 schreef Andreas Tille :
+>
+>
+> Hi,
+>
+> Am Sun, Nov 14, 2021 at 08:38:20AM +0100 schrieb Ben Tris:
+> > Found some maybe interesting still developed.
+> > To me (no packaging experience or whatever) only openpyxl seems less hard to update.
+> >
+> > openpyxl
+> > https://foss.heptapod.net/openpyxl/openpyxl
+>
+> Updated from new Homepage (and use Debian Science team as maintainer).
+>
+> > itksnap
+> > https://sourceforge.net/p/itk-snap/src/ci/master/tree/
+>
+> That was moved to Debian Med repository but there are build issues.
+> (see my separate mail)
+>
+> > gone
+> >
+> > pymc
+> > https://github.com/pymc-devs/pymc
+>
+> That's new in Debian.
+>
+> > lipsia
+> > https://github.com/lipsia-fmri/lipsia
+>
+> That was removed from Debian in 2013
+>
+> > pymvpa pymvpa2
+> > https://github.com/PyMVPA/PyMVPA
+>
+> This was removed in bug #807941 - any comments whether we should try to
+> re-introduce it into Debian?
+>
+> > openmeeg
+> > https://github.com/openmeeg/openmeeg
+>
+> Also removed from Debian.  I took over the packaging to Debian Med
+> team[1] and updated the packaging but failed to get this built in
+> a timeframe that is acceptable for me.
+>
+> Kind regards
+>
+>       Andreas.
+>
+> [1] https://salsa.debian.org/med-team/openmeeg
+>
+> --
+> http://fam-tille.de

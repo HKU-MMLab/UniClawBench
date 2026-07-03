@@ -1,0 +1,39 @@
+Message-ID: <Zcfe_tdHcI_VHhs5@hermes.hilbert.loc>
+X-Clawbench-ID: BIO-2024-1248
+Date: Sat, 10 Feb 2024 21:39:26 +0100
+From: Karsten Hilbert <Karsten.Hilbert@gmx.net>
+To: Debian-Med <debian-med@lists.debian.org>
+Subject: Re: gnumed-client is marked for autoremoval from testing
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_02_msg00011.html
+
+Am Sun, Feb 11, 2024 at 12:28:14AM +0530 schrieb Nilesh Patra:
+
+> > > gnumed-client 1.8.18+dfsg-1 is marked for autoremoval from testing on 2024-03-15
+> > >
+> > > It (build-)depends on packages with these RC bugs:
+> > > 1062249: libchipcard: NMU diff for 64-bit time_t transition
+> > >  https://bugs.debian.org/1062249
+> > > 1062362: libgwenhywfar: NMU diff for 64-bit time_t transition
+> > >  https://bugs.debian.org/1062362
+...
+> You needed to go one level deep. The same page has gnumed-client-de which is a binary
+> package of this source package. On checking the same at
+>
+>         https://packages.debian.org/sid/gnumed-client-de
+
+A-ha, I see.
+
+Me being upstream would be OK with demoting
+
+	dep:libchipard-tools -> rec:libchipcard-tools
+
+Might someone around here be able to afford the time for
+updating the Debian package metadata accordingly ?
+
+Many thanks,
+Karsten
+--
+GPG  40BE 5B0E C98E 1713 AFA6  5BC0 3BEA AC80 7D4F C89B

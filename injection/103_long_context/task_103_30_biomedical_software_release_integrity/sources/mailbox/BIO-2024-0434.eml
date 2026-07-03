@@ -1,0 +1,28 @@
+Message-ID: <Y5841adOJJMBlFgd@fusion>
+X-Clawbench-ID: BIO-2024-0434
+Date: Sun, 18 Dec 2022 16:59:17 +0100
+From: Étienne Mollier <emollier@emlwks999.eu>
+To: debian-med@lists.debian.org
+Subject: [Advent bug squashing] fixed bug #1024835 in python-pauvre
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_12_msg00088.html
+
+Good day,
+
+I took a closer look at the python-pauvre test failure when run
+against biopython 1.80 and how to circumvent the drop of module
+Bio.SubsMat.  After some documentation reading, trial and error,
+I managed to get a patch into shape to close Debian bug #1024835
+and pauvre Github issue #45[1], and informed upstream[2].
+
+[1]: https://github.com/conchoecia/pauvre/issues/45
+[2]: https://github.com/conchoecia/pauvre/pull/46
+
+Have a nice Sunday of the Advent,  :)
+--
+Étienne Mollier
+Fingerprint:  8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+Sent from /dev/pts/1, please excuse my verbosity.
+On air: Germán Pascual - Cancion Con Todos

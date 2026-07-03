@@ -1,0 +1,4 @@
+log_level=info
+max_retries=3
+timeout_seconds=30
+db_pool_size=10

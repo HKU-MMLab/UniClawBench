@@ -1,0 +1,58 @@
+Message-ID: <Z2bqOesoNA7oxhZN@DESKTOP-DQBDJ0U.localdomain>
+X-Clawbench-ID: ASF-2024-0629
+Date: Sat, 21 Dec 2024 17:18:01 +0100
+From: Thomas Meyer <thomas@m3y3r.de>
+To: dev@httpd.apache.org
+Subject: Re: Friendly nudge: PR #429 "mod_log_config: Add log_formatter  support and a JSON log_formatter"
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-12.mbox
+
+On Sat, Sep 21, 2024 at 09:49:49AM -0400, Eric Covener wrote:
+> On Sat, Sep 21, 2024 at 6:46 AM Thomas Meyer <thomas@m3y3r.de> wrote:
+> >
+> > Hi all,
+
+Hi,
+
+> >
+> > I hope you're all doing well and keeping your servers running smoothly! 🚀
+> >
+> > A little while ago, I submitted PR #429 to add support for log_formatter and a shiny new JSON log formatter to mod_log_config. It's been sitting quietly, waiting for a bit of love (or at least a review), but it seems everyone has been busy keeping the web safe and sound, so it hasn't gotten much attention.
+> >
+> > I know you're all swamped, but if anyone has a moment to take a quick look, I'd really appreciate it! The logs are patiently waiting to be formatted in style (and JSON!). If there’s anything I can do to help move it along or make it easier to review, feel free to let me know.
+> >
+> > Thanks a lot for your time! I'll buy the first round of virtual coffee ☕ for anyone who can help push this one through. 😉
+>
+>
+> a few minor requests after paging through again:
+>
+> 1. doc (mod_log_config.xml, logs.xml -- not just for the obvious
+> reasons, but it helps reviewers too)
+> 2. changelog entry (is the only expected change that you can pick JSON
+> or are there other subtle things to declare?)
+> 3. Some of the TODOS might be a little alarming to reviewers, it is
+> unclear which ones are status quo for example
+> 4. it's a massive pain to get started,  but test coverage in
+> https://svn.apache.org/repos/asf/httpd/test/framework/trunk .  I will
+> try to find some time to create a skeletal test for json and non-json
+> just so the code is actually running.
+> 5. replace "gruppenwechsel" in comments
+
+I added some documentation in the manual page of mod_log_config, and removed the word gruppenwechsel.
+Please see updated PR:
+
+https://github.com/apache/httpd/pull/429/files
+
+For testing I already did bid for some feedback regarding some changes I made, which did add
+code coverage to the existing tests and add basic coverage for existing mod_log_config options,
+but sadly never did get any reply :-(
+
+https://github.com/apache/httpd/pull/494
+https://github.com/apache/httpd-tests/compare/trunk...thomasmey:httpd-tests:tests/mod-log-config
+
+maybe at least the code coverage PR and the httpd-test changes can get merged, or at least looked at by somebody?
+
+Mfg
+thomas

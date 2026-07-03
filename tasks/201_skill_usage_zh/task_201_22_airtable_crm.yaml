@@ -1,0 +1,118 @@
+task_id: task_201_22_airtable_crm
+category: 201_skill_usage_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我们的季度管道评审明天就开，我需要在走进会场之前对整个交易漏斗做一次干净的全面核查。用
+  $AIRTABLE_PAT 从 base $AIRTABLE_BASE_ID 的表 $AIRTABLE_TABLE_NAME 中拉取每一行
+  ——数据拉取用工作区的 Airtable 集成技能，数字运算用
+  数据库操作技能。
+
+  我真正想要一眼看清的是：哪些交易是真的卡住了，而不是只是在正常推进；我的人哪里负荷过重、
+  哪里没有；现在哪个阶段是最严重的拥堵点；金额敞口真正集中在哪里；以及哪些 Won/Lost 行已经
+  陈旧到我们应当把它们当作冷掉的、别再假装它们还在盘里。无论你决定在书面报告里放什么，
+  都要确保这些角度都体现出来。
+
+  给我 /tmp_workspace/results/audit.json，做一次快速的健康度判读：
+  - active_stuck_deals：处于 Lead、Qualified、Proposal 或 Negotiation 的、在其当前阶段
+    停留超过 21 天的每一笔非终态交易。把它们全部列出。
+  - moving_active_deals：所有处于 21 天或以内的活跃非终态交易。
+  - terminal_aged_deals：所有超过 21 天的 Won/Lost 交易，单独分开，以免污染活跃的跟进。
+  - 针对所有行的 stage_counts。
+  - active_pipeline_value_usd 和 terminal_value_usd。
+  - owner_followups：对每一个至少有一笔活跃卡住交易的 owner，给我他们的卡住数量、卡住总值、
+    最久的卡住交易 id、在阶段中停留的最长天数，以及一条简短的下一步行动。每条下一步行动都
+    应以祈使动词开头，例如 Email / Call / Schedule / Send / Submit / Review / Confirm /
+    Escalate / Follow-up，让它读起来像一条指令；对于其最久卡住交易已远超 SLA 的 owner，你
+    应当用天数明确点出逾期时长，例如 "45 days"。
+
+  另外保存 /tmp_workspace/results/owner_followups.csv，列为
+  owner,active_stuck_count,active_stuck_value_usd,oldest_active_stuck_deal,
+  oldest_days_in_stage,next_action。对每一笔卡住或终态陈旧的交易，包含足够的识别信息——
+  deal_id、account、owner、stage、value、days_in_stage——好让我不必打开 Airtable 就能去
+  追踪它。
+
+  请增加 /tmp_workspace/results/priority_queue.csv，只列出最危险的活跃卡住交易——也就是
+  金额与浪费时间的组合最大的那些。把 risk_score 计算为
+  value_usd * days_in_stage / 1000，四舍五入到一位小数，按该分数降序排序，只给我风险最高
+  的前七这一档。每一行需要 deal_id、account、owner、stage、
+  value_usd、days_in_stage、risk_score，以及一条简短理由。
+
+  你可以把更宏观的判读穿插进 audit.json，或在其中放一个简短的汇总块，让卡住交易、owner
+  负荷、阶段流转、金额集中度，以及失效的终态客户这几方面的全貌都集中在一处清晰呈现——我想
+  扫一眼就知道下一步该往哪里使劲。
+
+task_snapshot: |
+  我们的季度管道评审明天就开，我需要对整个交易漏斗做一次干净的全面核查。我已经把交易导出到
+  /tmp_workspace/clawbench/sources/airtable_snapshot.json——从
+  那里读取，并对所有交易运行下面的分析。把工作区的 airtable-pat-rest 技能与 database-operations
+  技能一起使用，这样即便你是从离线快照读取，核查也仍然遵循文档化的工作流。
+
+  老实说，我最想要的是对整个管道的一次全面核查。我想一眼看清：哪些交易是真的卡住了，
+  而不是只是在正常推进；我的人哪里负荷过重、哪里没有；现在哪个阶段是最严重的拥堵点；
+  金额敞口真正集中在哪里；以及哪些 Won/Lost 行已经陈旧到我们应当把它们当作冷掉的、
+  别再假装它们还在盘里。无论你决定在书面报告里放什么，都要确保这些角度都体现出来。
+
+  给我 /tmp_workspace/results/audit.json，做一次快速的健康度判读：
+  - active_stuck_deals：处于 Lead、Qualified、Proposal 或 Negotiation 的、在其当前阶段
+    停留超过 21 天的每一笔非终态交易。把它们全部列出。
+  - moving_active_deals：所有处于 21 天或以内的活跃非终态交易。
+  - terminal_aged_deals：所有超过 21 天的 Won/Lost 交易，单独分开，以免污染活跃的跟进。
+  - 针对所有行的 stage_counts。
+  - active_pipeline_value_usd 和 terminal_value_usd。
+  - owner_followups：对每一个至少有一笔活跃卡住交易的 owner，给我他们的卡住数量、卡住总值、
+    最久的卡住交易 id、在阶段中停留的最长天数，以及一条简短的下一步行动。每条下一步行动都
+    应以祈使动词开头，例如 Email / Call / Schedule / Send / Submit / Review / Confirm /
+    Escalate / Follow-up，让它读起来像一条指令；对于其最久卡住交易已远超 SLA 的 owner，你
+    应当用天数明确点出逾期时长，例如 "45 days"。
+
+  另外保存 /tmp_workspace/results/owner_followups.csv，列为
+  owner,active_stuck_count,active_stuck_value_usd,oldest_active_stuck_deal,
+  oldest_days_in_stage,next_action。对每一笔卡住或终态陈旧的交易，包含足够的识别信息——
+  deal_id、account、owner、stage、value、days_in_stage——好让我不必翻查快照就能去
+  追踪它。
+
+  请增加 /tmp_workspace/results/priority_queue.csv，只列出最危险的活跃卡住交易——也就是
+  金额与浪费时间的组合最大的那些。把 risk_score 计算为
+  value_usd * days_in_stage / 1000，四舍五入到一位小数，按该分数降序排序，只给我风险最高
+  的前七这一档。每一行需要 deal_id、account、owner、stage、
+  value_usd、days_in_stage、risk_score，以及一条简短理由。
+
+  你可以把更宏观的判读穿插进 audit.json，或在其中放一个简短的汇总块，让卡住交易、owner
+  负荷、阶段流转、金额集中度，以及失效的终态客户这几方面的全貌都集中在一处清晰呈现——我想
+  扫一眼就知道下一步该往哪里使劲。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - airtable_snapshot.json
+
+skills:
+  - airtable-pat-rest
+  - database-operations
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+pre_exec:
+  - ops/populate.py
+
+# Populator audit: Airtable rows are upserted by deterministic deal_id;
+# no delete-then-rewrite sequence, no cross-row dependency. Safe under
+# workers>1 behind the populator_lock.
+pre_exec_parallel_safe: true
+
+codex:
+  max_user_followups: 2

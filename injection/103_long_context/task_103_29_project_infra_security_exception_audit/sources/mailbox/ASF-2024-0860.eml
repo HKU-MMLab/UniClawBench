@@ -1,0 +1,49 @@
+Message-ID: <0ABE1ACD-22A5-44E5-ACCC-51F259C889F3@apachelounge.com>
+X-Clawbench-ID: ASF-2024-0860
+Date: Tue, 2 Jul 2024 17:40:23 +0200
+From: Steffen <info@apachelounge.com>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.61-rc1 as httpd-2.4.61
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-07.mbox
+
++1 on Windows.
+
+Changes for 2.4.61 is empty.
+
+Eric, Rüdiger, Yann and others, thanks for all the work.
+
+> Op 2 jul 2024 om 15:30 heeft Eric Covener <covener@gmail.com> het volgende geschreven:
+> ﻿Hi all,
+>
+> Please find below the proposed release tarball and signatures:
+>
+> https://dist.apache.org/repos/dist/dev/httpd/
+>
+> === Different from template ===
+> I would like to call an expedited VOTE (due to regression in 2.4.60)
+> over the next 1-2 days to release this candidate tarball
+> httpd-2.4.61-rc1 as 2.4.61:
+>
+> (sorry)
+> === end not from a template
+>
+> [ ] +1: It's not just good, it's good enough!
+> [ ] +0: Let's have a talk.
+> [ ] -1: There's trouble in paradise. Here's what's wrong.
+>
+> The computed digests of the tarball up for vote are:
+> sha256: ccdc02f78ebf615002dbcab19c8dd9e124b99207b6fed4eecce7562e64c647c9
+> *httpd-2.4.61-rc1.tar.gz
+> sha512: ad5894ff83f06a8a39bedb26e32a4381ac6806ae0c8624c0dbf631781eb59431cef37af0e459dff0f5618628ed06adbee013a7a714447ed1de4542294e62b885
+> *httpd-2.4.61-rc1.tar.gz
+>
+> The candidate source is found at
+> <https://svn.apache.org/repos/asf/httpd/httpd/tags/tags/2.4.61-rc1-candidate>
+> and at <https://github.com/apache/httpd/tree/2.4.61-rc1-candidate>.
+>
+> --
+> Eric Covener
+> covener@gmail.com

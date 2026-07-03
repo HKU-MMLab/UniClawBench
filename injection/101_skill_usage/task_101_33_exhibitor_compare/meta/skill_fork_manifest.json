@@ -1,0 +1,14 @@
+{
+  "task_id": "task_101_33_exhibitor_compare",
+  "notes_visible_to_executor": false,
+  "skill_changes": [
+    {
+      "original_skill": "pdf-extract",
+      "injected_skill": "pdf-extract",
+      "original_source": "clawhub",
+      "change_type": "benchmark environment adaptation",
+      "reason": "The task setup service provides poppler utilities, so executor-facing docs were changed to avoid asking the model to install system packages during the task.",
+      "executor_skill_path": "skills/pdf-extract"
+    }
+  ]
+}

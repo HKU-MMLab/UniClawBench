@@ -1,0 +1,20 @@
+Message-ID: <1594435215.3531403.1669130261207@mail.yahoo.com>
+X-Clawbench-ID: BIO-2024-0442
+Date: Tue, 22 Nov 2022 15:17:41 +0000 (UTC)
+From: Gregory Sharp <gregsharp.geo@yahoo.com>
+To: debian-med@lists.debian.org
+Subject: Plastimatch 1.9.4 second try
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_11_msg00072.html
+
+Hi again,
+
+I have reverted the autopkgtest files and uploaded.
+
+Regarding Nilesh's suggestion of moving those upstream, it sounds like a good plan.  The upstream tests use dynamically generated synthetic data, so it could eliminate the need for storing large binary files.  We can do the same for the autopkgtest.
+
+Thank you,
+Greg Sharp
+gregsharp@geocities.com

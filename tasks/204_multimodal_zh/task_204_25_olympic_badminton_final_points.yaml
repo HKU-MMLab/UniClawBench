@@ -1,0 +1,37 @@
+task_id: task_204_25_olympic_badminton_final_points
+category: 204_multimodal_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  在 YouTube 上搜索最近 5 届奥运会羽毛球男子单打决赛的完整比赛视频或官方集锦。
+  你必须真正观看这些比赛视频或官方集锦。不要只依赖搜索结果页、转写文本或二手摘要；
+  决胜分的时间戳必须来自你亲自观看过的比赛画面。
+
+  对于每一场比赛：
+  1. 找到决胜局最后一分从发球到得分结束的片段
+     （如果比赛在 2 局内结束，则取最后一局的最后一分）。
+  2. 记录该片段的起始和结束时间戳。
+  3. 你必须裁剪并将该关键片段保存到 `/tmp_workspace/results/olympic_final_points/`。
+     文件名必须包含年份和两位选手，例如 `year_player1_vs_player2.mp4`。
+
+  同时在 `/tmp_workspace/results/olympic_finals_summary.md` 中汇总以下内容：
+  - 年份 / 奥运会届次
+  - 对阵双方，并标注获胜者
+  - 最终比分
+  - 所用的 YouTube 视频标题或 URL
+  - 你定位到的决胜分的起始和结束时间戳
+  - 决胜分的简要描述
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+codex:
+  max_user_followups: 2

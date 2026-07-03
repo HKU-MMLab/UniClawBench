@@ -1,0 +1,97 @@
+Message-ID: <Y1AhJ7jRtZQ86m6L@fusion>
+X-Clawbench-ID: BIO-2024-0607
+Date: Wed, 19 Oct 2022 18:09:11 +0200
+From: Étienne Mollier <emollier@emlwks999.eu>
+To: James Bonfield <jkb@sanger.ac.uk>
+Subject: Re: Htslib plugins [EXT]
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00068.html
+
+Hi,
+
+James Bonfield, on 2022-10-19:
+> On Wed, Oct 19, 2022 at 10:27:24AM -0400, Aaron M. Ucko wrote:
+> > James Bonfield  writes:
+> >
+> > > 	--with-plugin-path='/usr/local/lib/htslib:/usr/local/libexec/htslib:$(plugindir)'
+> >
+> > I haven't been involved with this package, but I suspect that line was
+> > supposed to have a double dollar sign so as to yield a reference to your
+> > build system's plugindir variable.  Thanks for the report!
+>
+> Yes.  My colleague pointed out after I sent the email that it's our
+> own Makefile with declares $plugindir.  (I should have known, but it's
+> a little byzantine at times.)
+>
+> So this is a quoting problem. As you say maybe $$ or another form of
+> quoting will resolve it.
+>
+> It may be worth revisiting patches/disable_plugin_loading_test.patch
+> afterwards too.  It's possible the reason the plugin test was disabled
+> was due to incorrectly configured plugins, but I'm not certain on
+> that.  Our upstream CI does run this test though and it's not needed
+> access to external networks to run so I don't see any fundamental
+> reason it has to be disabled in the Debian build environment.
+>
+> It's possible the lack of a plugin is then causing the library to
+> fall back to another access method, which is what's being seen here.
+
+It possible yes.  For reference I have the following output when
+I bring back the test in the suite:
+
+	test_plugin_loading:
+		HTS_PATH=/> />/test/with-shlib.sh />/htsfile https://localhost:99999/invalid_port
+
+		[W::hfile_add_scheme_handler] Couldn't register scheme handler for s3w
+	[W::hfile_add_scheme_handler] Couldn't register scheme handler for s3w+http
+	[W::hfile_add_scheme_handler] Couldn't register scheme handler for s3w+https
+	[W::hfile_add_scheme_handler] Couldn't register scheme handler for s3
+	[W::hfile_add_scheme_handler] Couldn't register scheme handler for s3+http
+	[W::hfile_add_scheme_handler] Couldn't register scheme handler for s3+https
+	[W::hfile_add_scheme_handler] Couldn't register scheme handler for gs
+	[W::hfile_add_scheme_handler] Couldn't register scheme handler for gs+http
+	[W::hfile_add_scheme_handler] Couldn't register scheme handler for gs+https
+	[W::hfile_add_scheme_handler] Couldn't register scheme handler for dict
+	[W::hfile_add_scheme_handler] Couldn't register scheme handler for file
+	[W::hfile_add_scheme_handler] Couldn't register scheme handler for ftp
+	[W::hfile_add_scheme_handler] Couldn't register scheme handler for ftps
+	[W::hfile_add_scheme_handler] Couldn't register scheme handler for gopher
+	[W::hfile_add_scheme_handler] Couldn't register scheme handler for gophers
+	[W::hfile_add_scheme_handler] Couldn't register scheme handler for http
+	[W::hfile_add_scheme_handler] Couldn't register scheme handler for https
+	[W::hfile_add_scheme_handler] Couldn't register scheme handler for imap
+	[W::hfile_add_scheme_handler] Couldn't register scheme handler for imaps
+	[W::hfile_add_scheme_handler] Couldn't register scheme handler for ldap
+	[W::hfile_add_scheme_handler] Couldn't register scheme handler for ldaps
+	[W::hfile_add_scheme_handler] Couldn't register scheme handler for mqtt
+	[W::hfile_add_scheme_handler] Couldn't register scheme handler for pop3
+	[W::hfile_add_scheme_handler] Couldn't register scheme handler for pop3s
+	[W::hfile_add_scheme_handler] Couldn't register scheme handler for rtmp
+	[W::hfile_add_scheme_handler] Couldn't register scheme handler for rtsp
+	[W::hfile_add_scheme_handler] Couldn't register scheme handler for scp
+	[W::hfile_add_scheme_handler] Couldn't register scheme handler for sftp
+	[W::hfile_add_scheme_handler] Couldn't register scheme handler for smb
+	[W::hfile_add_scheme_handler] Couldn't register scheme handler for smbs
+	[W::hfile_add_scheme_handler] Couldn't register scheme handler for smtp
+	[W::hfile_add_scheme_handler] Couldn't register scheme handler for smtps
+	[W::hfile_add_scheme_handler] Couldn't register scheme handler for telnet
+	[W::hfile_add_scheme_handler] Couldn't register scheme handler for tftp
+	htsfile: can't open "https://localhost:99999/invalid_port": Protocol not supported
+
+	.. failed ...
+
+The "Protocol not supported" error sounds related to the github
+issue.  That being said, I haven't managed to get the suite to
+work after adjusting the build to account properly for the
+plugindir variable, neither by doubling $ symbols to account for
+internal build system variables, nor by defining the variables
+at the head of the d/rules yet.
+
+Thanks for the hints!
+--
+Étienne Mollier
+Fingerprint:  8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+Sent from /dev/pts/2, please excuse my verbosity.
+On air: Echolyn - When Sunday Spills

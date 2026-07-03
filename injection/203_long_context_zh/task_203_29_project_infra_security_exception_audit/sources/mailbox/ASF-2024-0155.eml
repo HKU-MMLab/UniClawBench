@@ -1,0 +1,38 @@
+Message-ID: <CAKQ1sVM_RLnPxrqteOSdKeux0-nZfOHvneBhoo+k8eNt9ab5dQ@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0155
+Date: Sat, 6 Apr 2024 13:10:35 +0200
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: pytest results for 2.4.59
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-04.mbox
+
+On Sat, Apr 6, 2024 at 10:46 AM jean-frederic clere <jfclere@gmail.com> wrote:
+>
+> On 4/5/24 07:55, Ruediger Pluem wrote:
+> >
+> > Are you able to provide a stacktrace of the hanging process (thread apply all bt full)?
+>
+> It seems pthread_kill(t, 0) returns 0 even the thread t has exited...
+> older version of fedora will return 3 (I have tried fc28)
+
+If pthread_kill() does not work we probably should use the global
+"dying" variable like in mpm_event.
+But it's not clear from your earlier "bt full" whether there are other
+threads, could you try "thread apply all bt full" instead to show all
+the threads?
+It's clear from the main thread's backtrace that it's waiting for the
+listener in the "iter" loop, but nothing tells if the listener already
+exited or not. The listener for instance could be waiting indefinitely
+apr_pollset_poll() at this point, and since there is no pollset wakeup
+in mpm_worker I don't think that wakeup_listener() can help here.
+So maybe we need to add an apr_pollset_wakeup() in wakeup_listener()
+too, like in mpm_event too.
+
+Overall something like the attached patch?
+
+
+Regards;
+Yann.

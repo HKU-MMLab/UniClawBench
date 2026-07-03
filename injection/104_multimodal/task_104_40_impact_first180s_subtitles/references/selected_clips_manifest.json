@@ -1,0 +1,16 @@
+[
+  {
+    "slug": "impact",
+    "title": "Impact",
+    "identifier": "impact",
+    "clip_start_sec": 6030,
+    "clip_end_sec": 6510,
+    "duration_sec": 480,
+    "clip_video": "clip.mp4",
+    "resolution": [
+      640,
+      480
+    ],
+    "fps": 29.97
+  }
+]

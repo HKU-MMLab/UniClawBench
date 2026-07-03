@@ -1,0 +1,56 @@
+Message-ID: <20221025141945.7p57iuchmn6ptvwa@nileshpatra.info>
+X-Clawbench-ID: BIO-2024-0115
+Date: Tue, 25 Oct 2022 19:49:45 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: Andreas Tille <tille@debian.org>
+Subject: Re: Probably simple cmake help needed for nthash
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00085.html
+
+On Tue, Oct 25, 2022 at 12:07:46PM +0200, Andreas Tille wrote:
+> Hi Nilesh,
+>
+> Am Tue, Oct 25, 2022 at 02:49:25PM +0530 schrieb Nilesh Patra:
+> > On Tue, Oct 25, 2022 at 09:36:33AM +0200, Andreas Tille wrote:
+> > > Hi,
+> > >
+> > > the new version of nthash needs btllib which was luckily accepted very
+> > > quickly by ftpmaster.  Now I "just" need to declare in CMakeLists.txt
+> > > that the Debian packaged btllib should be used and as usually I failed
+> > > in doing so[1].
+> > >
+> > > Any cmake knowledged person who can submit a better patch to Git?
+> >
+> > I got the build proceed beyond that point but it still does not build
+> > and I am not sure why not.
+> > It probably stems from cmake itself but at the moment I am out of ideas.
+> >
+> > Changes on salsa.
+>
+> I've added DEP3 header.  The issue seems to be in debian/argparse.hpp.
+> Thus I've updated the code copy we are shipping which seems to solve the
+> issue you observed ...
+
+My bad, looks like I took the file at wrong commit hash.
+
+> but there are more things to fix, thought...
+
+I have fixed them hopefully, and pushed to salsa.
+I observe that the target binary name and include files -- several things have
+completely changed.
+
+The -dev package needs to also install a static lib now, so i have marked it :any
+and so this might need a removal hint for ftp master to remove the -dev binary
+package for arch:all (I am not sure tho)
+
+There are a couple of lintian errors (jquery.js needs to be accomodated somehow)
+
+Can you please finalize this?
+
+Thank you,
+
+--
+Best,
+Nilesh

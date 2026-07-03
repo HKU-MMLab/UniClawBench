@@ -1,0 +1,43 @@
+Message-ID: <E8FCB9A0-8FDB-4083-8410-039D2D67CE98@vmware.com>
+X-Clawbench-ID: ASF-2024-1393
+Date: Tue, 13 Dec 2022 22:37:37 +0000
+From: =?utf-8?B?SmVzw7pzIEdvbnrDoWxleg==?= <jesusgm@vmware.com>
+To: "dev@httpd.apache.org" <dev@httpd.apache.org>
+Subject: Re: mod_wasm: Contributing Upstream to Apache
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-12.mbox
+
+Thanks, Ruediger!
+
+mod_wasm code can be reviewed now on the PR: https://github.com/apache/httpd/pull/335
+I will work on adding a Travis CI test for mod_wasm.
+
+Cheers,
+Jesús
+
+﻿El 13/12/22, 20:45, "Ruediger Pluem" <rpluem@apache.org <mailto:rpluem@apache.org>> escribió:
+
+
+!! External Email
+
+
+On 12/13/22 7:58 PM, Jesús González wrote:
+> Thank Jean-Frederic for your feedback!
+>
+> Regarding reviewing from the diff, I agree that a PR to GitHub will ease the review process.
+> I'm afraid I don't have enough permission to do it. Who/where can I ask for it?
+
+
+You don't need special permissions. Just create a fork of https://nam04.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fapache%2Fhttpd&amp;data=05%7C01%7Cjesusgm%40vmware.com%7C47055f4dc74c4b83020f08dadd429a24%7Cb39138ca3cee4b4aa4d6cd83d9dd62f0%7C0%7C0%7C638065575374911445%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=8LaYxIvquVrH%2FrssQ%2Fl0vCE4T0hr0dRhh1quVybdSIY%3D&amp;reserved=0 <https://nam04.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fapache%2Fhttpd&amp;amp;data=05%7C01%7Cjesusgm%40vmware.com%7C47055f4dc74c4b83020f08dadd429a24%7Cb39138ca3cee4b4aa4d6cd83d9dd62f0%7C0%7C0%7C638065575374911445%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;amp;sdata=8LaYxIvquVrH%2FrssQ%2Fl0vCE4T0hr0dRhh1quVybdSIY%3D&amp;amp;reserved=0> with your github account.
+Branch trunk to your feature branch in this fork. Commit mod_wasm to it and create a PR against https://nam04.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fapache%2Fhttpd&amp;data=05%7C01%7Cjesusgm%40vmware.com%7C47055f4dc74c4b83020f08dadd429a24%7Cb39138ca3cee4b4aa4d6cd83d9dd62f0%7C0%7C0%7C638065575374911445%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=8LaYxIvquVrH%2FrssQ%2Fl0vCE4T0hr0dRhh1quVybdSIY%3D&amp;reserved=0 <https://nam04.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fapache%2Fhttpd&amp;amp;data=05%7C01%7Cjesusgm%40vmware.com%7C47055f4dc74c4b83020f08dadd429a24%7Cb39138ca3cee4b4aa4d6cd83d9dd62f0%7C0%7C0%7C638065575374911445%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;amp;sdata=8LaYxIvquVrH%2FrssQ%2Fl0vCE4T0hr0dRhh1quVybdSIY%3D&amp;amp;reserved=0>
+
+
+Regards
+
+
+Rüdiger
+
+
+!! External Email: This email originated from outside of the organization. Do not click links or open attachments unless you recognize the sender.

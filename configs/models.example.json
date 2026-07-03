@@ -1,0 +1,49 @@
+{
+  "proxies": {
+    "ssh-proxy-example": {
+      "type": "ssh",
+      "sshHost": "YOUR_SSH_HOST",
+      "sshUser": "root",
+      "localPort": 9000,
+      "remoteHost": "127.0.0.1",
+      "remotePort": 9000,
+      "adapter": "responses_via_chat",
+      "adapterPort": 9001
+    }
+  },
+  "providers": {
+    "dashscope-coding": {
+      "baseUrl": "https://coding.dashscope.aliyuncs.com/v1",
+      "apiKey": "${DASHSCOPE_API_KEY}",
+      "api": "openai-completions",
+      "models": [
+        { "id": "qwen3.5-plus", "name": "qwen3.5-plus", "input": ["text", "image"] },
+        {
+          "id": "kimi-k2.6",
+          "name": "kimi-k2.6",
+          "input": ["text", "image"],
+          "comment": "Moonshot kimi-k2.x rejects nanobot's default 0.1 — override via quirks.",
+          "quirks": { "temperature": 1.0 }
+        }
+      ]
+    },
+    "direct-responses-example": {
+      "baseUrl": "https://api.example.com/v1",
+      "apiKey": "${DIRECT_RESPONSES_API_KEY}",
+      "api": "openai-completions",
+      "models": [
+        { "id": "gpt-5.4-nano", "name": "gpt-5.4-nano", "input": ["text", "image"] }
+      ]
+    },
+    "proxy-example": {
+      "baseUrl": "http://127.0.0.1:9001/v1/openai/native",
+      "apiKey": "${PROXY_EXAMPLE_API_KEY}",
+      "api": "openai-completions",
+      "proxyRef": "ssh-proxy-example",
+      "models": [
+        { "id": "gpt-5.4", "name": "gpt-5.4", "input": ["text", "image"] },
+        { "id": "gpt-4.1", "name": "gpt-4.1", "input": ["text", "image"] }
+      ]
+    }
+  }
+}

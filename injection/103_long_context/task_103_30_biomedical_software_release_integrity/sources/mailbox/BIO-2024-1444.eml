@@ -1,0 +1,89 @@
+Message-ID: <ZLPyVqFR25FGX9QR@an3as.eu>
+X-Clawbench-ID: BIO-2024-1444
+Date: Sun, 16 Jul 2023 15:36:22 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Sébastien Jodogne <s.jodogne@orthanc-labs.com>
+Subject: Re: Fwd: civetweb_1.15+dfsg-5_source.changes REJECTED
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_07_msg00078.html
+
+Hi Sébastien,
+
+Am Sun, Jul 16, 2023 at 11:38:51AM +0200 schrieb Sébastien Jodogne:
+> > For whatever reason the pristine-tar information does not match the
+> > upstream source tarball.  My way to solve it is to re-import the
+> > tarball I get via
+> >
+> >      apt source civetweb
+>
+> Thanks, that worked! But indeed, it is not relevant anymore since your
+> update to civetweb 1.16 :-)
+
+:-)
+
+> > I admit I'm a bit scared about the need to update the symbols file again.
+> > For my not very well educated eyes we do not need to bump SOVERSION -
+> > but I'd like to have some review here.
+>
+> From my understanding, the issue here is that we have 2 shared libraries:
+> "libcivetweb-cpp.so" (from C++) and "libcivetweb.so" (from C).
+>
+> But, according to the following page, "For C++ libraries it is often better
+> not to ship symbols files":
+> https://wiki.debian.org/UsingSymbolsFiles#C.2B-.2B-_libraries
+
+I confirm I'm pretty bored by the RC bugs every C++ package with symbols
+files recieves for every gcc upgrade.  It simply drains a lot of
+developer time for no real use.  I have one reason to keep the symbols
+file for certain libraries:  Very often upstream does not care about
+SOVERSIONs.  Maintaining a symbols file usually raises a signal in new
+upstream versions if we need to bump SOVERSION.  IMHO this has some
+advantage - but I'm not sure whether it is outweighting the extra work
+we have.
+
+> This stems from the fact that the names of the binary C++ symbols will for
+> instance change by just upgrading g++. This contrasts with the C shared
+> library, for which the ABI is standardized.
+>
+> As far as I'm concerned, I would consequently tend to consider that
+> "libcivetweb1.symbols.amd64" should only contain the symbols of
+> "libcivetweb.so" (i.e. not those of "libcivetweb-cpp.so").
+
+Fine for me.
+
+> Furthermore, from my understanding, the suffix of the symbols from
+> "libcivetweb.so" should only contain "1", not "1.15" or "1.16", because of
+> the stability of the C ABI, and because it is OK to add new symbols, while
+> removing symbols should be prohibited. This explains my following changeset,
+> where "1.15" was replaced by "1" for all the functions beginning with "mg_":
+> https://salsa.debian.org/med-team/civetweb/-/commit/4be6bc58d7c7f5477b34b9ad4bffdad7ad0cac3c
+
+How can you be sure that the ABI is really stable?
+
+> Unfortunately, I was unable to find an option to "dpkg-gensymbols" to
+> generate one single symbols file describing two shared libraries, but with
+> different versions.
+> > So in case you see some issues that take longer to resolve (bumping
+> > SOVERSION means new processing) it might be more sensible to revert the
+> > upstream version to what we had and fix the bug first.
+>
+> As explained above, I don't think that SOVERSION should be bumped in a C
+> library, at least as long as symbols are not removed, and as long as the
+> upstream doesn't warn about a breaking change in the meaning of the
+> functions (which is not the case of civetweb).
+>
+> But I might also be fully wrong with what I explained above...
+
+I think you are right.  I was just asking for some review.
+
+We should probably fix the lintian error (about the pkgconfig files) but
+I probably will not manage before tomorrow evening (more probably
+Tuesday morning).  So if you (or someone else) beat me with uploading
+this is perfectly fine.
+
+Kind regards
+      Andreas.
+--
+http://fam-tille.de

@@ -1,0 +1,25 @@
+Message-ID: <Y1vO0FpxVeqBqbQl@an3as.eu>
+X-Clawbench-ID: BIO-2024-1222
+Date: Fri, 28 Oct 2022 14:45:04 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>,	Ghislain Antony Vaillant <ghisvail@gmail.com>,	949355@bugs.debian.org
+Subject: Removing simpleitk from Debian (Was: simpleitk FTBFS: test failures)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00108.html
+
+Hi Ghislain,
+
+I tried to upgrade simpleitk to latest upstream in Git but failed.  IMHO
+only the latest upstream which is supposed to be compatible to ITK5
+makes sense to support inside Debian.  You are listed as Maintainer of
+the package.  Do you think you are able to work on this package?
+Otherwise I'd like to ask for removal from Debian.
+
+Kind regards
+
+      Andreas.
+
+--
+http://fam-tille.de

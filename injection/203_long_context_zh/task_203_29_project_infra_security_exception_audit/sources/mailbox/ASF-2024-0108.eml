@@ -1,0 +1,24 @@
+Message-ID: <CAKQ1sVOzqs1G_W8uEmXTOK3O+j8f8RzrHiSD2nO_Vka+R4mQUg@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0108
+Date: Wed, 11 Sep 2024 17:59:48 +0200
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: [Bug 69235] unable to connect to backend with existing rewrite rules.
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-09.mbox
+
+On Mon, Sep 9, 2024 at 12:20 PM Ruediger Pluem <rpluem@apache.org> wrote:
+>
+> Looks like there is no further feedback on the below.
+> @Yann: Care to commit https://bz.apache.org/bugzilla/attachment.cgi?id=39832 ?
+> I would then commit my stuff below.
+
+Done (r1920570).
+
+I suppose we need a single backport proposal for both PRs 69235 and 69260?
+If so maybe amend "changes-entries/pr69235.txt" with your follow up commit?
+
+Regards;
+Yann.

@@ -1,0 +1,25 @@
+Message-ID: <1927553.usQuhbGJ8B@riemann>
+X-Clawbench-ID: BIO-2024-0266
+Date: Wed, 14 Sep 2022 17:23:12 -0500
+From: Steven Robbins <steve@sumost.ca>
+To: debian-med@lists.debian.org, Nilesh Patra <nilesh@nileshpatra.info>
+Subject: Re: [Proposed MBF: wxwidgets3.2 transition] Med/science-team packages
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_09_msg00016.html
+
+On Wednesday, September 14, 2022 3:21:57 P.M. CDT Nilesh Patra wrote:
+> Hi,
+>
+> There are some packages listed under our team and science team namespace
+> as listed below (I snipped the rest of the dd_list)
+> Please consider to port them to new wxwidgets if you happen to
+> work on these packages in near future.
+
+Thanks!  I glossed over the original message because I forgot to check for
+team-maintained things.
+
+I will take care of MRIConvert.
+
+-Steve

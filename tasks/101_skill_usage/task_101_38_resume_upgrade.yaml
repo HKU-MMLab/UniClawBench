@@ -1,0 +1,88 @@
+task_id: task_101_38_resume_upgrade
+category: 101_skill_usage
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I'm applying to a senior backend role and my resume is a mess —
+  outdated bullets, some internal contradictions, and it doesn't speak to
+  the JD at all. Help me fix it up. Use the resume helper skill for
+  the structural rework, the Word document skill to keep it in proper Word format, and
+  the copywriting skill to tighten the language. Also run the
+  UI/UX review skill over the final resume to check that the formatting
+  and visual hierarchy look professional — note any layout issues in
+  feedback.md.
+
+  My current resume is at /tmp_workspace/clawbench/sources/resume_2023.docx
+  and the JD is at /tmp_workspace/clawbench/sources/jd_senior_be.txt.
+  Note: there are factual errors and internal contradictions in the
+  original — dates that don't line up, numbers that contradict each other
+  across bullets, claimed years of experience that are impossible given
+  the timeline. Find and fix them all.
+
+  Keep the employers, roles, and timeframes intact where they make sense
+  and do not invent new projects, tools, or outcomes that are not
+  supported by the current resume.
+
+  1. /tmp_workspace/results/resume_v2.docx — stay in Word format, keep
+     the overall sections but rewrite the bullet points so the
+     experience actually lines up with what the JD is asking for, and
+     resolve the factual issues described above.
+  2. /tmp_workspace/results/feedback.md — 15 lines max, explaining
+     why you changed what you changed plus a couple of suggestions for
+     what I should do next. Call out the factual fixes you made so I can
+     review them.
+  3. /tmp_workspace/results/coverage.md — a compact JD alignment matrix.
+     Include one row for each must-have and nice-to-have requirement in
+     the job description, with: requirement, resume evidence you used,
+     revised resume wording, and whether the resume has enough support or
+     the item should be left out. Use one row per JD bullet/requirement
+     line as written; for a bundled cluster like on-call, SLOs, or
+     incident postmortems where the JD lists adjacent reliability
+     concepts together, keep them as a single row and mark it supported
+     if your evidence covers any of the listed concepts. Only split into
+     separate rows when the JD line names clearly distinct technologies,
+     such as PostgreSQL, Kafka, and Kubernetes becoming 3 rows. For
+     requirements that are entirely missing from the resume, mark them
+     unsupported explicitly instead of inventing experience. A typical
+     senior backend JD with this rule lands between 9 and 15 rows after
+     splitting; if your matrix is shorter you have over-bundled.
+  4. /tmp_workspace/results/evidence_map.xlsx — a workbook I can audit
+     before sending. Include sheets `JD_Coverage`, `Bullet_Rewrites`, and
+     `Unsupported_Items`. Each row should tie the JD requirement or revised
+     bullet to an exact quote from the original resume or mark it
+     unsupported. Use a canonical 5-column schema across the sheets so the
+     audit is consistent: `requirement_or_bullet`, `original_resume_quote`,
+     `revised_resume_wording`, `support_status`, `decision`. The
+     `decision` value must be exactly one of `used` for rewrote into the
+     final resume, `softened` for kept but downplayed, or `omitted` for
+     left out entirely.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - resume_2023.docx
+  - jd_senior_be.txt
+
+skills:
+  - resume-assistant
+  - word-docx
+  - copywriting
+  - ui-ux-pro-max
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

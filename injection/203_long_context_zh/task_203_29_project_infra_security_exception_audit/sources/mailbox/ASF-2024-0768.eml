@@ -1,0 +1,25 @@
+Message-ID: <420afaf0-d742-d28d-cc3f-85b65ffcc590@apache.org>
+X-Clawbench-ID: ASF-2024-0768
+Date: Wed, 9 Mar 2022 08:50:38 +0100
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.53-rc1 as httpd-2.4.53
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-03.mbox
+
+On 3/8/22 10:09 PM, Rainer Jung wrote:
+>
+
+>>
+>> Two additional things I already saw, but which are non.critical:
+>>
+>> - configure flag --with-pcre no longer accepts an external pcre 8 installation directory. It seems in that case the flag must
+>> now point to the path of the pcre-config script instead.
+
+Hmm. This could break existing configure calls. Probably not good for a patch release. Thanks for pointing out.
+
+Regards
+
+Rüdiger

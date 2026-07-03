@@ -1,0 +1,122 @@
+Message-ID: <YyRmuCuf4rd8h/Xv@an3as.eu>
+X-Clawbench-ID: BIO-2024-0920
+Date: Fri, 16 Sep 2022 14:06:16 +0200
+From: Andreas Tille <tille@debian.org>
+To: Nilesh Patra <nilesh@debian.org>
+Subject: Re: RM pinfish?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_09_msg00021.html
+
+Hi,
+
+Am Thu, Sep 15, 2022 at 02:27:42AM +0530 schrieb Nilesh Patra:
+> > How can we know?
+>
+> We can't, which is exactly the reason why I started this thread in the first place :)
+
+Sure.  That's very sensible to discuss things.
+
+> > I simply trusted Steffens insight he has put into the
+> > spreadsheet[2] and have put Steffen in CC to confirm.  In case he agrees
+> > that pinfish is not needed any more we should mention this in this sheet
+> > and remove the package accordingly.
+>
+> I agree. BTW I wonder if we should get rid of the spreadsheet and document it
+> somewhere else so it is accessible a bit more widely?
+
+I was no real fan of this format right from the beginning.  I even wrote
+a script to get UDD information about the list of packages for the first
+couple of changes until I realised that this is too much effort to keep
+it up to date (since it is hard to get a diff).  However, we have a
+Do-O-Cracy in Debian and the doer decides what is done.  I see Steffen as
+the person who does this part and I feel unable to do it content wise.
+Thus I learned to live with that format despite I do not like it much.
+
+> I have a feeling that the said spreadsheet is ``somewhat'' hidden from rest of
+> the debian and it'd be cool to have everyone take a look at it and/or propose
+> to make modifications.
+
+I agree.  However, all other attempts to have this kind of TODO lists we
+tried in the past did not worked way better.  I guess its not the format
+but rather a consequence of the general way how we work together and who
+is a member of the team.
+
+> > This is not the first package abandoned upstream - we have even packages
+> > where you can find the source only in webarchive (and for sure
+> > debian.org).
+>
+> I am aware of it, because I have worked on many of such packages, and I still
+> think that even these packages _should_ be removed if _no one_ is using them.
+> I find it tasteless to burn so much of developer time on things that are no longer
+> relevant.
+
+I agree for packages with RC bugs (or other bugs that make the package
+obviously useless).  My experience in real life tells me that even code
+abandoned upstream is used in some niche and users are super happy to
+find them in a handy format - specifically when the code has vanished
+from other places in the internet.
+
+> OTOH, there are packages that need updates with new upstream releases and keep waiting which
+> in my opinion is a much more impactful than fixing RC bugs in packages that have
+> sources purged upstream (:
+
+I confirm that my preferences are also set to new upstream releases and
+RC bugs.
+
+> We already have so many packages so we probably need same/less number of packages (not more)
+
+That's a very valid point.  However, I would start with packages that are
+creating real trouble.  For instance in the wxgtk migration I found three
+packages which do not simply build.  I'll ask for help to the wxgtk porters
+but in case we will not be able to port the code (with least effort from
+our team) this are better removal candidates than a package which is free
+of any bug.
+
+> > That's correct.  But we have packages in haskell (phybin) and D
+> > where I'm even worse.
+>
+> But that does not mean that you go on adding yourself to _even more_ of such
+> packages/tasks where you are not fully comfortable.
+
+It means it is on my table to see whether I can find a fix for a future
+bug or whether we really need to remove it.
+
+> I believe you'd like to keep such a list of unexplored territories to a minimum, as it's wise to do so.
+
+As I said in the Haskell or D examples: I've always found helping hands
+in competent teams and I enjoy this cooperation.  I think/hope I can
+estimate when it makes sense to ask for help or if it is simply burning
+time of other people.
+
+> > I'd prefer to wait with removal until we have the situation of such a
+> > bug that might cause real trouble.
+>
+> Again, I do not see a lot of point in keeping something 'limping' to the point when it gets
+> completely un-recoverable.
+> The situation with pinfish mayn't be too bad, but I don't see a point in waiting for an
+> RC bug to be filed against it some day or the other and _then_ asking for it to be kicked.
+>
+> What is even worse is that the RC bug is somehow easy to fix, someone fixes it and uploads and
+> we end up maintaining it for even longer, when in principle it might simply not be worth the effort
+> at all.
+
+I tend to think differently here.  Any other opinions?
+
+I just can speak from my personal experience that we unfortunately have
+a very low user response.  So we can't really know.  I've checked
+bioconda and they also do not have pinfish which might be another vague
+data point that there is no big interest from the community in this
+code.
+
+In the Do-O-Cracy sense above the doer decides what gets done and I will
+not stop you from filing a RC bug if you prefer this over handing over
+the package.
+
+Kind regards (and thanks for your previous work on this package)
+
+     Andreass.
+
+--
+http://fam-tille.de

@@ -1,0 +1,49 @@
+Message-ID: <72E5C219-E319-4899-9CB2-85D553AFE00A@eissing.org>
+X-Clawbench-ID: ASF-2024-0692
+Date: Wed, 23 Feb 2022 13:24:12 +0100
+From: Stefan Eissing <stefan@eissing.org>
+To: dev@httpd.apache.org
+Subject: Re: module threads and mpm lifecycle
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-02.mbox
+
+> Am 23.02.2022 um 11:52 schrieb Ruediger Pluem <rpluem@apache.org>:
+>
+>
+>
+> On 2/23/22 11:39 AM, Stefan Eissing wrote:
+>> One thing that is currently missing is a way to shutdown/reap/join module threads when the mpm exits.
+>>
+>> Example:
+>>
+>> mod_watchdog creates several threads post_config which are only joined on pool destruction.
+>>
+>> Problem:
+>>
+>> pool destruction is not ordered between modules and dependencies on order are not
+>> fully known. This leads to crashes in OpenSSL, for example, when mod_ssl is destructed
+>> before all watchdogs using OpenSSL are joined (OpenSSL 3.x seems to do better on this,
+>> but the point remains valid).
+>>
+>> There has been attempts by Yann to make a patch that make the OpenSSL termination
+>> way later (adding it to a 'higher' pool destruction). But that would only solve
+>> this particular problem and not any other 3rd party dependency.
+>>
+>> Proposal:
+>>
+>> Add a hook 'child_exiting(int graceful)' where modules can register
+>> and do their own thread join/reap.
+>
+> How does that differ from the child_stopping hook? Or is child_stopping only used when we shutdown the whole httpd not just one child?
+
+child_is_stopping is called when the shutdown is initiated.
+child_is_exiting would be called before pool destruction begins.
+
+The difference is that between those two, ongoing requests are still being served on graceful shutdowns.
+
+>
+> Regards
+>
+> Rüdiger

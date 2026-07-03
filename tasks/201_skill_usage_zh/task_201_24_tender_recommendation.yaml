@@ -1,0 +1,78 @@
+task_id: task_201_24_tender_recommendation
+category: 201_skill_usage_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  采购委员会明天上午开会，我需要准备好一份可以拿去汇报的供应商推荐。
+  在 /tmp_workspace/clawbench/sources/ 下有四份中文投标 PDF，名为
+  bid_vendor_a.pdf 到 bid_vendor_d.pdf，一份汇总报价表
+  price_summary_cn.xlsx，以及 scoring_policy_cn.md，里面有委员会的权重
+  和他们期望我们使用的归一化公式。用工作区的中文 PDF 抽取技能从中文
+  投标 PDF 中提取内容，用招标/财务评分技能跑评分，再用商务写作技能
+  打磨最终的书面报告。
+
+  说实话，委员会不会只满足于一个单一的数字。等我们进会场时，我们还需要
+  看价格竞争力——单价、总价以及任何隐藏费用——交付时间表和 SLA 有多
+  现实、每份投标是否真正满足规格/质量要求（涵盖强制项以及加分项）、
+  供应商的风险画像在财务状况、过往业绩、SOC2 等认证以及任何制裁风险
+  方面是什么样的，以及合同/付款条款在预付款、里程碑计费和质保期长度
+  上有多灵活。请把这些全都编织进书面报告里，这样我们就不用在现场临时
+  手忙脚乱地翻找了。
+
+  撰写 /tmp_workspace/results/recommendation.md，包含：
+    - 你的首选，在顶部用一行写出，外加三条理由。在这些理由下面，指出一个
+      明显不同的次选供应商，并用一句话给出理由，例如总价接近但风险更低，
+      或在相近价格下交付更快。
+    - 一份评分卡，从规格契合度、价格、交付和风险几个维度比较全部四家
+      供应商，并带一个总分列。使用 scoring_policy_cn.md 中的权重和归一化
+      规则，并在表格下方用一段简短的说明展示价格和交付的公式。
+    - 一个简短的风险章节，指出每家供应商最让你担心的一两件事。
+
+  另外保存 /tmp_workspace/results/scorecard.xlsx，其中有一个名为
+  Scorecard 的工作表。它应当每家供应商占一行，并包含 vendor、
+  specs fit、total price、price score、delivery days、delivery score、
+  risk score、total 和 rank 这些列。请对 price score、delivery score 和
+  total 使用电子表格公式，这样委员会可以审核计算过程，而不只是读到
+  复制粘贴过来的数字。
+
+  端到端地遵循招标/财务评分技能的工作流，使它要求你生成的任何审计产物
+  都落到 /tmp_workspace/results/ 中，与推荐报告放在一起——采购委员会会
+  用这些产物来确认推荐能够追溯回各份投标。
+
+  你在顶部推荐的供应商应当与评分卡上总分最高的那家是同一家。把三条理由
+  写得具体：每一条都应指向一个评分卡数值，或一个有来源支撑的、来自投标
+  和电子表格的事实，而不是一句泛泛的陈述。如果排名前两位的供应商很接近，
+  就把权衡讲清楚，让委员会能看出次选为什么没有胜出。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - bid_vendor_a.pdf
+  - bid_vendor_b.pdf
+  - bid_vendor_c.pdf
+  - bid_vendor_d.pdf
+  - price_summary_cn.xlsx
+  - scoring_policy_cn.md
+
+skills:
+  - pdf-smart-tool-cn
+  - tender-finance-local
+  - business-writing
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

@@ -1,0 +1,90 @@
+Message-ID: <YqIk0gfIanww6fA7@debian>
+X-Clawbench-ID: BIO-2024-0395
+Date: Thu, 9 Jun 2022 22:20:26 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: Andrius Merkys <merkys@debian.org>
+Subject: Re: Added autopkgtest for busco - Closes #1010653
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_06_msg00022.html
+
+On Thu, Jun 09, 2022 at 06:34:20PM +0300, Andrius Merkys wrote:
+> Interesting. I maintain a package with ~80 MBs in debian/. But again,
+> maybe I will get a REJECT next time it has to clear NEW. It would be
+> nice to have a rule of thumb to implement in lintian, but from [5] I
+> gather this is not that easy.
+
+It is pretty random to be honest. Some people are okay with it and
+some aren't.
+I personally don't find it very fruitful to be doing the MUT thingy either
+since with every new 'upstream release revision' we would be uploading giant source
+tars to archive anyway... but I suppose we are doing what gets the ball
+rolling.
+
+> I understand that I am probably not seeing the whole picture, thus
+> please do not take me questioning the status quo personally. I ACK your
+> efforts to find the solution that works.
+>
+> I personally find multi-source tarballs (MUT) tricky to use (for
+> example, will gbp import-orig handle them?).
+
+I have never quite liked them either :)
+
+> Actions to make one as per
+> [4] are just way too many. I know MUTs are widely used in JS team,
+
+Yep, I was just going to point there - but I realised you're a part
+of JS team too.
+
+> but
+> again I mostly managed to avoid them and always got my packages ACCEPTED
+> (I have heard about REJECTs of packages that are too small, though).
+
+Actually, this has been pretty in-consistent as well. I remember a couple
+of packages prepared by Praveen (DD in JS team) were rejected by FTP masters due to source code size.
+The same packages were later accepted a few months back when another
+DD (IIRC it was Jonas) uploaded it.
+
+I have seen accepts for tiny JS packages and rejects for moderately sized ones as well.
+All-the-more it has been very opaque for me, but that's a JS-team specific topic I guess.
+
+> Furthermore, I think MUTs have to be properly documented. Policy [4]
+> does not say where should I find the source for debian-tests-data/ or
+> how to update it. In JS team usually there is some automation, mostly in
+> debian/watch. For both busco and stringtie the descriptions are in
+> debian/tests/README. Could this also be referenced in [4] then?
+
+Right, Setting automation would be nice. But the problem comes when
+you need to fetch some public data file in a heap of archive.
+As far as I know, uscan isn't designed to handle such cases so we have to
+do that manually.
+
+Although, we do try to make it "semi"-automated, by using a get-tests-data script[7]
+so you don't end up pulling it in every other time. I am personally not sure
+if some other solution could work - however if you have some idea, it'd be nice to hear.
+
+And yes, I do agree that we need to document the policy a little better - please
+feel free to add those pointers.
+
+> I personally much more like Russ's suggestion of a Debian binary package
+> for various test data [6].
+> [...]
+
+Not sure if you missed it but
+We had that discussion earlier, almost 2 years back
+altho it is nice to re-discuss policies.
+
+I was not convinced to do this then, neither am I now. I'd simply point to my
+email[8] (it's not very long, and is readable) - again let me know
+if you disagree.
+
+> [4] https://med-team.pages.debian.net/policy/#embedding-large-test-data
+> [5] https://lists.debian.org/debian-devel/2020/09/msg00197.html
+> [6] https://lists.debian.org/debian-devel/2020/09/msg00198.html
+[7]: https://salsa.debian.org/med-team/busco/-/blob/master/debian/tests/get-test-data
+[8]: https://lists.debian.org/debian-med/2020/09/msg00365.html
+
+--
+Best,
+Nilesh

@@ -1,0 +1,37 @@
+Message-ID: <Yj9lAwd0nJSIjzkT@debian>
+X-Clawbench-ID: BIO-2024-0510
+Date: Sun, 27 Mar 2022 00:39:55 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: Michael Ikwuegbu <michaelikwuegbu1@gmail.com>
+Subject: Re: Add autopkgtests to package
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_03_msg00036.html
+
+Hi Michael,
+
+On Sat, Mar 26, 2022 at 07:03:31PM +0100, Michael Ikwuegbu wrote:
+> I am Michael Ikwuegbu an Outreachy applicant for the DebianMed project ,
+> I have setup a Debian unstable environment and sbuild.
+
+Welcome!
+
+> While trying to add
+> autopkgtest to the package (python-wdlparse):
+> https://salsa.debian.org/med-team/python-wdlparse
+> I came across some roadblocks: I have read the documentation on running
+> autopkgtest (
+> https://salsa.debian.org/ci-team/autopkgtest/-/blob/master/doc/README.package-tests.rst),
+> but I can't seem to figure out how I would generate the test that should be
+> added to the debian/test/run-unit-test file.
+
+It would not generate by itself, you need to write the autopkgtest on your own, and that
+is the task. Since wdlparse does not provide upstream tests, you will need to read the upstream
+docs and write a test script of your own.
+You can find an example here[1]
+
+[1]: https://salsa.debian.org/med-team/seirsplus/-/tree/master/debian/tests
+
+Regards,
+Nilesh

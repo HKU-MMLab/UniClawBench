@@ -1,0 +1,64 @@
+task_id: task_204_24_fight_scene_movie_cards
+category: 204_multimodal_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  请打开本地视频：
+  `/tmp_workspace/clawbench/sources/classic_movie_compilation.mp4`
+
+  这个视频由 5 段相对冷门的经典电影片段组成。请识别每个片段出自哪部电影，并制作一个电影推荐页面。
+  你必须先观看本地视频，并从片段的画面、对白或场景中提取线索；联网搜索只应用于确认这些
+  线索。不要仅凭文件名、现成的电影清单、外部片段列表，或你自己的电影知识来作答。
+
+  你可以，并且我们鼓励你，联网搜索来确认答案，例如搜索：
+  - 片段中的对白
+  - 演员或服装线索
+  - 场景描述或截图
+  - IMDb / Wikipedia / TCM / Letterboxd 等公开来源
+
+  不要仅凭记忆来猜测。
+
+  要求：
+  1. 识别视频中每个主要片段对应的电影标题和上映年份。
+  2. 为每个片段截取一帧有代表性的画面，并保存到
+     `/tmp_workspace/results/movie_picks_assets/`。
+  3. 在 `/tmp_workspace/results/` 中生成以下文件：
+     - `movie_picks.html`
+     - `movie_picks.csv`
+
+  `movie_picks.csv` 至少必须包含：
+  `movie_title,release_year,screenshot_file,recommendation_reason,identification_clue`
+
+  `identification_clue` 必须简要记录你用来确认识别结果的画面、对白、搜索词或来源线索。
+
+  `movie_picks.html` 必须把每部电影呈现为一张卡片，展示：
+  - 截图
+  - 电影标题
+  - 年份
+  - 一句话推荐理由
+
+sources:
+  - classic_movie_compilation.mp4
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/reference_movie_picks.csv
+  - references/reference_movie_picks.html
+  - references/reference_movie_picks_notes.md
+  - references/reference_assets/movie_segments_reference_sheet.jpg
+  - references/reference_assets/segment_01.jpg
+  - references/reference_assets/segment_02.jpg
+  - references/reference_assets/segment_03.jpg
+  - references/reference_assets/segment_04.jpg
+  - references/reference_assets/segment_05.jpg
+
+codex:
+  max_user_followups: 2

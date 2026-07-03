@@ -1,0 +1,41 @@
+task_id: task_202_02_steam_appdetails
+category: 202_exploration_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我正在为几款 PC 游戏搭建一个小型的价格／元数据追踪器，相比手动抓取 Steam
+  商店页面，我更希望从 API 拉取数据。
+
+  从这个 Steam 商店页面开始：
+
+      https://store.steampowered.com/app/1245620/ELDEN_RING/
+
+  Steam 商店前端背后有一个 JSON 接口，商店页面本身就是调用它来渲染游戏详情的
+  ——这个接口并没有真正的文档，所以你需要自己找到它（URL 中的 app id 是关键
+  输入）。请发现该接口并使用它（而不是解析商店页面的 HTML）来获取该游戏的
+  以下信息：
+
+  - 官方标题，
+  - 开发商和发行商，
+  - 支持哪些平台（Windows / macOS / Linux），
+  - 是否免费，如果不免费则当前价格，
+  - 发售日期，
+  - 如果有的话，Metacritic 评分。
+
+  将结构化结果保存到 `/tmp_workspace/results/steam_appdetails.json`，并将你
+  调用的确切请求 URL 及其原始 JSON 响应保存到
+  `/tmp_workspace/results/steam_evidence/`，以便这次拉取可复现。如果能附上一段
+  简短说明，讲讲你是如何找到该接口的，那就更好了。
+
+references:
+  - references/eval_rule.md
+
+codex:
+  max_user_followups: 2

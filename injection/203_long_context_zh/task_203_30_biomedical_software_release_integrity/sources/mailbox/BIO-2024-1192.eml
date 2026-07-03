@@ -1,0 +1,44 @@
+Message-ID: <Y0AxYRoxQVz+iq6Z@an3as.eu>
+X-Clawbench-ID: BIO-2024-1192
+Date: Fri, 7 Oct 2022 16:02:09 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Mgbecheta Justice <mgbechetajustice@gmail.com>
+Subject: Re: Interest in the Dabian med project
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00019.html
+
+Dear Mgbecheta,
+
+Am Fri, Oct 07, 2022 at 02:41:28PM +0100 schrieb Mgbecheta Justice:
+> Good day, I am a 3rd year computer science student with some background in
+> health.
+
+Thanks a lot for your interest.
+
+> I'll like to help contribute to the Dabian med project but the whole
+> ecosystem appears daunting.
+
+In principle we are packaging free software from health and biology for
+official Debian.  We need help in fixing bugs inside our packages,
+writing CI tests (which is probably the easiest way to enter) and we can
+also need helping hands for new packages.  To teach packaging I might
+review my attempt for peer-packaging ... I might do some new package in
+a Jitsi call to show how it works.
+
+> Please are there link to available resources  that  make on boarding less
+> daunting?
+
+The main resource is probably our publicly archived mailing list (in CC)
+which I recommend to subscribe.  You can also join our matrix channel[1]
+in case you are interested in faster communication.
+
+Hope this helps
+
+     Andreas.
+
+[1] https://app.element.io/?#/room/#debian-med:matrix.org
+
+--
+http://fam-tille.de

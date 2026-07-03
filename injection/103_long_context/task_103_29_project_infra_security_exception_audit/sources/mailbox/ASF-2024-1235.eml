@@ -1,0 +1,22 @@
+Message-ID: <CAGBAQ46uVyXtMu84zowJ-qVYuuSYUQyW93QHfS-ELsBfJ=mzyw@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1235
+Date: Thu, 29 Feb 2024 16:20:13 -0500
+From: Yehuda Katz <yehuda@ymkatz.net>
+To: dev@httpd.apache.org
+Subject: Instrumenting HTTPD
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-02.mbox
+
+I am working on a research paper related to server configuration. I am
+trying to collect some measurements or static analysis comparing the number
+of system calls with overrides off vs. on and also with different path
+lengths (i.e. what is the actual performance impact of checking .htaccess
+files). Before I start from scratch, I was wondering if anyone has done
+anything related to this before.
+
+Thanks,
+- Y
+
+Sent from a device with a very small keyboard and hyperactive autocorrect.

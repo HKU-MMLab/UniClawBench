@@ -1,0 +1,12 @@
+Message-ID: <cam-2003-0611@campaign-audit.example>
+X-Clawbench-ID: CAM-2003-0611
+Date: Tue, 11 Mar 2003 16:28:00 -0500
+From: Quality Review <quality@acme-mail.example>
+To: nina@acme-mail.example
+Subject: BrightWave QA status
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: synthetic email campaign lead-gen quality audit implant
+
+BrightWave still has no raw conversion export or suppression reconciliation. The ticket says newsletter optimization, but the invoice support mentions qualified leads and paid conversions. Please confirm before approval.

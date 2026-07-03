@@ -1,0 +1,7 @@
+[
+  {
+    "reviewer": "davidism",
+    "state": "CHANGES_REQUESTED",
+    "comment": "The readme and docs already show the recommended way to run the dev server. Closing."
+  }
+]

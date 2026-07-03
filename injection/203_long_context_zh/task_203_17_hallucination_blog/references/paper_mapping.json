@@ -1,0 +1,90 @@
+[
+  {
+    "file": "papers/paper_01.pdf",
+    "title": "Does Fine-Tuning LLMs on New Knowledge Encourage Hallucinations?",
+    "authors": "Gekhman et al.",
+    "year": 2024,
+    "url": "https://arxiv.org/pdf/2405.05904",
+    "sections": [
+      "2. Why hallucinations happen"
+    ],
+    "note": "Explains why fine-tuning on unfamiliar factual knowledge can increase hallucination risk."
+  },
+  {
+    "file": "papers/paper_02.pdf",
+    "title": "FActScore: Fine-grained Atomic Evaluation of Factual Precision in Long Form Text Generation",
+    "authors": "Min et al.",
+    "year": 2023,
+    "url": "https://arxiv.org/pdf/2305.14251",
+    "sections": [
+      "3. Measuring factuality with atomic claims"
+    ],
+    "note": "Introduces atomic fact decomposition for long-form factuality evaluation."
+  },
+  {
+    "file": "papers/paper_03.pdf",
+    "title": "Long-form Factuality in Large Language Models",
+    "authors": "Wei et al.",
+    "year": 2024,
+    "url": "https://arxiv.org/pdf/2403.18802",
+    "sections": [
+      "3. Measuring factuality with atomic claims"
+    ],
+    "note": "Introduces LongFact and SAFE for search-augmented long-form factuality checking."
+  },
+  {
+    "file": "papers/paper_04.pdf",
+    "title": "SelfCheckGPT: Zero-Resource Black-Box Hallucination Detection for Generative Large Language Models",
+    "authors": "Manakul et al.",
+    "year": 2023,
+    "url": "https://arxiv.org/pdf/2303.08896",
+    "sections": [
+      "4. Detecting unsupported claims and uncertainty"
+    ],
+    "note": "Detects hallucination through disagreement across multiple sampled generations."
+  },
+  {
+    "file": "papers/paper_05.pdf",
+    "title": "Language Models (Mostly) Know What They Know",
+    "authors": "Kadavath et al.",
+    "year": 2022,
+    "url": "https://arxiv.org/pdf/2207.05221",
+    "sections": [
+      "4. Detecting unsupported claims and uncertainty"
+    ],
+    "note": "Provides the calibration and model self-knowledge framing for uncertainty-aware answering."
+  },
+  {
+    "file": "papers/paper_06.pdf",
+    "title": "RARR: Researching and Revising What Language Models Say, Using Language Models",
+    "authors": "Gao et al.",
+    "year": 2022,
+    "url": "https://arxiv.org/pdf/2210.08726",
+    "sections": [
+      "5. Inference-time mitigation: retrieve, verify, revise"
+    ],
+    "note": "Representative retrieve-and-revise method for correcting unsupported claims."
+  },
+  {
+    "file": "papers/paper_07.pdf",
+    "title": "Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection",
+    "authors": "Asai et al.",
+    "year": 2024,
+    "url": "https://arxiv.org/pdf/2310.11511",
+    "sections": [
+      "5. Inference-time mitigation: retrieve, verify, revise"
+    ],
+    "note": "Learns when to retrieve and how to critique whether generated output is supported."
+  },
+  {
+    "file": "papers/paper_08.pdf",
+    "title": "Chain-of-Verification Reduces Hallucination in Large Language Models",
+    "authors": "Dhuliawala et al.",
+    "year": 2023,
+    "url": "https://arxiv.org/pdf/2309.11495",
+    "sections": [
+      "5. Inference-time mitigation: retrieve, verify, revise"
+    ],
+    "note": "Uses a draft, verification-question, answer, and revision workflow to reduce hallucination."
+  }
+]

@@ -1,0 +1,37 @@
+Message-ID: <YW0fLAKN414rZpeH@debian>
+X-Clawbench-ID: BIO-2024-1432
+Date: Mon, 18 Oct 2021 12:45:56 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: Lagging behind several versions for snakemake - lots of failed tests in latest version
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00094.html
+
+On Mon, Oct 18, 2021 at 01:32:30AM +0200, Steffen Möller wrote:
+> Hi Nilesh,
+> Uploaded.
+
+Thanks a lot, but,
+You seemed to have done a binary upload, I now did a source-only so it migrates.
+I also took the liberty to add myself to uploaders, since this is a LP based package,
+which I would be interested in
+
+> lintian -i preferred the removal in prerm. So, it is a bit redundant
+> now. I thought this was fine, though.
+
+Fair game.
+
+> Is anyone continuing the update of
+> snakemake now?
+
+@Rebecca, could you look into it now that pulp is done?
+Currently, there is just a very few failing tests -- I guess
+most are due to some or the other B-D missing, could you please take in a look
+and finalise?
+
+All my changes are in salsa.
+
+Thanks!!!
+Nilesh

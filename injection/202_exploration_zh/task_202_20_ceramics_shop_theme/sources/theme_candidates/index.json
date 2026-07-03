@@ -1,0 +1,46 @@
+{
+  "description": "Candidate e-commerce site themes for a handmade-ceramics shop with a Japanese-minimalist aesthetic. Each <id>.json declares ecommerce features, responsiveness, a 5-color palette (hex), and product_image_area_ratio (fraction of the above-the-fold homepage given to product imagery). The shop needs: working cart+checkout, a responsive layout, a restrained/muted Japanese-minimalist palette, and imagery-forward product display.",
+  "target_palette_example": [
+    "#F6F0E8",
+    "#B9825B",
+    "#222222"
+  ],
+  "hard_requirements": {
+    "ecommerce_cart_checkout": true,
+    "responsive": true,
+    "muted_palette": "average HSV saturation of palette <= 0.25",
+    "product_imagery_forward": "product_image_area_ratio >= 0.45"
+  },
+  "themes": [
+    {
+      "id": "shibui_ceramics",
+      "file": "shibui_ceramics.json",
+      "display_name": "Shibui \u2014 Ceramics"
+    },
+    {
+      "id": "neon_market",
+      "file": "neon_market.json",
+      "display_name": "NeonMarket \u2014 Storefront"
+    },
+    {
+      "id": "kinfolk_journal",
+      "file": "kinfolk_journal.json",
+      "display_name": "Kinfolk \u2014 Editorial"
+    },
+    {
+      "id": "wabi_shop_fixed",
+      "file": "wabi_shop_fixed.json",
+      "display_name": "Wabi \u2014 Shop (classic)"
+    },
+    {
+      "id": "bold_bazaar",
+      "file": "bold_bazaar.json",
+      "display_name": "BoldBazaar \u2014 Market"
+    },
+    {
+      "id": "muji_living",
+      "file": "muji_living.json",
+      "display_name": "MujiLiving \u2014 Catalog"
+    }
+  ]
+}

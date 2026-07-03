@@ -1,0 +1,25 @@
+Message-ID: <Y5ILdRhh7ibP8ATh@an3as.eu>
+X-Clawbench-ID: BIO-2024-1250
+Date: Thu, 8 Dec 2022 17:06:13 +0100
+From: Andreas Tille <andreas@fam-tille.de>
+To: olivier sallou <olivier.sallou@irisa.fr>
+Subject: Re: Seqan2 FTBFS
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_12_msg00071.html
+
+Am Wed, Dec 07, 2022 at 09:02:26AM +0100 schrieb olivier sallou:
+>
+> Is it really failing ? [1] link only shows failure due to max execution
+> time in CI and job was killed by CI.
+
+Besides the fact that there is actually a build error (see other mails)
+I wonder why the build was killed after 3h while I have set the limit to
+4h.  Is there any global limit for CI which can't be overridden?
+
+Kind regards
+   Andreas.
+
+--
+http://fam-tille.de

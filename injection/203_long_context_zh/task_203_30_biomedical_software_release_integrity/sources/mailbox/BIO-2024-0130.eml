@@ -1,0 +1,50 @@
+Message-ID: <vizejim7h6maclyrahz7u6lsziax7uuirqthmu5nxsl4cm57cv@twt2n4bjppy6>
+X-Clawbench-ID: BIO-2024-0130
+Date: Wed, 10 Jul 2024 19:28:47 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: "Michael R. Crusoe" <crusoe@debian.org>
+Subject: Re: Help requested: r-bioc-rhdf5lib patches need updating for bioc-3.19 upgrade
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_07_msg00008.html
+
+On Wed, Jul 10, 2024 at 12:14:05PM +0200, Michael R. Crusoe wrote:
+> I upgraded r-bioc-rhdf5lib from 1.24.2 to 1.26.0 in the "debian/experimental" branch on salsa.
+>
+> https://salsa.debian.org/r-pkg-team/r-bioc-rhdf5lib/-/tree/debian/experimental?ref_type=heads
+>
+> However when I try to build other packages using the resulting "r-bioc-rhd5lib" binary package, I get the following build errors:
+>
+> # From r-bioc-alabaster.base https://salsa.debian.org/r-pkg-team/r-bioc-alabaster.base
+> g++ -std=gnu++17 -shared -L/usr/lib/R/lib -Wl,-z,relro -o alabaster.base.so RcppExports.o check_csv.o check_list.o choose_numeric_missing_placeholder.o is_rfc3339.o load_csv.o load_list.o validate.o /usr/lib/R/site-library/Rhdf5lib/libs/libhdf5_cpp.a /usr/lib/R/site-library/Rhdf5lib/libs/libhdf5.a -lcrypto -lcurl -lpthread -lsz -lz -ldl -lm -lz -L/usr/lib/R/lib -lR
+> /usr/bin/ld: cannot find /usr/lib/R/site-library/Rhdf5lib/libs/libhdf5_cpp.a: No such file or directory
+> /usr/bin/ld: cannot find /usr/lib/R/site-library/Rhdf5lib/libs/libhdf5.a: No such file or directory
+> collect2: error: ld returned 1 exit status
+>
+> Can I get some help with this?
+>
+> Please push any fixes directly to the "debian/experimental" branch on Salsa and let me know, thank you!
+
+I don't have the time to write a patch/hack around this right now, but I
+understood what the issue is and it should be relatively easy to fix.
+
+alabaster.base used Rhdf5lib::pkgconfig("PKG_CXX_LIBS") to get the linker flags
+for Rhdf5 lib as can be see here[1]
+
+This has been set to an incorrect value as per the debian installed package[2].
+It points to a path that does not exist since we are using hdf5 packaged in
+debian instead of building and using embedded copies.
+
+Patching the code to point to the correct path should fix the issue for you.
+
+> For building r-bioc-alabaster.base, feel free to use the bioc-3.19 test packages I've been making: https://people.debian.org/~crusoe/bioc/
+>
+> --
+> Michael R. Crusoe
+
+[1]: https://salsa.debian.org/r-pkg-team/r-bioc-alabaster.base/-/blob/master/src/Makevars?ref_type=heads#L1
+[2]: https://salsa.debian.org/r-pkg-team/r-bioc-rhdf5lib/-/blob/debian/experimental/R/zzz.R?ref_type=heads#L73
+
+Best,
+Nilesh

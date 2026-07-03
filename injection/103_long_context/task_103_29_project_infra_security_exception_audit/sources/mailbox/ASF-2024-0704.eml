@@ -1,0 +1,55 @@
+Message-ID: <CAMD-=VKK5mcphtcprqgWJfjuM=CK8s8oZhcYQ54RBMFnxYYMsw@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0704
+Date: Tue, 21 Dec 2021 23:28:00 +1000
+From: Nick Edwards <nick.z.edwards@gmail.com>
+To: dev <dev@httpd.apache.org>
+Subject: Re: announce mails
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2021-12.mbox
+
+Oh, right, then we can delete our mirror then, thats get a few gigabytes
+back
+
+its not an issue for us, since we are not permitted to perform any upgrades
+since we are within the christmas embargo period, but the home users who
+run apache might be seeking out their fave stale mirror :)
+
+
+On Tue, Dec 21, 2021 at 4:31 PM Greg Stein <gstein@gmail.com> wrote:
+
+> The mirror system is no longer used. Most downloads are processed through
+> a CDN instead. European downloaders will tend to hit downloads.apache.org
+> which is "instantly" updated once a release artifact is committed to the
+> svn distribution repository.
+>
+> rsync.apache should be just as instant. If not, then please file an INFRA
+> ticket.
+>
+> Cheers,
+> -g
+>
+>
+> On Mon, Dec 20, 2021 at 7:26 PM Nick Edwards <nick.z.edwards@gmail.com>
+> wrote:
+>
+>> Why would the release system initiate an announce when the mirrors are
+>> not up to date, they cant be, since rsync.apache still lists 2.4.51 as
+>> latest, the process is to allow time for mirrors to get the package before
+>> announcing it
+>>
+>>
+>> On Mon, Dec 20, 2021 at 7:53 PM Stefan Eissing <stefan@eissing.org>
+>> wrote:
+>>
+>>> The mailings to announce lists continue to bother me. The release
+>>> announcement is the the moderation queue (hopefully) and the cveprocess
+>>> mails go right through to the list. This is not the order I prefer.
+>>>
+>>> I am holden back the send about the second CVE until I see the release
+>>> announcement winked through.
+>>>
+>>> - Stefan
+>>
+>>

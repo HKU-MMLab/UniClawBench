@@ -1,0 +1,53 @@
+Message-ID: <20211110200757.7neunuvcf5nvxf5j@emissary.chronitis.net>
+X-Clawbench-ID: BIO-2024-0941
+Date: Wed, 10 Nov 2021 20:07:57 +0000
+From: Gordon Ball <gordon@chronitis.net>
+To: Andreas Tille <andreas@an3as.eu>,	Debian Science List <debian-science@lists.debian.org>,	Yaroslav Halchenko <debian@onerussian.com>,	Michael Hanke <michael.hanke@gmail.com>,	"Rebecca N. Palmer" <rebecca_palmer@zoho.com>
+Subject: Re: Upgrading pandas
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_11_msg00083.html
+
+On Wed, Nov 10, 2021 at 07:32:53PM +0100, Timo Röhling wrote:
+> Hi Andreas,
+>
+> * Andreas Tille  [2021-11-10 18:14]:
+> >   nbsphinx.NotebookError: TypeError in user_guide/style.ipynb:
+> >   'coroutine' object is not subscriptable
+> This seems to be an issue with nbconvert 5.6.1, which apparently is
+> not playing nice with updated Jupyter notebook packages [1].
+>
+
+The proximate cause was updating jupyter-client to 7, which changes some
+existing APIs to be asynchronous. This requires patches or new versions
+to some other packages (nbconvert included), and probably some other
+packages which import jupyter bits and pieces directly. I'm working on
+it.
+
+The jupyter ecosystem is unfortunately suffering from a bit of runaway
+complexity, which is making keeping up with all the bits (particularly
+the web-connected bits, like notebook and ipywidgets) difficult.
+
+> > I wonder what you think here whether it makes sense to stop
+> > providing the docs for this package.
+> Even though I usually look up documentation online, I'm a bit
+> hesitant to drop the documentation completely, because I do need to
+> work "in the field" without Internet connection from time to time.
+>
+> Maybe, as a compromise, we can cut out all the notebooks^H bells and
+> whistles and limit the offline documentation to the API reference
+> itself, which is arguably the most useful part? I don't know
+> how easy it is to trim down the documentation, though.
+>
+
+This I would consider. When working on python packages, my feeling is
+that the documentation is a frequent cause of problems (sphinx
+extensions, privacy breaches in templates, unpackaged themes, anything
+that is meant to embed code), and honestly I don't think compiling it to
+HTML adds very much value to users. If the documentation source is in
+something which can be directly human-consumed like markdown or
+restructuredtext, I'm inclined to think having that in the source
+package is sufficient for the majority of use-cases.
+
+Gordon

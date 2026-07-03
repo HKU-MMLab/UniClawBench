@@ -1,0 +1,49 @@
+Message-ID: <7E0C0A86-3575-4135-85CF-0BEB0778BCE2@eissing.org>
+X-Clawbench-ID: ASF-2024-0319
+Date: Thu, 15 Jun 2023 15:15:18 +0200
+From: "Stefan Eissing via dev" <dev@httpd.apache.org>
+To: dev@httpd.apache.org
+Subject: HTTP/2 WebSockets, PR
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-06.mbox
+
+Adding HTTP/2 WebSockets support to the server.
+
+See: https://github.com/apache/httpd/pull/362
+
+Status:
+
+Works for the test cases I came up with so far. Will do more testing in the next weeks.
+
+What are the main changes?
+
+core:
+- addition of
+
+  ap_get_conn_in_pollfd(
+    conn_rec *c,
+    apr_pollfd_t *pfd,
+    apr_interval_time_t *ptimeout);
+
+  implemented as a hook. core provides it socket and timeout on "main" connections. mod_http2 provides its input pipe fd on "secondary" connections that were made for it.
+
+mod_http2:
+- handling of CONNECT for WebSockets, check of correct headers
+- announce WebSockets support in HTTP/2 settings sent to the client
+- transform HTTP/2 WebSocket CONNECTs to internal GET requests with generated "Sec-WebSocket-Key" headers, so that it appears internally as if it came via HTTP/1.1.
+- check for 101 response or fail the CONNECT. Check the 101 for a matching "Sec-WebSocket-Accept" header or fail.
+
+mod_proxy:
+- make the proxy_tunnel code in proxy_util.c work in case it only has a APR_POLL_FILE for the client side.
+  (Yann, please have a look and find my stupid mistakes!)
+
+test
+- added test cases in pytest for mod_http2 (needs python3-websockets installed)
+  The tests use a "ProxyPass xxx upgrade=websocket" configuration to a local python websockets server that can perform a set of traffic cases.
+- added test/clients directory to build "h2ws", the client used in the new tests
+
+
+Cheers,
+Stefan

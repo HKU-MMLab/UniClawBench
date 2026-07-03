@@ -1,0 +1,37 @@
+BRAND VOICE GUIDELINES
+======================
+
+Our voice is direct, warm, and confident. We assume our reader is a smart adult
+who values clarity over cleverness.
+
+Write like you talk
+-------------------
+- Use contractions. "We'll" not "We will." "Don't" not "Do not."
+- Read your draft out loud. If you stumble, the reader will too.
+- Start sentences with conjunctions when it helps the rhythm. But don't overdo it.
+
+Be specific
+-----------
+- "Faster" is not specific. "Three times faster than the previous version" is.
+- Use real numbers, real customer names (with permission), real screenshots.
+- If you cannot be specific, ask whether the claim is worth making.
+
+Avoid
+-----
+- "Game-changing," "revolutionary," "delightful," "frictionless." These have
+  been emptied of meaning by overuse.
+- Long, hedge-y sentences. If you find yourself writing "we believe that, in
+  many cases, our customers may experience…" — start over.
+- Internal jargon in customer-facing copy. The customer does not know what
+  the "platform layer" is.
+
+Punctuation
+-----------
+- Em dashes are great. Use them.
+- Avoid semicolons in customer-facing copy; they make the prose feel formal.
+- Oxford commas: yes.
+
+When in doubt
+-------------
+Ask the brand team in #brand-voice. Or send a draft to one of the brand
+reviewers — Maya, Tomas, or Sara — for a second read.

@@ -1,0 +1,47 @@
+Message-ID: <YYwhxeedHDzeckaU@an3as.eu>
+X-Clawbench-ID: BIO-2024-0909
+Date: Wed, 10 Nov 2021 20:47:17 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-science@lists.debian.org
+Subject: Re: Upgrading pandas
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_11_msg00079.html
+
+Hi Timo,
+
+Am Wed, Nov 10, 2021 at 07:32:53PM +0100 schrieb Timo Röhling:
+> * Andreas Tille  [2021-11-10 18:14]:
+> >   nbsphinx.NotebookError: TypeError in user_guide/style.ipynb:
+> >   'coroutine' object is not subscriptable
+> This seems to be an issue with nbconvert 5.6.1, which apparently is
+> not playing nice with updated Jupyter notebook packages [1].
+
+OK, if you think it is not really related to not packaged sphinx-panels
+I've pushed my workaround for that issue.  Any patch that might solve
+the nbconvert issue is welcome. ;-)
+
+> > I wonder what you think here whether it makes sense to stop
+> > providing the docs for this package.
+> Even though I usually look up documentation online, I'm a bit
+> hesitant to drop the documentation completely, because I do need to
+> work "in the field" without Internet connection from time to time.
+>
+> Maybe, as a compromise, we can cut out all the notebooks^H bells and
+> whistles and limit the offline documentation to the API reference
+> itself, which is arguably the most useful part? I don't know
+> how easy it is to trim down the documentation, though.
+
+I agree that I do not want to remove the doc if its possible to
+create it.  It would be great if someone would find a solution
+that enables building it.
+
+Kind regards
+
+     Andreas.
+
+> [1] https://stackoverflow.com/a/67061046/13476707
+
+--
+http://fam-tille.de

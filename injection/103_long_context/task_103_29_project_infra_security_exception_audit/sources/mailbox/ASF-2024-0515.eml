@@ -1,0 +1,38 @@
+Message-ID: <d01578d3-5e97-522d-cd90-48baca6b6752@apache.org>
+X-Clawbench-ID: ASF-2024-0515
+Date: Mon, 5 Dec 2022 08:47:08 +0100
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: MS-WDV (was Re: Help with buckets)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-12.mbox
+
+On 12/2/22 4:42 PM, Emmanuel Dreyfus wrote:
+> On Fri, Dec 02, 2022 at 03:17:05PM +0000, Joe Orton wrote:
+>> I think this might need to do something more complex, maybe running the
+>> PROPFIND in a subrequest properly and capturing (buffering) the output
+>> in a custom filter, rather than using the mod_dav internal API directly.
+>> Have you tried using ap_sub_req_method_uri()? Not sure this has been
+>> tried before with mod_dav so might well be something I'm missing.
+>
+> I can try that, but whatever the method is, we need to produce the
+> propfind data before sending its size.
+>
+> I see two unsatisfying alternatives:
+>
+> 1) produce propfind data in a buffer, output the size, then the buffer
+>
+> 2) produce propfind data, discarding it as it comes but coutning its size,
+> then output the size, and produce the propfind data a second time.
+>
+> First approach wastes memory, second approach wastes CPU. And second approach
+> needs a mechanism to ensure propfind data does not change between the two
+> times it is produced. I am not sure that can be guaranteed.
+
+I think we cannot guarantee this, which leaves us with 1.
+
+Regards
+
+Rüdiger

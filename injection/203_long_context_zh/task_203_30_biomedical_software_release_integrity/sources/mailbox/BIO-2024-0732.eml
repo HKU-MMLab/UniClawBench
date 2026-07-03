@@ -1,0 +1,28 @@
+Message-ID: <507123909.630876.1686843471460@office.mailbox.org>
+X-Clawbench-ID: BIO-2024-0732
+Date: Thu, 15 Jun 2023 21:07:51 +0530 (IST)
+From: Nilesh Patra <nilesh@nileshpatra.info>
+To: "debian-med@lists.debian.org" <debian-med@lists.debian.org>
+Subject: pychopper has switched to a non-free license in new upstream version
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_06_msg00001.html
+
+Hi,
+
+I'm dropping this mail to draw the attention of anyone who's interested in updating pychopper.
+While going through the list of outdated packages, I found pychopper as a candidate. Unfortunately
+upstream seems to have modified the license in a way that makes in non-dfsg compliant.
+In the commit
+
+     https://github.com/epi2me-labs/pychopper/commit/445bde1611ae2024c50f87e89dfe8c53bc039a32
+
+It says:
+
+'''
+1.10. "Research Purposes" means use for internal research and not intended for or directed towards commercial advantages or monetary compensation; provided, however, that monetary compensation does not include sponsored research of research funded by grants.
+'''
+
+Best,
+Nilesh

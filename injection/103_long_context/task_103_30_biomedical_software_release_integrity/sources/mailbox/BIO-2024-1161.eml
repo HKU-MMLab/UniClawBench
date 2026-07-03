@@ -1,0 +1,53 @@
+Message-ID: <4mytnhm5yn6g4vzdm3ucff4kzfkr7sribdmj2vs4gv5cfe3qaq@mv6al6wytf2s>
+X-Clawbench-ID: BIO-2024-1161
+Date: Tue, 16 Apr 2024 19:33:15 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: Emboss not migrating due to autopkgtest error on s390x
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_04_msg00035.html
+
+Hi Andrius,
+
+On Tue, Apr 16, 2024 at 04:52:01PM +0300, Andrius Merkys wrote:
+> On 2024-04-16 15:04, Nilesh Patra wrote:
+> > I suppose you meant "RM" instead of "BTS" here. Thanks for filing a report.
+>
+> No, I meant filing a BTS bug, which I did file as #1069098 in order to keep
+> track of the issue in previous Debian releases too.
+
+Right.
+
+> > OTOH, does anyone actually use s390x for any med team package? If not, can we
+> > consider to add this too along with other 32-bit archs to our policy?
+>
+> Personally, I do not like the idea of deny-listing architectures in team
+> policy. But I am not an uploader of emboss, I merely care for it as a
+> dependency for oscar4.
+
+Sure, but if there is no user for those packages at all on s390x, would that not
+translate to:
+
+a) extra maintenance
+b) more build cycles / load on porter machines / more cost so on?
+
+> I would suggest the following course of action for emboss:
+>
+> 1. Add a build-time test calling emboss executable(s). This way builds will
+> fail on s390x (and possibly other architectures) until #1069098 is fixed.
+>
+> 2. RM emboss for s390x without excluding s390x from build architectures.
+>
+> This way emboss will be able to migrate and there will be no action needed
+> if/when #1069098 is fixed.
+
+Makes sense to me.
+
+> What do you think?
+>
+> Andrius
+>
+Best,
+Nilesh

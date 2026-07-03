@@ -1,0 +1,65 @@
+task_id: task_202_12_zshrc_prompt_refactor_hard
+category: 202_exploration_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我接手了一个杂乱的遗留 `.zshrc`，它是在好几台笔记本和 SSH 机器上逐渐堆积起来
+  的。它"能用"，但提示符（prompt）在服务器上表现糟糕，而且我相当确定文件开头对
+  实际运行的内容是有误导的——有好几处地方，后面的某一行会悄悄覆盖前面的一行。
+  该文件位于：
+
+      /tmp_workspace/sources/existing_zshrc
+
+  这个任务**不是**从头写一个全新的提示符。你必须保留该配置所依赖的真实行为，并
+  消除它当前就已经包含的冲突。具体来说，在重构过程中你必须让以下东西继续可用：
+  各个别名（`ll`、`gs`、`k`、`gp`）、oh-my-zsh 插件（`git`、`docker`、`kubectl`、
+  `python`、`npm`）——也就是说 oh-my-zsh 必须仍然加载——conda hook、nvm 的
+  sourcing，以及 PATH 的前置（prepend）。
+
+  请先审计这份遗留配置，解释你发现的每一处冲突以及当前哪一次写入会胜出：多个相
+  互竞争的 `PROMPT` 定义、主题（theme）与不使用 Nerd-Font 这一要求之间的冲突、
+  那个替换掉 oh-my-zsh 自身 precmd hook 的裸 `precmd()`、重复的 PATH 条目、一行
+  泄漏进非交互式 shell 的启动语句，以及提示符里任何运行时的噪声（时间、
+  user@host、python 版本）。
+
+  然后产出最终的 `.zshrc`。提示符必须简洁，并显示当前路径和 git 状态，但默认情况
+  下必须**不**显示：用户名、主机名、挂钟时间、Python/Node/Ruby 运行时版本、未压
+  缩的完整深层路径，或仅 Nerd-Font 才有的字形（glyph）。右侧提示符（right
+  prompt）默认应当被移除。
+
+  结果必须通过真正加载 zsh 并渲染提示符来**验证**——而不是描述它看起来会是什么
+  样。要覆盖全部八种场景，并为每种场景保存真实渲染出来的提示符：普通 shell、git
+  干净（clean）、git 有改动（dirty）、detached HEAD、rebase/merge 状态、深层路
+  径、Python venv 已激活，以及非交互式的 `zsh -ic true`（捕获它的 stdout/stderr
+  ——它必须是静默的）。
+
+  保存：
+  - `/tmp_workspace/results/zshrc_final`
+  - `/tmp_workspace/results/zsh_prompt_audit.json`：每一处遗留冲突、哪一次写入胜
+    出、你保留了什么、你移除了什么，以及加载顺序（load-order）的解释。
+  - `/tmp_workspace/results/zsh_prompt_patch_notes.json`
+  - 八个渲染文件（每种场景一个，包含真实渲染出来的提示符/捕获到的输出）以及
+    `/tmp_workspace/results/zsh_prompt_verification.log`。
+  - `/tmp_workspace/results/startup_time.txt`，用以记录启动时间没有明显变差。
+
+  这是一个离线任务——不要从网络获取任何东西。
+
+references:
+  - references/eval_rule.md
+  - references/expected_prompts.json
+sources:
+  - existing_zshrc
+services:
+  - name: ohmyzsh-bootstrap
+    path: ohmyzsh-bootstrap
+    start: bash install.sh
+
+codex:
+  max_user_followups: 2

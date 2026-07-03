@@ -1,0 +1,40 @@
+Message-ID: <125AC093-57CC-4D8C-9EA2-95DC90F28CA4@jagunet.com>
+X-Clawbench-ID: ASF-2024-1343
+Date: Wed, 18 Dec 2024 17:32:18 -0500
+From: Jim Jagielski <jim@jagunet.com>
+To: dev@httpd.apache.org
+Subject: Re: Move to git (Was: Re: httpd 2.4 -> next)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-12.mbox
+
+> On Dec 18, 2024, at 2:06 PM, Greg Stein <gstein@gmail.com> wrote:
+>
+> On Wed, Dec 18, 2024 at 11:57 AM Eric Covener <covener@gmail.com <mailto:covener@gmail.com>> wrote:
+> >...
+>> Maybe something like this for the must-have tasks:
+>>
+>> - Get with Infra and see if there are general caveats (open PRs for
+>> example?) for converting from r/o to r/w
+>
+> The git repository (apache/httpd) just becomes canonical. Nothing needs to change.
+>
+>> - Clean up or save whatever might go missing when we convert
+>
+> The svn repository will be marked readonly. Nothing will go missing. In fact, the svn repository should stick around for archaeology and historical concerns. The git repository holds ported commits from svn, but it might not be perfect (for archaeology).
+>
+> Also don't forget that our svn repository is actually migrated from CVS. This would be the second migration. (and I have no idea where the origin CVS repository might be, for serious archeology people).
+>
+>> - give warning of the above + the upcoming cutover attempt.
+>> - make svn r/o (infra) && make github r/w (infra)
+>
+> The former is a change to a puppet config file. Well-known for infra. (not gonna link here; it is not a public file) ... I don't recall how svn-mirror github repositories are handled. I think it is simply that they don't have a synchronized repository on gitbox.a.o. Humbedooh would know more here.
+>
+
+The "switch" can be made at any time, and have git become primary... So I just need info from us when and I'll update the ticket.
+
+
+--
+Jim
+            "If you can dodge a wrench, you can dodge a ball."

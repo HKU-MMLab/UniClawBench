@@ -1,0 +1,22 @@
+Message-ID: <C16EB69A-4CA9-406A-AFE3-6643CD6F3544@nileshpatra.info>
+X-Clawbench-ID: BIO-2024-1493
+Date: Mon, 10 Oct 2022 13:34:41 +0530
+From: Nilesh Patra <nilesh@nileshpatra.info>
+To: debian-med@lists.debian.org, Andreas Tille <andreas@an3as.eu>
+Subject: Re: [Help] anfo: ftbfs with GCC-12
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00028.html
+
+On 10 October 2022 11:50:14 am IST, Andreas Tille  wrote:
+>> If no one gets to it, asking for removal is a sensible option. It otherwise imho becomes another time sapping package that no one cares about much.
+>
+>There was no volunteer to pick up the gcc-12 port of this package.  So
+>it seems to be time to ask for removal, right?
+
+Yep!
+
+--
+Best,
+Nilesh

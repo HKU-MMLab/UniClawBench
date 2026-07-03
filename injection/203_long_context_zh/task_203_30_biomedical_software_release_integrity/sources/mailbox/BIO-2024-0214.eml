@@ -1,0 +1,12 @@
+Message-ID: <bio-2024-0214@biodebian.example>
+X-Clawbench-ID: BIO-2024-0214
+Date: Fri, 05 Jan 2024 13:22:00 +0000
+From: Lina Rao <lrao@biodebian.example>
+To: debian-med@lists.debian.org
+Subject: sample manifest fields
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: synthetic Debian Med-style biomedical release-integrity implant
+
+The BACT-12 manifest is missing collection_date and platform for four samples. The FASTQ files have checksums, but the metadata table cannot support the reproducibility note as written.

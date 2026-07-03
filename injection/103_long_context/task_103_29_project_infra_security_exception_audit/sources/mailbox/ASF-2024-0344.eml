@@ -1,0 +1,28 @@
+Message-ID: <432797AA-E99A-4E5A-91D3-2DD9DC3F07CE@eissing.org>
+X-Clawbench-ID: ASF-2024-0344
+Date: Mon, 16 Oct 2023 14:45:31 +0200
+From: "Stefan Eissing via dev" <dev@httpd.apache.org>
+To: dev@httpd.apache.org
+Subject: Re: [PATCH] fix mod_h2 with older nghttp2
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-10.mbox
+
+> Am 16.10.2023 um 14:38 schrieb Joe Orton <jorton@redhat.com>:
+>
+> BTW is modules/http2 really CTR for 2.4.x? STATUS says only
+> mod_proxy_http2 is.
+
+
+I have made peace with myself to spend afterlife in hell.
+
+> Anyway: I am +1 for r1913005 and r1913019 for 2.4.x, latter was
+> sufficient to get 2.4 building on RHEL8 again (if only we had a CI to do
+> this, oh...).
+>
+
+The apr_encode.h is needed on my machine. Leaving it in.
+
+> Regards, Joe
+>

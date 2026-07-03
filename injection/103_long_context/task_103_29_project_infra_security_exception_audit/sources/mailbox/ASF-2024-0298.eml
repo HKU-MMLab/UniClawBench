@@ -1,0 +1,33 @@
+Message-ID: <1d7d4c6e-fbdd-e93b-77bb-f50995cb5d1f@apache.org>
+X-Clawbench-ID: ASF-2024-0298
+Date: Fri, 10 Jun 2022 17:05:16 +0200
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: [httpd-site] branch main updated: add inline details
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-06.mbox
+
+On 6/10/22 3:51 PM, covener@apache.org wrote:
+> This is an automated email from the ASF dual-hosted git repository.
+>
+> covener pushed a commit to branch main
+> in repository https://gitbox.apache.org/repos/asf/httpd-site.git
+>
+>
+> The following commit(s) were added to refs/heads/main by this push:
+>      new de34c89  add inline details
+> de34c89 is described below
+>
+> commit de34c893c06b0a65a23bc4684a5eaf2f85c29881
+> Author: Eric Covener <ecovener@us.ibm.com>
+> AuthorDate: Fri Jun 10 09:51:42 2022 -0400
+>
+>     add inline details
+
+Hm, now CVE-2022-28614.json disappeared from https://httpd.apache.org/security/vulnerabilities_24.html.
+
+Regards
+
+Rüdiger

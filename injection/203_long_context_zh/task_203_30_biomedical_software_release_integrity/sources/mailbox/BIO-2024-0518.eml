@@ -1,0 +1,53 @@
+Message-ID: <627567721c2c799f40102c89be9da0c3d9dbe684.camel@tugraz.at>
+X-Clawbench-ID: BIO-2024-0518
+Date: Sat, 08 Oct 2022 15:41:49 +0200
+From: Martin Uecker <uecker@tugraz.at>
+To: Andreas Tille <tille@debian.org>
+Subject: Re: BART 0.8.0
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00022.html
+
+Hi Andreas,
+
+Am Freitag, den 07.10.2022, 15:18 +0200 schrieb Andreas Tille:
+> Hi Martin,
+>
+> Am Sat, Oct 01, 2022 at 02:45:21PM +0200 schrieb Martin Uecker:
+> > I updated the Debian packages for BART (bart and bart-cuda)
+> > to our new upstream version.
+>
+> Thanks a lot for preparing these packages which I just uploaded.
+
+Thank you! I assume the bart package is still being processed?
+
+> > This time I also managed to run the CI on salsa for bart-cuda
+> > There are still some failures, but it seems ok to me.
+>
+> I admit in my local pbuilder I also observed issues but it seems
+> to be OK in Salsa CI.
+>
+> > Please upload if it looks ok to you.
+>
+> Is there any reason to stick to gcc-10.  I'm not sure when this
+> GCC version will be removed - but sooner or later this will be
+> the case.
+
+This was caused by nvcc not being compatible with newer
+version of GCC, but it seems a new version of
+nvidia-cuda-toolkit is now in sid, so we could try
+updating the build dependencies:
+
+https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1016625#65
+
+I will do this soon, but probably wait in case other issues
+emerge with the new packages.
+
+Martin
+
+
+> Kind regards and thanks again for your contribution
+>
+>     Andreas.
+>

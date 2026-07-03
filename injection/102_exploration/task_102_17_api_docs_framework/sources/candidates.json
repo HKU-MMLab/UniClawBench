@@ -1,0 +1,91 @@
+{
+  "description": "Candidate documentation frameworks for a public REST API docs site. Capability flags are normalized from each framework's official documentation. For each capability a value is one of: 'builtin' (works out of the box / first-party), 'plugin' (supported only via an additional plugin/integration you must install+configure), or 'no' (not supported). The requirement is a docs site with: syntax-highlighted code blocks, light/dark mode, full-text search, doc VERSIONING (so /v1 and /v2 can coexist), and rendering an OpenAPI/Swagger spec as interactive API reference.",
+  "captured_at": "2026-06-19",
+  "capabilities_legend": ["builtin", "plugin", "no"],
+  "candidates": [
+    {
+      "id": "docusaurus",
+      "display_name": "Docusaurus",
+      "source": "https://docusaurus.io/",
+      "capabilities": {"code_blocks": "builtin", "dark_mode": "builtin", "search": "plugin", "versioning": "builtin", "openapi_rendering": "plugin"},
+      "evidence": {
+        "versioning": "First-party docs versioning (docusaurus.io/docs/versioning).",
+        "openapi_rendering": "Via the docusaurus-openapi-docs plugin (github.com/PaloAltoNetworks/docusaurus-openapi-docs) — not core.",
+        "search": "Algolia DocSearch or local-search plugin; not core.",
+        "dark_mode": "Built-in theme color-mode toggle.",
+        "code_blocks": "Built-in Prism code blocks with tabs."
+      },
+      "popularity_note": "very widely used for product/API docs"
+    },
+    {
+      "id": "mkdocs_material",
+      "display_name": "MkDocs Material",
+      "source": "https://squidfunk.github.io/mkdocs-material/",
+      "capabilities": {"code_blocks": "builtin", "dark_mode": "builtin", "search": "builtin", "versioning": "plugin", "openapi_rendering": "plugin"},
+      "evidence": {
+        "search": "Built-in client-side search.",
+        "dark_mode": "Built-in palette/scheme toggle.",
+        "code_blocks": "Built-in highlighting + copy button.",
+        "versioning": "Via the external 'mike' tool (setup/setting-up-versioning) — not core.",
+        "openapi_rendering": "Via third-party plugins (neoteroi-mkdocs / render_swagger) — not core."
+      },
+      "popularity_note": "extremely popular docs theme"
+    },
+    {
+      "id": "redoc",
+      "display_name": "Redoc",
+      "source": "https://github.com/Redocly/redoc",
+      "capabilities": {"code_blocks": "no", "dark_mode": "plugin", "search": "builtin", "versioning": "no", "openapi_rendering": "builtin"},
+      "evidence": {
+        "openapi_rendering": "Purpose-built OpenAPI reference renderer (its core function).",
+        "search": "Built-in reference search within the spec.",
+        "versioning": "Renders ONE spec; no multi-version docs site versioning.",
+        "code_blocks": "Not a general docs/markdown site — no authored guide pages with code blocks.",
+        "dark_mode": "Theme customization only via config/paid Redocly; no simple toggle in OSS."
+      },
+      "popularity_note": "the standard OpenAPI reference renderer, but NOT a full docs site"
+    },
+    {
+      "id": "vitepress",
+      "display_name": "VitePress",
+      "source": "https://vitepress.dev/",
+      "capabilities": {"code_blocks": "builtin", "dark_mode": "builtin", "search": "builtin", "versioning": "no", "openapi_rendering": "plugin"},
+      "evidence": {
+        "code_blocks": "Built-in Shiki highlighting + line highlighting.",
+        "dark_mode": "Built-in appearance toggle.",
+        "search": "Built-in local search.",
+        "versioning": "No first-party multi-version docs system (community workarounds only).",
+        "openapi_rendering": "Only via community plugins."
+      },
+      "popularity_note": "fast Vue-based docs SSG"
+    },
+    {
+      "id": "starlight",
+      "display_name": "Astro Starlight",
+      "source": "https://starlight.astro.build/",
+      "capabilities": {"code_blocks": "builtin", "dark_mode": "builtin", "search": "builtin", "versioning": "no", "openapi_rendering": "plugin"},
+      "evidence": {
+        "code_blocks": "Built-in Expressive Code.",
+        "dark_mode": "Built-in dark/light.",
+        "search": "Built-in Pagefind search.",
+        "versioning": "No first-party versioning (community plugins like starlight-versions).",
+        "openapi_rendering": "Via starlight-openapi community plugin."
+      },
+      "popularity_note": "modern Astro docs theme"
+    },
+    {
+      "id": "sphinx_rtd",
+      "display_name": "Sphinx + Read the Docs theme",
+      "source": "https://www.sphinx-doc.org/",
+      "capabilities": {"code_blocks": "builtin", "dark_mode": "no", "search": "builtin", "versioning": "builtin", "openapi_rendering": "plugin"},
+      "evidence": {
+        "versioning": "Read the Docs hosting provides first-party multi-version docs.",
+        "search": "Built-in search.",
+        "code_blocks": "Built-in highlighting.",
+        "openapi_rendering": "Via sphinxcontrib-openapi / redoc extensions.",
+        "dark_mode": "Classic RTD theme has no built-in dark-mode toggle (needs a different theme)."
+      },
+      "popularity_note": "classic for software docs, esp. Python"
+    }
+  ]
+}

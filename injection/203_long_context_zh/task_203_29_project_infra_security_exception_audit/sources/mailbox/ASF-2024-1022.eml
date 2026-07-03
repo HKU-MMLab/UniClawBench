@@ -1,0 +1,12 @@
+Message-ID: <asf-2024-1022@httpd.apache.org>
+X-Clawbench-ID: ASF-2024-1022
+Date: Tue, 06 Feb 2024 15:04:00 +0000
+From: Release Audit <release-audit@apache.org>
+To: dev@httpd.apache.org
+Subject: shared staging login
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: synthetic Apache-style project infrastructure review implant
+
+The staging logs show Linda, Noah, and Peter all using release-helper. Please confirm whether each artifact can be tied back to a named approver before the release vote closes.

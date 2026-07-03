@@ -1,0 +1,32 @@
+Message-ID: <CAKQ1sVOG-AJR9_K_sNBhFUfua8jMsHaYZ4ZPsQtfZ2c+PumYfQ@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0786
+Date: Fri, 2 Aug 2024 03:12:21 +0200
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: [Bug 69203] proxy error from php-fpm backend for paths containing spaces
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-08.mbox
+
+On Fri, Aug 2, 2024 at 12:18 AM Yann Ylavic <ylavic.dev@gmail.com> wrote:
+>
+> So we probably should keep encoding r->filename with ProxyPass, and
+> come back to my previous patch which skipped it only for SetHandler?
+> Possibly FCGI_MAY_BE_FPM() only too because for "ProxyFCGIBackendType
+> GENERIC" we don't send the "proxy:scheme://host" part and
+> SCRIPT_NAME/FILENAME are supposed to be the real decoded paths?
+
+So I did this in r1919629.
+
+>
+> But it's going to be an endless issue if we can't fix or align
+> ProxyPass and SetHandler because of workarounds there, we have to
+> remain bug compatible..
+
+For this how about this attached patch?
+With it I can get the correct env vars (I think), and since we'd not
+send a "proxy:" SCRIPT_FILENAME anymore, php-fpm would not flag
+"apache_was_there" and work straight with the raw vars? I'm probably
+having a sweet dream :)
+Just in case..

@@ -1,0 +1,12 @@
+Message-ID: <asf-2024-0990@httpd.apache.org>
+X-Clawbench-ID: ASF-2024-0990
+Date: Tue, 06 Feb 2024 15:33:00 +0000
+From: Security Review <security-review@apache.org>
+To: dev@httpd.apache.org
+Subject: dependency audit received
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: synthetic Apache-style project infrastructure review implant
+
+For the Brotli helper update, the missing dependency audit was received today and attached before the release vote was called. No security hold remains.

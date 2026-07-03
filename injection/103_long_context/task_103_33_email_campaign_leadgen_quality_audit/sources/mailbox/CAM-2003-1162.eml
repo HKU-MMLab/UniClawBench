@@ -1,0 +1,26 @@
+Message-ID: <yf21y7h3i4m.fsf@proton.pathname.com>
+X-Clawbench-ID: CAM-2003-1162
+Date: Wed, 25 Sep 2002 13:54:17 -0700
+From: Daniel Quinlan <quinlan@pathname.com>
+To: yyyy@spamassassin.taint.org
+Subject: Re: [SAdev] Have mass-check remove X-Spam-* headers?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01504.3a306a038f96c31abe2440db7f7c6806
+
+jm@jmason.org (Justin Mason) writes:
+
+> except for 1 thing: defanged MIME messages.  that's a big problem.
+> but if you didn't just *remove* the headers and instead reverted
+> back to the X-Spam-Prev versions, it'd more-or-less work.
+>
+> (BTW fixed the downloads page ;)
+
+&check now un-defangs MIME -- it was screwing up some of my mass-check
+results (where SA-markup was present, yes).
+
+If there ever was a warning about SA-markup in mass-check, it never
+worked for me.
+
+Dan

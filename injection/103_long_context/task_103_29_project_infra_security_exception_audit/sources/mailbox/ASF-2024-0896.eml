@@ -1,0 +1,34 @@
+Message-ID: <b75e3813-34fe-d8f8-8c10-ee8ac2b0e490@apache.org>
+X-Clawbench-ID: ASF-2024-0896
+Date: Tue, 18 Jan 2022 21:13:52 +0100
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: [Regression in httpd 2.4.52] mod_dav: Potentially unbounded  memory usage in PROPFIND with dav_get_props() and dav_propfind_walker()
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-01.mbox
+
+On 1/18/22 2:58 PM, Evgeny Kotkov wrote:
+> Ruediger Pluem <rpluem@apache.org> writes:
+>
+>> Can you please check if the below patch fixes your issue?
+>
+> I have to say that the reason and the original intention of using
+> resource->pool's userdata here are still somewhat unclear to me.
+
+An application seems to be here:
+
+https://github.com/minfrin/mod_dav_calendar/blob/main/mod_dav_calendar.c#L2170
+
+As far as I understand the code needs the data stored in the userdata and has no other means to retrieve it.
+
+>
+> But it does look like the patch performs the allocation only once per
+> resource->pool, and so it should fix the unbounded memory usage issue.
+
+r1897182
+
+Regards
+
+Rüdiger

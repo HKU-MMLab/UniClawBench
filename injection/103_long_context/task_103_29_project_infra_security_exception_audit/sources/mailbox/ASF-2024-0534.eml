@@ -1,0 +1,18 @@
+Message-ID: <CALK=YjPQ1BgXWZaxUru+RgHYeVMd3YMEYZYvf6Xg0SNNE+6psw@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0534
+Date: Fri, 27 Sep 2024 08:47:54 -0400
+From: Eric Covener <covener@gmail.com>
+To: dev@httpd.apache.org, jakub.sysop@gmail.com
+Subject: Re: [Bug 69203] proxy error from php-fpm backend for paths containing spaces
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-09.mbox
+
+> Feel free to ask if you want to clarify some bits in FPM or its tests. I will also try to find some time to test this patch (most likely next week) and later I plan to do some integration tests which could potentially run daily against trunk (it's a bit longer term plan though).
+
+Hi Jakub, do you have a result from current/recent trunk vs 2.4.62 w/
+the added tests?  I think if we are improving relative to 2.4.62 it
+might be better to at least get this stuff released, even if it still
+disrupts some things from the historical behavior (that are likely
+busted in 2.4.62 too)

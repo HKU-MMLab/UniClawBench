@@ -1,0 +1,96 @@
+{
+  "task_id": "task_105_01_rag_survey_gui_zotero_obsidian",
+  "source_pdf": "sources/rag_survey_pack/rag_survey.pdf",
+  "source_evidence": "references/rag_survey_source_evidence.md",
+  "downloaded_from": "https://arxiv.org/pdf/2312.10997",
+  "paper_page": "https://arxiv.org/abs/2312.10997",
+  "extraction_tool": "pdftotext",
+  "source_anchors": {
+    "title_and_version": "rag_survey_source_evidence.md E01 identifies the title, authors, and arXiv:2312.10997v5.",
+    "abstract_scope": "rag_survey_source_evidence.md E02 describes hallucination/outdated knowledge, external databases, Naive RAG, Advanced RAG, Modular RAG, and retrieval/generation/augmentation.",
+    "scope_and_paradigms": "rag_survey_source_evidence.md E03 identifies over 100 studies, 26 tasks, nearly 50 datasets, and the three RAG paradigms.",
+    "evaluation_dimensions": "rag_survey_source_evidence.md E04 names context relevance, answer faithfulness, answer relevance, noise robustness, negative rejection, information integration, and counterfactual robustness.",
+    "challenges": "rag_survey_source_evidence.md E05 summarizes retrieval, generation, context-compression, standardization, long-context, robustness, production, multimodal, and evaluation-method challenges."
+  },
+  "bibliographic_record": {
+    "title": "Retrieval-Augmented Generation for Large Language Models: A Survey",
+    "authors": [
+      "Yunfan Gao",
+      "Yun Xiong",
+      "Xinyu Gao",
+      "Kangxiang Jia",
+      "Jinliu Pan",
+      "Yuxi Bi",
+      "Yi Dai",
+      "Jiawei Sun",
+      "Meng Wang",
+      "Haofen Wang"
+    ],
+    "year": 2024,
+    "venue": "arXiv preprint arXiv:2312.10997v5",
+    "doi_or_arxiv_id": "arXiv:2312.10997",
+    "citation_key": "gao2024retrieval",
+    "tags": [
+      "RAG",
+      "retrieval-augmented generation",
+      "large language models",
+      "survey",
+      "RAG evaluation"
+    ]
+  },
+  "canonical_facts": {
+    "objective": "Systematically survey Retrieval-Augmented Generation for large language models, including RAG paradigms, core components, evaluation, challenges, and future directions.",
+    "method": "The survey organizes RAG research into Naive RAG, Advanced RAG, and Modular RAG, and analyzes retrieval, generation, and augmentation techniques.",
+    "review_scope": "The paper reviews over 100 RAG studies and summarizes assessment methods covering 26 tasks and nearly 50 datasets.",
+    "evaluation_dimensions": [
+      "context relevance",
+      "answer faithfulness",
+      "answer relevance",
+      "noise robustness",
+      "negative rejection",
+      "information integration",
+      "counterfactual robustness"
+    ],
+    "key_points": [
+      "RAG mitigates LLM hallucination, outdated knowledge, and non-transparent reasoning by incorporating external databases.",
+      "Naive RAG follows an indexing-retrieval-generation pipeline.",
+      "Advanced RAG improves retrieval quality through pre-retrieval and post-retrieval strategies.",
+      "Modular RAG adds flexible modules and patterns such as iterative or adaptive retrieval.",
+      "RAG evaluation includes tasks, datasets, metrics, benchmarks, and tools, but mature standardized metrics are still developing."
+    ],
+    "limitations_or_challenges": [
+      "Long-context LLMs change but do not remove the need for RAG.",
+      "Retrieval quality, noisy or irrelevant context, and context compression remain important challenges.",
+      "RAG evaluation metrics are not yet mature or fully standardized.",
+      "RAG research is expanding toward multimodal domains, which introduces new evaluation and retrieval challenges."
+    ],
+    "rag_eval_plan_uses": [
+      "use context relevance, answer faithfulness, and answer relevance as core quality scores",
+      "include robustness checks such as noise robustness and negative rejection",
+      "compare Naive, Advanced, and Modular RAG configurations",
+      "track retrieval, generation, and augmentation components separately"
+    ]
+  },
+  "required_outputs": [
+    "/tmp_workspace/results/rag_survey_note_export.md",
+    "/tmp_workspace/results/zotero_rag_survey_export.bib",
+    "/tmp_workspace/results/pdf_reader_screenshot.png",
+    "/tmp_workspace/results/zotero_record_screenshot.png",
+    "/tmp_workspace/results/obsidian_note_screenshot.png"
+  ],
+  "required_real_app_evidence": {
+    "service_state": "/tmp_workspace/clawbench/service_state/zotero-obsidian-ready.json",
+    "zotero_export_base": "/tmp_workspace/results/zotero_rag_survey_export",
+    "acceptable_zotero_export_extensions": [
+      ".bib",
+      ".ris",
+      ".rdf"
+    ],
+    "obsidian_vault": "/tmp_workspace/results/rag_survey_obsidian_vault",
+    "disallowed_mock_outputs": [
+      "/tmp_workspace/results/mock_zotero_state.json",
+      "/tmp_workspace/results/mock_obsidian_state.json",
+      "/tmp_workspace/results/mock_gui_event_log.jsonl"
+    ]
+  }
+}

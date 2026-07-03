@@ -1,0 +1,22 @@
+{
+  "task_id": "task_101_20_slack_channel_summary",
+  "notes_visible_to_executor": false,
+  "skill_changes": [
+    {
+      "original_skill": "slack",
+      "injected_skill": "slack",
+      "original_source": "clawhub",
+      "change_type": "no_changes",
+      "reason": "Upstream `slack` (top-1000) is injected as-is. Credentials are supplied via `.privacy` (SLACK_BOT_TOKEN); SNAPSHOT_MODE switches to the local snapshot when the live Web API is unavailable.",
+      "executor_skill_path": "skills/slack"
+    },
+    {
+      "original_skill": "summarize-pro",
+      "injected_skill": "summarize-pro",
+      "original_source": "clawhub",
+      "change_type": "no_changes",
+      "reason": "Upstream `summarize-pro` (top-1000) is injected as-is.",
+      "executor_skill_path": "skills/summarize-pro"
+    }
+  ]
+}

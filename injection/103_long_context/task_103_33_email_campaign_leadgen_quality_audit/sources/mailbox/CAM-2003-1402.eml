@@ -1,0 +1,24 @@
+Message-ID: <20020810152905.GA4246@jinny.ie>
+X-Clawbench-ID: CAM-2003-1402
+Date: Sat, 10 Aug 2002 16:29:05 +0100
+From: "John P. Looney" <valen@tuatha.org>
+To: ilug@linux.ie
+Subject: Re: [ILUG] cdrecord + 2.4.19 = hard-lock
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00331.6cfb3936c79bcb295dc5e50bcd7c7561
+
+On Sat, Aug 10, 2002 at 12:11:50PM +0100, FRLinux mentioned:
+> I have been using 2.4.19 since a couple of days on a Mandrake 8.2 with
+> standard RPMs for cdrecord and it didn't give any hard locks on it at
+> all, i've already burnt a couple of CDs.
+
+ Stephane, don't you have a SCSI CD burner though ?
+
+John
+
+--
+Irish Linux Users' Group: ilug@linux.ie
+http://www.linux.ie/mailman/listinfo/ilug for (un)subscription information.
+List maintainer: listmaster@linux.ie

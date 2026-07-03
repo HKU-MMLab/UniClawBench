@@ -1,0 +1,62 @@
+Message-ID: <ZFtvcZozOycEutXo@benson.stsp.name>
+X-Clawbench-ID: ASF-2024-0082
+Date: Wed, 10 May 2023 12:18:25 +0200
+From: Stefan Sperling <stsp@apache.org>
+To: Greg Stein <gstein@gmail.com>
+Subject: Re: [VOTE] Switch read/write repository from Subversion to Git
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-05.mbox
+
+On Tue, May 09, 2023 at 11:11:40PM -0500, Greg Stein wrote:
+> The ASF is completely confident in svn, and basically 99% of our corporate
+> records, and some of our key workflows (eg. account requests, TLP
+> graduation, ICLA recording) is all based on Apache Subversion. Also a fact.
+> And zero plans to change that. Git is not envisioned to replace any of that.
+>
+> Your implication that the Foundation was somehow required to grow the svn
+> community is misplaced. That is not its purpose. The Apache Subversion
+> community is responsible for growing itself. In 2011, the Board of
+> Directors specifically declined to assist a TLP with its community (*way*
+> larger than svn) because that is not the purpose of the Foundation. We do
+> not want some people "over there" on the Foundation/administrative side
+> interfering with the technical operation, and the community dynamics of one
+> of the communities. Or, even worse, to *pick* which communities get
+> assistance, while others do not. No winners. No losers. (clearly: I am
+> upset by your implication that you've been let down; the true answer is
+> missing a step on the Foundation's role)
+
+Thanks for writing this up, Greg. Point taken. I did not mean to imply
+that the foundation was somehow responsible for adding developers to the
+project.
+
+I did have some hope that we would see individual self-motivated contributors
+arriving via various ASF projects because they are all using SVN every day
+on svn.apache.org, are programmers, might have itches to scratch, already have
+commit access to ^/subversion, and there is some sense of shared ownership
+across the ASF community. I was reminded of all this by Graham's remark.
+It's the lack of such interactions that I find disappointing in retrospect.
+There certainly have been some, but relatively few.
+Of course, it's not the foundation's job to make that happen. It's up to
+the individuals in the larger ASF community to make a decision whether
+to get involved.
+
+> As Daniel notes else-thread, the suggestion is not git vs. svn. It is
+> entirely about "Do we want the tools offered by GitHub, to be made
+> available to the Apache HTTPD community?"
+
+Yep, that is very clear.
+And there is the network effect which makes GitHub a popular platform
+in its own right.
+
+> I'm an svn partisan, but I also appreciate GitHub for its utility. I
+> voted +1 to move, for that reason only. Hands-down, I'd -1 a move to git.
+> It was only GitHub that changed my opinion on this issue.
+
+I'll abstain since I don't contribute much to HTTPD anymore and probably
+won't find the time to do so in the foreseeable future. I'll run with
+whatever gets decided by the community.
+
+Cheers,
+Stefan

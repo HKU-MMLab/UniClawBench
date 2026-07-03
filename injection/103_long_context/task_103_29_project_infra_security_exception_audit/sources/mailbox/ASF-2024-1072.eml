@@ -1,0 +1,37 @@
+Message-ID: <c2c78853-120e-7ce6-f812-7a695b745ad2@apache.org>
+X-Clawbench-ID: ASF-2024-1072
+Date: Thu, 10 Mar 2022 13:09:50 +0100
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: About our autoconf problems
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-03.mbox
+
+On 3/10/22 9:09 AM, Rainer Jung wrote:
+> First thanks to Stefan for downgrading his release system. It is a good workaround for the observed problems.
+>
+> Since downgrades are not a long term solution, here's the status info to avoid confusion.
+>
+> We observed two problems that had to do with using a recent autoconf version (2.70 an above) during releasing:
+>
+> - bundled APR configure broken (ongoing)
+>
+> This is already fixed by adjusting one of our autoconf macros in APR 1.7.x and trunk (I think not in 1.6.x). But we didn't have an
+> APR release since a long time, so the deps tarball for httpd still contains the latest but unfixed APR version. Once we will have
+> a new APR release und bundle that, this autoconf problem will be gone and the latest autoconf should again be fine.
+>
+> - thread local detection broken in httpd.h (fixed)
+>
+> This is not a configure time problem, but a compile time problem. But it is still related to configure, because since autoconf
+> 2.70 our call to AC_PROG_CC also checks whether the compiler support C11. For some gcc versions, eg. 4.8.x, this leads in
+> "-std=gnu11" being added to the compiler flags. This in combination with httpd.h in 2.4.53-rc1 lead to a compile time failure.
+
+But isn't this a bug in autoconf to add this as 4.8.x does not implement C11? Or should we blame it on gcc 4.8.x to accept
+-std=gnu11 if it doesn't implement this?
+Irrespective of the answers to the the questions above it is good that we have the fix in httpd.h.
+
+Regards
+
+Rüdiger

@@ -1,0 +1,32 @@
+Message-ID: <200207262200.SAA15582@blackcomb.panasas.com>
+X-Clawbench-ID: CAM-2003-0049
+Date: Fri, 26 Jul 2002 15:00:57 -0700
+From: Brent Welch <welch@panasas.com>
+To: exmh-workers@spamassassin.taint.org
+Subject: cvs access working?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00739.dbf08fcc01fee2e659d36fe697230097
+
+Can anyone access the CVS server for exmh?
+The last thing I was able to do was try a "cvs commit", but
+I got an "up-to-date check failed" for a couple files,
+exmh.CHANGES and lib/msg.tcl, I think, so I then tried "cvs update".
+I get a password prompt, and then it just hangs.
+
+cat CVS/Root
+welch@cvs.sourceforge.net:/cvsroot/exmh
+
+--
+Brent Welch
+Software Architect, Panasas Inc
+Pioneering the World's Most Scalable and Agile Storage Network
+www.panasas.com
+welch@panasas.com
+
+
+_______________________________________________
+Exmh-workers mailing list
+Exmh-workers@redhat.com
+https://listman.redhat.com/mailman/listinfo/exmh-workers

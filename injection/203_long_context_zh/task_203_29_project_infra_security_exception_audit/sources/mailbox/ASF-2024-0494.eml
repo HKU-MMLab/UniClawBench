@@ -1,0 +1,24 @@
+Message-ID: <CADED=K474EosSBKa3xhOk6kXUCB0rs+tJcQsGSJ5w4s=ynAcCA@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0494
+Date: Thu, 29 Sep 2022 12:15:44 +0100
+From: Steve Hay <steve.m.hay@googlemail.com>
+To: dev@httpd.apache.org, mod_perl Dev <dev@perl.apache.org>
+Subject: Re: [RESULT: PASS] Re: [VOTE] Release libapreq2-2.17
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-09.mbox
+
+On Thu, 25 Aug 2022 at 09:58, Joe Orton <jorton@redhat.com> wrote:
+>
+> Thanks for testing. The release is approved:
+>
+> PMC votes: +1 from ylavic, jfclere, jorton
+>
+> I will promote the release and announce it.
+>
+
+Thanks for this release. I didn't get round to uploading it to CPAN
+yet, but a bug report has come in for it anyway:
+
+https://rt.cpan.org/Public/Bug/Display.html?id=144470

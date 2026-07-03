@@ -1,0 +1,14 @@
+{
+  "id": "R07",
+  "title": "Letter from a soldier, transcribed",
+  "type": "manuscript_text",
+  "collection_rights": "varies",
+  "item_rights": "No known restrictions on publication",
+  "image": {
+    "thumbnail": true,
+    "full_image": true,
+    "iiif": true,
+    "width": 2400
+  },
+  "dedup_group": "g_letter"
+}

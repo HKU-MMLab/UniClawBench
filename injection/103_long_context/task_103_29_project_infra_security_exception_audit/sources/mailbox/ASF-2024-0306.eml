@@ -1,0 +1,32 @@
+Message-ID: <YiXrQj9kWIDYTvKN@redhat.com>
+X-Clawbench-ID: ASF-2024-0306
+Date: Mon, 7 Mar 2022 11:23:46 +0000
+From: Joe Orton <jorton@redhat.com>
+To: dev@httpd.apache.org
+Subject: Re: backports
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-03.mbox
+
+On Sun, Mar 06, 2022 at 05:56:36PM +0200, Graham Leggett wrote:
+> I am however strongly opposed for Github to be our only promotion process.
+>
+> CI is great right until the point you get your first unrelated test failure, then it is a nightmare. The collectd project was completely stuck unable to merge a single PR for months and months because their CI broke and nobody had access to fix it. Github presented a “computer says no” button and the project ground to a complete halt. The project is now so backlogged that the chances of getting anything reviewed are slim.
+>
+> https://www.mail-archive.com/search?l=collectd@verplant.org&q=subject:%22Re%5C%3A+%5C%5Bcollectd%5C%5D+SNMPv3%5C%2BDTLS+support+for+collectd%5C-snmp%22&o=newest&f=1
+>
+> It is inevitable that at some point the generosity of the people
+> supplying the CI will run out, and CI will stop working. We cannot
+> allow ourselves to be jammed up because of this.
+
+I assume the ASF infra budget is still paying for Travis capacity since
+there is no free service there any more (beyond an initial N thousand
+hours per account), and they were in the past:
+
+https://blogs.apache.org/infra/entry/apache_gains_additional_travis_ci
+
+AIUI you can configure github to allow merges even if tests fail, though
+I'm not familiar with that, has anybody played with the settings there?
+
+Regards, Joe

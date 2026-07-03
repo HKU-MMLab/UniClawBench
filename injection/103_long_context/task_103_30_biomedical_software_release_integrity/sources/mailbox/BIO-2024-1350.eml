@@ -1,0 +1,46 @@
+Message-ID: <YutgF7pOC8BRM6qt@an3as.eu>
+X-Clawbench-ID: BIO-2024-1350
+Date: Thu, 4 Aug 2022 07:58:47 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Help required for fixing build failure - gdcm
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_08_msg00016.html
+
+Hi,
+
+(Upstream in CC)
+
+Am Thu, Aug 04, 2022 at 10:17:00AM +0530 schrieb Nilesh Patra:
+> | $ pdflatex refman.tex
+> | This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex)
+> | restricted \write18 enabled.
+> | entering extended mode
+> | (./refman.tex
+> | LaTeX2e
+> | L3 programming layer
+> | $ echo $?
+> | 1
+>
+> It seems that pdflatex is exiting with exit code 1.
+> However, the pdf is rendered just fine, when I tried to compile and open it.
+> I am seeing a bunch of warnings in refman.log but no show stoppers/errors.
+
+I wonder whether we simply could
+
+    pdflatex refman.tex || true
+
+(or whatever might trigger that call)
+
+Another question (basically to Mathieu:  There is a new upstream release.
+Do you think its a "harmless" upgrade (no ABI change etc.) ?
+
+
+Kind regards
+
+       Andreas.
+
+--
+http://fam-tille.de

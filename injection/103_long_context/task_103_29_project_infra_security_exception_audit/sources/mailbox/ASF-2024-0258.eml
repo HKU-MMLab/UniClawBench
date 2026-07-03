@@ -1,0 +1,42 @@
+Message-ID: <649E42B2-0516-4C09-A79A-2D22D9920696@eissing.org>
+X-Clawbench-ID: ASF-2024-0258
+Date: Wed, 9 Mar 2022 10:10:08 +0100
+From: Stefan Eissing <stefan@eissing.org>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.53-rc1 as httpd-2.4.53
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-03.mbox
+
+CANCELLED.
+
+Due to errors/warnings found during your tests, I cancel the vote on rc1.
+
+Thanks for giving us these feedbacks! I'll put up the rc2 vote as soon
+as we're ready.
+
+Thanks,
+
+Stefan
+
+
+> Am 09.03.2022 um 08:50 schrieb Ruediger Pluem <rpluem@apache.org>:
+>
+>
+>
+> On 3/8/22 10:09 PM, Rainer Jung wrote:
+>>
+>
+>>>
+>>> Two additional things I already saw, but which are non.critical:
+>>>
+>>> - configure flag --with-pcre no longer accepts an external pcre 8 installation directory. It seems in that case the flag must
+>>> now point to the path of the pcre-config script instead.
+>
+> Hmm. This could break existing configure calls. Probably not good for a patch release. Thanks for pointing out.
+>
+> Regards
+>
+> Rüdiger
+>

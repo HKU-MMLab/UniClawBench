@@ -1,0 +1,42 @@
+Message-ID: <udlzgcui3eo.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-1080
+Date: Sun, 13 Nov 2022 23:08:31 -0500
+From: ucko@debian.org (Aaron M. Ucko)
+To: <debian-med@lists.debian.org>
+Subject: Re: Finishing ncbi-vdb and sra-sdk
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_11_msg00036.html
+
+"Aaron M. Ucko"  writes:
+
+> Meanwhile, I pushed some more tuneups, mostly related to tests; in
+> particular, I arranged to label and exclude all online tests, including
+> for better or worse some tests that were failing even with Internet
+> access.  I also made the Python binary package Architecture: any in the
+> same binNMU-safe fashion as the main Java package.  The source package
+> still needs a bit more work before uploading, even to experimental, but
+> it's getting late in the day.
+
+I found time to wrap up sra-sdk 3.0.0+dfsg-1, which I've now uploaded to
+experimental by way of NEW (where it is of course still sitting).  I
+gave architecture support the benefit of the doubt for now; in the
+likely event that we have to rein it back in, I'm inclined to do so for
+all architecture-dependent packages rather than trying to arrange for
+builds on semi-supported architectures to build only some
+architecture-dependent packages.
+
+I realized at the last minute (in the course of confirming that sra-sdk
+passes its autopkgtest) that I never merged in ngs-sdk's, which is
+likely to need formal adjustments per layout changes; we should try to
+remember to do so before uploading to unstable.
+
+Also, while scanning for copyright notices, I observed convenience
+copies of several separately packaged libraries.  I left their handling
+as is for now, but it would be good to look into switching to the
+separately packaged copies.
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

@@ -1,0 +1,24 @@
+Message-ID: <Y84gGJ7P7C4hDDnn@an3as.eu>
+X-Clawbench-ID: BIO-2024-0187
+Date: Mon, 23 Jan 2023 06:50:16 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Finishing ncbi-vdb and sra-sdk
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_01_msg00044.html
+
+Am Sun, Jan 22, 2023 at 10:35:37PM -0500 schrieb Aaron M. Ucko:
+> Version 3.x of ncbi-vdb and sra-sdk are now in unstable, and looking
+> good.  Please do not make further uploads of either, or of skesa, until
+> they migrate unless absolutely necessary.
+
+Thanks a lot for all your work on this.  I'm optimistic, that in future
+upgrades will be easier due to the switch to some default build system.
+
+Kind regards
+    Andreas.
+
+--
+http://fam-tille.de

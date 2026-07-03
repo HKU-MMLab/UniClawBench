@@ -1,0 +1,28 @@
+Message-ID: <df820dac-f752-c567-864a-80290eccac5e@wanadoo.fr>
+X-Clawbench-ID: ASF-2024-0514
+Date: Sat, 25 Dec 2021 10:56:59 +0100
+From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+To: dev@httpd.apache.org
+Subject: ocsp.t failing
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2021-12.mbox
+
+Hi,
+
+the last travis jobs have failed on trunk because of ocsp.t.
+
+Unless I missed something, the only change with previous successful
+build is r1896361:
+
+https://github.com/apache/httpd/commit/442b4b167f19e13df918402a7af28fe4a50c2730
+
+I can't see any potential link.
+
+Any idea?
+
+
+BTW, ML don't receive anymore travis failures?
+
+CJ

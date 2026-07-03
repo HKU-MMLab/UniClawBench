@@ -1,0 +1,14 @@
+{
+  "task_id": "task_101_18_reddit_synthesis",
+  "data_origin": "live_public_web_api",
+  "entries": [
+    {
+      "path": "https://www.reddit.com/r/programming/comments/1okf0md/.json",
+      "description": "Public Reddit JSON endpoint used by both the executor and the host-side populator. The populator refreshes hidden ground truth from the live endpoint; no executor-visible answer key or scoring criteria is stored in sources/."
+    }
+  ],
+  "hidden_references": [
+    "references/ground_truth.json",
+    "references/eval_rule.md"
+  ]
+}

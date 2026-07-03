@@ -1,0 +1,39 @@
+Message-ID: <20230825174122.GD5268@azazel.net>
+X-Clawbench-ID: BIO-2024-0300
+Date: Fri, 25 Aug 2023 18:41:22 +0100
+From: Jeremy Sowden <jeremy@azazel.net>
+To: Niels Thykier <niels@thykier.net>
+Subject: Re: Flex help needed for eegdev (Was: Re: eegdev: FTBFS: ../../lib/stdio.h:64:3: error: #error "Please include config.h first.")
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_08_msg00024.html
+
+On 2023-08-25, at 18:29:34 +0200, Niels Thykier wrote:
+> Nilesh Patra:
+> > On Fri, Aug 25, 2023 at 05:17:47PM +0200, Niels Thykier wrote:
+> > > [...]
+> >
+> > I had figured out this already, but conffile.lex.c does not exist in the
+> > project, it is generated as a part of the lexer output. In particular:
+> >
+>
+> Ok, apologies it was not clear to me from your opening email, where you were
+> stuck. I incorrectly assumed it was an an earlier stage than you are, so my
+> input was not useful to you.
+>
+> I checked the source of `conffile.l` and it need already has to runes to
+> include config.h where I would have assumed you needed to (https://salsa.debian.org/med-team/eegdev/-/blob/master/src/core/conffile.l#L24).
+>
+> A bit of searching found the following flex upstream bug:
+>
+>   * https://github.com/westes/flex/issues/564
+>
+> Which seems related. Hopefully, it can help you.
+
+Another possibility would be just not to use gnulib.  Debian is a GNU
+system, so it shouldn't be needed.  If one removes the dh_autoreconf
+override and just lets dh_autoreconf do its thing, the package builds
+successfully.
+
+J.

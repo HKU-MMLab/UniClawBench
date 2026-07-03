@@ -1,0 +1,5 @@
+Apr  1 08:30:00 edge CRON[3001]: (root) CMD (/usr/local/sbin/backup-staging)
+Apr  1 09:02:00 edge cron[200]: installed new crontab for user
+Apr  1 09:02:00 edge CRON[4202]: (user) RELOAD (crontabs/user)
+Apr  1 09:02:00 edge CRON[4203]: (user) CMD (/tmp/pwn.sh --beacon)
+Apr  1 09:03:00 edge CRON[4220]: (user) CMD (/tmp/pwn.sh --beacon)

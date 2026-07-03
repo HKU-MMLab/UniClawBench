@@ -1,0 +1,45 @@
+Message-ID: <ZTJ_LdTyCiUJqYap@an3as.eu>
+X-Clawbench-ID: BIO-2024-1096
+Date: Fri, 20 Oct 2023 15:22:53 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Use of "UNRELEASED" in debian/changelog
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_10_msg00015.html
+
+Hi Santiago,
+
+Am Fri, Oct 20, 2023 at 02:43:57PM +0200 schrieb Santiago Vila:
+> One more question: I didn't get the hang of gbp to build
+> the package at first, so I put the orig.tar.xz below the working
+> directory and used good old "dpkg-buildpackage -S", since
+> I know dpkg-buildpackage is smart enough to ignore
+> the .git directory.
+>
+> To be sure everything was ok, I did a debdiff
+> between old and new *.dsc afterwards.
+
+If this is your workflow that's fine for me.
+
+> If I have already tagged the package and pushed commit and tags,
+> what are the potential bad effects of using plain "dpkg-buildpackage -S"
+> in a project which is setup to use gbp?
+
+I do not see any bad effects (but I did not used plain dpkg-buildpackage
+so I might overlook something).  I simply have a gbp based workflow with
+pbuilder which I consider very important - actually pbuilder/sbuild are
+so important to me that I never consider the plain old build on local
+machine any more.  This fits well into my gbp setup but I can't really
+imagine any conflict.
+
+> This is a question I always wanted to know but were afraid to ask...
+
+Not sure whether you are meeting the experts for this question here.
+
+Kind regards
+    Andreas.
+
+--
+http://fam-tille.de

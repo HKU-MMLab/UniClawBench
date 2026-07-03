@@ -1,0 +1,21 @@
+Message-ID: <JHEOKEOOLIGLDHCMAHMOGEGJDNAA.marklists@mceahern.com>
+X-Clawbench-ID: CAM-2003-1497
+Date: Mon, 09 Sep 2002 11:26:51 -0500
+From: marklists@mceahern.com
+To: recipient@example.net
+Subject: [Spambayes] spambayes package?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01735.d038cbb36f734c5ddbb023d074711d10
+
+[Skip Montanaro]
+> That has the nasty side effect of placing all .py files in the package.
+> What about obvious executable scripts (like timtest or hammie)?  How can I
+> keep them out of the package?
+
+Put them in a scripts folder?
+
+// m
+
+-

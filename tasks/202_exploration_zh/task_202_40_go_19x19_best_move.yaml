@@ -1,0 +1,41 @@
+task_id: task_202_40_go_19x19_best_move
+category: 202_exploration_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  这是一道在完整 19x19 棋盘上的单一局面围棋（Weiqi/Baduk）问题。请找出轮到走子的
+  一方的唯一最佳一手——不是下完整盘棋，只是在这个局面下那一个全局最佳着手。
+
+  该局面以两种方式提供：
+
+      /tmp_workspace/clawbench/sources/board.txt    (human-readable grid)
+      /tmp_workspace/clawbench/sources/position.sgf (SGF, komi 7)
+
+  在 board.txt 中，`X` 是黑方（轮到走子的一方），`O` 是白方，`.` 为空；
+  行编号自上而下为 0-18，列编号自左而右为 0-18。轮到黑方走子。
+
+  分析该局面，确定黑方的最佳一手。请同时用上述以 0 起始约定的 (row, column) 坐标，
+  以及标准 GTP 坐标（列字母 A-T，跳过 I；行号自下而上为 1-19）两种形式报告它，
+  并简要解释为何它是最佳的。
+
+  将你的答案保存到 `/tmp_workspace/results/best_move.json`，包含字段
+  `row`、`col`、`gtp` 以及 `reasoning`，并在 `/tmp_workspace/results/`
+  下附上任何分析笔记。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+sources:
+  - board.txt
+  - position.sgf
+
+codex:
+  max_user_followups: 2

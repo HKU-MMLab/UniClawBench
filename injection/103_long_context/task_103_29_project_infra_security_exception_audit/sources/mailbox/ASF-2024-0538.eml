@@ -1,0 +1,61 @@
+Message-ID: <1777be67-4bb5-9c3d-fa2b-24849a789d2f@evermeet.cx>
+X-Clawbench-ID: ASF-2024-0538
+Date: Wed, 18 Jan 2023 03:15:43 -0500
+From: "Helmut K. C. Tessarek" <tessarek@evermeet.cx>
+To: dev@httpd.apache.org, Ruediger Pluem <rpluem@apache.org>
+Subject: Re: sporadic 500 errors with 2.4.55
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-01.mbox
+
+These are all good questions.
+
+On 2023-01-18 02:04, Ruediger Pluem wrote:
+> 1. As you suspect h2 have you tried running 2.4.55 without mod_http2?
+
+No.
+
+> 2. As you see the 500 errors only in the access log are they only for HTTP/2.0 or also for other protocol versions?
+
+I believe so, but after downgrading the logs were wiped by rotatelogs.
+Unfortunately rotatelogs does not append, but always truncates the logs at
+server start.
+
+> 3. Do you use %L in your access and error log which eases correlating the logs?
+
+No. I am using the following:
+
+ErrorLogFormat "[%{cu}t] [%-m:%l] [pid %P] [%7F] %M"
+LogFormat "%h %u [%{%F %T}t.%{usec_frac}t %{%z}t] \"%r\" %>s %b
+\"%{Referer}i\" \"%{User-Agent}i\"" standard
+LogFormat "%v %h %u [%{%F %T}t.%{usec_frac}t %{%z}t] \"%r\" %>s %b
+\"%{Referer}i\" \"%{User-Agent}i\"" vhosts
+
+> 4. What loglevel do you use and what would be the highest one you could set given the nature of the error (sporadic) and the
+> traffic on your side?
+
+I am just using the default log level. (LogLevel warn)
+
+I have downgraded and I won't upgrade to 2.4.55 anytime soon. At least not
+this server. I rather depend on this server and the implications are too
+great. I might be able to setup a test server in a VM, but can't say if I will
+be able to reproduce it there. However, I wouldn't be able to set a debug log
+level on my prod server anyway.
+2.4.54 works perfectly fine. I don't get any errors and the performance is
+subjectively better. Thus I will stick with that version for now.
+
+I will be heading to bed soon. It's rather late (or early) already in EST. ;-)
+
+Cheers,
+   K. C.
+
+
+--
+regards Helmut K. C. Tessarek              KeyID 0x172380A011EF4944
+Key fingerprint = 8A55 70C1 BD85 D34E ADBC 386C 1723 80A0 11EF 4944
+
+/*
+    Thou shalt not follow the NULL pointer for chaos and madness
+    await thee at its end.
+*/

@@ -1,0 +1,23 @@
+Message-ID: <fb5dc554-1778-adfb-dd64-8e48913164ef@apache.org>
+X-Clawbench-ID: ASF-2024-1161
+Date: Mon, 6 Mar 2023 13:32:38 +0100
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: expose SSL_SHARED_CIPHERs from SSL/TLS
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-03.mbox
+
+On 3/6/23 12:35 PM, Dirk-Willem van Gulik wrote:
+> I was cleaning up some of our private code - and came across the patch below - exposing the SHARED_CHIPHERs.
+>
+> We scratch this itch in a few places to help force (or prevent) the forcing of a protocol upgrade from application land.
+>
+> No idea how common that is - any reason not to submit this as a suggestion for some future httpd version ?
+
+If you provide some documentation for the var, go for it :-)
+
+Regards
+
+Rüdiger

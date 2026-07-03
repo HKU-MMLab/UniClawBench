@@ -1,0 +1,95 @@
+[00:00:00] [Alice]: Good morning everyone, this is the Q3 Platform Planning Sync recorded on April 30. We have five participants today: myself Alice, Bob from infra, Carol from design, David from data, and Erin from go-to-market. Let's get through agenda items: billing revamp, observability rollout, design system migration, customer onboarding research, regional expansion to Europe, the data warehouse cutover, security audit findings, and finally Q4 budget allocation. We have a hard stop at the forty minute mark.
+
+[00:00:42] [Alice]: First topic, agenda item one, the billing revamp. Bob, where are we?
+
+[00:00:50] [Bob]: We finished the prototype last sprint. The new metering pipeline is running in shadow mode against production traffic and discrepancies are below half a percent. I'm proposing we cut over the staging tenants on 2026-09-15 and full production on 2026-10-01. That gives us two weeks to monitor.
+
+[00:01:18] [Carol]: Wait, I want to push back on the September fifteenth date. The design refresh for the invoice template isn't approved yet. If we cut over staging before the new invoice ships, customers see two different invoice formats in two weeks and support gets flooded.
+
+[00:01:38] [Bob]: That's fair, but slipping the cutover means we miss the Q3 revenue recognition window. Finance has been clear that any slip past October first costs us about three hundred thousand dollars in deferred revenue.
+
+[00:01:55] [Alice]: Okay let's debate this. Carol, what's the soonest the invoice template can be approved?
+
+[00:02:03] [Carol]: If legal signs off this week, we can ship the new template by 2026-09-08. That gives Bob a one-week buffer before the staging cutover.
+
+[00:02:18] [David]: I want to flag something. The metering pipeline depends on the data warehouse cutover being done first. If warehouse cutover slips past September first, billing cutover has to slip too. So this is a hard dependency.
+
+[00:02:36] [Alice]: Got it. So decision: we proceed with billing staging cutover on 2026-09-15 conditional on the invoice template shipping by 2026-09-08 and the data warehouse cutover completing before September first. Bob, you own that. Carol, you own the invoice template approval. Both items are due 2026-09-08. Anyone object? Going once. Going twice. Approved.
+
+[00:03:08] [Alice]: Okay topic two, observability rollout. Bob, this is yours too.
+
+[00:03:14] [Bob]: Quick update. We've rolled out distributed tracing to forty percent of services. MTTR has dropped from forty-three minutes to nineteen minutes on rolled-out services, which is a huge win. The remaining sixty percent is mostly legacy Java monoliths that need instrumentation work. I think we can finish by end of Q3.
+
+[00:03:42] [Alice]: Any objections or questions? No? Decided: complete observability rollout by end of Q3, owner Bob, no further discussion needed.
+
+[00:03:54] [Alice]: Topic three, design system migration. Carol.
+
+[00:04:00] [Carol]: We're at a fork in the road and I want the group's input. Option A is migrate everything to the new design system over Q3 and Q4, big bang style, thirty engineers for two quarters. Option B is incremental migration, smaller team, takes through end of next year but lower risk.
+
+[00:04:25] [Erin]: From a sales perspective the customer-facing screens need the refresh by Q4 because we're showing them in renewal demos. So at minimum the customer portal has to migrate by 2026-12-15.
+
+[00:04:42] [David]: I'll push back on big bang. Last time we did big bang on the analytics rewrite we had three weeks of regressions and lost two enterprise contracts. I strongly prefer incremental.
+
+[00:04:58] [Bob]: Agreed with David. Big bang is too risky. We're already absorbing billing and warehouse cutovers.
+
+[00:05:08] [Carol]: Okay so the room is leaning incremental. How about a hybrid: customer portal gets prioritized as a focused two-month sprint, owner is me, deadline 2026-12-15, then everything else is incremental through 2027 Q2. Alice, can we approve that?
+
+[00:05:30] [Alice]: Approved. Decision recorded: hybrid migration, customer portal prioritized, deadline 2026-12-15, owner Carol. Incremental rollout for the rest. Action item: Carol to deliver the customer portal migration plan by 2026-09-15, including resourcing.
+
+[00:05:58] [Alice]: Topic four, customer onboarding research. David, your turn.
+
+[00:06:04] [David]: We ran a hundred-and-forty-person survey last month. The headline is that thirty-eight percent of new customers can't complete the onboarding flow without contacting support. The biggest pain point is unclear pricing tiers — sixty-two percent of dropoffs cite confusion about what's included in each plan. Second pain point is the API key generation flow which takes seven steps.
+
+[00:06:38] [Erin]: This matches what I'm hearing from sales. We lose deals because prospects can't self-onboard during evaluation.
+
+[00:06:48] [Alice]: What's the proposed fix?
+
+[00:06:51] [David]: I want to propose a redesigned onboarding flow with three changes. One, a pricing comparison page with concrete examples. Two, single-click API key generation. Three, a guided product tour. I can have a spec by 2026-09-22 if I get design partnership.
+
+[00:07:18] [Carol]: I can pair with David on the spec. We'll deliver jointly by 2026-09-22.
+
+[00:07:26] [Alice]: Approved. Action item: David and Carol jointly own onboarding redesign spec, due 2026-09-22.
+
+[00:07:38] [Alice]: Topic five, regional expansion to Europe. Erin.
+
+[00:07:44] [Erin]: We have signed letters of intent from four enterprise customers in Germany and France contingent on us having an EU data residency option. Without that we can't close them. Combined ARR potential is about two million dollars annually.
+
+[00:08:03] [Bob]: EU data residency is a six-month infrastructure project at minimum. Frankfurt region setup, GDPR compliance review, data replication, latency testing. That's not a Q3 deliverable.
+
+[00:08:20] [Erin]: I know but if we don't commit by Q3 we lose the deals. Can we at least commit to a target date?
+
+[00:08:30] [Alice]: This is the kind of decision I can't make in the room. David, can you put together a feasibility analysis with cost, timeline, and risk by 2026-10-15? Then we can decide at the October leadership offsite.
+
+[00:08:52] [David]: Yes I can do that. Feasibility analysis by 2026-10-15.
+
+[00:09:00] [Alice]: Open question recorded: EU expansion timing decision deferred to October offsite. No decision today.
+
+[00:09:12] [Alice]: Topic six, data warehouse cutover. David.
+
+[00:09:18] [David]: We're on track. The new warehouse is live, dual-writes are working, and we've validated query parity on eighty-five percent of dashboards. Final cutover is scheduled for 2026-09-01. After that the old warehouse is in read-only mode for thirty days then decommissioned.
+
+[00:09:42] [Alice]: Any blockers?
+
+[00:09:44] [David]: Just one. We need finance to approve the new warehouse compute costs, which are about fifteen percent higher per month. I sent the request two weeks ago, no response.
+
+[00:09:58] [Alice]: I'll escalate today. Action item, mine: get finance approval on warehouse compute by end of week.
+
+[00:10:08] [Alice]: Topic seven, security audit findings. This is sensitive so let me cover it. The external audit from last month flagged twelve findings: two critical, four high, six medium. The two critical findings are around access control on the admin API and missing rate limiting on the password reset endpoint. We have to remediate critical findings within sixty days per our SOC2 commitments, so 2026-06-29 hard deadline. Bob, can your team take both?
+
+[00:10:48] [Bob]: Yes. Critical findings remediation, owner Bob, deadline 2026-06-29. The four high-severity findings I'd like to push to Q3. Mediums to Q4.
+
+[00:11:02] [Alice]: Approved. Decision: critical security findings due 2026-06-29 owner Bob, high findings due end of Q3 owner Bob, mediums end of Q4.
+
+[00:11:16] [Alice]: Last topic, Q4 budget allocation. We have one-point-eight million in discretionary budget for Q4. I want to propose roughly forty percent to engineering hiring, thirty percent to GTM, twenty percent to product research, and ten percent reserve. Thoughts?
+
+[00:11:40] [Erin]: GTM should be higher. We're heading into renewals season and we're under-resourced on customer success. I'd argue for thirty-five GTM.
+
+[00:11:52] [Bob]: I disagree. We have critical infra work in Q4 and cutting engineering hiring will delay it. Forty percent engineering is the floor.
+
+[00:12:05] [David]: I'm neutral on the split but I want to flag that product research at twenty percent is already lean given the onboarding redesign.
+
+[00:12:18] [Alice]: Okay let's land this. Final decision: forty percent engineering, thirty-two percent GTM, eighteen percent product research, ten percent reserve. Erin, that's a small bump for GTM. Bob, engineering stays at forty. David, product research is slightly trimmed but the onboarding redesign is funded separately. Anyone strongly opposed? No? Approved.
+
+[00:12:50] [Alice]: Okay, summary of action items. Bob owns billing staging cutover 2026-09-15 and production cutover 2026-10-01, conditional on dependencies. Bob owns observability rollout end of Q3 and security critical remediation 2026-06-29. Carol owns invoice template by 2026-09-08, customer portal migration plan by 2026-09-15, and customer portal delivery 2026-12-15. David and Carol jointly own onboarding redesign spec by 2026-09-22. David owns EU feasibility analysis by 2026-10-15 and warehouse cutover 2026-09-01. I own finance escalation by end of this week.
+
+[00:13:48] [Alice]: Open questions deferred: EU expansion timing, decided at October offsite. Any final comments? No? Meeting adjourned. Thank you everyone.

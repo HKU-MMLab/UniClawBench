@@ -1,0 +1,27 @@
+Message-ID: <20210907094533.GG14628@an3as.eu>
+X-Clawbench-ID: BIO-2024-0649
+Date: Tue, 7 Sep 2021 11:45:33 +0200
+From: Andreas Tille <tille@debian.org>
+To: Gilles Filippini <pini@debian.org>
+Subject: Re: Help needed for r-bioc-rhdf5 in BioConductor transition
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_09_msg00008.html
+
+Hi Gilles,
+
+On Tue, Sep 07, 2021 at 12:57:38AM +0200, Gilles Filippini wrote:
+> Andreas Tille a écrit le 06/09/2021 à 16:59 :
+> > Gilles, do you see any chance to bump the minor version of hdf5 which
+> > should be hopefully easier than just upgrade to the latest upstream
+> > (1.12.0).  This would help us a lot.
+>
+> Will do in the next few days.
+
+Thanks a lot.  Its very helpful
+
+    Andreas.
+
+--
+http://fam-tille.de

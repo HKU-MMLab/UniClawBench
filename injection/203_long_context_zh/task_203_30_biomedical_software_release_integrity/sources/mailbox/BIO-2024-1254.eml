@@ -1,0 +1,23 @@
+Message-ID: <20211230200808.2jrh6kj3pb4ad64a@House>
+X-Clawbench-ID: BIO-2024-1254
+Date: Thu, 30 Dec 2021 21:08:08 +0100
+From: Daniel Gröber <dxld@darkboxed.org>
+To: debian-science@lists.debian.org
+Subject: Contributing to yosys maintenance
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_12_msg00024.html
+
+Hi debian-science,
+
+I'm working on packaging the latest version of yosys and related packages
+for Debian.
+
+What's the procedure in debian-science for being added to the salsa org/git
+repo on salsa[1] or should I just post MRs/patches to the BTS?
+
+[1]: Just in case, my username there is dxld-guest.
+
+Thanks,
+--Daniel

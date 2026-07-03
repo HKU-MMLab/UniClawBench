@@ -1,0 +1,32 @@
+Message-ID: <Y1AoIMD+sU72iB2N@fusion>
+X-Clawbench-ID: BIO-2024-1041
+Date: Wed, 19 Oct 2022 18:38:56 +0200
+From: Étienne Mollier <emollier@emlwks999.eu>
+To: James Bonfield <jkb@sanger.ac.uk>
+Subject: Re: Htslib plugins [EXT]
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00069.html
+
+Hi again,
+
+Étienne Mollier, on 2022-10-19:
+> The "Protocol not supported" error sounds related to the github
+> issue.  That being said, I haven't managed to get the suite to
+> work after adjusting the build to account properly for the
+> plugindir variable, neither by doubling $ symbols to account for
+> internal build system variables, nor by defining the variables
+> at the head of the d/rules yet.
+
+If I run the test suite standalone (e.g. in autopkgtest), then
+the disabled test now passes, no problem.  I guess I need a mean
+to get to the plugins while they are not installed yet (e.g. in
+package building context).  In any case this is promising.
+
+Have a nice day,  :)
+--
+Étienne Mollier
+Fingerprint:  8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+Sent from /dev/pts/2, please excuse my verbosity.
+On air: Ekos - En - Contraste

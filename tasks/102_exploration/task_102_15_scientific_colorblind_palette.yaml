@@ -1,0 +1,62 @@
+task_id: task_102_15_scientific_colorblind_palette
+category: 102_exploration
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I'm preparing a scientific figure with 5 data series (a multi-line plot) for
+  a journal. It needs to be readable for red-green colorblind reviewers AND it
+  will sometimes be printed in black and white, so the colors must also stay
+  distinguishable in grayscale. Help me pick the best 5-color palette from a
+  fixed set of candidates.
+
+  The candidate palettes are provided offline at:
+
+      /tmp_workspace/clawbench/sources/palettes.json
+
+  Each palette has 5 colors as RGB triples and hex (ColorBrewer qualitative
+  schemes, a jet/rainbow sampling, Okabe-Ito, and viridis). Evaluate them
+  objectively — don't go by reputation. Compute, for each palette:
+
+  - HARD constraints (must pass ALL):
+    1. Red-green colorblind safety: simulate deuteranopia AND protanopia, and
+       require the minimum pairwise perceptual difference (deltaE) among the 5
+       colors to be at least 15 under both.
+    2. Grayscale safety: when reduced to grayscale luminance, the minimum
+       pairwise luminance separation must be at least 5 (on a 0-100 scale), so
+       the series stay distinct in black-and-white print.
+
+  - SOFT preferences (tie-break among hard-constraint survivors): prefer larger
+    worst-case red-green separation, then larger grayscale separation.
+
+  Pick exactly ONE palette and justify with the computed numbers. Be careful:
+  a colorful-looking palette can be useless in grayscale, and a famous
+  "colorblind-safe" palette can still fail the grayscale/print requirement.
+
+  Save:
+  - `/tmp_workspace/results/palette_choice.json`: your pick (`selected_id` plus
+    the metrics justifying it), the list of palettes passing all hard
+    constraints, and the tie-break reasoning.
+  - `/tmp_workspace/results/palette_evaluation.json`: per-palette computed
+    metrics (worst-case red-green deltaE under deuteranopia/protanopia, and
+    grayscale min separation) with pass/fail and the failing constraint named.
+  - `/tmp_workspace/results/palette_method.json`: how you simulated color
+    blindness, computed deltaE, and computed grayscale luminance (reproducible).
+
+  This is fully offline — do not fetch anything from the network.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/reference_analysis.py
+sources:
+  - palettes.json
+
+codex:
+  max_user_followups: 2

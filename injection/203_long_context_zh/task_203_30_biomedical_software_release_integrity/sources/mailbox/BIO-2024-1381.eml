@@ -1,0 +1,39 @@
+Message-ID: <YzWVl5vBXv8G9chv@an3as.eu>
+X-Clawbench-ID: BIO-2024-1381
+Date: Thu, 29 Sep 2022 14:54:47 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Juri Grabowski <debian@jugra.de>
+Subject: Re: Help needed for watch file after bitbucket changed download page
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_09_msg00048.html
+
+Hi Juri,
+
+Am Thu, Sep 29, 2022 at 12:38:03PM +0200 schrieb Juri Grabowski:
+> maybe it can be helpfull for you. So you can get commit hash of your tag
+> with bitbucket api:
+> curl -s -L https://api.bitbucket.org/2.0/repositories/berkeleylab/metabat/refs/tags/v2.15 |jq -C -r .target.hash
+
+I confirm this returns the commit hash - but I have no idea how you want
+to use this information inside d/watch.
+
+> Other way is to use more generic git mode:
+>
+> cat debian/watch
+> version=4
+>
+> opts="mode=git,pgpmode=gittag,dversionmangle=auto" \
+> https://bitbucket.org/berkeleylab/metabat.git refs/tags/v([\d\.\d]+)
+> EOF
+
+I confirm this works.  However, uscan does not do the usual link to
+orig.tar.gz.  Any idea why this is the case?
+
+Kind regards
+
+     Andreas.
+
+--
+http://fam-tille.de

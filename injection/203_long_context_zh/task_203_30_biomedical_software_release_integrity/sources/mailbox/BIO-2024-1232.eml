@@ -1,0 +1,46 @@
+Message-ID: <Ze7l0n_ivVy5qbpP@an3as.eu>
+X-Clawbench-ID: BIO-2024-1232
+Date: Mon, 11 Mar 2024 12:06:58 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Developers <debian-devel@lists.debian.org>
+Subject: clustalw lost in debian/dists/sid/main/binary-i386/Packages.{gx}z ?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_03_msg00004.html
+
+Hi,
+
+I'm working on some time_t side effects on the emboss package and by
+doing so stumbled I upon the fact that i386 builds of packages with a
+Build-Dependency on clustalw are failing.  You can see an example in
+Salsa CI for libbio-tools-run-alignment-clustalw-perl[1] which contains
+
+   The following packages have unmet dependencies:
+    builddeps:. : Depends: clustalw but it is not installable
+   E: Unable to correct problems, you have held broken packages.
+
+When checking the package pool[2] I can find
+   clustalw_2.1+lgpl-7_i386.deb
+which is easily installable in some chroot I created using
+
+   sudo debootstrap --arch=i386 sid i386-chroot http://deb.debian.org/debian
+
+Debci seems to be fine in testing clustalw on all architectures[3] and
+according to build logs[4] all should be fine.  Unfortunately
+
+   wget -q  -O - http://ftp.debian.org/debian/dists/sid/main/binary-i386/Packages.xz | xzgrep "Package: *clustalw" Packages.xz
+
+is empty and I wonder why.  Is the Packages file for i386 just broken
+or is it me?
+
+Kind regards
+    Andreas.
+
+[1] https://salsa.debian.org/perl-team/modules/packages/libbio-tools-run-alignment-clustalw-perl/-/jobs/5431253
+[2] http://ftp.debian.org/debian/pool/main/c/clustalw/
+[3] https://ci.debian.net/packages/c/clustalw/unstable/i386/
+[4] https://buildd.debian.org/status/package.php?p=clustalw
+
+--
+http://fam-tille.de

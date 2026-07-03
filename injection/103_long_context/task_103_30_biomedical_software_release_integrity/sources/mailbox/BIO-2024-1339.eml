@@ -1,0 +1,26 @@
+Message-ID: <CA+7wUsw_BHCXwqWYDqAtHzEW68EoN6qZwdUumPBwm8T-4bBGOA@mail.gmail.com>
+X-Clawbench-ID: BIO-2024-1339
+Date: Sat, 15 Jan 2022 12:11:19 +0100
+From: Mathieu Malaterre <malat@debian.org>
+To: Andreas Tille <andreas@an3as.eu>
+Subject: Re: Help needed to build plastimatch
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_01_msg00019.html
+
+Hi Andreas,
+
+On Sat, Jan 15, 2022 at 12:05 PM Andreas Tille  wrote:
+>  1145 | DCMTK was configured to use C++17 features, but your compiler does not or was not configured to provide them.
+
+You need to adapt this patch:
+
+https://salsa.debian.org/med-team/plastimatch/-/commit/4b0e11e975a2606d60c784ebd2fdd06faaba3b45
+
+And change "14" into "17".
+
+I'll prepare a post on debian-devel for a better longer term solution.
+I fail to understand why DCMTK code source is doing such a check...
+
+-M

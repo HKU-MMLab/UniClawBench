@@ -1,0 +1,38 @@
+Message-ID: <Y4uiK//0TqHRb9fU@fusion>
+X-Clawbench-ID: BIO-2024-0168
+Date: Sat, 3 Dec 2022 20:23:23 +0100
+From: Étienne Mollier <emollier@emlwks999.eu>
+To: Mohd Bilal <mdbilal@disroot.org>
+Subject: Re: [Advent bug squashing] fixed bug #1018377 in insilicoseq
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_12_msg00023.html
+
+Hi Bilal,
+
+Mohd Bilal, on 2022-12-04:
+> On 12/3/22 23:50, Étienne Mollier wrote:
+> > test_ncbi needs to be skipped.
+>
+> Done. Thanks for spotting this :)
+
+I still see the test failing on my end, did I miss something?
+I'm under the impression I'm missing the commit.
+
+> Also can you take a look at python-biom-format[2]. I've pushed a fix for
+> #1018464. The fix was a simple one (remove depends on nose). Upstream
+> already uses pytest. Someone probably forgot to update B-D after an upgrade
+> :).
+
+Uploaded, thank you for your contribution!  :)
+
+> > > [1] - https://salsa.debian.org/med-team/insilicoseq
+> [2] - https://salsa.debian.org/med-team/python-biom-format
+
+Have a nice day,  :)
+--
+Étienne Mollier
+Fingerprint:  8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+Sent from /dev/pts/2, please excuse my verbosity.
+On air: Porcupine Tree - Never Have

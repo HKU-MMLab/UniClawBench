@@ -1,0 +1,384 @@
+Message-ID: <000d01c22919$c5890e10$a883a8c0@wl.opentext.com>
+X-Clawbench-ID: CAM-2003-1236
+Date: Thu, 11 Jul 2002 16:30:16 -0400
+From: Hitoshi Ito <hito@opentext.com>
+To: aebenjam@opentext.com
+Subject: Re: Regarding Mitsubishi Chemical Engineering Process Downtime - ticket #55606OTC1 -
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00042.5b7f2a0e87c853e8c8e13d556c1320d2
+
+OTC/Ito-san,
+Thank you for your continued support.
+
+Regarding the Livelink logs from Mitsubishi Chemical Engineering,
+we are currently unable to identify the cause,
+so we will organize the information and work to isolate the problem, including environmental factors.
+To that end, we would like to confirm whether there were any issues with [Service for UNIX].
+
+
+There are various possible causes for the process downtime,
+and in addition to audit function load issues and CA issues,
+for the purpose of isolating the cause, could you please report
+the details that led to the process downtime?
+
+Note: Regarding the [Service for UNIX] issue, this may not be directly related to the Livelink environment,
+but we are informing you of it.
+
+http://www.microsoft.com/japan/support/kb/articles/JP294/3/80.htm
+http://www.microsoft.com/JAPAN/support/kb/articles/JP283/0/13.HTM?LN=JA&SD=S
+O&FR=0
+
+We hope to resolve the process downtime as soon as possible
+and appreciate your cooperation.
+
+Canon Sales Co., Ltd.
+Masayoshi Ito
+
+-------- Original Message --------
+Subject: RE: Regarding Mitsubishi Chemical Engineering Process Downtime - ticket #55606OTC1 -
+Date: Tue, 30 Oct 2001 13:44:43 -0500
+From: "Hitoshi Ito" <>
+Reply-To: <>
+To: "'it-oh'" <>
+CC: <>, <>,<>, <>
+>
+> Canon Sales Co., Ltd.
+> Dear Ito-san,
+>
+> This is Ito from OpenText. Thank you for your continued support.
+>
+> We will handle your [Service for UNIX] question under a new ticket number.
+> I checked with the support manager, and as of now,
+> we have not heard of any cases where [Service for UNIX] is being used.
+> There are doubts about whether it works without issues. It is an unsupported
+> environment, and the number of customers actually using it is reportedly 0.
+> (At least among those reported to support, that is...)
+>
+> Was there something that made you think [Service for UNIX] might be the cause?
+> If Mitsubishi Chemical is able to test whether process downtime occurs within the supported scope,
+> could you please verify that?
+> We would like to eliminate as many possible factors as possible.
+> (In that case, we will handle it under the previous process downtime ticket 53121OTC1.)
+
+>
+> Thank you for your cooperation.
+>
+> > -----Original Message-----
+> > From: it-oh [mailto:]
+> > Sent: Tuesday, October 30, 2001 5:16 AM
+> > To:
+> > Cc: ; ;
+> > ;
+> > Subject: Re: Regarding Mitsubishi Chemical Engineering Process Downtime - ticket
+> > #53121OTC1 -
+> >
+> >
+> > OTC/Ito-san,
+> > Thank you for your continued support.
+> >
+> > Upon checking the Mitsubishi Chemical Engineering environment,
+> > the LL8141 server and Index data are on NT,
+> > but external documents use [Service for UNIX 2.0]
+> > and reside on the Solaris 2.6 filesystem.
+> > The Oracle engine and TableSpace are also on Solaris.
+> >
+> > Has [Service for UNIX] ever caused process downtime in the past?
+> > Also, do you know approximately how many users are using [Service for UNIX]?
+> > If you have that information, please let us know.
+> >
+> > Thank you for your cooperation.
+> >
+> > Canon Sales Co., Ltd.
+> > Masayoshi Ito
+> >
+> > -------- Original Message --------
+> > Subject: RE: Regarding Mitsubishi Chemical Engineering Process Downtime
+> >  - ticket #53121OTC1 -
+> > Date: Thu, 18 Oct 2001 17:24:33 -0400
+> > From: "Hitoshi Ito" <>
+> > Reply-To: <>
+> > To: "'it-oh'" <>
+> > CC: <>,
+> > <>,<
+> > >, <>
+> > >
+> > > Canon Sales Co., Ltd.
+> > > Dear Ito-san,
+> > >
+> > > This is Ito from OpenText. Thank you for your continued support.
+> > >
+> > > The response from Chicago was that, based on the watch.log you sent, memory does not appear to be the cause.
+> > > However, the cause is still unknown. We sincerely apologize
+> > > and ask that you continue to collect Livelink logs, Dr. Watson logs, etc.
+> > >
+> > > We sincerely apologize, but this is the response we received from development.
+> > > Regarding this matter, Kobayashi is directly contacting the Chicago development team to follow up.
+> > > We are always sorry for the inadequate response.
+> > 。
+> > >
+> > > > -----Original Message-----
+> > > > From: it-oh [mailto:]
+> > > > Sent: Thursday, October 18, 2001 5:49 AM
+> > > > To:
+> > > > Cc: ; ;
+> > > > ;
+> > > > Subject: Re: Regarding Mitsubishi Chemical Engineering Process Downtime
+> >  - ticket
+> > > > #53121OTC1 -
+> > > >
+> > > >
+> > > > OTC/Ito-san,
+> > > > Thank you for your continued support.
+> > > >
+> > > > It has been one week since we last checked on progress.
+> > > > We need to report to the client tomorrow (Japan time),
+> > > > so please let us know the schedule for when we can receive the investigation report
+> > > > and the current investigation findings
+> > > > by approximately 14 hours from now (Friday morning 9:00 AM Japan time).
+> > > >
+> > > > Canon Sales Co., Ltd.
+> > > > Masayoshi Ito
+> > > >
+> > > > -------- Original Message --------
+> > > > Subject: RE: Regarding Mitsubishi Chemical Engineering Process Downtime
+> > > >  - ticket #53121OTC1 -
+> > > > Date: Fri, 12 Oct 2001 13:33:26 -0400
+> > > > From: "Hitoshi Ito" <>
+> > > > Reply-To: <>
+> > > > To: "'it-oh'" <>
+> > > > CC: <>,
+> > > > <>,<
+> > > > >, <>
+> > > > >
+> > > > > Canon Sales Co., Ltd.
+> > > > > Dear Ito-san,
+> > > > >
+> > > > > This is Ito from OpenText. Thank you for your continued support.
+> > > > >
+> > > > > We are currently investigating on the development side. We will inform you as soon as we have findings.
+> > > > >
+> > > > > > -----Original Message-----
+> > > > > > From: it-oh [mailto:]
+> > > > > > Sent: Friday, October 12, 2001 2:57 AM
+> > > > > > To: Hitoshi Ito
+> > > > > > Cc: ; ;
+> > > > > > ;
+> > > > > > Subject: Re: Regarding Mitsubishi Chemical Engineering Process Downtime
+> > > >  - ticket
+> > > > > > #53121OTC1 -
+> > > > > >
+> > > > > >
+> > > > > > OTC/Ito-san,
+> > > > > > Thank you for your continued support.
+> > > > > >
+> > > > > > Regarding the process downtime based on the thread log and watch.log:
+> > > > > > Have you found anything?
+> > > > > > We need to report to Mitsubishi Chemical Engineering at the beginning of next week,
+> > > > > > so please contact us.
+> > > > > >
+> > > > > > Canon Sales Co., Ltd.
+> > > > > > Masayoshi Ito
+> > > > > >
+> > > > > > -------- Original Message --------
+> > > > > > Subject: [RE: Regarding Mitsubishi Chemical Engineering Process Downtime
+> > > > > >   - ticket #53121OTC1 -]
+> > > > > > Date: Wed, 10 Oct 2001 14:20:02 +0900
+> > > > > > From: it-oh <>
+> > > > > > To:
+> > > > > > CC: ,
+> > > > > > ,,
+> > > > > >
+> > > > > > >
+> > > > > > > OTC/Ito-san,
+> > > > > > > Thank you for your continued support.
+> > > > > > >
+> > > > > > > After setting up memory monitoring at Mitsubishi Chemical Engineering (NT),
+> > > > > > > a process downtime occurred on October 5.
+> > > > > > > The thread log and watch.log from that time have been uploaded to the FTP site
+> > > > > > > under the user "mitsubishi chemical eng".
+> > > > > > > Please see "20011005logs2.zip".
+> > > > > > > The watch.log does not output timestamps, so we cannot tell when the values are from,
+> > > > > > > but comparing the first and last values, the only change is an increase in the Faults item.
+> > > > > > >
+> > > > > > > Please investigate the cause of the process downtime.
+> > > > > > >
+> > > > > > > Canon Sales Co., Ltd.
+> > > > > > > Masayoshi Ito
+> > > > > > >
+> > > > > > > -------- Original Message --------
+> > > > > > > Subject: RE: Regarding Mitsubishi Chemical Engineering Process Downtime
+> > > > > >   - ticket #53121OTC1 -
+> > > > > > > Date: Tue, 11 Sep 2001 13:31:52 -0400
+> > > > > > > From: "Hitoshi Ito" <>
+> > > > > > > Reply-To: <>
+> > > > > > > To: "'it-oh'" <>
+> > > > > > > CC: <>,
+> > > > > > <>,<>,
+> > > > > >  <>
+> > > > > > >
+> > > > > > > Canon Sales Co., Ltd.
+> > > > > > > Dear Ito-san,
+> > > > > > >
+> > > > > > > This is Ito from OpenText. Thank you for your continued support.
+> > > > > > >
+> > > > > > > I confirmed and this appears to be correct. Together with the thread log,
+> > > > > > > they will investigate memory usage. We do not know about past cases,
+> > > > > > > but it appears to have been used for North American customers a few times.
+> > > > > > >
+> > > > > > > Thank you for your cooperation.
+> > > > > > >
+> > > > > > > > -----Original Message-----
+> > > > > > > > From: it-oh [mailto:]
+> > > > > > > > Sent: Tuesday, September 11, 2001 4:19 AM
+> > > > > > > > To:
+> > > > > > > > Cc: ;
+> > > > ;
+> > > > > > > > ;
+> > > > > > > > Subject: Re: Regarding Mitsubishi Chemical Engineering Process Downtime
+> > > > > >  - ticket
+> > > > > > > > #53121OTC1 -
+> > > > > > > >
+> > > > > > > >
+> > > > > > > > Dear Ito-san,
+> > > > > > > > Thank you for your continued support.
+> > > > > > > >
+> > > > > > > > I installed perl and am attaching the watch.log file output from our environment.
+> > > > > > > > Is this file acceptable?
+> > > > > > > > If so, we will configure it at Mitsubishi Chemical and output logs until a process downtime occurs.
+> > > > > > > > Note that this log does not output timestamps,
+> > > > > > > > but can the relationship to the process downtime be determined?
+> > > > > > > > Please provide an explanation of the log contents and any past cases where this log revealed the cause.
+> > > > > > > >
+> > > > > > > > Thank you for your cooperation.
+> > > > > > > >
+> > > > > > > > Canon Sales Co., Ltd.
+> > > > > > > > Masayoshi Ito
+> > > > > > > >
+> > > > > > > >
+> > > > > > > > -------- Original Message --------
+> > > > > > > > Subject: RE: Regarding Mitsubishi Chemical Engineering Process Downtime
+> > > > > > > >  - ticket #53121OTC1 -
+> > > > > > > > Date: Mon, 10 Sep 2001 15:44:26 -0400
+> > > > > > > > From: "Hitoshi Ito" <>
+> > > > > > > > Reply-To: <>
+> > > > > > > > To: "'it-oh'" <>
+> > > > > > > > CC: <>,
+> > > > > > > >
+> > <>,<>,
+> > > > > > > >  <>
+> > > > > > > >
+> > > > > > > > Canon Sales Co., Ltd.
+> > > > > > > > Dear Ito-san,
+> > > > > > > >
+> > > > > > > > This is Ito from OpenText. Thank you for your continued support.
+> > > > > > > > We have received a response from development and would like to inform you.
+> > > > > > > >
+> > > > > > > > > They seem to have quite a few crashes when the
+> > > > system seem to
+> > > > > > > > > be allocating
+> > > > > > > > > a pointer and then jumping off into the oblivion.
+> > > > I'd say we
+> > > > > > > > > should get
+> > > > > > > > > them watch.pl to see if they're running out of
+> > memory.  The
+> > > > > > > > > crashes are all
+> > > > > > > > > over the map but all of them seem to relate
+> > back to being
+> > > > > > > > > unable to trying
+> > > > > > > > > to get memory or to having an invalid pointer
+> > of some sort.
+> > > > > > > >
+> > > > > > > > Therefore, it appears that memory shortage or similar issues may be causing the process downtime.
+> > > > > > > >
+> > > > > > > > Please refer to the attached ZIP file. There is a Word document with explanations,
+> > > > > > 、
+> > > > > > > > but the test.pl script mentioned there is no longer in use.
+> > > > > > > > In my Win2k environment, I used the watchpslist.pl script instead
+> > > > > > > > and confirmed it works. Please verify.
+> > > > > > > >
+> > > > > > > > Please use this script to collect logs at the Mitsubishi Chemical site,
+> > > > > > > > then send the thread log and watch.log to us. Thank you.
+> > 。
+> > > > > > > >
+> > > > > > > >
+> > > > > > > > > -----Original Message-----
+> > > > > > > > > From: Hitoshi Ito [mailto:]
+> > > > > > > > > Sent: Friday, September 07, 2001 4:38 PM
+> > > > > > > > > To: 'it-oh'
+> > > > > > > > > Cc: '';
+> > > > > > '';
+> > > > > > > > > ''; ''
+> > > > > > > > > Subject: RE: Regarding Mitsubishi Chemical Engineering Process Downtime
+> > > > > > > >  - ticket
+> > > > > > > > > #53121OTC1 -
+> > > > > > > > >
+> > > > > > > > >
+> > > > > > > > > Canon Sales Co., Ltd.
+> > > > > > > > > Dear Ito-san,
+> > > > > > > > >
+> > > > > > > > > This is Ito from OpenText. Thank you for your continued support.
+> > > > > > > > >
+> > > > > > > > > We have reported this matter to the manager, and as with the Mitsubishi Electric case,
+> > > > > > > > > we will send the logs to the Chicago development team for investigation.
+> > > > > > > > > We will contact you as soon as we have findings. Please wait a little longer.
+> > > > > > > > >
+> > > > > > > > > Thank you for your cooperation.
+> > > > > > > > >
+> > > > > > > > > > -----Original Message-----
+> > > > > > > > > > From: it-oh [mailto:]
+> > > > > > > > > > Sent: Friday, September 07, 2001 4:34 AM
+> > > > > > > > > > To:
+> > > > > > > > > > Cc: ;
+> > > > > > ;
+> > > > > > > > > > ;
+> > > > > > > > > > Subject: Regarding Mitsubishi Chemical Engineering Process Downtime
+> > > > > > > > > >
+> > > > > > > > > >
+> > > > > > > > > > OTC/Ito-san,
+> > > > > > > > > > Thank you for your continued support.
+> > > > > > > > > >
+> > > > > > > > > > Process downtime is occurring frequently at Mitsubishi Chemical Engineering (NT user).
+> > > > > > > > > > 。
+> > > > > > > > > > Logs from June 26 to August 10 were sent all at once.
+> > > > 。
+> > > > > > > > > > The frequency of process downtime is higher than at Mitsubishi Electric (Solaris environment).
+> > > > > > > > > >
+> > > > > > > > > > The logs have been uploaded to the FTP site under the "mitsubishi
+> > cemical eng」
+> > > > > > > > > > The final processing of the thread logs that terminated midway shows various patterns,
+> > > > > > > > > > re-running the Livelink processing does not cause process downtime,
+> > > > > > > > > > so we do not believe the interrupted processing is the cause of the downtime.
+> > > > > > > > > >
+> > > > > > > > > > Please let us know the cause and solution for the process downtime based on the logs we are sending.
+> > > > > > > > > > Since it takes time to review all these logs, please start from the most recent
+> > > > １０
+> > > > > > > > > > Note that Mitsubishi Chemical Engineering does not have the Change Agent processing
+> > > > > > > > > > separated onto a different Livelink server.
+> > > > > > > > > >
+> > > > > > > > > >
+> > > > > > > > > >
+> > > > > > > > > > Process downtime occurrence dates and times:
+> > > > > > > > > >
+> > > > > > > > > > 20010626 03:00
+> > > > > > > > > > 20010626 09:56
+> > > > > > > > > > 20010627 13:17  - Due to large connect log, uploaded files other than connect log to FTP site.
+> > > > > > > > > >
+> > > > > > > > > > 20010708 22:09
+> > > > > > > > > > 20010710 04:00
+> > > > > > > > > > 20010710 08:05
+> > > > > > > > > > 20010718 09:10
+> > > > > > > > > > 20010718 09:28
+> > > > > > > > > > 20010725 10:50
+> > > > > > > > > > 20010731 08:26
+> > > > > > > > > >
+> > > > > > > > > > 20010807 11:00  - Due to large connect log, uploaded files other than connect log to FTP site.
+> > > > > > > > > > 20010809 09:01
+> > > > > > > > > > 20010810 08:57
+> > > > > > > > > >
+> > > > > > > > > >
+> > > > > > > > > > Thank you for your cooperation.
+> > > > > > > > > >
+> > > > > > > > > > Canon Sales Co., Ltd.
+> > > > > > > > > > Masayoshi Ito

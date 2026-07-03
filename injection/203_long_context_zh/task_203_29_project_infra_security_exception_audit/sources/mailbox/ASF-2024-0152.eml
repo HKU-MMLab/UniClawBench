@@ -1,0 +1,30 @@
+Message-ID: <ZAYZaJcMSw7aJ3T1@redhat.com>
+X-Clawbench-ID: ASF-2024-0152
+Date: Mon, 6 Mar 2023 16:48:40 +0000
+From: Joe Orton <jorton@redhat.com>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] [VOTE] Release httpd-2.4.56-rc1 as httpd-2.4.56
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-03.mbox
+
+On Sun, Mar 05, 2023 at 04:31:34PM -0500, Eric Covener wrote:
+> Hi all,
+>
+> Please find below the proposed release tarball and signatures:
+>
+> https://dist.apache.org/repos/dist/dev/httpd/
+>
+> I would like to call a VOTE over the next few days to release
+> this candidate tarball httpd-2.4.56-rc1 as 2.4.56:
+> [X] +1: It's not just good, it's good enough!
+> [ ] +0: Let's have a talk.
+> [ ] -1: There's trouble in paradise. Here's what's wrong.
+
++1, tests pass on RHEL 8+9 (x86_64), sigs good, thanks for RMing.
+
+Seems there is some tweak required to get Actions to work for a tag
+which I will look into.
+
+Regards, Joe

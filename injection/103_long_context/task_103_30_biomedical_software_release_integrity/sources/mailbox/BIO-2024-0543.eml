@@ -1,0 +1,53 @@
+Message-ID: <20230825073849.2y4clrbrapal7orr@office.mailbox.org>
+X-Clawbench-ID: BIO-2024-0543
+Date: Fri, 25 Aug 2023 13:08:49 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: 1040566@bugs.debian.org
+Subject: RM: logol -- ROM; unmaintained package; low popcon
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_08_msg00013.html
+
+Control: retitle -1 RM: logol -- ROM; unmaintained package; low popcon
+Control: reassign -1 ftp.debian.org
+Control: severity -1 normal
+
+Hi FTP team,
+
+On Wed, 19 Jul 2023 08:13:37 +0200 olivier sallou  wrote:
+> Le mer. 19 juil. 2023, 06:58, Andreas Tille  a écrit :
+>
+> > Hi Olivier,
+> >
+> > Am Mon, Jul 17, 2023 at 12:13:30PM +0200 schrieb olivier sallou:
+> > > logol is not maintained anymore for quite some time now
+> > >
+> > > effort to keep in line with swi-prolog updates (need to recompile on each
+> > > ABI break of swi-prolog) AND biojava requires frequent work for an old
+> > > software with low usage.
+> > >
+> > > I would let it be removed....
+> >
+> > You introduced the package so you know its usage best.  I think any
+> > removal should be announced on debian-med@l.d.o which I'm doing hereby.
+> >
+> > IMHO if the fix would be "simple" (in terms of needs only less than
+> > 10min) keeping it might be worth it.  Otherwise its a good time in the
+> > beginning of the release process to remove packages that just drain
+> > developer resources and do not serve a mentionable amount of users.
+> >
+>
+> It would require analysis and many updates, so quite some efforts for
+> unmaintained software and targetting low number of users (sure of that), so
+> i am for removal.
+>
+>
+> Olivier
+
+As discussed on this bug report, Olivier (the uploader) feels that this
+is not worth keeping, and nobody objected so far. Please remove this
+from the archive.
+
+Best,
+Nilesh

@@ -1,0 +1,51 @@
+Message-ID: <Ybe9jwkf5V12tQCr@an3as.eu>
+X-Clawbench-ID: BIO-2024-0076
+Date: Mon, 13 Dec 2021 22:39:27 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Peter Rice <ricepeterm@yahoo.co.uk>,	Debian Med Project List <debian-med@lists.debian.org>
+Subject: Re: emboss: FTBFS with OpenJDK 17 due to com.sun.net.ssl removal
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_12_msg00091.html
+
+Hi Peter,
+
+Am Mon, Dec 13, 2021 at 08:18:42PM +0000 schrieb Peter Rice:
+> I can take a look. What's the problem?
+
+The problem is described in the bug report[1].  May be one of the people
+who responded here will find a patch.
+
+> Still working through getting EMBOSS moved to github with all the past
+> releases. Nearly there. Then I play a lot of testing and updates for
+> anything that has run into problems.
+
+That's really great to know.
+
+Kind regards
+
+      Andras.
+
+[1] https://bugs.debian.org/982036
+
+> On 13/12/2021 17:55, Andreas Tille wrote:
+> > Hi,
+> >
+> > I've just asked for help on bug #982036 but no response so far.  I think
+> > it is time to care if we want to keep emboss for the next stable
+> > release.
+> >
+> > Kind regards
+> >
+> >        Andreas.
+> >
+>
+> --
+> This email has been checked for viruses by AVG.
+> https://www.avg.com
+>
+>
+
+--
+http://fam-tille.de

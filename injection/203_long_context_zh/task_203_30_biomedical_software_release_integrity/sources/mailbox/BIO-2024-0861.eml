@@ -1,0 +1,30 @@
+Message-ID: <20220406160710.1365.77623@mail.envs.net>
+X-Clawbench-ID: BIO-2024-0861
+Date: Wed, 06 Apr 2022 16:07:10 -0000
+From: "Mohd Bilal" <rmb@envs.net>
+To: debian-med@lists.debian.org
+Subject: RFS : add autopkgtest for bmtk
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_04_msg00021.html
+
+Hello team,
+
+I've added autopkgtest for bmtk[1] and would like someone to review and sponsor my changes.
+
+However I've some concerns.
+
+https://salsa.debian.org/med-team/bmtk/-/tree/master/bmtk/simulator/filternet/lgnmodel/cell_metrics has some csv files.
+But I cannot find these csv files in /usr/lib/python3/dist-packages/bmtk/simulator/filternet/lgnmodel/ after installing python3-bmtk.
+These csv's are required for the tests and I'm getting FileNotFound Error[2] for these files when running the tests.
+
+So as a  workaround I've added a patch to skip this particular test since I was unable to fix that test without the csv files.
+
+Can somebody review this and guide if this is not the right way to do it.
+
+[1] - https://salsa.debian.org/med-team/bmtk
+[2] - https://salsa.debian.org/med-team/bmtk/-/jobs/2647435
+
+Thanks & Regards,
+rmb

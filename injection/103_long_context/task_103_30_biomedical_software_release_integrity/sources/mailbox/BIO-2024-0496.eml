@@ -1,0 +1,40 @@
+Message-ID: <trinity-0da5a27c-d147-4493-8e6b-e5f07e56ee56-1683317763925@3c-app-gmx-bs20>
+X-Clawbench-ID: BIO-2024-0496
+Date: Fri, 5 May 2023 22:16:03 +0200
+From: Steffen Möller <steffen_moeller@gmx.de>
+To: Med Team <debian-med@lists.debian.org>
+Subject: Nextflow - have just used it on our HPC cluster and liked it
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_05_msg00000.html
+
+Hello,
+
+I must admit that I am rather impressed - a series of images were auto-downloaded to function together with singularity and this then worked on a test data collection of the workflow. So, with singularity (or docker) in Debian, and nextflow, we would have an immediate sync with what upstream offers.
+
+I had a look at the table in Google docs and found that the one dependency that was once missing to get nextflow through its autotests, i.e. capsule-nextflow is in the archive now. So I thought to give the main package of nextflow another look. I am impressed by all work that Pierre already invested into the packaging. @Pierre, where does that work stand? I only saw that kryo5 is listed as a dependency that is not in the archive.
+
+Best,
+Steffen
+
+A "debian/rules binary" got this far:
+
+Starting process 'Gradle Worker Daemon 1'. Working directory: ..../Salsa/Med/nextflow/.gradle/workers Command: /usr/lib/jvm/java-17-openjdk-amd64/bin/java @/tmp/gradle-worker-classpath9650940302470954557txt -Dfile.encoding=UTF-8 -Duser.country -Duser.language=en -Duser.variant worker.org.gradle.process.internal.worker.GradleWorkerMain 'Gradle Worker Daemon 1'
+Successfully started process 'Gradle Worker Daemon 1'
+Started Gradle worker daemon (3.129 secs) with fork options DaemonForkOptions{executable=/usr/lib/jvm/java-17-openjdk-amd64/bin/java, minHeapSize=null, maxHeapSize=null, jvmArgs=[], classpath=[/usr/share/maven-repo/org/codehaus/groovy/groovy-ant/debian/groovy-ant-debian.jar, /usr/share/maven-repo/org/codehaus/groovy/groovy-groovydoc/debian/groovy-groovydoc-debian.jar, /usr/share/maven-repo/org/codehaus/groovy/groovy-templates/debian/groovy-templates-debian.jar, /usr/share/maven-repo/org/codehaus/groovy/groovy-xml/debian/groovy-xml-debian.jar, /usr/share/maven-repo/org/codehaus/groovy/groovy/debian/groovy-debian.jar, /usr/share/maven-repo/org/apache/ant/ant-junit/debian/ant-junit-debian.jar, /usr/share/maven-repo/org/apache/ant/ant/debian/ant-debian.jar, /usr/share/maven-repo/org/apache/ant/ant-launcher/debian/ant-launcher-debian.jar, /usr/share/maven-repo/org/apache/ant/ant-antlr/debian/ant-antlr-debian.jar, /usr/share/java/ant-1.10.13.jar, /usr/share/java/ant-launcher-1.10.13.jar], keepAliveMode=SESSION}.
+This JVM does not support getting OS memory, so no OS memory status updates will be broadcast
+Initialized native services in: .../Salsa/Med/nextflow/.gradle/native
+
+Compiling with JDK Java compiler API.
+warning: [options] bootstrap class path not set in conjunction with -source 8
+Note: org.pf4j.processor.ExtensionAnnotationProcessor init
+Note: Options {}
+Note: Processing @org.pf4j.Extension
+warning: Implicitly compiled files were not subject to annotation processing.
+  Use -proc:none to disable annotation processing or -implicit to specify a policy for implicit compilation.
+2 warnings
+startup failed:
+.../Salsa/Med/nextflow/modules/nf-commons/src/main/nextflow/plugin/CustomPluginManager.groovy: 68: [Static type checking] - Cannot find matching method org.pf4j.SingletonExtensionFactory#(). Please check if the declared type is correct and if the method exists.
+ @ line 68, column 16.
+           return new SingletonExtensionFactory()

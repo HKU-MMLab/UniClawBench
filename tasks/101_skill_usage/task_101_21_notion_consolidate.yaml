@@ -1,0 +1,125 @@
+task_id: task_101_21_notion_consolidate
+category: 101_skill_usage
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I'm handing off a project to a new lead this week and I need a single
+  consolidated brief they can read on day one. The project lives across a
+  Notion page and its 8 sub-pages — grab everything with the workspace's
+  the Notion API skill to pull the page tree, then use the
+  knowledge-consolidation skill to roll it all into one document.
+  Start from this project page and authenticate with $NOTION_API_TOKEN:
+  https://www.notion.so/ClawBench-34808720dfd48081b333d54b7fc54025?pvs=12
+
+  Consolidate everything into /tmp_workspace/results/consolidated.md so
+  the new lead walks away knowing what we've decided so far, what action
+  items are outstanding with owner and due date, what open questions
+  still aren't resolved, what risks or concerns the team has surfaced,
+  and what's currently blocked or waiting on a dependency.
+
+  One thing to watch carefully: some decisions show up in more than one
+  page — proposed early in one page, revised in a later one, and finally
+  confirmed in a retro or follow-up page. For those, only the final form
+  belongs in the Decisions section, and the entry must explicitly note
+  that the earlier version is superseded so the new lead doesn't act on
+  stale guidance. Read all 8 pages before locking in the final form.
+
+  Format-wise:
+  - H1: project name
+  - H2: Meetings — dedup summary, grouped by month
+  - H2: Decisions — table of date, topic, decision, status, source-page-id
+  - H2: Action Register — owner, action, due date if stated, status/blocker, source-page-id
+  - H2: Open Questions — question, owner or pending owner, next step, source-page-id
+  - H2: Risks and Dependencies — risk/dependency, evidence, mitigation/next action, owner, source-page-id
+  - H2: References
+
+  Within Action Register, items that are blocked or waiting on a
+  dependency should be flagged in the status_or_blocker column, e.g.
+  "blocked: waiting on X", rather than just left as open — I want to be
+  able to see at a glance what's stuck and on what.
+
+  Also save two tracker files for follow-up:
+  - /tmp_workspace/results/decision_log.csv with columns date,topic,decision,status,source_page_id,source_excerpt
+  - /tmp_workspace/results/action_register.csv with columns owner,action,due_date,status_or_blocker,source_page_id
+
+  Preserve source page_ids in every section and tracker file so I can
+  cross-link back.
+
+task_snapshot: |
+  I'm handing off a project to a new lead this week and I need a single
+  consolidated brief they can read on day one. The project's Notion tree
+  — the main page plus its 8 sub-pages — is already exported to
+  /tmp_workspace/clawbench/sources/notion_snapshot.json, so read from
+  there. Do not attempt a live Notion API call in this run; the snapshot
+  is the canonical input. Use the workspace's notion-token-api skill for
+  the Notion data shape and the local-knowledge-consolidator skill to
+  roll everything into one document.
+
+  Consolidate everything into /tmp_workspace/results/consolidated.md so
+  the new lead walks away knowing what we've decided so far, what action
+  items are outstanding with owner and due date, what open questions
+  still aren't resolved, what risks or concerns the team has surfaced,
+  and what's currently blocked or waiting on a dependency.
+
+  One thing to watch carefully: some decisions show up in more than one
+  page — proposed early in one page, revised in a later one, and finally
+  confirmed in a retro or follow-up page. For those, only the final form
+  belongs in the Decisions section, and the entry must explicitly note
+  that the earlier version is superseded so the new lead doesn't act on
+  stale guidance. Read all 8 pages before locking in the final form.
+
+  Format-wise:
+  - H1: project name
+  - H2: Meetings — dedup summary, grouped by month
+  - H2: Decisions — table of date, topic, decision, status, source-page-id
+  - H2: Action Register — owner, action, due date if stated, status/blocker, source-page-id
+  - H2: Open Questions — question, owner or pending owner, next step, source-page-id
+  - H2: Risks and Dependencies — risk/dependency, evidence, mitigation/next action, owner, source-page-id
+  - H2: References
+
+  Within Action Register, items that are blocked or waiting on a
+  dependency should be flagged in the status_or_blocker column, e.g.
+  "blocked: waiting on X", rather than just left as open — I want to be
+  able to see at a glance what's stuck and on what.
+
+  Also save two tracker files for follow-up:
+  - /tmp_workspace/results/decision_log.csv with columns date,topic,decision,status,source_page_id,source_excerpt
+  - /tmp_workspace/results/action_register.csv with columns owner,action,due_date,status_or_blocker,source_page_id
+
+  Preserve source page_ids in every section and tracker file so I can
+  cross-link back.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - notion_snapshot.json
+
+skills:
+  - notion-token-api
+  - local-knowledge-consolidator
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+pre_exec:
+  - ops/populate.py
+
+# Populator audit: Notion page tree is created-if-absent, then the
+# populator writes the snapshot/ground_truth atomically; no partial
+# rewrite of live pages. Safe under workers>1 behind the populator_lock.
+pre_exec_parallel_safe: true
+
+codex:
+  max_user_followups: 2

@@ -1,0 +1,23 @@
+Message-ID: <CALK=YjMkCqqjZ5WT0zqHv0_Pvix2fTEBS03gwTWpTk9dchM2Ag@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1273
+Date: Thu, 15 Feb 2024 17:15:54 -0500
+From: Eric Covener <covener@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: release apreq 2.18 and mothball the project
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-02.mbox
+
+On Wed, Feb 14, 2024 at 11:57 PM Joe Schaefer <joe@sunstarsys.com> wrote:
+
+> Twenty years in core, with one bug to fix.
+> And you couldn’t even manage without three different botched releases.
+>
+
+I think you are mixing up apreq and httpd releases here.
+AIUI the apreq stuff in the core of httpd-trunk has only ever been in one
+alpha release, and predates the regression.
+
+I'll keep any advice about an apreq release to myself, good luck and please
+be mindful of the CoC https://www.apache.org/foundation/policies/conduct

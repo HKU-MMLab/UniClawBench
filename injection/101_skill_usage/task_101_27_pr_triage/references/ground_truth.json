@@ -1,0 +1,137 @@
+{
+  "task_id": "task_101_27_pr_triage",
+  "difficulty": "Hard",
+  "schema": "a",
+  "schema_notes": "concept-level booleans grounded in the real Flask GitHub state for 7 PRs (pallets/flask). Verdicts mirror the actual merged/closed-unmerged outcome; contributor labels are derived from author_association and prior_merged_prs at the time of the PR.",
+  "skills_declared": [
+    "code-analysis-skills",
+    "who-is-actor",
+    "test-runner"
+  ],
+  "ground_truth": {
+    "pr_count": 7,
+    "pr_ids": [
+      "pr_5375",
+      "pr_5382",
+      "pr_5384",
+      "pr_5389",
+      "pr_5393",
+      "pr_5402",
+      "pr_5433"
+    ],
+    "verdict_values": [
+      "merge",
+      "reject"
+    ],
+    "accepted_contributor_labels": [
+      "core",
+      "veteran",
+      "external",
+      "newcomer"
+    ],
+    "expected_verdicts": {
+      "pr_5375": "reject",
+      "pr_5382": "merge",
+      "pr_5384": "reject",
+      "pr_5389": "merge",
+      "pr_5393": "merge",
+      "pr_5402": "reject",
+      "pr_5433": "reject"
+    },
+    "expected_contributor_labels": {
+      "pr_5375": "newcomer",
+      "pr_5382": "core",
+      "pr_5384": "newcomer",
+      "pr_5389": "external",
+      "pr_5393": "external",
+      "pr_5402": "newcomer",
+      "pr_5433": "newcomer"
+    },
+    "accepted_label_alternatives": {
+      "pr_5389": ["external", "veteran"]
+    },
+    "accepted_label_alternatives_note": "pr_5389 author Siecje has prior_merged_prs=4 and a first_contributed_at of 2014-11-21 (10+ year contribution history). The prompt's 'long history of merged work' wording is ambiguous between counting merged PRs and counting years; both 'external' and 'veteran' are defensible interpretations. Either label is accepted on this PR.",
+    "actual_outcome_evidence": {
+      "pr_5375": {
+        "merged_at": null,
+        "closed_at": "2024-01-01T16:08:11Z",
+        "author": "ghost",
+        "author_association": "NONE",
+        "prior_merged_prs": 0,
+        "rejection_reason": "ThiefMaster + davidism declined cosmetic README rewrite consistent with prior policy."
+      },
+      "pr_5382": {
+        "merged_at": "2024-01-15T18:45:00Z",
+        "author": "davidism",
+        "author_association": "MEMBER",
+        "prior_merged_prs": 380,
+        "merge_reason": "Maintainer self-merge after CI; targeted 3.0.x for 3.0.1 release."
+      },
+      "pr_5384": {
+        "merged_at": null,
+        "closed_at": "2024-02-03T17:27:46Z",
+        "author": "ahmetelgun",
+        "author_association": "NONE",
+        "prior_merged_prs": 0,
+        "rejection_reason": "davidism declined redirecting official docs to a personal third-party fork."
+      },
+      "pr_5389": {
+        "merged_at": "2024-02-03T16:51:22Z",
+        "author": "Siecje",
+        "author_association": "CONTRIBUTOR",
+        "prior_merged_prs": 4,
+        "merge_reason": "davidism approved BaseLoader typehint correction; targeted 3.0.2."
+      },
+      "pr_5393": {
+        "merged_at": "2024-02-03T16:55:48Z",
+        "author": "r04922101",
+        "author_association": "CONTRIBUTOR",
+        "prior_merged_prs": 2,
+        "merge_reason": "Confirmed regression on Python <3.12 with regression test; merged for 3.0.2."
+      },
+      "pr_5402": {
+        "merged_at": null,
+        "closed_at": "2024-02-03T22:39:51Z",
+        "author": "ByteJoseph",
+        "author_association": "NONE",
+        "prior_merged_prs": 0,
+        "rejection_reason": "davidism: README and docs already show the recommended way to run the dev server."
+      },
+      "pr_5433": {
+        "merged_at": null,
+        "closed_at": "2024-03-10T07:11:14Z",
+        "author": "MagnusOxlund",
+        "author_association": "NONE",
+        "prior_merged_prs": 0,
+        "rejection_reason": "Branch carried 42 unrelated upstream commits across 13 files instead of a focused docstring fix; author closed it themselves."
+      }
+    },
+    "deterministic_verdict_rule": {
+      "definition": "verdict must equal the real GitHub outcome of the PR — merge iff merged_at is non-null in meta.json, reject iff merged_at is null.",
+      "strict_required": true
+    },
+    "triage_evidence_columns": [
+      "pr_id",
+      "author",
+      "author_association",
+      "approval_count",
+      "change_request_count",
+      "contributor_label",
+      "touched_files_count",
+      "final_verdict"
+    ],
+    "triage_md_required_sections": [
+      "merge",
+      "reject"
+    ],
+    "review_signal_counts": {
+      "pr_5375": {"approval_count": 0, "change_request_count": 2},
+      "pr_5382": {"approval_count": 0, "change_request_count": 0},
+      "pr_5384": {"approval_count": 0, "change_request_count": 1},
+      "pr_5389": {"approval_count": 1, "change_request_count": 0},
+      "pr_5393": {"approval_count": 1, "change_request_count": 0},
+      "pr_5402": {"approval_count": 0, "change_request_count": 1},
+      "pr_5433": {"approval_count": 0, "change_request_count": 0}
+    }
+  }
+}

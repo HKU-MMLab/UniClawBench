@@ -1,0 +1,109 @@
+Message-ID: <CAKQ1sVOdx6cDwnb+MpaCybzs+v2-kugArQn8DjOoJdPM2tox1g@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1269
+Date: Mon, 27 Jun 2022 23:24:08 +0200
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: httpd-dev <dev@httpd.apache.org>
+Subject: Re: Issues with shipping apr_thread_current() in APR 1.8.0 and an  alternative approach for PCRE2 allocations in HTTPD
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-06.mbox
+
+Hi Ivan,
+
+On Mon, Jun 27, 2022 at 8:19 PM Ivan Zhakov <ivan@visualsvn.com> wrote:
+>
+> For the longer version, let me first outline a few problems with the current apr_thread_current() API:
+>
+> 1) apr_thread_current_create() leaks the memory allocated in alloc_thread() after the thread exits.
+
+Hm, alloc_thread() creates an unmanaged pool (thread->pool) and
+allocates everything for the thread on that pool (including the thread
+itself).
+This pool is destroyed when the thread is joined (for attached
+threads), or for detached threads when apr_thread_exit() is called
+explicitly otherwise when the thread function actually exits.
+So which memory leaks precisely? apr_thread_current_create() for the
+process' main thread may leak the thread pool on exit because it's
+detached, it has not been apr_thread_create()d and is usually not
+apr_thread_exit()ed, but when the main thread exits (hence the
+process) nothing really leaks.. Should it matter we could also have an
+explicit apr_thread_current_unleak().
+
+Or do you mean the apr_threadattr_t that can be passed to
+apr_thread_current_create()? That one is on the caller's
+responsibility, and it can be reused for multiple threads if needed.
+
+>
+> 2) apr_thread_current_create() requires passing in the apr_threadattr_t value that may be unknown to the caller, so the result may not correspond to the actual thread attributes.
+
+This threadattr is for the users who know (attached vs detached
+mainly), but if they don't know/care maybe they shouldn't use
+apr_thread_current_create()?
+It really matters if
+apr_thread_detach()/apr_thread_join()/apr_thread_exit() is to be
+called later anyway, but users that do this usually create their
+thread with apr_thread_create(), and for these threads
+apr_thread_current_create() is moot anyway (apr_thread_current() works
+automagically for them).
+The main usage of apr_thread_current_create() is for the main thread,
+and this one is always detached per definition. But if users know the
+nature/lifetime of the native threads they want to APR-ize,
+apr_thread_current_create() can be useful too.
+
+>
+> 3) apr_thread_current() allows for situations where it can return NULL, such as with !APR_THREAD_LOCAL, making the API easy to misuse.
+
+Maybe we shouldn't define apr_thread_current{,_create}() when
+!APR_THREAD_LOCAL? I find it useful though to determine if the current
+thread is an APR one or not.
+
+>
+> 4) apr_thread_current_after_fork() callback has to be called by the API user in the appropriate moments of time, allowing for a hard-to-spot API misuse.
+
+Again, this one is a helper for native threads, if apr_fork() is used
+there is nothing to be done on the user side (httpd could do that in
+the unix threaded MPMs for instance to avoid the calls to
+apr_thread_current_after_fork()).
+
+>
+> Since apr_thread_current() was added to implement the specific allocation scheme for PCRE2,
+
+I personally find the API qui useful per se, but admittedly I'm a bit
+biased too..
+
+> I think that we could try an alternative approach for that part of the problem. The alternative approach would have the same characteristics as the approach that had been used for PCRE1:
+>
+> -- Supply PCRE2 with a custom context with malloc and free implementations.
+> -- Those implementations would work by either using a stack buffer for small allocations or by doing a malloc().
+> -- This allocation scheme would have the same properties as the existing scheme used when compiling with PCRE1.
+
+For PCRE2, you would malloc()/free() for every ap_regexec(), which can
+be quite costly depending on the configuration/modules. This work was
+done precisely for this concern, for the switch from PCRE1 to PCRE2 to
+be as little costly as possible. The current implementation reuses the
+same PCRE2 context per thread for the lifetime of httpd..
+Same for PCRE1, besides the stack buffer for small vectors (which is
+still there currently btw).
+
+>
+> With that in mind, the overall plan would be as follows:
+>
+> A) Implement the above approach for PCRE2 allocations in httpd.
+> B) Remove the apr_thread_current() and APR_THREAD_LOCAL from APR trunk and 1.8.x.
+> C) Release APR 1.8.0.
+
+Frankly, I find it hard to shoot down an API that works because it
+could be misused when playing with native threads, whereas it works
+transparently when using the APR threads directly.
+
+Isn't somewhere:
+ apr_thread_data_set(my_data, my_key, NULL, apr_thread_current());
+And elsewhere:
+ apr_thread_data_get(&my_data, my_key, apr_thread_current());
+quite nice compared to creating a native threadkey (whose number is
+usually limited) for each entry?
+
+
+Regards;
+Yann.

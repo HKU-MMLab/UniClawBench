@@ -1,0 +1,45 @@
+task_id: task_105_27_sketch_ui_replica
+category: 105_cross_platform
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I'm practicing design systems and want to replicate a real web page as
+  a .sketch file that I can later fine-tune in Sketch / Lunacy. Let's
+  try https://www.python.org/ as the starting point — it has a hero
+  banner, navigation, feature slides, and a footer; the structure is
+  clean and doesn't require login.
+
+  Here's the rough approach: first use chromium to take a full-page
+  screenshot of the homepage as a reference (desktop resolution is fine),
+  then use curl to fetch the HTML and htmlq to extract key UI elements —
+  the page title, hero tagline text, navigation links, primary color,
+  etc. Organize those into a design-spec JSON, then use sketch-cli to
+  generate the .sketch file. Finally, write a brief Chinese comparison
+  note discussing what was faithfully reproduced versus what couldn't be
+  replicated 100% (fonts, collapsed nav, etc.).
+
+  Put everything under /tmp_workspace/results/ — roughly: the
+  screenshot, the design spec JSON, the .sketch file, and the comparison
+  markdown.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources: []
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

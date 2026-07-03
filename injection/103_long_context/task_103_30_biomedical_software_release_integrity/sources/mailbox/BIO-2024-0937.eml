@@ -1,0 +1,30 @@
+Message-ID: <Y4ngvXaiTN8R1pdM@an3as.eu>
+X-Clawbench-ID: BIO-2024-0937
+Date: Fri, 2 Dec 2022 12:25:49 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Several issues solved but python issue remaining (Was: [Help] Build issue of latest version of libsbml (probably Java compatibility issue))
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_12_msg00010.html
+
+Hi Étienne,
+
+Am Thu, Dec 01, 2022 at 10:48:42PM +0100 schrieb Étienne Mollier:
+> Right, I saw that on my end as well.  This seems to have been
+> caused by forceful run of autopkgtest-pkg-python without it
+> being configured in the package.  I pushed a couple of changes
+> in salsa to fix the import name, and enable explicitly the
+> autopkgtest-pkg-python for upcoming uploads.
+>
+> In hope this helps,
+
+Yep.  This was actually a trivial one.  May be I'm doing too much
+different things to see those simple ones sometimes.
+
+Thanks a lot
+   Andreas.
+
+--
+http://fam-tille.de

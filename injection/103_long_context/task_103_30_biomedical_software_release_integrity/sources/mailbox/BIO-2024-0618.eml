@@ -1,0 +1,59 @@
+Message-ID: <YhOvA8GdW/s166eZ@debian>
+X-Clawbench-ID: BIO-2024-0618
+Date: Mon, 21 Feb 2022 20:55:55 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: Markus Blatt <markus@dr-blatt.de>
+Subject: Re: RFS: source-only upload of opm-{grid,simulators,upscaling}/2021.10-2
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2022_02_msg00039.html
+
+Hi Markus,
+
+On Mon, Feb 21, 2022 at 03:55:51PM +0100, Markus Blatt wrote:
+> > Looks like opm-upscaling and opm-simulators are not building on buildd machines
+> > as seen here[1][2]
+> > It chokes at missing B-D[3]
+> >
+> > | opm-upscaling build-depends on missing:
+> > | - libsuperlu3-dev:amd64 (>= 3.0)
+> >
+> > Can you check+fix this?
+> >
+>
+> Thanks for the hint. Somehow this was not a problem for salsaci and local pbuilder. There
+> used to be a libsuperlu3-dev package in older Debian releases.
+
+Actually, I was seeing the above mentioned problem in my sbuild environment as well,
+seems that it was somehow confusing apt.
+I had to explicitly add a `--build-dep-resolver=aptitude` to get those building.
+
+I thought the problem is sitting in front of my screen, as salsa CI went fine -- which is
+actually closer to the buildd machines.
+But apparently that wasn't the case, somehow.
+
+> Anyway the dependency on
+> libsuperlu-dev and libsuitesparse-dev is already handled as a dependency of libdune-istl-dev.
+> No need to list it again and I removed the offending entry:
+
+Yeah, I noticed that as well, and wanted you to confirm on that once as well.
+
+> Build-Depends: ..., libsuperlu3-dev (>= 3.0) | libsuperlu-dev (>= 4.3), ...
+>
+> Maybe buildd is different and does not allow packages that do not exist?
+
+I guess this is more related to how apt resolves build-deps, admittedly I did not
+investigate much at that end.
+
+> [...]
+> Updated source can be found at
+> https://salsa.debian.org/science-team/opm-upscaling
+> https://salsa.debian.org/science-team/opm-simulators
+>
+> UNRELEASED and untagged as requested, but version incremented.
+
+Great, thanks for working on these, I uploaded both.
+
+Regards,
+Nilesh

@@ -1,0 +1,53 @@
+task_id: task_205_31_bilibili_inkscape_poster
+category: 205_cross_platform_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我想给 3 个我喜欢的 Bilibili 视频做一张合集海报,挂在我的桌前:
+
+    BV1tt411a7Tt
+    BV1Vt411X7sa
+    BV1ev411s7QU
+
+  海报应该展示每个视频的封面缩略图、标题、UP主
+  (uploader)和时长。
+
+  数据采集用浏览器流程——在 chromium 里打开每个 Bilibili 视频页面并截图,
+  用 curl 获取 HTML,用 htmlq 提取标题、UP主、封面图片 URL 和时长。还要
+  用 curl 下载封面图片。
+
+  用 inkscape 创建一个合成的 SVG,把全部 3 个封面及其信息排版成单张海报,
+  然后导出一张至少 800px 宽的 PNG。3 个视频都在同一张海报里——不要拆成
+  3 个文件。
+
+  把产物放在 /tmp_workspace/results/ 下。海报源文件保存为 poster.svg,
+  导出的 PNG 保存为 poster.png。把 3 张封面图片放在一个 thumbs/ 子目录里,
+  以 BV 号命名;把 3 张浏览器截图放在一个 browser_screenshots/ 子目录里,
+  同样以 BV 号命名。
+
+  把每个视频的时长格式化为 "Xm Ys"(例如 "3m 45s"),并给最长的视频
+  标注一个标签(比如 ★ 或 "最长"),让它一眼就能看出来。
+
+  完成后,只需告诉我哪个视频最长。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources: []
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

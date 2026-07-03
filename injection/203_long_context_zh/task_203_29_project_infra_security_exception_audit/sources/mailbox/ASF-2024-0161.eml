@@ -1,0 +1,29 @@
+Message-ID: <Zn0c4pob_kIwjoCs@redhat.com>
+X-Clawbench-ID: ASF-2024-0161
+Date: Thu, 27 Jun 2024 09:03:46 +0100
+From: Joe Orton <jorton@redhat.com>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.60-rc4 as httpd-2.4.60
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-06.mbox
+
+On Wed, Jun 26, 2024 at 01:10:38PM -0400, Eric Covener wrote:
+> Hi all,
+>
+> Please find below the proposed release tarball and signatures:
+>
+> https://dist.apache.org/repos/dist/dev/httpd/
+>
+> I would like to call a VOTE over the next few days to release
+> this candidate tarball httpd-2.4.60-rc4 as 2.4.60:
+> [X] +1: It's not just good, it's good enough!
+> [ ] +0: Let's have a talk.
+> [ ] -1: There's trouble in paradise. Here's what's wrong.
+
++1 for release, big thank you Eric for this release.
+
+Tests pass on Fedora 40, RHEL8+9 (all x86_64).
+
+Regards, Joe

@@ -1,0 +1,30 @@
+Message-ID: <YthXxoN44AEy6G+h@an3as.eu>
+X-Clawbench-ID: BIO-2024-0793
+Date: Wed, 20 Jul 2022 21:30:14 +0200
+From: Andreas Tille <tille@debian.org>
+To: Thiago Franco de Moraes <thiago.moraes@cti.gov.br>
+Subject: Re: Upgrading invesalius
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_07_msg00053.html
+
+Hi Thiago,
+
+Am Wed, Jul 20, 2022 at 12:17:16PM -0300 schrieb Thiago Franco de Moraes:
+> Hi Andreas,
+>
+> Yes, the errors happens when InVesalius is running, the package is being created correctly. I thought it was a error with wxPython from Ubuntu 22.04, but it's happening on Debian Unstable too. I think this commit must be added to the python3-wxgtk4.0 patches https://github.com/wxWidgets/Phoenix/commit/7afcc7fbc68506b55b5bb85970871a5f3df6eac4
+
+Would you mind firing up
+
+   reportbug python3-wxgtk4.0
+
+and put debian-med@lists.debian.org in CC to let us know about this issue?
+
+Thanks a lot
+
+      Andreas.
+
+--
+http://fam-tille.de

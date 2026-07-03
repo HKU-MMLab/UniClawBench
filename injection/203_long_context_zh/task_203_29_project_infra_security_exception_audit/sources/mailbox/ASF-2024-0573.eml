@@ -1,0 +1,48 @@
+Message-ID: <567e97652787e7ba8d03222b7c405da2@ausics.net>
+X-Clawbench-ID: ASF-2024-0573
+Date: Wed, 08 Dec 2021 12:48:08 +1000
+From: Noel Butler <noel.butler@ausics.net>
+To: dev@httpd.apache.org
+Subject: Re: release vibes?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2021-12.mbox
+
+On 08/12/2021 01:14, Mladen Turk wrote:
+
+> On 06/12/2021 12:27, Noel Butler wrote: On 06/12/2021 20:36, Stefan
+> Eissing wrote:
+>
+> Friends of httpd, how do you feel about a release in the next two
+> weeks?
+>
+> Kind Regards,
+> Stefan
+> -1
+>
+> Thats days before christmas, most testers and i'm sure devs will be in
+> holiday mode, even if not, that close to christmas means server updates
+> are in embargo status in most organisations.
+
+Probably the worst -1 reason ever.
+
+Regards
+
+really? so, who is going to test for bugs, just the handful of code
+submitters?
+
+so us non PMC testers are not needed, cool, cya :)
+
+--
+Regards,
+Noel Butler
+
+This Email, including attachments, may contain legally privileged
+information, therefore at all times remains confidential and subject to
+copyright protected under international law. You may not disseminate
+this message without the authors express written authority to do so.
+If you are not the intended recipient, please notify the sender then
+delete all copies of this message including attachments immediately.
+Confidentiality, copyright, and legal privilege are not waived or lost
+by reason of the mistaken delivery of this message.

@@ -1,0 +1,27 @@
+Message-ID: <SA1PR05MB796684A242E3D7C09B31456BDFCC9@SA1PR05MB7966.namprd05.prod.outlook.com>
+X-Clawbench-ID: ASF-2024-1180
+Date: Fri, 27 Jan 2023 17:28:33 +0000
+From: =?iso-8859-1?Q?Jes=FAs_Gonz=E1lez?= <jesusgm@vmware.com>
+To: "dev@httpd.apache.org" <dev@httpd.apache.org>
+Subject: RE: Re: mod_wasm: Contributing Upstream to Apache
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-01.mbox
+
+Hi Eric,
+
+Thanks for the feedback. Though Wasm is relatively new it is being adopted by other HTTP-related projects, like NGINX and Envoy proxy and even ASF projects like APISIX. We want to contribute upstream to bring some of these new features to the Apache web server, similarly to how we are working to contribute our changes to other projects upstream (SQLite, PHP). We plan to continue to development and maintenance regardless of future VMware involvement. In fact, the reason we started this project was because our manager Daniel Lopez was an early ASF member and he looks at this as a way to contribute back to the community. We are initially targeting support for regular web apps such as WordPress, but we plan for mod_wasm to enable safely extending Apache's own functionality, providing access to the module API from Wasm code.
+
+On 2023/01/24 20:36:44 Eric Covener wrote:
+> > We are still very interested in contributing this module upstream and helping to maintain it. Please, let us know what improvements or changes would be needed for it to be considered ready for inclusion.
+>
+> As a pessimistic PMC member not caring about WASM or these languages,
+> I worry that marrying the lifecycle together is not advantageous for
+> either side. Of course I worry about being stuck with the pieces when
+> employer interest wanes or after turnover. It does not seem like it's
+> strictly necessary to be part of the server distribution (there are
+> many examples of successful out-of-tree modules).
+>
+> However the above is no veto.
+>

@@ -1,0 +1,49 @@
+Message-ID: <Yjo8gNJzNFBcbfbA@an3as.eu>
+X-Clawbench-ID: BIO-2024-0666
+Date: Tue, 22 Mar 2022 22:15:44 +0100
+From: Andreas Tille <tille@debian.org>
+To: "Aaron M. Ucko" <ucko@debian.org>
+Subject: Re: ncbi-igblast - compiles so much redundant general NCBI bits - wrong source tree?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_03_msg00024.html
+
+Hi Aaron,
+
+Am Mon, Mar 21, 2022 at 04:13:54PM -0400 schrieb Aaron M. Ucko:
+> Andreas Tille  writes:
+>
+> > ERR [127] --  [util/lmdb] lmdb_test.sh 1     (unparsable timing stats)
+>
+> Please try declaring a build dependency on time.
+>
+> FTR, my previous suggestion (switching from --with-dll to --without-dll)
+> addressed an unrelated concern Steffen had raised, namely using a very
+> similar set of private shared libraries to what ncbi-blast+ has.
+
+This hint enabled me to finally build the package.  Unfortunately there
+are lots of lintian errors[1].  I think I'll be able to deal with the
+RUNPATH issues (if I would have time which is not the case the next
+three days).
+
+I'm more concerned about
+
+
+E: ncbi-igblast source: license-problem-json-evil c++/include/misc/jsonwrapp/rapidjson11/license.txt
+E: ncbi-igblast source: source-is-missing c++/src/html/ncbi_menu.js
+E: ncbi-igblast source: source-is-missing c++/src/html/ncbi_menu_dnd.js
+E: ncbi-igblast source: source-is-missing c++/src/html/ncbi_menu_dyn.js
+
+
+Is there any chance to replace json-evil and drop the *.js files?
+
+Kind regards
+
+      Andreas.
+
+
+[1] https://salsa.debian.org/med-team/ncbi-igblast/-/jobs/2594875#L26
+
+--
+http://fam-tille.de

@@ -1,0 +1,66 @@
+{
+  "description": "Candidate reveal.js presentation themes (real upstream theme CSS shipped under theme_css/). Each theme exposes its colors as --r-* CSS custom properties (--r-background-color, --r-main-color, --r-heading-color, --r-link-color). Choose the best theme for a climate-tech investor PITCH deck: it must look dark/professional and be highly readable projected in a room, and its accent/link color should align with the company's green brand.",
+  "captured_at": "2026-06-19",
+  "brand": {
+    "name": "climate-green",
+    "target_hex": "#2EAA78",
+    "note": "accent/link color should be reasonably close to this green/teal brand color"
+  },
+  "themes": [
+    {
+      "id": "black",
+      "file": "theme_css/black.css",
+      "source": "https://github.com/hakimel/reveal.js/blob/master/dist/theme/black.css"
+    },
+    {
+      "id": "white",
+      "file": "theme_css/white.css",
+      "source": "https://github.com/hakimel/reveal.js/blob/master/dist/theme/white.css"
+    },
+    {
+      "id": "league",
+      "file": "theme_css/league.css",
+      "source": "https://github.com/hakimel/reveal.js/blob/master/dist/theme/league.css"
+    },
+    {
+      "id": "beige",
+      "file": "theme_css/beige.css",
+      "source": "https://github.com/hakimel/reveal.js/blob/master/dist/theme/beige.css"
+    },
+    {
+      "id": "sky",
+      "file": "theme_css/sky.css",
+      "source": "https://github.com/hakimel/reveal.js/blob/master/dist/theme/sky.css"
+    },
+    {
+      "id": "night",
+      "file": "theme_css/night.css",
+      "source": "https://github.com/hakimel/reveal.js/blob/master/dist/theme/night.css"
+    },
+    {
+      "id": "serif",
+      "file": "theme_css/serif.css",
+      "source": "https://github.com/hakimel/reveal.js/blob/master/dist/theme/serif.css"
+    },
+    {
+      "id": "simple",
+      "file": "theme_css/simple.css",
+      "source": "https://github.com/hakimel/reveal.js/blob/master/dist/theme/simple.css"
+    },
+    {
+      "id": "solarized",
+      "file": "theme_css/solarized.css",
+      "source": "https://github.com/hakimel/reveal.js/blob/master/dist/theme/solarized.css"
+    },
+    {
+      "id": "moon",
+      "file": "theme_css/moon.css",
+      "source": "https://github.com/hakimel/reveal.js/blob/master/dist/theme/moon.css"
+    },
+    {
+      "id": "dracula",
+      "file": "theme_css/dracula.css",
+      "source": "https://github.com/hakimel/reveal.js/blob/master/dist/theme/dracula.css"
+    }
+  ]
+}

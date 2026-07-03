@@ -1,0 +1,40 @@
+Message-ID: <ZNyI5Wp1A5qcDhwG@an3as.eu>
+X-Clawbench-ID: BIO-2024-1277
+Date: Wed, 16 Aug 2023 10:29:25 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: pyensembl autopkgtest
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_08_msg00004.html
+
+Hi Lin
+
+Am Wed, Aug 16, 2023 at 12:00:28AM +0700 schrieb Lin Qigang:
+> Yes, I will work on packaging this. I'm a member of the Debian Python Team
+> so I can make sure they become maintainer. I just wrote an issue asking the
+> upstream maintainer to tag the current release.
+
+Thanks a lot for taking over this task.
+
+> I agree about skipping the affected tests for now, and we can revisit this
+> later when there's a new version to make the test suite more comprehensive.
+
+:-)
+
+> I agree and was wondering why the versions were not consistent in Pypi and
+> Github. I wrote an issue on the pyensembl Github asking the upstream
+> maintainer to tag current and future versions.
+
+Thanks again.  I've added a comment to [1] to make it not a single opinion
+of some random person. ;-)
+
+Kind regards
+    Andreas.
+
+
+[1] https://github.com/openvax/pyensembl/issues/288
+
+--
+http://fam-tille.de

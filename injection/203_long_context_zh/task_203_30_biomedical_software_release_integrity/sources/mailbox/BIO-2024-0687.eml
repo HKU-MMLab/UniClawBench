@@ -1,0 +1,87 @@
+Message-ID: <11058415.Ycq2ar82Zf@simurgh>
+X-Clawbench-ID: BIO-2024-0687
+Date: Wed, 03 Nov 2021 20:38:10 +1100
+From: Stuart Prescott <stuart@debian.org>
+To: debian-science@lists.debian.org
+Subject: Re: Science Subgroups [was Re: Debian Math Team]
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_11_msg00016.html
+
+Hi folks
+
+From this discussion it seems that the main advantages of separate teams are
+
+- bespoke views of packages via tracker/dppo/udd
+- mailing lists where the signal:noise is higher (if you're lucky)
+
+However, the disadvantages of separate teams are
+
+- differing conventions in each team around VCS layout, interactions etc
+- niceties around team upload vs NMU reduces the number of people who feel
+able to help with the packages
+- fewer people looking at packages across the inevitably-smaller teams
+
+Separate teams are optimised for the "main" maintainer of a handful of
+packages who doesn't routinely work on any other packages; they are optimised
+_against_ bugsquashers, generalists or people trying to land big projects
+across large sets of packages.
+
+These are some of the biggest annoyances of package maintenance in Debian and
+are what make it very hard to produce a good quality distribution.
+
+Collectively, we need to make big changes on a regular basis (GCC bumps, large
+transitions, Python 2 removal, ...) and for each of them we need people to be
+able to work on lots of packages with minimal friction. In the recent Python 2
+removal work, for instance, it was easy for me to work on debian-science
+packages as I've been a team member since the dawn of time. Working with
+packages in the smaller teams was *much* more work involving additional git
+dances, MRs or BTS round-trips. There were also fewer people looking at those
+packages and it was more likely that there was lots of outstanding QA work,
+unpackaged upstream versions and packages effectively maintained by NMU.
+
+We should remember that having blends packages, blends web pages and
+informative wiki pages are completely independent of having a defined team with
+separate VCS and mailing list. All that needs is one or more people to curate
+them.
+
+
+On Tuesday, 2 November 2021 20:55:47 AEDT Timo Röhling wrote:
+[...]
+> As one of the "instigators" of the new Debian Robotics Team, I like
+> this idea very much and we will adopt it, too.
+
+That's excellent news :)
+
+> Jochen and I also discussed that we would like to consider the
+> Robotics Team more of a subgroup of the Science Team rather than a
+> completely independent team.
+
+I think that's an excellent idea!
+
+> Maybe this concept might also work for the Math Team and other
+> science-related groups?
+
+Yes please!
+
+I believe that we should think of this as good practice for maintenance of
+scientific software in Debian and that we should encourage all the other
+science-related teams to do this.
+
+Scientific software in Debian has a bit of a reputation problem that stems from
+many different causes that include upstream motivations, the vagaries of
+research funding, non-expert development work… but also because we are spread
+too thinly in Debian maintenance and many of our teams are nothing more than a
+VCS namespace and not actual teams.
+
+Making subgroups with a common way of working (i.e. policy) and having more
+permissive salsa configurations could help us a lot.
+
+cheers
+Stuart
+
+--
+Stuart Prescott    http://www.nanonanonano.net/   stuart@nanonanonano.net
+Debian Developer   http://www.debian.org/         stuart@debian.org
+GPG fingerprint    90E2 D2C1 AD14 6A1B 7EBB 891D BBC1 7EBB 1396 F2F7

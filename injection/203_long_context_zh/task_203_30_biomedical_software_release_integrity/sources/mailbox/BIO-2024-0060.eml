@@ -1,0 +1,38 @@
+Message-ID: <YWfku/UyxOKaeaIN@an3as.eu>
+X-Clawbench-ID: BIO-2024-0060
+Date: Thu, 14 Oct 2021 10:05:15 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: golang-github-dataence-porter2 fails autopkgtest
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00050.html
+
+Hi Nilesh,
+
+Am Thu, Oct 14, 2021 at 01:18:06PM +0530 schrieb Nilesh Patra:
+> Salsa CI passes:
+>
+> https://salsa.debian.org/med-team/golang-github-dataence-porter2/-/jobs/2070558
+
+Ahh, fine.
+
+> Are all your changes pushed to salsa?
+
+Yes.  Sometimes pbuilder chroots are behaving differently.
+
+> And on a related note, do you think it makes sense to move this package to
+> the golang team instead?
+> This also doesn't look exactly bioinformatics either, rather a
+> porter-stemmer. So for the sake of consistency, it'd IMO be good to move it
+> there -- thoughts?
+
+I'm perfectly fine with this.  Just do what you consider sensible.
+
+Kind regards
+
+      Andreas.
+
+--
+http://fam-tille.de

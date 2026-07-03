@@ -1,0 +1,44 @@
+Message-ID: <Yc4XhzirXYJzifg7@an3as.eu>
+X-Clawbench-ID: BIO-2024-0471
+Date: Thu, 30 Dec 2021 21:33:11 +0100
+From: Andreas Tille <tille@debian.org>
+To: tony mancill <tmancill@debian.org>
+Subject: Re: [Help needed] Racon
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_12_msg00198.html
+
+Hi Tony,
+
+Am Thu, Dec 30, 2021 at 08:40:32AM -0800 schrieb tony mancill:
+>
+> Thank you for the improvements to the autopkgtest and the other
+> clean-up.  Using the checksum is a great trick!  One (very minor)
+> concern I have is that our future selves won't be able to easily
+> differentiate between a change in the output format in a new version -
+> for example, capitalization or punctuation or the number of zeros
+> following the decimal for the XC field in this first line of output:
+>
+>   >utg000001l LN:i:47676 RC:i:181 XC:f:1.000000
+>
+> and a legitimately failing test.  I ran into this with a recent update
+> simrisc.
+>
+> I don't think we should revert your improvements.  I mention this only
+> because I see this as an area where we will continue to evolve the state
+> of the art.
+
+Fine with me.  In this case the result file is not extraordinary large
+and you have a valid point here.
+So feel free to revert and upload.
+
+> Best regards, and a Happy New Year to all!
+
+Same to you and thanks a lot for watching me
+
+       Andreas.
+
+
+--
+http://fam-tille.de

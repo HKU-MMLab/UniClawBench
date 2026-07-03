@@ -1,0 +1,84 @@
+task_id: task_105_05_event_materials_gui_inventory_slack
+category: 105_cross_platform
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I put eight on-site event material photos in:
+
+      /tmp_workspace/clawbench/sources/event_materials_photos/
+
+  Use a real desktop GUI workflow to organize the inventory. Do not use a Slack
+  mock, and do not use any benchmark spreadsheet fallback/mock.
+
+  1. Open this image directory with the file manager, and inspect each photo in
+     an image viewer.
+  2. Read the material category and quantity from each image. Categories must be
+     exactly one of:
+     badge, poster, sticker, notebook, misc.
+  3. Use LibreOffice Calc GUI to create an inventory spreadsheet with at least
+     these columns:
+     filename, category, quantity, note.
+     Use one row per image, and write a short one-sentence note describing what
+     you saw.
+  4. Add the total item count and the category with the largest quantity.
+  5. Save the spreadsheet as:
+
+      /tmp_workspace/results/event_materials_inventory.ods
+
+     The ODS itself must contain the eight image rows, total item count, and the
+     largest category. CSV or Markdown audit files cannot replace a missing or
+     incomplete ODS.
+
+  6. Open the real Slack Desktop client, log in to a real usable workspace, and
+     send a message of no more than 120 characters in an auditable channel or
+     direct message. The message should state the total item count and the
+     largest category. If the current environment has no Slack credentials or
+     workspace, still launch the real Slack Desktop client, save a screenshot of
+     the login/blocker state, and explain the blocker in the evidence. The Slack
+     subitem cannot receive full credit without real Slack credentials. The
+     Slack screenshot must actually show a Slack Desktop channel, message, login
+     page, workspace selection page, or explicit error page. A screenshot file
+     whose content is the file manager, Calc, or another application does not
+     count as Slack evidence.
+
+  7. Save GUI evidence under `/tmp_workspace/results/`, including at least:
+
+      /tmp_workspace/results/file_manager_event_materials.png
+      /tmp_workspace/results/image_viewer_event_materials.png
+      /tmp_workspace/results/calc_inventory.png
+      /tmp_workspace/results/slack_evidence.png
+
+     If a real Slack message was sent, you may also save a Slack export, copied
+     message link, audit log, or other human-auditable evidence to
+     `/tmp_workspace/results/slack_evidence.*`.
+
+  8. Finally, write a very short GUI usage record:
+
+      /tmp_workspace/results/gui_evidence.md
+
+     State that you used the file manager, image viewer, LibreOffice Calc GUI,
+     and real Slack Desktop client. If Slack login or installation was blocked,
+     explain why and cite the corresponding screenshot file.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - event_materials_photos/
+
+services:
+  - name: real-gui-setup
+    path: real-gui-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

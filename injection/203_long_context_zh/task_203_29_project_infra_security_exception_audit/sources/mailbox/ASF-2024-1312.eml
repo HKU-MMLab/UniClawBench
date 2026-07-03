@@ -1,0 +1,20 @@
+Message-ID: <6F758673-1E63-42DD-865E-47A78240E17A@eissing.org>
+X-Clawbench-ID: ASF-2024-1312
+Date: Wed, 15 Dec 2021 11:58:34 +0100
+From: Stefan Eissing <stefan@eissing.org>
+To: dev@httpd.apache.org
+Subject: intent to tag
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2021-12.mbox
+
+FYI: I intend to tag a 2.4.52 release candidate tomorrow, Thursday 16.12.
+
+The vote on this candidate is meant to conclude on Sunday evening and will,
+if successful, make a release on Monday, 20.12. Should we not reach a
+positive vote on Sunday, we will shift the next attempt to the first week
+in January.
+
+Kind Regards,
+Stefan

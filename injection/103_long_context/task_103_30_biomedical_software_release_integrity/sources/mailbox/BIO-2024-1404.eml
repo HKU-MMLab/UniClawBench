@@ -1,0 +1,52 @@
+Message-ID: <udlsfljmap8.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-1404
+Date: Fri, 26 Aug 2022 08:49:23 -0400
+From: ucko@debian.org (Aaron M. Ucko)
+To: <debian-med@lists.debian.org>
+Subject: Re: Finishing ncbi-vdb and sra-sdk
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_08_msg00063.html
+
+Andreas Tille  writes:
+
+> I noticed that another upload does not keep the position of the package
+> in the new queue but pulls it down at the end again. :-( BTW, what is
+
+Oops.  I've gone ahead with 3.0.0+dfsg2-2 now, then; I'm confident in
+those changes and don't want to let the position slip much more.
+
+> your rationale to push the old version 2.11.2+dfsg-5 as well?  Wouldn't
+> that be overridden by 3.0.0+dfsg2-1?
+
+Not immediately, because they're going to different suites, with 3.x
+still targeting experimental for now.  The idea is to allow for a
+maximally clean transition to having a separate ncbi-vdb-data binary
+package in systems running testing or unstable and updated reasonably
+often.  (Stable will of course be another matter, but still smooth
+enough.)
+
+> Thanks for working on this.
+
+No problem.
+
+> Without checking the background I think
+> debhelper uses debian/tmp for multiple binary packages and
+> debian/pkgname for single binary packages.
+
+Right, though I think that may vary by compatibility level.
+
+> I fail to understand in
+> what way the name of that temporary dir might be an issue but I can't
+> check in the next two weeks.
+
+debian/rules has some explicit references to debian/tmp, and dh_install
+moreover fails in this situation with the package's .install list.
+These are formalities that would be quick to address, but there's no
+point given that the source package will need to build multiple binary
+packages soon anyway.
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

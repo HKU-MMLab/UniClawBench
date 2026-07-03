@@ -1,0 +1,49 @@
+Message-ID: <YZDU7s/WkLUhriTu@an3as.eu>
+X-Clawbench-ID: BIO-2024-0597
+Date: Sun, 14 Nov 2021 10:20:46 +0100
+From: Andreas Tille <tille@debian.org>
+To: Yaroslav Halchenko <debian@onerussian.com>
+Subject: Re: Progress in merging neurodebian team?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_11_msg00079.html
+
+Hi Yaroslav,
+
+Am Sat, Nov 13, 2021 at 05:21:52PM -0500 schrieb Yaroslav Halchenko:
+> > There are packages I gave up.  For instance I have some mental note on
+> > fsl saying: non-free, outdated (upstream has version 6.0) and terribly
+> > complex.
+>
+> yeah, don't bother with FSL!  Even though still popular, non-free
+> license, and no longer fully open source AFAIK.
+
+So shouldn't we file an RFM bug against fsl?
+
+> If any other alternative in purpose -- pick up AFNI please.
+> Major (if not all) licensing issues were resolved, we never uploaded to
+> debian proper though.  Upstream is very receptive and friendly.
+> Problems:
+> - age (in how long it has been out there, but it is still active)
+> - original build infrastructure was "suboptimal",Michael redid in cmake,
+>   upstream worked on establishing their own cmake build infra but they
+>   are not actively use it
+>
+> our aged, not updated in awhile packaging:
+> https://github.com/neurodebian/afni/tree/debian
+>
+> upstream: https://afni.nimh.nih.gov/
+> https://github.com/afni/afni
+
+I transfered https://salsa.debian.org/neurodebian-team/afni (and
+afni-data) to Debian Med team.  Would you mind checking the status from
+Github to ensure we have the latest packaging status if someone might
+want to continue?
+
+Kind regards
+
+       Andreas.
+
+--
+http://fam-tille.de

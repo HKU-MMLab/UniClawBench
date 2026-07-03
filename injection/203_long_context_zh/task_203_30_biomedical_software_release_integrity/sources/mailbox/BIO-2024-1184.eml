@@ -1,0 +1,52 @@
+Message-ID: <Y4x8ilenBs+UIfk7@an3as.eu>
+X-Clawbench-ID: BIO-2024-1184
+Date: Sun, 4 Dec 2022 11:55:06 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Tony Travis <tony.travis@minke-informatics.co.uk>
+Subject: Re: [Advent bug squashing] Re: PIQUE
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_12_msg00036.html
+
+Hi Tony,
+
+Am Sun, Dec 04, 2022 at 10:51:02AM +0000 schrieb Tony Travis:
+> This is my BUG report:
+>
+> > https://bugs.launchpad.net/ubuntu/+source/pique/+bug/1998685
+>
+> I filed it using "ubuntu-bug".
+
+Well, Ubuntu bug reports do not reach our attention here.  Please use
+
+   reportbug pique
+
+next time.
+
+> > BTW, could you recommend some kind of test with some small example data
+> > set?  We could wrap this into a CI test and would be able to detect
+> > these issues immediately.
+>
+> There is a Makefile in the PIQUE "test" folder on the GitHub repo that could
+> be modified to test the installed version of PIQUE, rather than testing the
+> version of PIQUE in the source tree.
+>
+> It downloads test data: We had a conversation about this previously and I
+> explained that GWAS requires quite a 'large' data-set to test it (44K
+> SNP's). In fact, the 'test' data is small by comparison to a typical GWAS
+> that we do with millions of SNP's. GWAS requires a genotype file and a
+> phenotype file. The phenotype file, and subsets, of it are in the PIQUE
+> "test" folder.
+
+Ahhh, well, I remember now and also see the test folder.  Thanks again
+for the pointer.
+
+> Thanks again for packaging "PIQUE",
+
+You are welcome
+
+       Andreas.
+
+--
+http://fam-tille.de

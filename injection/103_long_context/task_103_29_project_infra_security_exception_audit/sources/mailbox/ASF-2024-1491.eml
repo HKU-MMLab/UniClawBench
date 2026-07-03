@@ -1,0 +1,22 @@
+Message-ID: <b0db3ddd-0409-ebec-681e-7caba2db8fa7@apache.org>
+X-Clawbench-ID: ASF-2024-1491
+Date: Fri, 31 Mar 2023 08:49:06 +0200
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: I plan to RM some time this weekend
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-03.mbox
+
+On 3/30/23 11:29 PM, Eric Covener wrote:
+> Primarily to pick up PR66547 and the rewrite improvements, but I also
+> seen an h2 crash addressed.
+>
+
+Great. Can you please have a look at the two proposals from Yann and me in STATUS that just lack one vote?
+I would like to see them in this release as well.
+
+Regards
+
+Rüdiger

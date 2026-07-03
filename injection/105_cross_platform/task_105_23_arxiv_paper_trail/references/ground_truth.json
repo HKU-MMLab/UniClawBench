@@ -1,0 +1,86 @@
+{
+  "task_id": "task_105_23_arxiv_paper_trail",
+  "schema_notes": "Anchor facts only. JSON shape, field names, and filenames are the executor's choice — the grader checks semantic content, not key naming. Anchored to arxiv:2304.03442v2 (Generative Agents: Interactive Simulacra of Human Behavior, Park et al. 2023). Snapshot date 2026-05-02.",
+  "reference_date": "2026-05-02",
+  "ground_truth": {
+    "paper": {
+      "arxiv_id": "2304.03442",
+      "title": "Generative Agents: Interactive Simulacra of Human Behavior",
+      "authors": [
+        "Joon Sung Park",
+        "Joseph C. O'Brien",
+        "Carrie J. Cai",
+        "Meredith Ringel Morris",
+        "Percy Liang",
+        "Michael S. Bernstein"
+      ],
+      "first_author": "Joon Sung Park",
+      "page_count": 22,
+      "publication_date": "2023-04-07",
+      "primary_pdf_url": "https://arxiv.org/pdf/2304.03442v2",
+      "abstract_first_100_chars": "Believable proxies of human behavior can empower interactive applications ranging from immersive env"
+    },
+    "semantic_scholar": {
+      "endpoint": "https://api.semanticscholar.org/graph/v1/paper/ARXIV:2304.03442",
+      "paper_id": "5278a8eb2ba2429d4029745caf4e661080073c81",
+      "venue": "ACM Symposium on User Interface Software and Technology",
+      "year": 2023,
+      "citation_count_at_snapshot": 3885,
+      "citation_count_acceptable_min": 3000,
+      "first_author_id": "2116649486",
+      "first_author_top_other_paper_title": "Social Simulacra: Creating Populated Prototypes for Social Computing Systems",
+      "first_author_top_other_paper_year": 2022
+    },
+    "github_top_repo": {
+      "full_name": "joonspk-research/generative_agents",
+      "url": "https://github.com/joonspk-research/generative_agents",
+      "rank": 1,
+      "is_official_author_repo": true
+    },
+    "github_other_likely_repos": [
+      "mkturkcan/generative-agents",
+      "nmatter1/smallville",
+      "QuangBK/generativeAgent_LLM",
+      "sethkarten/LLM-Economist"
+    ],
+    "hn_top_story": {
+      "story_id": "35517649",
+      "url": "https://news.ycombinator.com/item?id=35517649",
+      "title_substring": "Generative Agents: Interactive Simulacra",
+      "points_at_snapshot": 391,
+      "rank": 1
+    },
+    "hn_other_likely_stories": [
+      {"story_id": "37073938", "title_substring": "Now Open Source", "rank_approx": 2},
+      {"story_id": "35980223", "title_substring": "Smallville", "rank_approx": 3},
+      {"story_id": "35514309", "title_substring": "Generative Agents: Interactive Simulacra", "rank_approx": 4},
+      {"story_id": "35511843", "title_substring": "Generative Agents: Interactive Simulacra", "rank_approx": 5}
+    ],
+    "expected_characterisation": {
+      "academic_impact": "highly cited (>3000 citations on Semantic Scholar)",
+      "code_reception": "actively reproduced — joonspk-research/generative_agents is the official author repo, plus several community forks/reimplementations",
+      "community_reception": "strong HN attention — top story (id 35517649) has ~391 points at snapshot, plus a follow-up open-source-release story"
+    },
+    "paper_to_implementation_chronology": {
+      "method_hint": "For each candidate GitHub repo, get the earliest commit via gh api: (1) `gh api -i repos/<r>/commits?per_page=1` -> read Link header `rel=\"last\"` page number; (2) `gh api repos/<r>/commits?per_page=1&page=<last>&sha=<default_branch> --jq .[0].commit.author.date`. Compute days_since_paper_publish = first_commit_date - 2023-04-07. Repo `created_at` is a usable proxy when pagination fails (typically same day as first commit). The user's prompt anchors on top 3 GitHub implementations BY STARS — at the snapshot this is joonspk-research/generative_agents (21k+ stars, official), mkturkcan/generative-agents (~995 stars), nmatter1/smallville (~763 stars).",
+      "paper_publish_date": "2023-04-07",
+      "per_repo_first_commit_at_snapshot": {
+        "joonspk-research/generative_agents": {"first_commit_date": "2023-07-23", "days_since_paper": 107, "is_official_author_repo": true, "stars_at_snapshot": 21227},
+        "mkturkcan/generative-agents": {"first_commit_date": "2023-04-11", "days_since_paper": 4, "is_official_author_repo": false, "stars_at_snapshot": 995},
+        "nmatter1/smallville": {"first_commit_date": "2023-05-17", "days_since_paper": 40, "is_official_author_repo": false, "stars_at_snapshot": 763},
+        "QuangBK/generativeAgent_LLM": {"first_commit_date": "2023-06-02", "days_since_paper": 56, "is_official_author_repo": false, "stars_at_snapshot": 287}
+      },
+      "earliest_implementation_repo": "mkturkcan/generative-agents",
+      "earliest_implementation_lag_days": 4,
+      "earliest_implementation_finding": "The community got out ahead of the paper team: mkturkcan/generative-agents shipped its first commit on 2023-04-11, just 4 days after the paper was posted to arxiv. The official author repo (joonspk-research/generative_agents) only landed on 2023-07-23 — 107 days post-paper, presumably timed to a code release rather than an immediate reproduction effort.",
+      "tolerance": "first_commit_date is sourced from immutable git history and will not change. days_since_paper is exact. The grader accepts ±3 days on stated gap values to absorb any rounding/timezone edge cases (e.g. UTC vs local). The earliest-implementation identification (mkturkcan being first of the top 3) is the stable rank-1 property and must be correctly identified."
+    },
+    "tolerances": {
+      "page_count": "exact 22 (immutable PDF property)",
+      "citation_count": "≥ 3000 (any value at or above this; Semantic Scholar citationCount grows monotonically over time)",
+      "first_author_top_other_paper": "fuzzy substring match on 'Social Simulacra' (case-insensitive)",
+      "github_top_repo_full_name": "fuzzy substring match on 'joonspk-research'",
+      "hn_top_story_id": "exact '35517649' or any reference to news.ycombinator.com/item?id=35517649"
+    }
+  }
+}

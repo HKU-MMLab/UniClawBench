@@ -1,0 +1,34 @@
+Message-ID: <CALK=YjPtYYfYxN9Vy0gkaKgHnszMjE3pHd3VcRwCSBpevpEf6g@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1170
+Date: Wed, 26 Jun 2024 13:10:38 -0400
+From: Eric Covener <covener@gmail.com>
+To: Apache HTTP Server Development List <dev@httpd.apache.org>
+Subject: [VOTE] Release httpd-2.4.60-rc4 as httpd-2.4.60
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-06.mbox
+
+Hi all,
+
+Please find below the proposed release tarball and signatures:
+
+https://dist.apache.org/repos/dist/dev/httpd/
+
+I would like to call a VOTE over the next few days to release
+this candidate tarball httpd-2.4.60-rc4 as 2.4.60:
+[ ] +1: It's not just good, it's good enough!
+[ ] +0: Let's have a talk.
+[ ] -1: There's trouble in paradise. Here's what's wrong.
+
+The computed digests of the tarball up for vote are:
+sha256: 741554b6f608ac5cbe90d4774d1c3ccb0c251eaf1b087bac359f8146e1465e07
+*httpd-2.4.60-rc4.tar.gz
+sha512: 4e2a72b4f66bd3436222bd44940ae248effff8423551ab78a803ce001feddf521ec2f85bddd678b2368ac1f0ec50045848b3ff1ff7579e73d407cf33605068c5
+*httpd-2.4.60-rc4.tar.gz
+
+The SVN candidate source is found at tags/2.4.60-rc4-candidate.
+
+--
+Eric Covener
+covener@gmail.com

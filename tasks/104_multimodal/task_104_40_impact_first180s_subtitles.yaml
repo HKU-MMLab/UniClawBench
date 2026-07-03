@@ -1,0 +1,47 @@
+task_id: task_104_40_impact_first180s_subtitles
+category: 104_multimodal
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  Please open the video file:
+  /tmp_workspace/clawbench/sources/clip.mp4
+
+  You must actually play, watch, and listen to the local video clip, then
+  transcribe it yourself. Do not download existing subtitles, scripts, movie
+  dialogue transcripts, or rely on movie knowledge; the final subtitles and
+  timeline must be based on this local video.
+
+  Please generate a subtitle file for the first 180 seconds of the video and
+  save it as:
+  /tmp_workspace/results/clip.srt
+
+  Requirements:
+  1. Process only 0:00-3:00
+  2. Use standard SRT format
+  3. If there is a long stretch without dialogue at the beginning, do not force
+     subtitles into it; mark subtitles only when there is actual spoken content
+  4. After finishing, watch these 180 seconds again and check whether the
+     subtitles match the timing of speech on screen
+  5. If necessary, modify the original file directly; do not save an extra
+     separate version
+
+  If `/tmp_workspace/results/` does not exist, create it first.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/reference_clip.srt
+  - references/selected_clips_manifest.json
+
+sources:
+  - clip.mp4
+
+codex:
+  max_user_followups: 2

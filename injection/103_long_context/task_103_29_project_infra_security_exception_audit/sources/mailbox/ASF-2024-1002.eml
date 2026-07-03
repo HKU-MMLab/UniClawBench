@@ -1,0 +1,25 @@
+Message-ID: <CALK=YjMfT+JYcXdxGZseCHjG0Ph9jGiwVQZuL+3JdLXqcuJy7Q@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1002
+Date: Wed, 18 May 2022 08:31:15 -0400
+From: Eric Covener <covener@gmail.com>
+To: Apache HTTP Server Development List <dev@httpd.apache.org>
+Subject: Re: CVE-2022-1388
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-05.mbox
+
+> Given the above, I believe the interpretation of X-F5-Auth-Token should
+> be that it is an end-to-end header, and should therefore NOT be removed
+> from the proxied request.
+>
+> The text does say "All other headers *defined by HTTP/1.1* are
+> end-to-end headers" (emphasis mine, of course), and the X-F5-Auth-Token
+> header isn't defined by HTTP/1.1 (it's a custom one), but I think the
+> definition of specific hop-by-hop headers implies that *all* other
+> headers should be considered end-to-end.
+
+I don't think that interpretation can be squared with e.g.
+
+https://datatracker.ietf.org/doc/html/rfc7230#section-3.2.1
+https://datatracker.ietf.org/doc/html/rfc7230#section-6.1

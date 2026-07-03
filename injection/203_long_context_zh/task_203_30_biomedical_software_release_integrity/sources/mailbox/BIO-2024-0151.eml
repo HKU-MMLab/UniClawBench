@@ -1,0 +1,76 @@
+Message-ID: <CALF6qJkWNOYcf_cJ9weMSCu-Z4uLeOP2V0M4SR5HmGjX-Etm_g@mail.gmail.com>
+X-Clawbench-ID: BIO-2024-0151
+Date: Tue, 22 Feb 2022 13:06:30 +0100
+From: Anton Gladky <gladk@debian.org>
+To: Drew Parsons <dparsons@debian.org>
+Subject: Re: Google Summer of Code, Debian Science
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2022_02_msg00050.html
+
+Hello Drew,
+
+It is a very good idea!
+
+Though I would separate this task from QA-work on Debian Science
+packages. If you want, we could apply one-more project (something
+like HPC-testing of MPI-based science packages) and point special
+requirements for possible applicants. Feel free to propose a text
+for that. Thanks again!
+
+Regards
+
+Anton
+
+Am Di., 22. Feb. 2022 um 12:52 Uhr schrieb Drew Parsons :
+>
+> On 2022-02-21 17:42, Anton Gladky wrote:
+> > Dear all,
+> >
+> > Google Summer of Code call for Debian is announced [1].
+> > I am going to apply Debian Science Team as one of the projects.
+> >
+> > Main topic is QA-Work: Autopkgtests for high-popcon packages,
+> > gitlab-CI for most of packages, bringing not-in-testing packages
+> > into the proper shape to let them migrate to testing.
+> >
+> > If somebody wants to be a co-mentor or if you have better ideas
+> > for the project, please let me know.
+> >
+> > [1]
+> > https://lists.debian.org/debian-devel-announce/2022/02/msg00002.html
+>
+>
+> It would be helpful to run parallel/HPC performance testing for our MPI
+> numerical packages.
+>
+> This would be a type of CI testing that we would set up to run regularly
+> and report.
+> Lucas Nussbaum is in charge of an academic supercomputing cluster that
+> we can access to run such tests.
+>
+> Some packages have benchmarks already at hand.  The FEniCS project for
+> instance offers fenicsx-performance-tests (both prebuilt and source).
+>
+> The project would determined how to set up MPI CI testing (how to
+> activate it on Lucas' system), and what parameters (test size etc) to
+> use to get meaningful numbers.
+> A suggested tools for managing test parameters and results might be
+> https://reframe-hpc.readthedocs.io/en/stable/
+>
+> The report format could be similar to
+> https://fenics.github.io/performance-test-results/
+> or perhaps the GSoC worker could come up with a better way of presenting
+> results.
+>
+> It would be useful to be able to quantify how well our HPC packages
+> actually scale (in cloud computing environments) and monitor if there's
+> any drop in performance (e.g. with version updates)
+>
+> Also useful to report their performance with the various BLAS
+> alternatives.
+>
+> This would be valuable GSoC project I think.
+>
+> Drew

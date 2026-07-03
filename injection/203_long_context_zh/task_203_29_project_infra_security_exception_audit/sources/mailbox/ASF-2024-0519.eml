@@ -1,0 +1,17 @@
+Message-ID: <585D754A-5F42-415C-AF4E-8ED4A40DA7A0@eissing.org>
+X-Clawbench-ID: ASF-2024-0519
+Date: Fri, 12 May 2023 12:27:22 +0200
+From: "Stefan Eissing via dev" <dev@httpd.apache.org>
+To: dev@httpd.apache.org
+Subject: http2 proxy_fcgi interop issue
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-05.mbox
+
+Regarding https://bz.apache.org/bugzilla/show_bug.cgi?id=66597
+I am unable to figure out what is going wrong there.
+
+It seems mod_proxy_fcgi is not de-chunking request bodies and collecting them raw. Which *should* also be problematic in HTTP/1.1, but I have no test setup to verify this, really.
+
+- Stefan

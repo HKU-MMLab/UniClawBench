@@ -1,0 +1,29 @@
+Message-ID: <15743.18150.567462.560748@onceler.kciLink.com>
+X-Clawbench-ID: CAM-2003-0325
+Date: Wed, 11 Sep 2002 09:36:38 -0400
+From: Vivek Khera <khera@kcilink.com>
+To: spamassassin-talk@example.sourceforge.net
+Subject: Re: [SAtalk] base64 decode problem?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01455.6f59785ae19e2d0c92f0f18764e5e8a6
+
+>>>>> "CW" == Carlo Wood <carlo@alinoe.com> writes:
+
+CW> to manually decode the base64 part.
+CW> Can someone please tell me how to do that?
+
+
+google: base64 decode
+
+the first three results look useful.
+
+
+-------------------------------------------------------
+In remembrance
+www.osdn.com/911/
+_______________________________________________
+Spamassassin-talk mailing list
+Spamassassin-talk@lists.sourceforge.net
+https://lists.sourceforge.net/lists/listinfo/spamassassin-talk

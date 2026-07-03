@@ -1,0 +1,35 @@
+Message-ID: <Z18FvQ6MMPx5UACc@eamanu>
+X-Clawbench-ID: BIO-2024-0784
+Date: Sun, 15 Dec 2024 13:37:17 -0300
+From: Emmanuel Arias <eamanu@debian.org>
+To: debian-med@lists.debian.org
+Subject: [Advent Calendar] second week bug work
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_12_msg00015.html
+
+Hi amazing team!
+
+I send my (little) bug fixes report for this Advent Calendar Bug
+Squashing party :-). I started in the second week.
+
+* 09-12-2024
+  - qiime push to salsa a patch to remove crypt module. Fix #1084668.
+  - pyqi: Fix syntaxWarning. Fix #1085822.
+  - geneimpact: Fix syntaxWarning. Fix #1085915.
+
+* 11-12-2024
+  - yanosim: Fix SyntaxWarning. Fix #1087194.
+
+* 13-12-2024
+  - Start working on deepdiff to fix #1088239. Need orderly-set package in Debian.
+  - psychopy: Push to salsa fix of #1086772
+
+* 14-12-2024
+  - Package orderly-set. Closes: #1089916
+
+I plan continue working in psychopy on the next week.
+
+Cheers!
+Emmanuel

@@ -1,0 +1,33 @@
+Message-ID: <20020820120618.F4237@prodigy.Redbrick.DCU.IE>
+X-Clawbench-ID: CAM-2003-1255
+Date: Tue, 20 Aug 2002 12:06:18 +0100
+From: Philip Reynolds <phil@redbrick.dcu.ie>
+To: ilug@linux.ie
+Subject: Re: [ILUG] SMTP auth & mutt
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00469.5e2af174515bf3c131dc05a2b93c429a
+
+John P. Looney's [valen@tuatha.org] 11 lines of wisdom included:
+>  OK, Mutt uses sendmail to deliver mail...
+>
+>  How can I get it to deliver via a Postfix box with SMTP auth enabled ?
+
+Mutt interacts with smtpdaemon or something like that doesn't it?
+
+Can mutt interact directly with SMTP server with authentication
+capabilities? I don't think it can.
+
+Surely you can just run a mailserver on your own machine and send
+mail using it?
+
+--
+  Philip Reynolds
+   RFC Networks          tel: 01 8832063
+www.rfc-networks.ie      fax: 01 8832041
+
+--
+Irish Linux Users' Group: ilug@linux.ie
+http://www.linux.ie/mailman/listinfo/ilug for (un)subscription information.
+List maintainer: listmaster@linux.ie

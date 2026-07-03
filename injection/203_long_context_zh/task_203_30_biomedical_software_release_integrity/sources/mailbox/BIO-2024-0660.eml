@@ -1,0 +1,30 @@
+Message-ID: <YhHnl/0mPZGMIpvM@an3as.eu>
+X-Clawbench-ID: BIO-2024-0660
+Date: Sun, 20 Feb 2022 08:02:47 +0100
+From: Andreas Tille <andreas@fam-tille.de>
+To: "Rebecca N. Palmer" <rebecca_palmer@zoho.com>
+Subject: Re: Is snakemake using drmaa?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_02_msg00085.html
+
+Am Sat, Feb 19, 2022 at 09:23:16PM +0000 schrieb Rebecca N. Palmer:
+> The documentation says:
+> https://github.com/snakemake/snakemake/blob/main/docs/tutorial/additional_features.rst#cluster-execution
+> https://github.com/snakemake/snakemake/blob/main/docs/executing/cluster.rst
+> I don't know how up to date this is, but the code to use drmaa is still
+> there.
+>
+> snakemake already has several other options that only work with
+> not-in-Debian packages, so I wouldn't consider adding another one to be a
+> big deal, but I don't know how often this one is used.
+
+Feel free to name one or two alternatives we might package together
+to sensibly get rid of drmaa.
+
+Kind regards
+    Andreas.
+
+--
+http://fam-tille.de

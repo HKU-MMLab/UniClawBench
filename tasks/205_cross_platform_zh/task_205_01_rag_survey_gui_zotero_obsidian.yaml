@@ -1,0 +1,78 @@
+task_id: task_205_01_rag_survey_gui_zotero_obsidian
+category: 205_cross_platform_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我有一份来自真实 RAG 综述阅读包的本地 PDF，希望通过使用 Zotero 和
+  Obsidian 的真实桌面 GUI 工作流来处理它。
+
+  PDF 位于此处：
+
+      /tmp_workspace/clawbench/sources/rag_survey_pack/rag_survey.pdf
+
+  请使用真实的桌面应用，而不是网页模拟，也不要只用命令行编辑文件。一个
+  setup 服务会在你开始之前安装/验证 Zotero 和 Obsidian；如果它们仍在就绪
+  过程中，请稍等片刻后再次尝试启动它们。如有需要，你可以查看此 setup 状态：
+
+      /tmp_workspace/clawbench/service_state/zotero-obsidian-ready.json
+
+  - 用可见的 PDF 阅读器或浏览器 PDF 查看器打开并阅读该 PDF。
+  - 启动真实的 Zotero 桌面应用。为该 PDF 创建一条 Zotero 记录，
+    包含标题、作者、年份、发表场所（venue）、DOI 或 arXiv ID、citation key、
+    标签以及有用的摘要/总结。将本地 PDF 附加到该 Zotero
+    记录上。
+  - 如果可用，将该 Zotero 条目导出为 BibTeX 或 Better BibTeX 风格的 `.bib`。
+    导出的 citation key 应为 `gao2024retrieval`。
+  - 启动真实的 Obsidian 桌面应用。在
+    `/tmp_workspace/results/rag_survey_obsidian_vault/` 下创建/打开一个 Obsidian
+    vault，并创建一条链接到该 Zotero 记录/citation key 的文献笔记。该笔记必须涵盖
+    该论文的研究目标、方法、数据集/语料或综述范围、指标或
+    评估维度、关键发现、局限性，以及我们如何在
+    RAG 评估计划中使用它。
+
+  最终我需要在 `/tmp_workspace/results/` 下得到这些文件：
+
+  - `rag_survey_note_export.md`
+  - `zotero_rag_survey_export.bib`（或具有相同
+    基础名和标准引用扩展名的等效 Zotero 导出文件）
+  - `pdf_reader_screenshot.png`
+  - `zotero_record_screenshot.png`
+  - `obsidian_note_screenshot.png`
+
+  该笔记应当能作为一份 Obsidian 风格的 Markdown 文献笔记使用，带有
+  YAML front matter、引用元数据、要点式的综合归纳，以及足够多的
+  具体事实，使我能够将其追溯回 PDF。截图应当
+  展示真实的 PDF/浏览器查看器、真实的 Zotero 条目和真实的 Obsidian
+  笔记，而不是模拟的网页。
+
+  请确保最终的截图可供审核：Zotero 截图应当
+  显示目标父条目以及可见的附加 PDF 子条目、
+  非零的附件数量，或等效的同一记录附件证据；
+  Obsidian 截图应当显示实际的笔记标题/内容，而不仅仅是
+  启动界面或 vault 选择界面。不要用脚本来替代在真实桌面应用中
+  阅读 PDF、创建 Zotero 条目、附加 PDF 或创建 Obsidian
+  笔记的操作。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/rag_survey_source_evidence.md
+
+sources:
+  - rag_survey_pack/
+
+services:
+  - name: zotero-obsidian-setup
+    path: zotero-obsidian-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

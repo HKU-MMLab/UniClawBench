@@ -1,0 +1,45 @@
+Message-ID: <CA+7wUsy9as8OfJH1StaMJtUudhz3cAU-Ng2d-oHKafW8ynBLMw@mail.gmail.com>
+X-Clawbench-ID: BIO-2024-0802
+Date: Wed, 29 Jun 2022 11:57:43 +0200
+From: Mathieu Malaterre <malat@debian.org>
+To: Nilesh Patra <nilesh@nileshpatra.info>
+Subject: Re: CVEs in DCMTK
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_06_msg00054.html
+
+On Wed, Jun 29, 2022 at 11:51 AM Nilesh Patra  wrote:
+>
+> On 6/29/22 12:18 PM, Mathieu Malaterre wrote:
+> > Hi there,
+> >
+> > It turns out there are three CVEs associated with DCMTK version older
+> > than 3.6.7.
+> >
+> > * https://www.hipaajournal.com/warning-issued-about-3-high-severity-vulnerabilities-in-offis-dicom-software/
+> >
+> > Should we get in touch with debian-security to have them properly
+> > reported ?
+>
+> Yes.
+> Not to have them reported, but to coordinate uploads to security queue.
+>
+> > I am not clear about the process.
+>
+> Ah.
+> You might wish to read this paragraph[1,2] from dev-ref, explains it clearly.
+>
+> [1]: https://www.debian.org/doc/manuals/developers-reference/pkgs.en.html#security-uploads
+> [2]: https://www.debian.org/doc/manuals/developers-reference/pkgs.en.html#bug-security
+
+Still not clear about the vocabulary. What does "NOT-FOR-US" mean?
+
+Eg:
+https://security-tracker.debian.org/tracker/CVE-2022-2119
+
+It seems this contradict paragraph:
+
+* https://security-team.debian.org/security_tracker.html#about
+
+comments?

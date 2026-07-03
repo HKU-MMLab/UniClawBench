@@ -1,0 +1,29 @@
+Message-ID: <73849a5b-085e-7e9b-be67-966c72b97b84@kippdata.de>
+X-Clawbench-ID: ASF-2024-1151
+Date: Thu, 9 Mar 2023 09:51:10 +0100
+From: Rainer Jung <rainer.jung@kippdata.de>
+To: dev@httpd.apache.org
+Subject: Re: Current pytest failures
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-03.mbox
+
+Thanks for the tip. I already did the "run only one test case" and I
+fixed the LogLevel in test.conf to include trace8. So I guess there will
+not be any additional CGI logging available. But good to know the "-vvv".
+
+Thanks and regards,
+
+Rainer
+
+Am 09.03.23 um 09:33 schrieb Stefan Eissing via dev:
+> One tip, if you call "pytest -vvv -k test_h2_202_03b", it will run just that test and raise LogLevel for several "interesting" modules.
+>
+> The error log in test/gen/apache/logs/error_log will then show just that one test case. It's a convenient way to get more information without meddling with the test case configs.
+>
+> The list of modules for which the log level is raised on "-vvv" is found in test/modules/http2/env.py:73
+>
+> 	self.add_httpd_log_modules(["http2", "proxy_http2", "h2test", "proxy", "proxy_http"])
+>
+> we can add "cgi" or others if those are of interest.

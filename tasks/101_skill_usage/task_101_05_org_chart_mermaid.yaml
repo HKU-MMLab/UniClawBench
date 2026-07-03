@@ -1,0 +1,61 @@
+task_id: task_101_05_org_chart_mermaid
+category: 101_skill_usage
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  Our CEO asked for a governance visualization she can drop into her board
+  deck, and I need to pull it from the proxy statement. The excerpt lives at
+  /tmp_workspace/clawbench/sources/alphabet_def14a_excerpt.md — use the
+  Mermaid diagramming skill to turn it into a clean org chart. She wants
+  to see the actual reporting hierarchy — the solid lines from each current
+  director to the board and from each non-CEO executive officer to the
+  executive roster — who sits on which committee across the audit,
+  compensation, governance, and executive committees, and the dotted
+  advisory or observer relationships that aren't formal seats. We also need who chairs what,
+  and any seats that are vacant, interim, advisor-only, or recently filled.
+  Please render it as Mermaid using graph TD or flowchart TD in
+  /tmp_workspace/results/org.mmd, and produce an SVG rendering at
+  /tmp_workspace/results/org.svg. Use solid arrows for board and executive
+  roster relationships that are explicitly supported by the excerpt,
+  dotted arrows for committee memberships and any non-voting advisor or
+  observer relationships, and group each committee as a subgraph.
+  Distinguish committee chairs visually from regular members — shape or
+  styling is fine. Treat each person as a single node; if someone holds
+  multiple roles, draw their relationships from that one node rather than
+  duplicating them. Anyone listed as recently-departed should not appear
+  as a current node.
+
+  Also save /tmp_workspace/results/governance_matrix.csv so my chief of
+  staff can review the extraction without reading Mermaid. Use columns:
+  person, source_role, governance_group_or_board, committee, committee_role,
+  edge_type, source_quote. Include one row for each solid board / executive
+  roster edge and one row for each committee membership edge — committee
+  chairs should have committee_role = chair and regular members = member.
+  Advisors and observers can be rolled into the committee rows with an
+  edge_type that flags the advisory nature.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - alphabet_def14a_excerpt.md
+
+skills:
+  - diagram-local-mermaid
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

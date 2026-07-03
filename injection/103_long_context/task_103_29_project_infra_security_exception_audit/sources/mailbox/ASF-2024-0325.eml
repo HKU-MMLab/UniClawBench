@@ -1,0 +1,41 @@
+Message-ID: <9decf7ea-e830-1c53-f5f8-4576c55edc37@apache.org>
+X-Clawbench-ID: ASF-2024-0325
+Date: Wed, 16 Aug 2023 13:24:47 +0200
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: new HTTPProtocolOption for C-L+chunked?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-08.mbox
+
+On 8/2/23 1:29 PM, Eric Covener wrote:
+> Hi, at $bigco I am seeing more and more scanners reporting HTTP
+> request smuggling but the byte stream is really just two pipelined
+> requests.  They are costly to debunk.
+
+I guess I just miss the point, but how is the above related to the lower?
+
+>
+> So a few questions:
+>
+> - Is it reasonable as a standalone additional HTTPProtocolOption to
+> decide the behavior?
+> - Thoughts on behavior change in 2.4.x?
+> - 400 as a status code?
+>
+> https://httpwg.org/specs/rfc9112.html#rfc.section.6.1.p.15
+>
+> A server MAY reject a request that contains both Content-Length and
+> Transfer-Encoding or process such a request in accordance with the
+> Transfer-Encoding alone. Regardless, the server MUST close the
+> connection after responding to such a request to avoid the potential
+> attacks.
+
+We currently ignore the content-length header, proceed and close the connection
+afterwards as suggested above. Do you suggest that we should reject such requests
+based on a configuration setting?
+
+Regards
+
+Rüdiger

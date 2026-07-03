@@ -1,0 +1,70 @@
+Message-ID: <ZXYlzzhCZW+c69X5@loaner.com>
+X-Clawbench-ID: BIO-2024-0481
+Date: Sun, 10 Dec 2023 12:55:43 -0800
+From: "Kingsley G. Morse Jr." <kingsley@loaner.com>
+To: Julian Gilbey <jdg@debian.org>
+Subject: pandas 1.5 -> 2.1?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_12_msg00028.html
+
+Hi Rebecca, Julian and all science minded pythonistas of debian, great and small!
+
+I like your correspondence about upgrading from
+version 1.5 of pandas to 2.1.
+
+It's open, scientific and explores the ideal of
+proceeding wisely in a matter of public interest.
+
+My humble thoughts are:
+
+1.) Rebecca: *Why* did you write that you'd like
+    to move forward with the pandas 1.5 -> 2.1
+    transition? What's your reason?
+
+2.) What may be the advantage of migrating to
+    version 3.0 of Cython?
+
+3.) The following one-liner suggests 44 debian
+    packages might be affected by the breaks
+    Rebecca said would be caused by pandas 2.x:
+
+    $ for s in augur cnvkit dyda emperor esda mirtop pymatgen pyranges python-anndata python-biom-format python-cooler python-nanoget python-skbio python-ulmo q2-quality-control q2-demux q2-taxa q2-types q2templates sklearn-pandas ; do apt-cache search "$s" ; done | less
+
+4.) The break that worries me the most is
+    sklearn-pandas, because it seems to me that
+    sklearn is
+
+        popular and
+
+        fundamental.
+
+Comment welcome,
+Kingsley
+
+On 12/10/2023 20:16, Julian Gilbey wrote:
+> On Sun, Dec 10, 2023 at 01:06:01PM +0000, Rebecca N. Palmer wrote:
+> > I'd like to move forward with the pandas 1.5 -> 2.1 transition reasonably
+> > soon.
+> >
+> > Given that pandas 2.x is *not* required for Python 3.12 (but is required for
+> > Cython 3.0), should we wait for the Python 3.12 transition to be done first?
+>
+> Well, I have seen at least one package that has an RC bug for the
+> Python 3.12 transition that might be because it's still using an old
+> version of cython3 :(  So it's a bit of chicken-and-egg - having Cython
+> 3.0 might be very helpful.  But then there is this list of 28 packages
+> broken by pandas 2.x.  On the other hand, these will need fixing at
+> some point soon anyway, so I'd be in favour of doing the pandas
+> transition now, which will allow Cython 3.0 to move into unstable.
+>
+> Just my 2 cents' worth...
+>
+> Best wishes,
+>
+>    Julian
+>
+
+--
+Time is the fire in which we all burn.

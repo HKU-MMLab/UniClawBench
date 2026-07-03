@@ -1,0 +1,23 @@
+Message-ID: <1F475452-781B-4A3D-9899-F78F5C122FA1@nileshpatra.info>
+X-Clawbench-ID: BIO-2024-1393
+Date: Thu, 01 Dec 2022 21:09:28 +0530
+From: Nilesh Patra <nilesh@nileshpatra.info>
+To: Andreas Tille <andreas@an3as.eu>, Debian Med Project List <debian-med@lists.debian.org>
+Subject: Re: [Advent bug squashing] Just closed bug #1024954 of librcsb-core-wrapper
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_12_msg00005.html
+
+On 1 December 2022 12:54:07 pm IST, Andreas Tille  wrote:
+>Hi folks,
+>
+>just to give an example of announcing a squashed bug here. ;-)
+
+I wonder if it could be nice to make a wiki page instead and add in bugs there date-wise if hosting the calendar isn't a possibility?
+
+I'm ok with announcing on the list too but it decreases the signal to noise ratio a bit :)
+
+--
+Best,
+Nilesh

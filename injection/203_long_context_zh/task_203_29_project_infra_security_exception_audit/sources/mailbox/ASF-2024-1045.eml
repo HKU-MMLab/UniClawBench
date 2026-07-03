@@ -1,0 +1,53 @@
+Message-ID: <A943B9BD-B894-44AD-BA92-1872B3798F26@webweaving.org>
+X-Clawbench-ID: ASF-2024-1045
+Date: Mon, 6 Mar 2023 12:35:53 +0100
+From: Dirk-Willem van Gulik <dirkx@webweaving.org>
+To: dev@httpd.apache.org
+Subject: expose SSL_SHARED_CIPHERs from SSL/TLS
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-03.mbox
+
+I was cleaning up some of our private code - and came across the patch below - exposing the SHARED_CHIPHERs.
+
+We scratch this itch in a few places to help force (or prevent) the forcing of a protocol upgrade from application land.
+
+No idea how common that is - any reason not to submit this as a suggestion for some future httpd version ?
+
+Dw
+
+
+Index: modules/ssl/ssl_engine_vars.c
+===================================================================
+--- modules/ssl/ssl_engine_vars.c       (revision 620141)
++++ modules/ssl/ssl_engine_vars.c       (working copy)
+@@ -320,6 +320,11 @@
+     else if (ssl != NULL && strcEQ(var, "COMPRESS_METHOD")) {
+         result = ssl_var_lookup_ssl_compress_meth(ssl);
+     }
++    else if (ssl != NULL && strcEQ(var, "SHARED_CIPHERS")) {
++       char buf[ 1024 * 16 ];
++       if (SSL_get_shared_ciphers(ssl,buf,sizeof(buf)))  +               result = apr_pstrdup(p,buf);
++    }
+ #ifndef OPENSSL_NO_TLSEXT
+     else if (ssl != NULL && strcEQ(var, "TLS_SNI")) {
+         result = apr_pstrdup(p, SSL_get_servername(ssl,
+Index: modules/ssl/ssl_engine_kernel.c
+===================================================================
+--- modules/ssl/ssl_engine_kernel.c     (revision 620141)
++++ modules/ssl/ssl_engine_kernel.c     (working copy)
+@@ -1067,6 +1067,7 @@
+     "SSL_SERVER_A_KEY",
+     "SSL_SERVER_A_SIG",
+     "SSL_SESSION_ID",
++    "SSL_SHARED_CIPHERS",
+     NULL
+ };
+
+
+and config
+        SSLSessionCache         None
+        SSLSessionCacheTimeout  1
+        ...
+EOM

@@ -1,0 +1,45 @@
+Message-ID: <Y2QtzXipxEG9+s6d@fusion>
+X-Clawbench-ID: BIO-2024-0561
+Date: Thu, 3 Nov 2022 22:08:29 +0100
+From: Étienne Mollier <emollier@emlwks999.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Plastimatch new version
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_11_msg00008.html
+
+Hi Greg,
+
+Gregory Sharp, on 2022-11-03:
+> Happy Thursday everyone.
+
+Wishing you the same  :)
+
+> I have updated plastimatch for the new upstream version, and it is ready for review and upload.
+
+Please don't forget to adjust the d/t/run-unit-test after
+removal of test data. for the moment, I see that the autopkgtest
+fails with:
+
+	autopkgtest [21:54:46]: test run-unit-test: [-----------------------
+	cp: cannot stat 'debian-tests-data/*': No such file or directory
+	autopkgtest [21:54:46]: test run-unit-test: -----------------------]
+	autopkgtest [21:54:46]: test run-unit-test:  - - - - - - - - - - results - - - - - - - - - -
+	run-unit-test        FAIL non-zero exit status 1
+	autopkgtest [21:54:46]: @@@@@@@@@@@@@@@@@@@@ summary
+	run-unit-test        FAIL non-zero exit status 1
+
+While you're at it, you might also want to bump the copyright
+year and document some of the recently introduced libs/,
+although the copyright year bump might be deemed pedantic.
+
+Once the autopkgtest failure is solved, I believe it would be
+fine to upload plastimatch.
+
+Thanks for your contribution!
+--
+Étienne Mollier
+Fingerprint:  8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+Sent from /dev/pts/2, please excuse my verbosity.
+On air: Andromeda - Extension Of The Wish

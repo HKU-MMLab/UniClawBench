@@ -1,0 +1,18 @@
+Message-ID: <3B63754B-1AB7-4C81-B441-4B755005C347@riseup.net>
+X-Clawbench-ID: BIO-2024-1481
+Date: Wed, 22 Dec 2021 01:24:49 +0530
+From: Nilesh Patra <nilesh@riseup.net>
+To: debian-med@lists.debian.org
+Subject: Re: [Help needed] Racon
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_12_msg00126.html
+
+Hi all,
+
+Would someone have more hints on the problem?
+
+>Hi Tony, Thanks for replying.
+
+>On 12/20/21 12:59 AM, tony mancill wrote:  >>notice that libedlib0 [1] exported the >>edlibAlign symbol, but not libedlib1, which >>is what is pulled in by libedlib-dev. Could >>that be the source of the problem?

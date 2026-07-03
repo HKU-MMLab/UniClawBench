@@ -1,0 +1,57 @@
+Message-ID: <ZKZsy5b6993FpMCp@an3as.eu>
+X-Clawbench-ID: BIO-2024-0675
+Date: Thu, 6 Jul 2023 09:27:07 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Request for Sponsorship: VeryFastTree - Parallelized and Optimized Version of FastTree
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_07_msg00016.html
+
+Hi César,
+
+please also check the very detailed answer of Nilesh.
+
+Am Wed, Jul 05, 2023 at 07:52:07PM +0000 schrieb César Pomar:
+>
+> More than hardware optimizations, I mean that it may not make sense to
+> increase the
+> package size with 5 binaries
+
+Also your choice.  The binary itself is not extraordinary big in size so
+providing 5 of them would be not too expensive.  However, since on one
+hand we need to respect baseline and on the other hand we want to
+support "the fastest" architecture we can usually expect in nearly all
+relevant cases its your choice what you want to provide "inbetween".
+
+> when SSE (the minimum required by Debian) and
+> AVX2 (more common in current hardware) could be sufficient. AVX512, in the
+> tests conducted, doesn't have as much impact as SSE to AVX2, and outside of
+> servers, it is still not as common. The intermediate extensions are the
+> same. If current computers have AVX2, the previous ones don't make sense,
+> and for the rest, SSE is sufficient.
+>
+> Regarding the performance differences, they are analyzed in the
+> supplementary material
+> of the VeryFastTree paper, which is open access. You can find it here:
+> https://academic.oup.com/bioinformatics/article/36/17/4658/5861530
+
+You might like to provide this as debian/README.Debian to inform those
+users who are trained to check this file (which is unfortunately only
+a small fraction of our users).
+
+> Should I push it as is or should I delete some binaries?
+> Approximately, the size of the binaries would be:
+> AVX512: 10MB, AVX2: 5MB, AVX: 5MB, SSE4: 3MB SSE: 2.7MB = 25.7MB
+> for the package seems like a lot when perhaps AVX2 and SSE with 7.7MB would
+> be sufficient.
+
+As I said, just check Nilesh's mail which is pretty verbose about the
+changes that are needed.
+
+Kind regards
+   Andreas.
+
+--
+http://fam-tille.de

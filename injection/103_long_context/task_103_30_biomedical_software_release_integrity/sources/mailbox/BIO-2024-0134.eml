@@ -1,0 +1,32 @@
+Message-ID: <YXAILGU7v1yhHE8q@an3as.eu>
+X-Clawbench-ID: BIO-2024-0134
+Date: Wed, 20 Oct 2021 14:14:36 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: cmake task for terraphast
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00128.html
+
+Hi,
+
+we want to package raxml-ng which needs terraphast which I just
+injected[1].  The build process creates some files in
+obj-x86_64-linux-gnu but there seems to be no sensible install target.
+We probably need a library package and an application package.  The
+application is currently named obj-x86_64-linux-gnu/app which is
+not really sensible.
+
+If someone with some cmake knowledge and some spare time could have
+a look this would be really helpful.
+
+Kind regards
+
+    Andreas.
+
+
+[1] https://salsa.debian.org/med-team/terraphast
+
+--
+http://fam-tille.de

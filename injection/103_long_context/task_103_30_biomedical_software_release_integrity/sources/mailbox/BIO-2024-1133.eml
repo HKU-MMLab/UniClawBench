@@ -1,0 +1,25 @@
+Message-ID: <202112260833.54210.rhkramer@gmail.com>
+X-Clawbench-ID: BIO-2024-1133
+Date: Sun, 26 Dec 2021 08:33:54 -0500
+From: rhkramer@gmail.com
+To: debian-med@lists.debian.org
+Subject: Re: [Karsten.Hilbert@gmx.net: Re: Acquiring Dental RVG on Linux]
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_12_msg00171.html
+
+On Sunday, December 26, 2021 08:06:14 AM Mayuresh wrote:
+> Printing a map between raw and transformed pixel values shows that for a
+> given raw pixel value there are multiple transformed values i.e. the
+> transformation is not a function of pixel's value alone. It seems some
+> sort of filtering where the neighboring pixels also influence the
+> resultant value.
+
+That is not surprising -- there are a variety of image processing algorithms
+that work on a basis something like that, e.g., algorithms to improve focus /
+sharpness.
+
+I don't have any idea how you might sort of "back caculate" to figure out which
+algorithm or combination of algorithms might have been applied, but I suppose
+there might be a way to do that.

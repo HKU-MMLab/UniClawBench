@@ -1,0 +1,48 @@
+Message-ID: <20211230232715.vosu4whlaec7utd7@House>
+X-Clawbench-ID: BIO-2024-0590
+Date: Fri, 31 Dec 2021 00:27:15 +0100
+From: dxld@darkboxed.org
+To: Steffen Möller <steffen_moeller@gmx.de>
+Subject: Re: Contributing to yosys maintenance
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_12_msg00028.html
+
+On Thu, Dec 30, 2021 at 11:03:40PM +0100, Steffen Möller wrote:
+> äh - no, not yet. Wait for Ruben's reply. The integrity of the upstream
+> orig.tar.gz is a crucial part. You could be evil and introduce something
+> that then Ruben signs? Nope.
+
+Fair enough. Tough if me not pushing to a repo I have access to now is
+critical to package integrity something is very wrong already :)
+
+> Also, yosys (like most packages on salsa) comes with a pristine-tar
+> branch. Please look at git-buildpackage and, preferably, get a mentor
+> for your first upload to salsa. I am not sure about any policy document
+> for science, but for med there is
+> https://med-team.pages.debian.net/policy/ which should also apply to
+> salsa (just s/med/science/g) - please read that prior to uploading to salsa.
+
+I've just pushed this to my fork for now:
+
+    https://salsa.debian.org/dxld-guest/yosys
+
+> > > Please also look at the electronics team.
+> > I'm also planning on packaging the ghdl yosys integration so I'll likely
+> > have to :)
+>
+> Very nice. I happen to be behind
+> https://github.com/ghdl/ghdl-yosys-plugin/issues/162, so your work is
+> most welcome, indeed. Feel free drop a note in that issue that you
+> surfaced to address this.
+
+Ah, I hadn't seen that yet. Just figured I'll start packaging and see how
+it goes without looking ;)
+
+Looks like the ghdl 1.0.0 release is too old for the plugin, so I'm working
+on getting gbp to let me switch the package to using git as the source for
+an upload to experimental or something. I'll let you know if I get
+anywhere.
+
+--Daniel

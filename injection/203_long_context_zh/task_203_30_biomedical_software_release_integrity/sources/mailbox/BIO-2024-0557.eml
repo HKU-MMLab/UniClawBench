@@ -1,0 +1,68 @@
+Message-ID: <20221011200040.lw5tig76bsihooag@nileshpatra.info>
+X-Clawbench-ID: BIO-2024-0557
+Date: Wed, 12 Oct 2022 01:30:40 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: John Marshall <John.W.Marshall@glasgow.ac.uk>
+Subject: Re: [Help] New version of htslib does not build
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00038.html
+
+Hi,
+
+On Thu, Oct 06, 2022 at 01:59:23AM +0000, John Marshall wrote:
+> On 4 Oct 2022, at 15:31, Nilesh Patra  wrote:
+> > The thing that was causing failures on !amd64 was that there were amd64 specific symbols in debian/libhtscodecs2.symbols that were not matching on those archs due to avx2/avx512 specific ABI being exported there.
+>
+> So something specific to the Debian build scripts. Like many of Debian's issues with their htslib symbols file over the years, this is because Debian insists on listing all of libhtscodecs's global symbols in this file.
+> If you omitted these internal symbols, there would be no problem. I believe upstream's attitude would be that these particular symbols are not declared in htscodecs's installed public header files, so they are unusable unless the user cheats by making their own declarations, so they are not meaningfully part of either htscodecs's API or ABI. So they should not be listed in a symbols file.
+>
+> These two views are of course unreconcilable.
+
+Unfortunately yes, and dpkg-gensymbols generates them and takes a diff despite them being internal/private symbols.
+
+> They were reconciled in htslib by upstream implementing symbol visibility and hiding the internal global symbols.
+> You may wish to suggest to upstream htscodecs that they may wish to implement symbol visibility in libhtscodecs.so too.
+
+Hmm, I agree. But I think it'd be a little hard to convince upstream from my side, as to ask them
+to do extra work, which is lowkey un-necessary at their end but useful for the debian package.
+
+Since you seem to have a number of commits in the upstream repo -- can I ask you to suggest this to upstream?
+
+> >> But are you aware of a platform supported by ARM Linux that does not provide Neon, where this code always using the Neon implementation would fail?
+> >
+> > I am in no way a computer architecture pro, but that said I have seen bug reports wherein non-neon failures are reported
+> >
+> > 	https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=982794
+>
+> Thanks, that is interesting. So on 64-bit aarch64 one can assume Neon (as confirmed in the ArchitectureSpecificsMemo you linked to), but there do exist 32-bit
+> ARM Linux platforms that do not provide Neon.
+> So htscodecs will have to check for Neon capabilities at runtime just as it checks for SSE/AVX/etc on x86. That is now a proposed htscodecs PR [1].
+
+Thank you!
+
+> > $ elfx86exts /usr/lib/x86_64-linux-gnu/libhtscodecs.so.2.1.0
+> > [...]
+> > The users will download the program that is compiled on debian buildd machines, which has support for AVX, AVX2 etc.
+> > And so as per this little test, it _seems_ like this will crash on baseline that is lower than AVX.
+>
+> It will not crash on baseline that is lower than AVX.
+>
+> The report from elfx86exts shows that instructions from all these categories appear in the text segment. It says nothing about whether any particular instruction or function is ever executed, or if it is, the conditions under which those instructions or functions might get called.
+
+You are right, I got a few spare minutes and skimmed through the code. The SIMD levels are indeed taken care of in the
+code itself, which is an equivalent of writing a dispatcher script -- quite cool.
+
+> Debian maintainers who are not on holiday can look at rans_enc_func() and rans_dec_func() and confirm for yourselves that it works on x86 as I described: [...]
+
+I think Etienne took care of this and uploaded, so we should be good here.
+
+> [1] https://github.com/samtools/htscodecs/pull/63
+> [2] On 32-bit ARM a patch like [1] would be warranted. Or you may prefer to leave Neon suppressed on 32-bit ARM until a future upstream release includes something like that PR.
+
+This is what is currently being done with the latest upload, so I hope everything is sorted for now.
+
+--
+Best,
+Nilesh

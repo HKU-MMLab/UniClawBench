@@ -1,0 +1,39 @@
+Message-ID: <04026ae774d660f377413c1f7be31b9ec63811f4.camel@tugraz.at>
+X-Clawbench-ID: BIO-2024-0711
+Date: Wed, 26 Oct 2022 11:56:28 +0200
+From: Martin Uecker <uecker@tugraz.at>
+To: Nilesh Patra <nilesh@debian.org>
+Subject: Re: BART 0.8.0
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00095.html
+
+Am Dienstag, den 25.10.2022, 01:12 +0530 schrieb Nilesh Patra:
+> On Mon, Oct 24, 2022 at 09:20:21PM +0200, Martin Uecker wrote:
+> > Am Dienstag, den 25.10.2022, 00:41 +0530 schrieb Nilesh Patra:
+
+
+Hi Nilesh,
+
+> > > Also, salsa CI is failing the build pipeline,
+> > >
+> > > 	https://salsa.debian.org/med-team/bart-view/-/jobs/3422195
+> > >
+> > > this is not expected right?
+> >
+> > I am still working on the update of bart-view.
+> > But bart has to be updated first anyway.
+>
+> I saw your commits and was somehow under the impression that you updated bart-view, -cuda and bart
+> since you usually do this at once :)
+>
+> I have uploaded bart with your changes.
+
+Thank you! It seems this is working correctly
+on all archs.
+
+I also finalized the bart-view update. Can
+you upload it as well?
+
+Martin

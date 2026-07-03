@@ -1,0 +1,52 @@
+{
+  "task_id": "task_101_07_stock_snapshot_chart",
+  "difficulty": "Hard",
+  "schema": "c",
+  "schema_notes": "Q1 2024 total-return + max-drawdown for 5 large-cap tech names over fixed window 2024-01-02 to 2024-03-29 (last trading day 2024-03-28; 2024-03-29 was Good Friday). Data sourced from yfinance at design time and frozen into snapshot.json.",
+  "skills_declared": [
+    "stock-analysis"
+  ],
+  "ground_truth": {
+    "tickers": ["AAPL", "NVDA", "TSLA", "MSFT", "GOOG"],
+    "window": {
+      "declared_start": "2024-01-02",
+      "declared_end": "2024-03-29",
+      "first_trading_day": "2024-01-02",
+      "last_trading_day": "2024-03-28"
+    },
+    "expected_q1_returns_pct": {
+      "AAPL": -8.37,
+      "NVDA": 83.51,
+      "TSLA": -29.71,
+      "MSFT": 12.53,
+      "GOOG": 9.07
+    },
+    "expected_max_drawdowns_pct": {
+      "AAPL": -13.41,
+      "NVDA": -8.70,
+      "TSLA": -34.59,
+      "MSFT": -4.39,
+      "GOOG": -14.39
+    },
+    "expected_first_open_per_ticker": {
+      "AAPL": 187.15,
+      "NVDA": 49.24,
+      "TSLA": 250.08,
+      "MSFT": 373.86,
+      "GOOG": 139.60
+    },
+    "expected_last_close_per_ticker": {
+      "AAPL": 171.48,
+      "NVDA": 90.36,
+      "TSLA": 175.79,
+      "MSFT": 420.72,
+      "GOOG": 152.26
+    },
+    "expected_chart_legend": ["AAPL", "NVDA", "TSLA", "MSFT", "GOOG"],
+    "tolerance_pct_points": 0.5,
+    "computation_notes": {
+      "return_formula": "(close_on_last_trading_day / open_on_first_trading_day - 1) * 100",
+      "drawdown_formula": "min over the daily-close series of (close_t / running_max_close_up_to_t - 1) * 100"
+    }
+  }
+}

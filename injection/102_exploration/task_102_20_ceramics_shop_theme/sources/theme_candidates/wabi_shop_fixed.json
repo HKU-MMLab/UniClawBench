@@ -1,0 +1,20 @@
+{
+  "display_name": "Wabi \u2014 Shop (classic)",
+  "ecommerce": {
+    "cart": true,
+    "checkout": true,
+    "product_pages": true,
+    "inventory": true
+  },
+  "responsive": false,
+  "palette": [
+    "#F3EEE6",
+    "#D8CCBC",
+    "#9C7A5B",
+    "#5A554E",
+    "#1F1F1F"
+  ],
+  "product_image_area_ratio": 0.58,
+  "note": "lovely muted minimalist shop, full ecommerce \u2014 but a fixed-width desktop-only layout (not responsive)",
+  "id": "wabi_shop_fixed"
+}

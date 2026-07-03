@@ -1,0 +1,38 @@
+Message-ID: <CAOY50mtFfGR_NM0jyn7Jxdwm9wyQybnY07qAf2fUXWCtsZCKGg@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0079
+Date: Mon, 16 Oct 2023 12:05:43 -0400
+From: Frank Gingras <thumbs@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.58-rc3 as httpd-2.4.58
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-10.mbox
+
++1 for me, Slackware64 15.0. Thanks for the RM, yes.
+
+On Mon, Oct 16, 2023 at 11:43 AM Joe Orton <jorton@redhat.com> wrote:
+
+> On Mon, Oct 16, 2023 at 05:08:11PM +0200, Stefan Eissing via dev wrote:
+> > Hi all,
+> >
+> > after fixing my merge mistake in rc2 (sorry!), we go again:
+> >
+> > Please find below the proposed release tarball and signatures:
+> >
+> > https://dist.apache.org/repos/dist/dev/httpd/
+> >
+> > I would like to call a VOTE over the next few days to release
+> > this candidate tarball httpd-2.4.58-rc3 as 2.4.58:
+> > [X] +1: It's not just good, it's good enough!
+> > [ ] +0: Let's have a talk.
+> > [ ] -1: There's trouble in paradise. Here's what's wrong.
+>
+> +1 for release from me, sigs good; builds and passes tests on Fedora 39
+> and RHEL 8 and 9, my old computers are happy again ;)
+>
+> Big thanks for fixes and RMing.
+>
+> Regards, Joe
+>
+>

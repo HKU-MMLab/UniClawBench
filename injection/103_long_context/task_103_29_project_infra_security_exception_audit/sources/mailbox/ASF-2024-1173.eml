@@ -1,0 +1,118 @@
+Message-ID: <0a9fd2ea-b6f7-65e7-22b2-b6a957521a03@wanadoo.fr>
+X-Clawbench-ID: ASF-2024-1173
+Date: Tue, 10 Jan 2023 22:39:57 +0100
+From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+To: dev@httpd.apache.org, Eric Covener <covener@apache.org>
+Subject: Re: [VOTE] Release httpd-2.4.55-rc1 as httpd-2.4.55
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-01.mbox
+
+Le 10/01/2023 à 14:40, Eric Covener a écrit :
+> Hi all,
+>
+> Please find below the proposed release tarball and signatures:
+>
+> https://dist.apache.org/repos/dist/dev/httpd/
+>
+> I would like to call a VOTE over the next few days to release
+> this candidate tarball httpd-2.4.55-rc1 as 2.4.55:
+> [ ] +1: It's not just good, it's good enough!
+> [X] +0: Let's have a talk.
+> [ ] -1: There's trouble in paradise. Here's what's wrong.
+>
+> The computed digests of the tarball up for vote are:
+> sha256: 5276ea8bc6fff31eed5c82132ae51a0b2ee05f9e6b61a00fa877f6cadab3b638
+> *httpd-2.4.55-rc1.tar.gz
+> sha512: ca0d03b5e74078977378fe711ca3ed8cf63c109b7dbe73f2c43f7f30f7e522bbe46f93189a183b7675394d57fffb0c2526facd8d40508be984a7a8f64d18f8d6
+> *httpd-2.4.55-rc1.tar.gz
+>
+> The SVN candidate source is found at tags/2.4.55-rc1-candidate.
+>
+
++0
+
+
+Tested only with event.
+
+All good, as usual with the perl framework
+
+
+1 issue with pytest:
+    test/modules/http2/test_600_h2proxy.py .....F....
+(details at the end of the mail)
+
+Don't know if expected or not. Some pytest commits are only in trunk and
+have not been backported to 2.4.x. I don't know if it is linked to this
+failing test.
+
+Most of mod_md tests skippep (likely something missing in my conf)
+Nearly all mod_tls in error (likely something missing in my conf)
+
+I won't have time to investigate further, but only the failure in
+test_600_h2proxy looks odd to me.
+So I just report it and vote +0.
+
+
+Tested with:
+Linux pop-os 6.0.6
+gcc (Ubuntu 11.3.0-1ubuntu1~22.04) 11.3.0
+OpenSSL 3.0.2 15 Mar 2022 (Library: OpenSSL 3.0.2 15 Mar 2022)
+   libssl-dev 3.0.2
+   libbrotli-dev 1.0.9
+   libjansson-dev 2.13.1
+   libnghttp2-dev 1.43.0
+   libpcre2-dev 10.39
+   liblua5.3-dev 5.3.6
+   libsystemd-dev 249.11
+   libldap-dev 2.5.13+dfsg
+   libldap2-dev 2.5.13+dfsg
+   libxml2-dev 2.9.13+dfsg
+   libcurl4-openssl-dev 7.81.0
+
+
+__________________________________________________________
+TestH2Proxy.test_h2_600_05[on]
+___________________________________________________________
+
+self = <http2.test_600_h2proxy.TestH2Proxy object at 0x7f399ed99e70>,
+env = <http2.env.H2TestEnv object at 0x7f399e913df0>, enable_reuse = 'on'
+
+     @pytest.mark.parametrize("enable_reuse", [ "on", "off" ])
+     def test_h2_600_05(self, env, enable_reuse):
+         conf = H2Conf(env, extras={
+             f'cgi.{env.http_tld}': [
+                 f"ProxyPassMatch ^/h2proxy/([0-9]+)/(.*)$ "
+                 f"  h2c://127.0.0.1:$1/$2 enablereuse={enable_reuse}
+keepalive=on",
+             ]
+         })
+         conf.add_vhost_cgi()
+         conf.add([
+             f'Listen {env.http_port2}',
+             'UseCanonicalName On',
+             'UseCanonicalPhysicalPort On'
+         ])
+         conf.start_vhost(domains=[f'cgi.{env.http_tld}'],
+                          port=5004, doc_root="htdocs/cgi")
+         conf.add("AddHandler cgi-script .py")
+         conf.end_vhost()
+         conf.install()
+         assert env.apache_restart() == 0
+         url = env.mkurl("https", "cgi",
+f"/h2proxy/{env.http_port}/hello.py")
+         r = env.curl_get(url, 5)
+         assert r.response["status"] == 200
+         assert int(r.json["port"]) == env.http_port
+         # going to another backend port must create a new connection and
+         # we should see stream id one again
+         url = env.mkurl("https", "cgi",
+f"/h2proxy/{env.http_port2}/hello.py")
+         r = env.curl_get(url, 5)
+         assert r.response["status"] == 200
+         exp_port = env.http_port if enable_reuse == "on" else
+env.http_port2
+ >       assert int(r.json["port"]) == exp_port
+E       AssertionError: assert 5004 == 5002
+E        +  where 5004 = int('5004')

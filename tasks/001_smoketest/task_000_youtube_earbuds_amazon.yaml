@@ -1,0 +1,38 @@
+task_id: task_000_youtube_earbuds_amazon
+category: 001_smoketest
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200                  # per-turn executor budget: 20 min
+max_total_seconds: 1800                # cumulative executor budget across all turns: 30 min
+success_threshold: 1.0
+
+# Browser-only smoketest — supervisor judges from screenshots saved by
+# the executor, no need for desktop recording or a visible Chromium.
+recording: none
+headed: auto
+
+task: |
+  I saw a YouTube earbuds roundup and want to sanity-check one recommendation
+  before I buy.
+
+  Please use browser to look up the video by searching YouTube for `best wireless
+  earbuds 2025 review`, keeping the default relevance ranking and the 4K
+  filter on so we're checking the intended result.
+
+  Once you find that video, figure out the one is most suitable for usage during sleep
+  , then open the matching Amazon page and note whatever
+  price or availability is currently visible there.
+
+  Save a short conclusion, the Amazon link, and a couple of supporting
+  screenshots in `/tmp_workspace/results/` so I can review them later.
+
+references:
+  - references/eval_rule.md
+  - references/youtube_search_relevance_4k_top_result_2026-04-14.png
+  - references/youtube_video_page_2025_earbuds_awards_2026-04-14.png
+  - references/youtube_video_best_sleep_frame_2026-04-14.png
+  - references/amazon_product_page_soundcore_sleep_a30_2026-04-14.png
+
+codex:
+  max_user_followups: 2

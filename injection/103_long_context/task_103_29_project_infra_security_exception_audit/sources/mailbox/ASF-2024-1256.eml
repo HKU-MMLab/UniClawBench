@@ -1,0 +1,27 @@
+Message-ID: <CAKQ1sVN4mmxxETSmN3xbMf_KD2PoJbnJ7WgtBJCc1w0k+g496g@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1256
+Date: Mon, 30 May 2022 11:02:09 +0200
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: httpd-dev <dev@httpd.apache.org>
+Subject: Re: tcp send buffering and keepalive races
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-05.mbox
+
+On Fri, May 27, 2022 at 7:34 PM Eric Covener <covener@gmail.com> wrote:
+>
+> These types of investigations can be really painful.  Is there any
+> harm in allowing the server to act like "KeepAliveTimeout 5" is e.g.
+> "KeepAliveTimeout 5200ms".
+>
+> If this fudge buffer existed as an addl directive (rather than a trick
+> documented in KeepAliveTimeout) , would it be reasonable as a non-zero
+> default to discourage this race?
+
+Sounds reasonable to me.
+Possibly mpm_event when busy should not kill connections in keep-alive
+state for less than the timeout bias (200ms in your example) too?
+
+Regards;
+Yann.

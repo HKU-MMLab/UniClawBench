@@ -1,0 +1,91 @@
+[
+  {
+    "file": "papers/paper_01.pdf",
+    "title": "VisualBERT: A Simple and Performant Baseline for Vision and Language",
+    "authors": "Li et al.",
+    "year": 2019,
+    "url": "https://arxiv.org/pdf/1908.03557",
+    "sections": [
+      "2. Joint image-text pretraining"
+    ],
+    "note": "Provides a baseline for joint image-region and text-token transformer pretraining."
+  },
+  {
+    "file": "papers/paper_02.pdf",
+    "title": "SimVLM: Simple Visual Language Model Pretraining with Weak Supervision",
+    "authors": "Wang et al.",
+    "year": 2022,
+    "url": "https://arxiv.org/pdf/2108.10904",
+    "sections": [
+      "2. Joint image-text pretraining"
+    ],
+    "note": "Uses a simple prefix language modeling objective for weakly supervised VLM pretraining."
+  },
+  {
+    "file": "papers/paper_03.pdf",
+    "title": "Multimodal Few-Shot Learning with Frozen Language Models",
+    "authors": "Tsimpoukelli et al.",
+    "year": 2021,
+    "url": "https://arxiv.org/pdf/2106.13884",
+    "sections": [
+      "3. Image embeddings as language-model prefixes"
+    ],
+    "note": "Shows how image embeddings can condition a frozen language model."
+  },
+  {
+    "file": "papers/paper_04.pdf",
+    "title": "ClipCap: CLIP Prefix for Image Captioning",
+    "authors": "Mokady et al.",
+    "year": 2021,
+    "url": "https://arxiv.org/pdf/2111.09734",
+    "sections": [
+      "3. Image embeddings as language-model prefixes"
+    ],
+    "note": "Maps CLIP image embeddings into a language-model prefix for captioning."
+  },
+  {
+    "file": "papers/paper_05.pdf",
+    "title": "Flamingo: a Visual Language Model for Few-Shot Learning",
+    "authors": "Alayrac et al.",
+    "year": 2022,
+    "url": "https://arxiv.org/pdf/2204.14198",
+    "sections": [
+      "4. Cross-attention fusion"
+    ],
+    "note": "Uses gated cross-attention to inject visual features into a language model."
+  },
+  {
+    "file": "papers/paper_06.pdf",
+    "title": "CoCa: Contrastive Captioners are Image-Text Foundation Models",
+    "authors": "Yu and Wang et al.",
+    "year": 2022,
+    "url": "https://arxiv.org/pdf/2205.01917",
+    "sections": [
+      "5. Contrastive captioner foundation models"
+    ],
+    "note": "Combines contrastive image-text learning with caption generation."
+  },
+  {
+    "file": "papers/paper_07.pdf",
+    "title": "An Empirical Study of GPT-3 for Few-Shot Knowledge-Based VQA",
+    "authors": "Yang et al.",
+    "year": 2021,
+    "url": "https://arxiv.org/pdf/2109.05014",
+    "sections": [
+      "6. No-training and tool-composition approaches"
+    ],
+    "note": "Uses prompting and GPT-3 for knowledge-based visual question answering."
+  },
+  {
+    "file": "papers/paper_08.pdf",
+    "title": "Socratic Models: Composing Zero-Shot Multimodal Reasoning with Language",
+    "authors": "Zeng et al.",
+    "year": 2022,
+    "url": "https://arxiv.org/pdf/2204.00598",
+    "sections": [
+      "6. No-training and tool-composition approaches",
+      "7. Practical synthesis"
+    ],
+    "note": "Composes vision and language models through language as a multimodal interface."
+  }
+]

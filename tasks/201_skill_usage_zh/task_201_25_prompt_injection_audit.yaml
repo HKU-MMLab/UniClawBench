@@ -1,0 +1,50 @@
+task_id: task_201_25_prompt_injection_audit
+category: 201_skill_usage_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我们即将把大约 40 份外部文档喂进我们的 LLM 流水线，但我并不完全信任
+  这些来源。在任何东西进入之前，我需要一次提示注入审计。文件位于
+  /tmp_workspace/clawbench/sources/doc_pack/ —— 混合了 .md、.pdf、
+  .docx、.html 和 .txt。用工作区的安全扫描技能来承担主要工作，并用
+  skill scanner 和 security-analysis 技能作为后备，处理第一个没覆盖到的
+  任何内容。
+
+  扫描每个文件，并把你的发现以扁平 JSON 列表的形式保存到
+  /tmp_workspace/results/findings.json。对每一个命中，都要包含 doc_pack
+  下的文件路径、疑似的攻击类型，以及一段不超过 400 字符的简短逐字证据
+  片段。
+
+  每个文件最多 3 条发现。我希望对每个文件最相关的那条排在最前面。要小心：
+  有些文件包含看起来像注入、但出现在合法语境中的短语，所以不要只做关键词
+  grep。如果某个文件看起来可疑、但你判断它其实是良性的，就在 findings.json
+  里注明它，并附上一条简短理由解释你为什么排除了它——我也想看到误报的
+  推理过程。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - doc_pack
+
+skills:
+  - security-scanner
+  - skill-scanner
+  - clawsec
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

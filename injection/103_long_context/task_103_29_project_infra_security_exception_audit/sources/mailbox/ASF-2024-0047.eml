@@ -1,0 +1,87 @@
+Message-ID: <CAKQ1sVPaFFHX4E8YQtQWuG1_Xf87TeHeGToc-hGy9es5-f0qwQ@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0047
+Date: Wed, 15 May 2024 00:46:51 +0200
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: more async handling in mod_h2
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-05.mbox
+
+On Tue, May 14, 2024 at 12:21 PM Stefan Eissing via dev
+<dev@httpd.apache.org> wrote:
+>
+> Tried your PR and it works nicely without any changes to current mod_h2.
+
+Great, thanks for testing!
+
+With the current mod_h2 I think the connections returned to mpm_event
+use the KeepAliveTimeout rather than Timeout. Enough for the
+WINDOW_UPDATE to arrive in your tests maybe if keepalive connections
+don't get killed early by the MPM like in httpd-trunk?
+
+>
+> Made a test with `StartServers 1` opening 300 HTTP/2 connections and a
+> 1KB connection window size. This means writing responses very frequently
+> stalls on flow control and returns to the MPM.
+>
+> With plain trunk, this fails with connections being closed early. With
+> PR 294 all are successful, even when throttling `MaxRequestWorkers 25`.
+
+Yeah, the new queuing mechanism (fully nonblocking) and
+connections_above_limit() heuristics in PR 294 allow for much better
+scheduling with less threads from my testing (not potentially blocking
+scenarios obviously).
+There is even an "MaxRequestWorkers N auto" which automa[tg]ically
+sets ThreadsPerChild to the number of CPUs and the rest accordingly
+(Min/MaxSpareThreads, ...) for the N expected concurrent connections.
+>From my testing still it seems to behave better than trunk (even with
+the usual/more ThreadsPerChild there). Supposedly these heuristics and
+auto settings can be improved/fixed from others' thoughts, I'm all
+ears ;)
+
+>
+> Adding your proposed changes to h2_c1.c also works. Published as https://github.com/icing/mod_h2/pull/281
+
+I think this is what you want (i.e. use Timeout), while with a
+min_connection_timeout() hook you could fine-grain that timeout per
+h2_c1 state too if it makes sense (see reqtimeout_min_timeout() and
+how CONN_STATE_PROCESS uses ap_get_connection_timeout() in mpm_event
+to apply any module's min timeout of the moment eventually).
+
+Sorry it sounds a bit like I'm trying to sell my whole PR again :)
+Let me see how I can stage to trunk what's useful and meaningful
+there, mod_h2 looks like a good candidate to test it after all :p
+
+Also (or as a further note), if for anything early/full connection
+level handling (like mod_ssl handshake or mod_h2 c1) the
+CONN_STATE_PROCESS/AGAIN mechanism seems usable, I can't find how for
+a request handler for instance we could return AGAIN, we'd need to
+handle that at too many levels (everything in the call chain would
+need to be adapted to recover from the process_connection hook, if
+ever possible..).
+So like in mod_proxy_wstunnel (or the fallback to mod_proxy_http) and
+what happens already in trunk for an upgraded websocket connection,
+an/my (medium/long term) plan is for mod_proxy_http's normal HTTP
+traffic which would block (either on the client or backend side) to
+return to the MPM by maintaining a mod_proxy internal state and using
+the ap_mpm_register_poll_callback_timeout()/SUSPENDED mechanism.
+Not sure how it'd work/behave for mod_h2's c2_process() though, it
+would get ap_process_request() == SUSPENDED meaning that either/both
+of the client/beam/pipe or the backend connection are being polled by
+the MPM already, and when some event is available on either/both side
+it's mod_proxy_http's callback which will be called again to continue
+its read/write/forwarding work.
+I think the h2 workers are not needed anymore in this scenario, but
+how would mod_h2 know that h1 processing is going to be fully async?
+Looks like it can't for all httpd configurations (and third party
+modules), so the h2 workers would still be there but be prepared to be
+SUSPENDED too (i.e. when the MPM calls back mod_proxy_http after
+poll()ing it will be from a MPM worker thread, not an h2 worker)?
+
+Well, enough (whishful?) thoughts for tonight (-_-)
+
+
+Cheers;
+Yann.

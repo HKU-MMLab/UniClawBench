@@ -1,0 +1,57 @@
+Message-ID: <ZmCZUcmNc8IA8cjb@an3as.eu>
+X-Clawbench-ID: BIO-2024-0727
+Date: Wed, 5 Jun 2024 18:58:57 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Fwd: SPAdes 4.0 is released!
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_06_msg00004.html
+
+Hi,
+
+if someone might have time to upgrade SPAdes to its latest version this
+would be great.  Major upgrades of the spades Debian package are
+unfortunately not straightforward due to several code copies shipped with
+upstream.  Some of them are not identical with the original code.
+
+Kind regards
+   Andreas.
+
+----- Weitergeleitete Nachricht von SPAdes no reply  -----
+
+From: SPAdes no reply
+Subject: SPAdes 4.0 is released!
+
+Dear SPAdes user
+
+We have finally released new SPAdes 4.0!
+
+Since its birth in 2012 SPAdes has always been a free and open-source software,
+mainly supported by various academic and non-profit organization grants.
+However, since 2022 SPAdes is not developed within a certain academic
+institution anymore. SPAdes is currently maintained and supported by an
+international group of volunteering contributors, namely, a SPAdes team.
+
+Our old website is not active anymore. We also do not have a dedicated support
+email. From now on we are relying only on our GitHub repo. Please, download
+releases and report issues there. We also reworked and improved SPAdes
+documentation.
+
+SPAdes 4.0 will most likely be the last major release introducing new features
+and significant changes. No further development is currently planned.
+Nonetheless, we strongly intend to continue making bug-fix releases and
+supporting our users. And as always - patches are welcome!
+
+With love and happy assembling,
+SPAdes team
+
+unsubscribe
+
+*
+
+----- Ende weitergeleitete Nachricht -----
+
+--
+https://fam-tille.de

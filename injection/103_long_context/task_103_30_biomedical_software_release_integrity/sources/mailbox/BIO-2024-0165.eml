@@ -1,0 +1,33 @@
+Message-ID: <71097561.pKRbLVovNU@riemann>
+X-Clawbench-ID: BIO-2024-0165
+Date: Mon, 25 Oct 2021 09:12:41 -0500
+From: Steven Robbins <steve@sumost.ca>
+To: 995829@bugs.debian.org, ghisvail@gmail.com, debian-med@lists.debian.org
+Subject: ITK v5 in salsa
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00149.html
+
+Hi,
+
+I finally spent a few hours last night to get ITK v5 sources building.  There's
+still packaging work to do but I've pushed the interim results into salsa.
+Note: as previously discussed, python bindings are removed.
+
+On Tuesday, October 12, 2021 1:34:22 A.M. CDT ghisvail@gmail.com wrote:
+
+> I am indeed familiar with the existing ITK v4 packaging. I am also
+> aware that the medical community is very unlickly to switch all their
+> ITK dependencies from v4 to v5 overnight. Having handled some of these
+> transitions upstream myself, I know from personal experience that these
+> things take time.
+
+Yep.  But ITK v4 has issues building with C++11 and is currently scheduled for
+removal from Debian.  I spent some time a week or two ago to see if I could fix
+this and it seems like more work than I'm willing to put in.  So I think
+Debian itself is going to force a removal of ITK v4.  For this reason, I've
+just committed v5 into mainline of salsa.  If desired, a branch can be made to
+continue v4 development.
+
+-Steve

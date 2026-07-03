@@ -1,0 +1,48 @@
+task_id: task_104_09_veritasium_top5_science_popular
+category: 104_multimodal
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  Go to YouTube and find the Veritasium channel. Sort by view count
+  (Popular / Most popular), and use the channel /videos ordering
+  corresponding to this task's fixed snapshot (2026-04-23T01:42:41Z) to
+  identify the 5 most-viewed videos on this channel that are "science experiment /
+  science explanation" videos.
+  Video length does not matter, as long as the content is a science experiment or
+  science explanation.
+  You must open and watch each video individually. Do not download subtitles,
+  transcripts, cached ranking pages, or rely on old rankings or prior knowledge;
+  the final scientific question and conclusion must come from what you actually
+  saw in the videos.
+
+  After reviewing these 5 videos one by one, organize the results in:
+  `/tmp_workspace/results/veritasium_top5.md`
+
+  Requirements:
+  1. Clearly write the titles, links, and view counts you saw for the 5 videos you
+     ultimately selected.
+  2. For each video, at minimum clearly describe:
+     - The core scientific question
+     - The experimental design or key demonstration (if any)
+     - The final conclusion
+     - Whether the conclusion is counterintuitive
+     - One "intuition vs reality" comparison sentence
+  3. Add a short comparison table at the end of the document showing whether each
+     of the 5 videos is "counterintuitive".
+  4. Do not write an old ranking from memory; use the Veritasium Popular /
+     Most popular ordering corresponding to this task's fixed snapshot and the
+     content you actually opened and watched.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+codex:
+  max_user_followups: 2

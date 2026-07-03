@@ -1,0 +1,64 @@
+Message-ID: <Yeg1H+g4vQdIDmAW@einval.com>
+X-Clawbench-ID: BIO-2024-1497
+Date: Wed, 19 Jan 2022 15:58:23 +0000
+From: "Andrew M.A. Cater" <amacater@einval.com>
+To: debian-science@lists.debian.org
+Subject: Re: can I safely use dpkg from sid on bookworm?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2022_01_msg00016.html
+
+On Wed, Jan 19, 2022 at 10:08:16AM +0100, Christophe Trophime wrote:
+> Hi,
+> I'm trying to build packages for the upcoming jammy Ubuntu release
+> I've setup a private depot for these package
+>
+> When publishing the repo, I end with error like that:
+>
+> dpkg-deb: error: archive 'jammy_pool/main/mmg-doc_5.5.2-2.2_all.deb' uses unknown compression for member 'control.tar.zst', giving up
+> dpkg-scanpackages: error: couldn't parse control information from jammy_pool/main/mmg-doc_5.5.2-2.2_all.deb
+>
+> It seems that this issue has been fixed with latest dpkg (aka 1.21)
+> My question is can I use an update dpkg version from sid on my bookworm system?
+
+Hi Christophe,
+
+Ubuntu != Debian. They do things differently there and have their own policies
+and guidance. Anything Debian folks can tell you about Ubuntu may only be best
+endeaavours information and help because we could always be very wrong :)
+
+Given that Ubuntu will normally pull at least some packages from Sid/Unstable -
+you could potentially do it with an all-Sid system. I'd check with the
+Ubuntu release managers.
+
+You might be better with an all-Ubuntu Jammy machine / virtual
+machine. The standard Debian advice is, as ever,
+https://wiki.debian.org/DontBreakDebian
+
+With Sid/Unstable especially - if it breaks, you get to keep both pieces :)
+
+All the very best, as ever,
+
+Andy Cater
+
+>
+> Thanks for your feedback
+> Best
+> C
+>
+>
+>
+> Christophe TROPHIME
+> Research Engineer
+>
+> CNRS - LNCMI
+> 25, rue des Martyrs
+> BP 166
+> 38042 GRENOBLE Cedex 9
+> FRANCE
+>
+> Tel : +33 (0)4 76 88 90 02
+> Fax : +33 (0) 4 76 88 10 01
+> Office U 19
+> M@il : christophe.trophime@lncmi.cnrs.fr

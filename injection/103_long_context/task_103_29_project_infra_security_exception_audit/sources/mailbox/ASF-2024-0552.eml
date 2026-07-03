@@ -1,0 +1,38 @@
+Message-ID: <DE2CFAD2-EA86-4C79-8BD4-C7E8A0B79A13@eissing.org>
+X-Clawbench-ID: ASF-2024-0552
+Date: Tue, 17 May 2022 16:38:00 +0200
+From: Stefan Eissing <stefan@eissing.org>
+To: dev@httpd.apache.org
+Subject: Re: travis CI failing in 2.4.x
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-05.mbox
+
+Thanks for checking. I merged the change Yann mentioned and travis is considering maybe starting the ci suite some day in the future...we'll see.
+
+
+> Am 17.05.2022 um 15:33 schrieb Rainer Jung <rainer.jung@kippdata.de>:
+>
+> Forget the below. The real error was already detected by others and 25.000 lines higher in the console output:
+>
+> t/modules/heartbeat.t             (Wstat: 0 Tests: 1 Failed: 1)
+>
+>  Failed test:  1
+>
+> Files=141, Tests=7232, 130 wallclock secs ( 2.85 usr  0.26 sys + 47.35 cusr 10.50 csys = 60.96 CPU)
+>
+> Result: FAIL
+>
+> Failed 1/141 test programs. 1/7232 subtests failed.
+>
+> ...
+>
+> Am 17.05.2022 um 15:24 schrieb Rainer Jung:
+>> Not yet a full explanation but:
+>> - the build fails due to "The job exceeded the maximum log length, and has been terminated." shortly before line 30.000
+>> - the difference to the succeeeding "Linux Ubuntu Focal, ASan" is, that the ErrorLog of the run is not part of this log output handled by Travis.
+>> - the lines you saw look pretty normal to me (depending on the modules we build). And it is not the exact same line repeating, but just the same type of line for every request executed during the tests.
+>> I guess, the build configs differ, so that travis handled the ErrorLog differently?
+>> Best regards,
+>> Rainer

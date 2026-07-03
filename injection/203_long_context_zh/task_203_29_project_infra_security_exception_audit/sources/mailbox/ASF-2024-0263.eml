@@ -1,0 +1,42 @@
+Message-ID: <465657F0-8456-4A95-BB71-1B7A76E6D616@eissing.org>
+X-Clawbench-ID: ASF-2024-0263
+Date: Wed, 11 Jan 2023 16:10:12 +0100
+From: "Stefan Eissing via dev" <dev@httpd.apache.org>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.55-rc1 as httpd-2.4.55
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-01.mbox
+
+> Am 11.01.2023 um 15:50 schrieb Yann Ylavic <ylavic.dev@gmail.com>:
+>
+> On Wed, Jan 11, 2023 at 10:10 AM Stefan Eissing via dev
+> <dev@httpd.apache.org> wrote:
+>>
+>>> Am 10.01.2023 um 22:39 schrieb Christophe JAILLET <christophe.jaillet@wanadoo.fr>:
+>>>
+>>> 1 issue with pytest:
+>>>  test/modules/http2/test_600_h2proxy.py .....F....
+>>> (details at the end of the mail)
+>>>
+>>> Don't know if expected or not. Some pytest commits are only in trunk and have not been backported to 2.4.x. I don't know if it is linked to this failing test.
+>>
+>> This one works on my machine(tm). Odd indeed. This tries to verify proxy behaviour in regard to "enable_reuse" and var substitution in the urls authority. See <https://github.com/icing/mod_h2/issues/235>, discussed further in <https://lists.apache.org/thread/tlzfbvopg5k61nz8mhjq518oowkmm43f>.
+>>
+>> The test has a flexible proxypass using a part of the path to construct the backend url. Accessing first one path and then the other creates backend urls with different port numbers. Those backend resources produce a JSON response carrying the port number used.
+>>
+>> With "enable_reuse=on" the test expects the backend connection from the first request to be reused on the second, therefore producing a JSON that carries to first port number and not the second.
+>
+> Does curl reuse the same connection (keepalive) for the two requests?
+> Otherwise I think we need "ServerLimit 1" or something for the test to
+> be reliable, because the two requests could be handled by two
+> different child processes due to TCP queuing/scheduling (and the
+> backend connection would not be reused obviously).
+
+Good point. We could limit the server count in this test to avoid contacting the "other" instance.
+
+For the vote: I see no impact here. Code is behaving as it should, the test is not reliable.
+
+Cheers,
+Stefan

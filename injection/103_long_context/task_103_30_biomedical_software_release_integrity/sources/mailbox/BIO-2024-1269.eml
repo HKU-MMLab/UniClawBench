@@ -1,0 +1,27 @@
+Message-ID: <trinity-0d1b2bea-c014-49ea-9c5b-a0a71c74cc15-1644755735716@3c-app-gmx-bs30>
+X-Clawbench-ID: BIO-2024-1269
+Date: Sun, 13 Feb 2022 13:35:35 +0100
+From: Karsten Hilbert <Karsten.Hilbert@gmx.net>
+To: debian-med@lists.debian.org
+Subject: Aw: Re: Acquiring Dental RVG on Linux
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_02_msg00062.html
+
+> > Please do have a look at a sample header attached. If you find any fields
+> > that may give any hints about the calibration or post processing that the
+> > vendor software applies, please do highlight.
+>
+> E.g. this (undocumented aka Private) tag's value seems to be varying
+> across images:
+>
+> (0009, 110a) Private tag data                    UL: 1983368088
+
+Does this
+
+ https://groups.google.com/g/orthanc-users/c/8pOUQJH2oTs
+
+help in any way ?
+
+Karasten

@@ -1,0 +1,33 @@
+Message-ID: <CABD8fLUvnDAfVNY+yGe8mESK+GRmsaM1b9_SCEryWxXygT9xFg@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0461
+Date: Fri, 5 May 2023 02:31:30 -0500
+From: Greg Stein <gstein@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Switch read/write repository from Subversion to Git
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-05.mbox
+
+On Fri, May 5, 2023 at 2:12 AM Dennis Clarke <dclarke@blastwave.org> wrote:
+>...
+
+>      Why the assumption of Microsoft github?  There is no reason to
+> migrate to a git service such as Microsoft github when sourcehut works
+> just fine as does a private git repo provided by Apache FSF itself.
+>
+
+Because the Apache Instructure Team has constructed a lot of tooling around
+GitHub, to support git-based development at the Foundation. We
+maintain/synchronize our own copy of the git repository, mailing lists and
+commit emails are provided, LDAP authz groups are mapped to GitHub teams,
+we have GitHub Actions available, and more. GitHub is fully-supported and
+backed by Microsoft (and we have direct contact with them); compare with
+sourcehut, quote: "Notice: sr.ht is currently in alpha, and the quality of
+the service may reflect that."
+
+Everybody says git is decentralized, so why are you even asking this
+question? Can't you just use any git repository, anywhere? ;-)
+
+Cheers,
+-g

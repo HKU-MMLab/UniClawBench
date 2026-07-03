@@ -1,0 +1,83 @@
+task_id: task_205_04_rag_benchmark_gui_zotero_obsidian_calc
+category: 205_cross_platform_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我正在为 RAG 评测基准领域整理论文阅读笔记，
+  我想要一个带有可复核证据的桌面 GUI 工作流。
+
+  使用真实的桌面应用完成任务：Zotero、Obsidian 和
+  LibreOffice Calc。不要使用本地替代的网页工具，也不要仅用
+  脚本直接生成最终文件。任务环境会先运行一个
+  安装/验证服务；如果应用仍在安装中，
+  请检查 `/tmp_workspace/clawbench/service_state/task_105_04_real_apps_state.json`，
+  并等到状态为 `ready` 后再启动应用。
+
+  1. 在真实的 PDF 阅读器或浏览器 PDF 查看器中打开并阅读
+     `/tmp_workspace/clawbench/sources/papers/ares_rag_evaluation.pdf`。确认论文标题、
+     作者、年份、主要任务、主要指标或指标维度，以及一条
+     局限性。保存一张显示 PDF 已打开的截图：
+     `/tmp_workspace/results/pdf_reader_ares.png`。
+  2. 在真实的 Zotero 中，创建一条文献记录。至少填入标题、
+     作者、年份和出版物，并将该 PDF 路径作为附件添加到记录中。保存
+     一张 Zotero 记录或条目详情截图到
+     `/tmp_workspace/results/zotero_ares_record.png`。截图必须能够
+     审计出该附件属于同一个 ARES 父条目，
+     例如展开父条目以显示子附件，或
+     显示 `ares_rag_evaluation.pdf`、一个 PDF 图标、一个回形针/附件计数，
+     或在同一条目详情区域显示等价的非零附件证据。仅有
+     文献记录而没有附件是不够的；仅证明该
+     PDF 存在于文件系统中也是不够的。将该 Zotero 记录导出到
+     `/tmp_workspace/results/zotero_ares_record.bib` 或
+     `/tmp_workspace/results/zotero_ares_record.ris`；导出内容在可能的情况下应包含
+     附件路径或本地 PDF 文件名。
+  3. 在真实的 Obsidian vault 中，创建一篇名为 `RAG Benchmark Note.md` 的笔记。
+     内容必须包含以下三个小节：
+     - What task does it benchmark?
+     - What metric matters most?
+     - One limitation
+     将该笔记保存或导出到
+     `/tmp_workspace/results/rag_benchmark_note_export.md`，并保存一张 Obsidian
+     笔记截图到 `/tmp_workspace/results/obsidian_rag_benchmark_note.png`。
+     截图应显示已打开的笔记标题以及至少两个必需的
+     小节。不要只保存 Obsidian 启动页、文件夹选择器或
+     空 vault。
+  4. 在真实的 LibreOffice Calc 中，保存 `/tmp_workspace/results/rag_reading_tracker.ods`，
+     包含以下列：
+     Title | Year | Main Task | Main Metric or Metric Dimensions | Worth reading further (yes/no)
+     保存一张 Calc 截图到 `/tmp_workspace/results/calc_rag_reading_tracker.png`。
+     截图应显示真实的 LibreOffice Calc 并打开该 tracker，并
+     应使 A 到 E 列以及第 2 行在同一张图中可读，
+     尤其是 `Worth reading further (yes/no)` 及其 `yes` 或 `no` 值。
+
+  所有截图、Zotero 导出文件、ODS 和 Markdown 文件都必须位于
+  `/tmp_workspace/results/` 下。不要只复制摘要；笔记和表格
+  应反映你阅读 PDF 后的判断。不要使用脚本
+  直接生成或预填最终的 Markdown、citation 导出、ODS 或
+  截图来替代真实 Zotero、Obsidian 和
+  LibreOffice GUI 应用中的最终状态。最终截图必须分别证明
+  这些真实应用中的最终状态。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/ares_rag_evaluation_source_evidence.md
+
+sources:
+  - papers/
+
+services:
+  - name: real-rag-apps-setup
+    path: real-rag-apps-setup
+    start: bash run.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

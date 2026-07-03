@@ -1,0 +1,43 @@
+Message-ID: <3B90296D-027B-4CED-9954-AD9E87C615CE@eissing.org>
+X-Clawbench-ID: ASF-2024-0239
+Date: Mon, 6 Jun 2022 13:09:34 +0200
+From: Stefan Eissing <stefan@eissing.org>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.54-rc2 as httpd-2.4.54
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-06.mbox
+
+Guys, shall I make an rc3 with the recent apr version check changes? It seems the correct way to handle this...
+
+Cheers,
+Stefan
+
+> Am 06.06.2022 um 10:12 schrieb giovanni@paclan.it:
+>
+> On 6/4/22 14:59, Stefan Eissing wrote:
+>> Hi all,
+>>
+>> next attempt at 2.5.54. Thanks everyone for participating!
+>>
+>> Please find below the proposed release tarball and signatures:
+>>
+>> https://dist.apache.org/repos/dist/dev/httpd/
+>>
+>> I would like to call a VOTE over the next few days to release
+>> this candidate tarball httpd-2.4.54-rc2 as 2.4.54:
+>> [ ] +1: It's not just good, it's good enough!
+>> [ ] +0: Let's have a talk.
+>> [ ] -1: There's trouble in paradise. Here's what's wrong.
+>>
+>> The computed digests of the tarball up for vote are:
+>> sha256: fd461abb356592386e7de90835f888fa4eb0ce225a89986c38108bdcbce466ef *httpd-2.4.54-rc2.tar.gz
+>> sha512: 6267d43aca3c278a0b428633a41ddea346d73a1c94fa3e9d54a600e8c7ab71b4a7772c7dbbcd552a802606416c2f6193ceaa0c6bcf07fe2b61cf175cb48b892f *httpd-2.4.54-rc2.tar.gz
+>>
+>> The SVN candidate source is found at tags/2.4.54-rc2-candidate.
+>>
+> +1
+> tested on Fedora 36, OpenBSD 7.1 and OpenBSD-current
+>
+> Giovanni

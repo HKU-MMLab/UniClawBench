@@ -1,0 +1,23 @@
+{
+  "task_id": "task_102_31_talk_screenshot_provenance",
+  "note": "Talk-screenshot provenance task. The executor gets a video frame (sources/screenshot.jpg) with no channel watermark/caption/title. They must visually identify the speaker + talk and trace it to the canonical original video. The answer must be the OFFICIAL upload, not a re-upload/clip.",
+  "frame_origin": {
+    "source": "YouTube video iG9CE55wbtY (TED official channel) — frame, no overlay text",
+    "what_it_shows": "a man with glasses in a dark suit jacket and open-collar shirt speaking on a dark stage with colored stage lighting, mid-gesture"
+  },
+  "canonical_answer": {
+    "speaker": "Sir Ken Robinson",
+    "talk_title": "Do schools kill creativity?",
+    "venue": "TED (TED2006)",
+    "canonical_video": "https://www.youtube.com/watch?v=iG9CE55wbtY",
+    "official_channel": "TED (official YouTube channel)",
+    "also_acceptable_canonical": "the official TED.com talk page for 'Sir Ken Robinson: Do schools kill creativity?' (ted.com/talks/...)"
+  },
+  "scoring_anchors": {
+    "must_identify": {"speaker": "Sir Ken Robinson", "talk": "Do schools kill creativity?"},
+    "canonical_video_for_full_credit": {"youtube_id": "iG9CE55wbtY", "channel": "TED (official)"},
+    "primary_source_rule": "canonical = the official TED upload (YouTube iG9CE55wbtY) or the official TED.com talk page. Re-uploads, clip channels, and summaries are secondary.",
+    "anti_secondary_source": "stopping at a re-upload or a blog summary without reaching the official TED source caps the score",
+    "tolerance": "Accept speaker=Ken Robinson + talk='Do schools kill creativity?' as the core. Full credit requires reaching the official TED video (iG9CE55wbtY) OR the TED.com talk page. Partial credit if correctly identified but only a non-official re-upload is reached. (Note: this is the most-viewed TED talk, so identification should be feasible from the frame + reverse image search.)"
+  }
+}

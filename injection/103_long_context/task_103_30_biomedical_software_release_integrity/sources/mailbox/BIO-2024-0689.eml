@@ -1,0 +1,86 @@
+Message-ID: <YVnK91FHCI0xnDc8@lena.dartmouth.edu>
+X-Clawbench-ID: BIO-2024-0689
+Date: Sun, 3 Oct 2021 11:23:35 -0400
+From: Yaroslav Halchenko <debian@onerussian.com>
+To: debian-med@lists.debian.org
+Subject: Re: Introduction
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00017.html
+
+Hi Enric,
+
+thank you for reaching out!  I just want to follow up on one aspect:
+even without any coding/packaging, everyone can contribute to the big
+long lasting positive effect for Debian and "Open"
+science/software/health/... by promoting open practices, software and
+licenses to apply and legal safeguards (e.g. participant consent forms
+etc).
+
+Quite often in Debian (and elsewhere) we encounter interested in open
+sharing researchers who have not thought about open sharing whenever
+they initiated study or the project.  That often makes it hard or
+impossible for THEM later to either share the products of their work, or
+even at times to USE their own work (e.g. if they change
+employers, or decide to reuse materials they have surrended their
+copyright for).
+
+Shameless plug: have a look at our very brief publication
+https://academic.oup.com/gigascience/article/4/1/s13742-015-0072-7/2707572
+principles of which apply also to improve reproducibility of research.
+For that we promote thinking ahead while developing any
+(neuroimaging in our case) study and provide this "short HOWTO" with
+more pointers http://5steps.repronim.org/ .
+
+So, altogether -- promoting healthy open practices from the beginning of
+any study design/plan etc would be of great help to Debian and beyond.
+
+Cheers,
+
+On Sat, 02 Oct 2021, Enric Garcia Torrents wrote:
+
+>    Hello!
+
+>    I am Enric, new to the project. I am a medical anthropologist with very
+>    limited coding experience. My current research involves designing and
+>    developing an open source decision making support system, specifically for
+>    those cases regarded as severe by the current main psychiatric
+>    understanding. I hold the hope such system could be adapted for other
+>    uses, but that's the scope of what I am working on, fortunately with funds
+>    to carry on the work for five more years.
+
+>    My interest in Debian pure blends started ten years ago when I was
+>    fortunate to get involved in ArbyX, a Stanford Law School Codex' project
+>    on decision making in international arbitration courts. Unfortunately my
+>    involvement on that stalled for several reasons, but always kept in mind
+>    how important it is for people to have an access as easy as possible to
+>    free suits to do their job without worrying about very often unaffordable
+>    expenses, the burden of learning how to run the system at least as much as
+>    to install all packages and make them work without an issue, and so on.
+
+>    The arbitration project had a higher scope than the decision making one,
+>    but basically it's the same idea with a medical twist. That involved power
+>    maps of the players involved, and so do medicine. Involved adding data,
+>    and medicine -specially research and the development of treatments for new
+>    communities- also requires that. My experience, as I have been taught, is
+>    that software alone is not enough. Hopefully we can package it all, and
+>    create a tool set ready for those that need it.
+
+>    At the moment I really don't know how I can contribute other than maybe
+>    doing my best to help fire up other communities, help you spread the word
+>    about Debian Med, and help others join in the effort, on top of doing my
+>    very best to get to speed quickly on the Debian development part of it -as
+>    I mentioned to Andreas and the rest of the crew present on today's
+>    videocall (my apologies the connection was horrible and ran into other
+>    issues), I have next to zero idea on how to package and maintain-.
+
+>    No idea how long it take, because I am a medicine fresher too and that
+>    will take a massive amount of time. But I will, because I feel it's
+>    essential. Really admire what you have achieved developing Debian, it's
+>    impressive. Thanks.
+--
+Yaroslav O. Halchenko
+Center for Open Neuroscience     http://centerforopenneuroscience.org
+Dartmouth College, 419 Moore Hall, Hinman Box 6207, Hanover, NH 03755
+WWW:   http://www.linkedin.com/in/yarik

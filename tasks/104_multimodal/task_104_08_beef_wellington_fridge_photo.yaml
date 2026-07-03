@@ -1,0 +1,48 @@
+task_id: task_104_08_beef_wellington_fridge_photo
+category: 104_multimodal
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I want to learn how to make Gordon Ramsay-style Beef Wellington. Please complete the following:
+
+  1. Search YouTube for `Gordon Ramsay Beef Wellington`, find the full tutorial
+     video published by Gordon Ramsay's official channel, and open it for playback.
+     You must complete the task by directly watching the video visuals and listening
+     to the audio. Do not download subtitles, transcripts, third-party summaries,
+     or substitute your own cooking experience for watching; search is only for
+     locating the video, and your final judgment should be based on what you
+     actually see and hear.
+  2. Watch the video, capture at least 3 screenshots of key steps, and save them
+     under `/tmp_workspace/results/`. The screenshots must clearly show real
+     cooking actions, not thumbnails.
+  3. Read my fridge photo:
+     `/tmp_workspace/clawbench/sources/fridge_photo.jpg`
+  4. Compare the main ingredients needed for the dish in the video with what I
+     already have in my fridge photo, and generate a missing-items shopping list
+     at `/tmp_workspace/results/shopping_list.md`.
+  5. Also generate `/tmp_workspace/results/cooking_steps.md`, explaining which
+     steps you captured and what visual point each screenshot demonstrates.
+
+  In the shopping list, clearly list the ingredients that can be judged as
+  "missing" and note which cooking step each one mainly corresponds to.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/reference_shopping_list.md
+  - references/reference_cooking_steps.md
+  - references/video_thumbnail_Cyskqnp1j64_2026-04-16.jpg
+  - references/video_thumbnail_TE2omM_NoXU_2026-04-16.jpg
+
+sources:
+  - fridge_photo.jpg
+
+codex:
+  max_user_followups: 2

@@ -1,0 +1,42 @@
+Message-ID: <ZOUpXIAkLiIt1rZX@fusion>
+X-Clawbench-ID: BIO-2024-0576
+Date: Tue, 22 Aug 2023 23:32:12 +0200
+From: Étienne Mollier <emollier@debian.org>
+To: César Pomar <cesarpomar18@gmail.com>
+Subject: Re: Request for Sponsorship: VeryFastTree - Parallelized and Optimized Version of FastTree
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_08_msg00011.html
+
+Hi César,
+
+César Pomar, on 2023-07-28:
+> I noticed that on https://tracker.debian.org/pkg/veryfasttree, they are
+> testing the tool with 32-bit architectures, and the tests are failing. The
+> tool is designed to leverage computing on 64-bit architectures, and the
+> memory limit of 32 bits drastically reduces the size of data that can be
+> processed. Nevertheless, in order to avoid Segmentation faults on 32-bit
+> architectures and to pass the tests on those systems, I have made the code
+> compatible with 32 bits and released version 4.0.2. It should now pass all
+> the Debian tests without any issues.
+
+Thanks for your update for the 32-bit architectures support,
+sorry this seems to have stalled a bit.  I did give a spin to
+your version 4.0.2 on i386 and armhf, and the segmentation fault
+in autopkgtest context went away.
+
+If you're interested in proceeding to prepare the package update
+for Debian yourself, you can lookup the team policy[1] chapter
+on the update topic if you need a refresh.  Once you think your
+repository in Salsa is ready for uploading the new version,
+please come back to us requesting for sponsorship.
+
+[1]: https://med-team.pages.debian.net/policy/
+
+Have a nice day,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  gpg: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/3, please excuse my verbosity
+   `-    on air: Backfire - Alpha

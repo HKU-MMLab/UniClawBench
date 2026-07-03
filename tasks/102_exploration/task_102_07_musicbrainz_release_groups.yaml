@@ -1,0 +1,41 @@
+task_id: task_102_07_musicbrainz_release_groups
+category: 102_exploration
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I'm cataloguing a band's studio albums and I want canonical data from
+  MusicBrainz via its API instead of copying from the website.
+
+  Here's the band's MusicBrainz page:
+
+      https://musicbrainz.org/artist/5b11f4ce-a62d-471e-81fc-a69a8278c7da
+
+  MusicBrainz has a web service (the "ws/2" API). Please use it (not by
+  scraping the musicbrainz.org HTML) to pull this artist's **album** release
+  groups, and give me:
+
+  - the artist's name (confirm it from the API),
+  - the three earliest studio albums by first-release date (title + year),
+  - the total number of album-type release groups the API reports for this
+    artist.
+
+  Note: MusicBrainz asks clients to send a meaningful User-Agent identifying
+  the app and a contact, and to respect its rate limit (about one request per
+  second).
+
+  Save the result to `/tmp_workspace/results/musicbrainz_albums.json`, and save
+  the exact request URL(s) you called plus their raw JSON response(s) to
+  `/tmp_workspace/results/musicbrainz_evidence/`.
+
+references:
+  - references/eval_rule.md
+
+codex:
+  max_user_followups: 2

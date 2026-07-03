@@ -1,0 +1,45 @@
+Message-ID: <Yjhy/8nX1/K2Tmil@an3as.eu>
+X-Clawbench-ID: BIO-2024-0968
+Date: Mon, 21 Mar 2022 13:43:43 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: ismrmrd has cmake build issue
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_03_msg00019.html
+
+Hi,
+
+I injected the new version of ismrmrd but it does not build as you can
+see in Salsa CI[1].  I reported this upstream[2] but they can not
+reproduce the issue.  I tried my own luck with a patch to make sure
+the header files will be found:
+
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -207,6 +207,7 @@ if (USE_SYSTEM_PUGIXML)
+ else ()
+     list(APPEND ISMRMRD_TARGET_SOURCES libsrc/pugixml.cpp)
+ endif ()
++list(APPEND ISMRMRD_TARGET_INCLUDE_DIRS ${CMAKE_SOURCE_DIR}/include)
+
+ if (build4GE)
+    list(APPEND ISMRMRD_TARGET_LINK_LIBS pthread z dl)
+
+
+but this did not help.
+
+Any idea how to get this building?
+
+Kind regards
+
+     Andreas.
+
+
+[1] https://salsa.debian.org/med-team/ismrmrd/-/jobs/2582287#L1975
+[2] https://github.com/ismrmrd/ismrmrd/issues/201
+
+--
+http://fam-tille.de

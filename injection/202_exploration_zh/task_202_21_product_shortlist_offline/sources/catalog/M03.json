@@ -1,0 +1,22 @@
+{
+  "id": "M03",
+  "title": "Acme UltraSharp 27\" QHD/4K-Ready USB-C",
+  "listing": {
+    "size_in": 27,
+    "resolution": "4K",
+    "usb_c": "yes",
+    "price": 329.0,
+    "condition": "new"
+  },
+  "detail": {
+    "size_in": 27,
+    "resolution": "2560x1440",
+    "usb_c_video": true,
+    "usb_c_note": "USB-C DP Alt Mode",
+    "price": 329.0,
+    "price_type": "new_direct",
+    "seller": "Acme",
+    "ships_to_us": true,
+    "availability": "in_stock"
+  }
+}

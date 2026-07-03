@@ -1,0 +1,51 @@
+Message-ID: <6016bb12-1dac-d935-bd83-1444f1a960a8@kippdata.de>
+X-Clawbench-ID: ASF-2024-0198
+Date: Thu, 30 Jun 2022 10:59:53 +0200
+From: Rainer Jung <rainer.jung@kippdata.de>
+To: "dev@httpd.apache.org" <dev@httpd.apache.org>
+Subject: pytest for 2.4.x: crashes in mod_md during child shutdown
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-06.mbox
+
+Hi there,
+
+I ran the pytest suite on SLES 12+15 and RHEL 7+8 for 2.4.54 plus
+OpenSSL 1.1.1p. Ran it for event, worker and prefork and with OpenSSL
+1.1.1 and 3.0 in the client.
+
+I observe sporadic segmentation faults on all of those platforms and for
+all MPMs and all OpenSSL versions in the client.
+
+The crashes are not especially frequent and I only have backtraces on
+one platform (RHEL 8). There the pattern seems to be consistently:
+
+- only two threads shown, also for event and worker
+
+- one thread is in various stacks underneath clean_child_exit()
+
+- the other thread is somewhere below
+
+md_reg_renew()
+run_renew()
+acme_renew()
+...
+
+- it looks like things have already been deinitialized by the thread in
+clean_child_exit() when mod_md gets a renew job from mod_watchdog.
+
+Before I investigate further: is there already an expectation, that
+mod_watchdog should not dispatch a job after shutdown has started and
+vice versa shutdown should wait for a running mod_watchdog job at least
+some time? Or that mod_md should not execute on such a job after
+shutdown has started?
+
+It is probably a niche experience, but I got 20 segfaults in roughly 48
+pytest suite runs.
+
+Test for httpd using OpenSSL 3.0.4 on the server side will run later today.
+
+Best regards,
+
+Rainer

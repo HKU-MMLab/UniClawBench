@@ -1,0 +1,35 @@
+Message-ID: <CALK=YjMG4JwBaiy_DL4FGgeJV8ao_AjAcXPLBSO6-RFqpanOBw@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0095
+Date: Tue, 17 Oct 2023 08:31:20 -0400
+From: Eric Covener <covener@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.58-rc3 as httpd-2.4.58
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-10.mbox
+
+On Mon, Oct 16, 2023 at 11:10 AM Stefan Eissing via dev
+<dev@httpd.apache.org> wrote:
+>
+> Hi all,
+>
+> after fixing my merge mistake in rc2 (sorry!), we go again:
+>
+> Please find below the proposed release tarball and signatures:
+>
+> https://dist.apache.org/repos/dist/dev/httpd/
+>
+> I would like to call a VOTE over the next few days to release
+> this candidate tarball httpd-2.4.58-rc3 as 2.4.58:
+> [ ] +1: It's not just good, it's good enough!
+> [ ] +0: Let's have a talk.
+> [ ] -1: There's trouble in paradise. Here's what's wrong.
+>
+> The computed digests of the tarball up for vote are:
+> sha256: 503a7da4a4a27fd496037998b17078dc9fe004db32c657c96cce8356b8aa2eb6 *httpd-2.4.58-rc3.tar.gz
+> sha512: 5c11faf0572035ef67b27775d975999411c689cb774553175299a9e99b63d3d7138b0c7f15048ec28038494d8513689f916202c2289d557947d8b190d46ca9f3 *httpd-2.4.58-rc3.tar.gz
+>
+> The SVN candidate source is found at tags/2.4.58-rc3-candidate.
+
++1 AIX/xlc

@@ -1,0 +1,27 @@
+Message-ID: <YevcVOCrCcpRTVB4@an3as.eu>
+X-Clawbench-ID: BIO-2024-0143
+Date: Sat, 22 Jan 2022 11:28:36 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Segmentation fault in autopkgtest of new version of spaln
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_01_msg00064.html
+
+Hi,
+
+when checking failed uscan issues I stumbled upon a new upstream version
+of spaln which was moved to Github.  I found a fix for a first issue of
+the autopkgtest but finally the executable segfaults[1].
+
+For the moment I have no time to fire up gdb and track down this - so
+if anybody might beat me it would be great.
+
+Kind regards
+   Andreas.
+
+[1] https://salsa.debian.org/med-team/spaln/-/jobs/2388823
+
+--
+http://fam-tille.de

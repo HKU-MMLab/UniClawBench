@@ -1,0 +1,21 @@
+Message-ID: <CALK=YjPCRer=Qaz1L82jRnyGOa8Mr-cohZ_vPpHPvjAyp1Qx_g@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0482
+Date: Tue, 24 Jan 2023 15:36:44 -0500
+From: Eric Covener <covener@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: mod_wasm: Contributing Upstream to Apache
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-01.mbox
+
+> We are still very interested in contributing this module upstream and helping to maintain it. Please, let us know what improvements or changes would be needed for it to be considered ready for inclusion.
+
+As a pessimistic PMC member not caring about WASM or these languages,
+I worry that marrying the lifecycle together is not advantageous for
+either side. Of course I worry about being stuck with the pieces when
+employer interest wanes or after turnover.  It does not seem like it's
+strictly necessary to be part of the server distribution (there are
+many examples of successful out-of-tree modules).
+
+However the above is no veto.

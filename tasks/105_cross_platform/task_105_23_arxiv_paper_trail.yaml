@@ -1,0 +1,62 @@
+task_id: task_105_23_arxiv_paper_trail
+category: 105_cross_platform
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I'm writing a survey and want to understand how deeply the arxiv paper
+  "Generative Agents" (2304.03442) has been received. The PDF alone isn't
+  enough — I want to see this paper's current "footprint": how many
+  academic citations does it have? Are there reproductions on GitHub? Was
+  it a hot discussion on Hacker News back then?
+
+  Could you pull all of these together and give me an analysis report on
+  the paper's current impact? On the GitHub side, I specifically want to
+  know which repo is the official implementation by the paper's authors —
+  not derivative projects, not fan-made theme games or forks, just the
+  original repo under the first author's or the team's account. If the
+  highest-starred repo happens to be the official one, great; if not,
+  also mention what the highest-starred one actually is. For HN, call out
+  the top-discussed story in the report as well.
+
+  Also, if the first author has other papers, check what their other
+  most-cited work is — use the Semantic Scholar author papers endpoint,
+  sort by citationCount, take the top one excluding Generative Agents
+  itself.
+
+  I also want to see a timeline question: the paper went on arxiv in
+  early April — did GitHub reproductions start appearing within days, or
+  did they take months to show up? Find the top 3 GitHub implementations
+  by stars, then use `gh api repos/<r>/commits?per_page=1` and grab the
+  Link header's rel="last" page number, then run
+  `?per_page=1&page=<last>` to find each repo's first commit date.
+  Calculate how many days each repo's first commit came after the paper's
+  publication date (2023-04-07). Finally, tell me clearly which
+  reproduction appeared fastest — was it the authors' own official repo
+  released later, or did someone in the community rush one out within
+  the same week?
+
+  Put the report and data files under /tmp_workspace/results/.
+
+  The arxiv ID is 2304.03442, PDF at https://arxiv.org/pdf/2304.03442v2.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources: []
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

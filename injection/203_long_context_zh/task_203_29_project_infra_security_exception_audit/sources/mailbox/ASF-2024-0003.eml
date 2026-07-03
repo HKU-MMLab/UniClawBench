@@ -1,0 +1,23 @@
+Message-ID: <CAKQ1sVOL7NdG5UxRz1xGhegkvQUnDsqQ4WnO89paGx4YBk0MZQ@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0003
+Date: Wed, 31 Jul 2024 19:03:24 +0200
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: httpd-dev <dev@httpd.apache.org>
+Subject: Re: [Bug 69235] unable to connect to backend with existing rewrite rules.
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-07.mbox
+
+On Wed, Jul 31, 2024 at 6:57 PM <bugzilla@apache.org> wrote:
+>
+> https://bz.apache.org/bugzilla/show_bug.cgi?id=69235
+>
+> --- Comment #2 from Yann Ylavic <ylavic.dev@gmail.com> ---
+> Created attachment 39832
+>   --> https://bz.apache.org/bugzilla/attachment.cgi?id=39832&action=edit
+> mod_proxy fixup after mod_rewrite's
+
+What could be the issue with mod_proxy fixing up / canonicalizing all
+mod_rewrite [P] URLs (including perdir)?
+Looks sensible to me..

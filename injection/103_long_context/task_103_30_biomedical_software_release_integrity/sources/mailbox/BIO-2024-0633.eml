@@ -1,0 +1,26 @@
+Message-ID: <Yk9Wd6wgqBGe1fvM@debian>
+X-Clawbench-ID: BIO-2024-0633
+Date: Fri, 8 Apr 2022 02:54:07 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: RFS: add autopkgtest for python-bioblend
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_04_msg00030.html
+
+On Thu, Apr 07, 2022 at 10:37:24PM +0200, Andreas Tille wrote:
+> Am Thu, Apr 07, 2022 at 06:52:47PM -0000 schrieb Mohd Bilal:
+> > I've enabled salsa ci and added autopkgtest for python-bioblend[1] . Requesting someone to review and sponsor my changes.
+>
+> Looks good - uploaded.
+
+I did an upload on top of it.
+
+@Bilal, as said earlier, please do not run tests in-place when possible, please
+do take in a look at my commits.
+Also, I added a couple more bugs to the GSoC wiki so you could work on these next.
+Sorry for the delay.
+
+Regards,
+Nilesh

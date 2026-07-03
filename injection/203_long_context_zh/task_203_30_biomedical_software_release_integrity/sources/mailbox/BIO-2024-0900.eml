@@ -1,0 +1,25 @@
+Message-ID: <YWf01rEWbb7G+YY9@an3as.eu>
+X-Clawbench-ID: BIO-2024-0900
+Date: Thu, 14 Oct 2021 11:13:58 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: "Michael R. Crusoe" <michael.crusoe@gmail.com>,	Debian Med Project List <debian-med@lists.debian.org>
+Subject: Please update simde patches for minimap2
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00052.html
+
+Hi Michael,
+
+I upgraded minimap2 in Git which is now at version 2.22 (we had 2.17)
+and had obviously incorporated simde inside the code so several chunks
+of your simde patch do not apply.  Since I'm not educated about simde
+sufficiently I'd be really happy if you could finalise this and upload
+minimap2.
+
+Kind regards
+
+      Andreas.
+
+--
+http://fam-tille.de

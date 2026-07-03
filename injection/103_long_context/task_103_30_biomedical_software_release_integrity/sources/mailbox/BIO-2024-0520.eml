@@ -1,0 +1,40 @@
+Message-ID: <Y+YZkVpXUFtyDqYh@an3as.eu>
+X-Clawbench-ID: BIO-2024-0520
+Date: Fri, 10 Feb 2023 11:16:49 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: 896460@bugs.debian.org, 950598@bugs.debian.org, 1030884@bugs.debian.org,	debian-release@an3as.eu
+Subject: Chain of Dependencies prevents closing RC bugs
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_02_msg00038.html
+
+Hi,
+
+to fix
+
+  #1030884 python-cogent: FTBFS (ImportError: cannot import name 'float' from 'numpy')
+
+and let it migrate to testing it needs to wait for
+
+  #950598 python3-jupyter-sphinx: package relies on unavailable `ipywidgets.embed` module
+
+which in turn needs
+
+  #896460 Please package ipywidgets 7
+
+which needs another not yet packaged precondition.
+
+Since I do not think that #896460 will be closed any time soon the only
+realistic solution to let python-cogent migrate will probably be to make
+it independent from python3-jupyter-sphinx by skipping features in its
+docs or simply do not generate the doc at all as long as its
+precondition will not be in testing.
+
+Do you think that's correct?
+
+Kind regards
+   Andreas.
+
+--
+http://fam-tille.de

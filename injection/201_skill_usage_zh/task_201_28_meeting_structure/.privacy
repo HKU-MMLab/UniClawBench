@@ -1,0 +1,6 @@
+# Env vars required by this task.
+# Values are resolved from configs/privacy.local.env at runtime.
+#
+# The `openai-whisper-api` skill calls POST {WHISPER_BASE_URL}/audio/transcriptions.
+WHISPER_API_KEY
+WHISPER_BASE_URL

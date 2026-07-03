@@ -1,0 +1,84 @@
+Message-ID: <20230101192130.5sneune7rtcdh7ws@nileshpatra.info>
+X-Clawbench-ID: BIO-2024-1029
+Date: Mon, 2 Jan 2023 00:51:30 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: 1027629@bugs.debian.org, "Maarten L. Hekkelman" <maarten@hekkelman.com>
+Subject: Re: python-biopython: FTBFS: Test DSSP generation from MMCIF with non-standard residues.
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_01_msg00001.html
+
+Hi Maarten,
+
+This seems to stem from your latest upload of dssp. Could you consider taking
+a look at this one?
+
+Thanks,
+Nilesh
+
+On Sun, 1 Jan 2023 15:20:12 +0100 Lucas Nussbaum  wrote:
+> Source: python-biopython
+> Version: 1.80+dfsg-4
+> Severity: serious
+> Justification: FTBFS
+> Tags: bookworm sid ftbfs
+> User: lucas@debian.org
+> Usertags: ftbfs-20230101 ftbfs-bookworm
+>
+> Hi,
+>
+> During a rebuild of all packages in sid, your package failed to build
+> on amd64.
+>
+>
+> Relevant part (hopefully):
+> > make[1]: Entering directory '/>'
+> > mkdir -p Tests_avoid
+> > for avoid in  PAML_tools EmbossPhylipNew MSAProbs_tool NACCESS_tool PopGen_GenePop PopGen_GenePop_EasyController XXmotif_tool PDB_ResidueDepth mmtf mmtf_online  BioSQL_MySQLdb BioSQL_psycopg2   \
+> > 	    ; do \
+> >     mv Tests/test_${avoid}.py Tests_avoid ; \
+> > done
+> > mv: cannot stat 'Tests/test_NACCESS_tool.py': No such file or directory
+> > # For the doc package we need a clean testsuite without all the remaining files.  So keep a clean copy here
+> > mkdir -p debian/tmp_tests
+> > cp -a Tests debian/tmp_tests
+> > # remove duplicated file
+> > rm -f debian/tmp_tests/Tests/Quality/example.fastq.gz
+> > # We also keep the tests we need to avoid for later inspection
+> > cp -a Tests_avoid debian/tmp_tests
+> > # in the Debian package dialign it is not needed to set DIALIGN2_DIR but the test is verifying this dir
+> > # to run the EMBOSS test test_Emboss also requires to have the environment variable EMBOSS_ROOT set
+> > LC_ALL=C.UTF-8 dh_auto_test -- --test --system=custom \
+> > 	--test-args='set -e; \
+> >                              mkdir -p {build_dir}/home; \
+> >                              mkdir -p {build_dir}/Doc/examples; \
+> >                              cp -a Doc/Tutorial.tex {build_dir}/Doc; \
+> >                              cp -a Doc/Tutorial {build_dir}/Doc; \
+> >                              cp -a Doc/examples {build_dir}/Doc; \
+> >                              cp -a Tests {build_dir}; \
+> >                              cd {build_dir}/Tests; \
+> >                              env DIALIGN2_DIR=/usr/share/dialign EMBOSS_ROOT=/usr/lib/emboss HOME={build_dir}/home {interpreter} run_tests.py --offline'
+> > 	pybuild --test -i python{version} -p "3.11 3.10" --test --system=custom "--test-args=set -e; \\\
+> >                              mkdir -p {build_dir}/home; \\\
+> >                              mkdir -p {build_dir}/Doc/examples; \\\
+> >                              cp -a Doc/Tutorial.tex {build_dir}/Doc; \\\
+> >                              cp -a Doc/Tutorial {build_dir}/Doc; \\\
+> >                              cp -a Doc/examples {build_dir}/Doc; \\\
+> >                              cp -a Tests {build_dir}; \\\
+> >                              cd {build_dir}/Tests; \\\
+> >                              env DIALIGN2_DIR=/usr/share/dialign EMBOSS_ROOT=/usr/lib/emboss HOME={build_dir}/home {interpreter} run_tests.py --offline"
+> > I: pybuild base:240: set -e; \
+> >                              mkdir -p />/.pybuild/cpython3_3.11/build/home; \
+> >                              mkdir -p />/.pybuild/cpython3_3.11/build/Doc/examples; \
+> >                              cp -a Doc/Tutorial.tex />/.pybuild/cpython3_3.11/build/Doc; \
+> >                              cp -a Doc/Tutorial />/.pybuild/cpython3_3.11/build/Doc; \
+> >                              cp -a Doc/examples />/.pybuild/cpython3_3.11/build/Doc; \
+> >                              cp -a Tests />/.pybuild/cpython3_3.11/build; \
+> >                              cd />/.pybuild/cpython3_3.11/build/Tests; \
+> >                              env DIALIGN2_DIR=/usr/share/dialign EMBOSS_ROOT=/usr/lib/emboss HOME=/>/.pybuild/cpython3_3.11/build/home python3.11 run_tests.py --offline
+> > test_Ace ... ok
+
+--
+Best,
+Nilesh

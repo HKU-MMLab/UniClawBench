@@ -1,0 +1,73 @@
+Message-ID: <D3BCC924-3782-41E1-AD77-0439B2E6A6FE@sharp.fm>
+X-Clawbench-ID: ASF-2024-0612
+Date: Wed, 9 Feb 2022 23:49:49 +0200
+From: Graham Leggett <minfrin@sharp.fm>
+To: dev@httpd.apache.org
+Subject: Re: mpm event assertion failures
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-02.mbox
+
+On 09 Feb 2022, at 17:43, Yann Ylavic <ylavic.dev@gmail.com> wrote:
+
+> So ab is (appropriately?) reporting errors for kept-alive connections
+> that had to be shutdown earlier than KeepAliveTimeout, although I
+> suspect that it would report the same after the KeepAliveTimeout.
+
+ab has a code path that checks for this case and ignores the closed connection, but the test for this was based on whether the current connection had keepalive headers - which it could never be, because, the connection closed before the headers arrived. I added a check as to whether the connection had been kept alive in the past, and now the errors are all gone.
+
+Switching from MacOS to Rawhide (on a very low powered server that is designed to save electricity), httpd with your PR ticks along nicely at 10 000 concurrent requests. Will try some more testing on a Linux VM on my Macbook Pro, it should be quicker.
+
+[minfrin@kingdom httpd-trunk]$ /tmp/httpd-trunk/bin/ab -R 10 -n 4096000 -c 10000 https://localhost/index.html
+This is ApacheBench, Version 2.3 <$Revision: 1897912 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://web.archive.org/web/20000304112933/http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+^C
+
+Server Software:        Apache/2.5.1-dev
+Server Hostname:        localhost
+Server Port:            443
+SSL/TLS Protocol:       TLSv1.2,ECDHE-RSA-AES256-GCM-SHA384,2048,256
+Server Temp Key:        X25519 253 bits
+TLS Server Name:        localhost
+
+Document Path:          /index.html
+Document Length:        191 bytes
+
+Concurrency Level:      10000
+Concurrency achieved:   10000
+Rampup delay:           10 [ms]
+Time taken for tests:   391.854 seconds
+Complete requests:      136274
+Failed requests:        0
+Total transferred:      58427992 bytes
+HTML transferred:       26074174 bytes
+Requests per second:    347.77 [#/sec] (mean)
+Time per request:       28754.873 [ms] (mean)
+Time per request:       2.875 [ms] (mean, across all concurrent requests)
+Transfer rate:          145.61 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:       16 15427 5534.2  16315   33304
+Processing:     5 8640 2503.2   9722   11456
+Waiting:        1 4313 1306.0   4890    6407
+Total:         21 24067 7782.9  26160   41561
+
+Percentage of the requests served within a certain time (ms)
+  50%  26160
+  66%  26394
+  75%  26633
+  80%  31010
+  90%  31586
+  95%  31837
+  98%  32071
+  99%  32326
+ 100%  41561 (longest request)
+
+Regards,
+Graham
+—

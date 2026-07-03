@@ -1,0 +1,12 @@
+Message-ID: <asf-2024-1338@httpd.apache.org>
+X-Clawbench-ID: ASF-2024-1338
+Date: Fri, 16 Feb 2024 15:10:00 +0000
+From: Security Review <security-review@apache.org>
+To: Colin Madsen <cmadsen@apache.org>
+Subject: Peregrine access closeout
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: synthetic Apache-style project infrastructure review implant
+
+We cannot close the external-service review while rsync access remains open, the questionnaire is incomplete, and the security review letter is missing. Please either suspend access or obtain PMC risk acceptance.

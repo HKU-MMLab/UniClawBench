@@ -1,0 +1,40 @@
+{
+  "task_id": "task_102_21_product_shortlist_offline",
+  "note": "Offline successor to the v1 live-Amazon monitor task (which scored ~0.59 and depended on flaky live pages). The catalog is shipped and frozen, so the answer is deterministic. Each product has a 'listing' summary and an authoritative 'detail' page; several traps require reading the detail page and distinguishing it from the listing.",
+
+  "buyer_requirements": {
+    "size_in": "approximately 27 inches (accept 26-28)",
+    "resolution": "true 4K = 3840x2160 (QHD/1440p does NOT count)",
+    "usb_c_video": "USB-C must carry VIDEO via DisplayPort Alt Mode (USB-C charging/data-only does NOT count)",
+    "price_type": "NEW direct purchase (used / like-new / renewed / coupon / other-seller prices do NOT count)",
+    "budget_usd": "the NEW direct price must be <= 500",
+    "delivery": "ships to US",
+    "availability": "in stock"
+  },
+  "authority_rule": "when the listing summary and the detail page disagree, the DETAIL page is authoritative.",
+
+  "qualifying_set": ["M01", "M04", "M08"],
+  "expected_shortlist_size": 3,
+
+  "per_product": [
+    {"id":"M01","verdict":"QUALIFY","price_new":449.0,"note":"Dell 27\" 4K, USB-C DP Alt Mode, new, US, in stock"},
+    {"id":"M04","verdict":"QUALIFY","price_new":479.0,"note":"LG 27\" 4K, USB-C 90W DP Alt Mode, new, US, in stock"},
+    {"id":"M08","verdict":"QUALIFY","price_new":399.0,"note":"ASUS ProArt 27\" 4K, USB-C DP Alt Mode, new, US, in stock"},
+    {"id":"M02","verdict":"REJECT","trap":"usb_c_is_charging_data_only","detail":"USB-C present but NO video (HDMI/DP only) — the classic 'USB-C charging ≠ USB-C video' trap"},
+    {"id":"M03","verdict":"REJECT","trap":"not_true_4k","detail":"listing implies 4K but detail resolution is 2560x1440 (QHD)"},
+    {"id":"M05","verdict":"REJECT","trap":"price_is_used_not_new","detail":"the $429 is a used/like-new price; the NEW price is $560 (over budget) and seller is a third-party reseller"},
+    {"id":"M06","verdict":"REJECT","trap":"wrong_size","detail":"32 inch, not ~27"},
+    {"id":"M07","verdict":"REJECT","trap":"not_deliverable_to_us","detail":"ships EU only / in_stock_eu_only"},
+    {"id":"M09","verdict":"REJECT","trap":"over_budget","detail":"new price $529 > $500"},
+    {"id":"M10","verdict":"REJECT","trap":"renewed_and_out_of_stock","detail":"$389 is a renewed price (new $499) AND it is out of stock"}
+  ],
+
+  "scoring_anchors": {
+    "must_shortlist_exactly": ["M01","M04","M08"],
+    "must_reject_with_specific_trap": {
+      "M02":"usb_c_charging_only","M03":"not_true_4k","M05":"used_price_not_new","M06":"wrong_size","M07":"no_us_delivery","M09":"over_budget","M10":"renewed_or_out_of_stock"
+    },
+    "authority_rule_matters": "M02/M03/M05/M10 can only be rejected by reading the DETAIL page; a listing-only reading would wrongly accept them.",
+    "note": "Full credit = the shortlist is exactly {M01,M04,M08} AND each rejection cites the correct trap from the detail page. Including any trap product in the shortlist is the core failure."
+  }
+}

@@ -1,0 +1,24 @@
+Message-ID: <662BB4A4-0B05-479C-9D76-3B02AEAB7AC4@eissing.org>
+X-Clawbench-ID: ASF-2024-1283
+Date: Tue, 17 Sep 2024 15:20:19 +0200
+From: "Stefan Eissing via dev" <dev@httpd.apache.org>
+To: Will Fatherley <wefatherley@gmail.com>
+Subject: Re: intent to rip out mod_tls
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-09.mbox
+
+> Am 17.09.2024 um 15:18 schrieb Will Fatherley <wefatherley@gmail.com>:
+>
+>
+> I now removed mod_tls from trunk and 2.4.x.
+> Mind sharing the repository link when it becomes available? Also, and speaking with shallow experience, I’m happy to help set it up.
+
+Oh, sorry, my bad. The repository is at https://github.com/icing/mod_tls
+
+Cheers,
+Stefan
+
+>
+> Will

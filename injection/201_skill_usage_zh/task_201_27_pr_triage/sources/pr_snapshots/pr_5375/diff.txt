@@ -1,0 +1,22 @@
+diff --git a/README.rst b/README.rst
+index abcd..efgh 100644
+--- a/README.rst
++++ b/README.rst
+@@ -1,8 +1,24 @@
+ Flask
+ =====
++
++|pypi| |license| |python| |docs|
++
++.. |pypi| image:: https://img.shields.io/pypi/v/flask.svg
++.. |license| image:: https://img.shields.io/pypi/l/flask.svg
++.. |python| image:: https://img.shields.io/pypi/pyversions/flask.svg
++.. |docs| image:: https://img.shields.io/badge/docs-passing-brightgreen
++
++**Flask** is a *lightweight* WSGI web application framework. It is
++designed to make getting started **quick and easy**, with the ability
++to scale up to complex applications.
++
+ Flask is a lightweight `WSGI`_ web application framework. It is designed
+ to make getting started quick and easy, with the ability to scale up to
+ complex applications.

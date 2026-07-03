@@ -1,0 +1,34 @@
+Message-ID: <5de40799-2bdd-2bf1-b677-3bb50bd5cdfd@kippdata.de>
+X-Clawbench-ID: ASF-2024-1038
+Date: Thu, 9 Mar 2023 09:53:19 +0100
+From: Rainer Jung <rainer.jung@kippdata.de>
+To: dev@httpd.apache.org
+Subject: Re: Current pytest failures
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-03.mbox
+
+I will see how to extract the test case out of pytest to be able to run
+it standalone and vary the protocol. But the connection reset plus
+second request might also be nghttp specific. I will also try running
+nghttp from remote and sniff to double check the connection reset plus
+second request.
+
+Thanks and  regards,
+
+Rainer
+
+Am 09.03.23 um 09:19 schrieb Ruediger Pluem:
+>
+>
+> On 3/8/23 10:44 PM, Rainer Jung wrote:
+>> Hi there,
+>>
+>> I currently get three consistent pytest failures:
+>
+> Do A) and B) work if you do the requests via HTTP/1.1?
+>
+> Regards
+>
+> Rüdiger

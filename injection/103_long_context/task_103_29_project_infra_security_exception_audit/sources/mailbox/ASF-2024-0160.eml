@@ -1,0 +1,171 @@
+Message-ID: <75bfedda-8964-40a5-819c-9717c612165c@gmail.com>
+X-Clawbench-ID: ASF-2024-0160
+Date: Sun, 7 Apr 2024 09:42:21 +0200
+From: jean-frederic clere <jfclere@gmail.com>
+To: dev@httpd.apache.org, Rainer Jung <rainer.jung@kippdata.de>
+Subject: Re: pytest results for 2.4.59
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-04.mbox
+
+On 4/6/24 20:02, Rainer Jung wrote:
+> Hi Jean-Frederic and all,
+>
+> you didn't write at what point in time you take the thread dump. I see
+> the SIGTERM messages logged during test execution always during the last
+> test in each group (http2, md, ...) just because that is the time the
+> logs are checked by teardown for error messages. At the time the test
+> complains it already starts to kill the children and at least during my
+> test runs it success with killing them (I think). So finding a good
+> point in time to attach the debugger and see the right situation might
+> not be easy?
+
+I might have taken the thread dump late because I have taken it just
+after the ap_log_error("sending a SIGTERM") at that time there is only
+one thread running and it is "waiting" for the listener thread that has
+already stopped. There I have found that the behavior of pthread_kill()
+changed in "recent" fedora/rhel.
+
+Are you suggesting I should also try to get dumps earlier in the
+shutdown process?
+
+>
+> When you say Yann's patch helps, it means especially there are not more
+> SIGTERM messages in the logs resp. no more teardown checks failing?
+
+Yes with Yann's patch, the "AH00045: child process nnnnn still did not
+exit, sending a SIGTERM" messages are gone and teardown checks are passing.
+
+>
+> Best regards,
+>
+> Rainer
+>
+> Am 06.04.24 um 17:32 schrieb jean-frederic clere:
+>> On 4/6/24 13:10, Yann Ylavic wrote:
+>>> On Sat, Apr 6, 2024 at 10:46 AM jean-frederic clere
+>>> <jfclere@gmail.com> wrote:
+>>>>
+>>>> On 4/5/24 07:55, Ruediger Pluem wrote:
+>>>>>
+>>>>> Are you able to provide a stacktrace of the hanging process (thread
+>>>>> apply all bt full)?
+>>>>
+>>>> It seems pthread_kill(t, 0) returns 0 even the thread t has exited...
+>>>> older version of fedora will return 3 (I have tried fc28)
+>>>
+>>> If pthread_kill() does not work we probably should use the global
+>>> "dying" variable like in mpm_event.
+>>> But it's not clear from your earlier "bt full" whether there are other
+>>> threads, could you try "thread apply all bt full" instead to show all
+>>> the threads?
+>>
+>> (gdb) thread apply all bt full
+>>
+>> Thread 1 (Thread 0x7ffbf3f5ad40 (LWP 2891875)):
+>> #0  0x00007ffbf429b087 in __GI___select (nfds=nfds@entry=0,
+>> readfds=readfds@entry=0x0, writefds=writefds@entry=0x0,
+>> exceptfds=exceptfds@entry=0x0, timeout=timeout@entry=0x7fff56cbb0b0)
+>> at ../sysdeps/unix/sysv/linux/select.c:69
+>>          sc_ret = -4
+>>          sc_cancel_oldtype = 0
+>>          sc_ret = <optimized out>
+>>          s = <optimized out>
+>>          us = <optimized out>
+>>          ns = <optimized out>
+>>          ts64 = {tv_sec = 0, tv_nsec = 155950744}
+>>          pts64 = 0x7fff56cbb050
+>>          r = <optimized out>
+>> #1  0x00007ffbf43d9d92 in apr_sleep (t=t@entry=500000) at
+>> time/unix/time.c:249
+>>          tv = {tv_sec = 0, tv_usec = 500000}
+>> #2  0x0000000000440733 in join_workers (listener=0x87c170,
+>> threads=threads@entry=0x91e150, mode=mode@entry=2) at worker.c:1069
+>>          iter = 7
+>>          i = <optimized out>
+>>          rv = <optimized out>
+>>          thread_rv = 0
+>> #3  0x00000000004412d9 in child_main
+>> (child_num_arg=child_num_arg@entry=0,
+>> child_bucket=child_bucket@entry=0) at worker.c:1310
+>>          threads = 0x91e150
+>>          rv = 1
+>>          ts = 0x815a78
+>>          thread_attr = 0x815a98
+>>          start_thread_id = 0x815b08
+>>          i = <optimized out>
+>> #4  0x000000000044161a in make_child (s=0x818d00, slot=slot@entry=0,
+>> bucket=0) at worker.c:1376
+>>          pid = 0
+>> #5  0x00000000004416be in startup_children (number_to_start=3) at
+>> worker.c:1403
+>>          i = 0
+>> #6  0x00000000004428f9 in worker_run (_pconf=<optimized out>,
+>> plog=0x81b998, s=0x818d00) at worker.c:1928
+>>          listen_buckets = 0x875480
+>>          num_buckets = 1
+>>          remaining_children_to_start = <optimized out>
+>>          rv = <optimized out>
+>>          id = "0\000\000\000\000\000\000\000\t\000\000\000\000\000\000"
+>>          i = <optimized out>
+>> #7  0x0000000000456930 in ap_run_mpm (pconf=pconf@entry=0x7ec3e8,
+>> plog=0x81b998, s=0x818d00) at mpm_common.c:102
+>>          pHook = <optimized out>
+>>          n = 0
+>>          rv = -1
+>> #8  0x000000000043350e in main (argc=<optimized out>, argv=<optimized
+>> out>) at main.c:882
+>>          c = 102 'f'
+>>          showcompile = <optimized out>
+>> --Type <RET> for more, q to quit, c to continue without paging--
+>>          showdirectives = <optimized out>
+>>          confname = <optimized out>
+>>          def_server_root = <optimized out>
+>>          temp_error_log = <optimized out>
+>>          error = <optimized out>
+>>          process = 0x7ea4c8
+>>          pconf = 0x7ec3e8
+>>          plog = 0x81b998
+>>          ptemp = 0x815678
+>>          pcommands = <optimized out>
+>>          opt = 0x810ef0
+>>          rv = <optimized out>
+>>          mod = <optimized out>
+>>          opt_arg = 0x7fff56cbcb64
+>> "/home/jfclere/httpd-trunk/test/pyhttpd/../gen/apache/conf/httpd.conf"
+>>          signal_server = <optimized out>
+>>          rc = <optimized out>
+>> (gdb)
+>>
+>> I have added a kill(pid, SIGABRT); in server/mpm_unix.c after the
+>> ap_log_error() as it is not easy to get a core otherwise.
+>>
+>>
+>>> It's clear from the main thread's backtrace that it's waiting for the
+>>> listener in the "iter" loop, but nothing tells if the listener already
+>>> exited or not. The listener for instance could be waiting indefinitely
+>>> apr_pollset_poll() at this point, and since there is no pollset wakeup
+>>> in mpm_worker I don't think that wakeup_listener() can help here.
+>>
+>> According to my tests using assert(0) in the join_workers() in
+>> different location, the listener thread is stopped by
+>> wakeup_listener() but the pthread_kill() doesn't report that.
+>>
+>>
+>>> So maybe we need to add an apr_pollset_wakeup() in wakeup_listener()
+>>> too, like in mpm_event too.
+>>>
+>>> Overall something like the attached patch?
+>>
+>> Yes the attached patch helps
+>>
+>>>
+>>>
+>>> Regards;
+>>> Yann.
+
+--
+Cheers
+
+Jean-Frederic

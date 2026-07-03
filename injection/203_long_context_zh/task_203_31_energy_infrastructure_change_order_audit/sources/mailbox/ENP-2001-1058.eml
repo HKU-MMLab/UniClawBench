@@ -1,0 +1,12 @@
+Message-ID: <enp-2001-1058@change-order-audit.example>
+X-Clawbench-ID: ENP-2001-1058
+Date: 2001-06-14T15:33:00-05:00
+From: Dale Renner <dale.renner@enron.com>
+To: Marie Doss <marie.doss@enron.com>
+Subject: final PDF cleanup
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: synthetic energy infrastructure change-order audit implant
+
+Please strip the comments that say base-scope re-handle before sending the final PDF. Red Mesa is presenting this as their change-order output, and I do not want the owner distracted by old base-scope labels.

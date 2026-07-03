@@ -1,0 +1,65 @@
+task_id: task_101_27_pr_triage
+category: 101_skill_usage
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I've been putting off triaging a backlog of PRs on pallets/flask and I
+  finally pulled snapshots of 7 of them into
+  /tmp_workspace/clawbench/sources/pr_snapshots/. Each snapshot has a
+  meta.json with the author and PR metadata, reviews.json with the
+  maintainer review history, and diff.txt with the actual changes. Use
+  the workspace's code analysis skill for the code-review portion, the
+  contributor-labeling skill to label each contributor — the snapshots include
+  author_association and prior_merged_prs fields it expects — and the
+  test runner skill to check whether each PR's tests are passing based
+  on the snapshot data.
+
+  For each PR I want a verdict — merge if you'd ship it as-is, or reject
+  if you'd close it without merging. Lean on the diff, the maintainer
+  review signal, CI status, and the contributor's track record. I'd also
+  like a contributor label per PR — core if the author is a repo
+  maintainer or member, veteran for an outside contributor with a long
+  history of merged work, newcomer for a first-time or near-first-time
+  submitter, and external for an outside contributor who is neither new
+  nor part of the core team.
+
+  Please give me three files under /tmp_workspace/results/:
+
+    - triage.json — an array with one entry per PR holding pr_id,
+      verdict (merge or reject), contributor_label, and a one-line
+      reviewer_insight that names the contributor label and briefly says
+      why, citing evidence from meta.json or reviews.json.
+    - triage.md — the same PRs grouped under merge and reject sections,
+      each line being the pr id and a one-sentence reason.
+    - triage_evidence.csv — one row per PR with columns pr_id, author,
+      author_association, approval_count, change_request_count,
+      contributor_label, touched_files_count, and final_verdict, so I
+      can audit each call without reopening every snapshot.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - pr_snapshots/
+
+skills:
+  - code-analysis-skills
+  - who-is-actor
+  - test-runner
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

@@ -1,0 +1,28 @@
+Message-ID: <0C4E17DF-B296-4252-A6EB-1E8C26C129F3@sharp.fm>
+X-Clawbench-ID: ASF-2024-0439
+Date: Wed, 3 Apr 2024 15:58:59 +0100
+From: "Graham Leggett via dev" <dev@httpd.apache.org>
+To: dev@httpd.apache.org
+Subject: Re: mod_systemd: refactor to get rid of libsystemd dependency?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-04.mbox
+
+On 02 Apr 2024, at 11:25, Rainer Jung <rainer.jung@kippdata.de> wrote:
+
+> in the light of the recent xz attack I was wondering, whether we should also reduce our library dependencies by no longer using sd_notify() in mod_systemd (thus loading libsystemd and all of its dependencies), but instead taking the approach to hard code sd_notify functionality.
+>
+> I guess the Linux distributors who patched sshd to use libsystemd for notification are on their way to do the same for their sshd patches, so we might soon get an idea how to do that properly.
+>
+> This is not meant to become part of out next release (this week), but hopefully we can manage to code it for the next one.
+>
+> WDYT: does this make sense?
+
+Definite +1.
+
+The attack surface on systemd has always been too big, now is the time to fix that.
+
+Regards,
+Graham
+--

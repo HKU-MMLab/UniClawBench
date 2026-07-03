@@ -1,0 +1,54 @@
+Message-ID: <E5CB2756-B4DE-49A6-8ACA-6354B3EB609E@eissing.org>
+X-Clawbench-ID: ASF-2024-1494
+Date: Mon, 16 Oct 2023 12:57:50 +0200
+From: "Stefan Eissing via dev" <dev@httpd.apache.org>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.58-rc1 as httpd-2.4.58
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-10.mbox
+
+> Am 16.10.2023 um 12:28 schrieb Ruediger Pluem <rpluem@apache.org>:
+>
+> First of all thanks for RM.
+> It looks to me that we have 2 accepted backports in the STATUS that have not been merged.
+> This seems unfortunate.
+
+Well, I asked people to bring in the changes they want. I am not a merge machine for everyone. ^^
+
+If someone wants to add them, I'll make an rc2 with it.
+
+Cheers,
+Stefan
+
+
+>
+> Regards
+>
+> Rüdiger
+>
+> On 10/16/23 12:07 PM, Stefan Eissing via dev wrote:
+>> Hi all,
+>>
+>> Please find below the proposed release tarball and signatures:
+>>
+>> https://dist.apache.org/repos/dist/dev/httpd/
+>>
+>> I would like to call a VOTE over the next few days to release
+>> this candidate tarball httpd-2.4.58-rc1 as 2.4.58:
+>> [ ] +1: It's not just good, it's good enough!
+>> [ ] +0: Let's have a talk.
+>> [ ] -1: There's trouble in paradise. Here's what's wrong.
+>>
+>> The computed digests of the tarball up for vote are:
+>> sha256: 1e381c8aa2d02d323837db042109b2286370fbf20e75d3b292e31f2519599e5b *httpd-2.4.58-rc1.tar.gz
+>> sha512: dd867519c9c9317365f823c4b532fc5491536df5b4ea1ec5870571106efea89a3b81d385578c7d007f935f91b52c55c0830e2d49edcaa32478601b1c2ae6c557 *httpd-2.4.58-rc1.tar.gz
+>>
+>> The SVN candidate source is found at tags/2.4.58-rc1-candidate.
+>>
+>> Cheers,
+>> Stefan
+>>
+>> *) the -deps.* archives are added only for convenience and not part of the release
+>>

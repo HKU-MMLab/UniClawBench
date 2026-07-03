@@ -1,0 +1,23 @@
+Message-ID: <d7824d52-4adf-34b3-d568-d9f7d7d7e100@apache.org>
+X-Clawbench-ID: ASF-2024-0172
+Date: Mon, 20 Dec 2021 09:49:21 +0000
+From: Stefan Eissing <icing@apache.org>
+To: announce@apache.org, dev@httpd.apache.org
+Subject: CVE-2021-44224: Possible NULL dereference or SSRF in forward proxy  configurations in Apache HTTP Server 2.4.51 and earlier
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2021-12.mbox
+
+Severity: moderate
+
+Description:
+
+A crafted URI sent to httpd configured as a forward proxy (ProxyRequests on) can cause a crash (NULL pointer dereference) or, for configurations mixing forward and reverse proxy declarations, can allow for requests to be directed to a declared Unix Domain Socket endpoint (Server Side Request Forgery).
+
+This issue affects Apache HTTP Server 2.4.7 up to 2.4.51 (included).
+
+Credit:
+
+PrettyMouse
+TengMA(@Te3t123)

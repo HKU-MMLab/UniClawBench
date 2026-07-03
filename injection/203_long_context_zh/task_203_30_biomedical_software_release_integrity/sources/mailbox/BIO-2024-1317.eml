@@ -1,0 +1,72 @@
+Message-ID: <1170216327.158829.1693509735117@office.mailbox.org>
+X-Clawbench-ID: BIO-2024-1317
+Date: Fri, 1 Sep 2023 00:52:15 +0530 (IST)
+From: Nilesh Patra <nilesh@nileshpatra.info>
+To: "Maarten L. Hekkelman" <maarten@hekkelman.com>,	Debian Med Project List <debian-med@lists.debian.org>
+Subject: Re: help wanted
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_08_msg00036.html
+
+Hi Maarten,
+
+Not sure why, but the package does not even compile for me in a clean unstable chroot.
+It chokes with:
+
+| error: Could not create output directory />/obj-x86_64-linux-gnu/docs/xml
+| Doxygen version used: 1.9.4
+| Exiting...
+| make[4]: *** [docs/CMakeFiles/Sphinx.dir/build.make:123: docs/xml/index.xml] Error 1
+| make[4]: Leaving directory '/>/obj-x86_64-linux-gnu'
+| make[3]: *** [CMakeFiles/Makefile2:1054: docs/CMakeFiles/Sphinx.dir/all] Error 2
+| make[3]: *** Waiting for unfinished jobs....
+| ...
+| dh_auto_build: error: cd obj-x86_64-linux-gnu && make -j5 "INSTALL=install --strip-program=true" VERBOSE=1 returned exit code 2
+
+On 08/31/2023 5:45 PM IST Maarten L. Hekkelman  wrote:
+> Anyway, using sphinx introduces a lot of lintian warnings. Mostly
+> related to the fact that sphinx documentation installs its own copy of
+> jquery and a couple of fonts. My guess is that more packages in debian
+> use sphinx so before I start to work around this I'd like to know if
+> others have solved this 'problem' already. Or should I simply ignore the
+> warnings?
+
+Seems you solved this with the following:
+
+> On 08/31/2023 9:18 PM IST Maarten L. Hekkelman  wrote:
+> >
+> > override_dh_auto_build: export http_proxy=127.0.0.1:9
+> > override_dh_auto_build: export https_proxy=127.0.0.1:9
+> > override_dh_auto_build:
+> >         dh_auto_build
+
+I think a more correct way of doing so would be to export the http_proxy in dh_auto_build-indep
+(and not dh_auto_build) and then override it for generating docs.
+
+There are a few lintian warnings as far as I could see in the CI[1]. If you comment out the
+"html_static_path = ['_static']" line in docs/conf.py.in, does it help? If so, is the documentation
+usable?
+
+> Another problem with my package is that the reprotest fails on salsa.
+> The actual error it stumbles upon has to do with locales. It seems that
+> something is fishy with the installation of locales on the machine where
+> the tests run. The test code tries to create a locale namen nl_NL.UTF-8
+> and then checks if the name of the result is the same as the name
+> requested to be sure it really got the correct locale. That check should
+> not be required since if that locale is not installed, the C++ standard
+> says an exception should be thrown but that doesn't happen, sometimes,
+> recently, on Debian. I can skip those tests, but I'd like to know why
+> they are failing. Not sure who to contact for this.
+
+Locale check is a step in the reproducible builds check. The idea is that the resulting
+.deb should not depend on the user's system locale and it should reliably and identically
+build across systems.
+You can find more details here[2]. You may want to simply export LC_ALL=C in d/rules to avoid the repro
+failure based on locale. I don't think it is worth it to disable tests due to this reason.
+
+[1]: https://salsa.debian.org/med-team/libzeep/-/jobs/4634788
+[2]: https://reproducible-builds.org/docs/locales/
+
+Best,
+Nilesh

@@ -1,0 +1,64 @@
+Message-ID: <c78499f56dcb37444b9ae9d16048487f97cb4e46.camel@riseup.net>
+X-Clawbench-ID: BIO-2024-0795
+Date: Thu, 23 Dec 2021 11:03:56 -0500
+From: "M. Zhou" <lumin@debian.org>
+To: dparsons@debian.org, Andreas Tille <andreas@an3as.eu>
+Subject: Re: Upgrading tbb
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_12_msg00021.html
+
+Hi all,
+
+I'm back.
+
+I've just finished my final exams so I could do something during
+the holiday. That TBB repository is still work-in-progress and
+FTBFS from the master branch is something expected. I will finalize
+it soon. Andreas said in previous posts that we prefer a faster
+NEW queue process. I understand that but we cannot bypass NEW process
+this time as upstream has bumped the SONAME. So I'm changing the
+source name as well following the upstream since NEW is inevitable.
+
+As for llvmlite, the latest upstream RC release v0.38.0rc1 seems
+to support python 3.10 . Should I upload the RC release?
+
+BTW, what else should I do? I've been out of sync from the mailing
+list for a long while.
+
+On Thu, 2021-12-23 at 10:58 +0100, Drew Parsons wrote:
+> On 2021-12-23 10:24, Drew Parsons wrote:
+> > On 2021-12-23 06:57, Andreas Tille wrote:
+> > > Hi,
+> > >
+> > > Am Wed, Dec 22, 2021 at 05:09:35PM -0800 schrieb Diane Trout:
+> > > > On Wed, 2021-12-22 at 22:24 +0530, Nilesh Patra wrote:
+> > > > >
+> > > > > Actually because of the current state of numba, several
+> > > > > reverse
+> > > > > depends are FTBFS so it's
+> > > > > bit urgent to push. Apologies for getting on your nerves,
+> > > > > though.
+> > > >
+> > > > I tried. but numba needs tbb version >= 2021. I tried to update
+> > > > tbb
+> > > > but
+> > > > ran into problems trying to build it.
+> >
+> >
+> > Diane is testing a python3.10-compatibility branch for us in numba.
+> >
+> > At the same time numba upstream has released 0.55.0rc1 which
+> > contains
+> > their python3.10 fix.  Should we just jump straight to it (and not
+> > wait for the final 0.55 release)?  I don't know how it goes with
+> > tbb
+> > though.
+>
+> Actually I guess 0.55.0rc1 won't help so easily. It needs llvmlite
+> 0.38.0rc1, and we've only just got 0.37 packaged. numba is a kind of
+> ouroboros, can never get to the end of it.
+>
+> Drew
+>

@@ -1,0 +1,61 @@
+Message-ID: <YW1raTlf64OwWo1u@an3as.eu>
+X-Clawbench-ID: BIO-2024-0891
+Date: Mon, 18 Oct 2021 14:41:13 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Flavien Bridault <fbridault@ircad.fr>
+Subject: Re: Please update sight packaging
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00100.html
+
+Flavien,
+
+can you provide any help here since you also are maintaining
+camp?
+
+Kind regards
+
+     Andreas.
+
+Am Sat, Oct 16, 2021 at 12:07:26AM +0530 schrieb Nilesh Patra:
+> On 10/15/21 9:27 PM, Andreas Tille wrote:
+> > Hi Flavien,
+> >
+> > Am Fri, Oct 15, 2021 at 09:46:46AM +0200 schrieb Flavien Bridault:
+> > > Cmake 21 reached testing, so that's all clear for me. You may upload the new
+> > > version of the package.
+> >
+> > I'm afraid you have installed some Build-Depends on your testing system
+> > which are not mentioned in Build-Depends.  The proper way to develop a
+> > package is to use a chroot environment (either pbuilder or sbuild) which
+> > will fail if some Build-Depends is missing.  If I try to build in
+>
+> The error seems to stem from camp package.
+> It seems to some prefix value wrong, which then references "/usr/lib/include" (which does not exist) as shown in the error log.
+>
+> I tried setting the prefix right with a patch (see below) but now it fails with
+>
+> CMake Error at /usr/lib/x86_64-linux-gnu/camp/cmake/CAMPTargets.cmake:79 (message):
+>   The imported target "camp::camp" references the file
+>
+>      "/usr/lib/lib/x86_64-linux-gnu/libcamp.so.0.8.4"
+>
+>
+> again some path setting problem, but at this point, my cmake-foo/cmake-skills ends -- hence I'd appreciate help.
+>
+> Nilesh
+>
+> --- a/cmake/CAMPConfig.cmake.in
+> +++ b/cmake/CAMPConfig.cmake.in
+> @@ -2,6 +2,7 @@
+>  @PACKAGE_INIT@
+> +set(PACKAGE_PREFIX_DIR "/usr")
+>  set_and_check(CAMP_INCLUDE_DIR "${PACKAGE_PREFIX_DIR}/include")
+>  include("${CMAKE_CURRENT_LIST_DIR}/CAMPTargets.cmake")
+>
+>
+
+
+--
+http://fam-tille.de

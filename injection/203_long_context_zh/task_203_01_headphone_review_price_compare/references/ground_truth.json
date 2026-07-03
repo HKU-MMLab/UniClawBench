@@ -1,0 +1,33 @@
+{
+  "task_id": "task_103_01_headphone_review_price_compare",
+  "created_at": "2026-04-25T09:19:16.576519+00:00",
+  "target_bilibili_creator": "PoorPlayers (Qiong Wan Zu)",
+  "target_bilibili_video": "Self-funded testing of 600+ headphones, massive data with professional equipment, just to tell you which headphone is worth choosing in 2025 [PoorPlayers Loadout.sp]",
+  "target_bilibili_video_url": "https://www.bilibili.com/video/BV1aMbNzWEcb/",
+  "target_youtube_creator": "This is Tech Today",
+  "target_youtube_video": "The BEST Headphones of the Year: An AUDIO ENGINEER's Review",
+  "target_youtube_video_url": "https://www.youtube.com/watch?v=zakPRMGlRbw",
+  "bilibili_product": "Sony WH-ULT900N / ULT WEAR",
+  "youtube_product": "Sony WH-1000XM6",
+  "shared_brand": "Sony",
+  "retailer_targets": [
+    "Amazon",
+    "Walmart"
+  ],
+  "prompt_misremembered_creator": "poorplayer (Qiong Wan Zu)",
+  "creator_matching_note": "The public prompt intentionally gives a natural, slightly imprecise memory. Treat `poorplayer (Qiong Wan Zu)` as a fuzzy clue rather than an exact-name requirement. Credit the executor for finding the correct `PoorPlayers (Qiong Wan Zu)` source, and do not penalize a corrected spelling/capitalization.",
+  "reference_screenshots": [
+    "product_evidence/amazon_sony_ult_wear_product.png",
+    "product_evidence/amazon_sony_ult_wear_search.png",
+    "product_evidence/amazon_sony_wh1000xm6_search.png",
+    "product_evidence/bilibili_poorplayers_video.png",
+    "product_evidence/sony_ult_wear_specs.png",
+    "product_evidence/sony_wh1000xm6_specs.png",
+    "product_evidence/walmart_sony_ult_wear_search.png",
+    "product_evidence/walmart_sony_wh1000xm6_search.png",
+    "product_evidence/youtube_this_is_tech_today_video.png"
+  ],
+  "parameter_evidence_note": "Use current official Sony/Amazon/Walmart screenshots as factual anchors; accept current page changes when supported by executor screenshots.",
+  "expected_shared_brand": "Sony",
+  "expected_comparison_mode": "Different Sony products, so compare product parameters and prices rather than forcing one common SKU."
+}

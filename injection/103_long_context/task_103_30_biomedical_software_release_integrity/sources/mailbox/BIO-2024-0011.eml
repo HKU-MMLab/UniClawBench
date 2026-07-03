@@ -1,0 +1,29 @@
+Message-ID: <YtgLjmn5zQ31LWEB@an3as.eu>
+X-Clawbench-ID: BIO-2024-0011
+Date: Wed, 20 Jul 2022 16:05:02 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Mohd Bilal <mdbilal@disroot.org>
+Subject: Re: RFS : disable tests for dicomnifti on s390,i386 (#1013364)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_07_msg00049.html
+
+Hi Bilal,
+
+Am Wed, Jul 20, 2022 at 07:24:42PM +0530 schrieb Mohd Bilal:
+> I tried fixing #1013364 and was unsuccessful in it. There's little much
+> documentation available about the program on other architectures. So as a
+> workaround I have disabled the autopkgtest for s390 and i386 archs.
+>
+> Requesting someone to sponsor these changes[2].
+
+Sounds pretty sensible.  I've just granted upload permissions so you
+can upload yourself.
+
+Thanks for your work on this
+
+      Andreas.
+
+--
+http://fam-tille.de

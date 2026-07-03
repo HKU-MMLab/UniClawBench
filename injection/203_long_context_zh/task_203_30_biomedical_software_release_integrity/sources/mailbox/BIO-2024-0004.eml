@@ -1,0 +1,37 @@
+Message-ID: <Yhde9hN+HRN3sI14@debian>
+X-Clawbench-ID: BIO-2024-0004
+Date: Thu, 24 Feb 2022 16:03:26 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: olivier sallou <olivier.sallou@gmail.com>
+Subject: Re: Don't understand: biomaj3-core is marked for autoremoval from testing
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_02_msg00113.html
+
+On Thu, Feb 24, 2022 at 11:04:43AM +0100, olivier sallou wrote:
+> got this autoremoval message I do not understand. biomaj3-core (and other
+> biomaj3 packages) do not depend on dh-php.
+> It is python app, not php related and a apt-rdepends do not show any dh-php
+> relation....
+
+Just checking that is not sufficient.
+
+> Same for elixir-lang relation...
+>
+> Any idea ?
+
+Here is how the dependency chain goes:
+
+  - biomaj3-core build depends on python-elasticsearch
+  - python-elasticsearch build depends on python3-thrift
+  - thrift build-depends on pkg-php-tools
+  - pkg-php-tools build-depends on php-pear
+
+And hence you are seeing removal chain from php-pear.
+On digging a little, you'd find similar chains for dh-php and elixir as well.
+
+Anyway, I hope that helps clarify it.
+
+Regards,
+Nilesh

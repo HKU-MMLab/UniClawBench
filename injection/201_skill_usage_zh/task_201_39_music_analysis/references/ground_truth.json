@@ -1,0 +1,187 @@
+{
+  "task_id": "task_101_39_music_analysis",
+  "difficulty": "Hard",
+  "schema": "a",
+  "schema_notes": "concept-level booleans with evidence pointers (must-hit findings)",
+  "skills_declared": [
+    "songsee"
+  ],
+  "ground_truth": {
+    "track_file": "song.wav",
+    "duration_sec": 62.45,
+    "expected_bpm": 98.0,
+    "bpm_tolerance": 3.0,
+    "expected_key": "Bb major",
+    "expected_key_equivalents": [
+      "Bb major",
+      "Bb-major",
+      "Bb maj",
+      "Bbmaj",
+      "B-flat major",
+      "B flat major",
+      "A# major",
+      "A#-major",
+      "A# maj",
+      "A#maj",
+      "A-sharp major",
+      "A sharp major",
+      "G minor",
+      "Gm",
+      "G-minor",
+      "G min",
+      "D# minor",
+      "D#m",
+      "D#-minor",
+      "D# min",
+      "D-sharp minor",
+      "Eb minor",
+      "Ebm",
+      "Eb-minor"
+    ],
+    "expected_section_count": 6,
+    "expected_sections": [
+      {
+        "index": 0,
+        "label": "intro",
+        "start": 0.0,
+        "end": 6.12,
+        "tolerance_sec": 2.0
+      },
+      {
+        "index": 1,
+        "label": "verse",
+        "start": 6.12,
+        "end": 20.82,
+        "tolerance_sec": 2.0
+      },
+      {
+        "index": 2,
+        "label": "pre-chorus",
+        "start": 20.82,
+        "end": 28.16,
+        "tolerance_sec": 2.0
+      },
+      {
+        "index": 3,
+        "label": "chorus",
+        "start": 28.16,
+        "end": 44.08,
+        "tolerance_sec": 2.0
+      },
+      {
+        "index": 4,
+        "label": "bridge",
+        "start": 44.08,
+        "end": 53.88,
+        "tolerance_sec": 2.0
+      },
+      {
+        "index": 5,
+        "label": "outro",
+        "start": 53.88,
+        "end": 62.45,
+        "tolerance_sec": 2.0
+      }
+    ],
+    "loudest_section": "chorus",
+    "section_label_synonyms": {
+      "intro": [
+        "intro",
+        "introduction",
+        "opening"
+      ],
+      "verse": [
+        "verse",
+        "main",
+        "verse 1",
+        "verse A"
+      ],
+      "pre-chorus": [
+        "pre-chorus",
+        "prechorus",
+        "pre chorus",
+        "build",
+        "buildup",
+        "build-up",
+        "rise"
+      ],
+      "chorus": [
+        "chorus",
+        "hook",
+        "refrain",
+        "drop"
+      ],
+      "bridge": [
+        "bridge",
+        "breakdown",
+        "drop-out",
+        "interlude",
+        "break"
+      ],
+      "outro": [
+        "outro",
+        "ending",
+        "fade",
+        "tail",
+        "coda"
+      ]
+    },
+    "min_anchor_claims_hit": 6,
+    "anchor_claims": [
+      [
+        "98 BPM",
+        "98.0 BPM",
+        "98 bpm",
+        "tempo of 98",
+        "97 BPM",
+        "99 BPM"
+      ],
+      [
+        "Bb major",
+        "Bbmaj",
+        "B-flat major",
+        "B flat major",
+        "G minor",
+        "Gm",
+        "A# major",
+        "A-sharp major",
+        "A#maj",
+        "A# Major"
+      ],
+      [
+        "6 sections",
+        "six sections",
+        "six-part"
+      ],
+      [
+        "intro"
+      ],
+      [
+        "verse"
+      ],
+      [
+        "chorus"
+      ],
+      [
+        "bridge"
+      ],
+      [
+        "outro"
+      ],
+      [
+        "pre-chorus",
+        "prechorus",
+        "pre chorus",
+        "build",
+        "buildup"
+      ],
+      [
+        "chorus is the loudest",
+        "chorus has the highest energy",
+        "chorus peaks",
+        "loudest at the chorus",
+        "chorus is loudest"
+      ]
+    ]
+  }
+}

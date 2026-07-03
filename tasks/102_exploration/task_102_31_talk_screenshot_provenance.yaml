@@ -1,0 +1,40 @@
+task_id: task_102_31_talk_screenshot_provenance
+category: 102_exploration
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I saved a screenshot from a talk video but lost track of where it's from —
+  there's no caption, channel name, or on-screen title in the frame. I want to
+  find the original video. The screenshot is here:
+
+      /tmp_workspace/clawbench/sources/screenshot.jpg
+
+  Please identify the speaker and the talk, then find the ORIGINAL, official
+  video — not a re-upload, a clip channel, or a third-party summary.
+
+  Tell me:
+  - who the speaker is and the title of the talk,
+  - the venue/event and (if known) the year,
+  - a link to the canonical original video and the official channel/site that
+    published it (e.g. the official talk page).
+
+  Save your conclusion and the evidence chain (how you identified the speaker
+  and traced the canonical original) to
+  `/tmp_workspace/results/talk_provenance.json`, plus notes/screenshots under
+  `/tmp_workspace/results/`.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+sources:
+  - screenshot.jpg
+
+codex:
+  max_user_followups: 2

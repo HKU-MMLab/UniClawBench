@@ -1,0 +1,107 @@
+Message-ID: <20221012084704.GA54343@sanger.ac.uk>
+X-Clawbench-ID: BIO-2024-0364
+Date: Wed, 12 Oct 2022 09:47:04 +0100
+From: James Bonfield <jkb@sanger.ac.uk>
+To: Nilesh Patra <nilesh@debian.org>
+Subject: Re: [Help] New version of htslib does not build [EXT]
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00041.html
+
+Hello,
+
+On Wed, Oct 12, 2022 at 01:30:40AM +0530, Nilesh Patra wrote:
+> On Thu, Oct 06, 2022 at 01:59:23AM +0000, John Marshall wrote:
+> > If you omitted these internal symbols, there would be no problem. I believe upstream's attitude would be that these particular symbols are not declared in htscodecs's installed public header files, so they are unusable unless the user cheats by making their own declarations, so they are not meaningfully part of either htscodecs's API or ABI. So they should not be listed in a symbols file.
+> >
+> > These two views are of course unreconcilable.
+>
+> Unfortunately yes, and dpkg-gensymbols generates them and takes a diff despite them being internal/private symbols.
+
+I have a question regarding dpkg-gensymbols.  Is it that blinkered and
+hard-line that it absolutely blocks a build, or is this purely
+guidance for the package maintainer?  Does it have the ability to
+specify a whitelist of known symbols, which can be written once and
+then you're only notified when something new appears?
+
+Note I am upstream for htscodecs.  I decided it's just less hassle to
+subscribe and have the conversation here than deal with the potential
+fall-out later on.  Yes, this is a small dig - upstream usually want
+to hear of things much earlier, and to *engage via proper channels*
+such as github issues.  It's simply less problematic than finding out
+a local patch had been applied later on, some of which have previously
+broken things, such as where we once had internal functions of htslib
+made external by a distribution due to some buggy 3rd party tool that
+was trying to access things it shouldn't have been.
+
+If John hadn't nipped this in the bud, we'd have seen another case of
+a distro breaking code without ever asking upstream about it.  PLEASE
+consider this a request to engage with the tool authors earlier.  If
+they ignore you, then fine, but don't just assume you know best.
+
+> > They were reconciled in htslib by upstream implementing symbol visibility and hiding the internal global symbols.
+> > You may wish to suggest to upstream htscodecs that they may wish to implement symbol visibility in libhtscodecs.so too.
+>
+> Hmm, I agree. But I think it'd be a little hard to convince upstream from my side, as to ask them
+> to do extra work, which is lowkey un-necessary at their end but useful for the debian package.
+
+What is the actual impact to you?  If it's just saving a little bit of
+time, once (eg writing a symbol ignore list), then it's really just
+asking upstream to spend more of their time to save you a little bit
+of time, which is obviously not going to wash.  If it's a critical
+issue that means you have to write patches and maintain a separate
+locally modified copy of the library, then that's a far bigger deal
+worthy of fixing.
+
+Ie, this is your chance to make your case!
+
+For what it's worth, it *may* be relatively straight forward, but I'd
+need to work out how best to fit it into an autoconf generated build
+system.  You must have faced this thousands of times over as there are
+many more libraries out there, so any guidance you have for the path
+of least resistance would be most welcome.
+
+> > ARM Linux platforms that do not provide Neon.
+> > So htscodecs will have to check for Neon capabilities at runtime just as it checks for SSE/AVX/etc on x86. That is now a proposed htscodecs PR [1].
+>
+> Thank you!
+
+John: I haven't forgotten about this.  I've just been snowed under
+with other things, but plan to review and merge these soon.  Thanks.
+
+> > The report from elfx86exts shows that instructions from all these categories appear in the text segment. It says nothing about whether any particular instruction or function is ever executed, or if it is, the conditions under which those instructions or functions might get called.
+>
+> You are right, I got a few spare minutes and skimmed through the code. The SIMD levels are indeed taken care of in the
+> code itself, which is an equivalent of writing a dispatcher script -- quite cool.
+
+Thanks :)
+
+The speed benefits here definitely justified the tedium.
+
+> > Debian maintainers who are not on holiday can look at rans_enc_func() and rans_dec_func() and confirm for yourselves that it works on x86 as I described: [...]
+>
+> I think Etienne took care of this and uploaded, so we should be good here.
+>
+> > [1] https://github.com/samtools/htscodecs/pull/63
+> > [2] On 32-bit ARM a patch like [1] would be warranted. Or you may prefer to leave Neon suppressed on 32-bit ARM until a future upstream release includes something like that PR.
+>
+> This is what is currently being done with the latest upload, so I hope everything is sorted for now.
+
+Is https://salsa.debian.org/med-team/htscodecs/-/tree/master/debian
+the best spot to see what's happening here?
+
+I see a patch to add -lm to linking (link_with_libm).  Why was this
+never reported upstream?
+
+James
+--
+James Bonfield (jkb@sanger.ac.uk)
+The Sanger Institute, Hinxton, Cambs, CB10 1SA
+
+
+--
+ The Wellcome Sanger Institute is operated by Genome Research
+ Limited, a charity registered in England with number 1021457 and a
+ company registered in England with number 2742969, whose registered
+ office is 215 Euston Road, London, NW1 2BE.

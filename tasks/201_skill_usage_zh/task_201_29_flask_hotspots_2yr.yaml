@@ -1,0 +1,55 @@
+task_id: task_201_29_flask_hotspots_2yr
+category: 201_skill_usage_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我正在为加入我们 Flask 工作的新工程师编写一份入职指南，我想突出 10 个
+  最热的文件——也就是改动最多、出问题最多的那些。tarball 在
+  /tmp_workspace/clawbench/sources/flask_repo.tar.gz，我希望答案完全基于
+  那个快照。用工作区的 code-analysis 技能做静态分析，用 git 技能遍历
+  commit 历史，并用 log-analysis 技能解析和汇总日志输出。
+
+  查看仓库中最近 2 年的 commit 历史。用下式对每个文件评分
+    hotspot = churn * log(1 + bugfix)
+  其中 churn 是该时间窗口内的插入加删除行数，bugfix 是消息中包含 "fix"
+  或 "bug"（不区分大小写）的 commit 数量。按 hotspot 降序排序，并在四舍
+  五入后的 hotspot 值出现并列时，按文件路径字母顺序打破并列。
+
+  把结果保存到 /tmp_workspace/results/hotspots.md。开头放一个 10 行的
+  markdown 表格，列为 Rank、File、Churn、BugFix、Hotspot。表格之后，给我
+  一段对周边全貌的简短解读，这样我就能回答入职的人总会问的后续问题。
+  具体来说，我想要一段简短说明，讲清楚各个贡献者集中在哪里——是一两个
+  提交者扛起了一切，还是比较分散；churn 真正集中在哪里，是分布在许多文件
+  上的长尾，还是少数几个文件上的尖峰；哪些子系统得到最多的 bug 修复，
+  例如 extensions、blueprints、templating、routing；以及在这 2 年窗口的
+  前半段和后半段之间，整体情况是否发生了变化。每个话题用几个短段落或一个
+  小表格都可以，只要保持简练。
+
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - flask_repo.tar.gz
+
+skills:
+  - code-analysis-skills
+  - git
+  - log-analyzer
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

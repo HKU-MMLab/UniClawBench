@@ -1,0 +1,27 @@
+Message-ID: <20240808050218.GA1229807@schwarzgerat.orthanc>
+X-Clawbench-ID: BIO-2024-1021
+Date: Thu, 8 Aug 2024 01:02:18 -0400
+From: nick black <dankamongmen@gmail.com>
+To: "Michael R. Crusoe" <crusoe@debian.org>
+Subject: Re: Moving libdeflate from Debian-Med to a more appropriate team
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_08_msg00004.html
+
+Michael R. Crusoe left as an exercise for the reader:
+> Please create a new group on salsa and then we can move the repo[0] from the debian-med namespace.
+
+done: https://salsa.debian.org/deflate-team
+
+I've sent invites to you and Andrea. Feel free to ignore them.
+
+> Then you can formalize the change by uploading the new version[1] of libdeflate with the new "Maintainer".
+> [1] https://github.com/ebiggers/libdeflate/releases/tag/v1.21
+
+on it.
+
+--
+nick black -=- https://nick-black.com
+to make an apple pie from scratch,
+you need first invent a universe.

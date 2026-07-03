@@ -1,0 +1,22 @@
+Message-ID: <CAKQ1sVOZ2j-Hn21yoCZmp4Vv_oyk5AfnDbju31x6BOdpSrZEnw@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0881
+Date: Thu, 27 Jun 2024 10:59:45 +0200
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.60-rc4 as httpd-2.4.60
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-06.mbox
+
+On Wed, Jun 26, 2024 at 7:10 PM Eric Covener <covener@gmail.com> wrote:
+>
+> I would like to call a VOTE over the next few days to release
+> this candidate tarball httpd-2.4.60-rc4 as 2.4.60:
+
+[X] +1: It's not just good, it's good enough!
+
+Tested on Debian stable and testing/sid, all passes.
+Sigs/checksums OK too.
+
+Great job Eric, thank you very much!

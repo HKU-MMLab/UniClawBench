@@ -1,0 +1,50 @@
+Message-ID: <YXGvoGFfb7YzlDkf@fusion>
+X-Clawbench-ID: BIO-2024-1458
+Date: Thu, 21 Oct 2021 20:21:20 +0200
+From: Étienne Mollier <emollier@emlwks999.eu>
+To: Andreas Tille <andreas@an3as.eu>
+Subject: Re: Help: mothur: ftbfs with GCC-11
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00136.html
+
+Hi Andreas,
+
+Andreas Tille, on 2021-10-21:
+> In file included from addtargets2.cpp:3:
+> myutils.h:176:1: error: reference to 'byte' is ambiguous
+
+Since C++ 2017, the std::byte type is defined:
+
+>   176 | byte *ReadAllStdioFile(FILE *f, off_t &FileSize);
+>       | ^~~~
+> In file included from /usr/include/c++/11/bits/stl_algobase.h:61,
+>                  from /usr/include/c++/11/bits/char_traits.h:39,
+>                  from /usr/include/c++/11/string:40,
+>                  from myutils.h:8,
+>                  from addtargets2.cpp:3:
+> /usr/include/c++/11/bits/cpp_type_traits.h:404:30: note: candidates are: 'enum class std::byte'
+
+The redefinition below thus gives indeterminations, as the code
+is running in namespace "std":
+
+> In file included from addtargets2.cpp:3:
+> myutils.h:42:23: note:                 'typedef unsigned char byte'
+>    42 | typedef unsigned char byte;
+>       |                       ^~~~
+> myutils.h:177:1: error: reference to 'byte' is ambiguous
+
+The option which seems the most viable would be to replace all
+occurrences of the "byte" type by something that does not clash
+with the new standard library, maybe "byte8" to be somewhat
+consistent with upstream naming conventions.
+
+
+In hope this helps,
+
+Have a nice evening,  :)
+--
+Étienne Mollier
+Fingerprint:  8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+Sent from /dev/tty1, please excuse my verbosity.

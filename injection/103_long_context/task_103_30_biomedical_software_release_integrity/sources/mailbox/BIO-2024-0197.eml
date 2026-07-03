@@ -1,0 +1,58 @@
+Message-ID: <udla68qlzj0.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-0197
+Date: Sat, 30 Jul 2022 23:41:23 -0400
+From: "Aaron M. Ucko" <ucko@debian.org>
+To: David Miguel Susano Pinto <carandraug+dev@gmail.com>,        Steffen Möller <steffen_moeller@gmx.de>
+Subject: Re: igblast accepted - how can it be used to test igdiscover
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_07_msg00096.html
+
+Andreas Tille  writes:
+
+> into igdiscover changelog.  Igblast is accepted now.  However, despite I did
+> the final upload I did not checked for actual binaries which are all "hidden"
+> in usr/lib/ncbi-igblast/bin.  I simply took over your and David's packaging
+> layout and cared that it builds latest upstream.
+
+Thanks for taking IgBLAST on in general.  This packaging is off to a
+good start, but I'm sorry to say still not quite right.  In particular:
+
+- The executables to build and install directly are igblastn and
+  igblastp along with the edit_imgt_file.pl script (which Policy 10.4
+  says should be installed without its extension, though I know that's
+  somewhat controversial within this team).  All come from app/igblast
+  and should in fact wind up in /usr/bin.
+
+- As for other executables, supporting tools can and should come from
+  ncbi-blast+ (for which I reckon a Recommends should suffice) and you
+  don't need to install tests at all.
+
+- Because you're installing multiple binaries (even if fewer than at
+  present), building supporting libraries dynamically should save space;
+  please see ncbi-blast+ for an illustration of how to do so and
+  subsequently install only those shared libraries you'll actually need
+  at runtime.  To avoid possible skew or missed IgBLAST-specific
+  tuneups, it's probably best for the IgBLAST packaging to supply its
+  own versions of these files, rather than building against libraries
+  from ncbi-blast+ once a corresponding development package happens.
+  (I realize that this approach goes against policy, but the libraries
+  in question are at least generally native to both source bases.)
+
+- Some use cases may want app/igblast's internal_data and optional_file
+  subtrees, which I'd suggest installing to /usr/share/ncbi/igblast; I
+  can adjust the ncbi-data package to facilitate finding those subtrees
+  there.
+
+- The package FTBFS on some architectures.  Future releases should do
+  better, at least on those specific fronts, but meanwhile you might
+  want to copy some patches from ncbi-blast+.
+
+Thanks again, and please let me know if you'd like further advice on any
+of those fronts.  Also, sorry for not offering concrete patches; I'm
+already spread a bit too thin.
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

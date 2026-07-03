@@ -1,0 +1,26 @@
+Message-ID: <15842.34920.583131.72086@montanaro.dyndns.org>
+X-Clawbench-ID: CAM-2003-0243
+Date: Mon, 25 Nov 2002 14:30:32 -0600
+From: Skip Montanaro <skip@pobox.com>
+To: richie@entrian.com
+Subject: Re: [Spambayes] Current version
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 02481.176b368fe4b90682f33647d65a8b97a3
+
+Richie> As I understand it, post-1.8x versions of the core bsddb code
+    Richie> ship under the Sleepycat license, which demands that projects
+    Richie> using it must be published-source.
+
+Don't use bsddb in a closed-source product.  Use dbm or dumdbm or use
+pickles or roll your own thang.  I doubt the presence of bsddb would be the
+only barrier to creating a closed-source product based upon the spambayes
+code.
+
+Skip
+
+_______________________________________________
+Spambayes mailing list
+Spambayes@python.org
+http://mail.python.org/mailman/listinfo/spambayes

@@ -1,0 +1,26 @@
+Message-ID: <YWWMeVjz/ere3OX8@an3as.eu>
+X-Clawbench-ID: BIO-2024-0394
+Date: Tue, 12 Oct 2021 15:24:09 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: New upstream version of drop-seq does not build
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00037.html
+
+Am Tue, Oct 12, 2021 at 12:12:43PM +0200 schrieb Pierre Gruet:
+> Thanks for pointing this out; I looked at it and saw biojava has not been a
+> dependency of drop-seq until now. It seems version 2.4.1 is the first to
+> need biojava. So I will try to add biojava4 as a dependency and see if
+> drop-seq 2.4.1 can now be built.
+
+Ahhh, I should have checked this.  Somehow I'm starting to get blind for such
+simple things when upgrading all those packages. ;-)
+
+Kind regards
+
+     Andreas.
+
+--
+http://fam-tille.de

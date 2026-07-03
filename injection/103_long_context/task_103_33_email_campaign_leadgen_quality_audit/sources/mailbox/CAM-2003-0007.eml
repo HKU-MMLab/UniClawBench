@@ -1,0 +1,38 @@
+Message-ID: <20020802191858.GJ13849@linuxmafia.com>
+X-Clawbench-ID: CAM-2003-0007
+Date: Fri, 02 Aug 2002 12:18:58 -0700
+From: Rick Moen <rick@linuxmafia.com>
+To: ilug@linux.ie
+Subject: Re: [ILUG] Dell GX260 V Redhat 7.3
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00241.1cb3df109857b541b9829f93fb5189d1
+
+Quoting Stephen_Reilly@dell.com (Stephen_Reilly@dell.com):
+
+> You make it sound that incompatibility has been deliberately built
+> into the new systems. The products that any company sell with linux
+> installed will be easily reinstalled with linux. The products sold
+> with Windows only may not be. Having said that I've never found a Dell
+> system it was impossible to put RH on. I have had one or two headaches
+> in the past doing it, though.
+
+I just wanted to second what Stephen says, from an independent
+perspective:  The few times I've encountered an obstacle installing
+current Linux distributions on Dell boxes, it's been because Dell were
+an early adopter of (e.g.) a new Adaptec SCSI chipset, which hadn't
+been included in all installation kernels.  And that is the risk you
+_always_ take when you blindly buy hardware systems for Linux without
+verifying chipset support, first.  If anything, Dell have over the years
+occasioned less such trouble than have many competitors, in this area.
+
+--
+Cheers,   If C gives you enough rope to hang yourself, then C++ give you enough
+Rick Moen    to bind and gag your neighbourhood, rig the sails on a small ship,
+rick@linuxmafia.com    and still have enough to hang yourself from the yardarm.
+
+--
+Irish Linux Users' Group: ilug@linux.ie
+http://www.linux.ie/mailman/listinfo/ilug for (un)subscription information.
+List maintainer: listmaster@linux.ie

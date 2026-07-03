@@ -1,0 +1,27 @@
+Message-ID: <ZK+qDoOOKPd4cBC6@an3as.eu>
+X-Clawbench-ID: BIO-2024-0925
+Date: Thu, 13 Jul 2023 09:38:54 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: biopython 1.81 in experimental
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_07_msg00056.html
+
+Am Wed, Jul 12, 2023 at 10:32:08PM +0200 schrieb Étienne Mollier:
+> Not sure why this was caught only on arm64, as amd64 turned out
+> to be affected as well when I ran rebuild tests.  Anyway, this
+> is fixed by the newer python-bcbio-gff version 0.7.0, which has
+> the good taste of being compatible with biopython 1.80 as well.
+>
+> I uploaded the new python-bcbio-gff, and once python-biopython
+> 1.80+dfsg-6 migrates to testing (tomorrow or Friday if all goes
+> well), v1.81 can migrate to unstable and the version bump should
+> overall be a breeze.
+
+Good job
+    Andreas.
+
+--
+http://fam-tille.de

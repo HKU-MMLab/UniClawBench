@@ -1,0 +1,27 @@
+Message-ID: <3D480446.9080002@cunniffe.net>
+X-Clawbench-ID: CAM-2003-1383
+Date: Wed, 31 Jul 2002 16:37:42 +0100
+From: Vincent Cunniffe <vincent@cunniffe.net>
+To: ilug@linux.ie
+Subject: Re: [ILUG] sysctl.conf
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00183.c41caba7916cc619cd4e2543eb1aea40
+
+John P. Looney wrote:
+>  OK, I guess that sysctl.conf is the best way of setting
+>
+>     /proc/sys/fs/file-max
+
+cat 20480 > /proc/sys/fs/file-max
+
+ta dah...
+
+Vin
+
+
+--
+Irish Linux Users' Group: ilug@linux.ie
+http://www.linux.ie/mailman/listinfo/ilug for (un)subscription information.
+List maintainer: listmaster@linux.ie

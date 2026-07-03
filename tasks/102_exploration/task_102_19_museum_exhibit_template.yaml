@@ -1,0 +1,56 @@
+task_id: task_102_19_museum_exhibit_template
+category: 102_exploration
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  Our small museum is putting a historical photograph collection online as a
+  digital exhibition, and I need to choose a site template. The collection has
+  real archival requirements:
+
+  - every item must carry provenance metadata: a caption, the credit
+    (photographer / source), a rights statement, and the accession number;
+  - the exhibition is chronological, so we need a timeline;
+  - the scans are high-resolution, so we need IIIF / large-image support.
+
+  A fixed set of candidate templates is provided offline at:
+
+      /tmp_workspace/clawbench/sources/template_candidates/
+
+  Each template has a manifest (`<id>.json`) declaring the item-metadata fields
+  its schema supports and its features; `index.json` lists them and restates
+  the required fields/features. Read the manifests — don't pick by how pretty a
+  template sounds.
+
+  Decide which templates can actually satisfy ALL the hard requirements (the
+  four provenance fields AND a timeline AND IIIF), and pick exactly ONE. Be
+  careful: the most attractive gallery / scrollytelling templates are missing
+  archival fields like rights and accession number, and some full-metadata
+  templates are missing the timeline.
+
+  Save:
+  - `/tmp_workspace/results/template_choice.json`: your `selected_id`, how it
+    meets every required field and feature (cite the manifest), and the minimal
+    steps to load the collection with provenance + timeline.
+  - `/tmp_workspace/results/template_evaluation.json`: per-template coverage of
+    the four required fields and two required features, keep/reject, and for
+    each rejected template exactly which requirement(s) it fails.
+  - `/tmp_workspace/results/template_method.json`: which manifests you read and
+    how you checked each field/feature (reproducible).
+
+  This is fully offline — do not fetch anything from the network.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+sources:
+  - template_candidates/
+
+codex:
+  max_user_followups: 2

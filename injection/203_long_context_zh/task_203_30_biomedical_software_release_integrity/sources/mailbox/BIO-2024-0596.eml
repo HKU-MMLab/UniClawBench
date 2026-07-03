@@ -1,0 +1,28 @@
+Message-ID: <udl35ox8c9l.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-0596
+Date: Tue, 19 Oct 2021 07:49:58 -0400
+From: ucko@debian.org (Aaron M. Ucko)
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Re: sra-sdk is lacking libngs
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00108.html
+
+ucko@debian.org (Aaron M. Ucko) writes:
+
+> So I see.  I've concocted and pushed two more patches, which in
+> conjunction yield much saner results on my system; let's see how they do
+> on Salsa CI.  (Several apps were failing both because they wound up with
+
+Still not quite there, alas:
+
+  >>>>>Running vdb-encrypt...
+  2021-10-19T01:47:38 vdb-encrypt.2.11.2 err: libs/vfs/manager.c:903:VFSManagerGetConfigPWFile: encryption key not found while opening manager within virtual file system module - unable to obtain a password
+  2021-10-19T01:47:38 vdb-encrypt.2.11.2: exiting: RC(libs/vfs/manager.c:903:VFSManagerGetConfigPWFile rcVFS,rcMgr,rcOpening,rcEncryptionKey,rcNotFound) (2615479768)
+
+We may simply need to adjust the mechanics of how we supply the key to use.
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

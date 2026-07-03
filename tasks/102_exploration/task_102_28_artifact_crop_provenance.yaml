@@ -1,0 +1,41 @@
+task_id: task_102_28_artifact_crop_provenance
+category: 102_exploration
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I photographed a detail of an object in a museum but I forgot to note the
+  label. This cropped close-up has no caption — I want to know exactly what the
+  object is and find its catalog record on the museum's own site (not a
+  third-party reproduction). The image is here:
+
+      /tmp_workspace/clawbench/sources/crop.jpg
+
+  It's only a detail of the object, with no label text, so identify it from the
+  image itself and then trace it back to the museum's catalog.
+
+  Tell me:
+  - what the object is (type, culture/period, decorative technique),
+  - its approximate date,
+  - which museum holds it, the museum object id / accession number, and the
+    canonical museum catalog URL (the museum's own page or collection API).
+
+  Save your conclusion and the supporting evidence (how you identified it, and
+  the canonical museum record URL) to
+  `/tmp_workspace/results/artifact_provenance.json`, plus notes/screenshots
+  under `/tmp_workspace/results/`.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+sources:
+  - crop.jpg
+
+codex:
+  max_user_followups: 2

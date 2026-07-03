@@ -1,0 +1,57 @@
+Message-ID: <Y0Ev2CC/WrVojww8@fusion>
+X-Clawbench-ID: BIO-2024-0852
+Date: Sat, 8 Oct 2022 10:07:52 +0200
+From: Étienne Mollier <emollier@emlwks999.eu>
+To: debian-med@lists.debian.org
+Subject: Re: [Help] New version of htslib does not build
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00021.html
+
+Hi all,
+
+Andreas Tille, on 2022-10-06:
+> Am Thu, Oct 06, 2022 at 01:59:23AM +0000 schrieb John Marshall:
+> > On 4 Oct 2022, at 15:31, Nilesh Patra  wrote:
+> > > The thing that was causing failures on !amd64 was that there were amd64 specific symbols in debian/libhtscodecs2.symbols that were not matching on those archs due to avx2/avx512 specific ABI being exported there.
+> >
+> > So something specific to the Debian build scripts. Like many of Debian's issues with their htslib symbols file over the years, this is because Debian insists on listing all of libhtscodecs's global symbols in this file. If you omitted these internal symbols, there would be no problem. I believe upstream's attitude would be that these particular symbols are not declared in htscodecs's installed public header files, so they are unusable unless the user cheats by making their own declarations, so they are not meaningfully part of either htscodecs's API or ABI. So they should not be listed in a symbols file.
+>
+> I admit I'm not sure what change you would propose to the symbols files.
+> If a symbols file is provided dh_makeshlibs insists in specifying all
+> those symbols that are exposed by the library.  Otherwise the build ends
+> up in an error.  The only way to prevent this is to not provide any
+> symbols file.  There were cases where we (sloppily) provide only a
+> symbols file for amd64 since maintaining symbols for architectures that
+> provide different symbols is a huge maintenance burden which we try to
+> avoid.
+>
+> From my personal perspective as a maintainer the most value in those
+> symbols files is to detect ABI changes by upstream.  It might not be the
+> case for htslib but I've seen lots of libraries that silently change
+> their ABI.  When there is a symbols file you see from its diff that a
+> SONAME change is required.
+>
+> If we can be sure that ABI changes will be made transparently in htslib
+> / htscodecs we can drop the symbols file in case this is what you want
+> to suggest (and I admit I'm not really sure what you want to suggest but
+> we are happy to follow your suggestion).
+
+I spent some time reviewing the state of htscodecs in debian,
+and came up with little changes to bring back simd support
+without breaking builds or causing cpu baseline violations.
+Regarding the symbols file, I marked functions implementing the
+simd variants as "(optional)", this way they wouldn't cause
+build issues by getting back and forth.  They could have been
+marked architecture specific instead perhaps, but since they may
+come and go depending on the compiler capabilities and options,
+it seemed better to list them as unreliably usable straight away
+downstream.
+
+Have a nice day,  :)
+--
+Étienne Mollier
+Fingerprint:  8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+Sent from /dev/pts/2, please excuse my verbosity.
+On air: Nathan Frost - Empire Rising, 505AD [feat. Virgil Donat…

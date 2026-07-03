@@ -1,0 +1,33 @@
+Message-ID: <Y0JQ51xQnaLLzTlf@an3as.eu>
+X-Clawbench-ID: BIO-2024-1207
+Date: Sun, 9 Oct 2022 06:41:11 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: [Help] New version of htslib does not build
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00024.html
+
+Hi Étienne,
+
+Am Sat, Oct 08, 2022 at 10:07:52AM +0200 schrieb Étienne Mollier:
+> I spent some time reviewing the state of htscodecs in debian,
+> and came up with little changes to bring back simd support
+> without breaking builds or causing cpu baseline violations.
+> Regarding the symbols file, I marked functions implementing the
+> simd variants as "(optional)", this way they wouldn't cause
+> build issues by getting back and forth.  They could have been
+> marked architecture specific instead perhaps, but since they may
+> come and go depending on the compiler capabilities and options,
+> it seemed better to list them as unreliably usable straight away
+> downstream.
+
+Cool, thanks a lot for doing so!
+
+Kind regards
+
+     Andreas.
+
+--
+http://fam-tille.de

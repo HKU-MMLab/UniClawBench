@@ -1,0 +1,27 @@
+Message-ID: <CAEaoJe+GJTj9T=bDKHPju0TKS8Qmff_bvqbe5c-jzrjNgx-sCw@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0352
+Date: Fri, 25 Feb 2022 14:41:39 -0300
+From: Andre Nathan <andrenth@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: The SERVER_ADDR environment variable
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-02.mbox
+
+On Fri, Apr 11, 2014 at 10:34 AM Andre Nathan <andrenth@gmail.com> wrote:
+
+> The issue I'm facing is that a malicious user would still be able to find
+> the real server address via Apache's SERVER_ADDR environment variable, eg.
+> from a PHP script. I tried using SetEnv / SetEnvIf to change it's value or
+> unset it, but apparently this is not possible. I believe writing a module
+> to do just that won't work either, since as I understand it, the variable
+> is set after all modules are processed.
+>
+
+Sorry for reviving an ancient thread, but it could be useful for the
+archives. I've just found out that this has been possible since 2.4.26
+using ProxyFCGISetEnvIf.
+
+Regards,
+Andre

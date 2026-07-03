@@ -1,0 +1,40 @@
+Message-ID: <Yio5x2nLEjIDr/GG@debian>
+X-Clawbench-ID: BIO-2024-0439
+Date: Thu, 10 Mar 2022 23:17:51 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: debian-med@lists.debian.org
+Subject: Advice/Opinions regarding shovill
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_03_msg00001.html
+
+I had packaged shovill, which is a workflow package
+roughly two years ago. However, pretty soon I had realised,
+for every analysis you want to do, you need to _manually_ modify the
+bin/shovill file[1]
+
+Since in debian, it is in /usr/bin/shovill, you need to be modifying that file
+for each and every analysis when you want to change the adapter file.
+Since that is ugly, I had written code for
+a command line option that circumvents this manual modification and sent a PR
+upstream[2]
+
+Since we want to be inlined with what upstream is doing, I did not change it in debian
+package as that would mean diverging from there. I even after pinging several times, only
+to realise that upstream simply ignored it.
+
+And so, since this package is not properly usable (without root permissions) I am planning
+ahead to merge this cli opt feature in the debian package anyway and upload, mentioning
+this in d/NEWS that we are different in this aspect.
+
+Do you think this is fine or would you have any better suggestions?
+Also, do you think it makes sense to upload this also in stable-p-u?
+
+Let me know.
+
+Regards,
+Nilesh
+
+[1]: https://github.com/tseemann/shovill/tree/master/bin
+[2]: https://github.com/tseemann/shovill/pull/147

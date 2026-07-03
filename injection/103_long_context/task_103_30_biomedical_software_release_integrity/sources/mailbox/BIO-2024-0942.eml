@@ -1,0 +1,32 @@
+Message-ID: <Y1j8uR3hvGk6GYLq@an3as.eu>
+X-Clawbench-ID: BIO-2024-0942
+Date: Wed, 26 Oct 2022 11:24:09 +0200
+From: Andreas Tille <tille@debian.org>
+To: Pierre Gruet <pgt@debian.org>
+Subject: Re: gdcm: vtk[6,7] removal
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00093.html
+
+Hi Pierre,
+
+Am Wed, Oct 26, 2022 at 10:41:51AM +0200 schrieb Pierre Gruet:
+> > [1] https://salsa.debian.org/med-team/gdcm/-/jobs/3427720
+>
+> This is really just a missing include dir, as the problematic header is in
+> /usr/lib/jvm/default-java/include/linux/ . I will be having a look shortly,
+> we should be able to handle this and keep the Java packages if this is the
+> only Java-related issue.
+
+Please see the hint of Mathieu.  To be clear about this: We'll keep the
+general Java support libgdcm-java but it seems we need to remove
+libvtkgdcm-java which is way less frequently used.  (For sure if you see
+any chance to fix this feel free to re-add what was removed in Git - but
+I guess this is some issue that needs to be fixed upstream.)
+
+Kind regards
+   Andreas.
+
+--
+http://fam-tille.de

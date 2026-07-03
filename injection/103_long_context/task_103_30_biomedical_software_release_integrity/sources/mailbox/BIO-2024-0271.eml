@@ -1,0 +1,40 @@
+Message-ID: <udl4jz2mn6w.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-0271
+Date: Wed, 27 Jul 2022 14:21:11 -0400
+From: ucko@debian.org (Aaron M. Ucko)
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Re: Finishing ncbi-vdb and sra-sdk
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_07_msg00082.html
+
+Andreas Tille  writes:
+
+> I think ncbi-vdb version 3.0.0 is finished in Git.  I'm just uploading it to
+> experimental (needs to pass new queue due to the changed binary names).  I
+
+Thanks, but I still have some unpushed changes from some time back.  As
+noted at the time, I went to +dfsg2 to sidestep formal line-ending
+discrepancies in files we don't actually need.  I subsequently
+considered devendoring more third-party code while I was at it, but
+never found time; I suppose I should just proceed with what I have.
+
+Sorry for sitting on them for so long; I've had a lot going on outside
+Debian.
+
+>   VDB_LIBDIR="" does not exist - ncbi-vdb was not installed in that location.
+
+Does -DVDB_LIBDIR=/usr/lib/${DEB_HOST_MULTIARCH} help?
+
+Meanwhile, I'm concerned about how to handle ngs-sdk's incorporation
+into sra-sdk 3.x, since sra-sdk needs ncbi-vdb libraries but ncbi-vdb at
+least historically needed to build against ngs-sdk.  Given the lack of
+runtime dependency, it might just need headers, in which case splitting
+them out into an architecture-independent binary package should help --
+particularly if we can move sra-sdk's build dependencies on VDB
+development packages to Build-Depends-Arch.
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

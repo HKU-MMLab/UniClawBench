@@ -1,0 +1,43 @@
+Message-ID: <0af501da401f$2090b810$61b22830$@pdinc.us>
+X-Clawbench-ID: ASF-2024-0585
+Date: Fri, 5 Jan 2024 16:35:37 -0500
+From: "Jason Pyeron" <jpyeron@pdinc.us>
+To: <dev@httpd.apache.org>
+Subject: RE: process_regexp bug, infinite recursion
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-01.mbox
+
+> -----Original Message-----
+> From: Yann Ylavic <ylavic.dev@gmail.com>
+> Sent: Friday, January 5, 2024 9:09 AM
+>
+> On Fri, Jan 5, 2024 at 3:11 AM Eric Covener <covener@gmail.com> wrote:
+> >
+> > On Thu, Jan 4, 2024 at 9:04 PM Jason Pyeron <jpyeron@pdinc.us> wrote:
+> > >
+> > > I am having some issue searching Bugzilla for any issue involving process_regexp in
+> mod_headers.c .
+> > >
+> > > It finds nothing, so I am assuming I did something wrong in my search. Will file bug if not
+> already filed.
+> > >
+> > > We are investigating an infinite loop (stack overflow) issue, caused by "securing" a system.
+> > >
+> > > ZZZ-STIG-SV-214288r881493_rule.conf:Header always edit* Set-Cookie ^(.*)$ $1;HttpOnly;secure
+> >
+> > edit* just makes no sense at all here when you are capturing/replacing
+> > the entire string and will loop by definition.
+>
+> Maybe we should avoid infinite recursion in any case, like in the
+> attached patch?
+
+Cool.
+
+Likely, Monday I was going do similar - then only difference was checking if the substitution "made no change", abort. s/a/a/.
+
+> How does it work for you Jason?
+>
+
+Test early next week, I forwarded to the team to build and test.

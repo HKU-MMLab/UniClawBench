@@ -1,0 +1,28 @@
+Message-ID: <20220822190922.tebn4b34blak2hq6@debian>
+X-Clawbench-ID: BIO-2024-0654
+Date: Tue, 23 Aug 2022 00:39:22 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: RFS -- Added autopkgtest for nipype
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_08_msg00051.html
+
+On Tue, Aug 23, 2022 at 12:16:50AM +0530, Mohd Bilal wrote:
+> Hello team,
+>
+> I've added autopkgtest for nipype[1] and also fixed the reprotest
+> failures.Requesting someone to review my changes and sponsor the same.
+
+- Is it possible to run build time tests also as autopkgtests along with your sample test?
+If so, please do so.
+
+- The indentation is inconsistent across `concat' and `test_basic' function, please fix this
+also format it a bit better.
+
+> [1] - https://salsa.debian.org/med-team/nipype
+
+--
+Best,
+Nilesh

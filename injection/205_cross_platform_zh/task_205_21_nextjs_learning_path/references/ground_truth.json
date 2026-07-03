@@ -1,0 +1,107 @@
+{
+  "task_id": "task_105_21_nextjs_learning_path",
+  "schema_notes": "Anchor facts only. JSON shape, field names, and filenames are the executor's choice — the grader checks semantic content, not key naming. Anchored to vercel/next.js v15.3.0 (2025-04-09) AND v15.3.1 (2025-04-17) plus 5 immutable YouTube video IDs.",
+  "reference_date": "2026-05-02",
+  "ground_truth": {
+    "github_releases": {
+      "v15_3_0": {
+        "tag": "v15.3.0",
+        "published_at": "2025-04-09T20:19:59Z",
+        "published_date": "2025-04-09"
+      },
+      "v15_3_1": {
+        "tag": "v15.3.1",
+        "published_at": "2025-04-17T16:26:48Z",
+        "published_date": "2025-04-17",
+        "commit_sha": "fa536cf2c94475cecb7585680c5d96e35e00ba7b"
+      },
+      "v15_0_0_anchor": {
+        "tag": "v15.0.0",
+        "published_at": "2024-10-21T18:51:48Z",
+        "purpose": "boundary date for v15-era classification"
+      }
+    },
+    "npm": {
+      "v15_3_0": {
+        "version": "15.3.0",
+        "published_at": "2025-04-09T20:14:08.945Z",
+        "peer_dependencies": [
+          "@opentelemetry/api",
+          "@playwright/test",
+          "babel-plugin-react-compiler",
+          "react",
+          "react-dom",
+          "sass"
+        ]
+      },
+      "v15_3_1": {
+        "version": "15.3.1",
+        "published_at": "2025-04-17T15:36:04.984Z",
+        "peer_dependencies": [
+          "@opentelemetry/api",
+          "@playwright/test",
+          "babel-plugin-react-compiler",
+          "react",
+          "react-dom",
+          "sass"
+        ]
+      }
+    },
+    "version_diff_facts": {
+      "peer_dependencies_unchanged": true,
+      "days_between_releases": 7,
+      "release_body_word_count_diff_sign": "shrunk",
+      "release_body_word_count_diff_magnitude_approx": 2752,
+      "characterisation": "v15.3.1 is a small patch release; release notes are dramatically shorter than the v15.3.0 feature release notes."
+    },
+    "videos": [
+      {"video_id": "Sklc_fQBmcs", "title": "Next.js in 100 Seconds // Plus Full Beginner's Tutorial",                                  "channel": "Fireship",            "duration_seconds":   712, "upload_date": "20210105", "is_v15_era": false},
+      {"video_id": "_w0Ikk4JY7U", "title": "Next.js 13… this changes everything",                                                      "channel": "Fireship",            "duration_seconds":   376, "upload_date": "20221026", "is_v15_era": false},
+      {"video_id": "ZVnjOPwW4ZA", "title": "Next js Tutorial for Beginners | Nextjs 13 (App Router) with TypeScript",                  "channel": "Programming with Mosh", "duration_seconds":  3775, "upload_date": "20230911", "is_v15_era": false},
+      {"video_id": "mTz0GXj8NN0", "title": "Next.js Crash Course",                                                                     "channel": "Traversy Media",      "duration_seconds":  4185, "upload_date": "20210126", "is_v15_era": false},
+      {"video_id": "Zq5fmkH0T78", "title": "Next.js 15 Crash Course | Build and Deploy a Production-Ready Full Stack App",             "channel": "JavaScript Mastery", "duration_seconds": 19390, "upload_date": "20241025", "is_v15_era": true}
+    ],
+    "video_ranking_by_upload_date_desc": [
+      "Zq5fmkH0T78",
+      "ZVnjOPwW4ZA",
+      "_w0Ikk4JY7U",
+      "mTz0GXj8NN0",
+      "Sklc_fQBmcs"
+    ],
+    "highest_v15_coverage_video_id": "Zq5fmkH0T78",
+    "v15_topic_keywords_for_coverage": [
+      "async", "react 19", "fetch", "cookies", "headers", "params", "router cache"
+    ],
+    "subtitle_keyword_analysis": {
+      "method_hint": "yt-dlp --write-auto-subs --skip-download --sub-lang en for each video ID; case-insensitive substring count of each keyword in the resulting .en.vtt file. Absolute counts drift slightly across yt-dlp player versions and Google ASR refreshes, so the grader checks the rank ordering and the strict winner rather than exact numbers.",
+      "expected_subtitle_files": [
+        "Sklc_fQBmcs.en.vtt",
+        "_w0Ikk4JY7U.en.vtt",
+        "ZVnjOPwW4ZA.en.vtt",
+        "mTz0GXj8NN0.en.vtt",
+        "Zq5fmkH0T78.en.vtt"
+      ],
+      "per_video_topics_covered_at_snapshot": {
+        "Sklc_fQBmcs": 2,
+        "_w0Ikk4JY7U": 1,
+        "ZVnjOPwW4ZA": 2,
+        "mTz0GXj8NN0": 3,
+        "Zq5fmkH0T78": 6
+      },
+      "per_video_per_keyword_counts_at_snapshot_raw_vtt": {
+        "Sklc_fQBmcs": {"async": 0, "react 19": 0, "fetch": 36, "cookies": 0, "headers": 0, "params": 3, "router cache": 0},
+        "_w0Ikk4JY7U": {"async": 0, "react 19": 0, "fetch": 15, "cookies": 0, "headers": 0, "params": 0, "router cache": 0},
+        "ZVnjOPwW4ZA": {"async": 3, "react 19": 0, "fetch": 54, "cookies": 0, "headers": 0, "params": 0, "router cache": 0},
+        "mTz0GXj8NN0": {"async": 7, "react 19": 0, "fetch": 81, "cookies": 0, "headers": 0, "params": 18, "router cache": 0},
+        "Zq5fmkH0T78": {"async": 60, "react 19": 16, "fetch": 355, "cookies": 3, "headers": 6, "params": 42, "router cache": 0}
+      },
+      "best_coverage_video_id": "Zq5fmkH0T78",
+      "best_coverage_rationale": "Zq5fmkH0T78 covers 6 of the 7 v15 keywords (only 'router cache' missing as a 2-word phrase) and totals 482 occurrences across keywords — the next-best video (mTz0GXj8NN0) only covers 3 keywords with 106 total occurrences. The 6-vs-3 coverage gap and ~4.5x occurrence gap make Zq5fmkH0T78 the strict winner under any reasonable scoring of either coverage breadth or absolute frequency.",
+      "tolerance": "Per-keyword raw counts may drift ±30% between yt-dlp/Google-ASR refreshes; the ordinal ranking (Zq5fmkH0T78 strictly highest on both topics_covered AND total_occurrences) is the stable property. The grader does not require exact counts."
+    },
+    "expected_top_recommendation": {
+      "video_id": "Zq5fmkH0T78",
+      "rationale": "Only v15-era video and covers ~6/7 of the v15-specific topics; should be ranked first / recommended as the starting point for any learner targeting v15.3.1."
+    }
+  }
+}

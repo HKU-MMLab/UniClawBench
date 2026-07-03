@@ -1,0 +1,36 @@
+Message-ID: <Y6SDJWKeRr1tirwh@an3as.eu>
+X-Clawbench-ID: BIO-2024-0551
+Date: Thu, 22 Dec 2022 17:17:41 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: [RFH] aeonbits-owner and capsule-maven-nextflow
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_12_msg00100.html
+
+Am Thu, Dec 22, 2022 at 08:55:27PM +0530 schrieb Nilesh Patra:
+>
+> I see three options:
+>
+> 1. Revert mcl to past version
+
+>From a user base point of view I do not consider this a good option.
+
+> 2. Wait for upstream reaction on ocaml support for mcl -- they said someone
+> might be interested to look into it but the wait time is not definite
+
+I admit I'm not really optimistic that this will happen right in time
+but may be we can support backports later.
+
+> 3. Disable build time tests which use pplacer and move
+> the depends on pplacer to suggests; mention in README.Debian to get pplacer
+> from github or something similar
+
+This seems to be a good alternative.
+
+Kind regards
+    Andreas.
+
+--
+http://fam-tille.de

@@ -1,0 +1,38 @@
+Message-ID: <ZJVjAqhUk1PRC7Ir@an3as.eu>
+X-Clawbench-ID: BIO-2024-0679
+Date: Fri, 23 Jun 2023 11:16:50 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: bumping htslib stack to version 1.17
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_06_msg00015.html
+
+Hi Étienne,
+
+Am Thu, Jun 22, 2023 at 10:39:49PM +0200 schrieb Étienne Mollier:
+> I have staged an upload of htslib 1.17 into experimental last
+> week, and pseudo-excuses didn't raise any obvious issues[1],
+> beyond a breakage of samtools 1.16, whose bump to version 1.17
+> looks smooth so far.  I will migrate these packages this evening
+> to unstable.
+
+Thanks a lot for doing so.
+
+> I don't expect any difficulties, and this should unlock the
+> possibility to bump the version of all sorts of packages part of
+> the htslib ecosystem.  Hopefully this won't throw too much more
+> entropy in the archive.
+
+In case some helping hands are needed if something might break feel free
+to ping me.  I currently pulled the CRAN stack on my desk but this can
+also wait a couple of days if some other things might be more urgent.
+
+Kind regards
+    Andreas.
+
+> [1]: https://qa.debian.org/excuses.php?experimental=1&package=htslib
+
+--
+http://fam-tille.de

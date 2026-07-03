@@ -1,0 +1,41 @@
+Message-ID: <20210909122130.GC14598@an3as.eu>
+X-Clawbench-ID: BIO-2024-0232
+Date: Thu, 9 Sep 2021 14:21:30 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Scala error when trying to build latest version of pilon
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_09_msg00017.html
+
+Hi Pierre,
+
+thanks a lot for your educated answer.
+
+On Thu, Sep 09, 2021 at 12:48:33PM +0200, Pierre Gruet wrote:
+> > Any hint how to fix this?
+>
+> Well, /maybe/ we could patch this last pilon version to use Scala 2.11 with
+> it... but I see there were quite a lot of changed in pilon seemingly related
+> to newer Scala [3,4], so I am unsure we would succeed.
+
+Regarding pilon we are not in a hurry.  Its just one of the packages
+with broken watch file I'm touching step by step.
+
+> Anyway, for sure the
+> right thing would be to upgrade Scala.
+
+Yep.  We need this anyway.
+
+> This is one thing I would like to do and discuss with the Java team, will
+> try to do it quite soon...
+
+This would be cool.  Please do not waste time with patching pilon meanwhile.
+
+Kind regards
+
+       Andreas.
+
+--
+http://fam-tille.de

@@ -1,0 +1,22 @@
+{
+  "task_id": "task_101_15_cn_doc_organize",
+  "notes_visible_to_executor": false,
+  "skill_changes": [
+    {
+      "original_skill": "docx-cn",
+      "injected_skill": "docx-cn",
+      "original_source": "clawhub",
+      "change_type": "benchmark environment adaptation",
+      "reason": "The task setup service prepares document-processing dependencies, so executor-facing docs were changed to avoid asking the model to run npm install during the task.",
+      "executor_skill_path": "skills/docx-cn"
+    },
+    {
+      "original_skill": "document-pro",
+      "injected_skill": "document-pro",
+      "original_source": "clawhub",
+      "change_type": "benchmark environment adaptation",
+      "reason": "Replaces the prior file-organizer-zh injection (extension-based file classifier — irrelevant for the prompt's content-based topic classification). document-pro provides Chinese-localized DOCX content extraction with python-docx code patterns that are directly useful for reading paragraph/table text and inferring topic labels from 150 mixed Word documents.",
+      "executor_skill_path": "skills/document-pro"
+    }
+  ]
+}

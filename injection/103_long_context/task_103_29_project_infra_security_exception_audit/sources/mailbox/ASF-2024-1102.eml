@@ -1,0 +1,35 @@
+Message-ID: <CALK=YjMJyQaG7LXMwP1FujRnr9g+2ZO6fcCnigrO6aFKMRXBeg@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1102
+Date: Wed, 20 Nov 2024 06:45:36 -0500
+From: Eric Covener <covener@gmail.com>
+To: Apache HTTP Server Development List <dev@httpd.apache.org>
+Subject: modules-dev: advice on http client library?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-11.mbox
+
+Hi all, finding myself in a bit of a predicament.
+
+In a proprietary module used on lots of historical operating systems
+where curl isn't available as a first-class package (and I don't want
+to embed/own it!) so I am trying to avoid the dependency.
+
+I need a very basic HTTP client library (not even HTTPS) to introduce
+in a micro release of a module (really of a httpd fork with some
+proprietary modules).  It is a new dependency of a proprietary
+library that we might have to move up to at any time.
+
+Some of the options I've considered at a high level:
+
+- borrow from modules/ssl/ssl_util_ocsp.c (I lucked out finding this,
+I was actually only hunting for apr_brigade_pflatten)
+- depend on mod_proxy (act like a bare-bones mod_proxy_http)
+- serf (looks cool, but a bit much)
+- Some combination of APR and an existing lightweight HTTP parser.
+
+Anyone have additional useful ideas/pointers?
+
+--
+Eric Covener
+covener@gmail.com

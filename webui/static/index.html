@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>UniClawBench</title>
+    <link rel="stylesheet" href="/static/style.css?v=multipage_8" />
+  </head>
+  <body>
+    <nav class="topnav">
+      <a href="#/home" class="brand">
+        <span class="brand-name">UniClawBench</span>
+        <span class="brand-tag">Capability-driven agent evaluation</span>
+      </a>
+      <div class="topnav-links">
+        <a class="topnav-link active" data-page="home" href="#/home">Home</a>
+        <a class="topnav-link" data-page="leaderboard" href="#/leaderboard/model">Leaderboard</a>
+        <a class="topnav-link" data-page="tasks" href="#/tasks">Tasks</a>
+        <a class="topnav-link" data-page="trace" href="#/trace">Trace</a>
+      </div>
+    </nav>
+    <div id="page-root" class="page-root"></div>
+    <button id="refresh-fab" class="refresh-fab" type="button" aria-label="Refresh current data" title="Refresh current data">
+      <svg class="refresh-fab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 12a9 9 0 1 1-2.64-6.36" />
+        <polyline points="21 3 21 9 15 9" />
+      </svg>
+    </button>
+    <script>
+      if (!window.location.hash) window.location.hash = "#/home";
+    </script>
+    <div id="image-lightbox" class="lightbox hidden" aria-hidden="true">
+      <div id="lightbox-backdrop" class="lightbox-backdrop"></div>
+      <div class="lightbox-dialog" role="dialog" aria-modal="true" aria-label="Image preview">
+        <button id="lightbox-close" class="lightbox-close" type="button" aria-label="Close image preview">×</button>
+        <img id="lightbox-image" class="lightbox-image" alt="" />
+        <div id="lightbox-caption" class="lightbox-caption"></div>
+      </div>
+    </div>
+    <div id="file-modal" class="file-modal hidden" aria-hidden="true">
+      <div id="file-modal-backdrop" class="file-modal-backdrop"></div>
+      <div class="file-modal-dialog" role="dialog" aria-modal="true" aria-label="File preview">
+        <header class="file-modal-head">
+          <span id="file-modal-title" class="file-modal-title"></span>
+          <a id="file-modal-open" class="file-modal-open" target="_blank" rel="noopener" title="Open raw">↗</a>
+          <button id="file-modal-close" class="file-modal-close" type="button" aria-label="Close preview">×</button>
+        </header>
+        <div id="file-modal-body" class="file-modal-body"></div>
+      </div>
+    </div>
+    <script type="module" src="/static/main.js?v=multipage_8"></script>
+  </body>
+</html>

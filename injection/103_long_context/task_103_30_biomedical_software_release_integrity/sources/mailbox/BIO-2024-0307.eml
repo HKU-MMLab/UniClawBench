@@ -1,0 +1,31 @@
+Message-ID: <A1FED737-A369-484A-8478-E76D021CAF16@nileshpatra.info>
+X-Clawbench-ID: BIO-2024-0307
+Date: Fri, 25 Aug 2023 18:47:22 +0530
+From: Nilesh Patra <nilesh@nileshpatra.info>
+To: debian-med@lists.debian.org
+Subject: Re: Flex help needed for eegdev (Was: Re: eegdev: FTBFS: ../../lib/stdio.h:64:3: error: #error "Please include config.h first.")
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_08_msg00018.html
+
+On 25 August 2023 1:47:26 pm IST, Nilesh Patra  wrote:
+>On Wed, 26 Jul 2023 21:52:17 +0200 Lucas Nussbaum  wrote:
+>> Source: eegdev
+>> Version: 0.2-6
+>> Severity: serious
+>> > In file included from conffile.lex.c:242:
+>> > ../../lib/stdio.h:64:3: error: #error "Please include config.h first."
+>> >    64 |  #error "Please include config.h first."
+>> >       |   ^~~~~
+>
+>The lexed file conffile.lex.c seems to include some stuff before
+>config.h is included which is causing it to choke.
+>
+>I'm not acquainted with lexers and not sure what causes this. I'd
+>appreciate any help.
+
+Adding mentors list as well. If someone can help with this, that'd be great.
+
+Best,
+Nilesh

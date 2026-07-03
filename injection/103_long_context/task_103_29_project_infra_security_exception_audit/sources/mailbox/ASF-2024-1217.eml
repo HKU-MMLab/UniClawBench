@@ -1,0 +1,31 @@
+Message-ID: <SY4P282MB3016CD53A84B82BB3CF5DE4E85759@SY4P282MB3016.AUSP282.PROD.OUTLOOK.COM>
+X-Clawbench-ID: ASF-2024-1217
+Date: Tue, 14 Dec 2021 23:19:52 +1100
+From: Kay Hohenhaus <pkayh2@outlook.com>
+To: dev@httpd.apache.org
+Subject: Re: travis setup for 2.4.x
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2021-12.mbox
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"><div dir="auto">Would you kindly unsubscribe me? Many thanks</div><div class="gmail_extra"><br><div class="gmail_quote">On 14 Dec 2021 21:34, Stefan Eissing &lt;stefan@eissing.org&gt; wrote:<br type="attribution"><blockquote class="quote" style="margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><p dir="ltr">How is the relation between the .travis.yml in trunk and 2.4.x? We have checks for jobs in trunk with
+<br>
+
+<br>
+- if: *condition_not_24x
+<br>
+
+<br>
+and those jobs do not appear in the 2.4.x/.travis.yml. Is this a leftover? Are these 2 clearly separate or merged somehow?
+<br>
+
+<br>
+Thanks for the help!
+<br>
+
+<br>
+Kind Regards,
+<br>
+Stefan</p>
+</blockquote></div><br></div>

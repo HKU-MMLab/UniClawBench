@@ -1,0 +1,30 @@
+{
+  "task_id": "task_201_01_boarding_pass_ocr",
+  "note": "Operator populates /tmp_workspace/clawbench/sources/ from these files. Executor expects a directory of boarding pass images under sources/boarding_passes/ and writes one JSON object per image to /tmp_workspace/results/passes.json as a list.",
+  "entries": [
+    {
+      "path": "boarding_passes/pass_01.jpg",
+      "description": "Boarding pass scan fixture 1."
+    },
+    {
+      "path": "boarding_passes/pass_02.jpg",
+      "description": "Boarding pass scan fixture 2."
+    },
+    {
+      "path": "boarding_passes/pass_03.jpg",
+      "description": "Boarding pass scan fixture 3."
+    },
+    {
+      "path": "boarding_passes/pass_04.jpg",
+      "description": "Boarding pass scan fixture 4."
+    },
+    {
+      "path": "boarding_passes/pass_05.jpg",
+      "description": "Boarding pass scan fixture 5."
+    },
+    {
+      "path": "boarding_passes/pass_06.jpg",
+      "description": "Boarding pass scan fixture 6."
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+Message-ID: <3D4A6790.3070104@cunniffe.net>
+X-Clawbench-ID: CAM-2003-0035
+Date: Fri, 02 Aug 2002 12:05:52 +0100
+From: Vincent Cunniffe <vincent@cunniffe.net>
+To: ilug <ilug@linux.ie>
+Subject: Re: [ILUG] Checking that cronjobs actually ran?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00230.ff81becf76d1c77011e4218a6dba7a9a
+
+Wynne, Conor wrote:
+> Hi ladies,
+>
+> I setup a cron job to do a full backup to tape drive there last night, but
+> I'm just wondering how I can verify that it actually ran?
+> I suppose that a mail will be sent to root as I ran crontab -e as root. Is
+> that correct or should I be looking elsewhere?
+
+/var/log/cron
+
+Logs user, name of job run, and pid it ran as.
+
+Regards,
+
+Vin
+
+
+--
+Irish Linux Users' Group: ilug@linux.ie
+http://www.linux.ie/mailman/listinfo/ilug for (un)subscription information.
+List maintainer: listmaster@linux.ie

@@ -1,0 +1,47 @@
+Message-ID: <trinity-708b2176-42f2-4fc3-a312-6f9a6ed46c0c-1733418845787@trinity-msg-rest-gmx-gmx-live-bbc95d94c-mdhws>
+X-Clawbench-ID: BIO-2024-0957
+Date: Thu, 5 Dec 2024 17:14:05 +0000
+From: Steffen Möller <steffen_moeller@gmx.de>
+To: debian-med@lists.debian.org
+Subject: Aw: Igdiscover is in quite bad state
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_12_msg00006.html
+
+Dear Andreas,
+
+I think it is just fine to remove igdiscover. Thank you tons.
+
+Best,
+Steffen
+
+
+&gt; Gesendet: Montag, 2. Dezember 2024 um 16:18
+&gt; Von: "Andreas Tille"
+&gt; An: "Debian Med Project List"
+&gt; CC: "Steffen Moeller"
+&gt; Betreff: Igdiscover is in quite bad state
+&gt;
+&gt; Hi,
+&gt;
+&gt; when trying to squash some igdiscover bugs I stumbled upon my last
+&gt; commit from one year ago[1] with the commit message
+&gt;
+&gt;   Build-Depends igblast; re-activate test (just to show that it is broken)
+&gt;
+&gt; (Salsa CI test results are gone meanwhile).  Steffen, we have an existing
+&gt; RC buggy package of an old version and a new version that fail its test.
+&gt; Is it possibly time for removal of this package.   Or do you (or someone
+&gt; else) have a clue how to fix it?
+&gt;
+&gt; Kind regards
+&gt;     Andreas.
+&gt;
+&gt;
+&gt; [1] https://salsa.debian.org/med-team/igdiscover/-/commit/fad936b3bd6168fff918564ac22ce7b0bfed9111
+&gt;
+&gt; --
+&gt; https://fam-tille.de
+&gt;
+&gt;

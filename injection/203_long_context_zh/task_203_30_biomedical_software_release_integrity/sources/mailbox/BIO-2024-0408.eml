@@ -1,0 +1,43 @@
+Message-ID: <CALF6qJ=HszQRfwOymz_fabG-Rkxaf+VZQgmX575LyvCZ6k0sLg@mail.gmail.com>
+X-Clawbench-ID: BIO-2024-0408
+Date: Wed, 3 Nov 2021 21:09:15 +0100
+From: Anton Gladky <gladk@debian.org>
+To: Debian Science List <debian-science@lists.debian.org>
+Subject: Re: Debian Math Team
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_11_msg00028.html
+
+I think we all have a very limited free time to work on Debian.
+At least it is my situation.
+
+Newcomers are looking for reviewers/uploaders, trying to reach
+a relatively large audience in d/science, sometimes for a very long
+time without success. How will it work in a smaller team?
+
+Doing some large transitions (vtk, boost, etc.) I am always very glad
+seeing package maintained in a d/science because it is very easy
+to make a tiny uploads, reaching the result very fast without filing
+bugs, NMUs etc. All these official bureaucratic procedures  take a lot
+of time and at the end slow down the process. Why do we want to
+get a one-more team with own policy, necessity to be a member of it
+doing such uploads etc. It makes things harder!
+
+I have unsubscribed myself from most of the mailing lists (even from
+debian-devel, sorry), leaving only important ones for me to save some
+more time for QA-work, reviewing/sponsoring/uploading packages, fixing
+bugs, setting CI-pipelines for salsa-repos etc.  Why do we want to spread
+an energy/time writing new policy, moving packages etc?
+
+My strong opinion is that new barriers (blends/teams/salsa-groups whatever)
+will unlikely improve the total quality and amount of Debian packages.
+For me it just means that I will probably need to file more NMUs, asking
+other people for reviews etc... It is a pain and a waste of time. Sorry.
+
+I will probably need to request membership in other teams due to
+some QA or release-transition work, but....
+
+Regards
+
+Anton

@@ -1,0 +1,39 @@
+Message-ID: <YuFN+CJdMG0FCwha@an3as.eu>
+X-Clawbench-ID: BIO-2024-0754
+Date: Wed, 27 Jul 2022 16:38:48 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>,	"Aaron M. Ucko" <ucko@debian.org>
+Subject: Finishing ncbi-vdb and sra-sdk
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_07_msg00080.html
+
+Hi Aaron,
+
+I think ncbi-vdb version 3.0.0 is finished in Git.  I'm just uploading it to
+experimental (needs to pass new queue due to the changed binary names).  I
+tried building sra-sdk 3.0.0 against these packages but here the configure
+step with cmake fails with
+
+
+-- Found Java: /usr/bin/java (found version "11.0.16") found components: Development.
+-- Found Python3: /usr/bin/python3.10 (found version "3.10.5") found components: Interpreter.
+Using ncbi-vdb interfaces: /usr/include/ncbi-vdb/interfaces
+CMake Error at build/env.cmake:241 (message):
+  VDB_LIBDIR="" does not exist - ncbi-vdb was not installed in that location.
+  VDB_LIBDIR variable pointing to the ncbi-vdb binary libraries must be
+  specified.
+Call Stack (most recent call first):
+  CMakeLists.txt:47 (include)
+
+
+I guess I could need another hint for cmake to continue here. ;-)
+
+Kind regards
+
+       Andreas.
+
+
+--
+http://fam-tille.de

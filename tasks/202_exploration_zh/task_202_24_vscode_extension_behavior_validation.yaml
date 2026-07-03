@@ -1,0 +1,75 @@
+task_id: task_202_24_vscode_extension_behavior_validation
+category: 202_exploration_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  你必须验证某个 VS Code 扩展在本地环境中是否真正能帮助团队评审
+  Markdown 中的 Mermaid 架构图。这个任务
+  不是要推荐某个扩展或对 Marketplace 截图；你
+  必须在一个本地
+  可审计的 VS Code / `code` CLI 扩展环境中安装并实际触发扩展的能力。
+
+  工作区 fixture 位于：
+
+      /tmp_workspace/sources/vscode_mermaid_workspace/
+
+  它包含三个你必须用来驱动验证的 Markdown 文件：
+    - docs/architecture.md   （一个有效的流程图，含 emoji / 中日韩字符 / 嵌套子图）
+    - docs/incident_flow.md  （一个有效的时序图）
+    - docs/broken_diagram.md （一个故意写错的 Mermaid 图）
+
+  至少比较 3 个真实的候选扩展（例如一个 Mermaid 预览、一个
+  Markdown-preview-enhanced、一个 Mermaid 语法高亮，或另一个
+  与图表相关的扩展）。恰好选出 1 个主扩展，安装它，
+  并验证它。你的候选比较必须为每个扩展记录：扩展
+  id、发布者、版本、是否稳定、它的 contributes/commands、
+  它是否需要外部网络或额外二进制文件，以及它是否适合对 fixture 的
+  Mermaid 图进行离线评审。不要使用伪造的
+  Marketplace 数据，不要登录任何账号，不要绕过签名/下载
+  限制，也不要把 VS Code 的内置 Markdown 预览冒充为
+  第三方扩展的行为。
+
+  你必须验证行为，而不仅仅是安装。使用这三个 fixture
+  文件，证明以下全部内容：
+    - 有效的流程图（architecture.md）被该扩展
+      识别/预览，并且 emoji / 中日韩字符 / 特殊标签不会使其崩溃；
+    - 有效的时序图（incident_flow.md）被识别/预览；
+    - 写错的图（broken_diagram.md）产生可见的错误或
+      诊断信息，并且不会被静默地当作成功处理；
+    - 该能力确实来自所选扩展（命令
+      注册 / 扩展宿主日志 / 已安装的 package.json），而非来自
+      内置预览或某个不相关的渲染器。
+
+  你可以组合使用：VS Code GUI 截图、`code` CLI + 扩展宿主/输出
+  日志、命令面板/命令注册证据、已安装
+  扩展的 package.json、导出的 HTML/PNG/SVG，或无头/CLI 能力。
+
+  保存：
+  - `/tmp_workspace/results/extension_candidates.json`：比较的 >=3 个候选项，
+    包含上述字段以及选择理由。
+  - `/tmp_workspace/results/extension_install.json`：所选扩展的 id、
+    版本、发布者、安装路径、关键 package.json 字段、commands/contributes。
+  - `/tmp_workspace/results/behavior_validation.json`：对这三个
+    fixture 文件，记录它是如何被触发的、识别/预览/错误结果，
+    以及证据路径（尤其是：broken_diagram.md 必须显示错误）。
+  - `/tmp_workspace/results/activation_evidence/`：扩展宿主日志、命令
+    注册、VS Code 输出、证明激活的截图/导出文件。
+  - `/tmp_workspace/results/extension_sources.json`：候选的
+    Marketplace/Open VSX/GitHub/VSIX 来源、状态以及读取时间戳。
+  - 一个验证脚本（或运行记录）及其运行日志。
+
+references:
+  - references/eval_rule.md
+services:
+  - name: fixture-bootstrap
+    path: fixture-bootstrap
+    start: bash install.sh
+codex:
+  max_user_followups: 2

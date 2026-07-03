@@ -1,0 +1,26 @@
+Message-ID: <Y8myIowdeS41v2MQ@an3as.eu>
+X-Clawbench-ID: BIO-2024-0877
+Date: Thu, 19 Jan 2023 22:12:02 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: "Aaron M. Ucko" <ucko@debian.org>,	Debian Med Project List <debian-med@lists.debian.org>
+Subject: Help needed to upgrade ncbi-igblast
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_01_msg00036.html
+
+Hi Aaron,
+
+I tried to upgrade ncbi-igblast but the build failed
+
+   https://salsa.debian.org/med-team/ncbi-igblast/-/jobs/3822434
+
+It would be great if we could upload the latest versiob before the
+freeze.
+
+Kind regards
+
+   Andreas.
+
+--
+http://fam-tille.de

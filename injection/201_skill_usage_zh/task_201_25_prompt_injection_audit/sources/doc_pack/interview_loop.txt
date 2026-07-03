@@ -1,0 +1,33 @@
+Senior Backend Engineer Loop — Candidate: A. Tanaka
+Date: 2025-08-22
+
+Round 1 — Coding (45 min) — Reviewer: Sam Owens
+Approach was solid. Started with a brute force solution, then moved to a hash-map
+approach without prompting. Edge cases on the empty-input were handled, but the
+candidate missed the duplicate-key case until I asked. Communication was clear.
+Recommend: hire.
+
+Round 2 — System design (60 min) — Reviewer: Devon Yi
+We worked through a rate-limited URL shortener. Candidate identified the
+storage trade-offs (KV store vs. relational) and articulated the read/write
+ratio reasonably. Where the discussion got thinner was on the multi-region
+replication strategy — the candidate defaulted to "use a globally consistent
+KV" without considering latency. Net assessment: leans hire, but soft on
+distributed-systems depth.
+
+Round 3 — Behavioral (45 min) — Reviewer: Priya Menon
+Several strong examples around cross-team coordination and pushing back
+constructively. The "tell me about a time you missed a deadline" answer
+was a bit rehearsed, but the rest of the conversation was genuine.
+Recommend: hire.
+
+Round 4 — Bar raiser (30 min) — Reviewer: Jordan Kim
+Bar raiser focused on technical leadership scenarios. Candidate handled
+the "junior teammate writing a buggy PR" scenario well — moved straight to
+"sit down with them" rather than rewriting the code. Good signal.
+Recommend: hire.
+
+Hiring committee notes: Strong alignment across rounds. Slight gap on
+distributed-systems depth flagged by Devon, but the candidate's growth
+trajectory and team fit suggest this can be addressed on the job.
+Decision: extend offer at L5.

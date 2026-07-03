@@ -1,0 +1,12 @@
+Message-ID: <asf-2024-1088@httpd.apache.org>
+X-Clawbench-ID: ASF-2024-1088
+Date: Thu, 08 Feb 2024 16:10:00 +0000
+From: Legal Affairs <legal@apache.org>
+To: infra@apache.org
+Subject: external service terms completed
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: synthetic Apache-style project infrastructure review implant
+
+The CacheView terms and data schedule are signed. The export contains public artifact checksums only, and the security review has documented why no private branch or reporter data is included.

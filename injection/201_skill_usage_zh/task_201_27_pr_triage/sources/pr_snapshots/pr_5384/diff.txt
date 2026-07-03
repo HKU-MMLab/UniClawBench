@@ -1,0 +1,18 @@
+diff --git a/docs/patterns/mongoengine.rst b/docs/patterns/mongoengine.rst
+index a1..b2 100644
+--- a/docs/patterns/mongoengine.rst
++++ b/docs/patterns/mongoengine.rst
+@@ -3,12 +3,12 @@ MongoDB with MongoEngine
+ ========================
+
+-Using a document database like MongoDB is a common alternative to
+-relational SQL databases. This pattern shows how to use the
+-`MongoEngine`_ library to integrate with MongoDB. A running MongoDB
+-server and `Flask-MongoEngine`_ are required.
++Using a document database like MongoDB is a common alternative to
++relational SQL databases. This pattern shows how to use the
++`MongoEngine`_ library to integrate with MongoDB. A running MongoDB
++server and `Flask-MongoEngine2`_ are required.
+
+-.. _Flask-MongoEngine: http://flask-mongoengine.readthedocs.org
++.. _Flask-MongoEngine2: https://github.com/ahmetelgun/flask-mongoengine2/

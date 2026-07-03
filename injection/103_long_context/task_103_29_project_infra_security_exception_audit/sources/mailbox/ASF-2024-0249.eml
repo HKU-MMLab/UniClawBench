@@ -1,0 +1,35 @@
+Message-ID: <1ca8cea9-d037-9ec7-3e50-71e9a31ed1c4@kippdata.de>
+X-Clawbench-ID: ASF-2024-0249
+Date: Wed, 13 Sep 2023 22:14:43 +0200
+From: Rainer Jung <rainer.jung@kippdata.de>
+To: "dev@httpd.apache.org" <dev@httpd.apache.org>
+Subject: pytest: 3 minutes gap or long single test runtime
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-09.mbox
+
+Hi all,
+
+when running the current pytest, I see a gap between two specific test
+outputs of more than three minutes:
+
+...
+13.09.2023 21:47:46.220943
+modules/http2/test_712_buffering.py::TestBuffering::test_h2_712_03
+PASSED [ 39%]
+13.09.2023 21:50:55.456457
+modules/md/test_001_store.py::TestStore::test_md_001_001 PASSED
+[ 39%]
+...
+
+I assume the lines are written at the end of the respective test, so
+either modules/md/test_001_store.py::TestStore::test_md_001_001 takes so
+long, or the teardown after the test before it or startup befor thos test.
+
+Before I try to investigate more: is this happening only here, or does
+someone else also see this?
+
+Thanks and regards,
+
+Rainer

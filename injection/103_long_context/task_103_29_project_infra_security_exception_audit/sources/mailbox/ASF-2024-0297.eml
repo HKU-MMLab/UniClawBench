@@ -1,0 +1,28 @@
+Message-ID: <PR_kwDOFoJrE85chEpL-76b58d49-c2d6-4330-af1c-1c798d6555fd@gitbox.apache.org>
+X-Clawbench-ID: ASF-2024-0297
+Date: Thu, 12 Oct 2023 16:10:17 -0000
+From: =?utf-8?q?wdormann_=28via_GitHub=29?= <git@apache.org>
+To: dev@httpd.apache.org
+Subject: =?utf-8?q?Re=3A_=5BPR=5D_Document_non-impact_of_CVE-2023-44487_=5Bhttpd-site?=  =?utf-8?q?=5D?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-10.mbox
+
+wdormann commented on PR #10:
+URL: https://github.com/apache/httpd-site/pull/10#issuecomment-1759932314
+
+   You seem to have replied to a message that I had deleted, due to a failure in my test by way of not properly enabling the http2 protocol.
+   Even with Apache 2.4.57, combined with the nghttp2 that comes with Ubuntu 22.04, `httpd` will eventually get killed by oom-kill when under attack using CVE-2023-44487.
+   Only [nghttp2 v1.57.0](https://nghttp2.org/blog/2023/10/10/nghttp2-v1-57-0/] has a fix for CVE-2023-44487, so I don't think that Apache is in a place to say that it's not affected.
+
+
+--
+This is an automated message from the Apache Git Service.
+To respond to the message, please log on to GitHub and use the
+URL above to go to the specific comment.
+
+To unsubscribe, e-mail: dev-unsubscribe@httpd.apache.org
+
+For queries about this service, please contact Infrastructure at:
+users@infra.apache.org

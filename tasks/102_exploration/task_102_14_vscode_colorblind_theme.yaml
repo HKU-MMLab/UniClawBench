@@ -1,0 +1,74 @@
+task_id: task_102_14_vscode_colorblind_theme
+category: 102_exploration
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  A teammate has red-green color blindness (deuteranopia) and is unhappy with
+  our editor's dark theme — code is hard to read and some syntax colors look
+  identical to them. Help me pick the best VS Code dark theme for them from a
+  fixed set of candidates.
+
+  The candidate themes are provided offline as real VS Code color-theme JSON
+  files at:
+
+      /tmp_workspace/clawbench/sources/theme_candidates/
+
+  See `candidates.json` in that folder for the list (display name, the theme
+  JSON file, marketplace download count, and source). Popularity is just
+  context — the most-downloaded theme is not necessarily the right one.
+
+  Evaluate the themes objectively by actually parsing each theme JSON (they are
+  JSON-with-comments) and computing, for each:
+
+  - HARD constraints (a theme must pass ALL of these to be eligible):
+    1. The editor foreground vs editor background must meet WCAG AAA contrast
+       (>= 7.0) for normal text.
+    2. Every meaningful syntax token color (keyword, string, function,
+       variable, constant — comments are exempt since they're intentionally
+       dim) must have at least 3.0 contrast against the editor background.
+    3. The keyword color and the string color must remain distinguishable
+       under red-green color blindness: simulate deuteranopia AND protanopia
+       and require a perceptual color difference (deltaE) of at least 20 in
+       both.
+
+  - SOFT preferences (use to break ties among themes that pass all hard
+    constraints): prefer larger worst-case colorblind separation between
+    keyword and string, and a higher minimum meaning-token contrast.
+
+  Pick exactly ONE theme as your recommendation, and justify it with the
+  computed numbers. Watch out: at least one very popular / good-looking theme
+  fails a hard constraint, and at least one very high-contrast theme actually
+  uses the same color for keywords and strings (useless for the colorblind
+  teammate).
+
+  Save:
+  - `/tmp_workspace/results/theme_choice.json`: your final pick
+    (`selected_id`, `selected_file`, and the computed metrics that justify it),
+    the list of themes that passed all hard constraints, and the tie-break
+    reasoning.
+  - `/tmp_workspace/results/theme_evaluation.json`: per-candidate computed
+    metrics (editor contrast, min meaning-token contrast, keyword<->string
+    deltaE under deuteranopia and protanopia) and a pass/fail with the failing
+    constraint named for each rejected theme.
+  - `/tmp_workspace/results/theme_method.json`: how you parsed the JSON and
+    computed contrast / colorblind simulation / deltaE (so the audit is
+    reproducible).
+
+  This is fully offline — do not fetch anything from the network.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/reference_analysis.py
+sources:
+  - theme_candidates/
+
+codex:
+  max_user_followups: 2

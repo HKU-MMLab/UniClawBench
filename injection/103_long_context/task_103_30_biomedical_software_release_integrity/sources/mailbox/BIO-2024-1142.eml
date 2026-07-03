@@ -1,0 +1,28 @@
+Message-ID: <Y1vHCL0XJl1fO10a@an3as.eu>
+X-Clawbench-ID: BIO-2024-1142
+Date: Fri, 28 Oct 2022 14:11:52 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: 1013157@bugs.debian.org,	Debian Med Project List <debian-med@lists.debian.org>
+Subject: Asking for removal from Debian (Was: nifti2dicom: vtk[6,7] removal)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00107.html
+
+Hi,
+
+I've added to the upstream issue[1] that I will ask ftpmaster for
+removal from Debian if there is no visible sign that there is any
+interest to port the code to recent VTK.
+
+Just to let readers of Debian Med know that this package is about
+to be removed.
+
+Kind regards
+
+     Andreas.
+
+[1] https://github.com/biolab-unige/nifti2dicom/issues/36
+
+--
+http://fam-tille.de

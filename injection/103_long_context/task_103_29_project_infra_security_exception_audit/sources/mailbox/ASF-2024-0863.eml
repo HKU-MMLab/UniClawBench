@@ -1,0 +1,49 @@
+Message-ID: <164ac452-7524-57a6-dc08-9fb5d9f9702c@apache.org>
+X-Clawbench-ID: ASF-2024-0863
+Date: Fri, 11 Mar 2022 13:24:51 +0100
+From: Daniel Gruno <humbedooh@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.53-rc2 as httpd-2.4.53
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-03.mbox
+
+On 11/03/2022 13.14, Stefan Eissing wrote:
+> While the 72 hours have not all passed yet, the votes so far are positive.
+
+72 hours is a guideline, not a hard rule. If you wanna do it in 48 or
+24, that's fine as long as there's a valid reason.
+
+>
+> Given that no -1 vote will come, I call for a vote on the release time:
+>
+> [ ] +1: release it later today, it needs to get out!
+> [ ] +0: do not really care
+> [ ] -1: better do it Monday, Admins have a life, too, you know?
+>
+>
+>
+>> Am 09.03.2022 um 17:19 schrieb Stefan Eissing <stefan@eissing.org>:
+>>
+>> Hi all,
+>>
+>> Please find below the proposed release tarball and signatures:
+>>
+>> https://dist.apache.org/repos/dist/dev/httpd/
+>>
+>> I would like to call a VOTE over the next few days to release
+>> this candidate tarball httpd-2.4.53-rc2 as 2.4.53:
+>> [ ] +1: It's not just good, it's good enough!
+>> [ ] +0: Let's have a talk.
+>> [ ] -1: There's trouble in paradise. Here's what's wrong.
+>>
+>> The computed digests of the tarball up for vote are:
+>> sha256: 7a045e8e653aaf931f9667f3a7e1943bd81306bf908f316465f737a854d10c16 *httpd-2.4.53-rc2.tar.gz
+>> sha512: 2fa1918aa44eb9984c0a294f416102088ed6874213391acd8c434b062603eb2a9ec64f7b1a218d4fe283d74fc9956650297d0b4dda57dcd8533b075a7321ec78 *httpd-2.4.53-rc2.tar.gz
+>>
+>> The SVN candidate source is found at tags/2.4.53-rc2-candidate.
+>>
+>> Kind Regards,
+>> Stefan
+>

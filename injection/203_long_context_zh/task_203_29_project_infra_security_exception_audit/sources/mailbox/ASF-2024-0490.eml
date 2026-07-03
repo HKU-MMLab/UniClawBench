@@ -1,0 +1,38 @@
+Message-ID: <CAKQ1sVPF2+vL0CGDv9JnApCqyf_30s=JBza7HozHh+hdABUtAg@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0490
+Date: Mon, 22 Aug 2022 11:52:30 +0200
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: httpd-dev <dev@httpd.apache.org>, dev@perl.apache.org
+Subject: Re: [VOTE] Release libapreq2-2.17
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-08.mbox
+
+On Mon, Aug 22, 2022 at 11:32 AM Yann Ylavic <ylavic.dev@gmail.com> wrote:
+>
+> On Thu, Aug 18, 2022 at 1:32 PM Joe Orton <jorton@redhat.com> wrote:
+> >
+> > I would like to call a VOTE over the next week to release this candidate
+> > tarball as v2.17:
+>
+> +1 on Debian(s).
+
+Not really related to apreq, but somehow the perl test framework is
+now generating certificate key files in PKCS#8 format (for
+SSLProxyMachineCertificateFile), previously they were in PKCS#1
+format. That's the case for the httpd test framework too.
+Any idea what happened there?
+
+As a result load_x509_info()::PEM_X509_INFO_read_bio() does not
+recognize them as private key files and httpd-2.4.x fails to load.
+httpd-trunk is loading still, thanks to r1884552, but this commit
+looks quite orthogonal/incidental per the commit message?
+Linking httpd-trunk with libapreq seems useless/hopeless though, since
+the apreq util/helper functions have been copied in server/apreq_*.c
+files with the exact same apreq_ prefix, httpd will always use its own
+ones..
+
+
+Regards;
+Yann.

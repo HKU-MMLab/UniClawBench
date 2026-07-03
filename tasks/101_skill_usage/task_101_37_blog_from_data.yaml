@@ -1,0 +1,73 @@
+task_id: task_101_37_blog_from_data
+category: 101_skill_usage
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  End of the year and leadership wants a newsletter post about our sales
+  performance — something readable, not a data dump. The raw data lives
+  at /tmp_workspace/clawbench/sources/monthly_sales_2010.csv. Use the
+  CSV pipeline skill to load and aggregate the numbers, the Python visualization skill
+  for the cover chart, and the blog-writing skill to draft the
+  post so it actually reads like our newsletter voice.
+
+  The angle I want is a real year-in-review feel. The post should leave
+  readers with a sense of how the year unfolded month by month and the
+  MoM trend, which stores carried the load across the regional and store
+  ranking, when the peak hit and how concentrated that peak month was in
+  any single store, what changed in basket size versus order count over
+  the year using an average-order-value lens against order count, and
+  what we should watch for in the next quarter as a forward-looking
+  takeaway. Don't over-structure it with one header per topic — just let
+  those threads come through naturally in the writeup.
+
+  Give me three deliverables under /tmp_workspace/results/.
+
+  First, post.md at roughly 800 words, with an intro, three concrete
+  business callouts grounded in the CSV that stand on their own numbers
+  inside the body, and a short conclusion or recommendation at the end.
+
+  Second, cover.png — a combined bar-and-line chart I can drop in as the
+  post's cover image, with the monthly axis spanning the full year
+  present in the CSV.
+
+  Third, analysis.xlsx with three sheets. Monthly should have month,
+  total revenue, total orders, average order value, and month-over-month
+  revenue change driven by formulas. Store_Summary should have one row
+  per store or country with revenue, orders, share of total revenue, and
+  peak month, where the share-of-total and peak-month columns are
+  formula-backed so I can adjust the workbook later without rebuilding
+  it. Callouts should hold the three exact data points used in the blog
+  post, each with a cell reference back to whichever calculation sheet
+  produced it.
+
+  When you cite numbers in the post, use the same all-store totals that
+  drive the workbook so the post and the spreadsheet agree on every
+  figure.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - monthly_sales_2010.csv
+
+skills:
+  - csv-pipeline
+  - python-dataviz
+  - newsletter-blog-writer
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

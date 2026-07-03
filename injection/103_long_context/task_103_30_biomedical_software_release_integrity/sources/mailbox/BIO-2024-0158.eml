@@ -1,0 +1,25 @@
+Message-ID: <Zuq000mBvZVi00u4@an3as.eu>
+X-Clawbench-ID: BIO-2024-0158
+Date: Wed, 18 Sep 2024 13:09:07 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Developer statistics
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_09_msg00014.html
+
+Am Wed, Sep 18, 2024 at 12:48:07PM +0200 schrieb Joost van Baal-Ilić:
+> FYI: And the output of 'teammetrics' is collected and published at
+> http://blends.debian.net/liststats/ (took me some clicks to find that one).
+
+Ahhh, sorry, I assumed that's known here.  The reason why I did not
+pointed there is, that these graphs do not provide the answer to some
+general data about some developers activities.  Its just split over
+teams.
+
+Kind regards
+    Andreas.
+
+--
+https://fam-tille.de

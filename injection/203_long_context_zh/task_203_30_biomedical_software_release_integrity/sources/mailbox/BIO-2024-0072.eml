@@ -1,0 +1,20 @@
+Message-ID: <f91356c8-186d-6506-1adb-b88b36495793@debian.org>
+X-Clawbench-ID: BIO-2024-0072
+Date: Wed, 29 Sep 2021 16:17:22 +0300
+From: Andrius Merkys <merkys@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: libcifpp
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_09_msg00063.html
+
+On 2021-09-29 16:15, Nilesh Patra wrote:
+> On 9/29/21 6:42 PM, Maarten L. Hekkelman wrote:
+>> Should I wait until the dust settles and libcifpp-data is accepted by the might powers before trying to move my changes into salsa?
+> You can move your changes into salsa if you like, but do not upload to unstable until the one from new is accepted.
+
++1
+
+Best,
+Andrius

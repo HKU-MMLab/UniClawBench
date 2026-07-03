@@ -1,0 +1,56 @@
+Message-ID: <f7d3c0c1-eb70-c6e3-c432-96d0b9c15a3b@apache.org>
+X-Clawbench-ID: ASF-2024-1469
+Date: Fri, 16 Feb 2024 15:21:03 +0100
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: libapreq subproject roll call
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-02.mbox
+
+On 2/16/24 2:10 PM, Eric Covener wrote:
+>> Will apreq 2.18 still be released?
+>
+> I think we should, but we need someone to do the release work and 3
+> active PMC members to approve it.  Prior to the recent activity, the
+> subproject was essentially unchanged and unreleased for 10 years (with
+> 1 failed release due to lack of votes)
+>
+> I would like to understand if libapreq remains viable as a project
+> managed by the httpd PMC. We had this conversation last year on the
+> private list and the next step is to bring it here.
+
+I reread the thread on the private list. Did the discussed reach out to other
+PMC's happen?
+
+>
+> It is possible the next release comes with an end-of-life date in the
+> future. If this codebase has a community elsewhere, they should join
+> us or take it over.If there is anyone out there who wants to get more
+> involved, please speak up.
+>
+>
+> I count myself as a release vote of last resort only, but i don't
+> think we should be committing to future fixes/releases if nearly
+> everyone is in this category.
+
+I am in that category as well.
+I don't have time in the foreseeable future to evaluate if its worth keeping at least parts of it in trunk to be used for the
+locations in httpd where we parse form data (there are some). I guess it could be beneficial to have this capability in a central
+location.
+OTOH looking in what we have in trunk I am a bit confused. The trunk code does not seem to have the perl
+glue any longer that is present in the standalone code. Did it go somewhere else back then? How
+would perl users continue to use it even if we would release trunk today and would close down the
+standalone apreq with a terminal release today?
+
+I would be trying to help with a vote on a terminal release by this PMC if no one else wants to take over the code base as is,
+but we should clearly retire it then.
+As we discussed back then I am not sure if it will be possible to move it into the Attic or
+if there is some other way. In the worst case we just note it at https://httpd.apache.org/apreq/
+As far as I can tell there is no offer to download it from our downloads page. Hence even today
+people need to go to https://dlcdn.apache.org/httpd/libapreq/ directly.
+
+Regards
+
+Rüdiger

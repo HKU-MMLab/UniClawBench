@@ -1,0 +1,45 @@
+task_id: task_105_11_denver_web_plan
+category: 105_cross_platform
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+recording: none
+headed: auto
+task: |
+  You are an engineer visiting Denver on a business trip for the first time.
+  Plan for next Saturday, when you only have 13:30-18:30 free, and the fixed
+  starting point is Denver Union Station. If next Saturday is a public holiday,
+  closed day, special-hours day, sold out, or the official pages do not provide
+  enough date-specific opening/admission information, use the following
+  Saturday instead and explain why. Use only the browser to create a half-day
+  travel plan. The fixed candidate attractions are Denver Art Museum, Denver
+  Botanic Gardens, Museum of Nature & Science, and Meow Wolf Denver.
+
+  You need to:
+  1. Check the official attraction websites for opening hours, last admission
+     time, and reservation/ticket rules for the selected date.
+  2. Use a map webpage to check travel times from the starting point and
+     between attractions.
+  3. Find one candidate cafe webpage to confirm its operating status and
+     location for the selected date.
+  4. Provide the complete route in this file:
+
+         /tmp_workspace/results/denver_sat_trip.md
+
+  The final route must select 2 attractions plus 1 coffee rest stop, and must
+  satisfy: total duration no more than 5 hours, each individual transfer
+  preferably no more than 35 minutes, and no location with unclear reservation
+  status. The Markdown must include: candidate checks, chosen route, timed
+  itinerary, why others were rejected. State the selected date in the final
+  plan.
+codex:
+  max_user_followups: 2
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/process_evidence/denver_art_museum.png
+  - references/process_evidence/google_map_DAM_to_DBG.png
+  - references/process_evidence/google_map_DUS_to_DAM.png

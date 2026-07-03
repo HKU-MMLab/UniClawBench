@@ -1,0 +1,84 @@
+Message-ID: <Z1Nal2uBncoaT8Do@emlwks999.eu>
+X-Clawbench-ID: BIO-2024-0881
+Date: Fri, 6 Dec 2024 21:12:07 +0100
+From: Étienne Mollier <emollier@debian.org>
+To: debian-med@lists.debian.org
+Subject: [Advent Calendar] bug repors for the first week
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_12_msg00007.html
+
+Hi all,
+
+You will find the first few doors for the Advent Calendar Bug
+Squashing party.  Thanks to everyone involved in the resolution
+of bugs!
+
+Anticipated uploads from Saturday, November 30th:
+
+ 1. #1088545: simde: Cherry-pick LSX support from simde upstream
+ 2. #1088646: python-curies: Handle python3-multipart → python3-python-multipart renaming)   Debian Bug Tracking System
+ 3. #1087554: seqkit: FTBFS: undefined: decor.DidentRight
+ 4. #1087552: nthash: FTBFS on arm64: undefined reference to `omp_get_num_threads'
+
+Sunday of the Advent, December 1st:
+
+ 5. #1088757: nibabel: autopkgtest failure with Python 3.13
+ 6. #1077454: bioperl-run: FTBFS: dh_auto_test: error: /usr/bin/perl Build test --verbose 1 returned exit code 255
+ 7. #1086983: pyxnat: Python SyntaxWarning
+ 8. #1045454: primer3: Fails to build source after successful build
+ 9. #1081376: libbio-das-lite-perl: homepage defunct
+10. #1083625: python-dendropy: (build-)depends on deprecated module python3-pkg-resources
+11. #1046095: nim-hts: Fails to build source after successful build
+12. #1049588: nim-hts: Fails to build binary packages again after successful build
+13. #1081123: nim-hts: FTBFS with gcc-14
+
+Monday, December 2nd:
+
+14. #1075071: hts-nim-tools: ftbfs with GCC-14
+15. #1085491: ray FTCBFS: uses mpicxx
+16. #1079978: eegdev-plugins-free: Add Appstream metainfo announcing HW support
+17. #1047005: roary: Fails to build source after successful build
+18. #1049576: roary: Fails to build binary packages again after successful build
+19. #1087074: scoary: Python SyntaxWarning
+
+Tuesday, December 3rd:
+
+20. #876665: [argtable2] libargtable2-dev (needlessly?) depends on libargtable2-docs
+21. #1080069: sweed: A suspicious integer overflow to buffer overflow in 'SweeD_Input.c'
+22. #1081315: glam2: homepage defunct
+23. #1083637: python-fitbit: (build-)depends on deprecated module python3-pkg-resources
+24. #1087156: uncalled: Python SyntaxWarning
+
+Wednesday, December 4th:
+
+25. #1083648: python-hl7: (build-)depends on deprecated module python3-pkg-resources
+26. #1085666: lefse: Python SyntaxWarning
+27. #1085655: iva: Python SyntaxWarning
+
+Thursday, December 5th:
+
+28. #1087589: FTBFS on ppc64el: [ FAILED ] CooperativePool/CooperativePoolTest.Ints/3, where GetParam() = 4
+29. #1089096: python-pbcore: please make the build reproducible
+30. #1082265: python-ruffus FTBFS with Python 3.13
+31. #1086958: python-ruffus: Python SyntaxWarning
+32. #1085372: busco: Python SyntaxWarning
+33. #1085416: changeo: Python SyntaxWarning
+34. #1087097: srst2: Python SyntaxWarning
+
+Those are many bugs tackled, let's keep up the good work!
+
+I have done some manual copying and paste from alioth-lists[1],
+and notably had to have a peek at email timestamps to get the
+bug closures dates.  Hopefully I haven't messed up too much the
+lists.
+
+[1]: https://alioth-lists.debian.net/pipermail/debian-med-packaging/2024-December/date.html
+
+Have a nice day,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  pgp: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/3, please excuse my verbosity
+   `-    on air: Agusa - Stigen genom skogen

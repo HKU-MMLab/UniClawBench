@@ -1,0 +1,32 @@
+Message-ID: <640b02d4.d18.1ed8.5baf@land10.nl>
+X-Clawbench-ID: ASF-2024-0427
+Date: Fri, 10 Mar 2023 11:13:40 +0100
+From: SteffenAL <info@apachelounge.com>
+To: <dev@httpd.apache.org>
+Subject: Re: mod_wasm: Contributing Upstream to Apache
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-03.mbox
+
+Done,  version 0.10.3 available on the VS17 download page.
+
+Cheers, Steffen
+
+
+On Thursday 09/03/2023 at 16:34, Jesús González  wrote:
+>
+>
+> Hola!
+>
+> We just released a mod_wasm security update (v0.10.3) to address two
+> recently disclosed CVEs (one critical) of Wasmtime, the WebAssembly
+> runtime mod_wasm uses.
+>
+> Further details can be found in this article and in the mod_wasm
+> changelog.
+>
+> Let us know if you find any issues.
+>
+> Cheers!
+> Jesús

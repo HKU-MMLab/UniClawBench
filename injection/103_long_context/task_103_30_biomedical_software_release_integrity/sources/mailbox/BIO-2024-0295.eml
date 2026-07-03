@@ -1,0 +1,35 @@
+Message-ID: <Y4w2R1Iu32wIWxLL@an3as.eu>
+X-Clawbench-ID: BIO-2024-0295
+Date: Sun, 4 Dec 2022 06:55:19 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Help for unifrac autopkgtest needed
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_12_msg00031.html
+
+Hi Étienne,
+
+Am Sat, Dec 03, 2022 at 10:46:26PM +0100 schrieb Étienne Mollier:
+>
+> Probably nothing outstanding, liblapacke introduced the ztrsyl3_
+> in its version 3.11 and unifrac built against that, but the test
+> might have run against liblapacke 3.10 in testing which didn't
+> have this symbal.
+
+Sounds like a sensible explanation.  However, I checked again the debci
+log[1] and compared with Salsa CI[2].  Both are mentioning lapacke 3.11
+in the package installation section.  Salsa CI passes the test while
+debci is failing.  May be waiting a bit longer can help and the
+skikit-learn issue is interfering the migration anyway.
+
+Kind regards
+
+    Andreas.
+
+> > [1] https://ci.debian.net/data/autopkgtest/testing/amd64/u/unifrac/28811608/log.gz
+[2] https://salsa.debian.org/med-team/unifrac/-/jobs/3595307
+
+--
+http://fam-tille.de

@@ -1,0 +1,57 @@
+task_id: task_105_29_pr_mermaid_diagram
+category: 105_cross_platform
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  Quarterly team retrospective time — I want to review how a few
+  issue-view-related PRs in cli/cli progressed over the years. Could you
+  produce a markdown report with a Mermaid diagram?
+
+  These three PRs have all been merged:
+
+  - https://github.com/cli/cli/pull/2462   samcoe added issue comment view in late 2020
+  - https://github.com/cli/cli/pull/3196   g14a added search to issue list in early 2021
+  - https://github.com/cli/cli/pull/10941  iamazeem expanded JSON fields in 2025
+
+  For each PR I want: basic info (author, created/merged timestamps, how
+  many lines and files changed), top 5 most-changed files, who reviewed
+  it, and how long it took from creation to merge (in hours).
+
+  Fetch PR data with gh from the GitHub API. Draw a Mermaid diagram
+  visualizing the lifecycle of all three PRs — pick whatever chart type
+  makes the 2020-to-2025 evolution timeline clear, and render it with
+  mmdc.
+
+  Also write a Chinese narrative doing a cross-comparison: which was
+  fastest, which had the biggest diff. Estimate the discussion vibe from
+  comments — roughly how many questions / approvals / suggestions, and
+  which PR had the most heated discussion.
+
+  Put all artifacts under /tmp_workspace/results/. Save the structured
+  data for the three PRs as pr_summary.json, the Mermaid source as
+  pr_flow.mmd rendered to pr_flow.png (svg is fine too). Write a final
+  pr_doc.md markdown report titled "cli/cli 季度 PR 复盘" that embeds
+  the Mermaid diagram, the Chinese narrative, and the most-changed file
+  lists for each PR.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources: []
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

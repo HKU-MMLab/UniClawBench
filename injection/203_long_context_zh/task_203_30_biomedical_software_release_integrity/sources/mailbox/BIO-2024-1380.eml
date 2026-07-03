@@ -1,0 +1,24 @@
+Message-ID: <handler.s.C.164847449513097.transcript@bugs.debian.org>
+X-Clawbench-ID: BIO-2024-1380
+Date: Mon, 28 Mar 2022 13:39:03 +0000
+From: "Debian Bug Tracking System" <owner@bugs.debian.org>
+To: Pierre Gruet <pgt@debian.org>
+Subject: Processed: retitle 1008304 to ITP: libhttp-nio-java -- http/s file system provider for Java NIO.2
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_03_msg00040.html
+
+Processing commands for control@bugs.debian.org:
+
+> retitle 1008304 ITP: libhttp-nio-java -- http/s file system provider for Java NIO.2
+Bug #1008304 [wnpp] ITP: http-nio -- http/s file system provider for Java NIO.2
+Changed Bug title to 'ITP: libhttp-nio-java -- http/s file system provider for Java NIO.2' from 'ITP: http-nio -- http/s file system provider for Java NIO.2'.
+> thanks
+Stopping processing here.
+
+Please contact me if you need assistance.
+--
+1008304: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1008304
+Debian Bug Tracking System
+Contact owner@bugs.debian.org with problems

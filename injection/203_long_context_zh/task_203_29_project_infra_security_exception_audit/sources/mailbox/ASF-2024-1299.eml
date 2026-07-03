@@ -1,0 +1,44 @@
+Message-ID: <CAJ2uXbd=sxnf0XDoOOJUdLF8_6oJetp_3yPCeEFNSFDPOUN3wA@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1299
+Date: Tue, 1 Oct 2024 09:32:58 +0200
+From: =?UTF-8?Q?Ervin_Heged=C3=BCs?= <airween@gmail.com>
+To: dev@httpd.apache.org
+Subject: Question about file mutex
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-10.mbox
+
+Hi there,
+
+I hope this is a good forum to ask my question.
+
+We (mod_security2 developers) use mutex locks. This code snippet was added
+recently:
+
+https://github.com/owasp-modsecurity/ModSecurity/blob/v2/master/apache2/modsecurity.c#L125-L168
+
+As you can see, we create locks with these functions:
+
+apr_temp_dir_get()
+apr_file_mktemp()
+apr_global_mutex_create()
+
+This wrapper (acquire_global_lock()) works on Linux, but it seems to crash
+on FreeBSD:
+https://github.com/owasp-modsecurity/ModSecurity/issues/3255
+
+I did some investigation and I found that after the apr_file_mktemp()
+returns with success and the created file name is given to
+apr_global_mutex_create() then it removes that.
+
+In this comment:
+https://github.com/owasp-modsecurity/ModSecurity/issues/3255#issuecomment-2383132160
+I explained the results (with gdb and truss).
+
+My question is: what is the expected way to use file mutexes?
+
+Thanks for your help,
+
+
+a.

@@ -1,0 +1,78 @@
+Message-ID: <YpkGldZwWZJ9v77Q@debian>
+X-Clawbench-ID: BIO-2024-1040
+Date: Fri, 3 Jun 2022 00:21:01 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: Added autopkgtests for gifticlib
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_06_msg00004.html
+
+On Thu, Jun 02, 2022 at 10:57:26PM +0530, Mohd Bilal wrote:
+> Thanks for the pointer ! I tried removing the usage of '__DATE__' via a
+> patch
+
+I think this is not right. Either also remove printing the last %s, so it
+doesn't output any compilation date. Or properly subsitute compilation
+date via SOURCE_DATE_EPOCH[3]
+
+> but still I'm getting this error in CI[2] . I'm having trouble finding
+> out what is causing this error.
+
+If you look closely, reprotest fails in the _process of running_, and it
+is not the result of reprotest that fails. Some problem with CI.
+It works for me locally though
+
+| $ sudo reprotest --vary=-build_path,domain_host.use_sudo=1 --auto-build --min-cpus=5 ../gifticlib_1.0.9-5.dsc -- schroot sid-amd64-sbuild
+| [...]
+| Reproducible, even when varying as much as reprotest knows how to! :)
+| =======================
+| Reproduction successful
+| =======================
+| No differences in ./*.deb
+| 1be727a6b11e6b4bb051afe4258246440fcc4b224bd878fcc64fc575973ccc11  ./gifti-bin-dbgsym_1.0.9-5_amd64.deb
+| ba8506533fc8cfce5883adbf5defe0c1024bc482c1946320108ea1ff4257fa18  ./gifti-bin_1.0.9-5_amd64.deb
+| ed2eb1bb499806dbcee3886aef362c79090f2b9fe6d03f93e9ee5abe423d6421  ./libgiftiio-dev_1.0.9-5_amd64.deb
+| c68f12e90f18c9cdf0c2386b6950b18298e80b560ae4cf7cfd51802a6fbd9259  ./libgiftiio0-dbgsym_1.0.9-5_amd64.deb
+| 9b992146f17bf0abeac9b62c975505c5edd79cec897bf111bb2050a2d7fd67dd  ./libgiftiio0_1.0.9-5_amd64.deb
+
+However weirdly enough, I re-triggered the salsa CI and now it shows a proper failure
+(contrary to my local sys).
+On doing a diffoscope, I am seeing 4 bytes shift at multiple places.
+
+│ │ │ │ - 0x000000000000000a (STRSZ)              655 (bytes)
+│ │ │ │ + 0x000000000000000a (STRSZ)              659 (bytes)
+
+│ │ │ │ - 0x000000006ffffff0 (VERSYM)             0xa78
+│ │ │ │ + 0x000000006ffffff0 (VERSYM)             0xa7c
+
+Most likely it is some build path issue, this comes when two diff build paths on reprotest
+specific envs (paths starting with 1/ and 2/ IIRC) differ. GNU Build ID is probably a good
+indicator for the same
+
+│ │ │ │ -  GNU                  0x00000014	NT_GNU_BUILD_ID (unique build ID bitstring)	    Build ID: 9de0fd8fa76dae494291afd1fedd8f07e6043b1f
+│ │ │ │ +  GNU                  0x00000014	NT_GNU_BUILD_ID (unique build ID bitstring)	    Build ID: 150709fb739950fcc1da435340a8242eb8d77b2b
+
+If you ask me, IMO you could leave it. Or if you are interested to dig in, reproducible builds mailing
+list is the right place to ask further.
+
+Also, please fix the lintian warnings (you added copyr in a wrong order as it seems)
+| W: gifticlib source: globbing-patterns-out-of-order debian/tests/data/new.gii debian/* debian/tests/data/new.gii [debian/copyright:16]
+| W: gifticlib source: missing-license-paragraph-in-dep5-copyright other [debian/copyright:7]
+| W: gifti-bin: no-manual-page usr/bin/gifti_tool
+| W: gifticlib source: superfluous-file-pattern debian/tests/data/new.gii [debian/copyright:9]
+
+> [2] - https://salsa.debian.org/med-team/gifticlib/-/jobs/2840927#L815
+[3]: https://reproducible-builds.org/docs/source-date-epoch/
+[4]:
+
+PS: While it is nice that you bottom post in your mails, but please consider
+to trim out un-needed content and prune-out the part of email you aren't replying to
+(like I and Andreas do)
+Speaking from the peanut gallery here, that it sometimes gets pretty difficult for me
+to filter out your replies because they get lost in heaps of quoted text.
+
+--
+Best,
+Nilesh

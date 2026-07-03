@@ -1,0 +1,61 @@
+task_id: task_205_30_arxiv_calibre_index
+category: 205_cross_platform_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我想把这 8 篇与 LLM 相关的 arxiv 论文整理进我的 Calibre 库,然后再
+  创建一个 LibreOffice 索引表格,方便日后查阅。
+
+    2304.03442
+    2310.06825
+    2401.05566
+    2402.07927
+    2403.04132
+    2305.14314
+    2310.04408
+    2402.17764
+
+  具体来说:
+
+  用 wget 下载每篇 PDF,并用 calibredb 把它们导入一个 Calibre 库。用
+  pdfinfo 获取页数,从 Semantic Scholar 的公开 API 获取引用次数。然后
+  生成一个 .ods 索引表格,列出每篇论文的标题、第一作者、作者数量、页数和
+  引用次数,按 arxiv ID 排序。加入一个计算平均引用数或总页数的公式作为
+  汇总行,用条件格式把引用超过 1000 的行高亮成红色,并嵌入一张对比各篇
+  论文页数的条形图。用 soffice 或 odfpy 生成一个带公式和图表对象的真正的
+  .ods——而不只是 CSV 转换。
+
+  还要查一下每篇论文第一作者的所属机构(通常在 PDF 首页页眉里能看到——用
+  pdftotext 提取)。用简称就行,不需要完整地址。统计哪个机构出现得最频繁。
+
+  给我一个汇总的 papers.json,每篇论文一条记录(arxiv_id、title、
+  first_author、author_count、page_count、citation_count、
+  first_author_affiliation),外加一个顶层的 affiliation_distribution,
+  显示哪个机构出现得最多。
+
+  把 Calibre 库放在 /tmp_workspace/results/library/,索引表格命名为
+  index.ods,JSON 命名为 papers.json,全都放在 /tmp_workspace/results/
+  下。完成后,告诉我哪篇论文引用最多、哪篇页数最多、以及哪个机构出现得
+  最频繁。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources: []
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

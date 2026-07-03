@@ -1,0 +1,33 @@
+Message-ID: <271669D1-29CF-45A7-A910-CF93C6CDCBAD@eissing.org>
+X-Clawbench-ID: ASF-2024-0503
+Date: Sat, 29 Jan 2022 11:38:20 +0100
+From: Stefan Eissing <stefan@eissing.org>
+To: dev@httpd.apache.org
+Subject: Re: mpm event assertion failures
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-01.mbox
+
+> Am 28.01.2022 um 13:44 schrieb Yann Ylavic <ylavic.dev@gmail.com>:
+>
+> On Thu, Jan 27, 2022 at 3:17 PM Stefan Eissing <stefan@eissing.org> wrote:
+>>
+>> Testing my changes, I noticed that the poxy/ssl tests now take about 4 minutes to complete. I reverted and it stays the same on current trunk:
+>
+> I had a chance to look at this and r1897563 seems to fix the proxy/ssl
+> tests' timeout for me.
+> The proxy (frontend vhost) was waiting for the server (backend vhost
+> running an "nph-foldhdr.pl" cgi for one test) to close its HTTP/1.0
+> response.
+
+Thanks Yann, can confirm that those tests run in normal time again.
+
+Kind Regards,
+Stefan
+
+>
+> Dunno how it relates to the async handshake changes though :/
+>
+> Cheers;
+> Yann.

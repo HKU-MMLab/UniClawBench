@@ -1,0 +1,192 @@
+Message-ID: <YX/3brlLGaJzHOAA@an3as.eu>
+X-Clawbench-ID: BIO-2024-0842
+Date: Mon, 1 Nov 2021 15:19:26 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-science@lists.debian.org
+Subject: Re: Debian Math Team
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_11_msg00001.html
+
+Hi Doug and other Debian Science team members,
+
+at first thanks a lot for the step you did.  I think it is a move into
+the right direction.  As far as I've read the worries about this step
+here in the thread these seem to be:
+
+  1. Another "one-man" team
+     I think Ole gave a good answer here:  Its not about creating a
+     one-man team but rather attract more people to the team - from
+     inside and outside Debian.  For those who have any doubt that this
+     can work:  There are 23 people who confirmed, that they became
+     DDs *because* Debian Med exists[4].  Debian Med is now nearly
+     20 years old.  I would love if Debian Math would beat Debian Med
+     in attracting new developers.  (Andrius, you even belong to this
+     set. ;-) )
+
+     Those 20 years when the Debian Med project have teached me that
+     it is very important to advertise the fact to the world that Debian
+     is targeting specific fields of science and IMHO mathematics is
+      a) well worth to be advertised
+      b) has lots of technically competent people beeing potential DDs
+
+  2. Further fragmentation of debian-science
+     I do not think that another Blend will lead to fragmentation of
+     Debian Science.  Sure, some mathematics related packages will be
+     moved sooner or later but I personally can not see in how far
+     this might weaken Debian Science.  I personally see also additional
+     contributors for Debian Science once more mathematicans might
+     join Debian (as I'm very positive about).
+
+Am Sat, Oct 30, 2021 at 06:18:28PM +0530 schrieb Nilesh Patra:
+> Hi Andrius,
+>
+> Thanks for replying. See below :-
+>
+> On Sat, Oct 30, 2021 at 10:33:02AM +0300, Andrius Merkys wrote:
+> > Hi,
+> >
+> > On 2021-10-29 20:31, Torrance, Douglas wrote:
+> > > During the Debian Science BoF at this year's DebConf, there was some
+> > > discussion of creating a team devoted to packaging mathematical software.
+> >
+> > I agree with Anton here. I do not see how further fragmentation of
+> > debian-science could benefit it. I missed the BoF, but maybe there are
+> > notes reflecting this decision?
+>
+> No notes, Andreas came up with this idea in debconf, you could find it on videos.debian.net.
+> But anyways, I have the following point to make:
+>
+> 1. Separate team will help keep track of math-specific software, making it easy for
+> interested folks to work on them. Currently there is no specific team, and packages
+> are scattered across several teams which is (in my eyes) a bit haphazard
+
++1
+
+> 2. debian-math meta-package (with a separate team) -- this will help researchers to get
+> math related software and tooling in one go (exactly like the debian-med metapackage)
+
+I definitely see the need for improvement in the very generic tasks of Debian
+Science since science-mathematics (and science-mathematics-dev) are not really
+what users will be happy about.
+
+Doug, I'll happily give you a kick-start to create a sensible blends framework
+which enables more fine grained tasks (and by doing so a more fine QA toolset).
+
+> 3. Easier to find and contribute for people -- I am sure there are a lot of people on this list,
+> and even DDs who are interested in math, having such a team helps them approach and contribute well.
+
+... which was my point 1. ;-)
+
+> 4. Better maintainance - Lots of math softwares which are still lying un-updated, or broken in some ways.
+> So it helps improve the overall quality
+
+I can confirm Nilesh is extremely good in dealing with those! (Thanks
+Nilesh for all the QA work you are doing in Debian Med!)
+
+> 5. We have debichem team for chemistry packages, astro team for astronomy ones, and now even a new robotics team
+> We had a new AI team made a few months back. These would also come under science earlier, so if we could
+> make teams for specific domains, *and* they are doing well, why not do so for math?
+> I mean this comes as a very natural choice to me, considering other blends.
+
+Absolutely!
+
+> > Separate team and separate mailing list will have less members than
+> > debian-science.
+>
+> Well, every other team has started exactly the same way in Debian (i.e. less members) -- it would
+> grow with time, I don't think it'll be stalled for ever.
+> I could _somehat_ agree with the mailing list thingy, maybe we can
+> keep using this list for discussions.
+
+The start is definitely the hardest time and needs a lot of patience.
+I would encourage Doug to ask for list creation and I would lurk on
+this list.
+
+> > Furthermore, from my experience one does not need domain
+> > knowledge to successfully package and maintain packages in Debian.
+> > What makes more sense to me, is organizing packages into teams based on
+> > programming languages and build/test systems, as such teams indeed
+> > possess specific knowledge. I think most of the mails asking for help in
+> > debian-med concern language and build system problems, not
+> > domain-specific issues.
+>
+> I'm sorry, but I have to admit this argument of yours is sloppy, Andrius.
+> By this logic, we could push entire debian-med python packages into python-team,
+> java packages into java-team and so on...
+
+While this would work in principle the point of creating a Blend is to
+attract experts who know the algorithm and internals of a certain
+software to craft sensible packages and enable thorough testing.  This
+is usually not simply a programming language issue.  In Debian Med we
+have several upstreams maintaining their software as Debian packages
+(after sufficient teaching of the packaging process and for sure
+sponsored by a DD).  IMHO exactly this is the strength of the Blends
+concept to pair experts of the software with packaging experts.  Even
+better if this can be completed to involve users into that effort which
+does not (yet) work as good as expected (but this has IMHO more external
+reasons which we can hardly solve).
+
+> You also mentioned debian-med above, so if you think everything would be per-language
+> organised, why do you think separate teams (like -med, or -astro) should even exist?
+>
+> The whole point of blends is to help people with "specific" needs, right.
+> and such teams help organize that in a reliable way.
+> And Fwiw, people do
+> ask sometimes about software in debian-med (check element), people do file bug reports there, et. al.
+> Many upstreams are tied to -med team, and that could've never happened without domain-specific knowledge.
+
+Exactly.
+
+> > I am worried reading about R packages being moved from debian-r to new
+> > debian-math. I am afraid doing so might negatively impact their quality.
+>
+> You are right in your worries, but I have some statistics to present here.
+> See here[1] or more specifically, look here[2,3]
+
+I'm not worried about moving R packages to some other Blend.  It has
+turned out to be a good idea to move all R packages from Debian Science,
+Debian Med Debichem and possibly others into one language specific team.
+However, this had happened since R packages are extremely uniform and
+usually come with test suites that can be re-used which to some extend
+is taking over the role of an expert knowing the software.  There are
+also not really any specific decisions to make about the packaging since
+everything is really straightforward.
+
+This is absolutely different to software written in Python, Java or
+anything else.
+
+> You would notice that in recent times, the most active people there (Andreas, myself, Steffen, Dylan etc)
+> are also the members of debian-med and also the members of debian-science.
+> And if we have a math team, I'm sure atleasts some of these people would be involved there.
+
++1
+
+> The number of pure math software in R package team is in no way overflowing, so I really think this should
+> be manageable. The probability of it having a bit-rot will be less -- atleast not high with me, Andreas, Doug et. al.
+> being around.
+>
+> However if you very strongly feel about it, we could leave the R packages where they are and continue maintaining
+> them under R package umbrella.
+
+I'd say any Debian Math member who is interested in R packages should
+simply join pkg-r team and be done.
+
+> Should you want more explanation, do let me know and I'll be happy to discuss.
+
+Same for me.
+
+Thanks again Doug
+
+    Andreas.
+
+> [1]: http://blends.debian.net/liststats/
+> [2]: http://blends.debian.net/liststats/uploaders_r-pkg.png
+> [3]: http://blends.debian.net/liststats/commitstat_pkg-r.png
+
+[4] https://wiki.debian.org/DebianMed/Developers
+
+
+--
+http://fam-tille.de

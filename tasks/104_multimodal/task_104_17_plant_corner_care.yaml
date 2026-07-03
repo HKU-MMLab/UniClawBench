@@ -1,0 +1,38 @@
+task_id: task_104_17_plant_corner_care
+category: 104_multimodal
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  `/tmp_workspace/clawbench/sources/plant_corner/` contains photos of several main plant groups on my desk and by the window:
+  `plant_01_*`, `plant_02_*`, and `plant_03_*` are the overview/detail images for the three main plant groups;
+  `space_01.png` shows the overall placement environment; the directory also contains `habits.json`,
+  which describes my usual watering and light conditions.
+
+  Please help me assess the current condition of these plants and give me a simple, actionable care plan.
+
+  Requirements:
+  1. First assess the three groups, `plant_01`, `plant_02`, and `plant_03`, and determine whether they currently have obvious issues such as insufficient light, overcrowding, poor leaf condition, pots that are too small, or poor placement; use `space_01.png` only as reference for orientation, desk space, and the placement environment.
+  2. In `/tmp_workspace/results/plant_care_plan.md`, write the following for each main plant group:
+     - Current condition assessment
+     - The highest-priority issue to address
+     - The simplest actionable next step
+  3. If you are uncertain about the species or condition of any plant,
+     state that clearly instead of pretending the judgment is precise.
+  4. Your advice must be clearly based on the leaves, pots, orientation, and environment visible in the images, not just a generic plant-care template.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - plant_corner/
+
+codex:
+  max_user_followups: 2

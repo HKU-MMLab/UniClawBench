@@ -1,0 +1,56 @@
+Message-ID: <fe81dcb211410ed309912108544e2367@enron.com>
+X-Clawbench-ID: ANL-2001-0557
+Date: 2001-01-26T14:01:00-03:00
+From: Michael SCHILMOELLER <Michael SCHILMOELLER>
+To: Jason Sokolov <Jason Sokolov>, Tim Heizenrader <Tim Heizenrader>
+Subject: Re: CalPX prices
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Enron kaminski-v public mailbox index.json
+X-Original-Folder: kaminski-v_002/kaminski-v/All documents
+
+Jason,
+
+
+I think what you may be asking for are CalISO power prices.  The CalPX is a
+
+scheduling coordinator and they submit balanced schedules and bid curves to
+
+the CalISO.  The ISO combines the curves from participating SCs (of which I
+
+believe Enron is one) and calculates the uncongested and congested prices.
+
+The CalISO prices are available from RDI PowerDat, the Enron LIM database, and
+
+a number of other sources.  Recent historical prices are available from the
+
+CalISO web site.
+
+
+I am copying your mail to Tim Hiezenrader, who runs the Westdesk Fundamentals
+
+group.  I believe he would know how you might be able to access the more
+
+real-time CalISO data that Enron collects.
+
+
+Tim, can you help Jason out?  He is a manager in the ENA Research Group.
+
+
+Thanks,
+
+Michael
+
+
+>>> Sokolov, Jason 01/26/01 02:01PM >>>
+
+Michael,
+
+
+I an trying to locate some historical real-time (spot) power prices for CalPX.
+
+Do you know who may have them?
+
+
+Jason Sokolov

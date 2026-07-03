@@ -1,0 +1,49 @@
+Message-ID: <ZXuA8v6V3nTPZw1E@fusion>
+X-Clawbench-ID: BIO-2024-0340
+Date: Thu, 14 Dec 2023 23:25:54 +0100
+From: Étienne Mollier <emollier@debian.org>
+To: debian-med@lists.debian.org
+Subject: [Advent bug squashing] various bugs
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_12_msg00050.html
+
+Hi all,
+
+I had some time off to squash a variety of bugs today:
+
+  * #1058659: active builds for loong64 architecture;
+  * #1058334, #1058220: those were release critical bugs
+    revolving around portability to python3.12, in which some
+    deprecated calls to stdlib  functions were made in various
+    locations caught by the test suite; there are still several
+    python3.12 issues open remaining, and people who are
+    interested may refer to the porting guide[1] for the help in
+    implementing all the required fixes;
+  * #1058220: I had a quick discussion with Matthias Klose to
+    assess what to do with this bug since some functions of the
+    brian simulator were needing cython at runtime, but a number
+    of functions were still operating properly, even if in
+    degraded mode, so we agreed to demote the dependency to a
+    recommendation;
+  * #1057996: is another case of demoting cython3 dependency in
+    python3-nitime this time;
+  * #1047821: is yet another case of failure to build the source
+    after a successful build that has been fixed.
+
+Also I mention the release critical bug #1058416, fixed by the
+new nitime upstream version, that Andreas begun to introduce in
+the salsa repository.  I could finish the package upgrade and
+upload.
+
+[1]: https://docs.python.org/3/whatsnew/3.12.html
+
+I also painted a target for other volunteers, see #1058705.
+
+Have a good night,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  gpg: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/4, please excuse my verbosity
+   `-    on air: Steven Wilson - Deform to Form a Star

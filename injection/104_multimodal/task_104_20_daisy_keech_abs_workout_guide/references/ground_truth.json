@@ -1,0 +1,163 @@
+{
+  "source_accessed_on": "2026-04-23",
+  "evidence_basis": [
+    "Current YouTube watch-page metadata snapshot for niLch13u0sc.",
+    "Prompt-family notes already stored in Clawbench-main that identify this as the fixed Daisy Keech resource.",
+    "Multiple third-party Daisy Keech workout breakdowns captured on 2026-04-23 that agree on the Hourglass Abs routine's core move family and one-minute timer pattern."
+  ],
+  "resource": {
+    "url": "https://www.youtube.com/watch?v=niLch13u0sc",
+    "video_id": "niLch13u0sc",
+    "title": "Daisy Keech hourglass abs workout but just the exercises (with timer and breaks)",
+    "channel": "s h y",
+    "published_date": "2021-07-18",
+    "view_snapshot": "28M views"
+  },
+  "accepted_alternative_resources": [
+    {
+      "url": "https://www.youtube.com/watch?v=5cWxgnJgHHs",
+      "video_id": "5cWxgnJgHHs",
+      "title": "Hourglass Abs Workout | 10 Minutes",
+      "channel": "Daisy Keech",
+      "why_accepted": "Best-supported official original behind the timer-edit resource. Full-credit mapping is available when the executor explicitly explains that this official original is the source routine for the pinned timer edit."
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=sz3xierpVgg",
+      "video_id": "sz3xierpVgg",
+      "title": "Hourglass Abs Workout 8 minutes  **repeat this to cinch your waist",
+      "channel": "Daisy Keech",
+      "why_accepted": "Related Daisy Keech abs workout. Accept only partial equivalence unless the executor gives a very explicit mapping back to the pinned timer-edit target and still recovers the canonical move family."
+    }
+  ],
+  "reference_outputs": {
+    "reference_exercise_table": "references/reference_exercise_table.csv",
+    "reference_guide": "references/reference_abs_workout_guide.md",
+    "reference_report": "references/reference_abs_workout_report.md"
+  },
+  "routine_summary": {
+    "total_length_hint": "about 10 to 11 minutes",
+    "format": "timer-based ab circuit with very short rests or transitions",
+    "expected_move_count_range": [
+      9,
+      11
+    ],
+    "canonical_slot_count": 9,
+    "dominant_timer_pattern": "roughly one minute per move"
+  },
+  "ordered_sequence_primary": [
+    {
+      "slot": 1,
+      "canonical_name": "basic crunches",
+      "acceptable_synonyms": [
+        "crunches",
+        "bodyweight crunches"
+      ]
+    },
+    {
+      "slot": 2,
+      "canonical_name": "bicycle kicks",
+      "acceptable_synonyms": [
+        "bicycles",
+        "bicycle kicks"
+      ]
+    },
+    {
+      "slot": 3,
+      "canonical_name": "jack knives",
+      "acceptable_synonyms": [
+        "jackknives",
+        "alternating jack knives",
+        "v-ups"
+      ]
+    },
+    {
+      "slot": 4,
+      "canonical_name": "russian twists",
+      "acceptable_synonyms": [
+        "russian twist"
+      ]
+    },
+    {
+      "slot": 5,
+      "canonical_name": "toe taps",
+      "acceptable_synonyms": [
+        "toe touches",
+        "bent toe taps",
+        "bent knee taps"
+      ]
+    },
+    {
+      "slot": 6,
+      "canonical_name": "bicycle crunches",
+      "acceptable_synonyms": [
+        "cross-body bicycle crunches"
+      ]
+    },
+    {
+      "slot": 7,
+      "canonical_name": "scissor kicks",
+      "acceptable_synonyms": [
+        "scissors",
+        "scissor legs"
+      ]
+    },
+    {
+      "slot": 8,
+      "canonical_name": "reverse crunches",
+      "acceptable_synonyms": [
+        "reverse crunch"
+      ]
+    },
+    {
+      "slot": 9,
+      "canonical_name": "butterfly kicks",
+      "acceptable_synonyms": [
+        "flutter kicks",
+        "butterfly flutter kicks"
+      ]
+    }
+  ],
+  "partial_credit_sequence_variant": [
+    "russian twists",
+    "leg raises",
+    "bicycle kicks",
+    "bodyweight crunches",
+    "bent toe taps",
+    "alternating jack knives",
+    "scissor kicks",
+    "butterfly kicks"
+  ],
+  "canonical_output_schema": {
+    "expected_markdown_sections": [
+      "target video identity",
+      "ordered move table",
+      "duration or rep note per move",
+      "rest note per move or between moves",
+      "screenshot references"
+    ],
+    "minimum_named_moves_for_full_credit": 9,
+    "minimum_screenshots": 9
+  },
+  "candidate_answer_boundaries": {
+    "full_credit_requires": [
+      "the move list strongly matches all nine canonical slots in the ordered primary sequence recovered from the official-original mapping and hidden reference table",
+      "timing reflects a one-minute-per-move style circuit",
+      "the guide includes real screenshots for every canonical slot and references them in a way comparable to the hidden illustrated report"
+    ],
+    "partial_credit_if": [
+      "6 to 8 correct core moves are recovered but one or two names are merged",
+      "the move family is right but the exact order is slightly off",
+      "the answer follows the related partial-credit sequence variant instead of fully mapping back to the locked timer edit"
+    ],
+    "reject_if": [
+      "the guide is a generic abs routine not recognizably tied to this Daisy Keech video",
+      "the output only repeats the title and a couple of exercise names"
+    ]
+  },
+  "common_mistakes": [
+    "Confusing this fixed routine with a different Daisy Keech challenge or a later TikTok-style ab circuit.",
+    "Listing only 4 or 5 generic ab exercises without recovering the real move sequence.",
+    "Collapsing distinct moves such as bicycle kicks and bicycle crunches into one line without noting the overlap."
+  ],
+  "authoring_note": "Because the primary locked asset is an edited timer version of the original Daisy Keech workout, minor naming differences are acceptable. Hidden evaluation should score against the nine-slot ordered move family and timer shape rather than demand one exact transcript wording. Related sequence variants are partial-credit aids unless the executor explicitly maps them back to the locked timer edit. The official Daisy Keech original may also be accepted if the executor clearly states the mapping."
+}

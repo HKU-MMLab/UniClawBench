@@ -1,0 +1,62 @@
+Message-ID: <YX/5p1xYP40rErJR@an3as.eu>
+X-Clawbench-ID: BIO-2024-0670
+Date: Mon, 1 Nov 2021 15:28:55 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-science@lists.debian.org
+Subject: Re: Debian Math Team
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_11_msg00002.html
+
+Hi Julien,
+
+Am Sun, Oct 31, 2021 at 04:15:28PM +0100 schrieb Julien Puydt:
+> But about moving things, my feelings are mixed. Indeed, this very week,
+> I joined the OCaml Team and packaged src:elpi there -- which is
+> mathematics software. But since it's written in OCaml, I feel it's
+> better to keep it in the language-specific team.
+
+>From time to time it makes sense to join a certain language team and
+leave some packages of a Blend there.  For instance the Debian Med team
+has a couple of Perl packages maintained by the Perl team.  That's fine
+and is a case by case decision what might make the most sense.  I think
+also the Ruby team asked for taking over the bioruby package.
+
+The point of a Blend is to inform users about the available software
+inside Debian of a certain field.  The Vcs location is not really an
+information that is very important for the user.  Debian Med is pointing
+to several packages maintained by Debichem, Debian Science or also
+packages maintained by language teams.
+
+>From a developer point of view it comes handy to use a common Salsa team
+- but that's by no means "mandatory" and sensible exceptions should be
+made.
+
+> For all packages in the debian science team, I'm ok with them moving to
+> the new team. [I have no clue how to move them]
+
+How to move a package:
+
+ In Salsa:
+
+    Settings
+      -> General
+           -> Advanced [Expand]
+                -> Transfer project
+
+This redirects users who are using the old URL.  For sure you need the
+according permissions in both teams (not sure whether maintainer is
+sufficient or whether you need owner).
+
+> Perhaps the debian sagemath team should be merged in the math team?
+
+>From my naive perspective this makes perfectly sense and I would
+recommend this.
+
+Kind regards
+
+     Andreas.
+
+--
+http://fam-tille.de

@@ -1,0 +1,37 @@
+Message-ID: <ZyFTpqwhkYohPv88@emlwks999.eu>
+X-Clawbench-ID: BIO-2024-1206
+Date: Tue, 29 Oct 2024 22:29:10 +0100
+From: Étienne Mollier <emollier@debian.org>
+To: "Maarten L. Hekkelman" <maarten@hekkelman.com>
+Subject: python-biopython test failure with libcifpp changes (Bug #1086156)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_10_msg00026.html
+
+Hi Maarten,
+
+I'm dealing with python-biopython release critical bug #1086156,
+and I was wondering whether the 422M dataset components.cif
+wouldn't be worth injecting into the libcifpp-data package, to
+facilitate the handling of data by end users?  I guess that sure
+would make the package rather large, so I can understand if this
+is deemed excessive; although I believe some Debian packages do
+happen to be a little larger, although I don't really have
+specific examples in mind.
+
+https://bugs.debian.org/1086156
+
+If there are blockers, then another option for me might be to
+skip the test, as internet access at build time is not an
+option, but it means missing out on other genuine issues
+affecting libcifpp support in python-biopython.  The thing is,
+I'm not sure yet whether the test failure results from issues in
+python-biopython or libcifpp-data.
+
+Have a nice day,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  pgp: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/2, please excuse my verbosity
+   `-    on air: Kaipa - In A World Of Pines

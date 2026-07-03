@@ -1,0 +1,12 @@
+[
+  {
+    "reviewer": "ThiefMaster",
+    "state": "CHANGES_REQUESTED",
+    "comment": "This is the same kind of cosmetic README churn we've declined before — not useful to the project."
+  },
+  {
+    "reviewer": "davidism",
+    "state": "CHANGES_REQUESTED",
+    "comment": "Closing — README rewrite is out of scope for casual drive-by edits."
+  }
+]

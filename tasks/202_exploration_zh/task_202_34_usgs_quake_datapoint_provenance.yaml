@@ -1,0 +1,31 @@
+task_id: task_202_34_usgs_quake_datapoint_provenance
+category: 202_exploration_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我正在核对的一个数据集行列出了一次大地震——震级约 9.1，位于日本东北地区
+  （Tohoku）太平洋沿岸海域，发生于 2011 年 3 月——但没有指向权威记录的链接。
+  我想要这次确切事件的官方 USGS 记录，以及对其参数的确认。
+
+  请查找权威的 USGS 记录（而不是 Wikipedia 或新闻报道），并报告：
+  - USGS 事件 id 和事件页面，
+  - 震级、震中坐标（纬度/经度）、深度，以及发震时刻（UTC），
+  - 确认该行的“M~9.1，2011 年 3 月，Tohoku”这些属性是否与 USGS 记录相符。
+
+  将你的结论和证据链（USGS 事件 id、你所使用的 API/页面，以及确认的参数）
+  保存到 `/tmp_workspace/results/quake_provenance.json`，并在
+  `/tmp_workspace/results/` 下附上笔记。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+codex:
+  max_user_followups: 2

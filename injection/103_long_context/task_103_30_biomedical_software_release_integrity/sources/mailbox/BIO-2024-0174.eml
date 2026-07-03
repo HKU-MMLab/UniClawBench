@@ -1,0 +1,40 @@
+Message-ID: <Yf6t7hN4Kgegugeg@an3as.eu>
+X-Clawbench-ID: BIO-2024-0174
+Date: Sat, 5 Feb 2022 18:03:42 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Jerome BENOIT <calculus@rezozer.net>
+Subject: Re: Debian Math Team
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2022_02_msg00009.html
+
+Am Sat, Feb 05, 2022 at 01:12:34PM +0100 schrieb Jerome BENOIT:
+> I plan to transfer sooner or later the following packages from science-team to math-team:
+>
+> 4ti2
+> primesieve
+> bliss
+> blitz++
+> e-antic
+> nauty
+> mpfrc++
+> normaliz
+> primesieve
+> singular
+> sympow
+> mpfi
+>
+> can anyone grant me the necessary permissions to do so in due time ?
+
+I made you owner in Debian Science which should enable you transfering
+any package.
+
+Hope this helps
+
+      Andreas.
+
+PS: Please avoid pinging Nilesh until / including next weekend.  Thank you.
+
+--
+http://fam-tille.de

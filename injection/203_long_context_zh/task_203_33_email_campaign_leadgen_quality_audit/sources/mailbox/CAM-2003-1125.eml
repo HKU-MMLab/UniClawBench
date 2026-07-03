@@ -1,0 +1,27 @@
+Message-ID: <20020925125713.A1093@free.transpect.com>
+X-Clawbench-ID: CAM-2003-1125
+Date: Wed, 25 Sep 2002 12:57:13 -0400
+From: Whit Blauvelt <whit@transpect.com>
+To: razor-users@example.sourceforge.net
+Subject: [Razor-users] "No razor servers available at this time"
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01599.30e5cb62246ea4c06dbe1f8024ef9ffc
+
+I'm getting "no servers available" about half the time in the last few days.
+This is with Razor 2. Is there something I need adjust in the installation
+here, or are the servers just down/overloaded?
+
+Thanks,
+Whit
+
+
+-------------------------------------------------------
+This sf.net email is sponsored by:ThinkGeek
+Welcome to geek heaven.
+http://thinkgeek.com/sf
+_______________________________________________
+Razor-users mailing list
+Razor-users@lists.sourceforge.net
+https://lists.sourceforge.net/lists/listinfo/razor-users

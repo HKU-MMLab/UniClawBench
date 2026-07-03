@@ -1,0 +1,53 @@
+Message-ID: <YW77YsN2tewCY4u9@an3as.eu>
+X-Clawbench-ID: BIO-2024-0899
+Date: Tue, 19 Oct 2021 19:07:46 +0200
+From: Andreas Tille <tille@debian.org>
+To: Nilesh Patra <nilesh@debian.org>
+Subject: Re: Any volunteer to check two (hdf5 relatet?) issues with python-biom-format
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00113.html
+
+Hi,
+
+Am Tue, Oct 19, 2021 at 08:24:59PM +0530 schrieb Nilesh Patra:
+> > can be fixed with:
+> >
+> >             self.assertIn(m['BODY_SITE'], ('GUT', 'SKIN'))
+> > =>
+> >             self.assertIn(m['BODY_SITE'], (b'GUT', b'SKIN'))
+> >
+>
+> or..... a ".decode()" with m['BODY_SITE']
+> :)
+>
+> I had made this change locally a few hours ago.
+
+Thanks to you both.
+
+> > ...
+> > > FAILED
+> > > biom/tests/test_table.py::TableTests::test_to_hdf5_missing_metadata_s
+> > > ample
+> > this second test issue seems to be linked with hdf5 library.
+> > Seems it does not accept NULL values:
+> >
+> >         "E   ValueError: VLEN strings do not support embedded NULLs"
+> >
+> > while test tries to set some null values and see if converted to empty
+> > strings.
+>
+> I wonder if it's a problem with the the version of h5py in the archive?
+> Because these seem to run fine upstream.
+>
+> Might be worth raising this problem upstream?
+
+Its worth trying IMHO.  Would you volunteer to do so?
+
+Kind regards
+
+     Andreas.
+
+--
+http://fam-tille.de

@@ -1,0 +1,47 @@
+Message-ID: <YcRPAExUNEHkbNQM@an3as.eu>
+X-Clawbench-ID: BIO-2024-0714
+Date: Thu, 23 Dec 2021 11:27:12 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Somehow some dh_auto_test of Python3 packages insist to install wheel via pip
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_12_msg00155.html
+
+Am Thu, Dec 23, 2021 at 12:13:57PM +0200 schrieb Andrius Merkys:
+> Hi Andreas,
+>
+> On 2021-12-23 12:09, Andreas Tille wrote:
+> > error: Command '['/usr/bin/python3.10', '-m', 'pip', '--disable-pip-version-check', 'wheel', '--no-deps', '-w', '/tmp/tmp89sdjpdu', '--quiet', 'xmlschema']' returned non-zero exit status 1.
+>
+> Is Python package providing 'xmlschema' installed? To me this seems like
+> setup.py attempts to install missing dependencies.
+>
+> Hope this helps,
+
+This change
+
+diff --git a/debian/control b/debian/control
+index faadcf3..5f9cfbd 100644
+--- a/debian/control
++++ b/debian/control
+@@ -18,7 +18,7 @@ Build-Depends: debhelper-compat (= 12),
+                python3-pytest-xdist ,
+                python3-pytest-cov ,
+                python3-biopython (>= 1.74) ,
+-               python3-wheel ,
++               python3-xmlschema ,
+                pylint,
+                python3-coverage
+ Standards-Version: 4.5.0
+
+
+does not help, thought.
+
+Kind regards
+
+     Andreas.
+
+--
+http://fam-tille.de

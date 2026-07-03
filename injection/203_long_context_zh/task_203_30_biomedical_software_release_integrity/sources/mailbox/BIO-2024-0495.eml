@@ -1,0 +1,44 @@
+Message-ID: <ZtoXCbZqkeQjKM93@emlwks999.eu>
+X-Clawbench-ID: BIO-2024-0495
+Date: Thu, 5 Sep 2024 22:39:37 +0200
+From: Étienne Mollier <emollier@debian.org>
+To: Steffen Möller <steffen_moeller@gmx.de>
+Subject: Re: GENtle new upstream version on salsa - request for sponsoring
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_09_msg00001.html
+
+Hi Steffen,
+
+Steffen Möller, on 2024-09-05:
+> I just sent GENtle 1.9.5alpha2 to https://salsa.debian.org/med-team/gentle . GENtle saw a few binary uploads over the previous year because of the 64 bit time_t transition, so I understood, and this new release brings a series of improvements and fixes that seem worthwhile to be uploaded.
+>
+> The packaging should be in a decent shape, at least better than in the previous upload, a review and upload would nice.
+
+Thanks for your work on GENtle, I begun reviewing your changes
+for upload, but found out the source shipped a newly introduced
+docs/manual.adoc under GFDL license.  I'm afraid I saw nowhere
+upstream mention they would apply it with no invariant sections,
+so it is probably not DFSG compliant[1].  Way forward would be
+to convince upstream to adjust the licensing terms of their
+documentation, or declare docs/manual.adoc in Files-Excluded.
+
+[1]: https://wiki.debian.org/DFSGLicenses#GNU_Free_Documentation_License_.28GFDL.29
+
+That being said I saw nowhere in upstream documentation that
+there were invariant sections neither, so maybe this does not
+apply.  I would feel more comfortable uploading the source
+without that file though, unless we have unquestionable
+confirmation that no Invariant Sections apply.
+
+I have not spent much more time to check the state of the
+package from purely technical perspective.  However if that
+helps, I haven't located any other licensing issues.
+
+Have a nice day,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  pgp: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/5, please excuse my verbosity
+   `-    on air: The Ocean - Holocene

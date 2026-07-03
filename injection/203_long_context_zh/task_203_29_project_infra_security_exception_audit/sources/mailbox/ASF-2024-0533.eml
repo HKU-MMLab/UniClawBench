@@ -1,0 +1,35 @@
+Message-ID: <f11c76b7-e8c6-45ed-bd9e-3774533c88c3@kippdata.de>
+X-Clawbench-ID: ASF-2024-0533
+Date: Tue, 2 Jul 2024 20:19:26 +0200
+From: Rainer Jung <rainer.jung@kippdata.de>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.61-rc1 as httpd-2.4.61
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-07.mbox
+
+Am 02.07.24 um 15:29 schrieb Eric Covener:
+> Hi all,
+>
+> Please find below the proposed release tarball and signatures:
+>
+> https://dist.apache.org/repos/dist/dev/httpd/
+>
+> === Different from template ===
+> I would like to call an expedited VOTE (due to regression in 2.4.60)
+> over the next 1-2 days to release this candidate tarball
+> httpd-2.4.61-rc1 as 2.4.61:
+>
+> (sorry)
+> === end not from a template
+>
+> [ ] +1: It's not just good, it's good enough!
+> [ ] +0: Let's have a talk.
+> [ ] -1: There's trouble in paradise. Here's what's wrong.
+
++1 and many thanks for the hard work of all who contributed to this
+complex release and especially Eric.
+
+Build and tested on RHEL 6, 7, 8 and 9 plus SLES 11, 12 and 15 plus
+Solaris 10 Sparc using OpenSSL 3.1.6.

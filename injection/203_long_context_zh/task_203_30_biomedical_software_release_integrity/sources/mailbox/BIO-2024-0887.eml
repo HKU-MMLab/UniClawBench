@@ -1,0 +1,29 @@
+Message-ID: <YZYY4dOEJlP8+e1W@an3as.eu>
+X-Clawbench-ID: BIO-2024-0887
+Date: Thu, 18 Nov 2021 10:12:01 +0100
+From: Andreas Tille <tille@debian.org>
+To: Mathieu Malaterre <malat@debian.org>
+Subject: Re: Request to (re)join debian-med
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_11_msg00108.html
+
+Hi Mathieu,
+
+Am Thu, Nov 18, 2021 at 09:30:41AM +0100 schrieb Mathieu Malaterre:
+> * https://med-team.pages.debian.net/policy/#how-to-contribute
+>
+> I am also a member of debian-med on salsa.d.o.
+>
+> I'd like to become an uploader of the dcmtk and dicom3tools packages.
+
+Welcome back and feel free to add yourself to Uploaders to any package
+you like to maintain.
+
+Kind regards
+
+     Andreas.
+
+--
+http://fam-tille.de

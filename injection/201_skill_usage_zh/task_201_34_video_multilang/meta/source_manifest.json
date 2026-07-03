@@ -1,0 +1,14 @@
+{
+  "task_id": "task_201_34_video_multilang",
+  "note": "Operator populates these paths with real binary assets before running the task. The executor expects them under /tmp_workspace/clawbench/sources/.",
+  "entries": [
+    {
+      "path": "talk.mp4",
+      "description": "short (~1 minute) English tech clip (CC0/CC-BY source)"
+    },
+    {
+      "path": "cn_terms.json",
+      "description": "Small Chinese terminology glossary for subtitle wording."
+    }
+  ]
+}

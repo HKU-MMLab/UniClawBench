@@ -1,0 +1,48 @@
+Message-ID: <CAMD-=VLa5dN6VODpLj_3zx42NOibXp151jTO--thLMkBjy03bQ@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0621
+Date: Tue, 2 Jul 2024 07:41:32 +1000
+From: Nick Edwards <nick.z.edwards@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.60-rc4 as httpd-2.4.60
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-07.mbox
+
+Umm, am I missing something here..
+
+After upgrade (same process as I always use which does NOT touch any config
+files for the test vhosts), going to any php site on my test server who
+gets all updates before I push them onto production, but for all intents
+and purposes, is a clean live server, results  in blank page with
+
+application/x-httpd-php D)ownload, or C)ancel
+
+
+On Sat, Jun 29, 2024 at 5:18 AM Helmut K. C. Tessarek <tessarek@evermeet.cx>
+wrote:
+
+>
+> On 2024-06-28 03:07, Ruediger Pluem wrote:
+> > We already do this for Linux:
+>
+> Nice.
+>
+> > Our immediate target would be to do this for Windows.
+> > An AIX self-hosted runner would require someone to provide an AIX host.
+>
+> I worked almost 2 decades at IBM. Even though IBM always had a complex
+> organizational structure, it got a lot better with opensource and the
+> community. I could imagine they'd sponsor an AIX partition isolated via
+> VLAN or VXLAN in one of their DCs. But maybe not. I am no longer at IBM
+> thus I can't even try anything in that regard.
+>
+> --
+> regards Helmut K. C. Tessarek              KeyID 0x172380A011EF4944
+> Key fingerprint = 8A55 70C1 BD85 D34E ADBC 386C 1723 80A0 11EF 4944
+>
+> /*
+>     Thou shalt not follow the NULL pointer for chaos and madness
+>     await thee at its end.
+> */
+>

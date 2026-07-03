@@ -1,0 +1,33 @@
+task_id: task_104_01_scaling_laws_figure5_aspect_ratio
+category: 104_multimodal
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  Download the paper "Scaling Laws for Neural Language Models" from arXiv, locate
+  the middle "Aspect Ratio" line chart in Figure 5, and faithfully recreate it
+  with Python + matplotlib.
+
+  Requirements:
+  1. You must find the correct paper yourself and confirm the correct page/figure number; do not recreate the wrong chart.
+  2. The figure should preserve the original axis meanings, logarithmic x-axis, three curves for different model sizes, legend, and overall style.
+  3. Perform at least one "draw the chart, compare it with the original, then revise" iteration instead of producing it in one pass.
+  4. Save the final deliverables under `/tmp_workspace/results/`, including at least:
+     - `figure5_aspect_ratio_recreated.png`
+     - `figure5_aspect_ratio_recreated.py`
+     - `notes.md` (briefly state which paper and figure you confirmed, and what revisions you made)
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/scaling_laws_page8_full.png
+  - references/figure5_middle_aspect_ratio.png
+
+codex:
+  max_user_followups: 2

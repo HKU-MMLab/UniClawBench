@@ -1,0 +1,48 @@
+task_id: task_204_35_love_is_strange_lrc
+category: 204_multimodal_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  请打开音频文件：
+  /tmp_workspace/clawbench/sources/song.mp3
+
+  这是一首匿名歌曲。不要试图从文件名、元数据、网络信息或记忆中推断歌曲名、
+  艺人、版本或已有歌词；最终的歌词和时间戳必须仅基于这段音频。
+
+  你必须真正播放并聆听这段音频，然后自己转写。不要下载歌词、已有的 LRC/SRT
+  文件、歌词网站上的文本，也不要依赖记忆；最终的歌词和时间戳必须基于这段
+  音频。
+
+  请根据音频生成一个带时间戳的歌词文件，并保存为：
+  /tmp_workspace/results/song_generated.lrc
+
+  要求：
+  1. 使用标准 LRC 格式
+  2. 保留男声与女声交替演唱或以对唱方式演唱的段落
+  3. 完成初稿后，再把整段音频听一遍，重点关注：
+     - 开头 0:00-0:20
+     - 中间重复的段落
+     - 结尾处是否有遗漏的字词
+  4. 如果发现问题，直接修改原文件
+  5. 最后，再生成 /tmp_workspace/results/song_revision_log.md，简要描述
+     你所做的修订
+
+  如果 `/tmp_workspace/results/` 不存在，请先创建它。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.lrc
+  - references/ground_truth.srt
+
+sources:
+  - song.mp3
+
+codex:
+  max_user_followups: 2

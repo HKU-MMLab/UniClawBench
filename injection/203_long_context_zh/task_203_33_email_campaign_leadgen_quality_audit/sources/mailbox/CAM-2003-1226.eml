@@ -1,0 +1,49 @@
+Message-ID: <5.1.0.14.0.20020822094822.02756b28@holly.csn.ul.ie>
+X-Clawbench-ID: CAM-2003-1226
+Date: Thu, 22 Aug 2002 10:01:12 +0100
+From: Lee Hosty <hostyle@csn.ul.ie>
+To: webdev@linux.ie
+Subject: Re: [Webdev] PHP/MySQL Virtual Hosting Recommendations?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00523.af946124a6fe4b8913ea4bb65f5d2df3
+
+At 07:44 PM 21/08/2002 +0100, elvin@eircom.net wrote:
+
+>Circa 50MB-100MB web space for now
+>POP email accounts
+>Account Control Panel
+>Perl
+>PHP
+>MySQL
+>FTP and Telnet Access 24/7
+
+You'll be lucky to get telnet anywhere, SSH should do though.
+
+>Own CGI-BIN
+>Webalizer Graphical Stats
+>Server Side Includes
+>Good Reachable Technical Support
+>
+>I have seen a great looking 300MB solution in the region of 600Euro p.a.
+>which at the moment is a bit over my financial head in one payment - I
+>haven't completed any sites yet, but have a few potential jobs coming up.
+>
+>Any tips/pointers much appreciated!
+
+Try www.hosting365.ie - they haven't let me down yet.
+
+You could try iewebs.com aswell, though I don't know if they do "just hosting".
+
+
+Lee Hosty -x- hostyle AT csn.ul.ie -x- +353 (0)86 8768780
+--
+PLEELEY (adj.)
+Descriptive of a drunk person's attempt to be endearing.
+
+
+_______________________________________________
+Webdev mailing list
+Webdev@linux.ie
+http://www.linux.ie/mailman/listinfo/webdev

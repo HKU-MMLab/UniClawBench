@@ -1,0 +1,28 @@
+Message-ID: <CALK=YjP1kVB9JrPtJtkMc77AS5F2YoyEhLJjKKLdi_uJr38fCg@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0921
+Date: Sat, 4 Jun 2022 16:21:50 -0400
+From: Eric Covener <covener@gmail.com>
+To: Apache HTTP Server Development List <dev@httpd.apache.org>
+Subject: Re: [VOTE] Release httpd-2.4.54-rc2 as httpd-2.4.54
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-06.mbox
+
+On Sat, Jun 4, 2022 at 4:17 PM John Doe <ghalleck21@gmail.com> wrote:
+>
+> Hi,
+> Eric's fix did not fix because I'm building with APR 1.7.0.
+>
+> In apr.hw 1.7.0 there is
+> /* If we have a TCP implementation that can be "corked", what flag
+>  * do we use?
+>  */
+> #define APR_TCP_NOPUSH_FLAG       @apr_tcp_nopush_flag@
+>
+> /* Is the TCP_NODELAY socket option inherited from listening sockets?
+>
+> It looks like Yann has fixed this in apr 1.7 & 1.8. So I guess apr needs to T&R 1.7.1 minimum.
+> For the work around until then,httpd needs to look for <= < 1.7, not 6.
+
+Darn, I only checked in SVN.  Thanks for catching it.  I updated httpd just now.

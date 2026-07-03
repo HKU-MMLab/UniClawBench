@@ -1,0 +1,26 @@
+Message-ID: <Z070zH5d5sV8x99X@an3as.eu>
+X-Clawbench-ID: BIO-2024-1294
+Date: Tue, 3 Dec 2024 13:08:44 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: 1081297@bugs.debian.org,	Debian Med Project List <debian-med@lists.debian.org>
+Subject: Do we need squizz any more?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_12_msg00004.html
+
+Hi,
+
+before I turn #1081297 into a request for removal:
+
+ Squizz was package for only purpose since it is needed by mobyle.  Since
+ mobyle is end of life and will probably not released after Buster this
+ library can vanish together with mobyle.
+
+Mobyle was removed - I guess we can remove squizz as well, right?
+
+Kind regards
+    Andreas.
+
+--
+https://fam-tille.de

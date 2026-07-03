@@ -1,0 +1,24 @@
+task_id: task_103_07_slack_openclaw_assistant_setup
+category: 103_long_context
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I currently use Slack on my phone, and OpenClaw is already installed locally, but this OpenClaw assistant has not yet been connected inside Slack.
+
+  I watched this video and it seems that Slack integration should be possible: https://www.youtube.com/watch?v=9QpSkGnfKMk . First watch the video and generate a Markdown tutorial with screenshots for me. Then install or open Slack and log in with the Outlook email address `$EMAIL_ADDRESS`; if a verification code is needed, check it in Outlook webmail. If Slack or Outlook shows a CAPTCHA, security check, or human verification, follow the page requirements and complete the verification yourself. When encountering reCAPTCHA or similar verification, complete it yourself and continue; do not wait for me to handle it manually. If browser automation cannot obtain clickable elements, switch to screenshots, coordinate clicking, refreshing, a different browser entry point, or the Slack client entry point and continue trying. Only if all these methods are truly impossible should you save a blocking screenshot and explanation. After logging in, configure or reset an OpenClaw bot/assistant entry and connect local OpenClaw to Slack.
+
+  Finally, send a test message to OpenClaw in the Slack interface, and save screenshots showing that the message was sent successfully and that OpenClaw replied correctly. Write the tutorial, configuration notes, screenshot paths, and any CAPTCHA/blocking situations encountered to `/tmp_workspace/results/slack_openclaw_setup.md`. Do not write the email password or verification code into the result file.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/jishuzhan_openclaw_slack_tutorial.md
+codex:
+  max_user_followups: 2

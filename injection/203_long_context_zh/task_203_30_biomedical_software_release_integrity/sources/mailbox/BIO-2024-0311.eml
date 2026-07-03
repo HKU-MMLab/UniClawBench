@@ -1,0 +1,38 @@
+Message-ID: <udly1e2luk1.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-0311
+Date: Sat, 09 Dec 2023 20:23:26 -0500
+From: "Aaron M. Ucko" <ucko@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: Attempt to upgrade sra-sdk
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_12_msg00024.html
+
+Andreas Tille  writes:
+
+> I've spent some time into the new version of sra-sdk and tried to adapt
+> the patches to the new upstream version.
+
+Hi, Andreas, and thanks!
+
+AFAICT, the immediate problem is that label_online_tests.patch refers to
+at least one removed or renamed test:
+
+  CMake Error at test/internal/vdb-diff/CMakeLists.txt:42 (set_tests_properties):
+    set_tests_properties Can not find test to add properties to:
+      Test_VDB_Diff_Check_success
+
+Temporarily disabling this patch will let you focus on compilation
+issues for the time being.
+
+Please also bear in mind that upstream maintains this code in
+conjunction with ncbi-vdb (lower-level) and ngs-sdk (higher-level), so
+it may help to update ncbi-vdb first and you may want to update ngs-sdk
+afterwards.
+
+I'll take a closer look when I get a chance.
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

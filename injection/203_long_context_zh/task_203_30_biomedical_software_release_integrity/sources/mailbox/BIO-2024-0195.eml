@@ -1,0 +1,36 @@
+Message-ID: <a61dbd3f-bc9a-1e35-c4a9-71f175656469@tchncs.de>
+X-Clawbench-ID: BIO-2024-0195
+Date: Mon, 13 Sep 2021 23:42:06 +0530
+From: Nilesh Patra <nilesh@tchncs.de>
+To: debian-med@lists.debian.org
+Subject: Re: soname question
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_09_msg00025.html
+
+On 9/13/21 11:21 PM, Maarten L. Hekkelman wrote:
+> Op 03-09-2021 om 19:15 schreef Maarten L. Hekkelman:
+>> Now what? Were my ideas correct and should I update the SONAME? If so do I have to request a Debian Developer to upload? Of do I have to submit this as a new software package? Or do I simply revert the SONAME and pray no one notices the binary difference. The last option is easiest, but of course not the best.
+>
+> So I followed the advice and the new binary package for the library is named libzeep5.1. This is all accepted into unstable but now I run into regressions. libpdb-redo is linked against libzeep5 and an application built with libpdb-redo is linked against both libzeep5 and libzeep5.1...
+>
+> Ehrm... now what? I guess I need to upload a new version of libpdb-redo so it will build with libzeep5.1 instead of libzeep5? Or is there anything else I need to do?
+
+Ideally, you'd request something called a BinNMU[1][2]
+But since there is only libpdb-redo that depends on libzeep, simply uploading a new changelog revision
+of libpdb-redo _should_ do the trick, ideally.
+
+[1]: https://www.debian.org/doc/manuals/developers-reference/pkgs.html#binary-only-nmu
+[2]: https://www.debian.org/doc/manuals/developers-reference/pkgs.html#source-nmus-vs-binary-only-nmus-binnmus
+
+Cheers,
+
+--
+Nilesh Patra
+
+Debian Developer, Uploading
+  ⢀⣴⠾⠻⢶⣦⠀
+  ⣾⠁⢠⠒⠀⣿⡁
+  ⢿⡄⠘⠷⠚⠋   nilesh@debian.org / nileshpatra.info / tchncs.de
+  ⠈⠳⣄

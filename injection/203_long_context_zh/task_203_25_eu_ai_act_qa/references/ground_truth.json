@@ -1,0 +1,47 @@
+{
+  "task_id": "task_103_25_eu_ai_act_qa",
+  "created_at": "2026-06-20T00:00:00+00:00",
+  "document": "Regulation (EU) 2024/1689 of the European Parliament and of the Council (the EU AI Act), Official Journal text. Injected as both PDF (sources/regulation/eu_ai_act_2024_1689.pdf, 144 pages) and a normalized text extract (sources/regulation/eu_ai_act_2024_1689.txt).",
+  "note": "Questions target specific penalty amounts, phased application dates, and risk-tier rules that must be looked up in the injected text. The model cannot answer these reliably from memory. Answers are graded against the injected regulation text.",
+  "questions_and_answers": [
+    {
+      "id": "Q1",
+      "question": "What is the maximum administrative fine for infringing the prohibited-AI-practices rules (Article 5), expressed both as a fixed amount and as a percentage of worldwide annual turnover?",
+      "answer": "Up to EUR 35 000 000, or, if the offender is an undertaking, up to 7% of its total worldwide annual turnover for the preceding financial year, whichever is higher.",
+      "anchor": "Art. 99: 'non-compliance ... referred to in Article 5 shall be subject to administrative fines of up to EUR 35 000 000 or ... up to 7% of its total worldwide annual turnover'"
+    },
+    {
+      "id": "Q2",
+      "question": "What is the maximum fine for supplying incorrect, incomplete or misleading information to notified bodies or competent authorities in reply to a request?",
+      "answer": "Up to EUR 7 500 000, or, if the offender is an undertaking, up to 1% of its total worldwide annual turnover, whichever is higher.",
+      "anchor": "Art. 99: 'supply of incorrect ... information ... administrative fines of up to EUR 7 500 000 or ... up to 1% of its total worldwide annual turnover'"
+    },
+    {
+      "id": "Q3",
+      "question": "There is an intermediate penalty tier for non-compliance with provisions other than Article 5 (e.g. obligations on operators or notified bodies). What is its fixed-amount cap and turnover percentage?",
+      "answer": "Up to EUR 15 000 000, or, if the offender is an undertaking, up to 3% of its total worldwide annual turnover, whichever is higher.",
+      "anchor": "Art. 99: 'EUR 15 000 000 or ... up to 3% of its total worldwide annual turnover'"
+    },
+    {
+      "id": "Q4",
+      "question": "From what date does the Regulation generally apply, and on what date did it enter into force relative to that?",
+      "answer": "The Regulation applies from 2 August 2026 in general. (It entered into force earlier - 20 days after publication in the Official Journal, i.e. 1 August 2024 - with application phased afterward.)",
+      "anchor": "Final article: 'It shall apply from 2 August 2026.'"
+    },
+    {
+      "id": "Q5",
+      "question": "The application is phased. By when do (a) the prohibitions and general provisions (Chapters I and II) apply, and (b) the rules on general-purpose AI models, governance and penalties (the 2 August 2025 tranche) apply?",
+      "answer": "(a) Chapters I and II - including the prohibited practices - apply from 2 February 2025. (b) The GPAI-model rules, the governance/notifying-authority structure, and the penalties provisions apply from 2 August 2025. Certain high-risk obligations apply from 2 August 2027.",
+      "anchor": "Final article: 'Chapters I and II shall apply from 2 February 2025; (b) ... shall apply from 2 August 2025 ... shall apply from 2 August 2027'"
+    },
+    {
+      "id": "Q6",
+      "question": "Where in the Regulation is the list of high-risk AI system use-cases found (the annex), and name the high-level risk categories the Act uses to classify AI systems.",
+      "answer": "The high-risk use-case list is in Annex III. The Act classifies AI by risk: prohibited (unacceptable risk, Article 5), high-risk (Annex III / Article 6), and lower-risk systems subject to transparency obligations; general-purpose AI models are governed separately.",
+      "anchor": "Annex III lists high-risk use cases; Article 5 prohibited practices; Article 6 high-risk classification"
+    }
+  ],
+  "required_outputs": ["/tmp_workspace/results/eu_ai_act_qa.md"],
+  "scoring_notes": "Each answer must come from the injected regulation text. Reward exact penalty amounts (35M/15M/7.5M and 7%/3%/1%) and the exact phased dates (2 Feb 2025, 2 Aug 2025, 2 Aug 2026, 2 Aug 2027) with article/annex citations. Penalize wrong amounts, swapped tiers, wrong dates, or answers given generically without reading the text.",
+  "dynamic_content_note": "The injected OJ text is frozen and authoritative for this task. Judge answers against the injected PDF/text."
+}

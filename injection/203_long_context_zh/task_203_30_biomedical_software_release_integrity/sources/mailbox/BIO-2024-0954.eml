@@ -1,0 +1,38 @@
+Message-ID: <20230624102619.ma6d4ls2ccjad475@office.mailbox.org>
+X-Clawbench-ID: BIO-2024-0954
+Date: Sat, 24 Jun 2023 15:56:19 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: Fabian Klötzl <kloetzl@evolbio.mpg.de>
+Subject: phylonium 1.7 build fails on 32-bit archs
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_06_msg00017.html
+
+Hi Fabian,
+
+I happened to update phylonium to 1.7 and uploaded, sometime back.
+Unfortunately it fails on 32 bit archs:
+
+	https://buildd.debian.org/status/package.php?p=phylonium&ver=1.7-1
+
+with:
+
+| process.cxx: In lambda function:
+| process.cxx:222:39: error: no matching function for call to ‘max(saidx64_t&, long int)’
+|  222 |                 this_length = std::max(inter.l, 0l);
+|      |                               ~~~~~~~~^~~~~~~~~~~~~
+
+This seems to be because the new version exports and assumes the target
+arch to be 64-bit and uses a typedef of int64_t to saidx64_t everywhere.
+
+There are 32-bit definitions present in /usr/include/*/divsufsort.h and
+probably this should be used for archs that are not 32-bit (using
+saidx_t). Can you please take a look?
+
+Otherwise, do you want phylonium to support only 64-bit archs, and
+should we ask for removal of 32-bit entirely?
+
+--
+Best,
+Nilesh

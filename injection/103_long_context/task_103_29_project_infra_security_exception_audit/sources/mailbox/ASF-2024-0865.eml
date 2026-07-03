@@ -1,0 +1,37 @@
+Message-ID: <CAKQ1sVN1M0XJ_Rh7Ye3Rd2qbkV3AB8ED+EgyKmk3KJjdPBi5XA@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0865
+Date: Tue, 16 Jan 2024 18:45:45 +0100
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: process_regexp bug, infinite recursion
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-01.mbox
+
+On Mon, Jan 8, 2024 at 5:54 PM Ruediger Pluem <rpluem@apache.org> wrote:
+>
+> On 1/8/24 1:37 PM, Yann Ylavic wrote:
+> >
+> > As noted in v2 we have an issue here by "losing" the beginning of the
+> > value on recursion:
+> >             /* XXX: recursing by using AP_REG_NOTBOL (because we are not at ^
+> >              * anymore) and then "losing" the beginning of the string is not
+> >              * always correct. Say we match "(?<=a)ba" against "ababa", on
+> >              * recursion ap_regexec_len() will not know that the second "b" is
+> >              * preceded by "a" thus not match. We'd need a new ap_regexec_ex()
+> >              * that can take match_end as an offset to fix this..
+> >              */
+> >
+> > Not sure how far we should go with this patch..
+>
+> I think things do not get worse in this respect because of this patch but only improve
+> in the sense that an infinite recursion is avoided.
+> Hence +1 on the patch.
+
+I finally went with the full thing in r1915267, r1915268 and r1915271
+(with new tests in r1915269 for what didn't work well).
+
+
+Regards;
+Yann.

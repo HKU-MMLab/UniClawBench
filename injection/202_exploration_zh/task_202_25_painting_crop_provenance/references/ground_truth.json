@@ -1,0 +1,37 @@
+{
+  "task_id": "task_102_25_painting_crop_provenance",
+  "note": "Image-provenance task. The executor is given ONLY a cropped interior detail of a painting (sources/crop.jpg) with no title, signature, frame, or caption. They must visually identify the artwork and trace it to its canonical museum record. Searching text cannot short-circuit this — the crop carries no searchable text. Ground truth is the Met Collection API record.",
+
+  "crop_origin": {
+    "source_full_image": "Met Collection API primaryImage for objectID 436535 (https://images.metmuseum.org/CRDImages/ep/original/DP-42549-001.jpg)",
+    "crop_box_xyxy_on_4000x3184": [2000, 573, 3120, 2101],
+    "what_it_shows": "an interior detail: van Gogh's swirling impasto sky and a cypress/foliage band; no signature or frame edges"
+  },
+
+  "canonical_answer": {
+    "artwork_title": "Wheat Field with Cypresses",
+    "artist": "Vincent van Gogh",
+    "date": "1889",
+    "holding_institution": "The Metropolitan Museum of Art (The Met)",
+    "met_object_id": 436535,
+    "accession_number": "1993.132",
+    "department": "European Paintings",
+    "medium": "Oil on canvas",
+    "canonical_url": "https://www.metmuseum.org/art/collection/search/436535",
+    "met_api_url": "https://collectionapi.metmuseum.org/public/collection/v1/objects/436535",
+    "is_public_domain": true
+  },
+
+  "accepted_variants": {
+    "title": ["Wheat Field with Cypresses", "A Wheatfield, with Cypresses", "Wheatfield with Cypresses"],
+    "note": "Van Gogh painted several closely related 'Wheat Field with Cypresses' versions (Met 1889; National Gallery London; others). The Met version (objectID 436535, accession 1993.132) is the one this crop is taken from. Identifying the artwork + artist correctly is the core; landing specifically on the Met record (object id / accession / Met URL) is required for full credit because the crop is pixel-derived from the Met image."
+  },
+
+  "scoring_anchors": {
+    "must_identify": {"artist": "Vincent van Gogh", "title": "Wheat Field with Cypresses"},
+    "canonical_record_for_full_credit": {"institution": "The Met", "object_id": 436535, "accession": "1993.132"},
+    "primary_source_rule": "the canonical answer is the museum's own record (Met page or Met Collection API). Wikipedia/WikiArt/blog reproductions are secondary — acceptable as supporting evidence but the final canonical pointer should be the Met record.",
+    "anti_secondary_source": "stopping at a Wikipedia/Pinterest/stock-photo page without reaching the Met (or at least the holding institution's own record) caps the score",
+    "tolerance": "If the executor identifies the artwork + artist correctly and reaches a van Gogh 'Wheat Field with Cypresses' museum record but names a sibling version (e.g. National Gallery) instead of the Met, give partial credit (it is the right artwork family but the wrong specific holding for this exact image)."
+  }
+}

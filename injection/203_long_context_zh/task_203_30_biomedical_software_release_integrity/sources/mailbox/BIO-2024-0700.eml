@@ -1,0 +1,58 @@
+Message-ID: <Y263QGC1VHiFQYaA@an3as.eu>
+X-Clawbench-ID: BIO-2024-0700
+Date: Fri, 11 Nov 2022 21:57:36 +0100
+From: Andreas Tille <andreas@fam-tille.de>
+To: L Peter Deutsch <lpd@major2nd.com>
+Subject: Re: Command line switches for aeskulap
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_11_msg00026.html
+
+Hi,
+
+I'm just the Debian of aeskulap which means I can just build the code.
+I'm not a user of this package.  I just know that there are two other
+DICOM viewer in Debian ginkgocadx (in Debian stable, but not unstable
+any more) and amide.
+
+I'm forwarding your question to the Debian Med mailing list where other
+people might give some better hints.
+
+Kind regards
+   Andreas.
+
+Am Fri, Nov 11, 2022 at 07:39:53AM -0800 schrieb L Peter Deutsch:
+> Dear M. Pipelka and M. Tille,
+>
+> I found your names and e-mail addresses on the aeskulap man page.
+>
+> A hospital has provided us with a CD of CT scans in DICOM format that are
+> essential for my husband's surgery.  The surgeon's staff has been unable to
+> view them; convert (ImageMagick), dcm2pnm, and dcmj2pnm all produce images
+> that are gray with only tiny shade variations.  aeskulap produces beautiful
+> clear images, but the surgeon's office does not run Linux and cannot use
+> aeskulap.
+>
+> I have been unable to find any documentation for aeskulap other than a very
+> short man page.  I could have sworn I saw a man page that gave instructions
+> for a command line switch that caused aeskulap to write an image file in
+> some more usable format (PNG, PDF, ...), but I cannot find this page
+> anywhere now.  Does such documentation exist, and if so, where?
+>
+> If we cannot find this documentation within roughly the next 24 hours, I
+> will have to find a way to get the images we need using gnome-screenshot.
+> aeskulap appears not to be designed to be driven from the command line, so I
+> may have to use some terrible workaround like extracting its PID with ps |
+> grep and killing it manually.
+>
+> I will appreciate any assistance greatly.
+>
+> 			Sincerely,
+>
+> 					L Peter Deutsch
+> 					(original author of Ghostscript)
+>
+
+--
+http://fam-tille.de

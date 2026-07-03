@@ -1,0 +1,48 @@
+Message-ID: <c8c3a791-f7c9-798a-aac2-512793a43645@apache.org>
+X-Clawbench-ID: ASF-2024-1487
+Date: Mon, 31 Jan 2022 13:47:12 +0100
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: mpm event assertion failures
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-01.mbox
+
+On 1/27/22 4:44 PM, Ruediger Pluem wrote:
+>
+>
+> On 1/27/22 9:57 AM, Ruediger Pluem wrote:
+>>
+>>
+>> On 1/26/22 6:34 PM, Yann Ylavic wrote:
+>>> On Wed, Jan 26, 2022 at 5:07 PM Graham Leggett <minfrin@sharp.fm> wrote:
+>>>>
+>>>> We need to clarify expectations at this point.
+>>>>
+>>>> The trunk of httpd has a policy called “commit then review” (CTR), meaning that changes are applied first, and then review is done to see what the ramifications of those changes are. Some changes are at a high level and very well contained, some changes such as this one are at a very low level and affect the whole server. Obviously there is an expectation that one must think it works before committing, but none of our contributors have access to even a fraction of the number of platforms that httpd runs on, and so we must rely on both our CI and the review of others (thus the “then review”) to show us where things have gone wrong. Our CI is a tool to tell us what potentially has gone wrong across a wide set of scenarios, far beyond the capability of what a single person has access to.
+>>>
+>>> I agree with all of the above, there is nothing wrong with the way you did it.
+>>> Maybe now that we have a better ci that runs on each branch, a github
+>>> PR could be created first to see/test the results before checking in
+>>> to trunk (this was not an option a few years ago)?
+>>> This still allows for review and/or help if something goes wrong (by
+>>> asking on dev@ if needed), while others don't have to wait for trunk
+>>> to work for their own changes.
+>>
+>> This sounds like an excellent proposal here to me as it looks like that finding the issue takes longer and it removes stress from
+>> everyone.
+>
+> There are some tools in stock that will help you with this. Once you reverted the revisons on trunk, you can take these revisions
+> and use a modified version of https://svn.apache.org/repos/asf/httpd/dev-tools/github/create_pr.sh . Basically you need to replace
+> 2.4.x with trunk and override BRANCH_NAME near the top of the script with the name of your feature branch branched from the
+> reverted trunk.
+
+Since r1897624 this should be possible via:
+
+./create_pr.sh -b async_handshake -t trunk <revision numbers already committed to trunk for async handshake feature separated by
+spaces>
+
+Regards
+
+Rüdiger

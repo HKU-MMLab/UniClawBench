@@ -1,0 +1,73 @@
+task_id: task_105_03_rust_tokyo_meetup_gui_calendar
+category: 105_cross_platform
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  Use real public web pages to organize the Rust Global: Tokyo event information,
+  then create a reminder event in a real local desktop calendar GUI.
+
+  Verify the information from these real web pages. Do not use a local simulated
+  site or local mirror page:
+
+  - Rust Foundation event page: https://rustfoundation.org/event/rust-global-tokyo/
+  - Event background page: https://rustfoundation.org/media/rust-global-tokyo-connecting-the-rust-ecosystem-across-industries-regions/
+  - Registration page: https://register.linuxfoundation.org/event/rust-global-tokyo-2025/register
+  - Venue/travel page: https://events.linuxfoundation.org/open-source-summit-japan/attend/venue-travel/
+
+  For the calendar portion, use GNOME Calendar or an equivalent real desktop
+  calendar application installed on the system. Do not use Calendar Mock, and do
+  not only hand-write a calendar file. If the calendar or text editor is still
+  installing, wait briefly before launching it. The setup service records status
+  here:
+  `/tmp_workspace/clawbench/service_state/real-calendar-text-editor.json`
+
+  Requirements:
+  1. Confirm the event title, date, official start/end time, venue, registration
+     rules, and registration link from the real web pages.
+  2. Create an event in the real calendar GUI. The title must include
+     `Rust Global: Tokyo`.
+  3. Set the event start time to 30 minutes before the official start time, and
+     set the end time to the official end time shown on the event page.
+  4. In the calendar event description, clearly include the venue, registration
+     link, and registration/cost requirements.
+  5. Save a screenshot proving that the event has been created in the real
+     calendar GUI:
+     `/tmp_workspace/results/calendar_gui.png`; if the calendar supports export,
+     also save `/tmp_workspace/results/rust_global_tokyo.ics`.
+     An ICS import preview, a screen where no calendar has been selected, or a
+     dialog where import/save has not been clicked does not count as a created
+     event. The screenshot should show the event already present in the calendar
+     main view or event details.
+  6. Also write an audit JSON file to `/tmp_workspace/results/calendar_evidence.json`.
+     Record the calendar application used, event title, start/end time, timezone,
+     venue, registration link, and evidence file paths. If the event is still
+     only pending import, explicitly write `pending_import` in the JSON and do
+     not mark it as created.
+  7. Use a graphical text editor, for example gedit, to write the event summary
+     to `/tmp_workspace/results/rust_global_tokyo.md`. Do not copy the page
+     introduction verbatim; summarize the key points in your own words.
+
+  Final required outputs:
+  `/tmp_workspace/results/rust_global_tokyo.md`
+  `/tmp_workspace/results/calendar_evidence.json`
+  `/tmp_workspace/results/calendar_gui.png`
+  If export is available, also save `/tmp_workspace/results/rust_global_tokyo.ics`
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+codex:
+  max_user_followups: 2
+services:
+  - name: real-calendar-gui-setup
+    path: real-calendar-gui-setup
+    start: bash install.sh
+    oneshot: true

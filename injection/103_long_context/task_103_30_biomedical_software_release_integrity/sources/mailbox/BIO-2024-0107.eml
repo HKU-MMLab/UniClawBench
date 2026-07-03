@@ -1,0 +1,58 @@
+Message-ID: <YUNmCxhCuUw6sGwm@mapreri.org>
+X-Clawbench-ID: BIO-2024-0107
+Date: Thu, 16 Sep 2021 17:43:07 +0200
+From: Mattia Rizzolo <mattia@debian.org>
+To: debian-science@lists.debian.org
+Subject: Re: Team upload policy
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_09_msg00024.html
+
+On Thu, Sep 16, 2021 at 01:34:05PM +0200, Drew Parsons wrote:
+> The Python Team policy looks sensible to me.
+
+It is not, please do not let such thing spread outside the Python team.
+I don't remember if you are involved in the Python team, but I can tell
+you that the low-level of "teamship" that is there is only annoying, and
+this part of the policy goes straight against collaboration.
+
+
+> Any member of the team should be able to fix and upload any team package in
+> general.  That helps spread the load and keeps the packages fresh.
+
+That's exactly how it works already in the science team from what I
+could see over the years.  What the science team is lacking is active
+contributors, there are no rules that are blocking people from fixing
+and uploads stuff.
+I like the science team because I always felt fine uploading random
+changes in the past when I needed them, in the python team I always need
+to ponder "will the main uploader be bothered about my chnages" every
+time.
+
+> But reasonable also to have a stronger oversight model (the weak
+> collaboration case) if a particular package is more tricky and needs more
+> care.
+
+IME, this is just an overstatement.  I very very rarely saw team members
+overstep common sense.  If a package is tricky a proper DD should be
+able to tell so and ask for opinions, and that happens every so often.
+We are already fine here.
+Let's not overcomplicate matters.
+
+Timo: go ahead and fix the packages.  Just, IMHO please do not add
+allow-stderr, instead patch CMakeList to require an higher version (and
+forward the patch upstream if possible).  I always felt that too many
+packages already have allow-stderr where instead erroring out on stderr
+is a very fine way to catch future regressions *exactly* like this one.
+Looking at the src:cmake page I see there are not too many affected
+packages, so it should be fine?
+
+--
+regards,
+                        Mattia Rizzolo
+
+GPG Key: 66AE 2B4A FCCF 3F52 DA18  4D18 4B04 3FCD B944 4540      .''`.
+More about me:  https://mapreri.org                             : :'  :
+Launchpad user: https://launchpad.net/~mapreri                  `. `'`
+Debian QA page: https://qa.debian.org/developer.php?login=mattia  `-

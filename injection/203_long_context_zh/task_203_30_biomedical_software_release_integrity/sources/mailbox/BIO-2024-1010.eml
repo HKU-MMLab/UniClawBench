@@ -1,0 +1,43 @@
+Message-ID: <udl8rv5w6av.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-1010
+Date: Mon, 24 Jan 2022 09:35:04 -0500
+From: ucko@debian.org (Aaron M. Ucko)
+To: Andreas Tille <andreas@an3as.eu>
+Subject: Re: [Help] librostlab-blast fails its autopkgtest with C++ issue
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_01_msg00080.html
+
+Andreas Tille  writes:
+
+> However, what I do not understand is that the build of
+> librg-blast-parser-perl remains on failing[1] (versioned Build-Depends on
+> fixed librostlab-blast0-dev was set):
+
+Looks like fallout from a clash between Perl headers' definition of
+YYEMPTY as a macro and Rost Lab headers' use of it as an enum name:
+
+  In file included from
+  /usr/lib/x86_64-linux-gnu/perl/5.32/CORE/perl.h:3938,
+                   from Parser.xs:9:
+  /usr/lib/x86_64-linux-gnu/perl/5.32/CORE/parser.h:12:25: error: expected
+  identifier before '(' token
+     12 | #define YYEMPTY         (-2)
+        |                         ^
+  /usr/lib/x86_64-linux-gnu/perl/5.32/CORE/parser.h:12:25: error: expected
+  '}' before '(' token
+  In file included from /usr/include/rostlab/blast-parser-driver.h:26,
+                   from Parser.xs:15:
+  rostlab/blast-parser-parser.h:246:7: note: to match this '{'
+
+AFAICT, you can address it by patching Parser.xs either to
+
+  #undef YYEMPTY
+
+before including the Rost Lab header or to include the latter before any
+Perl headers.
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

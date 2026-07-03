@@ -1,0 +1,47 @@
+Message-ID: <ZV-Nhoqr2lZ6N61S@redhat.com>
+X-Clawbench-ID: ASF-2024-0624
+Date: Thu, 23 Nov 2023 17:36:06 +0000
+From: Joe Orton <jorton@redhat.com>
+To: dev@apr.apache.org, dev@httpd.apache.org
+Subject: mod_dav_fs locking / Re: apr_dbm and concurrency
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-11.mbox
+
+Adding dev@httpd to a dev@apr thread about apr_dbm locking being broken.
+
+On Sun, Nov 12, 2023 at 07:43:13AM -0600, Greg Stein wrote:
+> Or, apps can stick to an older APR. ... we don't have to carry this forward
+> into future versions of APR (IMO).
+>
+> To your point, it is probably a single page with code samples to show how
+> to do K/V with sqlite, to replace the apr_dbm calls. That's gonna be way
+> easier than locking code integrated into apr_dbm.
+
+This seems reasonable to me for the mod_dav use case where the database
+is an implementation detail which users don't care about. For other use
+cases in httpd I'm not so sure, but saying "dbm is dead, sqlite is the
+way" is probably possible for all of them. It does mean someone writing
+a lot of new modules to replace mod_auth*dbm etc tho ;)
+
+There are a few alternative approaches I looked at:
+
+1) we could hack fcntl-based locks to work on Linux by using F_OFD_SETLK
+etc which a sane locking model rather than the weird/dumb F_SETLK which
+has the traditional/POSIX non-thread-safe model. Linux-specific, so...
+
+2) try to shoehorn "proper" locking into apr_dbm is hard because there
+isn't a suitable locking primitive that can be used at this level. Maybe
+the only approach that might work would be filesystem-based locking
+based off open/O_EXCL but this is not exactly reliable.
+
+3) in the mean time I worked up a PR for mod_dav_fs which adds a global
+mutex around the dbm lockdb use. This passes my stress tests for the
+first time. Kind of ugly but this seems like the least ugly option at
+this point other than the "start again with sqlite":
+https://github.com/apache/httpd/pull/395
+
+Any comments/review/flames from either dev@ welcome.
+
+Regards, Joe

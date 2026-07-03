@@ -1,0 +1,67 @@
+Message-ID: <CA+7wUsyNJOvTEk_FY+PbgZ24qQ2mBesZG+1z1pEEGm2w1arHxQ@mail.gmail.com>
+X-Clawbench-ID: BIO-2024-1129
+Date: Wed, 28 Sep 2022 13:56:17 +0200
+From: Mathieu Malaterre <malat@debian.org>
+To: Nilesh Patra <nilesh@debian.org>
+Subject: Re: How to check ? Re: RFS -- autopkgtests for dcmtk
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_09_msg00031.html
+
+On Wed, Sep 28, 2022 at 1:34 PM Nilesh Patra  wrote:
+>
+> On Wed, Sep 28, 2022 at 01:00:28PM +0200, Mathieu Malaterre wrote:
+> > Is there a way to (quickly) run the autopkgtests for dcmtk ?
+>
+> These docs with autopkgtest package should help on that:
+>
+>         /usr/share/doc/autopkgtest/README.virtualisation-server.html
+>         /usr/share/doc/autopkgtest/README.running-tests.html
+>         /usr/share/doc/autopkgtest/README.package-tests.html
+>
+> And otherwise,
+> Here's a nice tutorial (with a setup guide) - https://asd.learnlearn.in/autopkgtest-tips/
+>
+> > Or else
+> > where can I see the output (somewhere on debian/ci) ?
+>
+> Since you already uploaded this package, debci ran on it.
+> Here's the link
+>
+>         https://ci.debian.net/packages/d/dcmtk/
+>
+> And here's the latest log (on amd64)
+>
+>         https://ci.debian.net/data/autopkgtest/unstable/amd64/d/dcmtk/26349262/log.gz
+
+Great ! Thanks for the link. I am not going to make any more noise
+about this. I just find this curious that my version of md5sum does
+not behave the same as in the deb-ci env:
+
+% cat /etc/debian_version
+bookworm/sid
+
+gives:
+
+ % sh -x ./debian/tests/run-unit-test
+[...]
++ [ -f dcmp2pgm.out ]
++ md5sum --check checksums
+md5sum: checksums: no properly formatted checksum lines found
++ echo FAIL
+FAIL
++ rm -rf /tmp/dcmtk-test.5wl9lz
+
+I would need to change:
+
+echo -e "15e7e2a11cdeabac32e1134674beda6b CT_small.dcm" >> checksums
+
+into:
+
+echo "15e7e2a11cdeabac32e1134674beda6b CT_small.dcm" >> checksums
+
+ref:
+* https://salsa.debian.org/med-team/dcmtk/-/commit/61bcbf663b79ee177dee878c72d6eda9b33683ea#8c77cc51b09ef1f7b294222180bcdb53ebb70e2f_0_23
+
+oh well...

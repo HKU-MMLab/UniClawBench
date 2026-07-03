@@ -1,0 +1,29 @@
+Message-ID: <FCDD4617-3B34-40AF-9D2A-FB343E092835@sharp.fm>
+X-Clawbench-ID: ASF-2024-0274
+Date: Tue, 25 Jan 2022 21:17:50 +0200
+From: Graham Leggett <minfrin@sharp.fm>
+To: dev@httpd.apache.org
+Subject: Re: trunk test failure, SSL handshake
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-01.mbox
+
+On 25 Jan 2022, at 13:57, Stefan Eissing <stefan@eissing.org> wrote:
+
+> Failure in https://app.travis-ci.com/github/apache/httpd/jobs/556778281
+> indicates that the SSL handshake timeout no longer is working.
+> Also logs mpm:error several times.
+>
+> The test opens a socket and sends one byte, then waits for
+> the connection to close with the configured timeout.
+
+Alas there is no SSL handshake timeout, but rather a timeout implemented by mod_reqtimeout, which in turn steps out of the way as soon as the connection is non blocking. Problem is on this line:
+
+https://github.com/apache/httpd/blob/trunk/modules/filters/mod_reqtimeout.c#L220
+
+mod_reqtimeout needs to be taught how to not-block.
+
+Regards,
+Graham
+—

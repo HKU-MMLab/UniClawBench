@@ -1,0 +1,38 @@
+Message-ID: <ZKxwKtdePdQGrf1O@fusion>
+X-Clawbench-ID: BIO-2024-1500
+Date: Mon, 10 Jul 2023 22:55:06 +0200
+From: Étienne Mollier <emollier@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: biopython 1.81 in experimental
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_07_msg00041.html
+
+Andreas Tille, on 2023-07-09:
+> Am Sun, Jul 09, 2023 at 09:30:11PM +0200 schrieb Étienne Mollier:
+> > I pushed python-biopython 1.81 in experimental.  We should be
+> > able to begin investigate changes needed in reverse dependencies
+> > before migrating it to unstable.
+>
+> Thanks a lot.  I'm currently busy with r-cran stuff but if you need
+> help on the BioPython migration just let me know.
+
+Hm, looks like I'd have to first get right the changes in
+biopython 1.80 to allow python-reportlab migration.  (:
+
+In any case, thanks for the offer, build of 1.81 for amd64 and a
+couple of other architectures concluded[1], and experimental
+pseudo-excuses[2] are ready to run (and they already caught
+#1040776[3]).
+
+[1]: https://buildd.debian.org/status/package.php?p=python-biopython&suite=experimental
+[2]: https://qa.debian.org/excuses.php?experimental=1&package=python-biopython
+[3]: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1040776
+
+Have a nice day,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  gpg: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/2, please excuse my verbosity
+   `-    on air: Rush - Tom Sawyer

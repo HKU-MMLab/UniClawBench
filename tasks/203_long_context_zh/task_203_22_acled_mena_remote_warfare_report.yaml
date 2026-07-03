@@ -1,0 +1,34 @@
+task_id: task_203_22_acled_mena_remote_warfare_report
+category: 203_long_context_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我想就以下问题制作一份交互式 HTML 分析报告：中东和北非地区无人机及其他远程攻击的兴起，是否伴随着空间上从邻近边境的冲突向针对首都地区的攻击的转移？
+
+  登录 ACLED（https://acleddata.com），使用 ACLED Data Export Tool 下载 1997-01-01 到 2025-04-18 的数据，区域为 Middle East and Northern Africa，事件类型包括 Battles、Violence against civilians 以及 Remote attacks / Explosions / Remote violence，重点关注空中/无人机打击和远程攻击。登录账户和密码在 `$ACLED_EMAIL` 和 `$ACLED_PASSWORD` 中。
+
+  遵循这份 ACLED 报告的写作和图表风格：https://acleddata.com/report/exhausted-ukraine-faces-military-and-diplomatic-pressure-cede-donbas 。报告正文应约 1,500 字，上下浮动 200 字，且必须包含 research question、methodology、findings、discussion 和 conclusion。
+
+  构造两个变量：capital-area event，指事件发生在国家首都，或其 sub-location 名称以该首都开头；以及 border-proximate event，指位于某条国际陆地边界 50 km 以内。基于数据，进行因子分析或类似的指标分解，以解释远程战争、首都地区、邻近边境、空中/无人机打击及相关因素之间的关系。图表必须至少包含远程攻击/空中-无人机打击的时间趋势、远程攻击中首都事件与边境事件占比的变化，以及一张带时间滑块的交互式地理散点地图。交付前，请自己打开 HTML，检查一次地图点位、时间滑块、图表和正文排版是否都正常工作。地图不得出现坐标颠倒、点位集中在错误区域、图表空白或没有时间变化的情况。交付 `/tmp_workspace/results/acled_mena_remote_warfare.html`，且不要把 ACLED 账户或密码写入结果。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/project_folder_reference/README.md
+  - references/project_folder_reference/code/01_data_cleaning.ipynb
+  - references/project_folder_reference/code/02_analysis.ipynb
+  - references/project_folder_reference/data/country_pattern_summary.csv
+  - references/project_folder_reference/data/spatial_bucket_summary.csv
+  - references/project_folder_reference/data/yearly_shift_summary.csv
+  - references/project_folder_reference/docs/figure4_notebook_map.html
+  - references/project_folder_reference/docs/index.html
+  - references/project_folder_reference/requirements.txt
+codex:
+  max_user_followups: 2

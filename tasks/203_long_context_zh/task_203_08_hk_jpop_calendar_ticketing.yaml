@@ -1,0 +1,32 @@
+task_id: task_203_08_hk_jpop_calendar_ticketing
+category: 203_long_context_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我住在新加坡，最近需要出一趟差。我想在这趟行程的中段看一场当地的演唱会。
+
+  请直接使用 Google Calendar / gcalcli 查看我的日历，判断这趟出差去往哪里、我住在哪里，以及哪个晚上适合安排演唱会。gcalcli 的 OAuth 配置已通过环境变量提供给工具。账户提示在 `$GOOGLE_CALENDAR_ACCOUNT` 中，但该账户值只应用于选择账户；不要把它写进最终结果，也不要把任何 token 或授权缓存内容写进结果。如果当前环境没有 gcalcli，请自行用可用的 apt 或 pip 安装并验证；不要仅仅因为它没有预装就直接切换到另一个数据源。要特别注意把日历时间归一化为这趟出差所在地的当地时间。如果 gcalcli 输出看起来像 UTC 或时区不明确，请用日历事件的时区/地点重新核对，不要直接照抄。然后在至少 10 个票务或演出信息网站上广泛搜索。如果某网站有合适的演唱会，保存一张页面截图；如果没有合适的结果，也保存搜索/无结果截图。
+
+  我是一名重度 J-pop 粉丝，所以请优先考虑 J-pop/J-rock/日本音乐相关的演出。最后推荐一场演唱会，列出其时间、场馆、票价、原始链接和截图路径，并保存到 `/tmp_workspace/results/concert_recommendation.md`。同时，基于我的行程和你推荐的演出，整理一份完整的 Markdown 日程并保存到 `/tmp_workspace/results/concert_calendar.md`：涵盖 6/3 到 6/9 每天的主要计划、看演唱会的最佳晚上，以及所推荐演唱会的时间、场馆、票价、链接和截图路径。我只需要这两份 Markdown 结果；不要增加、删除或修改我的 Google Calendar 事件。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/target_calendar.md
+pre_exec:
+  - ops/populate.py
+pre_exec_parallel_safe: true
+
+skills:
+  - apt-package-manager
+  - google-calendar-gcalcli
+
+codex:
+  max_user_followups: 2

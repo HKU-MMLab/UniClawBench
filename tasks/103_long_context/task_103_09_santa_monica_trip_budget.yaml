@@ -1,0 +1,44 @@
+task_id: task_103_09_santa_monica_trip_budget
+category: 103_long_context
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I want to go to Santa Monica in Los Angeles with a friend for a long weekend. The dates are: next Friday to the following Monday (a 3-night Friday-to-Monday stay), 2 people, flying from SFO to LAX. Please actually research and create a complete budget and itinerary plan, but do not pay, book tickets, book hotels, rent a car, reserve restaurants, or submit any irreversible order. Save all screenshots and documents to `/tmp_workspace/results/`.
+
+  For flights, only consider United nonstop. The outbound flight must depart SFO for LAX on next Friday between 09:00 and 11:30; the return flight must depart LAX for SFO on the following Monday between 17:00 and 19:30. Search once each on Google Flights, Kayak, and Momondo, and record 1 most suitable result from each platform with a screenshot.
+
+  For lodging, only consider Courtyard by Marriott Santa Monica, Hampton Inn & Suites Santa Monica, and Hilton Santa Monica Hotel & Suites. Search Booking.com and each hotel official website for a stay from next Friday to the following Monday, 2 people, 1 room. Record room type, 3-night total price, whether taxes/fees are included, cancellation policy, rating/address, and screenshots.
+
+  For rental cars, only consider LAX pickup and return, pickup at next Friday 12:30 and return at the following Monday 14:30. Search Enterprise for Economy, Compact, and Midsize. On Turo, record only the 2 cheapest qualifying cars in the search results, without logging in. For restaurants, only check Water Grill Santa Monica, Meat On Ocean, Fia Santa Monica, Orla Santa Monica, and 1212 Santa Monica, and check whether 2 people can reserve dinner between 18:00 and 20:30 from next Friday to next Sunday.
+
+  Finally generate `/tmp_workspace/results/santa_monica_trip_plan.md`, including a daily itinerary, a budget table for flights/hotel/rental car/restaurants/parking/gas/activity contingency, and two options: budget-saving and comfortable. Try to keep the comfortable option's total budget within $3,200 / 2 people.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/process_evidence/booking_courtyard_santa_monica.png
+  - references/process_evidence/booking_hampton_santa_monica.png
+  - references/process_evidence/booking_hilton_santa_monica.png
+  - references/process_evidence/enterprise_lax.png
+  - references/process_evidence/google_flights_sfo_lax_results.png
+  - references/process_evidence/hampton_santa_monica.png
+  - references/process_evidence/hilton_santa_monica.png
+  - references/process_evidence/kayak_sfo_lax.png
+  - references/process_evidence/marriott_courtyard_santa_monica.png
+  - references/process_evidence/momondo_sfo_lax_top_results.png
+  - references/process_evidence/momondo_sfo_lax_united_options.png
+  - references/process_evidence/opentable_1212.png
+  - references/process_evidence/opentable_fia.png
+  - references/process_evidence/opentable_meat_on_ocean.png
+  - references/process_evidence/opentable_orla.png
+  - references/process_evidence/opentable_water_grill.png
+  - references/process_evidence/turo_lax.png
+codex:
+  max_user_followups: 2

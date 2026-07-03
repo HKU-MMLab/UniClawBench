@@ -1,0 +1,45 @@
+Message-ID: <Ym93bcSlBy/XgsOr@an3as.eu>
+X-Clawbench-ID: BIO-2024-0999
+Date: Mon, 2 May 2022 08:17:17 +0200
+From: Andreas Tille <andreas@fam-tille.de>
+To: "Uecker, Martin" <Martin.Uecker@med.uni-goettingen.de>
+Subject: Re: bart upload
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_05_msg00004.html
+
+Hi Martin,
+
+Am Mon, May 02, 2022 at 06:01:16AM +0000 schrieb Uecker, Martin:
+> > Uploaded.  Thanks a lot for your preparation
+>
+> Thank you for uploading.
+
+You are welcome.
+
+> There is also some issue with the nvidia-cuda-toolkit
+>
+> https://tracker.debian.org/pkg/bart-cuda
+>
+> I guess we only need to re-upload once nvidia-cuda-toolkit
+> is updated?
+
+I need to admit you probably know better than I. ;-)
+Just ping me if you think an upload is necessary.
+
+> BTW: The next version of BART will include a complete
+> machine learning framework (not relying on Tensorflow
+> or Pytorch). Maybe this is interesting also to others.
+
+If this framework can be used separately we should probably split this
+out into a separate binary package.  I could imagine that this could
+be interesting but we probably need more information than "not relying
+on A or B". ;-)
+
+Kind regards and thanks again for your contribution
+
+    Andreas.
+
+--
+http://fam-tille.de

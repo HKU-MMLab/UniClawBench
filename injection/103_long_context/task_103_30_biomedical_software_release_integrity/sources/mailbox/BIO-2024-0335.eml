@@ -1,0 +1,44 @@
+Message-ID: <C3DE64FE-51A2-4516-A419-1813785142DA@nileshpatra.info>
+X-Clawbench-ID: BIO-2024-0335
+Date: Fri, 30 Sep 2022 11:42:21 +0530
+From: Nilesh Patra <nilesh@nileshpatra.info>
+To: debian-med@lists.debian.org, Andreas Tille <tille@debian.org>, "Aaron M. Ucko" <amu@alum.mit.edu>
+Subject: Re: [Help] anfo: ftbfs with GCC-12
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_09_msg00056.html
+
+On 30 September 2022 10:57:16 am IST, Andreas Tille  wrote:
+>Am Thu, Sep 29, 2022 at 05:41:52PM -0400 schrieb Aaron M. Ucko:
+>> Étienne Mollier  writes:
+>>
+>> > I believe in the case of anfo, that warnings about auto_ptr /
+>> > unique_ptr are red herrings.  If I search for "error:"s, then I
+>> > get some errors about no match for operator>
+>> Oops, good catch.  As for unique_ptr, this is evidently one of those
+>> situtations where whoever makes the substitution (possibly upstream
+>> after all at some point) will need to make additional changes to make it
+>> clear that their usage is safe.  In particular, the ...Reader
+>> constructors will probably want to accept auto_ptr<> by rvalue reference
+>> rather than by value:
+>>
+>>   std::unique_ptr&& is
+>
+>Just a note: This package was created at 11 Aug 2011 and since then
+>there was no new upstream release.  So we can not trust that upstream
+>will do anything here.  The popcon installations have some number
+>but the actual vote is 1 (which is more than zero and we never know
+>who is submitting popcon data or not).
+>
+>Removal of the package would be a valid option in case fixing it will
+>consume to much person-power from our side.
+
+
+I had spent a bit of time on this bug report few weeks back (IIRC it was just reported at that time). After spending sometime it was clear to me that it needs more code changes and isn't a ~trivial bug to fix.
+
+If no one gets to it, asking for removal is a sensible option. It otherwise imho becomes another time sapping package that no one cares about much.
+
+--
+Best,
+Nilesh

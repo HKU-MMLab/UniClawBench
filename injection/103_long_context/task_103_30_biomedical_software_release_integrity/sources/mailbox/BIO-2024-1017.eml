@@ -1,0 +1,42 @@
+Message-ID: <ZiKn5mH-P8zFuFtc@fusion.emlwks999.eu>
+X-Clawbench-ID: BIO-2024-1017
+Date: Fri, 19 Apr 2024 19:20:38 +0200
+From: Étienne Mollier <emollier@debian.org>
+To: Sebastian Ramacher <sramacher@debian.org>
+Subject: Re: Status of the t64 transition
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_04_msg00040.html
+
+Hi Sebastian,
+
+Andreas Tille, on 2024-04-19:
+> I've spotted these Debian Med packages.
+[…]
+> Am Thu, Apr 18, 2024 at 09:22:02PM +0200 schrieb Sebastian Ramacher:
+[…]
+> > jellyfish
+> > quorum
+[…]
+> No idea how we can help here.  Please let us know if we can do
+> something.
+
+About these two packages, I'm not 100% sure, but I believe some
+confusion may stem from jellyfish's support removal for 32-bit
+architectures[1,2].  This made the transition unnecessary so the
+package renaming has been undone in version 2.3.1-3, as far as I
+can witness in the changelog.  This probably affected quorum
+transitively; and also this possibly affected crac, the other
+libjellyfish-2.0-2 reverse dependency, although I don't know why
+it hasn't stood out on the list.
+
+[1]: https://bugs.debian.org/1067166
+[2]: https://github.com/gmarcais/Jellyfish/pull/202#issuecomment-2007544485
+
+In hope this clarifies things,
+--
+  .''`.  Étienne Mollier
+ : :' :  pgp: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/2, please excuse my verbosity
+   `-

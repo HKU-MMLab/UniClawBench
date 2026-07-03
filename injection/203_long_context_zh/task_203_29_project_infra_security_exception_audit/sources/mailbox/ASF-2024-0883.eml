@@ -1,0 +1,68 @@
+Message-ID: <3d6f4e92-06f2-cd1e-479e-9d773246d60c@gmail.com>
+X-Clawbench-ID: ASF-2024-0883
+Date: Mon, 28 Mar 2022 17:15:09 +0200
+From: jean-frederic clere <jfclere@gmail.com>
+To: Stefan Eissing <stefan@eissing.org>
+Subject: Re: HTTP and HTTP/1.x separation
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-03.mbox
+
+On 28/03/2022 16:03, Stefan Eissing wrote:
+>
+>
+>> Am 28.03.2022 um 15:52 schrieb jean-frederic clere <jfclere@gmail.com>:
+>>
+>> On 24/03/2022 13:21, Stefan Eissing wrote:
+>>> You are invited to have a look at my PR for separating HTTP/1.x processing from
+>>> generic HTTP protocol handling and verification:
+>>> https://github.com/apache/httpd/pull/291
+>>> I made a description of the changes in the PR that helps reviewing it (I hope).
+>>> "Changes appear larger than they really are"
+>>> A lot is code split+move from mod_http to mod_http1. In mod_http2, changes are
+>>> mainly removals of quirks necessary so far.
+>>> Kind Regards,
+>>> Stefan
+>>
+>> Something fishy:
+>> http/1.1:
+>> +++
+>>
+>> < HTTP/1.1 200 OK
+>> < Date: Mon, 28 Mar 2022 13:48:23 GMT
+>> < Server: Apache/2.5.1-dev (Unix) OpenSSL/1.1.1n
+>> < Last-Modified: Fri, 25 Mar 2022 15:47:39 GMT
+>> < ETag: "bf-5db0ce1e1e93e"
+>> < Accept-Ranges: bytes
+>> < Content-Length: 191
+>> < Content-Type: text/html
+>>
+>> +++
+>> http/2:
+>> +++
+>> < HTTP/2 200
+>> < last-modified: Fri, 25 Mar 2022 15:47:39 GMT
+>> < etag: "bf-5db0ce1e1e93e"
+>> < accept-ranges: bytes
+>> < content-length: 191
+>> < content-type: text/html
+>> +++
+>>
+>> Did I miss something?
+>
+> No, you found something. The generic server headers are not applied, it seems. Will look into this and add a test.
+>
+>> --
+>> Cheers
+>>
+>> Jean-Frederic
+>>
+>
+
+I think we have NO http/2 tests in the httpd-framework test, correct?
+
+--
+Cheers
+
+Jean-Frederic

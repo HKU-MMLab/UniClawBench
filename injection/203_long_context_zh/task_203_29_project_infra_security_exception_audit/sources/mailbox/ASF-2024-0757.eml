@@ -1,0 +1,48 @@
+Message-ID: <B0EB57F3-F10E-41DD-862F-DF2681E80D38@eissing.org>
+X-Clawbench-ID: ASF-2024-0757
+Date: Mon, 16 Oct 2023 15:42:44 +0200
+From: "Stefan Eissing via dev" <dev@httpd.apache.org>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.58-rc2 as httpd-2.4.58
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-10.mbox
+
+> Am 16.10.2023 um 15:40 schrieb Ruediger Pluem <rpluem@apache.org>:
+>
+> I am sorry, but #include "apr_encode.h" is still unconditional in h2_ws.c in 2.4.x. Fixed in r1913027.
+
+Thanks for catching this.
+
+>
+> Regards
+>
+> Rüdiger
+>
+>
+> On 10/16/23 3:31 PM, Stefan Eissing via dev wrote:
+>> Hi all,
+>>
+>> after some hickups with getting the new WebSockets support to
+>> compile on Joe's old computers, we try again!
+>>
+>> Please find below the proposed release tarball and signatures:
+>>
+>> https://dist.apache.org/repos/dist/dev/httpd/
+>>
+>> I would like to call a VOTE over the next few days to release
+>> this candidate tarball httpd-2.4.58-rc2 as 2.4.58:
+>> [ ] +1: It's not just good, it's good enough!
+>> [ ] +0: Let's have a talk.
+>> [ ] -1: There's trouble in paradise. Here's what's wrong.
+>>
+>> The computed digests of the tarball up for vote are:
+>> sha256: e544ee225fbab4f4cdd60970dc0bbd0b74cbd331cd7a5635faca717d532d8ed6 *httpd-2.4.58-rc2.tar.gz
+>> sha512: d4d322300cee4899dc1671e58dd5f6b88632beae87192cde475285324b9ceda62a9200b80fdd96b928f9eade5f819fc9bc3b3563f1b7b1fb3e759fd6d5df935a *httpd-2.4.58-rc2.tar.gz
+>>
+>> The SVN candidate source is found at tags/2.4.58-rc2-candidate.
+>>
+>> Cheers,
+>> Stefan
+>>

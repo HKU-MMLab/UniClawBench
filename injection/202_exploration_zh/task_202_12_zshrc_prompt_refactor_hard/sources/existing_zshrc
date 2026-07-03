@@ -1,0 +1,67 @@
+# ─────────────────────────────────────────────────────────────────────
+# Inherited production-ish zshrc, accreted across several laptops + SSH
+# boxes. It "works" but is full of conflicts where the last write wins
+# and the visible top of the file lies about the real behavior.
+# ─────────────────────────────────────────────────────────────────────
+
+export ZSH="$HOME/.oh-my-zsh"
+
+# Powerline/Nerd-Font theme copied from a laptop. On servers without a
+# Nerd Font this renders broken glyphs (, , ).
+ZSH_THEME="agnoster"
+
+plugins=(git docker kubectl python npm)
+
+# Preserve these aliases — several scripts depend on them.
+alias ll='ls -alF'
+alias gs='git status --short'
+alias k='kubectl'
+alias gp='git pull'
+
+# ---- PATH section (note: ordering matters for conda/nvm below) -------
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"   # duplicate of the first prepend
+export PATH="$HOME/bin:$PATH"
+
+# Early prompt attempt #1 (before oh-my-zsh). Noisy: user@host + time.
+PROMPT='%n@%m %D{%H:%M:%S} %~ %# '
+
+# Legacy right prompt from a copied laptop config; noisy on servers.
+RPROMPT='%D{%H:%M:%S} %n@%m'
+
+# This MOTD line runs unconditionally on every shell startup and dumps
+# text to stdout. It corrupts any tooling that captures the shell's
+# stdout (e.g. `zsh -ic 'cmd'` used by scripts). It should be removed or
+# guarded to login shells only.
+echo "[motd] welcome back, $USER — $(date)"
+
+# conda initializer. Must keep working even if conda isn't installed.
+__conda_setup="$('/opt/conda/bin/conda' 'shell.zsh' 'hook' 2>/dev/null)"
+if [ $? -eq 0 ]; then
+  eval "$__conda_setup"
+fi
+unset __conda_setup
+
+# oh-my-zsh must still load because the plugins above are used by aliases.
+source "$ZSH/oh-my-zsh.sh"
+
+# nvm initializer (placed AFTER oh-my-zsh; relies on $HOME/.nvm on PATH).
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+
+# Early prompt attempt #2 (after oh-my-zsh, overrides the theme). Adds the
+# active python version into the prompt — runtime spam we don't want.
+PROMPT='%~ $(python --version 2>/dev/null | cut -d" " -f2) %# '
+
+# A raw precmd() pasted from a gist. This REPLACES oh-my-zsh's own precmd
+# (it does not append to precmd_functions), so theme/vcs hooks installed
+# by oh-my-zsh stop firing.
+autoload -Uz vcs_info
+precmd() { vcs_info }
+zstyle ':vcs_info:git:*' formats '%b'
+
+# Early prompt attempt #3 — the one that actually wins, pasted last.
+# Shows full deep path, branch, AND time again. This is the "current"
+# behavior the team complains about.
+PROMPT='%F{cyan}%~%f %F{yellow}${vcs_info_msg_0_}%f %F{244}%D{%H:%M}%f %# '

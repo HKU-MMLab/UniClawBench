@@ -1,0 +1,25 @@
+Message-ID: <Y4+30WGoFuys4YQC@fusion>
+X-Clawbench-ID: BIO-2024-1138
+Date: Tue, 6 Dec 2022 22:44:49 +0100
+From: Étienne Mollier <emollier@emlwks999.eu>
+To: debian-med@lists.debian.org
+Subject: [Advent bug squashing] fixed bug #1018603 in pyxnat
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_12_msg00062.html
+
+Good day,
+
+This is another case of porting a test suite from nose to
+pytest.  I'm taking advantage that the procedure is still fresh
+to me to fix as many as I can, and also inform upstream
+especially since the patching can be quite involved in such
+situations.
+
+Have a nice day,  :)
+--
+Étienne Mollier
+Fingerprint:  8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+Sent from /dev/pts/1, please excuse my verbosity.
+On air: Pink Floyd - The Great Gig In The Sky

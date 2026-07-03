@@ -1,0 +1,27 @@
+Message-ID: <Y/8cQjM/QJXP6g8H@homeworld.netbsd.org>
+X-Clawbench-ID: ASF-2024-1342
+Date: Wed, 1 Mar 2023 09:34:58 +0000
+From: Emmanuel Dreyfus <manu@netbsd.org>
+To: dev@httpd.apache.org
+Subject: Why is my merge_dir_config not called
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-03.mbox
+
+Hello
+
+I am trying to add a per-directory confioguration directive to mod_dav_fs,
+but the merge_dir_config() calback is never called, and I always get the
+value from create_dir_config() when accessing the per-directory configuration.
+
+The directive is defined with ACCESS_CONF|RSRC_CONF but I am not sure
+that matters here, since merge_dir_config() should handle all directives
+and it is not called at all.
+
+What is the trick? I have spent a lot of time with printfs in server/config.c
+with no success so far.
+
+--
+Emmanuel Dreyfus
+manu@netbsd.org

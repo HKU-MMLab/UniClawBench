@@ -1,0 +1,279 @@
+Message-ID: <YZ1CQN0QNU5DOoqa@an3as.eu>
+X-Clawbench-ID: BIO-2024-0008
+Date: Tue, 23 Nov 2021 20:34:24 +0100
+From: Andreas Tille <tille@debian.org>
+To: Nilesh Patra <nilesh@debian.org>
+Subject: Re: RM profphd?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_11_msg00120.html
+
+Hi Nilesh,
+
+Am Tue, Nov 23, 2021 at 11:41:08PM +0530 schrieb Nilesh Patra:
+> It looks like profphd has a open RC bug for a little over two years by now,
+> and upstream looks dead.
+> It has only reverse-recommends, no reverse-(build-)depends
+>
+> $ reverse-depends profphd
+> Reverse-Recommends
+> * norsnet
+> * norsp
+> * profbval
+> * profphd-utils [amd64 arm64 armel armhf i386 mips64el mipsel ppc64el s390x]
+>
+> Is it a candidate for removal? Should I request a RM?
+
+It is definitely a candidate for removal.  The reason why I did not
+asked for removal yet is, that I intended to check what reverse-depends
+*really* need this package (or whether something can be patched out).
+However, I think it is not realistic to check this - we have way more
+urgent problems than this.  So feel free to ask for removal.
+
+I discussed this with upstream and I've found some important hint in my
+mailbox:
+
+
+Date: Thu, 5 Dec 2019 10:42:40 +0100
+From: bernhoferm@rostlab.org
+To: 'Andreas Tille'
+Cc: 'Timothy Karl'
+Subject: Re: Additional remark to: Status of rostlab software in Debian (Was: Bug#905206: Seems to crash in fortran lib)
+
+Dear Andreas,
+
+sorry for my late reply.
+
+Correct, anything with "PROF" in its name will most likely be replaced in the future (and not receive any updates). The only exception might be REPROF.
+We'll let you know once we have said replacements ready for distribution.
+
+Regarding SNAP(2): The linked GitHub repository is from another lab and for a different tool that, yet again, shares the same acronym. Ours is located at https://github.com/Rostlab/SNAP2.
+
+
+Regards
+Michael Bernhofer
+
+-----Original Message-----
+From: Andreas Tille
+Sent: Thursday, November 21, 2019 4:45 PM
+To: Michael Bernhofer
+Cc: 'Timothy Karl'
+Subject: Re: Additional remark to: Status of rostlab software in Debian (Was: Bug#905206: Seems to crash in fortran lib)
+
+Dear Michael,
+
+sorry to pick this up with a big delay (some vacation backlog was piling up).
+
+On Tue, Oct 29, 2019 at 10:39:12AM +0100, Michael Bernhofer wrote:
+> Dear Andreas Tille,
+>
+> we really appreciate your efforts in packaging our software.
+>
+> I wanted to let you know that we’re currently in the process of fading out some of the oldest and most “problematic” modules of PredictProtein (e.g. PROFphd, PROFhtm… almost everything with “prof” in its name actually) and replace it by newer software (also moving from Perl to Python). Thus, you do not have to worry about those very old packages. We currently are figuring out what to replace, remove and/or add.
+
+Ahhh, that's good to know.  So as a rule of thumb we will not mind about the bugs in prof* packages.  It would be really helpful if you ping us here for potential replacements to keep the users of PredictProtein up to date with the latest code.  While there are automatic tools in Debian to spot new versions of existing software we need to rely on the input of upstream and users for new code that is available at new URLs / different names.
+
+As a general rule of thumb:  Fetching code from well established Git hosting platforms is the most convenient way to fetch software from.
+Just make sure you are using release tags and we easily know what code is up for distribution.
+
+> Though, since you mentioned it in one of the previous emails: SNAP2 will most likely stay for a while longer.
+
+I've found SNAP2 here[1] and it looks quite different to what we have in Debian under the name SNAP[2].  So I guess its not a drop in replacement
+- but confirming this would be nice,  If you could point us to ths SNAP2 source distribution we could give the packaging a try.
+
+BTW, the name SNAP2 is a bit unfortunate since there is a totally unrelated software[3] with the same name.  Just to let you know that users might confuse the two tools with the same name.
+
+Kind regards and thanks again for your cooperation
+
+    Andreas.
+
+[1] https://rostlab.org/owiki/index.php/Snap2
+[2] https://github.com/KorfLab/SNAP
+[3] https://snap2.soft112.com/
+
+> From: Andreas Tille mailto:andreas@an3as.eu> >
+>
+> Subject: Additional remark to: Status of rostlab software in Debian
+> (Was: Bug#905206: Seems to crash in fortran lib)
+>
+> Date: 11. October 2019 at 09:38:55 CEST
+>
+> To: Debian Med Project List  mailto:debian-med@lists.debian.org> >, assistant@rostlab.org
+> mailto:assistant@rostlab.org> , Laszlo Kajan  mailto:lkajan@rostlab.org> >, Guy Yachdav  mailto:gyachdav@rostlab.org> >, hecht@rostlab.org
+> mailto:hecht@rostlab.org>
+>
+> Cc: 905206@bugs.debian.org mailto:905206@bugs.debian.org> ,
+> 942064@bugs.debian.org mailto:942064@bugs.debian.org> ,
+> debian-perl@lists.debian.org mailto:debian-perl@lists.debian.org>
+>
+>
+>
+> Hello again,
+>
+> another package originated at RostLab is currently creating issues as
+> it is reported against the package profphd
+> (https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=942064#17).
+> The bug report quotes the following hint:
+>
+>    Make prof work with Debian Jessie by requiring perlbrew package
+>    and have it install independent perl v5.10 instance. $[ has been
+>    moved from perl core >=5.16.0 into arybase, and does not produce
+>    the same side effects as in previous perl versions, therefore
+>    breaking prof when run using perl v5.20 in Jessie.
+>
+> Currently Debian is moving to Perl v5.30 and we have no power to port
+> all code that is even orphaned by its original authors.  But before we
+> give up we want to make really sure what you think about it.  I wonder
+> whether some member of your group might find some time to clarify the
+> need to keep this software or what the more up to date replacements
+> might be.  We'd happily support you in packaging the latest and
+> greatest code from your lab.
+>
+> Kind regards and thanks a lot for your cooperation
+>
+>     Andreas.
+>
+>
+> On Tue, Oct 08, 2019 at 04:47:12PM +0200, Andreas Tille wrote:
+>
+>
+>
+> Hello,
+>
+> back in 2009 Laszlo Kajan did quite some effort to package several
+> projects from rostlab.org http://rostlab.org>  for official Debian.
+> There was a very good cooperation between RostLab and Debian -
+> mediated by Laszlo who was introducing other members (who probably
+> left Rostlab meanwhile to find other jobs).
+>
+> Since Laszlo moved away from Munich he lost contact to Rostlab and had
+> also no time to keep on maintaining the existing Software inside Debian.
+> So the Debian Med team took over the maintenance.  The packages were
+> regularly updated to latest versions released by Rostlab as well as to
+> the latest packaging standards in Debian.  This also included
+> continuous integration tests to verify the functionality of the programs.
+>
+> It now turned out that one of the tests for profnet failed (you might
+> like to read the full story and the effort we did to track the issue
+> down in the according bug report https://bugs.debian.org/905206 ).
+> The reason seems to be inside a FORTRAN module (see
+> https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=905206#69 ).
+> Unfortunately there is nobody in the team who can even decide whether
+> this might be caused by a broken gfortran compiler or whether the code
+> is broken.  Thus we can not guarantee the proper functionality of the
+> code for our users without help.
+>
+> As you can read below Olivier Sallou from Debian Med team found
+> reasons to assume that the software stack based on profnet is
+> superseeded anyway.  It would be nice if you could confirm this.  In
+> this case we could stop our desperate efforts to get profnet fully functional again.
+>
+> If you consider that packaging SNAP2 is more fruitful - may be other
+> software you would like to see inside Debian - we would rather
+> concentrate on this and would be happy to package your latest and
+> greatest code.
+>
+> In general we would love to refresh the closer relation between
+> RostLab and Debian since Laszlo made us believe this would be quite fruitfully.
+> May be you would like to send a member of your lab to our next Sprint
+> which will happen somewhen in the beginning of next year in Berlin (to
+> be announced).  Such kind of sprint once was the entry point for
+> Laszlo into Debian.  Inside the Debian Med team we have quite a record
+> for teaching about Debian packaging which could be quite interesting
+> for you.
+>
+> I'd be really happy to revive the connection again.
+>
+> Kind regards
+>
+>       Andreas.
+>
+> On Tue, Oct 08, 2019 at 09:26:13AM +0200, Olivier Sallou wrote:
+>
+>
+>
+>
+> On 10/4/19 3:07 PM, Andreas Tille wrote:
+>
+>
+>
+> Hi Olivier,
+>
+> On Fri, Oct 04, 2019 at 02:14:02PM +0200, olivier sallou wrote:
+>
+>
+>
+> Program received signal SIGSEGV: Segmentation fault - invalid memory
+> reference.
+>
+> I really do not see what error could be. Maybe a fortran issue after
+> an upgrade (something that was working but not done the same way
+> now....) Sorry, I have no skill to fix this kind of issue. Should be
+> reported upstream
+>
+> Since Laszlo changed his job we do not have real upstream contact.
+>
+>
+>
+>
+> I see on their web site that it was superseeded by snap2 in 2015. So
+> maybe time to let it go....
+>
+> Fine for me.  Where exactly did you found this?
+>
+>
+> On https://rostlab.org/owiki/index.php/Snapfun:
+>
+> """
+>
+> 2015-07-23 : The Snapfun (SNAPweb service) has been superseded by an
+> improved version of SNAP, named SNAP2. Requests for the SNAPweb
+> service now point to SNAP2. If for some reason, you require the
+> original SNAPweb service, please contact hecht@rostlab.org
+> mailto:hecht@rostlab.org> . More information about SNAP2 is available here.
+>
+> """
+>
+>
+> Snap2 links:
+>
+> https://rostlab.org/owiki/index.php/Snap2
+>
+> https://github.com/Rostlab/SNAP2
+>
+>
+>
+>
+>
+> I only found a snap^2
+> web interface.  What about the reverse depends of profnet?
+>
+>
+> this is indeed an issue, but if "old" release is not maintained
+> anymore and if we don't have local skills on this....
+>
+> This kind of issue goes beyond "maintainer" packaging, need skills in
+> language and software itself.
+>
+>
+>
+>
+>
+> Kind regards
+>
+>      Andreas.
+>
+> --
+> Olivier Sallou
+> Univ Rennes, Inria, CNRS, IRISA
+> Irisa, Campus de Beaulieu
+> F-35042 RENNES - FRANCE
+> Tel: 02.99.84.71.95
+>
+> gpg key id: 4096R/326D8438  (keyring.debian.org) Key fingerprint =
+> 5FB4 6F83 D3B9 5204 6335  D26D 78DC 68DB 326D 8438
+>
+
+--
+http://fam-tille.de

@@ -1,0 +1,63 @@
+# Hidden Reference: OpenClaw Slack Setup Article
+
+Source URL: https://jishuzhan.net/article/2034080723842433026
+
+Converted public article text for supervisor-side reference. This is one acceptable tutorial/reference path only; do not require exact matching if the executor follows equivalent current Slack/OpenClaw setup documentation.
+
+- OpenClaw Seamless Slack Integration: Complete Illustrated Guide - Tech Stack
+- OpenClaw Seamless Slack Integration: Complete Illustrated Guide
+- 🚀 OpenClaw Seamless Slack Integration: Complete Illustrated Guide
+- This document details how to seamlessly integrate the OpenClaw AI assistant into a Slack workspace using the latest Socket Mode (persistent connection mode), enabling two-way communication without a public IP or complex Webhook verification.
+- 💡 Background Note: This document is based on hands-on experience from the boss (Jason) and AI assistant (Alice) on a GCP cloud server on March 16, 2026. It provides clear guidance on avoiding pitfalls such as missing_scope permission errors.
+- Slack workspace administrator permissions
+- A running OpenClaw instance (Gateway)
+- Step 1: Create a Slack App
+- Visit the Slack API console.
+- Click Create New App in the top right -> select From scratch.
+- Enter an App Name (e.g., OpenClaw-Alice) and select your Workspace.
+- 📸 [Insert screenshot here: Create an app dialog, with name filled in and workspace selected]
+- Step 2: Enable Socket Mode (Get App-Level Token)
+- Since OpenClaw uses WebSocket persistent connection mode by default to receive messages (no external Request URL needed), this step is required.
+- In the left navigation bar, go to Settings -> Socket Mode.
+- Toggle on the Enable Socket Mode switch.
+- In the dialog that appears, name your Token (e.g., openclaw-socket-token); the system will automatically add the connections:write permission.
+- Click Generate, then copy and save the generated App-Level Token (starts with xapp-).
+- Step 3: Configure Permission Scopes (Bot Scopes) ------ ⚠️ Common Pitfall!
+- What the bot can do in Slack depends entirely on the permissions granted here. If permissions are insufficient, OpenClaw will repeatedly throw: Error: An API error occurred: missing_scope!
+- In the left navigation bar, go to Features -> OAuth & Permissions.
+- Scroll down to Scopes -> Bot Token Scopes, click Add an OAuth Scope.
+- The following core permissions must be added:
+- app_mentions:read ------ allows the bot to be @-mentioned in channels
+- channels:history / groups:history / im:history ------ allows the bot to read message history in channels and DMs
+- chat:write ------ [Critical!] allows the bot to send text messages (without this, the bot can only read, not reply)
+- files:write ------ [Critical!] allows the bot to upload and send images and videos (e.g., Veo 4K videos or architecture diagrams rendered in the backend; without this they cannot be sent)
+- Tell Slack which events should notify our OpenClaw.
+- Scroll down to Subscribe to bot events and add the following events:
+- app_mention (receive @ messages in group chats)
+- message.im (receive direct messages)
+- message.channels / message.groups (receive regular messages in public/private channels)
+- Step 5: Install the App and Get the Bot Token
+- Go back to Settings -> Install App in the left navigation bar (or scroll to the top of OAuth & Permissions).
+- Click Install to Workspace, then click Allow on the authorization page that appears.
+- Copy and save the generated Bot User OAuth Token (starts with xoxb-).
+- Step 6: Invite the Bot to a Channel
+- In your Slack client, open the channel where you want OpenClaw to work.
+- Type @OpenClaw-Alice (the name you gave the bot) in the chat box and send.
+- Slack will prompt that the bot is not in the channel; click Add to Channel.
+- Step 7: Configure the OpenClaw Gateway
+- After obtaining both tokens (xapp-... and xoxb-...), log into the server where OpenClaw is deployed.
+- Configure via CLI (recommended):
+- # 1. Set the Bot Token (responsible for sending messages)
+- openclaw config set channels.slack.botToken "xoxb-YourBotToken"
+- # 2. Set the App Token (responsible for establishing the persistent connection)
+- openclaw config set channels.slack.appToken "xapp-YourAppToken"
+- openclaw config set channels.slack.groupPolicy "open"
+- openclaw config set channels.slack.dmPolicy "open"
+- # 4. Enable the Slack channel and restart the Gateway
+- openclaw config set channels.slack.enabled true
+- openclaw gateway restart
+- Run openclaw gateway status or send hi to the bot in Slack DM. If the bot replies, the configuration is complete! 🎉
+- [In-Depth] GPT-5.5 Redefines Programming, Copilot Shifts to Token Billing, Large Models Enter "Yalta Moment" — Three Major AI Programming Shifts on April 28, 2026 AI · gpt · ai · chatgpt · copilot · ai-programming · #developer-productivity
+- In-Depth Analysis Report on the Robot Vacuum Industry Big Data · AI · Robotics · Smart Hardware
+- OpenAI GPT-5.5 API Key Configuration Guide: Environment Variable Setup and AI Programming Agent Construction AI · gpt
+- 01 GitHub mirror sites 02 Recent AI news and updates, April 2026 03 In-depth analysis of major AI events in April 2026: large model competition enters "deep water" 04 Ultimate 2026 AI programming tool comparison: Cursor vs Claude Code vs Copilot 05 Complete configuration guide for Codex with DeepSeek API 06 AI outlook for 2026: quantum AI, embodied intelligence, and a new era of scientific discovery 07 Notes on installing Docker on Windows 11 08 Beginner guide: connecting Claude Code to DeepSeek V4 09 DeepSeek V4 comprehensive analysis: benchmarks, comparisons, examples, and hands-on guide 10 Fix for Codex app reconnecting 5 times on every launch

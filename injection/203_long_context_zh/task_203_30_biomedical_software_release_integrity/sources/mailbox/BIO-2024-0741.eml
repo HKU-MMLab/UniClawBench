@@ -1,0 +1,24 @@
+Message-ID: <Y4Zkr7Z7MSS8AGMZ@an3as.eu>
+X-Clawbench-ID: BIO-2024-0741
+Date: Tue, 29 Nov 2022 20:59:43 +0100
+From: Andreas Tille <tille@debian.org>
+To: Nilesh Patra <nilesh@debian.org>
+Subject: Re: Cmake help to upgrade spoa needed
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_11_msg00108.html
+
+Am Wed, Nov 30, 2022 at 01:18:03AM +0530 schrieb Nilesh Patra:
+>
+> I did get this rolling past that point but now the build fails due to
+> d-shlibs, which I am not very familiar with (and tend to avoid :))
+> So I leave it onto you to carry forward.
+
+Thanks a lot - I'll take over with d-shlibs.
+
+Kind regards
+     Andreas.
+
+--
+http://fam-tille.de

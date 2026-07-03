@@ -1,0 +1,32 @@
+task_id: task_203_26_kubernetes_docs_qa
+category: 203_long_context_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  在 `/tmp_workspace/clawbench/sources/k8s_docs/` 中有四个 Kubernetes 文档页面：`deployment.md`、`service.md`、`pod-lifecycle.md` 和 `configmap.md`。请通过阅读这些文档来回答以下问题。这些问题针对具体的字段、默认值和限制，所以请在所提供的文档中查找，而不要凭记忆作答——并为每个答案说明它来自哪个文档。
+
+  1. 对于使用 RollingUpdate 策略的 Deployment，`maxUnavailable` 和 `maxSurge` 的默认值各是多少？
+  2. 如果不设置，`.spec.replicas` 默认是多少？`.spec.revisionHistoryLimit` 默认是多少，把它设为 0 会怎样？
+  3. 默认的 Service type 是什么，把 `.spec.clusterIP` 设为 `"None"` 会创建什么？
+  4. 默认的 Pod termination grace period 是多少？
+  5. Pod 的 `restartPolicy` 字段有哪些可能取值，默认是哪一个？
+  6. ConfigMap 的最大大小是多少？
+  7. 在一个有 10 个 replicas、`maxSurge=3` 且 `maxUnavailable=2` 的 Deployment 的滚动更新中：更新期间最多可以有多少个 Pod 在运行，最少必须保持多少个可用？
+
+  将你的答案写入 `/tmp_workspace/results/k8s_docs_qa.md`，每个答案都注明来源文档。如果某个值在所提供的文档中确实未予说明，请如实说明，而不要编造。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+sources:
+  - k8s_docs/
+
+codex:
+  max_user_followups: 2

@@ -1,0 +1,48 @@
+task_id: task_201_14_excel_pivot_chart
+category: 201_skill_usage_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+recording: none
+headed: auto
+task: |
+  我周四有一场管理层评审，而我手头只有一份原始 CSV。我需要一份真正的分析型工作簿，而不只是
+  一张扁平的数据透视表。源文件位于 /tmp_workspace/clawbench/sources/sales_2011_q1.csv——
+  请用 Office 文档技能配合 Excel 仪表板技能，把它变成拿得出手的东西。这份
+  CSV 既有已入账交易，也有退货、作废和晚期调整。我需要按 region 对 product 切分净收入，
+  逐月环比地展示月度走势并带上实际增量，让我一眼就能看出从 1 月到 2 月再到 3 月的势头；
+  找出每个 region 内表现最好和最差的项；把作废、退货和晚期调整干净地单列出来，而不是悄悄
+  并进头条数字里；并且至少给出一个方向性的判断，说明 Q1 相比上一个可比期间是更好还是更差——
+  或者指出源文件里没有上一期间的基线——好让头条的总计数字有一些上下文。
+
+  请把它做成 /tmp_workspace/results/pivot.xlsx，包含：
+  - 一张清洗后数据工作表，保留原始行，并清楚标明哪些行被排除或为负值；
+  - 一张 region 对 product 的净收入透视表，其中 void 行被排除，return 行保持为负，
+    late_adjustment 行计入其 correction_month；
+  - 透视表的总计；
+  - 一张使用 correction_month 的月度势头工作表，含净收入和环比 % 变化；以及
+  - 一张绘制月度净收入和环比 % 变化的图表。
+
+  请使用真正的数值型货币和百分比格式，而不是纯文本值。
+  另外导出 /tmp_workspace/results/reconciliation.csv，每个状态一行——booked、return、void、
+  late_adjustment——展示行数、带符号的毛收入、被排除的收入、纳入的净收入，以及所用的规则。
+  在工作簿中增加一张 QA_Checks 工作表，将 CSV 对账总额与透视表总计对应起来，并标记 void、
+  return 和晚期调整规则是否已被应用。
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+sources:
+  - sales_2011_q1.csv
+skills:
+  - office-document-specialist-suite
+  - excel-weekly-dashboard
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+codex:
+  max_user_followups: 2

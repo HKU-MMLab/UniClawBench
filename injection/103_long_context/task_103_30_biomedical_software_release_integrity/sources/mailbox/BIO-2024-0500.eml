@@ -1,0 +1,51 @@
+Message-ID: <Y0f3DjOOkBn/d/IT@an3as.eu>
+X-Clawbench-ID: BIO-2024-0500
+Date: Thu, 13 Oct 2022 13:31:26 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: python3-biopython: incompatible with muscle >= 5
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00051.html
+
+Hi Andrius,
+
+Am Thu, Oct 13, 2022 at 12:14:01PM +0300 schrieb Andrius Merkys:
+> Since the bookworm's freeze is getting closer, I would like to attract
+> team's attention to bug #1009118 in biopython:
+
+Thanks a lot for the reminder!
+
+> On Thu, 7 Apr 2022 15:44:43 +0300 Andrius Merkys  wrote:
+> > python3-biopython is incompatible with muscle >= 5.
+> I tend to think this is serious-ish as biopython integration with muscle
+> from Debian package will not work. Upstream has been notified [1] and their
+> response was to drop all wrappers at some point. However, it becomes clear
+> that this point is beyond the bookworm's freeze (June 2022, to cite
+> upstream), thus we are at risk of shipping a broken package.
+>
+> What should we do?
+>
+> A. Patch biopython to work with muscle >= 5?
+
+Well, I guess if it would be that simple upstream would have stepped in.
+While it would be the optimal solution I'm afraid we will fail in this
+(and I would love a lot if someone would prove me wrong here!)
+
+> B. Patch biopython to detect muscle >= 5 and throw an error?
+>
+> C. Slap a warning (debian/NEWS) that biopython interface with muscle >=5 is
+> broken and should only be used with local installations of muscle  Or something else?
+
+Maintaining a muscle4 package?  May be quite some users have scripts
+adapted to muslce 4 and there might be some use for this as well?
+
+Kind regards
+
+      Andreas.
+
+> [1] https://github.com/biopython/biopython/issues/3902
+
+--
+http://fam-tille.de

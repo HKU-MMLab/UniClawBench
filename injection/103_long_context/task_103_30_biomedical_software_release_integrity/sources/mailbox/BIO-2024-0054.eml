@@ -1,0 +1,21 @@
+Message-ID: <Y4zf8NSyTCjBZD6f@fusion>
+X-Clawbench-ID: BIO-2024-0054
+Date: Sun, 4 Dec 2022 18:59:12 +0100
+From: Étienne Mollier <emollier@emlwks999.eu>
+To: debian-med@lists.debian.org
+Subject: [Advent bug squashing] finalized python-gffutils to close #1018501
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_12_msg00047.html
+
+Please count this one on Michael.  I only finalized the wrap up
+of python-gffutils to stick to default python3.10 since pysam is
+missing python3.11 support, so it fit for upload.
+
+Have a nice day,  :)
+--
+Étienne Mollier
+Fingerprint:  8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+Sent from /dev/pts/7, please excuse my verbosity.
+On air: Branch Arterial - Dreamer

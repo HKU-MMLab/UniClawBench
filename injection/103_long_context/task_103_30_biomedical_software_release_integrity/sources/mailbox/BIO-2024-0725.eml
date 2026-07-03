@@ -1,0 +1,46 @@
+Message-ID: <d08426cd-e4c5-3b7a-42c3-cea42d86c53d@debian.org>
+X-Clawbench-ID: BIO-2024-0725
+Date: Mon, 17 Jan 2022 17:45:49 +0200
+From: Andrius Merkys <merkys@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: New version of muscle with changed options compared to previous versions [muscle_5.1-1_source.changes ACCEPTED into unstable]
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_01_msg00038.html
+
+Hi,
+
+On 2022-01-17 16:55, Andreas Tille wrote:
+> I've just realised there is a new version of muscle (now on Github)
+> which has not only a changed algorithm but also changed command line
+> options (I had to adapt autopkgtest which is also a bit weak - some
+> educated person should check the result and drop a proper md5sum for
+> the expected result).
+>
+> I think we should follow upstream development but given that this quite
+> wide spread tool is used in several other packages (like biopython or
+> bioperl) I expect failing tests of those in the near future.  This opens
+> the question whether we should possibly maintain a muscle3 package - but
+> than we also need to patch those tools to spot the changed name of the
+> binary.
+>
+> Any opinions of real users of this package are welcome.
+
+I consider myself a muscle user, albeit mostly for teaching. Integration
+with biopython is quite important aspect to me as well.
+
+Although stability is a desired quality, algorithm improvement is
+probably more important. However, I did not compare the new muscle with
+its predecessors thus I cannot say which change outweighs which.
+
+I do not think that maintaining two parallel muscle packages is really
+worth the work. Having muscle 5.1 and biopython supporting only muscle 3
+will cause confusion. As for failing tests of other packages, it is
+probably best to gently prod their upstreams to implement support for
+new muscle.
+
+But all of this is just my opinion.
+
+Best,
+Andrius

@@ -1,0 +1,21 @@
+Message-ID: <A44CAD3D-BE8F-42F0-80EB-486E73F4F7CB@eissing.org>
+X-Clawbench-ID: ASF-2024-1198
+Date: Thu, 9 Mar 2023 09:10:33 +0100
+From: "Stefan Eissing via dev" <dev@httpd.apache.org>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] [VOTE] Release httpd-2.4.56-rc1 as httpd-2.4.56
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-03.mbox
+
+> Am 08.03.2023 um 23:38 schrieb Eric Covener <covener@gmail.com>:
+>
+> On Wed, Mar 8, 2023 at 4:57 PM BUSH Steve <Steven.BUSH@3ds.com> wrote:
+>
+>> Please remember to send the release announcement to announce@httpd.apache.org
+>
+> Maybe a moderation issue? Can anyone with the proper hat help check it
+> out please?
+
+In the releases I did, announce@ did *always* show delayed/lost processing of messages. It's not one of infras better services...

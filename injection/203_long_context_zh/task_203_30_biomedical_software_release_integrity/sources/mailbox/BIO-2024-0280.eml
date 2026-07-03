@@ -1,0 +1,53 @@
+Message-ID: <0e97a976-f1d8-8764-e52d-c41158dfabff@debian.org>
+X-Clawbench-ID: BIO-2024-0280
+Date: Wed, 8 Sep 2021 10:07:09 +0300
+From: Andrius Merkys <merkys@debian.org>
+To: debian-med@lists.debian.org
+Subject: Providing components.cif.gz [Was: Re: DeepMind’s AI Advanced Protein Structure Prediction tool Open Sourced]
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_09_msg00009.html
+
+Hi all,
+
+On 2021-07-19 10:24, Nilesh Patra wrote:
+> On 19 July 2021 12:50:03 pm IST, Andrius Merkys  wrote:
+>> Currently I am looking into ProMod3 [3], which seems to be the engine
+>> behind the great SWISS-MODEL service [4]. I seem to have figured out
+>> the
+>> dependencies, will go on to packaging next.
+> Let us know if you need help with packaging the chain, in case you need helping hands :-)
+
+So here I am asking for help/suggestions :)
+
+Problem: OpenStructure, a dependency of ProMod3, requires PDB components
+library, components.cif.gz, for some of its protein modeling routines.
+This library is provided by the PDB at [1] and is itself freely
+distributable (PDB discourages from modifying it though), but is updated
+quite often and does not get a version number. Furthermore, people often
+prefer to obtain the most up-to-date copy of components.cif.gz for their
+research, thus providing it in a Debian package of its own would not be
+very convenient.
+
+I am aware of solutions to similar problems, for example, libcifpp
+package, which keeps an up-to-date mmcif_pdbx_v50.dic.gz at
+/var/cache/libcifpp/mmcif_pdbx_v50.dic.gz. This could work for
+components.cif.gz as well, but my main concern is whether keeping
+system-wide components.cif.gz up-to-date is what every user would want.
+
+As a researcher I do my best to perform reproducible science. Thus I
+want to know precise versions/timestamps/checksums of my input
+databases, and have them suddenly change overnight is something akin to
+a nightmare. What is more, there might be more than one user on a
+machine wanting different versions of components.cif.gz.
+
+Thus my candidate solution for providing components.cif.gz for
+OpenStructure would be to talk to the upstream to implement an
+environment variable allowing for greater flexibility. Or maybe there
+are other solutions?
+
+[1] ftp://ftp.wwpdb.org/pub/pdb/data/monomers/components.cif.gz
+
+Best,
+Andrius

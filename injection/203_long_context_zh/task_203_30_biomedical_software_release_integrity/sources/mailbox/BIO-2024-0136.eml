@@ -1,0 +1,45 @@
+Message-ID: <udlzge3nk2w.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-0136
+Date: Mon, 10 Oct 2022 22:57:27 -0400
+From: ucko@debian.org (Aaron M. Ucko)
+To: <debian-med@lists.debian.org>
+Subject: Re: Finishing ncbi-vdb and sra-sdk
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00032.html
+
+"Aaron M. Ucko"  writes:
+
+> ucko@debian.org (Aaron M. Ucko) writes:
+>
+>> Ah, right, sra-sdk will need to go through NEW too -- the ngs-sdk code
+>> it absorbed underwent an SONAME bump along the way.  (All necessary
+>> ncbi-vdb changes passed NEW a few weeks ago, but ncbi-vdb 3.x is sitting
+>> in experimental until sra-sdk joins it.)  I'll see what I can do.
+>
+> I've made a fair bit of progress, and pushed what I have so far --
+> though one commit accidentally wound up with a stray change, so I'd
+> appreciate it if somebody could please grant me whatever access I need
+> to proceed with a force-push to master so I can clean that up properly.
+>
+> It's still not entirely ready, though.  In particular:
+> - Three tests are failing; I need to investigate why.  (I've been
+>   building in nocheck mode for now to sort out everything else.)
+> - On a possibly related note, I should see if anything from ngs-sdk's
+>   debian/patches is of interest here.
+> - The javadocs contain embedded copies of files from libjs-jquery and
+>   libjs-jquery-ui that should become symlinks (with dependencies added).
+> - Lower priority: I have not yet taught the Java bindings to look for
+>   full SONAMEs, so they still depend on a -dev package.  I'd appreciate
+>   help from someone more familiar with Java.
+
+I'll also need help getting CI to pick VDB build dependencies up from
+experimental; as it is, it complains of an unsatisfiable version
+constraint.
+
+Thanks!
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

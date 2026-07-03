@@ -1,0 +1,92 @@
+Message-ID: <Ya0lXGPe5Kr/R9gb@fusion>
+X-Clawbench-ID: BIO-2024-1382
+Date: Sun, 5 Dec 2021 21:47:24 +0100
+From: Étienne Mollier <emollier@emlwks999.eu>
+To: "Steve M. Robbins" <smr@debian.org>
+Subject: Re: [Debian-med-packaging] insighttoolkit5_5.2.1-1_amd64.changes ACCEPTED into unstable, unstable
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_12_msg00021.html
+
+Thanks Steve!
+
+Nice one for this Sunday of the advent!  :)
+Also Thanks to ftpmaster for the review and accepting!
+
+Cheers,
+Étienne.
+
+Nilesh Patra, on 2021-12-06:
+> Yay, and thanks a lot for this, Steve! :)
+>
+> Regards,
+> Nilesh
+>
+> On 12/6/21 12:30 AM, Debian FTP Masters wrote:
+> >
+> >
+> > Accepted:
+> >
+> > Format: 1.8
+> > Date: Sun, 31 Oct 2021 23:34:39 -0500
+> > Source: insighttoolkit5
+> > Binary: insighttoolkit5-examples libinsighttoolkit5-dev libinsighttoolkit5-dev-dbgsym libinsighttoolkit5.2 libinsighttoolkit5.2-dbgsym
+> > Architecture: source all amd64
+> > Version: 5.2.1-1
+> > Distribution: unstable
+> > Urgency: medium
+> > Maintainer: Debian Med Packaging Team
+> > Changed-By: Steve M. Robbins
+> > Description:
+> >   insighttoolkit5-examples - Image processing toolkit for registration and segmentation - exam
+> >   libinsighttoolkit5-dev - Image processing toolkit for registration and segmentation - deve
+> >   libinsighttoolkit5.2 - Image processing toolkit for registration and segmentation - runt
+> > Closes: 943677 995829
+> > Changes:
+> >   insighttoolkit5 (5.2.1-1) unstable; urgency=medium
+> >   .
+> >     [ Steve Robbins ]
+> >     * [21130e0] New upstream version 5.2.1.  Closes: #943677, #995829.
+> > Checksums-Sha1:
+> >   7bee40c428d09eddfcf0cd66c46df956811cd898 2489 insighttoolkit5_5.2.1-1.dsc
+> >   10f843c566238ae6eccd232212b51c5e0bbcbf76 282723808 insighttoolkit5_5.2.1.orig.tar.xz
+> >   b31205f38ad500ca7fff550c2702f7fba364ee81 22108 insighttoolkit5_5.2.1-1.debian.tar.xz
+> >   565583d897d07046cb7c3a87120ec772aa8207b8 1699196 insighttoolkit5-examples_5.2.1-1_all.deb
+> >   4823dadcdb1ce49f00b58a3675136032c4fcd1f4 10132 insighttoolkit5_5.2.1-1_amd64.buildinfo
+> >   ccdf569828c9ab125a281e702dfa8e99f7226b92 19872 libinsighttoolkit5-dev-dbgsym_5.2.1-1_amd64.deb
+> >   e1c595ed0628753afd378a4e625fadaabb8a1a9d 3040744 libinsighttoolkit5-dev_5.2.1-1_amd64.deb
+> >   f27647b0de8cc8e3a75b82f64eb8e28b672fdd04 11595852 libinsighttoolkit5.2-dbgsym_5.2.1-1_amd64.deb
+> >   53942d94f3b3a75dbdcedc4003e6a570aa312025 5549680 libinsighttoolkit5.2_5.2.1-1_amd64.deb
+> > Checksums-Sha256:
+> >   bd3272655755298fe291e1228a73b1219af796c8e2588a749881b4f93243aeea 2489 insighttoolkit5_5.2.1-1.dsc
+> >   a267fe9b37921cecbe85aa3f6ca64185c602d7a8ca3f148a705a4971f1b88202 282723808 insighttoolkit5_5.2.1.orig.tar.xz
+> >   0ae958ca895ee4ce54935a03178e73e805d79ce15378f281962181cb428605c4 22108 insighttoolkit5_5.2.1-1.debian.tar.xz
+> >   8c9bd647e416cf49d711f4d31265eb5d96001bd31b25a00f3307460a3e4b9f7c 1699196 insighttoolkit5-examples_5.2.1-1_all.deb
+> >   a913e9b43975c4a9fad7b76f51c9f6c77cfa002a63451e9d5f52873380e23bcb 10132 insighttoolkit5_5.2.1-1_amd64.buildinfo
+> >   29155bf718b1361b17e72a532db4743101c96fb43eb6149a5bd0ea7f57f2fe8e 19872 libinsighttoolkit5-dev-dbgsym_5.2.1-1_amd64.deb
+> >   a00dee34a2af5140a360768e2a7b8c33337538a57e0820a5515a4fee6afb3860 3040744 libinsighttoolkit5-dev_5.2.1-1_amd64.deb
+> >   153ce49ac7958cd7ac9f5c0925b145174c80d748cbc90d6f6a79aeaeb9de0595 11595852 libinsighttoolkit5.2-dbgsym_5.2.1-1_amd64.deb
+> >   994f1864e016e3884872710057f7e151dedfcef983307090b2408bb733d6e415 5549680 libinsighttoolkit5.2_5.2.1-1_amd64.deb
+> > Files:
+> >   f5cd35895808b8020b25f223e6edb7ca 2489 science optional insighttoolkit5_5.2.1-1.dsc
+> >   57913f71b23f80a92cf6f5261b57bcc5 282723808 science optional insighttoolkit5_5.2.1.orig.tar.xz
+> >   cb50ca90f35f68a27b7fb296767ce0a2 22108 science optional insighttoolkit5_5.2.1-1.debian.tar.xz
+> >   7ebb39187fa93f3b233e3678c93e31bb 1699196 devel optional insighttoolkit5-examples_5.2.1-1_all.deb
+> >   966aa4dfb47c6db682cde84740ab74eb 10132 science optional insighttoolkit5_5.2.1-1_amd64.buildinfo
+> >   af603cdb9df6ec29f1b990ffc5b8a9e2 19872 debug optional libinsighttoolkit5-dev-dbgsym_5.2.1-1_amd64.deb
+> >   65749dbbdd49785a1a81c6fe6d8b4ba4 3040744 libdevel optional libinsighttoolkit5-dev_5.2.1-1_amd64.deb
+> >   f38a1bc96f9630d03cd3a0630343ef7c 11595852 debug optional libinsighttoolkit5.2-dbgsym_5.2.1-1_amd64.deb
+> >   a2ecb3d63f0a49794aa8d5bde02ffb41 5549680 libs optional libinsighttoolkit5.2_5.2.1-1_amd64.deb
+> >
+> >
+> >
+> > Thank you for your contribution to Debian.
+> >
+> > _______________________________________________
+> > Debian-med-packaging mailing list
+> > Debian-med-packaging@alioth-lists.debian.net
+> > https://alioth-lists.debian.net/cgi-bin/mailman/listinfo/debian-med-packaging
+> >
+>
+>

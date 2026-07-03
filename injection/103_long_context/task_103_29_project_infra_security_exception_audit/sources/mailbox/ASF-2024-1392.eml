@@ -1,0 +1,26 @@
+Message-ID: <20211229131319.BA134A0186@buildbot-vm2.apache.org>
+X-Clawbench-ID: ASF-2024-1392
+Date: Wed, 29 Dec 2021 13:13:19 +0000
+From: buildbot@apache.org
+To: jailletc36@apache.org, ylavic@apache.org
+Subject: buildbot failure in  on httpd-trunk
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2021-12.mbox
+
+The Buildbot has detected a new failure on builder httpd-trunk while building . Full details are available at:
+    https://ci.apache.org/builders/httpd-trunk/builds/6388
+
+Buildbot URL: https://ci.apache.org/
+
+Buildslave for this Build: asf947_ubuntu
+
+Build Reason: The AnyBranchScheduler scheduler named 'httpd-trunk-on-commit' triggered this build
+Build Source Stamp: [branch httpd/httpd/trunk] 1896505
+Blamelist: jailletc36,ylavic
+
+BUILD FAILED: failed configure
+
+Sincerely,
+ -The Buildbot

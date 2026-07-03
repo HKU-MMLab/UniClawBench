@@ -1,0 +1,205 @@
+Message-ID: <CAKQ1sVORJ=sJCViS=U+EVPL01jnRwvV=FmWuqvdZT3WpEBi00A@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1300
+Date: Wed, 9 Feb 2022 16:43:29 +0100
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: httpd-dev <dev@httpd.apache.org>
+Subject: Re: mpm event assertion failures
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-02.mbox
+
+On Wed, Feb 9, 2022 at 2:09 PM Ruediger Pluem <rpluem@apache.org> wrote:
+>
+> On 2/9/22 1:25 PM, Graham Leggett wrote:
+> > On 08 Feb 2022, at 19:01, Yann Ylavic <ylavic.dev@gmail.com <mailto:ylavic.dev@gmail.com>> wrote:
+> >
+> >>> The most concurrent requests I can get out of MacOS appears to be roughly 2000 concurrent requests before “connection reset by
+> >>> peer” kills the test.
+> >>>
+> >>> One small detail I have uncovered is that a small percentage of requests fail, caused by httpd gracefully shutting the
+> >>> connection down before returning a response. Stopping ab in a debugger confirms that openssl returns SSL_ERROR_ZERO_RETURN on
+> >>> read, which is what openssl does when the other side gracefully triggers close notify.
+> >>>
+> >>> Is this something anyone has seen before while I go digging?
+> >>
+> >> I tried with ab too and indeed there was some (dead-)locking issue at
+> >> some point, could you please retry with the latest pushes I just made
+> >> to the PR?
+> >
+> > I tried with the latest patch, then I tried with no patch (vanilla trunk) and got the same results.
+> >
+> > Working backwards looking for graceful attempts to shut down the SSL connection, I found this:
+> >
+> > ::1:56237 ::1:56237 [Wed Feb 09 09:52:21 2022] [info] [pid 8747] mod_ssl.c(681): [client ::1:56237] AH01964: Connection to child
+> > 29 established (server localhost:443)
+> > ::1:56237 ::1:56237 [Wed Feb 09 09:52:21 2022] [debug] [pid 8747] ssl_engine_kernel.c(2402): [client ::1:56237] AH02043: SSL
+> > virtual host for servername localhost found
+> > ::1:56237 ::1:56237 [Wed Feb 09 09:52:21 2022] [debug] [pid 8747] ssl_engine_kernel.c(2262): [client ::1:56237] AH02041: Protocol:
+> > TLSv1.2, Cipher: ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits)
+> > ::1:56237 ::1:56237 [Wed Feb 09 09:52:21 2022] [debug] [pid 8747] ssl_engine_kernel.c(415): [client ::1:56237] AH02034: Initial
+> > (No.1) HTTPS request received for child 29 (server localhost:443)
+> > ::1:56237 ::1:56237 [Wed Feb 09 09:52:21 2022] [debug] [pid 8747] mod_authz_core.c(843): [client ::1:56237] AH01628: authorization
+> > result: granted (no directives)
+> > ::1:56237 ::1:56237 [Wed Feb 09 09:52:21 2022] [debug] [pid 8747] ssl_engine_kernel.c(415): [client ::1:56237] AH02034: Subsequent
+> > (No.2) HTTPS request received for child 27 (server localhost:443)
+> > ::1:56237 ::1:56237 [Wed Feb 09 09:52:21 2022] [debug] [pid 8747] mod_authz_core.c(843): [client ::1:56237] AH01628: authorization
+> > result: granted (no directives)
+> > ::1:56237 ::1:56237 [Wed Feb 09 09:52:21 2022] [debug] [pid 8747] ssl_engine_kernel.c(415): [client ::1:56237] AH02034: Subsequent
+> > (No.3) HTTPS request received for child 37 (server localhost:443)
+> > ::1:56237 ::1:56237 [Wed Feb 09 09:52:21 2022] [debug] [pid 8747] mod_authz_core.c(843): [client ::1:56237] AH01628: authorization
+> > result: granted (no directives)
+> > ::1:56237 ::1:56237 [Wed Feb 09 09:52:21 2022] [debug] [pid 8747] ssl_engine_io.c(1184): [client ::1:56237] AH02001: Connection
+> > closed to child 29 with standard shutdown (server localhost:443)
+> >
+> > It seems reasonably normal, except what looks like is happening is when "Connection closed to child 29 with standard shutdown” is
+> > run, this seems to happen before a response is sent to the client.
+> >
+> > ab then goes “that’s weird, I was trying to read a response, but got a connection closed instead”, and marks that request as failed.
+> >
+> > This is limited to keepalive requests, and happens after a number of keepalive requests have been correctly handled.
+>
+> Probably you get hit by this?
+>
+> https://github.com/apache/httpd/blob/46a9db4c6f9fadca4e362872021fa62a37908ece/server/mpm/event/event.c#L2096-L2101
+
+With PR #294 this specific case shouldn't happen anymore (thanks to
+https://github.com/apache/httpd/pull/294/commits/7089813e13bba0f25bd34df4c643cf5878e6e043).
+Also, every connection killed by the MPM (timeout, internal error..)
+should have an mpm_event:info message (AH10380), do you see any in
+your logs Graham?
+
+What might happen still is that a kept-alive connection gets closed by
+httpd, after KeepAliveTimeout usually but also as soon as httpd gets
+short in worker threads
+(https://github.com/apache/httpd/blob/trunk/server/mpm/event/event.c#L2260-L2262),
+and in both cases I'm not sure ab wouldn't report the same error
+anyway..
+
+With the latest version (sorry I keep updating this PR), I have no
+mpm_event:info message (using "LogLevel info ssl:warn"), and ab
+reports some "Failed length" requests:
+```
+$ bin/ab -k -R 20 -n 409600 -c 4096 https://127.0.0.1:40443/index.html
+This is ApacheBench, Version 2.3 <$Revision$>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd,
+http://web.archive.org/web/20000304112933/http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 127.0.0.1 (be patient)
+Completed 40960 requests
+Completed 81920 requests
+Completed 122880 requests
+Completed 163840 requests
+Completed 204800 requests
+Completed 245760 requests
+Completed 286720 requests
+Completed 327680 requests
+Completed 368640 requests
+Completed 409600 requests
+Finished 409600 requests
+
+Server Software:        Apache/2.5.1-dev
+Server Hostname:        127.0.0.1
+Server Port:            40443
+SSL/TLS Protocol:       TLSv1.2,ECDHE-RSA-AES256-GCM-SHA384,2048,256
+Server Temp Key:        X25519 253 bits
+
+Document Path:          /index.html
+Document Length:        321 bytes
+
+Concurrency Level:      4096
+Concurrency achieved:   4096
+Rampup delay:           20 [ms]
+Time taken for tests:   106.912 seconds
+Complete requests:      409600
+Failed requests:        8517
+   (Connect: 0, Receive: 0, Length: 8517, Exceptions: 0)
+Keep-Alive requests:    396304
+Total transferred:      249548361 bytes
+HTML transferred:       128820510 bytes
+Requests per second:    3831.19 [#/sec] (mean)
+Time per request:       1069.118 [ms] (mean)
+Time per request:       0.261 [ms] (mean, across all concurrent requests)
+Transfer rate:          2279.44 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0   72 480.4      0    7428
+Processing:     0  580 543.7    442    6290
+Waiting:        0  562 541.2    415    6271
+Total:          0  652 766.9    464    9050
+
+Percentage of the requests served within a certain time (ms)
+  50%    464
+  66%    794
+  75%    995
+  80%   1083
+  90%   1268
+  95%   1632
+  98%   2831
+  99%   4490
+ 100%   9050 (longest request)
+```
+
+This is on my laptop with full-throttle cpu/fans during the test, so
+the above results are not really exciting..
+FWIW,  the MPM setting have enough processes/threads for the load:
+```
+    StartServers            1
+    ServerLimit             1000
+    ThreadLimit             50
+    ThreadsPerChild         50
+    MinSpareThreads         400
+    MaxSpareThreads         1000
+    MaxRequestWorkers       5000
+```
+
+The "length" errors reported by ab show like this in httpd logs
+(LogLevel info mpm_event:trace6 ssl:debug):
+```
+[Wed Feb 09 15:15:44.184365 2022] [mpm_event:trace1] [pid 2489139:tid
+139983741224512] event.c(2139): All workers are busy or dying, will
+shutdown 1 keep-alive connections
+[Wed Feb 09 15:15:44.184373 2022] [mpm_event:trace6] [pid 2489139:tid
+139983741224512] event.c(992): [client 127.0.0.1:47568] deferring
+close for connection
+60e00017e100:60700001b1b0:26:CHECK_REQUEST_LINE_READABLE
+[Wed Feb 09 15:15:44.184393 2022] [mpm_event:trace6] [pid 2489139:tid
+139984080422464] event.c(2806): [client 127.0.0.1:47568] deferred
+close for connection 60e00017e100:60700001b1b0:26:LINGER
+[Wed Feb 09 15:15:44.184399 2022] [mpm_event:trace6] [pid 2489139:tid
+139984080422464] event.c(1366): [client 127.0.0.1:47568] processing
+connection 60e00017e100:60700001b1b0:26:LINGER
+[Wed Feb 09 15:15:44.184411 2022] [mpm_event:trace6] [pid 2489139:tid
+139984080422464] event.c(2030): [client 127.0.0.1:47568] lingering
+close for connection 60e00017e100:60700001b1b0:26:LINGER
+[Wed Feb 09 15:15:44.184464 2022] [ssl:debug] [pid 2489139:tid
+139984080422464] ssl_engine_io.c(1209): [client 127.0.0.1:47568]
+AH02001: Connection closed to child 260 with standard shutdown (server
+localhost:40443)
+[Wed Feb 09 15:15:44.189968 2022] [mpm_event:trace6] [pid 2489139:tid
+139983741224512] event.c(2371): [client 127.0.0.1:47568] polled
+connection 60e00017e100:60700001b1b0:26:LINGER_SHORT
+[Wed Feb 09 15:15:44.190262 2022] [mpm_event:trace6] [pid 2489139:tid
+139983877019200] event.c(1366): [client 127.0.0.1:47568] processing
+connection 60e00017e100:60700001b1b0:26:LINGER_SHORT
+[Wed Feb 09 15:15:44.190273 2022] [mpm_event:trace6] [pid 2489139:tid
+139983877019200] event.c(2030): [client 127.0.0.1:47568] lingering
+close for connection 60e00017e100:60700001b1b0:26:LINGER_SHORT
+[Wed Feb 09 15:15:44.190283 2022] [mpm_event:trace6] [pid 2489139:tid
+139983877019200] event.c(1023): [client 127.0.0.1:47568] closing
+connection 60e00017e100:60700001b1b0:26:LINGER_SHORT at
+process_lingering_close:2074
+```
+(full log attached for [client 127.0.0.1:47568], I got the client port
+by using the attached ab patch too).
+
+
+So ab is (appropriately?) reporting errors for kept-alive connections
+that had to be shutdown earlier than KeepAliveTimeout, although I
+suspect that it would report the same after the KeepAliveTimeout.
+
+
+Regards;
+Yann.

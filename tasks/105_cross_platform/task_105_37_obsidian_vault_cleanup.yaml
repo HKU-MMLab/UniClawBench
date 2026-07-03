@@ -1,0 +1,63 @@
+task_id: task_105_37_obsidian_vault_cleanup
+category: 105_cross_platform
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I have a messy Obsidian research vault here:
+
+      /tmp_workspace/clawbench/sources/project_vault/
+
+  It was imported from a small snapshot of the public Vite documentation
+  Markdown on GitHub. The raw import kept many docs-style relative links,
+  has weak Obsidian organization, and may include a repeated page from a
+  review queue. Please open it in the real Obsidian desktop app and
+  clean it up. Do not delete the substantive Vite docs content or the
+  provenance comments; copy a cleaned version to:
+
+      /tmp_workspace/results/project_vault_cleaned/
+
+  The cleaned vault must include:
+  - an `INDEX.md` that links to the main Vite guide/config/plugin notes
+  - normalized tags for guide/config/plugin/build/deploy topics
+  - fixed local internal links where the imported target note exists
+  - documented unresolved links where the target page was not imported
+  - `duplicates.md` listing duplicate or near-duplicate imports and your
+    keep/merge recommendation
+  - `orphans.md` listing notes that still have no clear incoming links
+
+  Also write a cleanup report at:
+
+      /tmp_workspace/results/vault_cleanup_report.md
+
+  The report should include note count inspected, broken or non-Obsidian
+  links found and fixed/documented, duplicate groups found, tag
+  normalization before/after, and unresolved issues. Save an Obsidian
+  screenshot showing the cleaned vault or index note at:
+
+      /tmp_workspace/results/obsidian_cleanup.png
+
+  Please actually use Obsidian for the review/screenshot; command-line
+  file edits can help, but the GUI evidence should show the final vault.
+
+sources:
+  - project_vault/
+
+services:
+  - name: obsidian-vault-setup
+    path: obsidian-vault-setup
+    start: bash install.sh
+    oneshot: true
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+codex:
+  max_user_followups: 2

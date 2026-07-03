@@ -1,0 +1,55 @@
+Message-ID: <20020726100652.61150.qmail@web21404.mail.yahoo.com>
+X-Clawbench-ID: CAM-2003-0964
+Date: Fri, 26 Jul 2002 11:06:52 +0100
+From: Michèl Alexandre Salim <salimma1@yahoo.co.uk>
+To: Freshrpms list <rpm-zzzlist@freshrpms.net>
+Subject: Re: req: Falcon's eye
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01167.49531a4802446e1da60be6dbcb0a854c
+
+FYI,
+
+I modified the Mandrake package a few months ago -
+rather a nightmare to package, I must say. Some
+stability issues but that might be my flaky ATI
+drivers.
+
+My Linux box is sitting in storage this summer though,
+so I don't have the .spec with me.
+
+Anyone else tried running Falcon's Eye on Red Hat?
+
+Regards,
+
+Michel
+
+ --- Harri Haataja <harri.haataja@cs.helsinki.fi>
+wrote: > Another thing I see in debian but not in my
+RH
+> boxen.
+>
+> http://falconseye.sourceforge.net/
+>
+> It's a GL(?) interface to nethack :)
+>
+> --
+> "And don't even think of quoting me out of context
+> ;)"
+> 	-- Michael Hinz in the Monastery
+>
+>
+> _______________________________________________
+> RPM-List mailing list <RPM-List@freshrpms.net>
+> http://lists.freshrpms.net/mailman/listinfo/rpm-list
+
+__________________________________________________
+Do You Yahoo!?
+Everything you'll ever need on one web page
+from News and Sport to Email and Music Charts
+http://uk.my.yahoo.com
+
+_______________________________________________
+RPM-List mailing list <RPM-List@freshrpms.net>
+http://lists.freshrpms.net/mailman/listinfo/rpm-list

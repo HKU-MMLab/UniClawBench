@@ -1,0 +1,38 @@
+{
+  "task_id": "task_103_24_world_bank_economic_report",
+  "created_at": "2026-06-20T00:00:00+00:00",
+  "dataset": "sources/worldbank_data/worldbank_indicators_2000_2023.csv",
+  "dataset_description": "Real World Bank indicator data for 6 countries (China, United States, Japan, Germany, India, Brazil) across 2000-2023, 5 indicators: GDP (current US$), GDP per capita (current US$), Population total, Urban population (% of total), CO2 emissions per capita (t). 720 rows. This is the authoritative source for the task — the report must be grounded in THIS dataset, not in the model's prior knowledge.",
+  "countries": ["China", "United States", "Japan", "Germany", "India", "Brazil"],
+  "indicators": [
+    "NY.GDP.MKTP.CD (GDP current US$)",
+    "NY.GDP.PCAP.CD (GDP per capita current US$)",
+    "SP.POP.TOTL (Population total)",
+    "SP.URB.TOTL.IN.ZS (Urban population % of total)",
+    "EN.GHG.CO2.PC.CE.AR5 (CO2 emissions per capita, t)"
+  ],
+  "required_outputs": [
+    "/tmp_workspace/results/economic_report.md",
+    "at least 3 charts saved under /tmp_workspace/results/ (png or an interactive html), referenced from the report"
+  ],
+  "ground_truth_anchors": {
+    "note": "These values are computed directly from the injected CSV and are used to check that the report actually read the data. Small rounding differences are fine; values off by more than ~5% indicate fabrication or wrong reading.",
+    "China_GDP_2000_to_2022_multiple": 15.0,
+    "United_States_GDP_2000_to_2022_multiple": 2.5,
+    "India_GDP_2000_to_2022_multiple": 7.1,
+    "GDP_per_capita_2022_usd": {"China": 12971, "United States": 76657, "Japan": 34066, "India": 2347},
+    "CO2_per_capita_2022_t": {"China": 8.9, "United States": 14.4, "India": 2.0},
+    "China_urban_pct_2000": 36.4,
+    "China_urban_pct_2022": 65.2,
+    "GDP_2022_usd_trillions": {"United States": 25.6, "China": 18.32, "Japan": 4.26, "Germany": 4.2, "India": 3.35, "Brazil": 1.95}
+  },
+  "expected_analysis_points": [
+    "China's GDP grew roughly 15x from 2000 to 2022, far faster than the US (~2.5x), reflecting catch-up growth",
+    "Despite high total GDP, China's and especially India's GDP per capita in 2022 remain far below the US and Japan",
+    "Per-capita CO2 ranking differs from total-emissions intuition: US per-capita CO2 (~14.4t) is well above China (~8.9t) and India (~2.0t) in 2022",
+    "China's urbanization rose dramatically (~36% in 2000 to ~65% in 2022)",
+    "Population vs GDP-per-capita interaction: India and China have huge populations but low per-capita output relative to the US/Japan/Germany"
+  ],
+  "scoring_notes": "The report must derive its numbers from the injected CSV. Reward correct anchor values, multi-indicator cross-analysis (not just one indicator), and at least 3 charts that match the data. Penalize fabricated numbers, numbers that contradict the CSV, single-indicator shallowness, or analysis that is generic prior-knowledge boilerplate not tied to the dataset values.",
+  "dynamic_content_note": "World Bank may revise historical figures slightly over time, but the injected CSV is frozen and authoritative for this task. Judge the report against the injected CSV, not against live API values."
+}

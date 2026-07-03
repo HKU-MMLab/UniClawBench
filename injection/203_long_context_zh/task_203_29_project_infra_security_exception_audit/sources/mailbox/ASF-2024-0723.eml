@@ -1,0 +1,46 @@
+Message-ID: <D1367A7F-F5DA-45A7-8ADB-3C8BE0E55344@sharp.fm>
+X-Clawbench-ID: ASF-2024-0723
+Date: Mon, 17 Jan 2022 22:33:04 +0200
+From: Graham Leggett <minfrin@sharp.fm>
+To: dev@httpd.apache.org
+Subject: Re: TLS neverbleed design
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-01.mbox
+
+On 17 Jan 2022, at 19:17, Ruediger Pluem <rpluem@apache.org> wrote:
+
+>> I see. Thanks for the clarification. Did not really now about that interface. Then I see no pressing point in adding an additional API, indeed.
+>
+> I haven't looked deeply in this, but based on the pointers from Joe I guess
+> this can be done with
+>
+> - p11-kit
+> - softhsm
+> - Some configuration on OpenSSL side to use the p11-kit client as pkcs11 provider for accessing the p11-kit server over a Unix
+> domain socket
+>
+> p11-kit and softhsm seem to be readily available at least on later versions of Ubuntu and RedHat.
+>
+> As the pkcs11 engine requires some configuration it could be nice adding a feature to mod_ssl that allows to load a different
+> configuration file than the standard Openssl configuration file.
+
+No need - as of recently this has been simplified and is available in v2.4.
+
+Start by passing pkcs11 URLs into mod_ssl as follows:
+
+    SSLCertificateFile pkcs11:token=Local%20Tokens;id=%B0%90%5A%36%1A%E0%2F%DA%13%14%81%FC%E1%DE%9D%86%9E%30%8F%AE;type=cert
+    SSLCertificateKeyFile pkcs11:token=Local%20Tokens;id=%B0%90%5A%36%1A%E0%2F%DA%13%14%81%FC%E1%DE%9D%86%9E%30%8F%AE;object=;type=private?pin-value=1111
+
+The pkcs11 URL prefix is enough to get mod_ssl to tell openssl it wants the pkcs11 engine, provided by the openssl-pkcs11 RPM package on Redhat derivatives (native package is called https://github.com/OpenSC/libp11). No need to mess about with manual engine configs, mod_ssl handles the details for you.
+
+In turn, if p11-kit is installed then all pkcs11 driver packages should “just work” on installation. I have had the most success with the opencryptoki-swtok package, a software HSM made by IBM.
+
+The softhsm package by Redhat is packaged in such a way that it cannot be used by anything other than opendnssec, which is a shame.
+
+If you want to store more than one certificate in your HSM / on your token, you need this fix: https://github.com/OpenSC/libp11/pull/433
+
+Regards,
+Graham
+—

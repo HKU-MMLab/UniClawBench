@@ -1,0 +1,72 @@
+Message-ID: <d4e6cae5-8829-b548-dfce-e016d9cf03a8@debian.org>
+X-Clawbench-ID: BIO-2024-0885
+Date: Mon, 24 Jan 2022 13:46:36 +0200
+From: Andrius Merkys <merkys@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: libcifpp transition
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_01_msg00077.html
+
+Hi Maarten,
+
+On 2022-01-24 12:23, Maarten L. Hekkelman wrote:
+> Op 16-01-2022 om 09:47 schreef Andrius Merkys:
+>> libcifpp 2.0.4-1 has just been accepted to experimental (yay!). This
+>> means now we have to carry out its transition [1] (libcifpp1 ->
+>> libcifpp2).
+>>
+>> I see you have in the meantime released libcifpp with soversion of 3.
+>> Thus instead of doing libcifpp1 -> libcifpp2 we may skip to libcifpp1 ->
+>> libcifpp3, but this will again require to clear NEW queue which may take
+>> quite some time again. I personally would like transitioning libcifpp1
+>> -> libcifpp2 as libcifpp 2.0.4-1 would unblock my plans to work on
+>> openstructure which needs components.cif as provided by libcifpp-data
+>> 2.0.4-1 (but I can play with this in experimental for now).
+>
+> We discussed this before and decided it is best to stick to version 2
+> for now. You need that for your projects.
+
+OK, great.
+
+>> To complete libcifpp1 -> libcifpp2 we need to ensure we can build all
+>> reverse dependencies with new libcifpp. The list of these dependencies
+>> is conveniently given in [1]. I have attempted building cif-tools
+>> 1.0.0-4, but failed due to the following:
+>>
+>> In file included from src/cif2pdb.cpp:28:
+>> src/cif-tools.hpp:34:10: fatal error: cif++/Config.hpp: No such file or
+>> directory
+>>     34 | #include "cif++/Config.hpp"
+>>        |          ^~~~~~~~~~~~~~~~~~
+>
+> The Config file was no longer needed thanks to the switch to cmake. The
+> API should be roughly the same.
+>
+> Of course I have upstream fixes for all packages. Will patch the code in
+> Debian when needed.
+
+Sure, I will leave this to you.
+
+> Which brings me to:
+>
+>> [1] https://release.debian.org/transitions/html/auto-libcifpp.html
+> When is this auto transition thing starting? I mean, if I visit this
+> page I get only red boxes. Don't understand what needs to be done here.
+>
+> Would be nice to have some overview to see what needs to be done.
+
+There is a nice documentation for transitions [2]. For now, we have to
+make sure we have everything needed to perform the transition: we need
+to know what to do to make all reverse-dependencies build with the new
+libcifpp. Then we start the transition by asking a slot, and then we
+upload new libcifpp to unstable (it is in experimental now). Afterwards
+we have to perform all the adjustments to reverse-dependencies (here the
+red boxes will turn green, hopefully). Provided all red boxes turn
+green, the transition is complete.
+
+[2] https://wiki.debian.org/Teams/ReleaseTeam/Transitions
+
+Hope this helps,
+Andrius

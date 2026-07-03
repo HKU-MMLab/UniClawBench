@@ -1,0 +1,24 @@
+Message-ID: <YequGyX250S/jWPF@an3as.eu>
+X-Clawbench-ID: BIO-2024-0462
+Date: Fri, 21 Jan 2022 13:59:07 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: sambamba and freebayes new releases
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_01_msg00052.html
+
+Am Fri, Jan 21, 2022 at 12:20:49PM +0100 schrieb Steffen Möller:
+> Also many thanks to you both and greetings from my side!
+
+BTW, please let us know if you think backports are helpful for
+users of Debian stable.  I do not do this automatically - but
+at request it is fine.
+
+Kind regards
+
+      Andreas.
+
+--
+http://fam-tille.de

@@ -1,0 +1,28 @@
+Message-ID: <87884607-9c09-8e3f-9665-7f5329004c5d@apache.org>
+X-Clawbench-ID: ASF-2024-0197
+Date: Wed, 9 Mar 2022 08:37:34 +0100
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.53-rc1 as httpd-2.4.53
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-03.mbox
+
+On 3/8/22 10:09 PM, Rainer Jung wrote:
+>
+
+>
+> You gcc 4.8 workaround for _Thread_local still looks good.
+>
+> Solaris builds and all unit tests not yet done but compiles fine for all my Linuxes.
+>
+> Thanks!
+
+Thanks for testing. I committed to trunk as r1898771 to throw it into our CI. If we need to tweak it further we can do later.
+
+BTW: Once we have a final patch the same needs to be done for APR trunk and APR 1.8.x.
+
+Regards
+
+Rüdiger

@@ -1,0 +1,25 @@
+Message-ID: <ZXagDpwiHBRST1IR@lark>
+X-Clawbench-ID: BIO-2024-0407
+Date: Sun, 10 Dec 2023 21:37:18 -0800
+From: tony mancill <tmancill@debian.org>
+To: Martin Uecker <uecker@tugraz.at>
+Subject: Re: bart version 0.9.00
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_12_msg00032.html
+
+On Mon, Dec 11, 2023 at 12:11:38AM +0100, Martin Uecker wrote:
+> I upgraded the BART package to the new upstream release.
+>
+> I would appreciate if someone could take a look and then
+> upload it
+
+Hi Martin,
+
+The new package version looks good to me.  I finalized the
+debian/changelog, uploaded, and pushed that commit and the
+debian/0.9.00-1 tag to the Salsa repo.
+
+Cheers,
+tony

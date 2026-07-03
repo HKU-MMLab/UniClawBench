@@ -1,0 +1,60 @@
+Message-ID: <20220330044753.z3bxs5qx32toluo2@lark>
+X-Clawbench-ID: BIO-2024-0251
+Date: Tue, 29 Mar 2022 21:47:53 -0700
+From: tony mancill <tmancill@debian.org>
+To: Graham Inggs <ginggs@debian.org>
+Subject: Re: Packages in non-free can be autobuilt
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_03_msg00051.html
+
+On Tue, Mar 29, 2022 at 10:08:28PM +0200, Graham Inggs wrote:
+> Hi
+>
+> Another reminder about this:
+>
+> On Sun, 20 Dec 2020 at 01:33, Adrian Bunk  wrote:
+> > Looking at the cluster3 discussion, just a reminder that many packages
+> > in non-free can be autobuilt just like packages in main:
+> > https://www.debian.org/doc/manuals/developers-reference/pkgs.en.html#marking-non-free-packages-as-auto-buildable
+> >
+> > This is also already happening for Debian Med packages:
+> > https://tracker.debian.org/pkg/vienna-rna
+> > https://buildd.debian.org/status/package.php?p=vienna-rna
+>
+> cluster3 now needs a rebuild for the Python 3.10 as default transition [1].
+>
+> Regards
+> Graham
+
+Hi Graham,
+
+Thanks for the reminder.  It's unfortunate, but the link to the full
+license that causes the package to be non-free is broken and I don't see
+a full copy of the license in either the package (neither in the sources
+nor in d/copyright) or in the email thread about the license [1].
+
+For that reason, I'm hesitant about items (1) and (3) from the
+Developer's Reference [2]:
+
+> 1. Check whether it is legally allowed and technically possible to
+> auto-build the package;
+>
+> 2. Add XS-Autobuild: yes into the header part of debian/control;
+>
+> 3. Send an email to non-free@buildd.debian.org and explain why the
+> package can legitimately and technically be auto-built.
+
+If there is already precedent for packages that violate multiple terms
+of the DFSG being legally and legitimately allowed to be auto-built, I
+am happy to revisit the matter.
+
+For the time-being, I have uploaded a binary package to move the
+transition along.
+
+Thanks,
+tony
+
+[1] https://lists.debian.org/debian-med/2016/02/msg00000.html
+[2] https://www.debian.org/doc/manuals/developers-reference/pkgs.en.html#marking-non-free-packages-as-auto-buildable

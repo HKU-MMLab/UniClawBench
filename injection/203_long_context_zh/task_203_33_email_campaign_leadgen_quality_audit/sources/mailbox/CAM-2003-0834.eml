@@ -1,0 +1,41 @@
+Message-ID: <20020720190317.F23917@ie.suberic.net>
+X-Clawbench-ID: CAM-2003-0834
+Date: Sat, 20 Jul 2002 19:03:17 +0100
+From: kevin lyda <kevin+dated+1027620199.79af71@linux.ie>
+To: Niall O Broin <niall@linux.ie>, ilug@linux.ie
+Subject: Re: [ILUG] [OT] GPL & PHP Question
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00097.3617ec656941c7f331701a661ae5a72f
+
+On Fri, Jul 19, 2002 at 11:47:39PM +0100, Niall O Broin wrote:
+> > I know this is not strictly a 'Linux' issue but any help would be appreciated
+> Microsoft has very much made this a Linux issue - it has attempted to imply
+> that any company using GPL software must make everything it owns public and
+> it must be true - that nice man from Microsoft wouldn't lie, would he ?
+
+but that's just stupid.  microsoft s/w covers a subset of applications
+that are under the gpl.  there are gpl word processors, there's a
+microsoft wp; there are various language compilers and interpreters under
+the gpl, microsoft has their visual compilers.  and so on.  and just
+like the gpl apps, the microsoft apps are distributed under a license.
+that license says lots of things, and there are various licenses used by
+microsoft, but in a nutshell they all pretty much say: you can't copy,
+distribute or modify their s/w; you can't sell it multiple times.
+
+so does anyone think that applies to their wp documents or their visual
+c++ code?
+
+kevin
+
+--
+kevin@suberic.net     that a believer is happier than a skeptic is no more to
+fork()'ed on 37058400    the point than the fact that a drunken man is happier
+meatspace place: home       than a sober one. the happiness of credulity is a
+http://ie.suberic.net/~kevin   cheap & dangerous quality -- g.b. shaw
+
+--
+Irish Linux Users' Group: ilug@linux.ie
+http://www.linux.ie/mailman/listinfo/ilug for (un)subscription information.
+List maintainer: listmaster@linux.ie

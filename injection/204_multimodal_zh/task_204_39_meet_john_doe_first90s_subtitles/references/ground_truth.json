@@ -1,0 +1,66 @@
+{
+  "task_id": "task_104_39_meet_john_doe_first90s_subtitles",
+  "difficulty": "Easy",
+  "schema": "b",
+  "schema_notes": "partial-range transcription plus evidence of a second-pass review note",
+  "ground_truth": {
+    "source_clip": "clip.mp4",
+    "reference_srt": "references/reference_clip.srt",
+    "requested_time_range_seconds": {
+      "start": 0,
+      "end": 90
+    },
+    "expected_output_files": [
+      "/tmp_workspace/results/clip.srt",
+      "/tmp_workspace/results/clip_review.md"
+    ],
+    "reference_metrics": {
+      "reference_cues_within_requested_range": 34,
+      "acceptable_cue_count_min": 24,
+      "acceptable_cue_count_max": 50,
+      "first_cue_start_max_sec": 2,
+      "last_cue_end_min_sec": 82,
+      "last_cue_end_max_sec": 92
+    },
+    "semantic_acceptance": {
+      "minimum_anchor_windows_hit": 2,
+      "minimum_semantic_coverage_ratio": 0.8,
+      "interpretation": "Both anchor windows should be covered, with roughly 80% or more of the spoken content captured semantically in each window."
+    },
+    "semantic_anchor_windows": [
+      {
+        "window": "00:00:10-00:00:40",
+        "keywords_any": [
+          "governor",
+          "Chronicle",
+          "mayor",
+          "Chamber of Commerce"
+        ]
+      },
+      {
+        "window": "00:00:40-00:01:30",
+        "keywords_any": [
+          "John Doe",
+          "building",
+          "window",
+          "reelection"
+        ]
+      }
+    ],
+    "review_expectations": {
+      "must_reference_any": [
+        "0:10-0:40",
+        "0:10 到 0:40",
+        "前40秒",
+        "较快的对白"
+      ],
+      "should_reference_any": [
+        "修正",
+        "复查",
+        "专有名词",
+        "时间轴",
+        "同步"
+      ]
+    }
+  }
+}

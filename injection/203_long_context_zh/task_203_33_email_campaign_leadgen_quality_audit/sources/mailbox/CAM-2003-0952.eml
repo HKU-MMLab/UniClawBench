@@ -1,0 +1,46 @@
+Message-ID: <20020724.j6c.63348700@www.dudex.net>
+X-Clawbench-ID: CAM-2003-0952
+Date: Wed, 24 Jul 2002 07:56:27 +0000
+From: Angles  Puglisi <angles@aminvestments.com>
+To: rpm-zzzlist@freshrpms.net
+Subject: Re: central management
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01158.6a44abff11c422803f7399f6db573b29
+
+I build a lot of rpms but I'm to stupid/busy to "apt-ize" what I have. I wish
+it was apt enabled because I have several boxen and apt would help even with
+rpms that I build. Did I mention forgetful too?
+
+http://www.dudex.net/rpms
+
+
+che (che666@uni.de) wrote*:
+>
+>hello!
+>well in my eyes something like a public contrib repository would be nice
+(where everyone can at least upload spec files) and a something like a
+"repository directory" with a collection of available repositorys and their
+content.
+>
+>i am personally on a dsl dialup connection with 16kb/s upstream cap and that
+kinda sucks perhaps i am gonna still create a respository for small
+windowmaker dockapps in the future :).
+>
+>what do you think?
+>
+>thanks,
+>che
+>
+>_______________________________________________
+>RPM-List mailing list <RPM-List@freshrpms.net>
+>
+
+--
+That's "angle" as in geometry.
+
+
+_______________________________________________
+RPM-List mailing list <RPM-List@freshrpms.net>
+http://lists.freshrpms.net/mailman/listinfo/rpm-list

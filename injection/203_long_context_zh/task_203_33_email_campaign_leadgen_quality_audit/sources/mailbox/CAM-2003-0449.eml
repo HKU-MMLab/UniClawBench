@@ -1,0 +1,53 @@
+Message-ID: <20020901.Cm5.66966300@www.dudex.net>
+X-Clawbench-ID: CAM-2003-0449
+Date: Mon, 02 Sep 2002 01:03:30 +0000
+From: Angles  Puglisi <angles@aminvestments.com>
+To: FreshRPMs List <rpm-zzzlist@freshrpms.net>
+Subject: Fw: some (null) eyecandy packages
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01294.8c242aa8998042dd666b7f9db56a6a3e
+
+If anyone here is running (null) beta then you may like these Gnome theme packages.
+They are enhanced and repackages from my previous theme packs, this time to conform
+to the way pre-release RH8 handles themes for GTK1 and GTK2.
+
+RedHat has a preferences -> themes app, but themes only show up there that have BOTH
+gtk1.2 (Gnome1) themes AND gtk1.4 (GTK2 aka Gnome2) themes available. Then RH will
+apply the theme to both GTK versions, so the user does not really notice that
+different GTK toolkit versions are being used, since they *should* look the same.
+
+This "gtk2-engines-compat" RPM has GTK2 ported themes for those themes that are
+included in the RH package "gtk-engines" themes pack for GTK1.
+
+The "gtk1+2-themez" pack mostly repackages my previous theme RPMs in a way that the
+(null) btea like, and supposedly the next RH8 when released :)
+
+forward - original mail:
+  From " Angles  Puglisi" <angles@aminvestments.com>
+  Date 09/01/2002 - 06:10:03 am
+  Subject some (null) eyecandy packages
+
+I make these for myself, you may find them of interest. See the .spec file(s) for info.
+
+http://www.dudex.net/rpms/gtk2-engines-compat-1.0-aap1.noarch.rpm
+http://www.dudex.net/rpms/gtk2-engines-compat-1.0.spec
+
+http://www.dudex.net/rpms/gtk1+2-themez-1.1-aap1.noarch.rpm
+http://www.dudex.net/rpms/gtk1+2-themez-1.1.spec
+
+You'll need gtk-engines, gtk2-engines, and a "thinice" engine for gtk2, this one
+might be a old now but it works:
+
+http://www.dudex.net/rpms/gtk2-thinice-engine-2.0.1-2.i386.rpm
+http://www.dudex.net/rpms/gtk2-thinice-engine-2.0.1-2.src.rpm
+http://www.dudex.net/rpms/gtk2-thinice-engine-2.0.1.spec
+
+--
+That's "angle" as in geometry.
+
+
+_______________________________________________
+Limbo-list mailing list
+Limbo-list@redhat.com

@@ -1,0 +1,133 @@
+Message-ID: <33e6ff2678134ec69b78dd790127b27e@3ds.com>
+X-Clawbench-ID: ASF-2024-1479
+Date: Thu, 4 Apr 2024 15:21:31 +0000
+From: "BUSH Steve via dev" <dev@httpd.apache.org>
+To: "dev@httpd.apache.org" <dev@httpd.apache.org>
+Subject: RE: [ANNOUNCEMENT] Apache HTTP Server 2.4.59 Released
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-04.mbox
+
+Hi Eric,
+
+Just an FYI: The https://httpd.apache.org/security/vulnerabilities_24.html file is missing.
+
+https://httpd.apache.org/security/
+
+Thanks,
+Steve Bush
+
+From: covener <covener@apache.org>
+Sent: Thursday, April 4, 2024 6:54 AM
+To: announce@httpd.apache.org
+Subject: [ANNOUNCEMENT] Apache HTTP Server 2.4.59 Released
+
+Apache HTTP Server 2. 4. 59 Released April 04, 2024 The Apache Software Foundation and the Apache HTTP Server Project are pleased to announce the release of version 2. 4. 59 of the Apache HTTP Server ("Apache"). This version of Apache is our latest
+
+
+                Apache HTTP Server 2.4.59 Released
+
+
+   April 04, 2024
+
+
+   The Apache Software Foundation and the Apache HTTP Server Project
+
+   are pleased to announce the release of version 2.4.59 of the Apache
+
+   HTTP Server ("Apache").  This version of Apache is our latest GA
+
+   release of the new generation 2.4.x branch of Apache HTTPD and
+
+   represents fifteen years of innovation by the project, and is
+
+   recommended over all previous releases. This release of Apache is
+
+   a security, feature and bug fix release.
+
+
+   We consider this release to be the best version of Apache available, and
+
+   encourage users of all prior versions to upgrade.
+
+
+   Apache HTTP Server 2.4.59 is available for download from:
+
+
+     https://urldefense.com/v3/__https://httpd.apache.org/download.cgi__;!!FbCVDoc3r24SyHFW!90aLZxJz8v9h9Kjw6c8g56Tx2CK_uJ2yN4oR-keptUBiTXodK5IUaXv6ObxDT0ah-kYLWQpXr_qL2qM7$<https://urldefense.com/v3/__https:/httpd.apache.org/download.cgi__;!!FbCVDoc3r24SyHFW!90aLZxJz8v9h9Kjw6c8g56Tx2CK_uJ2yN4oR-keptUBiTXodK5IUaXv6ObxDT0ah-kYLWQpXr_qL2qM7$>[httpd[.]apache[.]org]
+
+
+   Apache 2.4 offers numerous enhancements, improvements, and performance
+
+   boosts over the 2.2 codebase.  For an overview of new features
+
+   introduced since 2.4 please see:
+
+
+     https://urldefense.com/v3/__https://httpd.apache.org/docs/trunk/new_features_2_4.html__;!!FbCVDoc3r24SyHFW!90aLZxJz8v9h9Kjw6c8g56Tx2CK_uJ2yN4oR-keptUBiTXodK5IUaXv6ObxDT0ah-kYLWQpXr48c1jIZ$<https://urldefense.com/v3/__https:/httpd.apache.org/docs/trunk/new_features_2_4.html__;!!FbCVDoc3r24SyHFW!90aLZxJz8v9h9Kjw6c8g56Tx2CK_uJ2yN4oR-keptUBiTXodK5IUaXv6ObxDT0ah-kYLWQpXr48c1jIZ$>[httpd[.]apache[.]org]
+
+
+   Please see the CHANGES_2.4 file, linked from the download page, for a
+
+   full list of changes. A condensed list, CHANGES_2.4.59 includes only
+
+   those changes introduced since the prior 2.4 release.  A summary of all
+
+   of the security vulnerabilities addressed in this and earlier releases
+
+   is available:
+
+
+     https://urldefense.com/v3/__https://httpd.apache.org/security/vulnerabilities_24.html__;!!FbCVDoc3r24SyHFW!90aLZxJz8v9h9Kjw6c8g56Tx2CK_uJ2yN4oR-keptUBiTXodK5IUaXv6ObxDT0ah-kYLWQpXrxf1GEXG$<https://urldefense.com/v3/__https:/httpd.apache.org/security/vulnerabilities_24.html__;!!FbCVDoc3r24SyHFW!90aLZxJz8v9h9Kjw6c8g56Tx2CK_uJ2yN4oR-keptUBiTXodK5IUaXv6ObxDT0ah-kYLWQpXrxf1GEXG$>[httpd[.]apache[.]org]
+
+
+   This release requires the Apache Portable Runtime (APR), minimum
+
+   version 1.5.x, and APR-Util, minimum version 1.5.x. Some features may
+
+   require the 1.6.x version of both APR and APR-Util. The APR libraries
+
+   must be upgraded for all features of httpd to operate correctly.
+
+
+   This release builds on and extends the Apache 2.2 API.  Modules written
+
+   for Apache 2.2 will need to be recompiled in order to run with Apache
+
+   2.4, and require minimal or no source code changes.
+
+
+     https://urldefense.com/v3/__https://svn.apache.org/repos/asf/httpd/httpd/trunk/VERSIONING__;!!FbCVDoc3r24SyHFW!90aLZxJz8v9h9Kjw6c8g56Tx2CK_uJ2yN4oR-keptUBiTXodK5IUaXv6ObxDT0ah-kYLWQpXr6mT32m1$<https://urldefense.com/v3/__https:/svn.apache.org/repos/asf/httpd/httpd/trunk/VERSIONING__;!!FbCVDoc3r24SyHFW!90aLZxJz8v9h9Kjw6c8g56Tx2CK_uJ2yN4oR-keptUBiTXodK5IUaXv6ObxDT0ah-kYLWQpXr6mT32m1$>[svn[.]apache[.]org]
+
+
+   When upgrading or installing this version of Apache, please bear in mind
+
+   that if you intend to use Apache with one of the threaded MPMs (other
+
+   than the Prefork MPM), you must ensure that any modules you will be
+
+   using (and the libraries they depend on) are thread-safe.
+
+
+   Please note the 2.2.x branch has now passed the end of life at the Apache
+
+   HTTP Server project and no further activity will occur including security
+
+   patches.  Users must promptly complete their transitions to this 2.4.x
+
+   release of httpd to benefit from further bug fixes or new features.
+
+
+This email and any attachments are intended solely for the use of the individual or entity to whom it is addressed and may be confidential and/or privileged.
+
+If you are not one of the named recipients or have received this email in error,
+
+(i) you should not read, disclose, or copy it,
+
+(ii) please notify sender of your receipt by reply email and delete this email and all attachments,
+
+(iii) Dassault Systèmes does not accept or assume any liability or responsibility for any use of or reliance on this email.
+
+
+Please be informed that your personal data are processed according to our data privacy policy as described on our website. Should you have any questions related to personal data protection, please contact 3DS Data Protection Officer https://www.3ds.com/privacy-policy/contact/

@@ -1,0 +1,43 @@
+Message-ID: <Z13-J6hS85XjmOmI@an3as.eu>
+X-Clawbench-ID: BIO-2024-1215
+Date: Sat, 14 Dec 2024 22:52:39 +0100
+From: Andreas Tille <tille@debian.org>
+To: Santiago Ruano Rincón <santiagorr@riseup.net>
+Subject: Re: Getting rid of twitter-bootstrap3 as trade off for privacy breach
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_12_msg00013.html
+
+Am Sat, Dec 14, 2024 at 12:31:10PM -0300 schrieb Santiago Ruano Rincón:
+> El 14/12/24 a las 14:15, Andreas Tille escribió:
+> > This would be ony way to enable Debian getting rid of the bootstrap3
+> > package (not to bring the package intake in a better state).
+>
+> Remember that this is a bug in the upstream code. Have you already tried
+> contacting upstream to ask them if they could move to bootstrap 5?
+
+Sure.  The unfortunate issue is that upstream progressed to version
+0.7.0 which we can not package due to some not yet packages and pretty
+complex dependencies.  I have not yet checked the new version regarding
+bootstrap usage.
+
+> > So making Debian upstream of quite a view packages (like intake)?
+>
+> No, I don't mean to make debian upstream, but to help upstream (or
+> maintainers) providing examples of other porting efforts.
+
+In this specific case upstream would simply answer: "Use last stable",
+"use conda" etc...
+
+In case we consider bootstrap3 as a severe security risk we should
+probably make the package RC buggy which would prevent the current
+intake from being released in stable.
+
+In general I'm not happy about the situation with intake.
+
+Kind regards
+   Andreas.
+
+--
+https://fam-tille.de

@@ -1,0 +1,102 @@
+Message-ID: <ZJLqpKPPwduGXcnz@an3as.eu>
+X-Clawbench-ID: BIO-2024-0479
+Date: Wed, 21 Jun 2023 14:18:44 +0200
+From: Andreas Tille <tille@debian.org>
+To: Donald Norwood <donald@debian.org>
+Subject: Re: Regarding Press enquiry about debian-med blends
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_06_msg00012.html
+
+Hi Donald,
+
+Am Tue, Jun 20, 2023 at 05:01:18PM -0400 schrieb Donald Norwood:
+> > Here we are. Andreas (in CC) volunteered to answer your questions. What
+> > is it about, and what are the specific questions?
+> >
+>
+> Much appreciation for your time, I didn't want to give a general answer
+> considering all the work that you all have done. :)
+
+Thank you. :-)
+
+> The inquiry is from Bruce Byfield, care of Linux Pro Magazine:
+>
+> Can you say more about the contents of Med Blend?
+>
+> I've added:
+
+A general statement in andvance:  In Debian we can only package free
+software that is available in the field of Medicine and Bioinformatics.
+Its a pretty common misunderstanding that developers of Debian Med are
+coding medical software themselves.  IMHO it is important to state this
+in advance in a general article.  We are just a team inside Debian that
+cares for packages in some specific field (as well as the needed
+preconditions).
+
+The fact that we can package only *available* free software has the
+consequence that the big majority of software if from the field of
+bioinformatics where Free Software under Linux is kind of an accepted
+default for many scientists.  There is also quite some software
+available for medical imaging.  The usual expectation in Debian Med
+is that it fits general practitioners needs.  Well, we have packaged
+GNUmed in cooperation with its authors but this is the only relevant
+tool in this field.  There are a few other pieces of software in this
+field but these are not packaged (any more) for different reasons.
+
+> What does the team have planned toward the future?
+
+The greatest challenge is probably to provide some preconditions in
+machine learning, specifically Python3 support for tensorflow.  This
+would open a couple of modern tools in epidemiology (used in
+investigation of COVID-19 pandemie) and bioinformatics.
+We might also need data exploration tools like Python Panel.
+
+Apropos COVID-19:  In 2020 quite a number of developers joined the team
+which I tried to summarise in my talk at DebConf21[1].  This talk might
+also answer your questions in more detail.  Besides information about
+Debian Med I'm also talking about general problems of the Debian release
+process in the middle of the talk.
+
+> How well received has the Med Blend been?
+
+We realised that the majority of users of Debian Med profiting from the
+work of the Debian Med team via Debian derivatives like Ubuntu or Mint
+and do not even know the term "Debian Med" nor the idea of the project.
+While using derivatives is perfectly OK it hides the team from user
+responses which is a shame since we would be happy to focus even more on
+users needs.
+
+We are actually packaging at user requests.  Its an unknown fact that
+the big majority of the developers who are currently active inside the
+Debian Med team are not really working in the field themselves so proper
+response of users is the driving force for progress inside the project.
+The motivation of those "outsiders" to contribute is very different
+reaching from "want to help my colleagues" until "its a cool team I
+enjoy the work here".
+
+> What are they most proud of?
+
+We consider the software we have packaged as pretty good tested since we
+have put a lot of effort into writing CI tests for most of our packages.
+As I mentioned above most developers are no experts in this field of
+science and these automated tests are helping us to ensure the packages
+will be useful for our users.
+
+Another thing we are proud of is the healthy climate inside the team.
+Otherwise it would not be possible to assemble a team of developers from
+quite different fields all just following the unique motivation to build
+the best operating system for users in medicine and biology.
+
+
+I'd happily answer more questions in whatever detail might be needed.
+
+Kind regards in your interest into Debian Med
+    Andreas.
+
+
+[1] https://people.debian.org/~tille/talks/20210825_one_year_of_pandemie/
+
+--
+http://fam-tille.de

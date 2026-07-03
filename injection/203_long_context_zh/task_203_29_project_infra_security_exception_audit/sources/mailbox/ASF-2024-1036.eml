@@ -1,0 +1,30 @@
+Message-ID: <06a83b40-b236-69db-33a9-341c6b590165@apache.org>
+X-Clawbench-ID: ASF-2024-1036
+Date: Mon, 24 Apr 2023 13:36:13 +0200
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: build trunk in windows
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-04.mbox
+
+I am not a Windows guy, but I guess the best way to build trunk on Windows is to use cmake which is integrated in later versions
+of Visual studio.
+
+Regards
+
+Rüdiger
+
+On 4/24/23 1:05 PM, jean-frederic clere wrote:
+> Hi,
+>
+> I am trying to build httpd on windoze...
+>
+> "The .dsp project files are distributed in Visual Studio 6.0 (98) format. Visual C++ 5.0 (97) will recognize them. Visual Studio
+> 2002 (.NET) and later users must convert Apache.dsw plus the .dsp files into an Apache.sln plus .msproj files. Be sure you
+> reconvert the .msproj file again if its source .dsp file changes! This is really trivial, just open Apache.dsw in the VC++ 7.0 IDE
+> once again and reconvert."
+>
+> Where can I find the VC++ 7.0 IDE to convert the .dsp I can't use?
+>

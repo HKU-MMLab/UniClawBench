@@ -1,0 +1,34 @@
+task_id: task_103_06_self_hosted_rss_landscape
+category: 103_long_context
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I want to self-host my own RSS reader and I'd like a verified shortlist of options. Please research this live — search GitHub and the web — and don't rely on prior memory, since projects and their activity change.
+
+  I specifically want genuine self-hostable RSS/feed readers: open-source apps I can run on my own server. Do NOT include SaaS-only readers like Feedly or Inoreader, and do NOT include read-it-later / bookmarking apps (like wallabag or Pocket) — those are not feed readers. If something is borderline, say why you included or excluded it.
+
+  Find at least 10 genuine self-hostable feed readers. For each, record:
+  - the repository or project link
+  - primary language
+  - license (it should be open source)
+  - an approximate star count or activity signal (e.g. recent commits)
+  - how you deploy it (Docker, single binary, source) — confirming it is actually self-hostable
+  - one line on its features or scope
+
+  Verify each entry by actually looking at the repo (README/description/license), not just by name. Include the well-known anchors if you find them (for example FreshRSS, Miniflux, Tiny Tiny RSS, CommaFeed).
+
+  Save the shortlist to `/tmp_workspace/results/self_hosted_rss_landscape.md`, organized clearly, and add a short note on anything you deliberately excluded (SaaS-only or read-it-later) and why.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+codex:
+  max_user_followups: 2

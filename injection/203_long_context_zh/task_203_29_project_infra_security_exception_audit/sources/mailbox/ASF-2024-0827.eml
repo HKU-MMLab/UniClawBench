@@ -1,0 +1,46 @@
+Message-ID: <CAGmQQQ4rcUkJhRWPA6+S8H9zKXz7si_mb0N+dqkkDQSnzCqSkg@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0827
+Date: Sat, 30 Sep 2023 17:58:41 +0530
+From: General Email <general.email.12341234@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: Please support/enable https by default in the Apache web sever.
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-09.mbox
+
+On Sat, 30 Sep, 2023, 5:34 pm Will Fatherley, <wefatherley@gmail.com> wrote:
+
+>
+> Please support/enable https by default in the Apache web server.
+>>
+>
+> HTTPS is supported already by default. I like the idea of enabling by
+> default, but as it stands now probably should not be done as the generation
+> of keying material is required; the certification of keying material, while
+> capable of being automated, may become overburdened or more easily abused;
+> and other such complications related to authentication.
+>
+
+In XAMPP (https://www.apachefriends.org/download.html) https can be enabled
+easily (change of only couple of lines is required).
+
+XAMPP has apache http web server.
+
+It looks like they have a default SSL certificate in their distribution.
+
+Fitefox and other browsers complain something like "the certificate is not
+trusted" but they also give an option of taking the risk and going ahead.
+When you go ahead, you can access your site using https.
+
+This is good when a developer is developing a website on his local computer.
+
+Later, when going for hosting the website, the hosting providers do
+everything for you for supporting https.
+
+So, if whatever XAMPP has done in their distribution of apache http server,
+if the same can be done in official apache http server then this will be of
+great help during  website development and testing.
+
+Regards,
+GE

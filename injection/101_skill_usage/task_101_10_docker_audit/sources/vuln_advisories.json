@@ -1,0 +1,87 @@
+{
+  "generated_for": "task_101_10_docker_audit",
+  "as_of": "2026-04-25",
+  "notes": [
+    "Local advisory feed for this deployment audit. Treat unpinned requirements as unresolved exposure until the deployment lockfile proves a safe version.",
+    "The Dockerfile and requirements.txt are the authoritative current state; this file supplies advisory metadata only."
+  ],
+  "advisories": [
+    {
+      "package": "flask",
+      "current_requirement": "flask<2.3",
+      "affected_range": "<2.2.5 || >=2.3.0,<2.3.2",
+      "cve": "CVE-2023-30861",
+      "ghsa": "GHSA-m2qf-hxjv-5gpq",
+      "severity": "HIGH",
+      "fixed_version": "2.3.2",
+      "summary": "Possible disclosure of permanent session cookie due to missing Vary: Cookie header.",
+      "source": "https://github.com/pallets/flask/security/advisories/GHSA-m2qf-hxjv-5gpq"
+    },
+    {
+      "package": "requests",
+      "current_requirement": "requests==2.20.0",
+      "affected_range": "<2.20.1",
+      "cve": "CVE-2018-18074",
+      "ghsa": "GHSA-x84v-xcm2-53pg",
+      "severity": "HIGH",
+      "fixed_version": "2.20.1",
+      "summary": "Authorization header could be sent to an unintended host during certain HTTP redirects.",
+      "source": "https://requests.readthedocs.io/en/latest/community/updates/#release-history"
+    },
+    {
+      "package": "pyyaml",
+      "current_requirement": "pyyaml",
+      "affected_range": "<5.4",
+      "cve": "CVE-2020-14343",
+      "ghsa": "GHSA-8q59-q68h-6hv4",
+      "severity": "HIGH",
+      "fixed_version": "5.4",
+      "summary": "Untrusted YAML loaded through unsafe loader paths can lead to arbitrary code execution.",
+      "source": "https://bugzilla.redhat.com/show_bug.cgi?id=1860466"
+    },
+    {
+      "package": "jinja2",
+      "current_requirement": "jinja2",
+      "affected_range": "<2.11.3",
+      "cve": "CVE-2020-28493",
+      "ghsa": "GHSA-h5c8-rqwp-cp95",
+      "severity": "MEDIUM",
+      "fixed_version": "2.11.3",
+      "summary": "urlize filter regular-expression denial of service.",
+      "source": "https://nvd.nist.gov/vuln/detail/CVE-2020-28493"
+    },
+    {
+      "package": "django",
+      "current_requirement": "django<5.0",
+      "affected_range": "<4.2.7 || >=5.0,<5.0.1",
+      "cve": "CVE-2023-46695",
+      "ghsa": "GHSA-qmf9-6jqf-j8fq",
+      "severity": "HIGH",
+      "fixed_version": "5.0.1",
+      "summary": "Potential denial-of-service in django.contrib.auth.forms.UsernameField via inputs that produce slow Unicode normalization.",
+      "source": "https://www.djangoproject.com/weblog/2023/nov/01/security-releases/"
+    },
+    {
+      "package": "openssl",
+      "current_requirement": "system openssl 3.x",
+      "affected_range": "openssl 3.0.0 — 3.0.7 (Windows builds only)",
+      "cve": "CVE-2022-3996",
+      "ghsa": "",
+      "severity": "HIGH",
+      "fixed_version": "openssl 3.0.8",
+      "summary": "X.509 policy constraint deadlock leading to denial-of-service. Affects openssl runtime on Windows builds compiled with policy-validation; Linux builds with default config are not affected.",
+      "source": "https://www.openssl.org/news/secadv/20230207.txt"
+    },
+    {
+      "package": "lxml",
+      "current_requirement": "lxml>=4.0",
+      "affected_range": "<4.9.1",
+      "cve": "CVE-2022-2309",
+      "ghsa": "GHSA-wrxv-2j5q-m38w",
+      "severity": "MEDIUM",
+      "fixed_version": "4.9.1",
+      "summary": "NULL pointer dereference in lxml when parsing crafted XML via libxml2 cleanup; can crash the parsing process.",
+      "source": "https://github.com/advisories/GHSA-wrxv-2j5q-m38w"
+    }
+  ]
+}

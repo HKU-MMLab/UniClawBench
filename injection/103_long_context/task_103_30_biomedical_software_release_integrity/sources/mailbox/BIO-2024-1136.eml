@@ -1,0 +1,26 @@
+Message-ID: <Y1M4Hhf7nOlHA+HX@lena.dartmouth.edu>
+X-Clawbench-ID: BIO-2024-1136
+Date: Fri, 21 Oct 2022 20:23:58 -0400
+From: Yaroslav Halchenko <debian@onerussian.com>
+To: "Maarten L. Hekkelman" <maarten@hekkelman.com>
+Subject: Re: included git submodules
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00073.html
+
+On Fri, 21 Oct 2022, Maarten L. Hekkelman wrote:
+
+> Suggestions, opinions? What is done with other packages that rely on
+> submodules?
+
+those feel like worth their own packages or you could establish your own
+"mhekkel-toolkit" library "upstream" to contain those two and any other
+similar one if you want to maintain 1 instead of 2 (and may be later
+more) packages ;)
+
+--
+Yaroslav O. Halchenko
+Center for Open Neuroscience     http://centerforopenneuroscience.org
+Dartmouth College, 419 Moore Hall, Hinman Box 6207, Hanover, NH 03755
+WWW:   http://www.linkedin.com/in/yarik

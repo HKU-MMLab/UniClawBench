@@ -1,0 +1,41 @@
+Message-ID: <Yc973s/hO/mG+qlj@an3as.eu>
+X-Clawbench-ID: BIO-2024-0014
+Date: Fri, 31 Dec 2021 22:53:34 +0100
+From: Andreas Tille <andreas@fam-tille.de>
+To: Tony Travis <tony.travis@minke-informatics.co.uk>
+Subject: Re: [Bug 1956094] Re: deborphan guess-work removes too many files
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_12_msg00205.html
+
+Hi Tony,
+
+Am Fri, Dec 31, 2021 at 12:42:38PM +0000 schrieb Tony Travis:
+>
+> I *have* edited the configuration file, but the "deborphan" default has just
+> caused a lot of damage on multiple systems where I use "upgrade-system" it
+> appears to have overwritten my edited config files during a recent upgrade
+> and, as I reported, "deborphan" removed a large number of packages from five
+> of my servers where I have installed "med-bio" and "med-bio-dev" from the
+> Debian-Med project. I edited the config file after initially running
+> "upgrade-system" precisely because of this.
+>
+> I'm surprised that nobody else has been bitten by this bug!
+
+Sorry, but I do not understand the problem.  What config files are you
+talking about?  What is "upgrade-system"?  I'm using the command
+`deborphan` itself just to learn what package might be a potential
+candidate for removal.  From time to time I'm using
+
+    apt purge `deborphan`
+
+but well, that's users responsibility.  To learn what is really a "bug"
+we need more information that this quoted mail.
+
+Kind regards
+
+      Andreas.
+
+--
+http://fam-tille.de

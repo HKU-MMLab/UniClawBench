@@ -1,0 +1,35 @@
+Message-ID: <Yd6oc29xRPLrfmhh@redhat.com>
+X-Clawbench-ID: ASF-2024-0141
+Date: Wed, 12 Jan 2022 10:07:47 +0000
+From: Joe Orton <jorton@redhat.com>
+To: dev@httpd.apache.org
+Subject: Re: TLS neverbleed design
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-01.mbox
+
+On Fri, Jan 07, 2022 at 11:34:47AM +0100, Stefan Eissing wrote:
+> A nice new year to everyone!
+>
+> I was looking at the design of https://github.com/h2o/neverbleed which
+> - loads TLS private keys in a separate process
+> - creates EVP_PKEY instances that in the sign callback call into the
+>   separate process to create the TLS handshake signature
+>
+> This is surprisingly simple. With a little overhead, it keeps the keys
+> in a separate address space, inaccessible to any exploits in the traffic
+> serving workers.
+>
+> I wonder if it is worthwhile to add something similar to our server.
+
+It's definitely an interesting idea, though needs a caveat that if a
+compromised worker can do private key operations via the process then
+the key is not truly isolated.  (That's not to say it's a bad idea, just
+that it's a mitigation/defence-in-depth approach.)
+
+You should be able to deploy something like this with PKCS#11, e.g.
+softhsm, p11-kit can proxy PKCS#11 over a Unix domain socket, there are
+probably more solutions out there.
+
+Regards, Joe

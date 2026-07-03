@@ -1,0 +1,30 @@
+Message-ID: <e0043495-c4a0-a938-c1bf-fb99ddceb3d7@apache.org>
+X-Clawbench-ID: ASF-2024-0450
+Date: Fri, 5 May 2023 08:11:56 +0200
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: ci vs PR approvals? (was: [apache/httpd] Fix a possible NULL  pointer dereference in hook_uri2file (PR #355))
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-05.mbox
+
+On 5/5/23 2:37 AM, Greg Stein wrote:
+
+> Down-thread, Giovanni asks about security patch handling. We can continue to use repos/private/pmc/httpd/ for that. That area will
+> not go away. If people want to go "all git", then Infra can provide projects with a single, private repository that would function
+> similarly.
+
+Thanks for pointing this out. I think the repos/private/pmc/httpd should still stick in Subversion as it is now.
+And it brings up another point: We need to adjust our release scripts once we made a switch.
+
+>
+> IMO, I definitely think svn is a superior version control system to git. It is much more approachable and easy to use, compared to
+> git. I helped to build svn, yet I use git daily; this isn't knee-jerk svn partisanship; svn is simply better/easier. But *GitHub*
+
+And I still use it in other areas at $work that are not that much development driven but need to version control mostly
+text files and where the GitHub features are not needed / useful. For these cases svn is clearly much better suited than git.
+
+Regards
+
+Rüdiger

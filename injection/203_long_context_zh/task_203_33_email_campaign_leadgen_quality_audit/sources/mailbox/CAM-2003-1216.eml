@@ -1,0 +1,51 @@
+Message-ID: <1027364125.22596.TMDA@deepeddy.vircio.com>
+X-Clawbench-ID: CAM-2003-1216
+Date: Mon, 22 Jul 2002 13:55:23 -0500
+From: Chris Garrigues <cwg-exmh@DeepEddy.Com>
+To: Brent Welch <welch@panasas.com>
+Subject: Re: folders moving around in the unseen window
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00689.ae6cd2a1fe148629b6d4e11fba10cd8c
+
+> From:  Brent Welch <welch@panasas.com>
+> Date:  Thu, 18 Jul 2002 08:13:53 -0700
+>
+> Unfortunately, an unattributed patch may or may not be a contributed patch
+> as I'm not always good about recording the source of a patch.  I suspect
+> this patch may have been contributed from someone that uses the
+> auto-pack or auto-sort features, which I don't use.  This change should be
+> tested against those features.
+>
+> This whole folder scanning area is super delicate, as Chris is discovering.
+> I wish I had a little more time right now to wrap my head around the issues
+> .
+> It is good that another pair of eyes is looking at the code, and I hope I
+> left some clues in the comments about why things are being done.  If we
+> do change things, or remove calls, we may want to leave a note that says
+>
+> # Used to be a Scan_Folder call here, but it was removed for the
+> # following reason...
+
+Unfortunately, there are few comments in this part of the code.  I haven't
+been helping that situation much, although there are some comments in the new
+sequence stuff that I wrote.  I have cleaned up a bit of code so that
+it's a little more clear what it's doing and a little less delicate.  I also
+gratuitously renamed some variables for clarity.
+
+My last few bug fixes were purely problems that I created in my own
+patches and I can't blame anyone but myself.
+
+As I'm avoiding real work, I may clean up a little bit more (and probably
+break a few things as well ;-).
+
+Chris
+
+--
+Chris Garrigues                 http://www.DeepEddy.Com/~cwg/
+virCIO                          http://www.virCIO.Com
+716 Congress, Suite 200
+Austin, TX  78701		+1 512 374 0500
+
+  World War III:  The Wrong-Doers Vs. the Evil-Doers.

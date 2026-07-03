@@ -1,0 +1,39 @@
+Message-ID: <1337003665.70920.1704059540994@office.mailbox.org>
+X-Clawbench-ID: BIO-2024-0553
+Date: Mon, 1 Jan 2024 03:22:20 +0530 (IST)
+From: Nilesh Patra <nilesh@nileshpatra.com>
+To: Komolehin Israel <komolehinisrael@gmail.com>,	debian-med@lists.debian.org
+Subject: Re: Outreachy Contribution
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_12_msg00100.html
+
+Hi Israel,
+
+> On 01/01/2024 2:31 AM IST Komolehin Israel  wrote:
+> My name is Israel, an Outreachy intern under the mentorship program of Andreas Tille and Nilesh Patra which started on December 4th, 2023.
+>
+> Here is the list of the packages I have contribute to:
+>
+> Amide
+> Busco
+> Nipy
+> Nitime
+> Pique
+> Python-iow
+> Qcumber
+> Xpore
+>
+> It has been a wonderful journey so far and I look forward to solving more bugs and becoming better at contributing to med-team packages. The link to my blog for the internship period: https://komolehin.dreamwidth.org/
+
+This looks very good. Thanks a lot for the nice work!
+
+You could also use debian-outreach@ mailing list for reports like these (already CC'ed in this mail)
+
+> Happy new year.
+
+Happy new year!
+
+Best,
+Nilesh

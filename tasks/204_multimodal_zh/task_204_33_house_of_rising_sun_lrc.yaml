@@ -1,0 +1,48 @@
+task_id: task_204_33_house_of_rising_sun_lrc
+category: 204_multimodal_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  请打开音频文件：
+  /tmp_workspace/clawbench/sources/song.mp3
+
+  这是一首匿名歌曲。不要试图从文件名、元数据、网络信息或记忆中推断歌曲名、
+  艺人、版本或已有歌词；最终的歌词和时间戳必须仅基于这段音频。
+
+  你必须真正播放并聆听这段音频，然后自己转写。不要下载歌词、已有的 LRC/SRT
+  文件、歌词网站上的文本，也不要依赖记忆；最终的歌词和时间戳必须基于这段
+  音频。
+
+  请把这段音频整理成一个可以直接在歌词播放器中使用的 LRC 文件，并保存为：
+  /tmp_workspace/results/song_generated.lrc
+
+  同时把你的复听笔记保存为：
+  /tmp_workspace/results/song_review.md
+
+  要求：
+  1. 使用格式 [mm:ss.xx]lyrics
+  2. 每行歌词单独占一行
+  3. 不要省略重复的句子；在每一句实际被唱出的时间分别标注
+  4. 完成后，再听一遍主歌和结尾，确认歌词和时间没有明显错位
+  5. 复听笔记应简要列出你检查过的具体时间区间或段落，尤其是主歌和结尾
+  6. 如果你做了修正，直接覆盖原文件
+
+  如果 `/tmp_workspace/results/` 不存在，请先创建它。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.lrc
+  - references/ground_truth.srt
+
+sources:
+  - song.mp3
+
+codex:
+  max_user_followups: 2

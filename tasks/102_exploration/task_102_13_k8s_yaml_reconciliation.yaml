@@ -1,0 +1,57 @@
+task_id: task_102_13_k8s_yaml_reconciliation
+category: 102_exploration
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I inherited a small Kubernetes config repo (kustomize base + staging/prod
+  overlays) and I don't trust it — I think there are silent conflicts where
+  what's written in a file isn't what actually gets deployed. The repo is at:
+
+      /tmp_workspace/clawbench/sources/k8s_config/
+
+  Layout: a `base/` (ConfigMap + Deployment + kustomization) and
+  `overlays/staging/` and `overlays/prod/` that patch the base.
+
+  Please audit it carefully and reconcile what each environment really
+  resolves to. Do NOT just eyeball the files — actually parse the YAML and
+  reason through kustomize strategic-merge + image-transformer semantics,
+  because several of the bugs are invisible unless you parse. In particular,
+  watch for: duplicate keys in the same mapping, YAML anchors/aliases,
+  values that look like strings but parse as another type, an image tag in a
+  patch that an images-transformer overrides, and a static replica count that
+  conflicts with an autoscaler.
+
+  Produce two things:
+
+  1. `/tmp_workspace/results/yaml_conflicts.json` — a list of every conflict
+     you find. For each: an id/name, the type of conflict, the file(s) and
+     Kubernetes object involved, a short explanation of why it's a conflict,
+     and the value that actually takes effect (vs the value that is shadowed
+     or overridden).
+
+  2. `/tmp_workspace/results/yaml_resolved.json` — the reconciled effective
+     state per environment (base / staging / prod): the final effective
+     `orders-config` ConfigMap data, the final effective container image for
+     the orders Deployment, and the effective replica count (noting where an
+     autoscaler governs it instead of a static value).
+
+  Also save a short `/tmp_workspace/results/yaml_method.json` describing how
+  you parsed and reconciled (tools/commands used, merge rules applied), so the
+  audit is reproducible. This repo is fully offline — do not fetch anything
+  from the network.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+sources:
+  - k8s_config/
+
+codex:
+  max_user_followups: 2

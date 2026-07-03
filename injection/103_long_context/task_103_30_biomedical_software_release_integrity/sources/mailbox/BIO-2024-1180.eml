@@ -1,0 +1,28 @@
+Message-ID: <YYkAM/9iYmX/FYJ7@an3as.eu>
+X-Clawbench-ID: BIO-2024-1180
+Date: Mon, 8 Nov 2021 11:47:15 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Any volunteer to verify autopkgtest of spades?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_11_msg00037.html
+
+Hi,
+
+> In case you have troubles running SPAdes, you can write to spades.support@cab.spbu.ru
+> or report an issue on our GitHub repository github.com/ablab/spades
+> Please provide us with params.txt and spades.log files from the output directory.
+
+I debugged this issue a bit and opened an issue upstream[1]
+
+Kind regards
+
+      Andreas.
+
+
+[1] https://github.com/ablab/spades/issues/872
+
+--
+http://fam-tille.de

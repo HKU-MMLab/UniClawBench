@@ -1,0 +1,86 @@
+Message-ID: <CALK=YjNgpDRC9=TeQaDEW+hL0rjcM1ED=jdrd8QbQRL4C=sWtw@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1029
+Date: Tue, 17 Jan 2023 12:59:31 -0500
+From: Eric Covener <covener@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: [httpd-site] branch main updated: publishing release httpd-2.4.55
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-01.mbox
+
+Something is still subtly wrong here, the 2.4.55 section only has 1
+entry instead of 3.
+Will chat about it on #httpd on ASF slack.
+
+On Tue, Jan 17, 2023 at 12:17 PM Daniel Gruno <humbedooh@apache.org> wrote:
+>
+> I have patched the system to deal with the inconsistencies, but those
+> should really be looked at. There seems to be a mix of "timeline"
+> entries that are not consistent throughout the dir (even when accounting
+> for v4.0 vs v5.0 CVE data), and those were throwing spanners into the
+> build process.
+>
+> The CVE page should be back now, however.
+>
+> On 2023-01-17 17:46, Eric Covener wrote:
+> > Humbedooh is helping.
+> >
+> > Note that the SVN repo is dead content, real content is in
+> > git@github.com:/apache/httpd-site
+> >
+> > On Tue, Jan 17, 2023 at 11:39 AM Eric Covener <covener@gmail.com> wrote:
+> >>
+> >> I think it's https://svn.apache.org/repos/asf/httpd/site/trunk/content/security/cvejsontohtml.py
+> >> it hasn't been updated for the V5 JSON format, I misinterpreted Mark's mail.
+> >>
+> >> I will try to make it tolerant of both.
+> >>
+> >> On Tue, Jan 17, 2023 at 11:29 AM Ruediger Pluem <rpluem@apache.org> wrote:
+> >>>
+> >>>
+> >>>
+> >>> On 1/17/23 5:16 PM, covener@apache.org wrote:
+> >>>> This is an automated email from the ASF dual-hosted git repository.
+> >>>>
+> >>>> covener pushed a commit to branch main
+> >>>> in repository https://gitbox.apache.org/repos/asf/httpd-site.git
+> >>>>
+> >>>>
+> >>>> The following commit(s) were added to refs/heads/main by this push:
+> >>>>       new 83e7062  publishing release httpd-2.4.55
+> >>>> 83e7062 is described below
+> >>>>
+> >>>> commit 83e7062476d4a912f20ab275137b9587d441fdf0
+> >>>> Author: Eric Covener <ecovener@us.ibm.com>
+> >>>> AuthorDate: Tue Jan 17 11:16:01 2023 -0500
+> >>>>
+> >>>>      publishing release httpd-2.4.55
+> >>>> ---
+> >>>>   content/doap.rdf                          |   4 +-
+> >>>>   content/download.md                       |  24 +++----
+> >>>>   content/index.md                          |   6 +-
+> >>>>   content/security/json/CVE-2006-20001.json | 110 ++++++++++++++++++++++++++++++
+> >>>>   content/security/json/CVE-2022-36760.json | 103 ++++++++++++++++++++++++++++
+> >>>>   content/security/json/CVE-2022-37436.json |  88 ++++++++++++++++++++++++
+> >>>
+> >>> Looks like something went wrong as https://httpd.apache.org/security/vulnerabilities_24.html now results in a 404.
+> >>>
+> >>> Regards
+> >>>
+> >>> Rüdiger
+> >>>
+> >>
+> >>
+> >> --
+> >> Eric Covener
+> >> covener@gmail.com
+> >
+> >
+> >
+>
+
+
+--
+Eric Covener
+covener@gmail.com

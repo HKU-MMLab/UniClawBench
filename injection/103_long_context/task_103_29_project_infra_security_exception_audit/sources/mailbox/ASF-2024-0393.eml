@@ -1,0 +1,37 @@
+Message-ID: <15b1455b-9d06-4112-b519-64c15e8e3b3f@evermeet.cx>
+X-Clawbench-ID: ASF-2024-0393
+Date: Tue, 25 Jun 2024 16:35:05 -0400
+From: "Helmut K. C. Tessarek" <tessarek@evermeet.cx>
+To: dev@httpd.apache.org, Ruediger Pluem <rpluem@apache.org>
+Subject: Re: [VOTE] Release httpd-2.4.60-rc1 as httpd-2.4.60
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-06.mbox
+
+On 2024-06-25 02:53, Ruediger Pluem wrote:
+> Can you provide more details on your configuration how you forward stuff to fcgi and what request you made?
+
+Very simple:
+
+<FilesMatch "\.php$">
+     SetHandler  "proxy:unix:/run/php82-fpm/xxx.sock|fcgi://xxx"
+</FilesMatch>
+
+And then I access my website at https://example.com
+
+Please don't forget that I've been using this configuration for years.
+I only change the path to the socket every time when I move to a newer
+PHP release.
+
+Cheers,
+   K.C.
+
+--
+regards Helmut K. C. Tessarek              KeyID 0x172380A011EF4944
+Key fingerprint = 8A55 70C1 BD85 D34E ADBC 386C 1723 80A0 11EF 4944
+
+/*
+    Thou shalt not follow the NULL pointer for chaos and madness
+    await thee at its end.
+*/

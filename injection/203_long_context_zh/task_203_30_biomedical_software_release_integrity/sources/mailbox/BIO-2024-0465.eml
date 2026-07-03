@@ -1,0 +1,62 @@
+Message-ID: <CA+7wUswmAyMTWaOwk2obAy73RmSxWuJMzpq79q4tP6Xejf2qfw@mail.gmail.com>
+X-Clawbench-ID: BIO-2024-0465
+Date: Tue, 1 Feb 2022 10:10:56 +0100
+From: Mathieu Malaterre <malat@debian.org>
+To: Andreas Tille <andreas@an3as.eu>
+Subject: Re: Problems finding RocksDBConfig.cmake (Was: sortmerna: "/usr/bin/ld: cannot find -lpthreads")
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_02_msg00001.html
+
+On Tue, Feb 1, 2022 at 10:00 AM Andreas Tille  wrote:
+>
+> Hi again,
+>
+> Am Mon, Jan 31, 2022 at 02:02:24PM +0100 schrieb Mathieu Malaterre:
+> > > CMake Error at cmake/modules/FindRapidJson.cmake:37 (string):
+> > >   string sub-command REGEX, mode MATCH needs at least 5 arguments total to
+> > >   command.
+> >
+> > Upstream is doing very odd stuff...
+>
+> ACK.
+>
+> >  % dpkg -L rapidjson-dev | grep cmake
+> > /usr/share/cmake
+> > /usr/share/cmake/RapidJSON
+> > /usr/share/cmake/RapidJSON/RapidJSONConfig.cmake
+> > /usr/share/cmake/RapidJSON/RapidJSONConfigVersion.cmake
+> >
+> > So I simply remove the dummy FindRapidJson from upstream and prefer
+> > the one ship in Debian package.
+> >
+> > Just git pull my commit and let me know how it goes.
+>
+> Thanks to your patch I was able to make some progress and added
+> further patches. Now I'm struck again since the build system injects
+> some `-static` option.  I checked
+
+I can see your patch `no_static_linking.patch` which seems to be
+missing the PORTABLE option. This one needs to be set to "OFF"
+
+>
+> /build/sortmerna-4.3.4# grep -- -static obj-x86_64-linux-gnu/src/sortmerna/CMakeFiles/sortmerna.dir/link.txt
+> /usr/bin/c++ -g -O2 -ffile-prefix-map=/build/sortmerna-4.3.4=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -W -Wextra -Wall -Xlinker -v -Wl,-z,relro -Wl,-z,now -static CMakeFiles/sortmerna.dir/main.cpp.o ../../CMakeFiles/build_version.dir/build_version.cpp.o CMakeFiles/smr_objs.dir/alignment.cpp.o CMakeFiles/smr_objs.dir/bitvector.cpp.o CMakeFiles/smr_objs.dir/cmd.cpp.o CMakeFiles/smr_objs.dir/izlib.cpp.o CMakeFiles/smr_objs.dir/index.cpp.o CMakeFiles/smr_objs.dir/indexdb.cpp.o CMakeFiles/smr_objs.dir/kseq_load.cpp.o CMakeFiles/smr_objs.dir/kvdb.cpp.o CMakeFiles/smr_objs.dir/options.cpp.o CMakeFiles/smr_objs.dir/output.cpp.o CMakeFiles/smr_objs.dir/summary.cpp.o CMakeFiles/smr_objs.dir/paralleltraversal.cpp.o CMakeFiles/smr_objs.dir/processor.cpp.o CMakeFiles/smr_objs.dir/read.cpp.o CMakeFiles/smr_objs.dir/readfeed.cpp.o CMakeFiles/smr_objs.dir/readstats.cpp.o CMakeFiles/smr_objs.dir/references.cpp.o CMakeFiles/smr_objs.dir/refstats.cpp.o CMakeFiles/smr_objs.dir/ssw.c.o CMakeFiles/smr_objs.dir/traverse_bursttrie.cpp.o CMakeFiles/smr_objs.dir/util.cpp.o CMakeFiles/smr_objs.dir/otumap.cpp.o CMakeFiles/smr_objs.dir/report.cpp.o CMakeFiles/smr_objs.dir/report_fx_base.cpp.o CMakeFiles/smr_objs.dir/report_fastx.cpp.o CMakeFiles/smr_objs.dir/report_fx_other.cpp.o CMakeFiles/smr_objs.dir/report_blast.cpp.o CMakeFiles/smr_objs.dir/report_denovo.cpp.o CMakeFiles/smr_objs.dir/report_biom.cpp.o CMakeFiles/smr_objs.dir/report_sam.cpp.o ../../3rdparty/alp/CMakeFiles/alp.dir/njn_dynprogprob.cpp.o ../../3rdparty/alp/CMakeFiles/alp.dir/njn_dynprogproblim.cpp.o ../../3rdparty/alp/CMakeFiles/alp.dir/njn_dynprogprobproto.cpp.o ../../3rdparty/alp/CMakeFiles/alp.dir/njn_ioutil.cpp.o ../../3rdparty/alp/CMakeFiles/alp.dir/njn_localmaxstat.cpp.o ../../3rdparty/alp/CMakeFiles/alp.dir/njn_localmaxstatmatrix.cpp.o ../../3rdparty/alp/CMakeFiles/alp.dir/njn_localmaxstatutil.cpp.o ../../3rdparty/alp/CMakeFiles/alp.dir/njn_random.cpp.o ../../3rdparty/alp/CMakeFiles/alp.dir/sls_alignment_evaluer.cpp.o ../../3rdparty/alp/CMakeFiles/alp.dir/sls_alp.cpp.o ../../3rdparty/alp/CMakeFiles/alp.dir/sls_alp_data.cpp.o ../../3rdparty/alp/CMakeFiles/alp.dir/sls_alp_regression.cpp.o ../../3rdparty/alp/CMakeFiles/alp.dir/sls_alp_sim.cpp.o ../../3rdparty/alp/CMakeFiles/alp.dir/sls_basic.cpp.o ../../3rdparty/alp/CMakeFiles/alp.dir/sls_pvalues.cpp.o -o sortmerna  ../../3rdparty/cmph/CMakeFiles/cmph.dir/bdz.c.o ../../3rdparty/cmph/CMakeFiles/cmph.dir/bdz_ph.c.o ../../3rdparty/cmph/CMakeFiles/cmph.dir/bmz.c.o ../../3rdparty/cmph/CMakeFiles/cmph.dir/bmz8.c.o ../../3rdparty/cmph/CMakeFiles/cmph.dir/brz.c.o ../../3rdparty/cmph/CMakeFiles/cmph.dir/buffer_entry.c.o ../../3rdparty/cmph/CMakeFiles/cmph.dir/buffer_manager.c.o ../../3rdparty/cmph/CMakeFiles/cmph.dir/chd.c.o ../../3rdparty/cmph/CMakeFiles/cmph.dir/chd_ph.c.o ../../3rdparty/cmph/CMakeFiles/cmph.dir/chm.c.o ../../3rdparty/cmph/CMakeFiles/cmph.dir/cmph.c.o ../../3rdparty/cmph/CMakeFiles/cmph.dir/cmph_structs.c.o ../../3rdparty/cmph/CMakeFiles/cmph.dir/compressed_rank.c.o ../../3rdparty/cmph/CMakeFiles/cmph.dir/compressed_seq.c.o ../../3rdparty/cmph/CMakeFiles/cmph.dir/fch.c.o ../../3rdparty/cmph/CMakeFiles/cmph.dir/fch_buckets.c.o ../../3rdparty/cmph/CMakeFiles/cmph.dir/graph.c.o ../../3rdparty/cmph/CMakeFiles/cmph.dir/hash.c.o ../../3rdparty/cmph/CMakeFiles/cmph.dir/jenkins_hash.c.o ../../3rdparty/cmph/CMakeFiles/cmph.dir/miller_rabin.c.o ../../3rdparty/cmph/CMakeFiles/cmph.dir/select.c.o ../../3rdparty/cmph/CMakeFiles/cmph.dir/vqueue.c.o ../../3rdparty/cmph/CMakeFiles/cmph.dir/vstack.c.o /usr/lib/x86_64-linux-gnu/librocksdb.so.6.25.3 -ldl /usr/lib/x86_64-linux-gnu/libz.so
+>
+>
+> so it seems the `-static` is injected right after the hardening flags
+> that are propagated by the Debian build flags.  My patch[1] prevented
+> explicite extra `-static` parameters next to libz.so and librocksdb.so -
+> but I have no idea how to prevent that last remaining of the unwanted
+> option.
+>
+> Kind regards
+>
+>      Andreas.
+>
+> [1] https://salsa.debian.org/med-team/sortmerna/-/blob/master/debian/patches/no_static_linking.patch
+>
+> --
+> http://fam-tille.de
+>

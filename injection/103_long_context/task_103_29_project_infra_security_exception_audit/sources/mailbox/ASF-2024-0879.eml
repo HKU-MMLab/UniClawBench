@@ -1,0 +1,25 @@
+Message-ID: <CALK=YjMesGEi+YVj0od5jOyzDpc_rufp9GFPZ8zA34bS1JidZw@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0879
+Date: Thu, 3 Mar 2022 09:10:34 -0500
+From: Eric Covener <covener@gmail.com>
+To: Apache HTTP Server Development List <dev@httpd.apache.org>
+Subject: Re: c99
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-03.mbox
+
+On Thu, Mar 3, 2022 at 8:54 AM Jim Jagielski <jim@jagunet.com> wrote:
+>
+> I'm guessing we all heard the news that Linux is switching
+> to c99 from c89.
+>
+> Time for us to consider it as well?
+
+I thought they were skipping over c99 and going to c11.
+I think httpd has an extra wrinkle with legacy OS and compiler
+combinations (I certainly do in the distribution I look after).
+
+It would be nice to keep it optional (like the PCRE thing) or limited
+to new modules or something post-2.4 but I recognize those are all
+kind of a lot to ask.

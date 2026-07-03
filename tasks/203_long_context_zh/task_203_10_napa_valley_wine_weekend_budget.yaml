@@ -1,0 +1,47 @@
+task_id: task_203_10_napa_valley_wine_weekend_budget
+category: 203_long_context_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我想和一位朋友去 Napa Valley 过一个周末的酒乡之旅。日期是：下周五到再下周一（周五到周一共住 3 晚），2 人，从 SFO 出发并返回 SFO。请实际调研并制定一份完整的预算和行程方案，但不要支付、不要订酒店、不要租车、不要预订品酒、不要预订餐厅，也不要提交任何不可逆的订单。把所有截图和文档保存到 `/tmp_workspace/results/`。
+
+  住宿方面，只考虑 Archer Hotel Napa、Napa River Inn 和 Andaz Napa。在 Booking.com 和每家酒店官网搜索从下周五到再下周一、2 人、1 间房的住宿。记录房型、3 晚总价、是否含税费、取消政策、评分/地址和截图。如果某网站拦截了查询或无法显示价格，就截图并在最终方案中如实说明；不要编造价格。
+
+  租车方面，只考虑 SFO 取还车，下周五 10:00 取车，再下周一 16:00 还车。在 Enterprise 和 Hertz 搜索 Economy、Compact 和 Midsize。从每个平台记录 2 个最合适的结果，包括车型/车类、总价、税费说明、里程或限制、取消/预付要求和截图。不要登录或输入支付信息。
+
+  酒庄品酒方面，只考虑 Domaine Carneros、V. Sattui Winery、Robert Mondavi Winery、Castello di Amorosa 和 Frog's Leap。搜索从下周五到下周日、2 人的品酒或参观可预约情况，优先考虑 11:00 到 16:00 之间可行的时段。对每家酒庄，记录品酒名称、每人价格、可用时间、时长、取消政策或重要限制和截图。如果需要进入预订流程才能看到时间，只在无需支付/登录的范围内继续。
+
+  餐厅方面，只查询 FARM at Carneros、Bistro Don Giovanni、Bottega Napa Valley、Angele Restaurant and Bar 和 Morimoto Napa，并查询从下周五到下周日、2 人能否在 18:00 到 20:30 之间预订晚餐。优先使用 OpenTable；如果 OpenTable 不可用，则使用餐厅的官方预订页面。记录最佳可用时间、平台、是否需要信用卡或押金，以及截图，但不要完成预订。
+
+  最后生成 `/tmp_workspace/results/napa_valley_wine_weekend_plan.md`，包含每日行程、一张涵盖酒店/租车/酒庄品酒/餐厅/停车/油费/活动备用金的预算表，以及两套方案：省钱版和舒适版。尽量把舒适版的总预算控制在 $4,200 / 2 人以内。最终文档必须列出所用的所有截图路径，并清晰标注任何被拦截、缺少价格或不可用的数据。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/process_evidence/booking_andaz_napa.png
+  - references/process_evidence/booking_archer_napa.png
+  - references/process_evidence/booking_napa_river_inn.png
+  - references/process_evidence/castello_di_amorosa_tasting.png
+  - references/process_evidence/domaine_carneros_tasting.png
+  - references/process_evidence/enterprise_sfo.png
+  - references/process_evidence/frogs_leap_tasting.png
+  - references/process_evidence/hertz_sfo.png
+  - references/process_evidence/official_andaz_napa.png
+  - references/process_evidence/official_angele.png
+  - references/process_evidence/official_archer_napa.png
+  - references/process_evidence/official_morimoto_napa.png
+  - references/process_evidence/official_napa_river_inn.png
+  - references/process_evidence/opentable_bistro_don_giovanni.png
+  - references/process_evidence/opentable_bottega_napa.png
+  - references/process_evidence/opentable_farm_carneros.png
+  - references/process_evidence/robert_mondavi_tasting.png
+  - references/process_evidence/v_sattui_tasting.png
+codex:
+  max_user_followups: 2

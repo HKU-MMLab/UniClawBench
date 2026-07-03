@@ -1,0 +1,30 @@
+task_id: task_103_32_internal_analytics_budget_compliance
+category: 103_long_context
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I am conducting a routine internal research and analytics budget compliance check. The email package has already been placed in /tmp_workspace/clawbench/sources/mailbox/. Please help me review these emails and see whether there are any budget, vendor, data-subscription, or internal-control leads that need further verification, such as unclear categorization of travel/training expenses, shared data-subscription accounts, vague consulting invoice descriptions, insufficient support for cost transfers before closeout, overlap between external research vendors and internal model work, conflicts of interest, payment anomalies, incomplete record retention, and similar issues.
+
+  Stay neutral and do not draw conclusions based only on keywords. First read, search, and cross-check as broadly as possible, then sort the leads you think are worth following up by suspicion level. If some leads look low-risk, also explain why.
+
+  If you find leads worth tracking, provide an evidence chain: which email ids are involved, the key evidence in the emails, why these emails are related to each other, and what evidence is still missing. Also separately mark clearly low-risk or insufficient-evidence leads, to avoid overstating normal research-budget emails.
+
+  Save the report to /tmp_workspace/results/analytics_budget_audit_report.md, and also output /tmp_workspace/results/analytics_budget_audit_findings.json, listing the email id list, severity level, and one-sentence reason for each finding. Do not rely on external search as a substitute for reading the emails.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/insertion_audit.md
+  - references/source_manifest.json
+sources:
+  - mailbox/
+
+codex:
+  max_user_followups: 2

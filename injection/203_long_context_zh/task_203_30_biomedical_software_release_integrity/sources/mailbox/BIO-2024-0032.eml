@@ -1,0 +1,85 @@
+Message-ID: <Y9z4ma04ZRxaS/hE@an3as.eu>
+X-Clawbench-ID: BIO-2024-0032
+Date: Fri, 3 Feb 2023 13:05:45 +0100
+From: Andreas Tille <tille@debian.org>
+To: Pierre Gruet <pgt@debian.org>
+Subject: Re: Snippy autopkgtest claims that snpeff is version 0
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_02_msg00009.html
+
+Hi Pierre,
+
+Am Fri, Feb 03, 2023 at 11:32:07AM +0100 schrieb Pierre Gruet:
+> > [16:13:15] Found snippy-vcf_to_tab - /usr/bin/snippy-vcf_to_tab
+> > [16:13:15] Found snippy-vcf_report - /usr/bin/snippy-vcf_report
+> > [16:13:15] Checking version: samtools --version is >= 1.7 - ok, have 1.16
+> > [16:13:15] Checking version: bcftools --version is >= 1.7 - ok, have 1.16
+> > [16:13:15] Checking version: freebayes --version is >= 1.1 - ok, have 1.3.6
+> > [16:13:15] Need snpEff -version >= 4.3 but you have 0 - please upgrade it.
+> > autopkgtest [16:13:16]: test run-unit-test: -----------------------]
+> >
+> > I have no idea what this might mean.
+>
+> In fact it turns out snpeff itself is not installable on i386. I just tried
+> to apt-get install snpeff in an i386 chroot and I got
+
+Strange that this log is that different from s390x where the
+installation issue is more direct, but in principle the same.
+
+> -------------------------------8
+> Reading package lists...
+> Building dependency tree...
+> Reading state information...
+> Some packages could not be installed. This may mean that you have
+> requested an impossible situation or if you are using the unstable
+> distribution that some required packages have not yet been created
+> or been moved out of Incoming.
+> The following information may help to resolve the situation:
+>
+> The following packages have unmet dependencies:
+>  libngs-java : Depends: libngs-jni (>= 3.0.3+dfsg-4) but it is not
+> installable
+>                Depends: libngs-jni ( installable
+> E: Unable to correct problems, you have held broken packages.
+> Command apt-get --dry-run install -- snpeff exited with exit code 1.
+>
+> -------------------------------8
+> libngs-jni and libngs-java are built from src:sra-sdk, of which binaries are
+> only for amd64 and arm64, see [3]. Thus we could ignore autopkgtest failures
+> on arches other than amd64 and arm64 for snippy -- although I cannot explain
+> right now how its autopkgtests are passing on armel for instance, as
+> libngs-jni is unavailable there.
+
+I think with this explanation the conclusion should be
+
+diff --git a/debian/tests/control b/debian/tests/control
+index cd113c6..fd46ed1 100644
+--- a/debian/tests/control
++++ b/debian/tests/control
+@@ -1,4 +1,4 @@
+ Tests: run-unit-test
+ Depends: @
+ Restrictions: allow-stderr, skip-not-installable
+-Architecture: !s390x
++Architecture: amd64 arm64
+
+which I'll upload soon.
+
+> Would you have time today, you can take a decision if it is obvious to you.
+> Else I will look at it during the weekend!
+
+IMHO we need to decide whether we should ship snpeff version 5.0 rather
+than 5.1 to deal with bug #1029202.  May be you can estimate the effort
+needed for this change?  I have no idea how many applications besides
+snippy are suffering from this issue but it does not sound good.
+
+Kind regards
+    Andreas.
+
+> [3] https://buildd.debian.org/status/package.php?p=sra-sdk
+
+
+--
+http://fam-tille.de

@@ -1,0 +1,21 @@
+Message-ID: <7b106f00-0fb7-de67-c7ea-1aa3b80b9540@apache.org>
+X-Clawbench-ID: ASF-2024-1086
+Date: Thu, 25 Jan 2024 08:04:31 +0100
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: PR #363
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-01.mbox
+
+On 1/24/24 11:31 PM, Rich Bowen wrote:
+> Well, it turns out that in order for this to actually work, we would need to rename README to README.md, so I'm inclined to revert
+> this change unless someone thinks differently.
+
+How about using a symlink? Keep README and create a README.md symlink to it?
+But I am not sure if github handles this correctly.
+
+Regards
+
+Rüdiger

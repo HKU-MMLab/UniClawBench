@@ -1,0 +1,21 @@
+Message-ID: <OFAB0F76E6.9601123A-ONC12587AC.00241CDA-C12587AC.002930F9@ibm.com>
+X-Clawbench-ID: ASF-2024-0967
+Date: Wed, 15 Dec 2021 09:29:55 +0200
+From: "Arnaud Le Hors" <lehors@us.ibm.com>
+To: "Eric Covener" <covener@gmail.com>
+Subject: RE: Free MFA hardware tokens for your project
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2021-12.mbox
+
+> > By **2021-12-20** and preferably much sooner, please let me know
+> > for HttpCore and HttpClient:
+>
+> Wrong mailing list or wrong projects?   The above are dev@hc.apache.org
+
+This is really meant for Httpd. Please, ignore the reference to HttpCore
+and HttpClient in the text. Sorry about the confusion.
+--
+Arnaud  Le Hors - Senior Technical Staff Member - Open Technologies:
+Blockchain, Edge Computing, Web - IBM

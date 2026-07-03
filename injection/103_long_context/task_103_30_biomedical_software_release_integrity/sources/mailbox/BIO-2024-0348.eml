@@ -1,0 +1,32 @@
+Message-ID: <YZFtPbLOJgI+yP53@an3as.eu>
+X-Clawbench-ID: BIO-2024-0348
+Date: Sun, 14 Nov 2021 21:10:37 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Progress in merging neurodebian team?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_11_msg00081.html
+
+Am Mon, Nov 15, 2021 at 12:53:42AM +0530 schrieb Nilesh Patra:
+>
+> It cannot be easily updated to a new release now, since it needs a newer sklearn.
+> And having ternsorflow and keras both is a plus, since it has utilities for both.
+> Need to patch it. I wonder if I should just create another branch and upload to address
+> bug#999515?
+
+Feel free to just revert the upstream version bump - everything from
+routine-update should be OK.
+
+> In any case, please consider to not version bump packages when you move namespaces, provided
+> they are maintained fine already.
+
+You are right, sorry.
+
+Kind regards
+
+      Andreas.
+
+--
+http://fam-tille.de

@@ -1,0 +1,132 @@
+Message-ID: <23760cd5-dd85-3a30-ccd4-2e7274de6b5c@debian.org>
+X-Clawbench-ID: BIO-2024-1448
+Date: Thu, 4 Nov 2021 11:48:45 +0200
+From: Andrius Merkys <merkys@debian.org>
+To: debian-science@lists.debian.org
+Subject: Re: Debian Math Team
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_11_msg00032.html
+
+Hi Andreas,
+
+Thanks for finding time to reply to my worries.
+
+On 2021-11-01 16:19, Andreas Tille wrote:
+>   1. Another "one-man" team
+>      I think Ole gave a good answer here:  Its not about creating a
+>      one-man team but rather attract more people to the team - from
+>      inside and outside Debian.  For those who have any doubt that this
+>      can work:  There are 23 people who confirmed, that they became
+>      DDs *because* Debian Med exists[4].  Debian Med is now nearly
+>      20 years old.  I would love if Debian Math would beat Debian Med
+>      in attracting new developers.  (Andrius, you even belong to this
+>      set. ;-) )
+
+It is true that I am among these 23 :) My reason for being in the list
+is mostly pragmatical: it was Debian Med people who signed my key and
+advocated me to become a DD, and for this I am very grateful. I believe
+being very open and very friendly to newcomers is one of the strongest
+sides of Debian Med.
+
+>      Those 20 years when the Debian Med project have teached me that
+>      it is very important to advertise the fact to the world that Debian
+>      is targeting specific fields of science and IMHO mathematics is
+>       a) well worth to be advertised
+>       b) has lots of technically competent people beeing potential DDs
+>
+>   2. Further fragmentation of debian-science
+>      I do not think that another Blend will lead to fragmentation of
+>      Debian Science.  Sure, some mathematics related packages will be
+>      moved sooner or later but I personally can not see in how far
+>      this might weaken Debian Science.  I personally see also additional
+>      contributors for Debian Science once more mathematicans might
+>      join Debian (as I'm very positive about).
+>
+> Am Sat, Oct 30, 2021 at 06:18:28PM +0530 schrieb Nilesh Patra:
+>> Hi Andrius,
+>>
+>> Thanks for replying. See below :-
+>>
+>> On Sat, Oct 30, 2021 at 10:33:02AM +0300, Andrius Merkys wrote:
+
+I am skipping most of your replies to Nilesh's response to my mail. I
+ACK the skipped parts.
+
+>>> Furthermore, from my experience one does not need domain
+>>> knowledge to successfully package and maintain packages in Debian.
+>>> What makes more sense to me, is organizing packages into teams based on
+>>> programming languages and build/test systems, as such teams indeed
+>>> possess specific knowledge. I think most of the mails asking for help in
+>>> debian-med concern language and build system problems, not
+>>> domain-specific issues.
+>>
+>> I'm sorry, but I have to admit this argument of yours is sloppy, Andrius.
+>> By this logic, we could push entire debian-med python packages into python-team,
+>> java packages into java-team and so on...
+>
+> While this would work in principle the point of creating a Blend is to
+> attract experts who know the algorithm and internals of a certain
+> software to craft sensible packages and enable thorough testing.  This
+> is usually not simply a programming language issue.  In Debian Med we
+> have several upstreams maintaining their software as Debian packages
+> (after sufficient teaching of the packaging process and for sure
+> sponsored by a DD).  IMHO exactly this is the strength of the Blends
+> concept to pair experts of the software with packaging experts.  Even
+> better if this can be completed to involve users into that effort which
+> does not (yet) work as good as expected (but this has IMHO more external
+> reasons which we can hardly solve).
+
+I see your point. However I am not entirely convinced that teams are
+essential here. Maybe separate mailing lists could be enough? In the end
+upstreams mostly work on one-two source packages, and even if they
+become DMs they do not get push/upload permissions for all source
+packages of a team, do they? Domain-specific mailing lists could indeed
+be a go-to place for newcomers, those in need of help with packaging and
+sponsoring and so on.
+
+>>> I am worried reading about R packages being moved from debian-r to new
+>>> debian-math. I am afraid doing so might negatively impact their quality.
+>>
+>> You are right in your worries, but I have some statistics to present here.
+>> See here[1] or more specifically, look here[2,3]
+>
+> I'm not worried about moving R packages to some other Blend.  It has
+> turned out to be a good idea to move all R packages from Debian Science,
+> Debian Med Debichem and possibly others into one language specific team.
+> However, this had happened since R packages are extremely uniform and
+> usually come with test suites that can be re-used which to some extend
+> is taking over the role of an expert knowing the software.  There are
+> also not really any specific decisions to make about the packaging since
+> everything is really straightforward.
+>
+> This is absolutely different to software written in Python, Java or
+> anything else.
+
+I disagree. I find at least JavaScript and Perl packages quite uniform,
+and I have an impression that at least Perl packages outside the Debian
+Perl Team are generally in poorer shape than those inside the team.
+
+>> The number of pure math software in R package team is in no way overflowing, so I really think this should
+>> be manageable. The probability of it having a bit-rot will be less -- atleast not high with me, Andreas, Doug et. al.
+>> being around.
+>>
+>> However if you very strongly feel about it, we could leave the R packages where they are and continue maintaining
+>> them under R package umbrella.
+>
+> I'd say any Debian Math member who is interested in R packages should
+> simply join pkg-r team and be done.
+
+Agree.
+
+>> [1]: http://blends.debian.net/liststats/
+>> [2]: http://blends.debian.net/liststats/uploaders_r-pkg.png
+>> [3]: http://blends.debian.net/liststats/commitstat_pkg-r.png
+>
+> [4] https://wiki.debian.org/DebianMed/Developers
+
+Thanks again for discussing this with me!
+
+Cheers,
+Andrius

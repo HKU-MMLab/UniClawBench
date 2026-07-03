@@ -1,0 +1,24 @@
+Message-ID: <YtZtoEy3Hr5gr7pb@an3as.eu>
+X-Clawbench-ID: BIO-2024-0536
+Date: Tue, 19 Jul 2022 10:38:56 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: "Maarten L. Hekkelman" <maarten@hekkelman.com>,	Debian Med Project List <debian-med@lists.debian.org>
+Subject: Upgrading dssp, cif-tools, density-fitness and others
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_07_msg00031.html
+
+Hi Maarten,
+
+I realised that several packages you are Uploader (and upstream author?)
+for have new version numbers.  Would you mind updating this software
+stack?  Its not really urgent - I just wanted to express that I will not
+touch these in my current attempt to upgrade our outdated packages.
+
+Kind regards
+
+      Andreas.
+
+--
+http://fam-tille.de

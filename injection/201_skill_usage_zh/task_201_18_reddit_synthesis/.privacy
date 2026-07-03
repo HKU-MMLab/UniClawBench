@@ -1,0 +1,7 @@
+# Env vars required by this task.
+# Values are resolved from configs/privacy.local.env at runtime.
+# SNAPSHOT_MODE is declared (boolean flag, may be empty) so the framework
+# correctly gates reddit_snapshot.json injection: when SNAPSHOT_MODE is
+# unset/empty the executor must hit reddit's public JSON API live; only
+# when SNAPSHOT_MODE=1 is the snapshot file copied into the container.
+SNAPSHOT_MODE

@@ -1,0 +1,31 @@
+Message-ID: <YprM/T1KoD2GstKD@debian>
+X-Clawbench-ID: BIO-2024-1436
+Date: Sat, 4 Jun 2022 08:39:49 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: Added autopkgtests for gifticlib
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_06_msg00007.html
+
+On Fri, Jun 03, 2022 at 10:33:27PM +0200, Étienne Mollier wrote:
+> Please mark the package ready to upload to "unstable" instead of
+> the current "UNRELEASED" in the d/changelog when you consider
+> the package ready for upload, and I (or anyone beating me at
+> it :) will upload that for you.
+
+I just allowed him to do so himself :)
+
+| $ dcut dm --uid mdbilal@disroot.org --allow gifticlib
+| Uploading commands file to ftp.upload.debian.org (incoming: /pub/UploadQueue/)
+| Picking DM Mohammed Bilal  with fingerprint 2D65BC1EB9665A6E97F9730AB3F5945285219E1F
+| Uploading nilesh-1654311986.dak-commands to ftp-master
+
+> Have a nice day both,  :)
+
+You too!
+
+--
+Best,
+Nilesh

@@ -1,0 +1,58 @@
+{
+  "task_id": "task_102_18_pitch_deck_theme",
+  "note": "Objective answer key. Numbers computed from the SHIPPED reveal.js theme CSS (sources/theme_css/*.css) by references/reference_analysis.py: WCAG contrast on the themes' --r-* CSS variables, and CIE76 deltaE of the link/accent color to the climate-green brand. Offline + frozen -> deterministic. Grade ordinal outcomes; absolute numbers vary by method.",
+
+  "use_case": "Climate-tech startup investor PITCH deck. Brand accent target #2EAA78 (green/teal).",
+  "hard_constraints": {
+    "HC1_dark_professional": "dark background (background-color luminance < 0.2)",
+    "HC2_body_text_contrast": "body text contrast vs background >= 7.0 (AAA — legible projected in a room)",
+    "HC3_heading_contrast": "heading contrast vs background >= 7.0",
+    "HC4_accent_contrast": "link/accent color contrast vs background >= 4.5 (AA — used for emphasis/CTA)"
+  },
+  "soft_constraints": {
+    "SC1_brand_alignment": "prefer the smaller CIE76 deltaE between the theme's link/accent color and the brand target #2EAA78",
+    "SC2_max_min_contrast": "prefer the higher minimum of (text/heading/accent) contrast"
+  },
+
+  "per_candidate": [
+    {"id":"league","dark":true,"text_contrast":14.41,"heading_contrast":14.41,"accent_contrast":9.77,"brand_dE":42.3,"hard_pass":true,"fails":[],"note":"dark, all contrasts strong, accent is a teal/cyan closest to the climate-green brand"},
+    {"id":"night","dark":true,"text_contrast":18.88,"heading_contrast":18.88,"accent_contrast":9.44,"brand_dE":69.7,"hard_pass":true,"fails":[],"note":"dark, great contrast, but orange accent is far from the green brand"},
+    {"id":"black","dark":true,"text_contrast":17.58,"heading_contrast":17.58,"accent_contrast":7.32,"brand_dE":73.7,"hard_pass":true,"fails":[],"note":"dark, strong, but blue accent off-brand"},
+    {"id":"dracula","dark":true,"text_contrast":16.49,"heading_contrast":7.29,"accent_contrast":7.37,"brand_dE":109.9,"hard_pass":true,"fails":[],"note":"dark, passes, but pink accent is the farthest from brand"},
+    {"id":"moon","dark":true,"text_contrast":5.61,"heading_contrast":12.25,"accent_contrast":4.08,"brand_dE":74.2,"hard_pass":false,"fails":["HC2 text 5.61<7","HC4 accent 4.08<4.5"],"trap":"dark but the body text contrast is too low for projection"},
+    {"id":"simple","dark":false,"text_contrast":21.0,"heading_contrast":21.0,"accent_contrast":15.3,"brand_dE":136.6,"hard_pass":false,"fails":["HC1 not dark"],"trap":"HIGHEST contrast of all (21!) and very clean — but it's a LIGHT theme, fails the dark/professional brand requirement"},
+    {"id":"white","dark":false,"text_contrast":15.91,"heading_contrast":15.91,"accent_contrast":4.44,"brand_dE":96.8,"hard_pass":false,"fails":["HC1 not dark","HC4 accent 4.44<4.5"],"trap":"light theme"},
+    {"id":"serif","dark":false,"text_contrast":18.49,"heading_contrast":9.71,"accent_contrast":7.89,"brand_dE":57.1,"hard_pass":false,"fails":["HC1 not dark"],"trap":"light/academic"},
+    {"id":"beige","dark":false,"text_contrast":11.33,"heading_contrast":11.33,"accent_contrast":4.04,"brand_dE":51.7,"hard_pass":false,"fails":["HC1 not dark","HC4 accent 4.04<4.5"],"trap":"light"},
+    {"id":"sky","dark":false,"text_contrast":12.13,"heading_contrast":12.13,"accent_contrast":4.26,"brand_dE":96.8,"hard_pass":false,"fails":["HC1 not dark","HC4 accent 4.26<4.5"],"trap":"light"},
+    {"id":"solarized","dark":false,"text_contrast":4.13,"heading_contrast":4.99,"accent_contrast":3.41,"brand_dE":74.2,"hard_pass":false,"fails":["HC1 not dark","HC2 text 4.13<7","HC3 head 4.99<7","HC4 accent 3.41<4.5"],"trap":"low-contrast light theme — fails almost everything"}
+  ],
+
+  "hard_pass_survivors": ["black","dracula","league","night"],
+  "tiebreak": {
+    "league": {"brand_dE":42.3,"min_contrast":9.77},
+    "night":  {"brand_dE":69.7,"min_contrast":9.44},
+    "black":  {"brand_dE":73.7,"min_contrast":7.32},
+    "dracula":{"brand_dE":109.9,"min_contrast":7.29},
+    "winner": "league",
+    "reason": "Among the four dark themes that pass all hard constraints, league wins BOTH soft criteria: its teal/cyan accent is the closest to the climate-green brand (deltaE 42.3, far ahead of the next at 69.7) AND it has the highest minimum contrast (9.77)."
+  },
+
+  "gold": {
+    "selected_id": "league",
+    "acceptable_alternative": "night or black (other hard-pass dark survivors) WITH an explicit tradeoff noting their accent is off-brand and a custom accent override would be needed -> up to ~0.85",
+    "key_facts": {
+      "simple_is_a_trap": "highest contrast (21) but a LIGHT theme -> fails the dark/professional requirement; must not be picked just because its numbers are best",
+      "survivors": ["black","dracula","league","night"],
+      "optimal": "league (closest to brand + best readability among darks)"
+    }
+  },
+
+  "scoring_anchors": {
+    "must_reject_with_reason": ["simple","solarized","moon"],
+    "must_identify_survivors": ["black","dracula","league","night"],
+    "optimal_selection": "league",
+    "min_candidates_evaluated": 7,
+    "tolerance_note": "Grade ordinal outcomes: the light themes (simple/white/serif/beige/sky/solarized) fail HC1; moon fails on text contrast; the four dark survivors are black/dracula/league/night; league is optimal on brand alignment + readability. Exact contrast/deltaE numbers vary by method."
+  }
+}

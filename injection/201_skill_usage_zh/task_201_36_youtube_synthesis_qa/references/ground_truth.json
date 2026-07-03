@@ -1,0 +1,169 @@
+{
+  "task_id": "task_101_36_youtube_synthesis_qa",
+  "difficulty": "Hard",
+  "schema": "youtube-multi-video-synthesis",
+  "schema_notes": "Five YouTube transcripts on the same Python virtualenv question; synthesize current best answer with explicit outdated/caveat callouts.",
+  "skills_declared": [
+    "youtube-watcher"
+  ],
+  "ground_truth": {
+    "topic": "How to fix Python virtualenv conflicts on macOS Sonoma in 2024",
+    "expected_final_recommendation": {
+      "tool_name": "uv",
+      "vendor": "Astral",
+      "alias_keywords": [
+        "uv",
+        "Astral uv",
+        "uv from Astral"
+      ],
+      "must_mention_install_method_keywords": [
+        "brew install uv",
+        "astral.sh/uv/install.sh",
+        "Homebrew",
+        "curl"
+      ],
+      "must_mention_setup_keywords": [
+        "uv init",
+        "uv python pin",
+        "uv add",
+        "uv sync",
+        "uv run"
+      ],
+      "min_install_method_keywords_required": 1,
+      "min_setup_keywords_required": 2,
+      "rationale_keywords": [
+        "pre-built",
+        "Rust",
+        "lockfile",
+        "fast",
+        "single binary",
+        "no source build"
+      ],
+      "min_rationale_keywords_required": 2
+    },
+    "must_explicitly_note_outdated": [
+      {
+        "label": "plain venv only (2022 advice)",
+        "matching_keywords": [
+          "venv",
+          "python -m venv"
+        ],
+        "must_state_reason_keywords": [
+          "no version management",
+          "no dependency resolution",
+          "no lockfile",
+          "outdated",
+          "superseded",
+          "legacy"
+        ],
+        "min_reason_keywords_required": 1
+      },
+      {
+        "label": "pyenv + Poetry (2023 advice)",
+        "matching_keywords": [
+          "pyenv",
+          "Poetry",
+          "pyenv + Poetry",
+          "pyenv plus Poetry",
+          "pyenv and Poetry"
+        ],
+        "must_state_reason_keywords": [
+          "Sonoma",
+          "dylib",
+          "linker",
+          "segfault",
+          "compiles from source",
+          "builds Python from source"
+        ],
+        "min_reason_keywords_required": 1
+      }
+    ],
+    "must_explicitly_note_caveat": {
+      "label": "pyenv + Poetry has macOS Sonoma compatibility issue",
+      "must_mention_macos_sonoma": true,
+      "matching_keywords": [
+        "Sonoma",
+        "macOS Sonoma",
+        "Sonoma compatibility"
+      ],
+      "must_state_symptom_keywords": [
+        "dylib",
+        "segfault",
+        "missing-symbol",
+        "missing symbol",
+        "linker",
+        "dynamic library",
+        "openssl",
+        "libffi"
+      ],
+      "min_symptom_keywords_required": 1
+    },
+    "must_cite_videos": [
+      {
+        "video_id": "kJ8nqM3pYwA",
+        "title": "Fixing Python Virtualenv Conflicts: The Classic venv Approach",
+        "alias_keywords": [
+          "kJ8nqM3pYwA",
+          "Classic venv Approach",
+          "video_1"
+        ]
+      },
+      {
+        "video_id": "Lp4xR9zT2mE",
+        "title": "Why Plain venv Is Not Enough Anymore — Switch to pyenv + Poetry in 2023",
+        "alias_keywords": [
+          "Lp4xR9zT2mE",
+          "Plain venv Is Not Enough",
+          "pyenv + Poetry in 2023",
+          "video_2"
+        ]
+      },
+      {
+        "video_id": "Qs7vN4uWxKj",
+        "title": "Warning: pyenv + Poetry Breaks on macOS Sonoma — Here Is What Is Happening",
+        "alias_keywords": [
+          "Qs7vN4uWxKj",
+          "pyenv + Poetry Breaks on macOS Sonoma",
+          "Breaks on macOS Sonoma",
+          "video_3"
+        ]
+      },
+      {
+        "video_id": "Wm5tH7yJqRb",
+        "title": "uv Is the Answer in 2024 — Replacing pyenv, Poetry, and venv on Every Mac",
+        "alias_keywords": [
+          "Wm5tH7yJqRb",
+          "uv Is the Answer in 2024",
+          "Replacing pyenv, Poetry, and venv",
+          "video_4"
+        ]
+      },
+      {
+        "video_id": "Bv2zX8aLpFh",
+        "title": "The Big Picture — A History of Python Packaging from 2008 to Today",
+        "alias_keywords": [
+          "Bv2zX8aLpFh",
+          "History of Python Packaging",
+          "Big Picture",
+          "video_5"
+        ]
+      }
+    ],
+    "min_videos_cited": 4,
+    "min_caveats_in_caveats_section": 1,
+    "expected_caveats_about_recommendation_uv": [
+      "monorepo support is newer / less battle-tested",
+      "no plugin ecosystem yet",
+      "Conda still better for non-Python deps (CUDA, MKL, R)",
+      "uv still under active development"
+    ],
+    "min_uv_caveats_required": 1,
+    "required_sections": [
+      "recommendation",
+      "outdated_callouts",
+      "caveats",
+      "citations"
+    ],
+    "deliverable_path": "/tmp_workspace/results/answer.md"
+  }
+}

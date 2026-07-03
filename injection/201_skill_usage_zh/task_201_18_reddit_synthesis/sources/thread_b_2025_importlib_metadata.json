@@ -1,0 +1,45 @@
+{
+  "captured_at": "2025-11-02T08:41:55Z",
+  "permalink": "https://www.reddit.com/r/learnpython/comments/1gp2xqf/",
+  "post": {
+    "title": "Reposting because the top answer on the old thread is now deprecated — how should I read package version at runtime in 2025?",
+    "author": "noviceCoder_88",
+    "url": "https://www.reddit.com/r/learnpython/comments/1gp2xqf/",
+    "permalink": "/r/learnpython/comments/1gp2xqf/reposting_because_the_top_answer_on_the_old/",
+    "selftext": "A few years ago I asked the same question and the accepted answer was `pkg_resources.get_distribution(\"pkg\").version` (link to the older thread r/learnpython/comments/xbfp9q/ — I can't edit that thread anymore). I've since had two CI builds break because pkg_resources started emitting DeprecationWarnings and then in setuptools 81 (released 2025) it actually started raising on import unless you explicitly opt-in. So the old top answer is no longer the right answer. What's the correct modern way? I'm on Python 3.11 now, using a normal pip-installed package layout.",
+    "num_comments": 26,
+    "score": 142,
+    "subreddit": "learnpython",
+    "created_utc": 1730537715.0
+  },
+  "top_level_comments": [
+    {
+      "id": "lwzr8x4",
+      "author": "stdlib_evangelist",
+      "score": 89,
+      "body": "Yeah, do NOT use pkg_resources anymore. As of setuptools 81 (mid-2025) `import pkg_resources` is officially deprecated and the maintainers have been explicit that it will be removed. The modern, stdlib-only replacement is `importlib.metadata`:\n\n    from importlib.metadata import version\n    v = version(\"your_package_name\")\n\nThis has been in the standard library since Python 3.8, it's faster than pkg_resources because it doesn't scan all of sys.path eagerly, and it has no setuptools dependency at runtime. This is the answer in 2025. The pkg_resources advice you got on the old thread was correct for its time, it just isn't anymore.",
+      "permalink": "/r/learnpython/comments/1gp2xqf/_/lwzr8x4/"
+    },
+    {
+      "id": "lwztb02",
+      "author": "ci_pipeline_jane",
+      "score": 41,
+      "body": "Confirming the breakage — we had three internal libs that called `pkg_resources.get_distribution(...)` on import, and after we picked up setuptools 81 our CI started failing with deprecation warnings escalated to errors. The fix in every case was a one-line swap to `importlib.metadata.version(\"pkg\")`. Took about 20 minutes across the whole monorepo with ruff's UP036 rule.",
+      "permalink": "/r/learnpython/comments/1gp2xqf/_/lwztb02/"
+    },
+    {
+      "id": "lwzudd1",
+      "author": "back_compat_bob",
+      "score": 18,
+      "body": "If you really need to support Python 3.7 (you don't, it's EOL) the backport is `importlib_metadata` from PyPI with the same API. But for 3.8+ just import from the stdlib. Either way, drop pkg_resources.",
+      "permalink": "/r/learnpython/comments/1gp2xqf/_/lwzudd1/"
+    },
+    {
+      "id": "lwzv9c1",
+      "author": "type_safe_tess",
+      "score": 12,
+      "body": "Worth noting `importlib.metadata.version` raises `PackageNotFoundError` if the dist isn't installed (e.g. running from an unbuilt source tree), so wrap it in try/except if your tool can run that way. pkg_resources used to raise DistributionNotFound — same idea, different exception type.",
+      "permalink": "/r/learnpython/comments/1gp2xqf/_/lwzv9c1/"
+    }
+  ]
+}

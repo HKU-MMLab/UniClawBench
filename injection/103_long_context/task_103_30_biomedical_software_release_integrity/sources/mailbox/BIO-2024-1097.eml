@@ -1,0 +1,28 @@
+Message-ID: <Z1wNVVlUricFb0M1@an3as.eu>
+X-Clawbench-ID: BIO-2024-1097
+Date: Fri, 13 Dec 2024 11:32:53 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>,	"Aaron M. Ucko" <ucko@debian.org>
+Subject: Upgrade of sra-sdk
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_12_msg00010.html
+
+Hi Aaron,
+
+while trying to fix bug #1087096 (Python SyntaxWarning) I realised there
+is a new upstream version of sra-sdk.  I somehow got cmake passing after
+adapting some patches (review would be welcome) but not the build
+fails[1] and I have no idea how to fix this.
+
+In case this might be relevant:  I just uploaded ncbi-vdb 3.1.1 to
+experimental - so if this might be helpful its there.
+
+Kind regards
+   Andreas.
+
+[1] https://salsa.debian.org/med-team/sra-sdk/-/jobs/6746442
+
+--
+https://fam-tille.de

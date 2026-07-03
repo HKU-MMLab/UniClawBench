@@ -1,0 +1,28 @@
+Message-ID: <20220831152733.g5zv2vrqtkudj3si@nileshpatra.info>
+X-Clawbench-ID: BIO-2024-1307
+Date: Wed, 31 Aug 2022 20:57:33 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: Mohd Bilal <mdbilal@disroot.org>
+Subject: Re: RFS -- autopkgtest for libncl
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_08_msg00077.html
+
+On Wed, Aug 31, 2022 at 05:59:27PM +0530, Mohd Bilal wrote:
+> Hello team,
+>
+> I've added autopkgtest for libncl[1]. Requesting a review and sponsor for my
+> changes.
+
+Granted you DM access.
+Also, for the libbigwig upload you did yesterday, the autopkgtest
+is failing on some archs.
+
+Can you fix it? (Feel free to upload yourself)
+
+> [1] - https://salsa.debian.org/med-team/libncl
+
+--
+Best,
+Nilesh

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Diffusion Models for Video Generation</title>
+  <link href="assets/css/stylesheet.min.css" rel="preload stylesheet" as="style">
+  <script defer src="assets/js/highlight.min.js"></script>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$','$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] }
+    };
+  </script>
+  <script id="MathJax-script" async src="assets/js/tex-chtml.js"></script>
+  <style>
+    body { max-width: 900px; margin: 0 auto; }
+    .main { padding: 32px 20px 64px; }
+    .post-title { margin-bottom: 1.25rem; }
+    .toc { border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1.25rem; margin: 1.5rem 0 2rem; background: var(--code-bg); }
+    .toc ol { margin: 0.5rem 0 0 1.25rem; }
+    figure { margin: 1.75rem 0; text-align: center; }
+    figure img { max-width: 100%; border-radius: 10px; border: 1px solid var(--border); background: white; }
+    figcaption { margin-top: 0.55rem; color: var(--secondary); font-size: 0.92rem; line-height: 1.45; }
+    .takeaway { border-left: 4px solid #6aa6ff; padding: 0.75rem 1rem; background: var(--code-bg); border-radius: 8px; }
+    .refs li { margin-bottom: 0.6rem; }
+  </style>
+</head>
+<body>
+<main class="main post">
+  <article>
+    <header>
+      <h1 class="post-title">Diffusion Models for Video Generation</h1>
+    </header>
+    <section class="toc">
+      <strong>Table of contents</strong>
+      <ol>
+        <li>Why video generation is harder than image generation</li>
+        <li>Diffusion parameterization and sampling</li>
+        <li>Architectures for spatiotemporal generation</li>
+        <li>Scaling text-to-video systems</li>
+        <li>Latent video diffusion</li>
+        <li>Adapting image diffusion models to video</li>
+        <li>Practical synthesis</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>1. Why video generation is harder than image generation</h2>
+      <p>Video generation inherits the visual fidelity challenge of image generation and adds temporal consistency, motion modeling, long-range dependencies, and much larger compute cost. A useful reading path starts from diffusion models that treat video as a spatiotemporal object, then moves to architectures and adaptation methods that make this objective tractable.</p>
+    </section>
+    <section>
+      <h2>2. Diffusion parameterization and sampling</h2>
+      <p>Video diffusion models extend the image diffusion recipe: add noise to clean video clips, then learn a reverse denoising process. The same design choices remain central, including whether the model predicts noise, clean data, or velocity. Velocity prediction is especially useful as systems scale, because it stabilizes training and sampling across different noise levels.</p>
+      <figure><img src="assets/images/v-param.png" alt="Velocity parameterization for diffusion"><figcaption>Figure 1. Velocity parameterization for diffusion sampling. Source: Video Diffusion / diffusion parameterization material.</figcaption></figure>
+    </section>
+    <section>
+      <h2>3. Architectures for spatiotemporal generation</h2>
+      <p>A video model must mix information across space and time. Early designs naturally extend U-Net blocks into 3D U-Nets, replacing purely spatial operations with spatiotemporal ones. Later systems use factorized temporal layers, space-time U-Nets, or transformer-style blocks to balance quality and compute.</p>
+      <figure><img src="assets/images/3D-U-net.png" alt="3D U-Net architecture"><figcaption>Figure 2. 3D U-Net extends image-like encoder-decoder structure into volumetric or spatiotemporal data. Source: Cicek et al. (2016).</figcaption></figure>
+      <figure><img src="assets/images/lumiere-STUnet.png" alt="Lumiere space-time U-Net"><figcaption>Figure 3. Space-time U-Net for coherent video generation. Source: Bar-Tal et al. (2024), Lumiere.</figcaption></figure>
+    </section>
+    <section>
+      <h2>4. Scaling text-to-video systems</h2>
+      <p>Large text-to-video systems combine a diffusion backbone with text conditioning and often a cascade of spatial or temporal super-resolution modules. Imagen Video and Make-A-Video illustrate two central scaling paths: high-definition cascaded generation and using image-text data plus unlabeled video to reduce the need for paired text-video data.</p>
+      <figure><img src="assets/images/imagen-video.png" alt="Imagen Video architecture"><figcaption>Figure 4. Cascaded high-definition video generation. Source: Ho et al. (2022), Imagen Video.</figcaption></figure>
+      <figure><img src="assets/images/make-a-video.png" alt="Make-A-Video overview"><figcaption>Figure 5. Text-to-video generation without fully paired text-video data. Source: Singer et al. (2022), Make-A-Video.</figcaption></figure>
+    </section>
+    <section>
+      <h2>5. Latent video diffusion</h2>
+      <p>Pixel-space video diffusion is expensive. Latent video diffusion moves generation into a compressed representation, reducing memory and compute while retaining enough visual structure for high-quality synthesis. This mirrors the role latent diffusion played for images, but with stronger pressure from the temporal dimension.</p>
+      <figure><img src="assets/images/video-LDM.png" alt="Video latent diffusion model"><figcaption>Figure 6. Latent video diffusion pipeline. Source: Blattmann et al. (2023), Video LDM.</figcaption></figure>
+    </section>
+    <section>
+      <h2>6. Adapting image diffusion models to video</h2>
+      <p>A second mainline adapts strong image diffusion models rather than training video generators entirely from scratch. Tune-A-Video fine-tunes an image model for one-shot text-to-video generation, while Text2Video-Zero shows that training-free temporal constraints can turn image diffusion into zero-shot video generation.</p>
+      <figure><img src="assets/images/tune-a-video.png" alt="Tune-A-Video method"><figcaption>Figure 7. One-shot tuning of image diffusion models for text-to-video generation. Source: Wu et al. (2023), Tune-A-Video.</figcaption></figure>
+      <figure><img src="assets/images/text2video-zero.png" alt="Text2Video-Zero method"><figcaption>Figure 8. Training-free image-to-video adaptation with motion and attention constraints. Source: Khachatryan et al. (2023), Text2Video-Zero.</figcaption></figure>
+    </section>
+    <section>
+      <h2>7. Practical synthesis</h2>
+      <div class="takeaway"><p><strong>Main takeaway:</strong> video diffusion progress comes from three linked choices: a stable diffusion parameterization, a spatiotemporal architecture, and a compute-efficient adaptation or latent representation.</p></div>
+    </section>
+    <section><h2>References</h2><ol class="refs">
+      <li>Cicek et al. (2016). <em>3D U-Net: Learning Dense Volumetric Segmentation from Sparse Annotation.</em></li>
+      <li>Ho and Salimans et al. (2022). <em>Video Diffusion Models.</em></li>
+      <li>Ho et al. (2022). <em>Imagen Video: High Definition Video Generation with Diffusion Models.</em></li>
+      <li>Singer et al. (2022). <em>Make-A-Video: Text-to-Video Generation without Text-Video Data.</em></li>
+      <li>Blattmann et al. (2023). <em>Align your Latents: High-Resolution Video Synthesis with Latent Diffusion Models.</em></li>
+      <li>Wu et al. (2023). <em>Tune-A-Video: One-Shot Tuning of Image Diffusion Models for Text-to-Video Generation.</em></li>
+      <li>Khachatryan et al. (2023). <em>Text2Video-Zero: Text-to-image diffusion models are zero-shot video generators.</em></li>
+      <li>Bar-Tal et al. (2024). <em>Lumiere: A Space-Time Diffusion Model for Video Generation.</em></li>
+    </ol></section>
+  </article>
+</main>
+</body>
+</html>

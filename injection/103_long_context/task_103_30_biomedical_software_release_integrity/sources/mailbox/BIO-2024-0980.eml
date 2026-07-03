@@ -1,0 +1,58 @@
+Message-ID: <ZKPae6rkDcikMhFy@an3as.eu>
+X-Clawbench-ID: BIO-2024-0980
+Date: Tue, 4 Jul 2023 10:38:19 +0200
+From: Andreas Tille <tille@debian.org>
+To: César Pomar <cesarpomar18@gmail.com>
+Subject: Re: Request for Sponsorship: VeryFastTree - Parallelized and Optimized Version of FastTree
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_07_msg00001.html
+
+Hi César,
+
+thanks again for working on this package.
+
+Am Mon, Jul 03, 2023 at 11:45:07PM +0200 schrieb César Pomar:
+> I have already updated the GitHub repository. I updated the xxhash and
+> robin-map libraries to their latest versions and adjusted the source code
+> to avoid issues.
+
+Very good.  This kind of cooperation with upstream is IMHO a very
+valuable (and perfectly intended) effect of the Debian Med project.
+I've adapted the packaging to use the Debian packaged libs.
+
+> Now we can remove them in Debian and use the packages. I
+> also fixed the linking error in the CMakeLists file and, by the way,
+> allowed default values in CMAKE_CXX_FLAGS, which I suppose was causing the
+> blhc failure. If you believe that there is nothing else to add, tell me,
+> and I will proceed with creating the 4.0.1 release.
+
+Sounds pretty much a sensible point to add a new release tag.  However,
+there is some issue with the CI test you suggested.  I followed your
+suggestion to do the very same test as for fasttree[1].  Unfortunately
+this results in
+
+  TopHits: 1.00*sqrtN close=default refresh=0.80
+  ML Model: Jones-Taylor-Thorton, CAT approximation with 20 rate categories
+  Error parsing header line:
+
+as you can see in the log on salsa[2].
+
+> In the Salsa repository, I tried to modify the rules to ignore AVX2 with
+> ARM, but for some reason, it doesn't seem to recognize the DEB_BUILD_ARCH
+> variable and always uses it. Did I forget something?. I haven't tested it,
+> but otherwise, the source code should be compatible with ARM.
+
+I did not checked (yet) but you might like to have a look into
+SIMDEverywhere[3]
+
+Kind regards
+    Andreas.
+
+[1] https://salsa.debian.org/med-team/veryfasttree/-/blob/master/debian/tests/run-unit-test
+[2] https://salsa.debian.org/med-team/veryfasttree/-/jobs/4394674
+[3] https://wiki.debian.org/SIMDEverywhere
+
+--
+http://fam-tille.de

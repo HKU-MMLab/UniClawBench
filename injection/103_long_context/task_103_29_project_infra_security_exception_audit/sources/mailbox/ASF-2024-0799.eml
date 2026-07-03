@@ -1,0 +1,40 @@
+Message-ID: <Y00CEF1tfn3uWhIe@homeworld.netbsd.org>
+X-Clawbench-ID: ASF-2024-0799
+Date: Mon, 17 Oct 2022 07:19:44 +0000
+From: Emmanuel Dreyfus <manu@netbsd.org>
+To: dev@httpd.apache.org
+Subject: mod_dav_fs performances
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-10.mbox
+
+Hello
+
+I have been badly hit by a performance problem in mod_dav_fs. After a
+few users updated to (RaiDrive/2022.6.56.0), all users reported terrible
+performance, with files taking age to open.
+
+Investigating the problem, we discovered lock contention of the DavLockDB
+file. Too many clients looking up locks, too often. A log analysis show
+that RaiDrive/2022.6.56.0 does much more PROPFIND than other clients.
+PROPFIND involves lock discovery, and lock discovery needs serialized
+access to DavLockDB.
+
+I submitted a proposed fix in
+https://bz.apache.org/bugzilla/show_bug.cgi?id=66313 I
+
+This introduces a DAVLockDiscovery option to optionaly disable lock
+discovery. It uses an apache expession so that the thing can be fine
+tuned, e.g. disabling it for specific UserAgent that exhibit an abusive
+behavior.
+
+When lock discovery is disabled, PROPFIND just returns an empty lock
+discovery section.
+
+I have been testing disabling lock discovery for a week, it works well.
+Performances are good again, and no regression appeared.
+
+--
+Emmanuel Dreyfus
+manu@netbsd.org

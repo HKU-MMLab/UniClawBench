@@ -1,0 +1,34 @@
+Message-ID: <ZWYbRh4W1W4X9zQI@an3as.eu>
+X-Clawbench-ID: BIO-2024-1239
+Date: Tue, 28 Nov 2023 17:54:30 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Could some SnpEff user from the community please ping authors
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_11_msg00036.html
+
+Hi,
+
+we tried to package snippy which has uncovered a bug in SnpEff which we
+have reported upstream[1] with some easily verificable data set and
+command line.  Unfortunately we did not had any response from upstream.
+We even would consider to revert SnpEff version to a working one without
+this regression (like 5.0e).  However, we would like to have the correct
+code base for this release but even asking for proper tagging of the
+code was ignored inside the issue.
+
+I wonder whether some people from the community might be able to join
+our attempt to get this issue fixed and raise their voice inside the
+Github issue (or use other channels) to get this finally fixed.  I guess
+the problem does not only occure in snippy test suite but also in other
+pipelines so the community might be affected by this issue.
+
+Kind regards and thanks for your support
+    Andreas.
+
+[1] https://github.com/pcingola/SnpEff/issues/455
+
+--
+http://fam-tille.de

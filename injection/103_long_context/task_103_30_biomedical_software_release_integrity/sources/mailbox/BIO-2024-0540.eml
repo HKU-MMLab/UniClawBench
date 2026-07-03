@@ -1,0 +1,36 @@
+Message-ID: <20211009195447.pltbf2cnmhpyitok@frifot>
+X-Clawbench-ID: BIO-2024-0540
+Date: Sat, 9 Oct 2021 21:54:47 +0200
+From: Dominik George <natureshadow@debian.org>
+To: Andreas Tille <andreas@an3as.eu>
+Subject: Re: URL is OK in browser but returns 404 with uscan
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00027.html
+
+Hi,
+
+On Sat, Oct 09, 2021 at 09:46:51PM +0200, Andreas Tille wrote:
+> Hi,
+>
+> when I try to visit
+>
+>     https://alkesgroup.broadinstitute.org/BOLT-LMM/downloads/
+>
+> with any browser I get a list of files.  However, the watch file
+> of bolt-lmm[1] pointing to that web page returns:
+
+You don't get a list of files. You get the same 404. Only there is
+JavaScript on the page that in turn loads and renders the list of
+files…
+
+> Any idea how to help uscan reading that web page?
+
+https://storage.googleapis.com/broad-alkesgroup-public?delimiter=/&prefix=BOLT-LMM/downloads/
+gets you a step further.
+
+
+It's a brave new world!
+
+-nik

@@ -1,0 +1,40 @@
+Message-ID: <YYwAxdrFp0m6bYem@an3as.eu>
+X-Clawbench-ID: BIO-2024-0947
+Date: Wed, 10 Nov 2021 18:26:29 +0100
+From: Andreas Tille <tille@debian.org>
+To: Pierre Gruet <pgt@debian.org>
+Subject: Re: Thanks a lot for enabling igv in main [Was: igv_2.6.3+dfsg2-1_amd64.changes ACCEPTED into unstable, unstable]
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_11_msg00055.html
+
+Am Wed, Nov 10, 2021 at 04:57:56PM +0100 schrieb Pierre Gruet:
+> > Sent via private mail to not bloat the list archive with binary files.
+>
+> Thanks! I saw the test failing on your side is a thread safety test. DO you
+> have any idea why it fails on your machine? Are you enabling some
+> multithread features by default...? Just trying to guess.
+
+Not that I'm aware of.  I have some pretty default installation with no
+extra security means.
+
+> > Smells like excluding the test is a sensible thing.  On the other hand
+> > if Salsa-CI and autobuilders would be OK I'd be fine if you do a source
+> > only upload.
+>
+> I should say I am hesitating to remove the test about thread safety, and it
+> is true things are OK on Salsa-CI and on the autobuilders. Yet, before
+> source-only-uploading, I would like to at least dig a bit on the issue you
+> are facing. But if we cannot reproduce it, then I think a source-only upload
+> will be OK.
+
+Please do a source-only upload since I'd love to have a full build and
+if I can not do this myself its better if you do the upload.
+
+Kind regards
+
+    Andreas.
+
+--
+http://fam-tille.de

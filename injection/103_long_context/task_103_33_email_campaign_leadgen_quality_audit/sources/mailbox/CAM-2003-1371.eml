@@ -1,0 +1,55 @@
+Message-ID: <200207231816.OAA21116@blackcomb.panasas.com>
+X-Clawbench-ID: CAM-2003-1371
+Date: Tue, 23 Jul 2002 11:16:24 -0700
+From: Brent Welch <welch@panasas.com>
+To: exmh-users@spamassassin.taint.org
+Subject: Re: Folder computed replcomps (and replgroupcomps
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00705.7ff90bba3250a39362816997bbd728ef
+
+Yes - I was going to suggest the folder change hooks as well.
+Just have them check for your custom comps file, and generate
+or update them if needed.
+
+>>>Hal DeVore said:
+ >
+ >
+ > >>>>> On Fri, 19 Jul 2002, "J" == J C Lawrence wrote:
+ >
+ >   J> What would be great is if I could build the relevant comp
+ >   J> file dynamically at runtime.
+ >
+ > Sure.  Use the "folder change" hooks.  Create a proc named
+ > Hook_FolderChangeSomething (where "Something" is meaningful and
+ > likely to be unique in the universe just in case you distribute
+ > this to others).  Put the proc in a file in your ~/.tk/exmh
+ > directory, regenerate the tclIndex, restart exmh.
+ >
+ > In that proc you can do anything you want, like rewrite your
+ > ~/Mail/comp file.
+ >
+ >
+ > --Hal
+ >
+ >
+ >
+ >
+ > _______________________________________________
+ > Exmh-users mailing list
+ > Exmh-users@redhat.com
+ > https://listman.redhat.com/mailman/listinfo/exmh-users
+
+--
+Brent Welch
+Software Architect, Panasas Inc
+Pioneering the World's Most Scalable and Agile Storage Network
+www.panasas.com
+welch@panasas.com
+
+
+_______________________________________________
+Exmh-users mailing list
+Exmh-users@redhat.com
+https://listman.redhat.com/mailman/listinfo/exmh-users

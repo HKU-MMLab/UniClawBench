@@ -1,0 +1,27 @@
+Message-ID: <YpZMEc2jZiLPRKmv@debian>
+X-Clawbench-ID: BIO-2024-0710
+Date: Tue, 31 May 2022 22:40:41 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: Added autopkgtests for nifticlib
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_05_msg00039.html
+
+On Tue, May 31, 2022 at 10:10:45PM +0530, Mohd Bilal wrote:
+> I've added autopkgtests for nifticlib[1]. Requesting someone to review
+> and sponsor my changes.
+
+Permissions granted, please wait for the mail to arrive.
+Also, disable reprotest in salsa-ci before you upload.
+
+$ dcut dm --uid mdbilal@disroot.org --allow nifticlib
+Uploading commands file to ftp.upload.debian.org (incoming: /pub/UploadQueue/)
+Picking DM Mohammed Bilal  with fingerprint 2D65BC1EB9665A6E97F9730AB3F5945285219E1F
+Uploading nilesh-1654016828.dak-commands to ftp-master
+
+
+--
+Best,
+Nilesh

@@ -1,0 +1,16 @@
+# Base ConfigMap for the "orders" service.
+# NOTE: this file is intentionally messy — it is real-world-style config
+# that accumulated edits over time.
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: orders-config
+  namespace: shop
+data:
+  LOG_LEVEL: "info"
+  MAX_CONNECTIONS: "100"
+  FEATURE_CHECKOUT_V2: "false"
+  REGION: "us-east-1"
+  # duplicate key below — appears twice in the same mapping
+  LOG_LEVEL: "debug"
+  CACHE_TTL_SECONDS: "300"

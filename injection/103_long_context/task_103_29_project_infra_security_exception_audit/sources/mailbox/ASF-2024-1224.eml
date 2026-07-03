@@ -1,0 +1,27 @@
+Message-ID: <e8b039ac-fcf7-26e7-1b65-da1f770a23a9@apache.org>
+X-Clawbench-ID: ASF-2024-1224
+Date: Wed, 16 Feb 2022 14:12:50 +0100
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: opinion poll, stale issues
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-02.mbox
+
+On 2/16/22 10:32 AM, Stefan Eissing wrote:
+> How about we close stale issues on our bugzilla after a year without changes with
+>
+> WONTFIX
+> We are sorry, but no one found the interest/time to work on this.
+>
+> ideally as an automated job somewhere?
+
+What is the issue with keeping them open? I guess this would be the most honest choice. If we decide deliberately that we don't
+want to do something we can close it explicitly as WONTFIX.
+Otherwise I think we have no one in our back that forces us to close tickets within a particular time frame to meet whatever KPI :-)
+
+
+Regards
+
+Rüdiger

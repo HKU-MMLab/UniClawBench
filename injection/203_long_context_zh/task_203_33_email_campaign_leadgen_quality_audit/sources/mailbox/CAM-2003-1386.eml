@@ -1,0 +1,39 @@
+Message-ID: <005b01c24f17$823b1f30$fa7d940a@siddesktop>
+X-Clawbench-ID: CAM-2003-1386
+Date: Wed, 28 Aug 2002 21:49:49 -0700
+From: Sidney Markowitz <sidney@sidney.com>
+To: Theo Van Dinter <felicity@kluge.net>, Justin Mason <jm@jmason.org>
+Subject: Re: [SAdev] 2.40: ready for release?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01381.e8771e2f2786ccd37b1ecdbecd63c881
+
+> It's this section of spamassassin.raw:
+>
+> <<<<<<< spamassassin.raw
+[...snip]       }
+> =3D=3D=3D=3D=3D=3D=3D
+[... snip ...]
+> >>>>>>> 1.68.2.10
+[...snip...]
+
+This is what cvs puts in when you modify the copy of the file on your disk
+and someone checks in a change and then you pull an update and cvs can't
+figure out how to merge your changes and the checked in changes. The lines
+between the <<<<<< and the ===== are in your file and the ones in the next
+section are what have been checked in. You must have not noticed the warning
+messages about conflicts that cvs gave you when you did the update, and the
+"C" flag next to that file when cvs listed the files being pulled.
+
+ -- sidney
+
+
+-------------------------------------------------------
+This sf.net email is sponsored by:ThinkGeek
+Welcome to geek heaven.
+http://thinkgeek.com/sf
+_______________________________________________
+Spamassassin-devel mailing list
+Spamassassin-devel@lists.sourceforge.net
+https://lists.sourceforge.net/lists/listinfo/spamassassin-devel

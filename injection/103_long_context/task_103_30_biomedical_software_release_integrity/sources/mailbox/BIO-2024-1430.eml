@@ -1,0 +1,48 @@
+Message-ID: <YcQPxO2UmMPA4Sxb@an3as.eu>
+X-Clawbench-ID: BIO-2024-1430
+Date: Thu, 23 Dec 2021 06:57:24 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Diane Trout <diane@ghic.org>,	Debian Science List <debian-science@lists.debian.org>
+Subject: Upgrading tbb (Was: numba: FTBFS with Python 3.10)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_12_msg00018.html
+
+Hi,
+
+Am Wed, Dec 22, 2021 at 05:09:35PM -0800 schrieb Diane Trout:
+> On Wed, 2021-12-22 at 22:24 +0530, Nilesh Patra wrote:
+> >
+> > Actually because of the current state of numba, several reverse
+> > depends are FTBFS so it's
+> > bit urgent to push. Apologies for getting on your nerves, though.
+>
+> I tried. but numba needs tbb version >= 2021. I tried to update tbb but
+> ran into problems trying to build it.
+
+I've checked tbb Git and have read:
+
+
+onetbb (2021.4.0-1~exp1) UNRELEASED; urgency=medium
+
+  * Source rename following upstream. The new upstream Git URL is
+    https://github.com/oneapi-src/oneTBB
+
+ -- Mo Zhou   Mon, 29 Nov 2021 21:44:57 -0500
+
+
+I admit I support following upstream names in general.  However, the
+lesson that we just are waiting for some package with name changes in
+new for more than one month makes this name change a bit scary in the
+current situation, thought.  Well, in case tbb 2021.x might bump SONAME
+(which I have not checked) we can't avoid this.  However, if we might
+have a chance to get a recent tbb without name changes quickly and could
+do the name change later this would be helpful.
+
+Kind regards
+
+      Andreas.
+
+--
+http://fam-tille.de

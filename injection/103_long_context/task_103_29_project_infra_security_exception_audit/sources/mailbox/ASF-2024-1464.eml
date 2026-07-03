@@ -1,0 +1,21 @@
+Message-ID: <7B2A2A40-65EF-4E2D-8E55-76A2E0B394A9@eissing.org>
+X-Clawbench-ID: ASF-2024-1464
+Date: Fri, 12 May 2023 18:34:53 +0200
+From: "Stefan Eissing via dev" <dev@httpd.apache.org>
+To: dev@httpd.apache.org
+Subject: PR 66499
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-05.mbox
+
+Regarding https://bz.apache.org/bugzilla/show_bug.cgi?id=66499 I have a question.
+
+When using httpd in a forward proxy setup ("ProxyRequests On"), we expect absolute URLs in HTTP/1.1 requests. Fine.
+
+When accessing such a setup via HTTP/2, we get :scheme, :auhority and :path and, usually, do NOT want to convert that to absolute URIs in the reuqest line. That is what 66499 complained about. However, in the forward proxy case, we need it.
+
+How is mod_http2 supposed to know which case is in play? Any ideas?
+
+Cheers,
+Stefan

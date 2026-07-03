@@ -1,0 +1,126 @@
+Message-ID: <Y+Ov89G2Q9tv3kqV@an3as.eu>
+X-Clawbench-ID: BIO-2024-0806
+Date: Wed, 8 Feb 2023 15:21:39 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Thiago Franco de Moraes <thiago.moraes@cti.gov.br>
+Subject: Re: Autopkgtest fails for invesalius
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_02_msg00026.html
+
+Am Wed, Feb 08, 2023 at 12:03:05PM -0200 schrieb Thiago Franco de Moraes:
+> I pushed a commit with this new patch.
+
+Thanks for the patch.  Unfortunately there is some gdcm issue left[1]:
+
+[Errno 2] No such file or directory: '/home/debci/.config/invesalius/config.json'
+[Errno 2] No such file or directory: '/home/debci/.config/invesalius/config.cfg'
+Traceback (most recent call last):
+  File "/usr/share/invesalius/app.py", line 573, in
+    main()
+  File "/usr/share/invesalius/app.py", line 566, in main
+    non_gui_startup(options, args)
+  File "/usr/share/invesalius/app.py", line 280, in non_gui_startup
+    from invesalius.control import Controller
+  File "/usr/share/invesalius/invesalius/control.py", line 40, in
+    import invesalius.reader.dicom_reader as dcm
+  File "/usr/share/invesalius/invesalius/reader/dicom_reader.py", line 29, in
+    gdcm.Trace_DebugOff()
+    ^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'gdcm' has no attribute 'Trace_DebugOff'
+
+Kind regards
+    Andreas.
+
+[1] https://salsa.debian.org/med-team/invesalius/-/jobs/3919658
+
+> ----- Mensagem original -----
+> De: "Thiago Franco de Moraes"
+> Para: "Andreas Tille"
+> Cc: "debian-med"
+> Enviadas: Quarta-feira, 8 de fevereiro de 2023 10:23:55
+> Assunto: Re: Autopkgtest fails for invesalius
+>
+> Hi Andreas,
+>
+> It's because Python-3.11 gettext.translation doesn't have the 'codeset' parameter anymore. I'll submit a commit with a new patch to fix this problem. Thanks Andreas.
+>
+> Best regards.
+>
+> ----- Mensagem original -----
+> De: "Andreas Tille"
+> Para: "debian-med" , "Thiago Franco Moraes"
+> Enviadas: Quarta-feira, 8 de fevereiro de 2023 3:55:27
+> Assunto: Autopkgtest fails for invesalius
+>
+> Hi Thiago,
+>
+> seems that test never worked before but IMHO that should be fixed.
+> Both debci[1] and salsa CI[2] agree about:
+>
+> autopkgtest [03:15:09]: test run-unit-test: [-----------------------
+> [Errno 2] No such file or directory: '/home/debci/.config/invesalius/config.json'
+> [Errno 2] No such file or directory: '/home/debci/.config/invesalius/config.cfg'
+> Usage: app.py [options]
+>
+> Options:
+>   -h, --help            show this help message and exit
+>   -d, --debug
+>   --no-gui
+>   -i DICOM_DIR, --import=DICOM_DIR
+>   --import-all=IMPORT_ALL
+>   --import-folder=IMPORT_FOLDER
+>   --remote-host=REMOTE_HOST
+>   -s SAVE, --save=SAVE  Save the project after an import.
+>   -t THRESHOLD, --threshold=THRESHOLD
+>                         Define the threshold for the export (e.g. 100-780).
+>   -e EXPORT, --export=EXPORT
+>                         Export to STL.
+>   -a EXPORT_TO_ALL, --export-to-all=EXPORT_TO_ALL
+>                         Export to STL for all mask presets.
+>   --export-project=EXPORT_PROJECT
+>                         Export slices and mask to HDF5 or Nifti file.
+>   --no-masks            Make InVesalius not export mask when exporting
+>                         project.
+>   --use-pedal           Use an external trigger pedal
+> [Errno 2] No such file or directory: '/home/debci/.config/invesalius/config.json'
+> [Errno 2] No such file or directory: '/home/debci/.config/invesalius/config.cfg'
+> Traceback (most recent call last):
+>   File "/usr/share/invesalius/app.py", line 573, in
+>     main()
+>   File "/usr/share/invesalius/app.py", line 566, in main
+>     non_gui_startup(options, args)
+>   File "/usr/share/invesalius/app.py", line 278, in non_gui_startup
+>     _ = i18n.InstallLanguage(lang)
+>         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+>   File "/usr/share/invesalius/invesalius/i18n.py", line 81, in InstallLanguage
+>     lang = gettext.translation('invesalius', language_dir,
+>            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> TypeError: translation() got an unexpected keyword argument 'codeset'
+> autopkgtest [03:15:10]: test run-unit-test: -----------------------]
+>
+>
+> I admit in my local pbuilder chroot everything worked nicely (otherwise
+> I would not have uploaded).
+>
+> Any idea what might be wrong here?
+>
+> Kind regards
+>    Andreas.
+>
+> [1] https://ci.debian.net/data/autopkgtest/testing/amd64/i/invesalius/31159375/log.gz
+> [2] https://salsa.debian.org/med-team/invesalius/-/jobs/3915988
+>
+> --
+> http://fam-tille.de
+> --
+> Ressalva: Esta mensagem de correio eletrônico do Centro de Tecnologia da Informação Renato Archer - CTI é enviada exclusivamente a seu(s) destinatário(s) e pode conter informações confidenciais, protegidas por sigilo profissional. Sua utilização desautorizada é ilegal e sujeita o infrator às penas da lei. Se você a recebeu indevidamente, queira, por gentileza, reenviá-la ao remetente, esclarecendo o equívoco.
+>
+> Disclaimer: This e-mail message from Centro de Tecnologia da Informação Renato Archer - CTI is directed exclusively to its addressee(s) and may contain confidential data, protected under professional secrecy rules. Its unauthorized use is illegal and may subject the transgressor to the law's penalties. If you are not the addressee, please send it back, clarifying the failure.
+>
+>
+>
+
+--
+http://fam-tille.de

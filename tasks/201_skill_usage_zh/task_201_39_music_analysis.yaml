@@ -1,0 +1,50 @@
+task_id: task_201_39_music_analysis
+category: 201_skill_usage_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我正在准备一份音乐同步授权的推介，需要在发出之前对一首曲目做一份像样
+  的拆解。文件位于 /tmp_workspace/clawbench/sources/song.wav。请用音乐
+  分析技能来分析它——我需要以 BPM 表示的速度、调性、带时间戳的段落结构，
+  以及一段说明能量如何在整首曲目中流动的概述。
+
+  把可供人阅读的分析写入 /tmp_workspace/results/analysis.md，并把一份
+  结构化的伴随文件写入 /tmp_workspace/results/sections.json，以便我能用
+  程序 grep 它。
+
+  一些具体要求：
+  - 速度以 BPM 表示，保留一位小数。
+  - 调性以主音加调式表示，例如 C major 或 A minor。
+  - 对于段落，按源顺序列出每一个段落，包含起始时间、结束时间，以及一个
+    取自常见流行音乐词汇的标签——intro、verse、pre-chorus、chorus、
+    bridge、outro。不要把它们合并成一整块，也不要凭空多造出额外的段落。
+  - 在文字概述中告诉我能量如何从头到尾变化，以及哪一段是整首曲目中最
+    响亮的时刻。
+  - 伴随的 JSON 至少应包含 bpm、key，以及一个 sections 数组，其中每个
+    条目包含 start、end 和 label。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - song.wav
+
+skills:
+  - songsee
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

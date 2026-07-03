@@ -1,0 +1,35 @@
+Message-ID: <ZXCjCUPdgemNrPmB@an3as.eu>
+X-Clawbench-ID: BIO-2024-1398
+Date: Wed, 6 Dec 2023 17:36:25 +0100
+From: Andreas Tille <tille@debian.org>
+To: Nilesh Patra <nilesh@debian.org>
+Subject: Re: Could some SnpEff user from the community please ping authors
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_12_msg00016.html
+
+Hi Nilesh,
+
+Am Wed, Dec 06, 2023 at 02:00:52AM +0530 schrieb Nilesh Patra:
+> Sometimes just tagging upstream author does wonders :)
+
+I hope I'll keep that trick in mind! ;-)
+
+> They have replied and the (upstream) bug has been closed.
+> BTW, are you able to still reproduce (without any fixes for snpeff/snippy) #1031465?
+
+Confirming snippy builds nicely and bug can be closed.
+
+> For me, it is working fine in an unstable chroot (including autopkgtests)
+> and maybe could be closed.
+
+I've just pushed a patch for snippy that works with the options
+suggested by snpEff upstream.  I need to do some further tests but I
+think the problem is solved.
+
+Kind regards
+    Andreas.
+
+--
+http://fam-tille.de

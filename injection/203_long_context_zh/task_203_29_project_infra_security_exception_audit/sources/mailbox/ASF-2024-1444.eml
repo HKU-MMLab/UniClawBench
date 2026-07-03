@@ -1,0 +1,106 @@
+Message-ID: <CAGmQQQ4WouMH6Z7Nw0tL+jVDxbZTdED46f0zvCi9CqN1gYVM9A@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1444
+Date: Sat, 30 Sep 2023 19:40:34 +0530
+From: General Email <general.email.12341234@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: Please support/enable https by default in the Apache web sever.
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-09.mbox
+
+On Sat, 30 Sep, 2023, 7:06 pm Noel Butler, <noel.butler@ausics.net> wrote:
+
+> On 30/09/2023 22:28, General Email wrote:
+>
+>
+>
+> On Sat, 30 Sep, 2023, 5:34 pm Will Fatherley, <wefatherley@gmail.com>
+> wrote:
+>
+>
+>
+> Please support/enable https by default in the Apache web server.
+>
+>
+> HTTPS is supported already by default. I like the idea of enabling by
+> default, but as it stands now probably should not be done as the generation
+> of keying material is required; the certification of keying material, while
+> capable of being automated, may become overburdened or more easily abused;
+> and other such complications related to authentication.
+>
+>
+> In XAMPP (https://www.apachefriends.org/download.html) https can be
+> enabled easily (change of only couple of lines is required).
+>
+> XAMPP has apache http web server.
+>
+> It looks like they have a default SSL certificate in their distribution.
+>
+> Fitefox and other browsers complain something like "the certificate is not
+> trusted" but they also give an option of taking the risk and going ahead.
+> When you go ahead, you can access your site using https.
+>
+> This is good when a developer is developing a website on his local
+> computer.
+>
+> Later, when going for hosting the website, the hosting providers do
+> everything for you for supporting https.
+>
+> So, if whatever XAMPP has done in their distribution of apache http
+> server, if the same can be done in official apache http server then this
+> will be of great help during  website development and testing.
+>
+> Regards,
+> GE
+>
+>
+>
+>
+> Please re-read Stefan's reply.
+>
+> It is not up to the project to dictate to administrators, there are
+> examples that are easy implementable, use them. The project is not to know
+> where you want your docroot, if you want CGI or what directories require
+> special permissions or options are they, configuring your host to how you
+> want it is your job.
+>
+> How hard is it really to uncomment one hash sign and edit a file to set
+> correct DocumentRoot  and hostnames and where the keys are... (thats
+> rhetorical by the way not actually a question)
+>
+> And as for those "webhosts" doing it automatically, all we do is use a
+> vhost template that we created and is used when adding each host,
+> customised by perl or php or whatever prog language the webhost uses in
+> their backend.
+>
+
+I actually didn't understand your answer.
+
+What I said was to enable https by default and XAMPP have made it quite
+easy.
+
+If it can't be enabled by default then at least it should be as simple as
+adding one line or uncommenting one line: Listen 443.
+
+Currently, enabling https in apache http server is not easy and takes
+multiple steps.
+
+XAMPP doesn't require generation of SSL  certificate by the user but its
+certificate can't be used in production and this is ok because its
+certificate can be used during development.
+
+I am just suggesting that why can't official apache http server do the same
+as XAMPP.
+
+The main problem is that it is not recommended to use XAMPP in production
+so we need official apache http server in production.
+
+By the way, I don't understand how the default certificate can be abused.
+
+Anyways, may be I didn't understand well enough but please have a look as
+to how XAMPP is doing it and whether their certificates, etc. can also be
+abused or not.
+
+Regards,
+GE

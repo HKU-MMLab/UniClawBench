@@ -1,0 +1,14 @@
+# task_105_13_calendar_scheduling — Zoom-only design.
+#
+# All three keys are REQUIRED. install.sh fails fast if any of them are
+# empty (no Jitsi fallback). The executor receives all three as env
+# vars and must self-configure ~/.cli-anything-zoom/{config,tokens}.json
+# from them — install.sh deliberately wipes that directory after using
+# the credentials to reset the test account to zero meetings.
+#
+# To populate ZOOM_REFRESH_TOKEN see the "Zoom OAuth bootstrap" section
+# in /tmp/clawbench_user_actions.md (one-time browser-based OAuth flow
+# performed locally, refresh_token is long-lived).
+ZOOM_CLIENT_ID
+ZOOM_CLIENT_SECRET
+ZOOM_REFRESH_TOKEN

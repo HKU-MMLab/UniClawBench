@@ -1,0 +1,27 @@
+Message-ID: <3DA288E8.4060006@punkass.com>
+X-Clawbench-ID: CAM-2003-0148
+Date: Tue, 08 Oct 2002 09:27:36 +0200
+From: Roi Dayan <dejavo@punkass.com>
+To: rpm-zzzlist@freshrpms.net
+Subject: Re: xmms and .mp3 files.
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01283.a6c7612823e8b946c41bb4c25a64b31e
+
+humberto@hpcf.upr.edu wrote:
+
+>Redhat 8 disables all support for .mp3 files, relinking xmms with a zzmp3
+>module. Does anyone have a fixed spec file for xmms? One that can play mp3's
+>would be best.
+>
+>
+>
+oh xmms didn't work for me also
+i used mpg123 i tought its something from me
+like mplayer not working also and gives black screen
+
+
+_______________________________________________
+RPM-List mailing list <RPM-List@freshrpms.net>
+http://lists.freshrpms.net/mailman/listinfo/rpm-list

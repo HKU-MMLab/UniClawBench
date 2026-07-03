@@ -1,0 +1,42 @@
+Message-ID: <87k0ho9r1y.fsf@nonempty.org>
+X-Clawbench-ID: BIO-2024-0292
+Date: Thu, 04 Nov 2021 11:02:49 +0100
+From: Gard Spreemann <gspr@nonempty.org>
+To: debian-science@lists.debian.org
+Subject: Re: Blends framework for Debian Math (Was: Science Subgroups [was Re: Debian Math Team])
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_11_msg00033.html
+
+Andreas Tille  writes:
+
+> Am Wed, Nov 03, 2021 at 03:41:43PM +0530 schrieb Nilesh Patra:
+>>
+>> > We should remember that having blends packages, blends web pages and
+>> > informative wiki pages are completely independent of having a defined team with
+>> > separate VCS and mailing list. All that needs is one or more people to curate
+>> > them.
+>>
+>> That's correct. I talked with Andreas yesterday on the debian-med bi-weekly call, and
+>> tasks for math packages should be done soonish :)
+>
+> I've pushed the code for the metapackages to
+>
+>     https://salsa.debian.org/blends-team/math/
+>
+> and made
+>
+>     Doug Torrance
+>     Julien Puydt
+>     Timo Röhling
+>
+> members of the Blends team to enable currating these files (which should
+> be **really** done before announcing anything since its just a copy of the
+> two tasks from debian-science and does not make any sense in this form.)
+
+Stupid questions: What packages should go into the task? All mathematics
+packages? How do the categories work, and what conditions warrant a new
+category?
+
+ -- Gard

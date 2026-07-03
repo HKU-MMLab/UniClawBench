@@ -1,0 +1,81 @@
+Message-ID: <651411BC-0523-4EAC-A11B-11B3F3F246B6@sharp.fm>
+X-Clawbench-ID: ASF-2024-1075
+Date: Tue, 8 Feb 2022 15:14:52 +0200
+From: Graham Leggett <minfrin@sharp.fm>
+To: dev@httpd.apache.org
+Subject: Re: mpm event assertion failures
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-02.mbox
+
+On 07 Feb 2022, at 18:13, Yann Ylavic <ylavic.dev@gmail.com> wrote:
+
+> All green: https://app.travis-ci.com/github/apache/httpd/builds/246021482 <https://app.travis-ci.com/github/apache/httpd/builds/246021482>  \o/
+
+I’ve been load testing these changes with the fixed trunk version of ab, most recently modified at have a ramp delay to stop the OS kicking in and protecting itself from denial of service. The most concurrent requests I can get out of MacOS appears to be roughly 2000 concurrent requests before “connection reset by peer” kills the test.
+
+One small detail I have uncovered is that a small percentage of requests fail, caused by httpd gracefully shutting the connection down before returning a response. Stopping ab in a debugger confirms that openssl returns SSL_ERROR_ZERO_RETURN on read, which is what openssl does when the other side gracefully triggers close notify.
+
+Is this something anyone has seen before while I go digging?
+
+Little-Net:~ root# ulimit -n 10240; /tmp/httpd-trunk/bin/ab -k -R 20 -n 4096000 -c 4096 https://localhost:9443/blah.txt
+This is ApacheBench, Version 2.3 <$Revision: 1897866 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://web.archive.org/web/20000304112933/http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+Completed 409600 requests
+
+Test aborted after 10 failures
+
+apr_socket_connect(): Connection reset by peer (54)
+Total of 498014 requests completed
+
+
+Server Software:        Apache/2.5.1-dev
+Server Hostname:        localhost
+Server Port:            9443
+SSL/TLS Protocol:       TLSv1.2,ECDHE-RSA-AES256-GCM-SHA384,2048,256
+Server Temp Key:        X25519 253 bits
+TLS Server Name:        localhost
+
+Document Path:          /blah.txt
+Document Length:        9 bytes
+
+Concurrency Level:      4096
+Concurrency achieved:   2028
+Rampup delay:           20 [ms]
+Time taken for tests:   40.629 seconds
+Complete requests:      498014
+Failed requests:        13102
+   (Connect: 1, Receive: 0, Length: 13101, Exceptions: 0)
+Keep-Alive requests:    482963
+Total transferred:      135219777 bytes
+HTML transferred:       4364253 bytes
+Requests per second:    12257.69 [#/sec] (mean)
+Time per request:       334.158 [ms] (mean)
+Time per request:       0.082 [ms] (mean, across all concurrent requests)
+Transfer rate:          3250.18 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0   10  60.8      0     847
+Processing:     0   73  70.5     54     611
+Waiting:        0   70  69.9     52     487
+Total:          0   82  96.4     56    1192
+
+Percentage of the requests served within a certain time (ms)
+  50%     56
+  66%     91
+  75%    109
+  80%    125
+  90%    171
+  95%    224
+  98%    410
+  99%    485
+ 100%   1192 (longest request)
+
+Regards,
+Graham
+—

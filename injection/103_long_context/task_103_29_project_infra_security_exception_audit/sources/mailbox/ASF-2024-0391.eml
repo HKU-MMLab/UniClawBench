@@ -1,0 +1,179 @@
+Message-ID: <1364be40-1b78-e50d-65ce-cb5cb1974b3b@kippdata.de>
+X-Clawbench-ID: ASF-2024-0391
+Date: Wed, 8 Jun 2022 11:41:41 +0200
+From: Rainer Jung <rainer.jung@kippdata.de>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.54-rc3 as httpd-2.4.54
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-06.mbox
+
+Am 06.06.2022 um 16:25 schrieb Stefan Eissing:
+> Here we go again! Sorry for the repeats, but that is why we build candidates, right?
+>
+> Hi all,
+>
+> Please find below the proposed release tarball and signatures:
+>
+> https://dist.apache.org/repos/dist/dev/httpd/
+>
+> I would like to call a VOTE over the next few days to release
+> this candidate tarball httpd-2.4.54-rc3 as 2.4.54:
+> [X] +1: It's not just good, it's good enough!
+> [ ] +0: Let's have a talk.
+> [ ] -1: There's trouble in paradise. Here's what's wrong.
+
++1 to release and thanks a bunch for RM!
+
+The full range of unit tests is still running, but enough have completed
+for a vote.
+
+I actually used rc2 plus the one "#if" patch which got included in rc3
+to build and test, but also did the simple release checks for rc3.
+
+! KEYS maybe missing (see other mail)
+- Sigs and hashes OK
+- contents of tarballs identical
+- contents of tag and tarballs identical
+   except for expected deltas
+
+Built on
+
+- Solaris 10 Sparc as 32 Bit Binaries
+- SLES 11+12+15 (64 Bits)
+- RHEL 6+7+8 (64 Bits)
+
+For all platforms built
+
+- with default (shared) and static modules
+   (Solaris only shared modules)
+- with module set reallyall
+- using --enable-load-all-modules
+
+- using libraries
+   - APR/APU
+     - bundled deps tarball
+     - 1.7.0/1.6.1
+     - 1.6.5/1.6.1
+     - 1.7.x(r1901250)/1.7.x(r1901250) with libxml2
+     - 1.7.x(r1901250)/1.7.x(r1901250) with expat
+     - 1.6.x(r1898636)/1.6.x(r1901250)
+     - trunk(r1901250) with libxml2
+     - trunk(r1901250) with expat
+   - OpenSSL 3.0.3, 1.1.1o, 1.1.1,
+             1.0.2u, 1.0.2, 0.9.8zh, 0.9.8b
+   - expat 2.4.8
+   - pcre 10.39, sometimes 10.40
+   - lua 5.4.4 (compiled with LUA_COMPAT_MODULE)
+   - libxml2 2.9.14
+   - libnghttp2 1.47.0
+   - brotli 1.0.9
+   - curl 7.83.1
+   - jansson 2.14
+   - libldap 2.6.2 (2.5.7 with OpenSSL 1.1.1,
+                    2.4.59 with OpenSSL 1.0.2*,
+                    2.4.52 with OpenSSL 0.9.8*)
+   - on Solaris also platform ldap library
+
+- in total 96 builds per platform, 60 on Solaris
+
+- Tool chain:
+     - platform gcc except on Solaris
+       (gcc 9.3.0 Solaris 10)
+     - CFLAGS: -O2 -g -Wall -fno-strict-aliasing
+       - on Solaris additionally -mpcu=v9, -D_XOPEN_SOURCE,
+         -D_XOPEN_SOURCE_EXTENDED=1, -D__EXTENSIONS__
+         and -D_XPG6
+
+All 636 builds succeeded.
+
+- compiler warnings:
+
+   - only on Solaris (GCC 9.3.0):
+srclib/apr/locks/unix/proc_mutex.c:979:49: warning:
+'mutex_proc_pthread_cond_methods' defined but not used
+[-Wunused-const-variable=]
+
+   - deprecation warnings when building against OpenSSL 3.0.0, see other
+thread
+
+Tested for
+
+- SLES 11+12+15
+- RHEL 6+7+8
+- Solaris 10 Sparc
+- MPMs prefork, worker, event
+- log level trace8
+- Perl client bundle build against OpenSSL 3.0.0, ,
+   1.1.1g plus patches, 1.1.0l, 1.0.2u and 0.9.8zh
+
+Every OpenSSL version in the client tested with every OpenSSL version in
+the server. 15 unit test runs (3 MPMS x 5 OpenSSL clients) per server build.
+About 2.400 unit test runs are done, most for shared module builds.
+
+Some local adjustments to tests were used:
+
+- t/modules/buffer.t: removing huge buffer tests
+   -    my $bigsize = 100000;
+   +    my $bigsize = 50000;
+
+The following test failures were seen:
+
+a t/modules/buffer.t line 37
+   Test 4 (411 times), test 8 (217 times) and 12 (18 times)
+   Not a regression
+   Only on RHEL 6, SLES 11 and Solaris 10.
+
+b Various tests in t/modules/cgi.t, mostly lines 195 and 223,
+   sometimes line 167 and 252
+   Not a regression
+   Only on Solaris and once on RHEL 6
+   110 failed test runs (out of 120 on Solaris)
+   Test checks log contents. Could be false positive due to
+   logs written to NFS.
+
+c t/modules/sed.t line 37 test 3
+   91 times Solaris 10, 12 times RHEL 9, 6 times SLES 11
+   At least two cases I checked were
+   "(12)Cannot allocate memory" (Linux) resp.
+   "(12)Not enough space:" (Solaris).
+
+d A couple of tests fail for OpenSSL 0.9.8 based server
+   when tested with a OpenSSL 3.0.0 based client:
+   - t/modules/proxy_websockets_ssl.t
+   - t/protocol/echo.t
+   - t/security/CVE-2005-2700.t
+   - t/security/CVE-2009-3555.t
+   - t/ssl/basicauth.t
+   - t/ssl/env.t
+   - t/ssl/extlookup.t
+   - t/ssl/fakeauth.t
+   - t/ssl/headers.t
+   - t/ssl/ocsp.t
+   - t/ssl/pr12355.t
+   - t/ssl/pr43738.t
+   - t/ssl/proxy.t
+   - t/ssl/require.t
+   - t/ssl/varlookup.t
+   - t/ssl/verify.t
+   That might be expected due to the behavior of the 3.0
+   default security level (not investigated)
+
+
+Regards,
+
+Rainer
+
+ > The computed digests of the tarball up for vote are:
+ > sha256:
+c687b99c446c0ef345e7d86c21a8e15fc074b7d5152c4fe22b0463e2be346ffb
+*httpd-2.4.54-rc3.tar.gz
+ > sha512:
+e9599df48a73b07b3a11dd44db2c22a671e8a41cdd5021bb434bbcde39d6fc498d165d9b0c4ed2b66a6321d9760b031c1c1c84c23661dbf44c42c52f637ec4dd
+*httpd-2.4.54-rc3.tar.gz
+ >
+ > The SVN candidate source is found at tags/2.4.54-rc3-candidate.
+ >
+ > Kind Regards,
+ > Stefan

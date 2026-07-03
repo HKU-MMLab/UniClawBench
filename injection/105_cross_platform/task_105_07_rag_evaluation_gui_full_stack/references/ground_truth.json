@@ -1,0 +1,56 @@
+{
+  "task_id": "task_105_07_rag_evaluation_gui_full_stack",
+  "source_pdf": "sources/papers/ragas_evaluation.pdf",
+  "source_evidence": "references/ragas_evaluation_source_evidence.md",
+  "downloaded_from": "https://aclanthology.org/2024.eacl-demo.16.pdf",
+  "paper_page": "https://aclanthology.org/2024.eacl-demo.16/",
+  "source_anchors": {
+    "title_authors_venue": "ragas_evaluation_source_evidence.md E01 identifies the title, authors, venue, and year.",
+    "main_task": "ragas_evaluation_source_evidence.md E02 identifies reference-free RAG evaluation and the retrieval/generation framing.",
+    "metric_suite": "ragas_evaluation_source_evidence.md E03 defines faithfulness, answer relevance, and context relevance.",
+    "results_api_limitations": "ragas_evaluation_source_evidence.md E04 identifies human-judgment alignment, Python API utility, reproducibility risks, and evaluator-LLM dependence."
+  },
+  "title": "RAGAS: Automated Evaluation of Retrieval Augmented Generation",
+  "authors": [
+    "Shahul Es",
+    "Jithin James",
+    "Luis Espinosa-Anke",
+    "Steven Schockaert"
+  ],
+  "year": "2024",
+  "publication": "Proceedings of EACL 2024: System Demonstrations",
+  "main_task": "Reference-free automated evaluation of RAG pipelines across retrieval, faithful use of retrieved context, and generated answer quality.",
+  "main_metric": "Faithfulness, answer relevancy, and context relevancy.",
+  "secondary_metrics": [
+    "agreement with human judgments on WikiEval",
+    "reference-free quality dimensions"
+  ],
+  "one_limitation": "RAGAS relies heavily on the LLMs used for evaluation and can be affected by model randomness, API changes, and evaluator-model suitability.",
+  "worth_reading_further": "yes",
+  "worth_reason": "It provides a practical Python API and reference-free metrics that can be integrated into RAG development workflows.",
+  "expected_note_sections": [
+    "Main Task",
+    "Main Metric",
+    "One Limitation"
+  ],
+  "expected_result_files": [
+    "/tmp_workspace/results/pdf_reader_screenshot.png",
+    "/tmp_workspace/results/zotero_record_screenshot.png",
+    "/tmp_workspace/results/zotero_record_export.bib",
+    "/tmp_workspace/results/obsidian/RAG Evaluation Note.md",
+    "/tmp_workspace/results/obsidian_note_screenshot.png",
+    "/tmp_workspace/results/rag_evaluation_note_export.md",
+    "/tmp_workspace/results/rag_reading_tracker.ods",
+    "/tmp_workspace/results/calc_tracker_screenshot.png",
+    "/tmp_workspace/results/rag_quick_judgment.odt",
+    "/tmp_workspace/results/rag_quick_judgment.txt",
+    "/tmp_workspace/results/writer_judgment_screenshot.png",
+    "/tmp_workspace/results/real_gui_evidence.md"
+  ],
+  "acceptable_zotero_export_extensions": [
+    ".bib",
+    ".ris",
+    ".rdf"
+  ],
+  "service_state": "/tmp_workspace/clawbench/service_state/real_rag_gui_apps_task_105_07.json"
+}

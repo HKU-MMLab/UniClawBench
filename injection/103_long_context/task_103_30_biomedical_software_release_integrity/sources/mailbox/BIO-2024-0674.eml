@@ -1,0 +1,19 @@
+Message-ID: <trinity-618833eb-c2b2-4d89-8ba9-fc7a8e34bc83-1725553966453@msvc-mesg-gmx021>
+X-Clawbench-ID: BIO-2024-0674
+Date: Thu, 5 Sep 2024 18:32:46 +0200
+From: Steffen Möller <steffen_moeller@gmx.de>
+To: debian-med@lists.debian.org
+Subject: GENtle new upstream version on salsa - request for sponsoring
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_09_msg00000.html
+
+Hello,
+
+I just sent GENtle 1.9.5alpha2 to https://salsa.debian.org/med-team/gentle . GENtle saw a few binary uploads over the previous year because of the 64 bit time_t transition, so I understood, and this new release brings a series of improvements and fixes that seem worthwhile to be uploaded.
+
+The packaging should be in a decent shape, at least better than in the previous upload, a review and upload would nice.
+
+Many thanks and regards,
+Steffen

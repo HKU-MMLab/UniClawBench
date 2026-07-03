@@ -1,0 +1,47 @@
+Message-ID: <ZYMLikwOiXknd31f@redhat.com>
+X-Clawbench-ID: ASF-2024-0972
+Date: Wed, 20 Dec 2023 15:43:06 +0000
+From: Joe Orton <jorton@redhat.com>
+To: Eric Norris via dev <dev@httpd.apache.org>
+Subject: Re: [PATCH] mod_deflate: remove filter after seeing EOS
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-12.mbox
+
+On Wed, Dec 20, 2023 at 10:07:19AM -0500, Eric Norris via dev wrote:
+> Thanks Joe, and no need to apologize, that's totally understandable.
+>
+> I also appreciate you taking a look at the chunk filter behavior as that
+> was actually going to be the next patch I proposed. I had written it here:
+> https://github.com/ericnorris/httpd/commit/5f8fa24786b937ab611160b3c765cededa6dcb12,
+> though in retrospect I'm not sure why this (or your patch) alone isn't
+> enough, and why I thought the mod_deflate patch was also needed.
+
+In the repro case you posted, only one brigade is passed by the handler,
+with that I saw the "delayed last chunk" behaviour but not the Zlib
+double-deinit error log. I think the Zlib error would only be triggered
+by passing a second brigade with a FLUSH.
+
+It is incorrect for a handler to pass anything after EOS but filters are
+also supposed to be robust against it anyway.
+
+> If I understand correctly, either patch would send the flush bucket after
+> the last chunk marker and before the EOS bucket (i.e. [crlf last-chunk
+> FLUSH EOS]), so there's no need for "userspace" to send an additional flush
+> after the EOS bucket, and so mod_deflate wouldn't complain. Does that sound
+> right?
+
+I don't think the mod_deflate patch fixed the "delayed last-chunk"
+problem in my testing, but it is definitely correct & necessary to fix
+the Zlib error as above.
+
+> Apologies on my part if that's the case - it had been a few months since I
+> had written the patches, so I might have lost that context by the time I
+> was able to investigate submitting the patches. I possibly should have
+> submitted the chunk filter patch first. Either way, like I said I
+> appreciate your time.
+
+Thanks for taking the time to investigate & report it!
+
+Regards, Joe

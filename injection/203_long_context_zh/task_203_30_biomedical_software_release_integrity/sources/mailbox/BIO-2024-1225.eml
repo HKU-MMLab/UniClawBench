@@ -1,0 +1,40 @@
+Message-ID: <20220928113441.bt64cxc4stirjipx@posteo.in>
+X-Clawbench-ID: BIO-2024-1225
+Date: Wed, 28 Sep 2022 17:04:41 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: Mathieu Malaterre <malat@debian.org>
+Subject: Re: How to check ? Re: RFS -- autopkgtests for dcmtk
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_09_msg00030.html
+
+On Wed, Sep 28, 2022 at 01:00:28PM +0200, Mathieu Malaterre wrote:
+> Is there a way to (quickly) run the autopkgtests for dcmtk ?
+
+These docs with autopkgtest package should help on that:
+
+	/usr/share/doc/autopkgtest/README.virtualisation-server.html
+	/usr/share/doc/autopkgtest/README.running-tests.html
+	/usr/share/doc/autopkgtest/README.package-tests.html
+
+And otherwise,
+Here's a nice tutorial (with a setup guide) - https://asd.learnlearn.in/autopkgtest-tips/
+
+> Or else
+> where can I see the output (somewhere on debian/ci) ?
+
+Since you already uploaded this package, debci ran on it.
+Here's the link
+
+	https://ci.debian.net/packages/d/dcmtk/
+
+And here's the latest log (on amd64)
+
+	https://ci.debian.net/data/autopkgtest/unstable/amd64/d/dcmtk/26349262/log.gz
+
+HTH,
+
+--
+Best,
+Nilesh

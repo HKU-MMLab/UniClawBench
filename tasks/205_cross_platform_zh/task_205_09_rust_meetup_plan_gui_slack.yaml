@@ -1,0 +1,120 @@
+task_id: task_205_09_rust_meetup_plan_gui_slack
+category: 205_cross_platform_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  完成 Rust Global: Tokyo 的 5P-MIX2-2 跨平台规划任务。
+
+  活动信息和路线信息必须来自真实的公开网页。
+  不要使用本地模拟的活动站点或本地地图页面：
+
+  - 活动页面: https://rustfoundation.org/event/rust-global-tokyo/
+  - 活动背景: https://rustfoundation.org/media/rust-global-tokyo-connecting-the-rust-ecosystem-across-industries-regions/
+  - 场地/出行页面: https://events.linuxfoundation.org/open-source-summit-japan/attend/venue-travel/
+  - 路线估算: https://www.rome2rio.com/s/Shibuya-Station/Toranomon-Station
+  - 注册页面: https://register.linuxfoundation.org/event/rust-global-tokyo-2025/register
+
+  服务会安装并验证一个真实的桌面日历、一个真实的 GUI 文本
+  编辑器以及真实的 Slack Desktop。验证记录保存在
+  `/tmp_workspace/clawbench/service_state/real_plan_gui_apps_task_105_09.json`。
+  不要使用 Calendar Mock 或 Slack Mock。
+
+  1. 从真实的活动页面确认 Rust Global: Tokyo 的日期、官方开始/结束时间、场地以及注册
+     要求。
+  2. 从真实的路线/场地页面确认从 Shibuya Station 到场地的通勤
+     估算。将 Rome2Rio 给出的从 Shibuya Station
+     到 Toranomon Station 的地铁估算，与场地页面上从 Toranomon
+     Station Exit 1 到 Toranomon Hills Forum 的步行估算结合起来。
+  3. 自己在真实的桌面日历 GUI 中创建日历事件。不要
+     使用 Calendar Mock、本地模拟器，或任何替你创建或记录
+     事件的脚本。日历事件标题必须包含 `Rust Global:
+     Tokyo`；开始时间必须恰好在官方活动
+     开始时间前 40 分钟，结束时间应使用官方活动结束时间。
+     在位置/备注中保留场地和注册链接信息。
+     保存一张真实日历窗口截图：
+
+         /tmp_workspace/results/rust_meetup_plan_calendar_screenshot.png
+
+     截图应显示真实日历应用中已保存的事件或事件详情。ICS 导入预览、未选择
+     的日历或未保存的对话框都不足以证明事件已被创建。
+
+     同时保存一份可审计的日历导出或事件状态：
+
+         /tmp_workspace/results/rust_meetup_plan_calendar_export.ics
+         /tmp_workspace/results/rust_meetup_plan_calendar_event.json
+
+  4. 自己使用真实的 GUI 文本编辑器编写规划文档。不要
+     使用脚本直接生成或预填最终文档。将
+     文档保存为：
+
+         /tmp_workspace/results/rust_meetup_plan_5p.md
+
+     同时保存一张显示该文档在文本编辑器中打开的截图：
+
+         /tmp_workspace/results/note_editor_plan_screenshot.png
+
+     文档必须只包含以下三个顶级部分：
+
+     - Event info
+     - Route estimate
+     - Arrival plan
+
+     将网页信息综合成一份切实可行的计划；不要从网页简介中复制整
+     段内容。Arrival plan 应使用结合后的通勤估算，并
+     给出一个从 Shibuya Station 出发、能在 17:50 左右到达场地的发车
+     时间。
+  5. 打开真实的 Slack Desktop。如果环境已登录到某个 Slack
+     workspace，向 `#social` 发送一条不超过 120 个字符的消息，
+     概括活动时间、场地或到达计划。保存 Slack 截图
+     和文本审计：
+
+         /tmp_workspace/results/slack_desktop_evidence.png
+         /tmp_workspace/results/slack_message_evidence.md
+
+     如果 Slack Desktop 未登录或没有可用的 workspace/凭据，
+     仍然要启动真实的 Slack Desktop，保存一张登录/workspace 选择截图，
+     并在 `slack_message_evidence.md` 中说明消息无法发送的原因。
+     不要使用本地 Slack mock。`slack_desktop_evidence.png` 必须真实地
+     显示 Slack Desktop 的频道、消息、登录页面、workspace 选择页面，
+     或明确的错误屏幕。如果文件存在但截图内容是
+     其他应用，则视为缺失 Slack 视觉证据。不要用
+     在图片查看器、Calendar、终端或其他应用窗口中显示的 Slack
+     日志/截图来替代 Slack Desktop 截图。即使
+     任务栏或窗口标题包含 Slack 字样，像素内容也必须显示
+     真实的 Slack Desktop 界面或错误页面。
+
+  6. 保存真实网页使用证据：
+
+         /tmp_workspace/results/browser_event_page.png
+         /tmp_workspace/results/browser_route_page.png
+
+     截图应显示真实的 Rust Foundation / Linux Foundation /
+     Rome2Rio 页面。不要使用本地页面、缓存截图或文本摘录
+     来替代真实的网页证据。
+
+  7. 保存 `/tmp_workspace/results/gui_evidence.md`，列出真实网页、
+     真实日历、真实文本编辑器和真实 Slack Desktop 的证据。
+
+  最终的 `/tmp_workspace/results/` 目录应包含日历事件
+  状态/截图/导出产物、规划文档、Slack Desktop
+  证据以及 GUI 使用记录。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+services:
+  - name: real-plan-gui-apps-setup
+    path: real-plan-gui-apps-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

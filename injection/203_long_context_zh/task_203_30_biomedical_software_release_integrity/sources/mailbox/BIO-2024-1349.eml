@@ -1,0 +1,28 @@
+Message-ID: <CALF6qJmJOww9dqFBEKsi+G0aS0OagKtuBEUj9OuK=bu+6qcjMg@mail.gmail.com>
+X-Clawbench-ID: BIO-2024-1349
+Date: Mon, 21 Feb 2022 17:42:56 +0100
+From: Anton Gladky <gladk@debian.org>
+To: Debian Science List <debian-science@lists.debian.org>
+Subject: Google Summer of Code, Debian Science
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2022_02_msg00042.html
+
+Dear all,
+
+Google Summer of Code call for Debian is announced [1].
+I am going to apply Debian Science Team as one of the projects.
+
+Main topic is QA-Work: Autopkgtests for high-popcon packages,
+gitlab-CI for most of packages, bringing not-in-testing packages
+into the proper shape to let them migrate to testing.
+
+If somebody wants to be a co-mentor or if you have better ideas
+for the project, please let me know.
+
+[1] https://lists.debian.org/debian-devel-announce/2022/02/msg00002.html
+
+Best regards
+
+Anton

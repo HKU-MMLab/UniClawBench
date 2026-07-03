@@ -1,0 +1,28 @@
+Message-ID: <YZ0uvA5QBlhBXpHM@debian>
+X-Clawbench-ID: BIO-2024-0256
+Date: Tue, 23 Nov 2021 23:41:08 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: debian-med@lists.debian.org
+Subject: RM profphd?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_11_msg00119.html
+
+Hi,
+
+It looks like profphd has a open RC bug for a little over two years by now,
+and upstream looks dead.
+It has only reverse-recommends, no reverse-(build-)depends
+
+$ reverse-depends profphd
+Reverse-Recommends
+* norsnet
+* norsp
+* profbval
+* profphd-utils [amd64 arm64 armel armhf i386 mips64el mipsel ppc64el s390x]
+
+Is it a candidate for removal? Should I request a RM?
+
+Regards,
+Nilesh

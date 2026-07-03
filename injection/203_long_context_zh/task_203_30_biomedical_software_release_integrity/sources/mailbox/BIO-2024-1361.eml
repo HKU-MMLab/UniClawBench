@@ -1,0 +1,27 @@
+Message-ID: <Y1ps3CABPBFp6zoa@an3as.eu>
+X-Clawbench-ID: BIO-2024-1361
+Date: Thu, 27 Oct 2022 13:34:52 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Re: Watch file github mode pointing to certain branch issue (Was: cmake help for minimac4 needed)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00105.html
+
+Am Thu, Oct 27, 2022 at 03:25:29PM +0530 schrieb Nilesh Patra:
+> I pushed something via which I get:
+>
+> | uscan info: Launch mk-origtargz with options:
+> |   --package libomp-jonathonl --version 0.0+git20211216.5228495 --compression default --directory .. --copyright-file debian/copyright ../libomp-jonathonl-0.0+git20211216.5228495.tar.xz
+> | Successfully symlinked ../libomp-jonathonl-0.0+git20211216.5228495.tar.xz to ../libomp-jonathonl_0.0+git20211216.5228495.orig.tar.xz.
+>
+>
+> Maybe this shall do. Can you check?
+
+Thanks a lot, works
+
+     Andreas.
+
+--
+http://fam-tille.de

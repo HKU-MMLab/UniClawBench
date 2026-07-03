@@ -1,0 +1,24 @@
+Message-ID: <6e94f42f-3b57-0fbd-fec2-1445d96af325@apache.org>
+X-Clawbench-ID: ASF-2024-0858
+Date: Wed, 08 Jun 2022 09:43:54 +0000
+From: Stefan Eissing <icing@apache.org>
+To: announce@apache.org, dev@httpd.apache.org
+Subject: CVE-2022-30556: Apache HTTP Server: Information Disclosure in  mod_lua with websockets
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-06.mbox
+
+Severity: low
+
+Description:
+
+Apache HTTP Server 2.4.53 and earlier may return lengths to applications calling r:wsread() that point past the end of the storage allocated for the buffer.
+
+Credit:
+
+The Apache HTTP Server project would like to thank Ronald Crane (Zippenhop LLC) for reporting this issue
+
+References:
+
+https://httpd.apache.org/security/vulnerabilities_24.html

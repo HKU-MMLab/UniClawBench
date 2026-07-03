@@ -1,0 +1,128 @@
+{
+  "source_accessed_on": "2026-04-23",
+  "evidence_basis": [
+    "Current YouTube watch-page metadata snapshot for O_C_VUtUm80.",
+    "Search-result snippets visible on 2026-04-23 mentioning the video's recurring trend anchors: All That Jazz, Poetcore, balloon pants, capri pants, and lightweight cape styling."
+  ],
+  "resource": {
+    "url": "https://www.youtube.com/watch?v=O_C_VUtUm80",
+    "video_id": "O_C_VUtUm80",
+    "title": "【2026春夏流行趋势】8分钟教你今年春夏怎么穿最时尚 | Pantone流行色 | 儒雅诗人风",
+    "channel": "Betty Studio",
+    "published_date": "2026-04-01",
+    "view_snapshot": "33K views"
+  },
+  "canonical_style_anchors": [
+    {
+      "anchor_id": "look_1_jazz_tailoring",
+      "display_name": "Look 1",
+      "trend_name": "All That Jazz / 爵士时代",
+      "core_elements": [
+        "retro dressy mood",
+        "clean tailoring or a fitted outer layer",
+        "evening-leaning styling rather than sportswear"
+      ],
+      "must_cover_at_least_two": [
+        "structured blazer or cropped tailored jacket",
+        "swingy skirt, slip-like dress, or another movement-heavy lower piece",
+        "polished footwear such as heels or loafers"
+      ],
+      "negative_boundaries": [
+        "should not be reduced to a plain office suit",
+        "should not be explained as casual athleisure"
+      ],
+      "acceptable_synonyms": [
+        "jazz-inspired retro look",
+        "vintage evening tailoring",
+        "old-hollywood jazz styling"
+      ]
+    },
+    {
+      "anchor_id": "look_2_poetcore",
+      "display_name": "Look 2",
+      "trend_name": "Poetcore / 儒雅诗人风",
+      "core_elements": [
+        "soft romantic silhouette",
+        "flowy or airy top layer",
+        "literary or bohemian styling rather than sharp officewear"
+      ],
+      "must_cover_at_least_two": [
+        "draped blouse, soft shirt, or romantic top",
+        "light cardigan, cape, shawl-like layer, or loose outerwear",
+        "wide-leg trousers or a long flowing skirt"
+      ],
+      "negative_boundaries": [
+        "should not be labeled poetcore if it is only oversized basics",
+        "should not be scored as correct if the silhouette is rigid businesswear"
+      ],
+      "acceptable_synonyms": [
+        "poetic scholar style",
+        "romantic boho look",
+        "soft literary styling"
+      ]
+    },
+    {
+      "anchor_id": "look_3_pants_silhouette",
+      "display_name": "Look 3",
+      "trend_name": "Balloon Pants / Capri Pants",
+      "core_elements": [
+        "pant silhouette is the focal point",
+        "cropped or volume-heavy lower half",
+        "top kept comparatively simple"
+      ],
+      "must_cover_at_least_two": [
+        "balloon pants, barrel pants, or another volume trouser",
+        "capri pants or cropped fitted trousers",
+        "simple knit, tee, or blouse used to balance the pants"
+      ],
+      "negative_boundaries": [
+        "should not be credited if the lower half is a skirt or dress-led look",
+        "should not be credited if the pants are ordinary straight-leg basics with no silhouette emphasis"
+      ],
+      "acceptable_synonyms": [
+        "barrel pants look",
+        "cropped trouser trend",
+        "statement-pants outfit"
+      ]
+    }
+  ],
+  "canonical_output_schema": {
+    "expected_markdown_sections": [
+      "Look name or trend anchor",
+      "screenshot path",
+      "2 to 4 key visible items",
+      "2 Amazon alternatives",
+      "brief similarity rationale"
+    ],
+    "expected_screenshot_count": 3,
+    "required_screenshot_role": "one real playback frame per canonical look",
+    "alternatives_per_look": 2,
+    "required_alternative_fields": [
+      "product name",
+      "price",
+      "link",
+      "why it matches"
+    ]
+  },
+  "candidate_answer_boundaries": {
+    "full_credit_requires": [
+    "3 distinct early-video outfit or styling segments are covered",
+      "each anchor is supported by a real screenshot",
+      "each anchor has 2 Amazon alternatives"
+    ],
+    "partial_credit_if": [
+    "2 early-video looks are clearly covered and the third is weak or merged",
+    "the looks are grounded but alternatives are incomplete"
+    ],
+    "reject_if": [
+      "the report is a generic shopping roundup with no traceable video grounding",
+      "all 3 looks collapse into the same casual outfit formula"
+    ]
+  },
+  "common_mistakes": [
+    "Treating the task as a generic shopping list without mapping outfits back to the linked video.",
+    "Using three nearly identical casual looks instead of covering three distinct trend anchors.",
+    "Calling any oversized outfit 'poetcore' without a soft romantic or literary silhouette."
+  ],
+  "supervisor_note": "The linked resource is stable enough to lock by video ID, but exact garment colors, frame choices, and which first-three visible looks are selected can vary. Hidden evaluation should use these anchors as style-boundary guidance rather than as an exclusive required set."
+}

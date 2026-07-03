@@ -1,0 +1,63 @@
+Message-ID: <ZJyEnEccuDVuFWGj@fusion>
+X-Clawbench-ID: BIO-2024-0249
+Date: Wed, 28 Jun 2023 21:06:04 +0200
+From: Étienne Mollier <emollier@debian.org>
+To: Steven Robbins <steve@sumost.ca>
+Subject: Re: Not receiving Étienne's emails
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_06_msg00034.html
+
+Hi Steve,
+
+[I'm doing a group reply and send from debian.org smtp to check
+whether this is domain specific or something else and increase
+probability you receive at least one copy.]
+
+Steven Robbins, on 2023-06-28:
+> First of all: many thanks for helpful suggestions on both my recent problems.
+
+You're welcome  :)
+
+> One odd thing, though: I have received all the mail in the two threads EXCEPT
+> those from you.  I can see emails in the threads from others that are only to
+> the list (as yours are) and some that also CC me.  But none from you.
+>
+> This is weird.
+
+I made list replies, so if the mail didn't go through the list,
+then you wouldn't have received any copy.
+
+> I have an issue with the bug tracking system not sending me emails -- see
+> https://lists.debian.org/debian-devel/2022/09/msg00278.html
+>
+> Is this the same issue?
+
+I do not know.  Naively I would think you would see my messages
+marked as spam if dmarc kicks in and the message you receive is
+not appropriately dkim signed:
+
+	$ host -tTXT _dmarc.emlwks999.eu
+	_dmarc.emlwks999.eu descriptive text "v=DMARC1; p=quarantine;"
+
+In the past, I did have improper dkim signature due to a key
+rotation by my mail provider that I was not aware of, so I
+double checked, but the current configuration looks fine at t
+time.
+
+Or there could be something else that would probably justify me
+being more consistent sending messages from the debian.org
+address.  Or something else entirely outside smtp context (but
+fail to imaging what it would be).
+
+> Are you getting any weird bounce messages from the list about me?
+
+I do not see bounces.  If there are, they do not reach me.
+
+Thanks for raising that issue, getting mail right is hard today.
+--
+  .''`.  Étienne Mollier
+ : :' :  gpg: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/3, please excuse my verbosity
+   `-    on air: Utopianisti - Voodoo Mammoths From Neptune

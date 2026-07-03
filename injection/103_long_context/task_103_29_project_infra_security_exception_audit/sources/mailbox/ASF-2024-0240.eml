@@ -1,0 +1,106 @@
+Message-ID: <DS7PR12MB588865561035BFC9FA4C4EF7FEDE9@DS7PR12MB5888.namprd12.prod.outlook.com>
+X-Clawbench-ID: ASF-2024-0240
+Date: Fri, 10 Feb 2023 04:45:31 +0000
+From: Joe Schaefer <joe@sunstarsys.com>
+To: "dev@httpd.apache.org" <dev@httpd.apache.org>
+Subject: Re: CPU affinity request
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-02.mbox
+
+Nice proof of concept, but the code needs a serious porting effort to non-Linux platforms as well, and they’re all quirky in their own ways about this featureset.
+
+Doable tho.
+
+Joe Schaefer, Ph.D
+<joe@sunstarsys.com>
++1 (954) 253-3732
+SunStar Systems, Inc.
+Orion - The Enterprise Jamstack Wiki
+
+________________________________
+From: Martin Ma <machuang1983@gmail.com>
+Sent: Thursday, February 2, 2023 4:49:33 AM
+To: dev@httpd.apache.org <dev@httpd.apache.org>
+Subject: CPU affinity request
+
+
+Hi All,
+
+During httpd performance evaluation in Alibaba Cloud instance, I found httpd performance improved significantly after using “taskset” to set CPU affinity for httpd processes/threads, because it decreased the amount of CPU migrations. Performance improved 60% in arm instance g8y.2xlarge(8 vcpus, 32GiB memory, 40GB ESSD), also improved 20% in x86 instance g7.2xlarge(8 vcpus, 32GiB memory, 40GB ESSD). Test case: run httpd with event mode on g8y.2xlarge or g7.2xlarge, run traffic generator/benchmark 'wrk' on g8y.4xlarge(16 vcpus, 32GiB memory, 40GB ESSD), wrk command is 'wrk -t 32 -c 1000 -d 30 --latency http://$ServerIP<http://%24serverip/>'
+
+mpm event parameters:
+<IfModule mpm_event_module>
+    StartServers              8
+    ServerLimit             100
+    ThreadLimit            2000
+    MinSpareThreads          75
+    MaxSpareThreads        2000
+    ThreadsPerChild         125
+    MaxRequestWorkers      2000
+</IfModule>
+
+But httpd didn't have related parameters to support CPU affinity, so I used "taskset" to optimize.
+
+After source code analysis, I made a prototype for the affinity solution(add set_affinity function when worker/lister thread created). We can observe the same improvement by this solution. However, this prototype only applied the above special “event mpm” configuration for 8 cores server. I think it also needs to modify the current mechanism to dynamically adapt to the perceived load and add new parameters for the affinity setting.
+
+I had created a ticket on bugzilla, and Christophe JAILLET suggested discussing it in the dev mail list. I am not the developer on httpd, hope experts can evaluate this request and add cpu affinity function in future versions. Any commnet, please let me know.
+
+bugzilla ticket link: https://bz.apache.org/bugzilla/show_bug.cgi?id=66424
+
+Prototype patch(based on version 2.4.37) as below:
+
+diff --git a/server/mpm/event/event.c b/server/mpm/event/event.c
+index ffe8a23cbd..d23d115fff 100644
+--- a/server/mpm/event/event.c
++++ b/server/mpm/event/event.c
+@@ -1586,6 +1586,8 @@ static void * APR_THREAD_FUNC listener_thread(apr_thread_t * thd, void *dummy)
+     int have_idle_worker = 0;
+     apr_time_t last_log;
+
++    ap_setaffinity(process_slot);
++
+     last_log = apr_time_now();
+     free(ti);
+
+@@ -1998,6 +2000,8 @@ static void *APR_THREAD_FUNC worker_thread(apr_thread_t * thd, void *dummy)
+     apr_status_t rv;
+     int is_idle = 0;
+
++    ap_setaffinity(process_slot);
++
+     free(ti);
+
+     ap_scoreboard_image->servers[process_slot][thread_slot].pid = ap_my_pid;
+@@ -2456,6 +2460,8 @@ static void child_main(int child_num_arg, int child_bucket)
+     apr_thread_t *start_thread_id;
+     int i;
+
++    ap_setaffinity(process_slot);
++
+     /* for benefit of any hooks that run as this child initializes */
+     retained->mpm->mpm_state = AP_MPMQ_STARTING;
+
+@@ -3862,6 +3868,17 @@ static const char *set_worker_factor(cmd_parms * cmd, void *dummy,
+     return NULL;
+ }
+
++void ap_setaffinity(int cpu_affinity)
++{
++    cpu_set_t mask;
++
++    CPU_ZERO(&mask);
++    CPU_SET(cpu_affinity, &mask);
++
++    sched_setaffinity(0, sizeof(cpu_set_t), &mask);
++
++    printf("set thread_id=%d CPU affinity to Core %d\n", gettid(), cpu_affinity);
++}
+
+ static const command_rec event_cmds[] = {
+     LISTEN_COMMANDS,
+
+--
+Thanks & Best Regards
+Martin Ma

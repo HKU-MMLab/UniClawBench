@@ -1,0 +1,42 @@
+Message-ID: <YfkOwcaL9C+V/LLr@an3as.eu>
+X-Clawbench-ID: BIO-2024-0181
+Date: Tue, 1 Feb 2022 11:43:13 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Re: Problems finding RocksDBConfig.cmake (Was: sortmerna: "/usr/bin/ld: cannot find -lpthreads")
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_02_msg00006.html
+
+Am Tue, Feb 01, 2022 at 11:24:39AM +0100 schrieb Mathieu Malaterre:
+> > Odd.
+> >
+> > Here is what I see:
+> >
+> > % cat src/sortmerna/CMakeLists.txt
+> > [...]
+> >                 # the following are all transitive dependencies of
+> > smr_objs i.e. no need to link:
+> >                 # RapidJSON::RapidJSON ZLIB::ZLIB Threads::Threads (rockdb deps)
+> >
+> > So there may be an issue in the RocksDbConfig file... in any case I
+> > suspect this is acceptable to simply add it manually back:
+> >
+> >                 # RapidJSON::RapidJSON ZLIB::ZLIB (rockdb deps)
+> >                 Threads::Threads
+
+If I just remove the '#' in that line I get
+
+
+CMake Error at src/sortmerna/CMakeLists.txt:164 (add_executable):
+  Target "sortmerna" links to target "RapidJSON::RapidJSON" but the target
+  was not found.  Perhaps a find_package() call is missing for an IMPORTED
+  target, or an ALIAS target is missing?
+
+
+Kind regards
+     Andreas.
+
+--
+http://fam-tille.de

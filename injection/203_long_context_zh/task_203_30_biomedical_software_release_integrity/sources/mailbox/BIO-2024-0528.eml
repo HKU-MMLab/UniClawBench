@@ -1,0 +1,33 @@
+Message-ID: <20220701171353.ask3rts5xwegzaqv@lark>
+X-Clawbench-ID: BIO-2024-0528
+Date: Fri, 1 Jul 2022 10:13:53 -0700
+From: tony mancill <tmancill@debian.org>
+To: Andreas Tille <andreas@an3as.eu>
+Subject: Re: milib moved to gradle build system - help needed
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_07_msg00000.html
+
+On Thu, Jun 30, 2022 at 05:06:50PM +0200, Andreas Tille wrote:
+> Hi Pierre (and others)
+>
+> I injected latest version of milib which moved to gradle even in some
+> versions before.  My extremely weak attempt to switch to gradle failed
+> (quite expected) but I hope its a nice start for you (or anybody else
+> who might know gradle better than me which is basically zero).
+
+Hi Andreas,
+
+Not only did upstream switch to Gradle, but the build file is written in
+Kotlin, which I don't be believe our build toolchain currently supports.
+Fortunately, the build doesn't look very complex - it's mostly concerned
+with publishing, none of which we need - so we should be able to write a
+simple build.gradle for the project.
+
+I will give this a go, but it likely won't be until the end of next week
+due to some ${real_life} family considerations.  (Pierre, if you are
+already ahead of me on this, feel free to go ahead with an upload.)
+
+Cheers!
+tony

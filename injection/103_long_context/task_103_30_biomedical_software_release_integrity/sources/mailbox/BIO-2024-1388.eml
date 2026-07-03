@@ -1,0 +1,55 @@
+Message-ID: <udlmtco7xg7.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-1388
+Date: Mon, 01 Aug 2022 12:14:32 -0400
+From: ucko@debian.org (Aaron M. Ucko)
+To: David Miguel Susano Pinto <carandraug+dev@gmail.com>,        Debian Med Project List <debian-med@lists.debian.org>
+Subject: Re: igblast accepted - how can it be used to test igdiscover
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_08_msg00005.html
+
+Andreas Tille  writes:
+
+> thanks again a lot for your helpful comments.
+
+No problem.
+
+> I wonder what needs to be done to create the said binaries.
+
+Ah, right, they need VDB; please try adding a build dependency on
+libncbi-vdb-dev and removing --without-vdb from the configure command
+line.  Also, you can perform a more targeted build by adding
+--with-flat-makefile and then changing the build command to
+
+cd c++/*/build && make -f Makefile.flat app/igblast/
+
+where the trailing slash is mandatory.  (This approach will still yield
+some ancillary binaries, namely internal builds tools.)
+
+> I think that controverse is over and implemented in the package
+> template which contains the according lintian-override[1]
+
+OK, thanks. :-)
+
+> OK, pushed Recommends to Salsa (will drop superficial executables)
+
+Great, thanks!
+
+> I admit that's too much for a "Team upload" done by a person who has no
+> idea about all the ncbi stuff.
+
+That's fair; you can leave the build static for now and I'll take care of
+those adjustments when I get a chance.  Likewise for portability issues,
+though as noted you probably won't have to look far for patches.
+
+>> - Some use cases may want app/igblast's internal_data and optional_file
+[...]
+>
+> Commited to git.
+
+Thanks!
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

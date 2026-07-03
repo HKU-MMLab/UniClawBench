@@ -1,0 +1,39 @@
+Message-ID: <YeFLiORqzml1hZbL@benson.stsp.name>
+X-Clawbench-ID: ASF-2024-1099
+Date: Fri, 14 Jan 2022 11:08:08 +0100
+From: Stefan Sperling <stsp@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: httpd test framework svn repo borked?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-01.mbox
+
+On Thu, Jan 13, 2022 at 07:17:27PM -0600, William A Rowe Jr wrote:
+> Thanks Stefan, it's attempting [locally] to replace a file, which was
+> just created during the
+> checkout (which might even be open).
+
+Hmm. I assume SVN would close such files based on APR pool lifetime.
+
+Handling of the pristine installation step has been changed in SVN trunk:
+https://svn.apache.org/r1886490
+In particular:
+"""
+On Windows, it uses the existing mechanism of installing the files
+by handle, without having to reopen them.
+"""
+
+If you are running 1.14 or an older release, perhaps try a client
+built from trunk to see if this issue has already been fixed for
+a future SVN 1.15 release?
+
+> So it looks like some hash
+> collision or other
+> duplication issue where there are two attempts to emplace the same
+> hash svn-base image,
+> and linux is letting this happen without complaint, while windows refuses.
+
+Does the same file content (ignoring expanded keywords, if any) exist at
+multiple paths? If so, such paths would naturally share the same pristine
+based on the hash of file contents.

@@ -1,0 +1,12 @@
+{
+  "task_id": "task_103_36_minesweeper_easy_play",
+  "created_at": "2026-04-30T00:00:00+00:00",
+  "difficulty": "easy",
+  "board_rows": 9,
+  "board_cols": 9,
+  "mine_count": 10,
+  "total_cells": 81,
+  "score_formula": "(revealed_cells + correctly_flagged_mine_cells) / 81",
+  "full_clear_rule": "revealing all non-mine cells automatically earns full score 1.0 and passes",
+  "pass_condition": "full clear of all non-mine cells, or final total score >= 0.90 with board evidence"
+}

@@ -1,0 +1,71 @@
+Message-ID: <ZYSliqeO3Mu4smgk@bilena>
+X-Clawbench-ID: BIO-2024-1160
+Date: Thu, 21 Dec 2023 15:52:26 -0500
+From: Yaroslav Halchenko <debian@oneukrainian.com>
+To: Andreas Tille <andreas@an3as.eu>
+Subject: Re: Do we need pynwb - if yes please care for its new dependency
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_12_msg00066.html
+
+Hi Andreas,
+
+Thank you for taking care about upgrades of pynwb and hdmf!
+
+FWIW popcon is likely  small because we never packaged downstream
+packages which use pynwb and usually just instructed people to "pip
+install" them. And as a developer, I usually had to do the same
+anyways.
+
+The reason for current packaging hurdle is a switch from pypi to github
+in debian/watch:  pynwb uses git submodule for src/pynwb/nwb-schema/
+which they package within pynwb pypi releases.  I double checked it that
+they still do as they did before:
+
+	❯ for f in pynwb-2.*; do echo $f; tar -tzvf $f | grep src/pynwb/nwb-schema/ | wc -l; done
+	pynwb-2.1.0.tar.gz
+	15
+	pynwb-2.2.0.tar.gz
+	15
+	pynwb-2.3.0.tar.gz
+	15
+	pynwb-2.4.0.tar.gz
+	15
+	pynwb-2.5.0.tar.gz
+	15
+
+So a solution would be to revert going to monitor github and then reimport
+source.  I do not think it is worthwhile packaging nwb-schema at this point
+since small and unlikely we would bother packaging any other package which
+would use it directly.
+
+Do you agree to such changes -- then I could do the needed dance with git repo
+, just let me know.
+
+Cheers!
+
+On Thu, 21 Dec 2023, Andreas Tille wrote:
+
+> Hi Yaroslav,
+
+> I bumped pynwb to its latest upstream version a couple of times.  It was
+> not release in any stable release since o-o-stable since the package was
+> always in a bad state.  Popcon is pretty low[1] - but we do not see any
+> Ubuntu users here so may be that's a weak metric.
+
+> My recent update in Git to latest upstream has uncovered that it needs
+> a new predepends[2].  If you consider this package a good citizen inside
+> Debian it would be great if you would care for this new package.  Other
+> bugs should be fixed in Salsa, thought.
+
+> Kind regards
+>     Andreas.
+
+> [1] https://qa.debian.org/popcon.php?package=pynwb
+> [2] https://github.com/NeurodataWithoutBorders/nwb-schema
+--
+Yaroslav O. Halchenko
+Center for Open Neuroscience     http://centerforopenneuroscience.org
+Dartmouth College, 419 Moore Hall, Hinman Box 6207, Hanover, NH 03755
+WWW:   http://www.linkedin.com/in/yarik

@@ -1,0 +1,23 @@
+Message-ID: <YfK2m+46P2Dg7fcI@an3as.eu>
+X-Clawbench-ID: BIO-2024-1166
+Date: Thu, 27 Jan 2022 16:13:31 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Test issue with new version of mothur
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_01_msg00104.html
+
+Hi,
+
+I tried to upgrade mothur to its latest upstream version.
+I found an issue with autopkgtest and forwarded this upstream[1]
+
+Kind regards
+    Andreas.
+
+[1] https://forum.mothur.org/t/changes-in-version-1-47-0/21251
+
+--
+http://fam-tille.de

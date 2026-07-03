@@ -1,0 +1,48 @@
+task_id: task_204_10_street_food_search_csv
+category: 204_multimodal_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  打开 YouTube，打开并观看 Joshua Weissman 的这个视频：
+  `I Tried $1 Street Food Around The World`
+
+  这是本任务要使用的目标视频。不要换成其他创作者，
+  也不要混入其他视频的内容。
+  不要下载字幕、转录文本，也不要依赖任何外部食谱摘要；
+  你必须基于你实际观看的视频内容来整理表格。
+
+  然后将视频中出现的街头小吃整理到：
+  `/tmp_workspace/results/street_food.csv`
+
+  该 CSV 至少必须包含以下列：
+  - `video_id`
+  - `video_title`
+  - `creator`
+  - `country`
+  - `city`
+  - `snack`
+  - `price_text`
+  - `review`
+
+  要求：
+  1. 每种小吃单独占一行。
+  2. 在 `price_text` 中，保留你在视频里看到或听到的价格表达；如果
+     是一个大致价格，就照此记录。
+  3. `review` 必须描述创作者对该食物的评价，至少包含
+     一个明确的正面或负面判断。
+  4. 在 CSV 中使用 `video_id` / `video_title`，清楚表明你使用的是
+     这个 Joshua Weissman 的视频。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+codex:
+  max_user_followups: 2

@@ -1,0 +1,24 @@
+Message-ID: <ZX8BwS5FoEHZeulN@fusion>
+X-Clawbench-ID: BIO-2024-1127
+Date: Sun, 17 Dec 2023 15:12:17 +0100
+From: Étienne Mollier <emollier@debian.org>
+To: debian-med@lists.debian.org
+Subject: [Advent bug squashing] Bug #1048044
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_12_msg00054.html
+
+Hi all,
+
+I closed #1048044, yet another case of double source build
+failure affecting the legacy muscle3 package.  I will probably
+busy myself with other things to take a bit of rest instead of
+squashing further bugs for today.
+
+Have a nice Sunday of the Advent,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  gpg: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/2, please excuse my verbosity
+   `-    on air: Uriah Heep - Salisbury

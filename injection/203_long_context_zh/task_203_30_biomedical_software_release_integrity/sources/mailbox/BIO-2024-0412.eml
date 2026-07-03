@@ -1,0 +1,76 @@
+Message-ID: <54ed6335-7abc-b353-b341-5411c94d4dca@debian.org>
+X-Clawbench-ID: BIO-2024-0412
+Date: Wed, 10 Nov 2021 14:13:08 +0200
+From: Andrius Merkys <merkys@debian.org>
+To: debian-science@lists.debian.org
+Subject: Re: Debian Math Team
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_11_msg00071.html
+
+Hi Nilesh,
+
+On 2021-11-04 13:13, Nilesh Patra wrote:
+> On Thu, Nov 04, 2021 at 11:48:45AM +0200, Andrius Merkys wrote:
+>> Maybe separate mailing lists could be enough? In the end
+>> upstreams mostly work on one-two source packages, and even if they
+>> become DMs they do not get push/upload permissions for all source
+>> packages of a team, do they?
+>
+> I think this point is not exactly a discussion for the mathematics team, but
+> pretty much several other teams (i.e separate lists, etc)
+> Since this looks (to me) very generic and not very specific, maybe you'd
+> want to ask -devel for more opinions, but.... :)
+
+I agree, this is a topic for a separate discussion :)
+
+>>> since R packages are extremely uniform and
+>>> usually come with test suites that can be re-used which to some extend
+>>> is taking over the role of an expert knowing the software.  There are
+>>> also not really any specific decisions to make about the packaging since
+>>> everything is really straightforward.
+>>>
+>>> This is absolutely different to software written in Python, Java or
+>>> anything else.
+>>
+>> I disagree. I find at least JavaScript and Perl packages quite uniform,
+>> and I have an impression that at least
+>
+> I cannot say about perl, but your argument is certainly invalid for javascript team.
+> My journey to contributing in debian started with JS team, and I've been involved there
+> ever since (few years by now), and no, they are _not_ uniform.
+> Several packages need much more work than the defaults and maintaining JS is also more work
+> for more techinal reasons (like embedding node modules for instance)
+>
+> Several packages come with typescript defs, and you need to take care of them.
+> They come with varieties of build systems - webpack, rollup, grunt then terser, uglifyjs for
+> minifying and what not.
+> In majority of the JS packages I've touched (several dozens by now) I almost always had
+> to do something more than just running some scripts and I can attest to that.
+
+Interestingly, my experience is different. Most of JS packages I deal
+with are rather uniform, but maybe it is just luck.
+
+> A couple of years back, there was no pkg-js-tools (sort of a debhelper sort of tool for JS team) and
+> the work was even more. Yadd later wrote this nice tool that automates a number of tasks, and maybe that
+> gives you an impression that stuff is unform - sure, it has improved a lot, but you cannot compare it with
+> R packages. You can maintain R packages without knowing the build system very well, but not JS.
+
+Maybe it is just pkg-js-tools, yes. When I came to JS packaging,
+pkg-js-tools were already there, so I have no experience with the
+situation before that. Nevertheless, thanks to pkg-js-tools, JS packages
+look quite uniform to me now :)
+
+Apart from that, maintainers of the JS team do great deal of (seemingly
+semi-automated) improvements on team-maintained packages. Thus I am
+happy about my JS packages in JS team as they are taken care of even
+without my attention.
+
+> In case of R packages, dh-R takes care of literally everything. Ofcourse there are exceptions,
+> but they are very rare. A template legit works just okay, always.
+
+OK, good to know.
+
+Best,
+Andrius

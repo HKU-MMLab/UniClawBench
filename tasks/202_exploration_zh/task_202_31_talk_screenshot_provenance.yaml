@@ -1,0 +1,40 @@
+task_id: task_202_31_talk_screenshot_provenance
+category: 202_exploration_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我保存了一张某个演讲视频的截图，但忘了它出自哪里——
+  画面里没有说明文字、频道名称或屏幕上的标题。我想
+  找到原始视频。截图在这里：
+
+      /tmp_workspace/clawbench/sources/screenshot.jpg
+
+  请识别演讲者和这场演讲，然后找到那段原始的官方
+  视频——而非转载、剪辑频道，或第三方摘要。
+
+  请告诉我：
+  - 演讲者是谁，以及演讲的标题，
+  - 举办地点/活动，以及（如果知道的话）年份，
+  - 一个指向规范原始视频的链接，以及发布它的
+    官方频道/网站（例如官方演讲页面）。
+
+  把你的结论和证据链（你是如何识别演讲者，
+  以及如何追溯到规范原始视频）保存到
+  `/tmp_workspace/results/talk_provenance.json`，并把笔记/截图放在
+  `/tmp_workspace/results/` 下。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+sources:
+  - screenshot.jpg
+
+codex:
+  max_user_followups: 2

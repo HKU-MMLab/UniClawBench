@@ -1,0 +1,71 @@
+Message-ID: <dee5939ba2ca54cadd9486b0a5d34767@enron.com>
+X-Clawbench-ID: ANL-2001-0814
+Date: 1999-12-15T07:42:00-03:00
+From: Clayton Vernon <Clayton Vernon>
+To: Vince J Kaminski <Vince J Kaminski>
+Subject: gas prices
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Enron kaminski-v public mailbox index.json
+X-Original-Folder: kaminski-v_001/kaminski-v/Discussion threads
+
+Vince-
+
+
+1. We can detect "hoarding" of pipeline capacity as an elevated basis against
+
+the actual inflow.
+
+
+2. We can detect "market power" by dissociating the seller from the buyer,
+
+distinguishing between the physical "cost" in gas to run the generators and
+
+the transmission cost in dollars, i.e. the basis.
+
+
+3. (As you noted) We can detect "storage" as the difference between inflow
+
+and consumption.
+
+
+It appears to me there are two time series needed for a straightforward model
+
+of gas prices: flow rates at interconnects (from telemetry) and spot-market
+
+prices. There is an elevated basis reflecting pipeline companies monopolizing
+
+capacity, as well as hoarding of capacity by contracts. The dynamics of gas
+
+prices reflect consumption demand changes due to changes in expectations for
+
+the weather, as well as their impact on two highly strategic behaviors:
+
+hoarding of pipeline capacity and storage of gas.  We can "calibrate" the
+
+price elasticity of demands for consumption and storage, and the price
+
+elasticities of demand for transmission, as well as the extent of hoarding,
+
+from the two sets of numbers mentioned: flows and prices.  What the basis
+
+trader needs to understand are the incentives, and disincentives, for storage
+
+and capacity-hoarding, in terms of the calibrated price-elasticities, and
+
+each of these are as-if exotic call options at the consumption hub.  Finally,
+
+flows are "explained" by the model, and can be imputed from prices if
+
+necessary, resulting in a purely stochastic model of the basis in terms of
+
+the weather.
+
+
+I believe the problem is quite tractable, and I would like to proceed with a
+
+model.
+
+
+Clayton

@@ -1,0 +1,66 @@
+Message-ID: <6335f4359cbfdb7bdd42ed1c434a9077e59af2ed.camel@apache.org>
+X-Clawbench-ID: ASF-2024-1184
+Date: Wed, 29 Mar 2023 08:42:18 -0400
+From: Rich Bowen <rbowen@apache.org>
+To: "board@apache.org" <board@apache.org>
+Subject: A Message from the Board to PMC members
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-03.mbox
+
+Dear Apache Project Management Committee (PMC) members,
+
+The Board wants to take just a moment of your time to communicate a few
+things that seem to have been forgotten by a number of PMC members,
+across the Foundation, over the past few years.  Please note that this
+is being sent to all projects - yours has not been singled out.
+
+The Project Management Committee (PMC) as a whole[1] is tasked with the
+oversight, health, and sustainability of the project. The PMC members
+are responsible collectively, and individually, for ensuring that the
+project operates in a way that is in line with ASF philosophy, and in a
+way that serves the developers and users of the project.
+
+The PMC Chair is not the project leader, in any sense. It is the person
+who files board reports and makes sure they are delivered on time. It
+is the secretary for the project, and the project’s  ambassador to the
+Board of Directors. The VP title is given as an artifact of US
+corporate law, and not because the PMC Chair has any special powers. If
+you are treating your PMC Chair as the project lead, or granting them
+any other special powers or privileges, you need to be aware that
+that’s not the intent of the Chair role. The Chair is a PMC member peer
+with a few extra duties.
+
+Every PMC member has an equal voice in deliberations. Each has one
+vote. Each has veto power. Every vote weighs the same. It is not only
+your right, but it is your obligation, to use that vote for the good of
+the project and its users, not to appease the Chair, your employer, or
+any other voice in the project.
+
+Every PMC member can, and should, nominate new committers, and new PMC
+members. This is not the sole domain of the PMC Chair. This might be
+your most important responsibility to the project, as succession
+planning is the path to sustainability.
+
+Every PMC member can, and should, respond when the Board sends email to
+your private list. You should not wait for the PMC Chair to respond.
+The Board views the entire PMC as responsible for the project, not just
+one member.
+
+Every PMC member should be subscribed to the private@ mailing list. If
+you are not, then you are neglecting your duty of oversight. If you no
+longer wish to be responsible for oversight of the project, you should
+resign your PMC seat, not merely drop off of the private@ list and
+ignore it. You can determine which PMC members are not subscribed to
+your private list by looking at your PMC roster at
+https://whimsy.apache.org/roster/committee/  Names with an asterisk (*)
+next to them are not subscribed to the list. We encourage you to take a
+moment to contact them with this information.
+
+Thank you for your attention to these matters, and thank you for
+keeping our projects healthy.
+
+Rich, for The Board of Directors
+
+[1] https://apache.org/foundation/how-it-works.html#pmc-members

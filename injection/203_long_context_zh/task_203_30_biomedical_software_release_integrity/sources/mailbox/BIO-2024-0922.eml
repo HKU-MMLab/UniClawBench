@@ -1,0 +1,24 @@
+Message-ID: <CA+7wUszwYzfqYkZ9JWbAn=Zvp6EoqFtCUT3vu8GWp5hiUXLHuA@mail.gmail.com>
+X-Clawbench-ID: BIO-2024-0922
+Date: Tue, 4 Jun 2024 08:11:29 +0200
+From: Mathieu Malaterre <malat@debian.org>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: SONAME transition vs reverse dependencies
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_06_msg00001.html
+
+Hi folks,
+
+I am being asked to rebuild all reverse dependencies of dcmtk to
+transition to 3.6.8 (*). I have tried without success to get access to
+debomatic-amd64 with no luck so far.
+
+Would anyone have any other suggestions to get this transition rolling
+(stuck for 5 months now).
+
+Thanks,
+
+(*)
+https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1060704#10

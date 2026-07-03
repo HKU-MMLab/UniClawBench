@@ -1,0 +1,24 @@
+Message-ID: <YVWjjRBmsJ3V0tzH@an3as.eu>
+X-Clawbench-ID: BIO-2024-0943
+Date: Thu, 30 Sep 2021 13:46:21 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: 985001@bugs.debian.org
+Subject: Any progress with ITP of ipytree?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_09_msg00072.html
+
+Hi Emmanuel,
+
+its great that you ITPed ipytree since we need this package is a new
+depends for at least one Debian Med package (python-cooler).  Could
+you give some status update about this packaging effort?  I guess the
+JS dependencies will make it a tough one, right?
+
+Kind regards
+
+      Andreas.
+
+--
+http://fam-tille.de

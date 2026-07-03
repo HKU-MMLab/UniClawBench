@@ -1,0 +1,158 @@
+# UniClawBench orchestra dispatcher config — EXAMPLE / template.
+#
+# Copy this file to orchestra.local.yaml and edit it; orchestra.local.yaml
+# is gitignored. These are the ONLY two orchestra configs kept in the repo:
+# this example (committed) and your local copy (untracked).
+
+# ── Controller ────────────────────────────────────────────────────────
+# Runs the dispatcher, holds runs/, and serves the webui. data_root is the
+# parent of runs/, logs/, images/, venv/.
+#
+# If the controller is macOS and data_root lives under /Volumes/<external>,
+# grant Full Disk Access to /usr/libexec/sshd-keygen-wrapper in
+# System Settings → Privacy & Security so SSH-launched processes can
+# read/write the volume. Otherwise pick a path under the user's home.
+controller:
+  host: "localhost"                  # ssh alias (resolved via ~/.ssh/config);
+                                     # use "localhost" for a single-machine setup,
+                                     # or "your-controller-host" for a remote box.
+  data_root: "./runtime-data"        # parent of runs/, logs/, images/, venv/.
+                                     # Use a path you control — a relative dir
+                                     # like ./runtime-data, or an absolute
+                                     # "/path/to/your/data_root".
+  webui_port: 9005
+
+# ── Worker pool ────────────────────────────────────────────────────────
+# Every host listed here can receive task assignments over SSH. The
+# dispatcher reaches each worker via `ssh <ssh-alias>`, so the `ssh:` value
+# must be a host the controller can SSH into non-interactively.
+#   parallel = max concurrent tasks on that host (tune to its RAM/CPU)
+#   skip: true = temporarily drain a host without deleting its entry
+#
+# This example ships ONE local worker: the controller dispatches to itself
+# over `ssh localhost`, which requires passwordless SSH-to-self (add your
+# own public key to ~/.ssh/authorized_keys and verify `ssh localhost true`
+# succeeds without a prompt). To scale out, add more entries here, each
+# pointing at an SSH alias for another machine, e.g.:
+#   - {name: box2, ssh: "box2", parallel: 8, skip: false}
+workers:
+  - name: local
+    ssh: "localhost"
+    parallel: 2
+    skip: false
+
+# Where each worker keeps its checkout of the repo. For a localhost worker,
+# point this at your own checkout path.
+worker_repo: "/path/to/your/UniClawBench"
+
+# Python interpreter used on workers for worker_runner/run_eval and adapter
+# prewarm. prepare_node creates this venv by default.
+worker_python: "/opt/clawbench-venv/bin/python"
+
+# ── Grading roles ──────────────────────────────────────────────────────
+# Provider/model for the supervisor + user_simulator (the two Codex roles
+# that grade the executor). Swapping the grader model is a YAML edit, not a
+# code change. Both halves are required.
+#
+# `provider`/`model` must name a Codex provider + model available in
+# configs/codex.local.toml (copy configs/codex.example.toml first). Executor
+# models in the matrix below are the ones that resolve through
+# configs/models.local.json.
+supervision:
+  supervisor:
+    provider: proxy-example
+    model: gpt-5.4
+  user_simulator:
+    provider: proxy-example
+    model: gpt-5.4
+
+# ── WHAT TO RUN: suites × (backend × model) ────────────────────────────
+#
+# suites: which task suites to dispatch.
+#   • empty / omitted  → every suite under tasks/ EXCEPT the
+#                        000_template / 001_smoketest scaffolding (always
+#                        excluded, regardless of this list)
+#   • a list           → only those suites
+# Available suites:
+#   101_skill_usage 102_exploration 103_long_context 104_multimodal
+#   105_cross_platform   (+ Chinese mirrors)
+#   201_skill_usage_zh 202_exploration_zh 203_long_context_zh
+#   204_multimodal_zh 205_cross_platform_zh
+suites: []                           # e.g. [101_skill_usage, 201_skill_usage_zh]
+
+# matrix and priorities are ORTHOGONAL — matrix says WHAT to run, priorities
+# says in WHAT ORDER. They coexist.
+#
+# ── matrix: the experiment set (backend × model) ──────────────────────
+# A LIST of groups, each pinning its OWN model set (groups need not share
+# models). Each entry takes ``backend`` (one) or ``backends`` (several
+# sharing a model set). `models` are model_dir names: the provider/model id
+# with dots AND slashes turned into dashes. So provider `proxy-example` +
+# model `gpt-5.4` becomes `proxy-example-gpt-5-4`. Every model_dir below must
+# resolve to a provider/model that exists in configs/models.local.json (see
+# configs/models.example.json). This is the canonical place to declare
+# backend × model — do NOT put it in priorities.
+matrix:
+  - backend: openclaw
+    models: ["proxy-example-gpt-5-4"]
+  - backends: [nanobot, openclaw_edict]   # share the same model set
+    models: ["proxy-example-gpt-5-4"]
+# (also accepts the cross-product mapping form
+#  `matrix: {backends: [...], models: [...]}`)
+
+# ── priorities: the status-tier ORDERING (optional) ───────────────────
+# When matrix is present, priorities configures ORDER ONLY — each entry is a
+# status tier ``{id, status_in}`` with NO backend_in/model_in (that's matrix's
+# job; declaring it here is rejected). matrix × priorities combine STATUS-MAJOR:
+# for each tier, one bucket per matrix group, e.g. openclaw-missing →
+# nanobot/edict-missing → openclaw-running → ... . Omit this block to use the
+# default order below.
+priorities:
+  - {id: missing, status_in: [missing]}
+  - {id: running, status_in: [running]}
+  - {id: retry,   status_in: [rate_limit, infra_error, pre_exec_failed]}
+  - {id: ei,      status_in: [executor_incomplete]}
+# Optional: retry terminal global-timeout cells only when you explicitly opt in.
+# Catch-all "others" buckets never pick up terminal statuses by accident.
+# - {id: timeout, status_in: [global_timeout]}
+# Legacy (no matrix): priorities may instead be self-contained buckets that pin
+# their own match.{backend_in, model_in, status_in}.
+
+# ── Retry pacing ──────────────────────────────────────────────────────
+# wave_isolation (default true): blocks a whole priority's wave until its
+#   slowest member drains — prevents rate-limit retry storms but idles the
+#   cluster behind one slow cell.
+# retry_backoff_base_seconds > 0: SUPERSEDES wave_isolation with a PER-CELL
+#   backoff — a failed cell waits min(base*2**(attempts-1), cap) seconds before
+#   re-dispatch; unrelated cells are never blocked (no idle tail). Recommended:
+#   set base (e.g. 30) and wave_isolation: false.
+wave_isolation: true
+retry_backoff_base_seconds: 0           # 0 = off (use wave_isolation)
+retry_backoff_cap_seconds: 900
+
+# ── Per-task experiment retention ──────────────────────────────────────
+# After each attempt is collected, prune the task's
+# runs/<backend>/<model_dir>/<suite>/<task>/ dir to the newest N attempt
+# subdirs (by mtime); older ones are deleted. Must be >= 1.
+max_attempts_per_task: 3
+
+# ── Concurrency caps ───────────────────────────────────────────────────
+# Global cap per model_dir, enforced across the WHOLE cluster (not per
+# host). Use it to throttle a rate-limited API. A model not listed falls
+# back to default_model_cap; null there → unlimited (bounded only by the
+# sum of worker `parallel`). Cluster total here = 2 (the single local
+# worker). Keys must be model_dir names that exist in the registry.
+model_caps:
+  proxy-example-gpt-5-4: 2           # = cluster total; lower this to throttle
+  dashscope-coding-kimi-k2-6: 2
+default_model_cap: null
+
+# ── Docker images every worker must have ───────────────────────────────
+# prepare_node verifies these tags exist; missing tags are loaded from the
+# controller's image_dir if available.
+images:
+  - clawbench-runtime-base
+  - clawbench-openclaw
+  - clawbench-nanobot
+  - clawbench-codex
+  - clawbench-openclaw-edict

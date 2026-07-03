@@ -1,0 +1,64 @@
+Message-ID: <Y0VlewFkmY2tQ4id@an3as.eu>
+X-Clawbench-ID: BIO-2024-0493
+Date: Tue, 11 Oct 2022 14:45:47 +0200
+From: Andreas Tille <tille@debian.org>
+To: "Aaron M. Ucko" <ucko@debian.org>
+Subject: Re: Finishing ncbi-vdb and sra-sdk
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00033.html
+
+[Pierre, please read at the end]
+
+Hi Aaron,
+
+Am Mon, Oct 10, 2022 at 10:48:58PM -0400 schrieb Aaron M. Ucko:
+> ucko@debian.org (Aaron M. Ucko) writes:
+>
+> > Ah, right, sra-sdk will need to go through NEW too -- the ngs-sdk code
+> > it absorbed underwent an SONAME bump along the way.  (All necessary
+> > ncbi-vdb changes passed NEW a few weeks ago, but ncbi-vdb 3.x is sitting
+> > in experimental until sra-sdk joins it.)  I'll see what I can do.
+>
+> I've made a fair bit of progress, and pushed what I have so far --
+> though one commit accidentally wound up with a stray change, so I'd
+> appreciate it if somebody could please grant me whatever access I need
+> to proceed with a force-push to master so I can clean that up properly.
+
+I wanted to set you "Owner" of the Debian Med team repository since this
+is the maximum power.  I realised you are owner.  So either someone has
+beaten me and just did so or something is wrong if you can't do what you
+want to do.
+
+> It's still not entirely ready, though.  In particular:
+> - Three tests are failing; I need to investigate why.  (I've been
+>   building in nocheck mode for now to sort out everything else.)
+> - On a possibly related note, I should see if anything from ngs-sdk's
+>   debian/patches is of interest here.
+> - The javadocs contain embedded copies of files from libjs-jquery and
+>   libjs-jquery-ui that should become symlinks (with dependencies added).
+
+I've seen packages where this is ignored.  If you want to approach this
+and need helping hands just ask here.
+
+> - Lower priority: I have not yet taught the Java bindings to look for
+>   full SONAMEs, so they still depend on a -dev package.  I'd appreciate
+>   help from someone more familiar with Java.
+
+I admit I do not understand the problem but I have put Pierre in CC.
+
+
+A comment to your question in your other mail:  Sorry, I have no idea
+how to teach CI to pick from experimental.  On the other hand I do not
+think it should stop us from uploading if CI will fail as long as some
+preconditions are in experimental.  In my local pbuilder which I'm using
+to run autopkgtests I'm feeding the needed version of a package into the
+local pbuilder repository.
+
+Hope this helps
+
+    Andreas.
+
+--
+http://fam-tille.de

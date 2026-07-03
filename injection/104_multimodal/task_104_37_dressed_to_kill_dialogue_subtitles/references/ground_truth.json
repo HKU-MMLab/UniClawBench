@@ -1,0 +1,97 @@
+{
+  "task_id": "task_104_37_dressed_to_kill_dialogue_subtitles",
+  "difficulty": "Medium",
+  "schema": "b",
+  "schema_notes": "full-clip transcription judged with timing bands and semantic anchors",
+  "ground_truth": {
+    "source_clip": "clip.mp4",
+    "reference_srt": "references/reference_clip.srt",
+    "requested_time_range_seconds": {
+      "start": 0,
+      "end": 480
+    },
+    "expected_output_files": [
+      "/tmp_workspace/results/clip.srt"
+    ],
+    "reference_metrics": {
+      "cue_count": 162,
+      "acceptable_cue_count_min": 110,
+      "acceptable_cue_count_max": 220,
+      "first_cue_start_max_sec": 2,
+      "last_cue_end_min_sec": 470,
+      "last_cue_end_max_sec": 481
+    },
+    "semantic_acceptance": {
+      "minimum_anchor_windows_hit": 5,
+      "minimum_semantic_coverage_ratio": 0.8,
+      "interpretation": "The evaluator scores the five semantic windows in eval_rule.md. Each window should capture roughly 80% or more of the dialogue semantically, even if wording differs slightly in punctuation or line splitting."
+    },
+    "semantic_anchor_windows": [
+      {
+        "label": "opening_threat",
+        "window": "00:00:00-00:00:30",
+        "keywords_any": [
+          "murder",
+          "Scotland Yard",
+          "Sherlock Holmes",
+          "Now get out"
+        ]
+      },
+      {
+        "label": "holmes_and_murdered_emery",
+        "window": "00:00:33-00:01:45",
+        "keywords_any": [
+          "Holmes",
+          "Hopkins",
+          "Inspector Lestrade",
+          "Emery",
+          "Watson",
+          "Stinky",
+          "musical box"
+        ]
+      },
+      {
+        "label": "auction_room_inquiry",
+        "window": "00:01:45-00:03:07",
+        "keywords_any": [
+          "Julian Emery",
+          "Kilgour",
+          "143B Hampton Way",
+          "Golders Green",
+          "Crabtree",
+          "Dartmoor",
+          "five pounds",
+          "Thursday"
+        ]
+      },
+      {
+        "label": "kilgour_house_and_child",
+        "window": "00:03:12-00:06:29",
+        "keywords_any": [
+          "Kilgour",
+          "peddlers",
+          "shopping",
+          "Park Lane",
+          "child",
+          "cupboard",
+          "market basket",
+          "charwoman",
+          "actress"
+        ]
+      },
+      {
+        "label": "ending_auction",
+        "window": "00:07:20-00:07:59.540",
+        "keywords_any": [
+          "Dresden china figurine",
+          "French court",
+          "five pounds ten",
+          "five pounds fifteen",
+          "six pounds",
+          "going once",
+          "Trikland"
+        ]
+      }
+    ]
+  }
+}

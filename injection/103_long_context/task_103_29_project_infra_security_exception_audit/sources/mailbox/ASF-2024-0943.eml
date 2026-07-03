@@ -1,0 +1,34 @@
+Message-ID: <4ad1f727028a447e88d0196d573a6d76@wellsfargo.com>
+X-Clawbench-ID: ASF-2024-0943
+Date: Thu, 23 Jun 2022 17:40:24 +0000
+From: <jonmcalexander@wellsfargo.com>
+To: <dev@httpd.apache.org>
+Subject: Question about slotmem-shm- log file, etc. location
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-06.mbox
+
+Hello all.
+I have a question and haven't been able to find an answer yet on the interwebs. I ran into an issue while setting up mod-proxy-http with the balancer option and when I restarted Apache, it failed with this message:
+
+"AH02611: create: apr_shm_create(/apps/apache/2.4.53/logs/slotmem-shm-p18b8fc23_3.shm) failed"
+
+Turns out I didn't have a logs folder under 2.4.53. Looks like it looks at the ServerRoot as to where the logs directory is located. We run our apache servers with separate Instance directories and centralized binaries to make upgrades, etc. easier. Is there any way to specify something like a slotmem-file-target-location directive in the httpd.conf of the instance, or anything like that? I did see some rumblings around this from back in spring of 2012, but nothing since.
+
+Any assistance would be great.
+Dream * Excel * Explore * Inspire
+Jon McAlexander
+Senior Infrastructure Engineer
+Asst. Vice President
+He/His
+
+Middleware Product Engineering
+Enterprise CIO | EAS | Middleware | Infrastructure Solutions
+
+8080 Cobblestone Rd | Urbandale, IA 50322
+MAC: F4469-010
+Tel 515-988-2508 | Cell 515-988-2508
+
+jonmcalexander@wellsfargo.com<mailto:jonmcalexander@wellsfargo.com>
+This message may contain confidential and/or privileged information. If you are not the addressee or authorized to receive this for the addressee, you must not use, copy, disclose, or take any action based on this message or any information herein. If you have received this message in error, please advise the sender immediately by reply e-mail and delete this message. Thank you for your cooperation.

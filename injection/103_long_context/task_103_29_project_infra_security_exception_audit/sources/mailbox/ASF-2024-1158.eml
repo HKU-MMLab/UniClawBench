@@ -1,0 +1,26 @@
+Message-ID: <CALK=YjOxWAOUQWJN9ychsaVcRMnOFQxC8YyVscyY7zG9ZqV+7Q@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1158
+Date: Thu, 20 Oct 2022 10:32:37 -0400
+From: Eric Covener <covener@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: Define variable in modules
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-10.mbox
+
+On Thu, Oct 20, 2022 at 9:56 AM Nick Gearls <nickgearls@gmail.com> wrote:
+>
+> Hello,
+>
+> It would sometimes be very handy to be able to define a variable (like -D on command-line or "Define xxx" in the config) inside a module.
+> This would, for instance, allow to have a config file based on a define from the module, knowing if the new syntax is known or not, etc.
+>
+> Concrete example: in mod_security2, they introduced a new "collection".
+> If you use this collection in an old version, it's a syntax error.
+> If mod_security2 defines the variable "support_new_collection" (OK, very bad name obviously), then we can enclose the rule using a "<IfDefine support_new_collection>.
+>
+> Would it be possible to export a function to define such a variable?
+
+I think it's feasible. Might want to safeguard against it being called
+in unexpected times (after pre-config?) or ways (in child processes?)

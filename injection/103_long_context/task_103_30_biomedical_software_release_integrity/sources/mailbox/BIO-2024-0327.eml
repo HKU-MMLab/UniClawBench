@@ -1,0 +1,53 @@
+Message-ID: <YbDMLPRfCnlIfueV@an3as.eu>
+X-Clawbench-ID: BIO-2024-0327
+Date: Wed, 8 Dec 2021 16:15:56 +0100
+From: Andreas Tille <tille@debian.org>
+To: Andrius Merkys <merkys@debian.org>
+Subject: Re: Packaging TechneNotes [Was: Re: Project proposal for the Debian Med group]
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_12_msg00042.html
+
+Hi,
+
+Am Wed, Dec 08, 2021 at 04:21:30PM +0200 schrieb Andrius Merkys:
+> Dear Guido,
+>
+> On 2021-11-20 13:48, Guido Rovera wrote:
+> ...
+
+... all well said.
+
+> You may start from Debian packaging portal [1], but I cannot seem to
+> find it presenting the modern tools which highly simplify packaging
+> (git-buildpackage, debhelper, sbuild, ...). I ended up describing the
+> steps I take myself to package any new source package [2], you may start
+> from this small tutorial and see where it takes you to.
+
+I've hold a packaging workshop at DebConf21.  May be the video[3] is
+helpful.
+
+> > Finally, my software (TechneNotes) is substantially different from
+> > Cherry Tree, with key improvements in terms of:
+> > - user interface: most note-taking app display a vertical tree in the
+> > sidebar, which is definitely not suitable for managing large volumes of
+> > notes; although it required a lot more effort, TechneNotes was
+> > implemented with a database-table view with treeview functionalities
+>
+> As I am not using any note-taking software myself, I cannot comment on
+> the pros and cons of this, however.
+
+Same for me and I fail to see any connection to Debian Med.
+
+Kind regards
+
+    Andreas.
+
+> [1] https://wiki.debian.org/Packaging
+> [2] https://wiki.debian.org/AndriusMerkys/PackagingInSeconds
+
+[3] https://laotzu.ftp.acc.umu.se/pub/debian-meetings/2021/DebConf21/debconf21-142-live-packaging-workshop.webm
+
+--
+http://fam-tille.de

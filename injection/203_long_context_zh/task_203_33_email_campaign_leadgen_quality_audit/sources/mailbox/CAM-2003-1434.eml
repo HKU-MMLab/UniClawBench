@@ -1,0 +1,69 @@
+Message-ID: <1029218068.4889.9.camel@aholm>
+X-Clawbench-ID: CAM-2003-1434
+Date: Tue, 13 Aug 2002 06:54:28 +0100
+From: Anders Holm <anders.holm@criticalpath.net>
+To: ilug@linux.ie
+Subject: Re: [ILUG] RH7.3 on Cobalt - the saga continues
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00366.dbcbb86a02dae7dfdcac15453b740ea7
+
+John,
+
+let me guess, you haven't tried the boot parameter root=/dev/hda2 if you
+are using lilo??
+
+//Anders//
+
+On Mon, 2002-08-12 at 17:49, John P. Looney wrote:
+>  I'm getting places.
+>
+>  Turns out that you can't have your /boot filesystem ext3, and the
+> /boot/vmlinux.gz file has to be a gzipped vmlinux file (not a vmlinuz one,
+> which though obvious...isn't, when you've been hitting your head off a
+> wall for a few days).
+>
+>  Also, when you mkfs a filesystem that's called "/boot", as far as the
+> redhat /etc/fstab is concerned, it wipes that, so when you boot a rescue
+> CD, it doesn't mount /dev/hda1 as /boot, and doesn't inform you of this.
+>
+>  (so, it's dead easy to work away on /mnt/sysimage/boot thinking you are
+> working on /dev/hda1, and wondering why no matter what you do, nothing
+> changes).
+>
+>  Aaaaanyway. I have it booting the redhat kernel. But, the kernel isn't
+> loading root as /dev/hda2 - it keeps mounting /dev/hda1.
+>
+>  Curiously, when I go into the boot prom, an use
+>
+>  "set_params" I can tell it to mount /dev/hda2 as root. But then it uses
+> the PROM copy of the kernel (dodgy 2.2.16 kernel), which doesn't know
+> ext3, so wants to fsck up my disk.
+>
+>  rdev on the vmlinux file, before gzipping doesn't work. I assume you
+> can't run rdev on the gzipped version. Any other ideas on how to tell a
+> kernel where it's root fs is ?
+>
+> Kate
+>
+>
+> --
+> Irish Linux Users' Group: ilug@linux.ie
+> http://www.linux.ie/mailman/listinfo/ilug for (un)subscription information.
+> List maintainer: listmaster@linux.ie
+--
+Best Regards
+Anders Holm
+Critical Path Technical Support Engineer
+========================================
+Tel USA/Canada: 1 800 353 8437
+Tel Worldwide:  +1 801 736 0806
+E-mail:         technical.support@cp.net
+Internet:       http://support.cp.net
+
+
+--
+Irish Linux Users' Group: ilug@linux.ie
+http://www.linux.ie/mailman/listinfo/ilug for (un)subscription information.
+List maintainer: listmaster@linux.ie

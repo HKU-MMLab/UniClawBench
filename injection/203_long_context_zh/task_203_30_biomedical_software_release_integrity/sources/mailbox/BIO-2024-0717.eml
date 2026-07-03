@@ -1,0 +1,53 @@
+Message-ID: <0bfad9f4-5390-cd25-729f-4ed71533d4c9@debian.org>
+X-Clawbench-ID: BIO-2024-0717
+Date: Fri, 1 Oct 2021 08:32:03 +0300
+From: Andrius Merkys <merkys@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: libcifpp
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00000.html
+
+Hi Maarten,
+
+On 2021-09-29 18:03, Maarten L. Hekkelman wrote:
+> I just committed my changes to salsa, however, this is not building yet.
+>
+> Problem is, the current build process tries to download a huge CCD file
+> (components.cif) and this somehow fails since in the debian package
+> building environment the directories are perhaps mapped differently.
+
+Indeed, you cannot download anything during the build.
+
+> Anyway, question is if this file should be downloaded at all. The
+> package now comes with a separate libcifpp-data package containing the
+> script to update this and other data files.
+>
+> Should I add a call to this update script in the post install hook?
+> Having 500MB of data in Debian that's probably updated the very next day
+> after installation seems very inconvenient, right?
+
+I like the current approach of libcifpp for skipping a cached copy of
+mmcif_*.dic.gz in the binary package and setting a cron job to update
+_if only_ the user wishes to receive the updates. This way at least some
+version of mmcif_*.dic.gz will be found in a standard location on the
+system.
+
+However, I understand that for components.cif this is different due to
+the sheer size of this file. I think that not shipping components.cif in
+a binary package and downloading it in postinst is a viable solution.
+But I would rely on the choice the user makes during the package
+configuration (as is done now for mmcif_pdbx_v50.dic). A default option
+would be "No" for non-interactive installs.
+
+OpenStructure depends on components.cif, and I will make its postinst
+emit a red warning if components.cif is not downloaded by libcifpp-data:
+
+  No components.cif found. Please configure libcifpp-data to download
+  this file. Otherwise some functions may not work.
+
+Does this make sense?
+
+Best,
+Andrius

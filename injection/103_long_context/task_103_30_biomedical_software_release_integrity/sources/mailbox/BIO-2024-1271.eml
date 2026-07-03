@@ -1,0 +1,36 @@
+Message-ID: <c75dfc00-b207-81e0-2b70-554280a8224b@tchncs.de>
+X-Clawbench-ID: BIO-2024-1271
+Date: Fri, 3 Sep 2021 23:39:18 +0530
+From: Nilesh Patra <nilesh@tchncs.de>
+To: debian-med@lists.debian.org
+Subject: Re: soname question
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_09_msg00004.html
+
+On 9/3/21 10:45 PM, Maarten L. Hekkelman wrote:
+> Tried to use my fresh new powers as a maintainer today.
+
+Nice, and congrats!
+
+> That worked well, until I tried to update the SONAME one of my libraries (libzee> The version currently in Debian is version 5.0.2 and has SONAME 5. The current upstream version is 5.1.2 and this one is not binary compatible with the one in Debian. So I thought it would be best to set the SONAME of the new lib to 5.1. And so I had to create a new package as well called libzeep5.1 for the shared library.
+>
+> But of course, my upload was rejected since it was new.
+>
+> Now what? Were my ideas correct and should I update the SONAME? If so do I have to request a Debian Developer to upload?
+
+Yes, exactly like it used to work before you were a DM. You need to ask a DD to upload.
+Unfortunately, I cannot take a look at it anytime soon, hopefully Andrius/someone else gets to it soon.
+
+> Of do I have to submit this as a new software package?
+
+Yes, this will go a round trip via NEW, and FTP masters will have to accept this package. Usually this does not take very long, since this is not a package
+which is not in archive.
+Do remember to add a Breaks+Replaces on the old SONAME when the new one gets in.
+
+> Or do I simply revert the SONAME and pray no one notices the binary difference. The last option is easiest, but of course not the best.
+
+We should never break ABI, so this last option should never be done.
+
+Nilesh

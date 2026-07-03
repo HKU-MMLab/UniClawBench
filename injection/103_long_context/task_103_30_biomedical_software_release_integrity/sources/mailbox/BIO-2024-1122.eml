@@ -1,0 +1,26 @@
+Message-ID: <udlttgw6416.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-1122
+Date: Wed, 10 Jul 2024 22:44:37 -0400
+From: "Aaron M. Ucko" <ucko@debian.org>
+To: Pierre Gruet <pgt@debian.org>
+Subject: Re: sra-sdk: drop B-D on markdown
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_07_msg00011.html
+
+Pierre Gruet  writes:
+
+> Ah you're right. And indeed, the build goes smoothly without the line.
+
+It may well be a relic of the 2.x days; the build system changed
+extensively since then.
+
+> I offer to remove the whole line in experimental and in unstable, and
+> will do so within a few days if no concern is raised.
+
+Go for it, thanks!
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

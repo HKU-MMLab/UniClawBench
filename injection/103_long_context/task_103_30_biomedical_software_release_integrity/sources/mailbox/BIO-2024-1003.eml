@@ -1,0 +1,48 @@
+Message-ID: <YZKDk+UuxAncyghT@an3as.eu>
+X-Clawbench-ID: BIO-2024-1003
+Date: Mon, 15 Nov 2021 16:58:11 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Moving htcondor to Debian Med and trying to upgrade
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_11_msg00084.html
+
+Hi,
+
+I moved htcondor to Debian Med team maintenance[1] and tried to build
+the package which is not in testing for some reason.  I tried to build
+the version from unstable (8.6.8~dfsg.1-2) but this fails with
+
+/usr/bin/cc   -g -O2 -ffile-prefix-map=/build/condor-8.6.8~dfsg.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -o CMakeFiles/cmTC_c17f5.dir/HAVE_LINUX_NFSD_CONST_H.c.o -c "/build/condor-8.6.8~dfsg.1/obj-x86_64-linux-gnu/CMakeFiles/CheckIncludeFiles/HAVE_LINUX_NFSD_CONST_H.c"
+/build/condor-8.6.8~dfsg.1/obj-x86_64-linux-gnu/CMakeFiles/CheckIncludeFiles/HAVE_LINUX_NFSD_CONST_H.c:2:10: fatal error: linux/nfsd/const.h: No such file or directory
+    2 | #include
+      |          ^~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+...
+/usr/bin/cc   -g -O2 -ffile-prefix-map=/build/condor-8.6.8~dfsg.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -o CMakeFiles/cmTC_15dd2.dir/HAVE_SD_DAEMON_H.c.o -c "/build/condor-8.6.8~dfsg.1/obj-x86_64-linux-gnu/CMakeFiles/CheckIncludeFiles/HAVE_SD_DAEMON_H.c"
+/build/condor-8.6.8~dfsg.1/obj-x86_64-linux-gnu/CMakeFiles/CheckIncludeFiles/HAVE_SD_DAEMON_H.c:2:10: fatal error: systemd/sd-daemon.h: No such file or directory
+    2 | #include
+      |          ^~~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+
+Since there were some Python2 remainings anyway I decided to upgrade to
+latest upstream but those two errors remained.  The latter can be fixed
+by "Build-Depends: libsystemd-dev" but despite I've also added
+"Build-Depends: linux-headers-generic | linux-headers" this does not
+help.
+
+So I think we somehow need to salvage htcondor if it is helpful for some
+users or we should ask for removal if we can neither build the existing
+package nor the latest upstream version.
+
+Kind regards
+
+     Andreas.
+
+
+[1] https://salsa.debian.org/med-team/htcondor
+
+--
+http://fam-tille.de

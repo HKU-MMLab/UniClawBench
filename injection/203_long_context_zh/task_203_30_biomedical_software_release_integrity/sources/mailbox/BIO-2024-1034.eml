@@ -1,0 +1,51 @@
+Message-ID: <20211211211432.bbem7ilnyxpzinzu@lark>
+X-Clawbench-ID: BIO-2024-1034
+Date: Sat, 11 Dec 2021 13:14:32 -0800
+From: tony mancill <tmancill@debian.org>
+To: debian-science@lists.debian.org
+Subject: jblas update to 1.2.5?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_12_msg00012.html
+
+Hello Debian Science,
+
+jblas (http://jblas.org/) is a Debian Java team package, but I think it
+is more appropriate to ask about users here.  Upstream has released a
+new version, 1.2.5; Debian currently packages 1.2.4.  From the upstream
+release notes:
+
+> Release 1.2.5 - Aug 20, 2020
+>
+> It has been a while! Too long, maybe. In the meantime, GPUs and tensorflow and pytorch have raised the bar when
+> it comes to ML related computing. Adding automatic differentiation to compute gradients has become a must-have feature
+> jblas doesn't have. If you're interested in that for the JVM, have a look at deeplearning4j.org.
+>
+> It seems people are still using jblas, therefore here is a small update which makes jblas work under ubuntu20.04 (amd64)
+> and arm64. For these new versions, I switched to openblas, as performance seems to be comparable, but compilation is
+> much easier.
+>
+> Major changes and updates:
+>
+> - updated Linux amd64 to work on ubuntu20.04. Updated libgfortran from version 3 to 4. Packaged libgfortran and
+>   libquadmath into the JAR file so you don't have to install libgfortran.so.3 anymore.
+> - Switched from ATLAS to openblas. Because openblas is so much easier to compile and we can just use the libraries
+>   that are installed. Hopefully the performance / errors are the same.
+> - Added libraries for arm64 (Raspberry Pis for 64bit images like ubuntu server) and AWS Graviton instances.
+
+My first question is, do we have users?  Is the software useful to
+maintain in Debian?  The popcon for the package is low (around 15) and
+there haven't been recent bug reports.  If there are users, I will
+gladly prepare an update.
+
+And if we do update in Debian, I thought readers of this list might have
+opinions about whether I should switch the Debian packaging from
+building against lapack to openblas.
+
+Thank you for your input!
+tony
+
+P.S.  Thank you to Andreas Tille for directing me to the right list.
+This is a cross-post of
+https://lists.debian.org/debian-med/2021/12/msg00051.html.

@@ -1,0 +1,24 @@
+Message-ID: <ZwlQ-hRLb_xjJQBl@redhat.com>
+X-Clawbench-ID: ASF-2024-1311
+Date: Fri, 11 Oct 2024 17:23:22 +0100
+From: Joe Orton <jorton@redhat.com>
+To: dev@httpd.apache.org
+Subject: Re: Review PR for BZ 62497
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-10.mbox
+
+On Sat, Oct 05, 2024 at 03:37:42PM -0000, Michael Osipov wrote:
+> Folks,
+>
+> I have an open trivial PR [1] for five years now. Is anyone willing to
+> review and merge into into trunk and then to 2.4.x?
+>
+> [1] https://github.com/apache/httpd/pull/67
+
+Done, thanks for the ping. Unfortunately mod_lua is not being actively
+developed and probably most of us aren't terribly comfortable about
+changing the code there.
+
+Regards, Joe

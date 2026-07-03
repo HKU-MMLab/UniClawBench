@@ -1,0 +1,36 @@
+Message-ID: <YyHEF/bF0sxVaaPN@an3as.eu>
+X-Clawbench-ID: BIO-2024-0318
+Date: Wed, 14 Sep 2022 14:07:51 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Nilesh Patra <nilesh@nileshpatra.info>,	Steffen Möller <steffen_moeller@gmx.de>
+Subject: Re: RM pinfish?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_09_msg00009.html
+
+Hi Nilesh,
+
+Am Sun, Sep 04, 2022 at 11:07:12PM +0530 schrieb Nilesh Patra:
+> Pinfish is working fine in the archive(no bugs), but upstream has abandoned
+> the development and marked the repo as read-only[1]
+> Since this does not look very important, is it ok to file a removal request?
+
+Steffen?  You added this project to the spreadsheet[2].  Would you mind
+answering Nilesh's question?
+
+> I am not a user of the package, nor a bioinformatics guy, hence looking for opinions
+> if this is useful.
+
+In case you are bored to be specified as Uploader I'd volunteer to
+exchange our names and upload.
+
+Kind regards
+
+    Andreas.
+
+> [1]: https://github.com/nanoporetech/pinfish
+[2] https://docs.google.com/spreadsheets/d/1tApLhVqxRZ2VOuMH_aPUgFENQJfbLlB_PFH_Ah_q7hM/edit?ts=5eb957ba#gid=543782716
+
+--
+http://fam-tille.de

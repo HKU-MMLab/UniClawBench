@@ -1,0 +1,31 @@
+Message-ID: <f1ac2068-00d9-02b6-d117-b64e05d33161@evermeet.cx>
+X-Clawbench-ID: ASF-2024-0661
+Date: Wed, 18 Jan 2023 01:01:53 -0500
+From: "Helmut K. C. Tessarek" <tessarek@evermeet.cx>
+To: dev@httpd.apache.org
+Subject: Re: sporadic 500 errors with 2.4.55
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-01.mbox
+
+Additional info:
+
+I reverted back to 2.4.54 and the errors are gone. It also seems that the
+responses are snappier. The perf observation is subjective of course.
+
+Without any proof I suspect that there is some sort of contention/lock issue
+with h2 that might also result in a 500 now and then due to maybe a race
+condition? This his highly speculative of course.
+
+Cheers,
+   K. C.
+
+--
+regards Helmut K. C. Tessarek              KeyID 0x172380A011EF4944
+Key fingerprint = 8A55 70C1 BD85 D34E ADBC 386C 1723 80A0 11EF 4944
+
+/*
+    Thou shalt not follow the NULL pointer for chaos and madness
+    await thee at its end.
+*/

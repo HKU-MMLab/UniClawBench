@@ -1,0 +1,104 @@
+{
+  "task_id": "task_105_36_receipt_packet_gui_audit",
+  "source_license": "CC BY 4.0 as stated by the upstream dataset/repository",
+  "expected_unique_receipts": [
+    {
+      "file": "receipt_01.jpg",
+      "cord_split": "validation",
+      "cord_row_idx": 0,
+      "cord_image_id": 0,
+      "menu_item_count": 3,
+      "menu_names": [
+        "REAL GANACHE",
+        "EGG TART",
+        "PIZZA TOAST"
+      ],
+      "total_price": "45,500",
+      "total_price_int": 45500,
+      "cash_price": "50,000",
+      "change_price": "4,500",
+      "sha256": "7f37fcb4e19438d7afb51d123cb334ea89c2e3e82885bf3c8d1baa407cea4286"
+    },
+    {
+      "file": "receipt_02.jpg",
+      "cord_split": "validation",
+      "cord_row_idx": 1,
+      "cord_image_id": 1,
+      "menu_item_count": 1,
+      "menu_names": [
+        "Kopi Susu Kolonel"
+      ],
+      "total_price": "23.000",
+      "total_price_int": 23000,
+      "cash_price": "50.000",
+      "change_price": "27.000",
+      "sha256": "78cb5287bfd5463b6ba55df4e0d62dc0d0ff3a69bdd25bf2e75295e98ccb0357"
+    },
+    {
+      "file": "receipt_03.jpg",
+      "cord_split": "validation",
+      "cord_row_idx": 2,
+      "cord_image_id": 2,
+      "menu_item_count": 1,
+      "menu_names": [
+        "S-Ovaltine 50%"
+      ],
+      "total_price": "20,000",
+      "total_price_int": 20000,
+      "cash_price": "100,000",
+      "change_price": "80,000",
+      "sha256": "3d2b7b975a2e0474dd58d358fc27693bcde7e60d61eb79cd84518a521a978d19"
+    },
+    {
+      "file": "receipt_04.jpg",
+      "cord_split": "validation",
+      "cord_row_idx": 3,
+      "cord_image_id": 3,
+      "menu_item_count": 1,
+      "menu_names": [
+        "M-Caramel Black Tea"
+      ],
+      "total_price": "28,000",
+      "total_price_int": 28000,
+      "cash_price": "28,000",
+      "change_price": "0",
+      "sha256": "b928fbfa32d7b79973faf1dbd49e49cd57f7059dfbf3e5e09739371274193a15"
+    },
+    {
+      "file": "receipt_05.jpg",
+      "cord_split": "validation",
+      "cord_row_idx": 4,
+      "cord_image_id": 4,
+      "menu_item_count": 1,
+      "menu_names": [
+        "BBQ Chicken"
+      ],
+      "total_price": "41,000",
+      "total_price_int": 41000,
+      "cash_price": "50.000",
+      "change_price": ":9,000",
+      "sha256": "f14fc7dcce717a8e4b5a6bf110b2347309243cb0f47c51a59198ba4daa2762ce"
+    }
+  ],
+  "duplicate_files": [
+    {
+      "file": "scan_2026_07_17_b.jpg",
+      "duplicates": "receipt_03.jpg",
+      "sha256": "3d2b7b975a2e0474dd58d358fc27693bcde7e60d61eb79cd84518a521a978d19"
+    }
+  ],
+  "expected_unique_total_int": 157500,
+  "expected_unique_total_display": "157,500",
+  "accepted_categories": [
+    "meal",
+    "bakery",
+    "cafe",
+    "other"
+  ],
+  "required_outputs": {
+    "spreadsheet": "/tmp_workspace/results/receipt_packet_audit.ods",
+    "memo_odt": "/tmp_workspace/results/receipt_packet_memo.odt",
+    "memo_txt": "/tmp_workspace/results/receipt_packet_memo.txt",
+    "gui_dir": "/tmp_workspace/results/gui_evidence/"
+  }
+}

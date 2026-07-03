@@ -1,0 +1,23 @@
+Message-ID: <trinity-e6aed740-5a4a-4bed-a322-aa6389c7b285-1690799994771@3c-app-gmx-bs45>
+X-Clawbench-ID: BIO-2024-1310
+Date: Mon, 31 Jul 2023 12:39:54 +0200
+From: Steffen Möller <steffen_moeller@gmx.de>
+To: Med Team <debian-med@lists.debian.org>
+Subject: GENtle - some progress
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_07_msg00096.html
+
+Hello,
+
+I just uploaded another iteration of GENtle to our servers. It has some quirks, still, as in that wxWidgets' runtime checks kick in with the one or other window that is opened, something about the windows parents not set right, but I guess this is usable. I'll finish this up over the next weeks.
+
+Some background, GENtle comes from a time when the cloning of DNA (as in: get some large string of unknown DNA of interest connected in a much larger piece of well-known DNA that can be multiplied by bacteria) was a precondition to get that DNA sequenced. With technological advancements that has mostly been substituted with "let us just sequence the whole organism". And there is software like https://www.snapgene.com/ doing many things right that come to a rescue for smaller groups and/or smaller projects, and for all the many tasks like amplifying the gene product of what was cloned (as in producing insulin, see https://openinsulin.org/).
+
+IMHO times have changed again in that we already have sequenced of what we want to see sequenced and now the research community shifted from "get DNA out from human cells" to "get DNA into (typically cultures of) human cells". To move any gene across the cell wall, you need a special kind of vehicle, and technically those look just like those plasmids that GENtle already knows how to design. So this is not just some old outdated technology lurking with us, we should just think about how we can modernize the GUI a bit and maybe add some public data.
+
+I'll discuss data to be added with my wet-lab colleagues, also some imperfections in software may be ideal as student projects to describe/fix/learn, will see.
+
+Best,
+Steffen

@@ -1,0 +1,12 @@
+Message-ID: <cam-2003-0977@campaign-audit.example>
+X-Clawbench-ID: CAM-2003-0977
+Date: Mon, 17 Mar 2003 10:23:00 -0500
+From: Quality Review <quality@acme-mail.example>
+To: nina@acme-mail.example
+Subject: BrightWave conversion file
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: synthetic email campaign lead-gen quality audit implant
+
+We cannot sign off on BrightWave until the package separates true external leads from seed traffic, duplicates, bounces, and spam complaints. The partner summary excludes complaints that appear in the raw send log.

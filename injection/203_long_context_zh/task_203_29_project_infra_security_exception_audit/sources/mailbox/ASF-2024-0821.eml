@@ -1,0 +1,86 @@
+Message-ID: <644458f9-9826-83b9-2b33-e99e0d9ac9e4@apache.org>
+X-Clawbench-ID: ASF-2024-0821
+Date: Wed, 2 Oct 2024 10:33:35 +0200
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: Question about file mutex
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-10.mbox
+
+On 10/2/24 9:36 AM, Nick Gearls wrote:
+> Am I right that we can call apr_global_mutex_create() with a NULL filename and APR_LOCK_DEFAULT?
+> In case the underlying locking mechanism needs a filename, it will generate one.
+> Moreover, if we only support Unix & Windows, the preferred mechanism won't use a file at all.
+> Is that correct?
+
+Unix is a bit broad. I am not sure what the default mechanism is for each Unix-style OS. I think for Linux it is indeed not file
+based (pthread).
+
+>
+> In all cases, we don't have to generate a mktemp name ourselves, it'll be done in APR. Right?
+
+Yes. Unless you have a specific requirement to store this file outside of /tmp/. But if you provide a name be sure that the file
+does not exist already. Hence apr_file_mktemp would not be good for creating such a name because it also creates the file.
+
+Regards
+
+Rüdiger
+
+>
+> On 01/10/2024 14:02, Ruediger Pluem wrote:
+>> On 10/1/24 9:32 AM, Ervin Hegedüs wrote:
+>>> Hi there,
+>>>
+>>> I hope this is a good forum to ask my question.
+>>>
+>>> We (mod_security2 developers) use mutex locks. Thiscode snippet was added recently:
+>>>
+>>> https://github.com/owasp-modsecurity/ModSecurity/blob/v2/master/apache2/modsecurity.c#L125-L168
+>>>
+>>> As you can see, we create locks with these functions:
+>>>
+>>> apr_temp_dir_get()
+>>> apr_file_mktemp()
+>>> apr_global_mutex_create()
+>>>
+>>> This wrapper (acquire_global_lock()) works on Linux, but it seems to crash on FreeBSD:
+>>> https://github.com/owasp-modsecurity/ModSecurity/issues/3255
+>>>
+>>> I did some investigation and I found that after the apr_file_mktemp() returns with success and the created file name is given to
+>>> apr_global_mutex_create() then it removes that.
+>>>
+>>> In this comment:
+>>> https://github.com/owasp-modsecurity/ModSecurity/issues/3255#issuecomment-2383132160
+>>> I explained the results (with gdb and truss).
+>>>
+>>> My question is: what is the expected way to use file mutexes?
+>>>
+>>> Thanks for your help,
+>> Have a look at
+>>
+>> https://httpd.apache.org/docs/2.4/mod/core.html#mutex
+>> https://github.com/apache/httpd/blob/trunk/include/util_mutex.h#L156
+>> https://github.com/apache/httpd/blob/trunk/include/util_mutex.h#L181
+>>
+>> and as example
+>>
+>> https://github.com/apache/httpd/blob/trunk/modules/ssl/mod_ssl.c#L456
+>> https://github.com/apache/httpd/blob/trunk/modules/ssl/ssl_engine_mutex.c#L50
+>>
+>> If you want to go for an APR only approach keep in mind that the apr methods create the lock file if needed
+>> either with the name you specified or they create it in /tmp via apr_file_mktemp
+>> It should not exist.
+>>
+>> See
+>>
+>> https://github.com/apache/apr/blob/1.7.x/locks/unix/proc_mutex.c#L1051
+>> https://github.com/apache/apr/blob/1.7.x/locks/unix/proc_mutex.c#L1200
+>>
+>>
+>> Regards
+>>
+>> Rüdiger
+>>
+>

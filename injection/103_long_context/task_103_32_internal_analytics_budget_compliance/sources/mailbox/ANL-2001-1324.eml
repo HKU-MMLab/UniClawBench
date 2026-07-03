@@ -1,0 +1,44 @@
+Message-ID: <ac4d51e4fdff42f6c8a3bf3192ce690e@enron.com>
+X-Clawbench-ID: ANL-2001-1324
+Date: 2000-02-15T13:09:00-03:00
+From: Zimin Lu <Zimin Lu>
+To: Anjam Ahmad <Anjam Ahmad>
+Subject: Zero curve generator for UK gilts
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Enron kaminski-v public mailbox index.json
+X-Original-Folder: kaminski-v_000/kaminski-v/technote/mail/Techmemos
+
+Anjam,
+
+
+Here is the model for fitting the term structure of UK gilts.
+
+The basic idea is as follows:
+
+
+dirty price_{ith gilt} = Sum_{j} C_{i}/2*discount factor(t_{j,i} )+
+
+100*discount factor(t_{Ni, i}
+
+
+Using a five parameters analytical form for the discount factors, and
+
+minimizing the sum of
+
+absolute errors, I can derive a smooth zero curve.   The model needs an
+
+initial guess
+
+for the parameters, this may require some experience. The log file can help
+
+you to see
+
+how well the optimization works.
+
+
+Let me know if you have any questions.
+
+
+Zimin

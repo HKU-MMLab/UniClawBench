@@ -1,0 +1,27 @@
+Message-ID: <CF67E35C-7FE6-4105-A429-C64FE373028E@eissing.org>
+X-Clawbench-ID: ASF-2024-0353
+Date: Wed, 8 Jun 2022 10:40:12 +0200
+From: Stefan Eissing <stefan@eissing.org>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.54-rc3 as httpd-2.4.54
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-06.mbox
+
+With 9 +1 the voting is complete and I will make the release now.
+
+Thanks everyone for testing!
+
+Kind Regards,
+Stefan
+
+> Am 08.06.2022 um 09:04 schrieb Petr Gajdos <pgajdos@suse.cz>:
+>
+> On Mon, Jun 06, 2022 at 04:25:31PM +0200, Stefan Eissing wrote:
+> [x] +1: It's not just good, it's good enough!
+>
+> SLE 15sp4, openSUSE 15.4,Tumbleweed
+>
+> --
+> Have a lot of fun!

@@ -1,0 +1,108 @@
+Message-ID: <Y476AeIxb6PdP4KH@homeworld.netbsd.org>
+X-Clawbench-ID: ASF-2024-1285
+Date: Tue, 6 Dec 2022 08:14:57 +0000
+From: Emmanuel Dreyfus <manu@netbsd.org>
+To: dev@httpd.apache.org
+Subject: Re: MS-WDV (was Re: Help with buckets)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-12.mbox
+
+On Fri, Dec 02, 2022 at 03:17:05PM +0000, Joe Orton wrote:
+> I think this might need to do something more complex, maybe running the
+> PROPFIND in a subrequest properly and capturing (buffering) the output
+> in a custom filter, rather than using the mod_dav internal API directly.
+> Have you tried using ap_sub_req_method_uri()? Not sure this has been
+> tried before with mod_dav so might well be something I'm missing.
+
+I did it the way you suggested. The patch gets huge, I just send the
+reelvant bits. Does it looks good to you?
+
+In register_hooks() I have
+    ap_register_output_filter("DAV_MSEXT_OUT", dav_msext_output, NULL,
+                              AP_FTYPE_RESOURCE);
+Then:
+
+static apr_status_t dav_msext_output(ap_filter_t *f,
+                                     apr_bucket_brigade *bb)
+{
+    apr_bucket_brigade *bbsub = f->ctx;
+    apr_bucket *b;
+
+    b = APR_BRIGADE_FIRST(bb);
+    while (b != APR_BRIGADE_SENTINEL(bb)) {
+        apr_bucket *nb;
+        if (APR_BUCKET_IS_EOS(b))
+            break;
+
+        nb = APR_BUCKET_NEXT(b);
+        APR_BUCKET_REMOVE(b);
+        APR_BRIGADE_INSERT_TAIL(bbsub, b);
+        b = nb;
+    }
+
+    return ap_pass_brigade(f->next, bb);
+}
+
+static void dav_msdavext_combined_propfind(request_rec *r)
+{
+    apr_bucket_brigade *bbsub;
+    apr_bucket_brigade *bb;
+    ap_filter_t *f;
+    apr_bucket *b;
+    request_rec *rr = NULL;
+    apr_off_t length;
+
+    bbsub = apr_brigade_create(r->pool, r->output_filters->c->bucket_alloc);
+
+    rr = ap_sub_req_method_uri("PROPFIND", r->uri, r, r->output_filters);
+    if (!rr || rr->status != HTTP_OK)
+        goto out;
+
+    f = ap_add_output_filter("DAV_MSEXT_OUT", bbsub, rr, rr->connection);
+    if (!f)
+        goto out;
+
+    if (ap_run_sub_req(rr) != OK)
+        goto out;
+
+    ap_remove_output_filter(f);
+
+    if (apr_brigade_length(bbsub, 1, &length) != APR_SUCCESS)
+        goto out;
+
+    bb = apr_brigade_create(r->pool,r->output_filters->c->bucket_alloc);
+
+    apr_brigade_printf(bb, NULL, NULL,
+                       "%016" APR_UINT64_T_HEX_FMT, length);
+
+    APR_BRIGADE_CONCAT(bb, bbsub);
+
+    ap_destroy_sub_req(rr);
+    rr = NULL;
+
+    rr = ap_sub_req_lookup_uri(r->uri, r, r->output_filters);
+    if (!rr || rr->status != HTTP_OK || rr->filename == NULL ||
+        rr->finfo.filetype != APR_REG)
+        goto out;
+
+    apr_brigade_printf(bb, NULL, NULL,
+                       "%016" APR_UINT64_T_HEX_FMT, rr->finfo.size);
+
+    ap_set_content_type(r, "multipart/MSDAVEXTPrefixEncoded");
+
+    ap_pass_brigade(r->output_filters, bb);
+
+    /* plain GET rocessing happens afterward */
+out:
+    if (rr)
+        ap_destroy_sub_req(rr);
+
+    return;
+}
+
+
+--
+Emmanuel Dreyfus
+manu@netbsd.org

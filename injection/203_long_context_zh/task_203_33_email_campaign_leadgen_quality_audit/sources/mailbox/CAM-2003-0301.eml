@@ -1,0 +1,67 @@
+Message-ID: <20021002193602.GC6266@taz.home.priv>
+X-Clawbench-ID: CAM-2003-0301
+Date: Wed, 02 Oct 2002 12:36:02 -0700
+From: Gary Peck <gbpeck@sbcglobal.net>
+To: rpm-zzzlist@freshrpms.net
+Subject: Re: alsa-driver.spec tweak for homemade kernels
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01225.394c24658bf3f9f8f741bcbc94ca017c
+
+On Wed, Oct 02, 2002 at 10:09:19AM +0200, Matthias Saou wrote:
+> Well, I don't really find it consistent at all to use an rpm package built
+> against something that wasn't installed through rpm :-/
+
+Following that reasoning, I've been installing all my custom-built
+kernels through rpm recently. I find it annoying, though, that
+alsa-kernel, and similar packages, will only build for the currently
+running kernel.
+
+So I've attached a patch to specify an alternate kernel by setting the
+"TARGET_KERNEL" environment variable before running rpmbuild. You
+still need to have the rpm for the specified kernel installed, but at
+least it doesn't have to be currently running. It's kinda hackish, so
+if someone has a better way to do this, let me know.
+
+gary
+
+--- alsa-driver.spec.orig	2002-10-02 12:25:26.000000000 -0700
++++ alsa-driver.spec	2002-10-01 21:23:19.000000000 -0700
+@@ -3,9 +3,12 @@
+ # Comma separated list of cards for which to compile a driver
+ %define	cards		all
+
+-%define	kunamer		%(uname -r)
+-%define	kversion	%(echo $(uname -r) | sed -e s/smp// -)
+-%if %(uname -r | grep -c smp)
++%if %(printenv TARGET_KERNEL >/dev/null && echo -n 1 || echo -n 0)
++%define usekernel	%(echo -n $TARGET_KERNEL)
++%endif
++%define	kunamer		%{!?usekernel: %(uname -r)}%{?usekernel}
++%define	kversion	%(echo %{kunamer} | sed -e s/smp// -)
++%if %(echo %{kunamer} | grep -c smp)
+ 	%{expand:%%define ksmp -smp}
+ %endif
+ %define	karch		%(rpm -q --qf '%%{arch}' kernel%{?ksmp}-%{kversion})
+@@ -77,6 +80,7 @@
+ 	%{?_without_isapnp:--with-isapnp=no} \
+ 	%{?_without_sequencer:--with-sequencer=no} \
+ 	%{?_without_oss:--with-oss=no} \
++	%{?usekernel:--with-kernel=/lib/modules/%{usekernel}/build} \
+ 	--with-cards=%{cards}
+ make
+
+@@ -106,10 +109,10 @@
+ rm -f %{buildroot}/etc/rc.d/init.d/alsasound
+
+ %post -n alsa-kernel%{?ksmp}
+-/sbin/depmod -a
++/sbin/depmod -a -F /boot/System.map-%{kunamer} %{kunamer}
+
+ %postun -n alsa-kernel%{?ksmp}
+-/sbin/depmod -a
++/sbin/depmod -a -F /boot/System.map-%{kunamer} %{kunamer}
+
+ %clean
+ rm -rf %{buildroot}

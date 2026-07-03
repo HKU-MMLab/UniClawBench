@@ -1,0 +1,23 @@
+{
+  "task_id": "task_201_35_en_zh_tech_daily",
+  "data_origin": "frozen_public_snapshots",
+  "captured_window": [
+    "2026-04-18",
+    "2026-04-19",
+    "2026-04-20"
+  ],
+  "entries": [
+    {
+      "path": "ai_news_zh_snapshot.json",
+      "description": "Frozen 3-day Chinese-language technology news snapshot assembled from 36kr/geekpark/RSSHub-style public feed captures. 60 items total (20 per day across 2026-04-18, 2026-04-19, 2026-04-20). Executor-visible source data only; does not include hidden selection answers."
+    },
+    {
+      "path": "github_trending_snapshot.json",
+      "description": "Frozen 3-day GitHub repository search snapshot for Python AI/LLM/agent repositories created during February 2024, sorted by stars at each capture time. 45 items total (15 per day across 2026-04-18, 2026-04-19, 2026-04-20). Each item carries captured_on so the latest day's stars can be used as the canonical popularity signal. Executor-visible source data only; does not include hidden selection answers."
+    }
+  ],
+  "hidden_references": [
+    "references/ground_truth.json",
+    "references/eval_rule.md"
+  ]
+}

@@ -1,0 +1,90 @@
+Message-ID: <63f3972f-184d-eef7-7fb3-7908d1e31f97@kippdata.de>
+X-Clawbench-ID: ASF-2024-0939
+Date: Sun, 19 Dec 2021 15:35:27 +0100
+From: Rainer Jung <rainer.jung@kippdata.de>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.52-rc1 as httpd-2.4.52
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2021-12.mbox
+
+Am 16.12.2021 um 15:03 schrieb Stefan Eissing:
+>
+> Hi all,
+>
+> Please find below the proposed release tarball and signatures:
+>
+> https://dist.apache.org/repos/dist/dev/httpd/
+>
+> I would like to call a VOTE over the next few days to release
+> this candidate tarball httpd-2.4.52-rc1 as 2.4.52:
+> [X] +1: It's not just good, it's good enough!
+> [ ] +0: Let's have a talk.
+> [ ] -1: There's trouble in paradise. Here's what's wrong.
+
++1 to release and thanks a bunch for RM!
+
+I didn't have time to do the full range of my usual builds and tests.
+Nevertheless:
+
+! KEYS maybe missing (see other mail)
+- Sigs and hashes OK
+- contents of tarballs identical
+- contents of tag and tarballs identical
+   except for expected deltas
+
+Built on
+
+- Solaris 10 Sparc as 32 Bit Binaries
+- SLES 11+12+15 (64 Bits)
+- RHEL 6+7+8 (64 Bits)
+
+For all platforms built
+
+- with module set all plus proxy_fdpass plus proxy_http2
+- using APR/APU from the 2.4.51 deps tarball
+   (see separate message, why for me the 2.4.52
+   tarball didn't work)
+- OpenSSL linked statically
+
+- using external libraries
+   - expat 2.4.1
+   - pcre 8.45
+   - lua 5.4.3 (compiled with LUA_COMPAT_MODULE)
+   - libxml2 2.9.12
+   - libnghttp2 1.46.0
+   - brotli 1.0.9
+   - curl 7.80.0
+   - jansson 2.14
+   - libldap 2.6.0
+   - openssl 1.1.1m
+
+- Tool chain:
+     - platform gcc except on Solaris
+       (gcc 9.3.0 Solaris 10)
+     - CFLAGS: -O2 -g -Wall -fno-strict-aliasing
+       - on Solaris additionally -mpcu=v9, -D_XOPEN_SOURCE,
+         -D_XOPEN_SOURCE_EXTENDED=1, -D__EXTENSIONS__
+         and -D_XPG6
+
+Tested for
+
+- SLES 11+12+15
+- RHEL 6+7+8
+- Solaris 10 Sparc
+- MPMs prefork, worker, event
+- log level trace8
+- Perl client bundle build against OpenSSL 1.1.1g plus patches,
+   ´3.0.0, 1.1.0l, 1.0.2u and 0.9.8zh
+
+All of these tests passed.
+
+> The computed digests of the tarball up for vote are:
+> sha256: 296c74a8adde1a8acd6617b21fc3d19719ff4fa39319b2bdbd898aca4d5df97f *httpd-2.4.52-rc1.tar.gz
+> sha512: b9012096d6658f7d34a3c655eac31b39ffd439c11de6f3e6e9f309d55f4186a4fb26134eb97522e416ae8ca10ed008a14e96fa01a3e3105d9e547f72e2dc3bc2 *httpd-2.4.52-rc1.tar.gz
+>
+> The SVN candidate source is found at tags/candidate-2.4.52-rc1.
+>
+> Kind Regards,
+> Stefan

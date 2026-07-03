@@ -1,0 +1,152 @@
+{
+  "task_id": "task_105_32_react_versions_libreoffice",
+  "schema_notes": "Anchored to facebook/react latest stable release as of 2026-04-25, defined as the newest non-prerelease release published before 2026-04-25T00:00:00Z (v19.2.5, published 2026-04-08T18:49:20Z) + 8 immutable YouTube React-tutorial video IDs. video_lag_days computed against the major's published_at (v16.0.0 2017-09-26, v17.0.0 2020-10-20, v18.0.0 2022-03-29, v19.0.0 2024-12-05). freshness_score = max(0, 1 - gap*0.2). .ods platform-depth checks verify presence of formula cells, conditional-format rules, and embedded chart objects via zip-introspection of content.xml / styles.xml / manifest.xml.",
+  "reference_date": "2026-04-25",
+  "ground_truth": {
+    "current_react": {
+      "tag": "v19.2.5",
+      "major": 19,
+      "published_at": "2026-04-08T18:49:20Z"
+    },
+    "react_major_release_dates": {
+      "16": "2017-09-26",
+      "17": "2020-10-20",
+      "18": "2022-03-29",
+      "19": "2024-12-05"
+    },
+    "videos": [
+      {
+        "video_id": "uN0dioTiAwI",
+        "video_major": 16,
+        "gap": 3,
+        "video_lag_days": 76,
+        "freshness_score": 0.4,
+        "risk_level": "high",
+        "router_compat_major_expected": 4
+      },
+      {
+        "video_id": "BnasObkCGtQ",
+        "video_major": 16,
+        "gap": 3,
+        "video_lag_days": 394,
+        "freshness_score": 0.4,
+        "risk_level": "high",
+        "router_compat_major_expected": 4
+      },
+      {
+        "video_id": "_B7pGf8QJWo",
+        "video_major": 17,
+        "gap": 2,
+        "video_lag_days": -39,
+        "freshness_score": 0.6,
+        "risk_level": "high",
+        "router_compat_major_expected": 5
+      },
+      {
+        "video_id": "N0DhCV_-Qbg",
+        "video_major": 18,
+        "gap": 1,
+        "video_lag_days": 0,
+        "freshness_score": 0.8,
+        "risk_level": "medium",
+        "router_compat_major_expected": 6
+      },
+      {
+        "video_id": "dCLhUialKPQ",
+        "video_major": 19,
+        "gap": 0,
+        "video_lag_days": 50,
+        "freshness_score": 1.0,
+        "risk_level": "low",
+        "router_compat_major_expected": 7
+      },
+      {
+        "video_id": "TtPXvEcE11E",
+        "video_major": 19,
+        "gap": 0,
+        "video_lag_days": 284,
+        "freshness_score": 1.0,
+        "risk_level": "low",
+        "router_compat_major_expected": 7
+      },
+      {
+        "video_id": "8D-rWP3c088",
+        "video_major": 17,
+        "gap": 2,
+        "video_lag_days": -22,
+        "freshness_score": 0.6,
+        "risk_level": "high",
+        "router_compat_major_expected": 5
+      },
+      {
+        "video_id": "jLS0TkAHvRg",
+        "video_major": 18,
+        "gap": 1,
+        "video_lag_days": 12,
+        "freshness_score": 0.8,
+        "risk_level": "medium",
+        "router_compat_major_expected": 6
+      }
+    ],
+    "react_router_major_release_dates": {
+      "4": "2017-03-11",
+      "5": "2019-03-18",
+      "6": "2021-11-03",
+      "7": "2024-11-22"
+    },
+    "react_router_peer_react_at_2026_05_02": {
+      "4": ">=15",
+      "5": ">=15",
+      "6": ">=16.8",
+      "7": ">=18"
+    },
+    "router_compat_tolerance_abs_majors": 1,
+    "router_compat_min_videos_within_tolerance_for_full_credit": 6,
+    "summary_anchors": {
+      "average_freshness_score": 0.7,
+      "average_freshness_score_tolerance": 0.01,
+      "current_video_count_gap_zero": 2,
+      "high_risk_count": 4,
+      "medium_risk_count": 2,
+      "low_risk_count": 2
+    },
+    "ods_required_columns_substrings_any_order": [
+      "video_id",
+      "video_major",
+      "gap",
+      "video_lag_days",
+      "freshness_score",
+      "risk_level",
+      "router_compat_major"
+    ],
+    "ods_platform_depth_checks": {
+      "min_formula_cells": 1,
+      "formula_xml_grep_patterns": [
+        "table:formula",
+        "of:=AVERAGE",
+        "of:=SUM",
+        "of:=IF",
+        "of:=COUNTIF"
+      ],
+      "min_conditional_format_rules": 1,
+      "conditional_format_xml_grep_patterns": [
+        "calcext:conditional-format",
+        "style:conditional-format",
+        "calcext:condition"
+      ],
+      "min_embedded_chart_objects": 1,
+      "chart_zip_grep_patterns": [
+        "Object 1/content.xml",
+        "Object_1/content.xml",
+        "Object1/content.xml"
+      ],
+      "chart_manifest_mediatype": "application/vnd.oasis.opendocument.chart",
+      "ods_must_be_zip": true,
+      "ods_mimetype": "application/vnd.oasis.opendocument.spreadsheet"
+    },
+    "deliverables": {
+      "verification_json": "/tmp_workspace/results/verification.json",
+      "version_check_ods": "/tmp_workspace/results/version_check.ods"
+    }
+  }
+}

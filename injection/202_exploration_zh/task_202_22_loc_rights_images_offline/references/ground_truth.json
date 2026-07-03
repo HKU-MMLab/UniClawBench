@@ -1,0 +1,40 @@
+{
+  "task_id": "task_102_22_loc_rights_images_offline",
+  "note": "Offline successor to the v1 live-LoC rights-images task (scored ~0.72). The catalog is shipped and frozen, so the answer is a deterministic set. The traps require reading the ITEM-level rights (not collection-level), checking the full image actually exists (not thumbnail), confirming the item is an image (not OCR text / sound), and deduplicating records that share an image.",
+
+  "requirements": {
+    "item_level_rights_open": "item_rights must be clearly open ('No known restrictions' or 'Public domain'); 'Restricted', 'undetermined', or 'advisory' rights do NOT qualify even if collection_rights looks open",
+    "full_image_available": "image.full_image must be true (thumbnail-only does not count)",
+    "is_an_image": "type must be a visual image (photograph); manuscript_text/sound_recording do NOT count",
+    "deduplicated": "records sharing a dedup_group are the same image -> count once"
+  },
+  "select_count": 5,
+
+  "correct_selection_canonical": ["R01", "R03", "R06", "R08", "R10"],
+  "duplicate_equivalences": {"g_migrant_mother": ["R01", "R02"], "g_brooklyn_bridge": ["R03", "R11"]},
+  "acceptable_selection_rule": "exactly 5 records, one from each of the 5 usable dedup groups: {g_migrant_mother(R01 or R02), g_brooklyn_bridge(R03 or R11), g_coney_island(R06), g_grand_central(R08), g_lincoln_memorial(R10)}. Picking BOTH R01 and R02 (or R03 and R11) is a dedup failure.",
+
+  "per_record": [
+    {"id":"R01","verdict":"USABLE","group":"g_migrant_mother"},
+    {"id":"R02","verdict":"USABLE_BUT_DUP_OF_R01","group":"g_migrant_mother","note":"same image as R01; counts as the same item"},
+    {"id":"R03","verdict":"USABLE","group":"g_brooklyn_bridge"},
+    {"id":"R04","verdict":"REJECT","trap":"thumbnail_only","detail":"full_image=false (only a 150px thumbnail)"},
+    {"id":"R05","verdict":"REJECT","trap":"item_rights_restricted","detail":"collection_rights is open but item_rights is 'Restricted' — item-level wins"},
+    {"id":"R06","verdict":"USABLE","group":"g_coney_island"},
+    {"id":"R07","verdict":"REJECT","trap":"not_an_image","detail":"type=manuscript_text (OCR'd text, not a visual image)"},
+    {"id":"R08","verdict":"USABLE","group":"g_grand_central"},
+    {"id":"R09","verdict":"REJECT","trap":"rights_undetermined","detail":"item_rights is advisory/undetermined, not a clear grant"},
+    {"id":"R10","verdict":"USABLE","group":"g_lincoln_memorial"},
+    {"id":"R11","verdict":"USABLE_BUT_DUP_OF_R03","group":"g_brooklyn_bridge","note":"same image as R03"},
+    {"id":"R12","verdict":"REJECT","trap":"not_an_image_and_no_full","detail":"type=sound_recording and full_image=false"}
+  ],
+
+  "scoring_anchors": {
+    "must_select_one_per_group": ["g_migrant_mother","g_brooklyn_bridge","g_coney_island","g_grand_central","g_lincoln_memorial"],
+    "canonical_ids": ["R01","R03","R06","R08","R10"],
+    "must_reject_with_trap": {"R04":"thumbnail_only","R05":"item_rights_restricted","R07":"not_an_image","R09":"rights_undetermined","R12":"not_an_image"},
+    "dedup_pairs": [["R01","R02"],["R03","R11"]],
+    "item_vs_collection_rule": "R05 is the key test: collection-level rights are open but item-level is restricted -> reject. An executor reading collection-level only wrongly accepts R05.",
+    "note": "Full credit = exactly 5 records, one per usable dedup group, no trap included, no duplicate pair both selected, with each rejection citing the correct trap. Selecting both halves of a dedup pair, or including any trap, is the core failure."
+  }
+}

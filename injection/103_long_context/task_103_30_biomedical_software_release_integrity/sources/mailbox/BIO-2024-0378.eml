@@ -1,0 +1,58 @@
+Message-ID: <CAKZYK48ZbQMaZe3-kz4=ELVAvFRQFe_WBcmKo-OsTc_v44aAPg@mail.gmail.com>
+X-Clawbench-ID: BIO-2024-0378
+Date: Sun, 14 Nov 2021 20:15:50 +0100
+From: Stephan Lachnit <stephanlachnit@debian.org>
+To: Ben Tris <benattris@gezapig.nl>
+Subject: Re: some older and removed packages maybe to update
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_11_msg00096.html
+
+Regarding ROOT and CLHEP: I eventually plan to update them, but it's
+not easy (ROOT is quite big, CLHEP has almost unusable cmake build
+files). You fight packaging for ROOT here [1] and for CLHEP here [2].
+ROOT works, CLHEP not really.
+
+[1] https://salsa.debian.org/science-team/root
+[2] https://salsa.debian.org/science-team/clhep
+
+On Sun, Nov 14, 2021 at 1:18 PM Ben Tris  wrote:
+>
+> Found some maybe interesting still developed.
+> I can not help further (no packaging experience or whatever).
+>
+> calculix-ccx-test
+> calculix-ccx-doc
+> fastjet (phys)
+> https://svn.hepforge.org/fastjetsvn/contrib/trunk/
+> irstlm
+> https://github.com/irstlm-team/irstlm
+> clhep (phys)
+> https://gitlab.cern.ch/CLHEP/CLHEP
+> cliquer (math)
+> https://github.com/dimpase/autocliquer
+> nfft (math)
+> https://github.com/NFFT/nfft
+> siscone (phys)
+> https://phab.hepforge.org/source/sisconesvn/
+>
+> gone
+>
+> slicer (guess is the same) (med)
+> https://github.com/Slicer/Slicer
+> worldwind (maybe free now) (astro)
+> https://github.com/NASAWorldWind/WorldWindJava
+> scilab-metanet (math)
+> https://forge.scilab.org/index.php/p/metanet/source/tree/master/
+> feel++
+> https://github.com/feelpp/feelpp
+> mmtk (bio)
+> https://github.com/khinsen/mmtk
+> root-system (phys)
+> https://github.com/root-project/root
+> aster
+> https://sourceforge.net/p/codeaster/src/ci/default/tree/
+> elmerfem
+> elmer-doc
+> https://github.com/ElmerCSC/elmerfem

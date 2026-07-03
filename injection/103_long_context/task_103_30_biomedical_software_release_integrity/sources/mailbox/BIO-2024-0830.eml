@@ -1,0 +1,29 @@
+Message-ID: <ZQCtKXEc94D-bWDB@fusion>
+X-Clawbench-ID: BIO-2024-0830
+Date: Tue, 12 Sep 2023 20:25:45 +0200
+From: Étienne Mollier <emollier@debian.org>
+To: César Pomar <cesarpomar18@gmail.com>
+Subject: Re: Request for Sponsorship: VeryFastTree - Parallelized and Optimized Version of FastTree
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_09_msg00011.html
+
+Hi César,
+
+César Pomar, on 2023-09-12:
+> Done, the repository is ready.
+
+Excellent, I tested it and verified it functioned on computers
+with different baselines.  I uploaded with a minor change; I
+forgot to mention: don't forget to document your change in the
+debian/changelog entry.
+
+Thank you for your contribution!
+
+Have a nice day,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  gpg: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/0, please excuse my verbosity
+   `-

@@ -1,0 +1,26 @@
+Message-ID: <YfFWU6bsXWFg9akO@redhat.com>
+X-Clawbench-ID: ASF-2024-0179
+Date: Wed, 26 Jan 2022 14:10:27 +0000
+From: Joe Orton <jorton@redhat.com>
+To: dev@httpd.apache.org
+Subject: Re: Fwd: FYI: change to travis-ci emailer could cause moderation  headaches
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-01.mbox
+
+On Wed, Jan 26, 2022 at 08:58:14AM -0500, Eric Covener wrote:
+> I noticed I stopped getting "Travis CI" emails for httpd around 10/21.
+> But I see people still discussing CI failures, so I am a little
+> confused. Maybe they are only seeing it in the context of PRs.
+>
+> Did we lose notifications to dev@ as a result of the below? Or something else?
+
+Yup, it's apparently exactly that.  I filed:
+https://issues.apache.org/jira/browse/INFRA-22619 a while ago
+
+Does anyone know anybody at Travis so we could escalate this?  It seems
+like having them configure the envelope sender properly would be the
+best fix, or at least, easiest for us.
+
+Regards, Joe

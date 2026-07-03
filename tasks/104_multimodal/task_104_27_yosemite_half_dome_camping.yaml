@@ -1,0 +1,61 @@
+task_id: task_104_27_yosemite_half_dome_camping
+category: 104_multimodal
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  Please open these two pages on the official Yosemite National Park website:
+
+  1. Half Dome hiking information page:
+     https://www.nps.gov/yose/planyourvisit/halfdome.htm
+  2. Camping information page:
+     https://www.nps.gov/yose/planyourvisit/camping.htm
+
+  If you need to open official campground detail pages to compile information about Yosemite Valley campgrounds,
+  you may continue browsing relevant pages within the NPS site.
+
+  Please do the following:
+
+  1. Extract from the Half Dome page:
+     - Round-trip distance
+     - Elevation gain
+     - Estimated time required
+     - Whether a permit is required and how to apply
+     - Main safety considerations
+  2. Save at least 2 official website screenshots to `/tmp_workspace/results/`, each showing recognizable
+     page content:
+     - Half Dome description / map / key notice area
+     - Yosemite camping / campground information area
+     Do not capture only the official site header, navigation, warning banner, or blank areas.
+  3. From the official camping page, compile key information for Yosemite Valley campgrounds,
+     covering at least Upper Pines, Lower Pines, North Pines, and Camp 4.
+  4. Read `/tmp_workspace/clawbench/sources/yosemite_trip.json`.
+  5. Generate the following under `/tmp_workspace/results/`:
+     - `half_dome_guide.md`
+     - `campground_options.csv`
+     - `trip_assessment.md`
+     - `half_dome_reference.png`
+     - `campground_reference.png`
+
+  `campground_options.csv` must include at least the campground name, operating season, whether reservations
+  are required, fee notes (only include information visible on the official page or provable from your screenshots;
+  if you cannot confirm it, state that it is not clearly shown), and brief notes.
+  `trip_assessment.md` must clearly judge whether this trip is suitable for attempting Half Dome, and explain
+  more suitable campgrounds and preparation recommendations.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/campgrounds_ground_truth.csv
+
+sources:
+  - yosemite_trip.json
+
+codex:
+  max_user_followups: 2

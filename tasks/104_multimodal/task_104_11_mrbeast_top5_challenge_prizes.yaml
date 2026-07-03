@@ -1,0 +1,44 @@
+task_id: task_104_11_mrbeast_top5_challenge_prizes
+category: 104_multimodal
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  Go to YouTube and find the MrBeast channel.
+
+  Based on the current view-count ordering, find 5 high-view videos that clearly
+  have a challenge prize and whose final prize outcome can be determined within
+  that same video. Do not choose challenges where the final winner or prize outcome
+  is not resolved in the same video.
+  You must open and watch these candidate videos. Do not filter only from titles,
+  descriptions, subtitle download pages, or prior impressions; the final prize
+  outcome must come from the video itself.
+
+  Organize the results in:
+  `/tmp_workspace/results/mrbeast_challenges.md`
+
+  Requirements:
+  1. Clearly write the titles, links, and current view counts for the 5 videos you
+     selected.
+  2. For each video, at minimum clearly describe:
+     - Challenge rules
+     - Number of participants
+     - Key stages / key rounds
+     - Final winner (also note if multiple people split the prize)
+     - Final prize amount
+  3. Add a prize comparison table at the end.
+  4. This task must be based on the current YouTube pages you actually saw; do not
+     list a ranking from prior impressions.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+codex:
+  max_user_followups: 2

@@ -1,0 +1,25 @@
+{
+  "display_name": "Wax \u2014 Minimal Archive",
+  "based_on": "https://github.com/minicomp/wax",
+  "item_metadata_fields": [
+    "title",
+    "caption",
+    "creator",
+    "date",
+    "description",
+    "credit",
+    "rights",
+    "accession_number",
+    "collection"
+  ],
+  "features": {
+    "timeline": false,
+    "map": false,
+    "iiif_large_images": true,
+    "browse_by_filter": true,
+    "search": true,
+    "responsive": true
+  },
+  "note": "minimal-computing archival exhibit with full metadata incl rights+accession, IIIF; but NO timeline component",
+  "id": "wax_minimal_archive"
+}

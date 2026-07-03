@@ -1,0 +1,52 @@
+Message-ID: <YbClvZDXVx78T7LA@an3as.eu>
+X-Clawbench-ID: BIO-2024-0531
+Date: Wed, 8 Dec 2021 13:31:57 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Any help to get pydicom build welcome
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_12_msg00036.html
+
+HI Étienne,
+
+Am Tue, Dec 07, 2021 at 09:43:52PM +0100 schrieb Étienne Mollier:
+>
+> Actually, I ended up discovering the following statement in the
+> file pydicom/data/test_files/README.txt:
+>
+> >> 2020-06 Many files were moved to an external data store,
+> >> and are downloaded as needed.
+>
+> So maybe it is possible to disable pytest parameters referring
+> to missing data, given that it is not authorized to download
+> resources while building the package.
+
+Your hint makes perfectly sense and after a lot of patching I hope I've
+excluded all tests in need of downloaded files.  However I'm now running
+into:
+
+
+pydicom/tests/test_encoders.py ...s....s...s.....Fatal Python error: Aborted
+
+Current thread 0x00007f3c1264d740 (most recent call first):
+  File "/build/pydicom-2.2.2/.pybuild/cpython3_3.9_pydicom/build/pydicom/encoders/gdcm.py", line 60 in encode_pixel_data
+  File "/build/pydicom-2.2.2/.pybuild/cpython3_3.9_pydicom/build/pydicom/encoders/base.py", line 724 in _process
+  File "/build/pydicom-2.2.2/.pybuild/cpython3_3.9_pydicom/build/pydicom/encoders/base.py", line 262 in _encode_bytes
+  File "/build/pydicom-2.2.2/.pybuild/cpython3_3.9_pydicom/build/pydicom/encoders/base.py", line 196 in encode
+  File "/build/pydicom-2.2.2/.pybuild/cpython3_3.9_pydicom/build/pydicom/tests/test_encoders.py", line 309 in test_bytes
+  File "/usr/lib/python3/dist-packages/_pytest/python.py", line 183 in pytest_pyfunc_call
+
+
+Where I'm unsure how to fix this.  It might be connected to some unicode
+issue where we have another patch - but I have no idea how to find the
+problem here.
+
+Kind regards
+
+     Andreas.
+
+
+--
+http://fam-tille.de

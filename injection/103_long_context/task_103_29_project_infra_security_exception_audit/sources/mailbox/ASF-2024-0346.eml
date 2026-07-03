@@ -1,0 +1,100 @@
+Message-ID: <CACsi252FAYRXazZUHwFuZEvVXYfjAcAUmy+OqHGyAp3vbY_zZA@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0346
+Date: Fri, 21 Oct 2022 17:18:21 -0500
+From: William A Rowe Jr <wrowe@rowe-clan.net>
+To: httpd <dev@httpd.apache.org>
+Subject: Re: --with-pcre Path Error configuring Apache 2.4.53-.54
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-10.mbox
+
+The error below is acknowledged, and I worked out how it escaped my radar
+(when pcre2-config exists, the current logic tolerates a broken
+--with-pcre=/path,
+finds the system pcre2-config or pcre-config, and if another dependency picks
+the same path, the "desired" pcre is used and httpd assumes it is the version
+of the system located -config file.)
+
+I'd like to spend a moment setting fresh and realistic expectations of
+the correct
+behavior, and start by proposing to add a new --with-pcre2 to httpd 2.4.x. These
+two flags would interact as follows;
+
+--with-pcre2 (Default) --with-pcre (Default)
+Search the system path for pcre2-config, then for legacy pcre-config scripts
+
+--with-pcre2 (Default) --without-pcre
+Search the system path for ONLY pcre2-config script
+
+--without-pcre2 --with-pcre (Default)
+Search the system path for ONLY legacy pcre-config script
+
+--without-pcre2 --without-pcre
+Absolute failure to configure
+
+--with-pcre2 (Default) --with-pcre=/path
+Search only /path-to-explicit-config, /path/bin/pcre2-config,
+/path/pcre2-config,
+/path/bin/pcre-config, and /path/pcre-config in that order.
+Will not fall back from explicit path to system path.
+
+--with-pcre2=/path --without-pcre
+*or*
+--with-pcre2=/path --with-pcre (Default)
+Search only /path-to-explicit-config, /path/bin/pcre2-config, and
+/path/pcre2-config
+Will not fall back from explicit path to system path.
+
+--without-pcre2 --with-pcre=/path
+Search only /path-to-explicit-config, /path/bin/pcre-config, and
+/path/pcre-config
+(pre-2.4.53 behavior; however no longer falls back from explicit path
+to system path.)
+
+--with-pcre2=/path --with-pcre=/path
+Absolute failure to configure, can't have both.
+
+I need to determine if we can distinguish between default and explicit
+specified --with toggles. If so, then we can handle...
+
+--with-pcre2 (Explicit) --with-pcre (Default)
+Search the system path for ONLY pcre2-config scripts.
+
+--with-pcre2=/path --with-pcre (Explicit)
+*or*
+--with-pcre2 (Explicit) --with-pcre=/path
+*or*
+--with-pcre2 (Explicit) --with-pcre (Explicit)
+Absolute failure to configure, can't have both.
+
+I'd propose if this is accepted after 2.4.next release feedback, that
+all legacy pcre 8.x and early support is ripped out, and honor only the
+--with-pcre2[=path] syntax and forcefully reject the --with-pcre option.
+The suggestions above should provide a mostly painless transition
+to move from 2.4.next to subsequent releases.
+
+Thoughts/comments/objections?
+
+Bill
+
+On Mon, Apr 25, 2022 at 5:59 AM Ruediger Pluem <rpluem@apache.org> wrote:
+>
+> See https://bz.apache.org/bugzilla/show_bug.cgi?id=66000
+>
+> On 4/25/22 11:16 AM, Ganeshprasad MS wrote:
+> > We have downloaded the Apache HTTPD source httpd-2.4.53.tar.gz <https://dlcdn.apache.org/httpd/httpd-2.4.53.tar.gz> from Apache
+> > software foundation and trying to compile/build the Apache binaries, but we are facing the below error while configuring the
+> > Apache HTTPD.
+
+> > Options: --prefix /remote/users/gms/2.4.53/apache-pack/build/PKL-AWS-2.4.53.0/Release --enable-proxy --enable-proxy-ajp
+> > --enable-proxy-balancer --enable-proxy-http --enable-rewrite --enable-info --enable-headers --enable-expires --enable-deflate
+> > --enable-ssl --with-ssl=/remote/users/gms/2.4.53/apache-pack/build/PKL-AWS-2.4.53.0/Release
+> > --with-pcre=/remote/users/gms/2.4.53/apache-pack/build/pcre --with-apr=/remote/users/gms/2.4.53/apache-pack/build/apr
+> > --with-apr-util=/remote/users/gms/2.4.53/apache-pack/build/apr-util --with-crypto
+
+> > checking for -pcre2-config... no
+> > checking for -pcre-config... no
+> > checking for pcre2-config... no
+> > checking for pcre-config... pcre-config
+> > configure: error: Did not find working script at pcre-config

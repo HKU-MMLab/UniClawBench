@@ -1,0 +1,72 @@
+Message-ID: <5C5954DF-D625-4C22-AE00-A1D4FD7D7E6E@eissing.org>
+X-Clawbench-ID: ASF-2024-0378
+Date: Thu, 27 Jan 2022 15:17:19 +0100
+From: Stefan Eissing <stefan@eissing.org>
+To: dev@httpd.apache.org
+Subject: Re: mpm event assertion failures
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-01.mbox
+
+Testing my changes, I noticed that the poxy/ssl tests now take about 4 minutes to complete. I reverted and it stays the same on current trunk:
+
+trunk (r81897548), unchanged:
+t/ssl/proxy.t .. ok
+All tests successful.
+Files=1, Tests=290, 249 wallclock secs ( 0.12 usr  0.01 sys +  0.73 cusr  0.16 csys =  1.02 CPU)
+Result: PASS
+
+Before the handshake changes, it runs in 9 seconds:
+trunk (r1897273)
+t/ssl/proxy.t .. ok
+All tests successful.
+Files=1, Tests=290,  9 wallclock secs ( 0.12 usr  0.01 sys +  0.72 cusr  0.16 csys =  1.01 CPU)
+Result: PASS
+
+How should we proceed with this? Shall I setup a branch with the changes by Graham,
+so we can inspect it and discuss via github? Graham, is that ok with you? I am
+open to other ideas.
+
+Kind Regards,
+Stefan
+
+> Am 27.01.2022 um 10:50 schrieb Stefan Eissing <stefan@eissing.org>:
+>
+>
+>
+>> Am 26.01.2022 um 17:06 schrieb Graham Leggett <minfrin@sharp.fm>:
+>>
+>> On 26 Jan 2022, at 13:49, Stefan Eissing <stefan@eissing.org> wrote:
+>>
+>>> Guys, we have changes in a central part of the server and our CI fails.=20=
+>>>
+>>> It is not good enough to give other people unspecific homework to fix =
+>>> it.=20
+>>>
+>>> Analyze what you broke and if we can help, we'll happily do that. But
+>>> you need to give some more details here.
+>>
+>> We need to clarify expectations at this point.
+>>
+>> The trunk of httpd has a policy called “commit then review” (CTR), meaning that changes are applied first, and then review is done to see what the ramifications of those changes are. Some changes are at a high level and very well contained, some changes such as this one are at a very low level and affect the whole server. Obviously there is an expectation that one must think it works before committing, but none of our contributors have access to even a fraction of the number of platforms that httpd runs on, and so we must rely on both our CI and the review of others (thus the “then review”) to show us where things have gone wrong. Our CI is a tool to tell us what potentially has gone wrong across a wide set of scenarios, far beyond the capability of what a single person has access to.
+>>
+>> The next issue is “Analyze what you broke”.
+>>
+>> I have been working on this code morning, day and night for many days now. A lot of time was spent chasing what I thought was an infinite loop complaining about EOF, but actually was a harmless error that should have been a debug triggered every time the client disconnected. Then more time was spent trying to get to the bottom of why the timeouts weren’t working, only to discover that the timeouts weren’t implemented. The accusation that I have been careless is highly offensive.
+>>
+>> In open source we don’t bark accusations at each other, particularly when noone has seen just how much time and effort has gone into this. I have been working on this code for 25 years and am not afraid to call this out, but new people to open source or new to this project are going to be intimidated and leave. This must not happen.
+>>
+>> Please be mindful of others working on this project, and be helpful where possible.
+>
+> I did not intend to "bark" at you and am sorry if my reply came across like that.
+>
+> As you explained, this change has been very taxing and a struggle. We did not see that. What we experience are changes that prevent us from working in trunk. If you, at that point in time, are unable to help because workload/energy/or any other issues that is understood. This is a volunteer project. But understand that others are in the same situation as you and experience the changes as a showstopper.
+>
+>
+> As Yann pointed out much more constructively than myself, isolating such a change in a PR where the team can review, discuss and enhance it together seems the best approach. This does not mean every commit needs to be a PR. It can be done retroactively by reverting breaking changes and place them in a PR to work together to make it good.
+>
+> Let's do this and see how it works.
+>
+> Kind Regards,
+> Stefan

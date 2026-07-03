@@ -1,0 +1,88 @@
+Message-ID: <4a92630e-d814-f779-12bb-c8d0d76bf6ec@yahoo.com>
+X-Clawbench-ID: ASF-2024-0126
+Date: Mon, 25 Dec 2023 02:55:56 -0600
+From: "MIIM via dev" <dev@httpd.apache.org>
+To: dev@httpd.apache.org
+Subject: Module file access problem
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-12.mbox
+
+I apologize in advance for posting this question to the development
+forum, but unfortunately the modules-development list is dead
+according to the list server.
+
+
+I have a module attempting to write a log file --
+not one of the Apache log files -- for its own use.
+
+I adopted the code from a similar module which uses
+it to open-for-read a whitelist file in the default
+configuration directory; it works in that module.
+
+When opening for create-or-append a permissions
+failure occurs. The module reports the error as follows:
+
+
+Dec 24 22:11:58  mod_botlist: logfile </var/log/apache/>
+Dec 24 22:11:58  mod_botlist: Log file </var/log/apache/robots.log>
+Dec 24 22:11:58  mod_botlist: Error opening log file
+</var/log/apache/robots.log>
+
+
+Protection for the /var/log/apache directory is the default.
+This is the directory where Apache keeps its log files:
+
+
+/var/log ...
+drwxr-xr-x 2 root root   4096 Dec 24 22:11 apache
+
+
+The code for the file open is below.  The module gets
+through the stat checking section but fails to open
+the (nonexistent at the first request) file for append.
+
+
+/* Stat a possibly existing file in case there's a problem */
+
+   errno = 0;
+   logstat = stat(logfilename, &statdata);
+   if ( (logstat < 0) && (errno != ENOENT) ) {
+     filerr = errno;
+     ap_log_rerror(APLOG_MARK, APLOG_NOTICE, 0, r,
+                   "mod_botlist: Error on log file <%s>",
+                   logfilename);
+     ap_log_rerror(APLOG_MARK, APLOG_NOTICE, 0, r,
+                   "             %s",
+                   strerror(filerr));
+     bl_unlock_mutex(r, bl_scfg);
+     return DECLINED;
+   }
+
+   /* Open the file for append, or if none, create it */
+
+   errno = 0;
+   logfile = fopen(logfilename, "a+");
+   if (errno != 0) {
+     filerr = errno;
+     ap_log_rerror(APLOG_MARK, APLOG_NOTICE, 0, r,
+                   "mod_botlist: Error opening log file <%s>",
+                   logfilename);
+     ap_log_rerror(APLOG_MARK, APLOG_NOTICE, 0, r,
+                   "             %s",
+                   strerror(filerr));
+     bl_unlock_mutex(r, bl_scfg);
+     return DECLINED;
+   }
+
+
+1)  Is this problem due to the core giving up its privilege
+     after the individual servers are started?  Clearly some
+     part of the server had enough privilege to create those
+     files.
+
+2)  Am I doing this the hard way?  Is there a method in Apache
+     to write log files other than the server log files?  I've
+     investigated the source in /httpd/loggers but I'm sorry to
+     say I can't follow most of what is going on.

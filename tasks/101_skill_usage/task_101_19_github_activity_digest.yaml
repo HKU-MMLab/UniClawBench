@@ -1,0 +1,103 @@
+task_id: task_101_19_github_activity_digest
+category: 101_skill_usage
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I missed the last two weeks of activity on clawbench-activity-fixture and
+  need to catch up before the maintainer sync. Build me a 16-day activity
+  digest covering 2026-04-10 through 2026-04-25 inclusive — use the GitHub
+  skill in our workspace for the API calls. Authenticate with the
+  $GITHUB_TOKEN environment variable and hit the live GitHub REST API
+  directly via the gh CLI or curl against api.github.com. Do not rely on
+  any local cache or pre-exported snapshot file under /tmp_workspace/clawbench
+  for this run; everything must come from a fresh API pull covering merged
+  PRs, closed-unmerged PRs, closed issues, and commits in that window.
+
+  A few entries in this fixture repo may have been imported by an automation
+  account. When a PR or issue body, or a commit message, includes an
+  explicit pseudo-user or planned-date note, use that note as the
+  contributor and date for the digest instead of the automation account's
+  login or the rebuild timestamp. I'm using this digest to reconcile the
+  planning import, so the annotated fixture entries must drive the
+  contributor and date counts, highlights, and follow-up notes whenever the
+  raw GitHub metadata carries rebuild noise.
+
+  Save /tmp_workspace/results/digest.md grouped by contributor. For each
+  contributor show: PRs merged, PRs closed without merge, issues closed,
+  and commit count. Add a Follow-up Flags section for activity that looks
+  risky or needs a maintainer follow-up, including every closed-unmerged
+  PR and any revert PR or revert commit. End with a Highlights section
+  listing the 5 most recent merged PRs or closed issues in the window,
+  newest first. When two highlight events share the same date, list the
+  higher-numbered activity first so number 27 comes before number 13; if
+  the numbers also tie, list the issue before the pull request.
+
+  Also save /tmp_workspace/results/activity_index.csv with columns
+  activity_type,number_or_sha,title_or_message,contributor,activity_date,status
+  covering every merged PR, closed-unmerged PR, closed issue, and commit
+  in the 16-day window so I can sort and filter it later. Cover the full
+  set of contributors and activity, not a partial sample.
+
+task_snapshot: |
+  I missed the last two weeks of activity on this repo and need to catch
+  up before the maintainer sync. Build me a 16-day activity digest
+  covering 2026-04-10 through 2026-04-25 inclusive — use the GitHub skill
+  in our workspace for the analysis. The relevant activity is already
+  exported to
+  /tmp_workspace/clawbench/sources/github_activity_snapshot.json — read
+  every PR, issue, and commit from that JSON file and treat it as the only
+  source of truth for this run. Do not call the live GitHub API.
+
+  A few entries may have been imported by an automation account. When a PR
+  or issue body, or a commit message, includes an explicit pseudo-user or
+  planned-date note, use that note as the contributor and date for the
+  digest instead of the automation account's login. The annotated fixture
+  entries drive the contributor and date counts, highlights, and follow-up
+  notes whenever the raw metadata carries rebuild noise.
+
+  Save /tmp_workspace/results/digest.md grouped by contributor. For each
+  contributor show: PRs merged, PRs closed without merge, issues closed,
+  and commit count. Add a Follow-up Flags section for activity that looks
+  risky or needs a maintainer follow-up, including every closed-unmerged
+  PR and any revert PR or revert commit. End with a Highlights section
+  listing the 5 most recent merged PRs or closed issues in the window,
+  newest first. When two highlight events share the same date, list the
+  higher-numbered activity first so number 27 comes before number 13; if
+  the numbers also tie, list the issue before the pull request.
+
+  Also save /tmp_workspace/results/activity_index.csv with columns
+  activity_type,number_or_sha,title_or_message,contributor,activity_date,status
+  covering every merged PR, closed-unmerged PR, closed issue, and commit
+  in the 16-day window so I can sort and filter it later. Cover the full
+  set of contributors and activity, not a partial sample.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - github_activity_snapshot.json
+
+skills:
+  - github
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+pre_exec:
+  - ops/populate.py
+
+pre_exec_parallel_safe: true
+
+codex:
+  max_user_followups: 2

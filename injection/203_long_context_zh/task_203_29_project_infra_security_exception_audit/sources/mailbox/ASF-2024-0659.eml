@@ -1,0 +1,36 @@
+Message-ID: <0D25F402-7F04-49E6-91A2-643A29596634@eissing.org>
+X-Clawbench-ID: ASF-2024-0659
+Date: Tue, 2 Jul 2024 15:44:41 +0200
+From: "Stefan Eissing via dev" <dev@httpd.apache.org>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.61-rc1 as httpd-2.4.61
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-07.mbox
+
+> Am 02.07.2024 um 15:29 schrieb Eric Covener <covener@gmail.com>:
+>
+> Hi all,
+>
+> Please find below the proposed release tarball and signatures:
+>
+> https://dist.apache.org/repos/dist/dev/httpd/
+>
+> === Different from template ===
+> I would like to call an expedited VOTE (due to regression in 2.4.60)
+> over the next 1-2 days to release this candidate tarball
+> httpd-2.4.61-rc1 as 2.4.61:
+>
+> (sorry)
+> === end not from a template
+>
+> [ ] +1: It's not just good, it's good enough!
+> [ ] +0: Let's have a talk.
+> [ ] -1: There's trouble in paradise. Here's what's wrong.
+
++1, macOS 14.5
+
+Thanks for all the hard work put into this, Eric.
+
+- Stefan

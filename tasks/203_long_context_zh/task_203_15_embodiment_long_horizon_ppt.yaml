@@ -1,0 +1,29 @@
+task_id: task_203_15_embodiment_long_horizon_ppt
+category: 203_long_context_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我需要制作一份关于 Embodiment System 主题的论文阅读 PPT。我们的课程想把它分成四个部分：grounded & interactive、closed-loop recovery、long-horizon + hierarchical planning，以及 generalization。我负责 long-horizon + hierarchical planning 这一部分。
+
+  候选论文都在 `/tmp_workspace/clawbench/sources/papers/` 中，我把文件重命名成了没有语义的数字，所以不要从文件名猜测。阅读这些论文，并为 long-horizon + hierarchical planning 部分选出最合适的两篇论文。在 PPT 开头，先为 Embodiment System 创建一个整体路线图，并简要地把每篇候选论文归入四个部分之一：grounded & interactive、closed-loop recovery、long-horizon + hierarchical planning，以及 generalization。关于开放式通用智能体（open-ended generalist agents）、终身技能学习（lifelong skill learning）或跨任务泛化（cross-task generalization）的论文更适合归入 generalization，而不是我负责的 long-horizon + hierarchical planning 主体部分。然后展开我负责的这两篇论文。PPT 请采用 `/tmp_workspace/clawbench/sources/presentation_template.pptx` 的风格。
+
+  PPT 必须为每篇论文至少包含 motivation、method 和 experiment 部分，并且应自然地衔接前后两个部分。请注意，我会直接在组会上使用这份 PPT，所以不要只是堆砌文字或随意粘贴截图：排版应清晰，图应可读，标题和要点看起来应像一次正式的论文阅读。风格不需要逐像素一致，但应与模板协调。PPT 质量是本任务的核心要求；确保没有文字溢出、字号可读、图片没有被拉伸或裁切，且整体风格与模板相符。将最终 PPT 保存到 `/tmp_workspace/results/long_horizon_paper_reading.pptx`，并同时保存 `/tmp_workspace/results/selection_note.md`，说明为什么选择这两篇论文。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/group5_reference_deck.pptx
+  - references/paper_mapping.json
+sources:
+  - presentation_template.pptx
+  - papers/
+
+codex:
+  max_user_followups: 2

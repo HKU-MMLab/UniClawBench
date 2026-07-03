@@ -1,0 +1,431 @@
+{
+  "board_id": "69e52985bba0f571513ffd47",
+  "generated_at": "2026-04-25T10:00:00Z",
+  "items": [
+    {
+      "id": "69e52b2fc2c3841ad8cbc845",
+      "short_link": "e3wfPgLG",
+      "name": "Clean up legacy branches on staging",
+      "list_name": "Todo",
+      "due": "2026-05-15T10:00:00.000Z",
+      "labels": [
+        "internal",
+        "P4"
+      ],
+      "priority": "P4",
+      "owner": "Finley",
+      "client_facing": false,
+      "sla_hours": null,
+      "blocker": "",
+      "description": "Owner: Finley\nPriority: P4\nSLA hours: none\nWorkstream: internal"
+    },
+    {
+      "id": "69e52b2d69de0ad09ca1373f",
+      "short_link": "L7bnAFBk",
+      "name": "Draft Q3 OKR proposal",
+      "list_name": "Todo",
+      "due": "2026-05-05T10:00:00.000Z",
+      "labels": [
+        "P3",
+        "internal"
+      ],
+      "priority": "P3",
+      "owner": "Emery",
+      "client_facing": false,
+      "sla_hours": 168,
+      "blocker": "",
+      "description": "Owner: Emery\nPriority: P3\nSLA hours: 168\nWorkstream: internal"
+    },
+    {
+      "id": "69e52b2bd87f6eec667b78c4",
+      "short_link": "ULKNu5qo",
+      "name": "Prepare board meeting deck (Q2 financials)",
+      "list_name": "Todo",
+      "due": "2026-04-26T22:00:00.000Z",
+      "labels": [
+        "P1",
+        "internal"
+      ],
+      "priority": "P1",
+      "owner": "Blair",
+      "client_facing": false,
+      "sla_hours": 24,
+      "blocker": "",
+      "description": "Owner: Blair\nPriority: P1\nSLA hours: 24\nWorkstream: internal"
+    },
+    {
+      "id": "69e52b2e55feeae97a4dd566",
+      "short_link": "FbWXfecm",
+      "name": "Schedule 1:1s with reports for next week",
+      "list_name": "Todo",
+      "due": "2026-04-30T10:00:00.000Z",
+      "labels": [
+        "P3",
+        "internal"
+      ],
+      "priority": "P3",
+      "owner": "Casey",
+      "client_facing": false,
+      "sla_hours": 168,
+      "blocker": "",
+      "description": "Owner: Casey\nPriority: P3\nSLA hours: 168\nWorkstream: internal"
+    },
+    {
+      "id": "69e52b2a375cdae87ce6f3e7",
+      "short_link": "nJLomHkx",
+      "name": "Sign client contract — Acme MSA renewal",
+      "list_name": "Todo",
+      "due": "2026-04-25T22:00:00.000Z",
+      "labels": [
+        "P1",
+        "client-facing"
+      ],
+      "priority": "P1",
+      "owner": "Avery",
+      "client_facing": true,
+      "sla_hours": 24,
+      "blocker": "",
+      "description": "Owner: Avery\nPriority: P1\nSLA hours: 24\nWorkstream: client-facing"
+    },
+    {
+      "id": "69e52b2cb2b89ed39ea50889",
+      "short_link": "dhfEURYy",
+      "name": "Update the team wiki landing page",
+      "list_name": "Todo",
+      "due": "2026-05-02T10:00:00.000Z",
+      "labels": [
+        "internal",
+        "P4"
+      ],
+      "priority": "P4",
+      "owner": "Devon",
+      "client_facing": false,
+      "sla_hours": null,
+      "blocker": "",
+      "description": "Owner: Devon\nPriority: P4\nSLA hours: none\nWorkstream: internal"
+    },
+    {
+      "id": "69e52b340ba1ccee744acc5c",
+      "short_link": "en68pCFR",
+      "name": "Audit vendor SOC2 reports",
+      "list_name": "Doing",
+      "due": null,
+      "labels": [
+        "P2",
+        "client-facing"
+      ],
+      "priority": "P2",
+      "owner": "Devon",
+      "client_facing": true,
+      "sla_hours": 48,
+      "blocker": "",
+      "description": "Owner: Devon\nPriority: P2\nSLA hours: 48\nWorkstream: client-facing"
+    },
+    {
+      "id": "69e52b36daf7a1d87d3eb9cd",
+      "short_link": "bb6oIEe7",
+      "name": "Consolidate three Looker dashboards",
+      "list_name": "Doing",
+      "due": null,
+      "labels": [
+        "P3",
+        "internal"
+      ],
+      "priority": "P3",
+      "owner": "Finley",
+      "client_facing": false,
+      "sla_hours": 168,
+      "blocker": "",
+      "description": "Owner: Finley\nPriority: P3\nSLA hours: 168\nWorkstream: internal"
+    },
+    {
+      "id": "69e52b3711ffb8a24d334bac",
+      "short_link": "5Xh59oyp",
+      "name": "Draft onboarding checklist for new PM",
+      "list_name": "Doing",
+      "due": null,
+      "labels": [
+        "P3",
+        "internal"
+      ],
+      "priority": "P3",
+      "owner": "Avery",
+      "client_facing": false,
+      "sla_hours": 168,
+      "blocker": "",
+      "description": "Owner: Avery\nPriority: P3\nSLA hours: 168\nWorkstream: internal"
+    },
+    {
+      "id": "69e52b35be47fffe951035a7",
+      "short_link": "LOGGwkG9",
+      "name": "Implement dark-mode toggle on settings page",
+      "list_name": "Doing",
+      "due": null,
+      "labels": [
+        "internal",
+        "P4"
+      ],
+      "priority": "P4",
+      "owner": "Emery",
+      "client_facing": false,
+      "sla_hours": null,
+      "blocker": "",
+      "description": "Owner: Emery\nPriority: P4\nSLA hours: none\nWorkstream: internal"
+    },
+    {
+      "id": "69e52b33f4890383cc2c5b34",
+      "short_link": "CF74Fzwb",
+      "name": "Migrate analytics dashboard to v2",
+      "list_name": "Doing",
+      "due": "2026-05-09T10:00:00.000Z",
+      "labels": [
+        "P3",
+        "internal"
+      ],
+      "priority": "P3",
+      "owner": "Casey",
+      "client_facing": false,
+      "sla_hours": 168,
+      "blocker": "",
+      "description": "Owner: Casey\nPriority: P3\nSLA hours: 168\nWorkstream: internal"
+    },
+    {
+      "id": "69e52b3098b9ab154defa262",
+      "short_link": "JdxfECl2",
+      "name": "Refactor billing service error handling",
+      "list_name": "Doing",
+      "due": "2026-05-05T10:00:00.000Z",
+      "labels": [
+        "P2",
+        "internal"
+      ],
+      "priority": "P2",
+      "owner": "Blair",
+      "client_facing": false,
+      "sla_hours": 48,
+      "blocker": "",
+      "description": "Owner: Blair\nPriority: P2\nSLA hours: 48\nWorkstream: internal"
+    },
+    {
+      "id": "69e52b3252b2beefd69e4ddd",
+      "short_link": "ZEGqUmUE",
+      "name": "Review engineering hiring pipeline",
+      "list_name": "Doing",
+      "due": "2026-05-03T10:00:00.000Z",
+      "labels": [
+        "P3",
+        "internal"
+      ],
+      "priority": "P3",
+      "owner": "Avery",
+      "client_facing": false,
+      "sla_hours": 168,
+      "blocker": "",
+      "description": "Owner: Avery\nPriority: P3\nSLA hours: 168\nWorkstream: internal"
+    },
+    {
+      "id": "69e52b3143bf7e13e65017d8",
+      "short_link": "Gk8o3yWi",
+      "name": "Write integration tests for /checkout",
+      "list_name": "Doing",
+      "due": null,
+      "labels": [
+        "P2",
+        "client-facing"
+      ],
+      "priority": "P2",
+      "owner": "Blair",
+      "client_facing": true,
+      "sla_hours": 48,
+      "blocker": "",
+      "description": "Owner: Blair\nPriority: P2\nSLA hours: 48\nWorkstream: client-facing"
+    },
+    {
+      "id": "69e52b3bd87f6eec667b9dfa",
+      "short_link": "xzXt5bJF",
+      "name": "Awaiting vendor response on pricing tier",
+      "list_name": "Blocked",
+      "due": null,
+      "labels": [
+        "P2",
+        "client-facing"
+      ],
+      "priority": "P2",
+      "owner": "Finley",
+      "client_facing": true,
+      "sla_hours": 48,
+      "blocker": "Vendor has not confirmed pricing tier",
+      "description": "Owner: Finley\nPriority: P2\nSLA hours: 48\nWorkstream: client-facing\nBlocked by: Vendor has not confirmed pricing tier"
+    },
+    {
+      "id": "69e52b39f0e2779d42fea58f",
+      "short_link": "KWlEcKWC",
+      "name": "Blocked on AWS quota increase ticket",
+      "list_name": "Blocked",
+      "due": null,
+      "labels": [
+        "P1",
+        "internal"
+      ],
+      "priority": "P1",
+      "owner": "Devon",
+      "client_facing": false,
+      "sla_hours": 24,
+      "blocker": "AWS Support quota ticket is pending",
+      "description": "Owner: Devon\nPriority: P1\nSLA hours: 24\nWorkstream: internal\nBlocked by: AWS Support quota ticket is pending"
+    },
+    {
+      "id": "69e52b3ac27a4bc7d6e7ba50",
+      "short_link": "9Nlxn2H6",
+      "name": "Need design decision from Kai on nav hierarchy",
+      "list_name": "Blocked",
+      "due": null,
+      "labels": [
+        "P2",
+        "internal"
+      ],
+      "priority": "P2",
+      "owner": "Emery",
+      "client_facing": false,
+      "sla_hours": 48,
+      "blocker": "Kai needs to choose the nav hierarchy",
+      "description": "Owner: Emery\nPriority: P2\nSLA hours: 48\nWorkstream: internal\nBlocked by: Kai needs to choose the nav hierarchy"
+    },
+    {
+      "id": "69e52b38e877c6a9cba92472",
+      "short_link": "ynIQN3Hf",
+      "name": "Waiting on legal review of DPA",
+      "list_name": "Blocked",
+      "due": null,
+      "labels": [
+        "P1",
+        "internal"
+      ],
+      "priority": "P1",
+      "owner": "Casey",
+      "client_facing": false,
+      "sla_hours": 24,
+      "blocker": "Legal must approve the DPA language",
+      "description": "Owner: Casey\nPriority: P1\nSLA hours: 24\nWorkstream: internal\nBlocked by: Legal must approve the DPA language"
+    },
+    {
+      "id": "69e52b3eeba220e784dca1be",
+      "short_link": "Nz7QUzOW",
+      "name": "Closed Q1 revenue recognition review",
+      "list_name": "Done",
+      "due": null,
+      "labels": [
+        "internal",
+        "P4"
+      ],
+      "priority": "P4",
+      "owner": "Casey",
+      "client_facing": false,
+      "sla_hours": null,
+      "blocker": "",
+      "description": "Owner: Casey\nPriority: P4\nSLA hours: none\nWorkstream: internal"
+    },
+    {
+      "id": "69e52b412b2b966000a14b64",
+      "short_link": "ZvpsvjJ7",
+      "name": "Completed mid-year perf calibration",
+      "list_name": "Done",
+      "due": null,
+      "labels": [
+        "internal",
+        "P4"
+      ],
+      "priority": "P4",
+      "owner": "Finley",
+      "client_facing": false,
+      "sla_hours": null,
+      "blocker": "",
+      "description": "Owner: Finley\nPriority: P4\nSLA hours: none\nWorkstream: internal"
+    },
+    {
+      "id": "69e52b40cf764888bbc6eb6d",
+      "short_link": "bV3ojgvO",
+      "name": "Deprecated old search endpoint",
+      "list_name": "Done",
+      "due": null,
+      "labels": [
+        "internal",
+        "P4"
+      ],
+      "priority": "P4",
+      "owner": "Emery",
+      "client_facing": false,
+      "sla_hours": null,
+      "blocker": "",
+      "description": "Owner: Emery\nPriority: P4\nSLA hours: none\nWorkstream: internal"
+    },
+    {
+      "id": "69e52b423a34faa7ea23bf83",
+      "short_link": "GcxkQKXl",
+      "name": "Fixed flakey webhook retry logic",
+      "list_name": "Done",
+      "due": null,
+      "labels": [
+        "internal",
+        "P4"
+      ],
+      "priority": "P4",
+      "owner": "Avery",
+      "client_facing": false,
+      "sla_hours": null,
+      "blocker": "",
+      "description": "Owner: Avery\nPriority: P4\nSLA hours: none\nWorkstream: internal"
+    },
+    {
+      "id": "69e52b3fb41193790d757bc4",
+      "short_link": "cGSgmMYM",
+      "name": "Published security runbook v3",
+      "list_name": "Done",
+      "due": null,
+      "labels": [
+        "internal",
+        "P4"
+      ],
+      "priority": "P4",
+      "owner": "Devon",
+      "client_facing": false,
+      "sla_hours": null,
+      "blocker": "",
+      "description": "Owner: Devon\nPriority: P4\nSLA hours: none\nWorkstream: internal"
+    },
+    {
+      "id": "69e52b3df0be02f5d84c0c7b",
+      "short_link": "76ci4BvO",
+      "name": "Rolled out observability sampling fix",
+      "list_name": "Done",
+      "due": null,
+      "labels": [
+        "internal",
+        "P4"
+      ],
+      "priority": "P4",
+      "owner": "Blair",
+      "client_facing": false,
+      "sla_hours": null,
+      "blocker": "",
+      "description": "Owner: Blair\nPriority: P4\nSLA hours: none\nWorkstream: internal"
+    },
+    {
+      "id": "69e52b3c30191663fa5b17ec",
+      "short_link": "EirpQ2iL",
+      "name": "Shipped feature flag for new login flow",
+      "list_name": "Done",
+      "due": null,
+      "labels": [
+        "client-facing",
+        "P4"
+      ],
+      "priority": "P4",
+      "owner": "Avery",
+      "client_facing": true,
+      "sla_hours": null,
+      "blocker": "",
+      "description": "Owner: Avery\nPriority: P4\nSLA hours: none\nWorkstream: client-facing"
+    }
+  ]
+}

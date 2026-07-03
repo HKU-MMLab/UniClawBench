@@ -1,0 +1,44 @@
+task_id: task_104_16_reading_corner_layout
+category: 104_multimodal
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  `/tmp_workspace/clawbench/sources/reading_corner/` contains photos of one corner
+  of my room, measurements of the wall and window area, and photos of several
+  existing chairs, small side tables, floor lamps, and rugs.
+
+  I want to turn this corner into a more comfortable reading corner, but I do not
+  want to buy anything new.
+  Based on these existing items, please help me create a more reasonable layout
+  plan.
+
+  Requirements:
+  1. First identify the main current problems with this corner, such as crowding,
+     poor circulation, unsuitable lighting, or visual clutter.
+  2. From my existing furniture and items, select the group that is most suitable
+     for this corner.
+  3. Generate `/tmp_workspace/results/reading_corner_plan.md`, explaining:
+     - Which items should be kept
+     - Which items are not suitable for this spot
+     - Roughly how the chair, side table, lamp, and rug should be arranged
+     - The main reasons for this layout
+  4. Your judgment needs to explicitly reference the space, lighting, and appearance
+     of the existing items in the room photos, rather than only giving abstract
+     suggestions.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - reading_corner/
+
+codex:
+  max_user_followups: 2

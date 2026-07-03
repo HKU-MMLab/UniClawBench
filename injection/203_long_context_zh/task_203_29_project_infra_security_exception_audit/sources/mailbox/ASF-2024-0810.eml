@@ -1,0 +1,148 @@
+Message-ID: <CAC1o4Biig4R0As6CM=ea9zcPf072A3POsB_9Q8JHXd2JHH+rLA@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0810
+Date: Tue, 20 Dec 2022 12:01:47 +0000
+From: Codeweavers <apache-list@codeweavers.net>
+To: dev@httpd.apache.org
+Subject: Fwd: [users@httpd] mod proxy hcheck not observing timeout value
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-12.mbox
+
+Hi All,
+
+Just forwarding on the below as it was suggested the developer list would
+be a more appropriate place for this query.
+
+Kind regards
+
+Ben
+
+---------- Forwarded message ---------
+From: Daniel Ferradal <dferradal@apache.org>
+Date: Fri, 2 Dec 2022 at 17:34
+Subject: Re: [users@httpd] mod proxy hcheck not observing timeout value
+To: <users@httpd.apache.org>
+
+
+Hello,
+
+Perhaps the dev list is a more appropriate place to bring this up. Cheers
+
+El mar, 22 nov 2022 a las 9:39, Codeweavers (<apache-list@codeweavers.net>)
+escribió:
+
+> Hey Daniel,
+>
+> Would you be able to advise how I might push to get this change into
+> 2.4.55? Or if there is someone I should be asking?
+>
+> Kind regards
+>
+> Ben
+>
+> On Fri, 18 Nov 2022 at 08:56, Codeweavers <apache-list@codeweavers.net>
+> wrote:
+>
+>> Hi Daniel,
+>>
+>> We initially had trouble as this patch seems from our testing to require
+>> the timeout value set on the BalancerMember line of the configuration,
+>> which to us was not immediately obvious (many parts of the configuration
+>> seem to take a timeout that from the documents seem like it would
+>> represent the same setting), though looking at the code that is patched and
+>> the documentation I can see that the BalancerMember lines do represent
+>> workers which I presume corresponds with the worker object code looks to be
+>> pulling the value from.
+>>
+>> Kind regards
+>>
+>> Ben
+>>
+>> On Thu, 17 Nov 2022 at 18:35, Daniel Ferradal <dferradal@apache.org>
+>> wrote:
+>>
+>>> Hello,
+>>>
+>>> I initially reported this in April 2021 and @Yann Ylavic quickly made a
+>>> patch out of it. I am not sure why it didn't make it.
+>>>
+>>> You can see the conversation here for reference:
+>>>
+>>> https://httpd.markmail.org/message/xteh3uw53inl25gx?q=mod_proxy_hcheck+response+timeout%3F
+>>>
+>>> I also agree it is a good patch and although I initially had issues with
+>>> it it was probably due to some problem on my part.
+>>>
+>>> Your confirmation may be good enough to validate it and propose it for
+>>> next release perhaps?
+>>>
+>>> Thanks for bringing this back.
+>>>
+>>> Cheers
+>>>
+>>>
+>>>
+>>> El jue, 17 nov 2022 a las 17:26, Benjamin Davis (<
+>>> benjamindavis@codeweavers.net>) escribió:
+>>>
+>>>> Hey All,
+>>>>
+>>>> we have apache2 2.4.54 setup as a load balancer for our IIS backend
+>>>> servers. We would like to be able to carry out health checks using
+>>>> mod_proxy_hcheck and check that the backend server is serving a webpage. We
+>>>> have successfully set this up however in the event that a health check
+>>>> request to the backend hangs, apache never reaches a timeout and therefore
+>>>> the healthcheck doesn't fail.
+>>>>
+>>>> We have found a commit
+>>>> https://github.com/apache/httpd/commit/ab2b9dbfb74049ad207a91c45971948127dde893 that
+>>>> fixes this issue, we have verified this by building apache with this change
+>>>> applied and confirmed that when a timeout is provided in the apache
+>>>> balancer configuration, specifically on the BalancerMember line, the
+>>>> healthcheck(s) will timeout and put the backend into a failed state.
+>>>>
+>>>> This code is not in the latest apache release, does anyone have any
+>>>> idea if this will be part of a future release? Or can advise regarding this
+>>>> issue.
+>>>>
+>>>> Many thanks
+>>>>
+>>>> Ben
+>>>>
+>>>> --
+>>>>
+>>>> Ben Davis
+>>>>
+>>>> Infrastructure Engineer
+>>>>
+>>>>
+>>>> Website: www.codeweavers.net
+>>>>
+>>>>
+>>>>
+>>>>
+>>>>
+>>>> Barn 4, Dunston Business Village, ST18 9AB. Registered in England and
+>>>> Wales
+>>>>
+>>>> No. 04092394 VAT registration no. 974 9705 63
+>>>>
+>>>>
+>>>>
+>>>
+>>> --
+>>> Daniel Ferradal
+>>> HTTPD Project
+>>> #httpd help at Libera.Chat
+>>>
+>>
+>
+>
+
+--
+Daniel Ferradal
+HTTPD Project
+#httpd help at Libera.Chat
+
+--

@@ -1,0 +1,32 @@
+task_id: task_203_24_world_bank_economic_report
+category: 203_long_context_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我在 `/tmp_workspace/clawbench/sources/worldbank_data/worldbank_indicators_2000_2023.csv` 处有一份真实的世界银行指标数据集。它涵盖六个国家（China、United States、Japan、Germany、India、Brazil）从 2000 到 2023 年，包含五项指标：GDP（current US$）、GDP per capita（current US$）、总人口、城镇人口（占总人口百分比），以及人均 CO2 排放（吨）。
+
+  请基于这份数据集（而不是你自己的既有知识——要读取并在 CSV 上进行计算）撰写一份数据驱动的国别对比经济报告。我想要的是真正的分析，而不是把你对这些国家已有的认知做个总结。
+
+  报告应当：
+  1. 加载 CSV 并直接基于其数值进行处理。
+  2. 跨多项指标对各国进行比较，并把它们关联起来——例如，GDP 总量与人均 GDP 和人口之间的对比；人均 CO2 排放的排名与你根据经济总量可能预期的情况之间的对比；以及城镇化随时间的变化。
+  3. 用具体数字指出最有意思的发现，并为每个数字说明它来自哪项指标和哪一年。
+  4. 至少包含三张图表（PNG 图片或交互式 HTML 图表），保存在 `/tmp_workspace/results/` 下，并在报告中引用它们。图表必须反映真实数据（趋势、坐标轴和国家标签都正确）。
+
+  将书面报告保存到 `/tmp_workspace/results/economic_report.md`，并把图表文件放在一起。如果数据集中某个国家/年份的某个值缺失，请加以注明，而不要编造数字。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+sources:
+  - worldbank_data/
+
+codex:
+  max_user_followups: 2

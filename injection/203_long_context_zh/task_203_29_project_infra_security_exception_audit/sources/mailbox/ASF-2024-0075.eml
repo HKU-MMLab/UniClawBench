@@ -1,0 +1,33 @@
+Message-ID: <d1469f98-6fb2-3e49-9d4f-1a634488844a@gmail.com>
+X-Clawbench-ID: ASF-2024-0075
+Date: Mon, 28 Mar 2022 13:17:25 +0200
+From: jean-frederic clere <jfclere@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: httpd-framework problem.
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-03.mbox
+
+On 28/03/2022 12:00, jean-frederic clere wrote:
+> Hi,
+>
+> I have the following message with the framework:
+> +++
+>
+> t/modules/proxy_websockets.t ........ lib/Math/Random/ISAAC/XS.c:
+> loadable library and perl binaries are mismatched (got handshake key
+> 0xed00080, needed 0xeb00080)
+> t/modules/proxy_websockets.t ........ Dubious, test returned 1 (wstat
+> 256, 0x100)
+> +++
+>
+> Anyone one has an idea? If no I will look in details later today ;-)
+>
+
+forget it... my bad rm -rf ~/perl5 and reinstall fixes it.
+
+--
+Cheers
+
+Jean-Frederic

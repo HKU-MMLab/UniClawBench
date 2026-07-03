@@ -1,0 +1,56 @@
+{
+  "task_id": "task_101_18_reddit_synthesis",
+  "difficulty": "Hard",
+  "schema": "b",
+  "schema_notes": "multi-thread Reddit synthesis; older popular answer must be rejected as deprecated",
+  "skills_declared": [
+    "reddit-readonly",
+    "data-analysis"
+  ],
+  "topic": "Reading the installed version of a Python package at runtime, inside the package's own code (Python 3.11+, 2025/2026).",
+  "expected_final_recommendation": {
+    "modern_api_module": "importlib.metadata",
+    "modern_api_function": "version",
+    "modern_one_liner": "from importlib.metadata import version; v = version(\"your_package_name\")",
+    "stdlib_since_python_version": "3.8"
+  },
+  "must_mention": [
+    "importlib.metadata",
+    "importlib.metadata.version",
+    "from importlib.metadata import version"
+  ],
+  "must_NOT_recommend": [
+    "pkg_resources.get_distribution",
+    "pkg_resources"
+  ],
+  "must_cite_deprecation_evidence": {
+    "deprecated_api": "pkg_resources.get_distribution(\"pkg\").version",
+    "deprecation_signal_keywords": [
+      "deprecated",
+      "deprecation",
+      "removed",
+      "no longer",
+      "outdated"
+    ],
+    "deprecation_trigger": "setuptools 81",
+    "anchor_thread_file": "thread_b_2025_importlib_metadata.json",
+    "anchor_comment_id_primary": "lwzr8x4",
+    "anchor_comment_author_primary": "stdlib_evangelist",
+    "anchor_comment_id_secondary": "lwztb02",
+    "anchor_comment_author_secondary": "ci_pipeline_jane",
+    "anchor_thread_supporting_file": "thread_c_2024_stdlib_history.json",
+    "anchor_supporting_comment_id": "l9k4abc",
+    "anchor_supporting_comment_author": "metadata_maven"
+  },
+  "older_now_outdated_recommendation": {
+    "deprecated_api": "pkg_resources.get_distribution(\"pkg\").version",
+    "anchor_thread_file": "thread_a_2022_pkg_resources.json",
+    "anchor_comment_id": "io8a1qc",
+    "anchor_comment_author": "django_pro_42"
+  },
+  "noise_threads_should_be_ignored": [
+    "thread_d_2023_list_comprehensions.json",
+    "thread_e_2024_pip_vs_uv.json"
+  ],
+  "answer_path": "/tmp_workspace/results/answer.md"
+}

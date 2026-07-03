@@ -1,0 +1,90 @@
+Message-ID: <YW8FLiT3oG89sofa@an3as.eu>
+X-Clawbench-ID: BIO-2024-1357
+Date: Tue, 19 Oct 2021 19:49:34 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Flavien Bridault <flavien.bridault@ircad.fr>,	Debian Med Project List <debian-med@lists.debian.org>
+Subject: Re: Please update sight packaging
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00115.html
+
+Hi again,
+
+after adding further Build-Depends I need to admit I have no idea
+what is missing to solve:
+
+
+-- Configuring io_igtl: /build/sight-21.0.0/libs/io/igtl
+CMake Error at /usr/share/cmake-3.21/Modules/FindPackageHandleStandardArgs.cmake:230 (message):
+  Could NOT find LibArchive (missing: LibArchive_LIBRARY
+  LibArchive_INCLUDE_DIR)
+Call Stack (most recent call first):
+  /usr/share/cmake-3.21/Modules/FindPackageHandleStandardArgs.cmake:594 (_FPHSA_FAILURE_MESSAGE)
+  /usr/share/cmake-3.21/Modules/FindLibArchive.cmake:64 (find_package_handle_standard_args)
+  libs/io/igtl/CMakeLists.txt:3 (find_package)
+
+
+-- Configuring incomplete, errors occurred!
+See also "/build/sight-21.0.0/obj-x86_64-linux-gnu/CMakeFiles/CMakeOutput.log".
+See also "/build/sight-21.0.0/obj-x86_64-linux-gnu/CMakeFiles/CMakeError.log".
+
+
+In short: Please try a clean unstable chroot to build sight. ;-)
+Just let us know here if you have no idea how to do this.  I strongly
+recommend reading
+
+    https://med-team.pages.debian.net/policy/#to-make-gbp-buildpackage-build-the-package-with-pdebuild
+
+Kind regards
+
+    Andreas.
+
+Am Tue, Oct 19, 2021 at 07:26:13PM +0200 schrieb Andreas Tille:
+> Hi Flavien,
+>
+> Am Tue, Oct 19, 2021 at 04:16:13PM +0200 schrieb Flavien Bridault:
+> > Sorry, it seems I got it wrong all the way since the beginning. Actually I
+> > did not realize a new camp version was finally uploaded since the latest
+> > changes you and me made. Now I understand why I did not get the error in my
+> > usual docker dev container, I simply used the previous version.
+>
+> As I said before: It makes perfectly sense to build packages in a clean
+> unstable environment.  Debian Med policy recommends (and explains how to
+> setup) pbuilder, sbuild is fine as well and there are also docker based
+> solutions.  I strongly recommend to use this instead of private systems
+> setup manually.
+>
+> This will ensure that all needed Build-Depends are specified.  When
+> trying to build the package I just learned that there is a missing
+> Build-Depends from libopencv-dev and libceres-dev which is probably in
+> your manually setup system ... but not in a minimal unstable system.  So
+> crafting valid packages is only possible by using unstable chroots (or
+> containers at your preference).
+>
+> > I updated the patch so that the multi-arch path is well set on every
+> > component and avoid to introduce it later in the rules file. This is more
+> > consistent and this way CMake finds its way to locate the include directory
+> > properly.
+> >
+> > Of course, that means we need a new camp version uploaded before sight can
+> > be built.
+>
+> Its uploaded and I've set a versioned Build-Depends on libcamp-dev.
+>
+> > Can you review it and upload a new camp version if this looks fine ?
+>
+> I'll do so (and will add further Build-Depends if my build keeps
+> on failing).
+>
+> Thanks a lot for your contribution in any case
+>
+>      Andreas.
+>
+> --
+> http://fam-tille.de
+>
+>
+
+--
+http://fam-tille.de

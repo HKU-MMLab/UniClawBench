@@ -1,0 +1,41 @@
+Message-ID: <27E7C1E9-0288-4F50-B3B0-DCDBDA22A65C@eissing.org>
+X-Clawbench-ID: ASF-2024-0706
+Date: Wed, 23 Feb 2022 11:39:38 +0100
+From: Stefan Eissing <stefan@eissing.org>
+To: dev@httpd.apache.org
+Subject: module threads and mpm lifecycle
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-02.mbox
+
+One thing that is currently missing is a way to shutdown/reap/join module threads when the mpm exits.
+
+Example:
+
+mod_watchdog creates several threads post_config which are only joined on pool destruction.
+
+Problem:
+
+pool destruction is not ordered between modules and dependencies on order are not
+fully known. This leads to crashes in OpenSSL, for example, when mod_ssl is destructed
+before all watchdogs using OpenSSL are joined (OpenSSL 3.x seems to do better on this,
+but the point remains valid).
+
+There has been attempts by Yann to make a patch that make the OpenSSL termination
+way later (adding it to a 'higher' pool destruction). But that would only solve
+this particular problem and not any other 3rd party dependency.
+
+Proposal:
+
+Add a hook 'child_exiting(int graceful)' where modules can register
+and do their own thread join/reap.
+
+
+On a graceful shutdown, this would allow watchdogs to fully complete any ongoing task
+before things start to disappear in the process.
+
+Thoughts?
+
+Kind Regards,
+Stefan

@@ -1,0 +1,33 @@
+Message-ID: <CA+7wUsx_dNCf28ZJL-oaFG8YO4fS-d+SrLYtrSdNX4p68ofPig@mail.gmail.com>
+X-Clawbench-ID: BIO-2024-1065
+Date: Wed, 16 Mar 2022 16:16:36 +0100
+From: Mathieu Malaterre <malat@debian.org>
+To: Nilesh Patra <nilesh@debian.org>
+Subject: Re: git push -f on pixelmed
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_03_msg00014.html
+
+Hi Nilesh !
+
+On Wed, Mar 16, 2022 at 4:14 PM Nilesh Patra  wrote:
+>
+> On Wed, Mar 16, 2022 at 03:53:25PM +0100, Mathieu Malaterre wrote:
+> > I've done a little mess with the git repository, which I'd like to fix
+> > with a quick 'git push -f'.
+>
+> Is it not possible to rebase and merge instead?
+
+I messed up the 'upstream' branch which cannot be rebased or at least
+I do not know the tool to do it.
+
+> > Could someone with proper right level
+> > grant me a higher role level for 'pixelmed"
+>
+> There is no higher role for a single repository; I enabled force push on that repo.
+> Let me know once you are done, I'll revert it.
+
+You can revert it back to where it was.
+
+Thanks *very* much

@@ -1,0 +1,31 @@
+Message-ID: <20220731091226.s2xl5xrscxmod5ka@debian>
+X-Clawbench-ID: BIO-2024-1053
+Date: Sun, 31 Jul 2022 14:42:26 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: 1012482@bugs.debian.org
+Subject: Re: rdflib: URLInputSource can be abused to retrieve arbitrary documents if used naïvely
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_07_msg00097.html
+
+Hi Andrius,
+
+On Wed, 8 Jun 2022 08:59:13 +0300 Andrius Merkys  wrote:
+> Hello,
+>
+> rdflib will attempt to resolve any URL in @context in POSTed JSON-LD
+> messages, leading to various probing and DDoS vectors, see the upstream
+> discussion [1].
+>
+> [1] https://github.com/RDFLib/rdflib/issues/1844
+
+rdflib has been removed from testing along with a bunch of other packages.
+And it is triggering -rm-s for packages in testing anyway.
+
+Upstream is not actively working on the issue as I see from the github Issue
+URL. -- Do you think we can lower severity of this bug for a bit?
+
+--
+Best,
+Nilesh

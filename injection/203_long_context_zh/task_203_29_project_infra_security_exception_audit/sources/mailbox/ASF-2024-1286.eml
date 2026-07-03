@@ -1,0 +1,20 @@
+Message-ID: <CALK=YjOQAzeQBYpPQXRDeh+GWraA57O+ydFFekfCn_mfqKWpaw@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1286
+Date: Tue, 26 Jul 2022 20:15:17 -0400
+From: Eric Covener <covener@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: tcp send buffering and keepalive races
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-07.mbox
+
+> >>From the behavior, it appears the browser is:
+> >
+> > 1) willing to use nearly every millisecond of the advertised KeepAlive
+> > time for reusing a connection from its pool
+
+Just so this doesn't incept anyone with this misinfo, I recently
+learned that chrome does not parse the Keep-Alive timeout= parm and
+uses a fixed 5 minute TTL in its connection pool.
+So these 200ms-extra games don't help for chrome.

@@ -1,0 +1,47 @@
+Message-ID: <2CAB0E8C-7338-4CC0-B036-DF6DE41A7EC1@riseup.net>
+X-Clawbench-ID: BIO-2024-0870
+Date: Fri, 25 Mar 2022 02:59:06 +0530
+From: Nilesh Patra <nilesh@riseup.net>
+To: debian-med@lists.debian.org, Steffen Möller <steffen_moeller@gmx.de>
+Subject: Re: q2-composition - removed vega* from source tree
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_03_msg00031.html
+
+Hi Steffen,
+
+On 25 March 2022 12:48:33 am IST, "Steffen Möller"  wrote:
+>I am tempted to upload the package as it is. It is apparently version 4
+>of Vega that is expected, not version 5 that just entered the archive
+>(many, many thanks!!) and they are apparently using
+>https://github.com/vega/vega-embed which we yet do not have. However,
+>those embedded vega files will affect the presentation of the results
+>but not the results themselves and as such this package is already
+>useful. I propose to craft a bug report early about the package to
+>prevent its migration to testing and talk to upstream about.
+
+If the package is useful, I don't see much of a problem if it migrated to testing.
+But I agree that it makes sense to contact upstream to ask if they would include vega-embed in the monorepo as well.
+
+Or one work around (meanwhile to buy time) could be to include vega-embed inside say, debian/resources
+
+And do something like:
+
+execute_before_dh_auto_configure:
+        cp -a debian/resources $(CURDIR)/packages
+
+
+And so this would help get vega-embed as well.
+Or in the worst case scenario, we could package node-vega-embed as a different source package.
+
+>https://salsa.debian.org/med-team/q2-composition
+>
+>What do you think?
+
+Let me know what you think, and also, this conversation should not be happening in the -med@ mailing list.
+
+Please consider sending query about this to the pkg-javascript-devel mailing list instead, since there are people who are specifically involved with JS stuff; even the vega.js maintainer would be easy to reach out.
+
+Regards,
+Nilesh

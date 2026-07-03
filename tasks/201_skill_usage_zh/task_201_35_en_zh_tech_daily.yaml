@@ -1,0 +1,64 @@
+task_id: task_201_35_en_zh_tech_daily
+category: 201_skill_usage_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我每隔几天会为团队做一份小型中文科技摘要，但我落下了进度——三天的
+  原始素材积压了起来。帮我把它们整理成团队真正愿意读的内容。请用中文
+  新闻快照技能处理中文新闻文件，用仓库趋势技能处理 GitHub 趋势文件，
+  并用翻译技能把任何英文仓库描述译成中文。
+
+  快照位于 /tmp_workspace/clawbench/sources/ 下：
+    - ai_news_zh_snapshot.json——于 2026-04-18、2026-04-19、2026-04-20
+      从 36kr 快讯 + 热榜采集的中文科技新闻条目，每条包含 title、link、
+      pub_date、summary。
+    - github_trending_snapshot.json——同样这三天采集的热门 Python
+      AI/LLM/agent GitHub 仓库的每日快照，每条包含 name、description、
+      url、stars、captured_on、topics。
+
+  在 /tmp_workspace/results/digest.md 中综合出一份 3 天中文摘要，包含：
+    - "## Top 10"——恰好 10 个条目，先列出 5 条新闻（在它们之间排名），
+      然后把 5 个仓库作为单独的一块列出，不要交错排列。对于新闻，优先选
+      最新的条目，但要兼顾全部 3 天的覆盖，每天最多 2 条，这样第 3 天也
+      能被呈现出来。对于仓库，使用最近一个采集日的 star 数，按降序排列。
+      每一行：中文标题——把英文仓库描述译成中文——后跟一个 [news] 或
+      [repo] 来源标签、URL、来源日或采集日，以及一句话中文摘要。
+    - "## Categories"——根据主要主题，把这 10 个条目中的每一个恰好归入
+      以下四个桶之一：AI / chip / cloud / web。显示桶名及其下的标题，
+      并在桶名旁标注该桶的数量。
+    - "## By Day"——对于这 5 条新闻，显示分别有多少条来自三个采集日中的
+      每一天，例如 "2026-04-20: 2 / 2026-04-19: 2 / 2026-04-18: 1"。
+
+  另外保存 /tmp_workspace/results/selection_audit.csv，每个 Top 10 条目
+  一行，包含这些列：final_rank、source_tag、source_day、title、url、
+  popularity_value、category、selection_reason。popularity_value 对于
+  新闻是 pub_date，对于仓库是最近一日的 star 数。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - ai_news_zh_snapshot.json
+  - github_trending_snapshot.json
+
+skills:
+  - news-snapshot-zh
+  - repo-snapshot-cn
+  - translate
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

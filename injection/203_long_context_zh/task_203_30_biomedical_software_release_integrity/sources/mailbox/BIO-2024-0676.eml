@@ -1,0 +1,29 @@
+Message-ID: <YhTt1IFieH/AUYXq@debian>
+X-Clawbench-ID: BIO-2024-0676
+Date: Tue, 22 Feb 2022 19:36:12 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: Markus Blatt <markus@dr-blatt.de>
+Subject: Re: RFS: source-only upload of opm-{grid,simulators,upscaling}/2021.10-2
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2022_02_msg00054.html
+
+Hi Markus,
+
+On Tue, Feb 22, 2022 at 02:17:02PM +0100, Markus Blatt wrote:
+> Seems like the failing tests on platforms might still prevent migration
+> to testing:
+> [...]
+> On those platforms there are no binary packages due to missing dependencies.
+> that use "Restrictions: skip-not-installable" to d/tests/control to skip these.
+
+That indeed looks like the problem, I have uploaded both the packages,
+thanks for your work!
+
+> Thanks a lot. I owe you quite some beverages by now...
+
+I will remember to avail $beverages if/when we happen to meet :)
+
+Regards,
+Nilesh

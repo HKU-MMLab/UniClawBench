@@ -1,0 +1,69 @@
+task_id: task_205_34_academic_poster_inkscape
+category: 205_cross_platform_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我下周要在一个读书会上讲 Mistral 7B（arxiv 2310.06825），想起草一块
+  海报面板——先做出一份 PDF，之后我自己再细调排版。
+
+  这块面板大致应该是这样：顶部区域放论文标题、前几位作者和页数；中间
+  区域放 5 个核心概念，每个配一段简短的 Wikipedia 摘要（取首段约 80 个
+  字符），并标注该概念是否出现在论文中——找到为 ✓，没找到为 ✗。整体上
+  它应该看起来像一块海报面板，而不是一堵文字墙。
+
+  我固定了 5 个特定的 Wikipedia 修订版本（以免日后的编辑改动破坏内容）——
+  请使用以下确切的 oldid：
+    1. Mistral_AI                            oldid=1352105656
+    2. Large_language_model                  oldid=1351510195
+    3. Mixture_of_experts                    oldid=1346279093
+    4. Generative_pre-trained_transformer    oldid=1351783271
+    5. Open-source_artificial_intelligence   oldid=1350744847
+
+  用 wget 下载论文 PDF，用 pdftotext 转成文本，然后搜索关键词来判断概念
+  是否出现——例如 "mixture of experts"、"large language model"、
+  "open-source"——只要匹配到任意一个就算 ✓。用 pdfinfo 提取论文元数据。
+  用 curl 通过 MediaWiki API 获取 Wikipedia 数据（传入 revids 参数以锁定
+  版本）。
+
+  数据交付物：论文元数据（arxiv_id、title、完整作者列表作为 authors、
+  page_count）保存为 paper_meta.json；5 个概念的 Wiki 结果保存为
+  wiki_lookups.json，包含一个按上述 1-5 顺序排列的 concepts 数组，每项
+  包含 name、wiki_revision_id、wiki_url 和 first_para_first_100_chars；
+  交叉核对结果保存为 cross_check.csv，表头为：concept,paper_mentions,
+  wiki_revision_id,verification_status——在论文中找到的标为
+  verified_in_paper，未找到的标为 wiki_only；这 5 个概念在中文/日文
+  Wikipedia 上的多语言可用性保存为 multi_lang_availability.json，同样用
+  一个 concepts 数组，每项包含 name、en、zh、ja——取值为 "yes" 或 "no"
+  （通过 langlinks API 检查）。
+
+  用 inkscape 构建海报面板——源文件 poster.svg 放在 /tmp_workspace/work/
+  以便后续细调，然后从 SVG 导出一份 poster_panel.pdf。
+
+  最后用 evince 打开 poster_panel.pdf（在 xvfb 下以无头方式运行），并截图
+  命名为 evince_screenshot.png，让我预览渲染效果。
+
+  除了 /tmp_workspace/work/ 里的 poster.svg，其余所有产物都放在
+  /tmp_workspace/results/ 下。完成后，只需告诉我哪些概念得到了 ✓、哪些
+  得到了 ✗。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources: []
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

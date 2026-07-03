@@ -1,0 +1,28 @@
+Message-ID: <1034178803.1390.4.camel@samwise.speakeasy.net>
+X-Clawbench-ID: CAM-2003-0055
+Date: Wed, 09 Oct 2002 09:53:22 -0600
+From: "D. Michael Basinger" <dbasinge@speakeasy.net>
+To: rpm-zzzlist@freshrpms.net
+Subject: Problems with xosd-xmms
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01301.83b3e0f947cca0c2e3f5cbaffd2772eb
+
+After installing and enabling xosd-xmms I get the following error when
+trying to start xmms
+
+Xlib: unexpected async reply (sequence 0x30)!
+
+xmms starts, but it does not detect mouse commands.
+
+Thanks,
+Mike
+--
+D. Michael Basinger
+dbasinge@speakeasy.net
+
+
+_______________________________________________
+RPM-List mailing list <RPM-List@freshrpms.net>
+http://lists.freshrpms.net/mailman/listinfo/rpm-list

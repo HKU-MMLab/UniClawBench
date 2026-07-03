@@ -1,0 +1,63 @@
+{
+  "task_id": "task_105_08_event_materials_gui_full_stack",
+  "items": [
+    {
+      "filename": "event_material_01.png",
+      "category": "badge",
+      "quantity": 6,
+      "note": "six blank badge cards with black lanyards on a registration table"
+    },
+    {
+      "filename": "event_material_02.png",
+      "category": "poster",
+      "quantity": 4,
+      "note": "four designed conference posters on a prep table with visible rolled poster edges"
+    },
+    {
+      "filename": "event_material_03.png",
+      "category": "sticker",
+      "quantity": 9,
+      "note": "nine colorful abstract logo stickers on a wooden table"
+    },
+    {
+      "filename": "event_material_04.png",
+      "category": "notebook",
+      "quantity": 5,
+      "note": "five navy event notebooks fanned on a registration table"
+    },
+    {
+      "filename": "event_material_05.png",
+      "category": "misc",
+      "quantity": 7,
+      "note": "seven mixed event supplies including wristbands, clips, marker, holder, and tape"
+    },
+    {
+      "filename": "event_material_06.png",
+      "category": "badge",
+      "quantity": 8,
+      "note": "eight blank badges with colored lanyards near a supply box"
+    },
+    {
+      "filename": "event_material_07.png",
+      "category": "sticker",
+      "quantity": 11,
+      "note": "eleven colorful abstract logo stickers loosely arranged"
+    },
+    {
+      "filename": "event_material_08.png",
+      "category": "poster",
+      "quantity": 5,
+      "note": "five designed conference posters stacked with offset corners"
+    }
+  ],
+  "total_quantity": 55,
+  "quantity_by_category": {
+    "badge": 14,
+    "poster": 9,
+    "sticker": 20,
+    "notebook": 5,
+    "misc": 7
+  },
+  "largest_category": "sticker",
+  "expected_slack_channel": "#social"
+}

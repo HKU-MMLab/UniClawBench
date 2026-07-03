@@ -1,0 +1,35 @@
+Message-ID: <YzWfzwSic/dtQwEZ@fusion>
+X-Clawbench-ID: BIO-2024-0665
+Date: Thu, 29 Sep 2022 15:38:23 +0200
+From: Étienne Mollier <emollier@emlwks999.eu>
+To: Andreas Tille <tille@debian.org>
+Subject: Re: [Help] anfo: ftbfs with GCC-12
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_09_msg00050.html
+
+Hi all,
+
+Andreas Tille, on 2022-09-29:
+> Am Wed, Sep 28, 2022 at 04:06:23PM -0400 schrieb Aaron M. Ucko:
+> > Per GCC's hint, please try formally substituting unique_ptr for
+> > auto_ptr.  I haven't tested that approach for this package, but it's
+> > typically a safe drop-in replacement, and generally yields compilation
+> > errors in the rare cases where its usage would be problematic.
+
+I believe in the case of anfo, that warnings about auto_ptr /
+unique_ptr are red herrings.  If I search for "error:"s, then I
+get some errors about no match for operator::operator()(const _Tp&, const _Tp&) const [with _Tp = config::Policy]’:
+/usr/include/c++/12/bits/stl_tree.h:2533:33:   required from ‘std::_Rb_tree::iterator std::_Rb_tree::find(const _Key&) [with _Key = config::Policy; _Val = config::Policy; _KeyOfValue = std::_Identity; _Compare = std::less; _Alloc = std::allocator; iterator = std::_Rb_tree, std::less, std::allocator >::iterator]’
+/usr/include/c++/12/bits/stl_set.h:795:25:   required from ‘std::set::iterator std::set::find(const key_type&) [with _Key = config::Policy; _Compare = std::less; _Alloc = std::allocator; iterator = std::_Rb_tree, std::less, std::allocator >::const_iterator; key_type = config::Policy]’
+stream.cc:479:13:   required from ‘void streams::nub(google::protobuf::RepeatedPtrField&) [with E = config::Policy]’
+stream.cc:531:5:   required from here
+/usr/include/c++/12/bits/stl_function.h:408:20: error: no match for ‘operatorhttps://clang.llvm.org/compatibility.html#dep_lookup
+[2]: https://salsa.debian.org/med-team/librostlab-blast/-/blob/debian/1.0.1-13/debian/patches/gcc-12.patch
+
+Have a nice day,  :)
+--
+Étienne Mollier
+Fingerprint:  8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+Sent from /dev/pts/2, please excuse my verbosity.

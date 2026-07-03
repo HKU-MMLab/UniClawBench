@@ -1,0 +1,30 @@
+Message-ID: <YcNyR7DW7kRfbujl@an3as.eu>
+X-Clawbench-ID: BIO-2024-0077
+Date: Wed, 22 Dec 2021 19:45:27 +0100
+From: Andreas Tille <tille@debian.org>
+To: Pierre Gruet <pgt@debian.org>
+Subject: Re: libgoby-java: FTBFS: [WARNING] /<<PKGBUILDDIR>>/goby-io/../goby-distribution/src/main/java/org/campagnelab/goby/modes/FastaToCompactMode.java:23: error: package edu.rit.pj does not exist
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_12_msg00150.html
+
+Hi,
+
+Am Wed, Dec 22, 2021 at 06:17:21PM +0100 schrieb Pierre Gruet:
+>
+> The warning mentioned in the bug title is issued by the Javadoc builder,
+> which we do not use. It does not trigger the failure of the build.
+> The real issue is in the tests: for some reason, a FileNotFoundException is
+> raised by the FileOutputStream constructor when being called on files in the
+> test-results/ directory.
+
+The "can not reproduce" in combination with "file not found" rings somehow
+a bell that this could be a case for a --no-parallel build.
+
+Kind regards
+
+      Andreas.
+
+--
+http://fam-tille.de

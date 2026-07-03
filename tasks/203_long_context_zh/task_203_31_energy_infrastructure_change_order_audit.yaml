@@ -1,0 +1,30 @@
+task_id: task_203_31_energy_infrastructure_change_order_audit
+category: 203_long_context_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我正在对一个能源基础设施项目的变更单（change order）和现场付款进行例行合规检查。邮件包已经放在 /tmp_workspace/clawbench/sources/mailbox/ 中。请帮我审阅这些邮件，看看是否存在需要进一步核实的项目内控或工程审计线索，例如拆分材料采购、设备租赁/加班费归类不清、现场验收证据不足、分包商证书过期、变更单范围重叠、供应商/付款异常、提前释放质保金（retainage）、记录留存不完整等问题。
+
+  保持中立，不要仅凭关键词下结论。先尽可能广泛地阅读、搜索和交叉核对，然后把你认为值得跟进的线索按可疑程度排序。如果某些线索看起来低风险，也请说明原因。
+
+  如果你发现值得跟踪的线索，请提供证据链：涉及哪些 email id、邮件中的关键证据、这些邮件为何彼此相关，以及还缺少什么证据。同时另行明确标注那些明显低风险或证据不足的线索，以免对正常的项目执行邮件夸大其词。
+
+  将报告保存到 /tmp_workspace/results/change_order_audit_report.md，并另外输出 /tmp_workspace/results/change_order_audit_findings.json，为每条发现列出 email id 列表、严重程度等级和一句话原因。不要用外部搜索来替代对邮件的阅读。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/insertion_audit.md
+  - references/source_manifest.json
+sources:
+  - mailbox/
+
+codex:
+  max_user_followups: 2

@@ -1,0 +1,116 @@
+Message-ID: <001b01c24a76$315c63d0$e600000a@XENON16>
+X-Clawbench-ID: CAM-2003-0088
+Date: Fri, 23 Aug 2002 08:25:01 +0100
+From: wintermute <cout@eircom.net>
+To: ilug@linux.ie
+Subject: Re: [ILUG] Newbie seeks advice - Suse 7.2
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00043.d2673a72d215cbdd747dc98cde41fbd2
+
+< >
+> I downloaded a driver from the nVidia website and installed it using RPM.
+> Then I ran Sax2 (as was recommended in some postings I found on the net),
+but
+> it still doesn't feature my video card in the available list. What next?
+
+
+hmmm.
+
+Peter.
+
+Open a terminal and as root type
+lsmod
+you want to find a module called
+NVdriver.
+
+If it isn't loaded then load it.
+#insmod NVdriver.o
+Oh and ensure you have this module loaded on boot.... else when you reboot
+you might be in for a nasty surprise.
+
+Once the kernel module is loaded
+
+#vim /etc/X11/XF86Config
+
+in the section marked
+Driver I have "NeoMagic"
+you need to have
+Driver "nvidia"
+
+Here is part of my XF86Config
+
+Also note that using the card you are using you 'should' be able to safely
+use the FbBpp 32 option .
+
+Section "Module"
+ Load  "extmod"
+ Load  "xie"
+ Load  "pex5"
+ Load  "glx"
+ SubSection "dri"    #You don't need to load this Peter.
+  Option     "Mode" "666"
+ EndSubSection
+ Load  "dbe"
+ Load  "record"
+ Load  "xtrap"
+ Load  "speedo"
+ Load  "type1"
+EndSection
+
+#Plus the Modelines for your monitor should be singfinicantly different.
+
+Section "Monitor"
+ Identifier   "Monitor0"
+ VendorName   "Monitor Vendor"
+ ModelName    "Monitor Model"
+ HorizSync    28.00-35.00
+ VertRefresh  43.00-72.00
+        Modeline "800x600" 36 800 824 896 1024 600 601 603 625
+ Modeline "1024x768" 49 1024 1032 1176 1344 768 771 777 806
+EndSection
+
+Section "Device"
+
+ Identifier  "Card0"
+ Driver      "neomagic" #Change this to "nvidia"... making sure the modules
+are in the correct path
+ VendorName  "Neomagic" # "Nvidia"
+ BoardName   "NM2160"
+ BusID       "PCI:0:18:0"
+EndSection
+
+Section "Screen"
+ Identifier "Screen0"
+ Device     "Card0"
+ Monitor    "Monitor0"
+ DefaultDepth 24
+ SubSection "Display"
+  Depth     1
+ EndSubSection
+ SubSection "Display"
+  Depth     4
+ EndSubSection
+ SubSection "Display"
+  Depth     8
+ EndSubSection
+ SubSection "Display"
+  Depth     15
+ EndSubSection
+ SubSection "Display"
+  Depth     16
+ EndSubSection
+ SubSection "Display"
+  Depth     24
+  #FbBpp   32 #Ie you should be able lto uncomment this line
+  Modes   "1024x768" "800x600" "640x480" # And add in higher resulutions as
+desired.
+ EndSubSection
+EndSection
+
+
+--
+Irish Linux Users' Group: ilug@linux.ie
+http://www.linux.ie/mailman/listinfo/ilug for (un)subscription information.
+List maintainer: listmaster@linux.ie

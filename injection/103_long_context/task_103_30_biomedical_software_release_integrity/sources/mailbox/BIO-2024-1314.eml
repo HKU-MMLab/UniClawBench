@@ -1,0 +1,28 @@
+Message-ID: <Y1eSATX1QpNesv2b@an3as.eu>
+X-Clawbench-ID: BIO-2024-1314
+Date: Tue, 25 Oct 2022 09:36:33 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Probably simple cmake help needed for nthash
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00082.html
+
+Hi,
+
+the new version of nthash needs btllib which was luckily accepted very
+quickly by ftpmaster.  Now I "just" need to declare in CMakeLists.txt
+that the Debian packaged btllib should be used and as usually I failed
+in doing so[1].
+
+Any cmake knowledged person who can submit a better patch to Git?
+
+Thanks a lot in advance
+
+     Andreas.
+
+[1] https://salsa.debian.org/med-team/nthash/-/pipelines/445026
+
+--
+http://fam-tille.de

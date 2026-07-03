@@ -1,0 +1,37 @@
+Message-ID: <20021003212153.87EB0A87E2@belphegore.hughes-family.org>
+X-Clawbench-ID: CAM-2003-0319
+Date: Thu, 03 Oct 2002 14:21:53 -0700
+From: bugzilla-daemon@hughes-family.org
+To: spamassassin-devel@example.sourceforge.net
+Subject: [SAdev] [Bug 779] rule broken: CORRUPT_MSGID
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01526.c30529e56e1407674dfcb3f7080ec91b
+
+http://www.hughes-family.org/bugzilla/show_bug.cgi?id=779
+
+spamassassin-contrib@msquadrat.de changed:
+
+           What    |Removed                     |Added
+----------------------------------------------------------------------------
+             Status|NEW                         |RESOLVED
+         Resolution|                            |FIXED
+
+
+------- Additional Comments From spamassassin-contrib@msquadrat.de  2002-10-03 14:21 -------
+I think INVALID_MSGID does what this rule was supposed to do
+
+
+------- You are receiving this mail because: -------
+You are the assignee for the bug, or are watching the assignee.
+
+
+-------------------------------------------------------
+This sf.net email is sponsored by:ThinkGeek
+Welcome to geek heaven.
+http://thinkgeek.com/sf
+_______________________________________________
+Spamassassin-devel mailing list
+Spamassassin-devel@lists.sourceforge.net
+https://lists.sourceforge.net/lists/listinfo/spamassassin-devel

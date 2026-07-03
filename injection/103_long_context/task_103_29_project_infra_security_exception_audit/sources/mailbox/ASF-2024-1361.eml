@@ -1,0 +1,47 @@
+Message-ID: <CALK=YjP_cZREUbL1KGQkuuggu-MJrTDr5fRXdXv1XzSQOX+KHg@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1361
+Date: Fri, 2 Aug 2024 09:25:39 -0400
+From: Eric Covener <covener@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: [Bug 69203] proxy error from php-fpm backend for paths containing spaces
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-08.mbox
+
+On Fri, Aug 2, 2024 at 9:10 AM Yann Ylavic <ylavic.dev@gmail.com> wrote:
+>
+> On Fri, Aug 2, 2024 at 1:06 PM Eric Covener <covener@gmail.com> wrote:
+> >
+> > > Yeah, if not under DocumentRoot I don't see how ProxyPass could work,
+> > > but SetHandler should since it's following the whole request
+> > > processing to resolve the filesystem r->filename?
+> >
+> > In the examples I am seeing spot-checking google results, people who
+> > use ProxyPass + FPM hard-code the document root (or wherever the stuff
+> > is) in the 2nd parameter. This includes our own manual and the
+> > unofficial confluence wiki.
+>
+> Ah ok, I think we can do something like this:
+>         if (rconf->need_dirwalk) {
+>             const char *docroot = ap_document_root(r);
+>             if (strncmp(docroot, r->filename, strlen(docroot)) != 0) {
+>                 r->proxyreq = PROXYREQ_NONE;
+>                 ap_core_translate(r);
+>             }
+>             ap_directory_walk(r);
+>         }
+> ?
+
+I think users could be happily humming along with some other absolute
+filesystem path in the ProxyPass 2nd arg and would now see it
+docroot-prefixed.
+Are you trying to make the ProxyPass+FPM vars better because they will
+no longer be fixed up by apache_was_here side effects? I think it is
+probably bes to just retain/restore some of the historical bogus
+values if MAY_BE_FPM -- maybe doing them at the last moment where we'd
+do the above.
+
+--
+Eric Covener
+covener@gmail.com

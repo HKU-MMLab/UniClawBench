@@ -1,0 +1,100 @@
+Message-ID: <da87f16d1f5909b3461e4459767d05eba2490918.camel@irisa.fr>
+X-Clawbench-ID: BIO-2024-0608
+Date: Wed, 10 May 2023 09:44:21 +0200
+From: olivier sallou <olivier.sallou@irisa.fr>
+To: debian-med@lists.debian.org
+Subject: Re: Nextflow - have just used it on our HPC cluster and liked it
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_05_msg00007.html
+
+On Tue, 2023-05-09 at 22:24 +0200, Pierre Gruet wrote:
+> Hi Andreas,
+>
+> Le 09/05/2023 à 18:36, Andreas Tille a écrit :
+> > Hi Pierre,
+> >
+> > Am Mon, May 08, 2023 at 10:50:54PM +0200 schrieb Pierre Gruet:
+> > >
+> > > It is very nice to hear from you on Nextflow, this is a
+> > > motivation booster
+> > > for the packaging!
+> >
+> > +1
+> >
+> > > I have indeed packaged many dependencies, and if I remember
+> > > correctly I had
+> > > two issues at this step:
+> > > - kryo 5.x is needed although we have libkryo-java/2.7 in Debian,
+> > > which
+> > > cannot be upgraded to version 5.x as it would break gradle (!).
+> > > So we need a
+> > > dedicated src:kryo5 package, I began doing it but took a break
+> > > for whatever
+> > > reason;
+> >
+> > If we need two versions of kryo it needs passing new - thus you can
+> > upload
+> > it at any time, thought.
+>
+> True, yes.
+>
+> >
+> > > - more annoying: I need groovy 3.x and in Debian we have groovy
+> > > 2.4.21. I
+> > > tried to package it but met some antlr4 issues on which I have to
+> > > spend more
+> > > time.
+> > >
+> > > I think reworking on this will be a good task after the release
+> > > of Bookworm.
+> > > I can try again and post possible issues here.
+> >
+> > May be groovy can be upgraded in experimental to version 3.x?
+>
+> Possibly I have been unclear there, sorry: when trying to build
+> groovy
+> 3.x, I had issues linked to antlr4 which prevented me from completing
+> the whole build, so I am not even ready to propose a working upgrade
+> of
+> groovy... but since then, I have met other issues with antlr4 in
+> other
+> packages and could circumvent some of them, so I guess I should just
+> try
+> again as I now have more experience, and possibly coordinate with
+> other
+> interested people in debian-java.
+
+groovy is definitly a Java tool needed for many java packages, you
+should get help/interest from debian-java for this.
+
+I already had issue with previous groovy versions and antlr too,
+upgrades breaking stuff....
+
+Olivier
+>
+> >
+> > Thanks a lot for working on all these dependencies!
+>
+> And thanks for advising! :)
+>
+> >
+> > Kind regards
+> >       Andreas.
+> >
+>
+> Best,
+>
+> --
+> Pierre
+
+--
+Olivier Sallou
+Univ Rennes, Inria, CNRS, IRISA
+Irisa, Campus de Beaulieu
+F-35042 RENNES - FRANCE
+Tel: 02.99.84.71.95
+
+gpg key id: 4096R/326D8438  (keyring.debian.org)
+Key fingerprint = 5FB4 6F83 D3B9 5204 6335  D26D 78DC 68DB 326D 8438

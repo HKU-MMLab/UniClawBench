@@ -1,0 +1,52 @@
+task_id: task_205_24_wikipedia_multilang_mermaid
+category: 205_cross_platform_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我一直好奇一件事:对于同一个技术主题,Wikipedia 不同语言版本的写法
+  会差别很大吗?我挑了"Next.js",想对比英文、中文、日文和德文版本,看
+  哪两个最相似、哪个最孤立。
+
+  我已经把这四个都固定到了特定的历史修订版本,这样无论将来怎么编辑,对比
+  都能保持可复现。oldid 在末尾。
+
+  我的假设是英文版和日文版应该最相像——两者都更"工程导向"——而德文版
+  会相对孤立。你能帮我验证一下吗?
+
+  几个思路:对每个固定的修订版本,获取其章节列表和外部链接,然后在外部
+  链接集合上两两计算 Jaccard 相似度,看看哪两种语言写得最像。还要检查
+  每个版本的"厚度"——字节长度、分类数量、图片数量——德文版真的比英文版
+  薄很多吗?最后,画一张 Mermaid 概念图,把"Next.js"连接到这四种语言,
+  边上标注相似度分数,并渲染成 PNG,这样我能一眼看清它们之间的关系。
+
+  把结果放在 /tmp_workspace/results/ 下——大致包括一个汇总 JSON、Mermaid
+  源文件 + 渲染出的 PNG,以及一段简短的文字说明(中文),陈述结论:哪两个
+  最相似,以及德文是否确实最薄。
+
+  四个 oldid:
+    en: https://en.wikipedia.org/wiki/Next.js?oldid=1350358134
+    zh: https://zh.wikipedia.org/wiki/Next.js?oldid=91416611
+    ja: https://ja.wikipedia.org/wiki/Next.js?oldid=108911848
+    de: https://de.wikipedia.org/wiki/Next.js?oldid=262493853
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources: []
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

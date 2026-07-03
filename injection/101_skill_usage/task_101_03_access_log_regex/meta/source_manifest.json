@@ -1,0 +1,10 @@
+{
+  "task_id": "task_101_03_access_log_regex",
+  "note": "Hybrid source: a fixed 71,000-line Apache common-log fixture built from public NASA/ClarkNet 1995 traces plus a small amount of synthetic operational noise for log-analysis coverage.",
+  "entries": [
+    {
+      "path": "access.log",
+      "description": "Fixed Apache common-log fixture derived from public 1995 HTTP traces with synthetic edge cases for local parsing and summarization."
+    }
+  ]
+}

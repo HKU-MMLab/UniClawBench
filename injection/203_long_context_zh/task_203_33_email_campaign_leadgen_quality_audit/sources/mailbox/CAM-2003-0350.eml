@@ -1,0 +1,38 @@
+Message-ID: <20020731115338.D11938@ie.suberic.net>
+X-Clawbench-ID: CAM-2003-0350
+Date: Wed, 31 Jul 2002 11:53:38 +0100
+From: kevin lyda <kevin+dated+1028544820.c7b215@linux.ie>
+To: ILUG <ilug@linux.ie>
+Subject: Re: [ILUG] C++ and C Mailing Lists for Beginners and Advanced
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00174.8f16cc9b5762f4b43fb3b8afc66e8544
+
+On Wed, Jul 31, 2002 at 12:51:29PM +0200, David Neary wrote:
+> Also, you should keep a bookmark pointing at the comp.lang.c FAQ at
+> http://www.eskimo.com/~scs/C-faq/top.html
+
+and don't forget the c iaq.  that's here:
+
+    http://www.plethora.net/~seebs/faqs/c-iaq.html
+
+an example:
+
+    1.3: If I write the code int i, j; can I assume that (&i + 1) == &j?
+
+    Only sometimes. It's not portable, because in EBCDIC, i and j are not
+    adjacent.
+
+kevin
+
+--
+kevin@suberic.net     that a believer is happier than a skeptic is no more to
+fork()'ed on 37058400    the point than the fact that a drunken man is happier
+meatspace place: home       than a sober one. the happiness of credulity is a
+http://ie.suberic.net/~kevin   cheap & dangerous quality -- g.b. shaw
+
+--
+Irish Linux Users' Group: ilug@linux.ie
+http://www.linux.ie/mailman/listinfo/ilug for (un)subscription information.
+List maintainer: listmaster@linux.ie

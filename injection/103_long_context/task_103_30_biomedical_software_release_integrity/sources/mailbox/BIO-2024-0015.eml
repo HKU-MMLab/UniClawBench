@@ -1,0 +1,51 @@
+Message-ID: <20210923125309.GS28115@an3as.eu>
+X-Clawbench-ID: BIO-2024-0015
+Date: Thu, 23 Sep 2021 14:53:09 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Any volunteer to verify autopkgtest of spades?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_09_msg00047.html
+
+Hi,
+
+some time ago I've pushed a packaging update for Spades.  Unfortunately
+the autopkgtest fails with
+
+...
+The program was terminated by segmentation fault
+=== Stack Trace ===
+/usr/libexec/spades/spades-hammer(+0x1fb61) [0x5580fc8e4b61]
+/usr/libexec/spades/spades-hammer(+0x20823) [0x5580fc8e5823]
+/lib/x86_64-linux-gnu/libc.so.6(+0x3cef0) [0x7f3dc4f58ef0]
+/usr/libexec/spades/spades-hammer(+0x94f4b) [0x5580fc959f4b]
+/usr/libexec/spades/spades-hammer(+0x96db1) [0x5580fc95bdb1]
+/usr/libexec/spades/spades-hammer(+0x52e86) [0x5580fc917e86]
+/usr/libexec/spades/spades-hammer(+0x49567) [0x5580fc90e567]
+/usr/lib/x86_64-linux-gnu/libgomp.so.1(+0x1b396) [0x7f3dc5118396]
+/lib/x86_64-linux-gnu/libpthread.so.0(+0x8eae) [0x7f3dc549aeae]
+/lib/x86_64-linux-gnu/libc.so.6(clone+0x3f) [0x7f3dc5019a5f]
+
+
+== Error ==  system call for: "['/usr/libexec/spades/spades-hammer', '/tmp/tmp.ZpQTXtHuIC/spades_test/corrected/configs/config.info']" finished abnormally, OS return value: 1
+None
+
+In case you have troubles running SPAdes, you can write to spades.support@cab.spbu.ru
+or report an issue on our GitHub repository github.com/ablab/spades
+Please provide us with params.txt and spades.log files from the output directory.
+
+SPAdes log can be found here: /tmp/tmp.ZpQTXtHuIC/spades_test/spades.log
+
+Thank you for using SPAdes!
+autopkgtest [12:41:55]: test run-upstreams-tests: -----------------------]
+
+
+Kind regards
+
+      Andreas.
+
+
+--
+http://fam-tille.de

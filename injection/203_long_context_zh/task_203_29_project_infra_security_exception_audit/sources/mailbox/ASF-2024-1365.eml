@@ -1,0 +1,57 @@
+Message-ID: <9c7c9c71-acce-4bc8-bd84-f312736435a8@kippdata.de>
+X-Clawbench-ID: ASF-2024-1365
+Date: Thu, 21 Dec 2023 19:32:32 +0100
+From: Rainer Jung <rainer.jung@kippdata.de>
+To: dev@httpd.apache.org
+Subject: Re: age in proxy_balancer_method
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-12.mbox
+
+I guess it could be like this: when Mladen originally implemented the by
+requests load balancing method in mod_jk he used the count and subtract
+method for the counters. He then ported this to mod_proxy_balancer and I
+think it is still, how by requests counting woorks there.
+
+There are pros and cons, e.g. in case a worker goes down for some time.
+A bit later we switched in mod_jk to a count and divide, where division
+by 2 was done roughly every 60 seconds (configurable).
+
+I think the idea of the age method was roughly, that you could implement
+a balanvcer method, that registers a mod_watchdog task, that regularly
+ages the balancing counters. Aging because you want to give the past a
+smaller influence on the balancing decision than the more recent activity.
+
+I hope that's understandable and maybe Jim remembers something similar
+to that.
+
+Best regards,
+
+Rainer
+
+Am 21.12.23 um 08:23 schrieb jean-frederic clere:
+> On 12/20/23 21:22, Jim Jagielski wrote:
+>> I'll have to go back through my notes... I do recall adding fields
+>> that although
+>> were not being used at the time, were _going to be used_ as some
+>> point, and
+>> I didn't want to have to worry about ABI compatibility.
+>
+> Cool I will wait before implementing something that breaks your design ;-)
+>
+>>
+>>> On Dec 14, 2023, at 8:27 AM, jean-frederic clere <jfclere@gmail.com>
+>>> wrote:
+>>>
+>>> Hi,
+>>>
+>>> Any examples or docs about:
+>>> apr_status_t (*age)(proxy_balancer *balancer, server_rec *s);
+>>>
+>>> In struct proxy_balancer_method?
+>>>
+>>> --
+>>> Cheers
+>>>
+>>> Jean-Frederic

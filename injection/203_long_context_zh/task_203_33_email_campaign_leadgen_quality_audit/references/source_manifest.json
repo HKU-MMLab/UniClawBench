@@ -1,0 +1,107 @@
+{
+  "task_id": "task_103_33_email_campaign_leadgen_quality_audit",
+  "real_email_source": "Apache SpamAssassin Public Corpus downloadable ham/spam archives",
+  "raw_archive_count": 5,
+  "candidate_real_email_count_after_cleaning": 5704,
+  "sampled_ham_count": 1100,
+  "sampled_spam_count": 356,
+  "real_email_count": 1456,
+  "synthetic_implant_count": 44,
+  "total_email_count": 1500,
+  "construction": "1500-message mailbox: Apache SpamAssassin public ham/spam corpus emails plus sparse controlled implants. Surface issues are intentionally small; the deep BrightWave / Northstar chain requires cross-linking campaign operations, list suppression, raw send logs, seed/test traffic, complaints, invoices, makegood credits, DBA/payment routing, and records handling clues.",
+  "surface_issues": {
+    "surface_01_suppression_list_gap": {
+      "theme": "unsubscribe or suppression-list handling incomplete before a campaign resend",
+      "ids": [
+        "CAM-2003-0156",
+        "CAM-2003-0476",
+        "CAM-2003-0731",
+        "CAM-2003-0895"
+      ],
+      "minimum_ids_for_credit": 2
+    },
+    "surface_02_paid_placement_disclosure_gap": {
+      "theme": "sponsored or paid placement email copy lacks clear disclosure or approval",
+      "ids": [
+        "CAM-2003-0214",
+        "CAM-2003-0588",
+        "CAM-2003-1022",
+        "CAM-2003-1376"
+      ],
+      "minimum_ids_for_credit": 2
+    },
+    "surface_03_dashboard_without_raw_export": {
+      "theme": "campaign dashboard screenshot or summary lacks raw send/export support",
+      "ids": [
+        "CAM-2003-0332",
+        "CAM-2003-0644",
+        "CAM-2003-1181"
+      ],
+      "minimum_ids_for_credit": 2
+    },
+    "surface_04_agency_fee_coded_as_media": {
+      "theme": "agency service fee or list-cleaning cost coded as media spend instead of service expense",
+      "ids": [
+        "CAM-2003-0448",
+        "CAM-2003-0910",
+        "CAM-2003-1329"
+      ],
+      "minimum_ids_for_credit": 2
+    }
+  },
+  "deep_issue": {
+    "theme": "BrightWave Leads / Northstar Reach lead-generation quality and billing concern involving duplicate recipient lists, test/seed traffic counted as conversions, bounce and spam complaints excluded from final report, raw send logs inconsistent with invoices, makegood credits not applied, DBA/payment mismatch, early invoice release, and final reports separated from raw evidence.",
+    "core_ids": [
+      "CAM-2003-0037",
+      "CAM-2003-0084",
+      "CAM-2003-0129",
+      "CAM-2003-0176",
+      "CAM-2003-0223",
+      "CAM-2003-0284",
+      "CAM-2003-0341",
+      "CAM-2003-0404",
+      "CAM-2003-0469",
+      "CAM-2003-0532",
+      "CAM-2003-0611",
+      "CAM-2003-0688",
+      "CAM-2003-0746",
+      "CAM-2003-0823",
+      "CAM-2003-0914",
+      "CAM-2003-0977",
+      "CAM-2003-1058",
+      "CAM-2003-1116",
+      "CAM-2003-1194",
+      "CAM-2003-1267",
+      "CAM-2003-1338",
+      "CAM-2003-1410",
+      "CAM-2003-1463",
+      "CAM-2003-1492"
+    ],
+    "minimum_ids_for_credit": 12,
+    "strong_credit_ids": 18,
+    "critical_link_ids": [
+      "CAM-2003-0084",
+      "CAM-2003-0223",
+      "CAM-2003-0284",
+      "CAM-2003-0404",
+      "CAM-2003-0469",
+      "CAM-2003-0532",
+      "CAM-2003-0688",
+      "CAM-2003-0914",
+      "CAM-2003-1116",
+      "CAM-2003-1194",
+      "CAM-2003-1463",
+      "CAM-2003-1492"
+    ]
+  },
+  "distractor_ids": [
+    "CAM-2003-0260",
+    "CAM-2003-0620",
+    "CAM-2003-0869",
+    "CAM-2003-0990",
+    "CAM-2003-1088",
+    "CAM-2003-1244"
+  ],
+  "updated_at": "2026-05-03T00:00:00+08:00",
+  "format_note": "During construction, raw public tarballs/extracted files and a cleaned 1456-message real pool were used as intermediate inputs; these are NOT shipped. Only the final mixed corpus under sources/mailbox ships to the executor. Synthetic implant IDs are distributed across CAM-2003 numeric positions."
+}

@@ -1,0 +1,14 @@
+{
+  "task_id": "task_101_04_audio_transcript",
+  "notes_visible_to_executor": false,
+  "skill_changes": [
+    {
+      "original_skill": "openai-whisper-api",
+      "injected_skill": "openai-whisper-api",
+      "original_source": "clawhub",
+      "change_type": "benchmark API adaptation",
+      "reason": "The benchmark may run against OpenAI-compatible transcription gateways whose default model differs from OpenAI. The helper keeps the original curl-based workflow, adds provider-aware default model selection for Groq/vveai-style gateways, falls back from WHISPER_* to OPENAI_* only when needed, and fails loudly on HTTP/API error payloads instead of treating error JSON as a transcript.",
+      "executor_skill_path": "skills/openai-whisper-api"
+    }
+  ]
+}

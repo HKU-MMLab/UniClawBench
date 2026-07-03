@@ -1,0 +1,12 @@
+Message-ID: <cam-2003-0823@campaign-audit.example>
+X-Clawbench-ID: CAM-2003-0823
+Date: Thu, 13 Mar 2003 13:02:00 -0500
+From: List Operations <listops@acme-mail.example>
+To: colin@acme-mail.example
+Subject: BrightWave send log
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: synthetic email campaign lead-gen quality audit implant
+
+The BrightWave export includes 1,248 leads, but 312 are seed or internal test addresses and 96 are duplicates from the January west list. That is not reflected in the dashboard.

@@ -1,0 +1,24 @@
+Message-ID: <4A1E5DC9-7D19-4FD7-BB94-0586C4338452@sharp.fm>
+X-Clawbench-ID: ASF-2024-0291
+Date: Mon, 19 Aug 2024 13:06:03 +0200
+From: "Graham Leggett via dev" <dev@httpd.apache.org>
+To: Apache Dev Mailing List <dev@httpd.apache.org>
+Subject: linux.yml: missing libsasl2-dev dependency
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-08.mbox
+
+Hi all,
+
+Tests are failing on Ubuntu because of this bug:
+
+https://bugs.launchpad.net/ubuntu/+source/openldap2/+bug/2077320
+
+libldap2-dev is missing a dependency on libsasl2-dev, and as a result the moment you try use ldap_sasl_interactive_bind the build fails.
+
+Is it possible as a workaround for someone more clued up than me to update linux.yml to manually add this dependency?
+
+Regards,
+Graham
+--

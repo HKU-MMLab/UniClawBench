@@ -1,0 +1,31 @@
+Message-ID: <Y1oasvOUMXPRBHKP@an3as.eu>
+X-Clawbench-ID: BIO-2024-0225
+Date: Thu, 27 Oct 2022 07:44:18 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: cmake help for minimac4 needed
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00097.html
+
+Hi,
+
+just another cmake issue I'd like to ask for help here.  As you can see
+in salsa CI[1] the cmake configuration of minimac4 fails with:
+
+CMake Error: The following variables are used in this project, but they are set to NOTFOUND.
+Please set them or make sure they are set and tested correctly in the CMake files:
+OMPP_LIBRARY
+    linked by target "minimac4" in directory /builds/med-team/minimac4/debian/output/source_dir
+
+Any hint how to fix this?
+
+Kind regards
+   Andreas.
+
+
+[1] https://salsa.debian.org/med-team/minimac4/-/jobs/3432320
+
+--
+http://fam-tille.de

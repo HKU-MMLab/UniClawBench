@@ -1,0 +1,99 @@
+{
+  "task_id": "task_101_11_obsidian_vault_audit",
+  "difficulty": "Medium",
+  "schema": "a",
+  "schema_notes": "concept-level booleans with evidence pointers (must-hit findings). Ground truth lists every orphan, broken wikilink, and tag-drift cluster the audit must surface. The vault contains 52 notes; the audit must surface ALL items in expected_orphans, expected_broken_links, and expected_tag_drift_clusters.",
+  "skills_declared": [
+    "obsidian"
+  ],
+  "ground_truth": {
+    "vault_note_count": 52,
+    "expected_orphans": [
+      "Archive/old_idea_2019.md",
+      "Archive/deprecated-process.md",
+      "Archive/old-vendor-notes.md",
+      "Drafts/untitled-7.md",
+      "Drafts/scrap-thoughts.md",
+      "Drafts/half-baked-idea.md",
+      "Drafts/q3-recap-draft.md",
+      "Drafts/personal-todos.md",
+      "Inbox/unsorted-feedback.md",
+      "Index/MOC.md"
+    ],
+    "expected_broken_links": [
+      {"in_file": "projects/alpha.md", "wikilink": "[[daily-2026-04-02]]"},
+      {"in_file": "projects/beta.md", "wikilink": "[[meeting-with-sam]]"},
+      {"in_file": "Inbox/triage-2026-04.md", "wikilink": "[[truly-missing-followups]]"},
+      {"in_file": "notes/team-kickoff.md", "wikilink": "[[archive/q4-postmortem]]"},
+      {"in_file": "areas/security.md", "wikilink": "[[runbooks/incident-response-v2]]"},
+      {"in_file": "daily-2026-04-06.md", "wikilink": "[[follow-ups/sam-april-action-items]]"},
+      {"in_file": "meetings/budget-review.md", "wikilink": "[[finance/q2-budget]]"},
+      {"in_file": "meetings/qbr-2026-q1.md", "wikilink": "[[archive/2025-q4-results]]"},
+      {"in_file": "notes/roadmap-draft.md", "wikilink": "[[milestones/2026-h2-plan]]"},
+      {"in_file": "projects/delta.md", "wikilink": "[[clients/onboarding-tier-3]]"}
+    ],
+    "expected_tag_drift_clusters": [
+      {
+        "variants": ["#project/alpha", "#Project-Alpha", "#project/Alpha"],
+        "normalized_tag": "#project/alpha",
+        "majority_reason": "slash form is the dominant Obsidian-hierarchy variant in the vault (3 files use #project/alpha vs. 1 each for the case- and hyphen-drift variants)"
+      },
+      {
+        "variants": ["#note_tag", "#note-tag"],
+        "normalized_tag": "#note-tag",
+        "majority_reason": "hyphen form is used in 2 files vs. 1 for the underscore variant"
+      },
+      {
+        "variants": ["#follow-up", "#follow_up"],
+        "normalized_tag": "#follow-up",
+        "majority_reason": "hyphen form is used in 2 files (meetings/budget-review.md, meetings/standup-mon.md) vs. 1 underscore (daily-2026-04-08.md)"
+      },
+      {
+        "variants": ["#weekly-review", "#weekly_review"],
+        "normalized_tag": "#weekly-review",
+        "majority_reason": "hyphen form is used in 2 files (daily-2026-04-06.md, meetings/qbr-2026-q1.md) vs. 1 underscore (daily-2026-04-07.md)"
+      },
+      {
+        "variants": ["#OKR", "#okr"],
+        "normalized_tag": "#okr",
+        "majority_reason": "the lowercase form is the canonical Obsidian convention; in this vault each variant appears in 1 file (notes/roadmap-draft.md uses #OKR, areas/security.md uses #okr) so either choice is defensible, but #okr matches the convention used by every other lowercase tag"
+      }
+    ],
+    "false_positive_traps_pseudo_orphans": [
+      "Inbox/triage-2026-04.md",
+      "Inbox/random-thought.md",
+      "Drafts/launch-spec-draft.md"
+    ],
+    "false_positive_traps_pseudo_orphans_reason": "Each looks unreferenced at first glance but has at least one explicit backlink: triage-2026-04.md is linked from daily-2026-04-04.md; random-thought.md is linked from areas/customer-onboarding.md; launch-spec-draft.md is linked from projects/alpha.md. These MUST NOT appear in the audit's orphan list.",
+    "false_positive_traps_pseudo_broken_links": [
+      "[[../daily-2026-04-01]] in meetings/launch-postmortem.md (resolves to existing daily-2026-04-01.md via Obsidian relative-path rule)",
+      "[[Projects/Alpha]] in references/standards.md (resolves to projects/alpha.md via Obsidian case-insensitive rule)"
+    ],
+    "false_positive_traps_pseudo_broken_links_reason": "These wikilinks LOOK broken but resolve under the Obsidian rules documented in obsidian/SKILL.md. They MUST NOT be reported as broken.",
+    "handoff_outputs": {
+      "fix_plan_csv": "/tmp_workspace/results/fix_plan.csv",
+      "tag_normalization_json": "/tmp_workspace/results/tag_normalization.json",
+      "fix_plan_columns": [
+        "issue_type",
+        "affected_path",
+        "evidence",
+        "proposed_fix",
+        "priority"
+      ],
+      "normalized_tags": {
+        "#project/alpha": "#project/alpha",
+        "#Project-Alpha": "#project/alpha",
+        "#project/Alpha": "#project/alpha",
+        "#note_tag": "#note-tag",
+        "#note-tag": "#note-tag",
+        "#follow-up": "#follow-up",
+        "#follow_up": "#follow-up",
+        "#weekly-review": "#weekly-review",
+        "#weekly_review": "#weekly-review",
+        "#OKR": "#okr",
+        "#okr": "#okr"
+      }
+    },
+    "rationale": "Round 9 (2026-04-30) expanded the vault from ~27 to 52 notes per user feedback to (a) drop the specific note-count from the prompt, (b) make every audit anchor strictly checkable against the vault, and (c) increase the audit surface so executors cannot simply pattern-match on the v8 fixture. The new content is balanced: 6 new genuine orphans (Archive + Drafts + Inbox cleanup candidates), 6 new genuine broken wikilinks (each unresolvable under all three Obsidian wikilink rules), 3 new tag-drift clusters (#follow-up/#follow_up, #weekly-review/#weekly_review, #OKR/#okr), and ~10 well-linked benign notes (people MOC additions, meeting standups, daily notes, dependencies map) that anchor the graph and create enough noise to prevent trivial scans. All three v8 false-positive traps (pseudo-orphans Inbox/triage-2026-04, Inbox/random-thought, Drafts/launch-spec-draft) and both v8 pseudo-broken links ([[../daily-2026-04-01]], [[Projects/Alpha]]) are preserved unchanged so the precision checkpoints continue to bite."
+  }
+}

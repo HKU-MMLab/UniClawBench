@@ -1,0 +1,29 @@
+Message-ID: <20020911203845.662ED16F03@spamassassin.taint.org>
+X-Clawbench-ID: CAM-2003-0063
+Date: Wed, 11 Sep 2002 21:38:40 +0100
+From: yyyy@spamassassin.taint.org
+To: Robert Strickler <Robert.Strickler@us.net56.net>
+Subject: Re: [SAtalk] Yeah right... If spamassassin was looking through th    is mail, it would have marked it as spam.
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01458.faf90fabe2c118e46dd6a60139a7317f
+
+Robert Strickler said:
+
+> Looks like we need an identity stamp in the X-Spam headers so that SA only
+> accepts headers from authorized sources.
+
+Well, SpamAssassin will just ignore any old X-Spam-whatever headers
+it finds, so that cannot be used to get around the filter.
+
+--j.
+
+
+-------------------------------------------------------
+In remembrance
+www.osdn.com/911/
+_______________________________________________
+Spamassassin-talk mailing list
+Spamassassin-talk@lists.sourceforge.net
+https://lists.sourceforge.net/lists/listinfo/spamassassin-talk

@@ -1,0 +1,126 @@
+{
+  "task_id": "task_103_29_project_infra_security_exception_audit",
+  "created_at": "2026-05-03T00:00:00+08:00",
+  "real_email_source": "Apache httpd dev public mailing list archives via lists.apache.org mbox API",
+  "raw_archive_count": 36,
+  "real_email_count": 1456,
+  "synthetic_implant_count": 44,
+  "total_email_count": 1500,
+  "surface_issues": {
+    "surface_01_stale_ci_token": {
+      "theme": "temporary CI/deploy token extended and left active after the migration window",
+      "ids": [
+        "ASF-2024-0156",
+        "ASF-2024-0476",
+        "ASF-2024-0731",
+        "ASF-2024-0895"
+      ],
+      "minimum_ids_for_credit": 2
+    },
+    "surface_02_shared_release_account": {
+      "theme": "shared release/signing account used by multiple maintainers instead of named credentials",
+      "ids": [
+        "ASF-2024-0214",
+        "ASF-2024-0588",
+        "ASF-2024-1022",
+        "ASF-2024-1376"
+      ],
+      "minimum_ids_for_credit": 2
+    },
+    "surface_03_hosted_metrics_data_scope": {
+      "theme": "hosted metrics mirror classified as public-only despite collecting reporter addresses, IPs, or private issue metadata",
+      "ids": [
+        "ASF-2024-0332",
+        "ASF-2024-0644",
+        "ASF-2024-1181"
+      ],
+      "minimum_ids_for_credit": 2
+    },
+    "surface_04_missing_dependency_audit_attachment": {
+      "theme": "dependency/security review attachment missing while a release or infrastructure change continues",
+      "ids": [
+        "ASF-2024-0448",
+        "ASF-2024-0910",
+        "ASF-2024-1329"
+      ],
+      "minimum_ids_for_credit": 2
+    }
+  },
+  "deep_issue": {
+    "theme": "Peregrine BuildWorks / Nightjar CI infrastructure exception chain involving split access requests, understated data exposure, missing security review materials, token and artifact access before signoff, legal/service-owner mismatch, possible maintainer affiliation concern, reused project scripts presented as vendor validation, release pressure, and records split across dev, infra, and private threads.",
+    "core_ids": [
+      "ASF-2024-0037",
+      "ASF-2024-0084",
+      "ASF-2024-0129",
+      "ASF-2024-0176",
+      "ASF-2024-0223",
+      "ASF-2024-0284",
+      "ASF-2024-0341",
+      "ASF-2024-0404",
+      "ASF-2024-0469",
+      "ASF-2024-0532",
+      "ASF-2024-0611",
+      "ASF-2024-0688",
+      "ASF-2024-0746",
+      "ASF-2024-0823",
+      "ASF-2024-0914",
+      "ASF-2024-0977",
+      "ASF-2024-1058",
+      "ASF-2024-1116",
+      "ASF-2024-1194",
+      "ASF-2024-1267",
+      "ASF-2024-1338",
+      "ASF-2024-1410",
+      "ASF-2024-1463",
+      "ASF-2024-1492"
+    ],
+    "minimum_ids_for_credit": 12,
+    "strong_credit_ids": 18,
+    "critical_link_ids": [
+      "ASF-2024-0084",
+      "ASF-2024-0223",
+      "ASF-2024-0284",
+      "ASF-2024-0404",
+      "ASF-2024-0469",
+      "ASF-2024-0532",
+      "ASF-2024-0688",
+      "ASF-2024-0914",
+      "ASF-2024-1116",
+      "ASF-2024-1194",
+      "ASF-2024-1463",
+      "ASF-2024-1492"
+    ]
+  },
+  "distractor_ids": [
+    "ASF-2024-0260",
+    "ASF-2024-0620",
+    "ASF-2024-0869",
+    "ASF-2024-0990",
+    "ASF-2024-1088",
+    "ASF-2024-1244"
+  ],
+  "acceptable_labels": [
+    "project infrastructure security exception",
+    "stale CI or deploy token",
+    "shared release account",
+    "hosted service data-scope concern",
+    "missing dependency or security review attachment",
+    "access-scope splitting",
+    "service-owner mismatch",
+    "private log export",
+    "maintainer affiliation concern",
+    "premature token or service release",
+    "reused project work presented as external validation",
+    "records separation"
+  ],
+  "score_expectation": {
+    "surface_only_cap": 0.55,
+    "misses_deep_issue_cap": 0.6,
+    "deep_issue_required_for_high_score": true,
+    "full_pass_requires_all_four_surface_issues": true,
+    "missing_one_surface_issue_cap": 0.7,
+    "deep_issue_strong_answer": "Finds at least 18 deep ids or reconstructs all critical links with at least 12 ids and low hallucination.",
+    "weak_deep_chain_cap": 0.7
+  },
+  "construction_audit": "references/insertion_audit.md"
+}

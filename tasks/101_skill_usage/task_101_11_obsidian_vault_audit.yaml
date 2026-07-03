@@ -1,0 +1,62 @@
+task_id: task_101_11_obsidian_vault_audit
+category: 101_skill_usage
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I'm about to lean heavily on my Obsidian vault for project planning next
+  quarter, but I don't trust the state it's in — links rot, tags drift, and
+  notes go orphan without anyone noticing. Could you do a full health sweep
+  of the vault at /tmp_workspace/clawbench/sources/vault/ using the Obsidian
+  vault analysis skill so I can clean house before it matters?
+
+  Save /tmp_workspace/results/report.md with three short sections covering
+  the note graph health, broken or stale references, and taxonomy cleanup
+  work you'd want me to do.
+
+  In the note-graph section list every orphan note you find — meaning a
+  note that nothing else in the vault links to. In the references section
+  list every wikilink whose target does not resolve, after you have applied
+  Obsidian's normal lookup rules so case-only or relative-path variants are
+  not treated as broken. In the taxonomy section group each cluster of
+  case- or hyphen-drifted tag variants together, including the file paths
+  where each variant appears.
+
+  Each bullet should give the affected file by vault-relative path and
+  enough evidence for me to act on it.
+
+  Also save two handoff files:
+  - /tmp_workspace/results/fix_plan.csv with columns issue_type,
+    affected_path, evidence, proposed_fix, priority. Include every issue
+    you found that needs a content or linking fix — every orphan, every
+    broken wikilink, and every tag-drift cluster.
+  - /tmp_workspace/results/tag_normalization.json mapping each drifted tag
+    variant to the normalized tag you recommend, with one object per
+    cluster and a short reason. Pick the form most files seem to be
+    migrating toward, not a mechanical default. Also include the total
+    use-count for each variant so I can sanity-check the majority signal.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - vault/
+
+skills:
+  - obsidian
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

@@ -1,0 +1,31 @@
+Message-ID: <ZYSHR5Zfv1WWVEiW@an3as.eu>
+X-Clawbench-ID: BIO-2024-0640
+Date: Thu, 21 Dec 2023 19:43:19 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Yaroslav Halchenko <debian@onerussian.com>,	Debian Med Project List <debian-med@lists.debian.org>
+Subject: Do we need pynwb - if yes please care for its new dependency
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_12_msg00064.html
+
+Hi Yaroslav,
+
+I bumped pynwb to its latest upstream version a couple of times.  It was
+not release in any stable release since o-o-stable since the package was
+always in a bad state.  Popcon is pretty low[1] - but we do not see any
+Ubuntu users here so may be that's a weak metric.
+
+My recent update in Git to latest upstream has uncovered that it needs
+a new predepends[2].  If you consider this package a good citizen inside
+Debian it would be great if you would care for this new package.  Other
+bugs should be fixed in Salsa, thought.
+
+Kind regards
+    Andreas.
+
+[1] https://qa.debian.org/popcon.php?package=pynwb
+[2] https://github.com/NeurodataWithoutBorders/nwb-schema
+
+--
+http://fam-tille.de

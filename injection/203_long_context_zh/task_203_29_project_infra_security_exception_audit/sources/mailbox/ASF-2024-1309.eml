@@ -1,0 +1,53 @@
+Message-ID: <c5c73ee1ef23dc52a6562c8267339bdd@ausics.net>
+X-Clawbench-ID: ASF-2024-1309
+Date: Sun, 01 Oct 2023 10:28:59 +1000
+From: Noel Butler <noel.butler@ausics.net>
+To: dev@httpd.apache.org
+Subject: Re: Please support/enable https by default in the Apache web sever.
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-10.mbox
+
+On 01/10/2023 00:10, General Email wrote:
+
+> How hard is it really to uncomment one hash sign and edit a file to set
+> correct DocumentRoot  and hostnames and where the keys are... (thats
+> rhetorical by the way not actually a question)
+
+> What I said was to enable https by default and XAMPP have made it quite
+> easy.
+> If it can't be enabled by default then at least it should be as simple
+> as adding one line or uncommenting one line: Listen 443.
+
+I suggest you're trolling, are you on xampps public relations team, I
+mean seriously you come here pushing your agenda with arguments that
+don't make sense, but can't be bothered using your real name or real
+email address.
+
+> Currently, enabling https in apache http server is not easy and takes
+> multiple steps.
+
+really? I outlined in the first paragraph how EASY it was, if that is
+hard for you, then I suggest you contract someone to do it all for you.
+
+Apache is used by many fortune 500 companies as well as the smaller
+guys, many F500's still insist on using paid certs for the perceived
+beliefs of better trust and recourse for when the likes of debian do
+what they did 10 years ago and compromise openssl.  No project should
+include snakeoil. They might have been OK years ago when we were charged
+criminal rates by likes of verisgn, thawte and co to get a signed cert,
+but those days ended a long time ago.
+
+--
+Regards,
+Noel Butler
+
+This Email, including attachments, may contain legally privileged
+information, therefore at all times remains confidential and subject to
+copyright protected under international law. You may not disseminate
+this message without the authors express written authority to do so.
+If you are not the intended recipient, please notify the sender then
+delete all copies of this message including attachments immediately.
+Confidentiality, copyright, and legal privilege are not waived or lost
+by reason of the mistaken delivery of this message.

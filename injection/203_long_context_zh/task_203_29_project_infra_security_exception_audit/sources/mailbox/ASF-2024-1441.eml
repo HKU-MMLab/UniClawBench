@@ -1,0 +1,33 @@
+Message-ID: <500e9754-e04e-34ea-5224-fcbfb96a1e7b@apache.org>
+X-Clawbench-ID: ASF-2024-1441
+Date: Fri, 14 Jan 2022 11:37:35 +0100
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org, APR Developer List <dev@apr.apache.org>
+Subject: Re: Possible apr 1.7.1 showstopper from httpd test framework
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-01.mbox
+
+On 1/14/22 6:47 AM, William A Rowe Jr wrote:
+> In addition to a broken release of brotli (where enc/dec don't specify
+> -lbrotlicommon,
+> even on trunk, for openssl and other consumers to ferret out that binding), and
+> lots of fun changes to build flags in curl 7.81 minor release (who does that?)
+> there appears to be one test failure with date formatting in httpd 2.4.x branch
+> (including release 2.4.52) and apr 1.7.x branch (including release 1.7.0);
+>
+> t/modules/include.t ................. 56/98 # Failed test 64 in
+> t/modules/include.t at line 373
+>
+> Have not had time to investigate whether this is a change in perl behavior, or
+> possibly a regression caused by apr datetime handling in 1.7.x itself., but any
+> release apr-side should hold off just a bit to resolve this question.
+
+I cannot reproduce this with APR 1.7.x on RedHat 8 and our Travis builds at least for some builds
+on Ubuntu use APR 1.7 as well and do not fail.
+Is this probably a Windows specific issue? Can anyone reproduce on Windows?
+
+Regards
+
+Rüdiger

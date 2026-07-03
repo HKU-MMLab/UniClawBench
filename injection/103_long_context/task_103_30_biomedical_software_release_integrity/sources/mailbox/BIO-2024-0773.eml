@@ -1,0 +1,33 @@
+Message-ID: <YW+oyGZgaEHL6Dxi@an3as.eu>
+X-Clawbench-ID: BIO-2024-0773
+Date: Wed, 20 Oct 2021 07:27:36 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Any volunteer to check two (hdf5 relatet?) issues with python-biom-format
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00124.html
+
+Am Wed, Oct 20, 2021 at 12:13:35AM +0530 schrieb Nilesh Patra:
+> > Its worth trying IMHO.  Would you volunteer to do so?
+>
+> https://github.com/biocore/biom-format/issues/864 :-)
+
+Thanks a lot for this.
+
+> On the other spectrum, I kind of wonder that these could be good tasks for
+> people/volunteers who are looking
+> to contribute on the non-technical side, maybe DD-Non-uploading folks too?
+
+I agree 100% but in my nearly 20 years Debian Med experience those
+non-technical volunteer contributions are very rare unfortunately
+despite I continuously try to encourage people for even simpler
+tasks like writing down a list of software they need.
+
+Kind regards
+
+     Andreas.
+
+--
+http://fam-tille.de

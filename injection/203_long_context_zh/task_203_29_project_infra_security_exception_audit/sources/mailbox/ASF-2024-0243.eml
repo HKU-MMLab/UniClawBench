@@ -1,0 +1,21 @@
+Message-ID: <CALK=YjMCdyEJv2i9wNsVhejo0-j2MsHG26i=e_V=qUJo8X=kkw@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0243
+Date: Fri, 12 Jul 2024 07:17:28 -0400
+From: Eric Covener <covener@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: [RFC/PATCH] Avoid redefining apr_filepath_merge() for UNC path checks
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-07.mbox
+
+On Fri, Jul 12, 2024 at 7:15 AM Ruediger Pluem <rpluem@apache.org> wrote:
+
+> On 7/12/24 1:05 PM, Eric Covener wrote:
+> > Any concerns on this? @Ruediger Pluem ?
+>
+> I agree with all the arguments, but how do we protect 3rd party modules?
+> They would need to switch to ap_filepath_merge as well.
+
+Leaving the awkward redefine in would help there, while still updating
+all the callers we can?

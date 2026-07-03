@@ -1,0 +1,55 @@
+Message-ID: <YpfJGvARB/cARcKx@fusion>
+X-Clawbench-ID: BIO-2024-0497
+Date: Wed, 1 Jun 2022 22:16:26 +0200
+From: Étienne Mollier <emollier@emlwks999.eu>
+To: Mohd Bilal <mdbilal@disroot.org>
+Subject: Re: Added autopkgtests for gifticlib
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_06_msg00001.html
+
+Hi Mohd Bilal,
+
+Mohd Bilal, on 2022-06-01:
+> I've added autopkgtests for gifticlib[1].However the reprotest fails
+> currently. The error log looks similar to that of nifticlib. So should I
+> disable reprotest as done in nifticlib ?
+>
+> [1] - https://salsa.debian.org/med-team/gifticlib/
+
+I had a quick lookup at it and I'm happy with the autopkgtest,
+the way data are introduced, their relatively light weight
+compared to the rest of the package, their declaration in the
+copyright file (modulo the syntax error reported by lintian:
+"Continuation line not in paragraph (line 13)", but that is just
+a matter of glueing the copyright paragraph to the "License:"
+line I believe).
+
+On the reproducible build front, I failed to reproduce the
+failure to build reproducibly (if you follow me ;).  The
+following output in build logs seemed suspicious to me:
+
+	/tmp/reprotest.uo7yHg/const_build_path/const_build_path/gifti_io.c: In function 'gifti_disp_lib_version':
+	/tmp/reprotest.uo7yHg/const_build_path/const_build_path/gifti_io.c:1701:48: warning: macro "__DATE__" might prevent reproducible builds [-Wdate-time]
+	 1701 |     printf("%s, compiled %s\n", gifti_version, __DATE__);
+	      |                                                ^~~~~~~~
+
+However that might be a red herring if circumvented already by
+an automated mechanism, and a diffoscope pass in salsa ci build
+artifacts did not show me anything more than a few sections
+shifted by a byte or so.  I wouldn't disable the test before at
+least trying how goes the salsa ci with the warning corrected,
+to answer your question.
+
+I think once the copyright file is fixed, and eventually fixing
+a couple of lintian informational messages, the package should
+be in good shape for upload.
+
+Thanks for your contributions!
+Have a nice day,  :)
+--
+Étienne Mollier
+Fingerprint:  8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+Sent from /dev/pts/2, please excuse my verbosity.
+On air: Dream Theater - A View from the Top of the World

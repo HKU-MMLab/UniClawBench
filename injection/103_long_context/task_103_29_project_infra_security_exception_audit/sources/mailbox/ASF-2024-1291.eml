@@ -1,0 +1,24 @@
+Message-ID: <40c8dd01-6c3b-3a3d-abd2-9f9d414c5508@apache.org>
+X-Clawbench-ID: ASF-2024-1291
+Date: Mon, 16 Oct 2023 14:51:05 +0200
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: [PATCH] fix mod_h2 with older nghttp2
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-10.mbox
+
+On 10/16/23 2:38 PM, Joe Orton wrote:
+> BTW is modules/http2 really CTR for 2.4.x? STATUS says only
+> mod_proxy_http2 is.
+>
+> Anyway: I am +1 for r1913005 and r1913019 for 2.4.x, latter was
+> sufficient to get 2.4 building on RHEL8 again (if only we had a CI to do
+> this, oh...).
+
+I am also +1 on 1913020.
+
+Regards
+
+Rüdiger

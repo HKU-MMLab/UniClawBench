@@ -1,0 +1,10 @@
+{
+  "task_id": "task_201_30_xz_backdoor_audit",
+  "note": "Operator populates these paths with real binary assets before running the task. The executor expects them under /tmp_workspace/clawbench/sources/.",
+  "entries": [
+    {
+      "path": "release_tree/",
+      "description": "Unpacked source tree of a release tarball from the local package mirror. The task prompt avoids naming the public incident directly so the executor must inspect the tree evidence."
+    }
+  ]
+}

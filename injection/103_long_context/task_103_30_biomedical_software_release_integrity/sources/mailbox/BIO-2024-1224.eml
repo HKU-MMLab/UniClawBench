@@ -1,0 +1,39 @@
+Message-ID: <20210915051325.GS19450@an3as.eu>
+X-Clawbench-ID: BIO-2024-1224
+Date: Wed, 15 Sep 2021 07:13:25 +0200
+From: Andreas Tille <tille@debian.org>
+To: Dylan Aïssi <daissi@debian.org>,	991919@bugs.debian.org
+Subject: Re: Bioconductor API Bump to 3.13
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_09_msg00028.html
+
+Hi,
+
+On Sun, Aug 15, 2021 at 10:01:21AM +0200, Dylan Aïssi wrote:
+>
+> The transition tracker is on at
+> https://release.debian.org/transitions/html/r-api-bioc-3.13.html
+>
+> We are now waiting for the green-light from the release team (at
+> https://bugs.debian.org/991919) to start the transition of
+> bioconductor packages.
+
+All packages but one of the transition are now uploaded.  The missing
+one is r-bioc-destiny where we are discussing a removal from the
+archive[1].  I wonder whether we should file an RC bug against
+r-bioc-destiny to trigger testing removal.
+
+I think we should now focus on autopkgtests of the r-bioc-* packages
+since some test were depending from packages in a higher transition
+level.
+
+Kind regards
+
+     Andreas.
+
+[1] https://lists.debian.org/debian-r/2021/09/msg00067.html
+
+--
+http://fam-tille.de

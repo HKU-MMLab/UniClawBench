@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Large Transformer Model Inference Optimization</title>
+  <link href="assets/css/stylesheet.min.css" rel="preload stylesheet" as="style">
+  <script defer src="assets/js/highlight.min.js"></script>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$','$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] }
+    };
+  </script>
+  <script id="MathJax-script" async src="assets/js/tex-chtml.js"></script>
+  <style>
+    body { max-width: 900px; margin: 0 auto; }
+    .main { padding: 32px 20px 64px; }
+    .post-title { margin-bottom: 1.25rem; }
+    .toc { border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1.25rem; margin: 1.5rem 0 2rem; background: var(--code-bg); }
+    .toc ol { margin: 0.5rem 0 0 1.25rem; }
+    figure { margin: 1.75rem 0; text-align: center; }
+    figure img { max-width: 100%; border-radius: 10px; border: 1px solid var(--border); background: white; }
+    figcaption { margin-top: 0.55rem; color: var(--secondary); font-size: 0.92rem; line-height: 1.45; }
+    .takeaway { border-left: 4px solid #6aa6ff; padding: 0.75rem 1rem; background: var(--code-bg); border-radius: 8px; }
+    .refs li { margin-bottom: 0.6rem; }
+  </style>
+</head>
+<body>
+<main class="main post">
+  <article>
+    <header>
+      <h1 class="post-title">Large Transformer Model Inference Optimization</h1>
+    </header>
+    <section class="toc">
+      <strong>Table of contents</strong>
+      <ol>
+        <li>The inference bottleneck</li>
+        <li>Distillation</li>
+        <li>Quantization</li>
+        <li>Structured sparsity and pruning</li>
+        <li>Mixture-of-Experts</li>
+        <li>Architectural optimization</li>
+        <li>Practical synthesis</li>
+      </ol>
+    </section>
+
+    <section><h2>1. The inference bottleneck</h2>
+      <p>Large transformer inference is constrained by memory bandwidth, activation movement, attention cost, and the need to serve many tokens at low latency. Optimization methods reduce cost by compressing models, lowering numerical precision, skipping computation, or changing the architecture.</p>
+    </section>
+    <section><h2>2. Distillation</h2>
+      <p>Distillation trains a smaller student model to imitate a larger teacher. It is conceptually simple and broadly applicable, but the student must preserve enough capability for the target task and deployment setting.</p>
+      <figure><img src="assets/images/distillation.png" alt="Knowledge distillation"><figcaption>Figure 1. Distillation transfers behavior from a larger teacher into a smaller student. Source: Hinton et al. (2014), Sanh et al. (2019).</figcaption></figure>
+    </section>
+    <section><h2>3. Quantization</h2>
+      <p>Quantization reduces memory and compute by representing weights or activations with fewer bits. Transformer quantization is difficult because outliers in activations and attention layers can dominate error. Methods such as LLM.int8 and SmoothQuant handle these outliers while preserving model quality.</p>
+      <figure><img src="assets/images/LLM-int8.png" alt="LLM.int8 quantization"><figcaption>Figure 2. LLM.int8 handles outlier features during 8-bit transformer inference. Source: Dettmers et al. (2022).</figcaption></figure>
+      <figure><img src="assets/images/SmoothQuant.png" alt="SmoothQuant"><figcaption>Figure 3. SmoothQuant shifts quantization difficulty between activations and weights. Source: Xiao and Lin (2022).</figcaption></figure>
+      <figure><img src="assets/images/quantization-granularity.png" alt="Quantization granularity"><figcaption>Figure 4. Quantization granularity controls the tradeoff between compression and accuracy. Source: transformer quantization studies.</figcaption></figure>
+    </section>
+    <section><h2>4. Structured sparsity and pruning</h2>
+      <p>Pruning removes parameters or computation judged to be less important. Unstructured sparsity is hard to accelerate on common hardware, so structured patterns such as N:M sparsity are often more useful for inference.</p>
+      <figure><img src="assets/images/2-to-4-sparsity.png" alt="2:4 sparsity"><figcaption>Figure 5. 2:4 sparsity keeps a hardware-friendly pattern of nonzero weights. Source: NVIDIA A100 sparse tensor core design and N:M sparsity work.</figcaption></figure>
+    </section>
+    <section><h2>5. Mixture-of-Experts</h2>
+      <p>Mixture-of-Experts increases model capacity without activating all parameters for every token. Routing selects a small subset of experts, trading dense compute for routing complexity, load balancing, and communication overhead.</p>
+      <figure><img src="assets/images/PR-MoE.png" alt="Mixture of Experts"><figcaption>Figure 6. Sparse expert models activate only selected experts for each input. Source: Fedus et al. (2022), DeepSpeed-MoE and related systems.</figcaption></figure>
+    </section>
+    <section><h2>6. Architectural optimization</h2>
+      <p>Architectural methods target the cost structure of transformers directly: sparse attention, recurrence, memory-saving attention variants, and adaptive computation can reduce the per-token cost or the effective sequence length.</p>
+      <figure><img src="assets/images/efficient-transformer.png" alt="Efficient transformer taxonomy"><figcaption>Figure 7. Efficient transformer methods target attention, memory, recurrence, and sparsity. Source: Tay et al. (2022).</figcaption></figure>
+    </section>
+    <section><h2>7. Practical synthesis</h2>
+      <p>Inference optimization is usually a stack rather than a single method: quantization for memory bandwidth, batching and kernels for throughput, distillation or pruning for smaller deployments, and architecture changes when the model family can be redesigned.</p>
+      <figure><img src="assets/images/scaling-transformer-speedup-table.png" alt="Transformer speedup comparison"><figcaption>Figure 8. Different optimization strategies target different latency and throughput bottlenecks. Source: transformer inference optimization studies.</figcaption></figure>
+    </section>
+    <section><h2>References</h2><ol class="refs">
+      <li>Hinton et al. (2014). <em>Distilling the Knowledge in a Neural Network.</em></li>
+      <li>Sanh et al. (2019). <em>DistilBERT, a distilled version of BERT.</em></li>
+      <li>Dettmers et al. (2022). <em>LLM.int8(): 8-bit Matrix Multiplication for Transformers at Scale.</em></li>
+      <li>Xiao and Lin (2022). <em>SmoothQuant.</em></li>
+      <li>Frantar et al. (2022). <em>GPTQ: Accurate Quantization for Generative Pre-trained Transformers.</em></li>
+      <li>Zhu and Gupta (2017). <em>To Prune, or Not to Prune.</em></li>
+      <li>Fedus et al. (2022). <em>A Review of Sparse Expert Models in Deep Learning.</em></li>
+      <li>Tay et al. (2022). <em>Efficient Transformers: A Survey.</em></li>
+    </ol></section>
+  </article>
+</main>
+</body>
+</html>

@@ -1,0 +1,22 @@
+Message-ID: <Y5YeZazgtieHjDko@an3as.eu>
+X-Clawbench-ID: BIO-2024-1454
+Date: Sun, 11 Dec 2022 19:16:05 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: [Advent bug squashing] This weekend I fixed #994459, #1024821 and #1025739
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_12_msg00077.html
+
+Hi,
+
+I failed to fix a bug on Wednesday and Thursday last week since I was offline
+most of the time these days.  I try to compensate this a bit and fix more
+than one bug per day next week.
+
+Kind regards
+    Andreas.
+
+--
+http://fam-tille.de

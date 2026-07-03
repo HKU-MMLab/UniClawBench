@@ -1,0 +1,26 @@
+Message-ID: <CAKQ1sVMsehGvnt0rdMcCu=p4dkA1we_mdMuZhuv-xO2Cuhx9QQ@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1314
+Date: Tue, 9 May 2023 14:10:28 +0200
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: Fwd: [apache/httpd] don't forward invalid query strings (d78a166)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-05.mbox
+
+On Tue, May 9, 2023 at 12:55 PM Ruediger Pluem <rpluem@apache.org> wrote:
+>
+> On 5/9/23 12:16 PM, Eric Covener wrote:
+> > Still getting feedback in the PR about breakage. Any thoughts on options here, like allowing spaces or encoding rather than failing?
+>
+> Allowing spaces is out of question for me as it creates an invalid request and opens the door to response splitting. At best we
+> could encode automatically. It is really a good question if we could not make BCTLS the default.
+
+BCTLS by default looks fine to me, it changes the behaviour for users
+that (used to) expect/handle decoded spaces in the query-string in
+their scripts, but it's blocked now anyway..
+
+
+Regards;
+Yann.

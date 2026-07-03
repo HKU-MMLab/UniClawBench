@@ -1,0 +1,30 @@
+Message-ID: <20240918104807.GI8029@beskar.mdcc.cx>
+X-Clawbench-ID: BIO-2024-0782
+Date: Wed, 18 Sep 2024 12:48:07 +0200
+From: Joost van Baal-Ilić <joostvb-debian@mdcc.cx>
+To: debian-med@lists.debian.org
+Subject: Re: Developer statistics
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_09_msg00013.html
+
+Hi,
+
+On Wed, Sep 18, 2024 at 12:39:16PM +0200, Andreas Tille wrote:
+> Am Wed, Sep 18, 2024 at 12:56:46PM +0300 schrieb Andrius Merkys:
+> > > I would have a look at https://wiki.debian.org/UltimateDebianDatabase .
+> >
+> > Thanks - I gave UDD a look and managed to get what I wanted quite quickly.
+>
+
+>    https://salsa.debian.org/tille/public_html/-/blob/main/update_my_stats?ref_type=heads
+
+> [1] https://salsa.debian.org/teammetrics-team/teammetrics
+
+FYI: And the output of 'teammetrics' is collected and published at
+http://blends.debian.net/liststats/ (took me some clicks to find that one).
+
+Bye,
+
+Joost

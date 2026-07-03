@@ -1,0 +1,22 @@
+Message-ID: <F852FDC5-B157-42DE-B4BD-D4484486677D@eissing.org>
+X-Clawbench-ID: ASF-2024-0558
+Date: Sat, 30 Sep 2023 14:10:55 +0200
+From: "Stefan Eissing via dev" <dev@httpd.apache.org>
+To: dev@httpd.apache.org
+Subject: Re: Please support/enable https by default in the Apache web sever.
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-09.mbox
+
+> Am 30.09.2023 um 14:04 schrieb Will Fatherley <wefatherley@gmail.com>:
+>
+>
+> Please support/enable https by default in the Apache web server.
+>
+> HTTPS is supported already by default. I like the idea of enabling by default, but as it stands now probably should not be done as the generation of keying material is required; the certification of keying material, while capable of being automated, may become overburdened or more easily abused; and other such complications related to authentication.
+
+The capabilities are all there. It's a matter how your Apache is configured on install by whatever distribution you use. Since we do not provide installation packages, the project can not solve this for you.
+
+Kind Regards,
+Stefan

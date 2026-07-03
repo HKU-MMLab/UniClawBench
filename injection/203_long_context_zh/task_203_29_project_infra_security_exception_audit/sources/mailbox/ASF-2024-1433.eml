@@ -1,0 +1,86 @@
+Message-ID: <CAKQ1sVOo2ZvHyHXOweYCeK+exAnN6RzaTegYHBSHj=75QLqJTw@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1433
+Date: Fri, 2 Aug 2024 11:17:05 +0200
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: [Bug 69203] proxy error from php-fpm backend for paths containing spaces
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-08.mbox
+
+On Fri, Aug 2, 2024 at 5:22 AM Eric Covener <covener@gmail.com> wrote:
+>
+> On Thu, Aug 1, 2024 at 9:12 PM Yann Ylavic <ylavic.dev@gmail.com> wrote:
+> >
+> > On Fri, Aug 2, 2024 at 12:18 AM Yann Ylavic <ylavic.dev@gmail.com> wrote:
+> > >
+> > > So we probably should keep encoding r->filename with ProxyPass, and
+> > > come back to my previous patch which skipped it only for SetHandler?
+> > > Possibly FCGI_MAY_BE_FPM() only too because for "ProxyFCGIBackendType
+> > > GENERIC" we don't send the "proxy:scheme://host" part and
+> > > SCRIPT_NAME/FILENAME are supposed to be the real decoded paths?
+> >
+> > So I did this in r1919629.
+>
+> Just to level-set, IIUC:
+>
+> - 2.4.59 encoded SCRIPT_FILENAME for ProxyPass but not SetHandler
+> didn't and this same fragile stuff in php-fpm is CVE-2024-38473
+> - 2.4.60 started encoding these, for CVE-2024-38473 + general safety
+> - PR69203 reports a few different symptoms where SCRIPT_FILENAME has
+> URL-encoded file names that are actually spaces, utf-8, etc.
+> - https://github.com/apache/httpd/pull/470 undoes the re-encoding
+> introduced in 2.4.60 but makes sure controls and '?' aren't in the
+> SCRIPT_FILENAME (for CVE-2024-38473 and related funny business).
+
+Yeah correct, just '?' is not forbidden when !FCGI_MAY_BE_FPM because
+in this case SCRIPT_FILENAME is not the "proxy:" URL
+(https://github.com/apache/httpd/commit/cab0bfbb2645bb8f689535e5e2834e2dbc23f5a5
+applies).
+
+>
+> So this sounds reasonable to me without upsetting the fragile link
+> between php-fpm and proxy_fcgi.
+>
+> > > But it's going to be an endless issue if we can't fix or align
+> > > ProxyPass and SetHandler because of workarounds there, we have to
+> > > remain bug compatible..
+>
+> I wonder does ProxyPass just not work with php-fpm and these
+> spaces/utf-8 scenarios?
+
+Possibly because php-fpm seems to do some decoding itself when it
+thinks apache_was_there with ProxyPass, but I didn't test nor fully
+follow the code.
+
+>
+> > For this how about this attached patch?
+> > With it I can get the correct env vars (I think), and since we'd not
+> > send a "proxy:" SCRIPT_FILENAME anymore, php-fpm would not flag
+> > "apache_was_there" and work straight with the raw vars? I'm probably
+> > having a sweet dream :)
+>
+> It sounds the most rational, but it also sounds very similar to the
+> breakage the t/modules/proxy_fcgi.t points to here:
+> https://github.com/apache/httpd/commit/cab0bfbb2645bb8f689535e5e2834e2dbc23f5a5
+
+Not really the same because we don't just skip the
+"proxy:scheme://host" for SCRIPT_FILENAME, we really "resolve" the
+rest through ap_core_translate() (which adds DOCUMENT_ROOT) and
+ap_directory_walk() (which splits, provided the script exists).
+
+Eg. by requesting "/sympa/index.php/blah" I get:
+(gdb) dump_table r->subprocess_env
+[11] 'DOCUMENT_ROOT'='/var/www/htdocs' [0x5555556c4e98]
+[16] 'SCRIPT_FILENAME'='/var/www/htdocs/sympa/index.php' [0x7fffe8007378]
+[22] 'REQUEST_URI'='/sympa/index.php/blah' [0x7fffe8007cc8]
+[23] 'SCRIPT_NAME'='/sympa/index.php' [0x7fffe8007ce0]
+[24] 'PATH_INFO'='/blah' [0x7fffe80067ef]
+[25] 'PATH_TRANSLATED'='/var/www/htdocs/blah' [0x7fffe8007d10]
+
+>
+> As the thread talks about, maybe we can get them to accept some other
+> way to signal Apache.
+
+Or with the real SCRIPT_FILENAME get them to not think apache_was_there..

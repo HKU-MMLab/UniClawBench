@@ -1,0 +1,25 @@
+Message-ID: <YfQnFduQGJXUAcWp@an3as.eu>
+X-Clawbench-ID: BIO-2024-0662
+Date: Fri, 28 Jan 2022 18:25:41 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>,	Pierre Gruet <pgt@debian.org>
+Subject: Java help for king needed
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_01_msg00106.html
+
+Hi Pierre (and others),
+
+I realised that king was moved to Github and tried to upgrade the
+package to the latest upstream version.  Unfortunately I failed as you
+can see in Salsa-CI[1].
+
+Any help would be welcome
+
+     Andreas.
+
+[1] https://salsa.debian.org/med-team/king/-/jobs/2407025
+
+--
+http://fam-tille.de

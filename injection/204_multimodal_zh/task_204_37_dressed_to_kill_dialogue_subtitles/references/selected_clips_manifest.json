@@ -1,0 +1,16 @@
+[
+  {
+    "slug": "dressed_to_kill",
+    "title": "Dressed to Kill",
+    "identifier": "DressedToKill1946",
+    "clip_start_sec": 1260,
+    "clip_end_sec": 1740,
+    "duration_sec": 480,
+    "clip_video": "clip.mp4",
+    "resolution": [
+      720,
+      576
+    ],
+    "fps": 25.0
+  }
+]

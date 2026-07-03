@@ -1,0 +1,43 @@
+{
+  "task_id": "task_105_37_obsidian_vault_cleanup",
+  "input_basis": "real Vite docs imported from vitejs/vite",
+  "upstream_repository": "https://github.com/vitejs/vite",
+  "upstream_commit": "a2fff212d9ec6838c2b046e5bcc900d4334df3ff",
+  "expected_note_count": 12,
+  "broken_links": [
+    {
+      "source": "Imported Vite Docs/guide-env-and-mode.md",
+      "example_pattern": "../config/",
+      "expected_handling": "convert Vite relative docs links to local Obsidian/Markdown links when target page is included, otherwise document unresolved external docs link"
+    },
+    {
+      "source": "Imported Vite Docs/guide-using-plugins.md",
+      "example_pattern": "./api-plugin",
+      "expected_target": "Imported Vite Docs/guide-api-plugin.md"
+    }
+  ],
+  "duplicate_groups": [
+    [
+      "Imported Vite Docs/guide-env-and-mode.md",
+      "Review Queue/local-env-mode-notes.md"
+    ]
+  ],
+  "expected_orphans_or_low_link_notes": [
+    "Imported Vite Docs/guide-troubleshooting.md",
+    "Imported Vite Docs/config-build-options.md"
+  ],
+  "normalized_tag_examples": [
+    "#vite/guide",
+    "#vite/config",
+    "#vite/plugins",
+    "#vite/build"
+  ],
+  "required_outputs": {
+    "cleaned_vault": "/tmp_workspace/results/project_vault_cleaned/",
+    "index": "/tmp_workspace/results/project_vault_cleaned/INDEX.md",
+    "duplicates": "/tmp_workspace/results/project_vault_cleaned/duplicates.md",
+    "orphans": "/tmp_workspace/results/project_vault_cleaned/orphans.md",
+    "report": "/tmp_workspace/results/vault_cleanup_report.md",
+    "screenshot": "/tmp_workspace/results/obsidian_cleanup.png"
+  }
+}

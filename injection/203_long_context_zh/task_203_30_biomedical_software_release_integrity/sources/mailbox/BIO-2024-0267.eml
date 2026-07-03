@@ -1,0 +1,23 @@
+Message-ID: <DB9P192MB15401D68D4FB2823906EDC70A6AA2@DB9P192MB1540.EURP192.PROD.OUTLOOK.COM>
+X-Clawbench-ID: BIO-2024-0267
+Date: Wed, 24 Jul 2024 11:13:50 +0000
+From: Urmas Rist <urmas@leil.io>
+To: Aleksandr Ragel <AR@leil.io>, Tony Travis	<tony.travis@minke-informatics.co.uk>, Debian Med Project List	<debian-med@lists.debian.org>
+Subject: Re: Shared cluster storage for bioinformatics
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_07_msg00031.html
+
+> I followed this up and took a look at the "SaunaFS" GitHub" repo:
+
+>> https://github.com/aNeutrino/open-saunafs
+
+Quick correction: The official repository is here:
+
+> https://github.com/leil-io/saunafs
+
+Regards,
+---
+Urmas Rist
+SaunaFS Maintainer

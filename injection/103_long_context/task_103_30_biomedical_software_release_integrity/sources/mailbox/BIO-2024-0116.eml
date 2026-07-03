@@ -1,0 +1,45 @@
+Message-ID: <CALF6qJkyOi2S-n28ALWfG-pRiw3RdxdkGyBGf9womiKoo+ZZ-Q@mail.gmail.com>
+X-Clawbench-ID: BIO-2024-0116
+Date: Fri, 11 Feb 2022 14:38:26 +0100
+From: Anton Gladky <gladk@debian.org>
+To: Steffen Möller <steffen_moeller@gmx.de>
+Subject: Re: RFS faber - build dependency for boost-python
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2022_02_msg00025.html
+
+Hi Steffen,
+
+thanks for your work and packaging effort. I will take a deeper
+look into the package within the next few days.
+
+On behalf of the Debian Boost Team.
+
+Best regards
+
+Anton
+
+Am Di., 8. Feb. 2022 um 18:07 Uhr schrieb Steffen Möller
+:
+
+>
+> Hello,
+>
+> This is about
+>
+> https://salsa.debian.org/python-team/packages/faber
+>
+> I had asked the Debian boost folks already to comment on that package
+> but have not heard back. Faber is a build tool that the upstream boost
+> community has elevated as the next thing for their Python interface. But
+> it can also be used as a substitute for make.
+>
+> Anyway. Could someone please have a look that I have not borked to
+> smoothen the transition through NEW? Please feel free to upload.
+>
+> Many thanks!
+>
+> Best,
+> Steffen
+>

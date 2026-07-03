@@ -1,0 +1,12 @@
+Message-ID: <asf-2024-0214@httpd.apache.org>
+X-Clawbench-ID: ASF-2024-0214
+Date: Fri, 05 Jan 2024 13:22:00 +0000
+From: Linda Rao <lrao@apache.org>
+To: dev@httpd.apache.org
+Subject: release signing account
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: synthetic Apache-style project infrastructure review implant
+
+The release-helper account is still being used by three people to stage artifacts. The account was meant as a named fallback for one release manager, not a shared signing profile.

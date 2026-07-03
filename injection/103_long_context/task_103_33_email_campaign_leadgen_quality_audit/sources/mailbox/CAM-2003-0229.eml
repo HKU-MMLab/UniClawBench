@@ -1,0 +1,54 @@
+Message-ID: <20020913190117.GG5897@kluge.net>
+X-Clawbench-ID: CAM-2003-0229
+Date: Fri, 13 Sep 2002 15:01:18 -0400
+From: Theo Van Dinter <felicity@kluge.net>
+To: vernon@comp-wiz.com
+Subject: Re: [SAtalk] OT: DNS MX Record Clarification Please
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01473.1b15dc3174af070411cb9f2bd16add15
+
+On Fri, Sep 13, 2002 at 01:33:43PM -0500, vernon wrote:
+> As I understand it, DNS A records are used in a rotating fashion for load
+> balancing, but DNS MX records are used in order or prority, meaning the 10
+> before the 20 and only 20 if the 10 isn't available.
+
+That's the theory, yes.
+
+> But only some of the mail is actually being scanned which leads me to
+> believe that not all of the mail is actually hitting that box and the 10
+> never goes down. Why? Have I got something confused here?
+
+No, but either due to some technical glitch, or downright just wanting
+to do so, people send to the secondary.  It's a semi-usual spammer trick
+actually to bypass the main server and send directly to a secondary
+since it will either have less filtering, or be "trusted", or ...
+
+MX records in the mail world are all explained in RFC 2821, section 5:
+
+[...]
+   Multiple MX records contain a preference indication that MUST be used
+   in sorting (see below).  Lower numbers are more preferred than higher
+   ones.  If there are multiple destinations with the same preference
+   and there is no clear reason to favor one (e.g., by recognition of an
+   easily-reached address), then the sender-SMTP MUST randomize them to
+   spread the load across multiple mail exchangers for a specific
+   organization.
+[...]
+   If it determines that it should relay the message without rewriting
+   the address, it MUST sort the MX records to determine candidates for
+   delivery.  The records are first ordered by preference, with the
+   lowest-numbered records being most preferred.  The relay host MUST
+   then inspect the list for any of the names or addresses by which it
+   might be known in mail transactions.  If a matching record is found,
+   all records at that preference level and higher-numbered ones MUST be
+   discarded from consideration.  If there are no records left at that
+   point, it is an error condition, and the message MUST be returned as
+   undeliverable.  If records do remain, they SHOULD be tried, best
+   preference first, as described above.
+
+--
+Randomly Generated Tagline:
+"Now let's say I like sheep...  And now let's say I take the sheep to a
+ Christmas party..."               - Bob Golub

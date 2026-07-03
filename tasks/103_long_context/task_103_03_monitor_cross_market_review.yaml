@@ -1,0 +1,34 @@
+task_id: task_103_03_monitor_cross_market_review
+category: 103_long_context
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I'm shopping for a 2K (1440p) 27-inch high-refresh monitor, and I want to cross-check a Chinese buying guide against a North American one, because I suspect the two markets recommend pretty different products. Help me actually read both guides and make sense of where they agree and where they don't.
+
+  Install the `bilibili-all-in-one` skill from ClawHub and find the Bilibili 2025 monitor recommendation guide by the creator `野生的装机宅` (the host introduces himself as "小峰") — the "爆肝一个月 / 工厂级测试设备 / 无任何恰饭" self-funded round-up that covers 40-plus monitors across every size and spec. Also find the Monitors Unboxed video on YouTube that updates their best 1440p gaming monitor guide for 2025. Save screenshot evidence for both sources.
+
+  Then work through the content of both guides and produce the following:
+  1. From EACH guide, extract the specific monitors recommended in the 2K / 1440p 27-inch high-refresh segment (for the Bilibili guide, this is its dedicated "2K 27寸高刷" section; for the Monitors Unboxed guide, its 1440p gaming-monitor picks). List the actual model names from each source.
+  2. Identify which BRANDS are recommended by BOTH guides in this segment, and which specific model(s) each guide picks under those shared brands. Note explicitly that the exact models are very unlikely to match across the two markets, even when the brand is shared.
+  3. Explain the cross-market differences: which brands appear in both guides, which brands are essentially unique to the Chinese guide (e.g. domestic brands that the North American guide never mentions), and which are unique to the North American guide. Where the guides give a reason or a standout strength for a pick (panel type, response time, HDR/local dimming, color accuracy, price-to-performance), summarize it and attribute it to the correct source.
+  4. Give a practical takeaway for someone shopping this segment in the US who wants to use the Chinese guide's findings as extra input: which shared-brand models from the North American guide are the safest bets, and what the Chinese guide adds or contradicts.
+  5. To show you actually watched both videos rather than reading a written best-of summary, answer these detail questions that are only stated in the videos themselves:
+     a. The Bilibili host flags one recommended monitor as having had a "mixed-panel" (混发面板) problem in the past that the manufacturer later resolved — which model, and what panel did it standardize on?
+     b. The Bilibili host notes that the cheapest 27-inch 2K monitor he recommends goes by a second name / alternate model number — what is that model and its alternate name?
+     c. In the Monitors Unboxed video, among the 1440p 360Hz QD-OLEDs, which specific model does the reviewer call the "best calibrated," and what shared weakness do that model and the Gigabyte model have?
+     d. What rule-of-thumb discount does the Monitors Unboxed reviewer suggest for stepping down from a 1440p 240Hz OLED to an equivalent LCD?
+
+  Save the per-guide model lists, the shared-brand analysis, the cross-market difference write-up, the answers to the video-detail questions, screenshot paths, and source links to `/tmp_workspace/results/monitor_1440p_compare.md`.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+codex:
+  max_user_followups: 2

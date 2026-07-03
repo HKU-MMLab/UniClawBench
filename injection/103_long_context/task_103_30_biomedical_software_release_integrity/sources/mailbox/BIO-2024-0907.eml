@@ -1,0 +1,44 @@
+Message-ID: <YvJryUrm+WBU87E9@an3as.eu>
+X-Clawbench-ID: BIO-2024-0907
+Date: Tue, 9 Aug 2022 16:14:33 +0200
+From: Andreas Tille <andreas@fam-tille.de>
+To: Nilesh Patra <nilesh@riseup.net>
+Subject: Re: zalign: autopkgtest failure on 32 bit architectures: Segmentation fault
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_08_msg00037.html
+
+No objections, Andreas.
+
+Am Mon, Aug 08, 2022 at 06:36:43PM +0530 schrieb Nilesh Patra:
+> On 8/8/22 6:20 PM, Mohd Bilal wrote:
+> >
+> >
+> > On 8/8/22 18:05, Nilesh Patra wrote:
+> > > On 8/8/22 5:50 PM, Mohd Bilal wrote:
+> > > > Hello Team,
+> > > >
+> > > > I took a look at this and it seems the upstream[1] is not active anymore and Ubuntu already has a long standing bug report[2] regarding the same issue which hasn't seen any progress yet.
+> > >
+> > > I tried to add autopkgtests to zalign long ago, and if I remember correctly it was segfaulting
+> > > on some data on amd64 itself.
+> > >
+> > > > So can we skip the tests for the failing architectures ?
+> > >
+> > > We should instead ask for _removal of this package_. Same version since 9 years and upstream
+> > > is dead too.
+> >
+> > Makes sense. So shall I file a removal request for this package ?
+>
+> Yes.
+>
+> @Andreas, any objections?
+>
+> --
+> Best,
+> Nilesh
+>
+
+--
+http://fam-tille.de

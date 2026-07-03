@@ -1,0 +1,32 @@
+Message-ID: <CADizRgacztTnRCGGgacNy1bEpHNpDpntn8SWizfCp5KT1GYV-A@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1468
+Date: Wed, 25 May 2022 14:47:42 +0200
+From: Mathias Bynens <mths@google.com>
+To: dev@httpd.apache.org
+Subject: Re: release anyone?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-05.mbox
+
++1
+
+Is there any chance of considering https://github.com/apache/httpd/pull/318
+as part of the release? It seems like a small & harmless change to support
+a new RFC, so I’d expect it to be uncontroversial.
+
+On Wed, May 25, 2022 at 2:28 PM Eric Covener <covener@gmail.com> wrote:
+
+> +1 ty!
+>
+> On Wed, May 25, 2022, 8:15 AM Stefan Eissing <stefan@eissing.org> wrote:
+>
+>> Anyone feeling release vibes in the air?
+>>
+>> it's been a good 2.5 months and some things have accumulated.
+>> Maybe the start of June would be a good target?
+>>
+>> Kind Regards,
+>> Stefan
+>>
+>

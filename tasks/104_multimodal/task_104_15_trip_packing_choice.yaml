@@ -1,0 +1,45 @@
+task_id: task_104_15_trip_packing_choice
+category: 104_multimodal
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I am going away for 3 days this week, and
+  `/tmp_workspace/clawbench/sources/trip_packing/` contains:
+  - Photos of the clothes, toiletries, and electronics I want to bring
+  - Photos of my two existing bags and one suitcase
+  - Itinerary screenshots and weather screenshots
+  - A `notes.json` file
+
+  Please help me decide which bag / suitcase I should bring this time, and organize
+  everything into a packing plan that can actually be followed.
+
+  Requirements:
+  1. Based on the images, determine which items are bulky, fragile, need to be kept
+     with me, or are easy to forget.
+  2. Choose the most suitable main option from my existing bags and suitcase, and
+     explain why.
+  3. Generate `/tmp_workspace/results/packing_plan.md`, including at least:
+     - Which bag / suitcase is the final choice
+     - Must-bring item list
+     - Which items should go in the main compartment, outside pockets, or separate
+       protection
+     - Which items do not actually need to be brought
+  4. If you think my existing items will not fit, or if some items clearly conflict
+     with each other, point that out directly.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - trip_packing/
+
+codex:
+  max_user_followups: 2

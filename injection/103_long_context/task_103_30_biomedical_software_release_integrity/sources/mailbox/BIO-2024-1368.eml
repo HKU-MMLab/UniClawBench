@@ -1,0 +1,40 @@
+Message-ID: <ZlwnMh3ZTamWx1oo@fusion.emlwks999.eu>
+X-Clawbench-ID: BIO-2024-1368
+Date: Sun, 2 Jun 2024 10:02:58 +0200
+From: Étienne Mollier <emollier@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: Migration to htslib ecosystem 1.20.
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_06_msg00000.html
+
+Hi,
+
+Andreas Tille, on 2024-05-31:
+> Hi,
+>
+> thank you for all your work
+
+You're welcome!  :)
+
+> Am Thu, May 30, 2024 at 09:06:11PM +0200 schrieb Étienne Mollier:
+> > Erm, things didn't go according to the plan.  Thankfully Salsa
+> > caught properly my failure to handle properly arch-any &
+> > no-arch-all builds (which went hidden behind the version
+> > discrepancy issue).  Anyway this should be fixed in samtools
+> > 1.20-3 upload (I failed to dcut rm 1.20-2 in time).  Hopefully
+> > it is good for real now.
+
+samtools 1.20 made it to testing.  The ecosystem should be up to
+date in testing now.
+
+Have a nice day,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  pgp: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/1, please excuse my verbosity
+   `-    on air: Kansas - Journey from Mariabronn
+
+PS: sorry Andreas for the duplicate, I did a regular reply
+instead of a list reply.

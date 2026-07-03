@@ -1,0 +1,14 @@
+{
+  "id": "R04",
+  "title": "Dust Bowl farm, Oklahoma",
+  "type": "photograph",
+  "collection_rights": "varies",
+  "item_rights": "No known restrictions on publication",
+  "image": {
+    "thumbnail": true,
+    "full_image": false,
+    "iiif": false,
+    "width": 150
+  },
+  "dedup_group": "g_dustbowl"
+}

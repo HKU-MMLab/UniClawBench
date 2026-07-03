@@ -1,0 +1,38 @@
+Message-ID: <Z2LhK6ParozkMcGS@redhat.com>
+X-Clawbench-ID: ASF-2024-0145
+Date: Wed, 18 Dec 2024 14:50:19 +0000
+From: Joe Orton <jorton@redhat.com>
+To: dev@httpd.apache.org
+Subject: Re: httpd 2.4 -> next
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-12.mbox
+
+On Fri, Dec 13, 2024 at 09:16:43AM -0500, Jim Jagielski wrote:
+> Hi All!
+>
+> Come '25 I'll have some cycles to get back into some serious httpd
+> work, and am looking to find out what our next steps are. I've
+> followed along the lists but have really not been active. Do we have a
+> plan forward, past httpd-2.4? I'd like to see what areas I could look
+> into to help us drive forward. Some things that I want to do is reboot
+> my work on various proxy enhancements, including auto discovery and
+> balancer metrics.
+
+Nice! I've been quite short on time the last few months with various
+work distractions as well. From my side, I'd like to see a 2.5.x release
+series to prepare for 2.6, there are various trunk improvements which
+are hard/impossible to backport to 2.4.x and it would be good to get
+them out there.
+
+> Some considerations and potential topics of discussion:
+>
+> 1. On trunk, baseline something newer than c89
+> 2. Update the autoconf suite
+> 3. future roadmap
+
+Moving to C11 could be interesting, also requiring a OpenSSL 3+
+baseline?
+
+Regards, Joe

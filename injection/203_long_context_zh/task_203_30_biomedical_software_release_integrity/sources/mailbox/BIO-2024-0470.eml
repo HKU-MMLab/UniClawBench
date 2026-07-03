@@ -1,0 +1,75 @@
+Message-ID: <ZvMnyE4lLObVH4z_@emlwks999.eu>
+X-Clawbench-ID: BIO-2024-0470
+Date: Tue, 24 Sep 2024 22:57:44 +0200
+From: Étienne Mollier <emollier@debian.org>
+To: Debian-Med <debian-med@lists.debian.org>
+Subject: Re: GNUmed (-client/-server): new upstream available
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_09_msg00022.html
+
+Hi Karsten,
+
+Thanks for the notice about the newer GNUmed revision!
+
+Karsten Hilbert, on 2024-09-22:
+> with Andreas currently being our Father Figure may I ask for
+> a kind soul to re-package gnumed-client and gnumed-server due
+> to a new upstream version having been published ?
+
+I cloned the gnumed-client and -server to at least have a look,
+if not proceeding to an upload.  Maybe someone else is already
+at it, but if not, I may have few cycles during some upcoming
+evenings.
+
+[…]
+> The changelog for reference:
+>
+>               1.8.19
+>
+>        FIX: export area: exception on browsing export dir
+>        FIX: export area: allow removing remote/empty/stale DIRENTRYs
+>        FIX: document: gracefully handle empty templates [thanks parallels]
+>        FIX: episodes: do not auto-tinker with open state of existing episodes
+>
+>        IMPROVED: documents: part export filename
+>        IMPROVED: regular expression strings [thanks Wolfgang]
+>        IMPROVED: export area: saving entries as archive
+
+Thanks, it looks like there are no changes too involved.  I saw
+in the gnumed packages extensive logic to deal with various
+issues and dispatch files in several locations and documentation
+packages, but it seems most of the heavy lifting is already
+done.
+
+> Relevant links:
+>
+> 	https://packages.debian.org/sid/gnumed-client
+>
+> 	https://tracker.debian.org/pkg/gnumed-client
+>
+> 	https://www.gnumed.de/documentation/
+>
+> 	https://www.gnumed.de/downloads/client/1.8/
+
+I could get gnumed-client 1.8.19, no problem so far.
+
+> 	https://www.gnumed.de/downloads/server/v22
+
+I'm a bit confused by the gnumed-server 22.28 refresh I see on
+your web page.  Is the 22.28 source code from January already in
+sid sufficient, or are there substancial changes?
+
+(I'm just checking I'm not assuming wrongly.  With #1082672 and
+the changelog only covering gnumed-client, I'd suppose only the
+client is needed.  But if not, a server version bump to 22.29
+would have been less confusing and would have had a chance to be
+caught by our uscan tool.)
+
+Have a nice day,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  pgp: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/2, please excuse my verbosity
+   `-

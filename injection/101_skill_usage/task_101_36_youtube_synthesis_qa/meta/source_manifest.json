@@ -1,0 +1,10 @@
+{
+  "task_id": "task_101_36_youtube_synthesis_qa",
+  "note": "internal archive — not injected. The executor consumes the YouTube transcript snapshot under /tmp_workspace/clawbench/sources/transcripts/.",
+  "entries": [
+    {
+      "path": "transcripts/",
+      "description": "Frozen YouTube-transcript snapshot used as source material for the synthesis-and-QA task. The executor identifies the in-scope videos and answers comprehension questions against this captured set."
+    }
+  ]
+}

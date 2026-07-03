@@ -1,0 +1,27 @@
+# MOC
+
+- [[projects/alpha]]
+- [[projects/beta]]
+- [[projects/gamma]]
+- [[projects/delta]]
+- [[daily-2026-04-01]]
+- [[daily-2026-04-06]]
+- [[daily-2026-04-07]]
+- [[daily-2026-04-08]]
+- [[areas/reliability]]
+- [[areas/customer-onboarding]]
+- [[areas/security]]
+- [[notes/roadmap-draft]]
+- [[notes/research-summary]]
+- [[Index/people-moc]]
+- [[Index/meetings-moc]]
+- [[references/api-contract]]
+- [[references/decision-log]]
+- [[references/glossary]]
+- [[meetings/launch-postmortem]]
+- [[notes/dependencies-map]]
+- [[notes/team-kickoff]]
+- [[daily-2026-04-03]]
+- [[daily-2026-04-05]]
+
+#project/alpha

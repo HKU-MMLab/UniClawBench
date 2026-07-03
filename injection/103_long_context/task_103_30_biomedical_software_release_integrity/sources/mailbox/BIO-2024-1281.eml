@@ -1,0 +1,53 @@
+Message-ID: <ZTJhcx2ZOC-PSdHN@an3as.eu>
+X-Clawbench-ID: BIO-2024-1281
+Date: Fri, 20 Oct 2023 13:16:03 +0200
+From: Andreas Tille <tille@debian.org>
+To: Oyindamola Olatunji <ikeadeoyin@gmail.com>
+Subject: Re: Adding autopkgtest to Orthanc-python
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_10_msg00011.html
+
+Hi,
+
+Am Fri, Oct 20, 2023 at 08:44:26AM +0100 schrieb Oyindamola Olatunji:
+> I am working on adding autopkgtest to the orthanc-python package. Whenever
+> I run the test locally, it gets stuck in execution and doesn't seem to give
+> an output.
+>
+> Here is the autopkgtest:
+> https://salsa.debian.org/med-team/orthanc-python/-/commit/9e751a67614e90d383956f400906ce8121bcfc81
+>
+> I look forward to your feedback.
+
+@Sebastian: An other outreachy intern has just written a test for main
+orthanc package.  It seems to work so far.  Please have a look and add
+some comments here.
+
+Regarding orthanc-python: I confirm I also can't run this test
+successfully.  (@Oyindamola: It was important to set "Restrictions:
+needs-root" to make sure Orthanc will be found in Salsa CI.)  The
+CI test in Salsa[1] ends with:
+
+...
+I1020 09:35:19.401658 ServerIndex.cpp:510] Closing the monitor thread for stable resources
+I1020 09:35:19.402890 ServerIndex.cpp:308] Stopping the database flushing thread
+E1020 09:35:19.409488 main.cpp:2091] Uncaught exception, stopping now: [The TCP port of the DICOM server is privileged or already in use] (code 2004)
+W1020 09:35:19.409584 main.cpp:2122] Orthanc has stopped
+
+I have no idea what this might mean.  Could you have a look at the
+test?  I also realised that you are installing
+
+   debian/configuration/sample.py
+
+Is it possible that even this script can be used as example?
+
+Kind regards
+    Andreas.
+
+
+[1] https://salsa.debian.org/med-team/orthanc-python/-/jobs/4831625
+
+--
+http://fam-tille.de

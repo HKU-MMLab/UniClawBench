@@ -1,0 +1,70 @@
+Message-ID: <Y0mCmku0/yxsvwke@an3as.eu>
+X-Clawbench-ID: BIO-2024-1438
+Date: Fri, 14 Oct 2022 17:39:06 +0200
+From: Andreas Tille <andreas@fam-tille.de>
+To: Martin Uecker <uecker@tugraz.at>
+Subject: Re: BART 0.8.0
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00057.html
+
+Hi again,
+
+the build fails on i386[1].  Any idea what might went wrong?
+
+Please note: I'm not able to sponsor bart in the next week
+but I guess someone else will step in.
+
+Kind regards
+
+      Andreas.
+
+
+[1] https://buildd.debian.org/status/fetch.php?pkg=bart&arch=i386&ver=0.8.00-2&stamp=1665741010&raw=0
+
+Am Fri, Oct 14, 2022 at 08:53:00AM +0200 schrieb Andreas Tille:
+> Hi Martin,
+>
+> Am Thu, Oct 13, 2022 at 09:41:19PM +0200 schrieb Martin Uecker:
+> > > Yes, the issue is numerical unit tests failing on
+> > > some archs. This not entirely surprising as we had this
+> > > before, and we added *many* new tests in this version.
+> > >
+> > > I will see that it get it running on some ARM64 myself
+> > > and then push some fixes.
+> >
+> > Ok, I pushed some changes which should address this.
+> > There was some issue affecting 32bit archs
+> > and also some other issue we could reproduce
+> > on ARM64. This is still under investigation but
+> > turning off some optimizations seems to fix it
+> > for now.
+> >
+> > There also is the issue that some autopkgtests
+> > were sometimes failing. I tried to address this
+> > too.
+>
+> I've uploaded bart.  Thanks a lot for working on this.
+>
+> > For bart-cuda I also changed the build dependency
+> > to g++-11 and maybe this works now with the new
+> > nvidia-toolkit
+> >
+> > So please upload bart and bart-cuda. Thank you!
+>
+> I've not yet uploaded bart-cuda.  I think it makes sense to wait until
+> all autobuilders have passed bart.  Please ping me in case I might
+> forget.
+>
+> Kind regards
+>
+>      Andreas.
+>
+> --
+> http://fam-tille.de
+>
+>
+
+--
+http://fam-tille.de

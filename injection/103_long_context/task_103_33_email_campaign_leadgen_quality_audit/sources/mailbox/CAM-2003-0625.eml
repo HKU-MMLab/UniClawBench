@@ -1,0 +1,32 @@
+Message-ID: <20020909191229.EBB3DB1@whatexit.org>
+X-Clawbench-ID: CAM-2003-0625
+Date: Mon, 09 Sep 2002 15:12:28 -0400
+From: Tom Reingold <noglider@pobox.com>
+To: exmh-users@spamassassin.taint.org
+Subject: Re: Sorting
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00977.8046655ae38293b58a69a94389f20020
+
+On Mon, 09 Sep 2002 12:05:55 PDT,
+	Rick Baartman <baartman@lin12.triumf.ca> wrote:
+
+> Is there a way to do a global Sort command? Here's the situation:
+> I like to sort by date every folder. I'm cleaning up my inbox from
+> most recent to oldest, since I find this direction most efficient (I
+> guess because it helps me recognize the significance of individual,
+> old messages). But this adds messages to my other folders in the
+> wrong order. When I'm done, I'd like to re-sort all the folders I've
+> changed.
+
+I don't understand.  How does sorting one folder add messages to
+other folders?  What do you use to sort?
+
+Tom
+
+
+_______________________________________________
+Exmh-users mailing list
+Exmh-users@redhat.com
+https://listman.redhat.com/mailman/listinfo/exmh-users

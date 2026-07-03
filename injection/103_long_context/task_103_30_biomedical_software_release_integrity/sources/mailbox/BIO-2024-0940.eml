@@ -1,0 +1,25 @@
+Message-ID: <ZurfoDcIs_d3pa6I@an3as.eu>
+X-Clawbench-ID: BIO-2024-0940
+Date: Wed, 18 Sep 2024 16:11:44 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Developer statistics
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_09_msg00016.html
+
+Am Wed, Sep 18, 2024 at 01:24:47PM +0000 schrieb Nilesh Patra:
+> Offtopic, but do you see a possibility of adding a SSL cert to
+> blends.debian.net?
+>
+> The “http://”; URL doesn’t work for me when I’m using a machine I don’t
+> own, as the network administrator’s settings block it.
+
+Its on my long term todo list but never made it on top. :-(
+
+Kind regards
+     Andreas.
+
+--
+https://fam-tille.de

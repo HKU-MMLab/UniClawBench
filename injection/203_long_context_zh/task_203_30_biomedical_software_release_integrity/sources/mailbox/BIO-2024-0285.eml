@@ -1,0 +1,35 @@
+Message-ID: <ZN5/e59dSwT8ixWF@an3as.eu>
+X-Clawbench-ID: BIO-2024-0285
+Date: Thu, 17 Aug 2023 22:13:47 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Lin Qigang <lq27267@gmail.com>
+Subject: Re: pyensembl autopkgtest
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_08_msg00006.html
+
+Hi,
+
+Am Thu, Aug 17, 2023 at 10:27:37PM +0700 schrieb Lin Qigang:
+> Hi Andreas,
+>
+> I have pushed the limited testing to salsa for pyensembl. The tests being
+> run pass, but the command `pyensembl -h` will still error if run. Do you
+> want to upload these changes, or should it wait until the transition from
+> Pypi to Github for pyensembl and the packaging of tinytimer are over?
+
+I think its not really urgent.  Users on this list might raise their
+voice in case my opinion does not fit their needs.
+
+> I plan to wait on a response from tinytimer before creating the ITP for it.
+> I have done some prep work, so the packaging should be done soon after it
+> has been tagged.
+
+Thanks a lot for working on this
+
+   Andreas.
+
+
+--
+http://fam-tille.de

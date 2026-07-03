@@ -1,0 +1,43 @@
+Message-ID: <CAFQGv+ZoKjwRR5zYrP2tXbNTLKnK9tCOAYxF=Oa3fpSF4Jhf8w@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0572
+Date: Wed, 14 Feb 2024 22:33:44 -0500
+From: Joe Schaefer <joe@sunstarsys.com>
+To: dev@httpd.apache.org
+Subject: Re: release apreq 2.18 and mothball the project
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-02.mbox
+
+Bite me Eric.
+
+Next?
+
+Joe Schaefer, Ph.D.
+<https://sunstarsys.com/orion/features>
+Orion - The Enterprise Jamstack Wiki <https://sunstarsys.com/orion/features>
+<joe@sunstarsys.com>
+954.253.3732 <//954.253.3732>
+
+
+On Wed, Feb 14, 2024 at 10:25 PM Eric Covener <covener@gmail.com> wrote:
+
+> On Wed, Feb 14, 2024 at 1:45 PM Joe Schaefer <joe@sunstarsys.com> wrote:
+> >
+> > Assuming Google hasn't found any more fuzzing vulnerabilities with
+> apreq, we should call the subproject done after releasing it, rolling any
+> new efforts into httpd's internal copy of the codebase for the next major
+> release of httpd.
+> >
+> > Sound like a plan?  I can get the ball rolling on the RM process
+> assuming I still have working login (or can reacquire it via pw reset.
+>
+> I think another apreq release makes sense.
+>
+> But from the few relevant threads over the years (many on private
+> lists), there seems to be little maintainer support for apreq much
+> less apreq embedded in httpd. If there ever were a release branched
+> from trunk, I don't think it's likely the embedded apreq would
+> survive.  I think it's a big consideration for what's done with the
+> standalone tree.
+>

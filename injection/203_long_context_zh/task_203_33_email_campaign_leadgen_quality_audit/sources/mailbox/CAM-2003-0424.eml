@@ -1,0 +1,86 @@
+Message-ID: <200208082048.VAA04625@lugh.tuatha.org>
+X-Clawbench-ID: CAM-2003-0424
+Date: Thu, 08 Aug 2002 22:24:32 +0100
+From: wintermute <cout@eircom.net>
+To: ilug@linux.ie
+Subject: Re: [ILUG] Gentoo Linux
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00314.ea2320dd4e87b08924861080f8e7b8f5
+
+Mark Page <mpage@esatclear.ie> printfd
+
+APOLOGIES IN ADVANCE FOR 80 CHAR LINES IN WEB MAIL (will get a mail client for this soon, honest)
+
+> Has anybody on the list installed/used this distro? If so wouldn't mind a bit
+> of help.
+>
+>  Burnt the ISO's from the latest Linux Format magazine. Took a couple of
+> attempts to install but got there. My problem - I have a standard dial-up
+> modem and the installation gives you the network card setup so internet
+> download is out of the question, but, I installed the Stage3 tarball which
+> puts the .tgz files on your harddrive.
+>
+>  So methinks, I have the software there and all I need to do is install so as
+> 1) get the necessary programmes to connect to the net and 2) install any
+> other programmes I might need.
+>
+>  What actually happens is that if, for example, I attempt to install the KDE
+> package, the system goes looking for any dependencies on the net despite the
+> fact that the dependencies reside on my hard drive. Obviously I can't install
+> anything.
+>
+>  Have checked all docs on the web page and nothing deals with a standard
+> dial-up modem or how to tell the package manager to look for the dependencies
+> on the hard drive.
+>
+>  Anybody able to help me here?
+>
+>  Thanks in anticipation.
+
+
+Yup I'm running it on my k6 233 laptop. It's tres sweet.
+
+I would recommend getting wvdial, opening a virtual terminal dialing the internet and then emerging the packages you need.
+
+I did my install over my home lan and the lan in work (which has DSL - running Linux as firewall/router/mailserver of course).
+
+But yes you will need at least wvdial to make this puppy happen me thinks.
+
+In fact it looks as if the base install comes with wvdial for just this kind of instal.
+
+But I just found this on the Gentoo site for you.
+http://forums.gentoo.org/viewtopic.php?t=4691&highlight=modem
+
+Specifically
+
+quote:
+If it is not too obvious, these are the steps I took.
+
+
+    * Boot off the install CD
+    * modprobe serial
+    * setserial (if needed)
+    * create mount point for other distribution
+    * mount other distribution
+    * chroot'd to other distribution
+    * su - to regular user
+    * ran wvdial
+    * switch consoles and install as normal
+
+
+And yes I do give better technical support to people who use
+distros I like.
+
+I'm only laughing on the outside
+My smile is just skin deep
+If you could see inside I'm really crying
+You might join me for a weep.
+<<At your service Madame>>
+
+
+--
+Irish Linux Users' Group: ilug@linux.ie
+http://www.linux.ie/mailman/listinfo/ilug for (un)subscription information.
+List maintainer: listmaster@linux.ie

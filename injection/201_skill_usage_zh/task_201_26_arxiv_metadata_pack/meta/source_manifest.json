@@ -1,0 +1,57 @@
+{
+  "task_id": "task_201_26_arxiv_metadata_pack",
+  "note": "Operator populates these paths with arXiv-style placeholder PDFs before running the task. The executor expects them under /tmp_workspace/clawbench/sources/. Filenames are intentionally scrambled — the executor must read each PDF to recover the arxiv id; filename does not encode it.",
+  "topic": "robotics_and_embodied_ai",
+  "in_scope_count": 7,
+  "off_topic_count": 5,
+  "entries": [
+    {
+      "path": "arxiv_papers/paper_a3f.pdf",
+      "description": "In-scope: arXiv 2410.00425 — ManiSkill3 robotics simulator."
+    },
+    {
+      "path": "arxiv_papers/paper_b9k.pdf",
+      "description": "In-scope: arXiv 2307.15818 — RT-2 vision-language-action model."
+    },
+    {
+      "path": "arxiv_papers/paper_c1m.pdf",
+      "description": "In-scope: arXiv 2303.04137 — Diffusion Policy visuomotor policy learning."
+    },
+    {
+      "path": "arxiv_papers/paper_d7q.pdf",
+      "description": "In-scope: arXiv 2302.12766 — Voltron language-driven representation learning for robotics."
+    },
+    {
+      "path": "arxiv_papers/paper_e2t.pdf",
+      "description": "In-scope: arXiv 2303.03378 — PaLM-E embodied multimodal language model."
+    },
+    {
+      "path": "arxiv_papers/paper_f5h.pdf",
+      "description": "In-scope: arXiv 2310.08864 — Open X-Embodiment / RT-X."
+    },
+    {
+      "path": "arxiv_papers/paper_g8w.pdf",
+      "description": "In-scope: arXiv 2306.11706 — RoboCat self-improving generalist manipulator."
+    },
+    {
+      "path": "arxiv_papers/paper_h2n.pdf",
+      "description": "Off-topic distractor: arXiv 2407.05600 — latent diffusion image generation; title contains the word manipulation but the work is generative-image only."
+    },
+    {
+      "path": "arxiv_papers/paper_i6r.pdf",
+      "description": "Off-topic distractor: arXiv 2401.18000 — multi-agent RL for board games; no robot or embodiment."
+    },
+    {
+      "path": "arxiv_papers/paper_j4y.pdf",
+      "description": "Off-topic distractor: arXiv 2403.22002 — diffusion-based tabular data augmentation; manipulation in title is data manipulation."
+    },
+    {
+      "path": "arxiv_papers/paper_k7l.pdf",
+      "description": "Off-topic distractor: arXiv 2402.30050 — CV interpretability of CNN feature maps; locomotion in title is a metaphor."
+    },
+    {
+      "path": "arxiv_papers/paper_m9z.pdf",
+      "description": "Off-topic distractor: arXiv 2406.14400 — HCI user study on chatbot avatar embodiment; no physical robot."
+    }
+  ]
+}

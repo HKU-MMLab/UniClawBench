@@ -1,0 +1,24 @@
+Message-ID: <YcLOhkhrgdG6XFYR@an3as.eu>
+X-Clawbench-ID: BIO-2024-1340
+Date: Wed, 22 Dec 2021 08:06:46 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Help with possibly broken ar archive
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_12_msg00132.html
+
+Hi Aaron,
+
+Am Tue, Dec 21, 2021 at 09:10:24PM -0500 schrieb Aaron M. Ucko:
+> Yes, it looks like the build system is set up to produce "thin" archives
+> that can't stand on their own; please try patching the Makefile to drop
+> the T flag from LINK.A (line 72).
+
+As always thanks for your prompt help
+
+     Andreas.
+
+--
+http://fam-tille.de

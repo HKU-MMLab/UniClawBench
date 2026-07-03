@@ -1,0 +1,39 @@
+task_id: task_204_02_llama_figure2_reasoning_curves
+category: 204_multimodal_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  从 arXiv 下载论文 "LLaMA: Open and Efficient Foundation Language Models"，并复现
+  Figure 2 中的三条训练曲线：`TriviaQA`、`SIQA` 和 `PIQA`。
+
+  要求：
+  1. 你必须确认正确的论文和正确的页码；不要把其他训练图表当作 Figure 2 来复现。
+  2. 使用 Python + matplotlib 分别绘制这三张图，保留原始的坐标轴、颜色、虚线基线、
+     图例、标题以及整体布局风格。
+  3. 展示四条 LLaMA 曲线（7B / 13B / 33B / 65B）以及 Chinchilla 的虚线基线。
+  4. 与原图对比并至少修订一次，而不是只画出第一版。
+  5. 将结果保存在 `/tmp_workspace/results/` 下，至少包括：
+     - `figure2_triviaqa.png`
+     - `figure2_siqa.png`
+     - `figure2_piqa.png`
+     - `figure2_recreate.py`
+     - `notes.md`
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/llama_page8_full.png
+  - references/figure2_full.png
+  - references/figure2_triviaqa.png
+  - references/figure2_siqa.png
+  - references/figure2_piqa.png
+
+codex:
+  max_user_followups: 2

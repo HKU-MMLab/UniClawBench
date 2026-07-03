@@ -1,0 +1,14 @@
+{
+  "task_id": "task_101_39_music_analysis",
+  "notes_visible_to_executor": false,
+  "skill_changes": [
+    {
+      "original_skill": "songsee",
+      "injected_skill": "songsee",
+      "original_source": "clawhub",
+      "change_type": "benchmark path adaptation",
+      "reason": "The original clawhub songsee skill assumes its CLI is installed on the PATH; the benchmark cannot ship the binary, so the injected SKILL.md adds a numpy/scipy fallback recipe (onset-autocorrelation tempo, chroma-profile key fit, RMS section boundaries) so the executor can still satisfy the task in offline mode.",
+      "executor_skill_path": "skills/songsee"
+    }
+  ]
+}

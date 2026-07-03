@@ -1,0 +1,536 @@
+{
+  "generated_at": "2026-04-24T07:00:00Z",
+  "projects": [
+    "Work",
+    "Personal",
+    "Learning",
+    "Home"
+  ],
+  "items": [
+    {
+      "id": 1000,
+      "project": "Home",
+      "priority": 3,
+      "content": "Pick up dry cleaning from the corner shop",
+      "due_date": "2026-04-25",
+      "estimated_minutes": 45,
+      "checked": false
+    },
+    {
+      "id": 1001,
+      "project": "Work",
+      "priority": 3,
+      "content": "Review Datadog alert-noise report from SRE",
+      "due_date": "2026-04-26",
+      "estimated_minutes": 90,
+      "checked": false
+    },
+    {
+      "id": 1002,
+      "project": "Work",
+      "priority": 1,
+      "content": "Sign off on vendor SOW \u2014 Acme MSA renewal",
+      "due_date": "2026-04-27",
+      "estimated_minutes": 30,
+      "checked": false
+    },
+    {
+      "id": 1003,
+      "project": "Learning",
+      "priority": 2,
+      "content": "Work through SQL window-function exercises (Blau course, ch. 4)",
+      "due_date": "2026-04-28",
+      "estimated_minutes": 45,
+      "checked": false
+    },
+    {
+      "id": 1004,
+      "project": "Work",
+      "priority": 4,
+      "content": "Triage the Linear backlog \u2014 close stale tickets (>90d)",
+      "due_date": "2026-04-29",
+      "estimated_minutes": 15,
+      "checked": false
+    },
+    {
+      "id": 1005,
+      "project": "Work",
+      "priority": 4,
+      "content": "Archive the #eng-notes Slack DMs older than 2026-Q4",
+      "due_date": "2026-04-30",
+      "estimated_minutes": 30,
+      "checked": false
+    },
+    {
+      "id": 1006,
+      "project": "Personal",
+      "priority": 4,
+      "content": "Pay Chase credit-card statement before the 30th",
+      "due_date": "2026-05-01",
+      "estimated_minutes": 15,
+      "checked": false
+    },
+    {
+      "id": 1007,
+      "project": "Learning",
+      "priority": 4,
+      "content": "Read the Raft consensus paper (Ongaro & Ousterhout, 2014)",
+      "due_date": "2026-04-25",
+      "estimated_minutes": 60,
+      "checked": false
+    },
+    {
+      "id": 1008,
+      "project": "Work",
+      "priority": 3,
+      "content": "Prepare the staging-rollout slide for engineering all-hands",
+      "due_date": "2026-04-26",
+      "estimated_minutes": 45,
+      "checked": false
+    },
+    {
+      "id": 1009,
+      "project": "Work",
+      "priority": 3,
+      "content": "Review PR #4122 \u2014 billing idempotency fix (Priya)",
+      "due_date": "2026-04-27",
+      "estimated_minutes": 60,
+      "checked": false
+    },
+    {
+      "id": 1010,
+      "project": "Work",
+      "priority": 3,
+      "content": "Draft Q3 roadmap pre-read for Alex (1-pager)",
+      "due_date": "2026-04-28",
+      "estimated_minutes": 30,
+      "checked": false
+    },
+    {
+      "id": 1011,
+      "project": "Work",
+      "priority": 1,
+      "content": "Respond to Globex escalation ticket #8821 (latency regression)",
+      "due_date": "2026-04-29",
+      "estimated_minutes": 30,
+      "checked": false
+    },
+    {
+      "id": 1012,
+      "project": "Personal",
+      "priority": 1,
+      "content": "Call Walgreens about the prescription refill (Lisinopril)",
+      "due_date": "2026-04-30",
+      "estimated_minutes": 30,
+      "checked": false
+    },
+    {
+      "id": 1013,
+      "project": "Work",
+      "priority": 3,
+      "content": "Unblock Priya on the OAuth \u2192 OIDC migration (ADR review)",
+      "due_date": "2026-05-01",
+      "estimated_minutes": 30,
+      "checked": false
+    },
+    {
+      "id": 1014,
+      "project": "Personal",
+      "priority": 4,
+      "content": "Return the Amazon jacket (wrong size) before the window closes",
+      "due_date": "2026-04-25",
+      "estimated_minutes": 15,
+      "checked": false
+    },
+    {
+      "id": 1015,
+      "project": "Learning",
+      "priority": 1,
+      "content": "Finish Chapter 7 of Designing Data-Intensive Applications",
+      "due_date": "2026-04-26",
+      "estimated_minutes": 45,
+      "checked": false
+    },
+    {
+      "id": 1016,
+      "project": "Learning",
+      "priority": 4,
+      "content": "Watch GopherCon 2024 \u2014 \"Tricks of the Trade\" talk",
+      "due_date": "2026-04-27",
+      "estimated_minutes": 60,
+      "checked": false
+    },
+    {
+      "id": 1017,
+      "project": "Learning",
+      "priority": 1,
+      "content": "Submit the MIT 6.824 distributed-systems course quiz",
+      "due_date": "2026-04-28",
+      "estimated_minutes": 60,
+      "checked": false
+    },
+    {
+      "id": 1018,
+      "project": "Home",
+      "priority": 4,
+      "content": "Water the fiddle-leaf + trim the two dead leaves",
+      "due_date": "2026-04-29",
+      "estimated_minutes": 60,
+      "checked": false
+    },
+    {
+      "id": 1019,
+      "project": "Home",
+      "priority": 4,
+      "content": "Take recycling + cardboard to the curb Tuesday night",
+      "due_date": "2026-04-30",
+      "estimated_minutes": 60,
+      "checked": false
+    },
+    {
+      "id": 1020,
+      "project": "Work",
+      "priority": 2,
+      "content": "Reconcile the invoice mismatch with AR team (INV-20943)",
+      "due_date": "2026-05-01",
+      "estimated_minutes": 45,
+      "checked": false
+    },
+    {
+      "id": 1021,
+      "project": "Work",
+      "priority": 1,
+      "content": "Prepare the board pre-read for Thursday's meeting",
+      "due_date": "2026-04-25",
+      "estimated_minutes": 60,
+      "checked": false
+    },
+    {
+      "id": 1022,
+      "project": "Personal",
+      "priority": 2,
+      "content": "Check flight prices for parents' visit in June (LAX \u2194 BOS)",
+      "due_date": "2026-04-26",
+      "estimated_minutes": 30,
+      "checked": false
+    },
+    {
+      "id": 1023,
+      "project": "Work",
+      "priority": 2,
+      "content": "Write up 1:1 notes from Tuesday's session with Sam",
+      "due_date": "2026-04-27",
+      "estimated_minutes": 45,
+      "checked": false
+    },
+    {
+      "id": 1024,
+      "project": "Personal",
+      "priority": 3,
+      "content": "Book a dentist cleaning for May (Dr. Chen's office)",
+      "due_date": "2026-04-28",
+      "estimated_minutes": 45,
+      "checked": false
+    },
+    {
+      "id": 1101,
+      "project": "Work",
+      "priority": 1,
+      "content": "Send Q1 retro doc to leadership (URGENT)",
+      "due_date": "2026-04-22",
+      "estimated_minutes": 60,
+      "checked": true,
+      "completed_at": "2026-04-22T18:42:00Z"
+    },
+    {
+      "id": 1102,
+      "project": "Work",
+      "priority": 1,
+      "content": "Review and merge auth-service PR #482",
+      "due_date": "2026-04-24",
+      "estimated_minutes": 30,
+      "checked": true,
+      "completed_at": "2026-04-24T10:15:00Z"
+    },
+    {
+      "id": 1103,
+      "project": "Personal",
+      "priority": 1,
+      "content": "File expense report for SF trip before deadline",
+      "due_date": "2026-04-25",
+      "estimated_minutes": 45,
+      "checked": true,
+      "completed_at": "2026-04-25T22:08:00Z"
+    },
+    {
+      "id": 1104,
+      "project": "Learning",
+      "priority": 2,
+      "content": "Finish chapter 7 of Designing Data-Intensive Applications",
+      "due_date": "2026-04-26",
+      "estimated_minutes": 90,
+      "checked": true,
+      "completed_at": "2026-04-26T20:30:00Z"
+    },
+    {
+      "id": 1105,
+      "project": "Home",
+      "priority": 1,
+      "content": "Confirm appointment with plumber for Sat",
+      "due_date": "2026-04-27",
+      "estimated_minutes": 15,
+      "checked": true,
+      "completed_at": "2026-04-27T09:00:00Z"
+    },
+    {
+      "id": 1206,
+      "project": "Work",
+      "priority": 2,
+      "content": "Review PR #1287 from team-platform",
+      "due_date": "2026-04-23",
+      "estimated_minutes": 30,
+      "checked": true,
+      "completed_at": "2026-04-23T14:20:00Z"
+    },
+    {
+      "id": 1207,
+      "project": "Personal",
+      "priority": 1,
+      "content": "Book dentist appointment for Tuesday",
+      "due_date": "2026-04-21",
+      "estimated_minutes": 10,
+      "checked": true,
+      "completed_at": "2026-04-22T09:15:00Z"
+    },
+    {
+      "id": 1208,
+      "project": "Work",
+      "priority": 1,
+      "content": "Update Q2 roadmap with new milestones",
+      "due_date": "2026-04-25",
+      "estimated_minutes": 90,
+      "checked": true,
+      "completed_at": "2026-04-25T17:30:00Z"
+    },
+    {
+      "id": 1209,
+      "project": "Learning",
+      "priority": 3,
+      "content": "Finish Rust async chapter (chapter 9)",
+      "due_date": "2026-04-26",
+      "estimated_minutes": 60,
+      "checked": true,
+      "completed_at": "2026-04-26T20:00:00Z"
+    },
+    {
+      "id": 1210,
+      "project": "Home",
+      "priority": 2,
+      "content": "Order replacement air filter for HVAC",
+      "due_date": "2026-04-24",
+      "estimated_minutes": 15,
+      "checked": true,
+      "completed_at": "2026-04-24T11:00:00Z"
+    },
+    {
+      "id": 1211,
+      "project": "Work",
+      "priority": 1,
+      "content": "Drag latency analysis report into Confluence (URGENT)",
+      "due_date": "2026-04-22",
+      "estimated_minutes": 45,
+      "checked": true,
+      "completed_at": "2026-04-22T16:30:00Z"
+    },
+    {
+      "id": 1212,
+      "project": "Work",
+      "priority": 2,
+      "content": "1:1 prep notes for skip-level on Wed",
+      "due_date": "2026-04-23",
+      "estimated_minutes": 25,
+      "checked": true,
+      "completed_at": "2026-04-23T08:45:00Z"
+    },
+    {
+      "id": 1213,
+      "project": "Personal",
+      "priority": 1,
+      "content": "File quarterly tax estimate before deadline",
+      "due_date": "2026-04-24",
+      "estimated_minutes": 90,
+      "checked": true,
+      "completed_at": "2026-04-24T20:15:00Z"
+    },
+    {
+      "id": 1214,
+      "project": "Learning",
+      "priority": 2,
+      "content": "Watch Tiger Woods masterclass episode 5 (golf swing fundamentals)",
+      "due_date": "2026-04-25",
+      "estimated_minutes": 45,
+      "checked": true,
+      "completed_at": "2026-04-25T19:00:00Z"
+    },
+    {
+      "id": 1215,
+      "project": "Home",
+      "priority": 3,
+      "content": "Restock dishwasher pods + paper towels via Costco",
+      "due_date": "2026-04-26",
+      "estimated_minutes": 20,
+      "checked": true,
+      "completed_at": "2026-04-26T15:30:00Z"
+    },
+    {
+      "id": 1216,
+      "project": "Work",
+      "priority": 1,
+      "content": "Approve marketing budget request for Q3 (P1)",
+      "due_date": "2026-04-21",
+      "estimated_minutes": 30,
+      "checked": true,
+      "completed_at": "2026-04-21T15:00:00Z"
+    },
+    {
+      "id": 1217,
+      "project": "Work",
+      "priority": 2,
+      "content": "Schedule team retro for sprint 47",
+      "due_date": "2026-04-23",
+      "estimated_minutes": 15,
+      "checked": true,
+      "completed_at": "2026-04-23T10:00:00Z"
+    },
+    {
+      "id": 1218,
+      "project": "Personal",
+      "priority": 1,
+      "content": "Confirm Sunday brunch with parents",
+      "due_date": "2026-04-25",
+      "estimated_minutes": 5,
+      "checked": true,
+      "completed_at": "2026-04-25T08:30:00Z"
+    },
+    {
+      "id": 1219,
+      "project": "Learning",
+      "priority": 2,
+      "content": "Read 'Attention Is All You Need' annotated tour",
+      "due_date": "2026-04-26",
+      "estimated_minutes": 90,
+      "checked": true,
+      "completed_at": "2026-04-26T22:15:00Z"
+    },
+    {
+      "id": 1220,
+      "project": "Home",
+      "priority": 3,
+      "content": "Pay electricity bill (auto-pay confirmation)",
+      "due_date": "2026-04-27",
+      "estimated_minutes": 5,
+      "checked": true,
+      "completed_at": "2026-04-27T09:00:00Z"
+    },
+    {
+      "id": 1221,
+      "project": "Work",
+      "priority": 1,
+      "content": "Compile design-doc feedback summary for arch council",
+      "due_date": "2026-04-22",
+      "estimated_minutes": 60,
+      "checked": true,
+      "completed_at": "2026-04-22T19:00:00Z"
+    },
+    {
+      "id": 1222,
+      "project": "Personal",
+      "priority": 2,
+      "content": "Renew passport \u2014 submit application with photo",
+      "due_date": "2026-04-23",
+      "estimated_minutes": 30,
+      "checked": true,
+      "completed_at": "2026-04-23T16:00:00Z"
+    },
+    {
+      "id": 1223,
+      "project": "Work",
+      "priority": 1,
+      "content": "Approve PR #1342 (security patch for auth)",
+      "due_date": "2026-04-24",
+      "estimated_minutes": 25,
+      "checked": true,
+      "completed_at": "2026-04-24T11:00:00Z"
+    },
+    {
+      "id": 1224,
+      "project": "Learning",
+      "priority": 3,
+      "content": "Watch Stanford CS229 ensemble methods lecture",
+      "due_date": "2026-04-26",
+      "estimated_minutes": 75,
+      "checked": true,
+      "completed_at": "2026-04-26T21:00:00Z"
+    },
+    {
+      "id": 1225,
+      "project": "Home",
+      "priority": 2,
+      "content": "Order new toner cartridge (HP 305A black)",
+      "due_date": "2026-04-27",
+      "estimated_minutes": 10,
+      "checked": true,
+      "completed_at": "2026-04-27T13:00:00Z"
+    },
+    {
+      "id": 1226,
+      "project": "Work",
+      "priority": 1,
+      "content": "Review compensation cycle proposal (P1, due Mon)",
+      "due_date": "2026-04-21",
+      "estimated_minutes": 60,
+      "checked": true,
+      "completed_at": "2026-04-21T17:30:00Z"
+    },
+    {
+      "id": 1227,
+      "project": "Work",
+      "priority": 2,
+      "content": "Schedule arch-review for Service Mesh proposal",
+      "due_date": "2026-04-22",
+      "estimated_minutes": 15,
+      "checked": true,
+      "completed_at": "2026-04-22T11:00:00Z"
+    },
+    {
+      "id": 1228,
+      "project": "Personal",
+      "priority": 1,
+      "content": "Pay credit card bill (auto-pay confirmation)",
+      "due_date": "2026-04-23",
+      "estimated_minutes": 5,
+      "checked": true,
+      "completed_at": "2026-04-23T09:00:00Z"
+    },
+    {
+      "id": 1229,
+      "project": "Learning",
+      "priority": 3,
+      "content": "Read Chapter 5 of 'Designing Data-Intensive Applications'",
+      "due_date": "2026-04-24",
+      "estimated_minutes": 90,
+      "checked": true,
+      "completed_at": "2026-04-24T22:00:00Z"
+    },
+    {
+      "id": 1230,
+      "project": "Home",
+      "priority": 2,
+      "content": "Schedule HVAC seasonal tune-up appointment",
+      "due_date": "2026-04-25",
+      "estimated_minutes": 10,
+      "checked": true,
+      "completed_at": "2026-04-25T14:00:00Z"
+    }
+  ]
+}

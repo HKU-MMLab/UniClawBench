@@ -1,0 +1,165 @@
+Message-ID: <26F9C274-800F-40E5-A9FE-32601C8EFAE6@eissing.org>
+X-Clawbench-ID: ASF-2024-1255
+Date: Thu, 9 Mar 2023 09:33:15 +0100
+From: "Stefan Eissing via dev" <dev@httpd.apache.org>
+To: dev@httpd.apache.org
+Subject: Re: Current pytest failures
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-03.mbox
+
+One tip, if you call "pytest -vvv -k test_h2_202_03b", it will run just that test and raise LogLevel for several "interesting" modules.
+
+The error log in test/gen/apache/logs/error_log will then show just that one test case. It's a convenient way to get more information without meddling with the test case configs.
+
+The list of modules for which the log level is raised on "-vvv" is found in test/modules/http2/env.py:73
+
+	self.add_httpd_log_modules(["http2", "proxy_http2", "h2test", "proxy", "proxy_http"])
+
+we can add "cgi" or others if those are of interest.
+
+> Am 08.03.2023 um 22:44 schrieb Rainer Jung <rainer.jung@kippdata.de>:
+>
+> Hi there,
+>
+> I currently get three consistent pytest failures:
+>
+>
+> A) FAILED modules/http2/test_202_trailer.py::TestTrailers::test_h2_202_03b
+>
+> Response code is 500 and trace 8 server log shows:
+>
+> - we see the right request
+>
+> [Wed Mar 08 22:03:35.699234 2023] [aptest:info] [pid 4606:tid 140645737559808] [remote 127.0.0.1:50490] test[test_h2_202_03b]: POST //echohd.py?name=X HTTP/2.0
+> [Wed Mar 08 22:03:35.699247 2023] [http:trace4] [pid 4606:tid 140645737559808] http_request.c(436): [remote 127.0.0.1:50490] Headers received from client:
+> [Wed Mar 08 22:03:35.699254 2023] [http:trace4] [pid 4606:tid 140645737559808] http_request.c(440): [remote 127.0.0.1:50490]   Accept: */*
+> [Wed Mar 08 22:03:35.699259 2023] [http:trace4] [pid 4606:tid 140645737559808] http_request.c(440): [remote 127.0.0.1:50490] Accept-Encoding: gzip, deflate
+> [Wed Mar 08 22:03:35.699264 2023] [http:trace4] [pid 4606:tid 140645737559808] http_request.c(440): [remote 127.0.0.1:50490] User-Agent: nghttp2/1.52.0
+> [Wed Mar 08 22:03:35.699268 2023] [http:trace4] [pid 4606:tid 140645737559808] http_request.c(440): [remote 127.0.0.1:50490] Content-Length: 119
+> [Wed Mar 08 22:03:35.699273 2023] [http:trace4] [pid 4606:tid 140645737559808] http_request.c(440): [remote 127.0.0.1:50490]   Host: 127.0.0.1:5001
+> [Wed Mar 08 22:03:35.699277 2023] [http:trace4] [pid 4606:tid 140645737559808] http_request.c(440): [remote 127.0.0.1:50490] Ap-Test-Name: test_h2_202_03b
+> [Wed Mar 08 22:03:35.699282 2023] [http:trace4] [pid 4606:tid 140645737559808] http_request.c(440): [remote 127.0.0.1:50490]   X: 3b
+>
+> [Wed Mar 08 22:03:35.699425 2023] [authz_core:debug] [pid 4606:tid 140645737559808] mod_authz_core.c(818): [remote 127.0.0.1:50490] AH01626: authorization result of Require all granted: granted
+> [Wed Mar 08 22:03:35.699440 2023] [authz_core:debug] [pid 4606:tid 140645737559808] mod_authz_core.c(818): [remote 127.0.0.1:50490] AH01626: authorization result of <RequireAny>: granted
+> [Wed Mar 08 22:03:35.699446 2023] [core:trace3] [pid 4606:tid 140645737559808] request.c(362): [remote 127.0.0.1:50490] request authorized without authentication by access_checker_ex hook: /echohd.py
+>
+> We get the right response from the python CGI script:
+>
+> [Wed Mar 08 22:03:35.784148 2023] [cgid:trace4] [pid 4606:tid 140645737559808] util_script.c(576): [remote 127.0.0.1:50490] Headers from script 'echohd.py':
+> [Wed Mar 08 22:03:35.784206 2023] [cgid:trace4] [pid 4606:tid 140645737559808] util_script.c(577): [remote 127.0.0.1:50490]   Status: 200
+> [Wed Mar 08 22:03:35.784219 2023] [cgid:trace1] [pid 4606:tid 140645737559808] util_script.c(658): [remote 127.0.0.1:50490] Status line from script 'echohd.py': 200
+> [Wed Mar 08 22:03:35.784234 2023] [cgid:trace4] [pid 4606:tid 140645737559808] util_script.c(577): [remote 127.0.0.1:50490] Content-Type: text/plain
+> [Wed Mar 08 22:03:35.784255 2023] [filter:trace4] [pid 4606:tid 140645737559808] mod_filter.c(169): [remote 127.0.0.1:50490] Content-Type 'text/plain' ...
+> [Wed Mar 08 22:03:35.784268 2023] [filter:trace4] [pid 4606:tid 140645737559808] mod_filter.c(181): [remote 127.0.0.1:50490] ... did not match 'text/html'
+> [Wed Mar 08 22:03:35.784278 2023] [filter:trace4] [pid 4606:tid 140645737559808] mod_filter.c(175): [remote 127.0.0.1:50490] ... matched 'text/plain'
+>
+> deflate compression wants to kick in (no idea whether that's part of the problem)
+>
+> [Wed Mar 08 22:03:35.784288 2023] [filter:trace2] [pid 4606:tid 140645737559808] mod_filter.c(188): [remote 127.0.0.1:50490] Content-Type condition for 'deflate' matched
+>
+> and now a connection reset!
+>
+> [Wed Mar 08 22:03:35.788364 2023] [cgid:trace1] [pid 4606:tid 140645737559808] mod_cgid.c(1686): (104)Connection reset by peer: [remote 127.0.0.1:50490] Failed to flush CGI output to client
+>
+> and another request for that URL comes in:
+>
+> [Wed Mar 08 22:03:35.788486 2023] [ssl:debug] [pid 4606:tid 140645737559808] ssl_engine_kernel.c(422): [remote 127.0.0.1:50490] AH02034: Subsequent (No.2) HTTPS request received for child 0 (server cgi.tests.httpd.apache.org:443)
+> [Wed Mar 08 22:03:35.788500 2023] [aptest:info] [pid 4606:tid 140645737559808] [remote 127.0.0.1:50490] test[test_h2_202_03b]: POST //echohd.py?name=X HTTP/2.0
+>
+> And now we send the 500 code, probably due to the connection reset
+>
+> [Wed Mar 08 22:03:35.788676 2023] [http2:debug] [pid 4606:tid 140645720774400] h2_stream.c(1537): [client 127.0.0.1:50490] AH03073: h2_stream(4606-0-13,HALF_CLOSED_REMOTE): submit response 500
+>
+> The access log also shows two of these requests:
+>
+> 127.0.0.1 - - [08/Mar/2023:22:03:35 +0100] "POST //echohd.py?name=X HTTP/2.0" 500 678 "-" "nghttp2/1.52.0" 1
+> 127.0.0.1 - - [08/Mar/2023:22:03:35 +0100] "POST //echohd.py?name=X HTTP/2.0" 200 0 "-" "nghttp2/1.52.0" 1
+>
+> And in the trace 8 error log except for the "Subsequent (No.2) HTTPS request received" I don't see where this would get a code 200 as indicated in the access log.
+>
+> Client side log:
+>
+> execute: nghttp --header=host: cgi.tests.httpd.apache.org:5001 -v --header=AP-Test-Name: test_h2_202_03b --header X: 3b --data=/tmp/esupport-testdir/pytest-event-111/gen/nghttp.req.body https://127.0.0.1:5001//echohd.py?name=X
+> send frame SETTINGS on stream 0
+> send frame PRIORITY on stream 3
+> send frame PRIORITY on stream 5
+> send frame PRIORITY on stream 7
+> send frame PRIORITY on stream 9
+> send frame PRIORITY on stream 11
+> send frame HEADERS on stream 13
+> send frame DATA on stream 13
+> recv frame SETTINGS on stream 0
+> recv frame WINDOW_UPDATE on stream 0
+> recv frame SETTINGS on stream 0
+> send frame SETTINGS on stream 0
+> stream 13 header :status: 500
+> stream 13 header content-length: 531
+> stream 13 header content-type: text/html;
+> stream 13 header date: Wed,
+> stream 13 header server: Apache/2.4.56
+> stream 13: recv 5 header
+> stream 13: 531 DATA bytes added
+> send frame GOAWAY on stream 0
+>
+>
+> B) FAILED modules/http2/test_202_trailer.py::TestTrailers::test_h2_202_04
+>
+> Again status code 500.
+>
+> Server side same situation in error log:
+>
+> [Wed Mar 08 22:17:50.869360 2023] [aptest:info] [pid 16578:tid 140549696104192] [remote 127.0.0.1:32936] test[test_h2_202_04]: POST //echohd.py?name=X HTTP/2.0
+> [Wed Mar 08 22:17:50.869375 2023] [http:trace4] [pid 16578:tid 140549696104192] http_request.c(436): [remote 127.0.0.1:32936] Headers received from client:
+> [Wed Mar 08 22:17:50.869382 2023] [http:trace4] [pid 16578:tid 140549696104192] http_request.c(440): [remote 127.0.0.1:32936]   Accept: */*
+> [Wed Mar 08 22:17:50.869387 2023] [http:trace4] [pid 16578:tid 140549696104192] http_request.c(440): [remote 127.0.0.1:32936] Accept-Encoding: gzip, deflate
+> [Wed Mar 08 22:17:50.869392 2023] [http:trace4] [pid 16578:tid 140549696104192] http_request.c(440): [remote 127.0.0.1:32936] User-Agent: nghttp2/1.52.0
+> [Wed Mar 08 22:17:50.869396 2023] [http:trace4] [pid 16578:tid 140549696104192] http_request.c(440): [remote 127.0.0.1:32936] Content-Length: 119
+> [Wed Mar 08 22:17:50.869401 2023] [http:trace4] [pid 16578:tid 140549696104192] http_request.c(440): [remote 127.0.0.1:32936]   Host: 127.0.0.1:5001
+> [Wed Mar 08 22:17:50.869405 2023] [http:trace4] [pid 16578:tid 140549696104192] http_request.c(440): [remote 127.0.0.1:32936] Ap-Test-Name: test_h2_202_04
+> [Wed Mar 08 22:17:50.869410 2023] [http:trace4] [pid 16578:tid 140549696104192] http_request.c(440): [remote 127.0.0.1:32936]   X: 4a
+> [Wed Mar 08 22:17:50.869414 2023] [http:trace4] [pid 16578:tid 140549696104192] http_request.c(440): [remote 127.0.0.1:32936]   Trailer: x
+> [Wed Mar 08 22:17:50.869527 2023] [authz_core:debug] [pid 16578:tid 140549696104192] mod_authz_core.c(818): [remote 127.0.0.1:32936] AH01626: authorization result of Require all granted: granted
+> [Wed Mar 08 22:17:50.869540 2023] [authz_core:debug] [pid 16578:tid 140549696104192] mod_authz_core.c(818): [remote 127.0.0.1:32936] AH01626: authorization result of <RequireAny>: granted
+> [Wed Mar 08 22:17:50.869546 2023] [core:trace3] [pid 16578:tid 140549696104192] request.c(362): [remote 127.0.0.1:32936] request authorized without authentication by access_checker_ex hook: /echohd.py
+> [Wed Mar 08 22:17:50.949661 2023] [cgid:trace4] [pid 16578:tid 140549696104192] util_script.c(576): [remote 127.0.0.1:32936] Headers from script 'echohd.py':
+> [Wed Mar 08 22:17:50.949710 2023] [cgid:trace4] [pid 16578:tid 140549696104192] util_script.c(577): [remote 127.0.0.1:32936]   Status: 200
+> [Wed Mar 08 22:17:50.949718 2023] [cgid:trace1] [pid 16578:tid 140549696104192] util_script.c(658): [remote 127.0.0.1:32936] Status line from script 'echohd.py': 200
+> [Wed Mar 08 22:17:50.949735 2023] [cgid:trace4] [pid 16578:tid 140549696104192] util_script.c(577): [remote 127.0.0.1:32936] Content-Type: text/plain
+> [Wed Mar 08 22:17:50.949749 2023] [filter:trace4] [pid 16578:tid 140549696104192] mod_filter.c(169): [remote 127.0.0.1:32936] Content-Type 'text/plain' ...
+> [Wed Mar 08 22:17:50.949755 2023] [filter:trace4] [pid 16578:tid 140549696104192] mod_filter.c(181): [remote 127.0.0.1:32936] ... did not match 'text/html'
+> [Wed Mar 08 22:17:50.949760 2023] [filter:trace4] [pid 16578:tid 140549696104192] mod_filter.c(175): [remote 127.0.0.1:32936] ... matched 'text/plain'
+> [Wed Mar 08 22:17:50.949765 2023] [filter:trace2] [pid 16578:tid 140549696104192] mod_filter.c(188): [remote 127.0.0.1:32936] Content-Type condition for 'deflate' matched
+> [Wed Mar 08 22:17:50.952509 2023] [cgid:trace1] [pid 16578:tid 140549696104192] mod_cgid.c(1686): (104)Connection reset by peer: [remote 127.0.0.1:32936] Failed to flush CGI output to client
+> [Wed Mar 08 22:17:50.952620 2023] [ssl:debug] [pid 16578:tid 140549696104192] ssl_engine_kernel.c(422): [remote 127.0.0.1:32936] AH02034: Subsequent (No.2) HTTPS request received for child 1792 (server cgi.tests.httpd.apache.org:443)
+> [Wed Mar 08 22:17:50.952634 2023] [aptest:info] [pid 16578:tid 140549696104192] [remote 127.0.0.1:32936] test[test_h2_202_04]: POST //echohd.py?name=X HTTP/2.0
+> [Wed Mar 08 22:17:50.952816 2023] [http2:debug] [pid 16578:tid 140549549963008] h2_stream.c(1537): [client 127.0.0.1:32936] AH03073: h2_stream(16578-0-13,HALF_CLOSED_REMOTE): submit response 500
+>
+> Access log again shows two requests:
+>
+> 127.0.0.1 - - [08/Mar/2023:22:17:50 +0100] "POST //echohd.py?name=X HTTP/2.0" 500 678 "-" "nghttp2/1.52.0" 1
+> 127.0.0.1 - - [08/Mar/2023:22:17:50 +0100] "POST //echohd.py?name=X HTTP/2.0" 200 0 "-" "nghttp2/1.52.0" 1
+>
+>
+> Client side log:
+>
+> execute: nghttp --header=host: cgi.tests.httpd.apache.org:5001 -v --header=AP-Test-Name: test_h2_202_04 --header X: 4a --trailer X: 4b --data=/tmp/esupport-testdir/pytest-event-111/gen/nghttp.req.body https://127.0.0.1:5001//echohd.py?name=X
+> send frame SETTINGS on stream 0
+> send frame PRIORITY on stream 3
+> send frame PRIORITY on stream 5
+> send frame PRIORITY on stream 7
+> send frame PRIORITY on stream 9
+> send frame PRIORITY on stream 11
+> send frame HEADERS on stream 13
+> send frame DATA on stream 13
+> send frame HEADERS on stream 13
+> recv frame SETTINGS on stream 0
+> recv frame WINDOW_UPDATE on stream 0
+> recv frame SETTINGS on stream 0
+> send frame SETTINGS on stream 0
+> stream 13 header :status: 500
+> stream 13 header content-length: 531
+> stream 13 header content-type: text/html;
+> stream 13 header date

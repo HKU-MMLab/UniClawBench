@@ -1,0 +1,71 @@
+Message-ID: <Y+NHXwFoDkyolAlv@an3as.eu>
+X-Clawbench-ID: BIO-2024-0290
+Date: Wed, 8 Feb 2023 07:55:27 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>,	Thiago Franco de Moraes <tfmoraes@cti.gov.br>
+Subject: Autopkgtest fails for invesalius
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_02_msg00022.html
+
+Hi Thiago,
+
+seems that test never worked before but IMHO that should be fixed.
+Both debci[1] and salsa CI[2] agree about:
+
+autopkgtest [03:15:09]: test run-unit-test: [-----------------------
+[Errno 2] No such file or directory: '/home/debci/.config/invesalius/config.json'
+[Errno 2] No such file or directory: '/home/debci/.config/invesalius/config.cfg'
+Usage: app.py [options]
+
+Options:
+  -h, --help            show this help message and exit
+  -d, --debug
+  --no-gui
+  -i DICOM_DIR, --import=DICOM_DIR
+  --import-all=IMPORT_ALL
+  --import-folder=IMPORT_FOLDER
+  --remote-host=REMOTE_HOST
+  -s SAVE, --save=SAVE  Save the project after an import.
+  -t THRESHOLD, --threshold=THRESHOLD
+                        Define the threshold for the export (e.g. 100-780).
+  -e EXPORT, --export=EXPORT
+                        Export to STL.
+  -a EXPORT_TO_ALL, --export-to-all=EXPORT_TO_ALL
+                        Export to STL for all mask presets.
+  --export-project=EXPORT_PROJECT
+                        Export slices and mask to HDF5 or Nifti file.
+  --no-masks            Make InVesalius not export mask when exporting
+                        project.
+  --use-pedal           Use an external trigger pedal
+[Errno 2] No such file or directory: '/home/debci/.config/invesalius/config.json'
+[Errno 2] No such file or directory: '/home/debci/.config/invesalius/config.cfg'
+Traceback (most recent call last):
+  File "/usr/share/invesalius/app.py", line 573, in
+    main()
+  File "/usr/share/invesalius/app.py", line 566, in main
+    non_gui_startup(options, args)
+  File "/usr/share/invesalius/app.py", line 278, in non_gui_startup
+    _ = i18n.InstallLanguage(lang)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/share/invesalius/invesalius/i18n.py", line 81, in InstallLanguage
+    lang = gettext.translation('invesalius', language_dir,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: translation() got an unexpected keyword argument 'codeset'
+autopkgtest [03:15:10]: test run-unit-test: -----------------------]
+
+
+I admit in my local pbuilder chroot everything worked nicely (otherwise
+I would not have uploaded).
+
+Any idea what might be wrong here?
+
+Kind regards
+   Andreas.
+
+[1] https://ci.debian.net/data/autopkgtest/testing/amd64/i/invesalius/31159375/log.gz
+[2] https://salsa.debian.org/med-team/invesalius/-/jobs/3915988
+
+--
+http://fam-tille.de

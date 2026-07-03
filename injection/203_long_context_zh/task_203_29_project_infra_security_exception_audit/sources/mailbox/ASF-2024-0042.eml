@@ -1,0 +1,40 @@
+Message-ID: <CAMD-=VKq5+V54aMxLi_101NkSfY1Cm-oNFjU_XY1=dR=JA3CkQ@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0042
+Date: Tue, 2 Jul 2024 08:10:22 +1000
+From: Nick Edwards <nick.z.edwards@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.60-rc4 as httpd-2.4.60
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-07.mbox
+
+Hi Eric,
+Sure does, I've had email from another list member who has confirmed the
+problem, they asked for the OS and php versions which differs from theirs,
+so glad it's not just me.
+
+LoadModule php_module         modules/libphp.so
+AddType application/x-httpd-php .php
+
+On Tue, Jul 2, 2024 at 8:07 AM Eric Covener <covener@gmail.com> wrote:
+
+> On Mon, Jul 1, 2024 at 5:53 PM Nick Edwards <nick.z.edwards@gmail.com>
+> wrote:
+> >
+> > Umm, am I missing something here..
+> >
+> > After upgrade (same process as I always use which does NOT touch any
+> config files for the test vhosts), going to any php site on my test server
+> who gets all updates before I push them onto production, but for all
+> intents and purposes, is a clean live server, results  in blank page with
+> >
+> > application/x-httpd-php D)ownload, or C)ancel
+>
+> There is a regression just reported in 2.4.60 related to
+> DirectoryIndex and FallBackResource when handlers are configured with
+> AddType (rather than AddHandler).
+>
+> I am curious if this matches your config?  Working on a followup the
+> announcement and a 2.4.61.
+>

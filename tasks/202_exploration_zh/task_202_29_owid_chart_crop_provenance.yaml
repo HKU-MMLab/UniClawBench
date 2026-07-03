@@ -1,0 +1,40 @@
+task_id: task_202_29_owid_chart_crop_provenance
+category: 202_exploration_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  有人把这张图表贴进了一张幻灯片，标题和数据来源
+  那一行都被裁掉了，而我不想在不知道它真正
+  出处的情况下引用它。图片在这里：
+
+      /tmp_workspace/clawbench/sources/crop.jpg
+
+  请弄清楚这张图表展示的是什么，并将它追溯回其权威
+  来源。具体来说我需要：
+  - 这张图表衡量的是什么（以及单位），
+  - 它出自的规范图表页面（出版方自己的交互式
+    图表，而非转载它的新闻报道），
+  - 该图表本身所依据的底层数据来源/提供方
+    （这正是被裁掉的页脚所隐藏的部分），
+  - 一个下载底层数据的链接。
+
+  把你的结论和证据链（你是如何识别这张图表，以及
+  如何同时追溯图表页面和底层数据提供方）保存到
+  `/tmp_workspace/results/chart_provenance.json`，并把笔记/截图放在
+  `/tmp_workspace/results/` 下。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+sources:
+  - crop.jpg
+
+codex:
+  max_user_followups: 2

@@ -1,0 +1,52 @@
+task_id: task_101_25_prompt_injection_audit
+category: 101_skill_usage
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  We're about to feed roughly 40 external documents into our LLM pipeline,
+  but I don't fully trust the sources. Before anything goes in, I need a
+  prompt-injection audit. The files are at
+  /tmp_workspace/clawbench/sources/doc_pack/ — it's a mix of .md, .pdf,
+  .docx, .html, and .txt. Use the workspace's security scanning skill to
+  do the heavy lifting, with the skill scanner and the security-analysis skill as
+  backup for anything the first one doesn't cover.
+
+  Scan each file and save your findings to
+  /tmp_workspace/results/findings.json as a flat JSON list. For every hit,
+  include the file path under doc_pack, the suspected attack type, and a
+  short verbatim evidence snippet no longer than 400 characters.
+
+  Cap it at 3 findings per file. I'd like the most relevant one to come
+  first for each file. Be careful: some files contain phrases that look
+  like injection but appear in legitimate context, so don't just
+  keyword-grep. If a file looks suspicious but you determine it's actually
+  benign, note it in findings.json with a short reason explaining why you
+  ruled it out — I want visibility into the false-positive reasoning too.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - doc_pack
+
+skills:
+  - security-scanner
+  - skill-scanner
+  - clawsec
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

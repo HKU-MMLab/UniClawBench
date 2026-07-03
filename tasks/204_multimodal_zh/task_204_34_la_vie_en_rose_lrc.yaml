@@ -1,0 +1,45 @@
+task_id: task_204_34_la_vie_en_rose_lrc
+category: 204_multimodal_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  请打开音频文件：
+  /tmp_workspace/clawbench/sources/song.mp3
+
+  这是一首匿名歌曲。不要试图从文件名、元数据、网络信息或记忆中推断歌曲名、
+  艺人、版本或已有歌词；最终的歌词和时间戳必须仅基于这段音频。
+
+  你必须真正播放并聆听这段音频，然后自己转写。不要下载歌词、已有的 LRC/SRT
+  文件、歌词网站上的文本，也不要依赖记忆；最终的歌词和时间戳必须基于这段
+  音频。
+
+  请根据音频生成一个 LRC 歌词文件，并保存为：
+  /tmp_workspace/results/song_generated.lrc
+
+  要求：
+  1. 使用标准 LRC 格式
+  2. 每一行都必须对应一句清晰可听的歌词或短语
+  3. 不要跳过不清晰或重复的演唱段落；先写下你的最佳判断
+  4. 完成后，重点复查副歌和结尾，看是否需要修正
+  5. 覆盖最终版本，并另外输出
+     /tmp_workspace/results/song_uncertainty.md 来记录你最不确定的 2-3 处
+
+  如果 `/tmp_workspace/results/` 不存在，请先创建它。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.lrc
+  - references/ground_truth.srt
+
+sources:
+  - song.mp3
+
+codex:
+  max_user_followups: 2

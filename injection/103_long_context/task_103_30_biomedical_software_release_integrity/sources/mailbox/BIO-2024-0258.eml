@@ -1,0 +1,106 @@
+Message-ID: <YzRA6j3YCduDoxjv@an3as.eu>
+X-Clawbench-ID: BIO-2024-0258
+Date: Wed, 28 Sep 2022 14:41:14 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: How to check ? Re: RFS -- autopkgtests for dcmtk
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_09_msg00034.html
+
+Am Wed, Sep 28, 2022 at 05:57:02PM +0530 schrieb Nilesh Patra:
+> > % cat /etc/debian_version
+> > bookworm/sid
+> >
+> > gives:
+> >
+> >  % sh -x ./debian/tests/run-unit-test
+
+Ahhh, I see run-unit-test is known.
+
+> > [...]
+> > + [ -f dcmp2pgm.out ]
+> > + md5sum --check checksums
+> > md5sum: checksums: no properly formatted checksum lines found
+> > + echo FAIL
+> > FAIL
+> > + rm -rf /tmp/dcmtk-test.5wl9lz
+>
+> That's because you are explicitly interpreting it with `sh` rather than shebang do
+> its job which sets it to bash.
+> I suspect that on your system, `sh` is linked to `dash` and that indeed fails as well
+> for me.
+>
+> $ dash -x ./debian/tests/run-unit-test
+> [...]
+> + md5sum --check checksums
+> md5sum: checksums: no properly formatted MD5 checksum lines found
+> + echo FAIL
+> + rm -rf /tmp/dcmtk-test.jJjF3b
+> FAIL
+>
+> However if I change the permissions and run it,
+>
+> $ chmod +x ./debian/tests/run-unit-test; ./debian/tests/run-unit-test
+> [...]
+> CT_small.dcm: OK
+> PASS
+
+Hmmm, that sounds a bit weak for testing if the shell that was
+used has an influence on the result. :-(
+
+> And same for:
+> $ bash ./debian/tests/run-unit-test
+> [...]
+> CT_small.dcm: OK
+> PASS
+>
+> I wrote a little reasoning for it below:-
+>
+> > I would need to change:
+> >
+> > echo -e "15e7e2a11cdeabac32e1134674beda6b CT_small.dcm" >> checksums
+> >
+> > into:
+> >
+> > echo "15e7e2a11cdeabac32e1134674beda6b CT_small.dcm" >> checksums
+>
+> Yep. That's because "echo -e" introduces bashism
+>
+> As an example, with bash:
+>
+> $ echo -e "Test 17"
+> Test 17
+>
+> With dash:
+> $ echo -e "Test 17"
+> -e Test 17
+>
+> Now if that script is run with sh linked to dash, there are tonnes
+> of "-e" infront of the filenames, I did a cat of the checksums file and here
+> is what I see:
+>
+> -e 15e7e2a11cdeabac32e1134674beda6b  CT_small.dcm
+>
+> md5sum cannot interpret the "-e" and chokes.
+
+We should make the test independent from this.  IMHO
+just removing the '-e' option should do the trick.
+
+> > ref:
+> > * https://salsa.debian.org/med-team/dcmtk/-/commit/61bcbf663b79ee177dee878c72d6eda9b33683ea#8c77cc51b09ef1f7b294222180bcdb53ebb70e2f_0_23
+> >
+> > oh well...
+>
+> In this case it might make sense to remove the "-e" to make the script posix compliant, since I do not
+> particularly see the need to enable backslash interpretation.
+
++1
+
+Kind regards
+
+    Andreas.
+
+--
+http://fam-tille.de

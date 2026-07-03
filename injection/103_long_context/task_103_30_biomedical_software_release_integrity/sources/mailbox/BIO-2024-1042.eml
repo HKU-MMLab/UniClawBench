@@ -1,0 +1,35 @@
+Message-ID: <ZUnxcxHTVzsv4eCQ@an3as.eu>
+X-Clawbench-ID: BIO-2024-1042
+Date: Tue, 7 Nov 2023 09:12:35 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: migration to htslib ecosystem 1.18
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_11_msg00013.html
+
+Hi Étienne,
+
+Am Mon, Nov 06, 2023 at 10:30:04PM +0100 schrieb Étienne Mollier:
+> I kind of forgot an htslib upload to experimental in version
+> 1.18 for like two months, and which had no excuses[1] for
+> lingering  like that.  I will have some time on Wednesday to do
+> things, and I considered the idea of bumping the htslib and
+> related packages ecosystem to version 1.18 to spend the time.
+>
+> [1]: https://qa.debian.org/excuses.php?experimental=1&package=htslib
+>
+> There may be turbulences in this package ecosystem if I badly
+> anticipate corner issues, but nothing outstanding stood out in
+> the past two months, so time for larger distribution I guess.
+
+Thanks a lot for caring about this.  Just ping here if you need some
+help for uploads of htslib rdepends to experimental if you think this
+might be needed.
+
+Thanks again
+     Andreas.
+
+--
+http://fam-tille.de

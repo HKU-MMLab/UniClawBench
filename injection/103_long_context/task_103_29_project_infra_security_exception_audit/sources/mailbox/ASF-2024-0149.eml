@@ -1,0 +1,61 @@
+Message-ID: <545F58C7-D53A-4CE8-A45F-3815B05977F6@eissing.org>
+X-Clawbench-ID: ASF-2024-0149
+Date: Wed, 18 Jan 2023 19:40:17 +0100
+From: "Stefan Eissing via dev" <dev@httpd.apache.org>
+To: dev@httpd.apache.org,  Eissing Stefan <stefan@eissing.org>
+Subject: Re: sporadic 500 errors with 2.4.55
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-01.mbox
+
+Thanks for the logs. That was really helpful. If you can build a 2.4.55 yourself, could you try the following patch?
+
+
+Analysis:
+
+The 500 in the access log happens when a client RST (resets) a stream before the response has really started. The HTTP/2 processing of this is totally fine and as should be. We just have an entry in the access log where there should be none.
+
+The cause is code that is supposed to catch a rare error condition. This triggers and produces extra "SOMETHING HAS GONE WRONG" information which then leads to a wrong entry in the access log. The patch avoids this by not entering this code path when the request has been aborted. I hope this solves the wrong access logging completely.
+
+Sorry for not having caught this. I do not have test cases that check entries in the access log.
+
+Kind Regards,
+
+Stefan
+
+> Am 18.01.2023 um 18:40 schrieb Stefan Eissing via dev <dev@httpd.apache.org>:
+>
+> Helmut,
+>
+> thanks for setting this up. If you can go a bit deeper and get me logs with "http2:trace2" that would be supberb.
+>
+> If you want to keep them out of the open, you can mail at stefan@eissing.org
+>
+> Thanks a lot!
+>
+> Stefan
+>
+>> Am 18.01.2023 um 17:00 schrieb Helmut K. C. Tessarek <tessarek@evermeet.cx>:
+>>
+>> On 2023-01-18 06:43, Stefan Eissing via dev wrote:
+>>> In that case, maybe your could run the 2.4.55 mod_http2 with "LogLevel http2:debug" until some 500s show up. That would be very interesting to analyze.
+>>> You can mail/link me such a log confidential atstefan@eissing.org, if you like.
+>>
+>> I've setup a test VM and was able to reproduce the problem. However, in my test I got only one 500 error, but I do have an access log and an error_log set to http2:debug.
+>>
+>> Do you want the 2 logs or is Andreas' log sufficient?
+>>
+>> Cheers,
+>> K. C.
+>>
+>> --
+>> regards Helmut K. C. Tessarek              KeyID 0x172380A011EF4944
+>> Key fingerprint = 8A55 70C1 BD85 D34E ADBC 386C 1723 80A0 11EF 4944
+>>
+>> /*
+>>  Thou shalt not follow the NULL pointer for chaos and madness
+>>  await thee at its end.
+>> */
+>>
+>

@@ -1,0 +1,30 @@
+Message-ID: <Z2ih0kd_76JbCV-Y@eamanu>
+X-Clawbench-ID: BIO-2024-0135
+Date: Sun, 22 Dec 2024 20:33:38 -0300
+From: Emmanuel Arias <eamanu@debian.org>
+To: debian-med@lists.debian.org
+Subject: [Advent Calendar] third week bug work
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_12_msg00028.html
+
+Hi team!
+
+This week was a poor work for the team, sorry for that!
+I still have the intention to continue working on psychopy
+in the next week
+
+Here's my report:
+
+* 16-12-2024
+**  python-dicompylercore: Fix #1090137
+
+* 17-12-2024
+** Finish deepdiff work #1088239. Waiting for orderly-set.
+
+* 19-12-2024
+** Finally upload deppdiff.
+
+Cheers,
+Emmanuel

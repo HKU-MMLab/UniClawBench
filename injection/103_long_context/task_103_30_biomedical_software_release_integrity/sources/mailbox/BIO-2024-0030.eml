@@ -1,0 +1,31 @@
+Message-ID: <YWc8+7AXK0SgpUho@an3as.eu>
+X-Clawbench-ID: BIO-2024-0030
+Date: Wed, 13 Oct 2021 22:09:31 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: libcifpp
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00046.html
+
+Hi Maarten,
+
+Am Wed, Oct 13, 2021 at 03:31:02PM +0200 schrieb Maarten L. Hekkelman:
+> Yes, libcifpp is still in the queue @ftp-master. But I uploaded a new
+> package to salsa anyway. This one brings a new upstream version and also
+> includes the new update mechanism as proposed here.
+>
+> Would be nice if anyone with more power than I have is willing to upload
+> this package, as soon as it is possible of course. A review of the package
+> would also be welcome.
+
+This could be done for the first source-only upload.  It might make
+sense if you ping here once the package is accepted in unstable.
+
+Kind regards
+
+      Andreas.
+
+--
+http://fam-tille.de

@@ -1,0 +1,100 @@
+{
+  "task_id": "task_105_31_bilibili_inkscape_poster",
+  "schema_notes": "Anchored to 3 archived single-part Bilibili videos. bv_id, duration, uploader are immutable. Eval focuses on (a) a real browser flow (chromium-headless screenshot of each https://www.bilibili.com/video/<bv>/ page + curl --compressed of the same URL + htmlq HTML scrape — yt-dlp / api.bilibili.com routes are explicitly disallowed for the metadata leg) and (b) a real Inkscape composition: poster.svg must be a single composite with exactly 3 <image> elements + per-video text overlays (title, uploader, BV ID, formatted duration). Bilibili thumbnails may be .jpg or .png — both accepted.",
+  "reference_date": "2026-05-03",
+  "ground_truth": {
+    "videos": [
+      {
+        "bv_id": "BV1tt411a7Tt",
+        "page_url": "https://www.bilibili.com/video/BV1tt411a7Tt/",
+        "title": "宾利 AGAINST ALL ODDS 逮虾户4分14秒52",
+        "title_substring_anchor": "宾利",
+        "uploader": "BLACK-Android",
+        "duration_seconds": 281,
+        "duration_seconds_alt": 280,
+        "duration_formatted": "4m 41s"
+      },
+      {
+        "bv_id": "BV1Vt411X7sa",
+        "page_url": "https://www.bilibili.com/video/BV1Vt411X7sa/",
+        "title": "使命召唤15-Nate自瞄手枪已上线",
+        "title_substring_anchor": "使命召唤",
+        "uploader": "Prophet47",
+        "duration_seconds": 772,
+        "duration_seconds_alt": 771,
+        "duration_formatted": "12m 52s",
+        "longest": true
+      },
+      {
+        "bv_id": "BV1ev411s7QU",
+        "page_url": "https://www.bilibili.com/video/BV1ev411s7QU/",
+        "title": "TF2  进阶的练习",
+        "title_substring_anchor": "TF2",
+        "uploader": "最可靠的护盾",
+        "duration_seconds": 297,
+        "duration_seconds_alt": 296,
+        "duration_formatted": "4m 57s"
+      }
+    ],
+    "longest_video_bv_id": "BV1Vt411X7sa",
+    "poster_svg_required_image_element_count": 3,
+    "poster_svg_required_text_substrings": [
+      "BV1tt411a7Tt",
+      "BLACK-Android",
+      "4m 41s",
+      "宾利",
+      "BV1Vt411X7sa",
+      "Prophet47",
+      "12m 52s",
+      "使命召唤",
+      "BV1ev411s7QU",
+      "最可靠的护盾",
+      "4m 57s",
+      "TF2"
+    ],
+    "poster_svg_longest_highlight_markers_any_of": [
+      "最长",
+      "★",
+      "LONGEST",
+      "longest",
+      "MAX"
+    ],
+    "poster_svg_canvas": {
+      "min_width_px": 800,
+      "min_height_px": 600
+    },
+    "poster_png": {
+      "min_width_px": 800,
+      "min_height_px": 600,
+      "magic_bytes": "89PNG"
+    },
+    "thumbnails_raw": {
+      "directory": "/tmp_workspace/results/thumbs/",
+      "expected_count": 3,
+      "filename_glob_per_bv": "<bv_id>.{jpg,jpeg,png,webp}",
+      "min_filesize_bytes": 1024,
+      "valid_magic_bytes_any_of": ["JPEG", "PNG", "WEBP"]
+    },
+    "browser_screenshots": {
+      "directory": "/tmp_workspace/results/browser_screenshots/",
+      "expected_count": 3,
+      "filename_per_bv": "<bv_id>.png",
+      "magic_bytes": "89PNG",
+      "min_width_px": 1024,
+      "min_height_px": 600,
+      "min_filesize_bytes": 5120
+    },
+    "deliverables": {
+      "poster_svg": "/tmp_workspace/results/poster.svg",
+      "poster_png": "/tmp_workspace/results/poster.png",
+      "thumbs_dir": "/tmp_workspace/results/thumbs/",
+      "browser_screenshots_dir": "/tmp_workspace/results/browser_screenshots/"
+    },
+    "browser_pipeline_anchor_commands": [
+      "chromium --headless --disable-gpu --no-sandbox --window-size=1280,800 --hide-scrollbars --screenshot=/tmp_workspace/results/browser_screenshots/<bv>.png https://www.bilibili.com/video/<bv>/",
+      "curl -sL --compressed -A '<modern UA>' https://www.bilibili.com/video/<bv>/",
+      "htmlq 'meta[itemprop=author]' --attribute content",
+      "htmlq 'meta[itemprop=image]' --attribute content"
+    ]
+  }
+}

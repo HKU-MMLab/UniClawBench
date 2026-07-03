@@ -1,0 +1,66 @@
+task_id: task_002_vscode_hello_world
+category: 001_smoketest
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 1.0
+
+# GUI smoketest — the supervisor needs to verify VSCode actually opens
+# on screen, so we record the desktop and run headed Chromium for the
+# download flow.  ``headed: auto`` couples to ``recording: high``.
+recording: none
+headed: auto
+
+task: |
+  Hi! I just got this laptop and I really want to start learning a
+  bit of coding. My friend said I should try something called
+  "VSCode" — can you help me get it set up? I've never installed
+  anything like this before so I'm a bit lost. Here's what I'm
+  hoping you can do for me, without using the command line instructions:
+
+  - Open a web browser, look up VSCode, and download it for this
+    computer. If any page asks me to log in or sign up for anything,
+    please just skip the login — I don't want to create an account
+    right now, I just want the app.
+
+  - After it finishes downloading, get it installed and open it up,
+    so I can see the VSCode window on the screen — the one with the
+    little icons on the left side and the big empty area in the
+    middle where you type.
+
+  - Once VSCode is open, start a brand new empty file in it, and
+    type in a tiny program. My friend told me a classic first thing
+    to try is `print("hello world")`, so let's just do that.
+
+  - Then please save my new file to/tmp_workspace/results/this_is_a_hhh_test.py
+
+  - Finally, while VSCode is still open and you can see my new file
+    in the editor, can you also take a screenshot of the VSCode
+    window so I can show my friend it really worked? Please save
+    the screenshot here:
+
+        /tmp_workspace/results/vscode_window.png
+
+  So at the end, in that folder, I should have the tiny Python file
+  and the screenshot of VSCode. Thank you so much!
+
+references:
+  - references/eval_rule.md
+
+services:
+  # Preseed VSCode's argv.json with GPU / sandbox flags before the
+  # executor starts. Runner launches this at container-init time, it
+  # writes /root/.config/Code/User/argv.json, and exits. VSCode (once
+  # the executor installs and launches it) reads the file on first
+  # startup, which suppresses the "window terminated unexpectedly
+  # (reason: clean-exit, code: 0)" popup that Electron renderers
+  # throw under Xvfb + rootless-container + no GPU. Task-local fix,
+  # no image-wide pollution.
+  - name: vscode-gpu-fix
+    path: vscode-gpu-fix
+    start: bash install.sh
+
+codex:
+  max_user_followups: 2

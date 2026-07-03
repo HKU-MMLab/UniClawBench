@@ -1,0 +1,25 @@
+Message-ID: <YW3MPqtvIlUkhdOv@an3as.eu>
+X-Clawbench-ID: BIO-2024-1369
+Date: Mon, 18 Oct 2021 21:34:22 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Julien Dutheil <julien.dutheil@univ-montp2.fr>,	Debian Med Project List <debian-med@lists.debian.org>
+Subject: bppsuite 3.0.0 relies on not yet published bpp-phyl
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00104.html
+
+Hi Julien,
+
+I tried to build bppsuite 3.0.0 but it is seeking header files in
+different places than in libbpp-phyl 2.4.1 which is packaged for Debian.
+For instance the header files that reside in Bpp/Phyl/Tree.h are
+seeked in Bpp/Phyl/Tree/Tree.h.  I suspect you are using a higher
+version of the library but this is not yet tagged on Github.
+
+Kind regards
+
+       Andreas.
+
+--
+http://fam-tille.de

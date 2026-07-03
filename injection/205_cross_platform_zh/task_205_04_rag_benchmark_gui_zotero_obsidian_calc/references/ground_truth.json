@@ -1,0 +1,45 @@
+{
+  "task_id": "task_105_04_rag_benchmark_gui_zotero_obsidian_calc",
+  "source_pdf": "sources/papers/ares_rag_evaluation.pdf",
+  "source_evidence": "references/ares_rag_evaluation_source_evidence.md",
+  "downloaded_from": "https://aclanthology.org/2024.naacl-long.20.pdf",
+  "paper_page": "https://aclanthology.org/2024.naacl-long.20/",
+  "source_anchors": {
+    "title_authors_venue": "ares_rag_evaluation_source_evidence.md E01 identifies the title, authors, venue, and year.",
+    "method_and_dimensions": "ares_rag_evaluation_source_evidence.md E02 identifies context relevance, answer faithfulness, answer relevance, synthetic training data, lightweight LM judges, and PPI.",
+    "evaluation_scope_and_results": "ares_rag_evaluation_source_evidence.md E03 identifies KILT/SuperGLUE/AIS scope and ranking-accuracy comparisons with RAGAS/GPT-3.5.",
+    "limitations": "ares_rag_evaluation_source_evidence.md E04 describes the small validation set, domain expertise, GPU resource, and English-dataset limitations."
+  },
+  "title": "ARES: An Automated Evaluation Framework for Retrieval-Augmented Generation Systems",
+  "authors": [
+    "Jon Saad-Falcon",
+    "Omar Khattab",
+    "Christopher Potts",
+    "Matei Zaharia"
+  ],
+  "authors_display": "Jon Saad-Falcon, Omar Khattab, Christopher Potts, and Matei Zaharia",
+  "year": "2024",
+  "publication": "Proceedings of NAACL-HLT 2024, Volume 1: Long Papers",
+  "main_task": "Automated evaluation of RAG systems by creating tailored LM judges for context relevance, answer faithfulness, and answer relevance.",
+  "main_metric": "Context relevance, answer faithfulness, and answer relevance scores, with prediction-powered inference confidence intervals.",
+  "method": "ARES creates synthetic training data from in-domain passages, fine-tunes lightweight LM judges, and uses a small human preference validation set with prediction-powered inference.",
+  "evaluation_scope": "Eight knowledge-intensive datasets from KILT, SuperGLUE, and AIS.",
+  "key_result": "ARES beats existing automated approaches such as RAGAS on context relevance and answer relevance evaluation accuracy, and uses far fewer annotations than annotation-based evaluation.",
+  "limitation": "ARES still needs a small human preference validation set, may require domain-specialist annotators for law/medicine/finance, needs substantial GPU resources for the judge and generator models, and was evaluated only on English datasets.",
+  "worth_reading_further": "yes",
+  "pdf_filename": "ares_rag_evaluation.pdf",
+  "expected_result_files": [
+    "/tmp_workspace/results/pdf_reader_ares.png",
+    "/tmp_workspace/results/zotero_ares_record.png",
+    "/tmp_workspace/results/zotero_ares_record.bib",
+    "/tmp_workspace/results/rag_benchmark_note_export.md",
+    "/tmp_workspace/results/obsidian_rag_benchmark_note.png",
+    "/tmp_workspace/results/rag_reading_tracker.ods",
+    "/tmp_workspace/results/calc_rag_reading_tracker.png"
+  ],
+  "required_note_sections": [
+    "What task does it benchmark?",
+    "What metric matters most?",
+    "One limitation"
+  ]
+}

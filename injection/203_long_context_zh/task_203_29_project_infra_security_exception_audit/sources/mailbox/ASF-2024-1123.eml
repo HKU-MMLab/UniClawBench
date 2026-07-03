@@ -1,0 +1,105 @@
+Message-ID: <CAKQ1sVP=cu=X8pT3JziErTFCMZKMZ=Le_mT+0Ughb-ftMenU7A@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1123
+Date: Wed, 13 Jul 2022 05:20:22 +0200
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: Ivan Zhakov <ivan@visualsvn.com>
+Subject: Re: Issues with shipping apr_thread_current() in APR 1.8.0 and an  alternative approach for PCRE2 allocations in HTTPD
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-07.mbox
+
+On Tue, Jul 12, 2022 at 12:46 PM Ivan Zhakov <ivan@visualsvn.com> wrote:
+>
+> On Wed, 29 Jun 2022 at 01:28, Yann Ylavic <ylavic.dev@gmail.com> wrote:
+> >
+> > On Tue, Jun 28, 2022 at 6:08 PM Ivan Zhakov <ivan@visualsvn.com> wrote:
+> > > >
+> > > I meant a memory leak for native threads. For example, with an MPM
+> > > that uses native Windows threadpool for worker threads.
+> >
+> > That's not mpm_winnt right? (it does not use native threads anymore
+> > and plays no apr_thread_current_create() game, it just uses
+> > apr_thread_create() so apr_thread_current() works automatically
+> > there).
+>
+> No, it's not mpm_winnt, but still a possible real-world example. And there
+> are multiple other users of APR besides the HTTP Server.
+
+So we have a hypothetical issue for what exactly? Someone will be
+using the new ap_thread API (or future APR one) for something that it
+can't be used for?
+
+>
+> >
+> > Probably the thread pool lets you pass the thread function? So you
+> > could "apr_thread_current_create(&mythread)" when entering the
+> > function and "apr_pool_destroy(apr_thread_pool_get(mythread))" before
+> > leaving?
+> > That'd still leak if the thread calls TerminateThread() explicitly at
+> > some point, but it seems that the native Windows thread API is not
+> > very helpful for that since there is way to register a destructor for
+> > when the thread terminates by any mean (like the pthread_key_create()
+> > API's destructor for instance). If the native API does not help I
+> > don't think that APR can do much better..
+> >
+> This sounds problematic to me, because the result is a memory leak unless
+> the application code is changed (and the APR consumer has to somehow be aware
+> of that).
+>
+> Also, native Windows thread pool works in a different way: it invokes a
+> callback on the random thread created by OS. So there is no easy way to
+> track the thread exit.
+
+You call something that does not exist as problematic. If some native
+threads can call TerminateThread() at any uncontrollable point then
+don't use ap_thread_current_create(), and if this is in an MPM then
+don't use that MPM at all if you are worried about leaks.
+But threadpools usually let you provide the thread function, so you
+have both an entry and exit point between which you are not supposed
+to kill the thread (underneath the threadpool), right?
+
+> >
+> > As said above, this is how it works already when apr_thread_current() is NULL.
+> > If it's not NULL, you get the nice behaviour that it reuses
+> > efficiently the same vector (PCRE1) or context (PCRE2) for each call
+> > on the same thread, with no allocation/free overhead or memory
+> > fragmentation.
+> >
+>
+> The code in server/util_pcre.c:342 was doing the following:
+> [[[
+>     current = ap_thread_current();
+>     if (!current) {
+>         *to_free = 1;
+>         return alloc_match_data(size, small_vector);
+>     }
+> ]]]
+>
+> Here alloc_match_data() was calling pcre2_match_data_create(), resulting
+> in a malloc().
+
+Yes OK, with the previous implementation there was no cache/stack
+provided for PCRE2 for non APR threads (or !AP_HAS_THREAD_LOCAL).
+You implemented that, but now what's missing is a per-thread cache
+that works for all the patterns and is reused across the calls to
+ap_regexec(), and for that you need
+AP_THREAD_LOCAL/ap_thread_current().
+
+So how about we still use the stack buffer only if it's enough, or use
+some AP_THREAD_LOCAL/ap_thread_current() cache if available, or use
+malloc() finally otherwise. Best of both worlds, should there be
+regexes with many captures or PCRE2's START_FRAMES_SIZE be smaller for
+some libpcre2 build or pcre2_match_data_create_with_frames() be
+available on a future PCRE2 version (all of those cases would put more
+pressure on private_malloc() with more frequent and/or larger calls
+from pcre2_match()), then systems with
+AP_THREAD_LOCAL/ap_thread_current() will still work efficiently.
+
+Patch attached, thoughts?
+
+Regards;
+Yann.
+
+PS: the patch also includes the fix from
+https://bz.apache.org/bugzilla/show_bug.cgi?id=66119

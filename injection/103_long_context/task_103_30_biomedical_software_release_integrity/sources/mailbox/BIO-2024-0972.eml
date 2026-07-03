@@ -1,0 +1,69 @@
+Message-ID: <b4a621973f77787b30d3899d9ecc54ef2f15d98f.camel@gmail.com>
+X-Clawbench-ID: BIO-2024-0972
+Date: Mon, 08 Nov 2021 09:37:32 +0100
+From: Julien Puydt <julien.puydt@gmail.com>
+To: debian-science@lists.debian.org
+Subject: Re: Blends framework for Debian Math (Was: Science Subgroups [was Re: Debian Math Team])
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_11_msg00059.html
+
+Le jeudi 04 novembre 2021 à 10:31 +0100, Andreas Tille a écrit :
+> Am Wed, Nov 03, 2021 at 03:41:43PM +0530 schrieb Nilesh Patra:
+> >
+> > > We should remember that having blends packages, blends web pages
+> > > and
+> > > informative wiki pages are completely independent of having a
+> > > defined team with
+> > > separate VCS and mailing list. All that needs is one or more
+> > > people to curate
+> > > them.
+> >
+> > That's correct. I talked with Andreas yesterday on the debian-med
+> > bi-weekly call, and
+> > tasks for math packages should be done soonish :)
+>
+> I've pushed the code for the metapackages to
+>
+>     https://salsa.debian.org/blends-team/math/
+>
+> and made
+>
+>     Doug Torrance
+>     Julien Puydt
+>     Timo Röhling
+>
+> members of the Blends team to enable currating these files (which
+> should be **really** done before announcing anything since its just a
+> copy of the two tasks from debian-science and does not make any sense
+> in this form.)
+>
+> I've also did the necessary steps to create the web sentinel which
+> you
+> can see here:
+>
+>     https://blends.debian.org/math/tasks/
+>
+> Said members should probably feed some content into
+>
+>
+> https://salsa.debian.org/blends-team/website/-/tree/master/www/math
+>
+> before anything is announced and links will be set.
+>
+> Hope this helps
+
+Thanks for everything!
+
+I'll not be very active right in the near future : I'm both busy for
+paid work, and on the Debian side I'm taking more things on my
+shoulders in the Debian OCaml Team. In fact, it's mathematics software
+which I'll probably want to move in the Math Team at some point, but
+for now a language-specific team is more appropriate. The thread
+"Multiple teams maintaining one package (proposal)" on debian-devel
+will have a direct impact on this.
+
+Cheers,
+
+J.Puydt

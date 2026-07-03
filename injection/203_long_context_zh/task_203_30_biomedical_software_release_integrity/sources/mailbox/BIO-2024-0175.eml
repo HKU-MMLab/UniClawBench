@@ -1,0 +1,40 @@
+Message-ID: <20211230164032.cqbiugecdx7rfrru@lark>
+X-Clawbench-ID: BIO-2024-0175
+Date: Thu, 30 Dec 2021 08:40:32 -0800
+From: tony mancill <tmancill@debian.org>
+To: Andreas Tille <andreas@an3as.eu>
+Subject: Re: [Help needed] Racon
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_12_msg00192.html
+
+On Thu, Dec 30, 2021 at 11:27:58AM +0530, Nilesh Patra wrote:
+> >After updating libedlib to build the shared libraries and adjusting the
+> >symbols file, I have everything working locally, including racon's
+> >build-time tests.  I will add notes to my commits and the changelog so
+> >it is clear what happened.  First I will upload the update to libedlib
+> >and then an update to racon for its autopkgtests.
+>
+> Hi Tony, thanks a lot for the help! :)
+
+Hello Andreas,
+
+Thank you for the improvements to the autopkgtest and the other
+clean-up.  Using the checksum is a great trick!  One (very minor)
+concern I have is that our future selves won't be able to easily
+differentiate between a change in the output format in a new version -
+for example, capitalization or punctuation or the number of zeros
+following the decimal for the XC field in this first line of output:
+
+  >utg000001l LN:i:47676 RC:i:181 XC:f:1.000000
+
+and a legitimately failing test.  I ran into this with a recent update
+simrisc.
+
+I don't think we should revert your improvements.  I mention this only
+because I see this as an area where we will continue to evolve the state
+of the art.
+
+Best regards, and a Happy New Year to all!
+tony

@@ -1,0 +1,55 @@
+Message-ID: <51c3c77d-2097-be99-b1c3-74b9f9ef2f4e@wanadoo.fr>
+X-Clawbench-ID: ASF-2024-0775
+Date: Fri, 17 Dec 2021 21:31:27 +0100
+From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.52-rc1 as httpd-2.4.52
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2021-12.mbox
+
+Le 16/12/2021 à 15:03, Stefan Eissing a écrit :
+>
+> Hi all,
+>
+> Please find below the proposed release tarball and signatures:
+>
+> https://dist.apache.org/repos/dist/dev/httpd/
+>
+> I would like to call a VOTE over the next few days to release
+> this candidate tarball httpd-2.4.52-rc1 as 2.4.52:
+> [X] +1: It's not just good, it's good enough!
+> [ ] +0: Let's have a talk.
+> [ ] -1: There's trouble in paradise. Here's what's wrong.
+>
+> The computed digests of the tarball up for vote are:
+> sha256: 296c74a8adde1a8acd6617b21fc3d19719ff4fa39319b2bdbd898aca4d5df97f *httpd-2.4.52-rc1.tar.gz
+> sha512: b9012096d6658f7d34a3c655eac31b39ffd439c11de6f3e6e9f309d55f4186a4fb26134eb97522e416ae8ca10ed008a14e96fa01a3e3105d9e547f72e2dc3bc2 *httpd-2.4.52-rc1.tar.gz
+>
+> The SVN candidate source is found at tags/candidate-2.4.52-rc1.
+>
+> Kind Regards,
+> Stefan
+>
+
++1 ; Tested only with event.
+
+Tested with:
+Linux pop-os 5.15.5
+gcc (Ubuntu 10.3.0-1ubuntu1) 10.3.0
+OpenSSL 1.1.1j  16 Feb 2021
+   libssl-dev 1.1.1j
+   libbrotli-dev 1.0.9
+   libjansson-dev 2.13.1
+   libnghttp2-dev 1.43.0
+   libpcre2-dev 10.36
+   liblua5.3-dev 5.3.3
+   libsystemd-dev 247.3
+   libldap2-dev 2.4.57+dfsg
+   libxml2-dev 2.9.10+dfsg
+   libcurl4-openssl-dev 7.74.0
+
+Thx a lot Stefan for RM.
+
+CJ

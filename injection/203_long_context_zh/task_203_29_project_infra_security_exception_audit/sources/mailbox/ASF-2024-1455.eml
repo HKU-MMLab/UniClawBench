@@ -1,0 +1,38 @@
+Message-ID: <1e4163ca-cca0-62dd-3973-79a5622fba58@paclan.it>
+X-Clawbench-ID: ASF-2024-1455
+Date: Fri, 17 Dec 2021 12:34:42 +0100
+From: Giovanni Bechis <giovanni@paclan.it>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.52-rc1 as httpd-2.4.52
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2021-12.mbox
+
+On 12/16/21 15:03, Stefan Eissing wrote:
+>
+> Hi all,
+>
+> Please find below the proposed release tarball and signatures:
+>
+> https://dist.apache.org/repos/dist/dev/httpd/
+>
+> I would like to call a VOTE over the next few days to release
+> this candidate tarball httpd-2.4.52-rc1 as 2.4.52:
+> [ ] +1: It's not just good, it's good enough!
+> [ ] +0: Let's have a talk.
+> [ ] -1: There's trouble in paradise. Here's what's wrong.
+>
+> The computed digests of the tarball up for vote are:
+> sha256: 296c74a8adde1a8acd6617b21fc3d19719ff4fa39319b2bdbd898aca4d5df97f *httpd-2.4.52-rc1.tar.gz
+> sha512: b9012096d6658f7d34a3c655eac31b39ffd439c11de6f3e6e9f309d55f4186a4fb26134eb97522e416ae8ca10ed008a14e96fa01a3e3105d9e547f72e2dc3bc2 *httpd-2.4.52-rc1.tar.gz
+>
+> The SVN candidate source is found at tags/candidate-2.4.52-rc1.
+>
+> Kind Regards,
+> Stefan
+>
++1 for release,
+works fine on Fedora 35, OpenBSD 7.0 and Debian 11.
+ Regards
+  Giovanni

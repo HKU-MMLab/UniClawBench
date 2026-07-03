@@ -1,0 +1,28 @@
+Message-ID: <YoDGLrnshAywNIJf@bubu.plessy.net>
+X-Clawbench-ID: BIO-2024-0106
+Date: Sun, 15 May 2022 18:21:50 +0900
+From: Charles Plessy <plessy@debian.org>
+To: debian-med@lists.debian.org
+Subject: CWL media type and file extension now in /etc/mime.types
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_05_msg00005.html
+
+Hello everybody,
+
+I just updated the media-types package in Sid, which brings (among other
+changes) the application/cwl media type (and its json variant) in the
+`/etc/mime.types` file.
+
+If a backport would be useful to some purposes, please let me know.
+
+Have a nice Sunday,
+
+Charles
+
+--
+Charles Plessy                         Nagahama, Yomitan, Okinawa, Japan
+Debian Med packaging team         http://www.debian.org/devel/debian-med
+Tooting from work,           https://mastodon.technology/@charles_plessy
+Tooting from home,                 https://framapiaf.org/@charles_plessy

@@ -1,0 +1,56 @@
+task_id: task_201_04_audio_transcript
+category: 201_skill_usage_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我错过了今天早上的站会，需要尽快跟上进度。这里有一段
+  录音，位于 /tmp_workspace/clawbench/sources/standup.wav——请用
+  speech-to-text 技能把它转成带时间戳的字幕，
+  并把结果以标准 SRT 格式保存到 /tmp_workspace/results/transcript.srt。
+  保留原始英文，不需要翻译。
+
+  SRT 是主要交付物。在此之上，我还想要一段简短的
+  底部说明，放在 SRT 里，或者作为附带文件放在
+  /tmp_workspace/results/standup_notes.md，用你
+  自己的话描述：议程实际是怎么推进的、实际做出了哪些决定、
+  谁领走了哪个行动项、有什么遗留或未解决的事项，以及
+  当有人提出反对意见时大家的立场是怎么分化的。就像你
+  在跟一个错过这次会议的队友讲述一样写就行——几行字就够了，
+  不需要固定的格式。
+
+  我还想要一份结构化的 json 记录，放在
+  /tmp_workspace/results/standup_struct.json，方便我之后 grep。它
+  应该有三个数组——decisions、action_items、open_questions。
+  对每个决定，告诉我决定了什么，以及来自
+  转录文本的一句简短引文作为佐证。对每个行动项，包含负责人、
+  他们要做什么、如果提到了截止日期就填上、没有就填 null，以及一句
+  引文。对每个待解决的问题，包含该问题和一句引文。如果
+  会议在某一类里确实什么都没有，那就把
+  那个数组留空，并在说明里说清楚——请不要为了让它看起来
+  完整而硬凑内容。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - standup.wav
+
+skills:
+  - openai-whisper-api
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

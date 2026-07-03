@@ -1,0 +1,59 @@
+Message-ID: <Pine.OSF.4.44.0208281659320.3984-100000@falcon.dickinson.edu>
+X-Clawbench-ID: CAM-2003-1431
+Date: Wed, 28 Aug 2002 17:07:53 -0400
+From: Don Newcomer <newcomer@dickinson.edu>
+To: SpamAssassin Talk list <Spamassassin-talk@example.sourceforge.net>
+Subject: [SAtalk] Tru64 compile of SA
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01362.0892cc75c110776a0de7d611d8bab241
+
+I'm a new user (or about to be, hopefully) of SA but I've run into some
+compilation errors that prevent me from installing.  Rather than picking
+through the code, I thought I'd avoid reinventing the wheel and ask here.
+When I run the 'make', I get the following:
+
+cc: Error: spamd/spamc.c, line 50: In this declaration, "in_addr_t" has no
+linka
+ge and has a prior declaration in this scope at line number 572 in file
+/usr/inc
+lude/sys/types.h. (nolinkage)
+typedef unsigned long   in_addr_t;      /* base type for internet address
+*/
+------------------------^
+cc: Warning: spamd/spamc.c, line 169: In this statement, the referenced
+type of
+the pointer value "msg_buf" is "char", which is not compatible with
+"unsigned ch
+ar". (ptrmismatch)
+  if((bytes = full_read (in, msg_buf, max_size+1024, max_size+1024)) >
+max_size)
+-----------------------------^
+cc: Warning: spamd/spamc.c, line 174: In this statement, the referenced
+type of
+the pointer value "header_buf" is "char", which is not compatible with
+"const un
+signed char". (ptrmismatch)
+    full_write (out,header_buf,bytes2);
+--------------------^
+
+There are lots more where they came from.  Any ideas what can be done?
+Thanks in advance.
+
+================================================================================
+Don Newcomer                                            Dickinson College
+Associate Director, System and Network Services		P.O. Box 1773
+newcomer@dickinson.edu                                  Carlisle, PA  17013
+                                                        Phone: (717) 245-1256
+                                                          FAX: (717) 245-1690
+
+
+-------------------------------------------------------
+This sf.net email is sponsored by: Jabber - The world's fastest growing
+real-time communications platform! Don't just IM. Build it in!
+http://www.jabber.com/osdn/xim
+_______________________________________________
+Spamassassin-talk mailing list
+Spamassassin-talk@lists.sourceforge.net
+https://lists.sourceforge.net/lists/listinfo/spamassassin-talk

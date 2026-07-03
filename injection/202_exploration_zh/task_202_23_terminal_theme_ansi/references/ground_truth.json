@@ -1,0 +1,52 @@
+{
+  "task_id": "task_102_23_terminal_theme_ansi",
+  "note": "Objective answer key. Computed from the SHIPPED Windows Terminal theme JSONs (sources/theme_candidates/*.json) by references/reference_analysis.py: WCAG fg/bg contrast and CIE76 deltaE between the 6 chromatic ANSI colors. Offline + frozen -> deterministic. Grade ordinal outcomes; absolute numbers vary by method.",
+
+  "use_case": "Pick a dark terminal color scheme for a developer who runs colorized CLI output (git diff, ls, syntax-highlighted logs). The ANSI colors must stay mutually distinguishable — especially blue vs purple and red vs green — and text must be readable.",
+  "hard_constraints": {
+    "HC1_fg_contrast": "foreground vs background WCAG contrast >= 4.5 (AA)",
+    "HC2_min_ansi_separation": "minimum pairwise CIE76 deltaE among the 6 chromatic ANSI colors (red,green,yellow,blue,purple,cyan) >= 18 (no two normal colors look alike)",
+    "HC3_blue_vs_purple": "blue vs purple deltaE >= 18 (a common terminal collision)",
+    "HC4_red_vs_green": "red vs green deltaE >= 25 (must survive being told apart, incl. for protan/deutan-leaning users)"
+  },
+  "soft_constraints": {
+    "SC1_max_min_ansi": "prefer the larger minimum ANSI deltaE (most robustly distinct palette)",
+    "SC2_max_fg_contrast": "prefer higher fg/bg contrast"
+  },
+
+  "per_candidate": [
+    {"id":"Solarized Dark Higher Contrast","fg_contrast":8.99,"min_ansi_dE":40.3,"blue_purple":78.1,"red_green":111.3,"hard_pass":true,"note":"passes all; highest min-ANSI separation (40.3) -> optimal"},
+    {"id":"Dracula","fg_contrast":13.36,"min_ansi_dE":37.7,"blue_purple":37.7,"red_green":136.6,"hard_pass":true},
+    {"id":"One Half Dark","fg_contrast":10.48,"min_ansi_dE":31.2,"blue_purple":52.7,"red_green":76.6,"hard_pass":true},
+    {"id":"Gruvbox Dark","fg_contrast":10.75,"min_ansi_dE":28.8,"blue_purple":56.1,"red_green":79.0,"hard_pass":true},
+    {"id":"Ubuntu","fg_contrast":15.13,"min_ansi_dE":28.1,"blue_purple":28.1,"red_green":113.9,"hard_pass":true},
+    {"id":"Monokai Remastered","fg_contrast":13.86,"min_ansi_dE":0.0,"blue_purple":92.1,"red_green":142.4,"hard_pass":false,"fails":["HC2 (min ANSI 0 < 18)"],"trap":"HIGH-CONTRAST TRAP: gorgeous and high contrast, but its normal RED and PURPLE are the SAME color (#f4005f, deltaE 0) -> two ANSI colors are indistinguishable."},
+    {"id":"Nord","fg_contrast":9.25,"min_ansi_dE":15.8,"blue_purple":24.8,"red_green":61.4,"hard_pass":false,"fails":["HC2 (min ANSI 15.8 < 18)"],"trap":"POPULAR TRAP: Nord's muted arctic palette is well-loved but its normal ANSI colors are too close together (min 15.8) for reliable CLI color-coding."}
+  ],
+
+  "hard_pass_survivors": ["Solarized Dark Higher Contrast","Dracula","One Half Dark","Gruvbox Dark","Ubuntu"],
+  "tiebreak": {
+    "ranking_by_min_ansi_dE": [["Solarized Dark Higher Contrast",40.3],["Dracula",37.7],["One Half Dark",31.2],["Gruvbox Dark",28.8],["Ubuntu",28.1]],
+    "winner": "Solarized Dark Higher Contrast",
+    "reason": "Among the five hard-constraint survivors, it has the largest minimum ANSI separation (40.3), the primary soft criterion — the most robustly distinguishable palette."
+  },
+
+  "gold": {
+    "selected_id": "Solarized Dark Higher Contrast",
+    "acceptable_alternative": "Dracula (next-best survivor, min-ANSI 37.7) with an explicit correct tradeoff -> up to ~0.85",
+    "key_facts": {
+      "monokai_is_a_trap": "must NOT be selected; red == purple (identical ANSI colors)",
+      "nord_is_a_trap": "must NOT be selected; ANSI colors too close (min 15.8 < 18)",
+      "survivors": ["Solarized Dark Higher Contrast","Dracula","One Half Dark","Gruvbox Dark","Ubuntu"],
+      "optimal": "Solarized Dark Higher Contrast"
+    }
+  },
+
+  "scoring_anchors": {
+    "must_reject_with_reason": ["Monokai Remastered","Nord"],
+    "must_identify_survivors": ["Solarized Dark Higher Contrast","Dracula","One Half Dark","Gruvbox Dark","Ubuntu"],
+    "optimal_selection": "Solarized Dark Higher Contrast",
+    "min_candidates_evaluated": 5,
+    "tolerance_note": "Grade ordinal outcomes: Monokai fails (red==purple), Nord fails (min ANSI separation too low), the other five pass, and Solarized Dark Higher Contrast has the largest minimum ANSI separation. Exact deltaE values vary by method but these orderings are robust."
+  }
+}

@@ -1,0 +1,22 @@
+Message-ID: <yf2n0r3ho9g.fsf@proton.pathname.com>
+X-Clawbench-ID: CAM-2003-0607
+Date: Fri, 30 Aug 2002 17:20:59 -0700
+From: Daniel Quinlan <quinlan@pathname.com>
+To: yyyy@spamassassin.taint.org
+Subject: Re: [SAdev] GA-assigned SPAM_PHRASE_55_XX score
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01393.7c259c411369b7039505bc91769f09a6
+
+jm@jmason.org (Justin Mason) writes:
+
+> BTW I tried tweaking some of the scores that lint-rules complained about
+> being negative when they shouldn't be, and it *ruined* the results.  it's
+> worth hand-tweaking a bit, but in some cases, there's counter-intuitive
+> combinatorial effects like the above, so be careful when tweaking; run
+> a "./logs-to-c && ./evolve -C" to check the new hitrates afterwards.
+
+My tendency is to say that we shouldn't tweak at all.
+
+- Dan

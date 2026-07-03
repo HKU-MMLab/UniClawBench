@@ -1,0 +1,72 @@
+Message-ID: <ZUJToQvsuzUujduQ@an3as.eu>
+X-Clawbench-ID: BIO-2024-1030
+Date: Wed, 1 Nov 2023 14:33:21 +0100
+From: Andreas Tille <tille@debian.org>
+To: Tony Travis <tony.travis@minke-informatics.co.uk>
+Subject: Re: canu
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_11_msg00003.html
+
+Am Wed, Nov 01, 2023 at 10:02:24AM +0000 schrieb Tony Travis:
+> I didn't say that you gave advice "to use bioconda": I said that I had
+> followed your advice 'about installing "canu" under "bioconda3"'.
+>
+> I needed to fix the problem we encountered with "canu" installed from the
+> Debian-Med package quickly and adopted a pragmatic solution. This is what I
+> read in your notes about packaging "canu" for Debian-Med:
+>
+> > Installing with a 'package manager' is not encouraged, but if you have no other choice:
+> >
+> > Conda: conda install -c conda-forge -c bioconda -c defaults canu
+> >
+> > Homebrew: brew install brewsci/bio/canu
+
+I keep on insisting that these are *not* my notes.  Its Upstream
+README.md what you are quoting.  I'm pretty sure I will not write such
+advise since I'm literally uneducated about conda and have no idea about
+such command lines.
+
+> At the time, I believed that had no other choice...
+>
+> > > However, I would be interested to know if you have any plans to package it
+> > > again for Debian-Med?
+> >
+> > Canu is and remains packaged for Debian Med.  Since you are using Ubuntu
+> > which derives from Unstable you will not even miss it even if the package
+> > might be removed from testing (which the bug you read is about).
+> >
+> > In short: Please be more verbose about your problem.
+>
+> Upon further investigation, it seems that the problems were caused by a
+> broken "Slurm" instance on the system in question due to an upgrade (the
+> saved state of the job queue was inconsistent with the new version of
+> "Slurm"). I didn't know that "canu" automatically detects the presence of a
+> job scheduler and will try to use it by default.
+
+In any case I'd recommend to add command line and output to give some
+context for your readers.
+
+> I keep forgetting that this is a Debian forum and you prefer me to send bug
+> reports to the Ubuntu Bug-Tracker. I will refrain from posting about
+> Debian-Med issues that I encounter under Ubuntu here in future.
+
+Please understand me correctly:  I'd love to help you - but you need to
+provide context.  Writing something in the sense of "canu is broken
+under Debian thus I had to use conda" is neither sufficient information
+to help you nor helpful for our project.
+
+Our bug tracker gathers some context (installed packages) and asks you
+for details which is helpful.  If you can't use `reportbug` for whatever
+reason using this mailing list is a fallback we like to provide since
+Debian Med people like to care about their users.
+
+BTW, should we take the message that it makes sense to suggest
+slurm-client for canu from your observation?
+
+Kind regards
+   Andreas.
+
+--
+http://fam-tille.de

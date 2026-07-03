@@ -1,0 +1,28 @@
+Message-ID: <ZK5E9J21VRgxs0pZ@an3as.eu>
+X-Clawbench-ID: BIO-2024-0371
+Date: Wed, 12 Jul 2023 08:15:16 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: biopython 1.81 in experimental
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_07_msg00049.html
+
+Am Wed, Jul 12, 2023 at 07:56:30AM +0200 schrieb Étienne Mollier:
+> Étienne Mollier, on 2023-07-10:
+> > In any case, thanks for the offer, build of 1.81 for amd64 and a
+> > couple of other architectures concluded[1], and experimental
+> > pseudo-excuses[2] are ready to run (and they already caught
+> > #1040776[3]).
+>
+> Pseudo-excuses for experimental only caught an arm64 issue in
+> python-bcbio-gff.  Migration to biopython 1.81 should be pretty
+> painless.
+
+Cool.  Thanks a lot
+   Andreas.
+
+
+--
+http://fam-tille.de

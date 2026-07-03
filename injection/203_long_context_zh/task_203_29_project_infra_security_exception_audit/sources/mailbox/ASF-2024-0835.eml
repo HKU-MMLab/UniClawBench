@@ -1,0 +1,51 @@
+Message-ID: <CAKQ1sVP9z4YMmxDTFGKrrGXgXQ3SOeEBd6TRW_NJ_Ps_43jo7w@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0835
+Date: Wed, 26 Jan 2022 18:34:39 +0100
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: httpd-dev <dev@httpd.apache.org>
+Subject: Re: mpm event assertion failures
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-01.mbox
+
+On Wed, Jan 26, 2022 at 5:07 PM Graham Leggett <minfrin@sharp.fm> wrote:
+>
+> We need to clarify expectations at this point.
+>
+> The trunk of httpd has a policy called “commit then review” (CTR), meaning that changes are applied first, and then review is done to see what the ramifications of those changes are. Some changes are at a high level and very well contained, some changes such as this one are at a very low level and affect the whole server. Obviously there is an expectation that one must think it works before committing, but none of our contributors have access to even a fraction of the number of platforms that httpd runs on, and so we must rely on both our CI and the review of others (thus the “then review”) to show us where things have gone wrong. Our CI is a tool to tell us what potentially has gone wrong across a wide set of scenarios, far beyond the capability of what a single person has access to.
+
+I agree with all of the above, there is nothing wrong with the way you did it.
+Maybe now that we have a better ci that runs on each branch, a github
+PR could be created first to see/test the results before checking in
+to trunk (this was not an option a few years ago)?
+This still allows for review and/or help if something goes wrong (by
+asking on dev@ if needed), while others don't have to wait for trunk
+to work for their own changes.
+
+>
+> The next issue is “Analyze what you broke”.
+>
+> I have been working on this code morning, day and night for many days now. A lot of time was spent chasing what I thought was an infinite loop complaining about EOF, but actually was a harmless error that should have been a debug triggered every time the client disconnected. Then more time was spent trying to get to the bottom of why the timeouts weren’t working, only to discover that the timeouts weren’t implemented. The accusation that I have been careless is highly offensive.
+>
+> In open source we don’t bark accusations at each other, particularly when noone has seen just how much time and effort has gone into this. I have been working on this code for 25 years and am not afraid to call this out, but new people to open source or new to this project are going to be intimidated and leave. This must not happen.
+>
+> Please be mindful of others working on this project, and be helpful where possible.
+
+I'm really sorry if you feel like this from what I could have said, I
+very much value your contributions and efforts on httpd/apr or other
+oss projects.
+
+I had the impression from your previous message(s) that you implied
+that your changes were working correctly and the issues needed now to
+be addressed by those who created (or last touched at) the code that's
+now exercised differently and does not work as expected (according to
+you), that's why my last message(s) could have sounded a bit harsh
+possibly.
+It's likely a misinterpretation on my side, sorry for that again, but
+communicating is not always easy (more so in a non-native language
+possibly) and your responses are sometimes frustrating..
+
+
+Regards;
+Yann.

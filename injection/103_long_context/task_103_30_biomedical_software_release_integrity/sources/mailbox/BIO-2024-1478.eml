@@ -1,0 +1,38 @@
+Message-ID: <Y3I3/GQORAyKCNw8@an3as.eu>
+X-Clawbench-ID: BIO-2024-1478
+Date: Mon, 14 Nov 2022 13:43:40 +0100
+From: Andreas Tille <tille@debian.org>
+To: "Aaron M. Ucko" <ucko@debian.org>
+Subject: Re: Finishing ncbi-vdb and sra-sdk
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_11_msg00038.html
+
+Hi Aaron,
+
+thanks for all your work on this.
+
+Am Sun, Nov 13, 2022 at 11:08:31PM -0500 schrieb Aaron M. Ucko:
+> I realized at the last minute (in the course of confirming that sra-sdk
+> passes its autopkgtest) that I never merged in ngs-sdk's, which is
+> likely to need formal adjustments per layout changes; we should try to
+> remember to do so before uploading to unstable.
+
+Possibly it helps to remember if you would push the according commits
+and create the d/changelog entry accordingly.
+
+> Also, while scanning for copyright notices, I observed convenience
+> copies of several separately packaged libraries.  I left their handling
+> as is for now, but it would be good to look into switching to the
+> separately packaged copies.
+
+I confirm that I was afraid about the complexity here and thus left
+alone most code copies but for sure any cleanup would be very sensible
+here.
+
+Thanks again
+    Andreas.
+
+--
+http://fam-tille.de

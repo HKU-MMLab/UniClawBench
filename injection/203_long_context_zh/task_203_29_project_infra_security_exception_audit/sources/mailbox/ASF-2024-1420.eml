@@ -1,0 +1,28 @@
+Message-ID: <c0a53bd7-8726-3440-c4ac-2e43f41e29a8@tigertech.com>
+X-Clawbench-ID: ASF-2024-1420
+Date: Mon, 27 Mar 2023 16:21:30 -0700
+From: Robert L Mathews <lists@tigertech.com>
+To: dev@httpd.apache.org
+Subject: Re: Question about 2.4.56 "client resets of HTTP/2 streams led to  unwanted 500 errors" fix
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-03.mbox
+
+On 3/16/23 5:38 AM, Stefan Eissing via dev wrote:
+
+> I am not familiar enough with mod_fcgi's operation to make a judgement on that.
+
+As a followup to this, it turned out it was caused by the problem fixed
+here:
+
+  https://github.com/apache/httpd/commit/d6a9e4
+
+When the httpd parent process crashes, it cannot run the mod_fcgid code
+that marks any of its "busy" child processes as "ready" for new
+connections. That patch fixes it.
+
+Thanks!
+
+--
+Robert L Mathews

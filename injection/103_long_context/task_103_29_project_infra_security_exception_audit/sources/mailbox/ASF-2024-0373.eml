@@ -1,0 +1,21 @@
+Message-ID: <CAFQGv+ZkBWdtyVw0tFtpB6gNpF-AiguUfqjUctiJTOQeWCtnzQ@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0373
+Date: Sun, 27 Aug 2023 17:30:56 -0400
+From: Joe Schaefer <joe@sunstarsys.com>
+To: dev@httpd.apache.org
+Subject: Time for a new libapreq2 release?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-08.mbox
+
+Seems like it’s been a year since the last release, which means it’s time
+for good people to take another try at releasing something nondefective.
+
+Here to help with the quality control this time around.
+--
+Joe Schaefer, Ph.D.
+<https://sunstarsys.com/orion/features>
+Orion - The Enterprise Jamstack Wiki <https://sunstarsys.com/orion/features>
+<joe@sunstarsys.com>
+954.253.3732 <//954.253.3732>

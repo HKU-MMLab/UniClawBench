@@ -1,0 +1,33 @@
+Message-ID: <87bklrg7ie.fsf@debian.org>
+X-Clawbench-ID: BIO-2024-1309
+Date: Fri, 17 Feb 2023 19:08:25 -0500
+From: Sergio Durigan Junior <sergiodj@debian.org>
+To: debian-med@lists.debian.org
+Subject: Protected branches on some repositories (cannot "gbp push")
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_02_msg00043.html
+
+Hi,
+
+I've recently fixed a bunch of build problems that affected gatb-core's
+reverse dependencies, but when I tried to "gbp push" my changes to some
+repositories I got error messages saying that the master branch is
+protected.
+
+These are the repositories that have protected branches:
+
+- bcalm
+- mindthegap
+- simka
+
+Is this done on purpose?
+
+Thanks,
+
+--
+Sergio
+GPG key ID: 237A 54B1 0287 28BF 00EF  31F4 D0EB 7628 65FC 5E36
+Please send encrypted e-mail if possible
+https://sergiodj.net/

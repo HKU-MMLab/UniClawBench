@@ -1,0 +1,31 @@
+task_id: task_203_25_eu_ai_act_qa
+category: 203_long_context_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  EU AI Act（Regulation (EU) 2024/1689）的全文已在 `/tmp_workspace/clawbench/sources/regulation/` 中提供，既有 PDF（`eu_ai_act_2024_1689.pdf`），也有纯文本提取版（`eu_ai_act_2024_1689.txt`）。请通过阅读该文本来回答以下问题。这些都是精确的数字和日期，所以请在所提供的法规中查找，而不要凭记忆作答，并为每个答案引用相关的条款（article）或附件（annex）。
+
+  1. 对违反禁止性 AI 行为规则（Article 5）的最高行政罚款是多少，请同时以固定欧元金额和全球年营业额百分比两种形式表示？
+  2. 向 notified bodies 或主管机关提供不正确、不完整或具误导性信息的最高罚款是多少？
+  3. 对于除 Article 5 之外其他条款的不合规，存在一个中间档的处罚等级。它的固定金额上限和营业额百分比是多少？
+  4. 该法规总体上从哪个日期开始适用？
+  5. 其适用是分阶段的。请说明：（a）禁止性规定和总则（Chapters I and II）何时适用，（b）关于 general-purpose AI models、治理和处罚的规则何时适用？注明任何适用日期更晚的条款。
+  6. 哪个附件列出了高风险 AI 系统的使用场景，以及该法案用来对 AI 系统分类的高层级风险类别有哪些？
+
+  将你的答案写入 `/tmp_workspace/results/eu_ai_act_qa.md`，每个答案都引用相关的条款/附件。如果某个值在所提供的文本中确实未予说明，请如实说明，而不要编造。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+sources:
+  - regulation/
+
+codex:
+  max_user_followups: 2

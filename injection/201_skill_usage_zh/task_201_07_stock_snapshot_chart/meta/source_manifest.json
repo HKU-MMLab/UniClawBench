@@ -1,0 +1,10 @@
+{
+  "task_id": "task_201_07_stock_snapshot_chart",
+  "note": "Synthetic but realistic frozen market snapshot built for local return-analysis and charting. It includes OHLCV bars and corporate-action records so calculations can be validated offline.",
+  "entries": [
+    {
+      "path": "snapshot.json",
+      "description": "Frozen local market snapshot with daily OHLCV bars and corporate actions."
+    }
+  ]
+}

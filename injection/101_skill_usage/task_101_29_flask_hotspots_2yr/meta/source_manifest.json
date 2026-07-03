@@ -1,0 +1,10 @@
+{
+  "task_id": "task_101_29_flask_hotspots_2yr",
+  "note": "Operator populates these paths with real binary assets before running the task. The executor expects them under /tmp_workspace/clawbench/sources/.",
+  "entries": [
+    {
+      "path": "flask_repo.tar.gz",
+      "description": "Tarball of the Flask main-branch repository with full commit history"
+    }
+  ]
+}

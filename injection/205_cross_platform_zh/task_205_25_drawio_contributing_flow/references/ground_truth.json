@@ -1,0 +1,44 @@
+{
+  "task_id": "task_105_25_drawio_contributing_flow",
+  "schema_notes": "Anchored to cli/cli .github/CONTRIBUTING.md at the lightweight tag v2.65.0 (commit b3be16e98e1413f5bb0943c06402516cec3fd3b4). Tag is immutable and CONTRIBUTING.md content at this commit is permanent. The 5 step anchor substrings have been verified to appear literally (case-sensitive) in the file at this tag. Eval grades the .drawio mxGraph XML structure, the JSON's traceability to literal CONTRIBUTING text, and presence of either a rendered image or valid .drawio. Field names in flow_steps.json are not strictly pinned; supervisor reads semantically — accept top-level `steps` / `flow` / `entries`, per-step `action` / `step_text` / `description`, per-step `actor` / `role` / `who`, per-step `order` / `index` / `seq`.",
+  "reference_repo": "cli/cli",
+  "pinned_tag": "v2.65.0",
+  "pinned_commit_sha": "b3be16e98e1413f5bb0943c06402516cec3fd3b4",
+  "contributing_path": ".github/CONTRIBUTING.md",
+  "ground_truth": {
+    "expected_step_anchor_substrings": [
+      "Check issues to verify that a",
+      "Open an issue to propose a significant change",
+      "Create a new branch:",
+      "Submit a pull request:",
+      "Make your change, add tests, and ensure tests pass"
+    ],
+    "anchor_substring_match_threshold": 4,
+    "expected_actor_keywords_lowercase": [
+      "contributor",
+      "maintainer",
+      "reviewer",
+      "ci",
+      "bot"
+    ],
+    "minimum_distinct_actors_in_steps": 3,
+    "minimum_steps_in_json": 5,
+    "drawio_structural_minimums": {
+      "shapes_min": 5,
+      "edges_min": 5,
+      "actor_shapes_min": 3,
+      "step_text_match_min": 3
+    },
+    "deliverables": {
+      "flow_steps_json": "/tmp_workspace/results/flow_steps.json",
+      "drawio_file": "/tmp_workspace/results/contributing_flow.drawio",
+      "rendered_image_options": [
+        "/tmp_workspace/results/contributing_flow.png",
+        "/tmp_workspace/results/contributing_flow.svg",
+        "/tmp_workspace/results/contributing_flow.jpg",
+        "/tmp_workspace/results/contributing_flow.pdf"
+      ],
+      "summary_md": "/tmp_workspace/results/contributing_summary.md"
+    }
+  }
+}

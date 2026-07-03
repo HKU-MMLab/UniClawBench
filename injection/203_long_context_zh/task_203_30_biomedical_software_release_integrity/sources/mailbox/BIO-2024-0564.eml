@@ -1,0 +1,53 @@
+Message-ID: <Zd8bPtjmOERJRfaW@fusion>
+X-Clawbench-ID: BIO-2024-0564
+Date: Wed, 28 Feb 2024 12:38:38 +0100
+From: Étienne Mollier <emollier@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: autopkgtest-pkg-pybuild
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_02_msg00031.html
+
+Hi all,
+
+Michael R. Crusoe, on 2024-02-27:
+> On Tue 27 Feb 2024, 20:20 Andreas Tille,  wrote:
+> > I just learned about
+> >
+> >    Testsuite: autopkgtest-pkg-pybuild
+> >
+> > in your commit.  Could you please (on the mailing list) be more verbose
+> > about this?  Routine-update is adding autopkgtest-pkg-python by default?
+> > Is this an outdated strategy we should change?
+
+> I find autopkgtest-pkg-pybuild to often be superior, but it can't be
+> enabled automatically like the -python version as it won't work
+> automatically nearly as often without additional configuration like the
+> "-python" version.
+
+I also begun to introduce autopkgtest-pkg-pybuild in a couple of
+packages (mostly my newer ones that made it in the Debian Python
+Team umbrella).  The main improvement is that this allows,
+almost for free, running the dh_auto_test suite in autopkgtest
+context, which is a non-trivial improvement over the basic
+offered by the autopkgtest-pkg-python test suite.
+
+I write "almost for free", because things work when resorting
+only to pybuild to run the test suite (configuration using the
+environment variables like PYBUILD_TEST_ARGS are properly taken
+in account in such context), and some files necessary for
+running the test suite may need to be copied over manually in a
+special d/rules target "before-pybuild-autopkgtest".  You can
+refer to python-parsl d/rules file for example[1], and to
+pybuild-autopkgtest(1) manual[2] for further details.
+
+[1]: https://salsa.debian.org/python-team/packages/python-parsl/-/blob/debian/master/debian/rules?ref_type=heads
+[2]: https://manpages.debian.org/bookworm/dh-python/pybuild-autopkgtest.1.en.html
+
+Have a nice day,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  pgp: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/1, please excuse my verbosity
+   `-    on air: Syrinx - Le Vingt Et Unieme Cercle

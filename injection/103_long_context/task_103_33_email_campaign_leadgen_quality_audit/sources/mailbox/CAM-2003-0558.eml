@@ -1,0 +1,28 @@
+Message-ID: <002201c25fae$ee1188f0$7c00a8c0@cover.it>
+X-Clawbench-ID: CAM-2003-0558
+Date: Thu, 19 Sep 2002 09:34:04 +0200
+From: Boniforti Flavio <boniforti.f@co-ver.it>
+To: 'Santiago Vila' <sanvila@unex.es>
+Subject: RE: [Razor-users] RE: Re: Some startup questions...
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01592.2b5d8fc350354b303b6baf2d27f531df
+
+> I suggest that you use a normal user to start. Once you are familiar
+> enough with razor and understand how it works, try the complex things
+> like integration with the MTA and the like.
+
+OK, but do I have to launch that command as "root" or what?
+
+Thank you
+
+
+-------------------------------------------------------
+This sf.net email is sponsored by:ThinkGeek
+Welcome to geek heaven.
+http://thinkgeek.com/sf
+_______________________________________________
+Razor-users mailing list
+Razor-users@lists.sourceforge.net
+https://lists.sourceforge.net/lists/listinfo/razor-users

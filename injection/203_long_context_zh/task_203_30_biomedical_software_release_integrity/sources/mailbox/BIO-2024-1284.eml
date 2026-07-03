@@ -1,0 +1,28 @@
+Message-ID: <20220905184316.qzxrom3lrkp2gfca@nileshpatra.info>
+X-Clawbench-ID: BIO-2024-1284
+Date: Tue, 6 Sep 2022 00:13:16 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: Mohd Bilal <mdbilal@disroot.org>
+Subject: Re: RFS -- added autopkgtests for tvc
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_09_msg00006.html
+
+On Mon, Sep 05, 2022 at 11:26:43PM +0530, Mohd Bilal wrote:
+> Hello team,
+>
+> I've added autopkgtest for tvc[1]. Requesting someone to review and sponsor
+> my changes.
+
+Please also add a "exit 1" after you echo FAIL[2] otherwise this is a no-op.
+The autopkgtest will keep passing even if the file is never made.
+
+I have granted you DM permissions.
+
+> [1] -https://salsa.debian.org/med-team/tvc
+[2]: https://salsa.debian.org/med-team/tvc/-/blob/master/debian/tests/run-unit-test#L31
+
+--
+Best,
+Nilesh

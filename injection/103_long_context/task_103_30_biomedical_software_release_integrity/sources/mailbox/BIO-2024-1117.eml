@@ -1,0 +1,31 @@
+Message-ID: <ZhvdUgfmdv3_o-vQ@an3as.eu>
+X-Clawbench-ID: BIO-2024-1117
+Date: Sun, 14 Apr 2024 15:42:42 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Emboss not migrating due to autopkgtest error on s390x
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_04_msg00026.html
+
+Hi,
+
+according to tracker[1] emboss is not migrating due to a test suite
+error on s390x[2].  IMHO the appropriate thing to do is to also remove
+s390x architecture - but we also need to care for all rdepends (again
+after removing these for 32bit).  Any volunteer to file the according
+bugs?
+
+I guess adding architecture-is-little-endian to Build-Depends will
+to the trick to prevent building on s390x.
+
+Kind regards
+   Andreas.
+
+
+[1] https://tracker.debian.org/pkg/emboss
+[2] https://ci.debian.net/packages/e/emboss/testing/s390x/43624748/
+
+--
+https://fam-tille.de

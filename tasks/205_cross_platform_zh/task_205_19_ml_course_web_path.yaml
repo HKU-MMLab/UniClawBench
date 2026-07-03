@@ -1,0 +1,16 @@
+task_id: task_205_19_ml_course_web_path
+category: 205_cross_platform_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+recording: none
+headed: auto
+task: "你是一名具备 Python 基础的后端工程师，但这是你第一次系统地学习机器学习工程。你希望在接下来的 7 天内完成一条入门学习路径，目标是理解模型训练、评估、部署以及基本的 MLOps 概念。只使用浏览器完成以下任务：从至少 5 个公开网页来源收集学习资源，且这些来源必须涵盖以下类型：\n\n- 一个大学或机构的公开课程页面\n- 一个课程平台页面，例如 Coursera / edX / Udacity / DeepLearning.AI\n- 一个官方文档或教程页面\n- 一个视频课程或播放列表页面\n- 一个动手项目或 notebook / 教程页面\n\n你需要比较每个资源的主题覆盖范围、预估学习时间、先修要求、是否免费或可旁听，以及其实践性如何，然后选出最适合 7 天入门路径的 4-6 个资源。最后将学习路径写入：\n\n    /tmp_workspace/results/ml_engineering_week1_learning_path.md\n\n该 Markdown 必须包含五个顶级章节：\n- learner profile and goal\n- resource comparison\n- 7-day study plan\n- hands-on practice plan\n- why rejected others\n\n7 天学习计划必须为每一天包含：学习资源、预估时间、具体学习目标，以及一个可检查的产出。不要只提供一堆链接，也不要机械地照抄整个课程目录；要给出权衡取舍以及一个可在一周内执行的计划。如果某个资源需要付费、登录或有地区限制，要明确标记，并优先选择可公开访问的替代方案。\n"
+codex:
+  max_user_followups: 2
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json

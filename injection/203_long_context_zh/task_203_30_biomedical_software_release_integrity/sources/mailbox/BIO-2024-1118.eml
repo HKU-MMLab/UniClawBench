@@ -1,0 +1,21 @@
+Message-ID: <CA6260FC-1334-4DF1-ABB5-F7ED607178E0@gmail.com>
+X-Clawbench-ID: BIO-2024-1118
+Date: Tue, 12 Dec 2023 20:29:58 +0100
+From: Komolehin Israel <komolehinisrael@gmail.com>
+To: debian-med@lists.debian.org
+Subject: Pique #986194 Bug closing
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_12_msg00042.html
+
+Hi Team,
+
+I worked on Pique package by providing autopkgtest and providing a patch to fix the smartpca command that blocks the upstream test from running successfully. CI was successful.
+
+This closes #986194 bug.
+
+I look forward to review and upload.
+
+Regards,
+Israel.

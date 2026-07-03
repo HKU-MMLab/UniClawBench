@@ -1,0 +1,49 @@
+task_id: task_104_38_suddenly_first120s_subtitles
+category: 104_multimodal
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  Please open the video file:
+  /tmp_workspace/clawbench/sources/clip.mp4
+
+  You must actually play, watch, and listen to the local video clip, then
+  transcribe it yourself. Do not download existing subtitles, scripts, movie
+  dialogue transcripts, or rely on movie knowledge; the final subtitles and
+  timeline must be based on this local video.
+
+  Please process only the first 120 seconds of the video, generate a subtitle
+  file for that segment, and save it as:
+  /tmp_workspace/results/clip.srt
+
+  Requirements:
+  1. Cover only the 0:00-2:00 segment
+  2. Use standard SRT format
+  3. Split narration or continuous long sentences reasonably according to
+     natural pauses
+  4. After completing the first draft, watch the first 120 seconds again and
+     check whether there are:
+     - subtitle blocks that last too long and are hard to read
+     - obvious missing words
+     - abnormal overlaps or gaps between cues
+  5. If you find problems, correct the original file directly
+
+  If `/tmp_workspace/results/` does not exist, create it first.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/reference_clip.srt
+  - references/selected_clips_manifest.json
+
+sources:
+  - clip.mp4
+
+codex:
+  max_user_followups: 2

@@ -1,0 +1,18 @@
+Message-ID: <5DA4B367-0ECD-415A-91F7-221E637D4D00@eissing.org>
+X-Clawbench-ID: ASF-2024-0518
+Date: Thu, 27 Apr 2023 14:06:04 +0200
+From: "Stefan Eissing via dev" <dev@httpd.apache.org>
+To: dev@httpd.apache.org,  Eissing Stefan <stefan@eissing.org>
+Subject: Re: pytest in trunk
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-04.mbox
+
+Got pytest working again in trunk.
+
+> Am 27.04.2023 um 09:25 schrieb Stefan Eissing via dev <dev@httpd.apache.org>:
+>
+> ...is no longer working for me since r1908574 by Yann.
+>
+> Yann, you changed the cgi implementations. Some do no even run on my machine due to wrong var names. What was the idea behind the changes? I assume they are working on your system?

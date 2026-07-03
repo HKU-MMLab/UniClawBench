@@ -1,0 +1,21 @@
+{
+  "display_name": "ExhibitStory \u2014 Timeline",
+  "based_on": "scrollytelling exhibit template",
+  "item_metadata_fields": [
+    "title",
+    "caption",
+    "date",
+    "description",
+    "credit"
+  ],
+  "features": {
+    "timeline": true,
+    "map": true,
+    "iiif_large_images": false,
+    "browse_by_filter": false,
+    "search": false,
+    "responsive": true
+  },
+  "note": "gorgeous scrollytelling timeline, has credit \u2014 but NO rights and NO accession_number, and only medium images (no IIIF large)",
+  "id": "exhibit_timeline_story"
+}

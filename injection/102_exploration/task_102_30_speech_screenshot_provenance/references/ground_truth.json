@@ -1,0 +1,24 @@
+{
+  "task_id": "task_102_30_speech_screenshot_provenance",
+  "note": "Interview/speech-screenshot provenance task. The executor gets a video frame (sources/screenshot.jpg) with no channel watermark, no caption, no on-screen title. They must visually identify the speaker + occasion and trace it to the canonical original video. A plain search of a frame can't be done; reverse-image + recognition is needed, and the answer must be the OFFICIAL upload, not a reaction/clip channel.",
+  "frame_origin": {
+    "source": "YouTube video UF8uR6Z6KLc (Stanford official channel) — auto thumbnail frame, no overlay text",
+    "what_it_shows": "a balding man in academic regalia (dark gown, magenta/red hood) speaking at a lectern with a microphone, outdoors/auditorium with red banners behind"
+  },
+  "canonical_answer": {
+    "speaker": "Steve Jobs",
+    "occasion": "Stanford University 2005 Commencement Address ('Stay Hungry. Stay Foolish.')",
+    "date": "2005-06-12",
+    "canonical_video": "https://www.youtube.com/watch?v=UF8uR6Z6KLc",
+    "official_channel": "Stanford (official YouTube channel)",
+    "video_title": "Steve Jobs' 2005 Stanford Commencement Address",
+    "also_acceptable_canonical": "Stanford News official transcript/page for the 2005 commencement address (news.stanford.edu)"
+  },
+  "scoring_anchors": {
+    "must_identify": {"speaker": "Steve Jobs", "occasion": "Stanford 2005 Commencement Address"},
+    "canonical_video_for_full_credit": {"youtube_id": "UF8uR6Z6KLc", "channel": "Stanford (official)"},
+    "primary_source_rule": "canonical = the official Stanford upload of the address (YouTube UF8uR6Z6KLc) or Stanford's own published transcript/page. Reaction/clip/re-upload channels and news aggregators are secondary.",
+    "anti_secondary_source": "stopping at a random re-upload, a 'top moments' clip channel, or a news article without identifying the official Stanford source caps the score",
+    "tolerance": "Accept identifying speaker=Steve Jobs + occasion=Stanford 2005 commencement as the core. Full credit requires reaching the official Stanford video (UF8uR6Z6KLc) OR Stanford's own transcript page. If the executor identifies it correctly but only reaches a non-official re-upload, give partial credit."
+  }
+}

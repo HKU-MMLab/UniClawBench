@@ -1,0 +1,43 @@
+Message-ID: <20020821103804.16933c93.matthias@egwn.net>
+X-Clawbench-ID: CAM-2003-0821
+Date: Wed, 21 Aug 2002 10:38:04 +0200
+From: Matthias Saou <matthias@egwn.net>
+To: rpm-zzzlist@freshrpms.net
+Subject: Re: advice on 7.3.92 to 7.3.93, and Apt compiling
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01268.280863c5d13405da77887dc3bbdb3071
+
+Once upon a time, Brian wrote :
+
+> On Mon, 19 Aug 2002 16:44:30 +0200, Matthias Saou <matthias@egwn.net>
+> wrote:
+>
+> [snipped]
+>
+> > Then why bother : The new Red Hat Linux beta "(null)" is now available
+> > and should be announced anytime now. It contains rpm 4.1-0.81.
+> >
+> > You can grab it from here :
+> > ftp://ftp.freshrpms.net/pub/redhat/linux/beta/null/
+>
+>     What's the official "apt" line for it?  Is it just 7.4 instead of
+>     7.3, or did they make this one 8.0?
+
+This is a beta, probably of 8.0 although it's numbered 7.3.94. As such,
+I've set up no apt repository for it, although you may find a few of my
+packages recompiled for it under the /pub/freshrpms/null/ directory of my
+ftp server.
+
+Matthias
+
+--
+Matthias Saou                                World Trade Center
+-------------                                Edificio Norte 4 Planta
+System and Network Engineer                  08039 Barcelona, Spain
+Electronic Group Interactive                 Phone : +34 936 00 23 23
+
+_______________________________________________
+RPM-List mailing list <RPM-List@freshrpms.net>
+http://lists.freshrpms.net/mailman/listinfo/rpm-list

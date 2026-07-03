@@ -1,0 +1,43 @@
+Message-ID: <c6f1fd032ed56bf3c5c68584b6a0586b9e6fbdac@paclan.it>
+X-Clawbench-ID: ASF-2024-1369
+Date: Wed, 18 Dec 2024 21:41:00 +0000
+From: giovanni@paclan.it
+To: dev@httpd.apache.org
+Subject: Re: Move to git (Was: Re: httpd 2.4 -> next)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-12.mbox
+
+18 dicembre 2024 alle ore 18:56, "Eric Covener" <covener@gmail.com mailto:covener@gmail.com?to=%22Eric%20Covener%22%20%3Ccovener%40gmail.com%3E > scrive:
+>
+> >
+> > Are the tasks required to do so known? If so, I can take that on.
+> >
+> I don't think the full tasks (or even requirements) are known.
+>
+> I had started a scratchpad here
+> https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=311628229
+> but didn't get far, the focus was on what was absolutely needed to
+> cutover. Maybe it just really isn't that much if we'll continue to
+> use external processes for release/bugs/voting etc and we can chip
+> away at that stuff later.
+>
+> Maybe something like this for the must-have tasks:
+>
+> - Get with Infra and see if there are general caveats (open PRs for
+> example?) for converting from r/o to r/w
+> - Clean up or save whatever might go missing when we convert
+> - give warning of the above + the upcoming cutover attempt.
+> - make svn r/o (infra) && make github r/w (infra)
+> - Do a final check of contents and history (multiple eyes)
+> - Test basic PR flow and CI still happy
+> - Port the release scripts and run a non-security release (there are a
+> few regression fixes queued up i believe). I can take a crack at this
+> probably any time in 1Q with just a little notice to sync up.
+>
+> Then anything else is just gravy (developer doc, issues vs bugzilla, STATUS)
+>
+
+how should we handle "security" pmc-only repo in git workflow ?
+ Giovanni

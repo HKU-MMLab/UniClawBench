@@ -1,0 +1,25 @@
+Message-ID: <20220714150410.w7uaxtmgjkocfgg7@debian>
+X-Clawbench-ID: BIO-2024-0045
+Date: Thu, 14 Jul 2022 20:34:10 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: Added autopkgtest for rockhopper
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_07_msg00028.html
+
+On Thu, Jul 14, 2022 at 08:04:10PM +0530, Mohd Bilal wrote:
+> I've added autopkgtests for rockhopper[1]. The piuparts currently fails due
+> to an issue with the pipeline[2] and had no problems when tested locally.
+> Requesting someone to review and sponsor my changes.
+
+Perfect.
+Uploaded. Thanks, Bilal!
+
+> [1] - https://salsa.debian.org/med-team/rockhopper/
+> [2] - https://salsa.debian.org/salsa-ci-team/pipeline/-/merge_requests/358
+
+--
+Regards,
+Nilesh

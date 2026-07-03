@@ -1,0 +1,58 @@
+task_id: task_202_15_scientific_colorblind_palette
+category: 202_exploration_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我正在为一份期刊准备一幅含 5 条数据系列的科学图（多折线图）。它需要让
+  红绿色盲的审稿人也能看清，而且有时会以黑白方式印刷，所以这些颜色在灰度
+  下也必须保持可区分。请帮我从一组固定的候选中挑选最佳的 5 色调色板。
+
+  候选调色板离线提供，位于：
+
+      /tmp_workspace/clawbench/sources/palettes.json
+
+  每个调色板有 5 种颜色，以 RGB 三元组和 hex 给出（ColorBrewer 定性配色、
+  一组 jet/rainbow 采样、Okabe-Ito 以及 viridis）。请客观评估它们——不要
+  凭名气。对每个调色板计算：
+
+  - HARD 约束（必须全部通过）：
+    1. 红绿色盲安全性：同时模拟 deuteranopia 和 protanopia，并要求这 5 种
+       颜色之间的最小两两感知色差（deltaE）在两种情况下都至少为 15。
+    2. 灰度安全性：当简化为灰度亮度时，最小两两亮度间隔必须至少为 5
+       （在 0-100 的标度上），以便各系列在黑白印刷中保持可区分。
+
+  - SOFT 偏好（在通过 hard 约束者之间打破平局）：优先选择最坏情况红绿
+    区分度更大的，其次是灰度区分度更大的。
+
+  请恰好挑选一个调色板，并用计算出的数字来论证。注意：一个看起来色彩
+  丰富的调色板在灰度下可能毫无用处，而一个著名的"色盲友好"调色板仍可能
+  未通过灰度/印刷要求。
+
+  请保存：
+  - `/tmp_workspace/results/palette_choice.json`：你的选择（`selected_id`
+    以及论证它的指标）、通过所有 hard 约束的调色板清单，以及打破平局的
+    理由。
+  - `/tmp_workspace/results/palette_evaluation.json`：每个调色板的计算指标
+    （deuteranopia/protanopia 下最坏情况的红绿 deltaE，以及灰度最小间隔），
+    并附 pass/fail 和所违反的约束名称。
+  - `/tmp_workspace/results/palette_method.json`：你是如何模拟色盲、计算
+    deltaE 以及计算灰度亮度的（可复现）。
+
+  这是完全离线的——不要从网络获取任何内容。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/reference_analysis.py
+sources:
+  - palettes.json
+
+codex:
+  max_user_followups: 2

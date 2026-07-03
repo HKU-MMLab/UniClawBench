@@ -1,0 +1,24 @@
+Message-ID: <15740.52785.769385.831666@slothrop.zope.com>
+X-Clawbench-ID: CAM-2003-1159
+Date: Mon, 09 Sep 2002 12:37:05 -0400
+From: jeremy@alum.mit.edu
+To: recipient@example.net
+Subject: [Spambayes] understanding high false negative rate
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01737.0adb46c649c37f8f26c46c6d1b0d8d93
+
+>>>>> "TP" == Tim Peters <tim.one@comcast.net> writes:
+
+  >> First test results using tokenizer.Tokenizer.tokenize_headers()
+  >> unmodified.  ...  Second test results using
+  >> mboxtest.MyTokenizer.tokenize_headers().  This uses all headers
+  >> except Received, Data, and X-From_.  ...
+
+  TP> Try the latter again, but call the base tokenize_headers() too.
+
+Sorry.  I haven't found the time to try any more test runs.  Perhaps
+later today.
+
+Jeremy

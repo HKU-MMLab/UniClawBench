@@ -1,0 +1,82 @@
+Message-ID: <7164EC35-272A-40A5-A2CC-F5ED251DAF4B@vmware.com>
+X-Clawbench-ID: ASF-2024-0451
+Date: Tue, 13 Dec 2022 18:58:20 +0000
+From: =?utf-8?B?SmVzw7pzIEdvbnrDoWxleg==?= <jesusgm@vmware.com>
+To: jean-frederic clere <jfclere@gmail.com>, "dev@httpd.apache.org" 	<dev@httpd.apache.org>
+Subject: Re: mod_wasm: Contributing Upstream to Apache
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-12.mbox
+
+Thank Jean-Frederic for your feedback!
+
+Regarding reviewing from the diff, I agree that a PR to GitHub will ease the review process.
+I'm afraid I don't have enough permission to do it. Who/where can I ask for it?
+
+On the issue with wasm_return_const_char_ownership(), that's probably because we renamed the function name in the latest v0.10.0 for consistency.
+Rebuilding everything (including the Rust library) should make that work.
+
+With respect to the headers, in the update from yesterday both mod_wasm.h and mod_wasm.c now include the extended the Apache-2.0 license text as the other modules.
+
+Finally, yes our goal is to donate the module code and help to maintain it! __
+
+Jesús
+
+﻿El 13/12/22, 18:57, "jean-frederic clere" <jfclere@gmail.com <mailto:jfclere@gmail.com>> escribió:
+
+
+!! External Email
+
+
+On 11/14/22 07:37, Jesús González wrote:
+> Hi everyone,
+>
+> I’m Jesús González, and I am part of VMware’s Wasm Labs: wasmlabs.dev
+> <https://nam04.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwasmlabs.dev%2F&amp;data=05%7C01%7Cjesusgm%40vmware.com%7Cb9252a6ca5404ddfd20008dadd337411%7Cb39138ca3cee4b4aa4d6cd83d9dd62f0%7C0%7C1%7C638065510315550879%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=qCNY3UEqv31Cc%2B5eqb6FT5wcnio0qcOzgQYcO20Nqlk%3D&amp;reserved=0> <https://nam04.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwasmlabs.dev%2F&amp;amp;data=05%7C01%7Cjesusgm%40vmware.com%7Cb9252a6ca5404ddfd20008dadd337411%7Cb39138ca3cee4b4aa4d6cd83d9dd62f0%7C0%7C1%7C638065510315550879%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;amp;sdata=qCNY3UEqv31Cc%2B5eqb6FT5wcnio0qcOzgQYcO20Nqlk%3D&amp;amp;reserved=0&gt;>, a group focused on creating open source tools
+> for WebAssembly.
+>
+> We have created mod_wasm, an Apachemodule for running WebAssembly
+> binaries inside httpd, and we would like to contribute it upstream.
+> Please see below for more details. We would love to get your feedback
+> and understand what improvements would be needed (if any) before it
+> could be considered for contribution to the project.
+>
+> The details:
+>
+> WebAssembly <https://nam04.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwebassembly.org%2F&amp;data=05%7C01%7Cjesusgm%40vmware.com%7Cb9252a6ca5404ddfd20008dadd337411%7Cb39138ca3cee4b4aa4d6cd83d9dd62f0%7C0%7C1%7C638065510315550879%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=WlP8Eduz5DibUj1HWwUo57hGHRn9uZ9RoFDl8E2dk5I%3D&amp;reserved=0> <https://nam04.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwebassembly.org%2F&amp;amp;data=05%7C01%7Cjesusgm%40vmware.com%7Cb9252a6ca5404ddfd20008dadd337411%7Cb39138ca3cee4b4aa4d6cd83d9dd62f0%7C0%7C1%7C638065510315550879%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;amp;sdata=WlP8Eduz5DibUj1HWwUo57hGHRn9uZ9RoFDl8E2dk5I%3D&amp;amp;reserved=0&gt;>(Wasm) is a new binary instruction
+> format that is open, portable, efficient, secure, and polyglot. It
+> originated in the browser but is increasingly used in server
+> applications, in particular NGINX, Apache APISIX, Istio provide
+> Wasm-based plugin support (i.e.:
+> https://nam04.safelinks.protection.outlook.com/?url=https%3A%2F%2Fapisix.apache.org%2Fdocs%2Fapisix%2Fwasm%2F&amp;data=05%7C01%7Cjesusgm%40vmware.com%7Cb9252a6ca5404ddfd20008dadd337411%7Cb39138ca3cee4b4aa4d6cd83d9dd62f0%7C0%7C1%7C638065510315707067%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=iJHoUOiV%2B%2FgD3VzOqhugsOnFrliTCQQChWQ%2Bdj5APwM%3D&amp;reserved=0 <https://nam04.safelinks.protection.outlook.com/?url=https%3A%2F%2Fapisix.apache.org%2Fdocs%2Fapisix%2Fwasm%2F&amp;amp;data=05%7C01%7Cjesusgm%40vmware.com%7Cb9252a6ca5404ddfd20008dadd337411%7Cb39138ca3cee4b4aa4d6cd83d9dd62f0%7C0%7C1%7C638065510315707067%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;amp;sdata=iJHoUOiV%2B%2FgD3VzOqhugsOnFrliTCQQChWQ%2Bdj5APwM%3D&amp;amp;reserved=0>
+> <https://nam04.safelinks.protection.outlook.com/?url=https%3A%2F%2Fapisix.apache.org%2Fdocs%2Fapisix%2Fwasm%2F&amp;data=05%7C01%7Cjesusgm%40vmware.com%7Cb9252a6ca5404ddfd20008dadd337411%7Cb39138ca3cee4b4aa4d6cd83d9dd62f0%7C0%7C1%7C638065510315707067%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=iJHoUOiV%2B%2FgD3VzOqhugsOnFrliTCQQChWQ%2Bdj5APwM%3D&amp;reserved=0> <https://nam04.safelinks.protection.outlook.com/?url=https%3A%2F%2Fapisix.apache.org%2Fdocs%2Fapisix%2Fwasm%2F&amp;amp;data=05%7C01%7Cjesusgm%40vmware.com%7Cb9252a6ca5404ddfd20008dadd337411%7Cb39138ca3cee4b4aa4d6cd83d9dd62f0%7C0%7C1%7C638065510315707067%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;amp;sdata=iJHoUOiV%2B%2FgD3VzOqhugsOnFrliTCQQChWQ%2Bdj5APwM%3D&amp;amp;reserved=0&gt;>).
+>
+> mod_wasm is a way to run WebAssembly modules inside Apache Server. This
+> is similar to how mod_php embeds a PHP runtime to run PHP code. This
+> enables any language that supports WebAssembly (including C++, Rust, Go
+> but also Python, PHP, Ruby) to run with mod_wasm and take advantage of
+> the extra level of security and sandboxing. To learn more about mod_wasm
+> you can check out the following resources:
+>
+> * An overviewarticle
+> <https://nam04.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwasmlabs.dev%2Farticles%2Fapache-mod-wasm%2F&amp;data=05%7C01%7Cjesusgm%40vmware.com%7Cb9252a6ca5404ddfd20008dadd337411%7Cb39138ca3cee4b4aa4d6cd83d9dd62f0%7C0%7C1%7C638065510315707067%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=tUaQCURpeq%2BbvLC4Ibj6yjJN9bCblS0gmBSBoTZOI5A%3D&amp;reserved=0>for <https://nam04.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwasmlabs.dev%2Farticles%2Fapache-mod-wasm%2F&amp;amp;data=05%7C01%7Cjesusgm%40vmware.com%7Cb9252a6ca5404ddfd20008dadd337411%7Cb39138ca3cee4b4aa4d6cd83d9dd62f0%7C0%7C1%7C638065510315707067%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;amp;sdata=tUaQCURpeq%2BbvLC4Ibj6yjJN9bCblS0gmBSBoTZOI5A%3D&amp;amp;reserved=0&gt;for> the original
+> release.
+> * We presented mod_wasm at ApacheCon this year and here are theslides
+> <https://nam04.safelinks.protection.outlook.com/?url=https%3A%2F%2Fapachecon.com%2Facna2022%2Fslides%2F01_Gonz%25C3%25A1lez_mod-wasm_Bringing_WebAssembly.pdf&amp;data=05%7C01%7Cjesusgm%40vmware.com%7Cb9252a6ca5404ddfd20008dadd337411%7Cb39138ca3cee4b4aa4d6cd83d9dd62f0%7C0%7C1%7C638065510315707067%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=3q4zWco%2F7lUOHpiNq6RZBFWpp3%2FEe2fsNrB%2FIdMGFVg%3D&amp;reserved=0>and <https://nam04.safelinks.protection.outlook.com/?url=https%3A%2F%2Fapachecon.com%2Facna2022%2Fslides%2F01_Gonz%25C3%25A1lez_mod-wasm_Bringing_WebAssembly.pdf&amp;amp;data=05%7C01%7Cjesusgm%40vmware.com%7Cb9252a6ca5404ddfd20008dadd337411%7Cb39138ca3cee4b4aa4d6cd83d9dd62f0%7C0%7C1%7C638065510315707067%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;amp;sdata=3q4zWco%2F7lUOHpiNq6RZBFWpp3%2FEe2fsNrB%2FIdMGFVg%3D&amp;amp;reserved=0&gt;and> the source code:https://nam04.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fvmware-labs%2Fmod_wasm&amp;data=05%7C01%7Cjesusgm%40vmware.com%7Cb9252a6ca5404ddfd20008dadd337411%7Cb39138ca3cee4b4aa4d6cd83d9dd62f0%7C0%7C1%7C638065510315707067%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=zFaAicFRHh%2BwCiE8ke%2FZ4Q79y8xlgONRbogtl%2FCX7%2Fg%3D&amp;reserved=0 <https://nam04.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fvmware-labs%2Fmod_wasm&amp;amp;data=05%7C01%7Cjesusgm%40vmware.com%7Cb9252a6ca5404ddfd20008dadd337411%7Cb39138ca3cee4b4aa4d6cd83d9dd62f0%7C0%7C1%7C638065510315707067%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;amp;sdata=zFaAicFRHh%2BwCiE8ke%2FZ4Q79y8xlgONRbogtl%2FCX7%2Fg%3D&amp;amp;reserved=0> <https://nam04.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fvmware-labs%2Fmod_wasm&amp;data=05%7C01%7Cjesusgm%40vmware.com%7Cb9252a6ca5404ddfd20008dadd337411%7Cb39138ca3cee4b4aa4d6cd83d9dd62f0%7C0%7C1%7C638065510315707067%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=zFaAicFRHh%2BwCiE8ke%2FZ4Q79y8xlgONRbogtl%2FCX7%2Fg%3D&amp;reserved=0> <https://nam04.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fvmware-labs%2Fmod_wasm&amp;amp;data=05%7C01%7Cjesusgm%40vmware.com%7Cb9252a6ca5404ddfd20008dadd337411%7Cb39138ca3cee4b4aa4d6cd83d9dd62f0%7C0%7C1%7C638065510315707067%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;amp;sdata=zFaAicFRHh%2BwCiE8ke%2FZ4Q79y8xlgONRbogtl%2FCX7%2Fg%3D&amp;amp;reserved=0&gt;>.
+> * CNCF Talk on mod_wasm showcasing how to run
+> WordPress:https://nam04.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DjXe8kulUscQ&amp;data=05%7C01%7Cjesusgm%40vmware.com%7Cb9252a6ca5404ddfd20008dadd337411%7Cb39138ca3cee4b4aa4d6cd83d9dd62f0%7C0%7C1%7C638065510315707067%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=zqpz3y3c4L28baXjKKcyrmBd40YBU9o1K8FvS21wIpQ%3D&amp;reserved=0 <https://nam04.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DjXe8kulUscQ&amp;amp;data=05%7C01%7Cjesusgm%40vmware.com%7Cb9252a6ca5404ddfd20008dadd337411%7Cb39138ca3cee4b4aa4d6cd83d9dd62f0%7C0%7C1%7C638065510315707067%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;amp;sdata=zqpz3y3c4L28baXjKKcyrmBd40YBU9o1K8FvS21wIpQ%3D&amp;amp;reserved=0>
+> <https://nam04.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DjXe8kulUscQ&amp;data=05%7C01%7Cjesusgm%40vmware.com%7Cb9252a6ca5404ddfd20008dadd337411%7Cb39138ca3cee4b4aa4d6cd83d9dd62f0%7C0%7C1%7C638065510315707067%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=zqpz3y3c4L28baXjKKcyrmBd40YBU9o1K8FvS21wIpQ%3D&amp;reserved=0> <https://nam04.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DjXe8kulUscQ&amp;amp;data=05%7C01%7Cjesusgm%40vmware.com%7Cb9252a6ca5404ddfd20008dadd337411%7Cb39138ca3cee4b4aa4d6cd83d9dd62f0%7C0%7C1%7C638065510315707067%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;amp;sdata=zqpz3y3c4L28baXjKKcyrmBd40YBU9o1K8FvS21wIpQ%3D&amp;amp;reserved=0&gt;>
+>
+> In terms of mod_wasm architecture, the module is split into two parts:
+>
+> * /mod_wasm.so/is the extension module for Apache and it’s written in C.
+> * An external dependency:/libwasm_runtime.so/, which is written in
+> Rust and needs to be installed into the system.
+>
+> We modelled this after mod_tls, a module that is part of httpd and also
+> has a Rust dependency.
+>
+> You can take a look at the architecture diagram and instructions on how
+> to build the module
+> here:https://nam04.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fvmware-labs%2Fmod_wasm%23%25EF%25B8%258F-building-mod_wasm&amp;data=05%7C01%7Cjesusgm%40vmware.com%7Cb9252a6ca5404ddfd20008dadd337411%7Cb39138ca3cee4b4aa4d6cd83d9dd62f0%7C0%7C1%7C638065510315707067%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=2ayeUlhO%2FA3KOIFdUjP850OLGPmQAYi%2Blf%2FbNfDO1GY%3D&amp;reserved=0 <https://nam0

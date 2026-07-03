@@ -1,0 +1,12 @@
+Message-ID: <asf-2024-0977@httpd.apache.org>
+X-Clawbench-ID: ASF-2024-0977
+Date: Mon, 05 Feb 2024 10:23:00 +0000
+From: Legal Affairs <legal@apache.org>
+To: Nina Morales <nina@apache.org>
+Subject: Peregrine terms
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: synthetic Apache-style project infrastructure review implant
+
+We cannot sign off on Peregrine until the data schedule names the logs and branches being exported. Pre-release branch names, committer IDs, and reporter addresses are not covered by the short-form public artifact language.

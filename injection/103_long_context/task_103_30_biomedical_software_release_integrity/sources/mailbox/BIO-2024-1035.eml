@@ -1,0 +1,50 @@
+Message-ID: <YcGpnigqTiLeZcXU@an3as.eu>
+X-Clawbench-ID: BIO-2024-1035
+Date: Tue, 21 Dec 2021 11:17:02 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Mayuresh <mayuresh@acm.org>
+Subject: Re: Acquiring Dental RVG on Linux
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_12_msg00117.html
+
+Hi,
+
+Am Tue, Dec 21, 2021 at 01:04:21PM +0530 schrieb Mayuresh:
+> Reviving this[1] old thread after a gap of 1 year.
+>
+> Thanks to the thread this[2] open source implementation to interact with a
+> dental RVG device got developed. As of my pausing this work it was
+> possible to extract the X ray image using our software, but it lacked some
+> image processing to make its quality match with the vendor supplied
+> software.
+>
+> I am reviving this activity and look forward to inputs from this list as
+> before!
+>
+> Here[3] is an image preprocessed by the vendor supplied software and for
+> exactly the same snapshot here[4] is the raw image gathered with the help
+> of usbmon.
+>
+> Would appreciate some inputs on figuring out the transformation from [3]
+> to [4] - brightness, contrast, gamma etc. and suitable tools (preferably
+> non interactive) to carry them out.
+
+Given that you are programming in Python I'd recommend PIL to do some
+image processing.  If you want to do some post-processing possibly
+ImageMagick is your friend.
+
+Hope this helps
+
+       Andreas.
+
+> [1] https://lists.debian.org/debian-med/2020/12/msg00148.html
+> [2] https://github.com/mayureshw/pyrvg
+> [3] http://mayuresh.sdfeu.org/byvendor.jpg
+> [4] http://mayuresh.sdfeu.org/bypyrvg.png
+>
+>
+
+--
+http://fam-tille.de

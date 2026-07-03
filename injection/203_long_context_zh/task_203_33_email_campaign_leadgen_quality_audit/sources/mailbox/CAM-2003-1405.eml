@@ -1,0 +1,42 @@
+Message-ID: <Pine.LNX.4.44.0208111607450.26478-100000@fogarty.jakma.org>
+X-Clawbench-ID: CAM-2003-1405
+Date: Sun, 11 Aug 2002 16:10:40 +0100
+From: Paul Jakma <paul@clubi.ie>
+To: wintermute <cout@eircom.net>
+Subject: Re: [ILUG] Alan Cox doesn't like 2.5 so far!
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00338.150c1aef21dcd741036532b8dad9d694
+
+On Sun, 11 Aug 2002, wintermute wrote:
+
+> Hmm... begs the question, why remove Handrick?
+
+andre seems to have a peculiar way of interacting with people on
+linux-kernel. martin otoh gets on fine with people, but doesnt /seem/
+to have his head fully around the ide code yet¹.
+
+> If it ain't broke, don't fix it.
+
+however, how do you add features? eg tagged commands, udma100, 133,
+etc.. serial ATA, new chipsets. plus the IDE code might be fine, but
+lots of drives and chips have bugs, which need working around.
+
+all that said, Linus says he does his development on an IDE machine
+and hasnt had any problems.
+
+1. judging from comments on l-k.
+
+regards,
+--
+Paul Jakma	paul@clubi.ie	paul@jakma.org	Key ID: 64A2FF6A
+	warning: do not ever send email to spam@dishone.st
+Fortune:
+The surest way to remain a winner is to win once, and then not play any more.
+
+
+--
+Irish Linux Users' Group: ilug@linux.ie
+http://www.linux.ie/mailman/listinfo/ilug for (un)subscription information.
+List maintainer: listmaster@linux.ie

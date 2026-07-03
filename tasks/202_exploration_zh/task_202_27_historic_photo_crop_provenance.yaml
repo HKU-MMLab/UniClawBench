@@ -1,0 +1,42 @@
+task_id: task_202_27_historic_photo_crop_provenance
+category: 202_exploration_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我有一张某幅著名历史照片的裁剪特写，没有任何说明文字
+  或署名，我想知道它究竟描绘的是什么，并找到来源机构的原始
+  档案记录（而非维基百科或新闻转载）。
+  图片在这里：
+
+      /tmp_workspace/clawbench/sources/crop.jpg
+
+  它只是整张照片的一处细节——没有说明文字，没有标识文本——所以请仅凭
+  图像本身识别它，然后将它追溯回权威档案馆。
+
+  请告诉我：
+  - 这张照片描绘的是什么（事件/主题，如果能识别还包括人物），
+  - 拍摄日期，
+  - 收藏档案馆以及规范记录（档案馆自己的
+    页面 / 图像库 id），以及照片的档案 id，
+  - 如果知道的话，摄影师是谁。
+
+  把你的结论和支撑证据（你是如何识别它的，以及
+  规范的档案记录 URL）保存到
+  `/tmp_workspace/results/photo_provenance.json`，并把笔记/截图放在
+  `/tmp_workspace/results/` 下。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+sources:
+  - crop.jpg
+
+codex:
+  max_user_followups: 2

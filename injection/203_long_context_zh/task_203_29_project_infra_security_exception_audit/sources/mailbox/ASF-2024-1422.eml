@@ -1,0 +1,42 @@
+Message-ID: <CAKQ1sVNmTMTsy34TmcJpL8-9oumrZ0vdUCYT8YX-su-vVpU_Kw@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1422
+Date: Wed, 26 Jun 2024 00:09:40 +0200
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.60-rc1 as httpd-2.4.60
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-06.mbox
+
+On Tue, Jun 25, 2024 at 11:35 PM Eric Covener <covener@gmail.com> wrote:
+>
+> On Tue, Jun 25, 2024 at 5:22 PM Eric Covener <covener@gmail.com> wrote:
+> >
+> > On Tue, Jun 25, 2024 at 5:06 PM Eric Covener <covener@gmail.com> wrote:
+> > >
+> > > On Tue, Jun 25, 2024 at 4:35 PM Helmut K. C. Tessarek
+> > > <tessarek@evermeet.cx> wrote:
+> > > >
+> > > > On 2024-06-25 02:53, Ruediger Pluem wrote:
+> > > > > Can you provide more details on your configuration how you forward stuff to fcgi and what request you made?
+> > > >
+> > > > Very simple:
+> > > >
+> > > > <FilesMatch "\.php$">
+> > > >      SetHandler  "proxy:unix:/run/php82-fpm/xxx.sock|fcgi://xxx"
+> > > > </FilesMatch>
+> > >
+> > > I think this new path needs to account for UDS.  The URL is e.g.
+> > > "unix:/tmp/fake.sock|fcgi://xxx..." during proxy_fcgi_canon so it
+> > > declines, then the core handler reports the error on the
+> > > pseudo-filename.
+> >
+> > Or for now, skip the newly added proxy_fixup() and escape just
+> > r->filename before it gets the handler prefixed to it?
+>
+> These all seem hairy. We can do something more targetted from the
+> start to decrease the fallout?
+
+The attached might work, currently testing but sending early if you
+want to try too.

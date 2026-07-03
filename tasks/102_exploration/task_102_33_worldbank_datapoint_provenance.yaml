@@ -1,0 +1,35 @@
+task_id: task_102_33_worldbank_datapoint_provenance
+category: 102_exploration
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  A finance deck cites a figure of about US$4.44 trillion as Japan's GDP for
+  2015, with no source. I want to verify it against the authoritative dataset
+  before reusing it.
+
+  Please trace this number to its canonical source (not a news article or a
+  third-party stats site that repeats it). I need:
+  - the dataset and the exact indicator it comes from (name + code),
+  - the precise value that dataset gives for Japan in 2015, so we can confirm
+    the ~US$4.44 trillion figure,
+  - a link to the authoritative data (the dataset's own API or data page),
+  - whether the deck's figure checks out.
+
+  Save your conclusion and the evidence chain (dataset, indicator code, the
+  matching Japan/2015 value, and the authoritative link) to
+  `/tmp_workspace/results/datapoint_provenance.json`, plus notes under
+  `/tmp_workspace/results/`.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+codex:
+  max_user_followups: 2

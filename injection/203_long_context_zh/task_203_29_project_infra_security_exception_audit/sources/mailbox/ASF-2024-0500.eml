@@ -1,0 +1,50 @@
+Message-ID: <CABD8fLWcdGPHJxpXWydb1s+wqkfyXRp9e=OKm3d8w4x8na482Q@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0500
+Date: Wed, 18 Dec 2024 13:06:30 -0600
+From: Greg Stein <gstein@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: Move to git (Was: Re: httpd 2.4 -> next)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-12.mbox
+
+On Wed, Dec 18, 2024 at 11:57 AM Eric Covener <covener@gmail.com> wrote:
+>...
+
+> Maybe something like this for the must-have tasks:
+>
+> - Get with Infra and see if there are general caveats (open PRs for
+> example?) for converting from r/o to r/w
+>
+
+The git repository (apache/httpd) just becomes canonical. Nothing needs to
+change.
+
+
+> - Clean up or save whatever might go missing when we convert
+>
+
+The svn repository will be marked readonly. Nothing will go missing. In
+fact, the svn repository should stick around for archaeology and historical
+concerns. The git repository holds ported commits from svn, but it might
+not be perfect (for archaeology).
+
+Also don't forget that our svn repository is actually migrated from CVS.
+This would be the second migration. (and I have no idea where the origin
+CVS repository might be, for serious archeology people).
+
+
+> - give warning of the above + the upcoming cutover attempt.
+> - make svn r/o (infra) && make github r/w (infra)
+>
+
+The former is a change to a puppet config file. Well-known for infra. (not
+gonna link here; it is not a public file) ... I don't recall how svn-mirror
+github repositories are handled. I think it is simply that they don't have
+a synchronized repository on gitbox.a.o. Humbedooh would know more here.
+
+>...
+
+Cheers,
+-g

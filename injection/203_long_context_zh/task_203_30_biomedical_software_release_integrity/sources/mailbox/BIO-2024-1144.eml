@@ -1,0 +1,29 @@
+Message-ID: <d5b4017a434f25f728c7966bde0ad76368cb112e.camel@ghic.org>
+X-Clawbench-ID: BIO-2024-1144
+Date: Fri, 29 Mar 2024 17:00:12 -0700
+From: Diane Trout <diane@ghic.org>
+To: "Michael R. Crusoe" <crusoe@debian.org>, Debian Med Project List	 <debian-med@lists.debian.org>
+Subject: Re: Debian-Med policy proposal: 64-bit & little-endian only* for new packages
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_03_msg00040.html
+
+On Thu, 2024-03-28 at 14:51 +0100, Michael R. Crusoe wrote:
+>
+> Like all policy proposals, this is not meant to be a hard rule for
+> all time. We can and should revisit the issue later!
+
+What do you think of the policy being instead of "-med team packages
+MUST support all current Debian architectures", "-med team packages
+(CAN or SHOULD) try to support all current Debian architectures."
+
+Many packages do work fine, but some make no sense without being able
+to access much more than 4G of memory or have picky CPU architecture
+dependencies.
+
+I don't think the team should automatically turn off all more obscure
+architectures, but it seems very reasonable to be quite willing disable
+builds for things that cause problems outside of x86_64/arm64.
+
+Diane

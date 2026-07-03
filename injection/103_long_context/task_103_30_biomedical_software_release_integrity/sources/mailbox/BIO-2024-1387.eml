@@ -1,0 +1,32 @@
+Message-ID: <CADsTwj+dPaqrk6J10+uM75BwyA+GxM0svV8+exb9oQYLV9s9ig@mail.gmail.com>
+X-Clawbench-ID: BIO-2024-1387
+Date: Fri, 15 Mar 2024 14:52:55 +0100
+From: Alexandre Detiste <alexandre.detiste@gmail.com>
+To: debian-med@lists.debian.org
+Subject: Fwd: heudiconv FTBFS on i386
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_03_msg00014.html
+
+Whoops I sent to the wrong list.
+
+---------- Forwarded message ---------
+Date: mer. 13 mars 2024 à 11:07
+To: Debian Med Packaging Team
+
+
+Hi,
+
+I'm refreshing heudiconv.
+
+It fails to build on i386.
+
+https://salsa.debian.org/med-team/heudiconv/-/pipelines/651879
+
+The lazy solution is to drop more & more 32 bit support.
+... but maybe this package can still be fixed.
+
+I'll have a look again later.
+
+Greetings

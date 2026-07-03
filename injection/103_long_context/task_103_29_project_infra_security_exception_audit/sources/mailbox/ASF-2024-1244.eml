@@ -1,0 +1,12 @@
+Message-ID: <asf-2024-1244@httpd.apache.org>
+X-Clawbench-ID: ASF-2024-1244
+Date: Wed, 14 Feb 2024 13:52:00 +0000
+From: Infra Access Review <access-review@apache.org>
+To: dev@httpd.apache.org
+Subject: closed rsync exception
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: synthetic Apache-style project infrastructure review implant
+
+The short-term rsync exception for the release mirror was revoked after the final sync. The logs show no access after closure, and the owner attestation is complete.

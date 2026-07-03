@@ -1,0 +1,34 @@
+task_id: task_103_22_acled_mena_remote_warfare_report
+category: 103_long_context
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I want to create an interactive HTML analysis report for the question: Has the rise of drones and other remote attacks in the Middle East and North Africa been accompanied by a spatial shift from border-proximate clashes toward attacks on capital areas?
+
+  Log in to ACLED at https://acleddata.com and use the ACLED Data Export Tool to download data from 1997-01-01 to 2025-04-18, region Middle East and Northern Africa, event types including Battles, Violence against civilians, and Remote attacks / Explosions / Remote violence, with a focus on air/drone strikes and remote attacks. The login account and password are in `$ACLED_EMAIL` and `$ACLED_PASSWORD`.
+
+  Follow the writing and chart style of this ACLED report: https://acleddata.com/report/exhausted-ukraine-faces-military-and-diplomatic-pressure-cede-donbas . The report body should be about 1,500 words, plus or minus 200 words, and must include research question, methodology, findings, discussion, and conclusion.
+
+  Construct two variables: capital-area event, meaning the event occurred in the national capital or the sub-location name starts with that capital; and border-proximate event, meaning within 50 km of an international land border. Based on the data, perform factor analysis or a similar indicator decomposition to explain the relationship among remote warfare, capital-area, border-proximate, air/drone strike, and related factors. Charts must include at least a time trend of remote attacks/air-drone strikes, the changing proportion of capital vs border events among remote attacks, and an interactive geographic scatter map with a time slider. Before delivery, open the HTML yourself and check once that the map points, time slider, charts, and body layout all work correctly. The map must not have reversed coordinates, points concentrated in the wrong region, blank charts, or no time variation. Deliver `/tmp_workspace/results/acled_mena_remote_warfare.html`, and do not write the ACLED account or password in the result.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/project_folder_reference/README.md
+  - references/project_folder_reference/code/01_data_cleaning.ipynb
+  - references/project_folder_reference/code/02_analysis.ipynb
+  - references/project_folder_reference/data/country_pattern_summary.csv
+  - references/project_folder_reference/data/spatial_bucket_summary.csv
+  - references/project_folder_reference/data/yearly_shift_summary.csv
+  - references/project_folder_reference/docs/figure4_notebook_map.html
+  - references/project_folder_reference/docs/index.html
+  - references/project_folder_reference/requirements.txt
+codex:
+  max_user_followups: 2

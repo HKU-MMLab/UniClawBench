@@ -1,0 +1,19 @@
+Message-ID: <YWqH36a6NRP6JndW@an3as.eu>
+X-Clawbench-ID: BIO-2024-0193
+Date: Sat, 16 Oct 2021 10:05:51 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Lagging behind several versions for snakemake - lots of failed tests in latest version
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00078.html
+
+Am Fri, Oct 15, 2021 at 07:41:17PM +0530 schrieb Nilesh Patra:
+> However smart-open in archive lags several major versions behind -- current is 1.11.1-3 and latest is 5.2.1
+> So if you could update this ...
+
+I see you are working on this - so I'll move to real life now. ;-)
+
+--
+http://fam-tille.de

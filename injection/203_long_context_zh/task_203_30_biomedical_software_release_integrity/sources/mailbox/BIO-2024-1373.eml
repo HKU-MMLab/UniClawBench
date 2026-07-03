@@ -1,0 +1,30 @@
+Message-ID: <ZLPz7mQgYGDFQmei@an3as.eu>
+X-Clawbench-ID: BIO-2024-1373
+Date: Sun, 16 Jul 2023 15:43:10 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: What is the point of B-D-I in a package that has no arch:any component?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_07_msg00079.html
+
+Hi Nilesh,
+
+Am Sun, Jul 16, 2023 at 12:23:44PM +0530 schrieb Nilesh Patra:
+> What exactly is the point of having two separate fields in an arch:all package?
+
+Probably no point at all.
+
+> (Combining these into one would likely fix the bug as well)
+
+Feel free to fix it.
+
+Kind regards
+    Andreas.
+
+> [1]: https://lists.debian.org/debian-devel/2023/07/msg00188.html
+
+
+--
+http://fam-tille.de

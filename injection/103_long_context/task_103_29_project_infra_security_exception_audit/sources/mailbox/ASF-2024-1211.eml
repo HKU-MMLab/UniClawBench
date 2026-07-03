@@ -1,0 +1,29 @@
+Message-ID: <6cf7818c-0eca-6b71-8f59-5c77a92e8e22@kippdata.de>
+X-Clawbench-ID: ASF-2024-1211
+Date: Tue, 10 May 2022 16:37:50 +0200
+From: Rainer Jung <rainer.jung@kippdata.de>
+To: dev@httpd.apache.org
+Subject: Re: mod_dumpio and per-dir loglevel
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-05.mbox
+
+Am 10.05.2022 um 16:23 schrieb Eric Covener:
+> I was looking at making some tests run more quietly, but mod_dumpio
+> uses ap_log_cerror even though it always has a ap_filter_t when it's
+> doing its real work.
+>
+> While this would still leave some early logging (pre-location walk)
+> w/o the per-dir loglevel set yet, it would kick in by the time bodies
+> are read/written.
+>
+> Can anyone anticipate any issue/concern here with using ap_log_rerror?
+
+Probably not what you are asking, but mod_dumpio in a (reverse) proxy
+context can log the front connection and the back connection. Maybe
+something to be aware of when switching from connection to request.
+
+Best regards,
+
+Rainer

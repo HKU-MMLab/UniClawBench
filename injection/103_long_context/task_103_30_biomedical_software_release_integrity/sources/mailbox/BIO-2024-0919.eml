@@ -1,0 +1,72 @@
+Message-ID: <8ea3565668ecc738bc1ee6de4bf774f76fd8797e.camel@debian.org>
+X-Clawbench-ID: BIO-2024-0919
+Date: Sat, 02 Oct 2021 13:17:47 +0200
+From: Sébastien Villemot <sebastien@debian.org>
+To: debian-science@lists.debian.org
+Subject: Re: GraphBLAS and SuiteSparse
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_10_msg00004.html
+
+Le samedi 02 octobre 2021 à 11:06 +0200, Vincent Prat a écrit :
+> Le 27/09/2021 à 17:26, Sébastien Villemot a écrit :
+> >
+> > Le samedi 25 septembre 2021 à 17:57 +0200, Vincent Prat a écrit :
+> > > I recently started packaging python-suitesparse-graphblas [1], which is
+> > > a Python binding of SuiteSparse:GraphBLAS [2].
+> > > The version of GraphBLAS packaged in Debian comes from a different
+> > > repository that includes many other pieces of software, SuiteSparse [3].
+> > > My problem is that the version included in SuiteSparse (currently 5.0.5)
+> > > is out of date compared to the standalone version (currently 5.1.7) used
+> > > by python-suitesparse-graphblas.
+> > >
+> > > What is the best option?
+> > > a) packaging the standalone version with a different name
+> > > b) packaging the standalone version instead of the one included in
+> > > SuiteSparse
+> > > c) packaging an outdated version of python-suitesparse-graphblas to fit
+> > > the version of GraphBLAS included in SuiteSparse
+> > >
+> > > As far as I know, other pieces included in SuiteSparse do not depend on
+> > > GraphBLAS, so I would rather go for option b.
+> > > Sébastien, can you confirm this ?
+> > I was not aware that GraphBLAS was also distributed independently of
+> > SuiteSparse.
+> >
+> > I am perfectly fine with option b.
+> >
+> > Just note that you will have to be careful with version numbers,
+> > especially since suitesparse currently has an epoch. The libgraphblas5
+> > binary package that will be produced by your new source package must
+> > have a greater version number than the current one.
+> >
+> > What I would suggest is to not put the epoch in the new source package
+> > version, and to only add the epoch on the libgraphblas5 binary package
+> > (this is technically possible, see e.g. gcc-defaults).
+> >
+> > And when libgraphblas bumps its SOVERSION (whichs happens quite
+> > frequently), then you will be able to drop the epoch and revert to a
+> > standard versioning scheme.
+> >
+> Thank you for your reply.
+> I think I understand how to do this.
+> Besides, the Debian policy states that before increasing the epoch, one
+> should get a consensus on devian-devel, so I guess the discussion has to
+> move there.
+
+Actually there is no need to increase an epoch. There is already one on
+libgraphblas5, and we’re just talking about moving that binary package
+to a new source package, so it’s inevitable that the epoch has to stay.
+I don’t think that requires a discussion on debian-devel@.
+
+Please let me know when you want to move on with all this, so that I
+make the necessary changes in src:suitesparse in a coordinated fashion.
+
+Best,
+
+--
+⢀⣴⠾⠻⢶⣦⠀  Sébastien Villemot
+⣾⠁⢠⠒⠀⣿⡁  Debian Developer
+⢿⡄⠘⠷⠚⠋⠀  https://sebastien.villemot.name
+⠈⠳⣄⠀⠀⠀⠀  https://www.debian.org

@@ -1,0 +1,42 @@
+task_id: task_102_25_painting_crop_provenance
+category: 102_exploration
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  A friend sent me this cropped close-up of a painting with no caption and I'd
+  love to know exactly what it is and where the original lives so I can go see
+  it. The image is here:
+
+      /tmp_workspace/clawbench/sources/crop.jpg
+
+  It's only an interior detail — the title, signature, and frame are not in the
+  crop — so please identify the painting from the image itself, then trace it
+  back to the authoritative source.
+
+  Tell me:
+  - the painting's title and the artist,
+  - the approximate date,
+  - which museum holds it, and its catalog/accession record (the museum's own
+    page or collection API, not a third-party reproduction),
+  - the museum object id / accession number if available.
+
+  Save your conclusion and the supporting evidence (how you identified it, and
+  the canonical museum record URL you traced it to) to
+  `/tmp_workspace/results/painting_provenance.json`, plus any notes/screenshots
+  under `/tmp_workspace/results/`.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+sources:
+  - crop.jpg
+
+codex:
+  max_user_followups: 2

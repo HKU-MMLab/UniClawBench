@@ -1,0 +1,65 @@
+Message-ID: <D3089B05-A1D9-4420-B7AB-6E5E9CF462D0@eissing.org>
+X-Clawbench-ID: ASF-2024-0941
+Date: Wed, 26 Jan 2022 12:27:57 +0100
+From: Stefan Eissing <stefan@eissing.org>
+To: dev@httpd.apache.org
+Subject: Re: trunk test failure, SSL handshake
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-01.mbox
+
+> Am 25.01.2022 um 21:59 schrieb Yann Ylavic <ylavic.dev@gmail.com>:
+>
+> Stefan,
+>
+> On Tue, Jan 25, 2022 at 12:58 PM Stefan Eissing <stefan@eissing.org> wrote:
+>>
+>> Failure in https://app.travis-ci.com/github/apache/httpd/jobs/556778281
+>> indicates that the SSL handshake timeout no longer is working.
+>> Also logs mpm:error several times.
+>>
+>> The test opens a socket and sends one byte, then waits for
+>> the connection to close with the configured timeout.
+>>
+>> Run locally with:
+>>> pytest test/modules/http2/ -vvv -k test_h2_105_02
+>
+> Is there a way to have the pytest framework talk to an httpd already
+> running in gdb?
+>
+> Cheers;
+> Yann.
+
+I think the current implementation of handshake handling is broken.
+Added some logs in mod_reqtimeout. Test case opens a connection and sends 1 byte. Log:
+
+[Wed Jan 26 11:14:01.496247 2022] [ssl:info] [pid 54078:tid 123145339097088] [client 127.0.0.1:62564] AH01964: Connection to child 130 established (server cgi.tests.httpd.apache.org:443)
+[Wed Jan 26 11:14:01.496381 2022] [ssl:trace3] [pid 54078:tid 123145339097088] ssl_engine_kernel.c(2213): [client 127.0.0.1:62564] OpenSSL: Handshake: start
+[Wed Jan 26 11:14:01.496420 2022] [ssl:trace3] [pid 54078:tid 123145339097088] ssl_engine_kernel.c(2221): [client 127.0.0.1:62564] OpenSSL: Loop: before SSL initialization
+[Wed Jan 26 11:14:01.496430 2022] [reqtimeout:trace3] [pid 54078:tid 123145339097088] mod_reqtimeout.c(227): [client 127.0.0.1:62564] non-block read start
+[Wed Jan 26 11:14:01.496438 2022] [core:trace6] [pid 54078:tid 123145339097088] util_filter.c(1052): [client 127.0.0.1:62564] adopt full brigade to empty brigade in 'core_in' input filter
+[Wed Jan 26 11:14:01.496443 2022] [reqtimeout:trace3] [pid 54078:tid 123145339097088] mod_reqtimeout.c(232): [client 127.0.0.1:62564] non-block read return
+[Wed Jan 26 11:14:01.496448 2022] [ssl:trace4] [pid 54078:tid 123145339097088] ssl_engine_io.c(2499): [client 127.0.0.1:62564] OpenSSL: read 1/5 bytes from BIO#7f83ec704710 [mem: 7f83fd829603] (BIO dump follows)
+[Wed Jan 26 11:14:01.496453 2022] [ssl:trace7] [pid 54078:tid 123145339097088] ssl_engine_io.c(2429): [client 127.0.0.1:62564] +-------------------------------------------------------------------------+
+[Wed Jan 26 11:14:01.496458 2022] [ssl:trace7] [pid 54078:tid 123145339097088] ssl_engine_io.c(2466): [client 127.0.0.1:62564] | 0000: 30                                               0                |
+[Wed Jan 26 11:14:01.496462 2022] [ssl:trace7] [pid 54078:tid 123145339097088] ssl_engine_io.c(2471): [client 127.0.0.1:62564] +-------------------------------------------------------------------------+
+[Wed Jan 26 11:14:01.496465 2022] [reqtimeout:trace3] [pid 54078:tid 123145339097088] mod_reqtimeout.c(227): [client 127.0.0.1:62564] non-block read start
+[Wed Jan 26 11:14:01.496468 2022] [core:trace6] [pid 54078:tid 123145339097088] util_filter.c(1076): [client 127.0.0.1:62564] reinstate full brigade to empty brigade in 'core_in' input filter
+[Wed Jan 26 11:14:01.496473 2022] [core:trace6] [pid 54078:tid 123145339097088] util_filter.c(1052): [client 127.0.0.1:62564] adopt full brigade to empty brigade in 'core_in' input filter
+[Wed Jan 26 11:14:01.496476 2022] [reqtimeout:trace3] [pid 54078:tid 123145339097088] mod_reqtimeout.c(232): [client 127.0.0.1:62564] non-block read return
+[Wed Jan 26 11:14:01.496479 2022] [ssl:trace4] [pid 54078:tid 123145339097088] ssl_engine_io.c(2509): [client 127.0.0.1:62564] OpenSSL: I/O error, 4 bytes expected to read on BIO#7f83ec704710 [mem: 7f83fd829604]
+[Wed Jan 26 11:14:01.496484 2022] [ssl:trace3] [pid 54078:tid 123145339097088] ssl_engine_kernel.c(2250): [client 127.0.0.1:62564] OpenSSL: Exit: error in before SSL initialization
+[Wed Jan 26 11:14:01.496492 2022] [ssl:trace6] [pid 54078:tid 123145339097088] ssl_engine_io.c(1523): [client 127.0.0.1:62564] Want read during nonblocking accept
+[Wed Jan 26 11:14:01.496495 2022] [ssl:debug] [pid 54078:tid 123145339097088] mod_ssl.c(735): [client 127.0.0.1:62564] AH10371: SSL handshake in progress, continuing
+...nothing more...
+
+The last line means ssl_hook_process_connection() returns the new AGAIN to
+the MPM and that means the socket goes into polling with the usual Timeout.
+
+mod_reqtimeout has no chance to impose its configured handshake timeout.
+
+What is the intention behind the change in handshake handling? To not block a worker thread during its processing?
+
+Kind Regards,
+Stefan

@@ -1,0 +1,145 @@
+Message-ID: <3da2be02-b9af-441b-a15f-a4d8d0e20c1a@kippdata.de>
+X-Clawbench-ID: ASF-2024-0686
+Date: Thu, 19 Oct 2023 13:55:36 +0200
+From: Rainer Jung <rainer.jung@kippdata.de>
+To: "dev@httpd.apache.org" <dev@httpd.apache.org>
+Subject: OpenSSL 3.0 deprecations
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-10.mbox
+
+FYI: here's a list of symbols for which I get deprecation warnings when
+compiling httpd 2.4.58 (plus bundled APU) against current OpenSSL 3.1.3.
+or 3.0.11:
+
+srclib/apr-util/crypto/apr_crypto_openssl.c:141:5: warning:
+'ENGINE_load_builtin_engines' is deprecated (declared at
+include/openssl/engine.h:358): Since OpenSSL 3.0
+srclib/apr-util/crypto/apr_crypto_openssl.c:142:5: warning:
+'ENGINE_register_all_complete' is deprecated (declared at
+include/openssl/engine.h:415): Since OpenSSL 3.0
+srclib/apr-util/crypto/apr_crypto_openssl.c:208:9: warning:
+'ENGINE_finish' is deprecated (declared at
+include/openssl/engine.h:628): Since OpenSSL 3.0
+srclib/apr-util/crypto/apr_crypto_openssl.c:209:9: warning:
+'ENGINE_free' is deprecated (declared at include/openssl/engine.h:493):
+Since OpenSSL 3.0
+srclib/apr-util/crypto/apr_crypto_openssl.c:326:9: warning:
+'ENGINE_by_id' is deprecated (declared at include/openssl/engine.h:336):
+Since OpenSSL 3.0
+srclib/apr-util/crypto/apr_crypto_openssl.c:330:9: warning:
+'ENGINE_init' is deprecated (declared at include/openssl/engine.h:620):
+Since OpenSSL 3.0
+srclib/apr-util/crypto/apr_crypto_openssl.c:331:13: warning:
+'ENGINE_free' is deprecated (declared at include/openssl/engine.h:493):
+Since OpenSSL 3.0
+
+support/ab.c:769:25: warning: 'EVP_PKEY_get1_EC_KEY' is deprecated
+(declared at include/openssl/evp.h:1377): Since OpenSSL 3.0
+support/ab.c:770:25: warning: 'EC_KEY_get0_group' is deprecated
+(declared at include/openssl/ec.h:1037): Since OpenSSL 3.0
+support/ab.c:771:25: warning: 'EC_KEY_free' is deprecated (declared at
+include/openssl/ec.h:1006): Since OpenSSL 3.0
+support/ab.c:1431:13: warning: 'BIO_set_callback' is deprecated
+(declared at include/openssl/bio.h:279): Since OpenSSL 3.0
+
+modules/ssl/ssl_engine_config.c:611:5: warning: 'ENGINE_by_id' is
+deprecated (declared at include/openssl/engine.h:336): Since OpenSSL 3.0
+modules/ssl/ssl_engine_config.c:613:9: warning: 'ENGINE_free' is
+deprecated (declared at include/openssl/engine.h:493): Since OpenSSL 3.0
+modules/ssl/ssl_engine_config.c:618:9: warning: 'ENGINE_get_first' is
+deprecated (declared at include/openssl/engine.h:318): Since OpenSSL 3.0
+modules/ssl/ssl_engine_config.c:620:13: warning: 'ENGINE_get_id' is
+deprecated (declared at include/openssl/engine.h:552): Since OpenSSL 3.0
+modules/ssl/ssl_engine_config.c:621:42: warning: 'ENGINE_get_name' is
+deprecated (declared at include/openssl/engine.h:553): Since OpenSSL 3.0
+modules/ssl/ssl_engine_config.c:624:13: warning: 'ENGINE_get_next' is
+deprecated (declared at include/openssl/engine.h:323): Since OpenSSL 3.0
+modules/ssl/ssl_engine_init.c:483:9: warning: 'ENGINE_by_id' is
+deprecated (declared at include/openssl/engine.h:336): Since OpenSSL 3.0
+modules/ssl/ssl_engine_init.c:493:13: warning: 'ENGINE_ctrl' is
+deprecated (declared at include/openssl/engine.h:429): Since OpenSSL 3.0
+modules/ssl/ssl_engine_init.c:497:9: warning: 'ENGINE_set_default' is
+deprecated (declared at include/openssl/engine.h:708): Since OpenSSL 3.0
+modules/ssl/ssl_engine_init.c:508:9: warning: 'ENGINE_free' is
+deprecated (declared at include/openssl/engine.h:493): Since OpenSSL 3.0
+modules/ssl/ssl_engine_init.c:574:9: warning: 'SRP_VBASE_new' is
+deprecated (declared at include/openssl/srp.h:176): Since OpenSSL 3.0
+modules/ssl/ssl_engine_init.c:583:9: warning: 'SRP_VBASE_init' is
+deprecated (declared at include/openssl/srp.h:180): Since OpenSSL 3.0
+modules/ssl/ssl_engine_init.c:591:9: warning:
+'SSL_CTX_set_srp_username_callback' is deprecated (declared at
+include/openssl/ssl.h:1900): Since OpenSSL 3.0
+modules/ssl/ssl_engine_init.c:593:9: warning: 'SSL_CTX_set_srp_cb_arg'
+is deprecated (declared at include/openssl/ssl.h:1902): Since OpenSSL 3.0
+modules/ssl/ssl_engine_init.c:1318:5: warning: 'DH_get0_p' is deprecated
+(declared at include/openssl/dh.h:266): Since OpenSSL 3.0
+modules/ssl/ssl_engine_init.c:1539:9: warning: 'DH_free' is deprecated
+(declared at include/openssl/dh.h:207): Since OpenSSL 3.0
+modules/ssl/ssl_engine_init.c:1556:9: warning:
+'EC_KEY_new_by_curve_name' is deprecated (declared at
+include/openssl/ec.h:1001): Since OpenSSL 3.0
+modules/ssl/ssl_engine_init.c:1578:5: warning: 'EC_KEY_free' is
+deprecated (declared at include/openssl/ec.h:1006): Since OpenSSL 3.0
+modules/ssl/ssl_engine_init.c:1843:9: warning: 'SRP_VBASE_free' is
+deprecated (declared at include/openssl/srp.h:178): Since OpenSSL 3.0
+modules/ssl/ssl_engine_io.c:2288:9: warning: 'BIO_set_callback' is
+deprecated (declared at include/openssl/bio.h:279): Since OpenSSL 3.0
+modules/ssl/ssl_engine_io.c:2291:13: warning: 'BIO_set_callback' is
+deprecated (declared at include/openssl/bio.h:279): Since OpenSSL 3.0
+modules/ssl/ssl_engine_kernel.c:545:5: warning: 'SSL_get_srp_username'
+is deprecated (declared at include/openssl/ssl.h:1914): Since OpenSSL 3.0
+modules/ssl/ssl_engine_kernel.c:2594:13: warning: 'BIO_set_callback' is
+deprecated (declared at include/openssl/bio.h:279): Since OpenSSL 3.0
+modules/ssl/ssl_engine_kernel.c:2597:17: warning: 'BIO_set_callback' is
+deprecated (declared at include/openssl/bio.h:279): Since OpenSSL 3.0
+modules/ssl/ssl_engine_kernel.c:2812:5: warning: 'SSL_get_srp_username'
+is deprecated (declared at include/openssl/ssl.h:1914): Since OpenSSL 3.0
+modules/ssl/ssl_engine_kernel.c:2819:9: warning:
+'SRP_VBASE_get1_by_user' is deprecated (declared at
+include/openssl/srp.h:187): Since OpenSSL 3.0
+modules/ssl/ssl_engine_kernel.c:2825:5: warning:
+'SSL_set_srp_server_param' is deprecated (declared at
+include/openssl/ssl.h:1905): Since OpenSSL 3.0
+modules/ssl/ssl_engine_kernel.c:2827:9: warning: 'SRP_user_pwd_free' is
+deprecated (declared at include/openssl/srp.h:118): Since OpenSSL 3.0
+modules/ssl/ssl_engine_kernel.c:2835:5: warning: 'SRP_user_pwd_free' is
+deprecated (declared at include/openssl/srp.h:118): Since OpenSSL 3.0
+modules/ssl/ssl_engine_pphrase.c:856:5: warning: 'ENGINE_by_id' is
+deprecated (declared at include/openssl/engine.h:336): Since OpenSSL 3.0
+modules/ssl/ssl_engine_pphrase.c:864:5: warning: 'ENGINE_init' is
+deprecated (declared at include/openssl/engine.h:620): Since OpenSSL 3.0
+modules/ssl/ssl_engine_pphrase.c:877:9: warning:
+'ENGINE_ctrl_cmd_string' is deprecated (declared at
+include/openssl/engine.h:479): Since OpenSSL 3.0
+modules/ssl/ssl_engine_pphrase.c:886:9: warning: 'ENGINE_ctrl_cmd' is
+deprecated (declared at include/openssl/engine.h:450): Since OpenSSL 3.0
+modules/ssl/ssl_engine_pphrase.c:896:5: warning:
+'ENGINE_load_private_key' is deprecated (declared at
+include/openssl/engine.h:638): Since OpenSSL 3.0
+modules/ssl/ssl_engine_pphrase.c:904:5: warning: 'ENGINE_finish' is
+deprecated (declared at include/openssl/engine.h:628): Since OpenSSL 3.0
+modules/ssl/ssl_engine_pphrase.c:905:5: warning: 'ENGINE_free' is
+deprecated (declared at include/openssl/engine.h:493): Since OpenSSL 3.0
+modules/ssl/ssl_engine_vars.c:432:9: warning: 'SSL_get_srp_username' is
+deprecated (declared at include/openssl/ssl.h:1914): Since OpenSSL 3.0
+modules/ssl/ssl_engine_vars.c:437:9: warning: 'SSL_get_srp_userinfo' is
+deprecated (declared at include/openssl/ssl.h:1915): Since OpenSSL 3.0
+modules/ssl/ssl_util_ssl.c:474:5: warning: 'PEM_read_bio_DHparams' is
+deprecated (declared at include/openssl/pem.h:472): Since OpenSSL 3.0
+modules/ssl/ssl_util_ssl.c:487:5: warning: 'PEM_read_bio_ECPKParameters'
+is deprecated (declared at include/openssl/pem.h:464): Since OpenSSL 3.0
+
+modules/md/md_crypt.c:992:5: warning: 'EVP_PKEY_get1_RSA' is deprecated
+(declared at include/openssl/evp.h:1351): Since OpenSSL 3.0
+modules/md/md_crypt.c:997:5: warning: 'RSA_get0_key' is deprecated
+(declared at include/openssl/rsa.h:223): Since OpenSSL 3.0
+modules/md/md_crypt.c:1004:5: warning: 'EVP_PKEY_get1_RSA' is deprecated
+(declared at include/openssl/evp.h:1351): Since OpenSSL 3.0
+modules/md/md_crypt.c:1009:5: warning: 'RSA_get0_key' is deprecated
+(declared at include/openssl/rsa.h:223): Since OpenSSL 3.0
+
+Best regards,
+
+Rainer

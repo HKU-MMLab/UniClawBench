@@ -1,0 +1,39 @@
+Message-ID: <3D84F004.7000805@perkel.com>
+X-Clawbench-ID: CAM-2003-0949
+Date: Sun, 15 Sep 2002 13:39:32 -0700
+From: Marc Perkel <marc@perkel.com>
+To: "Tony L. Svanstrom" <tony@svanstrom.com>
+Subject: Re: [SAdev] Suggestion - 2 levels of Spam Status
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01482.a3576ddec34b0481a9a671c1f3c141c3
+
+Tony L. Svanstrom wrote:
+
+>On Sun, 15 Sep 2002 the voices made Marc Perkel write:
+>
+>>Right now we have one spam status flag indicating that a message is or
+>>is not spam. The idea being that the end user perhaps make a rule that
+>>would move the spam flagged messages into a spam folder and thus gain
+>>some time by presorting messages into to piles.
+>>
+>
+> If you (people) don't know enough to filter on the actual score they've got
+>the "stars", which will give them more than enough levers, if they want it.
+>
+>
+>	/Tony
+>
+Sure - we developers know that - but what I'm talking about is making it
+easier for END USERS to figure out.
+
+
+-------------------------------------------------------
+This sf.net email is sponsored by:ThinkGeek
+Welcome to geek heaven.
+http://thinkgeek.com/sf
+_______________________________________________
+Spamassassin-devel mailing list
+Spamassassin-devel@lists.sourceforge.net
+https://lists.sourceforge.net/lists/listinfo/spamassassin-devel

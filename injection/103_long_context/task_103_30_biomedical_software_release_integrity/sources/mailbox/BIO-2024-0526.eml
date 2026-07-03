@@ -1,0 +1,30 @@
+Message-ID: <Ym7bsIPwpmnh4XAv@an3as.eu>
+X-Clawbench-ID: BIO-2024-0526
+Date: Sun, 1 May 2022 21:12:48 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: "Uecker, Martin" <Martin.Uecker@med.uni-goettingen.de>
+Subject: Re: bart upload
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_05_msg00001.html
+
+Hi Martin,
+
+Am Sun, May 01, 2022 at 04:46:43PM +0000 schrieb Uecker, Martin:
+> it seems the octave upgrade is held back because of
+> some spurious error message in the BART autopkgtest.
+>
+> This is a bug in octave, but I added the workaround
+> suggested in the bug report.
+>
+> https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1010164
+>
+> Please upload of you think this makes sense.
+
+Uploaded.  Thanks a lot for your preparation
+
+      Andreas.
+
+--
+http://fam-tille.de

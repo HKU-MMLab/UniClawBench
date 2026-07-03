@@ -1,0 +1,28 @@
+Message-ID: <Zbf6QKleucsE5wE7@an3as.eu>
+X-Clawbench-ID: BIO-2024-0599
+Date: Mon, 29 Jan 2024 20:19:28 +0100
+From: Andreas Tille <tille@debian.org>
+To: Komolehin Israel <komolehinisrael@gmail.com>
+Subject: Re: ClonalFrameML: Dataset with less computational resourses
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_01_msg00019.html
+
+Hi Xavier,
+
+Am Mon, Jan 29, 2024 at 06:34:54PM +0100 schrieb Komolehin Israel:
+> > Would it be useful for you if I added these files to the github
+> > repository?
+>
+> Yes. That would be great.
+
+I consider this specifically helpful since you could add a test
+in the upstream archive which is helpful not only for Debian but
+in general.  We could simply call this test.
+
+Kind regards
+    Andreas.
+
+--
+http://fam-tille.de

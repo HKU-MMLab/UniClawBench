@@ -1,0 +1,34 @@
+Message-ID: <ZyQDrKJL-ZaGBGHX@emlwks999.eu>
+X-Clawbench-ID: BIO-2024-1266
+Date: Thu, 31 Oct 2024 23:24:44 +0100
+From: Étienne Mollier <emollier@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: python-biopython test failure with libcifpp changes (Bug #1086156)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_10_msg00031.html
+
+Hi Maarten,
+
+Maarten L. Hekkelman, on 2024-10-31:
+> Op 30-10-2024 om 20:42 schreef Étienne Mollier:
+> > despite the incomplete subset, it allows the
+> > test to pass, allowing the python-biopython build to go through.
+> > I should be able to upload a fix shortly.  🙂
+> If you bundle your own mini-ccd file, you could fix the warning by copying
+> the SO4 entry from a full compounds.cif file. The format is not that
+> complicated, simply copy/paste the part from components.cif starting at
+> data_SO4 until the next data_ line.
+
+Thank you for the hint, I pushed a modified data bank including
+SO4 definition for running the Bio test suite.  I confirm it now
+passes with flying colors; the warning introduced in yesterday's
+upload of python-biopython is now resolved in Salsa.
+
+Have a nice day,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  pgp: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/1, please excuse my verbosity
+   `-

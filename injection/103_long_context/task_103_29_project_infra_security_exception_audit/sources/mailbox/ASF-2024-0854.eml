@@ -1,0 +1,30 @@
+Message-ID: <fded3211-d1ac-7572-003e-724419a6aae7@apache.org>
+X-Clawbench-ID: ASF-2024-0854
+Date: Fri, 10 Feb 2023 16:54:35 +0100
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: MS-WDV and other MS extensions
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-02.mbox
+
+On 2/10/23 4:22 PM, Emmanuel Dreyfus wrote:
+> On Fri, Feb 10, 2023 at 04:15:16PM +0100, Ruediger Pluem wrote:
+>>> Do you suggests adding values to Options, or to create a DAVoptions
+>>> directive?
+>>
+>> I think DAVMSextis fine, but with an Options like syntax.
+>
+> Hence for now this?
+> DAVMSext +WDV
+
+Following the Options syntax the below should be the same with only one extension available.
+
+DAVMSext WDV
+DAVMSext All
+
+
+Regards
+
+Rüdiger

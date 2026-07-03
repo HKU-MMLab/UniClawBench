@@ -1,0 +1,34 @@
+Message-ID: <20021001151127.5ef5b77d.matthias@rpmforge.net>
+X-Clawbench-ID: CAM-2003-0876
+Date: Tue, 01 Oct 2002 15:11:27 +0200
+From: Matthias Saou <matthias@rpmforge.net>
+To: rpm-zzzlist@freshrpms.net
+Subject: Re: Gabber packages for 8.0 (was: All set for Red Hat Linux 8.0)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01213.25bf48d2ed386aa84360862062fc9c54
+
+Once upon a time, Matthias wrote :
+
+> I'm facing another problem right now. It looks like libsigc++ is no
+> longer included in the distribution, and gtkmm won't compile without it
+> :-/ I guess I'll have to repackage it myself for 8.0 (assuming it's
+> possible).
+
+Well, I've made an updated libsigc++ 1.0.4 package. It rebuilds cleanly on
+7.3 but the *.so* libraries are missing when trying to rebuild on 8.0 (the
+.a and .la files and everything else is though).
+Do you have an idea of what the problem may be? Julian : Do you want the
+.src.rpm to try to find the cause?
+
+Matthias
+
+--
+Clean custom Red Hat Linux rpm packages : http://freshrpms.net/
+Red Hat Linux release 7.3 (Valhalla) running Linux kernel 2.4.18-10acpi
+Load : 0.19 0.15 0.16
+
+_______________________________________________
+RPM-List mailing list <RPM-List@freshrpms.net>
+http://lists.freshrpms.net/mailman/listinfo/rpm-list

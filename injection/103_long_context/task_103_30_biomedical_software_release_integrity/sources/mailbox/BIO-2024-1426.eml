@@ -1,0 +1,26 @@
+Message-ID: <Yft+KJxHqR161VkQ@an3as.eu>
+X-Clawbench-ID: BIO-2024-1426
+Date: Thu, 3 Feb 2022 08:03:04 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Java help for king needed
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_02_msg00020.html
+
+Hi,
+
+Am Wed, Feb 02, 2022 at 10:54:09PM +0100 schrieb Pierre Gruet:
+> Just dropping a note here: king is ready for an upload but we just have to
+> wait that libpdfbox-graphics2d-java exits NEW before...
+
+Thanks a lot.  I've recorded this information into d/changelog - in
+case of long waiting time I simply forget this kind of facts. ;-)
+
+Kind regards
+
+      Andreas.
+
+--
+http://fam-tille.de

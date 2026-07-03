@@ -1,0 +1,29 @@
+Message-ID: <YWiTv/Bt+De5WDd7@an3as.eu>
+X-Clawbench-ID: BIO-2024-1296
+Date: Thu, 14 Oct 2021 22:31:59 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Is there anything blocking pysam update?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00059.html
+
+Hi Nilesh,
+
+Am Fri, Oct 15, 2021 at 01:17:52AM +0530 schrieb Nilesh Patra:
+> python3-pysam seems to lag several versions behind in the archive -- is there something blocking it?
+> I updated to a newer release than the one committed in salsa and everything works smooth.
+>
+> If there is no good reason for holding an upload, and the update looks good, please upload, or give
+> me a green flag and I'll do this
+
+Since pysam has a lot of rdepends we should run at least ratt or upload
+to experimental first.
+
+Kind regards
+
+     Andreas.
+
+--
+http://fam-tille.de

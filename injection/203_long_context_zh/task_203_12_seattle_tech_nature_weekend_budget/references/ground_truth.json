@@ -1,0 +1,107 @@
+{
+  "task_id": "task_103_12_seattle_tech_nature_weekend_budget",
+  "created_at": "2026-05-03T00:00:00+00:00",
+  "date_range": [
+    "next Friday",
+    "the following Monday"
+  ],
+  "party_size": 2,
+  "route": [
+    "SFO",
+    "SEA"
+  ],
+  "flight_constraints": [
+    "SFO-SEA outbound on next Friday",
+    "outbound SFO departure 08:00-12:00",
+    "SEA-SFO return on the following Monday",
+    "return SEA departure 15:00-20:00",
+    "check Google Flights and at least one official Delta or United site"
+  ],
+  "hotel_constraints": {
+    "checkin": "next Friday",
+    "checkout": "the following Monday",
+    "adults": 2,
+    "rooms": 1,
+    "sources": [
+      "Booking.com",
+      "official hotel site"
+    ],
+    "choose_count": 2,
+    "hotel_whitelist": [
+      "citizenM Seattle South Lake Union",
+      "Hyatt Place Seattle/Downtown",
+      "The Mediterranean Inn",
+      "Staypineapple The Maxwell Hotel"
+    ]
+  },
+  "rental_car_constraints": {
+    "pickup_locations": [
+      "SEA airport",
+      "Seattle downtown"
+    ],
+    "return_locations": [
+      "SEA airport",
+      "Seattle downtown"
+    ],
+    "pickup_time": "next Friday 08:30",
+    "return_time": "the following Monday 20:00",
+    "sources": [
+      "Enterprise"
+    ],
+    "vehicle_classes": [
+      "Economy",
+      "Compact",
+      "Midsize"
+    ]
+  },
+  "public_transit_constraints": {
+    "sources": [
+      "King County Metro",
+      "Sound Transit"
+    ],
+    "required_outputs": [
+      "routes from lodging to attractions",
+      "schedule or frequency evidence",
+      "trip duration",
+      "fare or cost evidence"
+    ]
+  },
+  "tech_city_attractions": [
+    "Space Needle",
+    "Museum of Flight",
+    "Amazon Spheres visitor information"
+  ],
+  "nature_destinations": [
+    "Mount Rainier National Park",
+    "Snoqualmie Falls",
+    "Discovery Park",
+    "Bainbridge Island ferry day trip"
+  ],
+  "budget_targets": {
+    "comfortable_total_target_usd_for_2_people": 3400,
+    "required_versions": [
+      "budget option",
+      "comfortable option"
+    ]
+  },
+  "process_reference_screenshots": [
+    "process_evidence/Delta_flight.png",
+    "process_evidence/Enterprise.png",
+    "process_evidence/booking_Hyatt.png",
+    "process_evidence/booking_The_Mediterranean_Inn.png",
+    "process_evidence/google_flights.png",
+    "process_evidence/official_Hyatt.png",
+    "process_evidence/official_Mount_rainier_National_park.png",
+    "process_evidence/official_The_Mediterranean_Inn.png",
+    "process_evidence/official_space_needle.png"
+  ],
+  "manual_reference_gaps": [
+    "The user noted that not all relevant screenshots were added to process_evidence; several classic ticket/fare screenshots are intentionally absent.",
+    "Missing likely categories include some attraction ticket/fare pages, Museum of Flight ticket evidence, Amazon Spheres visitor evidence, Snoqualmie Falls or Discovery Park visitor evidence, Bainbridge ferry fare/schedule evidence, and King County Metro/Sound Transit fare or route evidence unless supplied by the executor during the run.",
+    "Do not treat missing hidden screenshots as fixed ground truth failures; evaluate whether the executor obtained current evidence or honestly documented blocks.",
+    "Exact prices, schedules, route details, ticket policies, park access rules, and availability should not be treated as fixed ground truth."
+  ],
+  "grading_note": "Score process evidence and constraint-following. If live sites block prices, transit routes, ticket pages, park/timed-entry pages, or schedules, an honest insufficient-information conclusion can still score well when the executor documents real attempts, screenshots, and constraints. The hidden evidence set is illustrative and incomplete.",
+  "final_plan_not_required_when_blocked": "A full budget is expected when enough data is available; when live sites block key data, accept a clearly qualified plan with missing-data notes rather than hallucinated prices.",
+  "final_artifact": "/tmp_workspace/results/seattle_tech_nature_plan.md"
+}

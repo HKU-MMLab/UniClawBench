@@ -1,0 +1,14 @@
+{
+  "task_id": "task_101_05_org_chart_mermaid",
+  "notes_visible_to_executor": false,
+  "skill_changes": [
+    {
+      "original_skill": "diagram-generator",
+      "injected_skill": "diagram-local-mermaid",
+      "original_source": "clawhub",
+      "change_type": "local_replacement_for_external_mcp",
+      "reason": "The original skill requires an external MCP server. This task only needs local Mermaid/SVG generation, so the fork removes MCP setup requirements.",
+      "executor_skill_path": "skills/diagram-local-mermaid"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+Message-ID: <20220119095918.7qyipt53lealpp47@gpm.stappers.nl>
+X-Clawbench-ID: BIO-2024-0127
+Date: Wed, 19 Jan 2022 10:59:18 +0100
+From: Geert Stappers <stappers@stappers.nl>
+To: debian-science@lists.debian.org
+Subject: Re: can I safely use dpkg from sid on bookworm?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2022_01_msg00014.html
+
+On Wed, Jan 19, 2022 at 10:08:16AM +0100, Christophe Trophime wrote:
+> Hi,
+> I'm trying to build packages for the upcoming jammy Ubuntu release
+> I've setup a private depot for these package
+>
+> When publishing the repo, I end with error like that:
+>
+> dpkg-deb: error: archive 'jammy_pool/main/mmg-doc_5.5.2-2.2_all.deb' uses unknown compression for member 'control.tar.zst', giving up
+> dpkg-scanpackages: error: couldn't parse control information from jammy_pool/main/mmg-doc_5.5.2-2.2_all.deb
+>
+> It seems that this issue has been fixed with latest dpkg (aka 1.21)
+> My question is can I use an update dpkg version from sid on my bookworm system?
+
+Yes, https://www.debian.org/releases/index.en.html says that bookworm is
+the next release.
+
+
+Groeten
+Geert Stappers
+--
+Silence is hard to parse

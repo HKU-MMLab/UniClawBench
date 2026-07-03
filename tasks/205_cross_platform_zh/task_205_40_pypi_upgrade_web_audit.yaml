@@ -1,0 +1,64 @@
+task_id: task_205_40_pypi_upgrade_web_audit
+category: 205_cross_platform_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我正在为一个小型 Python 服务准备一份依赖升级说明。当前的固定版本和
+  目标版本在这里：
+
+      /tmp_workspace/clawbench/sources/pypi_upgrade/requirements.in
+      /tmp_workspace/clawbench/sources/pypi_upgrade/upgrade_targets.json
+
+  请在浏览器中使用 PyPI 官方的 project/version 页面来核实每个目标版本。
+  你也可以使用 PyPI 官方的 JSON API 获取元数据，但要保存来自真实 PyPI
+  页面的浏览器证据。
+
+  对每个包，收集：
+  - 包名
+  - 当前固定版本
+  - 目标版本
+  - PyPI 官方的目标版本 URL
+  - 目标版本的首次上传日期/时间
+  - requires_python
+  - 文件数量
+  - 是否存在 wheel
+  - 是否存在 sdist
+  - 一条简短的升级风险说明
+
+  在以下位置保存结构化数据：
+
+      /tmp_workspace/results/pypi_upgrade_audit.json
+
+  在以下位置保存一份 Markdown 报告：
+
+      /tmp_workspace/results/pypi_upgrade_report.md
+
+  在以下位置至少保存两张 PyPI 浏览器截图：
+
+      /tmp_workspace/results/pypi_screenshots/
+
+  不要与 PyPI 上当前的最新版本作比较。`upgrade_targets.json` 中的目标
+  版本才是审计的锚点。
+
+sources:
+  - pypi_upgrade/
+
+services:
+  - name: pypi-web-setup
+    path: pypi-web-setup
+    start: bash install.sh
+    oneshot: true
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+codex:
+  max_user_followups: 2

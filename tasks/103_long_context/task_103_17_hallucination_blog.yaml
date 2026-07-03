@@ -1,0 +1,48 @@
+task_id: task_103_17_hallucination_blog
+category: 103_long_context
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I need to make a paper-reading HTML blog on the topic of Extrinsic Hallucinations in LLMs.
+  Please organize it around the following main thread:
+  1. Problem setup: what is extrinsic hallucination
+   - Define hallucination as a failure of factual grounding; briefly distinguish in-context inconsistency from extrinsic hallucination; explain that an ideal system should know when to answer, when to refuse, and when to express uncertainty.
+  2. Why hallucinations happen
+   - Explain issues such as missing, outdated, incorrect, and mutually contradictory pretraining data; explain that fine-tuning/RLHF does not necessarily solve factuality and may make models more confident about wrong answers.
+  3. Measuring factuality with atomic claims
+   - Introduce splitting long answers into atomic facts, then verifying them through retrieval, search, or reliable sources; cover the evaluation line of FActScore and SAFE / LongFact.
+  4. Detecting unsupported claims and uncertainty
+   - Introduce SelfCheckGPT's multi-sampling consistency idea; introduce calibration / TruthfulQA / SelfAware and whether the model knows what it does not know.
+  5. Inference-time mitigation: retrieve, verify, revise
+   - Starting from RAG, further discuss retrieve-and-revise methods such as RARR / FAVA, Self-RAG's retrieve-generate-critique approach, and Chain-of-Verification's draft-check-revise idea.
+  6. Training models for factuality and attribution
+   - Briefly discuss training models to prefer attributable, evidence-supported answers.
+  7. Practical synthesis
+   - Summarize how short QA, long-form generation, and production systems should combine retrieval, citation, abstention, post-generation checkers, and factuality-oriented training.
+
+  The candidate papers are all in `/tmp_workspace/clawbench/sources/papers/`, and I renamed the files to non-semantic numbers, so do not guess from filenames. Read these papers and select the papers that should be discussed for each section, including the opening problem introduction.
+
+  Make the blog rich in both text and figures. You may screenshot figures/tables from the papers, but the screenshots must be complete, clear, matched to the content, and detailed enough to read text and details. Formulas may be written as screenshots or LaTeX. Use the prepared `/tmp_workspace/clawbench/sources/assets/`, which contains the CSS, JavaScript, and MathJax formula-rendering dependencies needed by the page template.
+
+  Save the final blog to `/tmp_workspace/results/hallucination_blog/`; it should contain the HTML file and corresponding assets. Put images referenced by the HTML into `/tmp_workspace/clawbench/results/assets/images`, and cite the source paper for every figure in the blog.
+
+  Also save `/tmp_workspace/results/selection_note.md` explaining why each section selected these papers.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/hallucination_blog/
+  - references/paper_mapping.json
+sources:
+  - papers/
+  - assets/
+
+codex:
+  max_user_followups: 2

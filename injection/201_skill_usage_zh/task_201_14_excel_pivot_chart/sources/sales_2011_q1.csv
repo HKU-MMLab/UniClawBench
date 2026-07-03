@@ -1,0 +1,241 @@
+order_id,booked_month,correction_month,region,product,status,quantity,unit_price_usd,discount_pct,net_revenue_usd
+Q1-0001,2011-01,2011-01,United Kingdom,Kitchen,booked,6,128.77,5,733.99
+Q1-0002,2011-01,2011-01,United Kingdom,Kitchen,booked,14,79.47,5,1056.95
+Q1-0003,2011-01,2011-01,United Kingdom,Kitchen,booked,4,131.57,0,526.28
+Q1-0004,2011-01,2011-01,United Kingdom,Kitchen,void,23,35.26,15,0.0
+Q1-0005,2011-01,2011-01,United Kingdom,Decor,return,47,17.63,10,-745.75
+Q1-0006,2011-01,2011-01,United Kingdom,Decor,booked,25,13.69,10,308.03
+Q1-0007,2011-01,2011-01,United Kingdom,Decor,return,64,119.35,10,-6874.56
+Q1-0008,2011-01,2011-01,United Kingdom,Decor,booked,49,130.28,0,6383.72
+Q1-0009,2011-01,2011-01,United Kingdom,Stationery,booked,53,96.27,15,4336.96
+Q1-0010,2011-01,2011-01,United Kingdom,Stationery,booked,24,137.28,0,3294.72
+Q1-0011,2011-01,2011-01,United Kingdom,Stationery,booked,80,105.57,0,8445.6
+Q1-0012,2011-01,2011-01,United Kingdom,Stationery,booked,24,114.19,5,2603.53
+Q1-0013,2011-01,2011-01,United Kingdom,Bag,return,59,87.07,0,-5137.13
+Q1-0014,2011-01,2011-01,United Kingdom,Bag,booked,36,33.59,15,1027.85
+Q1-0015,2011-01,2011-01,United Kingdom,Bag,return,43,13.63,0,-586.09
+Q1-0016,2011-01,2011-01,United Kingdom,Bag,booked,39,89.9,5,3330.8
+Q1-0017,2011-01,2011-01,Netherlands,Kitchen,booked,56,64.63,10,3257.35
+Q1-0018,2011-01,2011-01,Netherlands,Kitchen,booked,79,32.82,0,2592.78
+Q1-0019,2011-01,2011-01,Netherlands,Kitchen,booked,75,90.26,15,5754.07
+Q1-0020,2011-01,2011-02,Netherlands,Kitchen,late_adjustment,71,60.08,15,-3625.83
+Q1-0021,2011-01,2011-01,Netherlands,Decor,booked,62,83.0,5,4888.7
+Q1-0022,2011-01,2011-01,Netherlands,Decor,booked,75,125.88,10,8496.9
+Q1-0023,2011-01,2011-01,Netherlands,Decor,booked,79,122.56,15,8229.9
+Q1-0024,2011-01,2011-01,Netherlands,Decor,return,50,27.91,10,-1255.95
+Q1-0025,2011-01,2011-01,Netherlands,Stationery,booked,7,133.17,0,932.19
+Q1-0026,2011-01,2011-01,Netherlands,Stationery,booked,5,38.48,15,163.54
+Q1-0027,2011-01,2011-01,Netherlands,Stationery,booked,76,25.2,10,1723.68
+Q1-0028,2011-01,2011-01,Netherlands,Stationery,booked,32,21.21,0,678.72
+Q1-0029,2011-01,2011-01,Netherlands,Bag,booked,47,57.45,0,2700.15
+Q1-0030,2011-01,2011-01,Netherlands,Bag,return,80,107.79,0,-8623.2
+Q1-0031,2011-01,2011-01,Netherlands,Bag,booked,53,72.21,0,3827.13
+Q1-0032,2011-01,2011-01,Netherlands,Bag,booked,70,58.81,10,3705.03
+Q1-0033,2011-01,2011-01,EIRE,Kitchen,booked,80,130.9,5,9948.4
+Q1-0034,2011-01,2011-01,EIRE,Kitchen,return,13,48.01,15,-530.51
+Q1-0035,2011-01,2011-01,EIRE,Kitchen,void,21,25.08,15,0.0
+Q1-0036,2011-01,2011-01,EIRE,Kitchen,booked,37,82.93,0,3068.41
+Q1-0037,2011-01,2011-01,EIRE,Decor,booked,25,8.17,5,194.04
+Q1-0038,2011-01,2011-01,EIRE,Decor,booked,50,36.2,5,1719.5
+Q1-0039,2011-01,2011-01,EIRE,Decor,booked,44,99.25,0,4367.0
+Q1-0040,2011-01,2011-01,EIRE,Decor,booked,66,32.2,15,1806.42
+Q1-0041,2011-01,2011-01,EIRE,Stationery,booked,44,63.26,15,2365.92
+Q1-0042,2011-01,2011-01,EIRE,Stationery,booked,25,101.48,0,2537.0
+Q1-0043,2011-01,2011-01,EIRE,Stationery,booked,56,60.69,5,3228.71
+Q1-0044,2011-01,2011-01,EIRE,Stationery,booked,55,133.35,0,7334.25
+Q1-0045,2011-01,2011-01,EIRE,Bag,booked,67,38.53,10,2323.36
+Q1-0046,2011-01,2011-01,EIRE,Bag,booked,74,34.03,5,2392.31
+Q1-0047,2011-01,2011-01,EIRE,Bag,booked,58,39.99,10,2087.48
+Q1-0048,2011-01,2011-01,EIRE,Bag,booked,60,54.52,15,2780.52
+Q1-0049,2011-01,2011-01,Australia,Kitchen,booked,20,43.57,5,827.83
+Q1-0050,2011-01,2011-01,Australia,Kitchen,booked,11,49.97,0,549.67
+Q1-0051,2011-01,2011-01,Australia,Kitchen,booked,58,13.62,15,671.47
+Q1-0052,2011-01,2011-01,Australia,Kitchen,booked,30,86.68,5,2470.38
+Q1-0053,2011-01,2011-01,Australia,Decor,booked,50,10.79,0,539.5
+Q1-0054,2011-01,2011-01,Australia,Decor,booked,23,50.03,5,1093.16
+Q1-0055,2011-01,2011-01,Australia,Decor,booked,72,15.62,0,1124.64
+Q1-0056,2011-01,2011-01,Australia,Decor,booked,5,118.03,0,590.15
+Q1-0057,2011-01,2011-01,Australia,Stationery,return,36,55.73,0,-2006.28
+Q1-0058,2011-01,2011-01,Australia,Stationery,return,65,98.7,5,-6094.72
+Q1-0059,2011-01,2011-01,Australia,Stationery,return,79,46.35,5,-3478.57
+Q1-0060,2011-01,2011-01,Australia,Stationery,booked,13,90.85,0,1181.05
+Q1-0061,2011-01,2011-01,Australia,Bag,booked,32,56.36,0,1803.52
+Q1-0062,2011-01,2011-02,Australia,Bag,late_adjustment,74,41.59,10,-2769.89
+Q1-0063,2011-01,2011-01,Australia,Bag,return,76,129.82,0,-9866.32
+Q1-0064,2011-01,2011-01,Australia,Bag,booked,65,129.44,0,8413.6
+Q1-0065,2011-01,2011-01,Germany,Kitchen,booked,52,39.43,0,2050.36
+Q1-0066,2011-01,2011-01,Germany,Kitchen,booked,77,39.71,0,3057.67
+Q1-0067,2011-01,2011-02,Germany,Kitchen,late_adjustment,30,83.84,0,2515.2
+Q1-0068,2011-01,2011-01,Germany,Kitchen,booked,15,25.01,0,375.15
+Q1-0069,2011-01,2011-01,Germany,Decor,booked,69,11.62,10,721.6
+Q1-0070,2011-01,2011-01,Germany,Decor,booked,36,128.92,5,4409.06
+Q1-0071,2011-01,2011-01,Germany,Decor,booked,31,76.36,5,2248.8
+Q1-0072,2011-01,2011-01,Germany,Decor,return,5,50.5,0,-252.5
+Q1-0073,2011-01,2011-02,Germany,Stationery,late_adjustment,80,116.95,10,-8420.4
+Q1-0074,2011-01,2011-01,Germany,Stationery,booked,35,61.52,5,2045.54
+Q1-0075,2011-01,2011-02,Germany,Stationery,late_adjustment,31,126.82,0,-3931.42
+Q1-0076,2011-01,2011-01,Germany,Stationery,booked,55,88.5,0,4867.5
+Q1-0077,2011-01,2011-01,Germany,Bag,return,74,104.73,5,-7362.52
+Q1-0078,2011-01,2011-01,Germany,Bag,booked,13,26.22,0,340.86
+Q1-0079,2011-01,2011-01,Germany,Bag,booked,65,82.99,10,4854.91
+Q1-0080,2011-01,2011-01,Germany,Bag,booked,12,10.4,15,106.08
+Q1-0081,2011-02,2011-02,United Kingdom,Kitchen,booked,54,108.76,0,5873.04
+Q1-0082,2011-02,2011-03,United Kingdom,Kitchen,late_adjustment,33,30.88,15,-866.18
+Q1-0083,2011-02,2011-03,United Kingdom,Kitchen,late_adjustment,43,97.05,15,-3547.18
+Q1-0084,2011-02,2011-02,United Kingdom,Kitchen,return,49,132.18,5,-6152.98
+Q1-0085,2011-02,2011-02,United Kingdom,Decor,booked,13,113.46,10,1327.48
+Q1-0086,2011-02,2011-02,United Kingdom,Decor,booked,7,16.58,0,116.06
+Q1-0087,2011-02,2011-02,United Kingdom,Decor,booked,68,70.75,5,4570.45
+Q1-0088,2011-02,2011-02,United Kingdom,Decor,booked,55,20.74,5,1083.66
+Q1-0089,2011-02,2011-02,United Kingdom,Stationery,booked,59,51.3,10,2724.03
+Q1-0090,2011-02,2011-02,United Kingdom,Stationery,booked,28,127.82,0,3578.96
+Q1-0091,2011-02,2011-02,United Kingdom,Stationery,booked,62,117.93,10,6580.49
+Q1-0092,2011-02,2011-02,United Kingdom,Stationery,booked,40,118.28,0,4731.2
+Q1-0093,2011-02,2011-02,United Kingdom,Bag,void,49,97.17,15,0.0
+Q1-0094,2011-02,2011-02,United Kingdom,Bag,booked,72,53.49,15,3273.59
+Q1-0095,2011-02,2011-02,United Kingdom,Bag,booked,36,131.72,15,4030.63
+Q1-0096,2011-02,2011-02,United Kingdom,Bag,booked,18,92.01,15,1407.75
+Q1-0097,2011-02,2011-03,Netherlands,Kitchen,late_adjustment,50,87.84,10,3952.8
+Q1-0098,2011-02,2011-02,Netherlands,Kitchen,booked,59,120.92,5,6777.57
+Q1-0099,2011-02,2011-02,Netherlands,Kitchen,booked,39,16.17,10,567.57
+Q1-0100,2011-02,2011-02,Netherlands,Kitchen,booked,64,138.68,0,8875.52
+Q1-0101,2011-02,2011-02,Netherlands,Decor,return,57,47.99,0,-2735.43
+Q1-0102,2011-02,2011-02,Netherlands,Decor,booked,46,118.15,0,5434.9
+Q1-0103,2011-02,2011-03,Netherlands,Decor,late_adjustment,70,30.1,10,1896.3
+Q1-0104,2011-02,2011-02,Netherlands,Decor,booked,48,120.5,15,4916.4
+Q1-0105,2011-02,2011-02,Netherlands,Stationery,booked,40,26.03,10,937.08
+Q1-0106,2011-02,2011-02,Netherlands,Stationery,void,23,30.86,10,0.0
+Q1-0107,2011-02,2011-02,Netherlands,Stationery,booked,67,15.93,15,907.21
+Q1-0108,2011-02,2011-02,Netherlands,Stationery,booked,43,68.38,5,2793.32
+Q1-0109,2011-02,2011-02,Netherlands,Bag,return,22,62.28,0,-1370.16
+Q1-0110,2011-02,2011-02,Netherlands,Bag,booked,5,61.97,5,294.36
+Q1-0111,2011-02,2011-03,Netherlands,Bag,late_adjustment,37,69.27,5,-2434.84
+Q1-0112,2011-02,2011-02,Netherlands,Bag,booked,47,33.59,15,1341.92
+Q1-0113,2011-02,2011-02,EIRE,Kitchen,booked,16,79.24,0,1267.84
+Q1-0114,2011-02,2011-02,EIRE,Kitchen,booked,5,126.71,15,538.52
+Q1-0115,2011-02,2011-02,EIRE,Kitchen,booked,4,20.36,10,73.3
+Q1-0116,2011-02,2011-02,EIRE,Kitchen,booked,79,83.25,10,5919.07
+Q1-0117,2011-02,2011-03,EIRE,Decor,late_adjustment,26,107.82,0,2803.32
+Q1-0118,2011-02,2011-03,EIRE,Decor,late_adjustment,69,33.84,0,-2334.96
+Q1-0119,2011-02,2011-02,EIRE,Decor,booked,5,81.06,0,405.3
+Q1-0120,2011-02,2011-02,EIRE,Decor,booked,73,123.16,5,8541.15
+Q1-0121,2011-02,2011-02,EIRE,Stationery,booked,5,122.06,5,579.78
+Q1-0122,2011-02,2011-02,EIRE,Stationery,booked,21,80.09,10,1513.7
+Q1-0123,2011-02,2011-02,EIRE,Stationery,booked,48,121.71,5,5549.98
+Q1-0124,2011-02,2011-03,EIRE,Stationery,late_adjustment,73,97.1,0,-7088.3
+Q1-0125,2011-02,2011-02,EIRE,Bag,booked,19,129.96,0,2469.24
+Q1-0126,2011-02,2011-02,EIRE,Bag,booked,71,19.16,5,1292.34
+Q1-0127,2011-02,2011-02,EIRE,Bag,void,45,138.27,15,0.0
+Q1-0128,2011-02,2011-02,EIRE,Bag,booked,68,117.67,5,7601.48
+Q1-0129,2011-02,2011-02,Australia,Kitchen,void,42,80.09,15,0.0
+Q1-0130,2011-02,2011-02,Australia,Kitchen,void,31,48.77,10,0.0
+Q1-0131,2011-02,2011-03,Australia,Kitchen,late_adjustment,49,44.61,15,-1858.01
+Q1-0132,2011-02,2011-02,Australia,Kitchen,booked,79,34.93,15,2345.55
+Q1-0133,2011-02,2011-02,Australia,Decor,void,24,138.23,10,0.0
+Q1-0134,2011-02,2011-02,Australia,Decor,booked,51,87.25,15,3782.29
+Q1-0135,2011-02,2011-02,Australia,Decor,booked,46,106.59,0,4903.14
+Q1-0136,2011-02,2011-02,Australia,Decor,booked,21,64.44,15,1150.25
+Q1-0137,2011-02,2011-03,Australia,Stationery,late_adjustment,36,53.36,10,-1728.86
+Q1-0138,2011-02,2011-02,Australia,Stationery,booked,46,119.58,15,4675.58
+Q1-0139,2011-02,2011-02,Australia,Stationery,booked,43,61.12,0,2628.16
+Q1-0140,2011-02,2011-02,Australia,Stationery,booked,75,79.06,10,5336.55
+Q1-0141,2011-02,2011-02,Australia,Bag,booked,24,67.31,5,1534.67
+Q1-0142,2011-02,2011-02,Australia,Bag,booked,67,126.52,0,8476.84
+Q1-0143,2011-02,2011-02,Australia,Bag,booked,73,104.64,5,7256.78
+Q1-0144,2011-02,2011-02,Australia,Bag,return,9,32.35,0,-291.15
+Q1-0145,2011-02,2011-02,Germany,Kitchen,booked,44,62.04,15,2320.3
+Q1-0146,2011-02,2011-02,Germany,Kitchen,booked,15,43.64,10,589.14
+Q1-0147,2011-02,2011-02,Germany,Kitchen,void,14,32.31,10,0.0
+Q1-0148,2011-02,2011-02,Germany,Kitchen,booked,77,110.43,15,7227.64
+Q1-0149,2011-02,2011-02,Germany,Decor,booked,12,52.49,0,629.88
+Q1-0150,2011-02,2011-02,Germany,Decor,return,69,113.87,15,-6678.48
+Q1-0151,2011-02,2011-02,Germany,Decor,booked,42,48.47,0,2035.74
+Q1-0152,2011-02,2011-02,Germany,Decor,booked,10,45.41,0,454.1
+Q1-0153,2011-02,2011-02,Germany,Stationery,booked,30,61.95,0,1858.5
+Q1-0154,2011-02,2011-02,Germany,Stationery,booked,51,28.47,0,1451.97
+Q1-0155,2011-02,2011-03,Germany,Stationery,late_adjustment,40,52.05,5,-1977.9
+Q1-0156,2011-02,2011-02,Germany,Stationery,booked,43,72.79,0,3129.97
+Q1-0157,2011-02,2011-02,Germany,Bag,booked,15,101.29,0,1519.35
+Q1-0158,2011-02,2011-02,Germany,Bag,booked,26,39.75,0,1033.5
+Q1-0159,2011-02,2011-02,Germany,Bag,booked,9,123.41,5,1055.16
+Q1-0160,2011-02,2011-02,Germany,Bag,booked,58,91.96,0,5333.68
+Q1-0161,2011-03,2011-03,United Kingdom,Kitchen,booked,32,98.91,10,2848.61
+Q1-0162,2011-03,2011-03,United Kingdom,Kitchen,void,61,108.91,5,0.0
+Q1-0163,2011-03,2011-03,United Kingdom,Kitchen,late_adjustment,4,82.88,0,-331.52
+Q1-0164,2011-03,2011-03,United Kingdom,Kitchen,booked,35,32.23,5,1071.65
+Q1-0165,2011-03,2011-03,United Kingdom,Decor,booked,11,28.18,0,309.98
+Q1-0166,2011-03,2011-03,United Kingdom,Decor,booked,66,21.96,15,1231.96
+Q1-0167,2011-03,2011-03,United Kingdom,Decor,booked,46,136.45,15,5335.19
+Q1-0168,2011-03,2011-03,United Kingdom,Decor,booked,14,47.26,10,595.48
+Q1-0169,2011-03,2011-03,United Kingdom,Stationery,booked,64,26.11,15,1420.38
+Q1-0170,2011-03,2011-03,United Kingdom,Stationery,booked,71,107.08,15,6462.28
+Q1-0171,2011-03,2011-03,United Kingdom,Stationery,late_adjustment,17,89.73,10,1372.87
+Q1-0172,2011-03,2011-03,United Kingdom,Stationery,booked,16,53.27,15,724.47
+Q1-0173,2011-03,2011-03,United Kingdom,Bag,booked,38,121.36,0,4611.68
+Q1-0174,2011-03,2011-03,United Kingdom,Bag,booked,75,119.33,10,8054.78
+Q1-0175,2011-03,2011-03,United Kingdom,Bag,booked,58,108.11,0,6270.38
+Q1-0176,2011-03,2011-03,United Kingdom,Bag,booked,27,56.49,5,1448.97
+Q1-0177,2011-03,2011-03,Netherlands,Kitchen,booked,71,104.14,0,7393.94
+Q1-0178,2011-03,2011-03,Netherlands,Kitchen,booked,52,43.91,10,2054.99
+Q1-0179,2011-03,2011-03,Netherlands,Kitchen,booked,14,15.77,10,198.7
+Q1-0180,2011-03,2011-03,Netherlands,Kitchen,void,35,101.46,10,0.0
+Q1-0181,2011-03,2011-03,Netherlands,Decor,booked,59,43.89,5,2460.03
+Q1-0182,2011-03,2011-03,Netherlands,Decor,return,56,119.87,10,-6041.45
+Q1-0183,2011-03,2011-03,Netherlands,Decor,booked,49,12.22,10,538.9
+Q1-0184,2011-03,2011-03,Netherlands,Decor,booked,59,46.45,10,2466.5
+Q1-0185,2011-03,2011-03,Netherlands,Stationery,booked,49,109.28,15,4551.51
+Q1-0186,2011-03,2011-03,Netherlands,Stationery,booked,19,133.65,10,2285.41
+Q1-0187,2011-03,2011-03,Netherlands,Stationery,booked,56,68.6,10,3457.44
+Q1-0188,2011-03,2011-03,Netherlands,Stationery,booked,27,23.69,5,607.65
+Q1-0189,2011-03,2011-03,Netherlands,Bag,booked,56,26.96,15,1283.3
+Q1-0190,2011-03,2011-03,Netherlands,Bag,return,77,83.71,10,-5801.1
+Q1-0191,2011-03,2011-03,Netherlands,Bag,booked,25,32.26,0,806.5
+Q1-0192,2011-03,2011-03,Netherlands,Bag,late_adjustment,54,81.34,5,4172.74
+Q1-0193,2011-03,2011-03,EIRE,Kitchen,booked,11,133.27,15,1246.07
+Q1-0194,2011-03,2011-03,EIRE,Kitchen,booked,22,70.22,0,1544.84
+Q1-0195,2011-03,2011-03,EIRE,Kitchen,late_adjustment,71,117.71,0,8357.41
+Q1-0196,2011-03,2011-03,EIRE,Kitchen,booked,37,42.17,0,1560.29
+Q1-0197,2011-03,2011-03,EIRE,Decor,booked,27,94.08,0,2540.16
+Q1-0198,2011-03,2011-03,EIRE,Decor,booked,30,74.73,5,2129.8
+Q1-0199,2011-03,2011-03,EIRE,Decor,booked,80,14.06,0,1124.8
+Q1-0200,2011-03,2011-03,EIRE,Decor,booked,79,137.48,10,9774.83
+Q1-0201,2011-03,2011-03,EIRE,Stationery,booked,7,47.24,5,314.15
+Q1-0202,2011-03,2011-03,EIRE,Stationery,booked,14,130.07,15,1547.83
+Q1-0203,2011-03,2011-03,EIRE,Stationery,booked,16,55.93,0,894.88
+Q1-0204,2011-03,2011-03,EIRE,Stationery,booked,67,122.06,5,7769.12
+Q1-0205,2011-03,2011-03,EIRE,Bag,late_adjustment,17,99.43,15,-1436.76
+Q1-0206,2011-03,2011-03,EIRE,Bag,booked,48,96.13,10,4152.82
+Q1-0207,2011-03,2011-03,EIRE,Bag,booked,72,33.19,0,2389.68
+Q1-0208,2011-03,2011-03,EIRE,Bag,booked,49,112.52,5,5237.81
+Q1-0209,2011-03,2011-03,Australia,Kitchen,return,40,97.72,10,-3517.92
+Q1-0210,2011-03,2011-03,Australia,Kitchen,booked,72,34.85,15,2132.82
+Q1-0211,2011-03,2011-03,Australia,Kitchen,booked,48,103.08,0,4947.84
+Q1-0212,2011-03,2011-03,Australia,Kitchen,booked,18,24.17,15,369.8
+Q1-0213,2011-03,2011-03,Australia,Decor,booked,31,90.11,0,2793.41
+Q1-0214,2011-03,2011-03,Australia,Decor,booked,31,48.56,15,1279.56
+Q1-0215,2011-03,2011-03,Australia,Decor,late_adjustment,25,83.84,10,1886.4
+Q1-0216,2011-03,2011-03,Australia,Decor,booked,60,52.23,0,3133.8
+Q1-0217,2011-03,2011-03,Australia,Stationery,late_adjustment,47,129.29,5,-5772.8
+Q1-0218,2011-03,2011-03,Australia,Stationery,booked,32,26.95,15,733.04
+Q1-0219,2011-03,2011-03,Australia,Stationery,booked,8,56.44,15,383.79
+Q1-0220,2011-03,2011-03,Australia,Stationery,booked,49,24.96,0,1223.04
+Q1-0221,2011-03,2011-03,Australia,Bag,booked,34,135.42,0,4604.28
+Q1-0222,2011-03,2011-03,Australia,Bag,booked,26,73.33,10,1715.92
+Q1-0223,2011-03,2011-03,Australia,Bag,booked,68,36.8,0,2502.4
+Q1-0224,2011-03,2011-03,Australia,Bag,late_adjustment,51,14.44,10,-662.8
+Q1-0225,2011-03,2011-03,Germany,Kitchen,late_adjustment,22,81.56,0,-1794.32
+Q1-0226,2011-03,2011-03,Germany,Kitchen,booked,32,33.51,0,1072.32
+Q1-0227,2011-03,2011-03,Germany,Kitchen,void,52,108.49,10,0.0
+Q1-0228,2011-03,2011-03,Germany,Kitchen,booked,30,19.77,0,593.1
+Q1-0229,2011-03,2011-03,Germany,Decor,booked,11,93.71,0,1030.81
+Q1-0230,2011-03,2011-03,Germany,Decor,late_adjustment,61,62.73,0,3826.53
+Q1-0231,2011-03,2011-03,Germany,Decor,booked,13,93.54,15,1033.62
+Q1-0232,2011-03,2011-03,Germany,Decor,booked,79,23.51,5,1764.43
+Q1-0233,2011-03,2011-03,Germany,Stationery,booked,74,53.15,10,3539.79
+Q1-0234,2011-03,2011-03,Germany,Stationery,booked,62,20.34,0,1261.08
+Q1-0235,2011-03,2011-03,Germany,Stationery,booked,27,82.78,0,2235.06
+Q1-0236,2011-03,2011-03,Germany,Stationery,booked,9,26.61,15,203.57
+Q1-0237,2011-03,2011-03,Germany,Bag,late_adjustment,22,79.83,5,1668.45
+Q1-0238,2011-03,2011-03,Germany,Bag,booked,78,84.08,0,6558.24
+Q1-0239,2011-03,2011-03,Germany,Bag,booked,44,48.59,0,2137.96
+Q1-0240,2011-03,2011-03,Germany,Bag,booked,56,133.97,15,6376.97

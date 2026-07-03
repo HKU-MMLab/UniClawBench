@@ -1,0 +1,37 @@
+Message-ID: <20020904183605.A4666@nsk.yi.org>
+X-Clawbench-ID: CAM-2003-0144
+Date: Wed, 04 Sep 2002 18:36:05 +0100
+From: strange@nsk.yi.org
+To: secprog@securityfocus.com
+Subject: Re: Secure Sofware Key
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01619.e65e0291e555b111a9acd8b2267a0e1f
+
+On Tue, Sep 03, 2002 at 09:03:40PM -0400, Yannick Gingras wrote:
+> This make me wonder about the relative protection of smart cards.  They have
+> an internal procession unit around 4MHz.  Can we consider them as trusted
+> hardware ?  The ability to ship smart cards periodicaly uppon cashing of a
+> monthly subscription fee would not raise too much the cost of "renting" the
+> system.  Smart card do their own self encryption.  Can they be used to
+> decrypt data needed by the system ?  The input of the system could me mangled
+> and the would keep a reference of how long it was in service.
+>
+> This sounds really feasible but I may be totaly wrong.  I may also be wrong
+> about the safety of a smart card.
+>
+> What do you think ?
+
+That's similar to using hard-locks (either the old parallel, or the new
+usb).
+
+The problem is that that piece of hardware is trustworthy, but the rest of
+the PC isn't, so a cracker just needs to simulate the lock/smart card, or
+peek at the executable after the lock has been deactivated.
+
+Regards,
+Luciano Rocha
+
+--
+Consciousness: that annoying time between naps.

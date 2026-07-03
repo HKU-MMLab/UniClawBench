@@ -1,0 +1,45 @@
+Message-ID: <E17hYK5-0003XO-00@usw-pr-cvs1.sourceforge.net>
+X-Clawbench-ID: CAM-2003-1099
+Date: Wed, 21 Aug 2002 09:27:09 -0700
+From: "Malte S. Stretz" <msquadrat@users.sourceforge.net>
+To: spamassassin-commits@example.sourceforge.net
+Subject: [SACVS] CVS: spamassassin/lib/Mail/SpamAssassin Conf.pm,1.92,1.93
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01337.f4ddbcdd625e6ceca4a3dbc59f08079a
+
+Update of /cvsroot/spamassassin/spamassassin/lib/Mail/SpamAssassin
+In directory usw-pr-cvs1:/tmp/cvs-serv13563/lib/Mail/SpamAssassin
+
+Modified Files:
+	Conf.pm
+Log Message:
+restricted version_tag
+
+Index: Conf.pm
+===================================================================
+RCS file: /cvsroot/spamassassin/spamassassin/lib/Mail/SpamAssassin/Conf.pm,v
+retrieving revision 1.92
+retrieving revision 1.93
+diff -b -w -u -d -r1.92 -r1.93
+--- Conf.pm	21 Aug 2002 16:01:08 -0000	1.92
++++ Conf.pm	21 Aug 2002 16:27:06 -0000	1.93
+@@ -263,6 +263,7 @@
+
+     if(/^version[-_]tag\s+(.*)$/) {
+       my $tag = lc($1);
++      $tag =~ tr/a-z0-9./_/c;
+       foreach (@Mail::SpamAssassin::EXTRA_VERSION) {
+         if($_ eq $tag) {
+           $tag = undef;
+
+
+-------------------------------------------------------
+This sf.net email is sponsored by: OSDN - Tired of that same old
+cell phone?  Get a new here for FREE!
+https://www.inphonic.com/r.asp?r=sourceforge1&refcode1=vs3390
+_______________________________________________
+Spamassassin-commits mailing list
+Spamassassin-commits@lists.sourceforge.net
+https://lists.sourceforge.net/lists/listinfo/spamassassin-commits

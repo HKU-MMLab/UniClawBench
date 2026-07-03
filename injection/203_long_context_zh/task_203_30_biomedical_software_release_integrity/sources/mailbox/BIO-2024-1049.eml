@@ -1,0 +1,32 @@
+Message-ID: <Y1pRY+Yw9a9+w3dT@an3as.eu>
+X-Clawbench-ID: BIO-2024-1049
+Date: Thu, 27 Oct 2022 11:37:39 +0200
+From: Andreas Tille <tille@debian.org>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Re: Watch file github mode pointing to certain branch issue (Was: cmake help for minimac4 needed)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00102.html
+
+Hi Andrius,
+
+Am Thu, Oct 27, 2022 at 12:00:59PM +0300 schrieb Andrius Merkys:
+> I have just pushed a fix. Please check if that works for you as well.
+
+Hmmm, this results in
+
+  uscan info: Newest version of libomp-jonathonl on remote site is 0.0+git20181221.506f3e5, local version is 0.0+git20181221.506f3e5
+
+while I would expect
+
+  uscan info: Newest version of libomp-jonathonl on remote site is 0.0+git20211216.5228495, local version is 0.0+git20181221.506f3e5
+
+since commit 5228495 is from 2021-12-16.
+
+Kind regards
+
+      Andreas.
+
+--
+http://fam-tille.de

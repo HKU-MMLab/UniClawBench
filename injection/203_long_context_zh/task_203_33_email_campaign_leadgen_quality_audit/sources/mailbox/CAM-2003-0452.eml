@@ -1,0 +1,29 @@
+Message-ID: <20020808132715.5AD82440FC@phobos.labs.netnoteinc.com>
+X-Clawbench-ID: CAM-2003-0452
+Date: Thu, 08 Aug 2002 14:27:10 +0100
+From: yyyy@spamassassin.taint.org
+To: Ross Vandegrift <ross@willow.seitz.com>
+Subject: Re: [SAtalk] whitelisting mailing lists
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01358.114d4d6ec3f1b50509de356f8b1267cc
+
+Ross Vandegrift said:
+
+> Won't this whitelist spams sent to mailing lists though?
+
+only if you've whitelisted the mailing list.  In that case, c'est la vie
+;)
+
+--j.
+
+
+-------------------------------------------------------
+This sf.net email is sponsored by:ThinkGeek
+Welcome to geek heaven.
+http://thinkgeek.com/sf
+_______________________________________________
+Spamassassin-talk mailing list
+Spamassassin-talk@lists.sourceforge.net
+https://lists.sourceforge.net/lists/listinfo/spamassassin-talk

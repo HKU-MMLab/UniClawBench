@@ -1,0 +1,23 @@
+Message-ID: <ZS1QG1otlH+sPtE0@redhat.com>
+X-Clawbench-ID: ASF-2024-0913
+Date: Mon, 16 Oct 2023 16:00:43 +0100
+From: Joe Orton <jorton@redhat.com>
+To: dev@httpd.apache.org
+Subject: Re: windows block
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-10.mbox
+
+On Mon, Oct 16, 2023 at 04:45:29PM +0200, Stefan Eissing via dev wrote:
+> Do I make an rc3 nevertheless? Do we know someone else using VC?
+>
+> Advice appreciated.
+
++1 for rc3 at r1913027.
+
+Someone using VC needs to work out how to fix that rather than just
+report it's broken, it shouldn't hold progress up for the rest of the
+world.
+
+Regads, Joe

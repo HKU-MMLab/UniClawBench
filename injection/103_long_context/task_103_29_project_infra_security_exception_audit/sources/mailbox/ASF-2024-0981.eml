@@ -1,0 +1,37 @@
+Message-ID: <d226622f-1bdd-44b4-a1d9-aa26884d44ad@gmail.com>
+X-Clawbench-ID: ASF-2024-0981
+Date: Fri, 9 Feb 2024 11:59:43 +0100
+From: jean-frederic clere <jfclere@gmail.com>
+To: dev@httpd.apache.org
+Subject: reset in proxy_balancer_method
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-02.mbox
+
+Hi,
+
+I have noted to the reset() clean up too much in the balancers:
+mod_lbmethod_bybusyness.c for example does:
++++
+     for (i = 0; i < balancer->workers->nelts; i++, worker++) {
+         (*worker)->s->lbstatus = 0;
+         ap_proxy_set_busy_count(*worker, 0); /* BAD */
+     }
++++
+In fact reset() is called by ap_proxy_initialize_balancer() when a child
+process is created... Resetting the counters messes up the logic.
+
+Does it make sense to stop calling reset() from
+ap_proxy_initialize_balancer() or is it better to fix all reset()?
+
+
+There is another thing adding a new worker via /balancer-manager/
+probably requires some kind of reset() otherwise all the load moves to
+the new worker which is not the best.... May be calling age() or
+triggering calls to age() can help.
+
+--
+Cheers
+
+Jean-Frederic

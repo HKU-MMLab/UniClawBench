@@ -1,0 +1,48 @@
+Message-ID: <YzVC2gZUJzxK/8p3@an3as.eu>
+X-Clawbench-ID: BIO-2024-0721
+Date: Thu, 29 Sep 2022 09:01:46 +0200
+From: Andreas Tille <tille@debian.org>
+To: "Aaron M. Ucko" <ucko@debian.org>
+Subject: Re: [Help] anfo: ftbfs with GCC-12
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_09_msg00044.html
+
+Hi Aaron,
+
+Am Wed, Sep 28, 2022 at 04:06:23PM -0400 schrieb Aaron M. Ucko:
+>
+> Per GCC's hint, please try formally substituting unique_ptr for
+> auto_ptr.  I haven't tested that approach for this package, but it's
+> typically a safe drop-in replacement, and generally yields compilation
+> errors in the rare cases where its usage would be problematic.
+
+Thanks a lot for your hint.  In
+
+  b37ea9fe211292d63bbc5174c6f85a71eb442390
+
+I simply replaced std::auto_ptr by std:unique_ptr.  Since this
+ended up in a compile error at some auto_ptr (without std::)
+instances I replaced in commit
+
+  adfab8681fe2abc495178691a95b5bd53bde4a67
+
+auto_ptr by unique_ptr.  This also failed and thus my last
+attempt
+
+  24384abbcc03a54c793bd34e241617e809078223
+
+was to replace unique_ptr by std:unique_ptr which fails as well[1].  I
+will stop here with my wild-guessing now and hope for further helpful
+hints.
+
+Kind regards
+
+     Andreas.
+
+
+[1] https://salsa.debian.org/med-team/anfo/-/jobs/3313737
+
+--
+http://fam-tille.de

@@ -1,0 +1,62 @@
+Message-ID: <4D8E1D12-1643-4055-8861-34DF9D7741D7@eissing.org>
+X-Clawbench-ID: ASF-2024-0916
+Date: Mon, 7 Feb 2022 11:23:27 +0100
+From: Stefan Eissing <stefan@eissing.org>
+To: dev@httpd.apache.org
+Subject: Re: Python test suite - failures on Fedora Rawhide / MacOS
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-02.mbox
+
+Graham,
+
+could you attach a complete failed output of your pytest run? I use it on MacOS all the time and
+it seems most likely that some prerequisites have not been documented well enough or checks must
+add more information in output.
+
+Kind Regards,
+Stefan
+
+
+> Am 07.02.2022 um 11:14 schrieb Graham Leggett <minfrin@sharp.fm>:
+>
+> Hi all,
+>
+> I am not having any luck getting the python test suite to run on either MacOS or Rawhide.
+>
+> In the case of MacOS I see this:
+>
+> ================================== 50 failed, 214 passed, 239 skipped, 195 errors in 282.97s (0:04:42) ===================================
+>
+> A selection of errors:
+>
+> E       AssertionError: received response not in 3 chunks, but 4
+>
+> E       AssertionError: assert 'keep-alive' not in {'accept-ranges': 'bytes', 'connection': 'Upgrade, Keep-Alive', 'content-length': '543', 'content-type': 'text/html', …}
+>
+> E       assert 431 == 400
+>
+> E           AssertionError: assert 'HTTP/2' == 'HTTP/1.1'
+> E             - HTTP/1.1
+> E             + HTTP/2
+>
+> E       AssertionError: assert None
+> E        +  where None = <function search at 0x1070d8160>('HTTP_1_1_REQUIRED \\(err 13\\)', '* Added ssl.tests.httpd.apache.org:5001:127.0.0.1 to DNS cache\n* Hostname ssl.tests.httpd.apache.org was found in DN...ta]\n* OpenSSL SSL_read: error:0A000410:SSL routines::sslv3 alert handshake failure, errno 0\n* Closing connection 0\n')
+> E        +    where <function search at 0x1070d8160> = re.search
+> E        +    and   '* Added ssl.tests.httpd.apache.org:5001:127.0.0.1 to DNS cache\n* Hostname ssl.tests.httpd.apache.org was found in DN...ta]\n* OpenSSL SSL_read: error:0A000410:SSL routines::sslv3 alert handshake failure, errno 0\n* Closing connection 0\n' = ExecResult[code=56, args=['curl', '-s', '--path-as-is', '-D', '/Users/minfrin/src/apache/sandbox/httpd/httpd-trunk6/te... data]\n* OpenSSL SSL_read: error:0A000410:SSL routines::sslv3 alert handshake failure, errno 0\n* Closing connection 0\n].stderr
+>
+> In the case of Rawhide we have this:
+>
+> ================================================= 3 failed, 262 passed, 238 skipped, 195 errors in 539.82s (0:08:59) ==================================================
+>
+> E               FileNotFoundError: [Errno 2] No such file or directory: ‘openssl'
+>
+> E               FileNotFoundError: [Errno 2] No such file or directory: ‘pebble'
+>
+> Has anyone else had any luck?
+>
+> Regards,
+> Graham
+> —
+>

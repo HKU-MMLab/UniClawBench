@@ -1,0 +1,36 @@
+Message-ID: <Vk$KpqAZNoZ9EAV1@jblaptop.voidstar.com>
+X-Clawbench-ID: CAM-2003-0991
+Date: Fri, 23 Aug 2002 19:47:53 +0100
+From: Julian Bond <julian_bond@voidstar.com>
+To: razor-users@example.sourceforge.net
+Subject: Re: [Razor-users] Razor with sendmail
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01404.789355d67d32ceeedce39b891883eed5
+
+"Bort, Paul" <pbort@tmwsystems.com> wrote:
+>If your sendmail has been compiled with Milter support, you can add SMRazor
+>easily. We've been using it for a while without problems. Others on the list
+>have mentioned it as well.
+>
+>http://www.sapros.com/smrazor/
+
+Is there an easy way to tell if Milter is compiled in?
+
+--
+Julian Bond Email&MSM: julian.bond@voidstar.com
+Webmaster:              http://www.ecademy.com/
+Personal WebLog:       http://www.voidstar.com/
+CV/Resume:          http://www.voidstar.com/cv/
+M: +44 (0)77 5907 2173   T: +44 (0)192 0412 433
+
+
+-------------------------------------------------------
+This sf.net email is sponsored by: OSDN - Tired of that same old
+cell phone?  Get a new here for FREE!
+https://www.inphonic.com/r.asp?r=sourceforge1&refcode1=vs3390
+_______________________________________________
+Razor-users mailing list
+Razor-users@lists.sourceforge.net
+https://lists.sourceforge.net/lists/listinfo/razor-users

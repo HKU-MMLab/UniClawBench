@@ -1,0 +1,23 @@
+Message-ID: <ZcyYYSOqG1HUgGa3@redhat.com>
+X-Clawbench-ID: ASF-2024-1396
+Date: Wed, 14 Feb 2024 10:39:29 +0000
+From: Joe Orton <jorton@redhat.com>
+To: dev@httpd.apache.org
+Subject: Re: using changes-entries or write in CHANGES directly
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-02.mbox
+
+On Wed, Feb 14, 2024 at 11:28:15AM +0100, jean-frederic clere wrote:
+> So for 2.4.x on my accepted back port I have don't need changes-entries and
+> I have to process CHANGES by hands as I missed creating a changes-entries
+> file in trunk.
+
+If you file a Github PR for the backport you can still add a
+changes-entries/ file there (same if you create a patch and upload it
+somewhere). It makes the change easy to merge independent of other
+commits, avoiding conflicts adding directly to CHANGES. Works really
+well (thanks Rűdiger!)
+
+Regards, Joe

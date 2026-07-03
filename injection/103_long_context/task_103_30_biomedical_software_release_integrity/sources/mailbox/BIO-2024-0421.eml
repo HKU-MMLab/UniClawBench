@@ -1,0 +1,224 @@
+Message-ID: <ZJveSfp26oPrFCAH@an3as.eu>
+X-Clawbench-ID: BIO-2024-0421
+Date: Wed, 28 Jun 2023 09:16:25 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Re: Request for Sponsorship: VeryFastTree - Parallelized and Optimized Version of FastTree
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_06_msg00030.html
+
+Hi Cesar,
+
+> I created the repository as a fork of GitHub. Let me know if you want me to delete the tags that have been copied.
+
+These tags are no problem at all.  The only problem I see is that you
+did not tagged the actual target of your packaging version 4.0.  I've
+created a watch file which would fetch this version if it would be
+tagged but it is missing.  Please do so on Github.
+
+> I have also adjusted the branches as you instructed, including the upstream and master branches. The only thing remaining is to create the "pristine-tar" branch when the first tarball is created.
+
+I'd volunteer to do so once I can download a tarball from Github which
+will be possible once the version is tagged.
+
+> Additionally, I have updated the control file to point to Salsa instead of GitHub for the Git references.
+
+Good!
+
+> I have a question regarding the update policy. Since the upstream branch and the GitHub repository will contain the same content, I will keep them synchronized with any changes. However, I would like clarification on when to merge the changes from upstream to master. Should it be done periodically, for each release, or for each commit?
+
+Definitely for only release.  While there is a packaging workflow which
+works with cloning Github this is not the usual way we deal with
+packages inside the Debian Med team.  This does not mean you could not
+do so but I can not give any advise and you will create trouble for your
+sponsor who always needs to remember how that workflow was working.  We
+have established a pretty easy way to upgrade packages.  It is the
+package `routine-update` and you just need to call the script in that
+package which will fetch new upstream tarballs, injects it into Git and
+builds the package after adjusting to latest packaging standards.
+
+Thus I would strongly recommend to run this script.  I would even
+demonstarte that script - however, first I need a version 4.0 tarball.
+
+Here are the changes I did so far:
+
+   * Add watch file
+   * Add salsa-ci.yml to run CI on Salsa
+   * Stripped down debian/changelog.  It should only contain Debian
+     related changes.  Please maintain a separate upstream changelog
+     if you want to log your changes.  As long as the Debian package
+     is not uploaded there are no such changes and thus it should
+     only read "Initial upload"
+   * Minor polishing
+
+BTW, I so no real need to provide the manpage inside the debian/ dir.
+It might be useful for other distributions as well.
+
+I noticed that you followed the advise of Thorsten Alteholz to add the
+copyright statements for the included third party libraries.  That was
+probably quite some work but its only the second best way to deal with
+these.  In Debian you should try really hard to link against the
+Debian packaged versions of these libraries.  At a first look all these
+are available.  The development packages of the libraries should be
+added as Build-Depends and it should be ensured that these are linked.
+The best way to ensure this is to remove the code copies from the
+source tarball.  You can do so by adding them inside a
+
+   Files-Excluded:
+
+field in debian/copyright.  However, looking at the libs I really
+wonder whether you should simply remove boost*, bzip2 and zlib in any
+case.  These libs are existing on any known Linux distribution - there
+is no point in carrying around those code copies (since you always
+need to expect that there might be hidden security issues which you
+can not maintain on your own).  But that's up to you - the Debian
+source tarball Files-Excluded procedure can easily approach this.
+
+As a final remark:  Please remove the debian/ dir from your master
+branch.  If the package is maintained on Salsa by the Debian Med team
+this is the natural place to maintain this dir.  It has no real use for
+non-Debian user and for Debian its only helpful on Salsa.  So there is
+no point in keeping this inside your repository or download tarball.
+
+Please let me know once you tagged 4.0 and I keep on to help you
+creating a proper package.
+
+Thanks a lot for your work and your cooperation with the Debian Med
+team
+    Andreas.
+
+> Best regards,> Cesar
+>
+> De:>  Andreas Tille
+> Enviado:>  martes, 27 de junio de 2023 20:34
+> Para:>  PIÑEIRO POMAR CESAR ALFREDO
+> Asunto:>  RE: Re: Request for Sponsorship: VeryFastTree - Parallelized and Optimized Version of FastTree>  > Access granted - let me know if you might have any problem, Andreas.
+> --
+> http://fam-tille.de
+>
+>
+>
+> 27. Juni 2023, 19:18 von cesaralfredo.pineiro@usc.es:
+>
+> > Hi Andreas,
+> >
+> > My Salsa username is "cesarpomar," and I have requested permission to join the Debian Med group. Once I have access, I will create the repository as you instructed.
+> >
+> > I greatly appreciate the effort, thank you for inviting me to the team, and I will assist in the best way I can.
+> >
+> > Best regards,
+> > Cesar
+> >
+> >
+> >
+> >
+> >
+> > De:>  Andreas Tille
+> >  > Enviado:>  martes, 27 de junio de 2023 18:48
+> >  > Para:>  PIÑEIRO POMAR CESAR ALFREDO
+> >  > Asunto:>  RE: Re: Request for Sponsorship: VeryFastTree - Parallelized and Optimized Version of FastTree>
+> > [No suele recibir correo electrónico de tillea@tutanota.com. Descubra por qué esto es importante en >> https://aka.ms/LearnAboutSenderIdentification>>   ]
+> >
+> >  Hi Cesar,
+> >
+> >  the Debian Med policy[1] should clarify how we are maintaining our packages.  The short answer is that we are using the `master` branch for upstream code + debian/ dir, the `upstream` branch just the upstream code and the `pristine-tar` branch contains the metainformation for the tarball.  The policy[1] document contains all hints you might need to approach this - and for sure any help is granted on the Debian Med mailing list.
+> >
+> >  I'd be really happy if you would join our team.
+> >
+> >  Kind regards
+> >        Andreas.
+> >
+> >
+> >  [1] > > https://med-team.pages.debian.net/policy/
+> >  --
+> >  > > http://fam-tille.de
+> >
+> >
+> >
+> >  27. Juni 2023, 11:10 von cesaralfredo.pineiro@usc.es:
+> >
+> >  > Hi,
+> >  >
+> >  > Thank you for your email. I have a question regarding the request to move the package to the Debian Med team's space on salsa. When you mention "pushing the packaging to this team space," are you referring only to the "debian" folder, or do you want a complete fork of the veryfasttree repository on salsa?
+> >  >
+> >  > I want to ensure that I follow the correct procedure.
+> >  >
+> >  > Thank you for your clarification.
+> >  >
+> >  > Best regards,
+> >  > Cesar
+> >  >
+> >  >
+> >  >
+> >  > De:>  Andreas Tille
+> >  >  > Enviado:>  martes, 27 de junio de 2023 8:17
+> >  >  > Para:>  PIÑEIRO POMAR CESAR ALFREDO
+> >  >  > Asunto:>  FWD: Re: Request for Sponsorship: VeryFastTree - Parallelized and Optimized Version of FastTree>
+> >  > [No suele recibir correo electrónico de tillea@tutanota.com. Descubra por qué esto es importante en > >> https://aka.ms/LearnAboutSenderIdentification>>>    ]
+> >  >
+> >  >  Hi,
+> >  >  since my private mail server is not yet fully setup with DKIM my mail below was rejected.  Please continue communicating via the Debian Med mailing list where all discussion about Debian Med packages is done.
+> >  >  Thanks again for your effort in any case
+> >  >           Andreas.
+> >  >  --
+> >  >  > > > http://fam-tille.de
+> >  >
+> >  >
+> >  >
+> >  >  Datum: 27. Juni 2023, 08:15
+> >  >  Von: andreas@fam-tille.de
+> >  >  An: debian@alteholz.de
+> >  >  Cc: cesaralfredo.pineiro@usc.es, rf@q-leap.de, moeller@debian.org, debian-med@lists.debian.org
+> >  >  Betreff: Re: Request for Sponsorship: VeryFastTree - Parallelized and Optimized Version of FastTree
+> >  >
+> >  >
+> >  >  > [CCing Debian Med list to keep all relevant people informed.]
+> >  >  >
+> >  >  > Hi Cesar,
+> >  >  >
+> >  >  > besides the technical hints given by Thorsten, please also note that the
+> >  >  > Debian Med team is sponsoring only packages that are maintained at
+> >  >  >
+> >  >  >  > > > https://salsa:debian.org/med-team>  >
+> >  >  >
+> >  >  > Please push your packaging to this team space.  If you are no member of
+> >  >  > the team yet just let me know your salsa login.
+> >  >  >
+> >  >  > Thanks a lot for the effort you've put so far into this package
+> >  >  >
+> >  >  >  Andreas.
+> >  >  >
+> >  >  > Am Mon, Jun 26, 2023 at 06:44:26PM +0200 schrieb Thorsten Alteholz:
+> >  >  >
+> >  >  >> Hi Cesar,
+> >  >  >>
+> >  >  >> On 26.06.23 17:30, PIÑEIRO POMAR CESAR ALFREDO wrote:
+> >  >  >> >
+> >  >  >> > I have already submitted VeryFastTree to the Debian Mentors platform for
+> >  >  >> > review and inclusion into the official Debian repositories. You can find
+> >  >  >> > the package on the following URL:
+> >  >  >> > > > > https://mentors.debian.net/package/veryfasttree/>>  <>>  .
+> >  >  >>
+> >  >  >> please remove the embedded libraries and use the versions already in Debian.
+> >  >  >> Your debian/copyright does not mention all copyright holder, for example
+> >  >  >> Francisco Jose Tapia is missing.
+> >  >  >> Unless the license is not available in /usr/share/common-licenses, the full
+> >  >  >> license text needs to be added to your debian/copyright.
+> >  >  >>
+> >  >  >>   Thorsten
+> >  >  >>
+> >  >  >
+> >  >  > --
+> >  >  > > > > http://fam-tille.de
+> >  >  >
+> >  >
+> >
+>
+
+
+----- Ende weitergeleitete Nachricht -----
+
+--
+http://fam-tille.de

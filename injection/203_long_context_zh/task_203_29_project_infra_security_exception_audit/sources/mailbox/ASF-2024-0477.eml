@@ -1,0 +1,23 @@
+Message-ID: <7C07978A-FCAA-4648-997F-DF56D7D2C0A1@jagunet.com>
+X-Clawbench-ID: ASF-2024-0477
+Date: Wed, 18 Dec 2024 11:44:52 -0500
+From: Jim Jagielski <jim@jagunet.com>
+To: dev@httpd.apache.org
+Subject: Re: httpd 2.4 -> next
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-12.mbox
+
+> On Dec 18, 2024, at 9:50 AM, Joe Orton <jorton@redhat.com> wrote:
+>
+> Moving to C11 could be interesting, also requiring a OpenSSL 3+
+> baseline?
+>
+
+Plus it would provide some features that we depend on APR currently, such as long long*  and atomics.
+
+* long long is actually in C99
+--
+Jim
+            "If you can dodge a wrench, you can dodge a ball."

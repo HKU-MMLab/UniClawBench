@@ -1,0 +1,93 @@
+Message-ID: <f361cede-ade0-685e-e136-d89a3c4fd6f5@apache.org>
+X-Clawbench-ID: ASF-2024-0614
+Date: Thu, 18 May 2023 12:33:05 +0200
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: Apache2 chroot problem: towards a solution
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-05.mbox
+
+On 5/18/23 6:45 AM, Benjamin Godfrey wrote:
+> Hi, I'm working on the problem of Apache2 ignoring requests to any command in the chroot environment.  I have seen complaints
+> about this posted on a couple of websites, and I have not seen any solution.   I seem to have narrowed the problem down to a
+> relatively small section of the code, but I have gotten ambiguous information on how to resolve the issue.
+>
+> Initially, this problem comes across as a classic system compatibility issue, but this it turns out is not the case.   The
+> solution seems to be fairly easily solved, but either the Apache2 code would require a slight modification, or a module would need
+> to be written, if there isn't a module that already solves the problem, that unlocks the Apache for Linux users.
+>
+>
+> The errors follow the system information:
+>
+> Distributor ID: Ubuntu
+> Description:    Ubuntu 20.04.6 LTS
+> Release:        20.04
+> Codename:       focal
+>
+> Server version: Apache/2.4.41 (Ubuntu)
+>
+>
+> These are five typical errors:
+>
+>
+> systemctl status
+> System has not been booted with systemd as init system (PID 1). Can't operate.
+> Failed to connect to bus: Host is down
+>
+>
+> sudo systemctl start apache2
+> Running in chroot, ignoring request: start
+>
+>
+> sudo apachectl start
+> Invoking 'systemctl start apache2'.
+> Use 'systemctl status apache2' for more info.
+> Running in chroot, ignoring request: start
+>
+>
+> sudo service apache2 restart
+>  * Restarting Apache httpd web server apache2
+>              Invoking 'systemctl start apache2'.
+> Use 'systemctl status apache2' for more info.
+> Running in chroot, ignoring request: start
+>
+>
+> sudo systemctl status apache2
+> Running in chroot, ignoring request: status
+>
+>
+>
+> The irony is that the error message is stalling development on important issues like the eventual migration to systemd while the
+> text of the message seems to point to the cause of the error as related to the systemd  boot process not being completed in the
+> chroot.  This isn't the case.  The  errors are caused by the following code in Apache2:
+>
+> if (ap_is_in_chroot()) {
+>
+>     ap_log_error(APLOG_MARK, APLOG_ERR, 0, APLOG_NOERRNO,
+>
+>                  "Running in chroot, ignoring request: start");
+>
+>     return APR_SUCCESS;
+>
+> }
+>
+> This code begs the question, why is Apache2 even checking that the "ap" is running in a chroot?  It must be understood that using
+> a chroot environment is a useful security measure, and checking ap_is_in_chroot in this context is limiting the usefulness of
+> Apache for a number of users.
+>
+> Further information varies, as I haven't been able to locate this segment in the code.  I have heard it is in the ap_run_mpm()
+> function,  and in the server/mpm/common/main.cfile
+>
+> Other information, of which I am skeptical reports:
+>
+>    The ap_is_in_chroot()function is not a public function. It is an internal function that is used by the Apache source code. As
+> such, it is not included in the public release of the Apache source code.
+
+This code is not found in our code base. It seems to origin from an Ubuntu created patch. Hence you need to discuss about it with
+the Ubuntu people.
+
+Regards
+
+Rüdiger

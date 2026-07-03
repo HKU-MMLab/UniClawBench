@@ -1,0 +1,26 @@
+Message-ID: <YYTU58yxGFmcLQEZ@an3as.eu>
+X-Clawbench-ID: BIO-2024-0736
+Date: Fri, 5 Nov 2021 07:53:27 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: RFH: Getting fastp building on more archs
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_11_msg00030.html
+
+Hi,
+
+Am Fri, Nov 05, 2021 at 03:31:47AM +0530 schrieb Nilesh Patra:
+> Ondrej was very kind to extend isal support to more archs. However,
+> it does not build on i386 and s390x, and fastp is still stalled from migrating.
+>
+> Is there $something-else we could do? Do you think simply asking for removals on i386 and s390x
+> would be the right thing to do?
+
+Please ask for removal
+
+    Andreas.
+
+--
+http://fam-tille.de

@@ -1,0 +1,43 @@
+Message-ID: <87h6vt9y7r.fsf@contorta>
+X-Clawbench-ID: BIO-2024-0149
+Date: Fri, 10 Feb 2023 10:23:04 -0800
+From: Vagrant Cascadian <vagrant@debian.org>
+To: Mathieu Malaterre <malat@debian.org>, ARM <debian-arm@lists.debian.org>
+Subject: Re: neon: armhf baseline for next release ?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_02_msg00039.html
+
+On 2023-02-10, Mathieu Malaterre wrote:
+> On Thu, Feb 9, 2023 at 8:43 PM Andreas Tille  wrote:
+> [...]
+>> according to the build logs[1] armhf fails to build (as only
+>> architecture) with
+> [...]
+>> LLVM ERROR: Symbol not found: __sync_fetch_and_add_4
+>
+> I see that abel.d.o porterbox is offline. There is currently no other
+> porterbox for a DD to actually check armhf code on neon-less machine.
+>
+> Would it be possible to raise the armhf baseline to have some minimal
+> neon instructions ?
+
+I am pretty sure the answer in the short term is "no", as that would
+effectively be a new architecture... longer term, "maybe someday ... but
+not terribly likely"?
+
+Mostly because 32-bit arm is arguably a legacy platform; there is little
+to no new debian-capable hardware coming out, and so adding support for
+an entire new port seems unlikely, or at the very least, a very niche
+target. Either it supports armhf as it is, or more likely it supports
+arm64.
+
+For an individual package that wants to make use of neon, the correct
+thing to do is to make the neon support detected at run-time rather than
+rely on it at build-time and enabling or disabling codepaths, features,
+etc. as appropriate.
+
+
+live well,
+  vagrant

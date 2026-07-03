@@ -1,0 +1,58 @@
+{
+  "task_id": "task_103_26_kubernetes_docs_qa",
+  "created_at": "2026-06-20T00:00:00+00:00",
+  "docs": {
+    "deployment.md": "Kubernetes concepts: Deployments",
+    "service.md": "Kubernetes concepts: Service (services-networking)",
+    "pod-lifecycle.md": "Kubernetes concepts: Pod Lifecycle",
+    "configmap.md": "Kubernetes concepts: ConfigMap"
+  },
+  "note": "Four frozen Kubernetes documentation pages injected as sources. Questions target specific fields, default values, and behaviors that must be looked up in these docs. Answers are graded against the injected docs, not the model's memory of Kubernetes.",
+  "questions_and_answers": [
+    {
+      "id": "Q1",
+      "question": "For a Deployment using the RollingUpdate strategy, what are the default values of maxUnavailable and maxSurge?",
+      "answer": "Both default to 25%.",
+      "anchor": "deployment.md: 'The default value is 25%.' (maxSurge) and 'Kubernetes by default sets the value to 25%.' (maxUnavailable)"
+    },
+    {
+      "id": "Q2",
+      "question": "What does .spec.replicas default to if not set? What does .spec.revisionHistoryLimit default to, and what happens if you set it to 0?",
+      "answer": "replicas defaults to 1. revisionHistoryLimit defaults to 10. Setting it to 0 cleans up all of the Deployment's history, so the Deployment will not be able to roll back (a rollout still creates a new ReplicaSet before the old one is removed).",
+      "anchor": "deployment.md: '.spec.replicas ... defaults to 1'; revisionHistoryLimit 'By default, it is 10'; 'setting this field to 0, will result in cleaning up all the history ... will not be able to roll back'"
+    },
+    {
+      "id": "Q3",
+      "question": "What is the default Service type, and what does setting .spec.clusterIP to \"None\" create?",
+      "answer": "The default Service type is ClusterIP. Setting .spec.clusterIP to \"None\" creates a headless Service (no cluster IP allocated).",
+      "anchor": "service.md: default ClusterIP; '.spec.clusterIP set to \"None\"' -> headless service"
+    },
+    {
+      "id": "Q4",
+      "question": "What is the default Pod termination grace period?",
+      "answer": "30 seconds (terminationGracePeriodSeconds defaults to 30).",
+      "anchor": "pod-lifecycle.md: 'granted a term to terminate gracefully, which defaults to 30 seconds.'"
+    },
+    {
+      "id": "Q5",
+      "question": "What are the possible values of a Pod's restartPolicy field, and what is the default?",
+      "answer": "Possible values: Always, OnFailure, Never. The default is Always.",
+      "anchor": "pod-lifecycle.md: 'restartPolicy field with possible values Always, OnFailure, and Never. The default value is Always.'"
+    },
+    {
+      "id": "Q6",
+      "question": "What is the maximum size of a ConfigMap?",
+      "answer": "A ConfigMap cannot exceed 1 MiB.",
+      "anchor": "configmap.md: 'ConfigMap cannot exceed 1 MiB.'"
+    },
+    {
+      "id": "Q7_cross",
+      "question": "Cross-doc: In a rolling update example with 10 replicas, maxSurge=3 and maxUnavailable=2, how many Pods can be running at most during the update, and how many must remain available at minimum?",
+      "answer": "At most 10 + maxSurge = 13 Pods total during the update; at least 10 - maxUnavailable = 8 Pods available.",
+      "anchor": "deployment.md rolling-update example: 'running a Deployment with 10 replicas, maxSurge=3, and maxUnavailable=2'"
+    }
+  ],
+  "required_outputs": ["/tmp_workspace/results/k8s_docs_qa.md"],
+  "scoring_notes": "Each answer must come from the injected docs. Reward correct default values/behaviors with the right doc citation. Penalize values that are wrong, outdated from memory, or unattributed. Minor wording differences are fine; wrong numbers (e.g. grace period != 30s, default != 25%, ConfigMap limit != 1 MiB) are errors.",
+  "dynamic_content_note": "Kubernetes docs evolve; the injected pages are frozen and authoritative for this task. Judge against the injected docs, not against newer upstream versions."
+}

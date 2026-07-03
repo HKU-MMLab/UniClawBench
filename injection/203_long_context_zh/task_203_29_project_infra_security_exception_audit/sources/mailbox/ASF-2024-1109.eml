@@ -1,0 +1,68 @@
+Message-ID: <CAKQ1sVN=K=dmz8Lezx3A-du6+c8F096O3CRFn3fzzUPdtqBEiQ@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1109
+Date: Sat, 29 Oct 2022 18:59:37 +0200
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: [libapreq2] nits to pick about the patches to util.c over the  past few years
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-10.mbox
+
+Hi Joe,
+
+here comes the "goofer".
+
+On Fri, Oct 28, 2022 at 9:05 PM <joe@sunstarsys.com> wrote:
+>
+> Long time fan, not a first time caller.
+
+Yet what a crappy thread (and comments on [1]).
+All top posting, unreplyable.
+
+>
+> Libapreq2 was intended to be a safe,fast, standards compliant library- primarily *safe* before all other priorities.  Some of the work going on lately in util.c is starting to undermine that prime directive, so I’d like to better understand why these changes are happening, and why they are snowballing into a less functional, less secure software product that is driving up my support costs on CPAN.
+
+Yeah sure, rewriting history. That marvelous previous 2.16 just
+exploded when faced with google's oss-fuzzers (and not just a little,
+quite some reports) which now fuzz httpd trunk (thus apreq).
+CVE-2022-22728 is about libapreq2 v2.16 *and earlier" right? So
+something pre-dated my changes.
+
+>
+> For instance, this revision 1867789 is a pure pessimization:  it trades userland RAM for filesystem cache RAM, that’s it, but it’s not a big deal.  Just churn.
+
+I call it a fix for an UAF (Use After Free). This is my only change in
+2.16 btw, while you seem to suggest that security issues started with
+2.16.
+
+>
+> Everything in the crufty, old apreq_header_attribute code I wrote was completely tossed and reimplemented.  Why?
+
+Someone had to address the security reports, and someone (me) dared
+touching your code because it was not safe (i.e.
+broken/crashing/vulnerable/..), not for the lulz nor breaking users.
+I'm very sorry if that happened, only those who do nothing do not
+break anything though.
+Existing tests were still passing, but shit happens.
+
+>  We’re just racking up CVE’s, people are disabling the mfd parser altogether, and it no longer support common use cases that people now complain about because it supported cases in the wild that the new work does not.
+
+Are there multiple issues? I know of the one reported in [1] about
+"file upload does not work if any file fields are blank".
+That's not actionable sorry (I don't understand what it means), no
+more than your rant here and elusive "hints" on where/how to fix it.
+I asked in the other thread for a reproducer in the form of a HTTP
+payload, not a mod_perl handler which I don't know how to debug (let
+alone without the right thing to send on the client side).
+
+>
+> With the latest code coming out of p5p for Perl, there’s a whole new reason for excitement in httpd-land: the mod_perl2 + mpm_event combination is rock solid and screaming fast with HTTP/2.  The only reason I resubbed here is in the hopes of some synergy retaking these perl-related projects, since mod_perl2 is the only game in town for embedded interpreters in httpd2 (and no, lua is not the answer, it’s not thread safe either).
+
+Synergy! What a great intro..
+
+
+Regards;
+Yann.
+
+[1] https://rt.cpan.org/Public/Bug/Display.html?id=144470

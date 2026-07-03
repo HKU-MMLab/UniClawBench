@@ -1,0 +1,25 @@
+Message-ID: <CAKQ1sVP16eJG2i_=NOXmFsRwi+OvX=BxhibUQTk8+LvGwjEYfA@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0618
+Date: Wed, 26 Jan 2022 15:03:47 +0100
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: httpd-dev <dev@httpd.apache.org>
+Subject: Re: FYI: change to travis-ci emailer could cause moderation headaches
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-01.mbox
+
+On Wed, Jan 26, 2022 at 2:58 PM Eric Covener <covener@gmail.com> wrote:
+>
+> I noticed I stopped getting "Travis CI" emails for httpd around 10/21.
+> But I see people still discussing CI failures, so I am a little
+> confused. Maybe they are only seeing it in the context of PRs.
+
+I'm not receiving them anymore either (not sent to dev@ or IRC as before).
+So I'm looking at https://app.travis-ci.com/github/apache/httpd/builds
+manually for the discussions..
+
+>
+> Did we lose notifications to dev@ as a result of the below? Or something else?
+
+Dunno, but it would be really nice to have them back..

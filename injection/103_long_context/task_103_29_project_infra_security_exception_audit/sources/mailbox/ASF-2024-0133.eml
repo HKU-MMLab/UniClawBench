@@ -1,0 +1,56 @@
+Message-ID: <CABD8fLWcAL20dshD4sGYEHL2iQH24qqyC6USqEBhXTLaiY2mxg@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0133
+Date: Mon, 28 Aug 2023 15:49:29 -0500
+From: Greg Stein <gstein@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: Time for a new libapreq2 release?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-08.mbox
+
+Your LDAP record is still present [1]. You're still on the PMC of httpd and
+perl. Commit rights to incubator, sis, subversion. Dunno where httpd went,
+but as a PMC member of httpd you should have commit. We can fix that.
+
+So should we fix this up, so you can walk through a libapreq2 release?
+
+Cheers,
+-g
+[1] https://whimsy.apache.org/roster/committer/joes
+
+
+On Mon, Aug 28, 2023 at 8:43 AM Joe Schaefer <joe@sunstarsys.com> wrote:
+
+> Because my account no longer exists?
+>
+> On Mon, Aug 28, 2023 at 1:43 AM Greg Stein <gstein@gmail.com> wrote:
+>
+>> you're on the PMC. Why don't you do the tag&roll. ?
+>>
+>> On Sun, Aug 27, 2023 at 4:31 PM Joe Schaefer <joe@sunstarsys.com> wrote:
+>>
+>>> Seems like it’s been a year since the last release, which means it’s
+>>> time for good people to take another try at releasing something
+>>> nondefective.
+>>>
+>>> Here to help with the quality control this time around.
+>>> --
+>>> Joe Schaefer, Ph.D.
+>>> <https://sunstarsys.com/orion/features>
+>>> Orion - The Enterprise Jamstack Wiki
+>>> <https://sunstarsys.com/orion/features>
+>>> <joe@sunstarsys.com>
+>>> 954.253.3732 <//954.253.3732>
+>>>
+>>>
+>>> --
+> Joe Schaefer, Ph.D.
+> <https://sunstarsys.com/orion/features>
+> Orion - The Enterprise Jamstack Wiki
+> <https://sunstarsys.com/orion/features>
+> <joe@sunstarsys.com>
+> 954.253.3732 <//954.253.3732>
+>
+>
+>

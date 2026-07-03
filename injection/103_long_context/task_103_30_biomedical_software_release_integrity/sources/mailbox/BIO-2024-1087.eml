@@ -1,0 +1,31 @@
+Message-ID: <6a56d7ebb1746e4c70b63ea495b182fb0aca64c3.camel@43-1.org>
+X-Clawbench-ID: BIO-2024-1087
+Date: Fri, 21 Jan 2022 22:11:05 +0100
+From: Ansgar <ansgar@43-1.org>
+To: Markus Blatt <markus@dr-blatt.de>, debian-science@lists.debian.org
+Subject: Re: RFS: opm-common/2021.10-1 [QA] -- Tools for Eclipse reservoir simulation files
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2022_01_msg00023.html
+
+Hi,
+
+On Fri, 2022-01-21 at 21:10 +0100, Markus Blatt wrote:
+> Fix the issue with libfmt8 and the package builds find on salsa-ci
+> (except for puiparts,
+> which fails) and my chroot. Furthermore I can successfully build opm-
+> material with it on
+> salsa-ci (only piuparts fails).
+
+I uploaded the package.
+
+
+> Do I need to do something for opm-material or will that get resolved
+> automatically?
+
+The build service should automatically note when the dependency gets
+installable. However, the package will need a source-only upload (no
+changes) to be allowed to migrate to testing.
+
+Ansgar

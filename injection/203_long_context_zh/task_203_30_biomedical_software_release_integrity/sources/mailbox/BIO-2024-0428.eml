@@ -1,0 +1,98 @@
+Message-ID: <You17sotR3TEwO41@an3as.eu>
+X-Clawbench-ID: BIO-2024-0428
+Date: Mon, 23 May 2022 18:27:26 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: "Gajendra P.S. Raghava" <raghava@iiitd.ac.in>
+Subject: Re: Software for healthcare
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_05_msg00015.html
+
+Dear Raghava,
+
+Am Mon, May 23, 2022 at 09:23:20PM +0530 schrieb Gajendra P.S. Raghava:
+> Dear Andreas
+> Thanks for your quick response. These software are under GPL, I am a strong supporter of open source software.s
+
+We are very happy about this.
+
+> Thanks for looking our .deb files and pointing out lack of copyright information. We will put license and will repack them as per requirement of debian.
+
+I'd recommend you stall rebuilding of the packages for the moment.  As
+I've seen they are not created by proper tooling - otherwise the
+copyright files would have been included automatically.  So you can save
+the work on all those packages which will not lead to the result we will
+finally want and once we do so everything will be pretty smoothly.
+
+> Regarding source code, most of the software are either in perl or in python. We need guidance in creating source package from perl scripts. I will send, email of developers in my group who are interested in creating .deb files.
+
+Please point them to
+
+   https://salsa.debian.org/med-team/community/MoM/-/wikis/home
+
+which also contains references to packaging documents.
+
+> With best wishes and regards
+
+Same to you
+
+     Andreas.
+
+> Raghava
+> # ========================================================= #
+> # Prof. G. P. S. Raghava http://www.iiitd.ac.in/raghava/>, Head Department of Computational Biology,            #
+> # Indraprastha Institute of Information Technology http://www.iiitd.ac.in/> (IIIT), Okhla Phase III,         #
+> # New Delhi 110020 ; Phone:+91-11-26907444; E: raghava@iiitd.ac.in            #
+> # ========================================================= #
+> PS:  Former Chief Scientist, Institute of Microbial Technology, Chandigarh http://www.imtech.res.in/raghava/>.
+> Wiki:  http://en.wikipedia.org/wiki/Gajendra_Pal_Singh_Raghava
+> GS:  https://scholar.google.co.in/citations?user=XK5GUiYAAAAJ&hl=en
+>
+>
+> On 23-May-2022, at 12:55 PM, Andreas Tille  wrote:
+>
+> Dear Raghava,
+>
+> greetings to India.  I guess your mail is pretty welcome on this list
+> since recently the second active member from India joined our small
+> team.
+>
+> Am Sun, May 22, 2022 at 07:33:09PM +0530 schrieb Gajendra P.S. Raghava:
+> > Dear Colleagues,
+> > We are active contributors in the field of bioinformatics/chemoinformatics and health informatics. Mostly, we develop web-servers see our web site http://webs.iiitd.edu.in/raghava/ http://webs.iiitd.edu.in/raghava/> , most of software are heavily used by scientific community. All software and services are free for public. One of the major challenge is to distribute these packages to user, in past we made number of attempt to make these software available see https://webs.iiitd.edu.in/osddlinux/ https://webs.iiitd.edu.in/osddlinux/> , https://webs.iiitd.edu.in/gpsrdocker/ https://webs.iiitd.edu.in/gpsrdocker/>  and https://github.com/raghavagps https://github.com/raghavagps> . Still our users are not happy with our services, they need simple way of installing these software package. We believe, maintaing debian package is best solution as user can easily install these software.
+>
+> I confirm that we are happy to help in such cases.  First of all we need
+> to clarify the difference between "free for public" and free in the
+> terms of the Debian Free Software Guidelines[1].  All software we want
+> to package needs to have a license which complies to this.  Most used
+> licenses are GPL (different versions), BSD, MIT and so on.
+>
+> > The purpose of writing this long email to this list, help in joining debian med project. Though we know how to package, we have already developed deb packages see http://webs.iiitd.edu.in/repo/ http://webs.iiitd.edu.in/repo/>  but we are not expert. I tried to create PPA via launchpad but there are number of issues. I will highly appreciate if you please provide steps to join this project.
+>
+> I had a very quick look of some examples of your *.deb files in your
+> repository.  Its lacking any licensing and copyright information so we
+> do not know whether we can package this.  We also always need a link to
+> the source repository.  The packaging will be done according Debian
+> Policy which we can talk about in some Mentoring of the Month project[2].
+> So if you have one or two interested developers (preferably those
+> persons who cared for the *.deb files so far) we can teach them kindly
+> and patiently how to do the packaging right and include the packages
+> into official Debian.
+>
+> We happily welcome new developers and it will be a pleasure to teach
+> our knowledge.
+>
+> Kind regards
+>
+>     Andreas.
+>
+> [1] https://www.debian.org/social_contract
+> [2] https://salsa.debian.org/med-team/community/MoM/-/wikis/home
+>
+> --
+> http://fam-tille.de
+>
+
+--
+http://fam-tille.de

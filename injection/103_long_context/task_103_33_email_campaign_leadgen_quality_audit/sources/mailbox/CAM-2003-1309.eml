@@ -1,0 +1,45 @@
+Message-ID: <20020813233332.A30847@svr1.03s.net>
+X-Clawbench-ID: CAM-2003-1309
+Date: Tue, 13 Aug 2002 23:33:32 +0800
+From: Adrian Ho <aho-sw-razor@03s.net>
+To: razor-users@example.sourceforge.net
+Subject: Re: [Razor-users] FW: intigration with qmail
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00632.d171d66f937e72574b5d880346e0b628
+
+On Tue, Aug 13, 2002 at 09:44:33AM -0500, Michael J Humphries wrote:
+> I sent this message already and I am sorry if I am asking the wrong
+> question or if I have been asking stupid questions but I am in an urgent
+> time when people are using my service to spam others and I NEED to stop
+> them quickly.
+
+Sounds like you're solving the wrong problem.  If untrusted strangers
+are relaying spam through your qmail server, it's a fair bet that
+you've seriously botched your qmail config (like forgetting to create
+an rcpthosts file or something).
+
+Anyway, if you insist on using razor to resolve this problem, I
+would suggest tossing qmail-scanner <http://qmail-scanner.sf.net/>
+and SpamAssassin <http://www.spamassassin.org/> into the mix as well.
+The former provides the qmail-integration framework on which the latter
+does its work (including razor-check invocations).
+
+Fair warning: It'll be far more resource-intensive than simply denying
+relaying privileges to everyone except the folks you trust.  To find
+out how to do that, go to <http://www.qmail.org/> (which, incidentally,
+should be your first stop for all things qmail) and search for "qmail
+newbie's guide to relaying".
+
+- Adrian
+
+
+-------------------------------------------------------
+This sf.net email is sponsored by: Dice - The leading online job board
+for high-tech professionals. Search and apply for tech jobs today!
+http://seeker.dice.com/seeker.epl?rel_code=31
+_______________________________________________
+Razor-users mailing list
+Razor-users@lists.sourceforge.net
+https://lists.sourceforge.net/lists/listinfo/razor-users

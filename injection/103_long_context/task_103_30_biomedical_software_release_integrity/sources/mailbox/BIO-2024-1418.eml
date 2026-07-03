@@ -1,0 +1,93 @@
+Message-ID: <YgEueA/INSx3Vs8r@an3as.eu>
+X-Clawbench-ID: BIO-2024-1418
+Date: Mon, 7 Feb 2022 15:36:40 +0100
+From: Andreas Tille <tille@debian.org>
+To: Mathieu Malaterre <malat@debian.org>
+Subject: Re: Rationale for removing binary data from debian source package
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_02_msg00037.html
+
+Am Mon, Feb 07, 2022 at 10:26:16AM +0100 schrieb Mathieu Malaterre:
+> Dear Debian Med,
+>
+> I am trying to remember the rationale for removing binary data from a
+> Debian source package.
+>
+> Let's consider charls:
+>
+> ```
+> Files-Excluded: */test/conformance
+>                 */test/jlsimage
+>                 */test/*.raw
+>                 */test/*.jls
+>                 */test/*.dcm
+>                 */test/*.ppm
+>                 */test/MR2_UNC
+> ```
+
+
+This was added in commit:
+
+commit 936c46cce7fb88a032bb7f964406c5f171575f4e
+Author: Andreas Tille
+Date:   Thu May 19 17:27:01 2016 +0200
+
+    New upstream version (use Files-Excluded)
+
+
+If I go back to
+
+commit 3c1373841374b5fb75c4da2d2da7345ddd513943 (HEAD)
+Author: Mathieu Malaterre
+Date:   Fri Nov 7 08:24:52 2014 +0000
+
+    update to 3.9.6
+
+`git blame` uncovers:
+
+^e1fc389 (Mathieu Malaterre 2011-04-27 16:54:06 +0000 43) get-orig-source: $(UPSTREAM_SRC).zip
+^e1fc389 (Mathieu Malaterre 2011-04-27 16:54:06 +0000 44)       rm -rf $(DEBIAN_SRC_DIR)
+^e1fc389 (Mathieu Malaterre 2011-04-27 16:54:06 +0000 45)       unzip -q $(UPSTREAM_SRC).zip -d $(DEBIAN_SRC_DIR)
+3784391f (Mathieu Malaterre 2011-04-27 19:37:57 +0000 46)       # UNIX eol
+481f011f (Mathieu Malaterre 2011-04-27 19:07:43 +0000 47)       dos2unix $(DEBIAN_SRC_DIR)/*.h
+481f011f (Mathieu Malaterre 2011-04-27 19:07:43 +0000 48)       dos2unix $(DEBIAN_SRC_DIR)/*.c*
+481f011f (Mathieu Malaterre 2011-04-27 19:07:43 +0000 49)       dos2unix $(DEBIAN_SRC_DIR)/*.txt
+3784391f (Mathieu Malaterre 2011-04-27 19:37:57 +0000 50)       # remove dataset to reduce source size
+3784391f (Mathieu Malaterre 2011-04-27 19:37:57 +0000 51)       rm -rf $(DEBIAN_SRC_DIR)/test/conformance/
+3784391f (Mathieu Malaterre 2011-04-27 19:37:57 +0000 52)       rm -rf $(DEBIAN_SRC_DIR)/test/jlsimage/
+3784391f (Mathieu Malaterre 2011-04-27 19:37:57 +0000 53)       rm $(DEBIAN_SRC_DIR)/test/*.raw
+3784391f (Mathieu Malaterre 2011-04-27 19:37:57 +0000 54)       rm $(DEBIAN_SRC_DIR)/test/*.jls
+3784391f (Mathieu Malaterre 2011-04-27 19:37:57 +0000 55)       rm $(DEBIAN_SRC_DIR)/test/*.dcm
+48689d69 (Mathieu Malaterre 2011-04-27 19:44:40 +0000 56)       rm $(DEBIAN_SRC_DIR)/test/*.ppm
+3784391f (Mathieu Malaterre 2011-04-27 19:37:57 +0000 57)       rm $(DEBIAN_SRC_DIR)/test/MR2_UNC
+^e1fc389 (Mathieu Malaterre 2011-04-27 16:54:06 +0000 58)       GZIP="--best --no-name" tar czf $(DEBIAN_SRC_TAR) $(DEBIAN_SRC_DIR)
+^e1fc389 (Mathieu Malaterre 2011-04-27 16:54:06 +0000 59)       rm -rf $(DEBIAN_SRC_DIR)
+^e1fc389 (Mathieu Malaterre 2011-04-27 16:54:06 +0000 60)       rm $(UPSTREAM_SRC).zip
+
+
+So if you remember why you excluded those files at that point in time it
+makes sense to document this.  If not just keep them in if it permits a
+sensible testing.
+
+> Long story short, upstream is relying on some of these files to run
+> unit tests (please no debate). Would it be acceptable to add a portion
+> of these binary data back into the source package ? If so, what should
+> I pay attention to?
+
+I do not consider image data binary without source since there are image
+editing tools inside Debian.  The only thing we need to pay attention is
+that there are no copyrighted images (like "lena" amongst these).
+
+> ref:
+> https://salsa.debian.org/med-team/charls/-/blob/master/debian/copyright#L5-13
+
+Long story short: I'm fine with keeping all test data.
+
+Kind regards
+
+       Andreas.
+
+--
+http://fam-tille.de

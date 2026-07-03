@@ -1,0 +1,45 @@
+task_id: task_104_05_panel_figure5_reproduction
+category: 104_multimodal
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  First locate `图 5` within this full image, then use Python + matplotlib to recreate `图 5`:
+  /tmp_workspace/clawbench/sources/panel_sheet.png
+
+  The image provided here is a full sheet containing 6 panels, not a separately cropped target figure.
+  Correctly locating `图 5` is part of the task. Your output should recreate only `图 5`; do not redraw the entire 6-panel sheet.
+
+  `图 5` is the middle panel in the bottom row, containing:
+  - a large circle
+  - a vertical axis running from top to bottom
+  - a horizontal line passing near the circle center
+  - multiple diagonal lines and dashed helper lines inside the circle
+  - multiple point markers and text labels distributed along the circumference
+
+  Requirements:
+  1. The shapes, proportions, intersection relationships, and internal symmetry must be accurate.
+  2. Compare with the original after each drawing pass and make at least one revision.
+  3. The final goal is for the overall visual result to closely resemble `图 5` in the original,
+     including the circle size, axis positions, crossing lines, dashed helper lines, and label placement.
+  4. Save the runnable script to
+     /tmp_workspace/results/reproduce_prompt5_geometry_circle_chord_tangent.py
+  5. Save the final image to
+     /tmp_workspace/results/prompt5_geometry_replicate.png
+  6. Save a short revision note to
+     /tmp_workspace/results/prompt5_geometry_notes.md
+
+references:
+  - references/eval_rule.md
+
+sources:
+  - panel_sheet.png
+
+codex:
+  max_user_followups: 2

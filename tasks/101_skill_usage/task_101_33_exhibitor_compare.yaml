@@ -1,0 +1,84 @@
+task_id: task_101_33_exhibitor_compare
+category: 101_skill_usage
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  We need to decide which trade show to invest in next quarter and I've
+  been staring at three prospectus PDFs without making progress. Use the
+  the PDF extraction skill to pull the facts out of the PDFs and the
+  business writing skill to draft a recommendation I can hand to my VP.
+
+  The files are under /tmp_workspace/clawbench/sources/:
+  acvo_exhibitor_2025.pdf, cda_anaheim_exhibitor_2025.pdf, and
+  texas_charter_prospectus_2025.pdf, plus booth_roi_assumptions.csv with
+  our current lead-volume and gross-margin assumptions.
+
+  Pull out commercial terms, schedule constraints, package inclusions,
+  and anything else that affects ROI, then put the three shows side by
+  side in /tmp_workspace/results/compare.md.
+
+  Include a second ROI table covering all three shows with total cash
+  outlay, expected gross margin, expected net contribution, break-even
+  number of deals, and break-even number of qualified leads. Use the CSV
+  assumptions for the model and the PDF booth fees for the cash outlay.
+  For break-even qualified leads, compute it directly as the ceiling of
+  cash_outlay divided by per-lead margin, where per-lead margin is gross
+  margin per deal multiplied by the lead-to-deal conversion rate. Do not
+  derive it from break-even deals.
+
+  Then write a short recommendation paragraph of at most 8 sentences
+  naming your top pick and runner-up with reasoning, and cite at least
+  two concrete values from the comparison or ROI tables.
+
+  Also save /tmp_workspace/results/roi_model.xlsx with a sheet named ROI.
+  One row per show, formula-backed columns for booth fee, staff/travel
+  cost, total cash outlay, expected gross margin, expected net
+  contribution, break-even deals, and break-even qualified leads. I want
+  to be able to change the lead or margin assumptions later and have the
+  model recalculate.
+
+  Before you wrap up, add a short narrative section at the bottom of
+  compare.md, separate from the recommendation paragraph, walking
+  through how the three shows stack up. For each show cover booth
+  economics with the fee, deposit and package contents; the traffic
+  estimate including expected attendance, leads and conversion to
+  deals; vertical alignment for our pet/veterinary focus; timing and
+  logistics including schedule, setup, teardown and when cancellations
+  harden; and the ROI break-even math with deals needed and qualified
+  leads needed. Tie each point to concrete numbers from the comparison
+  and ROI tables so the recommendation is auditable.
+
+  Once you have the comparison ready, also use the email-drafting skill
+  to draft a quick email I can forward to the marketing team with the
+  top-line recommendation.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - acvo_exhibitor_2025.pdf
+  - cda_anaheim_exhibitor_2025.pdf
+  - texas_charter_prospectus_2025.pdf
+  - booth_roi_assumptions.csv
+
+skills:
+  - pdf-extract
+  - business-writing
+  - imap-smtp-email
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

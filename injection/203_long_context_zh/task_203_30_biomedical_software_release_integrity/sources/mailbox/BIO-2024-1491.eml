@@ -1,0 +1,31 @@
+Message-ID: <Z2Zm61kRd0zC4ukt@an3as.eu>
+X-Clawbench-ID: BIO-2024-1491
+Date: Sat, 21 Dec 2024 07:57:47 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: 967865@bugs.debian.org, 967392@bugs.debian.org,	DebiChem Project <debichem-devel@lists.alioth.debian.org>,	Michael Banck <mbanck@debian.org>
+Subject: Is there any chance that ghemical will be upgraded to more modern toolset?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_12_msg00027.html
+
+Hi Michael,
+
+since bug
+  #967865 ghemical: depends on deprecated libglade2
+became serious now and bug
+  #967392 ghemical: depends on deprecated GTK 2
+will fire sooner or later while upstream has orphaned the package a long
+time ago I'm wondering whether we have the power inside Debian to take
+over upstream work and upgrade the packaging ourselves.  Unfortunately
+I do not see any chance for this despite I'm personally miss this package
+also in Debian Med since it was used by microbiologists.
+
+If you think we will not be able to maintain the package in the long
+run it might make sense to ask for removal of the package.
+
+Kind regards
+    Andreas.
+
+--
+https://fam-tille.de

@@ -1,0 +1,25 @@
+Message-ID: <Y2WNRV4xN4tS/MKt@an3as.eu>
+X-Clawbench-ID: BIO-2024-0196
+Date: Fri, 4 Nov 2022 23:08:05 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: "Michael R. Crusoe" <michael.crusoe@gmail.com>,	Debian Med Project List <debian-med@lists.debian.org>
+Subject: Please update SIMDE patches in new version of kalign
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_11_msg00012.html
+
+Hi Michael,
+
+I injected the new version of kalign into Git.  Unfortunately the file
+layout has changed and the files that were patched in the currently
+packaged version do not exist any more[1].  It would be great if you
+could update the patches to the new version.
+
+Kind regards
+   Andreas.
+
+[1] https://salsa.debian.org/med-team/kalign/-/jobs/3474689
+
+--
+http://fam-tille.de

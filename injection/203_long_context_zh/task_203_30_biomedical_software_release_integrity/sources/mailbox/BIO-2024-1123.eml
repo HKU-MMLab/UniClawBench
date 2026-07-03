@@ -1,0 +1,25 @@
+Message-ID: <Y2Vuvo+CjZ1lljMz@an3as.eu>
+X-Clawbench-ID: BIO-2024-1123
+Date: Fri, 4 Nov 2022 20:57:50 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Help for new version of bowtie2 needed
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_11_msg00009.html
+
+Hi folks,
+
+I'm afraid that we see some SIMDE issues here:
+
+   https://salsa.debian.org/med-team/bowtie2/-/jobs/3474326
+
+I'm not sure whether I refreshed the according patches properly so some
+review might make sense.
+
+Any help is welcome
+    Andreas.
+
+--
+http://fam-tille.de

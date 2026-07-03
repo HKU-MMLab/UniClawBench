@@ -1,0 +1,23 @@
+Message-ID: <udlbktaye3n.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-1190
+Date: Wed, 27 Jul 2022 07:44:28 -0400
+From: ucko@debian.org (Aaron M. Ucko)
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Re: [Help] unifrac-tools: symbol `_ZTVN2H511IdComponentE' can not be used when making a shared object; recompile with -fPIC
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_07_msg00078.html
+
+Andreas Tille  writes:
+
+> h5c++ -shared -fopenmp -o libssu.so tree.o biom.o unifrac_internal.o unifrac_cmp_cpu.o unifrac.o cmd.o skbio_alt.o api.o -lc -lhdf5_cpp -llz4 -llapacke -lblas -L/lib
+> /usr/bin/ld: /usr/lib/x86_64-linux-gnu/hdf5/serial/libhdf5_cpp.a(H5Exception.o): warning: relocation against `_ZTVN2H518DataTypeIExceptionE' in read-only section `.text'
+> /usr/bin/ld: /usr/lib/x86_64-linux-gnu/hdf5/serial/libhdf5_cpp.a(H5IdComponent.o): relocation R_X86_64_PC32 against symbol `_ZTVN2H511IdComponentE' can not be used when making a shared object; recompile with -fPIC
+
+Please try arranging to add -shlib to the h5c++ command line to override
+that script's preference for static HDF5 libraries.
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

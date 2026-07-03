@@ -1,0 +1,25 @@
+Message-ID: <B653E22F-934D-44B5-A5A7-CC1BB1578060@vmware.com>
+X-Clawbench-ID: ASF-2024-1110
+Date: Tue, 24 Jan 2023 19:56:11 +0000
+From: =?utf-8?B?SmVzw7pzIEdvbnrDoWxleg==?= <jesusgm@vmware.com>
+To: "dev@httpd.apache.org" <dev@httpd.apache.org>
+Subject: Re: mod_wasm: Contributing Upstream to Apache
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-01.mbox
+
+Hola!
+
+I wanted to update you on our progress since we have recently published new WebAssembly builds for several language runtimes, including:
+- PHP 8.1.11 and 8.2.0
+- Python 3.11.1
+- Ruby 3.2.0
+
+With the inclusion of multi-module support in the mod_wasm v0.10.0 release, Apache can now serve different applications written in these languages using just mod_wasm, all under the WebAssembly security model.
+
+We also opened a pull request (PR#335) about a month ago that includes the source code, documentation, and scripting needed to build mod_wasm as an experimental module, as well as a test to build it on Travis CI.
+
+We are still very interested in contributing this module upstream and helping to maintain it. Please, let us know what improvements or changes would be needed for it to be considered ready for inclusion.
+
+Thanks!

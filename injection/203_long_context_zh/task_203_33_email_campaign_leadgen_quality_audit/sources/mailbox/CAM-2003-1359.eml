@@ -1,0 +1,32 @@
+Message-ID: <12948.1028698735@sss.pgh.pa.us>
+X-Clawbench-ID: CAM-2003-1359
+Date: Wed, 07 Aug 2002 01:38:55 -0400
+From: Tom Lane <tgl@sss.pgh.pa.us>
+To: exmh-users@spamassassin.taint.org
+Subject: Re: curses interface to nmh
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00774.4597cd41ff06a2de83c33c801f1f5321
+
+J C Lawrence <claw@kanga.nu> writes:
+> Tom Reingold <noglider@pobox.com> wrote:
+>> Years ago, there was a package called mh-e which was an emacs
+>> interface to MH.  I don't know if it's still around or works.  But
+>> it's an idea.
+
+> Its still around, its actively maintained, and its quite well evolved.
+
+I useta use mh-e regularly, but I never figured out whether it could
+handle exmh's multidrop mechanism, which is something I've grown to
+rely on.  Does that work in recent mh-e versions?  I'd love to use
+mh-e when reading mail remotely, if it can handle my multiple-inbox-
+folders setup...
+
+			regards, tom lane
+
+
+_______________________________________________
+Exmh-users mailing list
+Exmh-users@redhat.com
+https://listman.redhat.com/mailman/listinfo/exmh-users

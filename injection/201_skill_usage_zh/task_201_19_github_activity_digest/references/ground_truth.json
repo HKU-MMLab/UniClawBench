@@ -1,0 +1,118 @@
+{
+  "task_id": "task_101_19_github_activity_digest",
+  "difficulty": "Hard",
+  "schema": "a",
+  "schema_notes": "live GitHub activity snapshot with imported contributor/date notes",
+  "skills_declared": [
+    "github"
+  ],
+  "ground_truth": {
+    "contributor_count_min": 5,
+    "window_days": 16,
+    "highlight_count": 5,
+    "highlight_mode": "most_recent_closed_or_merged",
+    "activity_index_expected_rows": 64,
+    "activity_index_columns": [
+      "activity_type",
+      "number_or_sha",
+      "title_or_message",
+      "contributor",
+      "activity_date",
+      "status"
+    ],
+    "contributor_stats": {
+      "alice": {
+        "merged_prs": 1,
+        "closed_unmerged_prs": 1,
+        "closed_issues": 2,
+        "commits": 11
+      },
+      "bob": {
+        "merged_prs": 2,
+        "closed_unmerged_prs": 0,
+        "closed_issues": 2,
+        "commits": 7
+      },
+      "carol": {
+        "merged_prs": 2,
+        "closed_unmerged_prs": 2,
+        "closed_issues": 3,
+        "commits": 10
+      },
+      "dave": {
+        "merged_prs": 2,
+        "closed_unmerged_prs": 2,
+        "closed_issues": 2,
+        "commits": 7
+      },
+      "erin": {
+        "merged_prs": 0,
+        "closed_unmerged_prs": 2,
+        "closed_issues": 1,
+        "commits": 5
+      }
+    },
+    "closed_unmerged_pr_numbers": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      11,
+      15
+    ],
+    "revert_activity": [
+      {
+        "type": "pr",
+        "number": 15,
+        "title": "revert: revert #109 due to regression in webhook retries",
+        "user": "alice",
+        "date": "2026-04-10"
+      },
+      {
+        "type": "commit",
+        "sha": "70a6545805f97a",
+        "message": "revert: metric change caused false alerts",
+        "user": "bob",
+        "date": "2026-04-19"
+      }
+    ],
+    "highlights": [
+      {
+        "type": "issue",
+        "number": 29,
+        "title": "Admin UI: 'active' filter should persist across refresh",
+        "user": "dave",
+        "date": "2026-04-24"
+      },
+      {
+        "type": "pr",
+        "number": 14,
+        "title": "fix: timezone bug in invoice generator (UTC vs local)",
+        "user": "bob",
+        "date": "2026-04-23"
+      },
+      {
+        "type": "issue",
+        "number": 27,
+        "title": "pg_stat_statements is off in prod replica",
+        "user": "dave",
+        "date": "2026-04-22"
+      },
+      {
+        "type": "pr",
+        "number": 13,
+        "title": "refactor: split billing.py into submodules",
+        "user": "carol",
+        "date": "2026-04-22"
+      },
+      {
+        "type": "pr",
+        "number": 12,
+        "title": "feat: soft-delete for customer records",
+        "user": "carol",
+        "date": "2026-04-21"
+      }
+    ]
+  }
+}

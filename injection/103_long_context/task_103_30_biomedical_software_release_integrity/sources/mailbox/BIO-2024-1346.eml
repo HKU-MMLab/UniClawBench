@@ -1,0 +1,24 @@
+Message-ID: <ZP4Uat0dwcUz_as-@lark>
+X-Clawbench-ID: BIO-2024-1346
+Date: Sun, 10 Sep 2023 12:09:30 -0700
+From: tony mancill <tmancill@debian.org>
+To: Andreas Tille <andreas@an3as.eu>
+Subject: Re: What is the point of B-D-I in a package that has no arch:any component?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_09_msg00006.html
+
+On Sun, Jul 16, 2023 at 03:43:10PM +0200, Andreas Tille wrote:
+> Hi Nilesh,
+>
+> Am Sun, Jul 16, 2023 at 12:23:44PM +0530 schrieb Nilesh Patra:
+> > What exactly is the point of having two separate fields in an arch:all package?
+>
+> Probably no point at all.
+
+I'm also not sure why this pattern emerged, but it has found its way
+into a number of Java team packages.
+
+I'm considering adding a lintian check for it.  Any strong opinions,
+either for or against?

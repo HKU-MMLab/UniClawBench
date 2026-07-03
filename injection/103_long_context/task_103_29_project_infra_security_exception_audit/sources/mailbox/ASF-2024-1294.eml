@@ -1,0 +1,53 @@
+Message-ID: <714E3C0A-04BA-450E-B9E4-60EE69FD16AC@gbiv.com>
+X-Clawbench-ID: ASF-2024-1294
+Date: Fri, 10 Mar 2023 09:43:12 -0800
+From: "Roy T. Fielding" <fielding@gbiv.com>
+To: httpd dev <dev@httpd.apache.org>
+Subject: Re: [VOTE] [VOTE] Release httpd-2.4.56-rc1 as httpd-2.4.56
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-03.mbox
+
+On Mar 10, 2023, at 8:56 AM, Yann Ylavic <ylavic.dev@gmail.com> wrote:
+
+> On Fri, Mar 10, 2023 at 4:34 PM Eric Covener <covener@gmail.com> wrote:
+>>
+>> Saw another report on users@
+>>
+>> Any thoughts on something like this to just allow spaces?
+>> http://people.apache.org/~covener/patches/rewrite-lax.diff
+>
+> What about:
+>
+> Index: modules/mappers/mod_rewrite.c
+> ===================================================================
+> --- modules/mappers/mod_rewrite.c    (revision 1908254)
+> +++ modules/mappers/mod_rewrite.c    (working copy)
+> @@ -4814,7 +4814,8 @@ static int hook_uri2file(request_rec *r)
+>         apr_size_t flen;
+>         int to_proxyreq;
+>
+> -        if (r->args && *(ap_scan_vchar_obstext(r->args))) {
+> +        if (rulestatus == ACTION_NOESCAPE
+> +            && r->args && *(ap_scan_vchar_obstext(r->args))) {
+>             /*
+>              * We have a raw control character or a ' ' in r->args.
+>              * Correct encoding was missed.
+> ?
+>
+> Regards;
+> Yann.
+
+Allowing a space to be sent within the proxied request target is not an option,
+regardless of how the user has configured the server. The CVE fix was just to
+prevent an invalid target sent from us.
+
+Why don't we fix the source of the spaces? The place where the variable is decoding
+the matched string being inserted. I find that bit surprising, since it doesn't behave
+like a proper regex.
+
+Likewise, the rewrite mapper should always pct-encode or reject embedded spaces
+long before we get to the proxy (or internal redirect) request.
+
+....Roy

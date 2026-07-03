@@ -1,0 +1,38 @@
+task_id: task_103_14_chicago_architecture_food_budget
+category: 103_long_context
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I want to go to Chicago with a friend for a three-night Architecture + Food trip. The dates are: next Friday to the following Monday (a 3-night Friday-to-Monday stay), 2 people, departing from SFO, and ORD or MDW are both acceptable. Please actually research and create a complete budget and itinerary plan, but do not pay, book flights, book hotels, buy architecture cruise or museum tickets, reserve restaurants, or submit any irreversible order. Save all screenshots and documents to `/tmp_workspace/results/`.
+
+  Search round-trip flights from SFO to ORD or MDW. The outbound flight must depart SFO on next Friday between 07:00 and 12:30; the return flight must depart Chicago for SFO on the following Monday between 15:00 and 20:30. Search Google Flights, United's official website, and at least one official website from American Airlines or Southwest; record 1 most suitable result from each platform, including airport, airline, departure/arrival times, nonstop/connection status, fare, baggage/change restrictions, and screenshots.
+
+  For lodging, choose any 3 among Hyatt Place Chicago/River North, citizenM Chicago Downtown, Hampton Inn Chicago Downtown/N Loop/Michigan Ave, and LondonHouse Chicago. Search Booking.com and each hotel official website for a stay from next Friday to the following Monday, 2 people, 1 room. Record room type, 3-night total price, whether taxes or amenity fees are included, cancellation policy, rating/address, and screenshots. If a website blocks the query or cannot show a price, screenshot it and honestly explain it in the final plan; do not invent prices.
+
+  For architecture activities, only consider Chicago Architecture Center River Cruise, Wendella Architecture Boat Tour, Shoreline Sightseeing Architecture River Tour, and Chicago Architecture Center admission. Use official pages to check available sessions for 2 adults from next Friday to the following Monday, recording date, session time, ticket price, total price, meeting location, cancellation/exchange policy, and screenshots.
+
+  For museums/attractions, only consider Art Institute of Chicago, Skydeck Chicago, 360 Chicago, and Field Museum. Use official ticket/admission pages to check tickets for 2 adults during the trip. Record adult ticket price, opening hours, whether timed entry is required, cancellation/rescheduling rules, and screenshots.
+
+  The Food section must cover three categories: deep dish, casual, and reservation dinners. For deep dish, only consider Lou Malnati's, Giordano's, and Pequod's Pizza; record menu prices, opening hours, whether reservations or waitlist are available, and screenshots. For casual, only consider Portillo's; record menu prices and address/opening hours with screenshots. For reservation dinners, choose any 3 among Bavette's Bar & Boeuf, The Purple Pig, Girl & the Goat, and RPM Steak, and check whether 2 people can reserve dinner between 18:00 and 20:30 from next Friday to the following Monday. Prefer OpenTable, Resy, or the restaurant's official reservation page, record the best available time and whether a credit card or deposit is required, and screenshot it, but do not complete the reservation.
+
+  For city transportation, check the CTA fare page and official transportation information from ORD or MDW to downtown, recording 1-day or 3-day pass prices, airport-to-downtown fare, and estimated time with screenshots. Default to no car rental unless you find that the itinerary clearly requires it; if you recommend renting a car, you must explain parking costs and alternatives.
+
+  Finally generate `/tmp_workspace/results/chicago_architecture_food_plan.md`, including a daily itinerary, a budget table for flights/hotel/architecture activities/museums/dining/local transportation/activity contingency, and two options: budget-saving and comfortable. Try to keep the comfortable option's total budget within $3,600 / 2 people. The final document must list all screenshot paths used and clearly mark any data that was blocked, missing prices, or unavailable.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/process_evidence/booking_Art_Institute_of_Chicago.png
+  - references/process_evidence/booking_citizenM_Chicago_Downtown.png
+  - references/process_evidence/google_flight.png
+  - references/process_evidence/opentable_Lou_Malnatis.png
+  - references/process_evidence/ticket_Chicago_Architecture_Center_River_Cruise.png
+codex:
+  max_user_followups: 2

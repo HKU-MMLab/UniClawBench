@@ -1,0 +1,23 @@
+Message-ID: <CAB-ec3Sw+BtpDkEnUZu0zRVv0y-11xqshRwKgJOTPLoODri=rQ@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0224
+Date: Fri, 14 Oct 2022 11:31:18 -0400
+From: as@php.net
+To: dev@httpd.apache.org
+Subject: Re: Process-level htaccess cache
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-10.mbox
+
+On Fri, Oct 14, 2022 at 11:12 AM Frank Gingras <thumbs@apache.org> wrote:
+
+> Any reason this was based on the older 2.4.6 release?
+>
+
+We use 2.4.6 from CentOS 7. It has a ton of backports so the patch may
+actually not apply cleanly to vanilla 2.4.6. Earlier I'd tested against
+latest 2.4.x and the same perf savings applied. I can't find that version
+of the patch at the moment. (This was several months ago.) I can quickly
+port it if anyone wants to try it out.
+
+Adam

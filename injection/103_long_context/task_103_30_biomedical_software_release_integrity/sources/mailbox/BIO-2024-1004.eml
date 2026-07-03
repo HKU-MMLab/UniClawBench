@@ -1,0 +1,51 @@
+Message-ID: <89C676A7-5CFA-483A-9C64-075F32E82582@riseup.net>
+X-Clawbench-ID: BIO-2024-1004
+Date: Sat, 04 Dec 2021 17:55:35 +0530
+From: Nilesh Patra <nilesh@riseup.net>
+To: debian-science@lists.debian.org, Tobias Hansen <thansen@debian.org>
+Subject: Re: Debian Math Team
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_12_msg00002.html
+
+On 4 December 2021 5:43:35 pm IST, Tobias Hansen  wrote:
+>On 11/3/21 4:08 PM, Andreas Tille wrote:
+>> Am Wed, Nov 03, 2021 at 04:55:54PM +0100 schrieb Julien Puydt:
+>>> Hi,
+>>>
+>>> Le lundi 01 novembre 2021 à 15:28 +0100, Andreas Tille a écrit :
+>>>> How to move a package:
+>>>>
+>>>>  In Salsa:
+>>>>
+>>>>     Settings
+>>>>       -> General
+>>>>            -> Advanced [Expand]
+>>>>                 -> Transfer project
+>>>>
+>>>> This redirects users who are using the old URL.  For sure you need
+>>>> the according permissions in both teams (not sure whether maintainer
+>>>> is sufficient or whether you need owner).
+>>>>
+>>> Hmmm... I just tried with flint, and I can go to settings, expand
+>>> "Advanced"... and the choices are "Housekeeping", "Export project" and
+>>> "Change path".
+>>>
+>>> Perhaps I lack some credentials?
+>> Seems you need to be "Owner" to remove a repository somewhere ... and now you are.
+>> Please try again.
+>
+>Hi Andreas,
+>
+>could you also make me owner please? I am planning to move sagemath related packages to the maths team one by one whenever I do the next upload, in order for the Vcs fields to stay correct.
+>
+>Best wishes,
+>
+>Tobias
+>
+
+Bumped to owner.
+
+Regards,
+Nilesh

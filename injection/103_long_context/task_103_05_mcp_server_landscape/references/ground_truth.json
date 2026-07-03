@@ -1,0 +1,34 @@
+{
+  "task_id": "task_103_05_mcp_server_landscape",
+  "created_at": "2026-06-20T00:00:00+00:00",
+  "task_type": "live enumeration research with verification",
+  "note": "This task requires live web/GitHub research. The values below are a snapshot taken 2026-06-20 to anchor grading; star counts and exact rankings change over time, so the supervisor should judge methodology, correct identification of real MCP servers, verification quality, and enumeration discipline rather than exact star numbers.",
+  "what_is_an_mcp_server": "A Model Context Protocol (MCP) server is a program that exposes tools/resources/prompts to an MCP client (e.g. Claude Desktop, IDEs) over the MCP protocol, typically via stdio or HTTP/SSE transport. The task is to enumerate real MCP SERVERS, not awesome-lists, MCP clients/SDKs alone, or unrelated projects.",
+  "real_server_anchors_snapshot": [
+    {"repo": "microsoft/playwright-mcp", "lang": "TypeScript", "what": "browser automation MCP server"},
+    {"repo": "github/github-mcp-server", "lang": "Go", "what": "official GitHub MCP server"},
+    {"repo": "PrefectHQ/fastmcp", "lang": "Python", "what": "framework for building MCP servers (also ships servers); verify whether the executor counts it as a server or a framework"},
+    {"repo": "googleapis/mcp-toolbox", "lang": "Go", "what": "MCP toolbox for databases"},
+    {"repo": "GLips/Figma-Context-MCP", "lang": "TypeScript", "what": "Figma context MCP server"},
+    {"repo": "hangwin/mcp-chrome", "lang": "TypeScript", "what": "Chrome MCP server"},
+    {"repo": "awslabs/mcp", "lang": "Python", "what": "AWS MCP servers collection"},
+    {"repo": "modelcontextprotocol/servers", "lang": "varied", "what": "the official reference servers collection (filesystem, fetch, git, etc.) - a primary anchor the executor should find"}
+  ],
+  "distractors_to_exclude": [
+    {"repo": "punkpeye/awesome-mcp-servers", "why": "an awesome-LIST of servers, not a server itself - must not be counted as a server"},
+    {"repo": "modelcontextprotocol/inspector", "why": "a debugging/inspector tool/client, not a server"},
+    {"repo": "mcp-use/mcp-use", "why": "a client-side library for using MCP, not a server"}
+  ],
+  "expected_fields_per_server": [
+    "repo / official link",
+    "purpose (what tools it exposes)",
+    "primary language",
+    "approximate stars or popularity signal",
+    "whether it is official/first-party or community",
+    "transport (stdio / HTTP / SSE) where determinable"
+  ],
+  "required_outputs": ["/tmp_workspace/results/mcp_server_landscape.md"],
+  "minimum_servers": 12,
+  "scoring_notes": "Reward >=12 genuine MCP servers correctly identified and verified across the listed fields, with awesome-lists/clients/inspectors correctly EXCLUDED (or at least flagged as not-a-server). Reward including the official modelcontextprotocol/servers reference collection. Penalize counting awesome-lists or clients as servers, fabricated repos/links, or a list with no verification of what each server actually does. Exact star counts need not match the snapshot.",
+  "dynamic_content_note": "GitHub stars and the MCP ecosystem change continuously. The snapshot anchors are illustrative; judge live findings on correctness, verification, and enumeration discipline, not on matching the snapshot exactly."
+}

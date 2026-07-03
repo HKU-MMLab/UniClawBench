@@ -1,0 +1,56 @@
+Message-ID: <CABD8fLXoZtiV7nvF8+VZKUYu2VkYObdD1_rFHa2En6GNsjqACg@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0955
+Date: Tue, 9 May 2023 23:11:40 -0500
+From: Greg Stein <gstein@gmail.com>
+To: dev@httpd.apache.org, Stefan Sperling <stsp@apache.org>
+Subject: Re: [VOTE] Switch read/write repository from Subversion to Git
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-05.mbox
+
+On Mon, May 8, 2023 at 9:08 AM Stefan Sperling <stsp@apache.org> wrote:
+>...
+
+> If the ASF at large was confident in SVN as a technology then our current
+> reality would look quite different. The Subversion project never managed
+> to grow its developer base by becoming part of the ASF. We've mostly seen
+>
+
+That is simply untrue.
+
+Case in point: WANdisco did not materially contribute to svn *until* the
+project left the CollabNet umbrella. At that point, WD put several
+full-time developers onto the project, and ramped up their project plans.
+This is a specific *fact* directly from my conversations with the CEO, over
+the phone and in-person at their offices in Sheffield. And WANdisco offered
+many developers', over many years, with very significant and important
+contributions.
+
+The ASF is completely confident in svn, and basically 99% of our corporate
+records, and some of our key workflows (eg. account requests, TLP
+graduation, ICLA recording) is all based on Apache Subversion. Also a fact.
+And zero plans to change that. Git is not envisioned to replace any of that.
+
+Your implication that the Foundation was somehow required to grow the svn
+community is misplaced. That is not its purpose. The Apache Subversion
+community is responsible for growing itself. In 2011, the Board of
+Directors specifically declined to assist a TLP with its community (*way*
+larger than svn) because that is not the purpose of the Foundation. We do
+not want some people "over there" on the Foundation/administrative side
+interfering with the technical operation, and the community dynamics of one
+of the communities. Or, even worse, to *pick* which communities get
+assistance, while others do not. No winners. No losers. (clearly: I am
+upset by your implication that you've been let down; the true answer is
+missing a step on the Foundation's role)
+
+As Daniel notes else-thread, the suggestion is not git vs. svn. It is
+entirely about "Do we want the tools offered by GitHub, to be made
+available to the Apache HTTPD community?"
+
+I'm an svn partisan, but I also appreciate GitHub for its utility. I
+voted +1 to move, for that reason only. Hands-down, I'd -1 a move to git.
+It was only GitHub that changed my opinion on this issue.
+
+Cheers,
+-g

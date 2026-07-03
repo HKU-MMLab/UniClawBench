@@ -1,0 +1,54 @@
+Message-ID: <3D7344D7.6010702@waider.ie>
+X-Clawbench-ID: CAM-2003-0277
+Date: Mon, 02 Sep 2002 12:00:39 +0100
+From: Waider <waider@waider.ie>
+To: vincent@cunniffe.net
+Subject: Re: [ILUG] Email list management howto
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00094.ef72156b3ba9ff0fc5fedc2125ceb736
+
+-----BEGIN PGP SIGNED MESSAGE-----
+
+Vincent Cunniffe wrote:
+| Justin MacCarthy wrote:
+|
+|> I think I'll ask this question again, as I sent on friday afternoon.
+  :-)
+|
+|
+| Mailman ;-)
+|
+| Trust me, you do *not* want to running your own mailing lists
+| on your own software.
+|
+| You'll wind up crying in a dark room looking for something
+| high-voltage to stick your fingers into.
+
+All things considered, I get that effect with Mailman, but the viable
+alternatives are ezmlm, which is loonware and I'm avoiding on principle,
+and majordomo, which seems to have stagnated. Oh, and there's apparently
+something called SmartList which is a bitch to set up.
+
+Waider.
+- --
+waider@waider.ie / Yes, it /is/ very personal of me
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.0.6 (GNU/Linux)
+Comment: Using GnuPG with Mozilla - http://enigmail.mozdev.org
+
+iQEVAwUBPXNE16HbXyzZsAb3AQH2KQf/XqeOMaHNXAlzbmgd5iYd9VQaAgWAR2DQ
+kdpz0NbECR2OS7PJoLY9lsPKgNshpJcDZIRsxJvXmfp5YRNq0AyP0HGGwRvWgjgB
+0N9HG/Rgez7S5RhU79RAuhpFb9XO1XzMI0gSkDHSGefQsUOAZ69vZVLLsiRiyHFy
+4u+vrPVTP0rYR7haX41JXu42GVWfT2K2DDFftAimqGCsJnu2MXcMI/Ptq1rtxhXD
+WZhxCR+FAwirEk8Yz9Drl8+gJL0YJQFSoWumQzqLKKutx1lJvv7OS4yDjGRaQpxm
+Jmq8lifudZayccbixx7ZcXMSlpP4C45Wj5XJSYW8RCjU1bgxTqhMbQ==
+=eG8X
+-----END PGP SIGNATURE-----
+
+
+--
+Irish Linux Users' Group: ilug@linux.ie
+http://www.linux.ie/mailman/listinfo/ilug for (un)subscription information.
+List maintainer: listmaster@linux.ie

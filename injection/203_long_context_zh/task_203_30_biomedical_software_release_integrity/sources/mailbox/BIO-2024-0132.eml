@@ -1,0 +1,23 @@
+Message-ID: <20221027015642.w5ghu6jygcrnn5ca@nileshpatra.info>
+X-Clawbench-ID: BIO-2024-0132
+Date: Thu, 27 Oct 2022 07:26:42 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: Martin Uecker <uecker@tugraz.at>
+Subject: Re: BART 0.8.0
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00096.html
+
+On Wed, Oct 26, 2022 at 11:56:28AM +0200, Martin Uecker wrote:
+> Thank you! It seems this is working correctly
+> on all archs.
+>
+> I also finalized the bart-view update. Can
+> you upload it as well?
+
+I had done so, thanks!
+
+--
+Best,
+Nilesh

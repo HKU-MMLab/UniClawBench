@@ -1,0 +1,46 @@
+Message-ID: <CAKQ1sVMkMpqwx4_2COMfAmzhS1ivSkcBsqg4QpiRk+m4zpSWDQ@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1390
+Date: Wed, 26 Jun 2024 01:55:26 +0200
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.60-rc1 as httpd-2.4.60
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-06.mbox
+
+On Wed, Jun 26, 2024 at 1:17 AM Eric Covener <covener@gmail.com> wrote:
+>
+> On Tue, Jun 25, 2024 at 7:03 PM Yann Ylavic <ylavic.dev@gmail.com> wrote:
+> >
+> > On Wed, Jun 26, 2024 at 12:37 AM Eric Covener <covener@gmail.com> wrote:
+> > >
+> > > > The attached might work, currently testing but sending early if you
+> > > > want to try too.
+> > >
+> > > looks like proxy: is stripped off after the new call and needs to be
+> > > added back in?
+> >
+> > Yeah, the new call to ap_proxy_fixup_uds_filename() should not take
+> > &r->filename as argument.
+> > Fixed in this new version.
+>
+> +1 with basic "fakefpm" and real fpm hello-world.  Please commit to
+> trunk when practical.
+
+Done in r1918626. Looks good in my manual testing too, there will be
+two calls to ap_proxy_fixup_uds_filename() when proxying from
+r->handler, first in proxy_handler() and second in
+ap_proxy_pre_request(), but since the first will strip the UDS already
+the other call is a noop. We can eventually rework this after the
+release.
+
+>
+> If we can get another review for 2.4.x I can add it and roll an rc so
+> it can be more easily picked up for testing.
+
++1
+
+
+Regards;
+Yann.

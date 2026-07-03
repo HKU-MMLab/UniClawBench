@@ -1,0 +1,39 @@
+Message-ID: <YoZXsDprEmHTwCwK@redhat.com>
+X-Clawbench-ID: ASF-2024-0697
+Date: Thu, 19 May 2022 15:44:00 +0100
+From: Joe Orton <jorton@redhat.com>
+To: dev@httpd.apache.org
+Subject: Re: strcasecmp raises its...
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-05.mbox
+
+On Wed, May 18, 2022 at 05:34:22PM +0200, Ruediger Pluem wrote:
+> On 5/18/22 4:55 PM, Joe Orton wrote:
+> > I think for httpd it is only safe and sane to run httpd with LANG=C, we
+> > do this in the default service scripts in Fedora/RHEL for a very long
+> > time. Other than the protocol parsing issues you can get in non-C
+> > locales, you can also get "surprises" when sort order can change with
+> > the system locale, impacting e.g. config file load ordering and more.
+>
+> Don't you need a locale sensitive case insensitive string comparison in case of case blind file systems which support extended
+> latin characters? I know these Germans with their Umlaute :-).
+
+Heh. Well, I got away with it so far :)
+
+> > So IMHO it is probably sufficient & simpler to adjust apachectl to set
+> > LANG=C rather than trying to eliminate strcasecmp, and add another
+> > strcasecmp() reimplementation in APR, in this case.
+>
+> We already have this implementation in APR and we use the
+> httpd one which is just a forward port from APR to httpd until we require a sufficient recent APR version in several places.
+> The question is just if we should use them everywhere and thus do the correct thing no matter what locale is set.
+
+Ah, I missed that, thanks.
+
++1 from me on doing replacement of strcasecmp() with the
+locale-insensitive versions then. At least with config options, protocol
+data, it is definitely right.
+
+Regards, Joe

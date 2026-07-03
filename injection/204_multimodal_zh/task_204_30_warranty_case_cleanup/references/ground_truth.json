@@ -1,0 +1,72 @@
+{
+  "cases": [
+    {
+      "slug": "espresso_machine_jd202603010184",
+      "product_name": "Mini espresso machine",
+      "order_no": "JD202603010184",
+      "purchase_date": "2026-03-01",
+      "amount": 699,
+      "currency": "CNY",
+      "platform_or_merchant": "JD.com / BrewHome Official Store",
+      "status": "exchange / after-sales evidence largely complete",
+      "key_files": [
+        "file_09.png",
+        "file_06.pdf",
+        "file_11.png",
+        "file_01.png",
+        "file_04.jpg"
+      ],
+      "optional_supporting_files": [],
+      "missing": []
+    },
+    {
+      "slug": "headphones_tm202512190552",
+      "product_name": "Noise cancelling headphones",
+      "order_no": "TM202512190552",
+      "purchase_date": "2025-12-19",
+      "amount": 1299,
+      "currency": "CNY",
+      "platform_or_merchant": "Tmall",
+      "status": "warranty repair case mostly ready",
+      "key_files": [
+        "file_10.png",
+        "file_12.png",
+        "file_02.png",
+        "file_05.jpg"
+      ],
+      "optional_supporting_files": [],
+      "missing": [
+        "invoice not visible in sources"
+      ]
+    },
+    {
+      "slug": "desklamp_tb20240210444",
+      "product_name": "Foldable desk lamp",
+      "order_no": "TB20240210444",
+      "purchase_date": "2024-02-10",
+      "amount": 149,
+      "currency": "CNY",
+      "platform_or_merchant": "Taobao",
+      "status": "information insufficient for a strong claim",
+      "key_files": [
+        "file_03.png"
+      ],
+      "optional_supporting_files": [
+        "file_07.pdf"
+      ],
+      "missing": [
+        "no issue description or support chat",
+        "no invoice",
+        "no logistics or warranty evidence"
+      ]
+    }
+  ],
+  "ignore_files": [
+    "file_08.png"
+  ],
+  "readiness_order": [
+    "espresso_machine_jd202603010184",
+    "headphones_tm202512190552",
+    "desklamp_tb20240210444"
+  ]
+}

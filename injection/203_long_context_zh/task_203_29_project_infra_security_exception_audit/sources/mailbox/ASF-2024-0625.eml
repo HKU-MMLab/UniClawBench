@@ -1,0 +1,28 @@
+Message-ID: <CALK=YjOQ7eRYV_AbY9mWG0ZL3ZEY_zqFvFXvZ9-k87OY5BrLNg@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0625
+Date: Wed, 3 Apr 2024 15:03:27 -0400
+From: Eric Covener <covener@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.59-rc1 as httpd-2.4.59
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-04.mbox
+
+On Wed, Apr 3, 2024 at 2:54 PM Rainer Jung <rainer.jung@kippdata.de> wrote:
+>
+> Minor nit: the format of the SHA hash files has changes. Example:
+>
+> 2.4.58:
+>
+> fa16d72a078210a54c47dd5bef2f8b9b8a01d94909a51453956b3ec6442ea4c5
+> *httpd-2.4.58.tar.bz2
+>
+> 2.4.59:
+>
+> SHA2-256(httpd-2.4.59-rc1.tar.bz2)=
+> ec51501ec480284ff52f637258135d333230a7d229c3afa6f6c2f9040e321323
+
+It looks like the release tools are trying to strip that but maybe no
+longer matching?
+https://svn.apache.org/repos/asf/httpd/dev-tools/release/common-lib.sh

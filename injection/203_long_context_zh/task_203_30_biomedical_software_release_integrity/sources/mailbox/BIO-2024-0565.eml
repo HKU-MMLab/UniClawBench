@@ -1,0 +1,32 @@
+Message-ID: <Y5EFoerTdrv1nEWQ@fusion>
+X-Clawbench-ID: BIO-2024-0565
+Date: Wed, 7 Dec 2022 22:29:05 +0100
+From: Étienne Mollier <emollier@emlwks999.eu>
+To: debian-med@lists.debian.org
+Subject: [Advent bug squashing] fixed bug #1018636 in scoary
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_12_msg00070.html
+
+Good day all,
+
+I fixed yet another case of sunsetting python nosetests.  In
+this instance I could have removed straight away the test
+dependency, given that build time tests were disabled anyway,
+but I ended up noticing how upstream run their tests in their
+file .travis.yml, which luckily had nothing to do with nose.
+
+Bringing back the build time test suite raised an issue of
+compatibility with python3.11 which was not caught by running
+the autopkgtest: something about open() mode 'U' having no
+effect in python3 and obsoleted in python3.11.
+
+So bug #1018636 is fixed and scoary is now ready for python3.11.
+
+Have a nice day,  :)
+--
+Étienne Mollier
+Fingerprint:  8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+Sent from /dev/pts/2, please excuse my verbosity.
+On air: Leafless Tree - Megacycle

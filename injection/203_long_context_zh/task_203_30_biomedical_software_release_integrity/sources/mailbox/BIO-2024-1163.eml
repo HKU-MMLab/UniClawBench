@@ -1,0 +1,23 @@
+Message-ID: <Y1p1RcNgb04BdlMa@an3as.eu>
+X-Clawbench-ID: BIO-2024-1163
+Date: Thu, 27 Oct 2022 14:10:45 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Dylan Aïssi <daissi@debian.org>,	Debian Med Project List <debian-med@lists.debian.org>
+Subject: Minimac4 needs new autopkgtest
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00106.html
+
+Hi Dylan,
+
+you once wrote the autopkgtest for minimac4.  Version 4.1.0 has changed
+its interface.  Currently we need to wait until libomp-jonathonl is
+accepted in unstable but meanwhile it makes sense to look at the
+autopkgtest which is featuring the old interface of this package.
+
+Kind regards
+    Andreas.
+
+--
+http://fam-tille.de

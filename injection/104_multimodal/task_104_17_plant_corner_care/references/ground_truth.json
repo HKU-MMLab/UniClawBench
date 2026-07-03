@@ -1,0 +1,28 @@
+{
+  "plants": [
+    {
+      "name": "pothos / trailing vine",
+      "current_state": "generally healthy overall, but sprawling and likely to get messy if left in the same position with one-size-fits-all care",
+      "priority_issue": "trailing growth and mixed light exposure matter more than any severe visible damage",
+      "next_step": "give it bright indirect light, rotate it occasionally, and trim / redirect the longest growth if it starts to crowd the desk area"
+    },
+    {
+      "name": "snake plant",
+      "current_state": "overall stable and healthy-looking",
+      "priority_issue": "watering all plants on the same weekly schedule is likely too frequent for this plant",
+      "next_step": "let the soil dry more between waterings and avoid overwatering"
+    },
+    {
+      "name": "small rosette succulent",
+      "current_state": "compact and generally healthy-looking, but still the plant most likely to need the brightest light and the lightest watering hand",
+      "priority_issue": "it can decline quickly if treated like the other plants under the same weekly watering routine",
+      "next_step": "keep it in the brightest sill, rotate it occasionally, and let the soil dry much more fully between waterings"
+    }
+  ],
+  "environmental_factors": [
+    "east-facing window with morning light",
+    "same watering amount for all pots is a bad fit",
+    "AC and desk placement may dry leaves or keep some plants farther from ideal light"
+  ],
+  "uncertainty_note": "The current pothos images look healthier than an obviously drooping rescue case. Accept healthy-but-sprawling or mildly untidy readings; do not require strong distress language."
+}

@@ -1,0 +1,253 @@
+{
+  "task_id": "task_103_18_diffusion_video_blog",
+  "created_at": "2026-05-02T00:00:00+00:00",
+  "expected_output_dir": "/tmp_workspace/results/diffusion_video_blog/",
+  "expected_blog_file": "/tmp_workspace/results/diffusion_video_blog/blog.html",
+  "expected_selection_note": "/tmp_workspace/results/selection_note.md",
+  "paper_mapping_reference": "references/paper_mapping.json",
+  "reference_blog": "references/diffusion_video_blog/blog.html",
+  "expected_main_papers": [
+    {
+      "file": "papers/paper_01.pdf",
+      "title": "3D U-Net: Learning Dense Volumetric Segmentation from Sparse Annotation",
+      "authors": "Cicek et al.",
+      "year": 2016,
+      "url": "https://arxiv.org/pdf/1606.06650",
+      "sections": [
+        "3. Architectures for spatiotemporal generation"
+      ],
+      "note": "Provides the 3D U-Net backbone idea for volumetric and spatiotemporal generation."
+    },
+    {
+      "file": "papers/paper_02.pdf",
+      "title": "Video Diffusion Models",
+      "authors": "Ho and Salimans et al.",
+      "year": 2022,
+      "url": "https://arxiv.org/pdf/2204.03458",
+      "sections": [
+        "2. Diffusion parameterization and sampling"
+      ],
+      "note": "Foundational video diffusion model framing and sampling basics."
+    },
+    {
+      "file": "papers/paper_03.pdf",
+      "title": "Imagen Video: High Definition Video Generation with Diffusion Models",
+      "authors": "Ho et al.",
+      "year": 2022,
+      "url": "https://arxiv.org/pdf/2210.02303",
+      "sections": [
+        "4. Scaling text-to-video systems"
+      ],
+      "note": "Shows cascaded high-definition text-to-video generation with diffusion models."
+    },
+    {
+      "file": "papers/paper_04.pdf",
+      "title": "Make-A-Video: Text-to-Video Generation without Text-Video Data",
+      "authors": "Singer et al.",
+      "year": 2022,
+      "url": "https://arxiv.org/pdf/2209.14792",
+      "sections": [
+        "4. Scaling text-to-video systems"
+      ],
+      "note": "Uses image-text and unlabeled video data to reduce the need for paired text-video training."
+    },
+    {
+      "file": "papers/paper_05.pdf",
+      "title": "Align your Latents: High-Resolution Video Synthesis with Latent Diffusion Models",
+      "authors": "Blattmann et al.",
+      "year": 2023,
+      "url": "https://arxiv.org/pdf/2304.08818",
+      "sections": [
+        "5. Latent video diffusion"
+      ],
+      "note": "Moves video diffusion into latent space for more efficient high-resolution synthesis."
+    },
+    {
+      "file": "papers/paper_06.pdf",
+      "title": "Tune-A-Video: One-Shot Tuning of Image Diffusion Models for Text-to-Video Generation",
+      "authors": "Wu et al.",
+      "year": 2023,
+      "url": "https://openaccess.thecvf.com/content/ICCV2023/papers/Wu_Tune-A-Video_One-Shot_Tuning_of_Image_Diffusion_Models_for_Text-to-Video_Generation_ICCV_2023_paper.pdf",
+      "sections": [
+        "6. Adapting image diffusion models to video"
+      ],
+      "note": "Adapts image diffusion models to videos through one-shot tuning."
+    },
+    {
+      "file": "papers/paper_07.pdf",
+      "title": "Text2Video-Zero: Text-to-image diffusion models are zero-shot video generators",
+      "authors": "Khachatryan et al.",
+      "year": 2023,
+      "url": "https://arxiv.org/pdf/2303.13439",
+      "sections": [
+        "6. Adapting image diffusion models to video"
+      ],
+      "note": "Shows training-free adaptation of text-to-image diffusion models to video generation."
+    },
+    {
+      "file": "papers/paper_08.pdf",
+      "title": "Lumiere: A Space-Time Diffusion Model for Video Generation",
+      "authors": "Bar-Tal et al.",
+      "year": 2024,
+      "url": "https://arxiv.org/pdf/2401.12945",
+      "sections": [
+        "3. Architectures for spatiotemporal generation"
+      ],
+      "note": "Introduces a space-time diffusion architecture for coherent video generation."
+    }
+  ],
+  "expected_concept_sections": [
+    {
+      "name": "1. Why video generation is harder than image generation",
+      "required_ideas": [
+        "temporal consistency, motion, long-range dependency, and compute challenges",
+        "why extending image diffusion to video is nontrivial",
+        "motivate spatiotemporal architectures and efficient representations"
+      ],
+      "papers": [
+        "paper_02.pdf",
+        "paper_03.pdf",
+        "paper_04.pdf"
+      ]
+    },
+    {
+      "name": "2. Diffusion parameterization and sampling",
+      "required_ideas": [
+        "video diffusion as noising/denoising over video tensors",
+        "noise/data/velocity parameterizations and sampling stability",
+        "how Video Diffusion Models adapt diffusion to temporal data"
+      ],
+      "papers": [
+        "paper_02.pdf"
+      ]
+    },
+    {
+      "name": "3. Architectures for spatiotemporal generation",
+      "required_ideas": [
+        "3D U-Net and space-time U-Net ideas",
+        "joint spatial and temporal modeling",
+        "architecture choices that preserve motion coherence"
+      ],
+      "papers": [
+        "paper_01.pdf",
+        "paper_08.pdf"
+      ]
+    },
+    {
+      "name": "4. Scaling text-to-video systems",
+      "required_ideas": [
+        "large-scale cascaded text-to-video generation",
+        "text conditioning and super-resolution stages",
+        "strategies using image-text and video data"
+      ],
+      "papers": [
+        "paper_03.pdf",
+        "paper_04.pdf"
+      ]
+    },
+    {
+      "name": "5. Latent video diffusion",
+      "required_ideas": [
+        "pixel-space video diffusion is expensive",
+        "latent representations reduce high-resolution video cost",
+        "temporal alignment in latent video synthesis"
+      ],
+      "papers": [
+        "paper_05.pdf"
+      ]
+    },
+    {
+      "name": "6. Adapting image diffusion models to video",
+      "required_ideas": [
+        "one-shot tuning of image diffusion models for video",
+        "training-free or light-weight image-to-video adaptation",
+        "motion and attention modifications for temporal consistency"
+      ],
+      "papers": [
+        "paper_06.pdf",
+        "paper_07.pdf"
+      ]
+    },
+    {
+      "name": "7. Practical synthesis",
+      "required_ideas": [
+        "combine stable parameterization, spatiotemporal architectures, latent representations, and adaptation",
+        "explain tradeoffs among quality, consistency, compute, and data availability",
+        "summarize when to use each family of methods"
+      ],
+      "papers": [
+        "paper_02.pdf",
+        "paper_05.pdf",
+        "paper_06.pdf",
+        "paper_07.pdf",
+        "paper_08.pdf"
+      ]
+    }
+  ],
+  "expected_figures": [
+    {
+      "file": "assets/images/v-param.png",
+      "source": "Video Diffusion Models / diffusion parameterization",
+      "purpose": "velocity or diffusion parameterization overview"
+    },
+    {
+      "file": "assets/images/3D-U-net.png",
+      "source": "Cicek et al. 2016",
+      "purpose": "3D U-Net backbone"
+    },
+    {
+      "file": "assets/images/lumiere-STUnet.png",
+      "source": "Bar-Tal et al. 2024",
+      "purpose": "space-time U-Net for coherent video"
+    },
+    {
+      "file": "assets/images/imagen-video.png",
+      "source": "Ho et al. 2022 Imagen Video",
+      "purpose": "cascaded text-to-video system"
+    },
+    {
+      "file": "assets/images/make-a-video.png",
+      "source": "Singer et al. 2022",
+      "purpose": "Make-A-Video data/training strategy"
+    },
+    {
+      "file": "assets/images/video-LDM.png",
+      "source": "Blattmann et al. 2023",
+      "purpose": "latent video diffusion architecture"
+    },
+    {
+      "file": "assets/images/tune-a-video.png",
+      "source": "Wu et al. 2023",
+      "purpose": "one-shot tuning for video generation"
+    },
+    {
+      "file": "assets/images/text2video-zero.png",
+      "source": "Khachatryan et al. 2023",
+      "purpose": "zero-shot text-to-video adaptation"
+    }
+  ],
+  "required_assets": [
+    "assets/css/stylesheet.min.css",
+    "assets/js/highlight.min.js",
+    "assets/js/tex-chtml.js",
+    "assets/js/input/tex/extensions/ams.js",
+    "assets/js/input/tex/extensions/newcommand.js",
+    "assets/js/input/tex/extensions/boldsymbol.js",
+    "assets/js/input/tex/extensions/color.js",
+    "assets/js/input/tex/extensions/configmacros.js",
+    "assets/js/input/tex/extensions/html.js",
+    "assets/js/input/tex/extensions/noerrors.js",
+    "assets/js/input/tex/extensions/noundefined.js",
+    "assets/js/output/chtml/fonts/tex.js",
+    "assets/js/output/chtml/fonts/woff-v2/*.woff"
+  ],
+  "quality_checks": [
+    "HTML opens in a local HTTP server with visible styling from stylesheet.min.css",
+    "LaTeX formulas render through MathJax rather than appearing as raw TeX when formulas are present",
+    "Blog is image-rich and every included figure has a visible source-paper attribution",
+    "The blog explains paper selection and section-paper mapping in selection_note.md",
+    "The final result directory includes the HTML and all referenced assets needed for offline viewing",
+    "The blog should be a coherent paper-reading article, not just a bullet list or copied abstracts",
+    "All HTML-referenced assets resolve relative to the delivered HTML path and return 200 under a local HTTP server"
+  ]
+}

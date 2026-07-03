@@ -1,0 +1,41 @@
+Message-ID: <YqDwUHyiMw9A+qE3@an3as.eu>
+X-Clawbench-ID: BIO-2024-1476
+Date: Wed, 8 Jun 2022 20:54:08 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Added autopkgtest for busco - Closes #1010653
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_06_msg00018.html
+
+Am Wed, Jun 08, 2022 at 07:39:08PM +0530 schrieb Nilesh Patra:
+> On Wed, Jun 08, 2022 at 05:26:18PM +0530, Mohd Bilal wrote:
+> > The upstream responded[1] to my query regarding the license of busco
+> > datasets. Looks like it uses a non-free license (CC-BY-ND-4.0).
+>
+> Aw, crap!
+
+That's a pity.
+
+> > So I think adding this test data would make the package non-free. Seeking
+> > everyone's opinion on what should be done next :)
+>
+> You could either convince updatrem to make it DFSG-Free licensed.
+
+I'd be happy if you could try this.  Making the package non-free just to
+have a test makes no sense.
+
+> Or try finding some other dataset that is free and can be used for testing.
+
+Yes, this would be another option.  Hoping for input from busco users
+here.
+
+Thanks for caring for the test
+
+       Andreas.
+
+> > [1] - https://gitlab.com/ezlab/busco/-/issues/566#note_975479511
+
+--
+http://fam-tille.de

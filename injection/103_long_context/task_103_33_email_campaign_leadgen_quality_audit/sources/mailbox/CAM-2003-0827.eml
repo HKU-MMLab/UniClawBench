@@ -1,0 +1,30 @@
+Message-ID: <20021005151248.2184c904.matthias_haase@bennewitz.com>
+X-Clawbench-ID: CAM-2003-0827
+Date: Sat, 05 Oct 2002 15:12:48 +0200
+From: Matthias Haase <matthias_haase@bennewitz.com>
+To: rpm-zzzlist@freshrpms.net
+Subject: Re: RedHat 8.0 and his own freetype
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01259.503b1765330dada13ff5c85d8b5d9d29
+
+On Fri, 04 Oct 2002 16:07:12 -0700
+Ben Liblit <liblit@eecs.berkeley.edu> wrote:
+
+> So if your fonts look ugly, lack of bytecode hinting is *not* the cause.
+
+Well you are right, sorry, I didn't have any better idea yesterday late in
+the evening.
+The fonts are ugly only inside of gnome2 and clean for gnome1 apps, if
+antialiasing is disabled.
+This is difficult to understand for me.
+
+--
+regards from Germany
+                   Matthias
+
+
+_______________________________________________
+RPM-List mailing list <RPM-List@freshrpms.net>
+http://lists.freshrpms.net/mailman/listinfo/rpm-list

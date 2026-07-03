@@ -1,0 +1,30 @@
+{
+  "task_id": "task_101_31_postmortem_merge",
+  "note": "Six outage postmortems: three real public incidents condensed to markdown (Cloudflare 2022 BGP, Cloudflare 2019 WAF regex, GitLab 2017 database deletion) plus three synthetic 2025 internal-style incidents that introduce capacity-drain, online-migration lock, and config-drift failure modes for cross-incident synthesis.",
+  "entries": [
+    {
+      "path": "pm_2022_q2_bgp_misconfig.md",
+      "description": "Cloudflare public postmortem: Cloudflare Outage \u2014 2022-06-21 (BGP misconfiguration). Source: https://blog.cloudflare.com/cloudflare-outage-on-june-21-2022/"
+    },
+    {
+      "path": "pm_2019_q3_waf_regex.md",
+      "description": "Cloudflare public postmortem: Cloudflare Outage \u2014 2019-07-02 (WAF regex backtracking). Source: https://blog.cloudflare.com/details-of-the-cloudflare-outage-on-july-2-2019/"
+    },
+    {
+      "path": "pm_2017_q1_db_outage.md",
+      "description": "GitLab public postmortem: GitLab Outage \u2014 2017-01-31 (Accidental primary database deletion). Source: https://about.gitlab.com/blog/postmortem-of-database-outage-of-january-31/"
+    },
+    {
+      "path": "pm_2025_q1_outage.md",
+      "description": "Synthetic but realistic ASG capacity-drain incident."
+    },
+    {
+      "path": "pm_2025_q2_db_migration.md",
+      "description": "Synthetic but realistic online migration lock incident."
+    },
+    {
+      "path": "pm_2025_q3_config_drift.md",
+      "description": "Synthetic but realistic hotfix config-drift incident."
+    }
+  ]
+}

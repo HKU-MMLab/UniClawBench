@@ -1,0 +1,30 @@
+Message-ID: <1db6b4ad-6073-1581-45ff-7adff460fddd@wanadoo.fr>
+X-Clawbench-ID: ASF-2024-0934
+Date: Thu, 12 Jan 2023 07:28:17 +0100
+From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.55-rc1 as httpd-2.4.55
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-01.mbox
+
+Le 11/01/2023 à 10:05, Stefan Eissing via dev a écrit :
+>> Nearly all mod_tls in error (likely something missing in my conf)
+>
+> Not here. Do you have any more information on those failures?
+>
+
+Still don't have time to spend some minutes on it, but:
+   configure:35461: checking whether to enable mod_tls
+   configure:35521: result: checking dependencies
+   configure:35526: checking for rustls
+   configure:35538: checking for user-provided rustls base directory
+   configure:35552: result: none
+
+looks a good starting point for: (likely something missing in my conf*)
+
+CJ
+
+(* conf being whatever from *.conf, --configure, apt install
+<something>, ...)

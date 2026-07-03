@@ -1,0 +1,48 @@
+Message-ID: <87bl2wj7ry.fsf@nonempty.org>
+X-Clawbench-ID: BIO-2024-1105
+Date: Sun, 07 Nov 2021 16:38:09 +0100
+From: Gard Spreemann <gspr@nonempty.org>
+To: debian-science@lists.debian.org
+Subject: Re: Blends framework for Debian Math (Was: Science Subgroups [was Re: Debian Math Team])
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_11_msg00056.html
+
+Andreas Tille  writes:
+
+> Hi Gard,
+>
+> Am Fri, Nov 05, 2021 at 01:51:14PM +0100 schrieb Gard Spreemann:
+>>
+>> > All 'X-*' fields in tasks files are pure comments for editors of the
+>> > tasks files and are technically ignored (as well as in d/control files).
+>>
+>> Aha! Thanks for teaching me. I'll fix these things.
+>>
+>> Where are these task files documented, by the way?
+>
+>    https://blends.debian.org/blends/ch06.html
+>
+> You could hopefully find the Blends doc easily when going to
+>
+>    https://blends.debian.org
+>
+> --> if not please let me know how to enhance the pointers to
+> the docs.
+
+I could not find the documentation for fields like "Task" and
+"Description", but that could just be me.
+
+>> Just so I can avoid
+>> doing more things wrong when I got about fixing.
+>
+> ;-)
+
+I've made a new merge request with the packages I added before now split
+out into separate task files. I landed on keeping the whole MSC2020 code
++ name, even though it's quite verbose. Maybe we'll change that later.
+
+
+ Best,
+ Gard

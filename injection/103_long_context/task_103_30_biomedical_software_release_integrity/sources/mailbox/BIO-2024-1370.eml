@@ -1,0 +1,32 @@
+Message-ID: <Y4zHzH0opTbsCsqs@fusion>
+X-Clawbench-ID: BIO-2024-1370
+Date: Sun, 4 Dec 2022 17:16:12 +0100
+From: Étienne Mollier <emollier@emlwks999.eu>
+To: Mohd Bilal <mdbilal@disroot.org>
+Subject: Re: [Advent bug squashing] fixed in #1018506 in python-gtfparse
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_12_msg00045.html
+
+Mohd Bilal, on 2022-12-04:
+> On 12/4/22 20:39, Étienne Mollier wrote:
+> [...]
+> >
+> > In such configuration, assert would test whether $1 is true,
+> > and print $2 if it is not.  I believe you might have wanted to
+> > conver to:
+> >
+> > 	assert $1 == $2
+>
+> Oh. I did a direct substitution of `eq_(*)` with `assert` thinking that they
+> do the same job. Thanks for letting me know that's not the case.
+> I've refreshed the patch and pushed.
+
+Thanks for the fix, uploaded!
+
+Have a nice day,  :)
+--
+Étienne Mollier
+Fingerprint:  8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+Sent from /dev/pts/2, please excuse my verbosity.

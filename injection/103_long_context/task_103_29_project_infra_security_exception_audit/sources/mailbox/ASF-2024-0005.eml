@@ -1,0 +1,17 @@
+Message-ID: <BFC0BE91-5372-40D7-B294-38815FFF0E58@eissing.org>
+X-Clawbench-ID: ASF-2024-0005
+Date: Tue, 16 Apr 2024 12:56:44 +0200
+From: "Stefan Eissing via dev" <dev@httpd.apache.org>
+To: dev@httpd.apache.org
+Subject: mod_tls in 2.4.x - remove?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-04.mbox
+
+mod_tls is experimental in 2.4.x. The rustls project, initially wanting to stay backward compatible to the v0.10.x API, has change its mind and no longer guarantees any stability in future versions. In fact, they have changed the API already, making mod_tls no longer viable.
+
+I personally do not have the time to chase after this. If no one else has interests (and I don't know of anyone using it - else, speak up), I propose to remove it from the 2.4.x branch again.
+
+Kind Regards,
+Stefan

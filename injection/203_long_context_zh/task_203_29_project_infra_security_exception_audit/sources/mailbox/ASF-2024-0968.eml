@@ -1,0 +1,28 @@
+Message-ID: <CALK=YjMZ64M_7RfE9dPbnz9GHNkP2k4DvnRASDhKavx3gX=ZGw@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0968
+Date: Thu, 11 Jul 2024 06:07:05 -0400
+From: Eric Covener <covener@gmail.com>
+To: Apache HTTP Server Development List <dev@httpd.apache.org>
+Subject: Re: [apache/httpd] factor out IS_SLASH, perdir fix (PR #458)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-07.mbox
+
+On Thu, Jul 11, 2024 at 3:30 AM Joe Orton <notifications@github.com> wrote:
+
+> Do you not all have power to close these yourselves?
+>
+
+No, I can't close the ones I create or others either.
+Recently I noticed the keywords in the SVN commit of a PR created with the
+dev-tools didn't trigger the close either (one of the few updated in last
+12h)
+
+https://lists.apache.org/thread/dk2bog14mbggg6k13cjbl6op62njwjlo
+https://github.com/apache/httpd/pull/459
+
+Maybe r/w git (which we have PMC approval for for some time) after the next
+release? Beyond the release scripts, can anyone think of other impact?
+Other than developer workflow which people can pick up over time -- at
+least the guardrails are there.

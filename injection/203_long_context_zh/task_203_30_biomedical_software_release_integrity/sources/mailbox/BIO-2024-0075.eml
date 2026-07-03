@@ -1,0 +1,70 @@
+Message-ID: <YerZ1QYbYAubK/uH@an3as.eu>
+X-Clawbench-ID: BIO-2024-0075
+Date: Fri, 21 Jan 2022 17:05:41 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: New version of muscle contains asm statements which prevent building on non-Intel architectures
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_01_msg00057.html
+
+Hi,
+
+I've checked the build logs of muscle version 5.1[1] and noticed that
+for instance on arm64 the build fails with:
+
+g++ -Wdate-time -D_FORTIFY_SOURCE=2 -DNDEBUG -pthread -g -O2 -ffile-prefix-map=/>=. -fstack-protector-strong -Wformat -Werror=format-security -O3 -fopenmp -ffast-math -c -o Linux/transaln.o transaln.cpp
+In file included from testlog.cpp:2:
+timing.h: In function ‘void cmd_testlog()’:
+timing.h:26:9: error: impossible constraint in ‘asm’
+   26 |         __asm__ __volatile__ ("rdtsc" : "=a" (lo), "=d" (hi));
+      |         ^~~~~~~
+timing.h:26:9: error: impossible constraint in ‘asm’
+   26 |         __asm__ __volatile__ ("rdtsc" : "=a" (lo), "=d" (hi));
+      |         ^~~~~~~
+timing.h:26:9: error: impossible constraint in ‘asm’
+   26 |         __asm__ __volatile__ ("rdtsc" : "=a" (lo), "=d" (hi));
+      |         ^~~~~~~
+timing.h:26:9: error: impossible constraint in ‘asm’
+   26 |         __asm__ __volatile__ ("rdtsc" : "=a" (lo), "=d" (hi));
+      |         ^~~~~~~
+timing.h:26:9: error: impossible constraint in ‘asm’
+   26 |         __asm__ __volatile__ ("rdtsc" : "=a" (lo), "=d" (hi));
+      |         ^~~~~~~
+timing.h:26:9: error: impossible constraint in ‘asm’
+   26 |         __asm__ __volatile__ ("rdtsc" : "=a" (lo), "=d" (hi));
+      |         ^~~~~~~
+timing.h:26:9: error: impossible constraint in ‘asm’
+   26 |         __asm__ __volatile__ ("rdtsc" : "=a" (lo), "=d" (hi));
+      |         ^~~~~~~
+timing.h:26:9: error: impossible constraint in ‘asm’
+   26 |         __asm__ __volatile__ ("rdtsc" : "=a" (lo), "=d" (hi));
+      |         ^~~~~~~
+timing.h:26:9: error: impossible constraint in ‘asm’
+   26 |         __asm__ __volatile__ ("rdtsc" : "=a" (lo), "=d" (hi));
+      |         ^~~~~~~
+timing.h:26:9: error: impossible constraint in ‘asm’
+   26 |         __asm__ __volatile__ ("rdtsc" : "=a" (lo), "=d" (hi));
+      |         ^~~~~~~
+
+
+While the code contains a few arm64 specific bits:
+
+muscle(master) $ grep -Ri arm
+src/myutils.cpp:#elif defined(__arm64__)
+src/myutils.cpp:        return "osxarm64";
+src/myutils.h:#if defined(__x86_64__) || defined(_M_X64) || defined(__arm64__)
+
+
+the port does not seem to be complete.  Am I missing something?
+
+Kind regards
+
+     Andreas.
+
+
+[1] https://buildd.debian.org/status/package.php?p=muscle
+
+--
+http://fam-tille.de

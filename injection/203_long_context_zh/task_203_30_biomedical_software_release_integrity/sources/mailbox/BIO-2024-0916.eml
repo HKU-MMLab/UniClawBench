@@ -1,0 +1,32 @@
+Message-ID: <2c7b9a4f-b148-13d1-235f-12daecde3185@debian.org>
+X-Clawbench-ID: BIO-2024-0916
+Date: Tue, 22 Feb 2022 16:20:11 +0200
+From: Andrius Merkys <merkys@debian.org>
+To: Eric Brown <eb@ericebrown.com>, Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>, debian-science@lists.debian.org
+Subject: Re: sockjs-client is in Debian but needs update (Was: [covid-19] shiny-server (Was: dependencies Re: ITP: streamlit))
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2022_02_msg00055.html
+
+Hi Eric,
+
+On 2022-02-22 14:52, Eric Brown wrote:
+> If I’m understanding the below correctly, it appears that the node-json3
+> may already have been removed from the dependency socksjs-client, but
+> the updated version is not released yet.
+>
+> https://github.com/sockjs/sockjs-client/commit/d9584abe2c7c913ce95a1aea29e5744dd85e1af4
+> https://github.com/sockjs/sockjs-client/commit/d9584abe2c7c913ce95a1aea29e5744dd85e1af4>
+
+Great - this saves quite some work.
+
+> I wonder if we ask the dev to consider a release, and then update the
+> Debian package, that would solve the problem?
+
+Preferably. Otherwise we could convert this commit to a patch and
+attempt applying it, or package development version, but having a stable
+release would be better.
+
+Best,
+Andrius

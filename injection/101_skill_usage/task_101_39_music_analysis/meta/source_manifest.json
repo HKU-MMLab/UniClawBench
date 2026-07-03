@@ -1,0 +1,10 @@
+{
+  "task_id": "task_101_39_music_analysis",
+  "note": "Synthesized music track with known BPM, key, and section layout. The WAV is fixed in sources so the music-information-retrieval anchors are deterministic and reproducible from the synthesis recipe in design_notes.md.",
+  "entries": [
+    {
+      "path": "song.wav",
+      "description": "32-second 22050 Hz mono WAV synthesized at 120 BPM in C major with a 5-part intro/verse/chorus/bridge/outro layout. RMS-energy peaks at the chorus (12-20s)."
+    }
+  ]
+}

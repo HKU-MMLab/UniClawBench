@@ -1,0 +1,38 @@
+task_id: task_204_17_plant_corner_care
+category: 204_multimodal_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  `/tmp_workspace/clawbench/sources/plant_corner/` 中包含我桌上和窗边几组主要植物的照片：
+  `plant_01_*`、`plant_02_*` 和 `plant_03_*` 是这三组主要植物的全景/细节图片；
+  `space_01.png` 展示了整体的摆放环境；该目录还包含 `habits.json`，
+  其中描述了我平时的浇水和光照情况。
+
+  请帮我评估这些植物当前的状态，并给我一份简单、可执行的养护计划。
+
+  要求：
+  1. 先评估 `plant_01`、`plant_02` 和 `plant_03` 这三组，判断它们当前是否存在明显问题，例如光照不足、过于拥挤、叶片状态差、花盆太小或摆放位置不佳；`space_01.png` 仅用作朝向、桌面空间和摆放环境的参考。
+  2. 在 `/tmp_workspace/results/plant_care_plan.md` 中，为每组主要植物写出以下内容：
+     - 当前状态评估
+     - 最需要优先处理的问题
+     - 最简单、可执行的下一步
+  3. 如果你对任何一株植物的物种或状态不确定，
+     请明确说明，而不要假装判断很精确。
+  4. 你的建议必须明确基于图片中可见的叶片、花盆、朝向和环境，而不能只是套用一份通用的植物养护模板。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - plant_corner/
+
+codex:
+  max_user_followups: 2

@@ -1,0 +1,93 @@
+Message-ID: <Yz6AcDjTEZgVcFHg@an3as.eu>
+X-Clawbench-ID: BIO-2024-0142
+Date: Thu, 6 Oct 2022 09:14:56 +0200
+From: Andreas Tille <andreas@fam-tille.de>
+To: John Marshall <John.W.Marshall@glasgow.ac.uk>
+Subject: Re: [Help] New version of htslib does not build
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00013.html
+
+Hi John,
+
+thanks again for your contribution to the hts discussion.  Its
+really welcome as always!
+
+Am Thu, Oct 06, 2022 at 01:59:23AM +0000 schrieb John Marshall:
+> On 4 Oct 2022, at 15:31, Nilesh Patra  wrote:
+> > The thing that was causing failures on !amd64 was that there were amd64 specific symbols in debian/libhtscodecs2.symbols that were not matching on those archs due to avx2/avx512 specific ABI being exported there.
+>
+> So something specific to the Debian build scripts. Like many of Debian's issues with their htslib symbols file over the years, this is because Debian insists on listing all of libhtscodecs's global symbols in this file. If you omitted these internal symbols, there would be no problem. I believe upstream's attitude would be that these particular symbols are not declared in htscodecs's installed public header files, so they are unusable unless the user cheats by making their own declarations, so they are not meaningfully part of either htscodecs's API or ABI. So they should not be listed in a symbols file.
+
+I admit I'm not sure what change you would propose to the symbols files.
+If a symbols file is provided dh_makeshlibs insists in specifying all
+those symbols that are exposed by the library.  Otherwise the build ends
+up in an error.  The only way to prevent this is to not provide any
+symbols file.  There were cases where we (sloppily) provide only a
+symbols file for amd64 since maintaining symbols for architectures that
+provide different symbols is a huge maintenance burden which we try to
+avoid.
+
+>From my personal perspective as a maintainer the most value in those
+symbols files is to detect ABI changes by upstream.  It might not be the
+case for htslib but I've seen lots of libraries that silently change
+their ABI.  When there is a symbols file you see from its diff that a
+SONAME change is required.
+
+If we can be sure that ABI changes will be made transparently in htslib
+/ htscodecs we can drop the symbols file in case this is what you want
+to suggest (and I admit I'm not really sure what you want to suggest but
+we are happy to follow your suggestion).
+
+> > $ elfx86exts /usr/lib/x86_64-linux-gnu/libhtscodecs.so.2.1.0
+> > MODE64 (call)
+> > CMOV (cmove)
+> > SSE2 (movdqu)
+> > SSE1 (movaps)
+> > SSE41 (pmovzxwd)
+> > SSSE3 (pshufb)
+> > AVX (vmovdqu)
+> > AVX2 (vpunpcklbw)
+> > NOVLX (vpaddd)
+> > AVX512 (vpbroadcastd)
+> > CDI (vptestnmd)
+> > CPU Generation: Unknown
+> >
+> > The users will download the program that is compiled on debian buildd machines, which has support for AVX, AVX2 etc.
+> > And so as per this little test, it _seems_ like this will crash on baseline that is lower than AVX.
+>
+> It will not crash on baseline that is lower than AVX.
+
+That's good to know.
+
+> The report from elfx86exts shows that instructions from all these categories appear in the text segment. It says nothing about whether any particular instruction or function is ever executed, or if it is, the conditions under which those instructions or functions might get called.
+>
+> Debian maintainers who are not on holiday can look at rans_enc_func() and rans_dec_func() and confirm for yourselves that it works on x86 as I described: the code for everything up to AVX512 is present, but each SIMD implementation will only be used if cpuid() reports that the CPU it's running on is capable of executing that code. With [1] applied these functions will do similar runtime selection on ARM.
+
+I'm not on holidays any more but I admit I do not understand what you
+want me to look at.  From my point of view both packages migrated to
+testing since they build on every release architecture and do not fail
+their CI test.  So what exactly do you want me to test (some code
+snippet that I just need to pass to gcc and run would be helpful).
+
+> *My* x86-64 machine does not support AVX512. That AVX512 code is present, but my programs don't crash because it is never called -- because the AVX2 implementation is chosen at runtime instead.
+
+Sounds like everything is OK from your side, right?
+
+> > if you could provide a patch, me/others would be more than happy to merge it and upload.
+>
+> The point is that no patching (on x86 or aarch64 or most others [2]) is needed.
+
+What patch do you want us to remove?
+
+Kind regards
+
+     Andreas.
+
+> [1] https://github.com/samtools/htscodecs/pull/63
+> [2] On 32-bit ARM a patch like [1] would be warranted. Or you may prefer to leave Neon suppressed on 32-bit ARM until a future upstream release includes something like that PR.
+>
+
+--
+http://fam-tille.de

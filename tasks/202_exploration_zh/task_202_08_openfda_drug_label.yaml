@@ -1,0 +1,37 @@
+task_id: task_202_08_openfda_drug_label
+category: 202_exploration_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我需要通过 FDA 的开放数据、按品牌名、使用他们的 API 来查询药品标签信息。
+
+  FDA 的开放数据门户在这里：
+
+      https://open.fda.gov/
+
+  那里有一个药品标签（drug label）数据集/端点。请找到它并使用 API 查询品牌名
+  **Tylenol**。从匹配的标签记录中报告：
+
+  - 品牌名和通用名（活性成分），
+  - 给药途径（route of administration），
+  - API 表示匹配该品牌的标签记录总数，
+  - 制造商/标签方（manufacturer/labeler）的名称（如果存在）。
+
+  提个醒：品牌名/通用名/给药途径这些字段位于一个嵌套的 `openfda` 对象之下，所以
+  简单粗暴的顶层搜索不会匹配到——你需要用正确的字段路径搜索语法。
+
+  把结果保存到 `/tmp_workspace/results/openfda_tylenol.json`，并把你调用的确切请
+  求 URL 连同它们的原始 JSON 响应保存到 `/tmp_workspace/results/openfda_evidence/`。
+
+references:
+  - references/eval_rule.md
+
+codex:
+  max_user_followups: 2

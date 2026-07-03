@@ -1,0 +1,87 @@
+Message-ID: <ZgZd52_yg9C-qcK0@an3as.eu>
+X-Clawbench-ID: BIO-2024-1063
+Date: Fri, 29 Mar 2024 07:21:27 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Debian-Med policy proposal: 64-bit & little-endian only* for new packages
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_03_msg00034.html
+
+Hi,
+
+I'm personally fine with Michaels suggestion in general.
+
+Am Fri, Mar 29, 2024 at 10:13:40AM +0530 schrieb Nilesh Patra:
+>
+>
+> On 28 March 2024 7:21:01 pm IST, "Michael R. Crusoe"  wrote:
+>
+> There are also packages inside debian med umbrella which are not necessarily related to medicine or bioinformatics. These include some general purpose python packages, some C/C++ libraries et. al. There are packages that reverse-depend on the same. I don't think it's a good idea to remove 32 bit support in *all* the packages that are under our umbrella, but probably only the ones that are end-user applications.
+
+When reading Michaels proposal I also was thinking about generic
+libraries we are packaging as pre-dependencies for our end-user
+applications.  I'd be fine with mentioning those as exceptions from what
+I consider perfectly sensible for the packages that are really targeting
+at our user base.
+
+> It may be good to move packages not related to medicine to different teams over time but some of them actually don't fit into any availability team as per my understanding and may have to be moved to debian/ namespace.
+>
+> What do you think?
+
+I'm not convinced that moving package out of our focus is a good idea.
+When we did so in the past these packages somehow went out of our focus
+and we hear back from them only by testing removal warnings.  I have no
+problem with moving packages if there is some request from somewhere
+else and thus there is some convincing interest that the package is
+maintained properly.  But I would not browse the packages maintained by
+our team, check which might be of general interest, seek in what other
+team it might be appropriate, become a member of that team and maybe
+learn that this team has quite a different policy than we have (as I
+learned in DPT recently).
+
+In short:  Keep on maintaining what we have and apply common sense
+where to restrict the architectures sensibly.
+
+BTW. actively restricting the architectures for existing packages just
+creates work for no use.  I think we should simply focus on new packages
+and those that create some troublesome bug reports that we can deal
+with by removing unused architectures.
+
+One other hint: I consider it a good idea to forward our proposed change
+of policy to debian-devel@l.d.o (once we agreed upon the change - maybe
+in some MR) for two reasons:
+
+  1. There might be a chance we have overlooked something.
+  2. There might be other teams that are interested in a similar
+     change of policy.
+
+> >and on the Debian-Med Matrix channel for instant discussions: https://app.element.io/#/room/#debian-med:matrix.org
+>
+> I'll be happy to open another thread about it, but while we are at it, do you think it makes sense to make this as our official communication media?
+>
+> Most of us don't hang out on #debian-med IRC and it would be a little misleading for someone wanting to contact us.
+
+>From my perspective the main drawpack of IRC is that you can't search in
+history.  What about setting the title of #debian-med IRC pointing to
+our matrix channel?  This would make easily clear what we prefered as
+communication channel.
+
+> Should we just close the IRC channel and endorse the matrix channel as the official one?
+
+I do not use it but it makes sense to ask on IRC whether people
+like this channel for whatever reason.
+
+BTW, the Debian Med team is maintaining lots of packages in R pkg team -
+most prominently r-bioc-* packages but there are more packages dedicated
+to our user base.  We should probably also write a R pkg policy (which
+is long overdue).  For the moment it would be easy to make sure at least
+new r-bioc-* packages are restricted to the said architectures by adding
+this to dh-r.
+
+Kind regards
+    Andreas.
+
+--
+https://fam-tille.de

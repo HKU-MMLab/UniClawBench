@@ -1,0 +1,17 @@
+Message-ID: <udlilxb47l2.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-0659
+Date: Mon, 01 Nov 2021 22:25:29 -0400
+From: ucko@debian.org (Aaron M. Ucko)
+To: debian-med@lists.debian.org
+Subject: ncbi-vdb plans (fixing i386, enabling arm64)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_11_msg00006.html
+
+sra-sdk in unstable fixes this bug, but is blocked by ncbi-vdb, which
+FTBFS on i386 as of the latest release.  I have a fix worked out
+(disabling vdb3 for now, which AFAICT has no effect on the resulting
+binaries), and plans for some other tune-ups, perhaps most notably
+enabling arm64 builds.  I ran out of time for them today, but hope to
+take care of them later in the week.

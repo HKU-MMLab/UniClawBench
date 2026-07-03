@@ -1,0 +1,56 @@
+Message-ID: <CALK=YjPgo2nC9nZuHMphpSSjaBKijxKGkSsbTaung_QWN8kLnw@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0805
+Date: Thu, 1 Aug 2024 23:20:56 -0400
+From: Eric Covener <covener@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: [Bug 69203] proxy error from php-fpm backend for paths containing spaces
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-08.mbox
+
+On Thu, Aug 1, 2024 at 9:12 PM Yann Ylavic <ylavic.dev@gmail.com> wrote:
+>
+> On Fri, Aug 2, 2024 at 12:18 AM Yann Ylavic <ylavic.dev@gmail.com> wrote:
+> >
+> > So we probably should keep encoding r->filename with ProxyPass, and
+> > come back to my previous patch which skipped it only for SetHandler?
+> > Possibly FCGI_MAY_BE_FPM() only too because for "ProxyFCGIBackendType
+> > GENERIC" we don't send the "proxy:scheme://host" part and
+> > SCRIPT_NAME/FILENAME are supposed to be the real decoded paths?
+>
+> So I did this in r1919629.
+
+Just to level-set, IIUC:
+
+- 2.4.59 encoded SCRIPT_FILENAME for ProxyPass but not SetHandler
+didn't and this same fragile stuff in php-fpm is CVE-2024-38473
+- 2.4.60 started encoding these, for CVE-2024-38473 + general safety
+- PR69203 reports a few different symptoms where SCRIPT_FILENAME has
+URL-encoded file names that are actually spaces, utf-8, etc.
+- https://github.com/apache/httpd/pull/470 undoes the re-encoding
+introduced in 2.4.60 but makes sure controls and '?' aren't in the
+SCRIPT_FILENAME (for CVE-2024-38473 and related funny business).
+
+So this sounds reasonable to me without upsetting the fragile link
+between php-fpm and proxy_fcgi.
+
+> > But it's going to be an endless issue if we can't fix or align
+> > ProxyPass and SetHandler because of workarounds there, we have to
+> > remain bug compatible..
+
+I wonder does ProxyPass just not work with php-fpm and these
+spaces/utf-8 scenarios?
+
+> For this how about this attached patch?
+> With it I can get the correct env vars (I think), and since we'd not
+> send a "proxy:" SCRIPT_FILENAME anymore, php-fpm would not flag
+> "apache_was_there" and work straight with the raw vars? I'm probably
+> having a sweet dream :)
+
+It sounds the most rational, but it also sounds very similar to the
+breakage the t/modules/proxy_fcgi.t points to here:
+https://github.com/apache/httpd/commit/cab0bfbb2645bb8f689535e5e2834e2dbc23f5a5
+
+As the thread talks about, maybe we can get them to accept some other
+way to signal Apache.

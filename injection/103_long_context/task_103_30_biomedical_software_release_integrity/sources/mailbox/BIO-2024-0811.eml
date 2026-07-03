@@ -1,0 +1,21 @@
+Message-ID: <trinity-3495363c-7462-4563-bf9d-4e255d80c653-1727022619993@msvc-mesg-gmx003>
+X-Clawbench-ID: BIO-2024-0811
+Date: Sun, 22 Sep 2024 18:30:20 +0200
+From: Steffen Möller <steffen_moeller@gmx.de>
+To: debian-med@lists.debian.org
+Subject: GENtle package updated - dropped GFDL licensed documentation
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_09_msg00018.html
+
+Dear Étienne,
+
+thank you tons for pointing out that the license of the documentation is not as Free as it should be. I guess this will be addressed with the next major release. For now I have removed docs/manual.adoc and docs/images from the source tree as you suggested.
+
+https://salsa.debian.org/med-team/gentle
+
+I am testing this mostly on a Mac and just ran into some platform-specific bug, but, anyway this version is better than the currently in the archive and so this should be uploaded :)
+
+Many thanks,
+Steffen

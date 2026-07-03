@@ -1,0 +1,63 @@
+Message-ID: <Pine.LNX.4.33.0208112259280.5045-100000@hydrogen.leitl.org>
+X-Clawbench-ID: CAM-2003-1473
+Date: Sun, 11 Aug 2002 23:10:25 +0200
+From: Eugen Leitl <eugen@leitl.org>
+To: Gordon Mohr <gojomo@usa.net>
+Subject: Re: Forged whitelist spam
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01012.235d771c2e3094e4b4310a86ac7e7352
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+On Sun, 11 Aug 2002, Gordon Mohr wrote:
+
+> > Users don't like entering passphrases when sending email. USB fobs, smart
+> > cards or other removable hardware are not yet widespread.
+>
+> Bad assumption.
+
+Not really. If code can sign stuff without me being aware of it that
+pretty much invalidates the (already tenuous, since it assumes me trusting
+the contents of the frame buffer) concept of a digital signature.
+
+A secure piece of hardware puts the keyring outside of any code's reach.
+The key never leaves the hardware compartment. I have to mechanically
+acknowledge a signing process. The cryto fob then falls back to the
+default state: locked.
+
+> A reasonable UI would have me enter my passphrase *at most* each
+> time I launch my mail program -- never more than once per day,
+> sometimes once per week.
+
+I'm pretty comfortable with entering my passphrase every time. This is not
+production key, as I usually access my home box via a SSH session, and SSH
+sessions are easily attackable with a model of your typing pattern. So
+don't expect me to announce my plutonium shipments via this medium.
+
+> For some of myy workstations, I'd even be happy with the necessary
+> signing key being cached on disk, so signing is automatic when I
+> hit 'send'.
+>
+> If spammer code can read my local hard disk, I have bigger problems
+> than spoofed spam.
+
+I agree. Nevertheless, a number of people who use cryptography have their
+machines compromised.
+
+- -- Eugen* Leitl <a href="http://leitl.org">leitl</a>
+______________________________________________________________
+ICBMTO: N48 04'14.8'' E11 36'41.2'' http://leitl.org
+83E5CA02: EDE4 7193 0833 A96B 07A7  1A88 AA58 0E89 83E5 CA02
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.0.6 (GNU/Linux)
+Comment: For info see http://www.gnupg.org
+
+iD8DBQE9VtLFqlgOiYPlygIRAlRGAJ9MbPmjQESIqXD0g43aVgsLFcESSQCePf8x
+smDzFndB40MbQMv0l3yzMoY=
+=acss
+-----END PGP SIGNATURE-----
+
+http://xent.com/mailman/listinfo/fork

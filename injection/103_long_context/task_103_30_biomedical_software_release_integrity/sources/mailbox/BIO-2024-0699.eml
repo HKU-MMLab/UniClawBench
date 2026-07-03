@@ -1,0 +1,21 @@
+Message-ID: <0da74554-20a8-9ac1-b43a-abb217c57fb0@tchncs.de>
+X-Clawbench-ID: BIO-2024-0699
+Date: Wed, 29 Sep 2021 18:45:39 +0530
+From: Nilesh Patra <nilesh@tchncs.de>
+To: debian-med@lists.debian.org
+Subject: Re: libcifpp
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_09_msg00062.html
+
+On 9/29/21 6:42 PM, Maarten L. Hekkelman wrote:
+> Everyone and their grandmother is currently working on getting libcifpp through the ballot. Very much appreciated. But I just managed to release version 2.0.
+>
+> Now what.
+>
+> Should I wait until the dust settles and libcifpp-data is accepted by the might powers before trying to move my changes into salsa?
+
+You can move your changes into salsa if you like, but do not upload to unstable until the one from new is accepted.
+
+Nilesh

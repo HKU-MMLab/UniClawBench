@@ -1,0 +1,40 @@
+task_id: task_102_29_owid_chart_crop_provenance
+category: 102_exploration
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  Someone pasted this chart into a slide with the title and the data-source
+  line cropped off, and I don't want to cite it without knowing where it really
+  comes from. The image is here:
+
+      /tmp_workspace/clawbench/sources/crop.jpg
+
+  Please figure out what the chart shows and trace it back to its authoritative
+  source. Specifically I need:
+  - what the chart is measuring (and the units),
+  - the canonical chart page it comes from (the publisher's own interactive
+    chart, not a news article that reused it),
+  - the UNDERLYING data source/provider that the chart itself is built on
+    (this is the part the cropped-off footer hid),
+  - a link to download the underlying data.
+
+  Save your conclusion and the evidence chain (how you identified the chart and
+  traced both the chart page and the underlying data provider) to
+  `/tmp_workspace/results/chart_provenance.json`, plus notes/screenshots under
+  `/tmp_workspace/results/`.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+sources:
+  - crop.jpg
+
+codex:
+  max_user_followups: 2

@@ -1,0 +1,45 @@
+Message-ID: <YwhT0rwVlr2QHaLx@an3as.eu>
+X-Clawbench-ID: BIO-2024-1068
+Date: Fri, 26 Aug 2022 07:02:10 +0200
+From: Andreas Tille <tille@debian.org>
+To: "Aaron M. Ucko" <ucko@debian.org>
+Subject: Re: Finishing ncbi-vdb and sra-sdk
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_08_msg00058.html
+
+Hi Aaron,
+
+Am Fri, Aug 26, 2022 at 12:38:39AM -0400 schrieb Aaron M. Ucko:
+>
+> I wasn't quite as quick as I'd hoped, but still managed to avoid a
+> separate NEW cycle.  I subsequently discovered the need for some
+> additional tuneups, which I've pushed but not uploaded because I might
+> not be entirely done.
+
+I noticed that another upload does not keep the position of the package
+in the new queue but pulls it down at the end again. :-( BTW, what is
+your rationale to push the old version 2.11.2+dfsg-5 as well?  Wouldn't
+that be overridden by 3.0.0+dfsg2-1?
+
+> I've likewise pushed a couple of sra-sdk commits that in conjunction
+> with my latest ncbi-vdb changes get the build step to succeed.  The
+> installation step fails because debian/control currently lists just a
+> single binary package, so debhelper directs the upstream build system to
+> install directly into debian/sra-toolkit.  Accounting for ngs-sdk's
+> incorporation should reinstate the use of debian/tmp, but I don't have
+> time to look into that right now.
+
+Thanks for working on this.  Without checking the background I think
+debhelper uses debian/tmp for multiple binary packages and
+debian/pkgname for single binary packages.  I fail to understand in
+what way the name of that temporary dir might be an issue but I can't
+check in the next two weeks.
+
+Kind regards
+
+        Andreas.
+
+--
+http://fam-tille.de

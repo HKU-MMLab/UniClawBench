@@ -1,0 +1,26 @@
+Message-ID: <YsmD+3zlAnv5SNM5@fusion>
+X-Clawbench-ID: BIO-2024-0185
+Date: Sat, 9 Jul 2022 15:34:51 +0200
+From: Étienne Mollier <emollier@emlwks999.eu>
+To: debian-med@lists.debian.org
+Subject: ITP: abpoa -- adaptive banded Partial Order Alignment
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_07_msg00009.html
+
+Hello,
+
+Hmn, I seem to have forgotten to subscribe the debian-med
+mailing list when opening the ITP for a new prospective package,
+Not sure whether this is doable after the bug submission, but if
+there is any interest, the ITP for abPOA is #1014647[1].
+
+[1]: https://bugs.debian.org/1014647
+
+Have a nice day,  :)
+--
+Étienne Mollier
+Fingerprint:  8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+Sent from /dev/pts/2, please excuse my verbosity.
+On air: Cellar Noise - Blackfriars

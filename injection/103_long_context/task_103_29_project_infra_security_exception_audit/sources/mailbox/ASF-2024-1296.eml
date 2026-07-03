@@ -1,0 +1,43 @@
+Message-ID: <CALK=YjNiMNkbg18JpE9oh2eWJuq0KAn90s-ZYL=YoaGs+mvfDw@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1296
+Date: Tue, 25 Jun 2024 17:06:26 -0400
+From: Eric Covener <covener@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.60-rc1 as httpd-2.4.60
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-06.mbox
+
+On Tue, Jun 25, 2024 at 4:35 PM Helmut K. C. Tessarek
+<tessarek@evermeet.cx> wrote:
+>
+> On 2024-06-25 02:53, Ruediger Pluem wrote:
+> > Can you provide more details on your configuration how you forward stuff to fcgi and what request you made?
+>
+> Very simple:
+>
+> <FilesMatch "\.php$">
+>      SetHandler  "proxy:unix:/run/php82-fpm/xxx.sock|fcgi://xxx"
+> </FilesMatch>
+
+I think this new path needs to account for UDS.  The URL is e.g.
+"unix:/tmp/fake.sock|fcgi://xxx..." during proxy_fcgi_canon so it
+declines, then the core handler reports the error on the
+pseudo-filename.
+
+static int proxy_fcgi_canon(request_rec *r, char *url)
+{
+    char *host, sport[7];
+    const char *err;
+    char *path;
+    apr_port_t port, def_port;
+    fcgi_req_config_t *rconf = NULL;
+    const char *pathinfo_type = NULL;
+
+    if (ap_cstr_casecmpn(url, "fcgi:", 5) == 0) {
+        url += 5;
+    }
+    else {
+        return DECLINED;
+    }

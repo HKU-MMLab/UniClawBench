@@ -1,0 +1,57 @@
+Message-ID: <YWHxq3mqQyjNvGI8@an3as.eu>
+X-Clawbench-ID: BIO-2024-0180
+Date: Sat, 9 Oct 2021 21:46:51 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Mentors List <debian-mentors@lists.debian.org>
+Subject: URL is OK in browser but returns 404 with uscan
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00026.html
+
+Hi,
+
+when I try to visit
+
+    https://alkesgroup.broadinstitute.org/BOLT-LMM/downloads/
+
+with any browser I get a list of files.  However, the watch file
+of bolt-lmm[1] pointing to that web page returns:
+
+$ uscan --verbose --report
+uscan info: uscan (version 2.21.3) See uscan(1) for help
+uscan info: Scan watch files in .
+uscan info: Check debian/watch and debian/changelog in .
+uscan info: package="bolt-lmm" version="2.3.5+dfsg-2" (as seen in debian/changelog)
+uscan info: package="bolt-lmm" version="2.3.5+dfsg" (no epoch/revision)
+uscan info: ./debian/changelog sets package="bolt-lmm" version="2.3.5+dfsg"
+uscan info: Process watch file at: debian/watch
+    package = bolt-lmm
+    version = 2.3.5+dfsg
+    pkg_dir = .
+uscan info: opts: repacksuffix=+dfsg,dversionmangle=s/\+dfsg//g,repack,compression=xz
+uscan info: line: https://alkesgroup.broadinstitute.org/BOLT-LMM/downloads/ .*/BOLT-LMM_v(?:[-_]?(\d[\-+\.:\~\da-zA-Z]*))(?i)(?:\.(?:tar\.xz|tar\.bz2|tar\.gz|zip|tgz|tbz|txz))
+uscan info: Parsing repacksuffix=+dfsg
+uscan info: Parsing dversionmangle=s/\+dfsg//g
+uscan info: Parsing repack
+uscan info: Parsing compression=xz
+uscan info: line: https://alkesgroup.broadinstitute.org/BOLT-LMM/downloads/ .*/BOLT-LMM_v(?:[-_]?(\d[\-+\.:\~\da-zA-Z]*))(?i)(?:\.(?:tar\.xz|tar\.bz2|tar\.gz|zip|tgz|tbz|txz))
+uscan info: Last orig.tar.* tarball version (from debian/changelog): 2.3.5+dfsg
+uscan info: Last orig.tar.* tarball version (dversionmangled): 2.3.5
+uscan info: Requesting URL:
+   https://alkesgroup.broadinstitute.org/BOLT-LMM/downloads/
+uscan warn: In watchfile debian/watch, reading webpage
+  https://alkesgroup.broadinstitute.org/BOLT-LMM/downloads/ failed: 404 Not Found
+uscan info: Scan finished
+
+Any idea how to help uscan reading that web page?
+
+Kind regards
+
+     Andreas.
+
+
+[1] https://salsa.debian.org/med-team/bolt-lmm/-/blob/master/debian/watch
+
+--
+http://fam-tille.de

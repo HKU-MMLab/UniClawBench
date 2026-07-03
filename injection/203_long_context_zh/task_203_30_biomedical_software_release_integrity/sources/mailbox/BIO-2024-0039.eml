@@ -1,0 +1,31 @@
+Message-ID: <YXZEM2cNDy+bVeGj@an3as.eu>
+X-Clawbench-ID: BIO-2024-0039
+Date: Mon, 25 Oct 2021 07:44:19 +0200
+From: Andreas Tille <tille@debian.org>
+To: "Aaron M. Ucko" <ucko@debian.org>
+Subject: Re: sra-sdk is lacking libngs
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00147.html
+
+Hi Aaron,
+
+Am Sun, Oct 24, 2021 at 09:53:22PM -0400 schrieb Aaron M. Ucko:
+>
+> The only approach I've gotten to work is setting the environment
+> variable VDBPWFILEPTR; although we could certainly adjust the test
+> script accordingly, I'm concerned that we'd be papering over a genuine
+> regression. :-/
+>
+> Meanwhile, I did push a changelog update adding a closer for #997280.
+
+Real life is taking over for me this week - so if you think this is
+somehow ready please feel free to upload.
+
+Kind regards
+
+      Andreas.
+
+--
+http://fam-tille.de

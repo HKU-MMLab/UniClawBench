@@ -1,0 +1,65 @@
+Message-ID: <FCABC574-32D9-45B1-AB07-17602144337C@eissing.org>
+X-Clawbench-ID: ASF-2024-1461
+Date: Mon, 7 Feb 2022 11:31:58 +0100
+From: Stefan Eissing <stefan@eissing.org>
+To: dev@httpd.apache.org
+Subject: Re: SSL handshake nonblocking as PR
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-02.mbox
+
+> Am 06.02.2022 um 21:20 schrieb Graham Leggett <minfrin@sharp.fm>:
+>
+> On 04 Feb 2022, at 14:49, Stefan Eissing <stefan@eissing.org> wrote:
+>
+>> https://github.com/apache/httpd/pull/293
+>>
+>> is the PR that contains the changes I just reverted
+>> in trunk regarding the non-blocking SSL handshake.
+>>
+>> I did not like to revert a set of changes by anyone
+>> here. But our trunk CI is failing for some time now
+>> and I felt this needs to be analyzed without interfering
+>> with other ongoing work.
+>
+> Unfortunately this doesn't appear to be a clean revert, as a whole lot of unrelated commits seem to have got caught up in things.
+
+Sorry about that.
+
+> All the bugfixes made to ab for example are now gone:
+
+Not gone. There are in the subversion branch and the history and one should be able to remerge them.
+
+>
+> Little-Net:httpd-trunk6 minfrin$ svn log support/ab.c
+> r1897760 | icing | 2022-02-04 14:22:26 +0200 (Fri, 04 Feb 2022) | 6 lines
+>
+>   *) core/mod_ssl/mpm_event: reverting changes to nonblocing SSL handshakes
+>      to stabilize CI tests again. Previous revision of trunk has been copied
+>      to branches/trunk-ssl-handshake-unblocking to make those into a PR where
+>      changes can be discussed and tested separately.
+>
+> You’ve also reported conflicts while reverting, I’m assuming they weren't easily explained like log tags and mmn bumps?
+
+I had one conflict with Yann adding some thread_local stuff into a change you had made, so that did not revert cleanly.
+And breakage is always around our APLOGNO, since people tend to add the tagged code and updated docs/log-message-tags/next-number in the same revision.
+
+>
+> I’m stuck at this point, what do I do to move forward?
+
+1. It was all done in subversion. The git PR is just their UI view.
+2. Reapply all safe changes that I was not sure about. It should be possible to merge the original revision again.
+3. Then the PR should show only the changes that we need to find a solution
+   for.
+
+That's how I would do it.
+
+Kind Regards,
+Stefan
+
+>
+> Regards,
+> Graham
+> —
+>

@@ -1,0 +1,50 @@
+Message-ID: <YcShoR/A1TfYtuAU@an3as.eu>
+X-Clawbench-ID: BIO-2024-0684
+Date: Thu, 23 Dec 2021 17:19:45 +0100
+From: Andreas Tille <tille@debian.org>
+To: "M. Zhou" <lumin@debian.org>
+Subject: Re: Upgrading tbb
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_12_msg00022.html
+
+Hi,
+
+Am Thu, Dec 23, 2021 at 11:03:56AM -0500 schrieb M. Zhou:
+>
+> I've just finished my final exams so I could do something during
+> the holiday.
+
+Great.  Hope you finished the exams successfully. ;-)
+
+> That TBB repository is still work-in-progress and
+> FTBFS from the master branch is something expected. I will finalize
+> it soon. Andreas said in previous posts that we prefer a faster
+> NEW queue process. I understand that but we cannot bypass NEW process
+> this time as upstream has bumped the SONAME. So I'm changing the
+> source name as well following the upstream since NEW is inevitable.
+
+In this case for sure it sounds sensible to change name together
+with SONAME.
+
+> As for llvmlite, the latest upstream RC release v0.38.0rc1 seems
+> to support python 3.10 . Should I upload the RC release?
+
+I'm not very deeply involved in this but from my gut feeling I'd
+say go for it if it bears the chance to move away some blockers.
+
+> BTW, what else should I do? I've been out of sync from the mailing
+> list for a long while.
+
+May be python-sklearn could need some helping hands[1] which I
+did not managed despite I had put it on my agenda.
+
+Kind regards
+
+      Andreas.
+
+[1] https://lists.debian.org/debian-science/2021/12/msg00006.html
+
+--
+http://fam-tille.de

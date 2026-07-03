@@ -1,0 +1,21 @@
+Message-ID: <15737.35722.956784.600958@12-248-11-90.client.attbi.com>
+X-Clawbench-ID: CAM-2003-0459
+Date: Sat, 07 Sep 2002 00:15:54 -0500
+From: skip@pobox.com
+To: recipient@example.net
+Subject: [Spambayes] can't write to CVS...
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01693.5f6c04f93ace9da3b5f9e0906ba608c2
+
+I'm listed as a developer on SF and have the spambayes CVS module checked
+out using my SF username, but I'm unable to write to the repository.  CVS
+complains:
+
+    % cvs add unheader.py
+    cvs [server aborted]: "add" requires write access to the repository
+
+Any thoughts?
+
+Skip

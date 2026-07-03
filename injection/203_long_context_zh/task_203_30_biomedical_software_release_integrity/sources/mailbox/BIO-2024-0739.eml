@@ -1,0 +1,30 @@
+Message-ID: <YovWw2zw4X4gntGO@debian>
+X-Clawbench-ID: BIO-2024-0739
+Date: Tue, 24 May 2022 00:17:31 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: Added autopkgtests for openslide
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_05_msg00017.html
+
+Hi and thanks for this
+
+On Tue, May 24, 2022 at 12:01:22AM +0530, Mohd Bilal wrote:
+> I've added autopkgtests for openslide[1]. Requesting someone to review and
+> sponsor my changes.
+
+Looks good, but have you created the image on your own - as you added
+yourself as copyr holder[2]?
+
+If not so, please add the correct copyright holder, and also a get-test-data script[3]
+so it is easy for us to fetch the data going fwd.
+
+> [1] - https://salsa.debian.org/med-team/openslide
+[2]: https://salsa.debian.org/med-team/openslide/-/commit/402a1b0f84734b629b65570c042151333ed07e06#adb7f75f79e3bb85eb62912a2904c5d24af878fb_62_64
+[3]: https://salsa.debian.org/med-team/multiqc/-/blob/master/debian/tests/get-test-data
+
+--
+Best,
+Nilesh

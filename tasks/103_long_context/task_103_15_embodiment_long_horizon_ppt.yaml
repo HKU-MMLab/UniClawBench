@@ -1,0 +1,29 @@
+task_id: task_103_15_embodiment_long_horizon_ppt
+category: 103_long_context
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I need to make a paper-reading PPT on the topic of Embodiment System. Our course wants to divide it into four parts: grounded & interactive, closed-loop recovery, long-horizon + hierarchical planning, and generalization. I am responsible for the long-horizon + hierarchical planning part.
+
+  The candidate papers are all in `/tmp_workspace/clawbench/sources/papers/`, and I renamed the files to non-semantic numbers, so do not guess from filenames. Read these papers and select the two most suitable papers for the long-horizon + hierarchical planning section. At the beginning of the PPT, first create an overall roadmap for Embodiment System and briefly place every candidate paper into one of the four parts: grounded & interactive, closed-loop recovery, long-horizon + hierarchical planning, and generalization. Papers about open-ended generalist agents, lifelong skill learning, or cross-task generalization are more suitable for generalization, not for the main long-horizon + hierarchical planning section that I am responsible for. Then expand on the two papers I am responsible for. Use the style of `/tmp_workspace/clawbench/sources/presentation_template.pptx` for the PPT.
+
+  The PPT must contain at least motivation, method, and experiment sections for each paper, and it should naturally connect the previous and next parts. Please note that I will directly use this PPT in a group meeting, so do not merely pile up text or casually paste screenshots: the layout should be clear, figures should be readable, and titles and bullet points should look like a formal paper reading. The style does not need to be pixel-identical but should coordinate with the template. PPT quality is the core requirement for this task; ensure there is no text overflow, font sizes are readable, figures are not stretched or cropped, and the overall style matches the template. Save the final PPT to `/tmp_workspace/results/long_horizon_paper_reading.pptx`, and also save `/tmp_workspace/results/selection_note.md` explaining why these two papers were selected.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/group5_reference_deck.pptx
+  - references/paper_mapping.json
+sources:
+  - presentation_template.pptx
+  - papers/
+
+codex:
+  max_user_followups: 2

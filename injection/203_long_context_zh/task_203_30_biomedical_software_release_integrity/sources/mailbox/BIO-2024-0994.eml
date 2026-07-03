@@ -1,0 +1,64 @@
+Message-ID: <Yi+ZRYkFLeWdTuCU@an3as.eu>
+X-Clawbench-ID: BIO-2024-0994
+Date: Mon, 14 Mar 2022 20:36:37 +0100
+From: Andreas Tille <tille@debian.org>
+To: "Aaron M. Ucko" <ucko@debian.org>
+Subject: Re: Please review ncbi-vdb
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_03_msg00010.html
+
+Hi Aaron,
+
+Am Sat, Feb 26, 2022 at 10:48:29PM -0500 schrieb Aaron M. Ucko:
+> Andreas Tille  writes:
+>
+> > I managed the packaging now at the state where it builds binary packages
+> > that are technically basically OK from a Debian point of view (one RPATH
+> > issue left).  Aaron, I would love if you could give it a review with
+> > your specialist hat on.
+>
+> Great, thanks!  I'll review the result when I get a chance.
+>
+> > I have no idea whether it makes sense to split up the libraries.
+>
+> Don't worry, it definitely does -- I anticipate it will sooner or later
+> be common, if not typical, to need only libncbi-vdb.
+
+If you think the package structure is OK I might upload to new.
+Any other fine tuning that might be needed could be done in some
+source-only upload.
+
+> > Please also check whether we should keep the Architecture restriction
+> > to certain architectures or whether cmake now enables us to simply use
+> > "any".
+>
+> Last I checked, the CMake setup had some architecture-specific logic
+> that would call for not only keeping but tightening the restriction, by
+> dropping i386.  We could perhaps attempt to reinstate i386 support, but
+> I'm not sure it's worth the effort nowadays.
+>
+> > I'd really welcome some sensible autopkgtest which could prevent me
+> > making mistakes in future.
+>
+> I've found sra-toolkit's to be a fairly effective stand-in, but a
+> dedicated autopkgtest certainly wouldn't hurt.
+
+I absolutely agree ... but I have no idea about a test.  We might
+re-use the build time test partly.  Or can you get some hints from
+upstream?
+
+> > PS: Please note that I'm on vacation next week and will not do anything
+> >     on this package in the next 10 days.
+>
+> Enjoy your vacation!
+
+:-)
+
+Kind regards
+
+     Andreas.
+
+--
+http://fam-tille.de

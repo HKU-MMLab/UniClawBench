@@ -1,0 +1,24 @@
+Message-ID: <1d17a6c0-89ee-bd5d-e029-c830fc77be0a@apache.org>
+X-Clawbench-ID: ASF-2024-1261
+Date: Fri, 10 Feb 2023 16:15:16 +0100
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: MS-WDV and other MS extensions
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-02.mbox
+
+On 2/10/23 4:06 PM, Emmanuel Dreyfus wrote:
+> On Fri, Feb 10, 2023 at 09:53:47AM -0500, Eric Covener wrote:
+>> I like the third case with an all/on option.  If it will need to be
+>> per-directory, maybe an Options like syntax would make sense?
+>
+> Do you suggests adding values to Options, or to create a DAVoptions
+> directive?
+
+I think DAVMSextis fine, but with an Options like syntax.
+
+Regards
+
+Rüdiger

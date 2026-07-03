@@ -1,0 +1,27 @@
+Message-ID: <20020930223956.6c06655a.ralf@camperquake.de>
+X-Clawbench-ID: CAM-2003-0495
+Date: Mon, 30 Sep 2002 22:39:56 +0200
+From: Ralf Ertzinger <ralf@camperquake.de>
+To: rpm-zzzlist@freshrpms.net
+Subject: Re: apt 0.5.7 on RH 7.x
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01202.9fe368b4f333335b31d0d5ede2db37ee
+
+Hi.
+
+Matthias Saou <matthias@egwn.net> wrote:
+> My main concern is that when rebuilding the recent packages I've made
+> for Psyche on Valhalla, I'd need to lower the "Release:" tag (to keep an
+> upgrade working), and that would f*ck up my CVS repository which is on
+> my Valhalla box
+
+Sorry, I don't get it. What's wrong with a release tag of fr1?
+
+--
+Do I look like a freakin' people person?
+
+_______________________________________________
+RPM-List mailing list <RPM-List@freshrpms.net>
+http://lists.freshrpms.net/mailman/listinfo/rpm-list

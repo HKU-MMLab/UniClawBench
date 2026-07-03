@@ -1,0 +1,39 @@
+Message-ID: <17496c79-fe72-2a02-79b9-cbb2f2f7a4db@apache.org>
+X-Clawbench-ID: ASF-2024-1059
+Date: Wed, 12 Apr 2023 13:30:42 +0200
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: ci vs PR approvals? (was: [apache/httpd] Fix a possible NULL  pointer dereference in hook_uri2file (PR #355))
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-04.mbox
+
+On 4/12/23 12:35 PM, Yann Ylavic wrote:
+> On Wed, Apr 12, 2023 at 12:26 PM Yann Ylavic <ylavic.dev@gmail.com> wrote:
+>>
+>> On Wed, Apr 12, 2023 at 12:18 PM ylavic <notifications@github.com> wrote:
+>>>
+>>> @ylavic approved this pull request.
+>>>
+>>> Three approvals to get ci started?
+>>
+>> Nope.. It seems that gh actions don't run for PRs whatever we do.
+>> The docs[1] say that there should be an "Approve and run" button near
+>> the "workflow awaiting approval" text, but it's not the case for httpd
+>> mirror, while approving the whole PR looks inefficient..
+>
+> We (PMC/committers) once had the right to close any PRs, but that
+> seems to not be the case anymore either.
+> Something changed since
+> https://lists.apache.org/thread/g7bb70ymlmkzjlx1rpvq46dwz54qcpdb
+> probably.
+
+I guess we need help from infra. Is it possible that we cannot do all this because our git repository is just a readonly mirror of
+the Subversion repository and hence none of us is a maintainer of this repository?
+
+Regards
+
+Rüdiger
+
+>

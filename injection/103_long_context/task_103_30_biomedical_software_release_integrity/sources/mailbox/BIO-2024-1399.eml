@@ -1,0 +1,22 @@
+Message-ID: <YZAS9ClVBfnjOq28@debian>
+X-Clawbench-ID: BIO-2024-1399
+Date: Sun, 14 Nov 2021 01:03:08 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: Progress in merging neurodebian team?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_11_msg00073.html
+
+Hi,
+
+On Sat, Nov 13, 2021 at 06:19:18PM +0100, Andreas Tille wrote:
+> Feel free to pick one (and do not hesitate to ask me to transfer a
+> repository and when doing so bring it in Debian Med policy conform
+> shape).
+
+Please move imbalanced-learn to -med.
+
+Regards,
+Nilesh

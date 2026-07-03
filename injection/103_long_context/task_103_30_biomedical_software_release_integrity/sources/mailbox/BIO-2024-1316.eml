@@ -1,0 +1,24 @@
+Message-ID: <ZP5qBsSBSgc4++lC@an3as.eu>
+X-Clawbench-ID: BIO-2024-1316
+Date: Mon, 11 Sep 2023 03:14:46 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: What is the point of B-D-I in a package that has no arch:any component?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_09_msg00007.html
+
+Am Sun, Sep 10, 2023 at 12:09:30PM -0700 schrieb tony mancill:
+>
+> I'm considering adding a lintian check for it.  Any strong opinions,
+> either for or against?
+
+No strong opinion against this.  Nice to have a check that would
+prevent from doing things that are not sensible.
+
+Kind regards
+    Andreas.
+
+--
+http://fam-tille.de

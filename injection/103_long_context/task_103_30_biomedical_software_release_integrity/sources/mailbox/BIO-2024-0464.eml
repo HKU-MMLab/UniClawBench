@@ -1,0 +1,26 @@
+Message-ID: <ZYgUiD2jJ9QYPE9p@an3as.eu>
+X-Clawbench-ID: BIO-2024-0464
+Date: Sun, 24 Dec 2023 12:22:48 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: [Advent bug squashing] Thanks to all who joined the fun
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_12_msg00071.html
+
+Hi,
+
+I think bug #1059214 was my last one in this years Advent bug squashing.
+Thanks to all who joined.  For those who missed the fun for whatever
+reason there are some "add build support for loongarch64" and some
+"Fails to build source after successful build" low hanging fruits left.
+;-)
+
+For those who live in those parts of the world where Christmas matters
+I wish a merry Christmas.  I'm looking forward work together with all
+of you next year
+   Andreas.
+
+--
+http://fam-tille.de

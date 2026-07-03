@@ -1,0 +1,91 @@
+[
+  {
+    "file": "papers/paper_01.pdf",
+    "title": "Distilling the Knowledge in a Neural Network",
+    "authors": "Hinton et al.",
+    "year": 2014,
+    "url": "https://arxiv.org/pdf/1503.02531",
+    "sections": [
+      "2. Distillation"
+    ],
+    "note": "Introduces knowledge distillation as a model compression method."
+  },
+  {
+    "file": "papers/paper_02.pdf",
+    "title": "DistilBERT, a distilled version of BERT: smaller, faster, cheaper and lighter",
+    "authors": "Sanh et al.",
+    "year": 2019,
+    "url": "https://arxiv.org/pdf/1910.01108",
+    "sections": [
+      "2. Distillation"
+    ],
+    "note": "Applies distillation to transformer language models for cheaper inference."
+  },
+  {
+    "file": "papers/paper_03.pdf",
+    "title": "LLM.int8(): 8-bit Matrix Multiplication for Transformers at Scale",
+    "authors": "Dettmers et al.",
+    "year": 2022,
+    "url": "https://arxiv.org/pdf/2208.07339",
+    "sections": [
+      "3. Quantization"
+    ],
+    "note": "Introduces an 8-bit inference method handling outlier features in large transformers."
+  },
+  {
+    "file": "papers/paper_04.pdf",
+    "title": "SmoothQuant: Accurate and Efficient Post-Training Quantization for Large Language Models",
+    "authors": "Xiao and Lin et al.",
+    "year": 2022,
+    "url": "https://arxiv.org/pdf/2211.10438",
+    "sections": [
+      "3. Quantization"
+    ],
+    "note": "Smooths activation outliers to enable efficient weight-activation quantization."
+  },
+  {
+    "file": "papers/paper_05.pdf",
+    "title": "GPTQ: Accurate Post-Training Quantization for Generative Pre-trained Transformers",
+    "authors": "Frantar et al.",
+    "year": 2022,
+    "url": "https://arxiv.org/pdf/2210.17323",
+    "sections": [
+      "3. Quantization"
+    ],
+    "note": "Uses second-order information for accurate post-training quantization."
+  },
+  {
+    "file": "papers/paper_06.pdf",
+    "title": "To Prune, or Not to Prune: Exploring the Efficacy of Pruning for Model Compression",
+    "authors": "Zhu and Gupta",
+    "year": 2017,
+    "url": "https://arxiv.org/pdf/1710.01878",
+    "sections": [
+      "4. Structured sparsity and pruning"
+    ],
+    "note": "Studies pruning as a practical compression method."
+  },
+  {
+    "file": "papers/paper_07.pdf",
+    "title": "A Review of Sparse Expert Models in Deep Learning",
+    "authors": "Fedus et al.",
+    "year": 2022,
+    "url": "https://arxiv.org/pdf/2209.01667",
+    "sections": [
+      "5. Mixture-of-Experts"
+    ],
+    "note": "Surveys sparse expert models and the MoE design space."
+  },
+  {
+    "file": "papers/paper_08.pdf",
+    "title": "Efficient Transformers: A Survey",
+    "authors": "Tay et al.",
+    "year": 2022,
+    "url": "https://arxiv.org/pdf/2009.06732",
+    "sections": [
+      "6. Architectural optimization",
+      "7. Practical synthesis"
+    ],
+    "note": "Surveys architectural approaches to efficient transformer computation."
+  }
+]

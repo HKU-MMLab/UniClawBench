@@ -1,0 +1,29 @@
+Message-ID: <7b0171a7-fdab-573f-c648-5e1996ec29b9@debian.org>
+X-Clawbench-ID: BIO-2024-1413
+Date: Sat, 30 Oct 2021 14:52:25 +0300
+From: Andrius Merkys <merkys@debian.org>
+To: debian-science@lists.debian.org
+Subject: Re: Debian Math Team
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_10_msg00042.html
+
+On 2021-10-30 14:45, Anton Gladky wrote:
+> I do not see any benefits from creating a one-more team. It decreases
+> definitely bus-factor of the package, will unlikely increase their quality
+> and for end-users it is mostly not visible, in what team it is maintained.
+>
+> Sure, feel free to create it, if you want, but please do not move any existing
+> packages from any team to a new one without prior confirmation of all
+> uploaders.
+>
+>>From my point of view, we have enough really useful work in Debian which
+> needs to be done (fixing bugs, adding autopkgtests, setting-up
+> CI-pipelines etc.)
+> instead of moving packages between teams.
+
+Couldn't agree more. Uploader agreement to moving is a must, IMO.
+
+Best,
+Andrius

@@ -1,0 +1,39 @@
+Message-ID: <ZXzQLtBLd3Tqn2g_@fusion>
+X-Clawbench-ID: BIO-2024-0804
+Date: Fri, 15 Dec 2023 23:16:14 +0100
+From: Étienne Mollier <emollier@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: [Advent bug squashing] Bugs #1058252, #1043881, #1044949 and #1049574
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_12_msg00052.html
+
+Étienne Mollier, on 2023-12-15:
+> Hi all,
+>
+> For today's entry:
+
+Oh, I forgot to mention that I bumped the htslib ecosystem to
+version 1.19, except for the htslib itself which I uploaded to
+experimental for a couple of reasons:
+
+ 1. I'm unsettled about a "normally internal" symbol that
+    disappeared from libhts3 the table, although preliminary
+    tests did not show any typical ABI breakage symptoms in
+    almost all the reverse dependencies;
+
+ 2. cyvcf2 is affected by #1058768 with the new htslib 1.19
+    version; while I thought this was related to the symbole
+    disappearance, rebuild attempts also failed, and recovery of
+    the symbol did not resolve the regression.
+
+That's another issue to tackle, if people feel up to digging
+into C to Cython to Python interfaces.
+
+Have a good night,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  gpg: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/1, please excuse my verbosity
+   `-    on air: K2 - Cloak of Antiquity

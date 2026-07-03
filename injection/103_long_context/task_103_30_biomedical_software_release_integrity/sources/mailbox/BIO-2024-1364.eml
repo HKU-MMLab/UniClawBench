@@ -1,0 +1,49 @@
+Message-ID: <20221019150115.GB47584@sanger.ac.uk>
+X-Clawbench-ID: BIO-2024-1364
+Date: Wed, 19 Oct 2022 16:01:15 +0100
+From: James Bonfield <jkb@sanger.ac.uk>
+To: "Aaron M. Ucko" <ucko@debian.org>
+Subject: Re: Htslib plugins [EXT]
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00067.html
+
+On Wed, Oct 19, 2022 at 10:27:24AM -0400, Aaron M. Ucko wrote:
+> James Bonfield  writes:
+>
+> > 	--with-plugin-path='/usr/local/lib/htslib:/usr/local/libexec/htslib:$(plugindir)'
+>
+> I haven't been involved with this package, but I suspect that line was
+> supposed to have a double dollar sign so as to yield a reference to your
+> build system's plugindir variable.  Thanks for the report!
+
+Yes.  My colleague pointed out after I sent the email that it's our
+own Makefile with declares $plugindir.  (I should have known, but it's
+a little byzantine at times.)
+
+So this is a quoting problem. As you say maybe $$ or another form of
+quoting will resolve it.
+
+It may be worth revisiting patches/disable_plugin_loading_test.patch
+afterwards too.  It's possible the reason the plugin test was disabled
+was due to incorrectly configured plugins, but I'm not certain on
+that.  Our upstream CI does run this test though and it's not needed
+access to external networks to run so I don't see any fundamental
+reason it has to be disabled in the Debian build environment.
+
+It's possible the lack of a plugin is then causing the library to
+fall back to another access method, which is what's being seen here.
+
+James
+
+--
+James Bonfield (jkb@sanger.ac.uk)
+The Sanger Institute, Hinxton, Cambs, CB10 1SA
+
+
+--
+ The Wellcome Sanger Institute is operated by Genome Research
+ Limited, a charity registered in England with number 1021457 and a
+ company registered in England with number 2742969, whose registered
+ office is 215 Euston Road, London, NW1 2BE.

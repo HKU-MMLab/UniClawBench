@@ -1,0 +1,37 @@
+Message-ID: <BADF3C947A1BD54FBA75C70C241B0B9E10AAAF@ex02.idirect.net>
+X-Clawbench-ID: CAM-2003-0067
+Date: Mon, 26 Aug 2002 19:31:49 -0400
+From: "Harig, Mark A." <maharig@idirect.net>
+To: rpm-zzzlist@freshrpms.net
+Subject: RE: Re: When are we going to get. [making ALSA rpms]
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00403.bda6864694236a9ec97714233b831c31
+
+> made. Other than that, I bet you could do non-root. The following can
+be scripted
+> easily.
+>
+...
+> 2. unpack them somewhere.
+> 3. for each of them, go to the top directory of the unpacked tarball,
+and do
+> ../configure, then look in (I'm going by memory) TOPDIR/utils/* you
+should see a spec
+> file there. Do this for the 3 tarballs and you get 3 spec files.
+>
+
+The above steps can all be performed "automatically",
+if the .spec files are updated to include the necessary
+macros in the %prep (%setup -q) and %build stages.
+This would make the building of the .rpm files less
+error prone and more self-contained, and it would be
+somewhat self-documenting.
+
+---
+
+
+_______________________________________________
+RPM-List mailing list <RPM-List@freshrpms.net>
+http://lists.freshrpms.net/mailman/listinfo/rpm-list

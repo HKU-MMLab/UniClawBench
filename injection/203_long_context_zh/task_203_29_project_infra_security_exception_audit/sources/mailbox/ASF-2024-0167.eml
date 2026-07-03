@@ -1,0 +1,46 @@
+Message-ID: <31ff67e2-744f-3ebf-f523-38a136f55a8e@wanadoo.fr>
+X-Clawbench-ID: ASF-2024-0167
+Date: Mon, 14 Feb 2022 22:31:32 +0100
+From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+To: dev@httpd.apache.org, Jeff McKenna <jmckenna@gatewaygeomatics.com>
+Subject: Re: PCRE2 compatibility
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-02.mbox
+
+Le 14/02/2022 à 21:10, Jeff McKenna a écrit :
+> Hi Doug,
+>
+> If by "incompatible" you mean to ask if one can point to PCRE2 with
+> CMake with Apache 2.4.51 & build successfully, I can tell you that yes
+> it is incompatible, I was not able to build 2.4.51 with PCRE2 through
+> CMake, with Visual Studio 2019.
+>
+> (at the time I found many reporting this online, and a long list of
+> "workarounds", not easy to implement, so for my distribution I chose to
+> remain at PCRE 8.45, for now, unfortunately)
+>
+> Thanks,
+>
+> -jeff
+>
+
+Hi jeff,
+
+if you can build and test on Windows, it would be great if you can try
+to apply patches listed in [1], build and test :).
+
+In this link, you'll see another patch ([2]) to fix the performance issue.
+
+So building and testing with [2] as well would be much appreciated :).
+
+
+CJ
+
+[1]:
+https://svn.apache.org/viewvc/httpd/httpd/branches/2.4.x/STATUS?revision=1897901&view=markup#l147
+
+[2]: https://github.com/apache/httpd/pull/289       or
+
+https://svn.apache.org/viewvc/httpd/httpd/branches/2.4.x/STATUS?revision=1897901&view=markup#l228

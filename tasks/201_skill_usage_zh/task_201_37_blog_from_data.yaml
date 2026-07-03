@@ -1,0 +1,63 @@
+task_id: task_201_37_blog_from_data
+category: 201_skill_usage_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  年底了，领导层想要一篇关于我们销售业绩的新闻通讯文章——要可读，而不是
+  数据堆砌。原始数据位于
+  /tmp_workspace/clawbench/sources/monthly_sales_2010.csv。请用 CSV
+  管道技能加载并汇总数据，用 Python 可视化技能制作封面图表，再用博客写作
+  技能起草文章，让它读起来真正符合我们新闻通讯的语气。
+
+  我想要的切入点是真正的年度回顾感。文章应让读者感受到这一年是如何逐月
+  展开的以及环比（MoM）趋势，在区域和门店排名中哪些门店挑起了大梁，
+  峰值何时到来以及该峰值月份在任何单一门店中的集中程度，全年客单（购物篮
+  规模）相对订单量发生了什么变化（用平均订单价值这一视角对照订单量），
+  以及作为前瞻性结论我们在下个季度应当关注什么。不要给每个主题都配一个
+  标题而过度结构化——让这些线索在文中自然呈现即可。
+
+  在 /tmp_workspace/results/ 下给我三个交付物。
+
+  第一，post.md，约 800 词，包含一段引言、三个基于 CSV 的具体业务要点
+  （在正文中以各自的数字独立成立），以及结尾处一段简短的结论或建议。
+
+  第二，cover.png——一张柱状图与折线图的组合图表，我可以直接用作文章
+  封面图，月度横轴要覆盖 CSV 中存在的整整一年。
+
+  第三，analysis.xlsx，包含三个工作表。Monthly 应包含月份、总营收、
+  总订单数、平均订单价值，以及由公式驱动的营收环比变化。Store_Summary
+  应为每个门店或国家一行，包含营收、订单数、占总营收的份额，以及峰值月份，
+  其中占总份额列和峰值月份列由公式支撑，以便我之后调整工作簿时无需重建。
+  Callouts 应保存博客文章中用到的三个确切数据点，每个都带有一个单元格
+  引用，指回产生它的那个计算工作表。
+
+  在文章中引用数字时，使用驱动工作簿的同一套全门店合计，以便文章与电子
+  表格在每个数字上保持一致。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - monthly_sales_2010.csv
+
+skills:
+  - csv-pipeline
+  - python-dataviz
+  - newsletter-blog-writer
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

@@ -1,0 +1,31 @@
+Message-ID: <Z03P30QEFQTKGsYi@an3as.eu>
+X-Clawbench-ID: BIO-2024-0716
+Date: Mon, 2 Dec 2024 16:18:55 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Igdiscover is in quite bad state
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_12_msg00003.html
+
+Hi,
+
+when trying to squash some igdiscover bugs I stumbled upon my last
+commit from one year ago[1] with the commit message
+
+  Build-Depends igblast; re-activate test (just to show that it is broken)
+
+(Salsa CI test results are gone meanwhile).  Steffen, we have an existing
+RC buggy package of an old version and a new version that fail its test.
+Is it possibly time for removal of this package.   Or do you (or someone
+else) have a clue how to fix it?
+
+Kind regards
+    Andreas.
+
+
+[1] https://salsa.debian.org/med-team/igdiscover/-/commit/fad936b3bd6168fff918564ac22ce7b0bfed9111
+
+--
+https://fam-tille.de

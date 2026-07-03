@@ -1,0 +1,22 @@
+Message-ID: <udly23cyj4e.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-0566
+Date: Tue, 18 Jan 2022 13:49:21 -0500
+From: ucko@debian.org (Aaron M. Ucko)
+To: Andreas Tille <andreas@an3as.eu>
+Subject: Re: Any idea how to fix this C++ code in diann
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_01_msg00041.html
+
+Andreas Tille  writes:
+
+> I gave the packaging of diann a try but failed[1].  Any idea how
+> to fix these goto statements?
+
+Please try adding braces to indicate that the variables in question are
+not of interest to these statements' targets, per the attached patch.
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

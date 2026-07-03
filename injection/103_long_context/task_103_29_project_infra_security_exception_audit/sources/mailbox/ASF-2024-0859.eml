@@ -1,0 +1,39 @@
+Message-ID: <CAKQ1sVMdvUPRj-SRXSubRMPwQ6-+yg_htz_i7Zaq2zYqMU8ueA@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0859
+Date: Fri, 12 Apr 2024 13:09:50 +0200
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: pytest results for 2.4.59
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-04.mbox
+
+On Sun, Apr 7, 2024 at 2:16 PM Rainer Jung <rainer.jung@kippdata.de> wrote:
+>
+> Am 07.04.24 um 09:42 schrieb jean-frederic clere:
+> > On 4/6/24 20:02, Rainer Jung wrote:
+> >
+> >> When you say Yann's patch helps, it means especially there are not
+> >> more SIGTERM messages in the logs resp. no more teardown checks failing?
+> >
+> > Yes with Yann's patch, the "AH00045: child process nnnnn still did not
+> > exit, sending a SIGTERM" messages are gone and teardown checks are passing.
+>
+> I could now also do some tests and for me the SIGTERM messages for
+> worker on RHEL 9 during pytest are also gone with Yann's woker MPM
+> patch. Plus I didn't get any new failures. Perl test framework is fine
+> and pytest only some of the few occasional failures and errors I had
+> also seen before.
+>
+> So it would be nice if we would apply Yann's patch for the worker mpm.
+
+Thanks for testing, now in r1916926.
+Finally I did not use the "good methods" (APR_POLLSET_NODEFAULT) to
+create the pollset (like in mpm_event) but left the pollset
+implementation to be selected as before. It's now using
+APR_POLLSET_WAKEABLE though to help wakeup_listener().
+
+
+Regards;
+Yann.

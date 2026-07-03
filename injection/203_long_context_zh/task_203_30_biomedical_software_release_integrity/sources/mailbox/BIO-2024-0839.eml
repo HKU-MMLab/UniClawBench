@@ -1,0 +1,32 @@
+Message-ID: <20221220223716.h6x3ekof2tbmvgfr@nileshpatra.info>
+X-Clawbench-ID: BIO-2024-0839
+Date: Wed, 21 Dec 2022 04:07:16 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Re: Any idea how to fix the UTF-8 errors in augur?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_12_msg00095.html
+
+On Tue, Dec 20, 2022 at 09:29:38PM +0100, Andreas Tille wrote:
+> I've upgraded augur after python3-pyfastx is available.  Unfortunately there
+> are three remaining errors - two of them definitely related to UTF-8  issues
+> the third one possibly[1]
+
+Not exactly UTF-8 I guess, the error also spews out
+"zstd.ZstdError: zstd decompress error: Unknown frame descriptor"
+
+when I checked the code for augur.io.file.open_file, I realised this
+uses directly uses xopen. The version of xopen needed by augur is 1.7.0, as you could
+also check in setup.py as well[2]
+
+Simply updating xopen to 1.7.0 and building augur against it does the job.
+I have just uploaded xopen and augur both.
+
+> [1] https://salsa.debian.org/med-team/augur/-/jobs/3684088
+[2] https://salsa.debian.org/med-team/augur/-/blob/master/setup.py#L64
+
+--
+Best,
+Nilesh

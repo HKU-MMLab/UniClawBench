@@ -1,0 +1,59 @@
+Message-ID: <46A978C4-0E82-4B8C-B8C1-1F1186BDC703@eissing.org>
+X-Clawbench-ID: ASF-2024-0924
+Date: Fri, 8 Apr 2022 12:42:27 +0200
+From: Stefan Eissing <stefan@eissing.org>
+To: dev@httpd.apache.org
+Subject: Re: Adding a2md to httpd sources?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-04.mbox
+
+> Am 08.04.2022 um 12:01 schrieb Rainer Jung <rainer.jung@kippdata.de>:
+>
+> Thanks for all feedback. So no need to integrate.
+>
+> Note that the 2.4.x pytest suite still makes heavy use of it when testing mod_md.
+
+Yes, I think I should clean those up to avoid confusion for anyone reading it. But who expects other people to read their test code, you know? ;)
+
+>
+> Thanks and regards,
+>
+> Rainer
+>
+> Am 08.04.2022 um 10:24 schrieb Steffen:
+>> ﻿
+>> Agree no need for it anymore.
+>> Ps.
+>> You wrote:
+>> I have not yet heard any questions or feedback from anyone about it….If I remember correctly, no one was around to make the cmake and Windows builds for it.
+>> I had given feedback and was able to build it on windows in 2017. In the beginning some crashes, but Stefan solved.
+>>> Op 8 apr. 2022 om 09:14 heeft Stefan Eissing <stefan@eissing.org> het volgende geschreven:
+>>> ﻿
+>>>
+>>>> Am 07.04.2022 um 13:04 schrieb Rainer Jung <rainer.jung@kippdata.de>:
+>>>>
+>>>> Hi there,
+>>>>
+>>>> during my experiments with the nice pytest based test suite against 2.4.x I noticed, that many mod_md tests need "a2md". The sources for this commandline tool ar in Stefan's GitHub repos for mod_md, but not inside the httpd 2.4.x source tree.
+>>>>
+>>>> I have not really checked, what a2md exactly does, but was wondering, how much sense it would make to add it to 2.4.x as another support binary?
+>>>>
+>>>> From the man page:
+>>>>
+>>>> The a2md utility can be used to configure and update managed domains with the mod_md module for Apache HTTP Server. Managed Domains are virtual hosts which automatically obtain and renew TLS certificates from an ACME server.
+>>>>
+>>>> Is it ready for prime time? Would it interact with a custom build of httpd (layout might differ from distros)? What's the expectation?
+>>>
+>>> Some distros, who package from the github repro, seem to include a2md, but I have not yet heard any questions or feedback from anyone about it. We excluded it in the httpd build as, if I remember correctly, no one was around to make the cmake and Windows builds for it.
+>>>
+>>> Looking back, I do not see the need to a2md any longer. All can and should be configured in httpd's config files and information readout is available via the common status handlers and mod_md's own JSON status handler.
+>>>
+>>> Kind Regards,
+>>> Stefan
+>>>
+>>>>
+>>>> Thanks and regards,
+>>>>
+>>>> Rainer

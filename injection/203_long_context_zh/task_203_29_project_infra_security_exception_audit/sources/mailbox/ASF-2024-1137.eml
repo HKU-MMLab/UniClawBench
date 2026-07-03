@@ -1,0 +1,52 @@
+Message-ID: <9C8690BC-6489-41E5-B5DC-C817DEF0EB65@m3y3r.de>
+X-Clawbench-ID: ASF-2024-1137
+Date: Sat, 14 Dec 2024 10:05:43 +0100
+From: Thomas Meyer <thomas@m3y3r.de>
+To: dev@httpd.apache.org
+Subject: Re: httpd 2.4 -> next
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-12.mbox
+
+Am 13. Dezember 2024 22:12:56 MEZ schrieb Eric Covener <covener@gmail.com>:
+>On Fri, Dec 13, 2024 at 9:17 AM Jim Jagielski <jim@jagunet.com> wrote:
+>>
+>> Hi All!
+>>
+>> Come '25 I'll have some cycles to get back into some serious httpd work, and am looking to find out what our next steps are. I've followed along the lists but have really not been active. Do we have a plan forward, past httpd-2.4? I'd like to see what areas I could look into to help us drive forward. Some things that I want to do is reboot my work on various proxy enhancements, including auto discovery and balancer metrics.
+>>
+>> Some considerations and potential topics of discussion:
+>>
+>> 1. On trunk, baseline something newer than c89
+>> 2. Update the autoconf suite
+>> 3. future roadmap
+>>
+>> Basically the question is: Is httpd basically in maintenance mode or do we want to try to get some momentum going?
+
+The project seems to be basically dead from my experience.
+
+>
+>Other than the obvious shortage of contributors, I think one big
+
+As someone who has tried to get a patch merged for over one year now, my experience is a bit different. Only a few people seem to react on pull requests or mailing list at all, look at all the open GitHub PRs, that are open since month.
+
+There may be a lack of contributors but there seems to be even a greater lack of maintainers and their time :-(
+
+>dilemma is that a post-2.4 needs to thread such a tiny needle where
+>it's both similar enough for people to be able to move to it (skills,
+>compat, migration wise), but different enough to justify the extra
+>effort on both sides.
+>
+>There's also the baggage of httpd and C. While individually this might
+>be a strength to you and I (and any other long-time contributors), I
+>don't think it is for prospective contributors, possible
+>sponsors/partners, or users.
+>
+>I only follow developments in other servers at a very cursory level,
+>but is there something we can do on top of pingora (the rust
+>cloudflare library-ish thing) that makes it easier for people who like
+>httpd to adopt for example?
+
+--
+Diese Nachricht wurde von meinem Android-Gerät mit K-9 Mail gesendet.

@@ -1,0 +1,30 @@
+Message-ID: <20211009201123.xv54eh5r4gvwbz7a@frifot>
+X-Clawbench-ID: BIO-2024-1394
+Date: Sat, 9 Oct 2021 22:11:23 +0200
+From: Dominik George <natureshadow@debian.org>
+To: Andreas Tille <andreas@an3as.eu>
+Subject: Re: URL is OK in browser but returns 404 with uscan
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00028.html
+
+> > Any idea how to help uscan reading that web page?
+>
+> https://storage.googleapis.com/broad-alkesgroup-public?delimiter=/&prefix=BOLT-LMM/downloads/
+> gets you a step further.
+
+Digging a bit, there is actually an example for this in the uscan man
+page (grep for AWS).
+
+Find attached a patch for your package ☺.
+
+*snip*
+uscan info:  => Package is up to date from:
+             => https://storage.googleapis.com/BOLT-LMM/downloads/BOLT-LMM_v2.3.5.tar.gz
+uscan info:  => Forcing download as requested
+uscan info: Downloading upstream package: BOLT-LMM_v2.3.5.tar.gz
+*snip*
+
+HTH,
+Nik

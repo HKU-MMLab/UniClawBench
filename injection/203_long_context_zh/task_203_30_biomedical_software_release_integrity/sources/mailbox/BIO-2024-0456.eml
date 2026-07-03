@@ -1,0 +1,28 @@
+Message-ID: <CA+7wUsxwOM85P8g8dZyJSF_W6Kq_TzgQEiQZppWFKkAOVWgzKQ@mail.gmail.com>
+X-Clawbench-ID: BIO-2024-0456
+Date: Wed, 8 Dec 2021 13:52:46 +0100
+From: Mathieu Malaterre <malat@debian.org>
+To: Andreas Tille <andreas@an3as.eu>
+Subject: Re: Any help to get pydicom build welcome
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_12_msg00037.html
+
+Andreas,
+
+On Wed, Dec 8, 2021 at 1:32 PM Andreas Tille  wrote:
+[...]
+>   File "/build/pydicom-2.2.2/.pybuild/cpython3_3.9_pydicom/build/pydicom/encoders/gdcm.py", line 60 in encode_pixel_data
+[...]
+
+Could you re-run the above test within gdb ? I would need a `bt full`
+to have some idea to get started.
+
+Eg:
+
+$ gdb python3 ....path/to/pytdicom/test
+
+You may want to have libgdcm3.0-dbgsym first.
+
+Thanks

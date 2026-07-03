@@ -1,0 +1,41 @@
+task_id: task_104_28_landmark_photo_identification
+category: 104_multimodal
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  `/tmp_workspace/clawbench/sources/travel_photos/` contains 30 travel photos with random filenames.
+  Each image shows a real-world landmark.
+
+  Please identify the following for each photo, one by one:
+  - Landmark name
+  - City
+  - Country
+
+  Requirements:
+  1. Process all 30 images in this directory, without omissions or duplicates.
+  2. Output the final results to `/tmp_workspace/results/landmark_report.csv`. The CSV header must be:
+     `file_name,landmark,city,country`
+  3. Preserve the original filenames, and write the CSV sorted by `file_name`.
+  4. Also write `/tmp_workspace/results/landmark_summary.md` with a brief summary:
+     - The 10 images you are most confident about, each with the original `file_name`, identification result,
+       and visible evidence
+     - The 3 images you think are easiest to confuse, each with the original `file_name`, possible confusion
+       target, and distinguishing evidence
+  5. If you are not completely certain about an individual image, still give your most likely answer; do not leave it blank.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - travel_photos/
+
+codex:
+  max_user_followups: 2

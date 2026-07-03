@@ -1,0 +1,23 @@
+Message-ID: <20220711065305.qcsw3mhspfv35pgk@debian>
+X-Clawbench-ID: BIO-2024-0889
+Date: Mon, 11 Jul 2022 12:23:05 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: "Frith, Martin" <mcfrith@edu.k.u-tokyo.ac.jp>
+Subject: Re: suggesting dnarrange and lamassemble
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_07_msg00012.html
+
+On Mon, Jul 11, 2022 at 03:41:41PM +0900, Frith, Martin wrote:
+> Do any of lamassemble's dependencies (e.g. mafft) fail tests?
+
+No.
+Neither mafft, nor last-align, links here[1,2]
+
+[1]: https://ci.debian.net/packages/m/mafft/unstable/i386/
+[2]: https://ci.debian.net/packages/l/last-align/unstable/i386/
+
+--
+Best,
+Nilesh

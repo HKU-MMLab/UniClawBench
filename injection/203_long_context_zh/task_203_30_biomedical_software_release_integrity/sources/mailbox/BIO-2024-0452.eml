@@ -1,0 +1,43 @@
+Message-ID: <Ye716laSv12yEsTe@an3as.eu>
+X-Clawbench-ID: BIO-2024-0452
+Date: Mon, 24 Jan 2022 19:54:34 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: [Request for review] plast
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_01_msg00090.html
+
+Hi Nilesh,
+
+Am Mon, Jan 24, 2022 at 11:51:19PM +0530 schrieb Nilesh Patra:
+>
+> I have attempted to port plast to pcre2 for fixing up #999991
+> But since I have not used pcre2 myself earlier, I am unsure whether my patch is
+> sensible enough.
+>
+> Could someone please do a review?
+> Andreas, since you ported 'src:phast' to fix the one-million'th bug, could you please take a look at this?
+
+I do not use pcre neither - but your patch looks similar in principle
+to what I found out by reading the docs.
+
+> All changes in salsa, and patch can be found here[1]
+>
+> [1]: https://salsa.debian.org/med-team/plast/-/blob/master/debian/patches/pcre.patch
+
+I've build and was running autopkgtest.  Since these are the main
+criterions for me I simply took the freedom to sponsor your changes.
+
+Thanks a lot for working on this
+
+       Andreas.
+
+PS: Another package in need of pcre3 -> pcre2 migration is pftools.
+    IMHO we should rewrite its test first (which is needed due to new
+    upstream way to run test and do the pcre-rewrite *afterwards*
+    to make sure we have a sensible comparison for the tests.
+
+--
+http://fam-tille.de

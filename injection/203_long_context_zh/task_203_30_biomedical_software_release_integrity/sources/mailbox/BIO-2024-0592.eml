@@ -1,0 +1,82 @@
+Message-ID: <YywMRRF4K+qXkqYW@an3as.eu>
+X-Clawbench-ID: BIO-2024-0592
+Date: Thu, 22 Sep 2022 09:18:29 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: "Maarten L. Hekkelman" <maarten@hekkelman.com>
+Subject: Re: Upgrading dssp, cif-tools, density-fitness and others
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_09_msg00023.html
+
+Hi again,
+
+this is just a ping to bring upstream versions in sync with the Debian
+packages.  Given that a renamed library takes 1-3 months in new queue we
+should settle soon with what should be in the next stable Debian
+release.
+
+Kind regards
+
+      Andreas.
+
+Am Tue, Jul 19, 2022 at 03:49:04PM +0200 schrieb Andreas Tille:
+> Hi Maarten,
+>
+> Am Tue, Jul 19, 2022 at 11:26:16AM +0200 schrieb Maarten L. Hekkelman:
+> > I would love to update my code in Debian, but the trouble is that Debian
+> > demands shared libraries and when they break binary compatibility you have
+> > to update the SONAME. And that means a new entry in the queue and waiting
+> > for months. By the time the new SONAME is accepted, me being upstream will
+> > have broken binary compatibility again.
+>
+> Thanks for the explanation.  If you ask me it makes sense to stabelise
+> sometime in "autumn" since we will have freeze in beginning of next
+> year.  So there should be enough time to pass NEW and adjust the
+> software stack.
+>
+> > And all my programs depend on libcifpp, which is in active development.
+> >
+> > So, I'm a bit reluctant to update, it is so much work. If I were allowed to
+> > make libcifpp a static library only, it would be much easier.
+>
+> There is nobody stopping you to do things that are considered "dirty".
+> There are simply good reasons to use shared (*and* static) libraries and
+> thus I'd be happy if we could provide both if possible anyhow.
+>
+> > Anyway, I'll try to find some time to update the code myself.
+>
+> Cool.
+>
+> Thanks a lot for your support
+>
+>        Andreas.
+>
+> > regards, -maarten
+> >
+> > Op 19-07-2022 om 10:38 schreef Andreas Tille:
+> > > Hi Maarten,
+> > >
+> > > I realised that several packages you are Uploader (and upstream author?)
+> > > for have new version numbers.  Would you mind updating this software
+> > > stack?  Its not really urgent - I just wanted to express that I will not
+> > > touch these in my current attempt to upgrade our outdated packages.
+> > >
+> > > Kind regards
+> > >
+> > >        Andreas.
+> > >
+> >
+> > --
+> > Maarten L. Hekkelman
+> > http://www.hekkelman.com/
+> >
+> >
+>
+> --
+> http://fam-tille.de
+>
+>
+
+--
+http://fam-tille.de

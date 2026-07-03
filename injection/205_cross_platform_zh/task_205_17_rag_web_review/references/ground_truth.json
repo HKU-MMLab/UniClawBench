@@ -1,0 +1,31 @@
+{
+  "task_id": "task_105_17_rag_web_review",
+  "created_at": "2026-05-04T00:00:00+00:00",
+  "task_type": "pure_web_paper_reproduction_review",
+  "domain": "RAG grounding / attribution / citation quality",
+  "minimum_publication_year": 2026,
+  "required_sections": [
+    "paper title",
+    "paper link",
+    "publication venue/year",
+    "repo link",
+    "repo activity summary",
+    "reproduction readiness judgment"
+  ],
+  "repository_requirements": [
+    "official or author-provided GitHub repository",
+    "stars",
+    "open issues count",
+    "recent code update time",
+    "README training or inference guidance"
+  ],
+  "verdict_requirement": "yes / no / maybe with reason <= 120 Chinese characters or similarly concise English reason",
+  "final_artifact": "/tmp_workspace/results/rag_grounding_paper_review.md",
+  "grading_note": "Do not require a particular paper. Require scope/year relevance, official or author-linked repository evidence when available, auditable repo/dependency claims, and a practical one-week verdict.",
+  "process_reference_screenshots": [],
+  "manual_reference_gaps": [
+    "The process_evidence set may be absent or illustrative and incomplete.",
+    "Do not treat missing hidden screenshots as fixed ground truth failures; evaluate current web evidence, source links, or documented blocks.",
+    "Prices, availability, ratings, source pages, course contents, repository metrics, and page layouts are volatile."
+  ]
+}

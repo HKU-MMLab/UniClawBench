@@ -1,0 +1,27 @@
+{
+  "task_id": "task_102_28_artifact_crop_provenance",
+  "note": "Image-provenance task. The executor gets only a cropped detail of a museum artifact (sources/crop.jpg) with no label. They must visually identify the type/object and trace it to the museum's catalog record. No searchable text in the crop.",
+  "crop_origin": {
+    "source_full_image": "Met Collection API primaryImage for objectID 247960 (https://images.metmuseum.org/CRDImages/gr/original/TOAH_DP104336.jpg)",
+    "crop_box_xyxy_on_4000x4000": [880, 1200, 3120, 2720],
+    "what_it_shows": "the black-figure decorated body of a Greek amphora: galloping horses / a chariot scene in black silhouette on the orange terracotta ground; no museum label"
+  },
+  "canonical_answer": {
+    "object": "Terracotta Panathenaic prize amphora (jar)",
+    "culture": "Greek, Attic (black-figure)",
+    "date": "ca. 510 BCE",
+    "holding_institution": "The Metropolitan Museum of Art (The Met)",
+    "met_object_id": 247960,
+    "accession_number": "07.286.80",
+    "department": "Greek and Roman Art",
+    "canonical_url": "https://www.metmuseum.org/art/collection/search/247960",
+    "met_api_url": "https://collectionapi.metmuseum.org/public/collection/v1/objects/247960",
+    "is_public_domain": true
+  },
+  "scoring_anchors": {
+    "must_identify": "an Attic Greek black-figure amphora (Panathenaic prize amphora). Identifying it as 'a Greek vase / pottery' is partial; the black-figure Attic amphora identification is the core.",
+    "canonical_record_for_full_credit": {"institution": "The Met", "object_id": 247960, "accession": "07.286.80"},
+    "primary_source_rule": "canonical = the Met's own catalog record (Met page or Met Collection API). Wikipedia/stock/auction reproductions are secondary.",
+    "tolerance": "Accept 'Panathenaic amphora' / 'Attic black-figure amphora' for the object type. Full credit requires reaching the Met record (object id 247960 or accession 07.286.80). If the executor correctly types it as an Attic black-figure Panathenaic amphora but cannot pin the exact Met object id, give partial credit; pinning the Met record is required for full credit since the pixels are from the Met image."
+  }
+}

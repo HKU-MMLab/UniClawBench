@@ -1,0 +1,50 @@
+Message-ID: <YXBAYUkX8Wa7le/O@an3as.eu>
+X-Clawbench-ID: BIO-2024-1417
+Date: Wed, 20 Oct 2021 18:14:25 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Flavien Bridault <flavien.bridault@ircad.fr>
+Subject: Re: Please update sight packaging
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00130.html
+
+Hi Flavien,
+
+Am Wed, Oct 20, 2021 at 04:43:14PM +0200 schrieb Flavien Bridault:
+> I added some more dependencies and remove some you added. I understand you
+> added them to remove some CMake warnings, but normally we don't really care.
+> iirc this is just because of some CMake files in VTK that are not as modular
+> as we could expect. The executable files mentioned in the warnings are never
+> used at build time nor at runtime.
+
+Its perfectly fine if you removed something that is not needed. :-)
+
+> I struggled a bit with pbuilder because we download some resource files
+> during the configure step. I realized I needed to explicitly enable
+> networking in ~/.pbuilderrc... I guess it is enabled on Debian build
+> machines,  otherwise I would have noticed before, but I am just curious that
+> you can confirm that to me.
+
+Sorry, I can not confirm.  When building a package any download is
+strictly forbidden.  You somehow need to provide those resource files
+at build time - either inside the source tarball or as add on for
+instance in
+    debian/resources
+or so.
+
+> I also had to add a new patch for some missing includes, we already fixed
+> that upstream few days ago.
+>
+> Please confirm that this builds fine on your side.
+
+I admit I will not even try since this download trick will not work. ;-)
+
+Do you see any chance to fix this?
+
+Kind regards
+
+      Andreas.
+
+--
+http://fam-tille.de

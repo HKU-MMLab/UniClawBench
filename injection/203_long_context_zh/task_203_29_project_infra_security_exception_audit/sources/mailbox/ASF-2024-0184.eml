@@ -1,0 +1,102 @@
+Message-ID: <CAKQ1sVN1A9YaUybfneg=vdL+KNvBBmuja65AB0T7Q0btZB-E+w@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0184
+Date: Mon, 13 May 2024 22:49:24 +0200
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: Stefan Eissing <stefan@eissing.org>
+Subject: Re: more async handling in mod_h2
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-05.mbox
+
+On Mon, May 13, 2024 at 9:02 PM Yann Ylavic <ylavic.dev@gmail.com> wrote:
+>
+> On Mon, May 13, 2024 at 6:31 PM Stefan Eissing <stefan@eissing.org> wrote:
+> >
+> > > Am 13.05.2024 um 17:41 schrieb Yann Ylavic <ylavic.dev@gmail.com>:
+> > >
+> > > On Mon, May 13, 2024 at 1:32 PM Stefan Eissing
+> > >>
+> > >> With the change in PR 280, we return on being flow blocked. The response(s) are *not* finished. If MPM now closes such a connection under load, the client will most likely try again. This seems counter productive.
+> > >
+> > > AFAICT the CONN_STATE_WRITE_COMPLETION state is different depending on
+> > > CONN_SENSE_WANT_READ and CONN_SENSE_WANT_WRITE/DEFAULT.
+> > > With CONN_SENSE_WANT_WRITE/DEFAULT, mpm_event will indeed assume flush
+> > > (nonblocking) before close,
+>
+> It's actually a flush before *keepalive* (unless !AP_CONN_KEEPALIVE),
+> though it's not what you want anyway.
+>
+> > > but with CONN_SENSE_WANT_READ it will poll
+> > > for read on the connection and come back to the process_connection
+> > > hooks when something is in.
+> > >
+> > > When mod_h2 waits for some WINDOW_UPDATE it wants the MPM to POLLIN
+> > > (right?), h2_c1_hook_process_connection() should recover/continue with
+> > > the new data from the client. And since it's a c1 connection I don't
+> > > think there needs to be some new pollset/queues sizing adjustment to
+> > > do either, so we should be good?
+> >
+> > Yes, mod_h2 does CONN_STATE_WRITE_COMPLETION and CONN_SENSE_WANT_READ and it works nicely. The only thing is that, when I open many connections, unfinished ones get dropped very fast. Like after a few milliseconds.
+>
+> What do you mean by unfinished ones, which state are they in (i.e. how
+> do they end up in the MPM with a keepalive state which is the only one
+> where connections are "early" killed under high load)?
+> I think this can only happen when mpm_event gets a connection with
+> c->cs->state == CONN_STATE_WRITE_COMPLETION but c->cs->sense !=
+> CONN_SENSE_WANT_READ, is that a mod_h2 possible thing?
+
+Hm, I think I figured this out by myself.
+As I said above CONN_STATE_WRITE_COMPLETION leads to
+CONN_STATE_CHECK_REQUEST_LINE_READABLE (i.e keepalive state) once the
+completion is done (or the POLLIN with c->cs->sense ==
+CONN_SENSE_WANT_READ) and if there is no input data already pending.
+This is really not what mod_h2 wants but rather
+ap_run_process_connection() to always be called after POLLIN.
+We could handle that specifically for the CONN_SENSE_WANT_READ case
+but it's yet more abuse of CONN_STATE_WRITE_COMPLETION imho.
+Let's see how CONN_STATE_PROCESS (from PR 294 below) works to take the
+relevant bits in trunk eventually.
+
+>
+> > >>
+> > >> Therefore I am hesitant if this change is beneficial for us. It frees up a worker thread - that is good - but. Do we need a new "connection state" here?
+> > >>
+> > >> WDYT?
+> > >
+> > > I think the semantics of CONN_STATE_WRITE_COMPLETION with
+> > > CONN_SENSE_WANT_* are quite unintuitive (for the least), so we
+> > > probably should have different states for CONN_STATE_WRITE_COMPLETION
+> > > (flush before close) and CONN_STATE_POLL_READ/POLL_WRITE/POLL_RW which
+> > > would be how a process_connection hook would return to the MPM just
+> > > for poll()ing.
+> >
+> > I think that would be excellent, yes. Trigger polling with the connection Timeout value.
+>
+> There is https://github.com/apache/httpd/pull/294 with quite some
+> changes to mpm_event. Sorry this is still WIP and needs to be split
+> more, probably in multiple PRs too, but it works for the tests I've
+> done so far (I just rebased it on latest trunk).
+> This change starts with Graham's AGAIN return code (from
+> process_connection hooks) for letting the MPM do the polling for SSL
+> handshakes that'd block for instance. It then expanded to a
+> CONN_STATE_PROCESS state (renamed from CONN_STATE_READ_REQUEST_LINE)
+> where mpm_event receiving AGAIN from ap_run_process_connection() will
+> simply poll according to the c->cs->sense value
+> (WANT_READ/WANT_WRITE).
+> This PR also removes all keepalive kills, though I don't think mod_h2
+> should rely on this state?
+>
+> Could you try running your mod_h2 changes on top of it and with
+> h2_c1_run() doing something like:
+>     c->cs->state = CONN_STATE_PROCESS;
+>     c->cs->state = CONN_SENSE_WANT_READ; /* or _WRITE */
+
+This should be c->cs->sense = CONN_SENSE_WANT_READ of course..
+
+>     return AGAIN;
+> where you want mpm_event to simply poll() for read (or write)?
+>
+>
+> Regards;
+> Yann.

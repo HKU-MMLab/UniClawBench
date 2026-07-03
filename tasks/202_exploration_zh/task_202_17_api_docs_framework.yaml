@@ -1,0 +1,54 @@
+task_id: task_202_17_api_docs_framework
+category: 202_exploration_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我需要为我们的公开 REST API 文档站点选择一个框架。要求（以下每一项都很
+  重要）：
+
+  - 在自撰的指南页面中支持语法高亮的代码块，
+  - light/dark 模式，
+  - 全文搜索，
+  - 文档版本管理（VERSIONING），使 API 文档的 /v1 和 /v2 能够共存，
+  - 将我们的 OpenAPI/Swagger spec 渲染为交互式 API 参考。
+
+  一组固定的候选框架离线提供，位于：
+
+      /tmp_workspace/clawbench/sources/candidates.json
+
+  每个候选针对每项能力列出它是 `builtin`、仅能通过 `plugin` 提供（需要额外
+  安装/配置），还是 `no`（不支持），并附一条证据说明。一项能力只要是 builtin
+  或可通过 plugin 提供，就算满足；`no` 表示它无法满足该要求。
+
+  请弄清楚哪些框架满足全部五项要求，然后恰好挑选一个。当两个框架都符合
+  资格时，优先选择那个把改造起来在结构上最痛苦的要求——VERSIONING——做成
+  内置而非外挂的框架。注意：专为 OpenAPI 打造的工具未必是一个完整的文档
+  站点，而有些非常时髦的选项缺少版本管理。
+
+  请保存：
+  - `/tmp_workspace/results/framework_choice.json`：你的 `selected_id`、它为
+    什么满足每一项要求（注明哪些是 builtin、哪些是 plugin）、打破平局的理由，
+    以及关于配置 OpenAPI 渲染 + 版本管理的简要说明。
+  - `/tmp_workspace/results/framework_evaluation.json`：每个候选针对五项要求
+    的能力覆盖情况、keep/reject，以及对每个被淘汰的框架给出它具体未通过
+    哪项要求（附 builtin/plugin/no）。
+  - `/tmp_workspace/results/framework_method.json`：你使用了哪些字段/证据，
+    以及你是如何决定打破平局的（可复现）。
+
+  这是完全离线的——不要从网络获取任何内容。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+sources:
+  - candidates.json
+
+codex:
+  max_user_followups: 2

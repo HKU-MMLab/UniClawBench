@@ -1,0 +1,20 @@
+{
+  "display_name": "NeonMarket \u2014 Storefront",
+  "ecommerce": {
+    "cart": true,
+    "checkout": true,
+    "product_pages": true,
+    "inventory": true
+  },
+  "responsive": true,
+  "palette": [
+    "#0A0A0A",
+    "#FF2E63",
+    "#08D9D6",
+    "#FFD400",
+    "#7B2FF7"
+  ],
+  "product_image_area_ratio": 0.4,
+  "note": "high-energy neon storefront, full ecommerce but loud palette (wrong vibe)",
+  "id": "neon_market"
+}

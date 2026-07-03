@@ -1,0 +1,46 @@
+Message-ID: <ZifvHZ3HR9_FmMo-@fusion.emlwks999.eu>
+X-Clawbench-ID: BIO-2024-0872
+Date: Tue, 23 Apr 2024 19:25:49 +0200
+From: Étienne Mollier <emollier@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: emboss and python-biopython stuck in Building state
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_04_msg00042.html
+
+Hi Andrius,
+
+Andrius Merkys, on 2024-04-23:
+> Five days ago I have uploaded emboss and python-biopython. Both are stuck in
+> "Building" state since then, emboss on arm64 and python-biopython on armel.
+> This is strange to me, as normally long builds timeout after periods of
+> inactivity (no output). I have successfully rebuilt emboss on amdahl.d.o in
+> a couple of minutes.
+>
+> Has anybody experienced similar issues lately?
+
+r-cran-hunspell looks also affected on armel:
+
+	r-cran-hunspell (6d 7h 31m, arm-arm-01)
+	python-biopython (6d 5h 16m, arm-arm-03)
+
+also pyresample on arm64:
+
+	emboss (6d 7h 49m, arm-arm-01)
+	pyresample (6d 7h 9m, arm-arm-04)
+
+and on armhf:
+
+	pyresample (6d 7h 10m, arm-arm-01)
+
+none of which look to need that long to build.
+
+It could be that something went off with some Arm (ltd) runners.
+
+In hope this helps,
+--
+  .''`.  Étienne Mollier
+ : :' :  pgp: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/0, please excuse my verbosity
+   `-

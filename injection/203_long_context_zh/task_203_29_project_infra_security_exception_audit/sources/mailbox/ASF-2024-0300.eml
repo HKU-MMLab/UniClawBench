@@ -1,0 +1,41 @@
+Message-ID: <DS7PR12MB58883D1EBCDB5552792CD5E1FECE9@DS7PR12MB5888.namprd12.prod.outlook.com>
+X-Clawbench-ID: ASF-2024-0300
+Date: Wed, 25 Jan 2023 09:31:54 +0000
+From: Joe Schaefer <joe@sunstarsys.com>
+To: "dev@httpd.apache.org" <dev@httpd.apache.org>
+Subject: Re: mod_wasm: Contributing Upstream to Apache
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-01.mbox
+
+Looked at the PR- the IO is pretty primitive (no streaming anywhere).  Probably not fatal for Webapps, but it could use some better relations with the filter stack and bucket brigades.
+
+Joe Schaefer, Ph.D
+<joe@sunstarsys.com>
++1 (954) 253-3732
+SunStar Systems, Inc.
+Orion - The Enterprise Jamstack Wiki
+
+________________________________
+From: Joe Schaefer <joe@sunstarsys.com>
+Sent: Tuesday, January 24, 2023 4:06:13 PM
+To: dev@httpd.apache.org <dev@httpd.apache.org>
+Subject: Re: mod_wasm: Contributing Upstream to Apache
+
+Would be great to marry it to apreq, too.
+
+On Tue, Jan 24, 2023 at 4:04 PM Joe Schaefer <joe@sunstarsys.com<mailto:joe@sunstarsys.com>> wrote:
+It is impossible to run mod_h2 without it or similar.
+
+On Tue, Jan 24, 2023 at 3:37 PM Eric Covener <covener@gmail.com<mailto:covener@gmail.com>> wrote:
+> We are still very interested in contributing this module upstream and helping to maintain it. Please, let us know what improvements or changes would be needed for it to be considered ready for inclusion.
+
+As a pessimistic PMC member not caring about WASM or these languages,
+I worry that marrying the lifecycle together is not advantageous for
+either side. Of course I worry about being stuck with the pieces when
+employer interest wanes or after turnover.  It does not seem like it's
+strictly necessary to be part of the server distribution (there are
+many examples of successful out-of-tree modules).
+
+However the above is no veto.

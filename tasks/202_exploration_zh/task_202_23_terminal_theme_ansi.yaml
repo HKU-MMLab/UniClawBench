@@ -1,0 +1,59 @@
+task_id: task_202_23_terminal_theme_ansi
+category: 202_exploration_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我想为一位整天面对彩色 CLI 输出的开发者挑选一套深色终端配色方案——git diff、
+  ls 颜色、带语法高亮的日志。最重要的是 ANSI 颜色之间要保持清晰可辨
+  （尤其是蓝色与紫色、红色与绿色），并且文本要保持
+  可读。请帮我从一组固定的候选方案中选出最佳的一个。
+
+  候选方案以真实的 Windows Terminal 主题 JSON
+  文件形式离线提供，位于：
+
+      /tmp_workspace/clawbench/sources/theme_candidates/
+
+  每个文件包含 16 种 ANSI 颜色以及十六进制格式的 `background`/`foreground`。
+  请客观地评估它们——解析十六进制值，并为每套方案计算：
+
+  - 硬性约束（必须全部通过）：
+    1. foreground 与 background 的对比度 >= 4.5（WCAG AA），
+    2. 6 种彩色普通 ANSI 颜色（红、绿、黄、蓝、紫、青）中任意两者之间的
+       最小颜色差异（deltaE） >= 18，
+    3. 蓝色与紫色的 deltaE >= 18，
+    4. 红色与绿色的 deltaE >= 25。
+
+  - 软性偏好（在通过所有硬性约束的方案之间用于打破平局）：
+    优先选择更大的最小 ANSI deltaE，其次是更高的 fg/bg 对比度。
+
+  恰好挑选一套方案，并用计算得出的数值加以论证。请注意：
+  一套流行的柔和配色方案可能有彼此过于接近的 ANSI 颜色，而
+  一套高对比度方案可能实际上对两个不同的 ANSI 槽位复用了同一种颜色。
+
+  保存：
+  - `/tmp_workspace/results/theme_choice.json`：你的选择（`selected_id` + 各项
+    指标）、通过所有硬性约束的方案，以及打破平局的依据。
+  - `/tmp_workspace/results/theme_evaluation.json`：每套方案的指标（fg/bg
+    对比度、最小 ANSI deltaE、蓝-紫 deltaE、红-绿 deltaE），附带
+    通过/未通过及未通过的约束名称。
+  - `/tmp_workspace/results/theme_method.json`：你如何解析并计算
+    对比度 / deltaE（可复现）。
+
+  这完全是离线的——不要从网络获取任何内容。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/reference_analysis.py
+sources:
+  - theme_candidates/
+
+codex:
+  max_user_followups: 2

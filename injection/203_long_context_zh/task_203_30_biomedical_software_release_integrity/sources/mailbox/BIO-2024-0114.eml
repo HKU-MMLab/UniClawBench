@@ -1,0 +1,49 @@
+Message-ID: <YuwtZdbSJw0fbU8u@an3as.eu>
+X-Clawbench-ID: BIO-2024-0114
+Date: Thu, 4 Aug 2022 22:34:45 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>,	Dylan Aïssi <daissi@debian.org>
+Subject: Can someone have a look at the new upstream version of plink2
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_08_msg00024.html
+
+Hi,
+
+I tried to upgrade plink2 to latest upstream but as per Salsa CI[1]
+the build fails on amd64 with
+
+...
+../include/plink2_base.h:1534:8: error: #error "32-byte-float-vector builds require FMA3 as well."
+ 1534 | #      error "32-byte-float-vector builds require FMA3 as well."
+      |        ^~~~~
+In file included from ../include/plink2_bits.h:23,
+                 from ../plink2_cmdline.h:25,
+                 from ../plink2_random.h:21,
+                 from ../plink2_random.cc:18:
+../include/plink2_base.h:1534:8: error: #error "32-byte-float-vector builds require FMA3 as well."
+ 1534 | #      error "32-byte-float-vector builds require FMA3 as well."
+      |        ^~~~~
+In file included from ../include/plink2_bits.h:23,
+                 from ../include/pgenlib_misc.h:77,
+                 from ../include/pgenlib_read.h:23,
+                 from ../plink2_common.h:26,
+                 from ../plink2_set.h:21,
+                 from ../plink2_set.cc:18:
+../include/plink2_base.h:1534:8: error: #error "32-byte-float-vector builds require FMA3 as well."
+ 1534 | #      error "32-byte-float-vector builds require FMA3 as well."
+      |        ^~~~~
+
+
+while it builds on i386.  It would be great if someone could have a look.
+
+Kind regards
+
+      Andreas.
+
+
+[1] https://salsa.debian.org/med-team/plink2/-/jobs/3070516
+
+--
+http://fam-tille.de

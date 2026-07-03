@@ -1,0 +1,358 @@
+{
+  "generated_at": "2026-04-19T18:00:00Z",
+  "project": "Platform Rewrite",
+  "pages": [
+    {
+      "page_id": "p-001",
+      "title": "Kickoff",
+      "blocks": [
+        {
+          "type": "heading",
+          "text": "Kickoff — 2026-02-10"
+        },
+        {
+          "type": "text",
+          "text": "Attendees: Alice (TL), Bob (PM), Carol (infra), Dave (staff eng), Erin (SRE)."
+        },
+        {
+          "type": "text",
+          "text": "Goal: migrate the existing Python ingestion monolith to a set of Go microservices over the next two quarters, without regressing on end-to-end latency (p95 < 800ms)."
+        },
+        {
+          "type": "bullet",
+          "text": "Scope: ingest-api, dedup-worker, routing-service. Downstream consumers stay on the existing Kafka topics."
+        },
+        {
+          "type": "bullet",
+          "text": "Non-goals: replacing the object-storage layer, moving off Postgres, rewriting the Python CLI."
+        },
+        {
+          "type": "bullet",
+          "text": "Timeline: alpha by end of March, beta cut in mid-April, GA by mid-May."
+        },
+        {
+          "type": "text",
+          "text": "Risks flagged: team has limited Go experience (mitigation: pair with platform team for first month); existing Python monolith carries undocumented behavior (mitigation: shadow-traffic mirror during beta)."
+        },
+        {
+          "type": "bullet",
+          "text": "Initial proposal — observability ownership: Erin owns building all GA dashboards single-handed; she's our SRE so the dashboard suite naturally falls to her. (Cross-doc anchor: this proposal is later revisited in p-005 and superseded in p-007.)"
+        },
+        {
+          "type": "bullet",
+          "text": "Initial proposal — dedup window: a 10-minute LRU window should be enough given current re-delivery patterns. (Cross-doc anchor: revised in p-004 design draft and finalized in p-007.)"
+        }
+      ]
+    },
+    {
+      "page_id": "p-002",
+      "title": "Weekly Sync — Feb",
+      "blocks": [
+        {
+          "type": "heading",
+          "text": "Weekly Sync — 2026-02-17"
+        },
+        {
+          "type": "text",
+          "text": "Attendees: Alice, Bob, Carol, Dave."
+        },
+        {
+          "type": "bullet",
+          "text": "Agenda: queue choice, service boundaries, staffing for sprint 1."
+        },
+        {
+          "type": "bullet",
+          "text": "Decision: adopt Kafka as the event backbone for the new pipeline (vs. NATS or RabbitMQ) — aligns with existing downstream consumers and avoids a second operational surface."
+        },
+        {
+          "type": "bullet",
+          "text": "Decision: split ingest-api and dedup-worker into separate services from day 1, even though it's tempting to start with a monolith."
+        },
+        {
+          "type": "bullet",
+          "text": "Initial proposal — schema evolution: lean toward JSON-Schema for the on-wire event envelope; the team is already using JSON elsewhere, easier to debug. Marked tentative pending Carol's benchmark. (Cross-doc anchor: re-opened on p-005, finalized differently on p-008.)"
+        },
+        {
+          "type": "text",
+          "text": "Action items: Carol to spike Kafka client library choice by 2026-02-24; Dave to draft the ingest-api service contract."
+        },
+        {
+          "type": "heading",
+          "text": "Weekly Sync — 2026-02-24"
+        },
+        {
+          "type": "text",
+          "text": "Attendees: Alice, Bob, Dave, Erin."
+        },
+        {
+          "type": "bullet",
+          "text": "Carol's Kafka spike: recommend franz-go over confluent-kafka-go (better context.Context support, fewer cgo headaches)."
+        },
+        {
+          "type": "bullet",
+          "text": "Decision: use franz-go."
+        }
+      ]
+    },
+    {
+      "page_id": "p-003",
+      "title": "Weekly Sync — Mar",
+      "blocks": [
+        {
+          "type": "heading",
+          "text": "Weekly Sync — 2026-03-03"
+        },
+        {
+          "type": "text",
+          "text": "Attendees: Alice, Bob, Carol, Dave, Erin."
+        },
+        {
+          "type": "bullet",
+          "text": "Prototype ingest-api hitting 1.2k RPS on a single pod in staging — headroom to 2x with the current CPU request."
+        },
+        {
+          "type": "bullet",
+          "text": "Decision: use Go (golang 1.23) as the primary language for ingester and all downstream services in this workstream."
+        },
+        {
+          "type": "bullet",
+          "text": "Decision: deploy as a statefulset with local SSD for the dedup LRU cache (alternatives: Redis sidecar, in-memory only) — picked statefulset for cost + latency."
+        },
+        {
+          "type": "heading",
+          "text": "Weekly Sync — 2026-03-17"
+        },
+        {
+          "type": "text",
+          "text": "Attendees: Alice, Bob, Carol, Dave."
+        },
+        {
+          "type": "bullet",
+          "text": "Alpha rollout is a week behind; two load-test crashes tied to the franz-go batch reclaim path."
+        },
+        {
+          "type": "bullet",
+          "text": "Action item: Dave to open upstream issue + work around with manual flush; ship alpha 2026-03-25."
+        },
+        {
+          "type": "bullet",
+          "text": "Staffing: Erin rotating off for two weeks, Priya backfilling."
+        }
+      ]
+    },
+    {
+      "page_id": "p-004",
+      "title": "Design Doc: Ingester",
+      "blocks": [
+        {
+          "type": "heading",
+          "text": "Design Doc — Ingester — v2 draft"
+        },
+        {
+          "type": "text",
+          "text": "Author: Dave. Reviewers: Alice, Carol."
+        },
+        {
+          "type": "bullet",
+          "text": "Goal: accept up to 10k events/sec per region, dedup on (tenant_id, event_id), route to the right downstream topic."
+        },
+        {
+          "type": "bullet",
+          "text": "Architecture: HTTP/2 ingress behind an Envoy gateway → ingest-api (stateless) → dedup-worker (statefulset with a bounded LRU, 15-minute window) → router → Kafka."
+        },
+        {
+          "type": "bullet",
+          "text": "Revision — dedup window: superseding the 10-minute proposal from kickoff (p-001), this draft adopts a 15-minute LRU window after observing the alpha re-delivery tail. Still subject to retro feedback once beta data is in. (Cross-doc anchor: this 15-minute number is itself superseded in p-007.)"
+        },
+        {
+          "type": "bullet",
+          "text": "Backpressure: ingest-api returns 429 when dedup-worker lag > 5s, gateway retries with jitter."
+        },
+        {
+          "type": "bullet",
+          "text": "Decision: reject in-flight events older than the dedup window instead of silently letting duplicates through — safer default, callers already retry with their own idempotency keys."
+        },
+        {
+          "type": "text",
+          "text": "Open questions see page p-005."
+        }
+      ]
+    },
+    {
+      "page_id": "p-005",
+      "title": "Open Questions",
+      "blocks": [
+        {
+          "type": "heading",
+          "text": "Open Questions"
+        },
+        {
+          "type": "bullet",
+          "text": "Backpressure policy: should we drop or retry on sustained overload? Current prototype retries up to 3×, but that masks real capacity issues."
+        },
+        {
+          "type": "bullet",
+          "text": "Schema evolution revisit: p-002's tentative JSON-Schema lean is no longer the working assumption. Carol's benchmark shows protobuf wins on payload size and decode speed; final call deferred to a beta retro. (Cross-doc anchor: confirmed on p-008.)"
+        },
+        {
+          "type": "bullet",
+          "text": "Multi-region dedup: do we dedup per-region only, or is there a global guarantee we need? Currently per-region."
+        },
+        {
+          "type": "bullet",
+          "text": "Observability ownership revisit: p-001 said Erin alone owns dashboards; the alpha showed that's not realistic given her on-call load. Pending decision on whether to share ownership. (Cross-doc anchor: resolved on p-007.)"
+        },
+        {
+          "type": "bullet",
+          "text": "Runtime config: Feature flags via GrowthBook vs. env-vars-only — no decision yet."
+        }
+      ]
+    },
+    {
+      "page_id": "p-006",
+      "title": "References",
+      "blocks": [
+        {
+          "type": "heading",
+          "text": "References"
+        },
+        {
+          "type": "link",
+          "url": "https://kafka.apache.org/documentation/#design"
+        },
+        {
+          "type": "link",
+          "url": "https://github.com/twmb/franz-go"
+        },
+        {
+          "type": "link",
+          "url": "https://cloud.google.com/architecture/distributed-queue-patterns"
+        },
+        {
+          "type": "link",
+          "url": "https://aws.amazon.com/builders-library/reliability-and-constant-work/"
+        },
+        {
+          "type": "text",
+          "text": "Internal: the existing Python monolith lives in github.com/internal/ingestor-legacy; architecture notes in that repo's docs/ directory."
+        }
+      ]
+    },
+    {
+      "page_id": "p-007",
+      "title": "Retro — Alpha",
+      "blocks": [
+        {
+          "type": "heading",
+          "text": "Retro — Alpha (2026-03-31)"
+        },
+        {
+          "type": "heading",
+          "text": "What went well"
+        },
+        {
+          "type": "bullet",
+          "text": "Alpha shipped only one week late, despite the franz-go flush bug."
+        },
+        {
+          "type": "bullet",
+          "text": "Load tests caught the statefulset eviction issue before any customer traffic."
+        },
+        {
+          "type": "bullet",
+          "text": "Pairing with platform team for Go reviews unblocked us multiple times."
+        },
+        {
+          "type": "heading",
+          "text": "What to improve"
+        },
+        {
+          "type": "bullet",
+          "text": "We underestimated operational readiness — SRE asked for dashboards we hadn't built."
+        },
+        {
+          "type": "bullet",
+          "text": "Design reviews ran too long (2+ hrs) because the design doc was still in draft during review."
+        },
+        {
+          "type": "heading",
+          "text": "Decisions"
+        },
+        {
+          "type": "bullet",
+          "text": "Final decision — observability ownership: supersedes p-001 (Erin solo) and the p-005 open question. Dave and Erin co-own the GA dashboard set; Erin keeps SLO/error-budget dashboards, Dave owns ingest-pipeline saturation and franz-go internals. This is the working ownership model going into GA."
+        },
+        {
+          "type": "bullet",
+          "text": "Final decision — dedup window size: supersedes p-001 (10 min) and p-004 (15 min). Adopt a 20-minute LRU window for GA based on the alpha re-delivery distribution; the 15-minute draft cut off ~3% of legitimate retries. The 20-minute number is the binding GA value."
+        },
+        {
+          "type": "heading",
+          "text": "Actions"
+        },
+        {
+          "type": "bullet",
+          "text": "Dave to partner with Erin on the GA dashboard set by 2026-04-14."
+        },
+        {
+          "type": "bullet",
+          "text": "Alice to enforce the 'design doc fully written before review' rule for beta."
+        }
+      ]
+    },
+    {
+      "page_id": "p-008",
+      "title": "Retro — Beta",
+      "blocks": [
+        {
+          "type": "heading",
+          "text": "Retro — Beta (2026-04-18)"
+        },
+        {
+          "type": "heading",
+          "text": "What went well"
+        },
+        {
+          "type": "bullet",
+          "text": "Beta hit the performance target (p95 ingest latency: 710ms under 2x load)."
+        },
+        {
+          "type": "bullet",
+          "text": "Shadow-traffic diff against legacy Python ingester found only 0.03% mismatch — mostly timestamp rounding."
+        },
+        {
+          "type": "heading",
+          "text": "What to improve"
+        },
+        {
+          "type": "bullet",
+          "text": "The dedup LRU needs a proper persistence story before GA (pod restarts lose ~20 min of dedup state under the new window)."
+        },
+        {
+          "type": "bullet",
+          "text": "Runbook still incomplete — SRE escalated once during the first weekend."
+        },
+        {
+          "type": "heading",
+          "text": "Decisions"
+        },
+        {
+          "type": "bullet",
+          "text": "Final decision — schema evolution: supersedes p-002 (tentative JSON-Schema) and resolves the p-005 open question. Adopt protobuf for the on-wire event envelope. Carol's beta benchmark showed ~38% smaller payloads and ~2.4x faster decode versus JSON-Schema; tooling cost (codegen) is a one-time investment. This is the binding GA decision."
+        },
+        {
+          "type": "heading",
+          "text": "Action items"
+        },
+        {
+          "type": "bullet",
+          "text": "Carol to propose a snapshot-to-S3 approach for dedup LRU by 2026-04-28."
+        },
+        {
+          "type": "bullet",
+          "text": "Dave + Erin to close out the runbook before GA."
+        }
+      ]
+    }
+  ]
+}

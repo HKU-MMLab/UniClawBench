@@ -1,0 +1,25 @@
+Message-ID: <udly26hyinh.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-0426
+Date: Sun, 24 Oct 2021 21:53:22 -0400
+From: ucko@debian.org (Aaron M. Ucko)
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Re: sra-sdk is lacking libngs
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00146.html
+
+ucko@debian.org (Aaron M. Ucko) writes:
+
+> We may simply need to adjust the mechanics of how we supply the key to use.
+
+The only approach I've gotten to work is setting the environment
+variable VDBPWFILEPTR; although we could certainly adjust the test
+script accordingly, I'm concerned that we'd be papering over a genuine
+regression. :-/
+
+Meanwhile, I did push a changelog update adding a closer for #997280.
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

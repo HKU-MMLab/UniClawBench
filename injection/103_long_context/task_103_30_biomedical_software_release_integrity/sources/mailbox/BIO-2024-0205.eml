@@ -1,0 +1,41 @@
+Message-ID: <c8d497c014c7edd2f4eae211f60425369c27ff2f.camel@med.uni-goettingen.de>
+X-Clawbench-ID: BIO-2024-0205
+Date: Wed, 27 Oct 2021 06:39:45 +0000
+From: "Uecker, Martin" <Martin.Uecker@med.uni-goettingen.de>
+To: "andreas@fam-tille.de" <andreas@fam-tille.de>
+Subject: Re: bart: version 0.7.00
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00156.html
+
+Hi Andreas,
+
+Am Mittwoch, den 27.10.2021, 08:13 +0200 schrieb Andreas Tille:
+> Hi Martin,
+>
+> Am Tue, Oct 26, 2021 at 04:06:46PM +0000 schrieb Uecker, Martin:
+> > I pushed changes for a the version of bart. Maybe you could
+> > take a look?  There are some failures in the CI on salsa.
+>
+> I get
+>
+> The following packages have unmet dependencies:
+>  libpetsc-real3.14 : Depends: libhypre (
+> in autopkgtest in my pbuilder environment.
+
+Yes, this is not something BART explicitely depends on
+but this is somehow pulled in in a different way.
+
+> > The i386 build triggers a compiler crash. I will try to
+> > look into this later (I am a GCC contributor myself), but
+> > this is a compiler problem.
+> >
+> > The other failures may be related to the build environment
+> > not being up-to-date.
+>
+> May be that is the case but for this week I have no free cycles to check this.
+
+No problem. It is not urgent.
+
+Martin

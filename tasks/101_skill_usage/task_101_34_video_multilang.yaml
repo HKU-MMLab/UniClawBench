@@ -1,0 +1,63 @@
+task_id: task_101_34_video_multilang
+category: 101_skill_usage
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I recorded a short ML talk clip and want to share it with our Shanghai
+  office — they need Chinese subtitles and a readable transcript. The
+  video is at /tmp_workspace/clawbench/sources/talk.mp4, roughly a minute
+  long. Use the speech-to-text skill to transcribe with timestamps,
+  the video editing skill if you need to split out the audio track,
+  the translation skill to render everything into Chinese, and
+  the Markdown formatter to lay out the final transcript cleanly. There's a
+  glossary at cn_terms.json next to the video — every technical term that
+  appears must use exactly the Chinese rendering from that glossary, no
+  exceptions.
+
+  Two deliverables under /tmp_workspace/results/:
+
+  1. talk.zh.srt — a well-formed Chinese subtitle file that loads cleanly
+     in a standard video player. Numeric cue indices, HH:MM:SS,mmm
+     timestamp lines, and the timestamps must line up with where each
+     idea is actually said in the video, not just placeholder cues. The
+     first cue must start within the first five seconds.
+
+  2. talk.zh.md — a paragraph-by-paragraph Chinese transcript. Each
+     paragraph starts with a [HH:MM:SS] timestamp matching where that
+     paragraph begins in the video, and the writing should follow the
+     same order in which the speaker introduces each idea.
+
+  Keep the technical claims faithful to what the speaker actually says —
+  this should read like a real Chinese rendering of the talk, not a loose
+  summary. Every ML concept the speaker mentions should make it into both
+  files at a timestamp consistent with when it was spoken.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - talk.mp4
+  - cn_terms.json
+
+skills:
+  - ffmpeg-video-editor
+  - openai-whisper-api
+  - translate
+  - markdown-formatter
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

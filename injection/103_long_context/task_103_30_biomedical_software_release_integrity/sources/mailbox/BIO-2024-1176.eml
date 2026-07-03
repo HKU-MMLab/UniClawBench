@@ -1,0 +1,59 @@
+Message-ID: <udltu4aldbf.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-1176
+Date: Tue, 11 Oct 2022 09:06:28 -0400
+From: ucko@debian.org (Aaron M. Ucko)
+To: <debian-med@lists.debian.org>
+Subject: Re: Finishing ncbi-vdb and sra-sdk
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00034.html
+
+Andreas Tille  writes:
+
+> I wanted to set you "Owner" of the Debian Med team repository since this
+> is the maximum power.  I realised you are owner.  So either someone has
+> beaten me and just did so or something is wrong if you can't do what you
+> want to do.
+
+OK, thanks.  A closer look indicated that GitLab doesn't normally allow
+*anyone* to force-push to protected branches:
+
+https://docs.gitlab.com/ee/user/project/protected_branches.html
+
+I temporarily enabled force pushes for this one just long enough for my
+needs.  I would have preferred to be able to relax the policy just for
+owners, but AFAICT nobody else pushed in the interim anyway.
+
+>> - The javadocs contain embedded copies of files from libjs-jquery and
+>>   libjs-jquery-ui that should become symlinks (with dependencies added).
+>
+> I've seen packages where this is ignored.  If you want to approach this
+> and need helping hands just ask here.
+
+I reckon it should be straightforward enough, thanks; it just wasn't a
+priority.
+
+>> - Lower priority: I have not yet taught the Java bindings to look for
+>>   full SONAMEs, so they still depend on a -dev package.  I'd appreciate
+>>   help from someone more familiar with Java.
+>
+> I admit I do not understand the problem but I have put Pierre in CC.
+
+More concretely, the bindings should directly load libncbi-ngs.so.3, and
+depend directly on libncbi-ngs3, rather than going through the
+unversioned libncbi-ngs.so symlink and depending on libncbi-ngs-dev.  I
+made appropriate changes on the Python front, but I'm not so clear on
+how to do the same for Java.
+
+> A comment to your question in your other mail:  Sorry, I have no idea
+> how to teach CI to pick from experimental.
+
+OK, thanks.  No big deal, though it might be nice to have it working.
+
+Meanwhile, I reckon I'll also want to revisit debian/copyright,
+particularly with a pass through NEW upcoming. ;-)
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

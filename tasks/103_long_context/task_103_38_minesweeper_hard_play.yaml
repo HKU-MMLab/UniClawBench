@@ -1,0 +1,90 @@
+task_id: task_103_38_minesweeper_hard_play
+category: 103_long_context
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  A service has already started three live Minesweeper terminal sessions for you. Do not start the game
+  yourself. Begin by reading `/tmp_workspace/results/minesweeper_service.log`, choose the current attempt
+  from the listed prestarted sessions, and play through that running session.
+
+  Board size: 16x30 board with 99 mines.
+
+  Each attempt entry gives you:
+  - a prestarted stdin fifo you can write moves to
+  - a board snapshot txt path maintained by the service
+  - a terminal transcript path for that attempt
+  - a duration txt path that records the attempt's gameplay timing
+
+  Use one line per move, sent to the provided fifo for the attempt you are using:
+  - `row col` to reveal a cell
+  - `row col F` to toggle a flag
+
+  Do not launch a new game process. Do not rebuild the startup flow. Use only the prestarted service
+  session. Do not inspect hidden runtime service files.
+
+  Each attempt has its own board txt file, for example:
+  - `/tmp_workspace/results/minesweeper_sessions/attempt_1_board.txt`
+  - `/tmp_workspace/results/minesweeper_sessions/attempt_2_board.txt`
+  - `/tmp_workspace/results/minesweeper_sessions/attempt_3_board.txt`
+
+  The exact board txt path for the attempt you are using is listed in:
+  - `/tmp_workspace/results/minesweeper_service.log`
+  - `/tmp_workspace/results/minesweeper_sessions/summary.tsv`
+
+  After every move, the service writes the latest board state into that attempt's board txt file. Read that
+  txt file after each move to determine the current board state.
+
+  Each attempt also has its own duration txt file, for example:
+  - `/tmp_workspace/results/minesweeper_sessions/attempt_1_duration.txt`
+  - `/tmp_workspace/results/minesweeper_sessions/attempt_2_duration.txt`
+  - `/tmp_workspace/results/minesweeper_sessions/attempt_3_duration.txt`
+
+  The exact duration txt path is listed in the same service log and summary TSV. The duration txt records
+  gameplay timing from the first valid move until the game ends:
+  - `first_move_unix`
+  - `end_unix`
+  - `duration_seconds`
+
+  Before any valid move is made, the duration txt shows `duration_seconds=NOT_STARTED`. After the first
+  valid move but before the game ends, it shows `duration_seconds=IN_PROGRESS`. You must use the matching
+  duration txt for the attempt you actually played when applying the time-based score rule.
+
+  Retry rule:
+  - You have at most three attempts total, and all three are already prestarted for you.
+  - Start with attempt 1.
+  - You may switch to attempt 2 only if attempt 1 hits a mine within the first four moves.
+  - You may switch to attempt 3 only if attempt 2 also hits a mine within the first four moves.
+  - If an attempt survives beyond move 4, that run becomes your final run and you must not continue to a
+    later attempt.
+
+  Scoring:
+  - `base_score = (correctly revealed safe cells + correctly flagged mines) / total cells`.
+  - For this board, `total cells = 480`.
+  - If `duration_seconds <= 300`, `final_score = base_score`.
+  - If `duration_seconds > 300`, `final_score = base_score * (300 / duration_seconds)`.
+  - The task score is the best valid attempt score among the attempts you were allowed to use under the
+    retry rule above.
+  - Revealing all non-mine cells is a full clear. A full clear gets score 1.0 only when finished within
+    300 seconds from the first valid move; if it takes longer than 300 seconds, the same time multiplier
+    applies, so it must receive less than 1.0.
+
+  In your final `/tmp_workspace/results/minesweeper_result.md`, copy in the final board txt content and
+  the matching duration txt content you relied on as evidence.
+
+references:
+  - references/eval_rule.md
+sources: []
+services:
+  - name: minesweeper
+    path: minesweeper
+    start: bash install.sh
+
+codex:
+  max_user_followups: 2

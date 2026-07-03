@@ -1,0 +1,36 @@
+task_id: task_102_32_owid_datapoint_provenance
+category: 102_exploration
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  A slide I'm reviewing claims that in the year 2000, Japan's annual CO₂
+  emissions were about 1.26 billion tonnes, but it gives no citation. Before I
+  trust it, I want to know exactly where that figure comes from and whether it
+  checks out.
+
+  Please trace this number back to an authoritative dataset (not a news article
+  or blog that just repeats it). I need:
+  - the dataset and the specific series it comes from,
+  - the underlying data provider behind that dataset,
+  - the exact value that dataset gives for Japan in 2000 (so we can confirm the
+    ~1.26 billion tonnes figure), and a link to download/inspect the data,
+  - whether the slide's figure checks out.
+
+  Save your conclusion and the evidence chain (the dataset, the matching
+  Japan/2000 row and its value, and the underlying provider) to
+  `/tmp_workspace/results/datapoint_provenance.json`, plus notes under
+  `/tmp_workspace/results/`.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+codex:
+  max_user_followups: 2

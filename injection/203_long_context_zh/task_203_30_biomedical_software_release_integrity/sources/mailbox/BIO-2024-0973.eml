@@ -1,0 +1,24 @@
+Message-ID: <Yahf+3fASo80SWLY@an3as.eu>
+X-Clawbench-ID: BIO-2024-0973
+Date: Thu, 2 Dec 2021 06:56:11 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: [Advent bug squashing] ftpmaster has closed "#875184: [sofa-framework] Future Qt4 removal from Buster" for us
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_12_msg00002.html
+
+Hi,
+
+this bug was a long standing one. Sofa-framework was way lagging behind
+upstream since it would have required a packaging from scratch.  Whoever
+might have some spare time cycles and some packaging skills might take
+it up again.
+
+Kind regards
+
+     Andreas.
+
+--
+http://fam-tille.de

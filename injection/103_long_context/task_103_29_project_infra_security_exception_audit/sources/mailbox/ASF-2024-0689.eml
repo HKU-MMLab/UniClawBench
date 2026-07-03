@@ -1,0 +1,99 @@
+Message-ID: <CALK=YjPG93Mx-9o-VQM4FdqAp1+nK_WfWGAYk-sbk8KBpXgK4A@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0689
+Date: Tue, 20 Aug 2024 07:44:43 -0400
+From: Eric Covener <covener@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: [Bug 69235] unable to connect to backend with existing rewrite rules.
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-08.mbox
+
+On Tue, Aug 20, 2024 at 4:41 AM Ruediger Pluem <rpluem@apache.org> wrote:
+>
+>
+>
+> On 8/19/24 2:14 PM, Eric Covener wrote:
+> >>
+> >> Maybe reverting r757427 (https://svn.apache.org/viewvc?view=revision&revision=757427) fixes this.
+> >> My new patch sofar:
+> >>
+> >> Index: modules/mappers/mod_rewrite.c
+> >> ===================================================================
+> >> --- modules/mappers/mod_rewrite.c       (revision 1920017)
+> >> +++ modules/mappers/mod_rewrite.c       (working copy)
+> >> @@ -4527,20 +4527,6 @@
+> >>       * ourself).
+> >>       */
+> >>      if (p->flags & RULEFLAG_PROXY) {
+> >> -        /* For rules evaluated in server context, the mod_proxy fixup
+> >> -         * hook can be relied upon to escape the URI as and when
+> >> -         * necessary, since it occurs later.  If in directory context,
+> >> -         * the ordering of the fixup hooks is forced such that
+> >> -         * mod_proxy comes first, so the URI must be escaped here
+> >> -         * instead.  See PR 39746, 46428, and other headaches. */
+> >> -        if (ctx->perdir && (p->flags & RULEFLAG_NOESCAPE) == 0) {
+> >> -            char *old_filename = r->filename;
+> >> -
+> >> -            r->filename = ap_escape_uri(r->pool, r->filename);
+> >> -            rewritelog(r, 2, ctx->perdir, "escaped URI in per-dir context "
+> >> -                       "for proxy, %s -> %s", old_filename, r->filename);
+> >> -        }
+> >> -
+> >>          fully_qualify_uri(r);
+> >>
+> >>          rewritelog(r, 2, ctx->perdir, "forcing proxy-throughput with %s",
+> >> @@ -5392,12 +5378,17 @@
+> >>                  return HTTP_FORBIDDEN;
+> >>              }
+> >>
+> >> -            /* make sure the QUERY_STRING and
+> >> -             * PATH_INFO parts get incorporated
+> >> +            if (rulestatus == ACTION_NOESCAPE) {
+> >> +                apr_table_setn(r->notes, "proxy-nocanon", "1");
+> >> +            }
+> >
+> > This seems to preserve 2.4.58 behavior of [P,NE]  in per-dir.
+> > We should re-document NE in this context though
+>
+> I am not sure what you mean here.
+
+Sorry, I originally had a copy of the description from the manual.
+Current doc for [NE] talks about internal redirects only.
+
+>
+> >
+> >> +
+> >> +            /* make sure the QUERY_STRING gets incorporated, but only
+> >> +             * if we do not escape the target. Otherwise the mod_proxy
+> >> +             * canon handler will take care to do this.
+> >
+> > nit: I don't think we will ever escape the target later though [in
+> > mod_rewrite].
+>
+> What the comment wants to say is that we only need to add the QUERY_STRING if we do no escape the target. In case we escape the
+> target the QUERY_STRING gets added by the canon handler.
+
+Right, but I think it's misleading because there is no more escaping
+to come in mod_rewrite along this path (much less any controlled by
+[NE])
+
+>
+> >
+> >
+> >>               * (r->path_info was already appended by the
+> >>               * rewriting engine because of the per-dir context!)
+> >>               */
+> >> -            if (r->args != NULL) {
+> >> +            if ((r->args != NULL) && (rulestatus == ACTION_NOESCAPE)) {
+> >>                  /* see proxy_http:proxy_http_canon() */
+> >>                  r->filename = apr_pstrcat(r->pool, r->filename,
+> >>                                            "?", r->args, NULL);
+> >
+> > nit: It might be more clear here to check (or memoize) proxy-nocanon
+> > directly, for the same confusion as above.
+> >
+>
+> You mean replace (rulestatus == ACTION_NOESCAPE) with apr_table_get(r->notes, "proxy-nocanon") ?
+
+I think so, or alternatively remove any significance of [NE] for proxy.

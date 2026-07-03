@@ -1,0 +1,70 @@
+Message-ID: <1132B10C-39A6-4A01-9720-BB6E7BDB9C75@eissing.org>
+X-Clawbench-ID: ASF-2024-0066
+Date: Mon, 17 Jan 2022 17:32:38 +0100
+From: Stefan Eissing <stefan@eissing.org>
+To: dev@httpd.apache.org
+Subject: Re: TLS neverbleed design
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-01.mbox
+
+> Am 17.01.2022 um 16:42 schrieb Joe Orton <jorton@redhat.com>:
+>
+> On Wed, Jan 12, 2022 at 03:37:05PM +0100, Stefan Eissing wrote:
+>> My current, rough idea would be:
+>>
+>> - fork a process, like mod_cgid does, that can be communicated
+>>  with over a unix domain socket
+>> - have an ap_hook to load a key and return an opaque key handle
+>> - have an ap_hooks to sign/encrypt/decrypt data for a key handle
+>>
+>>
+>> For mod_ssl that would mean:
+>> - use the hook on loading a key file
+>>  - if no handle returned, proceed as now, tell SSL_CTX to load the file
+>>  - on handle, construct a EVP_PKEY that proxies its methods to the
+>>    new hooks
+>
+> You can do this already with PKCS#11 and it's already supported in
+> mod_ssl, reinventing that wheel to add another API
+>
+>> Example of how this is done at https://github.com/h2o/neverbleed/blob/master/neverbleed.c
+>> which AFAICT is used in production at Fastly.
+>>
+>> If we implement this in a new module, that would become usable with
+>> an additional On|Off directive and no changes to SSL configs.
+>>
+>>> You should be able to deploy something like this with PKCS#11, e.g.
+>>> softhsm, p11-kit can proxy PKCS#11 over a Unix domain socket, there are
+>>> probably more solutions out there.
+>>
+>> With the proposed hooks interface, one could do an implementation using soft or
+>> hard hsms. But that would require changing mod_ssl configs as then the
+>> configuration would need to specify keys by an id other than file names. etc. etc.
+>
+> Reinventing PKCS#11 as an ap_* level API is hardly without cost, though,
+> so I wouldn't wave that away against some "etc etc" costs that users
+> would need to tweak configs for.
+>
+> When I look at this problem from 10,000ft I see two parts:
+>
+> a) daemon which loads keys and offers key operations over an AF_UNIX
+> interface
+>
+> b) interface to (a) from SSL_* layer
+>
+> Importantly, both of these seem equally useful in e.g. exim as they are
+> in httpd.  You get (b) from supporting PKCS#11 which is already done in
+> mod_ssl/OpenSSL.  I don't know how much you can get (a) in a convenient
+> way for users, but as a project it mostly orthogonal to httpd except for
+> some startup integration stuff.
+
+I see. Thanks for the clarification. Did not really now about that interface. Then I see no pressing point in adding an additional API, indeed.
+
+Kind Regards,
+Stefan
+
+>
+> Regards, Joe
+>

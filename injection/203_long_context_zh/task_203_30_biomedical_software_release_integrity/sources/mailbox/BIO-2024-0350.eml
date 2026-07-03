@@ -1,0 +1,30 @@
+Message-ID: <20231229122713.7x5hukizxxarbxhd@office.mailbox.org>
+X-Clawbench-ID: BIO-2024-0350
+Date: Fri, 29 Dec 2023 17:57:13 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: Komolehin Israel <komolehinisrael@gmail.com>
+Subject: Re: Xpore Autopkgtest Review ( Bug #1035276 )
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_12_msg00078.html
+
+Hi Israel,
+
+On Fri, Dec 29, 2023 at 01:01:47PM +0100, Komolehin Israel wrote:
+> I worked on the Xpore package by providing autopkgtest and embedding test
+> data. CI was successful.
+>
+> This closes #1035276 bug.
+>
+> I look forward to its review and upload.
+
+I have two comments:
+
+* Add in the copyright information for the test data.
+* Add in a script to automate downloading of this test data in future, similar to[1]
+
+[1]: https://salsa.debian.org/med-team/yanagiba/-/blob/master/debian/tests/get-test-data?ref_type=heads
+
+Best,
+Nilesh

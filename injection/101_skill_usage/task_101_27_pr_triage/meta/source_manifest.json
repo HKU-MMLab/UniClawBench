@@ -1,0 +1,30 @@
+{
+  "task_id": "task_101_27_pr_triage",
+  "note": "Hybrid realism: six controlled PR fixtures modeled on the pallets/flask repository structure. Each snapshot includes meta.json, base/ and head/ trees, and reviews.json. Contributor histories and diffs are synthesized for stable local evaluation.",
+  "entries": [
+    {
+      "path": "pr_snapshots/pr_5599/",
+      "description": "PR fixture with repository metadata, code diff, and reviews."
+    },
+    {
+      "path": "pr_snapshots/pr_5612/",
+      "description": "PR fixture with repository metadata, code diff, and reviews."
+    },
+    {
+      "path": "pr_snapshots/pr_5688/",
+      "description": "PR fixture with repository metadata, code diff, and reviews."
+    },
+    {
+      "path": "pr_snapshots/pr_5701/",
+      "description": "PR fixture with repository metadata, code diff, and reviews."
+    },
+    {
+      "path": "pr_snapshots/pr_5850/",
+      "description": "PR fixture with repository metadata, code diff, and reviews."
+    },
+    {
+      "path": "pr_snapshots/pr_5928/",
+      "description": "PR fixture with repository metadata, code diff, and reviews."
+    }
+  ]
+}

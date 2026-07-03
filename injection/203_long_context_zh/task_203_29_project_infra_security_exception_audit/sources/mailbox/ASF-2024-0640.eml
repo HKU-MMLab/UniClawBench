@@ -1,0 +1,32 @@
+Message-ID: <CALK=YjM3Kk9LAuXfd=OGtfLOo8TxRN30KybxOA=ay9oaon9BXw@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0640
+Date: Tue, 2 Jul 2024 10:43:54 -0400
+From: Eric Covener <covener@gmail.com>
+To: Apache HTTP Server Development List <dev@httpd.apache.org>
+Subject: Re: [VOTE] Release httpd-2.4.61-rc1 as httpd-2.4.61
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-07.mbox
+
+On Tue, Jul 2, 2024 at 9:29 AM Eric Covener <covener@gmail.com> wrote:
+>
+> Hi all,
+>
+> Please find below the proposed release tarball and signatures:
+>
+> https://dist.apache.org/repos/dist/dev/httpd/
+>
+> === Different from template ===
+> I would like to call an expedited VOTE (due to regression in 2.4.60)
+> over the next 1-2 days to release this candidate tarball
+> httpd-2.4.61-rc1 as 2.4.61:
+>
+> (sorry)
+> === end not from a template
+>
+> [ ] +1: It's not just good, it's good enough!
+> [ ] +0: Let's have a talk.
+> [ ] -1: There's trouble in paradise. Here's what's wrong.
+
++1 aix/xlc/ppc64 usual proxy/ssl/perl culprits only.

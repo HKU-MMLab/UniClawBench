@@ -1,0 +1,163 @@
+{
+  "task_id": "task_105_30_arxiv_calibre_index",
+  "schema_notes": "Anchored to 8 immutable arxiv paper IDs. Page counts, author lists, first-author names from arxiv-hosted PDF as of 2026-05-02. Page counts ±2 tolerance. Citation counts dynamic — ±10% tolerance with 0.95x floor. .ods platform-depth checks verify presence of formula cells, conditional-format rules, and embedded chart objects via zip-introspection of content.xml / styles.xml / manifest.xml.",
+  "reference_date": "2026-05-02",
+  "ground_truth": {
+    "arxiv_ids": [
+      "2304.03442",
+      "2305.14314",
+      "2310.04408",
+      "2310.06825",
+      "2401.05566",
+      "2402.07927",
+      "2402.17764",
+      "2403.04132"
+    ],
+    "papers": [
+      {
+        "arxiv_id": "2304.03442",
+        "title": "Generative Agents: Interactive Simulacra of Human Behavior",
+        "first_author": "Joon Sung Park",
+        "author_count": 6,
+        "page_count": 22,
+        "citation_count": 3882
+      },
+      {
+        "arxiv_id": "2305.14314",
+        "title": "QLoRA: Efficient Finetuning of Quantized LLMs",
+        "first_author": "Tim Dettmers",
+        "author_count": 4,
+        "page_count": 26,
+        "citation_count": 4399
+      },
+      {
+        "arxiv_id": "2310.04408",
+        "title": "RECOMP: Improving Retrieval-Augmented LMs with Compression and Selective Augmentation",
+        "first_author": "Fangyuan Xu",
+        "author_count": 3,
+        "page_count": 23,
+        "citation_count": 259
+      },
+      {
+        "arxiv_id": "2310.06825",
+        "title": "Mistral 7B",
+        "first_author": "Albert Q. Jiang",
+        "author_count": 18,
+        "page_count": 9,
+        "citation_count": 3377
+      },
+      {
+        "arxiv_id": "2401.05566",
+        "title": "Sleeper Agents: Training Deceptive LLMs that Persist Through Safety Training",
+        "first_author": "Evan Hubinger",
+        "author_count": 39,
+        "page_count": 71,
+        "citation_count": 370
+      },
+      {
+        "arxiv_id": "2402.07927",
+        "title": "A Systematic Survey of Prompt Engineering in Large Language Models: Techniques and Applications",
+        "first_author": "Pranab Sahoo",
+        "author_count": 6,
+        "page_count": 12,
+        "citation_count": 828
+      },
+      {
+        "arxiv_id": "2402.17764",
+        "title": "The Era of 1-bit LLMs: All Large Language Models are in 1.58 Bits",
+        "first_author": "Shuming Ma",
+        "author_count": 10,
+        "page_count": 8,
+        "citation_count": 387
+      },
+      {
+        "arxiv_id": "2403.04132",
+        "title": "Chatbot Arena: An Open Platform for Evaluating LLMs by Human Preference",
+        "first_author": "Wei-Lin Chiang",
+        "author_count": 11,
+        "page_count": 29,
+        "citation_count": 1192
+      }
+    ],
+    "page_count_tolerance": 2,
+    "author_count_tolerance": 1,
+    "citation_count_tolerance_pct_upper": 0.10,
+    "citation_count_tolerance_pct_lower_floor": 0.95,
+    "summary": {
+      "most_cited_arxiv_id": "2305.14314",
+      "most_cited_count": 4399,
+      "max_pages_arxiv_id": "2401.05566",
+      "max_pages_count": 71,
+      "high_citation_arxiv_ids_over_1000": [
+        "2304.03442",
+        "2305.14314",
+        "2310.06825",
+        "2403.04132"
+      ]
+    },
+    "first_author_affiliations": {
+      "rationale": "Per-paper first-author institutional affiliation as printed on the arxiv PDF page 1 (typically below author block, sometimes via numbered footnote, sometimes via author email domain). Substring match (case-insensitive). Each paper lists a small set of acceptable substrings to allow common name variants (e.g. 'UC Berkeley' / 'University of California, Berkeley' / 'Berkeley'). Eval requires >=7 of 8 to match.",
+      "per_paper": {
+        "2304.03442":  {"first_author": "Joon Sung Park",   "expected_substrings": ["stanford"]},
+        "2305.14314":  {"first_author": "Tim Dettmers",     "expected_substrings": ["washington", "uw"]},
+        "2310.04408":  {"first_author": "Fangyuan Xu",      "expected_substrings": ["texas", "ut austin", "utexas"]},
+        "2310.06825":  {"first_author": "Albert Q. Jiang",  "expected_substrings": ["mistral"]},
+        "2401.05566":  {"first_author": "Evan Hubinger",    "expected_substrings": ["anthropic"]},
+        "2402.07927":  {"first_author": "Pranab Sahoo",     "expected_substrings": ["iit patna", "indian institute of technology", "iit-patna", "iitp"]},
+        "2402.17764":  {"first_author": "Shuming Ma",       "expected_substrings": ["microsoft", "msr", "aka.ms"]},
+        "2403.04132":  {"first_author": "Wei-Lin Chiang",   "expected_substrings": ["uc berkeley", "berkeley", "university of california"]}
+      },
+      "min_per_paper_match_count": 7,
+      "min_distinct_affiliations": 6,
+      "affiliation_distribution_total_min": 8,
+      "affiliation_distribution_total_max": 12,
+      "expected_distinct_institutions_canonical": [
+        "Stanford University",
+        "University of Washington",
+        "University of Texas at Austin",
+        "Mistral AI",
+        "Anthropic",
+        "IIT Patna",
+        "Microsoft",
+        "UC Berkeley"
+      ]
+    },
+    "ods_platform_depth_checks": {
+      "min_formula_cells": 1,
+      "formula_xml_grep_patterns": [
+        "table:formula",
+        "of:=AVERAGE",
+        "of:=SUM",
+        "of:=IF",
+        "of:=COUNTIF"
+      ],
+      "min_conditional_format_rules": 1,
+      "conditional_format_xml_grep_patterns": [
+        "calcext:conditional-format",
+        "style:conditional-format",
+        "calcext:condition"
+      ],
+      "min_embedded_chart_objects": 1,
+      "chart_zip_grep_patterns": [
+        "Object 1/content.xml",
+        "Object_1/content.xml",
+        "Object1/content.xml"
+      ],
+      "chart_manifest_mediatype": "application/vnd.oasis.opendocument.chart",
+      "ods_must_be_zip": true,
+      "ods_required_columns_substrings": [
+        "arxiv_id",
+        "title",
+        "first_author",
+        "author_count",
+        "page_count",
+        "citation_count"
+      ]
+    },
+    "deliverables": {
+      "papers_json": "/tmp_workspace/results/papers.json",
+      "library_dir": "/tmp_workspace/results/library/",
+      "index_ods": "/tmp_workspace/results/index.ods"
+    }
+  }
+}

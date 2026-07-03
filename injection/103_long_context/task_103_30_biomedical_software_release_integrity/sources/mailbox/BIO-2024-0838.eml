@@ -1,0 +1,31 @@
+Message-ID: <ZPDqj/wSgTSnHyYQ@an3as.eu>
+X-Clawbench-ID: BIO-2024-0838
+Date: Thu, 31 Aug 2023 21:31:27 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: "Maarten L. Hekkelman" <maarten@hekkelman.com>,	1050949-done@bugs.debian.org
+Subject: Re: help wanted
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_08_msg00035.html
+
+Hi Maarten,
+
+Am Thu, Aug 31, 2023 at 07:49:44PM +0200 schrieb Maarten L. Hekkelman:
+> > I'm wondering how you got routine-update running at all.  I get
+> >
+> Sshh... my bad... I was running routine-update on ubuntu, not on Debian.
+>
+> And Ubuntu has version 0.0.10 whereas Debian now has version 0.1.1
+
+While closing this bug report with this mail I'm wondering anyway why
+d/rules was edited.  I guess you might be safe to install routine-update
+as well as lintian-brush from Debian unstable (not sure about the
+latter) to use it on Ubuntu (but may be you will observe some side
+effects).
+
+Kind regards
+    Andreas.
+
+--
+http://fam-tille.de

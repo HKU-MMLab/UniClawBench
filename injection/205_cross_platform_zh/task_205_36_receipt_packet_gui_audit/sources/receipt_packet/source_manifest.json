@@ -1,0 +1,41 @@
+{
+  "dataset": "CORD-v2",
+  "dataset_url": "https://huggingface.co/datasets/naver-clova-ix/cord-v2",
+  "upstream_repository": "https://github.com/clovaai/cord",
+  "license": "CC BY 4.0 as stated by the upstream dataset/repository",
+  "selected_rows": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "packet_note": "Files were staged from a shared-drive vendor packet; repeated scans may be present and should be detected from the images, not from this manifest.",
+  "generated_at_utc": "2026-06-18T06:32:11.090382+00:00",
+  "files": [
+    {
+      "path": "receipt_01.jpg",
+      "source": "CORD validation row 0"
+    },
+    {
+      "path": "receipt_02.jpg",
+      "source": "CORD validation row 1"
+    },
+    {
+      "path": "receipt_03.jpg",
+      "source": "CORD validation row 2"
+    },
+    {
+      "path": "receipt_04.jpg",
+      "source": "CORD validation row 3"
+    },
+    {
+      "path": "receipt_05.jpg",
+      "source": "CORD validation row 4"
+    },
+    {
+      "path": "scan_2026_07_17_b.jpg",
+      "source": "CORD-derived shared-drive packet file"
+    }
+  ]
+}

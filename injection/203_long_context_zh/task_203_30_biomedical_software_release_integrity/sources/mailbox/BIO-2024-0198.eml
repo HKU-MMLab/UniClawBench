@@ -1,0 +1,46 @@
+Message-ID: <YZUSipDT8cF4FKBy@lena.dartmouth.edu>
+X-Clawbench-ID: BIO-2024-0198
+Date: Wed, 17 Nov 2021 09:32:42 -0500
+From: Yaroslav Halchenko <debian@onerussian.com>
+To: debian-med@lists.debian.org
+Subject: Re: Heudiconv moved to Debian Med repository
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_11_msg00099.html
+
+thank you very much Andreas!  May be worth uploading new version (even
+if only to announce the move) so if we forget about the move we have a
+better chance to detect it?
+
+I thought we were up to date with connectome-workbench ... yeap - we
+are.  Upstream is "involved" with uploads so we keep it uptodate afaik.
+Also upstream (in both cases, we are the upstream of heudiconv) is
+interested in neurodebian backports, at least for the most recent debian
+stable -- so ideally those packages should not jump onto bleeding edge
+packaging changes which would make them incompatible with debhelper etc
+in debian stable.
+
+On Wed, 17 Nov 2021, Andreas Tille wrote:
+
+> Hi,
+
+> just to let you know:  I've imported heudiconv to Debian Med team
+> repository[1].  Please make sure you pull from there in case you
+> intend to commit further to this package.
+
+> I also imported connectome-workbench[2] and Nilesh wants to
+> upload a next package version soon.
+
+> Kind regards
+
+>      Andreas.
+
+
+> [1] https://salsa.debian.org/med-team/heudiconv
+> [2] https://salsa.debian.org/med-team/connectome-workbench
+--
+Yaroslav O. Halchenko
+Center for Open Neuroscience     http://centerforopenneuroscience.org
+Dartmouth College, 419 Moore Hall, Hinman Box 6207, Hanover, NH 03755
+WWW:   http://www.linkedin.com/in/yarik

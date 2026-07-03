@@ -1,0 +1,51 @@
+Message-ID: <4687.1027546864@bhuta>
+X-Clawbench-ID: CAM-2003-1114
+Date: Wed, 24 Jul 2002 15:41:04 -0600
+From: kchrist@lsil.com
+To: Chris Garrigues <cwg-dated-1027978302.cb328a@DeepEddy.Com>
+Subject: Re: [fwd: error exmh 2.5 07/13/2001 ]
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00721.39d6783c5838169bfa901056e6c8a5b2
+
+Chris,
+
+I think you are referring to a problem I noticed last October (see
+attached email). If I remember correctly, the binding for SeditBeautify
+is being applied outside of the sedit window and that results in the
+behavior observed.
+
+Kevin
+
+In message <1027546301.610.TMDA@deepeddy.vircio.com>, Chris Garrigues writes:
+>
+> Am I the only one for whom typing control-L to the main window causes this
+> error?
+>
+> I can't figure out why it occurs.
+>
+> Chris
+>
+
+
+It appears that the binding for SeditBeautify applies to
+more than just the sedit window. Since SeditBeautify assumes
+we are in a sedit window the routine fails. (Try typing
+ctrl-l over the main window to see what I mean).
+
+The quick fix for this is to make the ^l more restrictive. However, I'd
+suggest keeping things the way the are and extending ^l to be a
+highlight toggle. If the window is currently highlighted (sedit or msg)
+re-display without highlighting and vice versa.
+
+While I can hack tcl, hacking tk is another story. Translation: I can't
+fix this bug myself. Any volunteers?
+
+Kevin
+
+
+_______________________________________________
+Exmh-workers mailing list
+Exmh-workers@redhat.com
+https://listman.redhat.com/mailman/listinfo/exmh-workers

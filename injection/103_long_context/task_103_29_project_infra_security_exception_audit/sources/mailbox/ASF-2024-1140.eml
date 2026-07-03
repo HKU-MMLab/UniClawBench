@@ -1,0 +1,31 @@
+Message-ID: <CAKQ1sVPmiikJzDWQTKFMaynmJnApD_ktj6fxgK3Bm1+TmGyqtQ@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1140
+Date: Mon, 7 Feb 2022 13:29:45 +0100
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: httpd-dev <dev@httpd.apache.org>
+Subject: Re: mpm event assertion failures
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-02.mbox
+
+On Mon, Feb 7, 2022 at 1:01 PM Stefan Eissing <stefan@eissing.org> wrote:
+>
+> > Am 07.02.2022 um 12:46 schrieb Yann Ylavic <ylavic.dev@gmail.com>:
+> >>
+> >> The assertion failure is due to mpm_event closing all the workers'
+> >> sockets forcibly [1] on ungraceful shutdown/restart, while the socket
+> >> is still handled by h2, thus when h2 gives the connection back to the
+> >> mpm fr lingering close it fails.
+>
+> Wow, you have been busy! Can I apply the PR diff to trunk for a test drive on my machine?
+
+Yes, the PR is based off trunk.
+
+I've just added a fix for beam cleanups because test_h2_500_20 was
+failing sporadically on travis, and there are still failures for
+mod_md still I haven't looked at (I think I don't have all the mod_md
+dependencies to test on my machine)..
+
+Cheers;
+Yann.

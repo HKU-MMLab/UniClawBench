@@ -1,0 +1,73 @@
+Message-ID: <CAOu7+yKUSwuf=qdYyVeOLpUwoBP1x9q=tSBASCsDoz6+6nzVoA@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0466
+Date: Mon, 9 Oct 2023 14:50:00 -0400
+From: "Eric Norris via dev" <dev@httpd.apache.org>
+To: dev@httpd.apache.org
+Subject: [PATCH] mod_deflate: remove filter after seeing EOS
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-10.mbox
+
+Hello all,
+
+I've submitted a pull request on GitHub here:
+https://github.com/apache/httpd/pull/387, per the instructions I found
+at https://httpd.apache.org/contribute. I figured it may also be
+useful to share the patch here, but please feel free to redirect me as
+this is my first time contributing.
+
+Thanks!
+
+Eric Norris
+Etsy
+
+---
+
+At Etsy, we use mod_php and were investigating what we thought was
+surprising behavior - that code executed during PHP's shutdown phase
+prevented the request from terminating, even if we didn't expect to send
+any additional output to the client.
+
+We determined that this was not surprising given mod_php's
+implementation, but after we developed a proof-of-concept patch that
+sent an EOS bucket and a flush bucket via a "userland" PHP function, we
+were surprised that it didn't work when compression was enabled for the
+request.
+
+I was able to reproduce this behavior with a simple Apache module built
+on top of mod_example_hooks:
+
+https://gist.github.com/ericnorris/37c7dac401b50d270867e82a47bdd294
+
+It seems that this is because mod_deflate receives the EOS bucket and
+then calls `deflateEnd` but remains in the filter chain. This means that
+it receives the next flush bucket and attempts to call
+`flush_libz_buffer`, which of course fails, causing it to print an
+AH01385 error to the Apache error log, and perhaps most importantly, to
+"eat" the flush bucket and not pass it down the bucket brigade.
+
+We found that this patch allows us to successfully send an EOS bucket
+*and* promptly flush the connection so that the client knows the request
+is finished.
+---
+ modules/filters/mod_deflate.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/modules/filters/mod_deflate.c b/modules/filters/mod_deflate.c
+index b7a68d2d43..ad753dc618 100644
+--- a/modules/filters/mod_deflate.c
++++ b/modules/filters/mod_deflate.c
+@@ -941,6 +941,10 @@ static apr_status_t deflate_out_filter(ap_filter_t *f,
+             }
+
+             deflateEnd(&ctx->stream);
++
++            /* We've ended the libz stream, so remove ourselves. */
++            ap_remove_output_filter(f);
++
+             /* No need for cleanup any longer */
+             apr_pool_cleanup_kill(r->pool, ctx, deflate_ctx_cleanup);
+
+--
+2.40.1

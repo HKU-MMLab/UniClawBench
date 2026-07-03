@@ -1,0 +1,30 @@
+Message-ID: <aeb01d5e-0d76-054c-0ed1-100b9ea17748@debian.org>
+X-Clawbench-ID: BIO-2024-0173
+Date: Sat, 16 Oct 2021 09:38:28 +0300
+From: Andrius Merkys <merkys@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: RFH: Getting fastp building on more archs
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00076.html
+
+Hi Nilesh,
+
+On 2021-10-16 08:54, Nilesh Patra wrote:
+> The new version of fastp B-D on libisal-dev, whick is available only on
+> amd64, arm64 and kfreebsd-amd64
+> Due to this, fastp is no longer able to build on archs it was able to
+> build on, earlier.
+>
+> And as a direct consequence, testing migration is stalled.
+>
+> I am not sure of the best way to proceed in this case, and would
+> appreciate any help.
+
+The intuitive solution to me seems to make libisal-dev build on the
+remaining architectures. Do you know why it is limited to amd64, arm64
+and kfreebsd-amd64?
+
+Best,
+Andrius

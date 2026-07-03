@@ -1,0 +1,16 @@
+task_id: task_105_18_3dcv_web_review
+category: 105_cross_platform
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+recording: none
+headed: auto
+task: "You are a graduate student choosing a reproduction topic in 3D computer vision / Gaussian Splatting, and you want to judge whether a paper is worth spending one week on for an initial reproduction attempt. Use only the browser to complete the following task: find a paper from 2026 or later whose topic is clearly related to 3D Gaussian Splatting, NeRF accelerated rendering, or 3D scene reconstruction; confirm whether it has an official GitHub repository; if the repository or README references Hugging Face, model weights, dataset download pages, or a project homepage, also inspect those pages; finally write the paper summary, code repository activity, model/data dependency situation, and your conclusion to:\n\n    /tmp_workspace/results/gaussian_splatting_reproduction_web_review.md\n\nThe Markdown must include five top-level sections:\n- paper\n- repo activity\n- model/data dependencies\n- reproduction risk\n- 1-week verdict (yes/no/maybe)\n\nDo not only provide a collection of links; give a clear judgment. The final conclusion must state whether the project is suitable for an initial reproduction attempt within one week, and briefly explain the main risks, such as environment setup, GPU requirements, dataset size, training time, or official code maintenance status.\n"
+codex:
+  max_user_followups: 2
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json

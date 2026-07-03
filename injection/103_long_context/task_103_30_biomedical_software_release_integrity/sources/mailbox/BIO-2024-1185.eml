@@ -1,0 +1,34 @@
+Message-ID: <b7b5b347-e516-bf3d-55d1-cd894359422a@debian.org>
+X-Clawbench-ID: BIO-2024-1185
+Date: Tue, 7 Jun 2022 09:23:20 +0300
+From: Andrius Merkys <merkys@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: Added autopkgtest for busco - Closes #1010653
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_06_msg00009.html
+
+Hi Mohd,
+
+On 2022-06-06 22:37, Mohd Bilal wrote:
+> I have added an autopkgtest for busco[1] as mentioned in bug report[2].
+> The license for the test data needs to be added. I have opened an
+> issue[3] upstream asking for clarification. Requesting someone to review
+> my changes .
+>
+> Thanks,
+> rmb
+>
+>
+> [1] - https://salsa.debian.org/med-team/busco
+> [2] - https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1010653
+> [3] - https://gitlab.com/ezlab/busco/-/issues/566
+
+Thanks a lot for pushing forward with this. Can you tell me why you
+decided to add 'debian-tests-data' component instead of just putting
+test files somewhere under debian/? IMO this unnecessarily complicates
+the source package, but I would like to hear other opinions too.
+
+Best,
+Andrius

@@ -1,0 +1,36 @@
+Message-ID: <4882304.GXAFRqVoOG@riemann>
+X-Clawbench-ID: BIO-2024-0841
+Date: Fri, 29 Mar 2024 13:44:15 -0500
+From: Steven Robbins <steve@sumost.ca>
+To: debian-med@lists.debian.org
+Subject: Re: Debian-Med policy proposal: 64-bit & little-endian only* for new packages
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_03_msg00039.html
+
+On Thursday, March 28, 2024 8:51:01 A.M. CDT Michael R. Crusoe wrote:
+
+> Therefore I personally conclude that:
+> Support Debian-Med packages for 32-bit and/or big-endian architectures is
+> not a good use of our limited resources.
+
+I've used that as a personal policy for years.
+
+In my case, I restrict the architecture set ONLY when maintaining all
+architectures becomes a burden.  So far it has happened only in one package
+(ITK), and its downstream dependencies.
+
+I am left with a question whether that is what you are proposing, or whether
+you mean to preemptively restrict the architectures even when they are not
+troublesome?  I would support the former but the latter position seems
+unwarranted to me.
+
+> Like all policy proposals, this is not meant to be a hard rule for all time.
+> We can and should revisit the issue later!
+
+Absolutely.  The working set of machines does change over time as you mention
+yourself.  I remember doing neuroinformatics research coding on SGI IRIX
+machines -- which will surely date me.  :-)
+
+-Steve

@@ -1,0 +1,71 @@
+Message-ID: <7e9da61039821af4d884ecf13bb5cb40@enron.com>
+X-Clawbench-ID: ANL-2001-0164
+Date: 2000-08-18T06:52:00-03:00
+From: Stinson Gibner <Stinson Gibner>
+To: Vince J Kaminski <Vince J Kaminski>
+Subject: Re: Alex's paper
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Enron kaminski-v public mailbox index.json
+X-Original-Folder: kaminski-v_002/kaminski-v/All documents
+
+Comments:
+
+
+1.  In the sentence between eqn. 3 and eqn. 4,  I think "annualized
+
+volatility"  should replace "annualized standard deviation."
+
+
+2.  As to the comment,  "Immediately we see something quite
+
+counter-intuitive."    I would disagree.   I think that its quite intuitive
+
+that this model should get closer to the Black-Scholes price as what is
+
+defined as the "jump" component becomes just part of the main price
+
+distribution, which happens if we define a jump to be only a 1-sigma
+
+event.    The table does show, however, that the results of using this model
+
+are very sensitive to exactly how you choose to define a "jump" (i.e. 2-sigma
+
+or 3-sigma... events),  and this is one difficulty in using the model in
+
+practice.
+
+
+3.  In the paragraph after the table, I don't understand the argument about
+
+hedging the option.  Especially about buying a swap which would pay on the
+
+difference between the strike and Fs.   This seems non-sensical.
+
+
+4.  I could not follow the logic of the last two sentences of the article, so
+
+this point should probably be explained more clearly.
+
+
+--Stinson
+
+
+Vince J Kaminski
+
+08/18/2000 08:15 AM
+
+To: Grant Masson/HOU/ECT@ECT, Stinson Gibner/HOU/ECT@ECT, Alex
+
+Huang/Corp/Enron@ENRON
+
+cc:
+
+Subject: Alex's paper
+
+
+Minor changes I made to Alex's paper.
+
+
+Vince

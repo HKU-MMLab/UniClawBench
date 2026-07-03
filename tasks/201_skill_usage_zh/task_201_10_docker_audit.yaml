@@ -1,0 +1,59 @@
+task_id: task_201_10_docker_audit
+category: 201_skill_usage_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我即将把一个小型 Python 服务上线到生产环境，而我对
+  容器配置里潜藏着什么真的很不安。所有文件都位于
+  /tmp_workspace/clawbench/sources/ 下：Dockerfile、requirements.txt、
+  server.py，外加一份本地漏洞数据源 vuln_advisories.json。请用
+  Docker 技能和安全审计技能把这套部署打包彻底过一遍，
+  找出每一个危险的安全风险。一个都别漏，否则我就
+  真的麻烦大了。
+
+  请基于源文件实际包含的内容来做风险判断。对于
+  依赖项的 CVE，要对照 vuln_advisories.json 中的条目来比对，
+  而不是凭记忆猜测，也不要盲目地把那个数据源里
+  与本服务毫不相关的条目照搬进来。
+
+  审计完成后，请把结果写入
+  /tmp_workspace/results/audit.md。我只需要能看到，对每个
+  风险，它指向源文件中的哪个位置、为什么危险，以及
+  如何修复。
+
+  另外起草两个我可以直接放进 PR 的修复文件：
+    - /tmp_workspace/results/Dockerfile.fixed——一个更安全的 Dockerfile，
+      不再把旧的不安全模式带过来。
+    - /tmp_workspace/results/requirements.fixed.txt——把直接
+      依赖固定到能解决本服务实际命中的
+      那些 advisory 的版本上。别塞进不需要的依赖。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - Dockerfile
+  - requirements.txt
+  - server.py
+  - vuln_advisories.json
+
+skills:
+  - docker
+  - security-auditor
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

@@ -1,0 +1,131 @@
+Message-ID: <0838a945-f0ed-4347-88d1-b265828814a6@kippdata.de>
+X-Clawbench-ID: ASF-2024-0683
+Date: Thu, 19 Oct 2023 13:27:43 +0200
+From: Rainer Jung <rainer.jung@kippdata.de>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.58-rc3 as httpd-2.4.58
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-10.mbox
+
+Am 16.10.23 um 17:08 schrieb Stefan Eissing via dev:
+> Hi all,
+>
+> after fixing my merge mistake in rc2 (sorry!), we go again:
+>
+> Please find below the proposed release tarball and signatures:
+>
+> https://dist.apache.org/repos/dist/dev/httpd/
+>
+> I would like to call a VOTE over the next few days to release
+> this candidate tarball httpd-2.4.58-rc3 as 2.4.58:
+> [X] +1: It's not just good, it's good enough!
+> [ ] +0: Let's have a talk.
+> [ ] -1: There's trouble in paradise. Here's what's wrong.
+>
+> The computed digests of the tarball up for vote are:
+> sha256: 503a7da4a4a27fd496037998b17078dc9fe004db32c657c96cce8356b8aa2eb6 *httpd-2.4.58-rc3.tar.gz
+> sha512: 5c11faf0572035ef67b27775d975999411c689cb774553175299a9e99b63d3d7138b0c7f15048ec28038494d8513689f916202c2289d557947d8b190d46ca9f3 *httpd-2.4.58-rc3.tar.gz
+>
+> The SVN candidate source is found at tags/2.4.58-rc3-candidate.
+>
+> Cheers,
+> Stefan
+
+I know I am late, but for the sake of completeness my test results:
+
++1 to release and thanks a bunch for RM!
+
+The full range of unit tests is still running, but enough have completed
+for a vote.
+
+- Sigs and hashes OK
+- contents of tarballs identical
+- contents of tag and tarballs identical
+   except for expected deltas
+
+Built on
+
+- SLES 11+12+15 (64 Bits)
+- RHEL 6+7+8+9 (64 Bits)
+
+For all platforms built
+
+- with default (shared) and static modules
+- with module set reallyall
+- using --enable-load-all-modules
+
+- using libraries
+   - APR/APU
+     - bundled deps tarball
+     - 1.7.4/1.6.3
+     - 1.6.5/1.6.3
+     - 1.7.x(r1911757)/1.7.x(r1911757) with libxml2
+     - 1.7.x(r1911757)/1.7.x(r1911757) with expat
+     - 1.6.x(r1908753)/1.6.x(r1911757)
+     - trunk(r1911757) with libxml2
+     - trunk(r1911757) with expat
+   - OpenSSL 3.1.3, 3.0.11, 1.1.1w,
+             and for all except RHEL 9
+             also 1.1.1, 1.0.2u, 1.0.2
+   - expat 2.5.0
+   - pcre 10.42
+   - lua 5.4.6 (compiled with LUA_COMPAT_MODULE)
+   - libxml2 2.11.5
+   - libnghttp2 1.57.0
+   - brotli 1.1.0
+   - curl 8.4.0
+   - jansson 2.14
+   - libldap 2.6.6 (2.5.7 with OpenSSL 1.1.1,
+                    2.4.59 with OpenSSL 1.0.2*)
+
+- in total 200 builds per platform (80 for RHEL 9)
+
+- Tool chain:
+     - platform gcc
+     - CFLAGS: -O2 -g -Wall -fno-strict-aliasing
+
+All builds succeeded.
+
+- compiler warnings:
+
+   - deprecation warnings when building against OpenSSL 3.1.3, see other
+thread
+
+Tested for
+
+- SLES 11+12+15
+- RHEL 6+7+8+9
+- MPMs prefork, worker, event
+- log level trace8
+- Perl client bundle build against OpenSSL 3.1.0beta1-1,
+   3.0.0, 1.1.1g plus patches, 1.1.0l, 1.0.2u and 1.1.0l-1
+   (RHEL 9 3.1.2-1, 3.0.10-1, 1.1.1w-1)
+
+Every OpenSSL version in the client tested with every OpenSSL version in
+the server. 18 unit test runs (3 MPMS x 6 OpenSSL clients) per server build.
+
+About 2.400 unit test runs are done, most with server OpenSSL 3.1 and
+3.0, for RHEL 9 also 1.1.1.
+
+Some local adjustments to tests were used:
+
+- t/modules/buffer.t: removing huge buffer tests
+   -    my $bigsize = 100000;
+   +    my $bigsize = 50000;
+
+The following test failures were seen:
+
+a t/modules/buffer.t line 37
+   Not a regression
+   Only on RHEL 6, SLES 11.
+
+c t/modules/sed.t line 37 test 3
+   Not a regression
+   Only on RHEL 6, SLES 11.
+
+
+Regards,
+
+Rainer

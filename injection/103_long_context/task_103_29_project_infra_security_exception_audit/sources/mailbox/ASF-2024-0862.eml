@@ -1,0 +1,27 @@
+Message-ID: <A4C9DA55-DDF7-4269-B636-129BE2FA40EE@jagunet.com>
+X-Clawbench-ID: ASF-2024-0862
+Date: Fri, 13 Dec 2024 09:16:43 -0500
+From: Jim Jagielski <jim@jagunet.com>
+To: dev@httpd.apache.org
+Subject: httpd 2.4 -> next
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-12.mbox
+
+Hi All!
+
+Come '25 I'll have some cycles to get back into some serious httpd work, and am looking to find out what our next steps are. I've followed along the lists but have really not been active. Do we have a plan forward, past httpd-2.4? I'd like to see what areas I could look into to help us drive forward. Some things that I want to do is reboot my work on various proxy enhancements, including auto discovery and balancer metrics.
+
+Some considerations and potential topics of discussion:
+
+1. On trunk, baseline something newer than c89
+2. Update the autoconf suite
+3. future roadmap
+
+Basically the question is: Is httpd basically in maintenance mode or do we want to try to get some momentum going?
+
+Cheers
+--
+Jim
+            "If you can dodge a wrench, you can dodge a ball."

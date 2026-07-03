@@ -1,0 +1,66 @@
+task_id: task_102_18_pitch_deck_theme
+category: 102_exploration
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I'm putting together an investor pitch deck for a climate-tech startup using
+  reveal.js, and I need to pick a theme. It should look dark and professional
+  (not a light/academic look), be highly readable when projected in a room,
+  and its accent color should align with our green brand (target accent color
+  is about #2EAA78).
+
+  The candidate themes are provided offline as their real reveal.js theme CSS
+  at:
+
+      /tmp_workspace/clawbench/sources/theme_css/
+
+  See `/tmp_workspace/clawbench/sources/candidates.json` for the list and the
+  brand target. Each theme exposes its colors as CSS custom properties
+  (`--r-background-color`, `--r-main-color`, `--r-heading-color`,
+  `--r-link-color`). Evaluate the themes objectively by parsing those values
+  and computing, for each:
+
+  - HARD constraints (must pass ALL):
+    1. Dark background (background luminance < 0.2).
+    2. Body text contrast vs background >= 7.0.
+    3. Heading contrast vs background >= 7.0.
+    4. Link/accent contrast vs background >= 4.5.
+
+  - SOFT preferences (tie-break among hard-constraint survivors): smaller color
+    difference (deltaE) between the theme's accent/link color and the brand
+    target #2EAA78, then higher minimum contrast.
+
+  Pick exactly ONE theme and justify it with the computed numbers. Watch out:
+  the theme with the highest contrast of all is actually a light theme (wrong
+  look for this brand), and some dark themes have an accent color far from the
+  green brand.
+
+  Save:
+  - `/tmp_workspace/results/deck_choice.json`: your pick (`selected_id` + the
+    metrics), the dark themes that passed all hard constraints, and the
+    tie-break reasoning (brand alignment + contrast).
+  - `/tmp_workspace/results/deck_evaluation.json`: per-theme computed metrics
+    (dark?, text/heading/accent contrast, accent deltaE to brand) with pass/fail
+    and the failing constraint named.
+  - `/tmp_workspace/results/deck_method.json`: how you parsed the CSS variables
+    and computed contrast / deltaE (reproducible).
+
+  This is fully offline — do not fetch anything from the network.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/reference_analysis.py
+sources:
+  - theme_css/
+  - candidates.json
+
+codex:
+  max_user_followups: 2

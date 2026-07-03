@@ -1,0 +1,38 @@
+Message-ID: <YuBQWu4mKseOvHSn@an3as.eu>
+X-Clawbench-ID: BIO-2024-1300
+Date: Tue, 26 Jul 2022 22:36:42 +0200
+From: Andreas Tille <tille@debian.org>
+To: Nilesh Patra <nilesh@debian.org>
+Subject: Re: CMake help needed for tiddit
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_07_msg00076.html
+
+Will check tomorrow - thanks a lot in advance, Andreas.
+
+Am Wed, Jul 27, 2022 at 12:23:35AM +0530 schrieb Nilesh Patra:
+> On 7/26/22 6:26 PM, Andreas Tille wrote:
+> > Am Tue, Jul 26, 2022 at 06:19:38PM +0530 schrieb Nilesh Patra:
+> > > @Andreas, I suppose you will have to build it the pybuild-way now. Autopkgtests will anyway help us verify
+> > > whether we are good :)
+> >
+> > Right.  Our quite good autopkgtest coverage helps a lot.
+>
+> I have finalised the package, please upload if it looks good. All changes in salsa.
+> However it differs a bit with prev release, for instance program bin rename to TIDDIT->tiddit and also removal of
+> some options.
+>
+> I wonder if these should be documented in d/NEWS
+> > > [1]: https://github.com/SciLifeLab/TIDDIT/tree/TIDDIT-2.12.1#installation
+> > > [2]: https://github.com/SciLifeLab/TIDDIT/blob/TIDDIT-2.12.1/INSTALL.sh
+> > > [3]: https://github.com/SciLifeLab/TIDDIT/tree/TIDDIT-3.1.0#installation
+>
+>
+> --
+> Best,
+> Nilesh
+>
+
+--
+http://fam-tille.de

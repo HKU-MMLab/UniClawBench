@@ -1,0 +1,38 @@
+Message-ID: <CAD+GYvz7XEasU0TfEZRCdLiJHxL25ZS4o18fZ4J-881-g8Hhkg@mail.gmail.com>
+X-Clawbench-ID: BIO-2024-1337
+Date: Wed, 24 Apr 2024 11:12:06 -0400
+From: Jeremy Bícha <jeremy.bicha@canonical.com>
+To: Andreas Tille <andreas@an3as.eu>
+Subject: Re: Binary conflict between Midnight Commander and MinIO Client
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_04_msg00048.html
+
+On Wed, Apr 24, 2024 at 9:42 AM Andreas Tille  wrote:
+> Am Mon, Apr 22, 2024 at 09:28:29AM +0200 schrieb Philip Hands:
+> > >> /usr/libexec/minio-client/bin/mc -> /usr/bin/mcli
+> >
+> > Might I suggest that the link goes the other way, so that the symlink
+> > lives in /usr/bin?  That way the existence of the lib directory is
+> > somewhat self-documenting.
+>
+> That's an interesting hint.  In Debian Med we are using a common
+> directories
+>
+>     /usr/lib/debian-med/bin/
+>     /usr/lib/debian-med/man/
+>
+> where those binaries will be moved to and have some kind of a
+> README.Debian template[1].  Changing this to have the real executable /
+> manpage to /usr/lib/debian-med/* makes sense.
+
+I believe moving those binaries to a subdirectory of /usr/libexec/
+would better comply with FHS 3.0. Maybe this could be done for the
+Trixie release?
+
+I guess a subdirectory of /usr/share/ would be appropriate for the
+extra manpages.
+
+Thank you,
+Jeremy Bícha

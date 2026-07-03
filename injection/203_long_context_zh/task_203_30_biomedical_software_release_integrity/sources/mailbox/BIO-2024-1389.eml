@@ -1,0 +1,74 @@
+Message-ID: <YuO3+D+qyXCUGeCU@an3as.eu>
+X-Clawbench-ID: BIO-2024-1389
+Date: Fri, 29 Jul 2022 12:35:36 +0200
+From: Andreas Tille <tille@debian.org>
+To: "Aaron M. Ucko" <ucko@debian.org>
+Subject: Re: Finishing ncbi-vdb and sra-sdk
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_07_msg00090.html
+
+Hi Aaron,
+
+thanks a lot for your iterative help which enables taking one hurdle
+after the other.  Unfortunately there seem to be many of them. ;-)
+
+Am Thu, Jul 28, 2022 at 11:41:18AM -0400 schrieb Aaron M. Ucko:
+> Andreas Tille  writes:
+>
+> > -- Could NOT find JNI (missing: JAVA_AWT_LIBRARY JAVA_AWT_INCLUDE_PATH).
+> >
+> > (which is probably caused at the end of file
+> >    ngs/ncbi/ngs-jni/CMakeLists.txt )
+>
+> More likely the find_package(Java ...) call on line 159 of
+> build/env.cmake.  At any rate, it looks like CMake might want the full
+> (non-headless) JDK; I don't see an obvious way around that requirement
+> short of setting the relevant variables explicitly, so I'd suggest
+> keeping it simple and upgrading the build dependency.
+
+Seems this did the trick.
+
+> >   test/sharq/CMakeLists.txt:44 (ExternalProject_Add)
+> >
+> > -- Configuring incomplete, errors occurred!
+> >
+> > It seems the patch I tried[1] is not working as intended. :-(
+>
+> Please try patching test/sharq in addition to tools/sharq.
+
+I pushed some change but I have no idea how to finalise this.  With the
+latest commit I get:
+
+...
+-- Found Threads: TRUE..
+-- Found HDF5: /usr/lib/x86_64-linux-gnu/hdf5/serial/libhdf5.so;/usr/lib/x86_64-linux-gnu/libcrypto.so;/usr/lib/x86_64-linux-gnu/libcurl.so;/usr/lib/x86_64-linux-gnu/libpthread.so;/usr/lib/x86_64-linux-gnu/libsz.so;/usr/lib
+HDF5_INCLUDE_DIRS=/usr/include/hdf5/serial
+HDF5_LIBRARIES=/usr/lib/x86_64-linux-gnu/hdf5/serial/libhdf5.so/usr/lib/x86_64-linux-gnu/libcrypto.so/usr/lib/x86_64-linux-gnu/libcurl.so/usr/lib/x86_64-linux-gnu/libpthread.so/usr/lib/x86_64-linux-gnu/libsz.so/usr/lib/x86_
+-- Configuring done
+CMake Warning (dev) at tools/sharq/CMakeLists.txt:92 (add_executable):
+  Policy CMP0115 is not set: Source file extensions must be explicit.  Run
+  "cmake --help-policy CMP0115" for policy details.  Use the cmake_policy
+  command to set the policy and suppress this warning.
+
+  File:
+
+    /build/sra-sdk-3.0.0+dfsg/tools/sharq/fastq_parse.cpp
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+CMake Error at test/sharq/CMakeLists.txt:42 (add_dependencies):
+  The dependency target "RE2_" of target "test-sharq-parser" does not exist.
+
+
+-- Generating done
+
+
+Any more help would be really appreciated.
+
+Kind regards
+
+     Andreas.
+
+--
+http://fam-tille.de

@@ -1,0 +1,20 @@
+{
+  "display_name": "Kinfolk \u2014 Editorial",
+  "ecommerce": {
+    "cart": false,
+    "checkout": false,
+    "product_pages": false,
+    "inventory": false
+  },
+  "responsive": true,
+  "palette": [
+    "#FAF7F2",
+    "#E3DCD2",
+    "#A89F94",
+    "#5C5750",
+    "#2B2B2B"
+  ],
+  "product_image_area_ratio": 0.7,
+  "note": "stunning muted minimalist editorial/blog theme \u2014 but it is NOT an ecommerce theme (no cart/checkout)",
+  "id": "kinfolk_journal"
+}

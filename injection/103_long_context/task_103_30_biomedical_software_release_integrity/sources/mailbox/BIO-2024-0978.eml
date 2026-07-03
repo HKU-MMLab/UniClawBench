@@ -1,0 +1,27 @@
+Message-ID: <32072663-5e3e-57fe-f2c5-268c5dfe18f6@tchncs.de>
+X-Clawbench-ID: BIO-2024-0978
+Date: Fri, 1 Oct 2021 17:46:35 +0530
+From: Nilesh Patra <nilesh@tchncs.de>
+To: debian-med@lists.debian.org
+Subject: Re: salsa-ci initiation for Debian Med - suspended?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00007.html
+
+On 10/1/21 5:40 PM, Steffen Möller wrote:
+> Hi all,
+>
+> I just got
+>
+> [...]
+
+$ salsa update_repo --ci-config-path debian/salsa-ci.yml med-team/long-read-assembler
+$ echo $?
+0
+
+Works okay for me. There is some local problem for you
+
+> I thought we wait with an upload to New until the new queue got a bit shorterThanks
+
+Nilesh

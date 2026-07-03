@@ -1,0 +1,35 @@
+Message-ID: <Yb8R6tzOhBnaLf9r@an3as.eu>
+X-Clawbench-ID: BIO-2024-1292
+Date: Sun, 19 Dec 2021 12:05:14 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Nilesh Patra <nilesh@onenetbeyond.org>
+Subject: Re: Moving python-bioblend to med-team?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_12_msg00106.html
+
+Hi Nilesh and Steffen,
+
+Am Sun, Dec 19, 2021 at 01:36:50PM +0530 schrieb Nilesh Patra:
+> python-bioblend is maintained on DPT, however it seems to be made for the
+> purpose of interacting with galaxy project's APIs.
+> Hence I was wondering if it is of our interest?
+
+I'm absolutely in favour of this.
+
+> It has also not seen uploads for a long time, and I was wondering if it makes sense to
+> move it here.
+>
+> I wanted to fix a problem on this package as well.
+
+Please go for it - usually Steffen agrees to those kind of moves
+and I think he is currently very busy.
+
+Kind regards
+
+      Andreas.
+
+
+--
+http://fam-tille.de

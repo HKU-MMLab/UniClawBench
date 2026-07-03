@@ -1,0 +1,12 @@
+Message-ID: <enp-2001-0823@change-order-audit.example>
+X-Clawbench-ID: ENP-2001-0823
+Date: 2001-06-04T09:48:00-05:00
+From: Priya Raman <priya.raman@enron.com>
+To: Greg Holt <greg.holt@enron.com>
+Subject: quantity reconciliation
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: synthetic energy infrastructure change-order audit implant
+
+The Red Mesa claim is 1,248 CY, but 312 CY are base-contract spoil re-handling and 96 CY are duplicated from the January grading ticket. That is not reflected in the change-order dashboard.

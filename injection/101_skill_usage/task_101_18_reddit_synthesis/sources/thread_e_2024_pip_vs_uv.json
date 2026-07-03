@@ -1,0 +1,38 @@
+{
+  "captured_at": "2024-11-20T07:14:42Z",
+  "permalink": "https://www.reddit.com/r/Python/comments/1gun9pq/",
+  "post": {
+    "title": "Has anyone fully switched from pip to uv for daily work?",
+    "author": "tooling_tinkerer",
+    "url": "https://www.reddit.com/r/Python/comments/1gun9pq/",
+    "permalink": "/r/Python/comments/1gun9pq/has_anyone_fully_switched_from_pip_to_uv_for/",
+    "selftext": "I've been playing with uv for the last couple of months and the speed difference is wild. Considering ripping pip + pip-tools out of all our internal tooling. What was your experience after fully switching? Anything that bit you?",
+    "num_comments": 71,
+    "score": 312,
+    "subreddit": "Python",
+    "created_utc": 1732086882.0
+  },
+  "top_level_comments": [
+    {
+      "id": "luvx12a",
+      "author": "uv_fan_03",
+      "score": 124,
+      "body": "We switched our monorepo six months ago. Resolves that took 90s with pip-compile take 2s with uv. Lockfile format took some getting used to but it's been a clear win.",
+      "permalink": "/r/Python/comments/1gun9pq/_/luvx12a/"
+    },
+    {
+      "id": "luvy23b",
+      "author": "cautious_chris",
+      "score": 43,
+      "body": "Mostly switched but we kept pip in a few CI images that talk to a private index with auth setups uv didn't fully support yet. It's getting closer every release though.",
+      "permalink": "/r/Python/comments/1gun9pq/_/luvy23b/"
+    },
+    {
+      "id": "luvz45c",
+      "author": "lock_skeptic",
+      "score": 17,
+      "body": "Speed is great but I want a 1.0 commitment on the lockfile format before I make it the company default.",
+      "permalink": "/r/Python/comments/1gun9pq/_/luvz45c/"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+[
+  {
+    "reviewer": "MagnusOxlund",
+    "state": "COMMENTED",
+    "comment": "This doesn't sound right — instead of a focused docstring fix the branch carries 42 commits. I'll revisit later. Anyone else is of course welcome to fix the docstring first."
+  }
+]

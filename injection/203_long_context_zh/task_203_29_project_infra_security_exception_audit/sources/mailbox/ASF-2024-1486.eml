@@ -1,0 +1,57 @@
+Message-ID: <9F8FC6BD-FBA0-4DBC-999A-4C225DD3C3E9@jaguNET.com>
+X-Clawbench-ID: ASF-2024-1486
+Date: Tue, 11 Oct 2022 08:33:38 -0400
+From: Jim Jagielski <jim@jaguNET.com>
+To: dev@httpd.apache.org,  Stefan Eissing <stefan@eissing.org>
+Subject: Re: friends of mod_proxy
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-10.mbox
+
++1
+
+> On Oct 11, 2022, at 3:47 AM, Stefan Eissing via dev <dev@httpd.apache.org> wrote:
+>
+>
+>
+>> Am 10.10.2022 um 20:39 schrieb Ruediger Pluem <rpluem@apache.org>:
+>>
+>>
+>>
+>> On 10/10/22 6:35 PM, Eric Covener wrote:
+>>> On Mon, Oct 10, 2022 at 11:55 AM Yann Ylavic <ylavic.dev@gmail.com> wrote:
+>>>>
+>>>> On Fri, Oct 7, 2022 at 9:14 PM Ruediger Pluem <rpluem@apache.org> wrote:
+>>>>>
+>>>>> On 10/7/22 7:11 PM, Stefan Eissing via dev wrote:
+>>>>>>
+>>>>>>
+>>>>>>> Am 07.10.2022 um 18:45 schrieb Yann Ylavic <ylavic.dev@gmail.com>:
+>>>>>>>
+>>>>>>
+>>>>>> Thanks, Yann, for the detailed explanation on how this works and that the default does the right thing.
+>>>>>
+>>>>> +1. I missed the default of not reusing the connection in these cases but having the possibility to override it like the user did.
+>>>>> But shouldn't we default to not reusing the connection in case of a $ inside the port as well?
+>>>>
+>>>> We default to disabling connection reuse for any $ substitution
+>>>> already, the compat issue is for an explicit enablereuse=on which used
+>>>> to "work" because it was ignored..
+>>>>
+>>>> How about a patch like the attached one now, which disables connection
+>>>> reuse definitively (regardless of enablereuse) if there is a $
+>>>> substitution in the hostname or port part of the URL?
+>>>> The patch uses the existing "is_address_reusable" flag (set to false
+>>>> initially in this case), and since it's not configurable by the user
+>>>> we are safe from a connection reuse point of vue in any case.
+>>>
+>>> +1 in concept
+>>>
+>>
+>> Looks sensible. +1.
+>
+> I like the patch. +1
+>
+> Cheers,
+> Stefan

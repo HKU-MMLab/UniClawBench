@@ -1,0 +1,244 @@
+{
+  "task_id": "task_101_26_arxiv_metadata_pack",
+  "difficulty": "Hard",
+  "schema": "b",
+  "schema_notes": "row-level expected values with accepted variants",
+  "skills_declared": [
+    "pymupdf-pdf-parser-clawdbot-skill",
+    "document-pro",
+    "xlsx-cn"
+  ],
+  "ground_truth": {
+    "domain": "robotics_and_embodied_ai",
+    "expected_in_scope_count": 7,
+    "expected_off_topic_count": 5,
+    "expected_in_scope_papers": [
+      "2410.00425",
+      "2307.15818",
+      "2303.04137",
+      "2302.12766",
+      "2303.03378",
+      "2310.08864",
+      "2306.11706"
+    ],
+    "expected_off_topic_papers": [
+      "2407.05600",
+      "2401.18000",
+      "2403.22002",
+      "2402.30050",
+      "2406.14400"
+    ],
+    "min_papers_with_key_contribution": 6,
+    "min_key_contribution_chars": 40,
+    "min_off_topic_substantive_reasons": 4,
+    "filename_to_arxiv_id": {
+      "paper_a3f.pdf": "2410.00425",
+      "paper_b9k.pdf": "2307.15818",
+      "paper_c1m.pdf": "2303.04137",
+      "paper_d7q.pdf": "2302.12766",
+      "paper_e2t.pdf": "2303.03378",
+      "paper_f5h.pdf": "2310.08864",
+      "paper_g8w.pdf": "2306.11706",
+      "paper_h2n.pdf": "2407.05600",
+      "paper_i6r.pdf": "2401.18000",
+      "paper_j4y.pdf": "2403.22002",
+      "paper_k7l.pdf": "2402.30050",
+      "paper_m9z.pdf": "2406.14400"
+    },
+    "actual_page_counts": {
+      "paper_a3f.pdf": 5,
+      "paper_b9k.pdf": 6,
+      "paper_c1m.pdf": 6,
+      "paper_d7q.pdf": 5,
+      "paper_e2t.pdf": 7,
+      "paper_f5h.pdf": 7,
+      "paper_g8w.pdf": 6,
+      "paper_h2n.pdf": 5,
+      "paper_i6r.pdf": 4,
+      "paper_j4y.pdf": 5,
+      "paper_k7l.pdf": 4,
+      "paper_m9z.pdf": 4
+    },
+    "papers": {
+      "2410.00425": {
+        "filename": "paper_a3f.pdf",
+        "title": "ManiSkill3: GPU-Parallelized Robotics Simulation and Rendering for Generalizable Embodied AI",
+        "year": 2024,
+        "actual_topic": "Robotics simulation framework — GPU-parallelized contact-rich physics for manipulation, locomotion, humanoid control. In-scope.",
+        "key_contribution_hint": "10-1000x faster than alternatives via GPU-parallelized rendering and contact-rich physics; 20+ task families across manipulation/locomotion/humanoid.",
+        "accepted_author_variants": [
+          "Stone Tao",
+          "Fanbo Xiang",
+          "Arth Shukla",
+          "Yuzhe Qin",
+          "Hao Su"
+        ],
+        "abstract_keywords": [
+          "GPU-parallelized",
+          "manipulation",
+          "embodied",
+          "simulator",
+          "contact-rich"
+        ]
+      },
+      "2307.15818": {
+        "filename": "paper_b9k.pdf",
+        "title": "RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Control",
+        "year": 2023,
+        "actual_topic": "Robotic control — vision-language-action models that transfer web knowledge to end-to-end robotic control. In-scope.",
+        "key_contribution_hint": "End-to-end VLA model transferring Internet-scale vision-language pretraining to robot actions, enabling emergent semantic reasoning on novel objects.",
+        "accepted_author_variants": [
+          "Anthony Brohan",
+          "Noah Brown",
+          "Yevgen Chebotar",
+          "Krzysztof Choromanski"
+        ],
+        "abstract_keywords": [
+          "vision-language",
+          "robotic control",
+          "VLA",
+          "end-to-end",
+          "robot"
+        ]
+      },
+      "2303.04137": {
+        "filename": "paper_c1m.pdf",
+        "title": "Diffusion Policy: Visuomotor Policy Learning via Action Diffusion",
+        "year": 2023,
+        "actual_topic": "Robotic visuomotor policy learning — represents the policy as a conditional denoising diffusion process over actions. In-scope.",
+        "key_contribution_hint": "Conditional denoising diffusion as the action-distribution score function, beating SOTA imitation-learning baselines by 46.9 percent across 12 manipulation tasks.",
+        "accepted_author_variants": [
+          "Cheng Chi",
+          "Siyuan Feng",
+          "Yilun Du",
+          "Shuran Song",
+          "Benjamin Burchfiel"
+        ],
+        "abstract_keywords": [
+          "visuomotor",
+          "diffusion",
+          "manipulation",
+          "policy",
+          "robot"
+        ]
+      },
+      "2302.12766": {
+        "filename": "paper_d7q.pdf",
+        "title": "Language-Driven Representation Learning for Robotics",
+        "year": 2023,
+        "actual_topic": "Visual representation learning for robotic manipulation — Voltron framework using human videos with captions. In-scope.",
+        "key_contribution_hint": "Voltron framework jointly trains masked autoencoding and language-conditioned objectives on human-video captions, transferring to grasping, manipulation, and dexterous control.",
+        "accepted_author_variants": [
+          "Siddharth Karamcheti",
+          "Suraj Nair",
+          "Annie S. Chen",
+          "Chelsea Finn",
+          "Dorsa Sadigh",
+          "Percy Liang"
+        ],
+        "abstract_keywords": [
+          "representation learning",
+          "robotics",
+          "visuomotor",
+          "human videos",
+          "manipulation"
+        ]
+      },
+      "2303.03378": {
+        "filename": "paper_e2t.pdf",
+        "title": "PaLM-E: An Embodied Multimodal Language Model",
+        "year": 2023,
+        "actual_topic": "Embodied multimodal language model — grounds language in real-world sensors for robotic manipulation planning. In-scope.",
+        "key_contribution_hint": "Embodied LM that injects continuous sensor modalities into a pretrained PaLM to enable robotic planning, VQA, and captioning with positive cross-domain transfer.",
+        "accepted_author_variants": [
+          "Danny Driess",
+          "Fei Xia",
+          "Brian Ichter",
+          "Corey Lynch",
+          "Aakanksha Chowdhery"
+        ],
+        "abstract_keywords": [
+          "embodied",
+          "multimodal",
+          "robotic manipulation",
+          "grounding",
+          "sensor"
+        ]
+      },
+      "2310.08864": {
+        "filename": "paper_f5h.pdf",
+        "title": "Open X-Embodiment: Robotic Learning Datasets and RT-X Models",
+        "year": 2023,
+        "actual_topic": "Cross-embodiment robot learning dataset and generalist policies trained over 22 robots. In-scope.",
+        "key_contribution_hint": "Cross-institution dataset spanning 22 robots and 527 skills, training generalist X-embodiment policies that show positive transfer across embodiments.",
+        "accepted_author_variants": [
+          "Open X-Embodiment Collaboration",
+          "Abby O'Neill",
+          "Abhinav Gupta",
+          "Abhishek Gupta"
+        ],
+        "abstract_keywords": [
+          "embodiment",
+          "robot",
+          "generalist",
+          "X-embodiment",
+          "policy"
+        ]
+      },
+      "2306.11706": {
+        "filename": "paper_g8w.pdf",
+        "title": "RoboCat: A Self-Improving Generalist Agent for Robotic Manipulation",
+        "year": 2023,
+        "actual_topic": "Multi-embodiment, multi-task generalist agent for robotic manipulation with a self-improvement loop. In-scope.",
+        "key_contribution_hint": "Generalist multi-embodiment manipulator that bootstraps with limited demonstrations and self-improves on novel tasks across heterogeneous robot platforms.",
+        "accepted_author_variants": [
+          "Konstantinos Bousmalis",
+          "Giulia Vezzani",
+          "Dushyant Rao",
+          "Coline Devin",
+          "Alex X. Lee"
+        ],
+        "abstract_keywords": [
+          "manipulation",
+          "robot",
+          "generalist",
+          "self-improvement",
+          "embodiment"
+        ]
+      }
+    },
+    "off_topic_papers": {
+      "2407.05600": {
+        "filename": "paper_h2n.pdf",
+        "title": "Compositional Manipulation of Latent Diffusion for Image Generation",
+        "actual_topic": "Image generation — latent-diffusion compositional editing on COCO/SDXL. The word manipulation refers to manipulating the latent representation of a generative model, not robotic manipulation. No robot, no embodiment, no policy.",
+        "off_topic_reason_template": "Image generation paper — latent-diffusion editing for text-to-image; manipulation in title refers to latent-vector edits, not robotic manipulation."
+      },
+      "2401.18000": {
+        "filename": "paper_i6r.pdf",
+        "title": "Multi-Agent Reinforcement Learning for Strategic Board Games with Imperfect Information",
+        "actual_topic": "Game-AI / board-game RL — counterfactual regret minimization on Stratego/Diplomacy/Hanabi. No robot, no physical actuators, no sensorimotor policy.",
+        "off_topic_reason_template": "Board-game multi-agent RL — discrete-state imperfect-information game AI, no physical embodiment or robot."
+      },
+      "2403.22002": {
+        "filename": "paper_j4y.pdf",
+        "title": "Manipulation of High-Dimensional Tabular Data via Conditional Diffusion Augmentation",
+        "actual_topic": "Tabular data augmentation — diffusion-based synthetic minority rows for class imbalance. The word manipulation in the title refers to data manipulation, not robotic manipulation. No robot, no policy.",
+        "off_topic_reason_template": "Tabular data augmentation — diffusion-based synthetic rows; manipulation in title refers to data manipulation, not robotics."
+      },
+      "2402.30050": {
+        "filename": "paper_k7l.pdf",
+        "title": "Locomotion-Inspired Receptive Field Patterns in Convolutional Neural Network Feature Maps",
+        "actual_topic": "CV interpretability — analysis of receptive-field oscillations in ResNet/ConvNeXt/ViT feature maps on ImageNet. Locomotion is used metaphorically; no real locomotion, no robot, no policy.",
+        "off_topic_reason_template": "CV interpretability of CNN feature maps on ImageNet — locomotion in title is a metaphor, not physical robot locomotion."
+      },
+      "2406.14400": {
+        "filename": "paper_m9z.pdf",
+        "title": "Embodiment Effects in Human-AI Conversational Agents: A User Study",
+        "actual_topic": "HCI user study — perceived trust ratings of chatbot avatars (text vs 2D vs 3D). Embodiment refers to a software-rendered avatar, not a physical robot or learned policy.",
+        "off_topic_reason_template": "HCI user study on chatbot avatar embodiment — software-rendered conversational agent, no physical robot or policy."
+      }
+    },
+    "scope_handling_note": "The folder contains 12 PDFs total: 7 in-scope robotics papers and 5 off-topic distractors. The executor must (a) place EXACTLY 7 rows in metadata.xlsx — one per in-scope arxiv id and ZERO off-topic rows; (b) write EXACTLY 7 in-scope summary bullets; (c) include a clearly-labelled Excluded / Off-topic section in summary.md naming ALL 5 off-topic arxiv ids with a one-line reason that references the actual research area. Any off-topic id appearing as a Papers row triggers the §6 scope-blowout cap 0.55. Missing the Excluded section entirely triggers the §6 off-topic-missed cap 0.55. Per-paper checkpoints are STRICT: any one in-scope paper missing or any one off-topic paper missing zeroes that rubric line."
+  }
+}

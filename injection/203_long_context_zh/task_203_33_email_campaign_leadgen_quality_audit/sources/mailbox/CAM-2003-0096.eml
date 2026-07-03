@@ -1,0 +1,22 @@
+Message-ID: <20020815095218.9D3F044134@phobos.labs.netnoteinc.com>
+X-Clawbench-ID: CAM-2003-0096
+Date: Thu, 15 Aug 2002 10:52:13 +0100
+From: yyyy@spamassassin.taint.org
+To: "Craig R.Hughes" <craig@deersoft.com>
+Subject: Re: [Razor-users] dot-tk registrations hitting Razor
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00643.cc9dcaf6c8befb9ebdff42e47aa0fe1e
+
+"Craig R.Hughes" said:
+
+> Hmm, tricky because we've got Razor1 and Razor2 rolled into one
+> rule.  Probably should break them out as separate rules anyway
+> so they can get different scores, etc.  Not too hard to do, but
+> it's nearly 11pm so I'll see if I can get to it tomorrow.
+
+IMO 2 separate rules is a good idea anyway, razor2 has totally different
+hitrates (generally better I think) to razor1.
+
+--j.

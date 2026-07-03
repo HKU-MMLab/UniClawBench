@@ -1,0 +1,25 @@
+{
+  "task_id": "task_101_27_pr_triage",
+  "skills": [
+    {
+      "original_skill": "code-analysis-skills",
+      "injected_skill": "code-analysis-skills",
+      "change_type": "benchmark environment adaptation",
+      "changes": [
+        "Changed the visible dependency section from a pip install command to a note that the workspace already provides the required Python packages.",
+        "Applied the same no-install wording to README.EN.md, README.CN.md, and SKILL.cn.md.",
+        "Changed optional PDF-output guidance in SKILL.md so it does not ask the executor to install optional packages."
+      ],
+      "reason": "The task setup service preinstalls these packages, and the task should not require the executor to install dependencies during the run."
+    },
+    {
+      "original_skill": "who-is-actor",
+      "injected_skill": "who-is-actor",
+      "change_type": "benchmark wording adaptation",
+      "changes": [
+        "Reworded a README sentence that said the skill has no pip/npm installs so it no longer contains task-time package-install command text."
+      ],
+      "reason": "The skill remains zero-dependency; this avoids executor-visible install-command noise during benchmark auditing."
+    }
+  ]
+}

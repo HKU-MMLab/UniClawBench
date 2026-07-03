@@ -1,0 +1,34 @@
+Message-ID: <Pine.GSO.4.30L.0209091538070.29646-100000@multics.mit.edu>
+X-Clawbench-ID: CAM-2003-1253
+Date: Mon, 09 Sep 2002 15:43:34 -0400
+From: Jacob Morzinski <yyyyorzins@MIT.EDU>
+To: exmh-users@spamassassin.taint.org
+Subject: Re: Sorting
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00980.c44ba5c1509adaeba8e9e496c91aef25
+
+On Mon, 9 Sep 2002, Rick Baartman wrote:
+> Is there a way to do a global Sort command?
+
+
+Wanting to sort like that is not common; I'd be surprised if exmh has
+a widget for it.  You can achieve what you want with the command-line
+mh tools, though.
+I suggest doing the following from a shell prompt:
+
+ sh -c 'for f in "`folders -recurse -fast`" ; do sortm +"$f" ; done'
+
+(The command "sortm" will sort a particular folder, and
+"folders -recurse -fast" prints out a list of all of your folders.)
+
+
+I hope this helps,
+ Jacob Morzinski                                jmorzins@mit.edu
+
+
+_______________________________________________
+Exmh-users mailing list
+Exmh-users@redhat.com
+https://listman.redhat.com/mailman/listinfo/exmh-users

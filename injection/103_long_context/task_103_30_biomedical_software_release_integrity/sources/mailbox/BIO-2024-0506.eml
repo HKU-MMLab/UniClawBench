@@ -1,0 +1,40 @@
+Message-ID: <YdWo4N2Wwtl74gMP@hermes.hilbert.loc>
+X-Clawbench-ID: BIO-2024-0506
+Date: Wed, 5 Jan 2022 15:19:12 +0100
+From: Karsten Hilbert <Karsten.Hilbert@gmx.net>
+To: debian-med@lists.debian.org
+Subject: Re: Acquiring Dental RVG on Linux
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_01_msg00010.html
+
+Am Mon, Jan 03, 2022 at 10:31:32AM +0100 schrieb Jakub Wilk:
+
+> You may want to give CLAHE (Contrast Limited Adaptive Histogram Equalization) a try.
+>
+> It's implemented in OpenCV.
+
+For what it's worth, here's code which so does:
+
+
+#!/usr/bin/env python3
+
+import cv2
+import numpy as np
+
+image = cv2.imread('bypyrvg.png')
+
+image_bw = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+for cl in [1,2,3,4,5,10,20,40,80,100,150,300]:
+	for tgl in [1, 2, 3, 4, 5, 10]:
+		for offset in [0, 1, 30, 250]:
+			clahe = cv2.createCLAHE(clipLimit = cl, tileGridSize = (tgl, tgl))
+			clahe_img = clahe.apply(image_bw) + offset
+			cv2.imwrite('byclahe-cl%s-tgl%s-ofs%s.png' % (cl, tgl, offset), clahe_img)
+
+
+Karsten
+--
+GPG  40BE 5B0E C98E 1713 AFA6  5BC0 3BEA AC80 7D4F C89B

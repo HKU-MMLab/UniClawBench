@@ -1,0 +1,36 @@
+Message-ID: <Y4CWvv8NwZgxb+Kg@an3as.eu>
+X-Clawbench-ID: BIO-2024-0634
+Date: Fri, 25 Nov 2022 11:19:42 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Étienne Mollier <emollier@emlwks999.eu>
+Subject: Re: python3-biopython: incompatible with muscle >= 5
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_11_msg00095.html
+
+Hi,
+
+Am Thu, Nov 24, 2022 at 10:35:06PM +0100 schrieb Étienne Mollier:
+>
+> python-biopython 1.80 is uploaded to experimental and should
+> build soon[1], if this is not the case already.  I haven't had a
+> lot of opportunities to extensively test interactions between
+> muscle3 and 5; I guess the situation will be clearer when
+> muscle3 makes it through NEW.  It would be nice that people
+> using biopython and muscle give this a try as early as possible.
+
+Thanks a lot for this.
+
+I've just reverted the version of t-coffee and have uploaded
+t-coffee_13.45.0.4846264+really13.41.0.28bdc39+dfsg-1 - not proud about
+this name, but well, it should do the trick without an epoch.
+
+Hope this will settle the situation with biopython soonish.
+
+Kind regards
+
+      Andreas.
+
+--
+http://fam-tille.de

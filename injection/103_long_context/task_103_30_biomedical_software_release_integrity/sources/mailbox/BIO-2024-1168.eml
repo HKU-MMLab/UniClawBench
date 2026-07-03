@@ -1,0 +1,50 @@
+Message-ID: <ZezaTy8w56O4YSNy@an3as.eu>
+X-Clawbench-ID: BIO-2024-1168
+Date: Sat, 9 Mar 2024 22:53:19 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Thorsten Alteholz <debian@alteholz.de>
+Subject: Build-Dependencies from emboss-lib for bioperl-run and python-biopython (Was: reverse dependencie)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_03_msg00003.html
+
+Control: block -1 by 1065782
+
+Hi Thorsten,
+
+Am Mon, Mar 04, 2024 at 06:41:28PM +0000 schrieb Thorsten Alteholz:
+> there are still reverse dependencies that need to be taken care of:
+>
+> Checking reverse dependencies...
+> # Broken Depends:
+> emboss: jemboss
+
+I think this is a false positive since jemboss is built from the emboss
+source.
+
+> emboss-explorer: emboss-explorer
+
+Bug filed.
+
+> # Broken Build-Depends:
+> bioperl-run: emboss
+
+This needs further investigation.
+
+> embassy-domainatrix: emboss-lib (6.6.1~  embassy-domalign: emboss-lib (6.6.1~  embassy-domsearch: emboss-lib (6.6.0-1~ >=)
+>                    emboss-lib (6.6.1~  python-biopython: emboss
+
+This needs further investigation.
+
+> In case they matter, this needs to be addressed first. Please remove the
+> moreinfo tag once that is done.
+
+Thanks for checking.  Once bioperl-run and python-biopython is fixed we
+reset moreinfo.
+
+Kind regards
+    Andreas.
+
+--
+http://fam-tille.de

@@ -1,0 +1,48 @@
+Message-ID: <YhS38FtH9F9AcjeJ@an3as.eu>
+X-Clawbench-ID: BIO-2024-0615
+Date: Tue, 22 Feb 2022 11:16:16 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Nanolyse autopkgtest broken - could someone provide a proper fastq file?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_02_msg00100.html
+
+Hi,
+
+by chance I realised that the autopkgtest of nanolyse was not
+working on the provided dataset.  After fixing this[1] the test
+breaks unfortunately[2]:
+
+Traceback (most recent call last):
+  File "/usr/bin/NanoLyse", line 33, in
+    sys.exit(load_entry_point('NanoLyse==1.2.0', 'console_scripts', 'NanoLyse')())
+  File "/usr/lib/python3/dist-packages/nanolyse/NanoLyse.py", line 53, in main
+    filter_reads(aligner, sys.stdin)
+  File "/usr/lib/python3/dist-packages/nanolyse/NanoLyse.py", line 122, in filter_reads
+    for record in SeqIO.parse(reads, "fastq"):
+  File "/usr/lib/python3/dist-packages/Bio/SeqIO/Interfaces.py", line 74, in __next__
+    return next(self.records)
+  File "/usr/lib/python3/dist-packages/Bio/SeqIO/QualityIO.py", line 1085, in iterate
+    for title_line, seq_string, quality_string in FastqGeneralIterator(handle):
+  File "/usr/lib/python3/dist-packages/Bio/SeqIO/QualityIO.py", line 950, in FastqGeneralIterator
+    raise ValueError("Sequence and quality captions differ.")
+ValueError: Sequence and quality captions differ.
+
+The problem occures when reading the perfectly random fastq file which I
+have shamelessly stolen from ncbi-blast+ package[3] and which is most
+probably a bad choice.  It would be great if some educated person would
+provide a better example data set.
+
+Kind regards
+
+        Andreas.
+
+
+[1] https://salsa.debian.org/med-team/nanolyse/-/commit/847f0439ab66d47a512bab6fbea61268ffec4213
+[2] https://salsa.debian.org/med-team/nanolyse/-/jobs/2498940
+[3] https://salsa.debian.org/med-team/nanolyse/-/blob/master/debian/tests/data/README
+
+--
+http://fam-tille.de

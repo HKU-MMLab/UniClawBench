@@ -1,0 +1,61 @@
+task_id: task_201_05_org_chart_mermaid
+category: 201_skill_usage_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我们的 CEO 要一份可以放进她董事会演示文稿的治理可视化图，
+  我需要从委托声明书里把它提取出来。摘录文件位于
+  /tmp_workspace/clawbench/sources/alphabet_def14a_excerpt.md——请用
+  Mermaid 绘图技能把它转成一张清晰的组织架构图。她想
+  看到真实的汇报层级——从每位现任
+  董事到董事会、以及从每位非 CEO 的执行官到
+  执行官名册的实线——谁在审计、
+  薪酬、治理、执行这几个委员会中分别担任成员，以及那些
+  不属于正式席位的虚线顾问或观察员关系。我们还需要谁担任什么职务的主席，
+  以及任何空缺、临时、仅顾问、或近期填补的席位。
+  请用 graph TD 或 flowchart TD 把它渲染为 Mermaid，写入
+  /tmp_workspace/results/org.mmd，并在 /tmp_workspace/results/org.svg
+  生成一份 SVG 渲染图。对于摘录中明确支持的
+  董事会和执行官名册关系，使用实线箭头；对于委员会成员关系
+  以及任何无表决权的顾问或观察员关系，使用
+  虚线箭头；并把每个委员会作为一个 subgraph 分组。
+  在视觉上把委员会主席与普通成员区分开——用形状或
+  样式都可以。把每个人当作单一节点；如果某人担任
+  多个角色，就从那一个节点出发画出他的各种关系，而不是
+  重复创建节点。任何被列为近期离任的人都不应作为
+  现任节点出现。
+
+  另外请保存 /tmp_workspace/results/governance_matrix.csv，好让我的
+  幕僚长不用读 Mermaid 也能核对这份提取结果。使用以下列：
+  person、source_role、governance_group_or_board、committee、committee_role、
+  edge_type、source_quote。为每条实线董事会／执行官
+  名册的边各包含一行，为每条委员会成员关系的边各包含一行——委员会
+  主席的 committee_role = chair，普通成员的 committee_role = member。
+  顾问和观察员可以并入委员会的那些行，并用一个
+  edge_type 来标明其顾问性质。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - alphabet_def14a_excerpt.md
+
+skills:
+  - diagram-local-mermaid
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

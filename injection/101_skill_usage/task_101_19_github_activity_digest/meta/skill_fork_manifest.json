@@ -1,0 +1,14 @@
+{
+  "task_id": "task_101_19_github_activity_digest",
+  "notes_visible_to_executor": false,
+  "skill_changes": [
+    {
+      "original_skill": "github",
+      "injected_skill": "github",
+      "original_source": "clawhub",
+      "change_type": "benchmark API adaptation",
+      "reason": "The live fixture is populated under the account authenticated by GITHUB_TOKEN. The fork keeps the original GitHub API skill but makes helper actions prefer /user.login from the token before falling back to GITHUB_USERNAME, so a placeholder username does not make the executor query the wrong repository owner.",
+      "executor_skill_path": "skills/github"
+    }
+  ]
+}

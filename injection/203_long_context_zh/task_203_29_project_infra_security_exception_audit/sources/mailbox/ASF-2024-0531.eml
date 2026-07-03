@@ -1,0 +1,99 @@
+Message-ID: <CALK=YjNwZTyy-gxcch=AouodattwdobqN-VxtC3d5ckFjGqPhw@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0531
+Date: Mon, 19 Aug 2024 11:22:49 -0400
+From: Eric Covener <covener@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE CLOSED] Switch read/write repository from Subversion to Git
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-08.mbox
+
+To bring the convo back here out of cwiki -- in a world where we moved
+to read/write git, with reviews happening in the context of a pull
+request, does anyone else have any feelings about ditching or keeping
+the STATUS file?
+
+If we lose some bits of useful state from STATUS, I would rather use
+something like GH projects with a few basic columns then continue to
+swivel into a STATUS file personally.
+
+On Wed, Aug 7, 2024 at 4:51 AM Ruediger Pluem <rpluem@apache.org> wrote:
+>
+>
+>
+> On 7/16/24 5:02 PM, Eric Covener wrote:
+> > On Thu, May 11, 2023 at 11:34 AM Ruediger Pluem <rpluem@apache.org> wrote:
+> >>
+> >>
+> >>
+> >> On 5/11/23 12:27 PM, Ruediger Pluem wrote:
+> >>>
+> >>>
+> >>> On 5/4/23 10:34 AM, Ruediger Pluem wrote:
+> >>>> This is a formal vote on whether we should move our read/write repository from Subversion to Git.
+> >>>> This means that our latest read/write repository will be no longer available via svn.apache.org. It
+> >>>> will be available via Git at https://gitbox.apache.org/repos/asf/httpd-site.git and https://github.com/apache/httpd.git.
+> >>>> Github also offers the possibility to use a Subversion client:
+> >>>> https://docs.github.com/en/get-started/working-with-subversion-on-github/support-for-subversion-clients
+> >>>>
+> >>>>
+> >>>> [ ]: Move the read/write repository from Subversion to Git and leverage the features of Github (for now Actions and PR).
+> >>>> [ ]: Move the read/write repository from Subversion to Git, but I don't want to work with Github and I will only work with
+> >>>>      what gitbox.apache.org offers.
+> >>>> [ ]: Leave everything as is.
+> >>>>
+> >>>
+> >>>
+> >>> After being open for one week I call this vote closed. Thank you for everyone who participated in this vote by
+> >>> either voting directly or voicing opinions on the subject.
+> >>>
+> >>> Result:
+> >>>
+> >>> Total number of votes: 16
+> >>>
+> >>> [ ]: Move the read/write repository from Subversion to Git and leverage the features of Github (for now Actions and PR).
+> >>>
+> >>> 13 votes by jorton, ylavic, icing, gbechis, covener, humbedooh, rjung, jailletc36, jblond, gstein, rpluem, jim, fielding.
+> >>>
+> >>> [ ]: Move the read/write repository from Subversion to Git, but I don't want to work with Github and I will only work with
+> >>>       what gitbox.apache.org offers.
+> >>>
+> >>> 0 votes.
+> >>>
+> >>> [ ]: Leave everything as is.
+> >>>
+> >>> 3 votes by manu, ivan, minfrin.
+> >>>
+> >>
+> >> Now that the vote is closed in favor of moving to Git what are the next steps?
+> >> Do we need to open an INFRA ticket to get this done?
+> >> Who will open it?
+> >> Is there any preferred point of time to do this?
+> >
+> > FYI was thinking about this during the latest release -- I created a
+> > cwiki topic here to track any work that would be needed to move to
+> > read/write git:
+> > https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=311628229
+> >
+> > I split it into a few sections based on timing.  Currently I don't
+> > even think the release scripts are a blocker -- It would be much
+> > easier to run through it live on a low stakes release then trying to
+> > mock it up or make a bunch of blind changes.
+> >
+> > I think what's practical once we migrate might inform things like what
+> > we decide on how RTC works, including RTC exceptions.  Maybe infra
+> > folks have some experience to share on the spectrum of options?
+> >
+>
+> Just left a comment on the Wiki page.
+>
+> Regards
+>
+> Rüdiger
+>
+
+
+--
+Eric Covener
+covener@gmail.com

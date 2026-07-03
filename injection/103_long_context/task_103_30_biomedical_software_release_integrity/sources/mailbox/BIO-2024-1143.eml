@@ -1,0 +1,26 @@
+Message-ID: <20210923131940.GU28115@an3as.eu>
+X-Clawbench-ID: BIO-2024-1143
+Date: Thu, 23 Sep 2021 15:19:40 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Autopkgtest of pftools needs to be rewritten
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_09_msg00049.html
+
+Hi,
+
+I've pushed the new version of pftools to Git.  I realised that the
+test.sh script upstream provided previously is not shipped any more.
+There is a cmake based build time test we might be able to re-use or we
+take the test.sh from previous version and run it on the data who are
+kept.  No idea what strategy might work best - I just drop a note here
+and will move on with other packages for the moment.
+
+Kind regards
+
+       Andreas.
+
+--
+http://fam-tille.de

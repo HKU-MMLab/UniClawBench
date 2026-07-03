@@ -1,0 +1,30 @@
+Message-ID: <CFO0W0WEJ98X.1VRDO8ZKTH2CC@debian>
+X-Clawbench-ID: BIO-2024-0771
+Date: Sat, 13 Nov 2021 00:16:11 +0530
+From: "Nilesh Patra" <nilesh@debian.org>
+To: "Andreas Tille" <andreas@an3as.eu>, "Debian Med Project List" <debian-med@lists.debian.org>
+Subject: Re: Moved dcmstack to Debian Med team - any idea how to fix test failure?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_11_msg00068.html
+
+Hi Andreas,
+
+On Fri Nov 12, 2021 at 4:56 PM IST, Andreas Tille wrote:
+> but I think nobody is working on this. Any volunteer to have a look at
+> this?
+
+I am not sure if you read my email here[1] but nose is being deprecated now,
+so it is best for us to switch.
+We also need to switch more packages eventually (DD list is attached with that email)
+I did a patch which switches nose->pytest and after everything was working, I uploaded.
+
+However, one request for you, can you please take care of forwarding the patch[2] (rather long) upstream?
+I would have done so myself but I am short on time.
+
+[1]: https://lists.debian.org/debian-med/2021/10/msg00145.html
+[2]: https://salsa.debian.org/med-team/dcmstack/-/blob/master/debian/patches/port-to-pytest.patch
+
+Regards,
+Nilesh

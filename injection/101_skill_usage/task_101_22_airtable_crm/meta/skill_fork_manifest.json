@@ -1,0 +1,14 @@
+{
+  "task_id": "task_101_22_airtable_crm",
+  "notes_visible_to_executor": false,
+  "skill_changes": [
+    {
+      "original_skill": "airtable",
+      "injected_skill": "airtable-pat-rest",
+      "original_source": "clawhub",
+      "change_type": "api_credential_adaptation",
+      "reason": "The task provides AIRTABLE_PAT, AIRTABLE_BASE_ID, and AIRTABLE_TABLE_NAME. The fork uses the official Airtable REST API directly instead of a third-party gateway credential flow.",
+      "executor_skill_path": "skills/airtable-pat-rest"
+    }
+  ]
+}

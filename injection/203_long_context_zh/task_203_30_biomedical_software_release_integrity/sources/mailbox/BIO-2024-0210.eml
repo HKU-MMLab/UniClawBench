@@ -1,0 +1,36 @@
+Message-ID: <Yi9pG+QEUB/KlCEK@an3as.eu>
+X-Clawbench-ID: BIO-2024-0210
+Date: Mon, 14 Mar 2022 17:11:07 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Peter Pentchev <roam@ringlet.net>
+Subject: Re: libzstd should not be maintained by Debian Med team - could some core team please take over (Was: libzstd 1.5.2 in Debian)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_03_msg00009.html
+
+Hi Peter,
+
+Am Mon, Feb 21, 2022 at 07:40:26PM +0200 schrieb Peter Pentchev:
+> > there was a (private) request to upgrade libzstd to latest 1.5.2.
+> >
+> > I'd like to repeat that I'm really convinced that libzstd should *not*
+> > be maintained in the Debian Med team but rather some core team in
+> > Debian.  It is here for historic reasons but should have moved somewhere
+> > more appropriately since it became its general importance.
+> >
+> > Please consider this mail a team-orphane of the package.
+>
+> I'm sorry; I do indeed intend to bring it into pkg-rpm, and I will try
+> to do that in the next couple of days. Apologies for the months of
+> delay, and thanks a lot for all of your team's work!
+
+Thanks for your information.  Are there any blockers to take over
+this package?
+
+Kind regards
+
+    Andreas.
+
+--
+http://fam-tille.de

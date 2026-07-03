@@ -1,0 +1,31 @@
+{
+  "video_id": "Qs7vN4uWxKj",
+  "url": "https://www.youtube.com/watch?v=Qs7vN4uWxKj",
+  "title": "Warning: pyenv + Poetry Breaks on macOS Sonoma — Here Is What Is Happening",
+  "channel": "AppleSiliconDev",
+  "published_at": "2023-12-05",
+  "duration_seconds": 528,
+  "view_count": 142000,
+  "tags": ["macos", "sonoma", "pyenv", "poetry", "python", "bug-report"],
+  "transcript_format": "json_segments",
+  "transcript": [
+    {"start": 0.0, "end": 19.0, "text": "Hey, this is a quick PSA. If you upgraded your Mac to macOS Sonoma in late 2023 and your pyenv plus Poetry workflow suddenly broke, you are not alone. I want to walk through the exact failure mode."},
+    {"start": 19.0, "end": 58.0, "text": "Symptom: poetry install fails with a cryptic error about a missing dynamic library, usually libssl or libffi. Or, more subtly, your Poetry venv runs but imports of common packages like cryptography or psycopg2 segfault on first call."},
+    {"start": 58.0, "end": 110.0, "text": "Root cause: macOS Sonoma changed how the system linker resolves dynamic libraries for processes that bypass code signing. pyenv builds Python from source, and that build links against Homebrew's openssl. The Sonoma linker treats those Homebrew dylibs as untrusted in some contexts."},
+    {"start": 110.0, "end": 162.0, "text": "Result: a Python interpreter built with pyenv on Sonoma may import fine, but as soon as a C extension tries to dlopen a Homebrew dylib at runtime, you get either a missing-symbol error or a hard segfault. Poetry triggers this because it actually exercises those C extensions during dependency resolution."},
+    {"start": 162.0, "end": 220.0, "text": "I want to be very specific: this is a Sonoma-only issue. The exact same pyenv plus Poetry setup works fine on Ventura and Monterey. If you are watching this on Linux or Windows, none of this applies to you."},
+    {"start": 220.0, "end": 278.0, "text": "Workarounds people are trying. First: pyenv install with explicit LDFLAGS and CPPFLAGS pointing at the Homebrew openssl prefix. This works for some users but breaks again after the next brew upgrade. Fragile."},
+    {"start": 278.0, "end": 335.0, "text": "Second: install Python via the python.org universal installer instead of pyenv. Then point Poetry at that Python. This sidesteps the dylib issue entirely because the python.org build is signed and notarized as a single bundle. The downside: you lose pyenv's per-project version pinning."},
+    {"start": 335.0, "end": 392.0, "text": "Third: switch to a tool that does not build Python from source. uv from Astral and rye both ship pre-built Python distributions and avoid the Sonoma linker issue out of the box. I'll cover those in detail in a follow-up video."},
+    {"start": 392.0, "end": 448.0, "text": "To be clear: the pyenv plus Poetry approach itself is not wrong. It was the recommended modern setup all through 2023. The issue is purely a macOS Sonoma compatibility regression. If you have not yet upgraded to Sonoma, your existing workflow is fine."},
+    {"start": 448.0, "end": 500.0, "text": "If you have already upgraded and you are seeing the segfault: do not panic, do not delete your projects. Either downgrade to a python.org installer build or wait for the alternative-toolchain video coming soon."},
+    {"start": 500.0, "end": 528.0, "text": "Sources, GitHub issues, and the Python build flags will be linked in the description. Subscribe and ring the bell because this Sonoma situation is evolving fast."}
+  ],
+  "key_points": [
+    "macOS Sonoma BREAKS pyenv-built Python via dylib linker change",
+    "Symptom: segfault or missing-symbol on cryptography/psycopg2 import",
+    "Sonoma-specific — Ventura, Monterey, Linux, Windows are FINE",
+    "Workarounds are fragile (LDFLAGS) or sidestep pyenv (python.org installer)",
+    "Hints at uv and rye as upcoming alternatives"
+  ]
+}

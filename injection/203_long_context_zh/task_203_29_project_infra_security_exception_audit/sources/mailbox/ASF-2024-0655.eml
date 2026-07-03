@@ -1,0 +1,21 @@
+Message-ID: <19EF2EA5-A258-46BC-80C2-9C0730811558@eissing.org>
+X-Clawbench-ID: ASF-2024-0655
+Date: Fri, 1 Apr 2022 13:50:18 +0200
+From: Stefan Eissing <stefan@eissing.org>
+To: dev@httpd.apache.org
+Subject: PR291 is dead, long live PR306!
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-04.mbox
+
+The first PR to separate HTTP and HTTP/1.x processing is in: https://github.com/apache/httpd/pull/306
+
+This is a small subset of PR291 that is easier to read. While it has all API additions from PR291, it
+only uses a subset in the implementation. With further use coming in future PRs.
+
+This PRs functional change is the move of the HTTP/1.x parts the HTTP_IN filter in a separate filter,
+which allows a large code removal in mod_http2.
+
+Kind Regards,
+Stefan

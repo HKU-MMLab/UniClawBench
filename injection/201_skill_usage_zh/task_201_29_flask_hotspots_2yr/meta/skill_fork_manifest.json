@@ -1,0 +1,34 @@
+{
+  "task_id": "task_101_29_flask_hotspots_2yr",
+  "skills": [
+    {
+      "original_skill": "code-analysis-skills",
+      "injected_skill": "code-analysis-skills",
+      "change_type": "benchmark environment adaptation",
+      "changes": [
+        "Changed the visible dependency section from a pip install command to a note that the workspace already provides the required Python packages.",
+        "Applied the same no-install wording to README.EN.md, README.CN.md, and SKILL.cn.md.",
+        "Changed optional PDF-output guidance in SKILL.md so it does not ask the executor to install optional packages.",
+        "Changed the git related-skill wording so it does not ask the executor to install other skills.",
+        "Changed the log-analyzer jq tip so it recommends available parsers instead of asking the executor to install jq."
+      ],
+      "reason": "The task setup service preinstalls these packages, and the task should not require the executor to install dependencies during the run."
+    },
+    {
+      "original_skill": "git",
+      "injected_skill": "git",
+      "change_type": "benchmark environment adaptation",
+      "changes": [
+        "Added 'Churn / Hotspot Analysis' section to SKILL.md recommending --no-merges global log for per-file churn computation, with an explanation of why per-file pathspec filtering should be avoided (Git history-simplification silently drops commits reachable only through merged branches)."
+      ],
+      "reason": "Without guidance, the executor may use per-file git log (which triggers history simplification) or global log without --no-merges, producing different churn/bugfix counts. The added section steers toward the deterministic --no-merges global approach that matches the ground truth."
+    },
+    {
+      "original_skill": "log-analyzer",
+      "injected_skill": "log-analyzer",
+      "change_type": "no_changes",
+      "changes": [],
+      "reason": "Declared as a supporting skill for parsing CHANGELOG / commit-log style records. Used as-is from clawhub with no executor-visible modifications."
+    }
+  ]
+}

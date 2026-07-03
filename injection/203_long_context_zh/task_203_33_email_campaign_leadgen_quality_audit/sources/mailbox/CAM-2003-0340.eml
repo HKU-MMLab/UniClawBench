@@ -1,0 +1,31 @@
+Message-ID: <20020206184755.D10950@pihlaja.kotilo>
+X-Clawbench-ID: CAM-2003-0340
+Date: Wed, 06 Feb 2002 18:47:55 +0200
+From: Peter Peltonen <pisara@iki.fi>
+To: rpm-zzzlist@freshrpms.net
+Subject: Re: Apt problems
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01097.08d3f921b8b1e6627c89504ea1c14069
+
+On Wed, Feb 06, 2002 at 04:30:18PM +0200, Harri Haataja wrote:
+> install. I haven't met an openssh like that and in worst case I've had 3
+> different openssl libraries (WTF can't they just bump a major version if
+> it's incompatible?!?).
+
+So, what should I with the openssl thing?
+
+> something) and Ive just made dummy packages (with verbose warning
+> attached ;) that explicitly provide those capabilities. (or claim to,
+> that is).
+
+How do I make such packages?
+
+--
+Peter
+
+
+_______________________________________________
+RPM-List mailing list <RPM-List@freshrpms.net>
+http://lists.freshrpms.net/mailman/listinfo/rpm-list

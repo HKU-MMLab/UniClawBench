@@ -1,0 +1,27 @@
+Message-ID: <ZzkW_yE1EwCJmftp@an3as.eu>
+X-Clawbench-ID: BIO-2024-0835
+Date: Sat, 16 Nov 2024 23:04:47 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: htslib ecosystem 1.21
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_11_msg00012.html
+
+Dear Étienne
+
+Am Wed, Nov 13, 2024 at 08:34:56PM +0100 schrieb Étienne Mollier:
+> It seems that I have been well inspired, because buildds caught
+> a number of build failures on other architectures than amd64 or
+> arm64[1] (nothing too complex thankfully, just a new symbol that
+> appears when certain vector extensions are available), and the
+> experimental pseudo-excuses raised a couple of issues[2].  I'll
+> open some bugs if that turns out necessary.
+
+Thanks for caring for htslib ... and waving from my Hotel in
+Toulouse to your accomodation - nice I was able to meet you here
+    Andreas.
+
+--
+https://fam-tille.de

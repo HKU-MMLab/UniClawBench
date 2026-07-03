@@ -1,0 +1,31 @@
+Message-ID: <Ze9Or1CHcGcQN2ee@an3as.eu>
+X-Clawbench-ID: BIO-2024-0883
+Date: Mon, 11 Mar 2024 19:34:23 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: How is autopkgtest working in Perl packages
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_03_msg00006.html
+
+Hi,
+
+when trying to exclude clustalw and emboss from bioperl-run I learned
+that its autopkgtest is failing for all architectures but amd64.  The
+reason is that the test wants to install pftools which is only available
+on amd646.  Thus all autopkgtests for other architectures are failing
+with
+
+   Broken autopkgtest-satdep:ppc64el Depends on pftools:ppc64el
+
+(and other not installable dependencies.)  Unfortunately I do not see
+any debian/tests/control file which is hidden by some Perl test magic
+I do not know.  Any hint how to relax the depencency from non-existent
+packages?
+
+Kind regards
+   Andreas.
+
+--
+http://fam-tille.de

@@ -1,0 +1,163 @@
+{
+  "task_id": "task_101_10_docker_audit",
+  "difficulty": "Hard",
+  "schema": "a",
+  "schema_notes": "concept-level critical-risk findings plus CVE crosswalk checks; strict all-of must-hit",
+  "skills_declared": [
+    "docker",
+    "security-auditor"
+  ],
+  "ground_truth": {
+    "must_hit_critical_risks": [
+      {
+        "id": "plaintext_api_key_in_dockerfile",
+        "concept": "plaintext API_KEY baked into Dockerfile ENV",
+        "where": "Dockerfile line 5: ENV API_KEY=abcd1234efgh5678",
+        "match_keywords_any": [
+          "API_KEY",
+          "abcd1234efgh5678",
+          "ENV API_KEY",
+          "plaintext secret",
+          "hardcoded secret",
+          "secret in Dockerfile",
+          "secret in ENV"
+        ],
+        "rationale": "A static credential committed in the image is exfiltrated to anyone who pulls or inspects the image; must be moved to runtime secret injection."
+      },
+      {
+        "id": "unsafe_pickle_loads_rce",
+        "concept": "pickle.loads on attacker-controlled request body",
+        "where": "server.py line 7-8: blob = request.data; obj = pickle.loads(blob) inside POST /load",
+        "match_keywords_any": [
+          "pickle.loads",
+          "pickle",
+          "unsafe deserialization",
+          "insecure deserialization",
+          "request.data"
+        ],
+        "rationale": "Calling pickle.loads on untrusted bytes is direct remote code execution; the /load endpoint accepts arbitrary POST bodies."
+      },
+      {
+        "id": "flask_debug_bind_all",
+        "concept": "Flask debug=True with host=0.0.0.0",
+        "where": "server.py line 16: app.run(host='0.0.0.0', debug=True)",
+        "match_keywords_any": [
+          "debug=True",
+          "Werkzeug debugger",
+          "interactive debugger",
+          "0.0.0.0",
+          "bind-all",
+          "debug mode"
+        ],
+        "rationale": "Werkzeug's interactive debugger gives RCE to any reachable client; combined with 0.0.0.0 binding this is a remotely exploitable shell."
+      },
+      {
+        "id": "runs_as_root_unpinned_base",
+        "concept": "container runs as root on python:latest with no USER directive",
+        "where": "Dockerfile line 1 (FROM python:latest) and absence of any USER directive",
+        "match_keywords_any": [
+          "root",
+          "USER",
+          "non-root",
+          "python:latest",
+          "unpinned base",
+          "latest tag"
+        ],
+        "rationale": "The image inherits the floating python:latest tag and never drops privileges, so a process compromise becomes a root-in-container compromise on an unpredictable base."
+      },
+      {
+        "id": "vulnerable_requests_2_20_0",
+        "concept": "requests==2.20.0 affected by CVE-2018-18074 (Authorization header leak on redirect)",
+        "where": "requirements.txt line 2: requests==2.20.0; vuln_advisories.json advisory CVE-2018-18074 (fixed_version 2.20.1)",
+        "match_keywords_any": [
+          "requests==2.20.0",
+          "CVE-2018-18074",
+          "GHSA-x84v-xcm2-53pg",
+          "Authorization header",
+          "2.20.1"
+        ],
+        "rationale": "The pinned requirement matches an explicit advisory in vuln_advisories.json with a known fix; missing this means the auditor did not actually use the supplied feed."
+      }
+    ],
+    "must_hit_critical_risks_count": 5,
+    "must_hit_match_policy": "All 5 risks must be hit. For each risk, the executor's audit.md must reference the concept clearly enough that any of match_keywords_any (case-insensitive) matches the title or evidence/body of at least one finding. Strict 5/5; missing even one risk → CP §5 line scores 0.",
+    "required_cve_crosswalk": [
+      {
+        "package": "flask",
+        "current_requirement": "flask<2.3",
+        "cve_or_ghsa": "CVE-2023-30861",
+        "fixed_version": "2.3.2"
+      },
+      {
+        "package": "requests",
+        "current_requirement": "requests==2.20.0",
+        "cve_or_ghsa": "CVE-2018-18074",
+        "fixed_version": "2.20.1"
+      },
+      {
+        "package": "pyyaml",
+        "current_requirement": "pyyaml",
+        "cve_or_ghsa": "CVE-2020-14343",
+        "fixed_version": "5.4"
+      },
+      {
+        "package": "jinja2",
+        "current_requirement": "jinja2",
+        "cve_or_ghsa": "CVE-2020-28493",
+        "fixed_version": "2.11.3"
+      }
+    ],
+    "docker_remediation_anchors": [
+      "pin base image by version or digest",
+      "copy requirements before app code for cacheable reproducible installs",
+      "use pip install --no-cache-dir",
+      "create and switch to a non-root USER",
+      "remove secrets from Dockerfile and inject via runtime secret management"
+    ],
+    "fixed_artifacts": {
+      "Dockerfile.fixed": {
+        "must_include": [
+          "FROM python:3",
+          "--no-cache-dir",
+          "USER"
+        ],
+        "must_not_include": [
+          "python:latest",
+          "API_KEY=abcd1234efgh5678"
+        ]
+      },
+      "requirements.fixed.txt": {
+        "minimum_versions": {
+          "Flask": "2.3.2",
+          "requests": "2.20.1",
+          "PyYAML": "5.4",
+          "Jinja2": "2.11.3"
+        }
+      }
+    },
+    "min_pinned_versions": {
+      "flask": "2.3.2",
+      "requests": "2.20.1",
+      "pyyaml": "5.4",
+      "jinja2": "2.11.3"
+    },
+    "inapplicable_advisories": [
+      {
+        "cve": "CVE-2023-46695",
+        "package": "django",
+        "reason_inapplicable": "django is not in this bundle (requirements.txt has flask, requests, pyyaml, jinja2 only). The advisory feed lists it but the package is not used; flagging it as a real finding is a false positive."
+      },
+      {
+        "cve": "CVE-2022-3996",
+        "package": "openssl",
+        "reason_inapplicable": "Affects Windows builds of openssl 3.0.0–3.0.7 only. The Dockerfile uses python:latest (Linux-based); this CVE does not apply to a Linux container. Flagging is a false positive unless the audit explicitly notes the platform mismatch."
+      },
+      {
+        "cve": "CVE-2022-2309",
+        "package": "lxml",
+        "reason_inapplicable": "lxml is not in this bundle's requirements.txt. The advisory feed lists it but the package is not installed; flagging is a false positive."
+      }
+    ],
+    "inapplicable_advisories_note": "Note: 3 misleading entries exist in vuln_advisories.json. A competent audit must cross-reference each advisory against the bundle's actual requirements.txt + Dockerfile + server.py before flagging. Listing any of these 3 CVEs as a real finding (without explicitly noting it does NOT apply) → §6 cap 0.50."
+  }
+}

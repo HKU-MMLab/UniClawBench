@@ -1,0 +1,37 @@
+task_id: task_102_05_itunes_lookup
+category: 102_exploration
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I want to pull an artist's catalog from Apple's store data with an API rather
+  than scraping the Apple Music web player.
+
+  Here's the artist's Apple Music page:
+
+      https://music.apple.com/us/artist/jack-johnson/909253
+
+  Apple runs a public store lookup service (the same data that powers iTunes /
+  Apple Music search) that isn't really documented but takes an Apple store id
+  as input. The numeric id is right there in the page URL. Please find that
+  lookup service and use it (not by scraping the Apple Music page DOM) to get:
+
+  - the artist's name and primary genre,
+  - a list of the artist's albums (collection name + release year) that the
+    service returns when you ask it for this artist's albums.
+
+  Save the result to `/tmp_workspace/results/itunes_artist.json`, and save the
+  exact request URL(s) you called plus their raw JSON response(s) to
+  `/tmp_workspace/results/itunes_evidence/` so the pull is reproducible.
+
+references:
+  - references/eval_rule.md
+
+codex:
+  max_user_followups: 2

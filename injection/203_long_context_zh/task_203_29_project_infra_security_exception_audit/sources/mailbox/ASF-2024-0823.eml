@@ -1,0 +1,12 @@
+Message-ID: <asf-2024-0823@httpd.apache.org>
+X-Clawbench-ID: ASF-2024-0823
+Date: Tue, 30 Jan 2024 13:02:00 +0000
+From: Infra Logs <infra-logs@apache.org>
+To: Colin Madsen <cmadsen@apache.org>
+Subject: rsync activity for Peregrine
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: synthetic Apache-style project infrastructure review implant
+
+The peregrine-drop account pulled three bundles over the weekend, including private-rc-failure-logs.tar.gz. That file is not the public artifact sample listed in the security ticket.

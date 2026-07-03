@@ -1,0 +1,72 @@
+task_id: task_204_19_kate_elisabeth_london_spending
+category: 204_multimodal_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  请在 YouTube 上找到 kate elisabeth 的频道，并找出截至 2026-04-23 基准快照时"最新发布"的、主题明确属于"我在伦敦一周花多少钱 / 在伦敦待一周 /
+  伦敦一周开销"这一类的视频。
+  你必须实际打开该频道并观看最新的相关视频。不要根据字幕文件、文字稿、频道摘要，或你自己
+  对花销的假设来拼凑答案；花销项目必须来自你这次观察到的视频画面或音频。
+
+  明确的限制：不要下载、保存、读取或解析字幕文件、VTT/SRT 文件、YouTube transcript、
+  第三方文字稿或网页摘要。浏览器播放时显示的字幕只能用作理解口语音频的辅助，不能
+  作为任何花销项目的唯一证据。不要在 `/tmp_workspace/results/` 中生成字幕、
+  文字稿、`.vtt` 或 `.srt` 文件。
+
+  基于你这次实际观察到的、对应该快照的最新相关视频内容：
+
+  1. 提取视频中提到的每一个明确的花销项目。
+  2. 在 `/tmp_workspace/results/` 中生成以下文件：
+     - `london_week_spending.csv`
+     - `london_week_spending_pie.png`
+     - `london_week_spending.md`
+     - 一个 `spending_evidence/` 目录，为 CSV 中的每一行包含一张对应的视频截图或关键帧
+  3. `london_week_spending.csv` 至少必须包含：
+     `item,amount,currency,category,timestamp,evidence_frame,evidence_type,note`
+     其中 `timestamp` 是该花销项目在视频中的时间点，`evidence_frame` 是你所保存截图的相对路径，
+     而 `evidence_type` 应是可验证的来源，例如 `visible_price_overlay`、`spoken_in_video` 或
+     `visible_and_spoken`。
+  4. `london_week_spending.md` 必须说明：
+     - 所选视频的标题和链接，以及为什么你判断它是截至 2026-04-23 快照时最新的主题匹配视频
+     - 每个花销项目的分类逻辑
+     - CSV 的逐项合计
+     - 创作者在视频中口述或展示的总花销
+     - 如果逐项合计与视频中的总花销不一致，请单独列出
+       `unitemized_or_unconfirmed_remainder`，并说明这并不是一笔虚构的具体购买
+
+  不要凭旧印象来写；请使用你这次实际观察到的频道内容。如果当前 YouTube 页面在 2026-04-23 之后
+  发生了变化，请在说明中注明，并且不要把快照之后的新内容当作本任务的目标。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/reference_video_selection.md
+  - references/spending_evidence_reference_sheet.jpg
+  - references/evidence_frames/spend_01.jpg
+  - references/evidence_frames/spend_02.jpg
+  - references/evidence_frames/spend_03.jpg
+  - references/evidence_frames/spend_04.jpg
+  - references/evidence_frames/spend_05.jpg
+  - references/evidence_frames/spend_06.jpg
+  - references/evidence_frames/spend_07.jpg
+  - references/evidence_frames/spend_08.jpg
+  - references/evidence_frames/spend_09.jpg
+  - references/evidence_frames/spend_10.jpg
+  - references/evidence_frames/spend_11.jpg
+  - references/evidence_frames/spend_12.jpg
+  - references/evidence_frames/spend_13.jpg
+  - references/evidence_frames/spend_14.jpg
+  - references/evidence_frames/spend_15.jpg
+  - references/evidence_frames/spend_16.jpg
+  - references/evidence_frames/spend_17.jpg
+  - references/evidence_frames/spend_18.jpg
+
+codex:
+  max_user_followups: 2

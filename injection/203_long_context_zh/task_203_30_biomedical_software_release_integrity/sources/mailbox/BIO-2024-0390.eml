@@ -1,0 +1,49 @@
+Message-ID: <9f0fcf03-503a-30a8-e170-43e3ecbd4922@debian.org>
+X-Clawbench-ID: BIO-2024-0390
+Date: Thu, 9 Dec 2021 09:40:38 +0200
+From: Andrius Merkys <merkys@debian.org>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Re: Packaging TechneNotes [Was: Re: Project proposal for the Debian Med group]
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_12_msg00043.html
+
+Hello,
+
+On 2021-12-08 17:15, Andreas Tille wrote:
+> Am Wed, Dec 08, 2021 at 04:21:30PM +0200 schrieb Andrius Merkys:
+>> On 2021-11-20 13:48, Guido Rovera wrote:
+>> You may start from Debian packaging portal [1], but I cannot seem to
+>> find it presenting the modern tools which highly simplify packaging
+>> (git-buildpackage, debhelper, sbuild, ...). I ended up describing the
+>> steps I take myself to package any new source package [2], you may start
+>> from this small tutorial and see where it takes you to.
+>
+> I've hold a packaging workshop at DebConf21.  May be the video[3] is
+> helpful.
+
+Thanks for the pointer, Andreas!
+
+>>> Finally, my software (TechneNotes) is substantially different from
+>>> Cherry Tree, with key improvements in terms of:
+>>> - user interface: most note-taking app display a vertical tree in the
+>>> sidebar, which is definitely not suitable for managing large volumes of
+>>> notes; although it required a lot more effort, TechneNotes was
+>>> implemented with a database-table view with treeview functionalities
+>>
+>> As I am not using any note-taking software myself, I cannot comment on
+>> the pros and cons of this, however.
+>
+> Same for me and I fail to see any connection to Debian Med.
+
+True. However, I cannot think of an appropriate team to continue the
+discussion. It would probably best to file an ITP for TechneNotes and
+take the discussion there.
+
+>> [1] https://wiki.debian.org/Packaging
+>> [2] https://wiki.debian.org/AndriusMerkys/PackagingInSeconds
+>
+> [3] https://laotzu.ftp.acc.umu.se/pub/debian-meetings/2021/DebConf21/debconf21-142-live-packaging-workshop.webm
+Best,
+Andrius

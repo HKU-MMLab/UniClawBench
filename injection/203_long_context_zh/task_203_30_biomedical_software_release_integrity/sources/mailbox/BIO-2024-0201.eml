@@ -1,0 +1,38 @@
+Message-ID: <YXLedfG+DzbtClxa@fusion>
+X-Clawbench-ID: BIO-2024-0201
+Date: Fri, 22 Oct 2021 17:53:25 +0200
+From: Étienne Mollier <emollier@emlwks999.eu>
+To: Nilesh Patra <nilesh@onenetbeyond.org>
+Subject: Re: disulfinder: ftbfs with GCC-11
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00143.html
+
+Hi Nilesh,
+
+Nilesh Patra, on 2021-10-22:
+> looks like C++17 has removed the provision to specify custom
+> exceptions, and there are a lot of errors like the one above.
+> In this case, does it makes sense to force C++14 standard
+> (with chnages in d/rules or with patches) in such cases and
+> ask upstream to clean these up? Or do I miss a relatively easy
+> solutions?
+
+It depends.  If I read correctly the porting guide to Gcc 11 [1]
+and if the number of occurrence of the issue is reasonable, then
+you can just patch the throw(BadOptionSetting) occurrences to
+replace them by noexcept(false).  If the number of occurrences
+is too high to make a patch viable, then similarly to mothur,
+the advice from Aaron M. Ucko applies: informing upstream and
+temporarily getting back to C++14 is probably the saner course
+of action.
+
+[1]: https://gcc.gnu.org/gcc-11/porting_to.html
+
+In hope this helps,
+Have a nice day,  :)
+--
+Étienne Mollier
+Fingerprint:  8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+Sent from /dev/pts/2, please excuse my verbosity.

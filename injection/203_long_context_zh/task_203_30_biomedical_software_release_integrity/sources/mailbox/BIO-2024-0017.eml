@@ -1,0 +1,71 @@
+Message-ID: <YuJXaLc5yy+7PN/M@an3as.eu>
+X-Clawbench-ID: BIO-2024-0017
+Date: Thu, 28 Jul 2022 11:31:20 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Finishing ncbi-vdb and sra-sdk
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_07_msg00085.html
+
+Hi Aaron,
+
+Am Wed, Jul 27, 2022 at 10:29:38PM +0200 schrieb Andreas Tille:
+> No real problem - the package will sit in NEW for some time.  I think I
+> also stumbled upon the line-ending issue and solved it by excluding
+> .gitattributes from upstream source tarball which makes the issue void
+> (from my perspective).
+>
+> > Does -DVDB_LIBDIR=/usr/lib/${DEB_HOST_MULTIARCH} help?
+>
+> I'll check tomorrow.
+
+Thanks for the hint.  This hurdle was taken but the next one is coming up.
+
+> > Meanwhile, I'm concerned about how to handle ngs-sdk's incorporation
+> > into sra-sdk 3.x, since sra-sdk needs ncbi-vdb libraries but ncbi-vdb at
+> > least historically needed to build against ngs-sdk.
+>
+> Upstream has not yet tagged any 3.0.0 release - so I simply assumed
+> the current version is fine.
+
+May be the issue I'm facing now is connected to this.  The next error
+is:
+
+-- Found Python3: /usr/bin/python3.10 (found version "3.10.5") found components: Interpreter.
+Using ncbi-vdb interfaces: /usr/include/ncbi-vdb/interfaces
+Using ncbi-vdb binary libraries: /usr/lib/x86_64-linux-gnu
+-- Could NOT find JNI (missing: JAVA_AWT_LIBRARY JAVA_AWT_INCLUDE_PATH).
+
+
+(which is probably caused at the end of file
+   ngs/ncbi/ngs-jni/CMakeLists.txt )
+
+But maybe that's not really critical but rather the next one:
+
+-- Found Threads: TRUE..
+-- Found HDF5: /usr/lib/x86_64-linux-gnu/hdf5/serial/libhdf5.so;/usr/lib/x86_64-linux-gnu/libcrypto.so;/usr/lib/x86_64-linux-gnu/libcurl.so;/usr/lib/x86_64-linux-gnu/libpthread.so;/usr/lib/x86_64-linux-gnu/libsz.so;/usr/lib
+HDF5_INCLUDE_DIRS=/usr/include/hdf5/serial
+HDF5_LIBRARIES=/usr/lib/x86_64-linux-gnu/hdf5/serial/libhdf5.so/usr/lib/x86_64-linux-gnu/libcrypto.so/usr/lib/x86_64-linux-gnu/libcurl.so/usr/lib/x86_64-linux-gnu/libpthread.so/usr/lib/x86_64-linux-gnu/libsz.so/usr/lib/x86_
+CMake Error at /usr/share/cmake-3.23/Modules/ExternalProject.cmake:2540 (message):
+  error: could not find git for clone of RE2_
+Call Stack (most recent call first):
+  /usr/share/cmake-3.23/Modules/ExternalProject.cmake:3640 (_ep_add_download_command)
+  test/sharq/CMakeLists.txt:44 (ExternalProject_Add)
+
+
+-- Configuring incomplete, errors occurred!
+
+
+It seems the patch I tried[1] is not working as intended. :-(
+
+Kind regards
+
+      Andreas.
+
+
+[1] https://salsa.debian.org/med-team/sra-sdk/-/blob/master/debian/patches/use_debian_packaged_re2.patch
+
+--
+http://fam-tille.de

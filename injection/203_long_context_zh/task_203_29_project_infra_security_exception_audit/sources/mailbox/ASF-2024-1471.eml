@@ -1,0 +1,35 @@
+Message-ID: <9348A94D-81E4-4516-9D08-31C0B6CE08AC@eissing.org>
+X-Clawbench-ID: ASF-2024-1471
+Date: Mon, 28 Mar 2022 15:24:13 +0200
+From: Stefan Eissing <stefan@eissing.org>
+To: dev@httpd.apache.org
+Subject: Re: Support JSON output in mod_status and mod_info
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-03.mbox
+
+> Am 28.03.2022 um 14:28 schrieb Rainer Jung <rainer.jung@kippdata.de>:
+>
+>
+> I am thinking about adding a JSON output format to mod_status and mod_info as an option controlled by a query string parameter.
+>
+> Since writing simple data structures from these modules is much simpler than parsing and processing a JSON structure, I would expect it to be based on simple ap_rputs() and ap_rprintf() like we already use it for auto (text) and HTML output. IMHO no need for a JSON library just for this use case.
+>
+> Of course, this will slightly bloat the code with "if" statements and roughly double the amount of ap_rputs() and ap_rprintf().
+>
+> For mod_status this probably means introduction of a new AP_STATUS_JSON value, so that in theory other modules could in the future update their status extensions with JSON support. In the meantime it might mean, that if a modules extends mod_status output, the result when asking for JSON output is no valid JSON (mix between mod_status JSON and mod_something providing HTML or text). For our own modules, especially mod_proxy, this can of course be fixed (and I will fix this). For mod_info, we do not have such an extension problem wrt. 3rd-party modules.
+>
+> Any comments up-front before I try to prototype this?
+
++1 (a big one)
+
+Suggestion: we could add an additional `status_hook` like `status_json_hook` so that existing one do not get confused?
+
+Kind Regards,
+Stefan
+
+>
+> Thanks and regards,
+>
+> Rainer

@@ -1,0 +1,52 @@
+task_id: task_101_30_xz_backdoor_audit
+category: 101_skill_usage
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  Before I mirror this release into our internal registry I need a
+  supply-chain risk assessment. The source tree is sitting at
+  /tmp_workspace/clawbench/sources/release_tree/ and something about it
+  doesn't feel right. Run the workspace's security-auditing skill and the penetration-testing skill
+  over the tree and tell me what you find. If it looks clean, say
+  that plainly. If it looks risky, I need every IOC — indicator of
+  compromise — you can surface. There's a known set; please find them
+  all. Pull from genuinely distinct parts of the release evidence so the
+  SOC sees real coverage of the attack surface rather than multiple
+  variants of the same finding.
+
+  Put the writeup in /tmp_workspace/results/findings.md. Use a clear
+  structured format and for each finding give me artifact, evidence,
+  attribution, and impact, so my SOC can act on it. I do not want a
+  memory-only writeup; each finding needs something concrete in this tree
+  and should explain why that artifact is risky.
+
+  Also save a YARA hunt file at /tmp_workspace/results/release_hunt.yar with
+  at least two rules aimed at the risk patterns you found, with comments
+  naming which findings each rule supports.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - release_tree/
+
+skills:
+  - security-auditor
+  - pentest
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

@@ -1,0 +1,31 @@
+Message-ID: <YzQ/Tr74fs/dqstz@an3as.eu>
+X-Clawbench-ID: BIO-2024-1159
+Date: Wed, 28 Sep 2022 14:34:22 +0200
+From: Andreas Tille <tille@debian.org>
+To: Mathieu Malaterre <malat@debian.org>
+Subject: Re: How to check ? Re: RFS -- autopkgtests for dcmtk
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_09_msg00033.html
+
+Am Wed, Sep 28, 2022 at 01:00:28PM +0200 schrieb Mathieu Malaterre:
+> Is there a way to (quickly) run the autopkgtests for dcmtk ? Or else
+> where can I see the output (somewhere on debian/ci) ?
+
+You should be able to directly run
+
+   https://salsa.debian.org/med-team/dcmtk/-/blob/master/debian/tests/run-unit-test
+
+Usually this script should be included as user example into
+
+     /usr/share/doc/dcmtk/run-unit-test
+
+(but this is missing).
+
+Hope this helps
+
+    Andreas.
+
+--
+http://fam-tille.de

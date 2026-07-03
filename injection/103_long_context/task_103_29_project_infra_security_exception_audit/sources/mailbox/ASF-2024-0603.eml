@@ -1,0 +1,41 @@
+Message-ID: <c6781638-aae5-a5c8-1b10-1ab6d335d0d4@gmx.de>
+X-Clawbench-ID: ASF-2024-0603
+Date: Wed, 18 May 2022 15:33:56 +0200
+From: Julian Reschke <julian.reschke@gmx.de>
+To: dev@httpd.apache.org
+Subject: Re: CVE-2022-1388
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-05.mbox
+
+Am 18.05.2022 um 14:50 schrieb Ruediger Pluem:
+>
+>
+> On 5/18/22 2:31 PM, Eric Covener wrote:
+>>> Given the above, I believe the interpretation of X-F5-Auth-Token should
+>>> be that it is an end-to-end header, and should therefore NOT be removed
+>>> from the proxied request.
+>>>
+>>> The text does say "All other headers *defined by HTTP/1.1* are
+>>> end-to-end headers" (emphasis mine, of course), and the X-F5-Auth-Token
+>>> header isn't defined by HTTP/1.1 (it's a custom one), but I think the
+>>> definition of specific hop-by-hop headers implies that *all* other
+>>> headers should be considered end-to-end.
+>>
+>> I don't think that interpretation can be squared with e.g.
+>>
+>> https://datatracker.ietf.org/doc/html/rfc7230#section-3.2.1
+>> https://datatracker.ietf.org/doc/html/rfc7230#section-6.1
+>>
+>
+> I get to the same conclusion. The current proxy code does it correctly.
+
+fwiw; you may want to check the new text in
+
+
+<https://greenbytes.de/tech/webdav/draft-ietf-httpbis-semantics-latest.html#field.connection>
+
+(really very soon to be published as RFC)
+
+Best regards, Julian

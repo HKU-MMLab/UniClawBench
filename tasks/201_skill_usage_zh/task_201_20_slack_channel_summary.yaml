@@ -1,0 +1,92 @@
+task_id: task_201_20_slack_channel_summary
+category: 201_skill_usage_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  财务电话会还有 30 分钟就开始，而我还没有完全消化本周在 #general 里进行的那个 Q3
+  预算规划讨论串。我需要的是那一个讨论的完整画面，而不是一份泛泛的频道回顾。用工作区的
+  Slack 集成技能拉取该频道，并用摘要技能把这个讨论串从头到尾走一遍。用 $SLACK_BOT_TOKEN
+  调用 Slack Web API，抓取 #general 的最新消息（最多
+  200 条）。我要找的讨论串是 Carol 发起的、关于 $1.85M 的
+  Q3 预算目标的那个——它总共有 8 条消息，逐步推进到一个锁定的
+  分配拆分。
+
+  我需要的是对这个 Q3 预算讨论串的完整重建，而不是一份泛泛的周报。这个讨论串从有人发起
+  Q3 预算规划时开始，并以一连串相互叠加的回复继续下去——每条回复都引用之前的数字并对其
+  作出调整。我需要把那条链上的每一条消息都找到并引用出来，把每一个金额数字和每一个日期都
+  点出来，并清楚地说明讨论串最终落到了哪里。
+
+  保存 /tmp_workspace/results/q3_budget_thread.md，包含以下小节：
+  - Thread messages —— 按时间顺序列出 Q3 预算讨论串中的每一条消息。对每一条给出 ts、作者，
+    以及一句话转述该消息增加或改变了什么。漏掉一条消息，文档的其余部分就会失去意义。
+  - Numbers called out —— 讨论串中出现的每一个金额数字和百分比，附上它所来自消息的 ts。
+    包括 Q3 总盘子、Q2 可比数、基础设施诉求、人头诉求、剩余余额、SaaS 节省、SWE 延期
+    节省、Acme SOW 数字，以及最终的各分桶分配。
+  - Dates and deadlines —— 讨论串中提到的每一个日历日期，附上它的 ts 以及它所指代的内容。
+  - Final decision —— 一段话，陈述锁定的总额、各分桶拆分，以及哪些被延期或移入应急储备，
+    外加提交截止日期。要与讨论串中最后一条消息所说的一致。
+
+  另外保存 /tmp_workspace/results/q3_budget_thread.csv，每条讨论串消息一行，列为 ts、author、
+  message_index、key_numbers、key_dates、role_in_thread。message_index 按时间顺序从 1 到 8。
+  role_in_thread 是 kickoff、infra_ask、headcount_ask、deferral_proposal、ops_savings、
+  risk_callout、revised_proposal、final_decision 之一。
+
+  如果没有配置 Slack 凭据，使用快照模式也可以——那种情况下直接读取
+  /tmp_workspace/clawbench/sources/slack_snapshot.json。
+
+task_snapshot: |
+  财务电话会还有 30 分钟就开始，而我还没有完全消化本周在 #general 里进行的那个 Q3
+  预算规划讨论串。我需要的是那一个讨论的完整画面，而不是一份泛泛的频道回顾。用工作区的
+  slack helper 和 summarize-pro 工作流技能把这个讨论串从头到尾走一遍。当前最新的非空消息
+  已经保存到 /tmp_workspace/clawbench/sources/slack_snapshot.json——请从
+  那里读取。
+
+  我需要的是对这个 Q3 预算讨论串的完整重建，而不是一份泛泛的周报。这个讨论串从有人发起
+  Q3 预算规划时开始，并以一连串相互叠加的回复继续下去——每条回复都引用之前的数字并对其
+  作出调整。我需要把那条链上的每一条消息都找到并引用出来，把每一个金额数字和每一个日期都
+  点出来，并清楚地说明讨论串最终落到了哪里。
+
+  保存 /tmp_workspace/results/q3_budget_thread.md，包含以下小节：
+  - Thread messages —— 按时间顺序列出 Q3 预算讨论串中的每一条消息。对每一条给出 ts、作者，
+    以及一句话转述该消息增加或改变了什么。
+  - Numbers called out —— 讨论串中出现的每一个金额数字和百分比，附上它所来自消息的 ts。
+  - Dates and deadlines —— 讨论串中提到的每一个日历日期，附上它的 ts 以及它所指代的内容。
+  - Final decision —— 一段话，陈述锁定的总额、各分桶拆分，以及哪些被延期或移入应急储备，
+    外加提交截止日期。
+
+  另外保存 /tmp_workspace/results/q3_budget_thread.csv，每条讨论串消息一行，列为 ts、author、
+  message_index、key_numbers、key_dates、role_in_thread。message_index 按时间顺序从 1 到 8。
+  role_in_thread 是 kickoff、infra_ask、headcount_ask、deferral_proposal、ops_savings、
+  risk_callout、revised_proposal、final_decision 之一。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - slack_snapshot.json
+
+skills:
+  - slack
+  - summarize-pro
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+pre_exec:
+  - ops/populate.py
+
+pre_exec_parallel_safe: true
+
+codex:
+  max_user_followups: 2

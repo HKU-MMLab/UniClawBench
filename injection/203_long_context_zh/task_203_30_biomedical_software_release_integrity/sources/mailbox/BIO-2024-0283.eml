@@ -1,0 +1,38 @@
+Message-ID: <Yc29vlYhGHmin8sq@debian>
+X-Clawbench-ID: BIO-2024-0283
+Date: Thu, 30 Dec 2021 19:40:06 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: Fabian Klötzl <kloetzl@evolbio.mpg.de>
+Subject: Re: RFS: andi and phylonium
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_12_msg00191.html
+
+On Thu, Dec 30, 2021 at 02:18:50PM +0100, Fabian Klötzl wrote:
+> Hi folks,
+>
+> Hope you are enjoying the holidays.
+
+Season's greetings to you too!
+
+> I for one finally had the time to update
+> two of my projects. I've updated andi and phylonium to new upstream
+> versions. Sponsoring an upload is much appreciated.
+
+Done, thanks for your work on these :)
+I did a few changes for andi though, do take a look.
+And if possible, please merge the test patch upstream.
+
+On 12/30/21 7:19 PM, Andreas Tille wrote:
+> Hi,
+>
+> seems Nilesh has done phylonium and I just uploaded andi.
+
+Actually, I was doing a couple of changes, but
+you pushed it before I had a chance to complete :)
+
+I did my changes anyway and uploaded anothe revision.
+
+Regards,
+Nilesh

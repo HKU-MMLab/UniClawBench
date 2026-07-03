@@ -1,0 +1,37 @@
+Message-ID: <YzHp/yVdYcSsj+Vk@an3as.eu>
+X-Clawbench-ID: BIO-2024-0728
+Date: Mon, 26 Sep 2022 20:05:51 +0200
+From: Andreas Tille <andreas@fam-tille.de>
+To: "Maarten L. Hekkelman" <maarten@hekkelman.com>
+Subject: Re: Upgrading dssp, cif-tools, density-fitness and others
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_09_msg00026.html
+
+Hi Maarten,
+
+Am Mon, Sep 26, 2022 at 04:45:38PM +0200 schrieb Maarten L. Hekkelman:
+> Dear Andreas,
+>
+> The version of libcifpp in trunk at github is newer than what is in Debian,
+> but is already outdated. I'm in the last stage of releasing yet another,
+> newer version that breaks binary (and API) compatibility.
+>
+> I'm not sure when I will release this newer version, but the goal is before
+> the end of next week.
+
+That's a good time frame.
+
+> I will create an update for the Debian version once the code is published
+> and all tools that depend on it are ported to the new version (should happen
+> in the same time frame).
+
+Hopefully libcifpp will pass new soon.
+
+Kind regards
+
+     Andreas.
+
+--
+http://fam-tille.de

@@ -1,0 +1,28 @@
+Message-ID: <AMEPKEBLDJJCCDEJHAMIOENGFCAA.ejw@cse.ucsc.edu>
+X-Clawbench-ID: CAM-2003-1211
+Date: Tue, 23 Jul 2002 17:40:26 -0700
+From: Jim Whitehead <ejw@cse.ucsc.edu>
+To: FoRK <FoRK@xent.com>
+Subject: SimPastry
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00712.e086301e1a13209a567bc2ae0c5ec1d9
+
+http://www.research.microsoft.com/~antr/Pastry/download.htm
+
+Pastry is a generic, scalable and efficient substrate for peer-to-peer
+applications. Pastry nodes form a decentralized, self-organizing and
+fault-tolerant overlay network within the Internet. Pastry provides
+efficient request routing, deterministic object location, and load balancing
+in an application-independent manner. Furthermore, Pastry provides
+mechanisms that support and facilitate application-specific object
+replication, caching, and fault recovery.
+
+----
+
+You can download a Pastry simulator off of this web site.
+
+- Jim
+
+http://xent.com/mailman/listinfo/fork

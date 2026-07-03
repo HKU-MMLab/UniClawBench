@@ -1,0 +1,61 @@
+Message-ID: <20231020133423.uoqe3utodn6syvr2@office.mailbox.org>
+X-Clawbench-ID: BIO-2024-0044
+Date: Fri, 20 Oct 2023 19:04:23 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: Use of "UNRELEASED" in debian/changelog
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_10_msg00016.html
+
+On Fri, Oct 20, 2023 at 02:43:57PM +0200, Santiago Vila wrote:
+> Thank you, Nilesh!
+>
+> Committed the fix and uploaded the package.
+
+Awesome!
+
+> One more question: I didn't get the hang of gbp to build
+> the package at first, so I put the orig.tar.xz below the working
+> directory and used good old "dpkg-buildpackage -S", since
+> I know dpkg-buildpackage is smart enough to ignore
+> the .git directory.
+>
+> To be sure everything was ok, I did a debdiff
+> between old and new *.dsc afterwards.
+>
+> If I have already tagged the package and pushed commit and tags,
+> what are the potential bad effects of using plain "dpkg-buildpackage -S"
+> in a project which is setup to use gbp?
+
+I can think of these points for the question (if they make sense
+ofcourse :)) -
+
+* Some projects specify the kind of layout they want in debian/gbp.conf
+  and if you do not use this, you may potentially miss out on the way
+  the said package is meant to be managed.
+* Some teams, like the go-team do not have a pristine-tar branch and
+  some of their packages don't have github tags either. In this case,
+  using gbp (instead of debuild) is very useful since it'd generate
+  the tarball from the upstream branch, and this has reproducible shasums
+  across releases. More details here[1].
+* gbp is very useful in packages that have multiple orig tarballs, for
+  instance javascript team packages where embedding node modules is a
+  thing. Using `origtargz` has not-very-seldom given me corrupted
+  tarballs and using a `gbp export-orig --pristine-tar` or instead just
+  a plain gbp buildpackage was much easier
+  to get reproducible tars. (An example of such package would ne
+  node-node-sass)
+* Building a project with gbp automates things for me which is creating
+  orig tars, tagging, and it even builds in a separate work directory
+  which I find a little more cleaner.
+
+That said, I've been involved with the project far less than you have
+been, and I've "grown up" using gbp so I have my workflow aligned with
+the same :)
+
+[1]: https://michael.stapelberg.ch/posts/2018-01-28-pristine-tar/
+
+Best,
+Nilesh

@@ -1,0 +1,21 @@
+Message-ID: <CALK=YjO-c9Dn5eaZOyZjPxNavvG84ZFVbRsYT1Kvop8BgdbHpg@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0040
+Date: Tue, 2 Jul 2024 09:49:00 -0400
+From: Eric Covener <covener@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.61-rc1 as httpd-2.4.61
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-07.mbox
+
+On Tue, Jul 2, 2024 at 9:47 AM Rainer Jung <rainer.jung@kippdata.de> wrote:
+>
+> Am 02.07.24 um 15:29 schrieb Eric Covener:
+> > Hi all,
+> >
+> > Please find below the proposed release tarball and signatures:
+> >
+> > https://dist.apache.org/repos/dist/dev/httpd/
+
+Thanks, checking on it, it seems like I did not get the usual gpg prompt.

@@ -1,0 +1,44 @@
+Message-ID: <YfA7y6tWSE48WKFm@an3as.eu>
+X-Clawbench-ID: BIO-2024-0813
+Date: Tue, 25 Jan 2022 19:04:59 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: routine-update adds debhelpe (Was: Sight needs to be ported to insighttoolkit5 [Fwd: sight is marked for autoremoval from testing])
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_01_msg00101.html
+
+Am Tue, Jan 25, 2022 at 10:48:55PM +0530 schrieb Nilesh Patra:
+>
+> There's already a bug report: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1003590
+> which has been fixed in the latest upload https://tracker.debian.org/news/1297402/accepted-lintian-brush-0120-source-into-unstable/
+>
+> Please update the version of lintian-brush you have locally.
+
+Ahhhh, done!
+
+The reason why I left some old lintian-brush on my machine is that it
+frequently needs some packages that are only in unstable.  While I've
+set my preferences to pull lintian-brush from unstable apt does not
+pull this on my testing machine if there are other requirements that
+are not in testing.  Too bad. :-(
+
+> >  I'm not
+> > really motivated to revert those changes afterwards in routine-update
+>
+> It decreases the overall quality, and I don't think not reverting this is a sensible thing to do.
+> In any case, we do have a solution to not do this in future packages.
+
+Yep.  Thanks for nagging about this!  As a punishment I reverted
+a few other occurences.
+
+Kind regards
+
+      Andreas.
+
+> > > [1]: https://salsa.debian.org/med-team/pftools/-/commit/4a13523419c3be98eced4804875436eb9b992d0b
+> > > [2]: https://salsa.debian.org/med-team/sight/-/commit/7db5abc531beb55747a35c06e4cf9e1385f695f8
+
+--
+http://fam-tille.de

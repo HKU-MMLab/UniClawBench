@@ -1,0 +1,28 @@
+Message-ID: <udl35e74dv1.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-0672
+Date: Sun, 07 Aug 2022 23:24:02 -0400
+From: ucko@debian.org (Aaron M. Ucko)
+To: <debian-med@lists.debian.org>
+Subject: Re: Finishing ncbi-vdb and sra-sdk
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_08_msg00031.html
+
+Andreas Tille  writes:
+
+> CMake Error at test/sharq/CMakeLists.txt:42 (add_dependencies):
+>   The dependency target "RE2_" of target "test-sharq-parser" does not exist.
+
+I'll try to take a look soon, but most likely your patch didn't go quite
+far enough.
+
+Meanwhile, I have made more (local) progress on ncbi-vdb; I'm pleased to
+report that we should be able to drop its NGS build dependencies as of
+version 3.0, so there won't be a cycle to contend with after all.  Also,
+I'm going to want to split out a small -data package to allow
+(temporary) coinstallation of libncbi-vdb2 and libncbi-vdb3.
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

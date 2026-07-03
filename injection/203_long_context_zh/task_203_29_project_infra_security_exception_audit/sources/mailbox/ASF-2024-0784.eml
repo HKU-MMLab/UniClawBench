@@ -1,0 +1,18 @@
+Message-ID: <CA+fua2UvzysUVo+Xg3M-X+E3=WpbGQ1kVo12sq4rAYXr6BmcHg@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0784
+Date: Fri, 18 Feb 2022 14:51:47 +0100
+From: "Gillis J. de Nijs" <gillis@jink.net>
+To: dev@httpd.apache.org
+Subject: Re: opinion poll, stale issues
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-02.mbox
+
+Should there be a distinction between "we're waiting on more user
+information, but didn't receive any" and "we have everything we need, but
+no one is working on it"?
+
+I reckon "STALE" would be good for the former (and then close as WONTFIX in
+due time), but closing actual bugs just because no one looked into them
+seems weird.

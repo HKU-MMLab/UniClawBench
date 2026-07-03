@@ -1,0 +1,43 @@
+Message-ID: <YeFiNPyYTECcO5gz@redhat.com>
+X-Clawbench-ID: ASF-2024-1378
+Date: Fri, 14 Jan 2022 11:44:52 +0000
+From: Joe Orton <jorton@redhat.com>
+To: dev@httpd.apache.org, APR Developer List <dev@apr.apache.org>
+Subject: Re: Possible apr 1.7.1 showstopper from httpd test framework
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-01.mbox
+
+On Fri, Jan 14, 2022 at 11:37:35AM +0100, Ruediger Pluem wrote:
+>
+>
+> On 1/14/22 6:47 AM, William A Rowe Jr wrote:
+> > In addition to a broken release of brotli (where enc/dec don't specify
+> > -lbrotlicommon,
+> > even on trunk, for openssl and other consumers to ferret out that binding), and
+> > lots of fun changes to build flags in curl 7.81 minor release (who does that?)
+> > there appears to be one test failure with date formatting in httpd 2.4.x branch
+> > (including release 2.4.52) and apr 1.7.x branch (including release 1.7.0);
+> >
+> > t/modules/include.t ................. 56/98 # Failed test 64 in
+> > t/modules/include.t at line 373
+> >
+> > Have not had time to investigate whether this is a change in perl behavior, or
+> > possibly a regression caused by apr datetime handling in 1.7.x itself., but any
+> > release apr-side should hold off just a bit to resolve this question.
+>
+> I cannot reproduce this with APR 1.7.x on RedHat 8 and our Travis builds at least for some builds
+> on Ubuntu use APR 1.7 as well and do not fail.
+> Is this probably a Windows specific issue? Can anyone reproduce on Windows?
+
+IIRC there is some test case which can be sensitive to filesystems, and
+e.g. sometimes fails if NFS mounted?  I may be mixing it up with another
+test. The output of "./t/TEST -v t/modules/include.t" should help
+diagnose.
+
+That phrase "including release 1.7.0" implies it's not a 1.7.x
+regression if it also failed with 1.7.0, Bill? i.e. no reason to hold up
+a release?
+
+Regards, Joe

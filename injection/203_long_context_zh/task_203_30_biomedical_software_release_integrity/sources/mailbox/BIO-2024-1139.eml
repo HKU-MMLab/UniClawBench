@@ -1,0 +1,37 @@
+Message-ID: <Y30p5ddBYTJ3S+Cs@fusion>
+X-Clawbench-ID: BIO-2024-1139
+Date: Tue, 22 Nov 2022 20:58:29 +0100
+From: Étienne Mollier <emollier@debian.org>
+To: Gregory Sharp <gregsharp.geo@yahoo.com>
+Subject: Re: Plastimatch 1.9.4 second try
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_11_msg00073.html
+
+Hi Gregory,
+
+Gregory Sharp, on 2022-11-22:
+> I have reverted the autopkgtest files and uploaded.
+
+I did a last review of the changes and I'm mostly happy with the
+result for now, so uploaded.  Thank you for your contribution!
+
+Note that lintian can spot some informational, and also
+pedantic, items.  You can get them by running lintian with
+options --display-info (-I) and --pedantic respecitvely; you
+may be interested in addressing a couple of typos for the next
+version.
+
+> Regarding Nilesh's suggestion of moving those upstream, it sounds like a good plan.  The upstream tests use dynamically generated synthetic data, so it could eliminate the need for storing large binary files.  We can do the same for the autopkgtest.
+
+If the package allows for that, then producing the synthetic
+data and testing against it within the autopkgtest would be
+awesome.
+
+Have a nice day,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  gpg: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/2, please excuse my verbosity
+   `-    on air: t - The Light At The End of the Light

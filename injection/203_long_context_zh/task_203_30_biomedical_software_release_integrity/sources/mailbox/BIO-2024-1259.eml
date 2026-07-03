@@ -1,0 +1,33 @@
+Message-ID: <YV2qJVXyIWM526fV@an3as.eu>
+X-Clawbench-ID: BIO-2024-1259
+Date: Wed, 6 Oct 2021 15:52:37 +0200
+From: Andreas Tille <tille@debian.org>
+To: Nicolas PHILIPPE <nicolas.philippe@lirmm.fr>,	Mikaël SALSON <mikael.salson@lifl.fr>,	Thierry LECROQ <thierry.lecroq@univ-rouen.fr>,	Martine LÉONARD <martine.leonard@univ-rouen.fr>,	Eric RIVALS <eric.rivals@lirmm.fr>
+Subject: Download location of Gk-arrays seems unavailable
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00024.html
+
+Hi,
+
+when trying to find out whether the Debian package of Gk-arrays is up to
+date I realised that the download page I'm aware of[1] results in
+
+   403 Forbidden
+
+A websearch seems that the code should be at some different location[2]
+but I can not reach this web page as well.
+
+Could you give any hint where to find the latest source code?
+
+Kind regards
+
+      Andreas.
+
+
+[1] http://gforge.inria.fr/frs/?group_id=3008
+[2] http://crac.gforge.inria.fr/gkarrays/
+
+--
+http://fam-tille.de

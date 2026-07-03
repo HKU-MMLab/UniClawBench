@@ -1,0 +1,27 @@
+Message-ID: <3DEDE21E.1010705@corvil.com>
+X-Clawbench-ID: CAM-2003-0899
+Date: Wed, 04 Dec 2002 11:08:14 +0000
+From: Padraig Brady <padraig.brady@corvil.com>
+To: ilug@linux.ie
+Subject: Re: [ILUG] PostgreSQL vs. MySQL
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 02488.68fed64ff8169f1505b74080bb7b6158
+
+Sean O'Donnell wrote:
+> Doesnt answer your question, but theres a very simple reason i
+ > develop a lot on mysql, it runs on windows and linux, a lot of
+ > clients only have windows servers, and last time i checked
+ > you can only run postgresql on windows with a lot of fecking
+> around with cygwin. give postgres a decent standalone windows
+ > build and i reckon you would see a lot of defections.
+
+This is pertinent: http://lwn.net/Articles/17067/
+
+Pádraig.
+
+--
+Irish Linux Users' Group: ilug@linux.ie
+http://www.linux.ie/mailman/listinfo/ilug for (un)subscription information.
+List maintainer: listmaster@linux.ie

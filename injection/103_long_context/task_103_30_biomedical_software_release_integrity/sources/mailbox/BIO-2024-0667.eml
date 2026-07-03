@@ -1,0 +1,32 @@
+Message-ID: <ZJSxlXYJ6v3tGjT9@fusion>
+X-Clawbench-ID: BIO-2024-0667
+Date: Thu, 22 Jun 2023 22:39:49 +0200
+From: Étienne Mollier <emollier@emlwks999.eu>
+To: debian-med@lists.debian.org
+Subject: bumping htslib stack to version 1.17
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_06_msg00014.html
+
+Hi all,
+
+I have staged an upload of htslib 1.17 into experimental last
+week, and pseudo-excuses didn't raise any obvious issues[1],
+beyond a breakage of samtools 1.16, whose bump to version 1.17
+looks smooth so far.  I will migrate these packages this evening
+to unstable.
+
+I don't expect any difficulties, and this should unlock the
+possibility to bump the version of all sorts of packages part of
+the htslib ecosystem.  Hopefully this won't throw too much more
+entropy in the archive.
+
+[1]: https://qa.debian.org/excuses.php?experimental=1&package=htslib
+
+Have a nice day,  :)
+--
+Étienne Mollier
+Fingerprint:  8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+Sent from /dev/pts/2, please excuse my verbosity.
+On air: Ceylon - La montée des marches

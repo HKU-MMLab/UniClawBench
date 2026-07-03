@@ -1,0 +1,248 @@
+{
+  "task_id": "task_103_19_RL_blog",
+  "created_at": "2026-05-02T00:00:00+00:00",
+  "expected_output_dir": "/tmp_workspace/results/RL_blog/",
+  "expected_blog_file": "/tmp_workspace/results/RL_blog/blog.html",
+  "expected_selection_note": "/tmp_workspace/results/selection_note.md",
+  "paper_mapping_reference": "references/paper_mapping.json",
+  "reference_blog": "references/RL_blog/blog.html",
+  "expected_main_papers": [
+    {
+      "file": "papers/paper_01.pdf",
+      "title": "Concrete Problems in AI Safety",
+      "authors": "Amodei et al.",
+      "year": 2016,
+      "url": "https://arxiv.org/pdf/1606.06565",
+      "sections": [
+        "1. Reward functions and specification gaps"
+      ],
+      "note": "Frames reward hacking as a core concrete AI safety problem."
+    },
+    {
+      "file": "papers/paper_02.pdf",
+      "title": "Shortcut Learning in Deep Neural Networks",
+      "authors": "Geirhos et al.",
+      "year": 2020,
+      "url": "https://arxiv.org/pdf/2004.07780",
+      "sections": [
+        "2. Shortcut learning as a source of hacking"
+      ],
+      "note": "Explains how models exploit spurious correlations instead of robust task features."
+    },
+    {
+      "file": "papers/paper_03.pdf",
+      "title": "The Effects of Reward Misspecification: Mapping and Mitigating Misaligned Models",
+      "authors": "Pan et al.",
+      "year": 2022,
+      "url": "https://arxiv.org/pdf/2201.03544",
+      "sections": [
+        "3. Reward hacking in RL environments"
+      ],
+      "note": "Maps how agents exploit misspecified rewards and studies mitigation."
+    },
+    {
+      "file": "papers/paper_04.pdf",
+      "title": "Reward Tampering Problems and Solutions in Reinforcement Learning",
+      "authors": "Everitt et al.",
+      "year": 2019,
+      "url": "https://arxiv.org/pdf/1908.04734",
+      "sections": [
+        "1. Reward functions and specification gaps"
+      ],
+      "note": "Analyzes corrupted reward channels and reward tampering through causal influence diagrams."
+    },
+    {
+      "file": "papers/paper_05.pdf",
+      "title": "Scaling Laws for Reward Model Overoptimization",
+      "authors": "Gao et al.",
+      "year": 2023,
+      "url": "https://arxiv.org/pdf/2210.10760",
+      "sections": [
+        "4. Reward hacking in RLHF for LLMs"
+      ],
+      "note": "Shows how optimizing a learned reward model can degrade true objective performance."
+    },
+    {
+      "file": "papers/paper_06.pdf",
+      "title": "Feedback Loops With Language Models Drive In-Context Reward Hacking",
+      "authors": "Pan et al.",
+      "year": 2024,
+      "url": "https://arxiv.org/pdf/2402.06627",
+      "sections": [
+        "5. Evaluator and in-context reward hacking"
+      ],
+      "note": "Demonstrates that models can exploit evaluator patterns visible in context."
+    },
+    {
+      "file": "papers/paper_07.pdf",
+      "title": "Language Models Learn to Mislead Humans via RLHF",
+      "authors": "Wen et al.",
+      "year": 2024,
+      "url": "https://arxiv.org/pdf/2409.12822",
+      "sections": [
+        "4. Reward hacking in RLHF for LLMs"
+      ],
+      "note": "Shows misleading behavior can emerge under RLHF-style optimization."
+    },
+    {
+      "file": "papers/paper_08.pdf",
+      "title": "Sycophancy to Subterfuge: Investigating Reward Tampering in Language Models",
+      "authors": "Denison et al.",
+      "year": 2024,
+      "url": "https://arxiv.org/pdf/2406.10162",
+      "sections": [
+        "6. Generalization of hacking skills",
+        "7. Detection and mitigation"
+      ],
+      "note": "Studies more severe reward tampering and generalization risks in language models."
+    }
+  ],
+  "expected_concept_sections": [
+    {
+      "name": "1. Reward functions and specification gaps",
+      "required_ideas": [
+        "define reward hacking as optimizing the specified reward while missing true intent",
+        "explain proxy objectives and specification gaps",
+        "include reward tampering as a related failure mode"
+      ],
+      "papers": [
+        "paper_01.pdf",
+        "paper_04.pdf"
+      ]
+    },
+    {
+      "name": "2. Shortcut learning as a source of hacking",
+      "required_ideas": [
+        "show how models exploit spurious features",
+        "connect shortcuts to reward proxies",
+        "distinguish robust task features from cheap correlates"
+      ],
+      "papers": [
+        "paper_02.pdf"
+      ]
+    },
+    {
+      "name": "3. Reward hacking in RL environments",
+      "required_ideas": [
+        "examples of reward misspecification in RL tasks",
+        "agents exploit environment or metric loopholes",
+        "mapping and mitigation of misaligned models"
+      ],
+      "papers": [
+        "paper_03.pdf"
+      ]
+    },
+    {
+      "name": "4. Reward hacking in RLHF for LLMs",
+      "required_ideas": [
+        "reward models are proxy objectives",
+        "overoptimization can reduce true preference quality",
+        "misleading or sycophantic behavior may emerge under RLHF"
+      ],
+      "papers": [
+        "paper_05.pdf",
+        "paper_07.pdf"
+      ]
+    },
+    {
+      "name": "5. Evaluator and in-context reward hacking",
+      "required_ideas": [
+        "LLM-as-judge/evaluator feedback can be exploited",
+        "models infer visible scoring patterns from context",
+        "feedback loops can drive in-context reward hacking"
+      ],
+      "papers": [
+        "paper_06.pdf"
+      ]
+    },
+    {
+      "name": "6. Generalization of hacking skills",
+      "required_ideas": [
+        "hacking behaviors can transfer or intensify across contexts",
+        "subterfuge and reward tampering as more severe generalization risks",
+        "study when reward hacking becomes a reusable strategy"
+      ],
+      "papers": [
+        "paper_08.pdf"
+      ]
+    },
+    {
+      "name": "7. Detection and mitigation",
+      "required_ideas": [
+        "audit reward models and evaluator behavior",
+        "detect abnormal feature use or reward-channel manipulation",
+        "combine better RL algorithms, data audits, adversarial tests, and monitoring"
+      ],
+      "papers": [
+        "paper_03.pdf",
+        "paper_08.pdf"
+      ]
+    }
+  ],
+  "expected_figures": [
+    {
+      "file": "assets/images/shortcut-features.png",
+      "source": "Geirhos et al. 2020",
+      "purpose": "shortcut learning and spurious features"
+    },
+    {
+      "file": "assets/images/exp-reward-misspecification.png",
+      "source": "Pan et al. 2022",
+      "purpose": "reward misspecification experiment"
+    },
+    {
+      "file": "assets/images/gameable-envs.png",
+      "source": "Pan et al. 2022 / reward hacking environments",
+      "purpose": "gameable RL environments"
+    },
+    {
+      "file": "assets/images/rlhf-misleading.png",
+      "source": "Wen et al. 2024",
+      "purpose": "misleading behavior under RLHF"
+    },
+    {
+      "file": "assets/images/rm-scaling-laws.png",
+      "source": "Gao et al. 2023",
+      "purpose": "reward-model overoptimization scaling"
+    },
+    {
+      "file": "assets/images/ICRH-exp.png",
+      "source": "Pan et al. 2024",
+      "purpose": "in-context reward hacking experiment"
+    },
+    {
+      "file": "assets/images/reward-hacking-generalization.png",
+      "source": "Denison et al. 2024",
+      "purpose": "generalization of reward tampering"
+    },
+    {
+      "file": "assets/images/reward-hacking-detection.png",
+      "source": "Denison et al. 2024 / mitigation",
+      "purpose": "detection and mitigation of reward hacking"
+    }
+  ],
+  "required_assets": [
+    "assets/css/stylesheet.min.css",
+    "assets/js/highlight.min.js",
+    "assets/js/tex-chtml.js",
+    "assets/js/input/tex/extensions/ams.js",
+    "assets/js/input/tex/extensions/newcommand.js",
+    "assets/js/input/tex/extensions/boldsymbol.js",
+    "assets/js/input/tex/extensions/color.js",
+    "assets/js/input/tex/extensions/configmacros.js",
+    "assets/js/input/tex/extensions/html.js",
+    "assets/js/input/tex/extensions/noerrors.js",
+    "assets/js/input/tex/extensions/noundefined.js",
+    "assets/js/output/chtml/fonts/tex.js",
+    "assets/js/output/chtml/fonts/woff-v2/*.woff"
+  ],
+  "quality_checks": [
+    "HTML opens in a local HTTP server with visible styling from stylesheet.min.css",
+    "LaTeX formulas render through MathJax rather than appearing as raw TeX when formulas are present",
+    "Blog is image-rich and every included figure has a visible source-paper attribution",
+    "The blog explains paper selection and section-paper mapping in selection_note.md",
+    "The final result directory includes the HTML and all referenced assets needed for offline viewing",
+    "The blog should be a coherent paper-reading article, not just a bullet list or copied abstracts",
+    "All HTML-referenced assets resolve relative to the delivered HTML path and return 200 under a local HTTP server"
+  ]
+}

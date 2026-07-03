@@ -1,0 +1,33 @@
+{
+  "description": "Obsidian vault fixture built from real Vite documentation Markdown imported from GitHub, with one repeated import queue file.",
+  "upstream_repository": "https://github.com/vitejs/vite",
+  "upstream_commit": "a2fff212d9ec6838c2b046e5bcc900d4334df3ff",
+  "license": "MIT license as stated in vitejs/vite LICENSE",
+  "upstream_files": [
+    "docs/guide/features.md",
+    "docs/guide/env-and-mode.md",
+    "docs/guide/build.md",
+    "docs/guide/dep-pre-bundling.md",
+    "docs/guide/static-deploy.md",
+    "docs/guide/troubleshooting.md",
+    "docs/guide/using-plugins.md",
+    "docs/guide/api-plugin.md",
+    "docs/config/server-options.md",
+    "docs/config/build-options.md"
+  ],
+  "source_urls": [
+    "https://raw.githubusercontent.com/vitejs/vite/a2fff212d9ec6838c2b046e5bcc900d4334df3ff/docs/guide/features.md",
+    "https://raw.githubusercontent.com/vitejs/vite/a2fff212d9ec6838c2b046e5bcc900d4334df3ff/docs/guide/env-and-mode.md",
+    "https://raw.githubusercontent.com/vitejs/vite/a2fff212d9ec6838c2b046e5bcc900d4334df3ff/docs/guide/build.md",
+    "https://raw.githubusercontent.com/vitejs/vite/a2fff212d9ec6838c2b046e5bcc900d4334df3ff/docs/guide/dep-pre-bundling.md",
+    "https://raw.githubusercontent.com/vitejs/vite/a2fff212d9ec6838c2b046e5bcc900d4334df3ff/docs/guide/static-deploy.md",
+    "https://raw.githubusercontent.com/vitejs/vite/a2fff212d9ec6838c2b046e5bcc900d4334df3ff/docs/guide/troubleshooting.md",
+    "https://raw.githubusercontent.com/vitejs/vite/a2fff212d9ec6838c2b046e5bcc900d4334df3ff/docs/guide/using-plugins.md",
+    "https://raw.githubusercontent.com/vitejs/vite/a2fff212d9ec6838c2b046e5bcc900d4334df3ff/docs/guide/api-plugin.md",
+    "https://raw.githubusercontent.com/vitejs/vite/a2fff212d9ec6838c2b046e5bcc900d4334df3ff/docs/config/server-options.md",
+    "https://raw.githubusercontent.com/vitejs/vite/a2fff212d9ec6838c2b046e5bcc900d4334df3ff/docs/config/build-options.md"
+  ],
+  "packet_note": "Local filenames are an import packet for Obsidian cleanup; repeated content should be detected from note contents, not from this manifest.",
+  "generated_at_utc": "2026-06-18T06:32:15.278400+00:00",
+  "note_count": 12
+}

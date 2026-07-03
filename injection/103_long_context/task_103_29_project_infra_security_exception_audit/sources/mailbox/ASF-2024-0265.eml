@@ -1,0 +1,50 @@
+Message-ID: <07333641-222A-490B-B6B5-115AA676094C@eissing.org>
+X-Clawbench-ID: ASF-2024-0265
+Date: Thu, 7 Sep 2023 20:14:42 +0200
+From: "Stefan Eissing via dev" <dev@httpd.apache.org>
+To: dev@httpd.apache.org
+Subject: Re: mod_ssl SSL_OP_IGNORE_UNEXPECTED_EOF: "unexpected eof while  reading"
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-09.mbox
+
+> Am 07.09.2023 um 18:46 schrieb Yann Ylavic <ylavic.dev@gmail.com>:
+>
+> On Thu, Sep 7, 2023 at 6:09 PM Yann Ylavic <ylavic.dev@gmail.com> wrote:
+>>
+>> On Wed, Aug 30, 2023 at 1:22 PM Rainer Jung <rainer.jung@kippdata.de> wrote:
+>>>
+>>> OpenSSL 3 flags some abortive shutdowns as an error different to what
+>>> 1.1.1 did. This results in info log output in httpd:
+>>>
+>>> [Tue Aug 29 12:33:06.787210 2023] [ssl:info] [pid 1994673:tid 1994737]
+>>> SSL Library Error: error:0A000126:SSL routines::unexpected eof while reading
+>>> [Tue Aug 29 12:33:06.787374 2023] [ssl:info] [pid 1994673:tid 1994737]
+>>> [client 1.2.3.4:54790] AH01998: Connection closed to child 215 with
+>>> abortive shutdown (server myserver:443)
+>>
+>> The info looks legit to me (someone closed the connection with no
+>> close_notify), possibly we want to log it at APLOG_DEBUG/TRACEx still
+>> if it happens too often?
+>> We don't do that though for SSL_ERROR_ZERO_RETURN in openssl < 3, but
+>> maybe we should too like in the attached patch (instead of r1912015)?
+>
+> Scratch that patch, SSL_ERROR_ZERO_RETURN is actually when
+> close_notify was received, we'd rather need to test SSL_ERROR_SYSCALL
+> && errno == 0 with openssl < 0, which is more tricky in httpd with the
+> EOS bucket vs APR_EOF.
+> Hm, not sure we want to complicate this more..
+
+I never understood the use for this in http/1.1 or newer. request and responses have their own termination and do not need anything for that from TLS.
+
+And if a server send a complete response, there is no guarantee that the client received it in full. Think intermediaries.
+
+Am I missing something?
+
+Cheers,
+Stefan
+
+>>
+>> Regards;
+>> Yann.

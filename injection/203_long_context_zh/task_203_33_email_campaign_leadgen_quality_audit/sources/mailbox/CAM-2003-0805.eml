@@ -1,0 +1,26 @@
+Message-ID: <20020728224941.GA5836@bagend.makalumedia.com>
+X-Clawbench-ID: CAM-2003-0805
+Date: Sun, 28 Jul 2002 23:49:41 +0100
+From: Niall O Broin <niall@linux.ie>
+To: webdev@linux.ie
+Subject: [Webdev] Migrating TO W2K
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00507.33eb248faaa35e9d98296e66f5af8eb9
+
+Yes, I know, dreadful subject. However, because of customer inistence we
+must deploy one project on W2K. This will thus be a WAMP project rather than
+a LAMP project. Of course as a highly skilled *ix person I can handle these
+Windows toys :-) but can anyone suggest any good educational resources for
+using Apache, PHP, Perl and MySQL together on W2K. Anyone had to do the same
+and found any particular nasty gotchas (yes, I know about the running
+Microsoft software one).
+
+
+Niall
+
+_______________________________________________
+Webdev mailing list
+Webdev@linux.ie
+http://www.linux.ie/mailman/listinfo/webdev

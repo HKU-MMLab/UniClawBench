@@ -1,0 +1,63 @@
+Message-ID: <ZBhkhh/3CfioZT/f@an3as.eu>
+X-Clawbench-ID: BIO-2024-0406
+Date: Mon, 20 Mar 2023 14:49:58 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Anne Ghisla <aghisla@posteo.de>
+Subject: Re: [MoM] Introduction
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_03_msg00002.html
+
+Dear Anne,
+
+Am Mon, Mar 20, 2023 at 12:43:27PM +0000 schrieb Anne Ghisla:
+> I'm Anne Ghisla, working at Forschungzentrum Jülich as generalist /
+> support tech, with close ties to NeuroDebian. I use Debian daily at
+> work, used to be active in geospatial FOSS (OSGeo, Google Summer of
+> Code), and now have the opportunity to dedicate time to Debian
+> packaging.
+
+Thank you for the introduction.  Also thanks for joining the video
+conference yesterday - I wished more contributors would sneak in to
+these short meetings since its nice to have some face to face
+interaction.
+
+> I wish to participate to the Mentoring of the Month project and for
+> that I picked a tiny piece of software, written by our intern. I
+> would like the mentoring month to be useful for us both, for me as
+> packager, for him as upstream:
+> https://github.com/psyinfra/prometheus_fzj_weather_exporter
+
+Looks like a pretty good start regarding the personal need and
+the (low) complexity of the software.  Since its not really a medical
+package we should package this in Debian Science team (which is not
+typical for the MoM projects but perfectly fine given your intention
+to contribute to Debian Med with more complex packages later).  Thus
+I've added you to the Debian Science team.
+
+> Once I get familiar with tools and processes, my next goal is to address
+> htcondor - most likely not alone, but Andreas mentioned yesterday
+> during the videoconference that it requires some major (leg)work on
+> copyright and I will be happy to pick that task.
+
+That would be perfect!
+
+> On the longer run, my plan is to take care of NeuroDebian packages.
+
+This would be extremely welcome.
+
+> I'm aware that I have quite a bit to catch up and I'm a bit intimidated,
+> but I'm confident that through documentation and questions I will soon
+> get familiar with the process, as all steps have defined actions :)
+
+The goal of a MoM project is to wipe out all hurdles for newcomers.
+
+> Thanks in advance for your support!
+
+You are welcome
+
+   Andreas.
+
+--
+http://fam-tille.de

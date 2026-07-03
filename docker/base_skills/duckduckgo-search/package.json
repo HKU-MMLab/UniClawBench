@@ -1,0 +1,32 @@
+{
+  "name": "duckduckgo-search",
+  "displayName": "DuckDuckGo Search",
+  "version": "1.1.0",
+  "description": "使用 DuckDuckGo 进行隐私保护的网页搜索，无需 API Key。支持关键信息提取和 AI 总结。",
+  "author": "OpenClaw Community",
+  "license": "MIT",
+  "homepage": "https://duckduckgo.com",
+  "keywords": [
+    "search",
+    "duckduckgo",
+    "privacy",
+    "web-search",
+    "no-api-key"
+  ],
+  "scripts": {
+    "main": "scripts/duckduckgo_search.py"
+  },
+  "requires": {
+    "bins": ["python3"]
+  },
+  "metadata": {
+    "emoji": "🦆",
+    "category": "search",
+    "tags": ["search", "duckduckgo", "privacy", "backup"]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/openclaw/openclaw",
+    "directory": "skills/duckduckgo-search"
+  }
+}

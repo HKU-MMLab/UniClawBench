@@ -1,0 +1,37 @@
+task_id: task_202_05_itunes_lookup
+category: 202_exploration_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我想用 API 从 Apple 的商店数据中拉取一位艺人的作品目录，而不是去抓取 Apple
+  Music 网页播放器。
+
+  这是该艺人的 Apple Music 页面：
+
+      https://music.apple.com/us/artist/jack-johnson/909253
+
+  Apple 运营着一个公开的商店查询服务（就是为 iTunes / Apple Music 搜索提供数据
+  的同一份数据），它其实没有正式文档，但接受一个 Apple 商店 id 作为输入。那个
+  数字 id 就在页面 URL 里。请找到那个查询服务并使用它（而不是抓取 Apple Music
+  页面的 DOM），获取：
+
+  - 艺人的名字和主要流派（genre），
+  - 当你向该服务请求这位艺人的专辑时，它返回的该艺人专辑列表（合辑名称 + 发行
+    年份）。
+
+  把结果保存到 `/tmp_workspace/results/itunes_artist.json`，并把你调用的确切请
+  求 URL 连同它们的原始 JSON 响应保存到 `/tmp_workspace/results/itunes_evidence/`，
+  以便此次拉取可复现。
+
+references:
+  - references/eval_rule.md
+
+codex:
+  max_user_followups: 2

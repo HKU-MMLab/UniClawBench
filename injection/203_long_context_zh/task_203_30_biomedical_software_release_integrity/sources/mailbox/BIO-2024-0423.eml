@@ -1,0 +1,26 @@
+Message-ID: <20220711180608.73z5yqceso77ryqs@debian>
+X-Clawbench-ID: BIO-2024-0423
+Date: Mon, 11 Jul 2022 23:36:08 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: Mohd Bilal <mdbilal@disroot.org>
+Subject: Re: Added autopkgtests for megadepth
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_07_msg00022.html
+
+On Mon, Jul 11, 2022 at 10:54:45PM +0530, Mohd Bilal wrote:
+> Hello team,
+>
+> I have added autopkgtests for megadepth[1]. Requesting someone to review and
+> sponsor my changes.
+
+Good!
+Thanks, uploaded. However please take in a look at my second-last commit, helps
+package get cross-building. In this case it was easy :)
+
+> [1] - https://salsa.debian.org/med-team/megadepth
+
+--
+Best,
+Nilesh

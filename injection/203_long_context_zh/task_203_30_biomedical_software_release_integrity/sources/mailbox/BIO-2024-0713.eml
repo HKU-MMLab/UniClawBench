@@ -1,0 +1,73 @@
+Message-ID: <ZUurSBePEVngXU-n@fusion>
+X-Clawbench-ID: BIO-2024-0713
+Date: Wed, 8 Nov 2023 16:37:44 +0100
+From: Étienne Mollier <emollier@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: migration to htslib ecosystem 1.18
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_11_msg00019.html
+
+Hi Andreas,
+
+Andreas Tille, on 2023-11-08:
+> No problem.  I also dived into the rdepends of libhts3 and stubled
+> upon kallisto which has a new upstream version.  I tried to upgrade
+> to this but there is a cmake issue[1]:
+>
+> CMake Error at src/CMakeLists.txt:20 (ExternalProject_Get_Property):
+>   Unknown CMake command "ExternalProject_Get_Property".
+> -- Configuring incomplete, errors occurred!
+>
+> I guess it is connected to the internal code copy of bifrost which
+> I just packaged[2] (will try a short autopkgtest before uploading
+> to new)
+
+Acknowledged.
+
+> We probably also need to talk to debci people since the upload of
+> htslib has triggered a failing test for jellyfish on arm64[3].  When
+> looking at the log[4] it ends with
+>
+> ...
+> 182s [ RUN      ] CooperativePool/CooperativePoolTest.Ints/9
+> 10051s autopkgtest [06:02:56]: ERROR: timed out on command "su -s /bin/bash debci -c set -e; exec /tmp/autopkgtest-lxc.xayqrapq/downtmp/wrapper.sh --artifacts=/tmp/autopkgtest-lxc.xayqrapq/downtmp/run-unit-test-artifacts --chdir=/tmp/autopkgtest-lxc.xayqrapq/downtmp/build.N8X/src --env=DEB_BUILD_OPTIONS=parallel=4 --env=DEBIAN_FRONTEND=noninteractive --env=LANG=C.UTF-8 --unset-env=LANGUAGE --unset-env=LC_ADDRESS --unset-env=LC_ALL --unset-env=LC_COLLATE --unset-env=LC_CTYPE --unset-env=LC_IDENTIFICATION --unset-env=LC_MEASUREMENT --unset-env=LC_MESSAGES --unset-env=LC_MONETARY --unset-env=LC_NAME --unset-env=LC_NUMERIC --unset-env=LC_PAPER --unset-env=LC_TELEPHONE --unset-env=LC_TIME --script-pid-file=/tmp/autopkgtest_script_pid --source-profile --stderr=/tmp/autopkgtest-lxc.xayqrapq/downtmp/run-unit-test-stderr --stdout=/tmp/autopkgtest-lxc.xayqrapq/downtmp/run-unit-test-stdout --tmp=/tmp/autopkgtest-lxc.xayqrapq/downtmp/autopkgtest_tmp --make-executable=/tmp/autopkgtest-lxc.xayqrapq/downtmp/build.N8X/src/debian/tests/run-unit-test -- /tmp/autopkgtest-lxc.xayqrapq/downtmp/build.N8X/src/debian/tests/run-unit-test"
+>
+>
+> These timeout thingies are really hard to debug.  Maybe we should simply
+> shorten the jellyfish test suite to avoid this.  For instance droping
+> the `/usr/lib/jellyfish/bin/test_all` call at the end makes the test
+> more sensible (also in terms of not stressing debci infrastructure to
+> much?
+>
+> What do you think?
+
+I did not anticipate that issue with the experimental upload.
+Drop of the affected would be the fastest way of "correcting"
+the issue.  I'm a bit bugged that this affects the arm64
+platform only and not the 32-bit variants, but perhaps the test
+suite is already disabled for them.
+
+My "go to" mitigation for these sort of weird issues on arm
+platforms would be to rebuild with option -fsigned-char, to
+ensure this is not a case of char types being used as a short
+integer assumed to be signed.  I'm having a look at these now;
+there is also the risk that the test enters the infinite loop
+unpredictably.
+
+> Kind regards
+>     Andreas.
+>
+>
+> [1] https://salsa.debian.org/med-team/kallisto/-/jobs/4901979#L1704
+> [2] https://salsa.debian.org/med-team/bifrost
+> [3] https://tracker.debian.org/pkg/htslib
+> [4] https://ci.debian.net/data/autopkgtest/testing/arm64/j/jellyfish/39674223/log.gz
+
+Have a nice day,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  gpg: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/2, please excuse my verbosity
+   `-    on air: Their Dogs Were Astronauts - Human Resistance

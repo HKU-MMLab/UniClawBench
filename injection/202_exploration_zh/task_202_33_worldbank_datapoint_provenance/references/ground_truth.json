@@ -1,0 +1,24 @@
+{
+  "task_id": "task_102_33_worldbank_datapoint_provenance",
+  "note": "Data-point provenance task. The executor is given a single value out of context and must trace it to the canonical dataset + the exact row (indicator, country, year), then verify the value matches. Searching the raw number does not surface a canonical source; the executor must reason about what dataset would carry such a value and query the authoritative API.",
+  "given_clue": "A finance deck cites a figure of about US$4.44 trillion as a country's GDP for the year 2015, with no source. The country is Japan.",
+  "canonical_answer": {
+    "dataset": "World Bank — World Development Indicators",
+    "indicator_name": "GDP (current US$)",
+    "indicator_code": "NY.GDP.MKTP.CD",
+    "country": "Japan",
+    "country_code_iso3": "JPN",
+    "year": 2015,
+    "value_usd": 4444930651964.18,
+    "value_approx": "~US$4.44 trillion",
+    "canonical_api_url": "https://api.worldbank.org/v2/country/JPN/indicator/NY.GDP.MKTP.CD?date=2015&format=json",
+    "canonical_page": "https://data.worldbank.org/indicator/NY.GDP.MKTP.CD?locations=JP"
+  },
+  "scoring_anchors": {
+    "must_identify_dataset": "World Bank World Development Indicators, indicator NY.GDP.MKTP.CD (GDP current US$)",
+    "must_match_row": {"country": "JPN", "year": 2015},
+    "value_check": "the executor's retrieved value must match the World Bank value for JPN 2015 within rounding (the API currently returns 4444930651964.18 ~ $4.44T). The World Bank occasionally revises historical values; accept the value the executor retrieves from the official API as long as it matches that API and is ~4.4 trillion.",
+    "primary_source_rule": "canonical = the World Bank API/data page. A news article quoting Japan's 2015 GDP, or a generic statistics aggregator, is secondary.",
+    "anti_search_the_number": "the value alone is not searchable to a canonical source; full credit requires querying the World Bank indicator API/data page and locating the JPN/2015 row, with the indicator code NY.GDP.MKTP.CD identified."
+  }
+}

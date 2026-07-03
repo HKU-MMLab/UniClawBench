@@ -1,0 +1,61 @@
+Message-ID: <20240329090007.GD20931@beskar.mdcc.cx>
+X-Clawbench-ID: BIO-2024-0108
+Date: Fri, 29 Mar 2024 10:00:07 +0100
+From: Joost van Baal-Ilić <joostvb-debian@mdcc.cx>
+To: Andreas Tille <andreas@an3as.eu>, debian-med@lists.debian.org
+Subject: irc #debian-med and #debian-med:matrix.org (was: Re: Debian-Med policy proposal: 64-bit & little-endian only* for new packages)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_03_msg00036.html
+
+Hi,
+
+On Fri, Mar 29, 2024 at 07:21:27AM +0100, Andreas Tille wrote:
+> Am Fri, Mar 29, 2024 at 10:13:40AM +0530 schrieb Nilesh Patra:
+> > On 28 March 2024 7:21:01 pm IST, "Michael R. Crusoe"  wrote:
+
+> > >and on the Debian-Med Matrix channel for instant discussions: https://app.element.io/#/room/#debian-med:matrix.org
+> >
+> > I'll be happy to open another thread about it, but while we are at it, do you think it makes sense to make this as our official communication media?
+> >
+> > Most of us don't hang out on #debian-med IRC and it would be a little misleading for someone wanting to contact us.
+>
+> From my perspective the main drawpack of IRC is that you can't search in
+> history.  What about setting the title of #debian-med IRC pointing to
+> our matrix channel?  This would make easily clear what we prefered as
+> communication channel.
+>
+> > Should we just close the IRC channel and endorse the matrix channel as the official one?
+>
+> I do not use it but it makes sense to ask on IRC whether people
+> like this channel for whatever reason.
+
+FWIW, currently the title of the #debian-med IRC channel _does_ point
+to matrix:
+
+ пет 29 09:54 -!- Topic for #debian-med: Find us now at
+          https://app.element.io/#/room/#debian-med:matrix.org !
+ пет 29 09:54 -!- Topic set by ChanServ [services@services.oftc.net] [Wed Dec 21 01:54:21
+          2022]
+
+And:
+
+ пет 29 09:54 [Users #debian-med]
+ пет 29 09:54 [ azeem         ] [ FloodServ ] [ matrix_ds   ] [ tarzeau_   ]
+ пет 29 09:54 [ charojovi[m]  ] [ hlieberman] [ pabs        ] [ tassia     ]
+ пет 29 09:54 [ crusoe        ] [ joostvb   ] [ pere        ] [ utkarsh2102]
+ пет 29 09:54 [ dr-hax[m]     ] [ KGB       ] [ sanjkrsna[m]] [ yoh        ]
+ пет 29 09:54 [ emollier      ] [ KGB-2     ] [ satta       ]
+ пет 29 09:54 [ felipegmaia419] [ mapreri   ] [ sivoais     ]
+ пет 29 09:54 -!- Irssi: #debian-med: Total of 22 nicks [0 ops, 0 halfops, 0 voices, 22
+           normal]
+ пет 29 09:54 -!- Channel #debian-med created Mon Aug 20 03:47:08 2012
+ пет 29 09:54 -!- Irssi: Join to #debian-med was synced in 1 secs
+ пет 29 09:54 -ChanServ(services@services.oftc.net)- [#debian-med] Welcome to Debian-Med
+           -- enjoy Free Software!
+
+
+HTH, Bye,
+
+Joost

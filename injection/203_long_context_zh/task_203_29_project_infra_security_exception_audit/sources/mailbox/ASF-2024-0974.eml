@@ -1,0 +1,21 @@
+Message-ID: <CAKQ1sVPbkTy2cHxXHm2c47XwoW3BgUuSUS7Ut7E-+YMVcYSPVA@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0974
+Date: Thu, 10 Mar 2022 12:33:38 +0100
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: httpd-dev <dev@httpd.apache.org>
+Subject: Re: [VOTE] Release httpd-2.4.53-rc2 as httpd-2.4.53
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-03.mbox
+
+On Wed, Mar 9, 2022 at 5:20 PM Stefan Eissing <stefan@eissing.org> wrote:
+>
+> I would like to call a VOTE over the next few days to release
+> this candidate tarball httpd-2.4.53-rc2 as 2.4.53:
+
+[X] +1: It's not just good, it's good enough!
+
+All good on Debian 10, 11 & 12.
+
+Thanks Stefan for RMing, now we know that rc++ mechanism works too ;)

@@ -1,0 +1,24 @@
+Message-ID: <YhKcBytYxrsKPA7g@debian>
+X-Clawbench-ID: BIO-2024-0275
+Date: Mon, 21 Feb 2022 01:22:39 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: Timo Röhling <roehling@debian.org>
+Subject: Re: Request privileges to push to all branches on team repos
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2022_02_msg00037.html
+
+On Sun, Feb 20, 2022 at 08:43:44PM +0100, Timo Röhling wrote:
+> Hi,
+>
+> I just fixed an RC bug in genetic and uploaded the packages, but
+> apparently I'm not allowed to push my changes to protected branches
+> (in this case, the master branch of the repository). Could a Salsa
+> group owner please increase my privileges for the science team?
+
+Bumped your access to 'maintainer'
+Hope that helps.
+
+Regards,
+Nilesh

@@ -1,0 +1,55 @@
+Message-ID: <30147c6c-c3a6-2faa-409f-452c3f2b999a@fossies.org>
+X-Clawbench-ID: ASF-2024-0711
+Date: Thu, 9 Mar 2023 20:38:33 +0100 (CET)
+From: Fossies Administrator <Jens.Schleusener@fossies.org>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] [VOTE] Release httpd-2.4.56-rc1 as httpd-2.4.56
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-03.mbox
+
+On Thu, 9 Mar 2023, Eric Covener wrote:
+
+> On Thu, Mar 9, 2023 at 12:14 PM <giovanni@paclan.it> wrote:
+>>
+>> On 3/9/23 05:30, Eric Covener wrote:
+>>>
+>>>
+>>> On Wed, Mar 8, 2023 at 11:02 PM BUSH Steve <Steven.BUSH@3ds.com <mailto:Steven.BUSH@3ds.com>> wrote:
+>>>
+>>>     Correction!____
+>>>
+>>>     I used our test template for the rule when I e-mailed just now, but once it is converted to the apache httpd.conf format, the actual rule appears in the httpd.conf as:____
+>>>
+>>>     RewriteRule ^/zoology/animals/reset/(\d+)$ "/auth/launchjob?Number of Records=$1&__poolid=animal-magic" [B,PT,L,QSA]
+>>>
+>>>
+>>> Thanks for the report.   Time will tell, but I think this is a very fringe case. The space isn't a backreference (where `B` would have fixed it) and a literal with a space in the substitution has to be quite rare (famous last words)
+>>
+>> I wonder how many websites might have a snippet similar to:
+>>
+>> RewriteRule ^/search/(.*)$ /search.php?term=$1 [PT,L,QSA]
+>
+> I do worry about this style a lot more, especially with how much of a
+> pain [B] has been for me in the past.
+> I think we can wait and see and only look for more problematic
+> characters in the mod_rewrite.c change.
+
+I use a bit historically a rule principally like
+
+  RewriteRule file_name_pattern cgi_app?$1/$2 [T=application/x-httpd-cgi,L]
+
+With httpd-2.4.56 now all requests using file names containing a space are
+blocked (403 Forbidden) with the according error log entry
+
+  AH10410: Rewritten query string contains control characters or spaces
+
+The called CGI application tries to handle "bad" characters itself so from
+my egoistic point of view at least spaces should be allowed here (may be
+by an extra directive).
+
+In my case, the only but unsatisfactory workaround I have found so far
+would be to replace the affected spaces with %2520.
+
+Jens

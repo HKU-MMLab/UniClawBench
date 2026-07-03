@@ -1,0 +1,27 @@
+Message-ID: <CA+7wUszJrpS-pCKXs3q62bjYNQpp3KB3aYipQnq889tjo2K8xA@mail.gmail.com>
+X-Clawbench-ID: BIO-2024-0580
+Date: Fri, 10 Feb 2023 10:06:20 +0100
+From: Mathieu Malaterre <malat@debian.org>
+To: ARM <debian-arm@lists.debian.org>
+Subject: neon: armhf baseline for next release ? (was: python-cogent fails to build on armhf )
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_02_msg00037.html
+
+Dear arm porters,
+
+On Thu, Feb 9, 2023 at 8:43 PM Andreas Tille  wrote:
+[...]
+> according to the build logs[1] armhf fails to build (as only
+> architecture) with
+[...]
+> LLVM ERROR: Symbol not found: __sync_fetch_and_add_4
+
+I see that abel.d.o porterbox is offline. There is currently no other
+porterbox for a DD to actually check armhf code on neon-less machine.
+
+Would it be possible to raise the armhf baseline to have some minimal
+neon instructions ?
+
+Thanks much for comment,

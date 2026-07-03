@@ -1,0 +1,80 @@
+Message-ID: <YyHc5jpqh7ZSYoqq@an3as.eu>
+X-Clawbench-ID: BIO-2024-0211
+Date: Wed, 14 Sep 2022 15:53:42 +0200
+From: Andreas Tille <tille@debian.org>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Re: RM pinfish?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_09_msg00011.html
+
+Hi Nilesh,
+
+Am Wed, Sep 14, 2022 at 06:23:58PM +0530 schrieb Nilesh Patra:
+> > In case you are bored to be specified as Uploader
+>
+> I am partly bored because I have so many packages under my name and I have personal
+> interest in only a few.
+
+Perfectly understandable.
+
+> But I also strongly belive in removing software that no-one is using. I agree
+> that our packages usually have low popcon values, but if some package is _never_
+> gonna be used,
+
+How can we know?  I simply trusted Steffens insight he has put into the
+spreadsheet[2] and have put Steffen in CC to confirm.  In case he agrees
+that pinfish is not needed any more we should mention this in this sheet
+and remove the package accordingly.  So my main motivation for my mail
+was to ping Steffen for clarification.
+
+> and is abandoned upstream, I think it is an absolute waste of
+> my time to keep maintaining it. Frankly, I'd do something else.
+
+This is not the first package abandoned upstream - we have even packages
+where you can find the source only in webarchive (and for sure
+debian.org).
+
+> The purpose of this mail is not to only push myself out of equation, but to also
+> rm something that isn't useful for anyone in debian as such.
+
+I perfectly understand this.  However, I think packages in [2]
+are useful for some purpose.
+
+> > I'd volunteer to exchange our names and upload.
+>
+> This is a go package and you have told me several times that you aren't the best
+> person to work on golang-related tasks, most recently on -hpc list[3]
+
+That's correct.  But we have packages in haskell (phybin) and D
+where I'm even worse.
+
+> So if going forward a bug is reported against pinfish, you'd probably have to spend
+> more time on it that you'd like.
+
+I'd prefer to wait with removal until we have the situation of such a
+bug that might cause real trouble.
+
+> So I don't think just exchanging names is a very optimal thing to do here.
+>
+> If I don't hear from Steffen, or no-one raises an objection in the next three weeks, I'll
+> proceed to file an RM bug.
+
+Steffen???
+
+Kind regards
+
+    Andreas.
+
+> > > [1]: https://github.com/nanoporetech/pinfish
+> > [2] https://docs.google.com/spreadsheets/d/1tApLhVqxRZ2VOuMH_aPUgFENQJfbLlB_PFH_Ah_q7hM/edit?ts=5eb957ba#gid=543782716
+> [3]: https://lists.debian.org/debian-hpc/2022/08/msg00020.html
+>
+> --
+> Best,
+> Nilesh
+
+
+--
+http://fam-tille.de

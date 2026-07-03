@@ -1,0 +1,30 @@
+Message-ID: <20221007163737.fhweeoklypieqazf@nileshpatra.info>
+X-Clawbench-ID: BIO-2024-0953
+Date: Fri, 7 Oct 2022 22:07:37 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: BART 0.8.0
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00020.html
+
+On Fri, Oct 07, 2022 at 03:18:36PM +0200, Andreas Tille wrote:
+> > Please upload if it looks ok to you.
+>
+> Is there any reason to stick to gcc-10.  I'm not sure when this
+> GCC version will be removed - but sooner or later this will be
+> the case.
+
+Becasue nvcc (This is a non-free compiler by nvidia) which bart-cuda
+uses does not support gcc-12 yet, as Andreas Beckmann pointed out here[1]
+
+But according to him, B-D on g++-11 could also work.
+
+[1]: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1016625#65
+
+Cheers,
+
+--
+Best,
+Nilesh

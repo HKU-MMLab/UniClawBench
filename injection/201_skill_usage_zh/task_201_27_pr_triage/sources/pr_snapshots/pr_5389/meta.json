@@ -1,0 +1,27 @@
+{
+  "id": "pr_5389",
+  "repo": "pallets/flask",
+  "number": 5389,
+  "title": "Fix jinja_loader typehint",
+  "body": "mypy is complaining about `jinja2.ChoiceLoader` with `FileSystemLoader`. Update the type annotation for `jinja_loader` to use `BaseLoader`, the parent class of both `ChoiceLoader` and `FileSystemLoader`. Fixes #5388.",
+  "author": "Siecje",
+  "author_association": "CONTRIBUTOR",
+  "prior_merged_prs": 4,
+  "first_contributed_at": "2014-11-21T00:00:00Z",
+  "additions": 5,
+  "deletions": 1,
+  "files_changed": 2,
+  "changed_files": [
+    "CHANGES.rst",
+    "src/flask/sansio/scaffold.py"
+  ],
+  "base_ref": "main",
+  "head_ref": "jinja-loader-typehint",
+  "created_at": "2024-01-23T08:11:00Z",
+  "merged_at": "2024-02-03T16:51:22Z",
+  "closed_at": "2024-02-03T16:51:22Z",
+  "state": "closed",
+  "merged": true,
+  "milestone": "3.0.2",
+  "labels": []
+}

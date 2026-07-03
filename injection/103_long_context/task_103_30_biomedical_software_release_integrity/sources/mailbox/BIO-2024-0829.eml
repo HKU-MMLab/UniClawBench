@@ -1,0 +1,32 @@
+Message-ID: <Yt/VEIzmso+eDdSW@an3as.eu>
+X-Clawbench-ID: BIO-2024-0829
+Date: Tue, 26 Jul 2022 13:50:40 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: CMake help needed for tiddit
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_07_msg00070.html
+
+Hi,
+
+from my perspective the CMakeLists.txt of tiddit has not changed compared
+to the last upstream version.  Unfortunately the build fails[1] with
+
+	CMake Error at CMakeLists.txt:42 (add_executable):
+	  No SOURCES given to target: TIDDIT
+
+which is not really true if I read the CMakeLists.txt file correctly.
+
+Any idea what might be wrong here?
+
+Kind regards
+
+      Andreas.
+
+
+[1] https://salsa.debian.org/med-team/tiddit/-/jobs/3038929#L962
+
+--
+http://fam-tille.de

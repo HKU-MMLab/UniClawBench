@@ -1,0 +1,41 @@
+{
+  "task_id": "task_101_06_sqlite_anomalies",
+  "difficulty": "Medium",
+  "schema": "a",
+  "schema_notes": "concept-level booleans with evidence pointers (must-hit findings)",
+  "skills_declared": [
+    "sql-toolkit",
+    "database-operations"
+  ],
+  "ground_truth": {
+        "checks": {
+            "negative_prices_count": 3,
+            "duplicate_orders_count": 2,
+            "duplicate_orders_row_memberships": 5,
+            "orphan_foreign_keys_count": 2,
+            "out_of_window_dates_count": 8,
+            "out_of_window_cutoff": "2010-12-31"
+        },
+        "reproducibility_outputs": {
+            "anomaly_rows_csv": "/tmp_workspace/results/anomaly_rows.csv",
+            "reproduce_sql": "/tmp_workspace/results/reproduce.sql",
+            "csv_columns": [
+                "anomaly_type",
+                "table_name",
+                "primary_key",
+                "order_number",
+                "customer_id",
+                "product_id",
+                "evidence_value",
+                "lookup_sql"
+            ],
+            "required_sql_checks": [
+                "negative unit prices",
+                "duplicate order numbers",
+                "orphan customers",
+                "orphan products",
+                "out-of-window dates"
+            ]
+        }
+    }
+}

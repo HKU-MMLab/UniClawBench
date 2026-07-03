@@ -1,0 +1,24 @@
+Message-ID: <CAKQ1sVNBbTOadnqf8r+LH0CSSBXm7EZ=HrGyiYckV-8R_RKRog@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0850
+Date: Wed, 6 Sep 2023 18:40:56 +0200
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: jean-frederic clere <jfclere@gmail.com>
+Subject: Re: balancers bybusyness, bytraffic and byrequest thread/process safe issues
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-09.mbox
+
+On Wed, Sep 6, 2023 at 6:29 PM Yann Ylavic <ylavic.dev@gmail.com> wrote:
+>
+> As for the memory orders on success/failure, they have nothing to do
+> with the likeliness of success/failure
+
+Well the memory orderings specified can certainly influence the
+likeliness of success/failure since a weaker ordering implies less
+synchronization thus probably more concurrency, what I meant is that
+they don't influence *correctness* of the returned values!
+
+
+Regards;
+Yann.

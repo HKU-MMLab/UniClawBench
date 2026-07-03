@@ -1,0 +1,32 @@
+Message-ID: <CALK=YjO9Muzjs1Hb7=h3Tsi+oexJNnGXFXr3Q8z--CX_FPrkLw@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1472
+Date: Fri, 10 Mar 2023 13:21:56 -0500
+From: Eric Covener <covener@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] [VOTE] Release httpd-2.4.56-rc1 as httpd-2.4.56
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-03.mbox
+
+> Allowing a space to be sent within the proxied request target is not an option,
+> regardless of how the user has configured the server. The CVE fix was just to
+> prevent an invalid target sent from us.
+
+This context in mod_rewrite is not specific to proxying. The CVE is
+addressed in a similar snippet in the proxy modules.
+
+> Why don't we fix the source of the spaces? The place where the variable is decoding
+> the matched string being inserted. I find that bit surprising, since it doesn't behave
+> like a proper regex.
+
+The input here is the decoded URL-path.  rewrite can explicitly look
+at the original request verbatim, but it's a rare thing to be used.
+
+> Likewise, the rewrite mapper should always pct-encode or reject embedded spaces
+> long before we get to the proxy (or internal redirect) request.
+
+In the non-proxy case, the backreference may be in a local filename or
+the query string. I guess the latter is still bogus in CGI-like cases,
+but it's been tolerated forever and being passed onto CGI-like things
+without automatic encoding.

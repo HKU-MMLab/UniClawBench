@@ -1,0 +1,30 @@
+Message-ID: <ZvWBZNRixMFePJww@hermes.hilbert.loc>
+X-Clawbench-ID: BIO-2024-0799
+Date: Thu, 26 Sep 2024 17:44:36 +0200
+From: Karsten Hilbert <Karsten.Hilbert@gmx.net>
+To: debian-med@lists.debian.org
+Subject: Re: GNUmed (-client/-server): new upstream available
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_09_msg00028.html
+
+Am Wed, Sep 25, 2024 at 10:06:46PM +0200 schrieb Étienne Mollier:
+
+> Hi Karsten,
+>
+> Étienne Mollier, on 2024-09-25:
+> > Great, thank you for the clarifications!  I'll focus on the
+> > client,
+>
+> I triggered an upload of gnumed-client 1.8.19.  It should make
+> its way in unstable by tomorrow.
+
+Many thanks !
+
+It installed fine on my test systems.
+
+Best,
+Karsten
+--
+GPG  40BE 5B0E C98E 1713 AFA6  5BC0 3BEA AC80 7D4F C89B

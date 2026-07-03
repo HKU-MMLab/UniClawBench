@@ -1,0 +1,28 @@
+Message-ID: <7cd78095-5f9f-da66-e2a6-fd94b97f3055@apache.org>
+X-Clawbench-ID: ASF-2024-0381
+Date: Mon, 24 Oct 2022 08:48:56 +0200
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: --with-pcre Path Error configuring Apache 2.4.53-.54
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-10.mbox
+
+On 10/22/22 11:52 PM, William A Rowe Jr wrote:
+> There is an alternate solution for 2.4.x that is simpler for me to offer.
+>
+> it could be argued that an abandoned project, deprecated in 2015, and
+> entirely abandoned effective June 2021, is only supported with an explicit
+> path to the pcre-config file, and that only pcre2-config would ever be
+> searched for in future 2.4.x releases, whether we observe --with-pcre
+> or establish a new --with-pcre2 config flag. It might not be a bad idea
+
+I think this is fine. It probably breaks some configure calls on some LTS Linux distributions
+where PCRE is still delivered and people did not install the PCRE2 devel package yet.
+But these can be fixed by either pointing to pcre-config explicitly or by installing the PCRE2 devel
+package.
+
+Regards
+
+Rüdiger

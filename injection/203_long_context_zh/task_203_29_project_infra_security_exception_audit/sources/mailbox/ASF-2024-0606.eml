@@ -1,0 +1,50 @@
+Message-ID: <B17A4848-9A79-4F26-B4A0-D307F694C439@sharp.fm>
+X-Clawbench-ID: ASF-2024-0606
+Date: Tue, 8 Mar 2022 14:58:54 +0200
+From: Graham Leggett <minfrin@sharp.fm>
+To: dev@httpd.apache.org
+Subject: Re: backports
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-03.mbox
+
+On 08 Mar 2022, at 10:29, Joe Orton <jorton@redhat.com> wrote:
+
+>> “No need to patch/compile locally" is not a good idea - currently the
+>> travis tests target Ubuntu only, and this is a practical limitation
+>> forced upon us by the nature of the Travis service. I want to see
+>> reviewers try out the patch on different architectures. I for example
+>> work on MacOS, but deploy to Redhat, so those are my two environments.
+>> Others will have different environments.
+>>
+>> Our testing needs to be wide and diverse.
+>
+> Definitely +1 on the sentiment and I'm keen to help with any effort to
+> add more diversity to the CI.  Travis natively supports a bunch of
+> non-Linux platforms so if someone cares about that they should be able
+> to hook it up by tweaking the .travis.yml.
+> https://docs.travis-ci.com/user/reference/overview/ <https://docs.travis-ci.com/user/reference/overview/>
+
+Please don’t underestimate just how much ongoing work is involved first of all achieving the diversity of platforms, and then keeping them working on an ongoing basis.
+
+I have spent a very long time getting code to work on COPR, which targets Fedora/Redhat derivatives. The COPR service is excellent, but I have yet to get any non trivial piece of code to build on all targets. Apart from the arbitrary differences between platforms, there is regular instability. In some cases there is platform breakage (dependencies suddenly break), sometimes network outages, in other cases there is an inability to compile with no obvious reason.
+
+Using Github/Travis should inform us on the status of a proposal.
+
+Github/Travis should definitely not be invited onto our PMC and given a veto vote on backports and releases.
+
+I spend a lot of time fixing bugs in open source projects, the pattern is I find something broken, I dive in, rip it to bits, fix the error handling, then fix the problem, and then submit upstream, then to distros. In some cases I have been waiting years for bugfixes to be picked up by projects, and it’s often because their CI is broken and so nobody will give the PR a second glance without significant prodding. In the collectd case the whole project was locked out.
+
+Having one less place where “broken computer says no” would make our project far more welcoming.
+
+> (I'll note the empty APLOGNO() check in question here was added because
+> some Windows build broke for that case and it blocked a release, IIRC.)
+
+I would far rather the empty APLOGNO check was part of the build.
+
+Vastly simpler.
+
+Regards,
+Graham
+—

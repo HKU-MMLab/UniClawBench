@@ -1,0 +1,29 @@
+Message-ID: <Y5o45UsY3yEWA8ev@fusion>
+X-Clawbench-ID: BIO-2024-0734
+Date: Wed, 14 Dec 2022 21:58:13 +0100
+From: Étienne Mollier <emollier@emlwks999.eu>
+To: debian-med@lists.debian.org
+Subject: [Advent bug squashing] fixed bug #1021675 (merged with 1022508) in ariba
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_12_msg00084.html
+
+Hi,
+
+Since htslib bump to version 1.16, ariba suffered from various
+issues raised in its test suite.  I finally uploaded some long
+standing changes adjusting calls to the mpileup command, which
+migrated from samtools to bcftools, plus a workaround following
+some data test refresh needed after bowtie2 2.5.0 update.  I
+also informed upstream of the remaining issues and fixes[1]
+slash workarounds[2].
+
+[1]: https://github.com/sanger-pathogens/ariba/issues/327
+[2]: https://github.com/sanger-pathogens/ariba/issues/329
+
+Have a nice day,  :)
+--
+Étienne Mollier
+Fingerprint:  8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+Sent from /dev/pts/2, please excuse my verbosity.

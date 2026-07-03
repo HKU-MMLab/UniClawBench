@@ -1,0 +1,40 @@
+task_id: task_103_12_seattle_tech_nature_weekend_budget
+category: 103_long_context
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I want to go to Seattle with a friend for a Tech + Nature weekend. The dates are: next Friday to the following Monday (a 3-night Friday-to-Monday stay), 2 people, flying from SFO to SEA. Please actually research and create a complete budget and itinerary plan, but do not pay, book flights, book hotels, rent a car, buy attraction tickets, reserve restaurants, or submit any irreversible order. Save all screenshots and documents to `/tmp_workspace/results/`.
+
+  Search round-trip flights from SFO to SEA. The outbound flight must depart SFO on next Friday between 08:00 and 12:00; the return flight must depart SEA for SFO on the following Monday between 15:00 and 20:00. Search Google Flights and at least one official website from Delta or United; record 1 most suitable result from each platform, including airline, departure/arrival times, whether nonstop, fare, baggage/change restrictions, and screenshots.
+
+  For lodging, choose any 2 among citizenM Seattle South Lake Union, Hyatt Place Seattle/Downtown, The Mediterranean Inn, and Staypineapple The Maxwell Hotel. Search Booking.com and each hotel official website for a stay from next Friday to the following Monday, 2 people, 1 room. Record room type, 3-night total price, whether taxes/fees are included, cancellation policy, rating/address, and screenshots. If a website blocks the query or cannot show a price, screenshot it and honestly explain it in the final plan; do not invent prices.
+
+  The Nature section needs to compare renting a car vs not renting a car. For rental cars, only consider SEA airport or Seattle downtown pickup and return, pickup at next Friday 08:30 and return at the following Monday 20:00. Search Enterprise for Economy, Compact, and Midsize, and record the 2 most suitable results from each platform with screenshots. For public transportation, check King County Metro and Sound Transit routes and schedules, and record transportation mode, travel time, cost, and screenshots for getting from the lodging area to each attraction.
+
+  For tech/city attractions, only consider Space Needle, Museum of Flight, and Amazon Spheres visitor information. Use official pages to check tickets or visitor information for 2 adults during the trip, recording adult price, opening hours, combo tickets, reservation requirements, cancellation/rescheduling rules, and screenshots.
+
+  For nature attractions, only consider Mount Rainier National Park, Snoqualmie Falls, Discovery Park, and a Bainbridge Island ferry day trip. Check official visitor/fees/timed-entry pages and record ticket or pass fees, parking, opening hours, transportation time, whether reservation is required, and screenshots.
+
+  Finally generate `/tmp_workspace/results/seattle_tech_nature_plan.md`, including a daily itinerary, a budget table for flights/hotel/rental car or public transit/attractions/restaurants/parking/gas/activity contingency, and two options: budget-saving and comfortable. Try to keep the comfortable option's total budget within $3,400 / 2 people. The final document must list all screenshot paths used and clearly mark any data that was blocked, missing prices, or unavailable.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/process_evidence/Delta_flight.png
+  - references/process_evidence/Enterprise.png
+  - references/process_evidence/booking_Hyatt.png
+  - references/process_evidence/booking_The_Mediterranean_Inn.png
+  - references/process_evidence/google_flights.png
+  - references/process_evidence/official_Hyatt.png
+  - references/process_evidence/official_Mount_rainier_National_park.png
+  - references/process_evidence/official_The_Mediterranean_Inn.png
+  - references/process_evidence/official_space_needle.png
+codex:
+  max_user_followups: 2

@@ -1,0 +1,12 @@
+Message-ID: <bio-2024-0448@biodebian.example>
+X-Clawbench-ID: BIO-2024-0448
+Date: Fri, 12 Jan 2024 09:28:00 +0000
+From: Priya Raman <priya@biodebian.example>
+To: debian-med@lists.debian.org
+Subject: ontology version in examples
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: synthetic Debian Med-style biomedical release-integrity implant
+
+The examples now load CellOnt 2024-01, but the package metadata still says 2023-11. The release note mentions the new ontology, while downstream vignette output was generated with the old labels.

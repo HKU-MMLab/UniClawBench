@@ -1,0 +1,22 @@
+{
+  "task_id": "task_101_37_blog_from_data",
+  "notes_visible_to_executor": false,
+  "skill_changes": [
+    {
+      "original_skill": "blog-writer",
+      "injected_skill": "newsletter-blog-writer",
+      "original_source": "clawhub",
+      "change_type": "remove_external_publish_side_effect",
+      "reason": "The original skill requires publishing to a specific Notion database. The task asks only for local newsletter artifacts, so the fork keeps drafting guidance and removes publication side effects.",
+      "executor_skill_path": "skills/newsletter-blog-writer"
+    },
+    {
+      "original_skill": "python-dataviz",
+      "injected_skill": "python-dataviz",
+      "original_source": "clawhub",
+      "change_type": "benchmark environment adaptation",
+      "reason": "The task setup service provides the required Python packages, so executor-facing docs were changed to avoid venv creation, package installation, and host-specific paths.",
+      "executor_skill_path": "skills/python-dataviz"
+    }
+  ]
+}

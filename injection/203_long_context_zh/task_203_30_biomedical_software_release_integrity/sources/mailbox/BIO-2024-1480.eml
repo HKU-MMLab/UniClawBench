@@ -1,0 +1,58 @@
+Message-ID: <Y5Tvco/+DiZ8ZIvc@an3as.eu>
+X-Clawbench-ID: BIO-2024-1480
+Date: Sat, 10 Dec 2022 21:43:30 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Étienne Mollier <emollier@emlwks999.eu>
+Subject: Re: About LTO bugs in med packages
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_12_msg00076.html
+
+Am Sat, Dec 10, 2022 at 04:06:06PM +0100 schrieb Étienne Mollier:
+> Hi Nilesh,
+>
+> Nilesh Patra, on 2022-12-04:
+> > There are a bunch of LTO based bugs that have been filed. The packages
+> > that had "real" issues (as in with the code) with LTO have been fixed.
+> >
+> > Now most of what is left is changes in symbols, which fails with dpkg-gensymbols,
+> > which is just a change with compiler opt, and likely nothing more
+> > and I am not quite thrilled to keep them open until they become RC provided there
+> > are so many of them.
+> >
+> > Does it make sense to force no-lto in these?
+>
+> Force no-lto would be the path of least resistance.  It won't
+> hurt but won't bring the supposed benefit of the build option.
+> In libraries it might be a shame, as they factor out code used
+> by potentially lots of packages.  On the other hand I'm not sure
+> that only private symbols may go away when lto builds are
+> active; I would have to check that by running autopkgtest on
+> reverse dependencies.
+>
+> I remained undecided about adding -fvisibility=hidden, as this
+> might make libraries' symbol tracking overall more manageable,
+> but in some cases, I saw the whole symbols file being emptied,
+> so I assume this is only applicable for upstream sources which
+> provide the appropriate mappings; they would usually include the
+> -fvisibility=hidden flag in their own build options already.
+> But should it give sensible results, it might help with the
+> symbols tracking update caused by lto usage, or even solve it at
+> once.
+>
+> I'm hopeful to be able to take the time to sort one of the
+> libraries during the Advent, to check how reverse dependencies
+> behave when optimisations are applied.
+
+I admit I'm not sure about the consensus regarding the LTO bugs.  Fixing
+half of them might be as easy as updating the symbols files.  However,
+as far as I understood the discussion its not yet clear whether we
+really want LTO or not.  Am I missing something?  If I might have
+missied the point I'll start immediately to fix those bugs.
+
+Kind regards
+    Andreas.
+
+--
+http://fam-tille.de

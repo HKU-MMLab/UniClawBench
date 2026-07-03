@@ -1,0 +1,253 @@
+{
+  "task_id": "task_103_20_transformer_blog",
+  "created_at": "2026-05-02T00:00:00+00:00",
+  "expected_output_dir": "/tmp_workspace/results/transformer_blog/",
+  "expected_blog_file": "/tmp_workspace/results/transformer_blog/blog.html",
+  "expected_selection_note": "/tmp_workspace/results/selection_note.md",
+  "paper_mapping_reference": "references/paper_mapping.json",
+  "reference_blog": "references/transformer_blog/blog.html",
+  "expected_main_papers": [
+    {
+      "file": "papers/paper_01.pdf",
+      "title": "Distilling the Knowledge in a Neural Network",
+      "authors": "Hinton et al.",
+      "year": 2014,
+      "url": "https://arxiv.org/pdf/1503.02531",
+      "sections": [
+        "2. Distillation"
+      ],
+      "note": "Introduces knowledge distillation as a model compression method."
+    },
+    {
+      "file": "papers/paper_02.pdf",
+      "title": "DistilBERT, a distilled version of BERT: smaller, faster, cheaper and lighter",
+      "authors": "Sanh et al.",
+      "year": 2019,
+      "url": "https://arxiv.org/pdf/1910.01108",
+      "sections": [
+        "2. Distillation"
+      ],
+      "note": "Applies distillation to transformer language models for cheaper inference."
+    },
+    {
+      "file": "papers/paper_03.pdf",
+      "title": "LLM.int8(): 8-bit Matrix Multiplication for Transformers at Scale",
+      "authors": "Dettmers et al.",
+      "year": 2022,
+      "url": "https://arxiv.org/pdf/2208.07339",
+      "sections": [
+        "3. Quantization"
+      ],
+      "note": "Introduces an 8-bit inference method handling outlier features in large transformers."
+    },
+    {
+      "file": "papers/paper_04.pdf",
+      "title": "SmoothQuant: Accurate and Efficient Post-Training Quantization for Large Language Models",
+      "authors": "Xiao and Lin et al.",
+      "year": 2022,
+      "url": "https://arxiv.org/pdf/2211.10438",
+      "sections": [
+        "3. Quantization"
+      ],
+      "note": "Smooths activation outliers to enable efficient weight-activation quantization."
+    },
+    {
+      "file": "papers/paper_05.pdf",
+      "title": "GPTQ: Accurate Post-Training Quantization for Generative Pre-trained Transformers",
+      "authors": "Frantar et al.",
+      "year": 2022,
+      "url": "https://arxiv.org/pdf/2210.17323",
+      "sections": [
+        "3. Quantization"
+      ],
+      "note": "Uses second-order information for accurate post-training quantization."
+    },
+    {
+      "file": "papers/paper_06.pdf",
+      "title": "To Prune, or Not to Prune: Exploring the Efficacy of Pruning for Model Compression",
+      "authors": "Zhu and Gupta",
+      "year": 2017,
+      "url": "https://arxiv.org/pdf/1710.01878",
+      "sections": [
+        "4. Structured sparsity and pruning"
+      ],
+      "note": "Studies pruning as a practical compression method."
+    },
+    {
+      "file": "papers/paper_07.pdf",
+      "title": "A Review of Sparse Expert Models in Deep Learning",
+      "authors": "Fedus et al.",
+      "year": 2022,
+      "url": "https://arxiv.org/pdf/2209.01667",
+      "sections": [
+        "5. Mixture-of-Experts"
+      ],
+      "note": "Surveys sparse expert models and the MoE design space."
+    },
+    {
+      "file": "papers/paper_08.pdf",
+      "title": "Efficient Transformers: A Survey",
+      "authors": "Tay et al.",
+      "year": 2022,
+      "url": "https://arxiv.org/pdf/2009.06732",
+      "sections": [
+        "6. Architectural optimization",
+        "7. Practical synthesis"
+      ],
+      "note": "Surveys architectural approaches to efficient transformer computation."
+    }
+  ],
+  "expected_concept_sections": [
+    {
+      "name": "1. The inference bottleneck",
+      "required_ideas": [
+        "large Transformer inference is limited by memory, bandwidth, attention cost, and latency",
+        "distinguish parameter storage, activation movement, and decoding throughput",
+        "motivate compression and architectural optimization"
+      ],
+      "papers": [
+        "paper_03.pdf",
+        "paper_04.pdf",
+        "paper_08.pdf"
+      ]
+    },
+    {
+      "name": "2. Distillation",
+      "required_ideas": [
+        "student models imitate teacher outputs or representations",
+        "distillation reduces inference cost",
+        "include both general distillation and DistilBERT-style Transformer distillation"
+      ],
+      "papers": [
+        "paper_01.pdf",
+        "paper_02.pdf"
+      ]
+    },
+    {
+      "name": "3. Quantization",
+      "required_ideas": [
+        "low-bit weights/activations reduce memory and bandwidth",
+        "outlier handling in LLM.int8",
+        "SmoothQuant activation smoothing and GPTQ post-training quantization"
+      ],
+      "papers": [
+        "paper_03.pdf",
+        "paper_04.pdf",
+        "paper_05.pdf"
+      ]
+    },
+    {
+      "name": "4. Structured sparsity and pruning",
+      "required_ideas": [
+        "pruning removes less important weights or structures",
+        "structured sparsity is more hardware-friendly",
+        "compression tradeoffs between accuracy and speed"
+      ],
+      "papers": [
+        "paper_06.pdf"
+      ]
+    },
+    {
+      "name": "5. Mixture-of-Experts",
+      "required_ideas": [
+        "sparse expert routing activates only part of model capacity",
+        "MoE trades parameters for conditional compute",
+        "deployment challenges include routing, load balance, and memory"
+      ],
+      "papers": [
+        "paper_07.pdf"
+      ]
+    },
+    {
+      "name": "6. Architectural optimization",
+      "required_ideas": [
+        "efficient attention and memory-saving transformer variants",
+        "recurrence, sparsity, or low-rank attention patterns",
+        "architecture-level changes reduce asymptotic or practical cost"
+      ],
+      "papers": [
+        "paper_08.pdf"
+      ]
+    },
+    {
+      "name": "7. Practical synthesis",
+      "required_ideas": [
+        "real deployments combine quantization, kernels, batching, distillation, pruning, and architecture choices",
+        "optimization depends on latency, throughput, quality, hardware, and serving regime",
+        "avoid treating any single method as universally best"
+      ],
+      "papers": [
+        "paper_03.pdf",
+        "paper_04.pdf",
+        "paper_07.pdf",
+        "paper_08.pdf"
+      ]
+    }
+  ],
+  "expected_figures": [
+    {
+      "file": "assets/images/distillation.png",
+      "source": "Hinton et al. 2014 / DistilBERT context",
+      "purpose": "knowledge distillation overview"
+    },
+    {
+      "file": "assets/images/LLM-int8.png",
+      "source": "Dettmers et al. 2022",
+      "purpose": "LLM.int8 outlier-aware quantization"
+    },
+    {
+      "file": "assets/images/SmoothQuant.png",
+      "source": "Xiao et al. 2022",
+      "purpose": "SmoothQuant activation smoothing"
+    },
+    {
+      "file": "assets/images/quantization-granularity.png",
+      "source": "quantization reference",
+      "purpose": "quantization granularity comparison"
+    },
+    {
+      "file": "assets/images/2-to-4-sparsity.png",
+      "source": "structured sparsity / pruning reference",
+      "purpose": "2:4 structured sparsity"
+    },
+    {
+      "file": "assets/images/PR-MoE.png",
+      "source": "Fedus et al. 2022 / sparse expert models",
+      "purpose": "mixture-of-experts routing"
+    },
+    {
+      "file": "assets/images/efficient-transformer.png",
+      "source": "Tay et al. 2022",
+      "purpose": "efficient Transformer design taxonomy"
+    },
+    {
+      "file": "assets/images/scaling-transformer-speedup-table.png",
+      "source": "Tay et al. 2022 / efficient Transformer survey",
+      "purpose": "speedup and scaling comparison"
+    }
+  ],
+  "required_assets": [
+    "assets/css/stylesheet.min.css",
+    "assets/js/highlight.min.js",
+    "assets/js/tex-chtml.js",
+    "assets/js/input/tex/extensions/ams.js",
+    "assets/js/input/tex/extensions/newcommand.js",
+    "assets/js/input/tex/extensions/boldsymbol.js",
+    "assets/js/input/tex/extensions/color.js",
+    "assets/js/input/tex/extensions/configmacros.js",
+    "assets/js/input/tex/extensions/html.js",
+    "assets/js/input/tex/extensions/noerrors.js",
+    "assets/js/input/tex/extensions/noundefined.js",
+    "assets/js/output/chtml/fonts/tex.js",
+    "assets/js/output/chtml/fonts/woff-v2/*.woff"
+  ],
+  "quality_checks": [
+    "HTML opens in a local HTTP server with visible styling from stylesheet.min.css",
+    "LaTeX formulas render through MathJax rather than appearing as raw TeX when formulas are present",
+    "Blog is image-rich and every included figure has a visible source-paper attribution",
+    "The blog explains paper selection and section-paper mapping in selection_note.md",
+    "The final result directory includes the HTML and all referenced assets needed for offline viewing",
+    "The blog should be a coherent paper-reading article, not just a bullet list or copied abstracts",
+    "All HTML-referenced assets resolve relative to the delivered HTML path and return 200 under a local HTTP server"
+  ]
+}

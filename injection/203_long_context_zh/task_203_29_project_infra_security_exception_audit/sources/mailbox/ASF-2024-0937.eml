@@ -1,0 +1,41 @@
+Message-ID: <786803a1-f096-9c2d-d577-7fd9771e9214@apache.org>
+X-Clawbench-ID: ASF-2024-0937
+Date: Wed, 3 May 2023 14:31:35 -0500
+From: Daniel Gruno <humbedooh@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: ci vs PR approvals? (was: [apache/httpd] Fix a possible NULL  pointer dereference in hook_uri2file (PR #355))
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-05.mbox
+
+On 2023-05-03 14:12, Eric Covener wrote:
+> On Tue, Apr 25, 2023 at 2:45 PM Graham Leggett via dev
+> <dev@httpd.apache.org> wrote:
+>>
+>> On 25 Apr 2023, at 07:45, Ruediger Pluem <rpluem@apache.org> wrote:
+>>
+>> 2. Switching from Subversion to Git is mostly an emotional problem for me. We have some closer ties to Subversion by some
+>>    overlaps in the community and via mod_dav_svn we kind of partially eat our very own dogfood here by using Subversion.
+>>    We wouldn't do that any longer with Git. Plus it would switch another of our development tools from an Apache license to GPL.
+>>    Apart from technical aspects that this change would create we should check if all of the current active committers are fine
+>>    using Github. While people could use Gitbox and thus avoid Github when we use Git I would like us to leverage the features of
+>>    Github when we would do this switch and I think this cannot be done if active committers would have issues with Github.
+>>
+>>
+>> +1.
+>>
+>> I've always found the fight about “must be git” to be really tedious. Github supports both git and svn to this day, and people are free to use what they prefer by using the interface they are most familiar with.
+>>
+>> While Github is popular today, this is only because the goals of the owners of Github are presently aligned with our goals. As Twitter has taught us, goals change at any time and without warning.
+>
+> Hi Graham -- it's a little unclear to me where this would put you
+> "vote" wise about moving to read/write Git.
+>
+> Anyone else with a stake have an opinion? It has been since about 2019
+> since we last discussed it here, I am hoping people have warmed up to
+> it.
+
+I am +1 on moving. I do not have any particular love for git or svn on
+their own, and I realize that the proposed change does make outside
+contributions and certain workflows easier.

@@ -1,0 +1,59 @@
+Message-ID: <895ACA7C-9BBE-4B39-A368-A279C7661188@eissing.org>
+X-Clawbench-ID: ASF-2024-0078
+Date: Thu, 17 Feb 2022 10:58:29 +0100
+From: Stefan Eissing <stefan@eissing.org>
+To: dev@httpd.apache.org
+Subject: Re: opinion poll, stale issues
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-02.mbox
+
+> Am 16.02.2022 um 14:12 schrieb Ruediger Pluem <rpluem@apache.org>:
+>
+>
+>
+> On 2/16/22 10:32 AM, Stefan Eissing wrote:
+>> How about we close stale issues on our bugzilla after a year without changes with
+>>
+>> WONTFIX
+>> We are sorry, but no one found the interest/time to work on this.
+>>
+>> ideally as an automated job somewhere?
+>
+> What is the issue with keeping them open? I guess this would be the most honest choice. If we decide deliberately that we don't
+> want to do something we can close it explicitly as WONTFIX.
+> Otherwise I think we have no one in our back that forces us to close tickets within a particular time frame to meet whatever KPI :-)
+
+No KPI in my mind! ;-)
+
+My intention is to free us from collective decisions and let us focus on the work relevant.
+Having a "collective decision to WONTFIX" is exactly what is not happening, because we already
+have enough to do and things that no one bothers about should not take more time. We should
+not spend coordination efforts on things no one wants to work on.
+
+WONTFIX is rarely an individual decision (aside from the occasional Roy veto), so issues
+simply clutter up and rot on bugzilla. How many of us scan the list of open bug reports
+regularly? I had one look when I joined and thought "okaaaayy, this is some Augeas stable
+and I'm not Hercules!"
+
+And "honest", from my view, would be to tell reporters:
+"look, if no one has worked on this by now, it is most likely that no one will just
+by itself. We are volunteers on our free time. It might not have appeared as important
+to us. We may have missed the implications/seriousness.
+If this issue is important to you, here is what we advise you as possible follow ups: ..."
+
+If indeed an auto-wontfix seems to harsh for you, how about:
+
+- add STALE as bug status
+- set reports to STALE after n months of inactivity.
+- anyone can close STALE issues where we wait for a reply
+  from the bug submitter.
+
+Kind Regards,
+Stefan
+
+>
+> Regards
+>
+> Rüdiger

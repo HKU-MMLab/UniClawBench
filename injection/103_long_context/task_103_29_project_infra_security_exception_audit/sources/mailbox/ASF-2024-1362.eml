@@ -1,0 +1,24 @@
+Message-ID: <B8B234A7-B8EA-4482-8849-815A3FEE9078@eissing.org>
+X-Clawbench-ID: ASF-2024-1362
+Date: Wed, 10 Apr 2024 10:27:31 +0200
+From: "Stefan Eissing via dev" <dev@httpd.apache.org>
+To: dev@httpd.apache.org
+Subject: Re: pytest test/modules/md/test_310_conf_store.py
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-04.mbox
+
+In trunk or 2.4.x? I trunk I thought I'd fixed that.
+
+> Am 09.04.2024 um 19:06 schrieb jean-frederic clere <jfclere@gmail.com>:
+>
+> Hi,
+>
+> Has anyone run those tests recently?
+>
+> I have errors like "MD testdomain.org does not match any VirtualHost with ...", probably I am doing something wrong...
+> --
+> Cheers
+>
+> Jean-Frederic

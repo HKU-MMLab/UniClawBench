@@ -1,0 +1,32 @@
+Message-ID: <Y4jUm9985pOBlZLn@an3as.eu>
+X-Clawbench-ID: BIO-2024-0217
+Date: Thu, 1 Dec 2022 17:21:47 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Nilesh Patra <nilesh@nileshpatra.info>
+Subject: Re: [Advent bug squashing] Just closed bug #1024954 of librcsb-core-wrapper
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_12_msg00006.html
+
+Hi Nilesh,
+
+Am Thu, Dec 01, 2022 at 09:09:28PM +0530 schrieb Nilesh Patra:
+>
+> I wonder if it could be nice to make a wiki page instead and add in bugs there date-wise if hosting the calendar isn't a possibility?
+
+Fine for me but I was hoping to motivate the readers of the list to join
+the party.  I'm not sure whether outsiders regularly go to the wiki
+page.
+
+> I'm ok with announcing on the list too but it decreases the signal to noise ratio a bit :)
+
+I agree with the signal noise argument, despite the subject tag [Advent
+bug squashing] should help to deal with this.  If more people might
+feel distracted from our main topic I'll simply stop posting here.
+
+Kind regards
+   Andreas.
+
+--
+http://fam-tille.de

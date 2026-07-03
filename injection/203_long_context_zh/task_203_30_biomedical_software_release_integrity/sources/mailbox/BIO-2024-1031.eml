@@ -1,0 +1,34 @@
+Message-ID: <Zuqt1DSthQw6kF4C@an3as.eu>
+X-Clawbench-ID: BIO-2024-1031
+Date: Wed, 18 Sep 2024 12:39:16 +0200
+From: Andreas Tille <tille@debian.org>
+To: Andrius Merkys <merkys@debian.org>
+Subject: Re: Developer statistics
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_09_msg00012.html
+
+Am Wed, Sep 18, 2024 at 12:56:46PM +0300 schrieb Andrius Merkys:
+> > I would have a look at https://wiki.debian.org/UltimateDebianDatabase .
+>
+> Thanks - I gave UDD a look and managed to get what I wanted quite quickly.
+
+Nice you got what you need.  I'd like to add that you can find a couple
+of useful queries inside the teammetrics Git repository[1].
+
+For those who are interested:  I'm updating my Debian Maintainer
+homepage daily by using queries like this:
+
+   https://salsa.debian.org/tille/public_html/-/blob/main/update_my_stats?ref_type=heads
+
+(The update script is actually a python script but uses the same
+queries.)
+
+Hope this helps
+    Andreas.
+
+[1] https://salsa.debian.org/teammetrics-team/teammetrics
+
+--
+https://fam-tille.de

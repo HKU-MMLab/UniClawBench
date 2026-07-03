@@ -1,0 +1,103 @@
+Message-ID: <YlQU4LznncqNYZ8k@an3as.eu>
+X-Clawbench-ID: BIO-2024-1240
+Date: Mon, 11 Apr 2022 13:45:36 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: RFS: added autopkgtest for pplacer
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_04_msg00035.html
+
+Hi,
+
+Am Mon, Apr 11, 2022 at 11:23:13AM -0000 schrieb Mohd Bilal:
+> >1. There is no information given where you obtained the data in
+> >   debian/tests/data from.  It is good style to add some script that
+> >   fetches the data from somewhere (may be via wget or whaterver
+> >   tool you prefer.
+> >
+>
+> I've added a script[4] in d/tests/ that fetches the test data
+
+Looks good.
+
+> >2. The data should be also mentioned in d/copyright.
+> >
+> >3. Since the size of the data exceedes the size of the other files
+> >   it might make sense to create a separate tarball as it is
+> >   described in the Debian Med team policy[3].  Alternatively
+> >   you might consider xz compressing the data files (which needs
+> >   adding them in debian/source/include-binaries) and uncompressing
+> >   them once they are needed.  The compression rate might be
+> >   sufficiently high to tolerate the size of the compressed data
+> >   files.
+> >   It might be also be sensible to create an extra pplacer-examples
+> >   binary package in case the compression rate is not high enough.
+> >   A sign for the issue is also given by lintian:
+> >    I: pplacer: arch-dep-package-has-big-usr-share 12192kB 39%
+> >
+>
+> I've followed the instructions in the med-team policy and moved the tests data to debian-tests-data. The upstream repo[5] for test data  doesn;t state a license . So what should be included in the d/copyright file?
+
+May be its a good idea to ask upstream.  In lots of cases those data are
+in public domain - but this should be clarified.
+
+Also good you created the additional test-data tarball.  Please be so kind
+to push it to pristine-tar branch.  When I try `gbp buildpackage` I get:
+
+
+/usr/bin/gbp buildpackage --git-pbuilder-options=--source-only-changes
+gbp:info: Tarballs 'pplacer_1.1~alpha19.orig.tar.gz, pplacer_1.1~alpha19.orig-debian-tests-data.tar.gz' not found at '../tarballs/'
+gbp:info: Creating /home/andreas/debian-maintain/salsa/med-team/build-area/pplacer_1.1~alpha19.orig.tar.gz
+gbp:info: Creating /home/andreas/debian-maintain/salsa/med-team/build-area/pplacer_1.1~alpha19.orig-debian-tests-data.tar.gz
+gbp:error: Can not find pristine tar commit for archive 'pplacer_1.1~alpha19.orig-debian-tests-data.tar.gz'
+
+
+> >4. Unfortunately the test does not work in my pbuilder environment.
+> >   I&#39;ve added a `set -x` to run-unit-test and so I&#39;Ve got:
+> > ...
+> >Test 1
+> >make: *** No rule to make target &#39;test&#39;.  Stop.
+> >autopkgtest [07:44:45]: test run-unit-test: -----------------------]
+> >
+> >There is no Makefile provided and if I&#39;m checking the build directory
+> >the Makefile would need a binary _build/tests/tests.native which
+> >contains the according calls to the pplacer binaries.  Thus the test
+> >only works in a full source tree ... and I admit I&#39;m quite baffled
+> >why the Salsa-CI test is passing.  It obviously rebuilds the needed
+> >binary but I have no idea why.
+> >
+>
+> I've removed the part that uses the Makefile for testing and autopkgtest now uses commands from the tutorial[6] and verifies their checksums. So would this be ok for now?
+
+Sounds good.  I'll test once you've pushed
+pplacer_1.1~alpha19.orig-debian-tests-data.tar.gz  .
+
+> Thanks a lot for this detailed review. Please see whether my changes are appropriate or is there anything more to be done.
+
+You are welcome.  We need to make sure to add some paragraph about the
+license of the data since the change in the source package will probably
+require passing the new queue which means license and copright will be
+re-checked.  As I said above an issue in the upstream Github repository
+might be a promising way to find this out.
+
+Kind regards
+
+     Andreas.
+
+> > > [1] - https://salsa.debian.org/med-team/pplacer
+> > > [2] - https://fhcrc.github.io/microbiome-demo/
+> >[3] https://med-team.pages.debian.net/policy/#embedding-large-test-data
+> >
+> [4] - https://salsa.debian.org/med-team/pplacer/-/blob/master/debian/tests/get-test-data
+> [5] - https://github.com/fhcrc/microbiome-demo
+> [6] -https://fhcrc.github.io/microbiome-demo/
+>
+> >--
+> >http://fam-tille.de
+>
+>
+
+--
+http://fam-tille.de

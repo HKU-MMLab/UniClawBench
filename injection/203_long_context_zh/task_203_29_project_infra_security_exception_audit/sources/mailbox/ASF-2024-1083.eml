@@ -1,0 +1,30 @@
+Message-ID: <409EE1CA-07E3-4594-9A88-34BD9D7AE1DE@sharp.fm>
+X-Clawbench-ID: ASF-2024-1083
+Date: Mon, 8 May 2023 10:29:04 +0100
+From: "Graham Leggett via dev" <dev@httpd.apache.org>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Switch read/write repository from Subversion to Git
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-05.mbox
+
+On 04 May 2023, at 09:34, Ruediger Pluem <rpluem@apache.org> wrote:
+
+> This is a formal vote on whether we should move our read/write repository from Subversion to Git.
+> This means that our latest read/write repository will be no longer available via svn.apache.org. It
+> will be available via Git at https://gitbox.apache.org/repos/asf/httpd-site.git and https://github.com/apache/httpd.git.
+> Github also offers the possibility to use a Subversion client:
+> https://docs.github.com/en/get-started/working-with-subversion-on-github/support-for-subversion-clients
+>
+>
+> [ ]: Move the read/write repository from Subversion to Git and leverage the features of Github (for now Actions and PR).
+> [ ]: Move the read/write repository from Subversion to Git, but I don't want to work with Github and I will only work with
+>     what gitbox.apache.org offers.
+> [X]: Leave everything as is.
+
+I would rather see proper SVN integration with Github. This is a vote of no confidence in our own projects.
+
+Regards,
+Graham
+—

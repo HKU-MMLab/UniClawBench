@@ -1,0 +1,29 @@
+Message-ID: <CAKQ1sVNLjHWdhnUd-8Hkv84W8YYkhNVQRbsLAPpTuRRdsOAPog@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1499
+Date: Tue, 17 May 2022 15:20:29 +0200
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: httpd-dev <dev@httpd.apache.org>
+Subject: Re: travis CI failing in 2.4.x
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-05.mbox
+
+Hi,
+
+>
+> We have the CI for 2.4.x failing for some time in endless log messages for "Linux Ubuntu Focal, ASan, pool-debug"
+>
+> [Mon May 16 14:36:38.939810 2022] [optional_hook_import:error] [pid 64983:tid 140667614734080] AH01866: Optional hook test said: GET /getfiles-perl-pod/perlapi.pod HTTP/1.1
+> 5989[Mon May 16 14:36:38.939815 2022] [optional_fn_export:error] [pid 64983:tid 140667614734080] AH01871: Optional function test said: GET /getfiles-perl-pod/perlapi.pod HTTP/1.1
+>
+> Anyone got an idea?
+
+While both r1900026 and r1899841 were in the backport proposal
+(STATUS), it seems that the former only made it to 2.4.x in r1900751,
+the latter fixed the same issue in trunk a while ago
+(https://app.travis-ci.com/github/apache/httpd/jobs/566966513#L4124)
+so it's probably what's missing.
+
+Cheers;
+Yann.

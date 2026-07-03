@@ -1,0 +1,67 @@
+Message-ID: <03a6df61d14a8a15350e0d2495e09a902033dd94.camel@debian.org>
+X-Clawbench-ID: BIO-2024-0709
+Date: Wed, 12 Jan 2022 11:24:00 -0500
+From: "M. Zhou" <lumin@debian.org>
+To: Gard Spreemann <gspr@nonempty.org>, Andrius Merkys <merkys@debian.org>
+Subject: Re: alphafold Debian packaging ?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2022_01_msg00011.html
+
+Even more complicated is the underlying software dependency tree.
+
+alphafold depends on dm-haiku, jax, tensorflow.
+dm-haiku depends on jax.
+jax depends on XLA from tensorflow.
+tensorflow still in NEW.
+
+Long way to go. Mhhh.
+
+What's also complicated is the GPU support. Currently the only
+working modern deep learning framework in our archive is pytorch,
+which is only compiled with cpu support.
+
+pytorch-cuda requires cudnn. I gave up cudnn packaging a few
+times and I eventually realized that I dislike working on
+nvidia stuff even if I have to use it.
+
+pytorch-rocm is a good way to go. As you can see on debian-ai@
+people are still working hard to get ROCm into debian.
+
+Intel GPU support is too new to evaluate.
+
+On Wed, 2022-01-12 at 16:54 +0100, Gard Spreemann wrote:
+>
+> Andrius Merkys  writes:
+>
+> > On 2022-01-12 17:34, Gard Spreemann wrote:
+> > > And their code repository is Apache. Or did you find the actual
+> > > pretrained models somewhere under CC-BY-NC?
+> >
+> > Interesting. Maybe I am looking at some other source. Am I right to
+> > assume we are talking about [3]? If so, it says that the parameters
+> > are
+> > CC-BY-NC here: [4].
+> >
+> > [3] https://github.com/deepmind/alphafold
+> > [4] https://github.com/deepmind/alphafold#model-parameters
+>
+> Interesting indeed! So we have:
+>
+>  – Training data: A plethora of different licenses.
+>
+>  – Code: Apache
+>
+>  – Trained model: CC-BY-NC-4.0
+>
+>  – Output of said trained model: CC-BY-4.0 [5]
+>
+> Nightmarish!
+>
+> [5] See under "license and attributions" on https://alphafold.com
+>
+>
+>  -- Gard
+>
+>

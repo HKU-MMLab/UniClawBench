@@ -1,0 +1,49 @@
+Message-ID: <PR_kwDOFoJrE856s1fJ-2f4158a7-7c97-4dd4-a41c-fbb194fd400e@gitbox.apache.org>
+X-Clawbench-ID: ASF-2024-0516
+Date: Fri, 06 Sep 2024 19:46:44 -0000
+From: =?utf-8?q?covener_=28via_GitHub=29?= <git@apache.org>
+To: dev@httpd.apache.org
+Subject: =?utf-8?q?Re=3A_=5BPR=5D_disable_pelican_=5Bhttpd-site=5D?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-09.mbox
+
+covener commented on code in PR #14:
+URL: https://github.com/apache/httpd-site/pull/14#discussion_r1747638567
+
+
+##########
+pelicanconf.py:
+##########
+@@ -0,0 +1,75 @@
++
++import datetime
++# Basic information about the site.
++SITENAME = 'Apache HTTP Server Project'
++SITEDESC = 'The official website of the Apache HTTP Server Project'
++SITEDOMAIN = 'httpd.apache.org'
++SITEURL = 'https://httpd.apache.org'
++SITELOGO = 'https://httpd.apache.org/images/httpd_logo_wide_new.png'
++SITEREPOSITORY = 'https://github.com/apache/httpd-site/blob/main/content/'
++CURRENTYEAR = datetime.date.today().year
++TRADEMARKS = 'Apache HTTP Server, Apache, and the Apache feather logo are trademarks of The Apache Software Foundation.'
++TIMEZONE = 'UTC'
++# Theme includes templates and possibly static files
++THEME = 'theme/apache'
++# Specify location of plugins, and which to use
++PLUGIN_PATHS = [ '/Users/covener/SRC/infrastructure-actions/pelican/migration/../plugins',  ]
+
+Review Comment:
+   ty, will look a this along with some hints from Daniel about testing
+
+
+--
+This is an automated message from the Apache Git Service.
+To respond to the message, please log on to GitHub and use the
+URL above to go to the specific comment.
+
+To unsubscribe, e-mail: dev-unsubscribe@httpd.apache.org
+
+For queries about this service, please contact Infrastructure at:
+users@infra.apache.org

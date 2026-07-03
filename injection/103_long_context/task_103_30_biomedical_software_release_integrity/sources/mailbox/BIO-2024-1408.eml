@@ -1,0 +1,34 @@
+Message-ID: <Yzhtsh7iV0bdAKJx@fusion>
+X-Clawbench-ID: BIO-2024-1408
+Date: Sat, 1 Oct 2022 18:41:22 +0200
+From: Étienne Mollier <emollier@emlwks999.eu>
+To: Nilesh Patra <nilesh@debian.org>
+Subject: Re: [Help] New version of htslib does not build
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00002.html
+
+Hello everyone,
+
+Nilesh Patra, on 2022-10-01:
+> I have fixed a bunch of things with htscodecs and htslib, both
+> of which were not building on !amd64. Hopefully it is
+> fine now.
+>
+> But please fix pysam which is blocking htslib transition. I am
+> _absolutely_ out of time now.
+
+The autopkgtest failures[1] raise a couple of errors which do
+not look very obvious on first sight.  I informed pysam upstream
+on their bugtracker[2], will see how it goes.
+
+[1]: https://ci.debian.net/data/autopkgtest/testing/amd64/p/python-pysam/26567166/log.gz
+[2]: https://github.com/pysam-developers/pysam/issues/1131
+
+Have a nice day,  :)
+--
+Étienne Mollier
+Fingerprint:  8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+Sent from /dev/pts/0, please excuse my verbosity.
+On air: Týr - A´lvur Kongur

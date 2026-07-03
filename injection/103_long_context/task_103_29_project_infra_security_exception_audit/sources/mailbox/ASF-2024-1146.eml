@@ -1,0 +1,31 @@
+Message-ID: <969b7de4-d326-42f9-1d38-247173e5e3c6@apache.org>
+X-Clawbench-ID: ASF-2024-1146
+Date: Fri, 7 Oct 2022 21:14:01 +0200
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: friends of mod_proxy
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-10.mbox
+
+On 10/7/22 7:11 PM, Stefan Eissing via dev wrote:
+>
+>
+>> Am 07.10.2022 um 18:45 schrieb Yann Ylavic <ylavic.dev@gmail.com>:
+>>
+
+>
+> Thanks, Yann, for the detailed explanation on how this works and that the default does the right thing.
+
++1. I missed the default of not reusing the connection in these cases but having the possibility to override it like the user did.
+But shouldn't we default to not reusing the connection in case of a $ inside the port as well?
+
+>
+> My guess is that such configurations are pretty rare, as their security is not good in general. The only thing that comes to mind is logging a warning for such cases.
+
++1
+
+Regards
+
+Rüdiger

@@ -1,0 +1,41 @@
+Message-ID: <OF35F36475.E07B823E-ONC12587AF.004D9C3E-C12587AF.004E5603@ibm.com>
+X-Clawbench-ID: ASF-2024-0780
+Date: Sat, 18 Dec 2021 16:15:39 +0200
+From: "Arnaud Le Hors" <lehors@us.ibm.com>
+To: dev@httpd.apache.org
+Subject: RE: Free MFA hardware tokens for your project
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2021-12.mbox
+
+> From: "Christopher Schultz" <chris@christopherschultz.net>
+>
+> Any particular reasons why TOTP won't work just as well and not generate
+
+> electronic waste?
+>
+
+Security is on a continuum and TOTP is better than simple passwords.
+However, software TOTP is nowhere near as secure as a hardware token.
+The fundamental problem is that software-based TOTP applications typically
+run on hardware that runs other software (other apps, JavaScript, etc.)
+and often that hardware has network connectivity (WiFi, cellular, wired
+Internet, etc.). That makes the software TOTP much easier to break into
+and steal the underlying secrets.
+
+In contrast, hardware tokens are single-use devices, so most of the
+attacks that work against software TOTP do *not* work on hardware devices.
+
+Software TOTP also tends to be less convenient, since you have to retype
+the code, or allow copy/paste, or allow a camera to view it. For security,
+it's important to be convenient where practical; things that are a pain to
+do are often worked around.
+
+Of course no solution is perfect and all can be defeated under certain
+circumstances but overall hardware tokens provide significant advantages.
+
+I hope that helps.
+--
+Arnaud  Le Hors - Senior Technical Staff Member - Open Technologies:
+Blockchain, Edge Computing, Web, Security - IBM

@@ -1,0 +1,54 @@
+Message-ID: <YYPBgSCJ0t/Jt5Ru@debian>
+X-Clawbench-ID: BIO-2024-1006
+Date: Thu, 4 Nov 2021 16:48:25 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: debian-science@lists.debian.org
+Subject: Re: Blends framework for Debian Math (Was: Science Subgroups [was Re: Debian Math Team])
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_11_msg00035.html
+
+On Thu, Nov 04, 2021 at 10:31:13AM +0100, Andreas Tille wrote:
+> Am Wed, Nov 03, 2021 at 03:41:43PM +0530 schrieb Nilesh Patra:
+> >
+> > > We should remember that having blends packages, blends web pages and
+> > > informative wiki pages are completely independent of having a defined team with
+> > > separate VCS and mailing list. All that needs is one or more people to curate
+> > > them.
+> >
+> > That's correct. I talked with Andreas yesterday on the debian-med bi-weekly call, and
+> > tasks for math packages should be done soonish :)
+>
+> I've pushed the code for the metapackages to
+>
+>     https://salsa.debian.org/blends-team/math/
+
+Many thanks!
+
+> and made
+>
+> [...]
+> members of the Blends team to enable currating these files (which should
+> be **really** done before announcing anything since its just a copy of the
+> two tasks from debian-science and does not make any sense in this form.)
+
+Looks like I was already a member -- can you bump my access to that of a
+maintainer? That'd ease my work there
+
+> I've also did the necessary steps to create the web sentinel which you
+> can see here:
+>
+>     https://blends.debian.org/math/tasks/
+>
+> Said members should probably feed some content into
+>
+>     https://salsa.debian.org/blends-team/website/-/tree/master/www/math
+>
+> before anything is announced and links will be set.
+>
+> Hope this helps
+
+Awesome, thanks!
+
+Nilesh

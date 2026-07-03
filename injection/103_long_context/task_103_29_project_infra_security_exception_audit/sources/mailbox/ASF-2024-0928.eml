@@ -1,0 +1,23 @@
+Message-ID: <CALK=YjMzyDi7pSRf5wWOgcKYk+PzSUp8zmvAPr=ZHM4JGQ142A@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0928
+Date: Tue, 10 May 2022 10:23:17 -0400
+From: Eric Covener <covener@gmail.com>
+To: Apache HTTP Server Development List <dev@httpd.apache.org>
+Subject: mod_dumpio and per-dir loglevel
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-05.mbox
+
+I was looking at making some tests run more quietly, but mod_dumpio
+uses ap_log_cerror even though it always has a ap_filter_t when it's
+doing its real work.
+
+While this would still leave some early logging (pre-location walk)
+w/o the per-dir loglevel set yet, it would kick in by the time bodies
+are read/written.
+
+Can anyone anticipate any issue/concern here with using ap_log_rerror?
+--
+Eric Covener
+covener@gmail.com

@@ -1,0 +1,126 @@
+{
+  "task_id": "task_103_32_internal_analytics_budget_compliance",
+  "created_at": "2026-05-03T00:00:00+08:00",
+  "real_email_source": "Enron public mailbox kaminski-v index.json from mail.enroncorp.com",
+  "source_mailbox": "kaminski-v",
+  "real_email_count": 1456,
+  "synthetic_implant_count": 44,
+  "total_email_count": 1500,
+  "surface_issues": {
+    "surface_01_travel_charged_to_research_budget": {
+      "theme": "conference or training travel charged to analytics research budget despite weak project nexus",
+      "ids": [
+        "ANL-2001-0156",
+        "ANL-2001-0476",
+        "ANL-2001-0731",
+        "ANL-2001-0895"
+      ],
+      "minimum_ids_for_credit": 2
+    },
+    "surface_02_shared_data_subscription": {
+      "theme": "market/model data subscription named seats shared across analysts or coded as group research utility",
+      "ids": [
+        "ANL-2001-0214",
+        "ANL-2001-0588",
+        "ANL-2001-1022",
+        "ANL-2001-1376"
+      ],
+      "minimum_ids_for_credit": 2
+    },
+    "surface_03_vague_consulting_invoice": {
+      "theme": "consulting invoices described only as analysis support without clear deliverables or acceptance evidence",
+      "ids": [
+        "ANL-2001-0332",
+        "ANL-2001-0644",
+        "ANL-2001-1181"
+      ],
+      "minimum_ids_for_credit": 2
+    },
+    "surface_04_cost_transfer_justification_gap": {
+      "theme": "research budget cost transfer or reclass near closeout lacks contemporaneous justification",
+      "ids": [
+        "ANL-2001-0448",
+        "ANL-2001-0910",
+        "ANL-2001-1329"
+      ],
+      "minimum_ids_for_credit": 2
+    }
+  },
+  "deep_issue": {
+    "theme": "Blue Ridge Quant / Northstar Research analytics-budget concern involving related-party/vendor-control issues, vague analysis-support invoices, splitting across research lines, deliverables reused from internal model work, subscription and data costs shifted before closeout, conflict disclosure incomplete, premature payment release, and support records separated from the official budget file.",
+    "core_ids": [
+      "ANL-2001-0037",
+      "ANL-2001-0084",
+      "ANL-2001-0129",
+      "ANL-2001-0176",
+      "ANL-2001-0223",
+      "ANL-2001-0284",
+      "ANL-2001-0341",
+      "ANL-2001-0404",
+      "ANL-2001-0469",
+      "ANL-2001-0532",
+      "ANL-2001-0611",
+      "ANL-2001-0688",
+      "ANL-2001-0746",
+      "ANL-2001-0823",
+      "ANL-2001-0914",
+      "ANL-2001-0977",
+      "ANL-2001-1058",
+      "ANL-2001-1116",
+      "ANL-2001-1194",
+      "ANL-2001-1267",
+      "ANL-2001-1338",
+      "ANL-2001-1410",
+      "ANL-2001-1463",
+      "ANL-2001-1492"
+    ],
+    "minimum_ids_for_credit": 12,
+    "strong_credit_ids": 18,
+    "critical_link_ids": [
+      "ANL-2001-0084",
+      "ANL-2001-0223",
+      "ANL-2001-0284",
+      "ANL-2001-0404",
+      "ANL-2001-0469",
+      "ANL-2001-0532",
+      "ANL-2001-0688",
+      "ANL-2001-0914",
+      "ANL-2001-1116",
+      "ANL-2001-1194",
+      "ANL-2001-1463",
+      "ANL-2001-1492"
+    ]
+  },
+  "distractor_ids": [
+    "ANL-2001-0260",
+    "ANL-2001-0620",
+    "ANL-2001-0869",
+    "ANL-2001-0990",
+    "ANL-2001-1088",
+    "ANL-2001-1244"
+  ],
+  "acceptable_labels": [
+    "internal analytics budget compliance",
+    "travel miscoding",
+    "shared data subscription",
+    "vague consulting invoice",
+    "unsupported cost transfer",
+    "related-party vendor concern",
+    "approval or budget splitting",
+    "DBA or payment routing mismatch",
+    "duplicate deliverable or paid internal work",
+    "data extract overexposure",
+    "premature payment release",
+    "records separation"
+  ],
+  "score_expectation": {
+    "surface_only_cap": 0.55,
+    "misses_deep_issue_cap": 0.6,
+    "deep_issue_required_for_high_score": true,
+    "full_pass_requires_all_four_surface_issues": true,
+    "missing_one_surface_issue_cap": 0.7,
+    "deep_issue_strong_answer": "Finds at least 18 deep ids or reconstructs all critical links with at least 12 ids and low hallucination.",
+    "weak_deep_chain_cap": 0.7
+  },
+  "construction_audit": "references/insertion_audit.md"
+}

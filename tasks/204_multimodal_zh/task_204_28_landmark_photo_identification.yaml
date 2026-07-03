@@ -1,0 +1,39 @@
+task_id: task_204_28_landmark_photo_identification
+category: 204_multimodal_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  `/tmp_workspace/clawbench/sources/travel_photos/` 包含 30 张文件名随机的旅行照片。
+  每张图片都展示了一个真实世界的地标。
+
+  请逐一识别每张照片的以下信息：
+  - 地标名称
+  - 城市
+  - 国家
+
+  要求：
+  1. 处理该目录中全部 30 张图片，不得遗漏或重复。
+  2. 将最终结果输出到 `/tmp_workspace/results/landmark_report.csv`。CSV 表头必须为：
+     `file_name,landmark,city,country`
+  3. 保留原始文件名，并按 `file_name` 排序写入 CSV。
+  4. 同时撰写 `/tmp_workspace/results/landmark_summary.md`，给出简要总结：
+     - 你最有把握的 10 张图片，每张附上原始 `file_name`、识别结果和可见证据
+     - 你认为最容易混淆的 3 张图片，每张附上原始 `file_name`、可能的混淆对象和区分证据
+  5. 如果你对某张图片不完全确定，仍要给出最可能的答案；不要留空。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - travel_photos/
+
+codex:
+  max_user_followups: 2

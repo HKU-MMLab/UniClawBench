@@ -1,0 +1,6 @@
+PO4A-HEADER: position=^\.\\" Author; mode=after; beginboundary=^\.\\"$
+.\"
+.\" french translation of XZ Utils man
+.\" Copyright (C) 2021 Debian French l10n team <debian-l10n-french@lists.debian.org>
+.\"  Translator
+.\" bubu <bubub@no-log.org>, 2021.

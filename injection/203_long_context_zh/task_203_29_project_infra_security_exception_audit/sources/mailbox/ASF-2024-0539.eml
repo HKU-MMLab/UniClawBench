@@ -1,0 +1,39 @@
+Message-ID: <CAKQ1sVMx29qnTv8GjR10KJdg5TeMNZDC=TGp__=OmMxfjKgC9Q@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0539
+Date: Wed, 9 Mar 2022 13:09:58 +0100
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: httpd-dev <dev@httpd.apache.org>
+Subject: Re: backports
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-03.mbox
+
+On Tue, Mar 8, 2022 at 1:59 PM Graham Leggett <minfrin@sharp.fm> wrote:
+>
+> Using Github/Travis should inform us on the status of a proposal.
+
+Good, so having it run on every branch is fine by you right?
+
+>
+> Github/Travis should definitely not be invited onto our PMC and given a veto vote on backports and releases.
+
+I don't think anyone proposed that merges (let alone releases) be
+blocked by ci, this is a per-project setting in github AFAICT.
+Now if the ci fails for whatever reason (bad code or bad test) and the
+merge happens anyway, this will have to be fixed on the target branch
+at one time or another. The point is that it shouldn't affect others
+too much, if the PR uncovered a can of worms elsewhere I still think
+that we'd better fix that too before merging (not on the PR's
+contributor though), but here again the ci is of great help for
+everyone.
+
+So if committers can contribute by either pushing directly to git.a.o
+(almost like before) or using github, and we don't let github dictate
+our policies, and github also allows for more contributors (thus more
+people to potentially become committers), what are your reserves
+still?
+
+
+Regards;
+Yann.

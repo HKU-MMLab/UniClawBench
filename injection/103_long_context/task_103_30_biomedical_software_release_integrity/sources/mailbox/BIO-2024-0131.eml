@@ -1,0 +1,54 @@
+Message-ID: <ZfRoDpA_DzKygCQH@bilena>
+X-Clawbench-ID: BIO-2024-0131
+Date: Fri, 15 Mar 2024 11:23:58 -0400
+From: Yaroslav Halchenko <debian@oneukrainian.com>
+To: debian-med@lists.debian.org
+Subject: Re: Fwd: heudiconv FTBFS on i386
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_03_msg00015.html
+
+Hi Alexandre,
+
+Do we know any details on how much memory we have on that i386 box?
+
+meanwhile I made a record against nibabel
+https://github.com/nipy/nibabel/issues/1307
+on this.
+
+Here -- we could potentially just skip (announce xfail) that particular
+test (test_reproin_largely_smoke) on i386?  could even do upstream if
+would be of any help (to not mess around with patches etc)
+
+
+On Fri, 15 Mar 2024, Alexandre Detiste wrote:
+
+> Whoops I sent to the wrong list.
+
+> ---------- Forwarded message ---------
+> Date: mer. 13 mars 2024 à 11:07
+> To: Debian Med Packaging Team
+
+
+> Hi,
+
+> I'm refreshing heudiconv.
+
+> It fails to build on i386.
+
+> https://salsa.debian.org/med-team/heudiconv/-/pipelines/651879
+
+> The lazy solution is to drop more & more 32 bit support.
+> ... but maybe this package can still be fixed.
+
+> I'll have a look again later.
+
+> Greetings
+
+
+--
+Yaroslav O. Halchenko
+Center for Open Neuroscience     http://centerforopenneuroscience.org
+Dartmouth College, 419 Moore Hall, Hinman Box 6207, Hanover, NH 03755
+WWW:   http://www.linkedin.com/in/yarik

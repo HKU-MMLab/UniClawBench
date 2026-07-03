@@ -1,0 +1,36 @@
+task_id: task_102_10_hackernews_firebase
+category: 102_exploration
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I read Hacker News (https://news.ycombinator.com/) and I want to pull data
+  from it programmatically. The website itself doesn't expose an obvious API on
+  the page, but there is an official public data API for Hacker News.
+
+  Please find that official API and use it (not by scraping the
+  news.ycombinator.com HTML) to do two things:
+
+  1. Fetch the current front-page top stories list, take the #1 story right
+     now, and report its id, title, url (if any), author (`by`), score, and
+     number of comments (`descendants`).
+  2. As a fixed cross-check, also fetch the item with id **8863** and report
+     its title and author — this is a specific historical item so its core
+     fields won't change.
+
+  Save the result to `/tmp_workspace/results/hackernews.json` (a `top_story`
+  object and an `item_8863` object), and save the exact request URL(s) you
+  called plus their raw JSON response(s) to
+  `/tmp_workspace/results/hackernews_evidence/`.
+
+references:
+  - references/eval_rule.md
+
+codex:
+  max_user_followups: 2

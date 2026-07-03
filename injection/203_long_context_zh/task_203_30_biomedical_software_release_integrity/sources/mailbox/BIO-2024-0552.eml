@@ -1,0 +1,86 @@
+Message-ID: <582698682.315164.1658279913055.JavaMail.zimbra@cti.gov.br>
+X-Clawbench-ID: BIO-2024-0552
+Date: Tue, 19 Jul 2022 22:18:33 -0300 (BRT)
+From: Thiago Franco de Moraes <thiago.moraes@cti.gov.br>
+To: debian-med <debian-med@lists.debian.org>
+Subject: Re: Upgrading invesalius
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_07_msg00038.html
+
+Hi Andreas,
+
+Thanks for the routine-update tip. I pushed some commits to Salsa. But I'm having the error bellow on wxPython. I think this commits is needed on wxPython (python3-wxgtk4.0).
+
+Best regards.
+
+```
+  File "/usr/lib/python3/dist-packages/wx/lib/agw/aui/auibar.py", line 1508, in GetToolsPosition
+    bmp_rect = wx.Rect(bmp_x, bmp_y, bmp_width, bmp_height)
+TypeError: Rect(): arguments did not match any overloaded call:
+  overload 1: too many arguments
+  overload 2: argument 1 has unexpected type 'float'
+  overload 3: argument 1 has unexpected type 'float'
+  overload 4: argument 1 has unexpected type 'float'
+  overload 5: argument 1 has unexpected type 'float'
+  overload 6: argument 1 has unexpected type 'float'
+```
+
+----- Original Message -----
+From: "Andreas Tille"
+To: "Thiago Franco de Moraes"
+Cc: "debian-med"
+Sent: Tuesday, July 19, 2022 5:19:02 PM
+Subject: Re: Upgrading invesalius
+
+Am Tue, Jul 19, 2022 at 03:04:39PM -0300 schrieb Thiago Franco de Moraes:
+> Yes, I have intention to update the package. I'll try to do that in the next days. I just need to relearn some parts of packaging.
+
+Fine.
+
+For the re-learning I'd recommend
+
+   sudo apt install routine-update
+   routine-update
+
+I can do this for you if you want me to do so - I just want to let you
+check the result before uploading.
+
+Kind regards
+
+      Andreas.
+
+> Best regards.
+>
+> ----- Original Message -----
+> From: "Andreas Tille"
+> To: "debian-med" , "Thiago Franco Moraes"
+> Sent: Tuesday, July 19, 2022 9:51:31 AM
+> Subject: Upgrading invesalius
+>
+> Hi Thiago,
+>
+> the Debian package of invesalius is some micro versions behind
+> upstream.  Do you intend to prepare an updated package?
+>
+> Kind regards
+>
+>       Andreas.
+>
+> --
+> http://fam-tille.de
+> --
+> Ressalva: Esta mensagem de correio eletrônico do Centro de Tecnologia da Informação Renato Archer - CTI é enviada exclusivamente a seu(s) destinatário(s) e pode conter informações confidenciais, protegidas por sigilo profissional. Sua utilização desautorizada é ilegal e sujeita o infrator às penas da lei. Se você a recebeu indevidamente, queira, por gentileza, reenviá-la ao remetente, esclarecendo o equívoco.
+>
+> Disclaimer: This e-mail message from Centro de Tecnologia da Informação Renato Archer - CTI is directed exclusively to its addressee(s) and may contain confidential data, protected under professional secrecy rules. Its unauthorized use is illegal and may subject the transgressor to the law's penalties. If you are not the addressee, please send it back, clarifying the failure.
+>
+>
+>
+
+--
+http://fam-tille.de
+--
+Ressalva: Esta mensagem de correio eletrônico do Centro de Tecnologia da Informação Renato Archer - CTI é enviada exclusivamente a seu(s) destinatário(s) e pode conter informações confidenciais, protegidas por sigilo profissional. Sua utilização desautorizada é ilegal e sujeita o infrator às penas da lei. Se você a recebeu indevidamente, queira, por gentileza, reenviá-la ao remetente, esclarecendo o equívoco.
+
+Disclaimer: This e-mail message from Centro de Tecnologia da Informação Renato Archer - CTI is directed exclusively to its addressee(s) and may contain confidential data, protected under professional secrecy rules. Its unauthorized use is illegal and may subject the transgressor to the law's penalties. If you are not the addressee, please send it back, clarifying the failure.

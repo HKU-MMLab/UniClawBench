@@ -1,0 +1,30 @@
+Message-ID: <ZbocO90xOXHcADzM@an3as.eu>
+X-Clawbench-ID: BIO-2024-0385
+Date: Wed, 31 Jan 2024 11:08:59 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Tony Travis <tony.travis@minke-informatics.co.uk>
+Subject: Re: User input needed: Stop supporting 32 bit architectures with emboss (Was: emboss-lib: identified for time_t transition but no ABI in shlibs)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_01_msg00024.html
+
+Hi Tony,
+
+Am Wed, Jan 31, 2024 at 09:57:32AM +0000 schrieb Tony Travis:
+> The only people I know still using 32-bit software are doing BLAST etc on
+> older Raspberry Pi's. However, AFAIK, the default Raspberry Pi OS (based on
+> Debian Bullseye) is 32-bit even though the newer Raspberry Pi have 64-bit
+> processors. Personally, I don't think it's worth the effort to support
+> 32-bit software these days. I don't use EMBOSS any longer.
+
+Thanks a lot to your insight.  Do you have any contact to those people
+running 32bit systems?  Can you forward this question to them?  Or more
+generally:  Wouldn't it make sense if people doing Debian based
+bioinformatics would subscribe this list and speak here?
+
+Kind regards
+   Andreas.
+
+--
+http://fam-tille.de

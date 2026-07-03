@@ -1,0 +1,32 @@
+Message-ID: <Pine.LNX.4.33.0209200803070.18827-100000@hydrogen.leitl.org>
+X-Clawbench-ID: CAM-2003-1082
+Date: Fri, 20 Sep 2002 08:03:13 +0200
+From: Eugen Leitl <eugen@leitl.org>
+To: forkit! <fork@spamassassin.taint.org>
+Subject: Sun donates elliptic curve code to OpenSSL? (fwd)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00665.f1547d981d26d8c8ccfa9375dcd7d222
+
+---------- Forwarded message ----------
+Date: 19 Sep 2002 22:18:46 -0400
+From: Perry E. Metzger <perry@piermont.com>
+To: cryptography@wasabisystems.com
+Subject: Sun donates elliptic curve code to OpenSSL?
+
+
+According to this:
+
+http://www.sun.com/smi/Press/sunflash/2002-09/sunflash.20020919.8.html
+
+Sun is donating some elliptic curve code to the OpenSSL project. Does
+anyone know details that they would care to share on the nature of the
+donation?
+
+--
+Perry E. Metzger		perry@piermont.com
+
+---------------------------------------------------------------------
+The Cryptography Mailing List
+Unsubscribe by sending "unsubscribe cryptography" to majordomo@wasabisystems.com

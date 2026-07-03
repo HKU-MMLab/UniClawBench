@@ -1,0 +1,30 @@
+{
+  "task_id": "task_101_40_excel_dashboard_qa",
+  "notes_visible_to_executor": false,
+  "skill_changes": [
+    {
+      "original_skill": "excel-xlsx",
+      "injected_skill": "excel-xlsx",
+      "original_source": "clawhub",
+      "change_type": "benchmark environment adaptation",
+      "reason": "The skill is already injected for the task, so related-skill wording was changed to avoid asking the executor to install other skills.",
+      "executor_skill_path": "skills/excel-xlsx"
+    },
+    {
+      "original_skill": "duckdb-cli-ai-skills",
+      "injected_skill": "duckdb-cli-ai-skills",
+      "original_source": "clawhub",
+      "change_type": "benchmark path adaptation",
+      "reason": "The original README instructed users to copy SKILL.md into ~/.claude/skills. The benchmark injects the skill directly at /root/skills/duckdb-cli-ai-skills, so that visible install instruction was replaced with the injected runtime path.",
+      "executor_skill_path": "skills/duckdb-cli-ai-skills"
+    },
+    {
+      "original_skill": "automate-excel",
+      "injected_skill": "automate-excel",
+      "original_source": "clawhub",
+      "change_type": "benchmark environment adaptation",
+      "reason": "Replaces the prior data-analyst-pro injection (one-sentence template SKILL.md) with a 16-script Excel automation skill (validate / aggregate / deduplicate / merge / format) that materially helps the QA-the-workbook task. Removed upstream pip-install instructions because the workspace pre-installs openpyxl / pandas via task-setup.",
+      "executor_skill_path": "skills/automate-excel"
+    }
+  ]
+}

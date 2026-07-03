@@ -1,0 +1,68 @@
+task_id: task_202_14_vscode_colorblind_theme
+category: 202_exploration_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  一位同事是红绿色盲（deuteranopia），他对我们编辑器的暗色主题很不满意——
+  代码难以阅读，而且有些语法颜色在他看来完全一样。请帮我从一组固定的候选
+  主题中，为他挑选最合适的 VS Code 暗色主题。
+
+  候选主题以真实的 VS Code color-theme JSON 文件形式离线提供，位于：
+
+      /tmp_workspace/clawbench/sources/theme_candidates/
+
+  该文件夹中的 `candidates.json` 给出了清单（显示名称、主题 JSON 文件、
+  marketplace 下载量和来源）。流行度只是参考信息——下载量最高的主题未必
+  就是正确的选择。
+
+  请客观评估这些主题，方法是真正解析每个主题 JSON（它们是带注释的 JSON），
+  并对每个主题计算：
+
+  - HARD 约束（一个主题必须全部通过才有资格入选）：
+    1. 编辑器前景色与编辑器背景色对正常文本的对比度必须满足 WCAG AAA
+       （>= 7.0）。
+    2. 每个有意义的语法 token 颜色（keyword、string、function、variable、
+       constant——comments 除外，因为它们本就刻意调暗）相对编辑器背景的
+       对比度必须至少为 3.0。
+    3. keyword 颜色和 string 颜色在红绿色盲下必须仍可区分：同时模拟
+       deuteranopia 和 protanopia，并要求两者下的感知色差（deltaE）
+       都至少为 20。
+
+  - SOFT 偏好（用于在所有通过 hard 约束的主题之间打破平局）：优先选择
+    keyword 与 string 之间最坏情况色盲区分度更大、以及最小有意义 token
+    对比度更高的主题。
+
+  请恰好挑选一个主题作为你的推荐，并用计算出的数字来论证。注意：至少有
+  一个非常流行/好看的主题会未通过某个 hard 约束，而且至少有一个对比度
+  极高的主题实际上对 keyword 和 string 使用了相同的颜色（这对该色盲同事
+  毫无用处）。
+
+  请保存：
+  - `/tmp_workspace/results/theme_choice.json`：你的最终选择
+    （`selected_id`、`selected_file`，以及论证它的计算指标）、通过所有 hard
+    约束的主题清单，以及打破平局的理由。
+  - `/tmp_workspace/results/theme_evaluation.json`：每个候选的计算指标
+    （编辑器对比度、最小有意义 token 对比度、deuteranopia 和 protanopia 下
+    keyword<->string 的 deltaE），以及每个被淘汰主题的 pass/fail 和所违反的
+    约束名称。
+  - `/tmp_workspace/results/theme_method.json`：你是如何解析 JSON 并计算
+    对比度 / 色盲模拟 / deltaE 的（以便审计可复现）。
+
+  这是完全离线的——不要从网络获取任何内容。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/reference_analysis.py
+sources:
+  - theme_candidates/
+
+codex:
+  max_user_followups: 2

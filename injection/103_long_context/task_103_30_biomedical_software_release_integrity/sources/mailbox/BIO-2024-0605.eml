@@ -1,0 +1,32 @@
+Message-ID: <udla6dp7sfm.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-0605
+Date: Wed, 16 Mar 2022 12:50:21 -0400
+From: ucko@debian.org (Aaron M. Ucko)
+To: <debian-med@lists.debian.org>
+Subject: Re: Please review ncbi-vdb
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_03_msg00016.html
+
+Andreas Tille  writes:
+
+> Ahhh, good catch.  I admit I did not stumbled upon any dpkg-source errors
+> but I absolutely agree that we should drop VS files from upstream source.
+
+Thanks!  To be clear, I mean to drop the convenience googletest copy
+altogether.
+
+> Ups, thanks a lot for the review.
+
+No problem.
+
+> So I simply wait.  I'm perfectly fine if you would do the upload to
+> new if you are ready with what you plan to do.
+
+Sure, will do in due course.  Thanks for your initial work on this
+version, and for your patience.
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

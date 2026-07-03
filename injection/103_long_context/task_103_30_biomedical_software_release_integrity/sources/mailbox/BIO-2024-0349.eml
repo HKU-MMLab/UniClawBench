@@ -1,0 +1,54 @@
+Message-ID: <Zv-TPOqBVuYkJUeF@an3as.eu>
+X-Clawbench-ID: BIO-2024-0349
+Date: Fri, 4 Oct 2024 09:03:24 +0200
+From: Andreas Tille <tille@debian.org>
+To: Charles Plessy <plessy@debian.org>
+Subject: Re: Dropping big-endian (s390x) support for some r-bioc-* packages
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_10_msg00003.html
+
+Am Wed, Oct 02, 2024 at 08:34:24PM +0900 schrieb Charles Plessy:
+> Le Wed, Oct 02, 2024 at 12:53:56PM +0200, Michael R. Crusoe a écrit :
+> >
+> > So I propose to add a "architecture-is-little-endian" build-dep to the following packages and request the removal of their s390x builds from the archive:
+
++1
+
+> I am all for it but I would like to propose something bigger.
+>
+> Let r-bioc-biocgenerics (or r-bioc-biocbase) provide a virtual package
+> called r-bioc-supported-architectures available for amd64 and arm64
+> only, and make all r-boc-* depend on it at the next BioC release (which
+> takes place this month).
+
+It might possibly a good idea to fix the architure depencency inside
+r-bioc-biocgenerics (or r-bioc-biocbase).  However, there are new
+interesting architectures coming up (like riscv64) and excluding those
+without good reason is IMHO not rectified by the problems we've seen in
+the past.
+
+> People who want r-bioc-* packages on other architectures can first work
+> on portability issues outside the Debian main archive, and can create
+> a local version of r-bioc-supported-architectures to enable building
+> BiocC on what they want.  If the mass-build looks sustainable we can
+> consider add, maybe after consulting BioC upstream about future
+> prospects.
+>
+> I think that bioinformaticians can aim for other architectures if they
+> have appetite for the work it represents, and portrers can aim for
+> bioinformatics if they have the workforce for it, but by default we
+> should not build these packages everywhere because it puts the whole
+> burden on mostly just us.
+
+I think architecture-is-little-endian on r-bioc-biocgenerics will solve
+our current problems without creating extra work for future
+architectures.  I'm also scared by the extra work we have to remove
+all those architectures that are currently building and testing fine.
+
+Kind regards
+   Andreas.
+
+--
+https://fam-tille.de

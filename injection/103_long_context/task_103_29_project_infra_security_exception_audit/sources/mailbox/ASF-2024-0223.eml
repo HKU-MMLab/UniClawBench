@@ -1,0 +1,12 @@
+Message-ID: <asf-2024-0223@httpd.apache.org>
+X-Clawbench-ID: ASF-2024-0223
+Date: Fri, 05 Jan 2024 09:22:00 +0000
+From: Nina Morales <nina@apache.org>
+To: David Liao <dliao@apache.org>
+Subject: Peregrine service owner detail
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: synthetic Apache-style project infrastructure review implant
+
+The service name on the packet is Peregrine BuildWorks, but the admin console and support contract list Nightjar CI Labs d/b/a Peregrine. Infra can enter it, but we normally ask for an exception when the service owner and legal/contact domain do not match.

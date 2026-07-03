@@ -1,0 +1,31 @@
+Message-ID: <549d47d8-36ae-956a-8a2e-c91dd28e1716@debian.org>
+X-Clawbench-ID: BIO-2024-1319
+Date: Tue, 11 Jan 2022 16:18:14 +0200
+From: Andrius Merkys <merkys@debian.org>
+To: debian-science@lists.debian.org
+Subject: Re: alphafold Debian packaging ?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2022_01_msg00005.html
+
+Hi,
+
+On 2022-01-11 15:47, PICCA Frederic-Emmanuel wrote:
+> I would like to know if you are aware of an effort to package alphafold[1] on Debian ?
+
+Some time ago there was a thread on debian-med@ [2], but I do not recall
+how did it end.
+
+Moreover, I noticed some interest in compiling alphafold using
+Debian-provided libraries [3], but I also do not know how did that end.
+
+I am as well interested in packaging alphafold.
+
+> [1] https://alphafold.com/
+
+[2] https://lists.debian.org/debian-med/2021/08/msg00005.html
+[3] https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=992931
+
+Best,
+Andrius

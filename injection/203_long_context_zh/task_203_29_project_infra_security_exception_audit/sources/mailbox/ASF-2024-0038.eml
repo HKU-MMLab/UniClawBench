@@ -1,0 +1,42 @@
+Message-ID: <68FB9526-B1A8-4E84-9889-445204253976@sharp.fm>
+X-Clawbench-ID: ASF-2024-0038
+Date: Sun, 6 Feb 2022 22:20:22 +0200
+From: Graham Leggett <minfrin@sharp.fm>
+To: dev@httpd.apache.org
+Subject: Re: SSL handshake nonblocking as PR
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-02.mbox
+
+On 04 Feb 2022, at 14:49, Stefan Eissing <stefan@eissing.org> wrote:
+
+> https://github.com/apache/httpd/pull/293
+>
+> is the PR that contains the changes I just reverted
+> in trunk regarding the non-blocking SSL handshake.
+>
+> I did not like to revert a set of changes by anyone
+> here. But our trunk CI is failing for some time now
+> and I felt this needs to be analyzed without interfering
+> with other ongoing work.
+
+Unfortunately this doesn't appear to be a clean revert, as a whole lot of unrelated commits seem to have got caught up in things.
+
+All the bugfixes made to ab for example are now gone:
+
+Little-Net:httpd-trunk6 minfrin$ svn log support/ab.c
+r1897760 | icing | 2022-02-04 14:22:26 +0200 (Fri, 04 Feb 2022) | 6 lines
+
+  *) core/mod_ssl/mpm_event: reverting changes to nonblocing SSL handshakes
+     to stabilize CI tests again. Previous revision of trunk has been copied
+     to branches/trunk-ssl-handshake-unblocking to make those into a PR where
+     changes can be discussed and tested separately.
+
+You’ve also reported conflicts while reverting, I’m assuming they weren't easily explained like log tags and mmn bumps?
+
+I’m stuck at this point, what do I do to move forward?
+
+Regards,
+Graham
+—

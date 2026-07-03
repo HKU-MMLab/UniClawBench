@@ -1,0 +1,24 @@
+{
+  "task_id": "task_102_32_owid_datapoint_provenance",
+  "note": "Data-point provenance task. The executor is given a single emissions value out of context and must trace it to the canonical dataset and the exact (country, year) row, then verify it matches and name the underlying data provider. Searching the raw number does not surface a canonical source.",
+  "given_clue": "A slide claims that in the year 2000, Japan's annual CO2 emissions were about 1.26 billion tonnes, with no citation. Confirm where this figure comes from and whether it checks out.",
+  "canonical_answer": {
+    "dataset": "Our World in Data — 'Annual CO₂ emissions' (annual-co2-emissions-per-country)",
+    "underlying_data_source": "Global Carbon Budget / Global Carbon Project (processed by Our World in Data)",
+    "country": "Japan",
+    "country_code": "JPN",
+    "year": 2000,
+    "value_tonnes": 1260203000,
+    "value_approx": "~1.26 billion tonnes",
+    "canonical_chart_url": "https://ourworldindata.org/grapher/annual-co2-emissions-per-country",
+    "canonical_csv_url": "https://ourworldindata.org/grapher/annual-co2-emissions-per-country.csv",
+    "csv_row_format": "Entity,Code,Year,Annual CO₂ emissions  ->  Japan,JPN,2000,1260203000"
+  },
+  "scoring_anchors": {
+    "must_identify_dataset": "the OWID 'Annual CO₂ emissions' dataset (annual-co2-emissions-per-country), underlying source Global Carbon Project / Global Carbon Budget",
+    "must_match_row": {"entity": "Japan", "code": "JPN", "year": 2000},
+    "value_check": "the executor's retrieved value must match the OWID CSV for Japan/2000 (currently 1,260,203,000 t ~ 1.26 billion t). OWID re-releases the Global Carbon Budget periodically; accept the value the executor retrieves from the current OWID CSV as long as it matches that CSV and is ~1.26 billion tonnes.",
+    "primary_source_rule": "canonical = the OWID dataset (chart/CSV) AND its underlying Global Carbon Project source. A news article or blog quoting the number is secondary.",
+    "anti_search_the_number": "the number alone is not searchable to a canonical source; full credit requires reaching the OWID dataset, locating the Japan/2000 row, and naming Global Carbon Project as the data origin."
+  }
+}

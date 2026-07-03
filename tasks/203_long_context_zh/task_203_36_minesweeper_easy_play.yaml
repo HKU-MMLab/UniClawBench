@@ -1,0 +1,88 @@
+task_id: task_203_36_minesweeper_easy_play
+category: 203_long_context_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  一个服务已经为你启动了三个实时的扫雷终端会话。不要自己启动游戏。
+  先阅读 `/tmp_workspace/results/minesweeper_service.log`，从列出的预启动会话中选择当前这次尝试，
+  并把这个正在运行的会话玩完。
+
+  棋盘大小：9x9 棋盘，10 颗地雷。
+
+  每条尝试条目会提供给你：
+  - 一个预启动的 stdin fifo，你可以向其写入落子
+  - 一个由服务维护的棋盘快照 txt 路径
+  - 该次尝试的终端 transcript 路径
+  - 一个记录该次尝试游玩计时的 duration txt 路径
+
+  每次落子用一行，发送到你所使用的那次尝试对应的 fifo：
+  - `row col` 揭开一个格子
+  - `row col F` 切换标记
+
+  不要启动新的游戏进程。不要重建启动流程。只使用预启动的服务会话。
+  不要查看隐藏的运行时服务文件。
+
+  每次尝试都有自己的棋盘 txt 文件，例如：
+  - `/tmp_workspace/results/minesweeper_sessions/attempt_1_board.txt`
+  - `/tmp_workspace/results/minesweeper_sessions/attempt_2_board.txt`
+  - `/tmp_workspace/results/minesweeper_sessions/attempt_3_board.txt`
+
+  你所使用的那次尝试对应的确切棋盘 txt 路径，列在：
+  - `/tmp_workspace/results/minesweeper_service.log`
+  - `/tmp_workspace/results/minesweeper_sessions/summary.tsv`
+
+  每次落子之后，服务会把最新的棋盘状态写入该次尝试的棋盘 txt 文件。每次落子后阅读该
+  txt 文件以确定当前的棋盘状态。
+
+  每次尝试也都有自己的 duration txt 文件，例如：
+  - `/tmp_workspace/results/minesweeper_sessions/attempt_1_duration.txt`
+  - `/tmp_workspace/results/minesweeper_sessions/attempt_2_duration.txt`
+  - `/tmp_workspace/results/minesweeper_sessions/attempt_3_duration.txt`
+
+  确切的 duration txt 路径列在同一份服务日志和 summary TSV 中。该 duration txt 记录
+  从第一次有效落子到游戏结束的游玩计时：
+  - `first_move_unix`
+  - `end_unix`
+  - `duration_seconds`
+
+  在做出任何有效落子之前，duration txt 显示 `duration_seconds=NOT_STARTED`。在第一次
+  有效落子之后但游戏结束之前，它显示 `duration_seconds=IN_PROGRESS`。在应用基于时间的计分
+  规则时，你必须使用你实际游玩的那次尝试对应的 duration txt。
+
+  重试规则：
+  - 你总共最多有三次尝试，且三次都已为你预启动。
+  - 从尝试 1 开始。
+  - 只有当尝试 1 在前四步之内踩到地雷时，你才可以切换到尝试 2。
+  - 只有当尝试 2 也在前四步之内踩到地雷时，你才可以切换到尝试 3。
+  - 如果某次尝试在第 4 步之后仍然存活，则该次运行成为你的最终运行，你不得继续进行更
+    晚的尝试。
+
+  计分：
+  - `base_score = (correctly revealed safe cells + correctly flagged mines) / total cells`。
+  - 对于本棋盘，`total cells = 81`。
+  - 如果 `duration_seconds <= 300`，则 `final_score = base_score`。
+  - 如果 `duration_seconds > 300`，则 `final_score = base_score * (300 / duration_seconds)`。
+  - 任务分数取你在上述重试规则下被允许使用的各次尝试中，最佳的有效尝试分数。
+  - 揭开所有非地雷格子即为全清。只有当从第一次有效落子起在 300 秒内完成时，全清才能
+    得到 1.0 分；如果耗时超过 300 秒，则同样适用该时间乘数，因此它必然低于 1.0。
+
+  在你最终的 `/tmp_workspace/results/minesweeper_result.md` 中，把你所依据的最终棋盘 txt 内容和
+  对应的 duration txt 内容作为证据复制进去。
+
+references:
+  - references/eval_rule.md
+sources: []
+services:
+  - name: minesweeper
+    path: minesweeper
+    start: bash install.sh
+
+codex:
+  max_user_followups: 2

@@ -1,0 +1,53 @@
+Message-ID: <20211229215312.cdyo5adcb46xx2a3@lark>
+X-Clawbench-ID: BIO-2024-1037
+Date: Wed, 29 Dec 2021 13:53:12 -0800
+From: tony mancill <tmancill@debian.org>
+To: Nilesh Patra <nilesh@riseup.net>
+Subject: Re: [Help needed] Racon
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_12_msg00184.html
+
+On Wed, Dec 22, 2021 at 01:24:49AM +0530, Nilesh Patra wrote:
+> Hi all,
+>
+> Would someone have more hints on the problem?
+>
+> >Hi Tony, Thanks for replying.
+>
+> >On 12/20/21 12:59 AM, tony mancill wrote:
+>>notice that libedlib0 [1] exported the
+>>edlibAlign symbol, but not libedlib1, which
+>>is what is pulled in by libedlib-dev. Could
+>>that be the source of the problem?
+
+Hi Nilesh,
+
+After updating libedlib to build the shared libraries and adjusting the
+symbols file, I have everything working locally, including racon's
+build-time tests.  I will add notes to my commits and the changelog so
+it is clear what happened.  First I will upload the update to libedlib
+and then an update to racon for its autopkgtests.
+
+A few notes:
+
+1.  There is a bit of mismatch in the libedlib/changelog [1], since
+Andreas uploaded [2], but it isn't reflected in the changelog in the
+repo, nor is there a tag in the repo.  I will address both of these.
+
+2.  The current autopkgtest configured for racon doesn't work because
+the TEST_DATA path is defined at build-time and there doesn't appear to
+be an easy way to pass the path into the test at run-time.  That is, we
+need to reinstate something like the work Michael did in [3].  However,
+there's not much point in merely rerunning racon_test, since that's the
+same test performed during the package build [4].   I think we can come
+up with another test of the installed software.
+
+Cheers!
+tony
+
+[1] https://salsa.debian.org/med-team/libedlib/-/blob/1f7f7a27818667289f1652c815f82785d58074ff/debian/changelog
+[2] https://tracker.debian.org/news/1267047/accepted-libedlib-127-2-source-into-unstable/
+[3] https://salsa.debian.org/med-team/racon/-/commit/59010b193e7e49a64083ed15a65449f66ff95005
+[4] https://salsa.debian.org/med-team/racon/-/blob/master/debian/rules#L22

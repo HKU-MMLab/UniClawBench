@@ -1,0 +1,225 @@
+Message-ID: <CAFQGv+aS+DQvHwdg+Hv58SQSD4xaAF3yAor693ow1SWs85m9Kg@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1084
+Date: Tue, 4 Jul 2023 22:58:28 -0400
+From: Joe Schaefer <joe@sunstarsys.com>
+To: "dev@httpd.apache.org" <dev@httpd.apache.org>
+Subject: Re: mod_wasm: Contributing Upstream to Apache
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-07.mbox
+
+The win with having an apr table  api from httpd is that by sharing those
+tables in the sandbox, various programming languages will be able to
+interact with others without stealing the client form inputs.
+
+Even if you don’t go that route, and just expose the form inputs on stdin
+in your app, users can always configure apreq’s input filter to activate on
+the protocol filter chain before wasm activates. That way other modules
+still can access form input without breaking the Wasm app.
+
+On Tue, Jul 4, 2023 at 10:48 PM Joe Schaefer <joe@sunstarsys.com> wrote:
+
+> The more of the API you expose, the less value the sandbox has to end
+> users.  For Webapps, easy read/search / write/ iterate is essential.  But
+> also form data; which apreq stores in readonly apr tables.
+>
+> Joe Schaefer, Ph.D
+> <joe@sunstarsys.com>
+> +1 (954) 253-3732
+> SunStar Systems, Inc.
+> *Orion - The Enterprise Jamstack Wiki*
+>
+> ------------------------------
+> *From:* Jesús González <jesusgm@vmware.com>
+> *Sent:* Monday, July 3, 2023 8:49:33 AM
+> *To:* dev@httpd.apache.org <dev@httpd.apache.org>
+> *Subject:* Re: mod_wasm: Contributing Upstream to Apache
+>
+>
+> Hola!
+>
+> mod_wasm v0.12.1
+> <https://github.com/vmware-labs/mod_wasm/releases/tag/v0.12.1> is now
+> available!
+>
+> This maintenance release bumps Wasmtime to 10.0.1, including preliminary
+> support for WASI preview 2 among other improvements and fixes.
+>
+> Best,
+> Jesús
+>
+>
+>
+> *De: *Jesús González <jesusgm@vmware.com>
+> *Fecha: *viernes, 2 de junio de 2023, 19:09
+> *Para: *dev@httpd.apache.org <dev@httpd.apache.org>
+> *Asunto: *Re: mod_wasm: Contributing Upstream to Apache
+>
+> Thanks Joe for your encouragement! And yes, your feedback was what
+> inspired us to expand mod_wasm in this direction.
+>
+> In the demo from my colleague Asen, we expose three wrapper functions to
+> WebAssembly get_header, set_header, delete_header, that internally make use
+> of apr_table_get, apr_table_set and apr_table_unset with the incoming
+> request headers (r->headers_in). This shows read and write capabilities
+> from a Wasm binary using internal Apache APIs. Is this what you are
+> referring to with exposing apreq_*?
+>
+> Limiting to read-only (ie: just get_header) implies that some
+> functionality that is possible with other extension modules (mod_headers,
+> mod_perl, mod_lua, etc.) won’t be available in mod_wasm. We would love to
+> know more about those concerns, so we can understand better how to develop
+> mod_wasm in a way that both allows you to develop fully capable modules but
+> still address any concerns you may have.
+>
+> BTW, here is a recent article showing how mod_wasm can help mitigating
+> vulnerabilities
+> https://wasmlabs.dev/articles/mitigating-php-vulnerabilities-with-webassembly/,
+> proving how it adds an extra layer of security to traditional applications.
+>
+> Looking forward to your feedback.
+>
+>
+> *De: *Joe Schaefer <joe@sunstarsys.com>
+> *Fecha: *jueves, 1 de junio de 2023, 22:16
+> *Para: *dev@httpd.apache.org <dev@httpd.apache.org>
+> *Asunto: *Re: mod_wasm: Contributing Upstream to Apache
+>
+> *!! External Email*
+>
+> Huge fan, love that you are receptive to my feedback.  If you get to the
+> point where the apreq_* (APR table-based) interfaces in trunk can be
+> exposed as read-only data structures in mod_wasm as an optional API for
+> power httpd users that like the sandboxed functionality you get OOTB, that
+> would justify a lot of the more conservative concerns that some devs have
+> for not putting incorporating this into the trunk codebase, which would be
+> my recommendation at that point for how to get it into a releasable tree at
+> some point.
+>
+>
+>
+>
+>
+> On Tue, May 30, 2023 at 8:42 AM José Carlos Chávez <jcchavezs@apache.org>
+> wrote:
+>
+> I think not making WASM a first class concern in a proxy or server is
+> missing out, more so in those platforms where extensibility isn't trivial.
+> Apache will remain running in current setups but having limited
+> extensibility is something concerning these days as systems are getting
+> more and more complex. Writing an apache module isn't something you do
+> every day and it probably takes quite some time, writing a wasm app
+> following certain ABI is something you can do in minutes, hence supporting
+> mod_wasm as a first class concern could be a good point in the
+> sustainability of an ecosystem when it comes to moving forward out of the
+> status quo.
+>
+> On 2022/11/14 06:37:34 Jesús González wrote:
+> > Hi everyone,
+> >
+> >
+> >
+> > I’m Jesús González, and I am part of VMware’s Wasm Labs: wasmlabs.dev<
+> https://wasmlabs.dev/>, a group focused on creating open source tools for
+> WebAssembly.
+> >
+> > We have created mod_wasm, an Apache module for running WebAssembly
+> binaries inside httpd, and we would like to contribute it upstream. Please
+> see below for more details. We would love to get your feedback and
+> understand what improvements would be needed (if any) before it could be
+> considered for contribution to the project.
+> >
+> >
+> >
+> >
+> >
+> > The details:
+> >
+> >
+> >
+> > WebAssembly<https://webassembly.org/> (Wasm) is a new binary
+> instruction format that is open, portable, efficient, secure, and polyglot.
+> It originated in the browser but is increasingly used in server
+> applications, in particular NGINX, Apache APISIX, Istio provide Wasm-based
+> plugin support (i.e.: https://apisix.apache.org/docs/apisix/wasm/).
+> >
+> >
+> >
+> > mod_wasm is a way to run WebAssembly modules inside Apache Server. This
+> is similar to how mod_php embeds a PHP runtime to run PHP code. This
+> enables any language that supports WebAssembly (including C++, Rust, Go but
+> also Python, PHP, Ruby) to run with mod_wasm and take advantage of the
+> extra level of security and sandboxing. To learn more about mod_wasm you
+> can check out the following resources:
+> >
+> >   *   An overview article<https://wasmlabs.dev/articles/apache-mod-wasm/>
+> for the original release.
+> >   *   We presented mod_wasm at ApacheCon this year and here are the
+> slides<
+> https://apachecon.com/acna2022/slides/01_Gonz%c3%a1lez_mod-wasm_Bringing_WebAssembly.pdf
+> <https://apachecon.com/acna2022/slides/01_Gonz%C3%A1lez_mod-wasm_Bringing_WebAssembly.pdf>>
+> and the source code: https://github.com/vmware-labs/mod_wasm.
+> >   *   CNCF Talk on mod_wasm showcasing how to run WordPress:
+> https://www.youtube.com/watch?v=jXe8kulUscQ
+> >
+> >
+> >
+> > In terms of mod_wasm architecture, the module is split into two parts:
+> >
+> >   *   mod_wasm.so is the extension module for Apache and it’s written in
+> C.
+> >   *   An external dependency: libwasm_runtime.so, which is written in
+> Rust and needs to be installed into the system.
+> >
+> >
+> >
+> > We modelled this after mod_tls, a module that is part of httpd and also
+> has a Rust dependency.
+> >
+> > You can take a look at the architecture diagram and instructions on how
+> to build the module here:
+> https://github.com/vmware-labs/mod_wasm#%EF%B8%8F-building-mod_wasm
+> >
+> >
+> >
+> > In terms of the actual contribution, please find a patch attached. We
+> tried to follow all existing conventions in terms of autoconf/automake,
+> providing module documentation, etc. Please let us know anything that you
+> see missing or could be improved. In particular, we do not know yet if it
+> is better to keep the Rust code separate, as an external dependency (like
+> mod_tls does) or in the Apache source code repository.
+> >
+> >
+> >
+> > In summary, we believe mod_wasm is a worthy addition to httpd and it
+> will allow us to catch up to some of the other web servers already
+> supporting Wasm, like NGINX. We were encouraged by Rich Bowen, Jim
+> Jagielski and Jean-Frederic Clere to submit it for contribution upstream
+> and we are looking forward to your feedback.
+> >
+> >
+> >
+> > Cheers!
+> >
+> > Jesús
+> >
+> >
+> >
+> >
+> >
+>
+>
+>
+> *!! External Email:* This email originated from outside of the
+> organization. Do not click links or open attachments unless you recognize
+> the sender.
+>
+>
+>
+--
+Joe Schaefer, Ph.D.
+<https://sunstarsys.com/orion/features>
+Orion - The Enterprise Jamstack Wiki <https://sunstarsys.com/orion/features>
+<joe@sunstarsys.com>
+954.253.3732 <//954.253.3732>

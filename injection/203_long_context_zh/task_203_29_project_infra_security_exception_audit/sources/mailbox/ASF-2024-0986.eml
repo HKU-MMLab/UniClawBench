@@ -1,0 +1,89 @@
+Message-ID: <f421160f-bb03-53bc-5420-a91afc58cebd@apache.org>
+X-Clawbench-ID: ASF-2024-0986
+Date: Thu, 11 May 2023 14:32:29 -0500
+From: Daniel Gruno <humbedooh@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE CLOSED] Switch read/write repository from Subversion to Git
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-05.mbox
+
+On 2023-05-11 13:45, Ruediger Pluem wrote:
+>
+>
+> On 5/11/23 5:40 PM, Daniel Gruno wrote:
+>> On 2023-05-11 10:33, Ruediger Pluem wrote:
+>>>
+>>>
+>>> On 5/11/23 12:27 PM, Ruediger Pluem wrote:
+>>>>
+>>>>
+>>>> On 5/4/23 10:34 AM, Ruediger Pluem wrote:
+>>>>> This is a formal vote on whether we should move our read/write repository from Subversion to Git.
+>>>>> This means that our latest read/write repository will be no longer available via svn.apache.org. It
+>>>>> will be available via Git at https://gitbox.apache.org/repos/asf/httpd-site.git and https://github.com/apache/httpd.git.
+>>>>> Github also offers the possibility to use a Subversion client:
+>>>>> https://docs.github.com/en/get-started/working-with-subversion-on-github/support-for-subversion-clients
+>>>>>
+>>>>>
+>>>>> [ ]: Move the read/write repository from Subversion to Git and leverage the features of Github (for now Actions and PR).
+>>>>> [ ]: Move the read/write repository from Subversion to Git, but I don't want to work with Github and I will only work with
+>>>>>        what gitbox.apache.org offers.
+>>>>> [ ]: Leave everything as is.
+>>>>>
+>>>>
+>>>>
+>>>> After being open for one week I call this vote closed. Thank you for everyone who participated in this vote by
+>>>> either voting directly or voicing opinions on the subject.
+>>>>
+>>>> Result:
+>>>>
+>>>> Total number of votes: 16
+>>>>
+>>>> [ ]: Move the read/write repository from Subversion to Git and leverage the features of Github (for now Actions and PR).
+>>>>
+>>>> 13 votes by jorton, ylavic, icing, gbechis, covener, humbedooh, rjung, jailletc36, jblond, gstein, rpluem, jim, fielding.
+>>>>
+>>>> [ ]: Move the read/write repository from Subversion to Git, but I don't want to work with Github and I will only work with
+>>>>         what gitbox.apache.org offers.
+>>>>
+>>>> 0 votes.
+>>>>
+>>>> [ ]: Leave everything as is.
+>>>>
+>>>> 3 votes by manu, ivan, minfrin.
+>>>>
+>>>
+>>> Now that the vote is closed in favor of moving to Git what are the next steps?
+>>> Do we need to open an INFRA ticket to get this done?
+>>> Who will open it?
+>>
+>> Anyone on the PMC can open such a ticket, there is a canonical thread here to prove consensus.
+>>
+>>> Is there any preferred point of time to do this?
+>>
+>> It depends...
+>> The read-only mirror that we currently have _can_ be repurposed as a r/w repository, which means the cutover could be quite
+>> instant. I'd advise that folks make the necessary checks and ensure that the git repo has accurate history and contents
+>> (specifically the current state of trunk/2.4/etc). When we are satisfied, we can ask Infra to switch the mirror over to a
+>> read/write mode. Subversion history will be preserved, and the subversion dir will be locked to read-only (assuming we don't have
+>> other resources there we need to write to still).
+>>
+>> The bigger task comes after that, as all the source links in docs, our web site etc, will need to be updated, but that can happen
+>> after the fact.
+>
+> Thanks for the process. What about the commit mails currently going to cvs@httpd.apache.org? Do we need to do something to ensure
+> that git commits get send there in the future?
+
+All notification schemes and other repository settings for git repos are
+handled via the .asf.yaml metadata file[1] and is entirely self-serve.
+Each repository we have can have individual settings.
+
+[1] https://s.apache.org/asfyaml
+
+>
+> Regards
+>
+> Rüdiger
+>

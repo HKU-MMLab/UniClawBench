@@ -1,0 +1,64 @@
+Message-ID: <YkNTDWLTzZhFeJyM@debian>
+X-Clawbench-ID: BIO-2024-1018
+Date: Wed, 30 Mar 2022 00:12:21 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: Mohd Bilal <mdbilal@disroot.org>
+Subject: Re: Add autopkgtests for python-datacache, parallel-fastq-dump
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_03_msg00047.html
+
+Hi Bilal,
+
+On Tue, Mar 29, 2022 at 05:33:12PM +0000, Mohd Bilal wrote:
+> I'm interested in contributing towards the Debian Med Team
+> and would like to be a part of it. I've had beginner experiences packaging some ruby gems for the Ruby Team.
+
+Welcome! And thanks for your interest.
+I have granted you push access to our salsa team so you can directly push your changes.
+
+> I've tried adding autopkgtest for python-datacache[1],parallel-fastq-dump[2] which are maintained by the Debian Med Team.
+
+Thanks again for doing so!
+
+> I've opened a merge requests[3],[4] and would like someone to review my changes and suggest the necessary changes.
+
+I have merged them both but I have minor reviews:
+
+- python-datacache -> Actually, nose is being deprecated[6] and
+ no longer recommended to be used. So I patched it to remove refs to nose.
+ One request though - it'd be awesome if you could get the patch merged upstream.
+
+- parallel-fastq-dump -> The test geneates an out/ dir with some files. I added in an
+ additional check that those files are not empty files.
+
+Please take in a look at my commits.
+
+Also, please add in a "Team Upload" entry for the packages wherein you aren't listed in 'Uploaders' field.
+
+I have sponsored uploads for both the packages.
+
+> Also the ci reprotest fails[5] for python-datacache and I don't know how to proceed further.
+> I would like someone to guide as to what is to be done inorder to fix this.
+
+That failure is odd, reprotest works fine for me locally. However if I download the artefacts from salsa and run a diffoscope[7]
+I see:
+
+│ │ │ │ │ --rw-r--r--   0 root         (0) root         (0)     8625 2022-03-28 18:25:48.000000 ./usr/lib/python3/dist-packages/datacache/download.py
+│ │ │ │ │ +-rw-r--r--   0 root         (0) root         (0)     8625 1970-10-13 05:44:00.000000 ./usr/lib/python3/dist-packages/datacache/download.py
+
+
+I do not see any timestamp, so maybe this is random. In any case reprotest is not very important and
+can be ignored if it is hard to find what went south.
+
+> [1] - https://salsa.debian.org/mdb571/python-datacache
+> [2] - https://salsa.debian.org/mdb571/parallel-fastq-dump
+> [3] - https://salsa.debian.org/med-team/python-datacache/-/merge_requests/1
+> [4] - https://salsa.debian.org/med-team/parallel-fastq-dump/-/merge_requests/2
+> [5] - https://salsa.debian.org/mdb571/python-datacache/-/jobs/2617267
+[6]: https://lists.debian.org/debian-python/2021/10/msg00058.html
+[7]: https://tracker.debian.org/pkg/diffoscope
+
+Regards,
+Nilesh

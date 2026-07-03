@@ -1,0 +1,57 @@
+Message-ID: <CACsi251kXgR8XRbrj2VU_y=80Td5rEOadQm8kX0kNnovZMuQZw@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0657
+Date: Thu, 13 Jan 2022 19:17:27 -0600
+From: William A Rowe Jr <wrowe@rowe-clan.net>
+To: dev@httpd.apache.org
+Subject: Re: httpd test framework svn repo borked?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-01.mbox
+
+Thanks Stefan, it's attempting [locally] to replace a file, which was
+just created during the
+checkout (which might even be open). So it looks like some hash
+collision or other
+duplication issue where there are two attempts to emplace the same
+hash svn-base image,
+and linux is letting this happen without complaint, while windows refuses.
+
+(At first I suspected a strange file perms issue or a conflicting file
+name case issue, but
+this is not the situation.)
+
+
+On Thu, Jan 13, 2022 at 3:34 PM Stefan Sperling <stsp@apache.org> wrote:
+>
+> On Thu, Jan 13, 2022 at 03:14:55PM -0600, William A Rowe Jr wrote:
+> > I'm trying to work out how trunk on httpd test framework is busted on
+> > Windows, irrespective
+> > of using an msys2, sfl-ubuntu, or older win32 native svn build. The
+> > problem always devolves
+> > to something like shown below;
+> >
+> > svn co -q -r 1896892
+> > https://svn.apache.org/repos/asf/httpd/test/framework/trunk
+> > httpdtest-1896892
+> > svn: E000013: Can't move
+> > '/c/Users/wrowe/dev/oss-httpd-build/src/httpdtest-1896892/.svn/tmp/svn-yIVLxQ'
+> > to '/c/Users/wrowe/dev/oss-httpd-build/src/httpdtest-1896892/.svn/pristine/b4/b4648076d6b2a3dfab889875d892252d5ed2594c.svn-base':
+> > Permission denied
+>
+> This has nothing to do with the server, it is some problem with the
+> working copy which is being checked out.
+>
+> It looks as if MoveFileExW is failing with EACCESS, see here:
+> https://svn.apache.org/viewvc/subversion/trunk/subversion/libsvn_subr/io.c?view=annotate#l4529
+> Though depending on which version of svn you have installed, svn might
+> be calling directly into APR instead and fail there.
+>
+> > make: *** [../mak/Makefile.download:36: httpdtest-1896892] Error 1
+> >
+> > The file it is attempting to move to already exists (why?) Any
+> > guidance is appreciated, since
+> > it is painful to grab this on a native ubuntu vm and slough it back to
+> > windows to be able
+> > to run the framework on windows.
+> >

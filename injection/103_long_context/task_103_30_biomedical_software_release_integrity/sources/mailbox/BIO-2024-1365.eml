@@ -1,0 +1,25 @@
+Message-ID: <5496155.Sb9uPGUboI@riemann>
+X-Clawbench-ID: BIO-2024-1365
+Date: Wed, 28 Jun 2023 11:02:09 -0500
+From: Steven Robbins <steve@sumost.ca>
+To: debian-med@lists.debian.org
+Subject: Re: help with git errors
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_06_msg00033.html
+
+On Wednesday, June 28, 2023 4:33:22 A.M. CDT olivier sallou wrote:
+
+> I think I fixed the issue.
+>
+> I deleted upstream/5.3.0 tag on remote , went to upstream branch, and
+> put tag again:
+
+Awesome, thanks so much!!
+
+I found that "gbp pull" initially failed on me.  I had to delete my local tag
+upstream/5.3.0.  After that, pull and push both worked.
+
+Thanks again!
+-Steve

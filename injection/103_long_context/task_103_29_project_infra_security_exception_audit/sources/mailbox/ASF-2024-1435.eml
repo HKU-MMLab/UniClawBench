@@ -1,0 +1,32 @@
+Message-ID: <b53e29b1-56c6-415b-ca81-8b7de33a044b@apache.org>
+X-Clawbench-ID: ASF-2024-1435
+Date: Fri, 17 Dec 2021 11:48:43 +0100
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.52-rc1 as httpd-2.4.52
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2021-12.mbox
+
+On 12/17/21 10:54 AM, Joe Orton wrote:
+> On Thu, Dec 16, 2021 at 03:03:13PM +0100, Stefan Eissing wrote:
+>> I would like to call a VOTE over the next few days to release
+>> this candidate tarball httpd-2.4.52-rc1 as 2.4.52:
+>> [X] +1: It's not just good, it's good enough!
+>> [ ] +0: Let's have a talk.
+>> [ ] -1: There's trouble in paradise. Here's what's wrong.
+>>
+>> The computed digests of the tarball up for vote are:
+>> sha256: 296c74a8adde1a8acd6617b21fc3d19719ff4fa39319b2bdbd898aca4d5df97f *httpd-2.4.52-rc1.tar.gz
+>> sha512: b9012096d6658f7d34a3c655eac31b39ffd439c11de6f3e6e9f309d55f4186a4fb26134eb97522e416ae8ca10ed008a14e96fa01a3e3105d9e547f72e2dc3bc2 *httpd-2.4.52-rc1.tar.gz
+>
+> Thanks for RMing, Stefan.
+>
+> +1 for release, passes test suite on Fedora 35, RHEL 8 and 9 Beta.
+
+Out of curiosity: On RHEL 9 Beta it works and passes tests against the OS provided OpenSSL 3?
+
+Regards
+
+Rüdiger

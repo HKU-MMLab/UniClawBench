@@ -1,0 +1,43 @@
+task_id: task_003_jq_json_query
+category: 001_smoketest
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 1.0
+
+# CLI-only smoketest — no browser, no GUI.  Force headless explicitly
+# so the executor doesn't waste compositor resources even if a future
+# default ever flips.
+recording: none
+headed: auto
+
+task: |
+  I've got a small JSON catalog sitting at
+
+      /tmp_workspace/clawbench/sources/data.json
+
+  Each entry has a sku, name, price, and stock. Can you find the single
+  most expensive item in the catalog and write just its sku code
+  (nothing else needed; a trailing newline is fine either way) to:
+
+      /tmp_workspace/results/answer.txt
+
+  Feel free to use whatever tooling is already available on this
+  machine. A quick check of what's on PATH would be a reasonable place
+  to start.
+
+sources:
+  - data.json
+
+services:
+  - name: jq-installer
+    path: jq-installer
+    start: bash install.sh
+
+references:
+  - references/eval_rule.md
+
+codex:
+  max_user_followups: 2

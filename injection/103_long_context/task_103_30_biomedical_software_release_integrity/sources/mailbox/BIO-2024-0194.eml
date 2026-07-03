@@ -1,0 +1,32 @@
+Message-ID: <ZTAMaCPBodAGxHGU@an3as.eu>
+X-Clawbench-ID: BIO-2024-0194
+Date: Wed, 18 Oct 2023 18:48:40 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>,	Pierre Gruet <pgtdebian@free.fr>
+Subject: Java help for bbmap needed
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_10_msg00005.html
+
+Hi Pierre (or whoever wants to take this task),
+
+I tried to upgrade bbmap but failed[1].  I stumbled upon the line:
+
+jh_build: error: find current -name '*.java' -and -type f -print0 | xargs -s 512000 -0 /usr/lib/jvm/default-java/bin/javac -g -cp /usr/share/java/mpi.jar:debian/_jh_build.bbmap -d debian/_jh_build.bbmap -encoding ISO8859-1 -source 7 -target 7  returned exit code 123
+
+since we should probably have "-source 8 -target 8" instead but I have
+not found any string '-source' inside the source tarball.  So may be here
+is some magic in the Jave build process.  I can only guess whether those
+build errors might vanish if source/target=8 is used and would be really
+happy if someone with Java experience could have a look on this possibly
+simple issue.
+
+Kind regards
+    Andreas.
+
+
+[1] https://salsa.debian.org/med-team/bbmap/-/jobs/4824812
+
+--
+http://fam-tille.de

@@ -1,0 +1,21 @@
+Message-ID: <3D6BC814.23250.14EE9A8@localhost>
+X-Clawbench-ID: CAM-2003-0663
+Date: Tue, 27 Aug 2002 18:42:28 -0400
+From: John Evdemon <jevdemon@acm.org>
+To: fork@spamassassin.taint.org
+Subject: Re: DataPower announces XML-in-silicon
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00935.8ecbeab3ef30caba2c29e25744a2265a
+
+On 27 Aug 2002 at 15:00, Rohit Khare wrote:
+
+> DataPower delivers XML acceleration device
+> By Scott Tyler Shafer
+> August 27, 2002 5:46 am PT
+>
+Intel also had a similar device a couple of years ago (Netstructure).  They have, afaik, abandoned it.
+
+Intel is still in the XML hardware game though.  On 8/19 they spun off a company named Tarari.   Tarari develops hardware to check the headers of IP packets. Tarari calls
+this Layer 7 processing (atop the OSI model).    From what I can tell, Tarari plans to combine virus scanning and XML acceleration into a single hardware device.

@@ -1,0 +1,30 @@
+Message-ID: <ZzPT5R0sVpY4vlND@emlwks999.eu>
+X-Clawbench-ID: BIO-2024-0477
+Date: Tue, 12 Nov 2024 23:17:09 +0100
+From: Étienne Mollier <emollier@debian.org>
+To: debian-med@lists.debian.org
+Subject: htslib ecosystem 1.21
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_11_msg00008.html
+
+Hi,
+
+The htslib ecosystem has been available for some time in newer
+upstream version 1.21, but the Debian package in unstable is
+still in version 1.20.  I am preparing an upload of htslib 1.21
+to experimental to get a picture of how things are looking with
+relation to reverse dependencies.  I'm not expecting any major
+breakage, but I vaguely recall there is some coupling between
+the different components, so prefer anticipating things a bit
+before throwing too much entropy in the archive.  htslib does
+not look entangled in any ongoing transition, so maybe I am just
+too cautious here.
+
+Have a nice day,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  pgp: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/1, please excuse my verbosity
+   `-

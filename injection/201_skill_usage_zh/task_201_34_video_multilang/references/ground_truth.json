@@ -1,0 +1,101 @@
+{
+  "task_id": "task_101_34_video_multilang",
+  "difficulty": "Hard",
+  "schema": "b",
+  "schema_notes": "row-level expected values with accepted variants + timeline anchors + canonical Chinese translations",
+  "skills_declared": [
+    "ffmpeg-video-editor",
+    "openai-whisper-api",
+    "translate",
+    "markdown-formatter"
+  ],
+  "ground_truth": {
+    "required_keys": [
+      "talk.zh.srt",
+      "talk.zh.md"
+    ],
+    "ordered_concepts": [
+      {
+        "english": "transformer architecture",
+        "accepted_zh": ["Transformer 架构", "Transformer架构", "Transformer"]
+      },
+      {
+        "english": "natural language processing",
+        "accepted_zh": ["自然语言处理"]
+      },
+      {
+        "english": "self attention",
+        "accepted_zh": ["自注意力"]
+      },
+      {
+        "english": "positional encoding",
+        "accepted_zh": ["位置编码"]
+      },
+      {
+        "english": "multi head attention",
+        "accepted_zh": ["多头注意力"]
+      },
+      {
+        "english": "large language models",
+        "accepted_zh": ["大语言模型"]
+      },
+      {
+        "english": "next token prediction",
+        "accepted_zh": ["下一词预测"]
+      },
+      {
+        "english": "fine tuning",
+        "accepted_zh": ["微调"]
+      },
+      {
+        "english": "scaling laws",
+        "accepted_zh": ["规模定律"]
+      }
+    ],
+    "concept_order_strict_required": true,
+    "min_concepts_in_canonical_order": 8,
+    "expected_concept_order": [
+      "transformer architecture",
+      "natural language processing",
+      "self attention",
+      "positional encoding",
+      "multi head attention",
+      "large language models",
+      "next token prediction",
+      "fine tuning",
+      "scaling laws"
+    ],
+    "expected_concept_timestamps_seconds": {
+      "transformer architecture": [0, 8],
+      "natural language processing": [5, 15],
+      "self attention": [12, 22],
+      "positional encoding": [20, 30],
+      "multi head attention": [26, 36],
+      "large language models": [32, 42],
+      "next token prediction": [38, 48],
+      "fine tuning": [44, 54],
+      "scaling laws": [50, 60]
+    },
+    "concept_timestamp_tolerance_seconds": 15,
+    "expected_chinese_translations": {
+      "transformer": "Transformer",
+      "self attention": "自注意力",
+      "positional encoding": "位置编码",
+      "multi head attention": "多头注意力",
+      "scaling laws": "规模定律",
+      "large language models": "大语言模型",
+      "fine tuning": "微调",
+      "natural language processing": "自然语言处理",
+      "recurrent networks": "循环网络",
+      "next token prediction": "下一词预测"
+    },
+    "chinese_translation_strict_per_term": true,
+    "chinese_translation_term_count": 10,
+    "concept_timeline_min_anchors": 9,
+    "concept_timeline_partial_credit": {
+      "9_of_9": 0.20,
+      "8_of_9": 0.10,
+      "7_or_fewer": 0.00
+    }
+  }
+}

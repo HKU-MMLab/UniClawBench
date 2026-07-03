@@ -1,0 +1,133 @@
+Message-ID: <CA+7wUswNUh7x=WZZMH5tz=Hgtf-UwNg9eft27Fen2jExYOANyQ@mail.gmail.com>
+X-Clawbench-ID: BIO-2024-0276
+Date: Tue, 4 Apr 2023 08:37:55 +0200
+From: Mathieu Malaterre <malat@debian.org>
+To: "Shah, Amul" <Amul.Shah@fisglobal.com>
+Subject: Re: Novice needs help submitting a bug report
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_04_msg00002.html
+
+On Mon, Apr 3, 2023 at 11:41 PM Shah, Amul  wrote:
+>
+> All,
+>
+> I need some guidance. The host where we encountered a bug is sitting in a lab environment with no direct Internet access. Below is the output from reportbug with the print-only option.
+>
+>
+>
+> I am filing a bug against glibc 2.36 due to a bug in memcmp-sse2.S
+
+Here is what I am reading from the git commit message:
+
+[...]
+In the case of INCORRECT usage of `memcmp(a, b, N)` where `a` and `b`
+are concurrently modified as `memcmp` runs, there can be a SIGSEGV
+in `L(ret_nonzero_vec_end_0)` because the sequential logic
+assumes that `(rdx - 32 + rax)` is a positive 32-bit integer.
+[...]
+https://sourceware.org/git/?p=glibc.git;a=commitdiff;h=b712be52645282c706a5faa038242504feb06db5
+
+I am pretty sure the actual root issue is in fis-gtm instead. Could
+you check with them directly?
+
+> that causes fis-gtm to segfault possibly leading to data corruption. There is already a fix in the upstream (see below). I am unsure of how to proceed. I know that I should create the bug report so that the problem gets fixed, either by patching or adoption of the version with the fix. Should I submit the patch myself? Or should I just wait for the adoption of the latest glibc version, 2.37?
+>
+>
+>
+> Please let me know if there is anything that I can do to improve the quality of my bug report and if I can/should help myself by providing a patch.
+>
+>
+>
+> Thanks!
+>
+> Amul
+>
+>
+>
+> --- content of the reportbug email ---
+>
+>
+>
+> Content-Type: text/plain; charset="us-ascii"
+>
+> MIME-Version: 1.0
+>
+> Content-Transfer-Encoding: 7bit
+>
+> From: Amul Shah Amul.Shah@fisglobal.com
+>
+> To: Debian Bug Tracking System submit@bugs.debian.org
+>
+> Subject: libc-bin: Bug in glibc causes SIGSEGV in fis-gtm; see upstream bug report BZ #29863
+>
+>
+>
+> Package: libc-bin
+>
+> Version: 2.36-8
+>
+> Severity: grave
+>
+> Justification: renders package unusable
+>
+> X-Debbugs-Cc: Amul.Shah@fisglobal.com
+>
+>
+>
+> Dear Maintainer,
+>
+>
+>
+> There is a bug in glibc 2.36 that has been fixed in 2.37. The two links below detail the original bug report and the fix.
+>
+> - Upstream bug report - https://sourceware.org/bugzilla/show_bug.cgi?id=29863
+>
+> - Upstream commit fixing said bug report – https://sourceware.org/git/?p=glibc.git;a=commitdiff;h=b712be52645282c706a5faa038242504feb06db5
+>
+>
+>
+> This bug causes fis-gtm to randomly crash on a SIGSEGV. Depending upon process activity, the crash could result in database damage.
+>
+>
+>
+> -- System Information:
+>
+> Debian Release: bookworm/sid
+>
+>   APT prefers unstable-debug
+>
+>   APT policy: (500, 'unstable-debug'), (500, 'unstable')
+>
+> Architecture: amd64 (x86_64)
+>
+>
+>
+> Kernel: Linux 6.1.0-3-amd64 (SMP w/8 CPU threads; PREEMPT)
+>
+> Locale: LANG=en_US.UTF-8, LC_CTYPE=en_US.UTF-8 (charmap=UTF-8), LANGUAGE not set
+>
+> Shell: /bin/sh linked to /usr/bin/dash
+>
+> Init: systemd (via /run/systemd/system)
+>
+> LSM: AppArmor: enabled
+>
+>
+>
+> Versions of packages libc-bin depends on:
+>
+> ii  libc6  2.36-8
+>
+>
+>
+> Versions of packages libc-bin recommends:
+>
+> ii  manpages  6.02-1
+>
+>
+>
+> libc-bin suggests no packages.
+>
+> The information contained in this message is proprietary and/or confidential. If you are not the intended recipient, please: (i) delete the message and all copies; (ii) do not disclose, distribute or use the message in any manner; and (iii) notify the sender immediately. In addition, please be aware that any message addressed to our domain is subject to archiving and review by persons other than the intended recipient. Thank you.

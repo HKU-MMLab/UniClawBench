@@ -1,0 +1,28 @@
+Message-ID: <0467b5f7-f1d2-5eee-04dc-d166f77be7e0@gmail.com>
+X-Clawbench-ID: ASF-2024-1382
+Date: Mon, 24 Apr 2023 13:05:28 +0200
+From: jean-frederic clere <jfclere@gmail.com>
+To: dev@httpd.apache.org
+Subject: build trunk in windows
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-04.mbox
+
+Hi,
+
+I am trying to build httpd on windoze...
+
+"The .dsp project files are distributed in Visual Studio 6.0 (98)
+format. Visual C++ 5.0 (97) will recognize them. Visual Studio 2002
+(.NET) and later users must convert Apache.dsw plus the .dsp files into
+an Apache.sln plus .msproj files. Be sure you reconvert the .msproj file
+again if its source .dsp file changes! This is really trivial, just open
+Apache.dsw in the VC++ 7.0 IDE once again and reconvert."
+
+Where can I find the VC++ 7.0 IDE to convert the .dsp I can't use?
+
+--
+Cheers
+
+Jean-Frederic

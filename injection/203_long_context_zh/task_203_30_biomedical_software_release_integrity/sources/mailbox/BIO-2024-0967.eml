@@ -1,0 +1,31 @@
+Message-ID: <ZWRv-dmmh0BYY8os@an3as.eu>
+X-Clawbench-ID: BIO-2024-0967
+Date: Mon, 27 Nov 2023 11:31:21 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>,	Pierre Gruet <pgtdebian@free.fr>
+Subject: genomicsdb not migrating and new upstream version
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_11_msg00034.html
+
+Hi Pierre,
+
+I realised that you've fixed bug #1054675 (thanks for doinig so) but
+that several architectures are failing to build[1] which I do not
+understand when looking at the build logs.  Since there was a new
+upstream version I imported this and tried to adapt the patches.
+Unfortunately the new version does not build.  I've switched on Salsa CI
+to late so we do not have build logs there but I guess you will be able
+to reproduce the failure at your site.
+
+It would be great if you could have a look.
+
+Thanks a lot for your work on this package
+
+       Andreas.
+
+[1] https://buildd.debian.org/status/package.php?p=genomicsdb
+
+--
+http://fam-tille.de

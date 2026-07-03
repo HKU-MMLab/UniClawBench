@@ -1,0 +1,36 @@
+Message-ID: <20220825191640.ny5i7tg3coa6pray@casagrau.org>
+X-Clawbench-ID: BIO-2024-1187
+Date: Thu, 25 Aug 2022 15:16:40 -0400
+From: Federico Grau <donfede@casagrau.org>
+To: "Grau, Federico *" <Federico.Grau@fda.hhs.gov>
+Subject: Re: upcoming public discussion on Open Source use at FDA during 2022 Scientific Computing Days forum
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_08_msg00054.html
+
+Here is a link to the submitted slides -- https://casagrau.org/~donfede/fda/scd2022_FOSS_at_FDA_cmk_2022-08-16_submit.pdf
+They should be posted publicly after the event.
+
+
+regards,
+donfede
+
+
+On Thu, Aug 25, 2022 at 07:10:40PM +0000, Grau, Federico * wrote:
+> Hello debian-events-na and debian-med ,
+>
+> I am Fede Grau, a Debian community member and also an FDA contractor helping with their GNU/Linux support.
+>
+> In a couple weeks, as part of FDA's public "Scientific Computing Days" forum, I've had the opportunity to participate in a panel discussion on Open Source use at FDA, where I'll have 10-minutes to present slides on our Checkmk success and reference Debian.
+>
+> # 2022 Scientific Computing Days information
+> https://www.fda.gov/drugs/news-events-human-drugs/2022-scientific-computing-days-09072022#day_1
+>
+> Day 1: September 7, 2022 2:30PM - 4:30PM Eastern (EDT)
+>
+> "Home on the OpenSource Range: Empowering FDA scientists with OpenSource Tools
+> Organizers: Raju Rayavarapu, PhD (FDA/CTP) and Alexis Norris, PhD (FDA/CVM)"
+>
+> Monitoring: Checkmk [Federico Grau - FDA/ODT]
+>

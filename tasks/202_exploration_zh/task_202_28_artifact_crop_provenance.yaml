@@ -1,0 +1,41 @@
+task_id: task_202_28_artifact_crop_provenance
+category: 202_exploration_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我在博物馆里拍下了某件器物的一处细节，但忘了记下
+  说明牌。这张裁剪特写没有任何说明文字——我想确切知道这件
+  器物是什么，并在博物馆自己的网站上找到它的编目记录（而非
+  第三方复制品）。图片在这里：
+
+      /tmp_workspace/clawbench/sources/crop.jpg
+
+  它只是该器物的一处细节，没有说明牌文字，所以请仅凭
+  图像本身识别它，然后将它追溯回博物馆的编目。
+
+  请告诉我：
+  - 这件器物是什么（类型、文化/时期、装饰工艺），
+  - 它大致的年代，
+  - 哪家博物馆收藏它、博物馆的对象 id / 入藏编号，以及
+    规范的博物馆编目 URL（博物馆自己的页面或藏品 API）。
+
+  把你的结论和支撑证据（你是如何识别它的，以及
+  规范的博物馆记录 URL）保存到
+  `/tmp_workspace/results/artifact_provenance.json`，并把笔记/截图
+  放在 `/tmp_workspace/results/` 下。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+sources:
+  - crop.jpg
+
+codex:
+  max_user_followups: 2

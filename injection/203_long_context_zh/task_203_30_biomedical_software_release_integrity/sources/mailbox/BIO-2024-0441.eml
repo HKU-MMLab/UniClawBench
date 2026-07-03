@@ -1,0 +1,24 @@
+Message-ID: <udlczkhw6ma.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-0441
+Date: Mon, 24 Jan 2022 09:28:13 -0500
+From: ucko@debian.org (Aaron M. Ucko)
+To: "Maarten L. Hekkelman" <maarten@hekkelman.com>
+Subject: Re: libcifpp transition
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_01_msg00079.html
+
+"Maarten L. Hekkelman"  writes:
+
+> The Config file was no longer needed thanks to the switch to
+> cmake. The API should be roughly the same.
+
+It might have been helpful to leave a stub in place, perhaps with a
+deprecation warning; AFAICT, there are only a few reverse dependencies,
+but they all use this header as an indication of the library's
+availability.  (I suppose it's still not too late to reinstate it as a stub.)
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

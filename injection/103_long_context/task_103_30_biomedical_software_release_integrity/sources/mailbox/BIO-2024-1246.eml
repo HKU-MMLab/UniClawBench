@@ -1,0 +1,56 @@
+Message-ID: <Yp729l+bP1uQJYh6@an3as.eu>
+X-Clawbench-ID: BIO-2024-1246
+Date: Tue, 7 Jun 2022 08:57:58 +0200
+From: Andreas Tille <tille@debian.org>
+To: Andrius Merkys <merkys@debian.org>
+Subject: Re: Added autopkgtest for busco - Closes #1010653
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_06_msg00010.html
+
+Hi Andrius,
+
+Am Tue, Jun 07, 2022 at 09:23:20AM +0300 schrieb Andrius Merkys:
+>
+> On 2022-06-06 22:37, Mohd Bilal wrote:
+> > I have added an autopkgtest for busco[1] as mentioned in bug report[2].
+> > The license for the test data needs to be added. I have opened an
+> > issue[3] upstream asking for clarification. Requesting someone to review
+> > my changes .
+
+Cool.  Just uploaded after checking.  Upload permissions granted in
+case further uploads might be necessary.
+
+> > [1] - https://salsa.debian.org/med-team/busco
+> > [2] - https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1010653
+> > [3] - https://gitlab.com/ezlab/busco/-/issues/566
+>
+> Thanks a lot for pushing forward with this. Can you tell me why you
+> decided to add 'debian-tests-data' component instead of just putting
+> test files somewhere under debian/? IMO this unnecessarily complicates
+> the source package, but I would like to hear other opinions too.
+
+This is perfectly in line with the request of ftpmaster to keep the
+debian/ dir "sensibly" small and I'm pretty sure ftpmaster would have
+been rejected the package if the data would have been under debian/
+(we had such cases in the past).  There are borderline cases where
+only a "few" data files are needed but in this case the debian-tests-data
+tarball is even an order of magnitude larger than the actual source
+package - so this case is pretty clear.
+
+Its actually also not that complicated and documented in Debian Med
+policy[4] (thanks to Nilesh).
+
+You probably did not followed all GSoC mails we exchanged with Bilal
+but it was one of the first lessons we teached him. ;-)
+
+Kind regards
+
+     Andreas.
+
+[4] https://med-team.pages.debian.net/policy/#embedding-large-test-data
+
+
+--
+http://fam-tille.de

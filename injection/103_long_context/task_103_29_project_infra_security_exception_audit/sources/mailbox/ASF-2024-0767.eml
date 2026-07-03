@@ -1,0 +1,32 @@
+Message-ID: <1d355d43-2baf-1d2b-d772-85ea5357cfcf@apache.org>
+X-Clawbench-ID: ASF-2024-0767
+Date: Fri, 28 Jun 2024 09:07:36 +0200
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.60-rc4 as httpd-2.4.60
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-06.mbox
+
+On 6/27/24 10:54 PM, Helmut K. C. Tessarek wrote:
+> On 2024-06-26 17:20, Eric Covener wrote:
+>> Thanks for testing and re-testing. I just extended an existing FCGI
+>> test to cover the scenario as well.
+>
+> You are welcome. Thanks for doing the release work and for adding a test that will catch this in the future. :+1
+>
+> May I ask whether you thought about using gh actions to run the test suite?
+
+We already do this for Linux:
+
+https://github.com/apache/httpd/blob/trunk/.github/workflows/linux.yml
+
+> Even if AIX is not available via gh, you can self-host a runner.
+
+Our immediate target would be to do this for Windows.
+An AIX self-hosted runner would require someone to provide an AIX host.
+
+Regards
+
+Rüdiger

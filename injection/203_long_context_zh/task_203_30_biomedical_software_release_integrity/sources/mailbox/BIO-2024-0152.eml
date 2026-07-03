@@ -1,0 +1,53 @@
+Message-ID: <YguLWslllnZWpkqC@an3as.eu>
+X-Clawbench-ID: BIO-2024-0152
+Date: Tue, 15 Feb 2022 12:15:38 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Chiara Marmo <marmochiaskl@gmail.com>
+Subject: Re: Failures for sklearn
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2022_02_msg00027.html
+
+Dear Chiara,
+
+thanks a lot for working on this.
+
+Am Fri, Feb 11, 2022 at 02:33:07PM -1000 schrieb Chiara Marmo:
+> Dear scikit-learn maintainers,
+>
+> I have updated the scikit-learn version on salsa and modified some of the
+> EXCLUDE_TESTS variables in order to reflect the current status of the
+> scikit-learn issue tracker.
+> I was hoping to run continuous integration on salsa, but it is very time
+> consuming for scikit-learn, so I'm switching it on and off, when needed.
+
+Speaking about Salsa-CI:  The last run is
+
+   https://salsa.debian.org/science-team/scikit-learn/-/jobs/2454291
+
+connected to commit dba31326ec5b746ff3ba2ae067f4b49f4811c9eb.  Would you
+confirm that your last commit excludes those two failures that are
+breaking the test?  BTW, how are you aware that you can skip Salsa-CI by
+adding the string [ci skip] or [skip ci].  This would make it more
+transparent what commit was checked by CI and what not.
+
+> I must confess that I am a bit confused about how the last builds of
+> scikit-learn are failing with respect to setuptools (
+> https://ci.debian.net/packages/s/scikit-learn/).
+>
+> Should it be possible to upload this 1.0.2 version, to check if I have
+> correctly patch the tests?
+> Otherwise I'd be happy to listen to your comments and suggestions about the
+> current status of the repo.
+
+I've done some minor changes (normalising d/changelog and renamed
+debian/.gitlab-ci.yml to debian/salsa-ci.yml) and check Salsa-CI
+for this commit.  (Just noticed that there was also a NMU which I
+added as well and used [ci skip] ...)
+
+Kind regards
+    Andreas.
+
+--
+http://fam-tille.de

@@ -1,0 +1,54 @@
+Message-ID: <udl1qtvhp1m.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-0358
+Date: Thu, 04 Aug 2022 13:55:01 -0400
+From: ucko@debian.org (Aaron M. Ucko)
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Re: igblast accepted - how can it be used to test igdiscover
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_08_msg00023.html
+
+Andreas Tille  writes:
+
+> Hmmmm, very strange.  I "simply" pushed and wanted to show you in Salsa-CI
+> to show you the problem ... but there is no such error as here:
+
+OK, thanks.
+
+> "no"s by the according Build-Depends if we have the actual library (not
+> sure yet what is checked by NCBI C toolkit but others are clear, thought.
+
+Most of these checks are artifacts of fully sharing a build system with
+a much larger tree containing some projects that need them.  The only
+additional build dependencies that would specifically make sense here
+are
+
+libbackward-cpp-dev
+libbz2-dev
+libdw-dev
+liblmdb-dev
+libmbedtls-dev
+libpcre3-dev
+zlib1g-dev
+
+generally to be used in lieu of vendored copies thereof.  (The two
+exceptions are libbackward-cpp-dev and libdw-dev, which this code base
+uses if available to yield clearer stack traces if anything goes wrong.
+I suppose ncbi-blast+ could stand to gain build dependencies on both
+too.)
+
+NB: Switching to system libmbedtls-dev requires some additional
+tweaks: adding --with-mbedtls to the configure command line and applying
+https://salsa.debian.org/med-team/ncbi-blastplus/-/blob/master/debian/patches/system_mbedtls_only
+
+Also, PCRE2 is not an option so far -- if you supply it instead of PCRE
+3.x, the build system will simply fall back on vendored PCRE 3.x.
+
+> OK, I removed libopenmpi-dev from Build-Depends.
+
+Thanks!
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

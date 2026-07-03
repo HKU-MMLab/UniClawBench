@@ -1,0 +1,26 @@
+{
+  "task_id": "task_102_26_nasa_image_crop_provenance",
+  "note": "Image-provenance task. The executor gets only a cropped detail of an astronomy image (sources/crop.jpg) with no caption. They must visually identify the object and trace it to NASA's own canonical image record. No searchable text in the crop.",
+  "crop_origin": {
+    "source_full_image": "NASA images-assets PIA15426~orig.jpg",
+    "crop_box_xyxy_on_1970x2400": [98, 768, 1871, 1488],
+    "what_it_shows": "the edge-on galaxy disk with the bright bulge and dark dust lane (the 'sombrero' shape), star field around it; no labels"
+  },
+  "canonical_answer": {
+    "object": "The Sombrero Galaxy (Messier 104 / M104 / NGC 4594)",
+    "image_title": "The Sombrero Galaxy Split Personality",
+    "telescope_instrument": "NASA Spitzer Space Telescope (infrared)",
+    "nasa_center": "JPL",
+    "nasa_id": "PIA15426",
+    "date_created": "2012-04-24",
+    "canonical_url": "https://images.nasa.gov/details/PIA15426",
+    "nasa_api_url": "https://images-api.nasa.gov/asset/PIA15426",
+    "also_acceptable_canonical": "the NASA/JPL Photojournal page for PIA15426 (https://photojournal.jpl.nasa.gov/catalog/PIA15426)"
+  },
+  "scoring_anchors": {
+    "must_identify": "the Sombrero Galaxy (M104). Identifying it as 'a galaxy' generically is not enough.",
+    "canonical_record_for_full_credit": {"nasa_id": "PIA15426", "source": "NASA image library / JPL Photojournal"},
+    "primary_source_rule": "the canonical answer is NASA's own image record (images.nasa.gov / images-api / JPL Photojournal). Wikipedia/news/astro-blog reproductions are secondary.",
+    "tolerance": "Accept M104 / Messier 104 / NGC 4594 as the object name. Accept reaching the NASA record by nasa_id PIA15426 OR the JPL Photojournal entry. If the executor identifies M104 correctly and reaches a NASA-owned page for a different M104 image (NASA has several), give partial credit but full credit requires the PIA15426 record this crop is from (Spitzer 'split personality' infrared image)."
+  }
+}

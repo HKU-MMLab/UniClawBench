@@ -1,0 +1,80 @@
+task_id: task_205_06_rust_meetup_route_gui_note
+category: 205_cross_platform_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  请使用真实的公开网站为 Rust Global: Tokyo 准备一份简短的
+  规划笔记，不要使用本地模拟的活动页面。
+
+  使用以下真实来源：
+
+  - 活动页面: https://rustfoundation.org/event/rust-global-tokyo/
+  - 活动背景: https://rustfoundation.org/media/rust-global-tokyo-connecting-the-rust-ecosystem-across-industries-regions/
+  - 场地/出行页面: https://events.linuxfoundation.org/open-source-summit-japan/attend/venue-travel/
+  - 从 Shibuya Station 到 Toranomon Station 的路线估算：
+    https://www.rome2rio.com/s/Shibuya-Station/Toranomon-Station
+
+  另外，请自己在服务安装的真实桌面日历应用
+  （优先 GNOME Calendar）中创建一个日历事件。不要使用模拟
+  日历、本地事件模拟器，或任何替你创建/记录
+  事件的脚本。
+
+  日历事件应恰好在活动开始时间前 40 分钟开始。
+  将可审计的日历证据保存在 `/tmp_workspace/results/` 下：
+
+  - `/tmp_workspace/results/rust_meetup_calendar_event.json`
+  - `/tmp_workspace/results/rust_meetup_calendar_export.ics`
+  - `/tmp_workspace/results/rust_meetup_calendar_screenshot.png`
+
+  日历截图应显示真实日历应用中已保存的事件
+  或已保存的事件详情视图。仅有导入预览或未保存的
+  对话框是不够的。
+
+  然后使用真实的图形化文本编辑器写：
+
+      /tmp_workspace/results/rust_meetup_route_note.md
+
+  通过保存一张笔记在该编辑器中打开的截图，
+  保留使用了真实图形化编辑器的可审计证据：
+
+  - `/tmp_workspace/results/rust_meetup_note_editor_screenshot.png`
+
+  另外保存浏览器证据，显示你使用的真实公开页面：
+
+  - `/tmp_workspace/results/browser_event_page.png`
+  - `/tmp_workspace/results/browser_route_page.png`
+
+  笔记必须恰好包含以下三个部分：
+
+  1. Event info
+  2. Route estimate
+  3. Arrival plan
+
+  包含活动时间、场地、注册/费用要求、从 Shibuya Station
+  出发的通勤估算，以及一个切实可行的到达/出发
+  计划。不要只复制活动页面的简介；将各项细节综合成一份有用的
+  笔记。使用真实路线和场地页面上的路线数值，而不是泛泛的
+  地图估算或猜测。
+
+  最后保存 `/tmp_workspace/results/gui_evidence.md`，列出你使用的真实浏览器、
+  日历和文本编辑器窗口以及截图路径。
+
+services:
+  - name: real-route-gui-apps-setup
+    path: real-route-gui-apps-setup
+    start: bash install.sh
+    oneshot: true
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+codex:
+  max_user_followups: 2

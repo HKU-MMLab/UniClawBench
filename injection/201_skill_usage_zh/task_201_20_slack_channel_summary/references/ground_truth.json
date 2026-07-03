@@ -1,0 +1,158 @@
+{
+  "task_id": "task_101_20_slack_channel_summary",
+  "difficulty": "Medium",
+  "schema": "c",
+  "schema_notes": "sorted / ranked list with deterministic tie-break",
+  "skills_declared": [
+    "slack",
+    "summarize-pro"
+  ],
+  "ground_truth": {
+    "thread_topic": "Q3 budget planning",
+    "thread_root_ts": "1776746603.999000",
+    "expected_thread_ts": [
+      "1776746603.999000",
+      "1776746604.000000",
+      "1776746605.000000",
+      "1776746606.000000",
+      "1776746607.000000",
+      "1776746608.000000",
+      "1776746609.000000",
+      "1776746610.000000"
+    ],
+    "thread_messages": [
+      {
+        "index": 1,
+        "ts": "1776746603.999000",
+        "user": "U03CAROL",
+        "role_in_thread": "kickoff",
+        "text": "kicking off the Q3 budget planning thread — finance handed us a target of $1.85M total opex for Q3, which is a 6% lift over Q2's $1.745M. let's land allocations by 2026-06-15. (msg 1/8)"
+      },
+      {
+        "index": 2,
+        "ts": "1776746604.000000",
+        "user": "U04DAVE",
+        "role_in_thread": "infra_ask",
+        "text": "re: Q3 budget — quoting Carol's $1.85M target above, infra is asking for $620K (datadog renewal $145K + new clickhouse cluster $230K + AWS reserved instances $245K). that's already 33.5% of the envelope, fyi. (msg 2/8)"
+      },
+      {
+        "index": 3,
+        "ts": "1776746605.000000",
+        "user": "U02BOB",
+        "role_in_thread": "headcount_ask",
+        "text": "re Dave's $620K infra ask — that's tight. headcount needs $980K for the 4 open reqs (2 SWE @ $185K base + 1 SRE @ $210K + 1 PM @ $200K, plus ~15% loaded benefits). leaves only $250K for everything else. (msg 3/8)"
+      },
+      {
+        "index": 4,
+        "ts": "1776746606.000000",
+        "user": "U01ALICE",
+        "role_in_thread": "deferral_proposal",
+        "text": "Bob's $250K residual won't cover marketing+ops+travel. last year's remaining bucket was $310K and we ended Q2 over by 4%. proposing we defer 1 SWE hire to Q4 to free $53K. (msg 4/8)"
+      },
+      {
+        "index": 5,
+        "ts": "1776746607.000000",
+        "user": "U05ERIN",
+        "role_in_thread": "ops_savings",
+        "text": "re Alice's deferral idea — ops can also trim $40K by switching to annual contracts on three SaaS tools (Notion, Linear, PagerDuty). that gives $93K of headroom on top of the SWE deferral. (msg 5/8)"
+      },
+      {
+        "index": 6,
+        "ts": "1776746608.000000",
+        "user": "U03CAROL",
+        "role_in_thread": "risk_callout",
+        "text": "great signals from Erin. one risk: the clickhouse migration consulting engagement isn't in the $620K — that's another $75K SOW with Acme. we either fold it in or carry it as a Q3 contingency. (msg 6/8)"
+      },
+      {
+        "index": 7,
+        "ts": "1776746609.000000",
+        "user": "U02BOB",
+        "role_in_thread": "revised_proposal",
+        "text": "putting Carol's $75K Acme SOW in the contingency line, not the main allocation. CFO call tomorrow at 11am PT to walk through. final numbers I'll send: infra $620K, headcount $927K (deferring 1 SWE saves $53K), ops $210K, contingency $93K. totals $1.85M exact. (msg 7/8)"
+      },
+      {
+        "index": 8,
+        "ts": "1776746610.000000",
+        "user": "U03CAROL",
+        "role_in_thread": "final_decision",
+        "text": "decision: Q3 budget locked at $1.85M with Bob's split (infra $620K / headcount $927K / ops $210K / contingency $93K). 1 SWE req deferred to Q4. submitting to finance by 2026-04-30 deadline. closing the thread. (msg 8/8 — FINAL)"
+      }
+    ],
+    "expected_specific_numbers": [
+      {"label": "Q3 total opex target", "value": "$1.85M", "source_ts": "1776746603.999000"},
+      {"label": "Q2 comparable opex", "value": "$1.745M", "source_ts": "1776746603.999000"},
+      {"label": "Q3 over Q2 lift", "value": "6%", "source_ts": "1776746603.999000"},
+      {"label": "infra ask total", "value": "$620K", "source_ts": "1776746604.000000"},
+      {"label": "datadog renewal", "value": "$145K", "source_ts": "1776746604.000000"},
+      {"label": "new clickhouse cluster", "value": "$230K", "source_ts": "1776746604.000000"},
+      {"label": "AWS reserved instances", "value": "$245K", "source_ts": "1776746604.000000"},
+      {"label": "infra share of envelope", "value": "33.5%", "source_ts": "1776746604.000000"},
+      {"label": "headcount ask total", "value": "$980K", "source_ts": "1776746605.000000"},
+      {"label": "SWE base salary (each)", "value": "$185K", "source_ts": "1776746605.000000"},
+      {"label": "SRE base salary", "value": "$210K", "source_ts": "1776746605.000000"},
+      {"label": "PM base salary", "value": "$200K", "source_ts": "1776746605.000000"},
+      {"label": "loaded benefits load", "value": "~15%", "source_ts": "1776746605.000000"},
+      {"label": "residual after infra+headcount", "value": "$250K", "source_ts": "1776746605.000000"},
+      {"label": "last year remaining bucket", "value": "$310K", "source_ts": "1776746606.000000"},
+      {"label": "Q2 overrun", "value": "4%", "source_ts": "1776746606.000000"},
+      {"label": "SWE deferral savings", "value": "$53K", "source_ts": "1776746606.000000"},
+      {"label": "SaaS annual-contract savings", "value": "$40K", "source_ts": "1776746607.000000"},
+      {"label": "combined headroom (Erin)", "value": "$93K", "source_ts": "1776746607.000000"},
+      {"label": "Acme SOW", "value": "$75K", "source_ts": "1776746608.000000"},
+      {"label": "final infra allocation", "value": "$620K", "source_ts": "1776746609.000000"},
+      {"label": "final headcount allocation", "value": "$927K", "source_ts": "1776746609.000000"},
+      {"label": "final ops allocation", "value": "$210K", "source_ts": "1776746609.000000"},
+      {"label": "final contingency allocation", "value": "$93K", "source_ts": "1776746609.000000"},
+      {"label": "final total", "value": "$1.85M", "source_ts": "1776746609.000000"}
+    ],
+    "expected_specific_dates": [
+      {
+        "value": "2026-06-15",
+        "meaning": "deadline to land Q3 allocations internally",
+        "source_ts": "1776746603.999000"
+      },
+      {
+        "value": "11am PT tomorrow",
+        "meaning": "CFO call to walk through Q3 numbers",
+        "source_ts": "1776746609.000000"
+      },
+      {
+        "value": "2026-04-30",
+        "meaning": "deadline to submit Q3 budget to finance",
+        "source_ts": "1776746610.000000"
+      }
+    ],
+    "expected_final_decision": {
+      "total_locked": "$1.85M",
+      "buckets": {
+        "infra": "$620K",
+        "headcount": "$927K",
+        "ops": "$210K",
+        "contingency": "$93K"
+      },
+      "deferral": "1 SWE req deferred to Q4 (frees $53K)",
+      "contingency_note": "Acme $75K SOW carried as contingency, not folded into main allocation",
+      "submission_deadline": "2026-04-30",
+      "decision_message_ts": "1776746610.000000"
+    },
+    "csv_columns": [
+      "ts",
+      "author",
+      "message_index",
+      "key_numbers",
+      "key_dates",
+      "role_in_thread"
+    ],
+    "csv_required_indices": [1, 2, 3, 4, 5, 6, 7, 8],
+    "csv_required_roles": [
+      "kickoff",
+      "infra_ask",
+      "headcount_ask",
+      "deferral_proposal",
+      "ops_savings",
+      "risk_callout",
+      "revised_proposal",
+      "final_decision"
+    ]
+  }
+}

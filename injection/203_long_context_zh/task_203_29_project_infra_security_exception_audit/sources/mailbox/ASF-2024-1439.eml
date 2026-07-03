@@ -1,0 +1,48 @@
+Message-ID: <1C75FFCA-44CB-4B5C-8916-561F10FF70CB@eissing.org>
+X-Clawbench-ID: ASF-2024-1439
+Date: Sat, 30 Sep 2023 16:47:48 +0200
+From: "Stefan Eissing via dev" <dev@httpd.apache.org>
+To: dev@httpd.apache.org
+Subject: Re: Please support/enable https by default in the Apache web sever.
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-09.mbox
+
+Even for test setups with a few users, I recommend something like this: <https://github.com/icing/blog/blob/main/test_server_tls.md>
+
+We use this method in our test and CI workflows as well.
+
+Cheers,
+Stefan
+
+> Am 30.09.2023 um 16:42 schrieb General Email <general.email.12341234@gmail.com>:
+>
+>
+>
+> On Sat, 30 Sep, 2023, 8:00 pm Emmanuel Dreyfus, <manu@netbsd.org> wrote:
+> On Sat, Sep 30, 2023 at 07:40:34PM +0530, General Email wrote:
+> > By the way, I don't understand how the default certificate can be abused.
+>
+> It is not signed by a trusted CA, hence your browser cannot tell if it
+> is speaking to your legitimate web server, or to some malware lurking
+> in between. Perhaps your web trafic is not worth being evesdropped, but
+> consider a malware could inject an exploit against your browser in your
+> web trafic. The attacker could just be an infected machine on the same
+> LAN.
+>
+> The security level of an untrusted ceritificate is not much better than
+> plain text HTTP.
+>
+>
+> Yes, I understand this.
+>
+> We will not be using the default untrusted certificate when we go live.
+>
+> But during development, if 10 people are working on the development of one website and each of them has their own apache http installation, then we have to generate 10 certificates and do a few changes or more than few changes to get https enabled on each of 10 installations.
+>
+> Having a default certificate (not signed by trusted CA) in official http server will make enabling https on each installation much easier and we won't have to generate 10 certificates, etc.
+>
+> Regards,
+> GE
+>

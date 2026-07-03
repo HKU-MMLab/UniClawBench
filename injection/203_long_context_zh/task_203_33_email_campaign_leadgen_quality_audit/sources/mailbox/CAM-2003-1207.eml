@@ -1,0 +1,42 @@
+Message-ID: <B7973337-B468-11D6-9F04-00039396ECF2@deersoft.com>
+X-Clawbench-ID: CAM-2003-1207
+Date: Tue, 20 Aug 2002 11:14:50 -0700
+From: "Craig R.Hughes" <craig@deersoft.com>
+To: yyyy@spamassassin.taint.org
+Subject: Re: [SAtalk] results for giant mass-check (phew)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01386.7019c4fe138653195097d8064c11cb80
+
+On Tuesday, August 20, 2002, at 07:23  AM, Justin Mason wrote:
+
+>> The compensate rule USER_AGENT should go or at least score
+>> very low; with
+>> it, a spammer just has to include a header like
+>
+> BTW, the scores are irrelevant right now (unless the test is
+> going to have
+> a non-GA'd score).  The GA should reduce "easy" ones, and if it
+> doesn't,
+> after the GA run is the time to comment.  Don't pay any
+> attention to them!
+> ;)
+
+Remember that the GA is going to be considering combinatorial
+uses of the rules, so rules which look dodgy on their own might
+be gems for the GA -- perhaps something with a S/O ratio of .5
+actually occurs often in combination with some other rule, and
+in those situations, helps to distinguish spam vs nonspam.
+
+C
+
+
+-------------------------------------------------------
+This sf.net email is sponsored by: OSDN - Tired of that same old
+cell phone?  Get a new here for FREE!
+https://www.inphonic.com/r.asp?r=sourceforge1&refcode1=vs3390
+_______________________________________________
+Spamassassin-talk mailing list
+Spamassassin-talk@lists.sourceforge.net
+https://lists.sourceforge.net/lists/listinfo/spamassassin-talk

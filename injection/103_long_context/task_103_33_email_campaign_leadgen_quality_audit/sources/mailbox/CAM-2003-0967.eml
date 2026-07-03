@@ -1,0 +1,22 @@
+Message-ID: <15737.37569.889973.866955@12-248-11-90.client.attbi.com>
+X-Clawbench-ID: CAM-2003-0967
+Date: Sat, 07 Sep 2002 00:46:41 -0500
+From: skip@pobox.com
+To: recipient@example.net
+Subject: [Spambayes] Maybe change X-Spam-Disposition to something else...
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01701.a28b76746a64d3d352375a462f4f8404
+
+>> Accordingly, I wrote unheader.py, which is mostly a ripoff of
+    >> something someone else posted to python-dev or c.l.py within the last
+    >> week or so to strip out SA-generated headers.
+
+    Tim> Unless I've grown senile tonight, you got it from Anthony to begin
+    Tim> with.  Please check it in to project, and add a short blurb to
+    Tim> README.txt!
+
+Raring to go, once I can write to CVS...
+
+S

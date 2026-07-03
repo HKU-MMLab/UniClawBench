@@ -1,0 +1,44 @@
+Message-ID: <ZKu7bGemi6nMZXEK@an3as.eu>
+X-Clawbench-ID: BIO-2024-0319
+Date: Mon, 10 Jul 2023 10:03:56 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: "Poll" for video conference date
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_07_msg00033.html
+
+Hi,
+
+I think we do not need any poll site to decide how to schedule our video
+conferences in future.  IMHO it makes sense to do it in the beginning of
+each month and as far as I understood responses (private and public) it
+make sense to stick close to weekends.  If you have some opinion when it
+is good for you simply rank your preferences with numbers 1 (=prefered),
+2 (=OK), 3 (=I might join), 4 (=its hard vor me to join) of 5 (=I will
+not be able to join)
+
+Example for my case
+   Friday
+       [3] 17 UTC
+       [1] 18 UTC
+       [1] 19 UTC
+
+   Saturday
+       [4] 17 UTC
+       [3] 18 UTC
+       [3] 18 UTC
+
+   Sunday
+       [3] 17 UTC
+       [1] 18 UTC
+       [1] 19 UTC
+
+The smallest value of the responses should win.
+
+Kind regards
+    Andreas.
+
+--
+http://fam-tille.de

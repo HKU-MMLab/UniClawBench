@@ -1,0 +1,31 @@
+Message-ID: <Ze93ut0mTwbNfVG9@fusion>
+X-Clawbench-ID: BIO-2024-0743
+Date: Mon, 11 Mar 2024 22:29:30 +0100
+From: Étienne Mollier <emollier@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: How is autopkgtest working in Perl packages
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_03_msg00009.html
+
+Étienne Mollier, on 2024-03-11:
+> I think it may be skipped for now by
+> creating a debian/tests/pkg-perl/SKIP file containing:
+>
+> runtime-deps-and-recommends
+
+The change turns out to be much more involved than I initially
+thought: we need to account for the build dependencies as well
+as the recommends, and tests don't go skipped that easily,
+because the control on skippable entries occurs after the
+testbed is installed, which cannot occur since recommended
+packages are uninstallable.  I'll probably continue having a
+look at bioperl-run during the week.
+
+Good night,
+--
+  .''`.  Étienne Mollier
+ : :' :  pgp: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/1, please excuse my verbosity
+   `-    on air: Cynthesis - Incision

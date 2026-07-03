@@ -1,0 +1,35 @@
+Message-ID: <YVcgk/9EE+EF3Lzo@an3as.eu>
+X-Clawbench-ID: BIO-2024-1100
+Date: Fri, 1 Oct 2021 16:52:03 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>,	Pierre Gruet <pgt@debian.org>
+Subject: Pilon might need newer scala
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00011.html
+
+Hi,
+
+I intended to update pilon to its latest upstream version but
+got:
+
+scalac -classpath /usr/share/java/htsjdk.jar -d pilon.jar src/main/scala/org/broadinstitute/pilon/*
+src/main/scala/org/broadinstitute/pilon/BamFile.scala:24: error: object jdk is not a member of package scala
+import scala.jdk.CollectionConverters._
+             ^
+src/main/scala/org/broadinstitute/pilon/BamFile.scala:65: error: value asScala is not a member of java.util.List[htsjdk.samtools.SAMSequenceRecord]
+    val seqs = r.getFileHeader.getSequenceDictionary.getSequences.asScala
+                                                                  ^
+src/main/scala/org/broadinstitute/pilon/BamFile.scala:96: error: value asScala is not a member of htsjdk.samtools.SAMRecordIterator
+    val reads = r.queryUnmapped.asScala.filter(validateRead(_)).toList
+                                ^
+src/main/scala/org/broadinstitute/pilon/BamFile.scala:119: error: value asScala is not a member of htsjdk.samtools.SAMRecordIterator
+possible cause: maybe a semicolon is missing before `value asScala'?
+      (region.start-10000) max 0, (region.stop+10000) min region.contig.length).asScala
+                                                                                ^
+src/main/scala/org/broadinstitute/pilon/PileUpRegion.scala:22: error: object jdk is not a member of package scala
+import scala.jdk.CollectionConverters._
+             ^
+src/main/scala/org/broadinstitute/pilon/BamFile.scala:297: error: value asScala is not a member of htsjdk.samtools.SAMRecordIterator
+    for (read http://fam-tille.de

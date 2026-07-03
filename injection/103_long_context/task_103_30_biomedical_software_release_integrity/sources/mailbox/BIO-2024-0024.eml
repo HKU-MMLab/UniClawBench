@@ -1,0 +1,70 @@
+Message-ID: <D1C82C26-43A4-47EB-81DA-850859E2390E@debian.org>
+X-Clawbench-ID: BIO-2024-0024
+Date: Wed, 10 Nov 2021 12:25:30 +0100
+From: Rene Engelhard <rene@debian.org>
+To: Andreas Tille <andreas@an3as.eu>, Debian Science List <debian-science@lists.debian.org>
+Subject: Re: CoinMP was listed as smelling ;-)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_11_msg00070.html
+
+Am 10. November 2021 12:06:16 MEZ schrieb Andreas Tille :
+>Hi Rene,
+>
+>I've found coinmp at the list of smelling packages[1] and found some
+>spare cycles to reduce its smell. ;-)
+>
+>In VCS I've found
+>
+>   coinmp (1.8.3-2) unstable; urgency=medium
+>
+>     * upload to unstable
+>
+>
+>but this upload never happened.
+
+???
+
+>  Thus I'm wondering whether you
+>intentionally did not moved that version from experimental to unstable.
+
+Huh? What? coinmp is 1.8.3-3(!) in unstable (even testing and stable) and 1.8.3-2 is even in old stable.
+
+Probably i just forgot to commit to git..
+
+>Unfortunately there is an issue with debhelper compat level 13 which
+>I've choosen since its calling autoreconf automatically and coinmp does
+>not autoreconfigure with the new version of autoconf anyway - the build
+>stops with:
+(...)
+
+>
+>So we can either revert the compat level bump from 13 back to 10 (I
+>think)
+
+Yes, i don't like bumping compat just for bumping compat. l
+
+> May be latest upstream (1.8.4) has
+>fixed this which I did not checked.
+
+Doubt that.
+
+>I'd like to leave those decisions rather to you as the originial uploader
+>of this package before I might break anything.
+
+I'd say there is nothing to see here except that I maybe should upload 1.8.4 (but that changed the soname backwards...)
+
+Regards,
+
+René
+
+P.S.;
+
+>[1] https://trends.debian.net/packages-with-smells-sorted-by-maintainer.txt
+
+The only thing which smells here is the fact that such a list even exists.
+
+
+--
+Diese Nachricht wurde von meinem Android-Gerät mit K-9 Mail gesendet.

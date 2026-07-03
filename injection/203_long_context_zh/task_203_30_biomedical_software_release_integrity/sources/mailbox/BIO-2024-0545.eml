@@ -1,0 +1,47 @@
+Message-ID: <20210929152804.GB29524@an3as.eu>
+X-Clawbench-ID: BIO-2024-0545
+Date: Wed, 29 Sep 2021 17:28:04 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: libcifpp
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_09_msg00069.html
+
+On Wed, Sep 29, 2021 at 05:03:06PM +0200, Maarten L. Hekkelman wrote:
+> Op 29-09-2021 om 15:15 schreef Nilesh Patra:
+>
+> > > Everyone and their grandmother is currently working on getting libcifpp through the ballot. Very much appreciated. But I just managed to release version 2.0.
+> >
+> > You can move your changes into salsa if you like, but do not upload to unstable until the one from new is accepted.
+> I just committed my changes to salsa, however, this is not building yet.
+>
+> Problem is, the current build process tries to download a huge CCD file
+> (components.cif) and this somehow fails since ...
+
+... you are not permitted to download anything while building the package.
+
+> in the debian package building
+> environment the directories are perhaps mapped differently.
+>
+> Anyway, question is if this file should be downloaded at all. The package
+> now comes with a separate libcifpp-data package containing the script to
+> update this and other data files.
+
+You are the only one who can answer the question whether the download is
+needed.
+
+> Should I add a call to this update script in the post install hook? Having
+> 500MB of data in Debian that's probably updated the very next day after
+> installation seems very inconvenient, right?
+
+I'm not sure whether we have example solutions here.  But this kind of
+volatile data should probably not be part of a package.
+
+Kind regards
+
+    Andreas.
+
+--
+http://fam-tille.de

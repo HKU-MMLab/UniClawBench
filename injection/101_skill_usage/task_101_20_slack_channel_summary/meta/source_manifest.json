@@ -1,0 +1,14 @@
+{
+  "task_id": "task_101_20_slack_channel_summary",
+  "data_origin": "live_api_fixture_with_snapshot_fallback",
+  "entries": [
+    {
+      "path": "slack_snapshot.json",
+      "description": "Executor-visible snapshot of the newest populated Slack #general messages. In live mode, ops/populate.py refreshes the channel fixture and hidden ground truth before execution."
+    }
+  ],
+  "hidden_references": [
+    "references/ground_truth.json",
+    "references/eval_rule.md"
+  ]
+}

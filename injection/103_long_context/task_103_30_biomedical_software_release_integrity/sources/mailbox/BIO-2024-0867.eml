@@ -1,0 +1,55 @@
+Message-ID: <20231104102144.kzoh2x3bh4qmqkzi@office.mailbox.org>
+X-Clawbench-ID: BIO-2024-0867
+Date: Sat, 4 Nov 2023 15:51:44 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: Sébastien Jodogne <s.jodogne@orthanc-labs.com>
+Subject: Re: Adding autopkgtest to Orthanc-python
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_11_msg00008.html
+
+On Tue, Oct 31, 2023 at 10:58:31AM +0100, Sébastien Jodogne wrote:
+> This error indicates that two instances of Orthanc are running at the same
+> time, most probably because the "orthanc" Debian service is not stopped at
+> the beginning of the test by autopkgtests.
+>
+> I indeed do not see any call to "systemctl stop orthanc" in the main script
+> "debian/tests/run-unit-test" [1], is this expected?
+>
+> I also don't understand how "debian/tests/run-unit-test" starts Orthanc. By
+> using "Orthanc ./configuration.json --verbose", the script will not progress
+> until Orthanc is manually stopped. From my understanding, Orthanc should
+> instead be launched in the background (i.e., by adding an ampersand).
+>
+> Furthermore, before making a call to "http://localhost:8042/toto"; (which is
+> added by the Python plugin), the test script should wait until Orthanc is
+> actually started. This can be tested by an (infinite) loop testing whether
+> the Orthanc PID is still existent, while waiting until
+> "http://localhost:8042/system"; answers (this is a route that is built in
+> Orthanc).
+
+I tried doing something similar however the test still seems to fail.
+The failing job can be found at[3].
+
+Seems to me the reason is that the route to /toto is still not present
+and the offending line is _probably_
+
+| W1104 10:12:22.974692 main.cpp:1184] REST API cannot write to the file system.
+
+But I am not really sure since I see the error even if change the test
+dir to a dir with write permissions from everyone.
+Can you take a look, please?
+
+> However, as stated in another thread [2], I have strictly no experience with
+> autopkgtests, so I cannot help readily here.
+
+It should be as simple as `bash ./debian/tests/run-unit-test` for
+checking locally (for this package).
+
+> [1] https://salsa.debian.org/med-team/orthanc-python/-/commit/9e751a67614e90d383956f400906ce8121bcfc81
+> [2] https://lists.debian.org/debian-med/2023/10/msg00017.html
+[3] https://salsa.debian.org/med-team/orthanc-python/-/jobs/4887512
+
+Best,
+Nilesh

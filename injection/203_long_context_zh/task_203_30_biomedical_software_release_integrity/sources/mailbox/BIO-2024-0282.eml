@@ -1,0 +1,60 @@
+Message-ID: <20210906145909.GI24536@an3as.eu>
+X-Clawbench-ID: BIO-2024-0282
+Date: Mon, 6 Sep 2021 16:59:09 +0200
+From: Andreas Tille <tille@debian.org>
+To: Nilesh Patra <nilesh@tchncs.de>, Gilles Filippini <pini@debian.org>
+Subject: Re: Help needed for r-bioc-rhdf5 in BioConductor transition
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_09_msg00001.html
+
+Hi,
+
+[libhdf5 maintainer in CC]
+
+On Mon, Sep 06, 2021 at 06:33:34PM +0530, Nilesh Patra wrote:
+> ------------------------------------------------------------------------
+>
+> Hi Andreas,
+>
+> > Hi,
+> > when trying to build r-bioc-rhdf5 in Git I get
+> > ...
+> > installing to /build/r-bioc-rhdf5-2.36.0+dfsg/debian/r-bioc-rhdf5/usr/lib/R/site-library/00LOCK-r-bioc-rhdf5-2.36.0+dfsg/00new/rhdf5/libs
+> > ** R
+> > [...]
+> > unable to load shared object '/build/r-bioc-rhdf5-2.36.0+dfsg/debian/r-bioc-rhdf5/usr/lib/R/site-library/00LOCK-r-bioc-rhdf5-2.36.0+dfsg/00new/rhdf5/libs/rhdf5.so':
+> >  /build/r-bioc-rhdf5-2.36.0+dfsg/debian/r-bioc-rhdf5/usr/lib/R/site-library/00LOCK-r-bioc-rhdf5-2.36.0+dfsg/00new/rhdf5/libs/rhdf5.so: undefined symbol: H5Scombine_select
+>
+> I think I _probably_ did find out the problem(I'm not 100% sure). The problem likely is that this function has been introduced in 1.10.7 release of hdf5 (which vendors lib
+> and the one we have in archive is 1.10.6 (older than what we need)
+> This answer is also hidden in the news file of this very source package here[1]
+> And the release notes of 1.10.7 of hdf5 also say the same[2] about adding more hyperslab functions.
+
+This sounds pretty convincing.
+
+> So maybe we new update of hdf5 in the acrhive to 1.10.7 to proceed with rhdf5 update for bioconductor.
+> Or, is there some interim version between 1.34.0->1.36.0 that might build with current state?
+
+I do not think that we have this option.  So I wonder if we can upgrade
+libhdf5 pretty soon.  May be it makes sense we file some "new upstream
+version available" bug agains src:hdf5 and make this bug blocking the
+BioConductor transition.
+
+Gilles, do you see any chance to bump the minor version of hdf5 which
+should be hopefully easier than just upgrade to the latest upstream
+(1.12.0).  This would help us a lot.
+
+Kind regards
+
+       Andreas.
+
+> [1]: https://salsa.debian.org/r-pkg-team/r-bioc-rhdf5/-/blob/master/inst/NEWS.Rd#L8-9
+> [2]: https://www.hdfgroup.org/2020/09/release-of-hdf5-1-10-7-newsletter-175/
+>
+> Nilesh
+>
+
+--
+http://fam-tille.de

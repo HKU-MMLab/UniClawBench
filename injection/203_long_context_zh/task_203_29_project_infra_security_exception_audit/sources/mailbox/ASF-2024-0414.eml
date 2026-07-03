@@ -1,0 +1,194 @@
+Message-ID: <53de8a5a-6026-45d6-8147-9ebf96897da2@gmail.com>
+X-Clawbench-ID: ASF-2024-0414
+Date: Fri, 5 Apr 2024 09:14:52 +0200
+From: jean-frederic clere <jfclere@gmail.com>
+To: dev@httpd.apache.org, Ruediger Pluem <rpluem@apache.org>
+Subject: Re: pytest results for 2.4.59
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-04.mbox
+
+On 4/5/24 07:55, Ruediger Pluem wrote:
+>
+>
+> On 4/5/24 12:59 AM, Rainer Jung wrote:
+>> I think I fixed all test failures, hopefully in the correct way. More eyes welcome.
+>>
+>> I have a few additional sporadic ERRORS:
+>>
+>> A] ERROR during teardown check for log file errors or warnings (twice):
+>>
+>> 04.04.2024 21:14:42.205465 _______________ ERROR at teardown of TestStatus.test_md_920_020 ________________
+>> 04.04.2024 21:14:42.205465 ERROR modules/md/test_920_status.py::TestStatus::test_md_920_020 - AssertionE...
+>>
+>> 04.04.2024 21:14:42.205465 E       AssertionError: apache logged 1 errors and 0 warnings:
+>> 04.04.2024 21:14:42.205465 E         [Thu Apr 04 21:12:29.381511 2024] [md:error] [pid 4169] (22)Invalid argument: no certificates
+>> in non-empty chain /path/to/gen/apache/md/staging/one.test.test-md-702-070-1712257797.org/pubcert.pem
+>>
+>>
+>> 04.04.2024 21:03:26.382051 _______________ ERROR at teardown of TestStatus.test_md_920_020 ________________
+>> 04.04.2024 21:03:26.382360 ERROR modules/md/test_920_status.py::TestStatus::test_md_920_020 - AssertionE...
+>>
+>> 04.04.2024 21:03:26.382051 E       AssertionError: apache logged 1 errors and 1 warnings:
+>> 04.04.2024 21:03:26.382051 E         [Thu Apr 04 21:00:48.924286 2024] [md:error] [pid 8717:tid 139629962274560] (20014)Internal
+>> error (specific information not available): test-md-702-041-1712256790.org: asked to retrieve chain, but no order in context
+>> 04.04.2024 21:03:26.382051 E         [Thu Apr 04 21:00:48.924229 2024] [md:warn] [pid 8717:tid 139629962274560] error generate
+>> pkey RSA 3072
+>>
+>> B] Hanging httpd child processes
+>>
+>> This happens only on RHEL 9 with worker MPM and can be notices by a dramatic slowdown of the tests. There's a lot of messages
+>>
+>> AH00045: child process 1067703 still did not exit, sending a SIGTERM
+>>
+>> and
+>>
+>> AH00276: the listener thread didn't exit
+>>
+>> It happened in
+>>
+>> modules/core/test_001_encoding.py::TestEncoding::test_core_001_20[test2-/10%25abnormal.txt-200]
+>>
+>> modules/md/test_920_status.py::TestStatus::test_md_920_020
+>>
+>> modules/proxy/test_02_unix.py::TestProxyUds::test_proxy_02_003[mixed-500]
+>>
+>> but I don't know, whether it might happen elsewhere also, because it is sporadic.
+>>
+>> What I see in the error logs for one hanging child process:
+>>
+>> - most threads terminate with
+>>
+>> [Thu Apr 04 22:42:59.617953 2024] [ssl:trace3] [pid 1067703:tid 140619680433728] ssl_engine_kernel.c(2223): [client
+>> 127.0.0.1:40686] OpenSSL: Write: SSL negotiation finished successfully
+>> [Thu Apr 04 22:42:59.617972 2024] [ssl:trace6] [pid 1067703:tid 140619680433728] ssl_engine_io.c(154): [client 127.0.0.1:40686]
+>> bio_filter_out_write: flush
+>> [Thu Apr 04 22:42:59.617981 2024] [ssl:debug] [pid 1067703:tid 140619680433728] ssl_engine_io.c(1146): [client 127.0.0.1:40686]
+>> AH02001: Connection closed to child 0 with standard shutdown (server test1.tests.httpd.apache.org:443)
+>>
+>> - watchdog thread terminates (?) with
+>>
+>> [Thu Apr 04 22:43:00.902666 2024] [md:debug] [pid 1067703:tid 140619697219136] md_reg.c(1163): test-md-810-003a-1712260944.org:
+>> staging done
+>> [Thu Apr 04 22:43:00.903951 2024] [md:notice] [pid 1067703:tid 140619697219136] AH10059: The Managed Domain
+>> test-md-810-003a-1712260944.org has been setup and changes will be activated on next (graceful) server restart.
+>> [Thu Apr 04 22:43:00.904418 2024] [md:debug] [pid 1067703:tid 140619697219136] mod_md_drive.c(229): AH10107: next run in 11 hours
+>> 59 minutes 58 seconds
+>> [Thu Apr 04 22:43:01.204981 2024] [md:debug] [pid 1067703:tid 140619697219136] mod_md_drive.c(236): AH10058: md watchdog stopping
+>> [Thu Apr 04 22:43:01.205094 2024] [watchdog:debug] [pid 1067703:tid 140619697219136] mod_watchdog.c(257): AH02973: Singleton
+>> Watchdog (_md_renew_) stopping
+>>
+>> - one worker thread seems not to stop:
+>>
+>> [Thu Apr 04 22:42:59.768569 2024] [core:trace5] [pid 1067703:tid 140619672041024] protocol.c(714): [client 127.0.0.1:48748]
+>> Request received from client: GET /.well-known/acme-challenge/3VAiCadJ5do2TuwIbbh3w2foMGfnCspnm0eYejBSC9E HTTP/1.1
+>> [Thu Apr 04 22:42:59.768667 2024] [md:debug] [pid 1067703:tid 140619672041024] mod_md.c(1385): [client 127.0.0.1:48748] loading
+>> challenge for test-md-810-003a-1712260944.org (/.well-known/acme-challenge/3VAiCadJ5do2TuwIbbh3w2foMGfnCspnm0eYejBSC9E)
+>> [Thu Apr 04 22:42:59.768698 2024] [http:trace3] [pid 1067703:tid 140619672041024] http_filters.c(1141): [client 127.0.0.1:48748]
+>> Response sent with status 200, headers:
+>> [Thu Apr 04 22:42:59.768706 2024] [http:trace5] [pid 1067703:tid 140619672041024] http_filters.c(1150): [client 127.0.0.1:48748]
+>> Date: Thu, 04 Apr 2024 20:42:59 GMT
+>> [Thu Apr 04 22:42:59.768712 2024] [http:trace5] [pid 1067703:tid 140619672041024] http_filters.c(1153): [client 127.0.0.1:48748]
+>> Server: Apache/2.4.59 (Unix) OpenSSL/3.1.5
+>> [Thu Apr 04 22:42:59.768718 2024] [http:trace4] [pid 1067703:tid 140619672041024] http_filters.c(971): [client 127.0.0.1:48748]
+>> Content-Length: 88
+>> [Thu Apr 04 22:42:59.768724 2024] [http:trace4] [pid 1067703:tid 140619672041024] http_filters.c(971): [client 127.0.0.1:48748]
+>> Connection: close
+>> [Thu Apr 04 22:42:59.769616 2024] [core:trace6] [pid 1067703:tid 140619672041024] core_filters.c(828): [client 127.0.0.1:48748]
+>> writev_nonblocking: 227/227
+>>
+>> I do not know, whether it is always this request, but that is one example I could extract from the (trace8) error log.
+>>
+>> No idea, why I can only observe this (until now) on RHEL 9 with worker. Not woth event or prefork, not on RHEL 7 and 8 and SLES 12
+>> and 15.
+>
+> Are you able to provide a stacktrace of the hanging process (thread apply all bt full)?
+
+(gdb) bt full
+#0  0x00007f8b4cbda087 in __GI___select (nfds=nfds@entry=0,
+readfds=readfds@entry=0x0, writefds=writefds@entry=0x0,
+exceptfds=exceptfds@entry=0x0,
+     timeout=timeout@entry=0x7ffd961c9d50) at
+../sysdeps/unix/sysv/linux/select.c:69
+         sc_ret = -4
+         sc_cancel_oldtype = 0
+         sc_ret = <optimized out>
+         s = <optimized out>
+         us = <optimized out>
+         ns = <optimized out>
+         ts64 = {tv_sec = 0, tv_nsec = 155601612}
+         pts64 = 0x7ffd961c9cf0
+         r = <optimized out>
+#1  0x00007f8b4cd19242 in apr_sleep (t=t@entry=500000) at
+time/unix/time.c:249
+         tv = {tv_sec = 0, tv_usec = 500000}
+#2  0x0000000000440813 in join_workers (listener=0x7f8b44004e50,
+threads=threads@entry=0xdf6f70, mode=mode@entry=2) at worker.c:1069
+         iter = 7
+         i = <optimized out>
+         rv = <optimized out>
+         thread_rv = 0
+#3  0x00000000004413bd in child_main
+(child_num_arg=child_num_arg@entry=2, child_bucket=child_bucket@entry=0)
+at worker.c:1310
+         threads = 0xdf6f70
+         rv = 1
+         ts = 0xdf7040
+         thread_attr = 0xe03170
+         start_thread_id = 0xdf70a0
+         i = <optimized out>
+#4  0x00000000004416fa in make_child (s=0xe08f80, slot=slot@entry=2,
+bucket=0) at worker.c:1376
+         pid = 0
+#5  0x000000000044179e in startup_children (number_to_start=1) at
+worker.c:1403
+         i = 2
+#6  0x000000000044290d in worker_run (_pconf=<optimized out>,
+plog=0xdc67d0, s=0xe08f80) at worker.c:1928
+         listen_buckets = 0xdf9df0
+         num_buckets = 1
+         remaining_children_to_start = <optimized out>
+         rv = <optimized out>
+         id = "0", '\000' <repeats 14 times>
+         i = <optimized out>
+#7  0x0000000000456580 in ap_run_mpm (pconf=pconf@entry=0xd95ca0,
+plog=0xdc67d0, s=0xe08f80) at mpm_common.c:102
+         pHook = <optimized out>
+         n = 0
+         rv = -1
+#8  0x0000000000433575 in main (argc=<optimized out>, argv=<optimized
+out>) at main.c:882
+         c = 102 'f'
+         showcompile = <optimized out>
+         showdirectives = <optimized out>
+         confname = <optimized out>
+--Type <RET> for more, q to quit, c to continue without paging--
+         def_server_root = <optimized out>
+         temp_error_log = <optimized out>
+         error = <optimized out>
+         process = 0xd95c70
+         pconf = 0xd95ca0
+         plog = 0xdc67d0
+         ptemp = 0xe3dec0
+         pcommands = <optimized out>
+         opt = 0xdc6740
+         rv = <optimized out>
+         mod = <optimized out>
+         opt_arg = 0x7ffd961cab64
+"/home/jfclere/httpd-trunk/test/pyhttpd/../gen/apache/conf/httpd.conf"
+         signal_server = <optimized out>
+         rc = <optimized out>
+
+Weird... only one thread
+
+>
+> Regards
+>
+> Rüdiger
+>
+
+--
+Cheers
+
+Jean-Frederic

@@ -1,0 +1,25 @@
+Message-ID: <1027119059.10143.3.camel@localhost.localdomain>
+X-Clawbench-ID: CAM-2003-0920
+Date: Sat, 20 Jul 2002 10:50:58 +1200
+From: Mark Derricutt <mark@talios.com>
+To: rpm-zzzlist@freshrpms.net
+Subject: Re: Gnome 2
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01126.d32e9821c5b4a8c537f1a4614a293a52
+
+On Fri, 2002-07-19 at 09:09, Jesse Keating wrote:
+
+> And you think a batch of gnome2 rpms is going to solve that?
+> (no offense)
+
+Not quite, but if I got gnome2 installed, then my guess is that gtk2
+would also be fully installed, which would let me use the new pan.
+
+That and I'd like to try gnome2 anyway.
+
+
+_______________________________________________
+RPM-List mailing list <RPM-List@freshrpms.net>
+http://lists.freshrpms.net/mailman/listinfo/rpm-list

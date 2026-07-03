@@ -1,0 +1,30 @@
+Message-ID: <200208191215.aa10146@salmon.maths.tcd.ie>
+X-Clawbench-ID: CAM-2003-0272
+Date: Mon, 19 Aug 2002 12:15:35 +0100
+From: Niall Brady <bradyn@maths.tcd.ie>
+To: webdev@linux.ie
+Subject: Re: [Webdev] site monitroring service?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00515.b39512509fd4f39fb1cf50248c37564f
+
+On Mon, 19 Aug 2002 12:01:02 BST, Adrian Murphy said:
+>
+>I wonder could anyone reccommend a good
+>website monitoring service-with sms alerts.
+>thx and sorry to be OT.
+
+It sounds more like you're looking for a commercial service, in which
+case "ain't got a bog", but on the offchance that you're looking for
+software, try nagios. (www.nagios.org)
+
+It'll do that and a lot more.
+
+--
+	Niall
+
+_______________________________________________
+Webdev mailing list
+Webdev@linux.ie
+http://www.linux.ie/mailman/listinfo/webdev

@@ -1,0 +1,29 @@
+Message-ID: <e123c11c-2861-92a2-2e93-9aa62c70f3af@apache.org>
+X-Clawbench-ID: ASF-2024-0385
+Date: Wed, 14 Feb 2024 11:06:03 +0100
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: using changes-entries or write in CHANGES directly
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-02.mbox
+
+On 2/14/24 10:53 AM, jean-frederic clere wrote:
+> Hi,
+>
+> Are there any rules to use changes-entries or write directly in CHANGES?
+>
+
+
+IMHO change-entries is preferred. See http://svn.apache.org/viewvc/httpd/httpd/trunk/README.CHANGES?view=markup
+
+I just noticed that we probably need a better cleanup mechanism for change-entries in trunk as I guess that
+we do not want to add backported changes to the trunk CHANGES file. But this problem has been there in the past
+as well that direct edits to CHANGES in trunk were not properly reverted once this change was backported.
+But the usage of change-entries should ease this process.
+
+
+Regards
+
+Rüdiger

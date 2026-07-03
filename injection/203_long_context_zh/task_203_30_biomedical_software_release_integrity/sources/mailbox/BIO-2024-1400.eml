@@ -1,0 +1,18 @@
+Message-ID: <80b657488ce6013c08caabaeeca1021b0335df95.camel@riseup.net>
+X-Clawbench-ID: BIO-2024-1400
+Date: Tue, 22 Feb 2022 09:49:13 -0500
+From: "M. Zhou" <lumin@debian.org>
+To: Debian Science List <debian-science@lists.debian.org>
+Subject: Re: Google Summer of Code, Debian Science
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2022_02_msg00056.html
+
+On Tue, 2022-02-22 at 12:52 +0100, Drew Parsons wrote:
+>
+> Also useful to report their performance with the various BLAS
+> alternatives.
+
+Looking forward to it. I'm glad to provide pointers in terms of
+our BLAS and LAPACK packaging.

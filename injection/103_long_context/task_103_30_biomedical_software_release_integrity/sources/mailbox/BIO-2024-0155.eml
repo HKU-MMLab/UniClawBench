@@ -1,0 +1,52 @@
+Message-ID: <3640094.usQuhbGJ8B@riemann>
+X-Clawbench-ID: BIO-2024-0155
+Date: Sat, 06 Apr 2024 11:29:08 -0500
+From: Steven Robbins <steve@sumost.ca>
+To: debian-med <debian-med@lists.debian.org>
+Subject: Re: Debian-Med policy proposal: 64-bit & little-endian only* for new packages
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_04_msg00011.html
+
+On Saturday, April 6, 2024 7:39:10 A.M. CDT Michael R. Crusoe wrote:
+> On 29/03/2024 19.44, Steven Robbins wrote:
+
+> > I am left with a question whether [reactively dropping troublesome
+> > architectures] is what you are proposing, or
+> > whether you mean to preemptively restrict the architectures even when
+> > they are not troublesome?  I would support the former but the latter
+> > position seems unwarranted to me.
+>
+> At least the first, but preferably also the second. Why waste the computing
+> resources / climate damage / maintainer time when that does not benefit our
+> users?
+
+I guess I would say that, to me, the contention that there is a waste of
+resources like maintainer time is unproven.  I have read all the replies but
+saw nothing that convinces me of that.
+
+What is your estimate of fraction of troublesome packages?
+
+> Yes, it is true that compiling for 32-bit and/or big-endian architectures
+> occasionally highlights coding errors that were otherwise hidden and could
+> cause problems later. But I'm proposing that it isn't worth it, and that if
+> a member of the team wishes to restrict the architectures built, they
+> should do so.
+
+To be very precise: I absolutely agree with the position that  one doesn't
+need to adopt heroic efforts to deal with issues on minority architectures -
+which, in my mind, includes all non-release architectures.  As I say, I adhere
+to this myself and years ago restricted ITK for this reason.  Under current
+policy.
+
+In my case, ITK was far and away an outlier.  Is your experience different?  If
+we were to adopt policy language that makes it easier to "opt out" of
+universal architecture coverage - but not change the default - what fraction
+of packages do you expect you'd choose to opt out on?
+
+At this point, I don't see a need to change the default to "64 bits only" for
+everything in the debian-med umbrella.  That seems counter to the Debian
+spirit.
+
+-Steve

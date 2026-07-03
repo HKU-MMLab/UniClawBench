@@ -1,0 +1,62 @@
+Message-ID: <e8ee9676-78e1-b072-a798-b31c236880df@kippdata.de>
+X-Clawbench-ID: ASF-2024-1241
+Date: Sun, 24 Apr 2022 22:44:06 +0200
+From: Rainer Jung <rainer.jung@kippdata.de>
+To: dev@httpd.apache.org
+Subject: Re: pytest: test_101_ssl_reneg.py with OpenSSL 3.0.2 triggers error  in TestBuffering.test_h2_712_03
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-04.mbox
+
+Cool, thanks for the pointer. Will report back!
+
+Am 24.04.2022 um 22:29 schrieb Stefan Eissing:
+> Hi Rainer,
+>
+> there is a list of patterns and APLOGNOs that are allowed to happen. In the http2 tests, those are defined in env.py, lines 88-97.
+>
+> If we get new ones with openssl 3.0.2, we need to add them there. Could you give this a shot?
+>
+> Kind Regards,
+>
+> Stefan
+>
+>> Am 24.04.2022 um 22:03 schrieb Rainer Jung <rainer.jung@kippdata.de>:
+>>
+>> Hi all,
+>>
+>> at the end of the test runs in the pytest suite, TestBuffering.test_h2_712_03 checks for warnings or errors logged in the httpd error log. None are allowed, but test
+>>
+>> test_101_ssl_reneg.py
+>>
+>> [ssl:error] [pid 15298:tid 140040420189952] SSL Library Error: error:0A0000C1:SSL routines::no shared cipher -- Too restrictive SSLCipherSuite or using DSA server certificate?
+>> [ssl:error] [pid 15298:tid 140040411797248] SSL Library Error: error:0A0000C7:SSL routines::peer did not return a certificate -- No CAs known to server for verification?
+>> [ssl:error] [pid 15299:tid 140040378226432] SSL Library Error: error:0A0000C7:SSL routines::peer did not return a certificate -- No CAs known to server for verification?
+>> [ssl:error] [pid 15299:tid 140040369833728] SSL Library Error: error:0A0000C1:SSL routines::no shared cipher -- Too restrictive SSLCipherSuite or using DSA server certificate?
+>>
+>> This is with OpenSSL 3.0.2. It does not happen with OpenSSL 1.1.1n (server and curl, but the nghttp2 commandline tools always using 3.0.2).
+>>
+>> I added time stamps, so I think the relevant tests, that produce the messages are:
+>>
+>> 24.04.2022 10:07:50.347236 test/modules/http2/test_101_ssl_reneg.py::TestSslRenegotiation::test_h2_101_03 PASSED:
+>>
+>> [Sun Apr 24 10:07:50.337861 2022] [ssl:error] [pid 9912:tid 139900498208512] SSL Library Error: error:0A0000C1:SSL routines::no shared cipher -- Too restrictive SSLCipherSuite or using DSA server certificate?
+>>
+>> 24.04.2022 10:07:50.459491 test/modules/http2/test_101_ssl_reneg.py::TestSslRenegotiation::test_h2_101_04 PASSED:
+>>
+>> [Sun Apr 24 10:07:50.451743 2022] [ssl:error] [pid 9912:tid 139900506601216] SSL Library Error: error:0A0000C7:SSL routines::peer did not return a certificate -- No CAs known to server for verification?
+>>
+>> 24.04.2022 10:07:50.580942 test/modules/http2/test_101_ssl_reneg.py::TestSslRenegotiation::test_h2_101_05 PASSED:
+>>
+>> [Sun Apr 24 10:07:50.572229 2022] [ssl:error] [pid 9911:tid 139900473030400] SSL Library Error: error:0A0000C7:SSL routines::peer did not return a certificate -- No CAs known to server for verification?
+>>
+>> 24.04.2022 10:07:50.862277 test/modules/http2/test_102_require.py::TestRequire::test_h2_102_01 PASSED:
+>>
+>> [Sun Apr 24 10:07:50.853262 2022] [ssl:error] [pid 9912:tid 139900389103360] SSL Library Error: error:0A0000C1:SSL routines::no shared cipher -- Too restrictive SSLCipherSuite or using DSA server certificate?
+>>
+>> I haven't thought about how to fix this, first wanted to make it known.
+>>
+>> Thanks and regards,
+>>
+>> Rainer

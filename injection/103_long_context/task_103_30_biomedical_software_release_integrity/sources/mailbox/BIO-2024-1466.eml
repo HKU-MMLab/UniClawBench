@@ -1,0 +1,30 @@
+Message-ID: <20231229060541.2uakscep7sohqo6q@office.mailbox.org>
+X-Clawbench-ID: BIO-2024-1466
+Date: Fri, 29 Dec 2023 11:35:41 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: Please help fixing meson/cmake code of btllib to use Debian packaged libargparse
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_12_msg00076.html
+
+On Thu, Dec 28, 2023 at 10:28:26PM +0100, Andreas Tille wrote:
+> Am Thu, Dec 28, 2023 at 03:28:54PM +0530 schrieb Nilesh Patra:
+> >
+> > Fixed the build. Now it fails at dh_missing due to python stuff not being installed.
+> > I am not sure if you want to create a new bin pkg with python wrapper or not - so I
+> > leave the onus of finalizing it onto you.
+>
+> I've added python3-btllib but its not that easy since we obviously need
+> to add different modules for Python3.11 and Python3.12.  I have no spare
+> cycles to implement this and leave it to someone who might be faster
+> than I (probably not before 9. January).
+
+On a brief look, it does not seem easy and would mean maintaining a debian specific
+patch for ever which maybe non-trivial for future versions.
+
+Can we not support just the default python3-dev?
+
+Best,
+Nilesh

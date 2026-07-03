@@ -1,0 +1,34 @@
+Message-ID: <77628265-3ADC-434C-B53D-F834CB679F1B@apachelounge.com>
+X-Clawbench-ID: ASF-2024-0329
+Date: Sat, 4 Jun 2022 13:29:11 +0200
+From: Steffen <info@apachelounge.com>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.54-rc1 as httpd-2.4.54
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-06.mbox
+
+No apr.h in httpd/include. In APR yes, but not the line you mention.
+
+I am going out of town now.  Monday again.
+
+Maybe Gregg can chime in.
+
+
+> Op 4 jun. 2022 om 13:18 heeft Stefan Eissing <stefan@eissing.org> het volgende geschreven:
+>
+> ﻿How is the definition in your include/apr.h for APR_TCP_NOPUSH_FLAG? On my macOS it is:
+>
+> #define APR_TCP_NOPUSH_FLAG       TCP_NOPUSH
+>
+> It maybe that the added lines
+>
+> #if APR_TCP_NOPUSH_FLAG && !defined(__APPLE__)
+>
+> needs a check for Windows too?
+>
+>> Am 04.06.2022 um 12:49 schrieb SteffenAL <info@apachelounge.com>:
+>>
+>> r1901201
+>

@@ -1,0 +1,52 @@
+Message-ID: <ZUM8SmmrotZ9q-cH@an3as.eu>
+X-Clawbench-ID: BIO-2024-0410
+Date: Thu, 2 Nov 2023 07:06:02 +0100
+From: Andreas Tille <andreas@fam-tille.de>
+To: Tony Travis <tony.travis@minke-informatics.co.uk>
+Subject: Re: canu
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_11_msg00004.html
+
+Hi Tony,
+
+Am Wed, Nov 01, 2023 at 05:11:41PM +0000 schrieb Tony Travis:
+>
+> Sorry, the attached screenshot with your picture on it is what I read, but I
+> didn't notice that it was the upstream README.md.
+
+Ohhhh, dear, if I would have written all the stuff where Github
+instances put my picture on it, I would probably need a couple of life
+times. ;-P
+
+> > BTW, should we take the message that it makes sense to suggest
+> > slurm-client for canu from your observation?
+>
+> No, because "canu" works without "Slurm":
+
+Yes, it works without slurm.  If it would really need slurm we would use
+Recommends or even Depends.  Suggests means that it might work better
+under some circumstances.  I'm just undecided because slurm itself needs
+a bit more than just install the client package and you have immediate
+advantage without more administration.
+
+> Our problem was that the saved
+> state of the Slurm controller was incompatible with the upgraded version of
+> Slurm. I'm not sure how that happened, but this is not my server and I was
+> simply helping to diagnose why "canu" crashed.
+>
+> Unfortunately, I didn't save the error messages, but I saw that "canu" was
+> reporting problems submitting a job to "Slurm". I installed "canu" in a
+> Bioconda env so that my colleague could continue his work, then I removed
+> the stale job-state information and restarted "Slurm".
+>
+> At some point, I'll reinstall "canu" from the Med-Bio package, but at
+> present I don't want to disrupt the work on someone else's server. I'll use
+> the Ubuntu Bug-Tracker to report any issues after reinstalling.
+
+Thanks a lot for the precise report
+    Andreas.
+
+--
+http://fam-tille.de

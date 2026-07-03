@@ -1,0 +1,34 @@
+Message-ID: <20020922163819.GB25030@kluge.net>
+X-Clawbench-ID: CAM-2003-1485
+Date: Sun, 22 Sep 2002 12:38:20 -0400
+From: Theo Van Dinter <felicity@kluge.net>
+To: Justin Mason <yyyy@spamassassin.taint.org>
+Subject: Re: [SAtalk] telesp.net.br?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01509.e13d579ab7ecc89514b343c16ea37ecc
+
+On Sun, Sep 22, 2002 at 02:33:48PM +0100, Justin Mason wrote:
+> I seem to be getting a *lot* of spam relayed via these guys recently.
+> Can others confirm this?
+>
+> if it's the case, I'll come up with a forged-hostname test for it.
+
+I do get some from them, typically some dsl.telesp.net.br host:
+
+% grep -c telesp.net.br *| sort -rn
+spammers-2002-09:59
+spammers-2002-08:64
+spammers-2002-07:23
+spammers-2002-06:13
+spammers-2002-05:4
+spammers-2002-04:2
+
+Definitely increasing per month.  Percentage-wise:  2002-09 has 1212
+spams in it, so 59/1212 is about 4.8%.  Last month was 3.6%.
+
+--
+Randomly Generated Tagline:
+I don't believe I've ever cuddled my elses.
+              -- Larry Wall in <199806221550.IAA07171@wall.org>

@@ -1,0 +1,59 @@
+task_id: task_102_21_product_shortlist_offline
+category: 102_exploration
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I'm shopping for a desktop monitor and I've saved a catalog of candidates to
+  compare offline. Help me shortlist the ones that actually match what I need.
+
+  My requirements:
+  - about 27 inches (26-28 is fine),
+  - true 4K (3840x2160) — not 1440p/QHD,
+  - USB-C that carries VIDEO (DisplayPort Alt Mode), so I can drive it from my
+    laptop over a single USB-C cable — a USB-C port that's only for
+    charging/data does NOT count,
+  - buyable NEW directly (not used, like-new, renewed, coupon, or third-party-
+    reseller prices),
+  - the NEW price must be at most $500,
+  - ships to the US, and currently in stock.
+
+  The catalog is at:
+
+      /tmp_workspace/clawbench/sources/catalog/
+
+  Each product `<id>.json` has a `listing` (the search-result summary) and a
+  `detail` (the authoritative product page). IMPORTANT: when the listing and
+  the detail disagree, the DETAIL page wins — some listings look fine but the
+  detail reveals the catch.
+
+  Go through every product, apply the requirements against the detail page, and
+  produce the shortlist of all qualifying monitors.
+
+  Save:
+  - `/tmp_workspace/results/monitor_shortlist.json`: the qualifying monitors,
+    each with id, title, the new direct price, and the evidence (resolution,
+    USB-C video, condition/price-type, US delivery, stock) that it passed.
+  - `/tmp_workspace/results/monitor_rejections.json`: every rejected product
+    with the SPECIFIC reason it failed (e.g. usb-c charging-only, QHD not 4K,
+    used/renewed price, wrong size, no US delivery, over budget, out of stock),
+    citing the detail-page field.
+  - `/tmp_workspace/results/monitor_method.json`: how you applied the
+    listing-vs-detail authority rule and each requirement (reproducible).
+
+  This is fully offline — do not fetch anything from the network.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+sources:
+  - catalog/
+
+codex:
+  max_user_followups: 2

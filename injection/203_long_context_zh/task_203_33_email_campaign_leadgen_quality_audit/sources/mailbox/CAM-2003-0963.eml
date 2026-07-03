@@ -1,0 +1,72 @@
+Message-ID: <1027559672.2056.38.camel@avalon>
+X-Clawbench-ID: CAM-2003-0963
+Date: Wed, 24 Jul 2002 18:14:31 -0700
+From: James Rogers <jamesr@best.com>
+To: fork@spamassassin.taint.org
+Subject: Re: Asteroids anyone ?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00875.88008b119e71ad96444faf3f66f05bee
+
+On Wed, 2002-07-24 at 16:46, bitbitch@magnesium.net wrote:
+> >
+> > Hit or miss, Groundhog Day 2019 is going to be one heck of a show. Book
+> > early, avoid the rush.
+>
+> Hey, meybee by then, Bush's grand plan for a missle defense system will
+> actually pan out and -work- ...
+> I'm not holding my breath, but i'm not going to panic for something thats
+> a little under 17 years away, either.
+
+
+I don't think a ballistic missile defense system will be much help
+against a rock a couple thousand kilometers in diameter.  That's WAY
+outside the design spec for any such system.  Particularly when
+ballistic intercept designs usually don't have any type of warhead
+associated with them, either being kinetic or directed energy weapons.
+
+Contrary to popular belief, ballistic missile defense isn't a hard
+problem (ignoring whether or not it is useful).  The only real challenge
+is materials science, as it really pushes the envelope of materials
+performance requirements to places they've never been; there has been
+some technology crossover with some of the new materials and processes
+they've had to come up with.  The actual discrimination algorithms,
+while way more advanced than anything you'll see in the private sector
+(and classified, to keep it that way), are usually run on a crusty old
+MIPS R3k embedded processor or similar, with a low-to-mid range DSP to
+help out. It is not computationally intensive by any means.
+
+I used to be tangentially involved in various ballistic missile
+intercept weapon programs many years ago and am pretty familiar with the
+technologies that go into them.  Most of the arguments against it from a
+technological standpoint are ignorant bullshit, and have lead me to
+believe that hardly anyone understands the technical parameters of
+ballistic missile intercept.  And the arguments that are made without
+reference to the capability of the technology are neither particularly
+convincing nor conclusive.
+
+In summary:
+
+1) Ballistic missile intercept technology is useless on a big rock.  You
+are much better off using heavy-lift space technology to deliver a big
+nuke (or small nuke, depending on your plan).
+
+2) State-of-the-art ballistic missile intercept technology is far more
+competent than most people imagine it is, and has discrimination
+capabilities that exceed most popular belief.  It better be -- they've
+had twenty years to work on it.
+
+3) I've never heard a really convincing argument against deploying
+ballistic missile intercept technology, particularly considering most of
+the R&D investment has already been made. I don't really care about it
+one way or the other, but I also don't see why other people have fits
+over it either.
+
+Cheers,
+
+-James Rogers
+ jamesr@best.com
+
+
+http://xent.com/mailman/listinfo/fork

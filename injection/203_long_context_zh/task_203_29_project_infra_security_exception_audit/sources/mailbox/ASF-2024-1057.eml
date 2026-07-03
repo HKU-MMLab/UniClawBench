@@ -1,0 +1,80 @@
+Message-ID: <CAA=k7mXaJAZiHwOkSSNp-ysyMOMRhX+gw+Dd3fFWEYLfdXkz0g@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1057
+Date: Wed, 3 May 2023 08:50:38 +0200
+From: Mario Brandt <jblond@gmail.com>
+To: dev@httpd.apache.org, Pavel Lyalyakin <pavel.lyalyakin@visualsvn.com>
+Subject: Re: httpd on Windows crashes when ErrorLog path in httpd.conf is invalid
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-05.mbox
+
+Hi Pavel,
+the 0xc0000005 error is an access violation on Windows. That error
+also appears when a hard drive dies.
+That isn't new in 2.4.56. I tested that with earlier versions.
+
+Your dump helped to trace. This is related to the VCRUNTIME not
+exclusive to httpd.
+
+Sadly httpd -S does not notice that configuration mistake.
+
+Cheers
+Mario
+
+On Tue, 2 May 2023 at 17:08, Pavel Lyalyakin via dev
+<dev@httpd.apache.org> wrote:
+>
+> Hello,
+>
+> It appears that httpd 2.4.56 crashes on Windows when httpd.conf has an
+> invalid path in the ErrorLog directive:
+> [[[
+> ErrorLog "z:/abc.log"
+> ]]]
+> My testing computer does not have volume 'z', so the path is invalid.
+>
+> Crash dump is attached.
+>
+> The problem reproduces with httpd 2.4.56 and 2.4.57 on Windows 10 22H2
+> (OS Build 19045.2846). I used httpd 2.4.56 bundled with the latest
+> 'XAMPP[1] for Windows' release for reproducing this crash.
+> [[[
+> Faulting application name: httpd.exe, version: 2.4.56.0, time stamp: 0x64072c6c
+> Faulting module name: VCRUNTIME140.dll, version: 14.32.31326.0, time
+> stamp: 0x49b85383
+> Exception code: 0xc0000005
+> Fault offset: 0x0000000000001fad
+> Faulting process id: 0x1368
+> Faulting application start time: 0x01d97d06056ef31f
+> Faulting application path: c:\xampp\apache\bin\httpd.exe
+> Faulting module path: C:\WINDOWS\SYSTEM32\VCRUNTIME140.dll
+> Report Id: b7d45bfb-9d55-4145-993c-68fa24b62c67
+> Faulting package full name:
+> Faulting package-relative application ID:
+> ]]]
+> [[[
+> Fault bucket 1650965393206579658, type 4
+> Event Name: APPCRASH
+> Response: Not available
+> Cab Id: 0
+>
+> Problem signature:
+> P1: httpd.exe
+> P2: 2.4.56.0
+> P3: 64072c6c
+> P4: VCRUNTIME140.dll
+> P5: 14.32.31326.0
+> P6: 49b85383
+> P7: c0000005
+> P8: 0000000000001fad
+> P9:
+> P10:
+> ]]]
+>
+> [1]: https://www.apachefriends.org/
+>
+> --
+> With best regards,
+> Pavel Lyalyakin
+> VisualSVN Team

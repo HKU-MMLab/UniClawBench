@@ -1,0 +1,23 @@
+Message-ID: <20211226130614.ce2xwhobkgmds3kb@localhost>
+X-Clawbench-ID: BIO-2024-0529
+Date: Sun, 26 Dec 2021 18:36:14 +0530
+From: Mayuresh <mayuresh@acm.org>
+To: debian-med@lists.debian.org
+Subject: Re: [Karsten.Hilbert@gmx.net: Re: Acquiring Dental RVG on Linux]
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_12_msg00170.html
+
+On Fri, Dec 24, 2021 at 10:20:19AM +0100, Karsten Hilbert wrote:
+> > Notably, the vendor image pushes pixel weighting way to the
+> > extreme, things are either "nearly black" or "nearly white".
+
+Printing a map between raw and transformed pixel values shows that for a
+given raw pixel value there are multiple transformed values i.e. the
+transformation is not a function of pixel's value alone. It seems some
+sort of filtering where the neighboring pixels also influence the
+resultant value.
+
+--
+Mayuresh

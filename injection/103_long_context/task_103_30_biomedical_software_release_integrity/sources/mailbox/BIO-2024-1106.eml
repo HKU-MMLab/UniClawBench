@@ -1,0 +1,178 @@
+Message-ID: <YeqEDVywjS4z+518@an3as.eu>
+X-Clawbench-ID: BIO-2024-1106
+Date: Fri, 21 Jan 2022 10:59:41 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Flavien Bridault <flavien.bridault@ircad.fr>
+Subject: Re: Sight needs to be ported to insighttoolkit5 [Fwd: sight is marked for autoremoval from testing]
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_01_msg00048.html
+
+Hi Flavien,
+
+Am Fri, Jan 21, 2022 at 10:16:19AM +0100 schrieb Flavien Bridault:
+> Well, sorry I assumed this module was not built for a reason... It is
+> actually an experimental module for algorithms, that may be promoted in a
+> real category if they are judged good enough.
+>
+> See https://itk.org/Doxygen/html/group__ITKReview.html.
+
+I intentionally have set ITK Uploaders in CC. ;-)
+
+> So I have no idea if Debian wants to enable this module considering this.
+
+There is no "declared will of Debian".  May be the best idea is you
+file a wishlist bug report so it is documented and adapt sight as
+long as this feature is missing.
+
+> Otherwise, I can give a try to try to build it and propose a patch, but I
+> admit I was a bit afraid by the importance of the package. :)
+
+If you add that patch to the wishlist bug report its chances are
+way higher to get fixed.
+
+> I would prefer to hear the advice of someone maintaining this package before
+> proposing any modification, is there anyone on this list that could help?
+
+I'm personally lacking the knowledge to give more sensible comments.
+
+Kind regards
+
+     Andreas.
+
+
+> *Dr. Flavien BRIDAULT*
+> Director of Software Development
+> IRCAD France & IRCAD Africa
+>
+> flavien.bridault@ircad.fr mailto:flavien.bridault-louchez@ircad.fr>
+> Tél. : +33 (0)3 88 119 201
+> 		IRCAD France
+> http://www.ircad.fr/
+> http://www.ircad.africa/ http://www.ircad.fr/>
+>
+> Suivez l'IRCAD sur Facebook
+> http://www.facebook.com/pages/IRCAD/193785273990141>
+>
+> *IRCAD France*
+> Hôpitaux Universitaires - 1, place de l'Hôpital - 67091 Strasbourg Cedex -
+> FRANCE
+>
+> Le 20/01/2022 à 21:00, Andreas Tille a écrit :
+> > Hi Flavien,
+> >
+> > Am Thu, Jan 20, 2022 at 04:33:28PM +0100 schrieb Flavien Bridault:
+> > > I have understood the problem. The missing image filter has moved in an
+> > > optional module, ITKReview.
+> > >
+> > > Two possible solutions:
+> > >
+> > > 1. modify the ITK package in order to enable the build of the ITKReview
+> > > module
+> > I'm not sure whether I understand this correctly.  We probably want a
+> > feature complete package.  If not our users might be surprised about
+> > missing features in other applications as well.
+> > > 2. remove the filter from sight build - this is what we did on Windows and
+> > > why it builds with ITK5.... ^^
+> > Finally its your decision.
+> >
+> > > This image filter is really non-essential, so I guess it is easier to take
+> > > solution 2, can you confirm please ?
+> > Its perfectly fine whatever you decide.
+> >
+> > Kind regards
+> >
+> >        Andreas.
+> >
+> >
+> > > > Hi Andreas,
+> > > >
+> > > > I am a bit disappointed it doesn't build because we do use ITK5 on
+> > > > Windows.
+> > > >
+> > > > Anyway, I'll take care of this of course, thanks for trying. :)
+> > > >
+> > > > Cheers,
+> > > >
+> > > >
+> > > > *Dr. Flavien BRIDAULT*
+> > > > Director of Software Development
+> > > > IRCAD France & IRCAD Africa
+> > > >
+> > > > flavien.bridault@ircad.fr  mailto:flavien.bridault-louchez@ircad.fr>
+> > > > Tél. : +33 (0)3 88 119 201
+> > > > 		IRCAD France
+> > > > http://www.ircad.fr/
+> > > > http://www.ircad.africa/  http://www.ircad.fr/>
+> > > >
+> > > > Suivez l'IRCAD sur Facebook
+> > > > http://www.facebook.com/pages/IRCAD/193785273990141>
+> > > >
+> > > > *IRCAD France*
+> > > > Hôpitaux Universitaires - 1, place de l'Hôpital - 67091 Strasbourg Cedex
+> > > > - FRANCE
+> > > >
+> > > > Le 12/01/2022 à 15:17, Andreas Tille a écrit :
+> > > > > Hi Flavien,
+> > > > >
+> > > > > as you can see below ITK4 is buggy and we switched to ITK5 anyway so
+> > > > > ITK4 will be removed.  To verify whether sight might build with ITK5
+> > > > > smoothly I simply replaced libinsighttoolkit4-dev by
+> > > > > libinsighttoolkit5-dev in (Build-)Depends[1], but obviously:
+> > > > >
+> > > > > ...
+> > > > > [ 81%] Building CXX object libs/io/dicom/test/CMakeFiles/io_dicomTest.dir/tu/DicomAnonymizerTest.cpp.o
+> > > > > cd /build/sight-21.0.0/obj-x86_64-linux-gnu/libs/io/dicom/test && /usr/bin/c++ -DBOOST_ALL_DYN_LINK -DBOOST_ALL_NO_LIB -DBOOST_ATOMIC_DYN_LINK -DBOOST_CHRONO_DYN_LINK -DBOOST_DATE_TIME_DYN_LINK -DBOOST_FILESYSTEM_DYN_LINK -DBOOST_IOSTREAMS_DYN_LINK -DBOOST_LOG_DYN_LINK -DBOOST_LOG_SETUP_DYN_LINK -DBOOST_REGEX_DYN_LINK -DBOOST_SPIRIT_USE_PHOENIX_V3 -DBOOST_THREAD_DONT_PROVIDE_DEPRECATED_FEATURES_SINCE_V3_0_0 -DBOOST_THREAD_DYN_LINK -DBOOST_THREAD_PROVIDES_FUTURE -DBOOST_THREAD_VERSION=2 -DIO_DICOMTEST_EXPORTS -I/build/sight-21.0.0/obj-x86_64-linux-gnu/libs/core/pch/pchCore/include/pchCore -I/build/sight-21.0.0/obj-x86_64-linux-gnu/libs/io/dicom/include -I/build/sight-21.0.0/libs -I/build/sight-21.0.0/libs/core -I/build/sight-21.0.0/obj-x86_64-linux-gnu/libs/io/base/include -I/build/sight-21.0.0/obj-x86_64-linux-gnu/libs/core/core/include -I/usr/include/libxml2 -I/build/sight-21.0.0/obj-x86_64-linux-gnu/libs/core/data/include -I/build/sight-21.0.0/obj-x86_64-linux-gnu/libs/core/service/include -I/build/sight-21.0.0/obj-x86_64-linux-gnu/libs/core/activity/include -I/build/sight-21.0.0/obj-x86_64-linux-gnu/libs/filter/dicom/include -I/build/sight-21.0.0/obj-x86_64-linux-gnu/libs/geometry/data/include -I/build/sight-21.0.0/obj-x86_64-linux-gnu/libs/io/zip/include -I/build/sight-21.0.0/obj-x86_64-linux-gnu/libs/core/utestData/include -I/build/sight-21.0.0/obj-x86_64-linux-gnu/libs/core/utest/include -isystem /usr/include/gdcm-3.0 -isystem /usr/lib -isystem /usr/include/cppunit -g -O2 -ffile-prefix-map=/build/sight-21.0.0=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -O3 -DNDEBUG -fPIE -fvisibility=hidden -fvisibility-inlines-hidden -march=sandybridge -mtune=generic -mfpmath=sse -fvisibility=hidden -fvisibility-inlines-hidden -Wall -Wextra -Wconversion -Wno-unused-parameter -Wno-ignored-qualifiers -fPIC -std=gnu++17 -include "pch.hpp"  -Winvalid-pch -MD -MT libs/io/dicom/test/CMakeFiles/io_dicomTest.dir/tu/DicomAnonymizerTest.cpp.o -MF CMakeFiles/io_dicomTest.dir/tu/DicomAnonymizerTest.cpp.o.d -o CMakeFiles/io_dicomTest.dir/tu/DicomAnonymizerTest.cpp.o -c /build/sight-21.0.0/libs/io/dicom/test/tu/DicomAnonymizerTest.cpp
+> > > > > /build/sight-21.0.0/libs/filter/image/SpheroidExtraction.cpp:34:10: fatal error: itkLabelGeometryImageFilter.h: No such file or directory
+> > > > >      34 | #include
+> > > > >         |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> > > > > compilation terminated.
+> > > > >
+> > > > >
+> > > > > ... the situation is more complex.  Would you mind switching the
+> > > > > upstream code to ITK5?
+> > > > >
+> > > > > Kind regards
+> > > > >
+> > > > >        Andreas.
+> > > > >
+> > > > >
+> > > > > [1]https://salsa.debian.org/med-team/sight/-/commit/4dfa098d04116ef8c0320e6786e50337d0059ce7
+> > > > >
+> > > > > ----- Weitergeleitete Nachricht von Debian testing autoremoval watch   -----
+> > > > >
+> > > > > Date: Wed, 12 Jan 2022 04:39:32 +0000
+> > > > > From: Debian testing autoremoval watch
+> > > > > To:sight@packages.debian.org
+> > > > > Subject: sight is marked for autoremoval from testing
+> > > > >
+> > > > > sight 21.0.0-3 is marked for autoremoval from testing on 2022-02-09
+> > > > >
+> > > > > It (build-)depends on packages with these RC bugs:
+> > > > > 984284: insighttoolkit4: otb: ftbfs with GCC-11
+> > > > >    https://bugs.debian.org/984284
+> > > > >
+> > > > >
+> > > > >
+> > > > > This mail is generated by:
+> > > > > https://salsa.debian.org/release-team/release-tools/-/blob/master/mailer/mail_autoremovals.pl
+> > > > >
+> > > > > Autoremoval data is generated by:
+> > > > > https://salsa.debian.org/qa/udd/-/blob/master/udd/testing_autoremovals_gatherer.pl
+> > > > >
+> > > > > _______________________________________________
+> > > > > Debian-med-packaging mailing list
+> > > > > Debian-med-packaging@alioth-lists.debian.net
+> > > > > https://alioth-lists.debian.net/cgi-bin/mailman/listinfo/debian-med-packaging
+> > > > >
+> > > > >
+> > > > > ----- Ende weitergeleitete Nachricht -----
+> > > > >
+> >
+> >
+> >
+
+
+--
+http://fam-tille.de

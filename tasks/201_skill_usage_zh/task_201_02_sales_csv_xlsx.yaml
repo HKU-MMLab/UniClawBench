@@ -1,0 +1,55 @@
+task_id: task_201_02_sales_csv_xlsx
+category: 201_skill_usage_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+recording: none
+headed: auto
+task: |
+  能帮我把我们的 Q1 零售导出收尾吗？财务希望今天下班前拿到最终的
+  工作簿，而我还没搞定汇率换算。这里的繁重工作请用工作区的 Excel 技能
+  来完成。两个源 CSV 文件位于
+  /tmp_workspace/clawbench/sources/ —— retail_sales_q1_2024.csv 包含
+  以各门店本币计的订单行，fx_rates_q1_2024.csv 则包含每日的美元
+  换算汇率。
+
+  我需要 /tmp_workspace/results/sales_q1.xlsx，其中有一个 Sales 工作表，
+  保留每一条订单行，补上匹配到的当日汇率，并新增一个 amount_usd 列，
+  用该行自己的币种和 fx_date 从 amount_native 换算而来。请在 amount_usd
+  单元格、合计行以及对账单元格中使用公式，这样财务可以审计这个工作簿，
+  而不是只看到粘贴上去的数值。冻结顶部的表头行，并对本币和美元金额列
+  都使用数值货币格式。在底部添加一个 Total 合计行，对换算后的美元求和，
+  再添加一个 FX_Reconciliation 工作表，每个币种一行，显示本币合计、
+  美元合计和订单数量。
+
+  也请添加一个 Audit_Checks 工作表，包含源数据行数、未匹配上汇率的
+  行数、工作簿的美元合计，以及至少五个有代表性的行级抽查。抽查请覆盖
+  数据的边界情况——例如金额最小的订单、金额最大的、日期最早的、
+  日期最晚的，以及一个中等期限的订单——使用源数据中实际出现的订单 ID。
+  每个抽查应显示源数据的本币金额、匹配到的汇率、工作簿中的美元值，
+  以及一个 OK 标记。
+
+  在交付之前，请在工作簿里放一个简短的叙述性 Notes 工作表，或者在它旁边
+  附一个简短的 notes.md，让财务可以快速读到关键数字。我想看到收入如何
+  按币种拆分、在整个 Q1 里如何逐月变化、各门店之间如何比较、你采用了
+  什么汇率方法——你是按哪个日期字段做关联的、每日汇率从哪里来的——
+  以及折扣相对毛额是如何计入的。保持简洁，但每一点都要以工作簿中具体的
+  数字为依据，方便团队抽查核对。
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+sources:
+  - retail_sales_q1_2024.csv
+  - fx_rates_q1_2024.csv
+skills:
+  - excel-xlsx
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+codex:
+  max_user_followups: 2

@@ -1,0 +1,69 @@
+Message-ID: <Y1BhY9YkGGZ1D9ol@fusion>
+X-Clawbench-ID: BIO-2024-0558
+Date: Wed, 19 Oct 2022 22:43:15 +0200
+From: Étienne Mollier <emollier@emlwks999.eu>
+To: James Bonfield <jkb@sanger.ac.uk>
+Subject: Re: Htslib plugins [EXT]
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00071.html
+
+Hi James,
+
+James Bonfield, on 2022-10-19:
+> On Wed, Oct 19, 2022 at 06:38:56PM +0200, ?tienne Mollier wrote:
+> > If I run the test suite standalone (e.g. in autopkgtest), then
+> > the disabled test now passes, no problem.  I guess I need a mean
+> > to get to the plugins while they are not installed yet (e.g. in
+> > package building context).  In any case this is promising.
+>
+> You can manually set the HTS_PATH environment variable to include the
+> build directory, so those tests would work pre-installed.  I thought
+> our Makefile already did this infact, but it sets it to ".".  Maybe if
+> you have some out-of-tree building going on that would break.
+
+Thanks for the pointer, while it didn't solve the situation, it
+allowed me to check the behavior of htsfile when plugins are
+caught or not.  I had a visible difference, where the htsfile
+failed immediately when plugins were not caught, and failed
+after issuing numerous errors when plugins were actually caught.
+I could realize I was not looking at the right thing.
+
+It turned out the test was failing and plugins were unusable
+because the way build helpers were used erased the linker flags
+instead of completing them.  This caused the flag -rdynamic to
+disappear from the linker command.  This is fixed by the commit
+below[1].
+
+[1]: https://salsa.debian.org/med-team/htslib/-/commit/9b013cdd1222f2a9227f0f76b0126b2112c66ff8
+
+There is probably room for improvement, but it should be good
+for now, and this needs to be done carefully since a previous
+attempt made some symbols disappear from the tracking; this
+might have been sign I would have broken something else.
+
+Have a nice day,  :)
+--
+Étienne Mollier
+Fingerprint:  8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+Sent from /dev/pts/2, please excuse my verbosity.
+On air: Janus - Under The Shadow Of The Moon
+
+PS: I just added the below patch to help build reproducibility.
+This trims a built option which injects the full build path of
+the package into the build artifacts.  In case this topic is of
+interest.
+
+--- htslib.orig/Makefile
++++ htslib/Makefile
+@@ -163,7 +163,9 @@
+ config_vars.h:
+ 	echo '#define HTS_CC "$(CC)"' > $@
+ 	echo '#define HTS_CPPFLAGS "$(CPPFLAGS)"' >> $@
+-	echo '#define HTS_CFLAGS "$(CFLAGS)"' >> $@
++	echo '#define HTS_CFLAGS "$(CFLAGS)"' \
++	| sed 's/-ffile-prefix-map=[^ ]*=.//' \
++	>> $@
+ 	echo '#define HTS_LDFLAGS "$(LDFLAGS)"' >> $@
+ 	echo '#define HTS_LIBS "$(LIBS)"' >> $@

@@ -1,0 +1,34 @@
+Message-ID: <BADF3C947A1BD54FBA75C70C241B0B9E10AA93@ex02.idirect.net>
+X-Clawbench-ID: CAM-2003-0046
+Date: Wed, 14 Aug 2002 18:46:22 -0400
+From: "Harig, Mark A." <maharig@idirect.net>
+To: rpm-zzzlist@freshrpms.net
+Subject: Documentation about RPM macros?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01233.fccdd783a75357fe29b39816a3a3f6f4
+
+Hi,
+
+   Can someone tell me where I can find some
+   documentation about rpm macros?  In
+   particular, I'd like to understand the
+   '%files devel', '%post -p', and '%postun -p'
+   uses described at
+
+    http://freshrpms.net/docs/fight.html
+
+   and, more generally, I'm looking for a
+   more detailed description of the available
+   macros and the options they accept.  There's
+   no description of the above uses of %file,
+   %post, or %postun in the maximum-rpm book.
+
+   Thanks in advance for any help!
+
+---
+
+_______________________________________________
+RPM-List mailing list <RPM-List@freshrpms.net>
+http://lists.freshrpms.net/mailman/listinfo/rpm-list

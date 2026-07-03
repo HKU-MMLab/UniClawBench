@@ -1,0 +1,54 @@
+Message-ID: <Zl92yZFLqTxoUu97@fusion.emlwks999.eu>
+X-Clawbench-ID: BIO-2024-1268
+Date: Tue, 4 Jun 2024 22:19:21 +0200
+From: Étienne Mollier <emollier@debian.org>
+To: Mathieu Malaterre <malat@debian.org>
+Subject: Re: SONAME transition vs reverse dependencies
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_06_msg00003.html
+
+Hi Mathieu,
+
+Nilesh Patra, on 2024-06-04:
+> [~]$ reverse-depends libdcmtk-dev -b
+> Reverse-Build-Depends
+> =====================
+> * amide
+> * ants
+> * biosig
+> * cmtk
+> * dicomscope
+> * elastix
+> * insighttoolkit5
+> * mia
+> * odil
+> * odin
+> * openimageio
+> * orthanc
+> * orthanc-wsi
+> * plastimatch
+>
+> [~]$ reverse-depends libdcmtk17t64 -b
+> No reverse dependencies found
+> [~]$ reverse-depends dcmtk -b
+> Reverse-Build-Depends
+> =====================
+> * odil
+> * sight
+>
+> In total it looks like 15 reverse build depends and it should be possible to
+> build locally (except for maybe itk5). You could use ratt package or
+> ruby-team/meta: https://salsa.debian.org/ruby-team/meta for the same.
+
+If that helps save you some cycles, I have rebuilt itk5 against
+your version of dcmtk in experimental, and I confirm that the
+build went through without regressions.
+
+Have a nice evening,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  pgp: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/1, please excuse my verbosity
+   `-    on air: Colosseum II - Rivers

@@ -1,0 +1,27 @@
+Message-ID: <YpS8qLU5t5uwPWqJ@an3as.eu>
+X-Clawbench-ID: BIO-2024-0326
+Date: Mon, 30 May 2022 14:46:32 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Added autopkgtests for dicomnifti
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_05_msg00035.html
+
+Hi Bilal,
+
+Am Mon, May 30, 2022 at 02:25:41PM +0530 schrieb Mohd Bilal:
+> I've added autopkgtests for dicomnifti[1]. Requesting someone to review
+> and sponsor/grant permissions.
+
+I've done some minor changes (see matrix channel) and uploaded (since
+it was just built here.  Permissions granted in case further uploads
+might be needed anyway.
+
+Thanks a lot for your work on this package
+
+     Andreas.
+
+--
+http://fam-tille.de

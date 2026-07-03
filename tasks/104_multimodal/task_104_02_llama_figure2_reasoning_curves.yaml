@@ -1,0 +1,40 @@
+task_id: task_104_02_llama_figure2_reasoning_curves
+category: 104_multimodal
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  Download the paper "LLaMA: Open and Efficient Foundation Language Models" from
+  arXiv, and recreate the three training curves in Figure 2: `TriviaQA`, `SIQA`,
+  and `PIQA`.
+
+  Requirements:
+  1. You must confirm the correct paper and correct page; do not recreate some other training chart as Figure 2.
+  2. Use Python + matplotlib to draw the three charts separately, preserving the original axes, colors, dashed baseline,
+     legend, titles, and overall layout style.
+  3. Show the four LLaMA curves (7B / 13B / 33B / 65B) and Chinchilla's dashed baseline.
+  4. Compare against the original and revise at least once instead of only drawing a first version.
+  5. Save the results under `/tmp_workspace/results/`, including at least:
+     - `figure2_triviaqa.png`
+     - `figure2_siqa.png`
+     - `figure2_piqa.png`
+     - `figure2_recreate.py`
+     - `notes.md`
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/llama_page8_full.png
+  - references/figure2_full.png
+  - references/figure2_triviaqa.png
+  - references/figure2_siqa.png
+  - references/figure2_piqa.png
+
+codex:
+  max_user_followups: 2

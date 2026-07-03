@@ -1,0 +1,47 @@
+Message-ID: <ZJnNel5DvGuxTVG4@an3as.eu>
+X-Clawbench-ID: BIO-2024-1383
+Date: Mon, 26 Jun 2023 19:40:10 +0200
+From: Andreas Tille <andreas@fam-tille.de>
+To: Thorsten Alteholz <debian@alteholz.de>
+Subject: Re: Request for Sponsorship: VeryFastTree - Parallelized and Optimized Version of FastTree
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_06_msg00022.html
+
+[CCing Debian Med list to keep all relevant people informed.]
+
+Hi Cesar,
+
+besides the technical hints given by Thorsten, please also note that the
+Debian Med team is sponsoring only packages that are maintained at
+
+   https://salsa:debian.org/med-team
+
+Please push your packaging to this team space.  If you are no member of
+the team yet just let me know your salsa login.
+
+Thanks a lot for the effort you've put so far into this package
+
+      Andreas.
+
+Am Mon, Jun 26, 2023 at 06:44:26PM +0200 schrieb Thorsten Alteholz:
+> Hi Cesar,
+>
+> On 26.06.23 17:30, PIÑEIRO POMAR CESAR ALFREDO wrote:
+> >
+> > I have already submitted VeryFastTree to the Debian Mentors platform for
+> > review and inclusion into the official Debian repositories. You can find
+> > the package on the following URL:
+> > https://mentors.debian.net/package/veryfasttree/.
+>
+> please remove the embedded libraries and use the versions already in Debian.
+> Your debian/copyright does not mention all copyright holder, for example
+> Francisco Jose Tapia is missing.
+> Unless the license is not available in /usr/share/common-licenses, the full
+> license text needs to be added to your debian/copyright.
+>
+>   Thorsten
+
+--
+http://fam-tille.de

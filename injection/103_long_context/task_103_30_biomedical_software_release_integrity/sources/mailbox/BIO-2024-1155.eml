@@ -1,0 +1,32 @@
+Message-ID: <20220828174428.ujeiropqjytasvrs@debian>
+X-Clawbench-ID: BIO-2024-1155
+Date: Sun, 28 Aug 2022 23:14:28 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: Mohd Bilal <mdbilal@disroot.org>
+Subject: Re: RFS -- autopkgtest for python-wdlparse
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_08_msg00068.html
+
+On Sun, Aug 28, 2022 at 11:04:13PM +0530, Mohd Bilal wrote:
+> Hello team,
+>
+> I've added autopkgtest for python-wdlparse[1]. Requesting someone to review
+> and sponsor my changes.
+
+Rather than printing the ast, it'd be better to `assert' it equal to expected output.
+Please make this change before you upload.
+
+It'd be even better if you can play around with the ast dump and compare relevant parts.
+
+> [1] - https://salsa.debian.org/med-team/python-wdlparse
+
+| $ dcut dm --uid mdbilal@disroot.org --allow python-wdlparse
+| Uploading commands file to ftp.upload.debian.org (incoming: /pub/UploadQueue/)
+| Picking DM Mohammed Bilal  with fingerprint 2D65BC1EB9665A6E97F9730AB3F5945285219E1F
+| Uploading nilesh-1661708543.dak-commands to ftp-master
+
+--
+Best,
+Nilesh

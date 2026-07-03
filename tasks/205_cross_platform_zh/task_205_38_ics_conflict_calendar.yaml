@@ -1,0 +1,55 @@
+task_id: task_205_38_ics_conflict_calendar
+category: 205_cross_platform_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我需要帮助把一份杂乱的排期请求变成 2026-07-06 那一周的真实日历。这份
+  资料包在这里：
+
+      /tmp_workspace/clawbench/sources/scheduling_packet/
+
+  它包含两份已有的日历和一份团队负责人的请求。请解析该请求，遵循
+  America/Los_Angeles 时区和 09:00-17:00 的工作时间，为这六个被请求的
+  会议各自选出第一个可行的候选时段，并避免与已有的忙碌时段冲突。
+
+  在以下位置保存一份结构化的 JSON 摘要：
+
+      /tmp_workspace/results/parsed_schedule.json
+
+  在以下位置保存新日历：
+
+      /tmp_workspace/results/planning_week_schedule.ics
+
+  在以下位置写一份简短报告：
+
+      /tmp_workspace/results/planning_week_report.md
+
+  JSON/报告必须包含所选会议、被跳过的候选项的原因、hard_conflicts、
+  near_conflicts、所使用的源日历，以及对生成的 ICS 的解析/校验说明。
+
+  最后在真正的日历应用中打开或导入该 ICS，并在以下位置保存一张截图：
+
+      /tmp_workspace/results/planning_week_calendar.png
+
+sources:
+  - scheduling_packet/
+
+services:
+  - name: calendar-ics-setup
+    path: calendar-ics-setup
+    start: bash install.sh
+    oneshot: true
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+codex:
+  max_user_followups: 2

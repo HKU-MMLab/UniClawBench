@@ -1,0 +1,30 @@
+Message-ID: <Zsog_5VKeXhL1dLx@emlwks999.eu>
+X-Clawbench-ID: BIO-2024-0457
+Date: Sat, 24 Aug 2024 20:05:51 +0200
+From: Étienne Mollier <emollier@debian.org>
+To: debian-med@lists.debian.org
+Subject: [help] python-pyani upgrade to 0.2.13.1
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_08_msg00010.html
+
+Aloha,
+
+I have attempted to bump the version of python-pyani to 0.2.13.1
+but the test suite of the module is giving me many difficulties,
+and I don't expect to sort them all by myself timely.  I would
+welcome help from someone more fluent with Python than I am to
+finish the job.  The git repository[0] is up to date.  Salsa
+CI[1] gives an idea of the test items that are failing at the
+moment.
+
+[0]: https://salsa.debian.org/med-team/python-pyani
+[1]: https://salsa.debian.org/med-team/python-pyani/-/jobs/6176496
+
+Have a nice day,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  pgp: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/1, please excuse my verbosity
+   `-    on air: First Band From Outer Space - Smokin'

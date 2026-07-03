@@ -1,0 +1,98 @@
+Message-ID: <CALK=YjMkALFk=16XDTz9ngFXt9qTS52dYAo65_qxBGknfoVnkQ@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0046
+Date: Fri, 10 Mar 2023 10:33:52 -0500
+From: Eric Covener <covener@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] [VOTE] Release httpd-2.4.56-rc1 as httpd-2.4.56
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-03.mbox
+
+Saw another report on users@
+
+Any thoughts on something like this to just allow spaces?
+http://people.apache.org/~covener/patches/rewrite-lax.diff
+
+(this is off my $bigco fork so may not actually apply)
+
+On Thu, Mar 9, 2023 at 3:08 PM BUSH Steve <Steven.BUSH@3ds.com> wrote:
+>
+> >> Maybe we can slip an additional entry into the changelog.
+>
+> >> I think in this case, for now at least, we'd primarily rely on the error_log entry. Did this produce the new AH10410?
+>
+>
+>
+> Yes, the error log did include the AH10410 message.
+>
+>
+>
+> URL encoding the spaces either as \%20 (path or query string) or + (query string) does eliminate the problem for our mappings.
+>
+>
+>
+> From: Eric Covener <covener@gmail.com>
+> Sent: Wednesday, March 8, 2023 8:31 PM
+> To: dev@httpd.apache.org
+> Subject: Re: [VOTE] [VOTE] Release httpd-2.4.56-rc1 as httpd-2.4.56
+>
+>
+>
+> On Wed, Mar 8, 2023 at 11: 02 PM BUSH Steve <Steven. BUSH@ 3ds. com> wrote: Correction! I used our test template for the rule when I e-mailed just now, but once it is converted to the apache httpd. conf format, the actual rule appears in the
+>
+> ZjQcmQR
+>
+> YFpfptBannerEnd
+>
+>
+>
+> On Wed, Mar 8, 2023 at 11:02 PM BUSH Steve <Steven.BUSH@3ds.com> wrote:
+>
+> Correction!
+>
+> I used our test template for the rule when I e-mailed just now, but once it is converted to the apache httpd.conf format, the actual rule appears in the httpd.conf as:
+>
+> RewriteRule ^/zoology/animals/reset/(\d+)$ "/auth/launchjob?Number of Records=$1&__poolid=animal-magic" [B,PT,L,QSA]
+>
+>
+>
+> Thanks for the report.   Time will tell, but I think this is a very fringe case. The space isn't a backreference (where `B` would have fixed it) and a literal with a space in the substitution has to be quite rare (famous last words)
+>
+> I just looked at the mod_rewrite.c source differences from 2.4.55 to 2.4.56 and it’s clear that the use of spaces in the query string of the mapped URL are the cause of the 403 forbidden messages.
+>
+>
+>
+> We can update our httpd.conf mapping code, so it won’t be a problem for us, but it might be worth updating the mod_rewrite documentation on this?
+>
+>
+>
+>
+>
+> Maybe we can slip an additional entry into the changelog.
+>
+> I think in this case, for now at least, we'd primarily rely on the error_log entry. Did this produce the new AH10410?
+>
+>
+>
+>
+>
+> This email and any attachments are intended solely for the use of the individual or entity to whom it is addressed and may be confidential and/or privileged.
+>
+> If you are not one of the named recipients or have received this email in error,
+>
+> (i) you should not read, disclose, or copy it,
+>
+> (ii) please notify sender of your receipt by reply email and delete this email and all attachments,
+>
+> (iii) Dassault Systèmes does not accept or assume any liability or responsibility for any use of or reliance on this email.
+>
+>
+> Please be informed that your personal data are processed according to our data privacy policy as described on our website. Should you have any questions related to personal data protection, please contact 3DS Data Protection Officer https://www.3ds.com/privacy-policy/contact/
+>
+>
+
+
+--
+Eric Covener
+covener@gmail.com

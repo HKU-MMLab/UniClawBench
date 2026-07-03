@@ -1,0 +1,24 @@
+Message-ID: <udlmt5u7w1d.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-0723
+Date: Fri, 03 Feb 2023 07:50:22 -0500
+From: ucko@debian.org (Aaron M. Ucko)
+To: debian-med@lists.debian.org
+Subject: Re: Snippy autopkgtest claims that snpeff is version 0
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_02_msg00010.html
+
+Andreas Tille  writes:
+
+> +Architecture: amd64 arm64
+
+Indeed.  Sorry for making this restriction necessary, and for missing
+the need for it earlier -- I suppose Britney doesn't check very far up
+the reverse dependency tree for autopkgtest regressions, just for
+buildability ones, and doesn't care if an architecture-independent
+package has become buildable on fewer architectures.
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

@@ -1,0 +1,339 @@
+{
+  "description": "Candidate 5-class qualitative color palettes for a scientific line/scatter figure (RGB + hex). Choose the best palette for a figure that must stay readable for red-green colorblind viewers AND when printed in grayscale.",
+  "n_classes": 5,
+  "palettes": {
+    "Set1": {
+      "rgb": [
+        [
+          228,
+          26,
+          28
+        ],
+        [
+          55,
+          126,
+          184
+        ],
+        [
+          77,
+          175,
+          74
+        ],
+        [
+          152,
+          78,
+          163
+        ],
+        [
+          255,
+          127,
+          0
+        ]
+      ],
+      "hex": [
+        "#E41A1C",
+        "#377EB8",
+        "#4DAF4A",
+        "#984EA3",
+        "#FF7F00"
+      ],
+      "note": "ColorBrewer Set1 (bright qualitative)"
+    },
+    "Set2": {
+      "rgb": [
+        [
+          102,
+          194,
+          165
+        ],
+        [
+          252,
+          141,
+          98
+        ],
+        [
+          141,
+          160,
+          203
+        ],
+        [
+          231,
+          138,
+          195
+        ],
+        [
+          166,
+          216,
+          84
+        ]
+      ],
+      "hex": [
+        "#66C2A5",
+        "#FC8D62",
+        "#8DA0CB",
+        "#E78AC3",
+        "#A6D854"
+      ],
+      "note": "ColorBrewer Set2 (muted qualitative)"
+    },
+    "Dark2": {
+      "rgb": [
+        [
+          27,
+          158,
+          119
+        ],
+        [
+          217,
+          95,
+          2
+        ],
+        [
+          117,
+          112,
+          179
+        ],
+        [
+          231,
+          41,
+          138
+        ],
+        [
+          102,
+          166,
+          30
+        ]
+      ],
+      "hex": [
+        "#1B9E77",
+        "#D95F02",
+        "#7570B3",
+        "#E7298A",
+        "#66A61E"
+      ],
+      "note": "ColorBrewer Dark2"
+    },
+    "Paired": {
+      "rgb": [
+        [
+          166,
+          206,
+          227
+        ],
+        [
+          31,
+          120,
+          180
+        ],
+        [
+          178,
+          223,
+          138
+        ],
+        [
+          51,
+          160,
+          44
+        ],
+        [
+          251,
+          154,
+          153
+        ]
+      ],
+      "hex": [
+        "#A6CEE3",
+        "#1F78B4",
+        "#B2DF8A",
+        "#33A02C",
+        "#FB9A99"
+      ],
+      "note": "ColorBrewer Paired"
+    },
+    "Accent": {
+      "rgb": [
+        [
+          127,
+          201,
+          127
+        ],
+        [
+          190,
+          174,
+          212
+        ],
+        [
+          253,
+          192,
+          134
+        ],
+        [
+          255,
+          255,
+          153
+        ],
+        [
+          56,
+          108,
+          176
+        ]
+      ],
+      "hex": [
+        "#7FC97F",
+        "#BEAED4",
+        "#FDC086",
+        "#FFFF99",
+        "#386CB0"
+      ],
+      "note": "ColorBrewer Accent"
+    },
+    "Pastel1": {
+      "rgb": [
+        [
+          251,
+          180,
+          174
+        ],
+        [
+          179,
+          205,
+          227
+        ],
+        [
+          204,
+          235,
+          197
+        ],
+        [
+          222,
+          203,
+          228
+        ],
+        [
+          254,
+          217,
+          166
+        ]
+      ],
+      "hex": [
+        "#FBB4AE",
+        "#B3CDE3",
+        "#CCEBC5",
+        "#DECBE4",
+        "#FED9A6"
+      ],
+      "note": "ColorBrewer Pastel1 (pastel)"
+    },
+    "jet": {
+      "rgb": [
+        [
+          0,
+          0,
+          143
+        ],
+        [
+          0,
+          255,
+          255
+        ],
+        [
+          124,
+          255,
+          121
+        ],
+        [
+          255,
+          165,
+          0
+        ],
+        [
+          128,
+          0,
+          0
+        ]
+      ],
+      "hex": [
+        "#00008F",
+        "#00FFFF",
+        "#7CFF79",
+        "#FFA500",
+        "#800000"
+      ],
+      "note": "Jet / rainbow colormap (5 samples)"
+    },
+    "okabe_ito": {
+      "rgb": [
+        [
+          230,
+          159,
+          0
+        ],
+        [
+          86,
+          180,
+          233
+        ],
+        [
+          0,
+          158,
+          115
+        ],
+        [
+          240,
+          228,
+          66
+        ],
+        [
+          0,
+          114,
+          178
+        ]
+      ],
+      "hex": [
+        "#E69F00",
+        "#56B4E9",
+        "#009E73",
+        "#F0E442",
+        "#0072B2"
+      ],
+      "note": "Okabe & Ito qualitative palette"
+    },
+    "viridis": {
+      "rgb": [
+        [
+          68,
+          1,
+          84
+        ],
+        [
+          59,
+          82,
+          139
+        ],
+        [
+          33,
+          145,
+          140
+        ],
+        [
+          94,
+          201,
+          98
+        ],
+        [
+          253,
+          231,
+          37
+        ]
+      ],
+      "hex": [
+        "#440154",
+        "#3B528B",
+        "#21918C",
+        "#5EC962",
+        "#FDE725"
+      ],
+      "note": "Viridis (perceptually uniform, 5 samples)"
+    }
+  }
+}

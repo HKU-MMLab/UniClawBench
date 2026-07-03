@@ -1,0 +1,87 @@
+Message-ID: <CAOu7+yKmzMzW+Eq2r1cPxpmz0Y-Kc4crd6W3ypewUq8zGmEEnQ@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1415
+Date: Wed, 20 Dec 2023 10:18:27 -0500
+From: "Eric Norris via dev" <dev@httpd.apache.org>
+To: Yann Ylavic <ylavic.dev@gmail.com>
+Subject: Re: [PATCH] mod_deflate: remove filter after seeing EOS
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-12.mbox
+
+On Wed, Dec 20, 2023 at 10:09 AM Yann Ylavic <ylavic.dev@gmail.com> wrote:
+>
+> On Wed, Dec 20, 2023 at 2:40 PM Joe Orton <jorton@redhat.com> wrote:
+> >
+> > I was surprised this made a difference to the behaviour on the wire. It
+> > seems like the chunk filter has suboptimal behaviour here. If you take
+> > an output brigade like either:
+> >
+> > a) [HEAP FLUSH EOS]
+> > b) [HEAP FLUSH EOS FLUSH]
+> >
+> > in both cases the chunk filter would output two brigades:
+> >
+> > [chunk-hdr HEAP crlf FLUSH] [last-chunk EOS]
+> >
+> > Significantly there is no FLUSH in the second brigade even for case (b),
+> > because the chunk filter also drops everything after EOS. It would be
+> > clearly better/correct if the chunk filter produces a single brigade for
+> > this very common output pattern:
+> >
+> > [chunk-hdr HEAP crlf last-chunk FLUSH EOS]
+> >
+> > correctly preserving the semantics of the FLUSH. I've tried this here:
+> >
+> > https://github.com/apache/httpd/pull/400
+>
+> Thanks, looks good to me.
+>
+> > >
+> > > On Mon, Oct 9, 2023 at 2:50 PM Eric Norris <enorris@etsy.com> wrote:
+> > > >
+> > > > At Etsy, we use mod_php and were investigating what we thought was
+> > > > surprising behavior - that code executed during PHP's shutdown phase
+> > > > prevented the request from terminating, even if we didn't expect to send
+> > > > any additional output to the client.
+> > > >
+> > > > We determined that this was not surprising given mod_php's
+> > > > implementation, but after we developed a proof-of-concept patch that
+> > > > sent an EOS bucket and a flush bucket via a "userland" PHP function, we
+> > > > were surprised that it didn't work when compression was enabled for the
+> > > > request.
+>
+> I'm wondering if these cases are valid/supported though:
+> c) [HEAP EOS FLUSH]
+> d) [HEAP EOS] [FLUSH] (with separate FLUSH but on r->output_filters still)
+> which seems to be what mod_php and the "userland" POC do?
+
+Small note, mod_php doesn't yet do this, but it may be something that
+we consider proposing. For now, it's a private patch that we're
+running at Etsy.
+
+> I thought nothing should be sent on r->output_filters after EOS (only
+> c->output_filters might forward metadata in between requests), and at
+> least in ap_http_chunk_filter() this won't work since, as Joe said,
+> everything after EOS being dropped breaks c) and the filter not
+> removing itself after EOS breaks d).
+>
+> So I think what the POC or mod_php should be doing is [FLUSH EOS] or
+> something might not work in the chain sooner or later?
+
+I believe that is what the POC was doing here
+https://gist.github.com/ericnorris/37c7dac401b50d270867e82a47bdd294#file-mod_example_hooks-c-L58-L64
+- unfortunately though, the chunk filter behavior requires that we
+send another FLUSH bucket
+(https://gist.github.com/ericnorris/37c7dac401b50d270867e82a47bdd294#file-mod_example_hooks-c-L67-L68)
+in order to get the last chunk marker to go immediately to the client.
+Without this, the last chunk marker sits in the bucket brigade until
+the POC finishes and something in the Apache internals sends it out. I
+agree though that sending a flush after an EOS is strange, and I noted
+in my response to Joe that maybe the chunk filter change alone is
+enough to solve our problem.
+
+>
+>
+> Regards;
+> Yann.

@@ -1,0 +1,32 @@
+Message-ID: <udlmt02cgxe.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-0512
+Date: Tue, 11 Jul 2023 16:49:17 -0400
+From: ucko@debian.org (Aaron M. Ucko)
+To: debian-med@lists.debian.org
+Subject: Re: Issues with concurrentqueue
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_07_msg00047.html
+
+Andreas Tille  writes:
+
+>   E: libconcurrentqueue-dev: triplet-dir-and-architecture-mismatch is for amd64 instead of all [usr/lib/x86_64-linux-gnu/]
+
+These files are not appropriate to move as is, for two reasons (unless I
+missed anything):
+- concurrentqueueConfig.cmake and concurrentqueueTargets.cmake both
+  embed the directory name and would need to be adjusted accordingly.
+- concurrentqueueConfigVersion.cmake embeds the expected pointer size as
+  a sanity check, even though there are no actual build products to
+  worry about matching.
+
+That said, the package is so small that you could reasonably enough
+leave the files as is, declare the package architecture-any accordingly,
+and benefit from build-time testing on additional architectures.
+
+Thanks for asking!
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

@@ -1,0 +1,40 @@
+task_id: task_102_09_gbif_occurrence_match
+category: 102_exploration
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I'm doing some biodiversity data work and I need occurrence counts for a
+  species from GBIF, pulled through their API.
+
+  GBIF's site is here:
+
+      https://www.gbif.org/
+
+  GBIF has a public API. The catch is that occurrence queries are keyed by a
+  numeric taxon key, not by a species name — so you first have to resolve the
+  scientific name to its taxon key, then query occurrences with that key.
+
+  Please use the API to:
+
+  - resolve the scientific name **Panthera leo** (lion) to its GBIF taxon key,
+    and report the matched scientific name, rank, and taxon key,
+  - then query the number of occurrence records for that taxon key in the
+    country **Kenya** (ISO code KE),
+  - and also report the total global occurrence count for that taxon key.
+
+  Save the result to `/tmp_workspace/results/gbif_panthera_leo.json`, and save
+  the exact request URL(s) you called plus their raw JSON response(s) to
+  `/tmp_workspace/results/gbif_evidence/`.
+
+references:
+  - references/eval_rule.md
+
+codex:
+  max_user_followups: 2

@@ -1,0 +1,99 @@
+Message-ID: <20020801024141.A1980@excalibur.research.wombat.ie>
+X-Clawbench-ID: CAM-2003-1375
+Date: Thu, 01 Aug 2002 02:41:41 +0100
+From: Kenn Humborg <kenn@linux.ie>
+To: Irish Linux Users Group <ilug@linux.ie>
+Subject: Re: [ILUG] inputting chinese characters in Redhat 7.3
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00200.a85d0ee8b147e0d0de9db7bc84117551
+
+On Wed, Jul 31, 2002 at 06:57:50PM +0100, Brian Foster wrote:
+>  XIMs generally work as a complex compose frontend.  i.e., you
+>  build up your character as a series of composes of the root or
+>  fundamental strokes ("radicals", I think they are called), and
+>  then "commit" the composite character to the application.
+>  ( yes, keyboarding these scripts _is_ quite slow, I believe
+>   a good typist can only do a few characters a minute!
+>   and I assume using a qwerty keyboard is very painful. )
+
+I can speak for some Chinese input methods and you can do a hell
+of a lot better than a few chars per minute.  For example, the
+simplest Chinese IM is Pinyin where you phonetically spell out
+each character using the pinyin romanisation rules.  For example,
+Zhong Guo (Chinese for China) is entered by typing 'zhong',
+then you're prompted with a list of possible matches, with the
+most common first in a numbered list, so you hit, say, 2 for
+the second in the list, then similarly for 'guo' 3.
+
+You can see, that, regarding keystroke counts, it's not that
+much different to English.  However, until you get familiar
+with the sorting order in the 'possible match' lists, it can
+be a little slow.
+
+Other input methods are more keystroke-efficient, losing the
+phonetic simplicity of Pinyin.  Chinese characters are almost
+always pronounced as a first-part-second-part, so zhong is
+'zh'-'ong'.  One input method assigns single letters to
+the possible first and second parts, so 'i' might represent
+'zh' as a first part and 'ong' as a second part, so you'd
+enter zhong as 'ii' and a digit to choose from the possible
+matches.
+
+I think the Microsoft Global IME has a 'stroke' mode where
+you can build up a character stroke by stroke, but you'd only
+use that when you know the character you want but you don't
+know how to pronounce it.
+
+>
+>  some XIMs compose "in place", others do it on a special line,
+>  and some seem to do it in a special window (or the root?).
+>  also, some(/most?) XIMs apparently support a US-ASCII input
+>  mode as well --- _not_ a general Latin-alphabet input mode,
+>  which seems to require another TLA, called KBD, and which
+>  apparently doesn't work when an XIM is also being used? ---
+>  implying you have to switch back and forth between US-ASCII
+>  input mode (what us English-speakers would call "normal"
+>  keyboarding/typing), and the other input (e.g., Chinese).
+>  I'm not sure, but I have the impression the switch is often
+>  a toggle, and something like <Control><CapsLock>.
+
+Probably most often Ctrl-Space.  That's what the Microsoft Global
+Input Method Editor uses and what xcin uses IIRC.
+
+Regarding the original poster's question - here's what works for me
+on Red Hat 7.2
+
+o  Make sure the xcin and ttfonts-zh_CN RPMs are installed.  (The
+   fonts might not be essential, I think XFree comes with usuable
+   Chinese fonts in the XFree86-fonts RPMs
+
+o  Select Chinese (Simplified) as the language in GDM when logging
+   in.
+
+Everything should 'just work'.  If you've got the default clock in
+your GNOME panel, you should now see it in Chinese.  A lot of the
+menus will also be in Chinese, but you should be able to find your
+way around.
+
+Use Ctrl-Space to toggle between Chinese and English input.  When
+in Chinese mode Shift-Space toggles between something that I don't
+understand, but it blocks exiting to English.  So if you can't use
+Ctrl-Space to get back to English, try hitting Shift-Space, Ctrl-Space.
+
+Fire up a GNOME terminal.  In Chinese mode, type zhong 1 guo 1 and
+you'll see the Chinese for China.
+
+Getting this to work while selecting English at the GDM screen is left
+as an exercise for the reader.  Looking at /etc/X11/xinit/xinitrc.d/xinput
+and /usr/share/doc/xcin should give enough info.
+
+Later,
+Kenn
+
+
+--
+Irish Linux Users' Group: ilug@linux.ie
+http://www.linux.ie/mailman/listinfo/ilug for (un)subscription information.
+List maintainer: listmaster@linux.ie

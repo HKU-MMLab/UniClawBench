@@ -1,0 +1,41 @@
+Message-ID: <000301c299e0$debf53c0$0504290a@McBoyle>
+X-Clawbench-ID: CAM-2003-1423
+Date: Mon, 02 Dec 2002 08:57:40 -0000
+From: James McBoyle <james.mcboyle@cp.net>
+To: ilug@linux.ie
+Subject: RE: [ILUG] eircom mail
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 02464.95f59bae730edc01ce4f88d98791ffca
+
+>
+>hi i was just wondering if anyone experiening difficulty with eircom
+mail
+>sever.I was trying to send mail from mozilla mail but it keeps coming
+up
+>with this error:
+>sorry,that domain isnt in my list of allows rcpthosts(#5.7.1)
+>please check the message recipients and try again.
+>
+>What is this all about.
+>I am using mail2.eircom.net as my smtp and my pop, i can recieve mail
+but
+>i cannot send mail. is there any other open relay that i  can use.
+
+I think you'll find it's at Eircons end. I occasionally have problems
+sending to a server I use, whose admin said it's a known bug for which
+he had to apply a patch... you'll probably want to tell eircon's admins
+that they need to patch the server, and to re-do it if they think it's
+already done...
+
+sorry for the lame answer, but it's been so long I've forgotten the
+details.
+
+Have Fun,
+Jim.
+
+--
+Irish Linux Users' Group: ilug@linux.ie
+http://www.linux.ie/mailman/listinfo/ilug for (un)subscription information.
+List maintainer: listmaster@linux.ie

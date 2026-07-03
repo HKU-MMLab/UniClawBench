@@ -1,0 +1,47 @@
+Message-ID: <YcRK9TujIYd5kG25@an3as.eu>
+X-Clawbench-ID: BIO-2024-1306
+Date: Thu, 23 Dec 2021 11:09:57 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Somehow some dh_auto_test of Python3 packages insist to install wheel via pip
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_12_msg00152.html
+
+Hi,
+
+seems python-pbcore is just an example[1] for the issue:
+
+...
+  dh_auto_test
+I: pybuild base:237: python3.10 setup.py test
+/usr/lib/python3/dist-packages/setuptools/dist.py:723: UserWarning: Usage of dash-separated 'description-file' will not be supported in future versions. Please use the underscore name 'description_file' instead
+  warnings.warn(
+running pytest
+/usr/lib/python3/dist-packages/setuptools/dist.py:723: UserWarning: Usage of dash-separated 'description-file' will not be supported in future versions. Please use the underscore name 'description_file' instead
+  warnings.warn(
+/usr/lib/python3/dist-packages/setuptools/command/easy_install.py:158: EasyInstallDeprecationWarning: easy_install command is deprecated. Use build and pip and other standards-based tools.
+  warnings.warn(
+/usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+  warnings.warn(
+WARNING: Testing via this command is deprecated and will be removed in a future version. Users looking for a generic test entry point independent of test runner are encouraged to use tox.
+/usr/lib/python3/dist-packages/setuptools/installer.py:27: SetuptoolsDeprecationWarning: setuptools.installer is deprecated. Requirements should be satisfied by a PEP 517 installer.
+  warnings.warn(
+/usr/bin/python3.10: No module named pip
+error: Command '['/usr/bin/python3.10', '-m', 'pip', '--disable-pip-version-check', 'wheel', '--no-deps', '-w', '/tmp/tmp89sdjpdu', '--quiet', 'xmlschema']' returned non-zero exit status 1.
+
+
+which I've also faced in the case of deepdiff[2].  Any idea what
+might be wrong here?
+
+Kind regards
+
+      Andreas.
+
+
+[1] https://salsa.debian.org/med-team/python-pbcore/-/pipelines/330517
+[2] https://salsa.debian.org/python-team/packages/deepdiff
+
+--
+http://fam-tille.de

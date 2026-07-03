@@ -1,0 +1,45 @@
+task_id: task_204_05_panel_figure5_reproduction
+category: 204_multimodal_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  先在这张完整图像中定位 `图 5`，然后使用 Python + matplotlib 复现 `图 5`：
+  /tmp_workspace/clawbench/sources/panel_sheet.png
+
+  这里提供的图像是一张包含 6 个面板的完整大图，而不是单独裁剪出的目标图。
+  正确定位 `图 5` 是任务的一部分。你的输出应只复现 `图 5`；不要重绘整张 6 面板大图。
+
+  `图 5` 是底行中间的面板，包含：
+  - 一个大圆
+  - 一条从上到下贯穿的竖直轴
+  - 一条经过圆心附近的水平线
+  - 圆内多条斜线和虚线辅助线
+  - 沿圆周分布的多个点标记和文字标签
+
+  要求：
+  1. 形状、比例、交点关系以及内部对称性必须准确。
+  2. 每画一遍后与原图对比，并至少修订一次。
+  3. 最终目标是让整体视觉效果与原图中的 `图 5` 高度相似，
+     包括圆的大小、轴的位置、交叉的直线、虚线辅助线以及标签的摆放。
+  4. 将可运行的脚本保存到
+     /tmp_workspace/results/reproduce_prompt5_geometry_circle_chord_tangent.py
+  5. 将最终图像保存到
+     /tmp_workspace/results/prompt5_geometry_replicate.png
+  6. 将简短的修订笔记保存到
+     /tmp_workspace/results/prompt5_geometry_notes.md
+
+references:
+  - references/eval_rule.md
+
+sources:
+  - panel_sheet.png
+
+codex:
+  max_user_followups: 2

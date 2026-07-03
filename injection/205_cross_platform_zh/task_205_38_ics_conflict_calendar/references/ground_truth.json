@@ -1,0 +1,82 @@
+{
+  "task_id": "task_105_38_ics_conflict_calendar",
+  "timezone": "America/Los_Angeles",
+  "week_start": "2026-07-06",
+  "expected_events": [
+    {
+      "title": "Launch kickoff",
+      "start": "2026-07-06T10:30:00-07:00",
+      "end": "2026-07-06T11:30:00-07:00",
+      "duration_minutes": 60,
+      "attendees": [
+        "Alice",
+        "Bruno"
+      ],
+      "chosen_candidate_index": 2
+    },
+    {
+      "title": "Data migration dry run",
+      "start": "2026-07-07T11:15:00-07:00",
+      "end": "2026-07-07T12:45:00-07:00",
+      "duration_minutes": 90,
+      "attendees": [
+        "Alice"
+      ],
+      "chosen_candidate_index": 2
+    },
+    {
+      "title": "Support handoff",
+      "start": "2026-07-09T15:45:00-07:00",
+      "end": "2026-07-09T16:30:00-07:00",
+      "duration_minutes": 45,
+      "attendees": [
+        "Bruno"
+      ],
+      "chosen_candidate_index": 2
+    },
+    {
+      "title": "Metrics readout",
+      "start": "2026-07-08T15:00:00-07:00",
+      "end": "2026-07-08T15:30:00-07:00",
+      "duration_minutes": 30,
+      "attendees": [
+        "Alice",
+        "Bruno"
+      ],
+      "chosen_candidate_index": 2
+    },
+    {
+      "title": "Partner Q&A",
+      "start": "2026-07-10T13:00:00-07:00",
+      "end": "2026-07-10T14:00:00-07:00",
+      "duration_minutes": 60,
+      "attendees": [
+        "Bruno"
+      ],
+      "chosen_candidate_index": 2
+    },
+    {
+      "title": "Retro prep",
+      "start": "2026-07-06T16:30:00-07:00",
+      "end": "2026-07-06T17:00:00-07:00",
+      "duration_minutes": 30,
+      "attendees": [
+        "Alice"
+      ],
+      "chosen_candidate_index": 1
+    }
+  ],
+  "expected_hard_conflicts": [],
+  "expected_near_conflicts": [
+    {
+      "title": "Retro prep",
+      "reason_contains": "ends at working-hours boundary or starts near end of day"
+    }
+  ],
+  "required_outputs": {
+    "parsed_json": "/tmp_workspace/results/parsed_schedule.json",
+    "ics": "/tmp_workspace/results/planning_week_schedule.ics",
+    "report": "/tmp_workspace/results/planning_week_report.md",
+    "screenshot": "/tmp_workspace/results/planning_week_calendar.png"
+  }
+}

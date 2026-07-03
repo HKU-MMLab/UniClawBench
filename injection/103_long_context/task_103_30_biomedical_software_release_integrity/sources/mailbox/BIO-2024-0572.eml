@@ -1,0 +1,28 @@
+Message-ID: <CAOXh_Kpg7AMW-M_CEYH5+G+RK5ZxwKDb3Y30QqFYkKt+YwNyKg@mail.gmail.com>
+X-Clawbench-ID: BIO-2024-0572
+Date: Thu, 16 Sep 2021 09:59:17 -0400
+From: Kyle Edwards <kyle.edwards@kitware.com>
+To: Debian Science List <debian-science@lists.debian.org>
+Subject: Re: CMake-induced breakage [was Re: Team upload policy]
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_09_msg00023.html
+
+On Thu, Sep 16, 2021 at 6:56 AM Timo Röhling  wrote:
+>
+> Hi Gard,
+>
+> * Gard Spreemann  [2021-09-16 12:38]:
+> >Off-topic, but: where can I read about this problem?
+> Starting with CMake 3.19, you get a deprecation warning on stderr if
+> cmake_minimum_required() asks for a version below 2.8.12. This will
+> break autopkgtests unless they run with Restrictions: allow-stderr.
+
+CMake upstream here. CMake 2.8.12 is *very* old, and it is likely that
+we will eventually remove support for < 2.8.12 altogether, resulting
+in errors (rather than just deprecation warnings) if you specify such
+an old version in cmake_minimum_required(). I would suggest updating
+the autopkgtests to request a newer CMake version.
+
+Kyle

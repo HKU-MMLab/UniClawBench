@@ -1,0 +1,26 @@
+Message-ID: <5404527ff502f0b377b141c3ceed4c3d@disroot.org>
+X-Clawbench-ID: BIO-2024-0775
+Date: Tue, 29 Mar 2022 17:33:12 +0000
+From: "Mohd Bilal" <mdbilal@disroot.org>
+To: debian-med@lists.debian.org
+Subject: Add autopkgtests for python-datacache, parallel-fastq-dump
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_03_msg00046.html
+
+Hello team,
+
+I'm interested in contributing towards the Debian Med Team and would like to be a part of it.I've had beginner experiences packaging some ruby gems for the Ruby Team.
+
+I've tried adding autopkgtest for python-datacache[1],parallel-fastq-dump[2] which are maintained by the Debian Med Team. I've opened a merge requests[3],[4] and would like someone to review my changes and suggest the necessary changes.
+
+Also the ci reprotest fails[5] for python-datacache and I don't know how to proceed further. I would like someone to guide as to what is to be done inorder to fix this.
+
+Thanks !
+
+[1] - https://salsa.debian.org/mdb571/python-datacache
+[2] - https://salsa.debian.org/mdb571/parallel-fastq-dump
+[3] - https://salsa.debian.org/med-team/python-datacache/-/merge_requests/1
+[4] - https://salsa.debian.org/med-team/parallel-fastq-dump/-/merge_requests/2
+[5] - https://salsa.debian.org/mdb571/python-datacache/-/jobs/2617267

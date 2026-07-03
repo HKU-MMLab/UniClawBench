@@ -1,0 +1,23 @@
+Message-ID: <ZKsKw+6ZFhmteRuX@fusion>
+X-Clawbench-ID: BIO-2024-0301
+Date: Sun, 9 Jul 2023 21:30:11 +0200
+From: Étienne Mollier <emollier@debian.org>
+To: debian-med@lists.debian.org
+Subject: biopython 1.81 in experimental
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_07_msg00031.html
+
+Hi all,
+
+I pushed python-biopython 1.81 in experimental.  We should be
+able to begin investigate changes needed in reverse dependencies
+before migrating it to unstable.
+
+Have a nice day,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  gpg: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/4, please excuse my verbosity
+   `-    on air: Arc Angel-Cannata - Tamorok

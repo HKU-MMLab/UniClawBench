@@ -1,0 +1,40 @@
+Message-ID: <CALK=YjPRN_fu3=r-14WMgFX5i-Rn4yE_oRqaFjeY05Kdb3Fa-A@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0061
+Date: Fri, 10 Mar 2023 12:04:42 -0500
+From: Eric Covener <covener@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] [VOTE] Release httpd-2.4.56-rc1 as httpd-2.4.56
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-03.mbox
+
+On Fri, Mar 10, 2023 at 11:57 AM Yann Ylavic <ylavic.dev@gmail.com> wrote:
+>
+> On Fri, Mar 10, 2023 at 4:34 PM Eric Covener <covener@gmail.com> wrote:
+> >
+> > Saw another report on users@
+> >
+> > Any thoughts on something like this to just allow spaces?
+> > http://people.apache.org/~covener/patches/rewrite-lax.diff
+>
+> What about:
+>
+> Index: modules/mappers/mod_rewrite.c
+> ===================================================================
+> --- modules/mappers/mod_rewrite.c    (revision 1908254)
+> +++ modules/mappers/mod_rewrite.c    (working copy)
+> @@ -4814,7 +4814,8 @@ static int hook_uri2file(request_rec *r)
+>          apr_size_t flen;
+>          int to_proxyreq;
+>
+> -        if (r->args && *(ap_scan_vchar_obstext(r->args))) {
+> +        if (rulestatus == ACTION_NOESCAPE
+> +            && r->args && *(ap_scan_vchar_obstext(r->args))) {
+>              /*
+>               * We have a raw control character or a ' ' in r->args.
+>               * Correct encoding was missed.
+
+I think it helps for the users@ redirect case, but I think we still
+have a concern with non-redirect (where IIUC there is not any escaping
+even w/o the flag/status, but I am not 100% sure on this)

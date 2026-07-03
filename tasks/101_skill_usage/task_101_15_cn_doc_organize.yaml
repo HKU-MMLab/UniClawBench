@@ -1,0 +1,78 @@
+task_id: task_101_15_cn_doc_organize
+category: 101_skill_usage
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  We're migrating our shared drive to a proper DMS and someone just dumped
+  a hundred-plus Chinese Word documents into
+  /tmp_workspace/clawbench/sources/cn_docs/ with zero organization. The
+  filenames are a mess — some carry timestamps, some are garbled
+  placeholders, some are just strings of digits, and some are in English.
+  I need you to use the Chinese DOCX reading skill and the document
+  processing skill to actually read the document content and classify by
+  what each document is really doing, instead of guessing the category from
+  the filename.
+
+  Please organize all the documents under /tmp_workspace/results/organized/<category>/,
+  and rename each file to the format <YYYYMMDD>_<short_topic>.docx. For the
+  date, prefer one extracted from the document body, and fall back to today's
+  date if you can't find one.
+
+  The classification must strictly use the following 4 fixed buckets, with
+  directory names matching exactly character for character:
+  - 合同 — any document referencing a contract relationship, including
+    formal contracts (cooperation agreements, procurement contracts,
+    service contracts), contract drafts and addenda, contract-related
+    notes, and internal or personal notes about contractual matters
+    (renewal reminders, clause memos, vendor follow-ups tied to a contract)
+  - 会议纪要 — meeting minutes and meeting-track artefacts more broadly:
+    minutes from regular meetings, review meetings, retrospectives;
+    cross-meeting summaries; inter-departmental coordination memos; and
+    other discussion-track documents that record what a group aligned on
+    even if no single formal meeting is named
+  - 项目报告 — formal business reports or training outputs such as quarterly
+    reports, annual reports, training materials, and training effectiveness
+    evaluations
+  - 其他 — genuinely uncategorizable personal notes, diary entries, scattered
+    thoughts with no clear business topic. This bucket holds at most 10
+    documents. More than 10 means you got lazy and didn't actually read the
+    content to classify it
+
+  Other requirements:
+  - Do not delete any source file, and do not overwrite target files. When
+    two files end up with the same name after classification, add a suffix to
+    avoid overwriting. Every single source document must have a corresponding
+    file under organized/.
+  - In /tmp_workspace/results/organized/index.md, give one row per document,
+    each row containing: new filename, original filename, category, and a
+    one-sentence topic summary. The original filename must be preserved
+    byte-for-byte as-is — do not normalize, transliterate, or replace garbled
+    or mojibake characters. I need this index to map precisely back to every
+    original file on disk.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - cn_docs/
+
+skills:
+  - docx-cn
+  - document-pro
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

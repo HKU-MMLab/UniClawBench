@@ -1,0 +1,57 @@
+Message-ID: <Y3f4zwr+lVWfe3Kg@fusion>
+X-Clawbench-ID: BIO-2024-0583
+Date: Fri, 18 Nov 2022 22:27:43 +0100
+From: Étienne Mollier <emollier@debian.org>
+To: Gregory Sharp <gregsharp.geo@yahoo.com>
+Subject: Re: Plastimatch new version
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_11_msg00063.html
+
+Hi Greg,
+
+Gregory Sharp, on 2022-11-18:
+> Thank you, you are correct! Yahoo blocked your direct e-mail, but it also blocked the one from debian-med which is not good.
+
+Things that happen I guess.  For what it's worth this prompted
+me to check my own provider didn't change dkim settings behind
+my back.  I worried when I saw my configuration was still
+correct, that your provider might be overly suspicious.
+
+> Looks like I did not correctly understand autopkgtest. Would you recommend reverting the debian-tests-data removal or adjusting run-unit-test?
+
+Digging in mail archives, I noticed the autopkgtest was brought
+a few months ago by someone else[0].  I would tend to assume a
+revert would be appropriate if this data set was brought
+specifically for running the test.
+
+[0]: https://lists.debian.org/debian-med/2022/08/msg00003.html
+
+>And how do I keep up on the best practice in Debian packaging, is there any training you can recommend?
+
+Autopkgtests are usually nice to have, they allow you to test
+your program in the same conditions as your end users would
+expect from an installed package.  As a bonus, your package gets
+to migrate to testing a couple of days earlier.  You actually
+started a first autopkgtest through the Salsa CI pipeline[1],
+although not one you have configured yourself.
+
+[1]: https://salsa.debian.org/med-team/plastimatch/-/pipelines
+
+Wiki documentation about autopkgtest[2] is a bit terse but can
+serve as entry point; there is also a page about best
+practices[3].  In my opinion, the best documentation available
+for autopkgtest is installed below /usr/share/doc/autopkgtest/
+after installing the package autopkgtest.  One README will help
+you run tests and another one will help you to adjust them.
+
+[2]: https://wiki.debian.org/ContinuousIntegration/autopkgtest
+[3]: https://wiki.debian.org/ContinuousIntegration/AutopkgtestBestPractices
+
+Have a nice day,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  gpg: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/2, please excuse my verbosity
+   `-    on air: Unitopia - The Garden

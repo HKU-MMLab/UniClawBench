@@ -1,0 +1,58 @@
+Message-ID: <YYunqJifOW/whpuI@an3as.eu>
+X-Clawbench-ID: BIO-2024-1431
+Date: Wed, 10 Nov 2021 12:06:16 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Science List <debian-science@lists.debian.org>,	Rene Engelhard <rene@debian.org>
+Subject: CoinMP was listed as smelling ;-)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_11_msg00069.html
+
+Hi Rene,
+
+I've found coinmp at the list of smelling packages[1] and found some
+spare cycles to reduce its smell. ;-)
+
+In VCS I've found
+
+   coinmp (1.8.3-2) unstable; urgency=medium
+
+     * upload to unstable
+
+
+but this upload never happened.  Thus I'm wondering whether you
+intentionally did not moved that version from experimental to unstable.
+
+Unfortunately there is an issue with debhelper compat level 13 which
+I've choosen since its calling autoreconf automatically and coinmp does
+not autoreconfigure with the new version of autoconf anyway - the build
+stops with:
+
+   dh_autoreconf
+/usr/share/autoconf/autoconf/trailer.m4:4: warning: AC_OUTPUT was never used
+configure.ac:40: error: possibly undefined macro: AC_COIN_INIT_AUTOMAKE
+      If this token and others are legitimate, please use m4_pattern_allow.
+      See the Autoconf documentation.
+configure.ac:46: error: possibly undefined macro: AC_COIN_MAIN_PACKAGEDIR
+configure.ac:63: error: possibly undefined macro: AC_COIN_FINALIZE
+autoreconf: error: /usr/bin/autoconf failed with exit status: 1
+dh_autoreconf: error: autoreconf -f -i returned exit code 1
+make: *** [debian/rules:5: binary] Error 25
+
+
+So we can either revert the compat level bump from 13 back to 10 (I
+think) or fix the autoconf issue.  May be latest upstream (1.8.4) has
+fixed this which I did not checked.
+
+I'd like to leave those decisions rather to you as the originial uploader
+of this package before I might break anything.
+
+Kind regards
+
+        Andreas.
+
+[1] https://trends.debian.net/packages-with-smells-sorted-by-maintainer.txt
+
+--
+http://fam-tille.de

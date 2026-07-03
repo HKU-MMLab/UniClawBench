@@ -1,0 +1,83 @@
+Message-ID: <200209230458.AAA08321@blackcomb.panasas.com>
+X-Clawbench-ID: CAM-2003-0715
+Date: Sun, 22 Sep 2002 21:58:30 -0700
+From: Brent Welch <welch@panasas.com>
+To: exmh-users@spamassassin.taint.org
+Subject: Re: Linking message [was: Re: Patch to complete a change...]
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01031.58993bacb186b32660aae3fc69890840
+
+Both Move and Link are one-click actions.
+
+<Button-3> on a folder label Move's the current message
+<Shift-Button-3> on a folder label Link's the current message
+
+>>>Robert Elz said:
+ >     Date:        Thu, 12 Sep 2002 23:26:33 -0500
+ >     From:        Hal DeVore <haldevore@acm.org>
+ >     Message-ID:  <23204.1031891193@dimebox>
+ >
+ >   | 1) Right click on the folder label in the folder list
+ >
+ > That (the way I have it configured, and it sounds as if the way Tony does
+ > too) just does a move (rather than select as target without moving).
+ >
+ > Of course, if you can manage to get no messages currently selected, then
+ > it works fine.
+ >
+ >   | 2) In the main window, the "+" key puts you into a "change
+ >   |    folder" mode (the first time you use it after starting exmh),
+ >   |    hit a second + and you go to "set a target" mode.  Type a few
+ >   |    characters of the folder name and hit space for autocomplete.
+ >
+ > This works, but is not nice if you're not using the keyboard, but just
+ > the mouse.
+ >
+ > Tony: I agree - a nice way to link in one click would be good, and should
+ > be easy to add, though currently adding mouse bindings (something like
+ > shift right click would be a good choice) is much harder than adding
+ > key bindings.
+ >
+ > But note there's no need to "undo" - the way I generally use link, if
+ > the desired destination folder isn't the current selected target, is
+ > to right click on the target, which selects it and moves the message,
+ > (and because I have the "automatic move to the next message on move or
+ > link option set) select the message again, and then "Link".
+ >
+ > Exmh only permits one uncomitted action to be selected for a message at a
+ > time, that is, one of delete, move, or link.   Selecting any of those
+ > implicitly undoes any previous choice from the three (so you cannot
+ > achieve a "move" by doing a link, then delete, then commit, it needs to
+ > be link, commit, delete, commit).  (xmh was just the same there incidentally
+     ).
+ >
+ >   | How's spring shaping up "down under"?
+ >
+ > No meaningful comment from me, I'm not there at the minute.   But I'm told
+ > that where I'm from it is cold, wet, and miserable, though has been better
+ > during the day (sunny days, cold nights) for the past few.    In any case,
+ > all of that is a good enough reason to stay away...
+ >
+ > kre
+ >
+ >
+ >
+ > _______________________________________________
+ > Exmh-users mailing list
+ > Exmh-users@redhat.com
+ > https://listman.redhat.com/mailman/listinfo/exmh-users
+
+--
+Brent Welch
+Software Architect, Panasas Inc
+Pioneering the World's Most Scalable and Agile Storage Network
+www.panasas.com
+welch@panasas.com
+
+
+_______________________________________________
+Exmh-users mailing list
+Exmh-users@redhat.com
+https://listman.redhat.com/mailman/listinfo/exmh-users

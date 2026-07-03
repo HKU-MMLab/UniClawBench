@@ -1,0 +1,33 @@
+Message-ID: <YpRYUsugZCO5iXs5@an3as.eu>
+X-Clawbench-ID: BIO-2024-0027
+Date: Mon, 30 May 2022 07:38:26 +0200
+From: Andreas Tille <tille@debian.org>
+To: "Aaron M. Ucko" <ucko@debian.org>
+Subject: Re: Accepted ebook-tools 0.2.2-5 (source) into unstable
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_05_msg00033.html
+
+Hi Aaron,
+
+Am Sun, May 29, 2022 at 11:16:04PM -0400 schrieb Aaron M. Ucko:
+> > acedb-other shall step behind anything that is offered from the NCBI
+> > realm, I suggest.
+>
+> Thanks, but no need at this point.
+
+But probably "soon":
+
+   #967243: acedb: depends on deprecated GTK 2
+
+Some time ago I've spent one hour to investigate this issue but learned
+that its not solved in a couple of hours and gave up.  It would be great
+if this could be solved upstream.
+
+Kind regards
+
+      Andreas.
+
+--
+http://fam-tille.de

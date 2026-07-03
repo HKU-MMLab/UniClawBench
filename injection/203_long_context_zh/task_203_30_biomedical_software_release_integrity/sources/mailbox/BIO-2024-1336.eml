@@ -1,0 +1,33 @@
+Message-ID: <YqnNRJTLCsuW3NAR@an3as.eu>
+X-Clawbench-ID: BIO-2024-1336
+Date: Wed, 15 Jun 2022 14:15:00 +0200
+From: Andreas Tille <andreas@fam-tille.de>
+To: Gregory Sharp <gregsharp.geo@yahoo.com>
+Subject: Re: DCM_DICT_DEFAULT_PATH
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_06_msg00032.html
+
+Just from traveling:  Feel free to push a patch to Salsa.  CI will catch up and I can test it tomorrow.
+
+Am Tue, Jun 14, 2022 at 07:19:14PM +0000 schrieb Gregory Sharp:
+>  Hi Andreas,
+>
+> On Tuesday, June 14, 2022, 03:00:27 PM EDT, Andreas Tille  wrote:
+>
+> Am Tue, Jun 14, 2022 at 03:27:10PM +0000 schrieb Gregory Sharp:
+>
+> > > How best to proceed? It seems editing rules and patches/03_datadic_insall.patch to use CMAKE_INSTALL_DATADIR would make most sense, but I haven't tested it.
+>
+> > It would be great if you could propose (and test) a patch. I'm basically offline for two days.
+>
+> I can absolutely propose the patch, but I haven't yet succeeded to build it. Debian packaging remains deep magic to me.
+>
+> If someone can give me some hints about the sequence of commands I would appreciate.
+>
+> Greg
+>
+
+--
+http://fam-tille.de

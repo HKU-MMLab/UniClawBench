@@ -1,0 +1,86 @@
+Message-ID: <ZPCnXkCFongcyVTk@an3as.eu>
+X-Clawbench-ID: BIO-2024-0742
+Date: Thu, 31 Aug 2023 16:44:46 +0200
+From: Andreas Tille <tille@debian.org>
+To: "Maarten L. Hekkelman" <maarten@hekkelman.com>
+Subject: Re: help wanted
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_08_msg00031.html
+
+Am Thu, Aug 31, 2023 at 04:16:25PM +0200 schrieb Maarten L. Hekkelman:
+> routine-update, that is a useful tool, too bad it nuked my rules file... ;-)
+
+Really?  Usually debian/rules changes are only with confirmation of
+the user.  Could you please describe in detail what happened.
+
+> Perhaps I should file a bug report somewhere.
+
+Yes, please do.
+
+> Will upload the code, hopefully it will get past NEW soon.
+
+Crossing fingers
+    Andreas.
+
+> Op 31-08-2023 om 14:40 schreef Andreas Tille:
+> > Hi Maarten,
+> >
+> > Am Thu, Aug 31, 2023 at 02:15:33PM +0200 schrieb Maarten L. Hekkelman:
+> > > I've updated the debian package for libzeep. There's a change in the SONAME
+> > > so it has to go through new.
+> > Thanks a lot for updating libzeep.
+> >
+> > > The package contains the new code for libzeep 6 as well as new
+> > > documentation. I used to use the boost docbook tools but those cause a few
+> > > problems and besides, every kid on the block is moving towards Sphinx and
+> > > ReadTheDocs these days. As an old man I like to pretend I'm hip as well.
+> > >
+> > > Anyway, using sphinx introduces a lot of lintian warnings. Mostly related to
+> > > the fact that sphinx documentation installs its own copy of jquery and a
+> > > couple of fonts. My guess is that more packages in debian use sphinx so
+> > > before I start to work around this I'd like to know if others have solved
+> > > this 'problem' already. Or should I simply ignore the warnings?
+> > IMHO these warnings ca be ignored.  On the other hand I'd recommend
+> > fixing these:
+> >
+> > I: libzeep source: out-of-date-standards-version 4.5.0 (released 2020-01-20) (current is 4.6.2)
+> >    -> I'd recommend to run `routine-update -f` in your git clone
+> >
+> > I: libzeep source: quilt-patch-missing-description [debian/patches/boost.patch]
+> >    -> It would be great to have documented patches
+> > > Another problem with my package is that the reprotest fails on salsa. The
+> > > actual error it stumbles upon has to do with locales. It seems that
+> > > something is fishy with the installation of locales on the machine where the
+> > > tests run. The test code tries to create a locale namen nl_NL.UTF-8 and then
+> > > checks if the name of the result is the same as the name requested to be
+> > > sure it really got the correct locale. That check should not be required
+> > > since if that locale is not installed, the C++ standard says an exception
+> > > should be thrown but that doesn't happen, sometimes, recently, on Debian. I
+> > > can skip those tests, but I'd like to know why they are failing. Not sure
+> > > who to contact for this.
+> > I need to admit I do not pay too much attention to reprotest tests on
+> > Salsa.  While I perfectly agree that reproducibility is important I have
+> > problems to
+> >
+> >    a) read the log and draw sensible conclusions
+> >    b) find out how to fix those issues
+> >
+> > If nobody has a better idea I'd recommend to not make this a show
+> > stopper and upload to new.
+> >
+> > > A review of the current package of libzeep at salsa would also be very much
+> > > appreciated.
+> > You are welcome
+> >      Andreas.
+> >
+>
+> --
+> Maarten L. Hekkelman
+> http://www.hekkelman.com/
+>
+>
+
+--
+http://fam-tille.de

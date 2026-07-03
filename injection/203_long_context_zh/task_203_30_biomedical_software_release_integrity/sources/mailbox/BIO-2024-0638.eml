@@ -1,0 +1,41 @@
+Message-ID: <f5c35be01e6efee6c235e3dd4511a4596bbd9c7a.camel@tugraz.at>
+X-Clawbench-ID: BIO-2024-0638
+Date: Sun, 09 Oct 2022 09:39:53 +0200
+From: Martin Uecker <uecker@tugraz.at>
+To: Andreas Tille <andreas@fam-tille.de>
+Subject: Re: BART 0.8.0
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00026.html
+
+Hi Andreas,
+
+Am Sonntag, den 09.10.2022, 06:39 +0200 schrieb Andreas Tille:
+> Hi Martin,
+>
+> Am Sat, Oct 08, 2022 at 05:45:43PM +0200 schrieb Andreas Tille:
+> > Hmmmm, I need to check my upload - thanks for mentioning it.
+> > Bart-cuda arrived in unstable but bart is pending.  I'll check later.
+>
+> I've done so yesterday.
+
+Thanks!
+
+> > > I will do this soon, but probably wait in case other issues
+> > > emerge with the new packages.
+>
+> Seems there are build issues on some architectures:
+>
+>    https://buildd.debian.org/status/package.php?p=bart
+>
+> Could you have a look?
+
+Yes, the issue is numerical unit tests failing on
+some archs. This not entirely surprising as we had this
+before, and we added *many* new tests in this version.
+
+I will see that it get it running on some ARM64 myself
+and then push some fixes.
+
+Martin

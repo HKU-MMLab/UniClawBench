@@ -1,0 +1,31 @@
+Message-ID: <0928B4BB-7AC4-4524-ADB6-39AB9113E4F8@eissing.org>
+X-Clawbench-ID: ASF-2024-0011
+Date: Mon, 7 Mar 2022 16:55:54 +0100
+From: Stefan Eissing <stefan@eissing.org>
+To: dev@httpd.apache.org
+Subject: [VOTE] Release httpd-2.4.53-rc1 as httpd-2.4.53
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-03.mbox
+
+Hi all,
+
+Please find below the proposed release tarball and signatures:
+
+https://dist.apache.org/repos/dist/dev/httpd/
+
+I would like to call a VOTE over the next few days to release
+this candidate tarball httpd-2.4.53-rc1 as 2.4.53:
+[ ] +1: It's not just good, it's good enough!
+[ ] +0: Let's have a talk.
+[ ] -1: There's trouble in paradise. Here's what's wrong.
+
+The computed digests of the tarball up for vote are:
+sha256: 7559255a37adc5cb6f568ba224e435420f0a138cd9564162c9528b8ac08737b3 *httpd-2.4.53-rc1.tar.gz
+sha512: a7734e2fa35389678be74bbc18136eef482ff9daecc2c1ed9c2c5eb410182735a94ff6ad248d0d4b6266e90161f2f8052d4871f381723c996ace0412b0219961 *httpd-2.4.53-rc1.tar.gz
+
+The SVN candidate source is found at tags/2.4.53-rc1-candidate.
+
+Kind Regards,
+Stefan

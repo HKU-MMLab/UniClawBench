@@ -1,0 +1,47 @@
+Message-ID: <f69b3e1263e2d6c8050fad90daded2dd@enron.com>
+X-Clawbench-ID: ANL-2001-0180
+Date: 2002-01-25T20:09:46-03:00
+From: Kaminski <Kaminski>
+To: 'vkaminski@aol.com' <'vkaminski@aol.com'>
+Subject: FW: GPCM News: 1/25/02: Working with Power Model Forecasts: AGA Gas Storage
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Enron kaminski-v public mailbox index.json
+X-Original-Folder: kaminski-v_000/kaminski-v/Sent Items
+
+^
+
+
+ -----Original Message-----
+
+From:   "Robert E. Brooks" <rebrooks@earthlink.net>@ENRON
+
+Sent:   Friday, January 25, 2002 1:57 PM
+
+To:     'GPCM Distribution'
+
+Subject:        GPCM News: 1/25/02: Working with Power Model Forecasts: AGA Gas Storage
+
+
+Working with Power Model Forecasts
+
+
+Recently we have been spending quite a bit of time working with companies who are using both a power model such as Prosym, GE Maps, or IREMM, and GPCM.  These power models compute, among other things, the amount of gas burned at gas-fired or dual-fired generation plants.  These values are frequently then fed back to GPCM as electric generation gas demands.  The idea was that GPCM would produce the prices for the various power demand locations which could then be fed back to the power model for re-calculation of demands.  This iterative process would produce eventually a solution which was consistent between the power model and GPCM.  The difficulty with this idea is that the power model takes too much time to solve to make it practical.
+
+
+After a lot of thought, I have come up with a different idea which has greater workability.  I would recommend the following:  instead of running a single power model case with an expected set of gas prices for each area, run 3 cases:  essentially a high, medium and low Henry Hub Price forward price trajectory plus best estimates of future basis to each power generation gas demand area.  The results will then be three gas burns at three prices at each location.  We can then construct a demand curve for each demand location based on those three points.  With those demand curves, GPCM can solve for an expected price - gas burn combination which will be an appropriately interpolated value between the 3 points computed by the power model.
+
+
+When this is done, one final run could be made using the power model and the resulting GPCM prices.  It should produce gas burns very close to the value computed by GPCM and will contain all the information needed by the power modeling team.
+
+
+From Enerfax on Thursday (http://www.enerfax.com )
+
+
+AGA Natural Gas Storage Report
+
+
+            Week                                    Prev
+
+           Ending    Prev                   Prev    Year

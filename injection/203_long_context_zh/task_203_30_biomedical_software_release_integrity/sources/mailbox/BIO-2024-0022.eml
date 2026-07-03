@@ -1,0 +1,66 @@
+Message-ID: <ZUHwIr4NXOt8d82n@an3as.eu>
+X-Clawbench-ID: BIO-2024-0022
+Date: Wed, 1 Nov 2023 07:28:50 +0100
+From: Andreas Tille <tille@debian.org>
+To: Tony Travis <tony.travis@minke-informatics.co.uk>
+Subject: Re: canu
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_11_msg00001.html
+
+Hi Tony,
+
+Am Tue, Oct 31, 2023 at 11:13:13AM +0000 schrieb Tony Travis:
+> What's the status of "canu"?
+
+Since canu has a test suite issue on arm64 a bug was filed[1].
+Since we have no idea about this issue the forwarded the problem
+upstream[2].
+
+> The "canu" package in Debian-Med appears to be broken under Ubuntu 22.04 and
+
+Sorry "broken under Ubuntu 22.04" is not a helpful information.  While
+on several Debian forums you get the answer "this is Debian if you have
+a problem with Ubuntu ... blabla" you know that you are welcome here
+with questions.  However, we do not have a magic ball to guess what
+exactly is broken.  Please provide as minimum some command line and the
+output to enable us reproducing what exactly is broken.  Under Debian
+on amd64 architecture its definitely not "obviously" broken since it
+is passing its CI test on this architecture which you are most probably
+using.
+
+> I see that it has been marked for removal in Nov 2023:
+
+This is due to a CI test issue on arm64 (see also discussion with
+upstream[2] which explains, that this issue seems to occure only under
+specific CI circumstances).  This again raises the question:  What is
+broken for you and do you possibly want to report this in an upstream
+issue?
+
+> > https://tracker.debian.org/pkg/canu
+>
+> @Andreas, I've now removed the "canu" package and followed your advice about
+> installing "canu" under "bioconda3":
+
+I *never ever* gave any advise to use bioconda.
+
+> > https://salsa.debian.org/med-team/canu
+>
+> However, I would be interested to know if you have any plans to package it
+> again for Debian-Med?
+
+Canu is and remains packaged for Debian Med.  Since you are using Ubuntu
+which derives from Unstable you will not even miss it even if the package
+might be removed from testing (which the bug you read is about).
+
+In short: Please be more verbose about your problem.
+
+Kind regards
+    Andreas.
+
+[1] https://bugs.debian.org/1052347
+[2] https://github.com/marbl/canu/issues/2271
+
+--
+http://fam-tille.de

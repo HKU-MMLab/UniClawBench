@@ -1,0 +1,28 @@
+Message-ID: <788C98BD-B494-40E5-B5B4-CD46ADAF0D3F@eissing.org>
+X-Clawbench-ID: ASF-2024-0379
+Date: Mon, 13 May 2024 13:31:01 +0200
+From: "Stefan Eissing via dev" <dev@httpd.apache.org>
+To: dev@httpd.apache.org
+Subject: more async handling in mod_h2
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-05.mbox
+
+I have merged https://github.com/icing/mod_h2/pull/280 to the mod-h2 on github. With mpm_event, this will return HTTP/2 connections more often to the mpm, thus freeing a worker.
+
+While this sounds good, I am not sure this is beneficial for a server under load. The current connection state handling is designed for HTTP/1.x where a connection is "given back" to the MPM at the end of a request.
+
+AFAICT, the MPM assumes that, once any pending output is written, it may close the connection under load. Because in HTTP/1.x it means the connection has served the last response completely. The client should be grateful and cope well with the connection being closed subsequently due to other clients demands.
+
+In HTTP/2 so far, we did return to the MPM only when all requests had been served. The connection is therefore really in a similar state to HTTP/1.x. The client has got its responses, we are free to close.
+
+With the change in PR 280, we return on being flow blocked. The response(s) are *not* finished. If MPM now closes such a connection under load, the client will most likely try again. This seems counter productive.
+
+Therefore I am hesitant if this change is beneficial for us. It frees up a worker thread - that is good - but. Do we need a new "connection state" here?
+
+WDYT?
+
+
+Cheers,
+Stefan

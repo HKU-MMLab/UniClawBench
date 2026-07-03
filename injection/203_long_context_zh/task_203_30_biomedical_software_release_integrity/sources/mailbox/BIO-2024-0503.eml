@@ -1,0 +1,29 @@
+Message-ID: <ZK6LYLT+HmTGf3JG@an3as.eu>
+X-Clawbench-ID: BIO-2024-0503
+Date: Wed, 12 Jul 2023 13:15:44 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Unable to find source code for pbsv which would be helpful for cutesv autopkgtest
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_07_msg00050.html
+
+Hi,
+
+I considered the benchmark for cutesv[1] a good resource to write an
+autopkgtest.  Thus I added it as a script[2] and tried to package
+pbsv[3] which is used by this script.  Unfortunately the upstream
+repository of pbsv does not contain any code and the issue tracker to
+contact upstream is deactivated.  Any idea how to get the pbsv code?
+
+Kind regards
+   Andreas.
+
+
+[1] https://github.com/tjiangHIT/sv-benchmark
+[2] https://salsa.debian.org/med-team/cutesv/-/blob/master/debian/tests/benchmark
+[3] https://salsa.debian.org/med-team/pbsv
+
+--
+http://fam-tille.de

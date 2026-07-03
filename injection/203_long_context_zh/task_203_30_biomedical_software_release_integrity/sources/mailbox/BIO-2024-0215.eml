@@ -1,0 +1,45 @@
+Message-ID: <YYKz9zyLSWisP0Ql@an3as.eu>
+X-Clawbench-ID: BIO-2024-0215
+Date: Wed, 3 Nov 2021 17:08:23 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Julien Puydt <julien.puydt@gmail.com>
+Subject: Re: Debian Math Team
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_11_msg00025.html
+
+Am Wed, Nov 03, 2021 at 04:55:54PM +0100 schrieb Julien Puydt:
+> Hi,
+>
+> Le lundi 01 novembre 2021 à 15:28 +0100, Andreas Tille a écrit :
+> >
+> > How to move a package:
+> >
+> >  In Salsa:
+> >
+> >     Settings
+> >       -> General
+> >            -> Advanced [Expand]
+> >                 -> Transfer project
+> >
+> > This redirects users who are using the old URL.  For sure you need
+> > the according permissions in both teams (not sure whether maintainer
+> > is sufficient or whether you need owner).
+> >
+>
+> Hmmm... I just tried with flint, and I can go to settings, expand
+> "Advanced"... and the choices are "Housekeeping", "Export project" and
+> "Change path".
+>
+> Perhaps I lack some credentials?
+
+Seems you need to be "Owner" to remove a repository somewhere ... and now you are.
+Please try again.
+
+Kind regards
+
+    Andreas.
+
+--
+http://fam-tille.de

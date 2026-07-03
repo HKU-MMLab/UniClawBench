@@ -1,0 +1,66 @@
+Message-ID: <E17hYPi-0004Zs-00@usw-pr-cvs1.sourceforge.net>
+X-Clawbench-ID: CAM-2003-0961
+Date: Wed, 21 Aug 2002 09:32:58 -0700
+From: Justin Mason <yyyyason@users.sourceforge.net>
+To: spamassassin-commits@example.sourceforge.net
+Subject: [SACVS] CVS: spamassassin/wordfreqs RUNME,1.1,1.1.4.1
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01338.cf2b7a6c2f872b9442d68609842d7d92
+
+Update of /cvsroot/spamassassin/spamassassin/wordfreqs
+In directory usw-pr-cvs1:/tmp/cvs-serv17442/wordfreqs
+
+Modified Files:
+      Tag: b2_4_0
+	RUNME
+Log Message:
+added a warning for ISPs in required_hits manual entry
+
+Index: RUNME
+===================================================================
+RCS file: /cvsroot/spamassassin/spamassassin/wordfreqs/RUNME,v
+retrieving revision 1.1
+retrieving revision 1.1.4.1
+diff -b -w -u -d -r1.1 -r1.1.4.1
+--- RUNME	15 Jan 2002 05:34:18 -0000	1.1
++++ RUNME	21 Aug 2002 16:32:55 -0000	1.1.4.1
+@@ -13,17 +13,20 @@
+
+ mv spam.local nonspam.local logs/old
+
+-./mass-phrase-freq /local2/mail-archives/scoop.1999.gz >> nonspam.local
+-./mass-phrase-freq /local2/mail-archives/oldmail.1998.gz >> nonspam.local
+-
+ ./mass-phrase-freq-for-jm ; sh commands.sh
+
+-for f in /local2/mail-archives/crackmice-old/* ; do
+-  ./mass-phrase-freq $f >> nonspam.local
++for f in /local/mail-archives/recent/nonspam/* ; do
++  echo Checking $f: ; ./mass-phrase-freq $f  >> nonspam.local
+ done
+
+-./mass-phrase-freq /local2/mail-archives/kelsey.spamtrap.gz >> spam.local
+-./mass-phrase-freq /local2/mail-archives/spam.2000-2001.gz >> spam.local
++./mass-phrase-freq /local/mail-archives/recent/spamtrap/20020717/nonspam.mbox >> nonspam.local
++
++./mass-phrase-freq /local/mail-archives/recent/spamtrap/20020717/mbox >> spam.local
++
++for f in /local/mail-archives/old/nonspam/* /local/mail-archives/recent/nonspam/*
++do
++  echo Checking $f: ; ./mass-phrase-freq $f >> nonspam.local
++done
+
+ echo "
+
+
+
+-------------------------------------------------------
+This sf.net email is sponsored by: OSDN - Tired of that same old
+cell phone?  Get a new here for FREE!
+https://www.inphonic.com/r.asp?r=sourceforge1&refcode1=vs3390
+_______________________________________________
+Spamassassin-commits mailing list
+Spamassassin-commits@lists.sourceforge.net
+https://lists.sourceforge.net/lists/listinfo/spamassassin-commits

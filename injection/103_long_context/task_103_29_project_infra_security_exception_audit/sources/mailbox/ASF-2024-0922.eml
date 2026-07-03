@@ -1,0 +1,44 @@
+Message-ID: <ZS0WhwHNYhs9LcTw@redhat.com>
+X-Clawbench-ID: ASF-2024-0922
+Date: Mon, 16 Oct 2023 11:55:03 +0100
+From: Joe Orton <jorton@redhat.com>
+To: dev@httpd.apache.org
+Subject: [PATCH] fix mod_h2 with older nghttp2
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-10.mbox
+
+Looks like this broke with the websockets backport. mod_h2 is failing to
+compile on versions of nghttp2 without
+NGHTTP2_SETTINGS_ENABLE_CONNECT_PROTOCOL - looks like this was added in
+nghttp2 v1.34.0 [1] so how about something like this, or is there a
+better way?
+
+(configure check for a declaration is messier)
+
+diff --git a/modules/http2/h2.h b/modules/http2/h2.h
+index cfecb3d9a3..06e7087c04 100644
+--- a/modules/http2/h2.h
++++ b/modules/http2/h2.h
+@@ -20,6 +20,8 @@
+ #include <apr_version.h>
+ #include <ap_mmn.h>
+
++#include <nghttp2/nghttp2ver.h>
++
+ struct h2_session;
+ struct h2_stream;
+
+@@ -39,7 +41,7 @@ struct h2_stream;
+ #define H2_USE_POLLFD_FROM_CONN 0
+ #endif
+
+-#if H2_USE_PIPES
++#if H2_USE_PIPES && defined(NGHTTP2_VERSION_NUM) && NGHTTP2_VERSION_NUM >= 0x012200
+ #define H2_USE_WEBSOCKETS       1
+ #else
+ #define H2_USE_WEBSOCKETS       0
+
+
+[1] https://github.com/nghttp2/nghttp2/milestone/30?closed=1

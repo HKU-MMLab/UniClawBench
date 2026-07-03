@@ -1,0 +1,32 @@
+task_id: task_204_01_scaling_laws_figure5_aspect_ratio
+category: 204_multimodal_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  从 arXiv 下载论文 "Scaling Laws for Neural Language Models"，找到 Figure 5 中间
+  那张 "Aspect Ratio" 折线图，并使用 Python + matplotlib 忠实地复现它。
+
+  要求：
+  1. 你必须自己找到正确的论文，并确认正确的页码/图号；不要复现错误的图表。
+  2. 该图应保留原始的坐标轴含义、对数 x 轴、三条不同模型规模的曲线、图例以及整体风格。
+  3. 至少执行一次"画图、与原图对比、再修订"的迭代，而不是一次成型。
+  4. 将最终交付物保存在 `/tmp_workspace/results/` 下，至少包括：
+     - `figure5_aspect_ratio_recreated.png`
+     - `figure5_aspect_ratio_recreated.py`
+     - `notes.md`（简要说明你确认的是哪篇论文和哪张图，以及你做了哪些修订）
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/scaling_laws_page8_full.png
+  - references/figure5_middle_aspect_ratio.png
+
+codex:
+  max_user_followups: 2

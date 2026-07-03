@@ -1,0 +1,28 @@
+Message-ID: <ZcfiFPP2qZIqMGFC@hermes.hilbert.loc>
+X-Clawbench-ID: BIO-2024-0586
+Date: Sat, 10 Feb 2024 21:52:36 +0100
+From: Karsten Hilbert <Karsten.Hilbert@gmx.net>
+To: debian-med@lists.debian.org
+Subject: Re: gnumed-client is marked for autoremoval from testing
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_02_msg00012.html
+
+Am Sat, Feb 10, 2024 at 09:39:26PM +0100 schrieb Karsten Hilbert:
+
+> Me being upstream would be OK with demoting
+>
+> 	dep:libchipard-tools -> rec:libchipcard-tools
+>
+> Might someone around here be able to afford the time for
+> updating the Debian package metadata accordingly ?
+
+For good measure I have submitted a corresponding bug report.
+
+	https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1063669
+
+Thanks,
+Karsten
+--
+GPG  40BE 5B0E C98E 1713 AFA6  5BC0 3BEA AC80 7D4F C89B

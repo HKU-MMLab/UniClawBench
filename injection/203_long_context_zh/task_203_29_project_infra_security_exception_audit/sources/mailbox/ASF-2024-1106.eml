@@ -1,0 +1,90 @@
+Message-ID: <CAKQ1sVO_qPjC+L5a3O4+gWkzMyDwj4GOocb7hutxpHgnWOynFA@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1106
+Date: Wed, 6 Sep 2023 18:29:55 +0200
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: jean-frederic clere <jfclere@gmail.com>
+Subject: Re: balancers bybusyness, bytraffic and byrequest thread/process safe issues
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-09.mbox
+
+On Wed, Sep 6, 2023 at 1:17 PM jean-frederic clere <jfclere@gmail.com> wrote:
+>
+> On 8/31/23 18:20, Jim Jagielski wrote:
+> > Isn't the call to find the best balancer mutex protected?
+>
+> Look to apr_atomic_cas32() and the APR code (1.7.x) I noted that we
+> don't test the return value of __atomic_compare_exchange_n()
+
+IIUC we don't need to since apr_atomic_cas32() does not return it, see below.
+
+>
+> +++
+> PR_DECLARE(apr_uint32_t) apr_atomic_cas32(volatile apr_uint32_t *mem,
+> apr_uint32_t val,
+>                                             apr_uint32_t cmp)
+> {
+> #if HAVE__ATOMIC_BUILTINS
+>      __atomic_compare_exchange_n(mem, &cmp, val, 0, __ATOMIC_SEQ_CST,
+> __ATOMIC_SEQ_CST);
+>      return cmp;
+> #else
+>      return __sync_val_compare_and_swap(mem, cmp, val);
+> #endif
+> +++
+>
+> and:
+> https://gcc.gnu.org/onlinedocs/gcc/_005f_005fatomic-Builtins.html
+> Says:
+> Otherwise, false is returned and memory is affected according to
+> failure_memorder. This memory order cannot be __ATOMIC_RELEASE nor
+> __ATOMIC_ACQ_REL. It also cannot be a stronger order than that specified
+> by success_memorder.
+>
+> So we use __ATOMIC_SEQ_CST so we can't fail or do I miss something?
+
+These docs (also) say:
+"""
+bool __atomic_compare_exchange_n (type *ptr, type *expected, type desired, ...)
+This compares the contents of *ptr with the contents of *expected. If
+equal, the operation is a read-modify-write operation that writes
+desired into *ptr. If they are not equal, the operation is a read and
+the current contents of *ptr are written into *expected.
+"""
+So __atomic_compare_exchange_n() guarantees that *expected will always
+be set to the value of *ptr before the call (be it changed or not),
+that's all we care about as returned value.
+
+Typical usage of apr_atomic_cas32() is:
+   ret = apr_atomic_cas32(mem, val, cmp);
+   if (ret == cmp) {
+      /* *mem changed to val, old value was ret (== cmp) */
+   }
+   else {
+      /* *mem unchanged, current value is ret (!=t cmp) */
+   }
+meaning that done/true (or noop/false) is given by ret == cmp (or
+respectively ret != cmp), no explicit bool is returned. The CAS
+guarantees that if *mem is equal to cmp then it's set to val, so it's
+enough to check that ret == cmp (i.e. old value was cmp) to assume
+success.
+
+As for the memory orders on success/failure, they have nothing to do
+with the likeliness of success/failure (which solely depends on the
+current value of *ptr compared to the one in *expected), they are a
+way to tell which memory ordering applies to the CAS operation w.r.t.
+the simultaneous atomic operations on the same *ptr memory (for more
+details you could find out about the acquire, release and
+acquire+release semantics relating to the C++ memory model used by the
+__atomic builtins). Roughly this is a way to tell how reads/writes on
+different CPUs should synchronize with each other (reads waiting or
+not for in-flight writes to finish and vice versa).
+The APR uses __ATOMIC_SEQ_CST for all its __atomic operations which is
+the stronger memory ordering (full barrier) since there is no way
+(yet?) for the users to specify their own (i.e. a faster/weaker one
+but safe enough for their usage, which the APR can't guess..).
+
+
+Regards;
+Yann.

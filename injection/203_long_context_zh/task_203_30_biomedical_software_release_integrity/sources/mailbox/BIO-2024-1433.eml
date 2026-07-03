@@ -1,0 +1,55 @@
+Message-ID: <YZStVxMCrStYoLGn@an3as.eu>
+X-Clawbench-ID: BIO-2024-1433
+Date: Wed, 17 Nov 2021 08:20:55 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-science@lists.debian.org
+Subject: Re: some older and removed packages maybe to update
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_11_msg00105.html
+
+Hi Ben,
+
+Am Sun, Nov 14, 2021 at 01:18:09PM +0100 schrieb Ben Tris:
+> Found some maybe interesting still developed.
+> I can not help further (no packaging experience or whatever).
+>
+> fastjet (phys)
+> https://svn.hepforge.org/fastjetsvn/contrib/trunk/
+
+Uploaded.
+
+> irstlm
+> https://github.com/irstlm-team/irstlm
+
+Uploaded.
+
+> cliquer (math)
+> https://github.com/dimpase/autocliquer
+
+This Homepage represents a different project, but I uploaded
+the Debian packaged cliquer.
+
+> nfft (math)
+> https://github.com/NFFT/nfft
+
+I worked on this but autopkgtest fails (also in old version)
+and thus pinged Uploader.
+
+> siscone (phys)
+> https://phab.hepforge.org/source/sisconesvn/
+
+Uploaded.
+
+> gone
+
+There is currently more important work on my desk than re-introducing
+removed software
+
+Thanks a lot for verifying the Debian Science package pool
+
+      Andreas.
+
+--
+http://fam-tille.de

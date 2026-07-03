@@ -1,0 +1,99 @@
+Message-ID: <ZyKMGleW2TWguTR0@emlwks999.eu>
+X-Clawbench-ID: BIO-2024-0427
+Date: Wed, 30 Oct 2024 20:42:18 +0100
+From: Étienne Mollier <emollier@debian.org>
+To: "Maarten L. Hekkelman" <maarten@hekkelman.com>
+Subject: Re: python-biopython test failure with libcifpp changes (Bug #1086156)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_10_msg00029.html
+
+Hi Maarten, Hi Andrius,
+
+I've been in the vicinity for a couple of years now, and yet
+neither biology nor chemistry are my field, far from it.  Thank
+you for helping me connecting the dots with this issue!  :)
+
+Maarten L. Hekkelman, on 2024-10-30:
+> Of course, it would be easiest to include the components.cif file in
+> libcifpp. However, this file changes weekly and it is huge. Two good reasons
+> not to do it.
+>
+> What I did for density-fitness e.g. is include a subset of components.cif
+> large enough for testing. That way, you can avoid having to download the
+> entire CCD file for just some simple tests on basic proteins. Have a look at
+> the density-fitness debian/tests files, perhaps this may help you solve your
+> problem.
+>
+> There are similar ways to provide a dummy components.cif file. See
+> https://pdb-redo.github.io/libcifpp/resources.html for more information.
+
+Thank you for the hints, as a start, I checked whether I manage
+to get somewhere with your mini-ccd.cif from density-fitness.
+It seemed on first sight that I may have to populate a few more
+fields before being able to fulfil the requirements of
+python-biopython test suite :
+
+	test_PDB_DSSP ... />/.pybuild/cpython3_3.12/build/Bio/PDB/DSSP.py:199: UserWarning:
+	Configuration error:
+
+	The attempt to retrieve compound information for "SO4" failed.
+
+	This information is searched for in a CCD file called components.cif or
+	components.cif.gz which should be located in one of the following directories:
+
+	"/usr/share/libcifpp"
+	"/var/cache/libcifpp"
+	"/>/libcifpp-data"
+	"/usr/share/libcifpp"
+	"/usr/share/libcifpp"
+
+	(Note that you can add a directory to the search paths by setting the
+	LIBCIFPP_DATA_DIR environmental variable)
+
+	On Linux an optional cron script might have been installed that automatically updates
+	components.cif and mmCIF dictionary files. This script only works when the file
+	libcifpp.conf contains an uncommented line with the text:
+
+	update=true
+
+	If you do not have a working cron script, you can manually update the files
+	in /var/cache/libcifpp using the following commands:
+
+	curl -o /var/cache/libcifpp/components.cif https://files.wwpdb.org/pub/pdb/data/monomers/components.cif
+	curl -o /var/cache/libcifpp/mmcif_pdbx.dic https://mmcif.wwpdb.org/dictionaries/ascii/mmcif_pdbx_v50.dic
+	curl -o /var/cache/libcifpp/mmcif_ma.dic https://github.com/ihmwg/ModelCIF/raw/master/dist/mmcif_ma.dic
+
+	The current order of compound factory objects is:
+
+	CCD components.cif resource
+	CCD components.cif resource
+	Unknown compound: SO4
+	Missing compound information for SO4
+
+	  warnings.warn(err)
+	ok
+
+That being said, despite the incomplete subset, it allows the
+test to pass, allowing the python-biopython build to go through.
+I should be able to upload a fix shortly.  :)
+
+> As an alternative, I'm thinking about packaging a subset with libcifpp.
+> Dictionaries can be stacked already, so having a subset might be a simple
+> way out of this. But the question then is, what to include in the subset. I
+> did some counting on components in PDB entries to see if there is a clear
+> cut-off, but couldn't find one. And only including the standard amino acids
+> and nucleic acids is a bit too limited to be useful.
+
+I understand how problematic it is to determine a useful subset,
+and am afraid I don't believe to have any good idea.  For all I
+can tell, in its present shape, the mini-ccd.cif already allows
+for basic functional testing.
+
+Have a nice day,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  pgp: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/2, please excuse my verbosity
+   `-    on air: Patrick Moraz - Sonata in C (3rd movement Alle…

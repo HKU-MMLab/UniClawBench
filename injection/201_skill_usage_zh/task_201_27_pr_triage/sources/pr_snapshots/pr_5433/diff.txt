@@ -1,0 +1,9 @@
+diff --git a/src/flask/sansio/scaffold.py b/src/flask/sansio/scaffold.py
+index 11..22 100644
+--- a/src/flask/sansio/scaffold.py
++++ b/src/flask/sansio/scaffold.py
+@@ -120,7 +120,7 @@ class Scaffold:
+     @property
+     def jinja_loader(self) -> FileSystemLoader | None:
+-        """The Jinja loader for this object's tempaltes."""
++        """The Jinja loader for this object's templates."""

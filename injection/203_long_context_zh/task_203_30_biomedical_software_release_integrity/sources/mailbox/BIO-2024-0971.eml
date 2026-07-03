@@ -1,0 +1,26 @@
+Message-ID: <89e50061d316b9c6f4675a71f58b833388fe018d.camel@mzf.fr>
+X-Clawbench-ID: BIO-2024-0971
+Date: Wed, 6 Oct 2021 21:57:46 +0200
+From: François Mazen <francois@mzf.fr>
+To: Andrius Merkys <merkys@debian.org>, <debian-science@lists.debian.org>
+Subject: Re: Update Ceres Solver to 2.0.0
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_10_msg00013.html
+
+Hello Andrius!
+
+> To start with, you should target experimental instead
+> of
+> unstable in debian/changelog.
+
+I've changed the target in the changelog file on salsa and re-uploaded
+to mentors. Thanks for the pointer!
+
+> It would be best if Anton could help you with upload and rights.
+
+Perfect, I'm waiting for his review.
+
+Best Regards,
+François

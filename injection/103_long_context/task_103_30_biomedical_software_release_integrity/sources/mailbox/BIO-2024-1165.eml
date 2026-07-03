@@ -1,0 +1,22 @@
+Message-ID: <udlh6zz28j7.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-1165
+Date: Wed, 19 Oct 2022 10:27:24 -0400
+From: ucko@debian.org (Aaron M. Ucko)
+To: James Bonfield <jkb@sanger.ac.uk>
+Subject: Re: Htslib plugins
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00065.html
+
+James Bonfield  writes:
+
+> 	--with-plugin-path='/usr/local/lib/htslib:/usr/local/libexec/htslib:$(plugindir)'
+
+I haven't been involved with this package, but I suspect that line was
+supposed to have a double dollar sign so as to yield a reference to your
+build system's plugindir variable.  Thanks for the report!
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

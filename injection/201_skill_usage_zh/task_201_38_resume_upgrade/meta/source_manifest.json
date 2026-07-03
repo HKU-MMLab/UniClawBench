@@ -1,0 +1,14 @@
+{
+  "task_id": "task_201_38_resume_upgrade",
+  "note": "Hybrid realism: the DOCX structure, section ordering, and bullet conventions mirror real senior-engineer resumes; the JD uses real industry terms (PostgreSQL, Kafka, Kubernetes, OpenTelemetry, eBPF, Rust). Names, employers, and quantified claims are synthetic because public resumes cannot be redistributed without consent.",
+  "entries": [
+    {
+      "path": "resume_2023.docx",
+      "description": "Mid-level backend engineer resume in authentic DOCX structure (Jordan Chen, fictional). Six years of Python/Go backend experience with quantified bullets."
+    },
+    {
+      "path": "jd_senior_be.txt",
+      "description": "Senior Backend Engineer JD modelled on real public postings (checkout/payments + Kubernetes + event streams). Company fictitious; technical requirements are real."
+    }
+  ]
+}

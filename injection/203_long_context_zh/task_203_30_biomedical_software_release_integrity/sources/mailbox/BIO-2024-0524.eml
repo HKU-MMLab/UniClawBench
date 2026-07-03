@@ -1,0 +1,101 @@
+Message-ID: <Y0AsU4yw78IRTtyA@an3as.eu>
+X-Clawbench-ID: BIO-2024-0524
+Date: Fri, 7 Oct 2022 15:40:35 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Paul Burden <burden.paul@gmail.com>,	Amul Shah <Amul.Shah@fisglobal.com>,	Debian Med Project List <debian-med@lists.debian.org>
+Subject: Outdated documentation in fis-gtm (Was: Fwd: fis-gtm_6.3-014-3_amd64.deb)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00018.html
+
+Hi Paul,
+
+Am Fri, Oct 07, 2022 at 11:38:44AM +0100 schrieb Paul Burden:
+> I've been redirected to you by Steve. Can you help with my query please?
+> I've installed the package but links in the README file are not valid.
+
+I admit the text I was suggested 9 years ago is not relevant any more
+these days.  I keep Amul Shah in CC of this mail as well as the Debian
+Med mailing list where things like this are discussed.  Amul is part of
+the upstream fis-gtm team and will hopefully know some answer.
+
+BTW, in principle its the best idea to report issues like this by
+doing
+
+     reportbug fis-gtm
+
+(on a Debian system ... no idea how it works on Ubuntu, sorry) to have a
+record in our bug tracking system (and yes, broken links are considered
+bugs).
+
+I need to admit that I personally do not use fis-gtm - I just supported
+the packaging and thus I have no idea how to set it up or what links
+might be helpful.
+
+Sorry of not beeing able to provide direct help but I hope you might
+get on your way with further hints from others.
+
+Kind regards
+
+     Andreas.
+
+> -------- Forwarded Message --------
+> Subject: 	Re: fis-gtm_6.3-014-3_amd64.deb
+> Date: 	Thu, 6 Oct 2022 16:59:09 -0700
+> From: 	Steve Langasek
+> To: 	Paul Burden
+> CC: 	ubuntu-motu@lists.ubuntu.com
+>
+>
+>
+> Hi Paul,
+>
+> On Thu, Oct 06, 2022 at 01:44:16PM +0100, Paul Burden wrote:
+> > Hi
+>
+> > I've installed this from the ubuntu repo, but the links to the
+> > documentation
+> > don't work. I'm not clear how to set up the environment to get a mumps
+> > environment active. I programmed in mumps during the 80's and early 90's
+> > and
+> > would like to get back into it.
+>
+> > Can you please help with these links that are in
+> > /usr/share/doc/fis-gtm/README.Debian? Contents look like :-
+>
+> > FIS GT.M for Debian
+> > ===================
+> >
+> > Please note the Release Notes & Supplementary Information for the latest
+> > versions here:
+> >
+> > http://tinco.pair.com/bhaskar/gtm/doc/articles/index.html
+> >
+> > For documentation please visit
+> >
+> > http://fis-gtm.com
+> >
+> > and click on the User Documentation tab.
+> >
+> > -- Andreas Tille   Sun, 24 Nov 2013 09:26:25 +0100
+>
+> > It's the tinco.pair.com and the http://fis-gtm.com that don't appear to
+> > work.
+>
+> > Thank for your help
+>
+> ubuntu-motu is not a very effective contact for these kinds of questions.
+> This package is synchronized from Debian, and it's unlikely anyone here has
+> specific knowledge about this package. I suggest you contact the Debian
+> maintainer - either Andreas whose email address is listed above, or the
+> Debian Med Packaging Team .
+>
+> --
+> Steve Langasek                   Give me a lever long enough and a Free OS
+> Debian Developer                   to set it on, and I can move the world.
+> Ubuntu Developerhttps://www.debian.org/
+> slangasek@ubuntu.com                                      vorlon@debian.org
+
+--
+http://fam-tille.de

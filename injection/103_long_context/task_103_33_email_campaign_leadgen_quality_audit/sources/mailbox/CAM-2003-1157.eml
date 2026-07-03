@@ -1,0 +1,35 @@
+Message-ID: <BADF3C947A1BD54FBA75C70C241B0B9E10AA9B@ex02.idirect.net>
+X-Clawbench-ID: CAM-2003-1157
+Date: Mon, 19 Aug 2002 15:08:56 -0400
+From: "Harig, Mark A." <maharig@idirect.net>
+To: rpm-zzzlist@freshrpms.net
+Subject: RE: when building a rpm i386-redhat-linux- is appended to man page
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01256.9494ea8b24d04fed1503e96c2f3a7a4d
+
+>
+> The workaround is to pass an extra argument to configure as follows :
+>
+> %configure --program-prefix=%{?_program_prefix:%{_program_prefix}}
+>
+
+This works when you are defining a switch that %configure
+does not already define, but how can we override an
+existing switch?  For example,
+
+  prefix: /usr/local
+
+  %configure --prefix=%{?_prefix:%{prefix}}
+
+would be desirable for making a .rpm package relocatable,
+but this doesn't work.  'configure' receives two switches,
+the default '--prefix=/usr' and the (attempted) override
+'--prefix=/usr/local', but it only recognizes the first one.
+
+---
+
+_______________________________________________
+RPM-List mailing list <RPM-List@freshrpms.net>
+http://lists.freshrpms.net/mailman/listinfo/rpm-list

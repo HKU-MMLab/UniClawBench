@@ -1,0 +1,12 @@
+{
+  "transformer": "Transformer",
+  "self attention": "自注意力",
+  "positional encoding": "位置编码",
+  "multi head attention": "多头注意力",
+  "scaling laws": "规模定律",
+  "large language models": "大语言模型",
+  "fine tuning": "微调",
+  "natural language processing": "自然语言处理",
+  "recurrent networks": "循环网络",
+  "next token prediction": "下一词预测"
+}

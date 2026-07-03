@@ -1,0 +1,6 @@
+payment_id,invoice_number,payment_date,currency,amount,method,notes
+PAY-1001,INV-2025-0001,2025-03-28,USD,329.08,ACH,paid in full
+PAY-1002,BL-00184,2025-03-29,EUR,345.55,SEPA,first split payment
+PAY-1003,BL-00184,2025-04-01,EUR,345.54,SEPA,second split payment
+PAY-1004,HCG-2025-0041,2025-04-10,USD,12000.00,wire,partial payment approved by finance
+PAY-1005,SL-2025-00876,2025-04-18,CNY,19466.50,wire,possible overpayment pending supplier confirmation

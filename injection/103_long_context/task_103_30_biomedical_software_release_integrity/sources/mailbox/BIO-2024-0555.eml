@@ -1,0 +1,130 @@
+Message-ID: <Yue/WKdLJFg7p6zj@an3as.eu>
+X-Clawbench-ID: BIO-2024-0555
+Date: Mon, 1 Aug 2022 13:56:08 +0200
+From: Andreas Tille <tille@debian.org>
+To: "Aaron M. Ucko" <ucko@debian.org>
+Subject: Re: igblast accepted - how can it be used to test igdiscover
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_08_msg00001.html
+
+Hi Aaron,
+
+thanks again a lot for your helpful comments.
+
+Am Sat, Jul 30, 2022 at 11:41:23PM -0400 schrieb Aaron M. Ucko:
+> Andreas Tille  writes:
+>
+> > into igdiscover changelog.  Igblast is accepted now.  However, despite I did
+> > the final upload I did not checked for actual binaries which are all "hidden"
+> > in usr/lib/ncbi-igblast/bin.  I simply took over your and David's packaging
+> > layout and cared that it builds latest upstream.
+>
+> Thanks for taking IgBLAST on in general.  This packaging is off to a
+> good start, but I'm sorry to say still not quite right.  In particular:
+>
+> - The executables to build and install directly are igblastn and
+>   igblastp
+
+I did the following attempt to seek for those binaries inside the source
+tree:
+
+
+diff --git a/debian/rules b/debian/rules
+index fcaef90..5cf119b 100755
+--- a/debian/rules
++++ b/debian/rules
+@@ -21,7 +21,8 @@ override_dh_auto_build:
+        cd c++ && make
+
+ override_dh_auto_install:
+-       # skipping
++       find . -name igblastn
++       find . -name igblastp
+
+ override_dh_clean:
+        # cleans *.orig files, which it should not
+
+
+and found the according part inside the build log:
+
+diff --git a/debian/rules b/debian/rules
+index fcaef90..5cf119b 100755
+--- a/debian/rules
++++ b/debian/rules
+@@ -21,7 +21,8 @@ override_dh_auto_build:
+        cd c++ && make
+
+
+ override_dh_auto_install:
+-       # skipping
++       find . -name igblastn
++       find . -name igblastp
+
+ override_dh_clean:
+        # cleans *.orig files, which it should not
+
+
+I wonder what needs to be done to create the said binaries.
+
+> along with the edit_imgt_file.pl script (which Policy 10.4
+>   says should be installed without its extension, though I know that's
+>   somewhat controversial within this team).  All come from app/igblast
+>   and should in fact wind up in /usr/bin.
+
+I think that controverse is over and implemented in the package
+template which contains the according lintian-override[1]
+
+> - As for other executables, supporting tools can and should come from
+>   ncbi-blast+ (for which I reckon a Recommends should suffice) and you
+>   don't need to install tests at all.
+
+OK, pushed Recommends to Salsa (will drop superficial executables)
+
+> - Because you're installing multiple binaries (even if fewer than at
+>   present), building supporting libraries dynamically should save space;
+>   please see ncbi-blast+ for an illustration of how to do so and
+>   subsequently install only those shared libraries you'll actually need
+>   at runtime.  To avoid possible skew or missed IgBLAST-specific
+>   tuneups, it's probably best for the IgBLAST packaging to supply its
+>   own versions of these files, rather than building against libraries
+>   from ncbi-blast+ once a corresponding development package happens.
+>   (I realize that this approach goes against policy, but the libraries
+>   in question are at least generally native to both source bases.)
+
+I admit that's too much for a "Team upload" done by a person who has no
+idea about all the ncbi stuff.
+
+> - Some use cases may want app/igblast's internal_data and optional_file
+>   subtrees, which I'd suggest installing to /usr/share/ncbi/igblast; I
+>   can adjust the ncbi-data package to facilitate finding those subtrees
+>   there.
+
+Commited to git.
+
+> - The package FTBFS on some architectures.  Future releases should do
+>   better, at least on those specific fronts, but meanwhile you might
+>   want to copy some patches from ncbi-blast+.
+
+I personally would simply wait for future releases.  I have no interest
+at all to burn my time with 32bit architectures on this package.  If
+someone volunteers to take over patches, I'm fine but we have lots of
+open RC bugs in our packages and predepends of our packages.  I consider
+it not sensibly spent human resources to build this kind of packages on
+hardware where it never will be used.
+
+> Thanks again, and please let me know if you'd like further advice on any
+> of those fronts.  Also, sorry for not offering concrete patches; I'm
+> already spread a bit too thin.
+
+Your hints are really helpful to iteratively get things working.
+
+Kind regards
+
+     Andreas.
+
+[1] https://salsa.debian.org/med-team/community/package_template/-/blob/master/debian/lintian-overrides
+
+--
+http://fam-tille.de

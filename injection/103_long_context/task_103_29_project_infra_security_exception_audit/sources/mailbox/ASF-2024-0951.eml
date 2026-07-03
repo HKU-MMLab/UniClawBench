@@ -1,0 +1,39 @@
+Message-ID: <5231a3f9-200b-f0f6-49a5-86e2eb7899fd@tigertech.com>
+X-Clawbench-ID: ASF-2024-0951
+Date: Wed, 15 Mar 2023 09:27:54 -0700
+From: Robert L Mathews <lists@tigertech.com>
+To: dev@httpd.apache.org
+Subject: Question about 2.4.56 "client resets of HTTP/2 streams led to  unwanted 500 errors" fix
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-03.mbox
+
+[I sent this message to the users list but there were no replies; trying
+here instead.]
+
+After upgrading from httpd 2.4.54 to 2.4.55, I noticed that mod_fcgid
+scripts would sometimes get "stuck" in the "working" state, rather than
+the "ready" state, even though the script associated with the mod_fcgid
+slot was idle and waiting for a new request.
+
+While investigating, I noticed this usually happened after a stray
+HTTP/2 "500" error in the logs that I couldn't match up to a real error.
+This was puzzling, so I downgraded back to 2.4.54 while thinking about it.
+
+Now in the 2.4.56 update, I see:
+
+*) mod_http2: client resets of HTTP/2 streams led to unwanted 500 errors
+    reported in access logs and error documents. The processing of the
+    reset was correct, only unneccesary reporting was caused.
+
+The "unwanted 500 errors" sounds like it might be related, except that
+it says the processing was correct, implying that this problem would not
+affect anything other than the logging.
+
+Is it possible that it actually *did* affect the processing of mod_fcgid
+requests –- that the bug could have prevented mod_fcgid from switching a
+child process from "working" back to "ready" after the client reset?
+
+--
+Robert L Mathews

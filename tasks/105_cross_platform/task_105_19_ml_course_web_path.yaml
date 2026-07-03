@@ -1,0 +1,16 @@
+task_id: task_105_19_ml_course_web_path
+category: 105_cross_platform
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+recording: none
+headed: auto
+task: "You are a backend engineer with Python basics, but this is your first time systematically learning machine learning engineering. You hope to complete an introductory learning path over the next 7 days, with the goal of understanding model training, evaluation, deployment, and basic MLOps concepts. Use only the browser to complete the following task: collect learning resources from at least 5 public webpage sources, and the sources must cover the following types:\n\n- one university or institution public course page\n- one course platform page such as Coursera / edX / Udacity / DeepLearning.AI\n- one official documentation or tutorial page\n- one video course or playlist page\n- one hands-on project or notebook / tutorial page\n\nYou need to compare each resource's topic coverage, estimated study time, prerequisites, whether it is free or can be audited, and how practical it is, then select the 4-6 resources most suitable for a 7-day introductory path. Finally, write the learning path to:\n\n    /tmp_workspace/results/ml_engineering_week1_learning_path.md\n\nThe Markdown must include five top-level sections:\n- learner profile and goal\n- resource comparison\n- 7-day study plan\n- hands-on practice plan\n- why rejected others\n\nThe 7-day study plan must include, for each day: learning resources, estimated time, concrete learning goal, and one checkable output. Do not only provide a collection of links, and do not mechanically copy a full course catalog; provide tradeoffs and a plan that can be executed within one week. If a resource requires payment, login, or is region-restricted, mark that explicitly and prefer publicly accessible alternatives.\n"
+codex:
+  max_user_followups: 2
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json

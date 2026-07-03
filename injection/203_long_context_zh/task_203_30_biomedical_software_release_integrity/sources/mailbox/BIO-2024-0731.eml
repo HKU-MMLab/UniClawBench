@@ -1,0 +1,12 @@
+Message-ID: <bio-2024-0731@biodebian.example>
+X-Clawbench-ID: BIO-2024-0731
+Date: Fri, 26 Jan 2024 11:30:00 +0000
+From: Validation Bot <validation@biodebian.example>
+To: debian-med@lists.debian.org
+Subject: GeneMatrix candidate mismatch
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: synthetic Debian Med-style biomedical release-integrity implant
+
+The candidate tarball is GeneMatrix 2.3.1, but the stored validation checksum maps to the 2.3.0 reference output. Please confirm whether a fresh validation bundle exists.

@@ -1,0 +1,67 @@
+task_id: task_105_30_arxiv_calibre_index
+category: 105_cross_platform
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I want to organize these 8 LLM-related arxiv papers into my Calibre
+  library and then create a LibreOffice index spreadsheet for easy
+  reference later.
+
+    2304.03442
+    2310.06825
+    2401.05566
+    2402.07927
+    2403.04132
+    2305.14314
+    2310.04408
+    2402.17764
+
+  Specifically:
+
+  Download each PDF with wget and import them into a Calibre library
+  using calibredb. Get page counts with pdfinfo and citation counts from
+  Semantic Scholar's public API. Then produce a .ods index spreadsheet
+  listing each paper's title, first author, author count, page count, and
+  citation count, sorted by arxiv ID. Include a formula for average
+  citations or total pages as a summary row, use conditional formatting
+  to highlight rows with citations over 1000 in red, and embed a bar
+  chart comparing page counts across papers. Generate a real .ods with
+  formulas and chart objects using soffice or odfpy — not just a CSV
+  conversion.
+
+  Also check each paper's first author affiliation (usually visible in
+  the PDF's first-page header — extract with pdftotext). Short names are
+  fine, no full addresses. Count which affiliation appears most often.
+
+  Give me a summary papers.json with one record per paper (arxiv_id,
+  title, first_author, author_count, page_count, citation_count,
+  first_author_affiliation), plus a top-level affiliation_distribution
+  showing which institution appears most.
+
+  Put the Calibre library at /tmp_workspace/results/library/, the index
+  spreadsheet as index.ods, and the JSON as papers.json, all under
+  /tmp_workspace/results/. When done, tell me which paper has the most
+  citations, which has the most pages, and which institution appears
+  most often.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources: []
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

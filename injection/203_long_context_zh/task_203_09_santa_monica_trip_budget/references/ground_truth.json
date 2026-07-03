@@ -1,0 +1,49 @@
+{
+  "task_id": "task_103_09_santa_monica_trip_budget",
+  "created_at": "2026-04-25T09:19:28.187778+00:00",
+  "date_range": [
+    "next Friday",
+    "the following Monday"
+  ],
+  "flight_constraints": [
+    "United",
+    "SFO-LAX",
+    "nonstop",
+    "outbound 09:00-11:30",
+    "return 17:00-19:30"
+  ],
+  "hotel_whitelist": [
+    "Courtyard by Marriott Santa Monica",
+    "Hampton Inn & Suites Santa Monica",
+    "Hilton Santa Monica Hotel & Suites"
+  ],
+  "restaurant_whitelist": [
+    "Water Grill Santa Monica",
+    "Meat On Ocean",
+    "Fia Santa Monica",
+    "Orla Santa Monica",
+    "1212 Santa Monica"
+  ],
+  "process_reference_screenshots": [
+    "process_evidence/booking_courtyard_santa_monica.png",
+    "process_evidence/booking_hampton_santa_monica.png",
+    "process_evidence/booking_hilton_santa_monica.png",
+    "process_evidence/enterprise_lax.png",
+    "process_evidence/google_flights_sfo_lax_results.png",
+    "process_evidence/hampton_santa_monica.png",
+    "process_evidence/hilton_santa_monica.png",
+    "process_evidence/kayak_sfo_lax.png",
+    "process_evidence/marriott_courtyard_santa_monica.png",
+    "process_evidence/momondo_sfo_lax_top_results.png",
+    "process_evidence/momondo_sfo_lax_united_options.png",
+    "process_evidence/opentable_1212.png",
+    "process_evidence/opentable_fia.png",
+    "process_evidence/opentable_meat_on_ocean.png",
+    "process_evidence/opentable_orla.png",
+    "process_evidence/opentable_water_grill.png",
+    "process_evidence/turo_lax.png"
+  ],
+  "manual_reference_gaps": [],
+  "grading_note": "Score process evidence and constraint-following. If live sites block prices or reservations, an honest insufficient-information conclusion can still score well when the executor documents real attempts, screenshots, and constraints.",
+  "final_plan_not_required_when_blocked": "A full budget is expected when enough data is available; when live sites block key data, accept a clearly qualified plan with missing-data notes rather than hallucinated prices."
+}

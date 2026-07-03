@@ -1,0 +1,69 @@
+Message-ID: <ZvBgka8qIiL8av6b@hermes.hilbert.loc>
+X-Clawbench-ID: BIO-2024-1217
+Date: Sun, 22 Sep 2024 20:23:13 +0200
+From: Karsten Hilbert <Karsten.Hilbert@gmx.net>
+To: Debian-Med <debian-med@lists.debian.org>
+Subject: GNUmed (-client/-server): new upstream available
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_09_msg00019.html
+
+Dear all,
+
+with Andreas currently being our Father Figure may I ask for
+a kind soul to re-package gnumed-client and gnumed-server due
+to a new upstream version having been published ?
+
+
+	Package: gnumed-client
+	Description: medical practice management - Client
+	 This is the GNUmed Electronic Medical Record. Its purpose is
+	 to enable doctors to keep a medically sound record on their
+	 patients' health. It does not currently provide functionality
+	 for stock keeping. Clinical features are well-tested by real
+	 doctors in the field.
+	 .
+	 While the GNUmed team has taken the utmost care to make sure
+	 the medical records are safe at all times you still need to
+	 make sure you are taking appropriate steps to backup the
+	 medical data to a safe place at appropriate intervals. Do
+	 not forget to test your recovery procedures, too !
+	 .
+	 Protect your data! GNUmed itself comes without
+	 any warranty whatsoever. You have been warned.
+	 .
+	 This package contains the wxpython client.
+
+
+The changelog for reference:
+
+              1.8.19
+
+       FIX: export area: exception on browsing export dir
+       FIX: export area: allow removing remote/empty/stale DIRENTRYs
+       FIX: document: gracefully handle empty templates [thanks parallels]
+       FIX: episodes: do not auto-tinker with open state of existing episodes
+
+       IMPROVED: documents: part export filename
+       IMPROVED: regular expression strings [thanks Wolfgang]
+       IMPROVED: export area: saving entries as archive
+
+
+Relevant links:
+
+	https://packages.debian.org/sid/gnumed-client
+
+	https://tracker.debian.org/pkg/gnumed-client
+
+	https://www.gnumed.de/documentation/
+
+	https://www.gnumed.de/downloads/client/1.8/
+
+	https://www.gnumed.de/downloads/server/v22
+
+
+Thanks to all,
+Karsten
+--
+GPG  40BE 5B0E C98E 1713 AFA6  5BC0 3BEA AC80 7D4F C89B

@@ -1,0 +1,30 @@
+Message-ID: <Zo6GVQ9QzLjjmTjw@fusion.emlwks999.eu>
+X-Clawbench-ID: BIO-2024-0865
+Date: Wed, 10 Jul 2024 15:02:13 +0200
+From: Étienne Mollier <emollier@debian.org>
+To: Benjamin Redelings <benjamin.redelings@gmail.com>
+Subject: Re: [Help] Re: [bredelings/BAli-Phy] Test suite error in 4.0-beta7 (Issue #17)]
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_07_msg00007.html
+
+Hi again,
+
+Étienne Mollier, on 2024-07-10:
+> Full log would probably be better suited in your issue tracker
+> than in a mailing list.  Let me know if you need it.  I tried to
+> trip Salsa CI so it produces an independent build and a build
+> log to point to, but it doesn't look to be operating right now.
+
+Actually, the CI kicked in and reported a different set of test
+failures[1].  I'm not sure what's up.  Does this ring a bell?
+
+[1]: https://salsa.debian.org/med-team/bali-phy/-/jobs/5952519
+
+Have a nice day,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  pgp: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/0, please excuse my verbosity
+   `-    on air: Saga - (Goodbye) Once Upon A Time

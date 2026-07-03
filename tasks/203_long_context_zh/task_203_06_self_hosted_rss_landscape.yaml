@@ -1,0 +1,34 @@
+task_id: task_203_06_self_hosted_rss_landscape
+category: 203_long_context_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我想自托管一个属于自己的 RSS 阅读器，希望得到一份经过核实的候选清单。请实时调研——搜索 GitHub 和网络——不要依赖以往的记忆，因为项目及其活跃度会变化。
+
+  我明确想要的是真正可自托管的 RSS/订阅源阅读器：可以在我自己服务器上运行的开源应用。不要纳入仅限 SaaS 的阅读器，如 Feedly 或 Inoreader，也不要纳入稍后读/书签类应用（如 wallabag 或 Pocket）——它们不是订阅源阅读器。如果某个项目处于模糊地带，请说明你纳入或排除它的原因。
+
+  找到至少 10 个真正可自托管的订阅源阅读器。对每一个，记录：
+  - 仓库或项目链接
+  - 主要编程语言
+  - 许可证（应为开源）
+  - 大致的 star 数或活跃度信号（例如近期提交）
+  - 它的部署方式（Docker、单一二进制、源码）——确认它确实可自托管
+  - 一句话说明其功能或范围
+
+  通过实际查看仓库（README/描述/许可证）来核实每一条记录，而不仅仅是看名称。如果你找到了那些知名的标杆项目，请将其纳入（例如 FreshRSS、Miniflux、Tiny Tiny RSS、CommaFeed）。
+
+  将候选清单保存到 `/tmp_workspace/results/self_hosted_rss_landscape.md`，组织清晰，并附上一段简短说明，列出你有意排除的任何项目（仅限 SaaS 或稍后读类）及其原因。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+codex:
+  max_user_followups: 2

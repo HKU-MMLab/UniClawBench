@@ -1,0 +1,49 @@
+Message-ID: <ZQSZAosceJrD1tM6@fusion>
+X-Clawbench-ID: BIO-2024-1348
+Date: Fri, 15 Sep 2023 19:48:50 +0200
+From: Étienne Mollier <emollier@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: libcifpp updated, new soname, review requested
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_09_msg00015.html
+
+Hi Maarten,
+
+Nevermind the below, it looks like I read the diff the wrong way
+around:
+>  1. The two following files have been introduced in version 5.2
+>     and would need dedicated entries in d/copyright since they
+>     declare being licensed under Boost Software License 1.0
+>     (careful not to make a single paragraph, as copyright
+>     holders are not exactly the same, although a concatenation
+>     of holders of both files may be tolerable):
+>
+>         cmake/GetGitRevisionDescription.cmake
+>         cmake/GetGitRevisionDescription.cmake.in
+>
+>  2. The holder of the following file went back in time in 2021,
+>     but the stamp in d/copyright doesn't go as far in the past:
+>
+>         cmake/VersionString.cmake
+>
+>     Reading further, these go as far as 2020:
+>
+>         include/cif++/pdb/pdb2cif.hpp
+>         include/cif++/utilities.hpp
+>         src/pdb/pdb2cif_remark_3.hpp
+>
+>     So it might be worth extending the range of dates for all
+>     files to 2020-2023 to be on the safe side in my opinion.
+
+I will let things rest a bit for now, and will redo the
+review again later when I will be better focused.  In the
+meantime, this request is open for review.
+
+Sorry for the confusion,
+--
+  .''`.  Étienne Mollier
+ : :' :  gpg: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/4, please excuse my verbosity
+   `-    on air: Marillion - Estonia

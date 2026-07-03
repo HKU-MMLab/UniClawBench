@@ -1,0 +1,51 @@
+Message-ID: <YfkL1dD33SHTBZpI@an3as.eu>
+X-Clawbench-ID: BIO-2024-1045
+Date: Tue, 1 Feb 2022 11:30:45 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Re: Problems finding RocksDBConfig.cmake (Was: sortmerna: "/usr/bin/ld: cannot find -lpthreads")
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_02_msg00005.html
+
+Am Tue, Feb 01, 2022 at 11:24:39AM +0100 schrieb Mathieu Malaterre:
+> On Tue, Feb 1, 2022 at 11:20 AM Mathieu Malaterre  wrote:
+> >
+> > >
+> > > Kind regards and thanks a lot for your patience
+> >
+> > Odd.
+> >
+> > Here is what I see:
+> >
+> > % cat src/sortmerna/CMakeLists.txt
+> > [...]
+> >                 # the following are all transitive dependencies of
+> > smr_objs i.e. no need to link:
+> >                 # RapidJSON::RapidJSON ZLIB::ZLIB Threads::Threads (rockdb deps)
+> >
+> > So there may be an issue in the RocksDbConfig file... in any case I
+> > suspect this is acceptable to simply add it manually back:
+> >
+> >                 # RapidJSON::RapidJSON ZLIB::ZLIB (rockdb deps)
+> >                 Threads::Threads
+>
+> Very odd. pthread transitive dep should have been pulled:
+>
+>  % grep -2 thread /usr/lib/x86_64-linux-gnu/cmake/rocksdb/RocksDBTargets.cmake
+> set_target_properties(RocksDB::rocksdb PROPERTIES
+>   INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+>   INTERFACE_LINK_LIBRARIES
+> "\$;\$;\$;/usr/lib/x86_64-linux-gnu/libbz2.so;\$;\$"
+> )
+>
+> that goes a bit too far in my understanding of cmake at this point.
+
+Funny anouth the -lpthread is missing in the linker line I've quoted ...
+
+Kind regards
+     Andreas.
+
+--
+http://fam-tille.de

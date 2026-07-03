@@ -1,0 +1,68 @@
+Message-ID: <E625F4BB-345F-487A-9BFD-15926857351C@glasgow.ac.uk>
+X-Clawbench-ID: BIO-2024-0306
+Date: Thu, 6 Oct 2022 01:59:23 +0000
+From: John Marshall <John.W.Marshall@glasgow.ac.uk>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Re: [Help] New version of htslib does not build
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00012.html
+
+On 4 Oct 2022, at 15:31, Nilesh Patra  wrote:
+> The thing that was causing failures on !amd64 was that there were amd64 specific symbols in debian/libhtscodecs2.symbols that were not matching on those archs due to avx2/avx512 specific ABI being exported there.
+
+So something specific to the Debian build scripts. Like many of Debian's issues with their htslib symbols file over the years, this is because Debian insists on listing all of libhtscodecs's global symbols in this file. If you omitted these internal symbols, there would be no problem. I believe upstream's attitude would be that these particular symbols are not declared in htscodecs's installed public header files, so they are unusable unless the user cheats by making their own declarations, so they are not meaningfully part of either htscodecs's API or ABI. So they should not be listed in a symbols file.
+
+These two views are of course unreconcilable. They were reconciled in htslib by upstream implementing symbol visibility and hiding the internal global symbols. You may wish to suggest to upstream htscodecs that they may wish to implement symbol visibility in libhtscodecs.so too.
+
+>> But are you aware of a platform supported by ARM Linux that does not provide Neon, where this code always using the Neon implementation would fail?
+>
+> I am in no way a computer architecture pro, but that said I have seen bug reports wherein non-neon failures are reported
+>
+> 	https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=982794
+
+Thanks, that is interesting. So on 64-bit aarch64 one can assume Neon (as confirmed in the ArchitectureSpecificsMemo you linked to), but there do exist 32-bit ARM Linux platforms that do not provide Neon. So htscodecs will have to check for Neon capabilities at runtime just as it checks for SSE/AVX/etc on x86. That is now a proposed htscodecs PR [1].
+
+>> You don't explain what you mean by avoiding "violat[ing] arch baseline",
+>
+> Because that is pretty standard in debian-land. Here is what it means:
+>
+> 	https://wiki.debian.org/ArchitectureSpecificsMemo#Architecture_baselines
+
+As the view that this dynamically selected and dispatched SIMD or scalar code might violate the baseline was so nonsensical, I assumed you meant something else.
+
+> $ elfx86exts /usr/lib/x86_64-linux-gnu/libhtscodecs.so.2.1.0
+> MODE64 (call)
+> CMOV (cmove)
+> SSE2 (movdqu)
+> SSE1 (movaps)
+> SSE41 (pmovzxwd)
+> SSSE3 (pshufb)
+> AVX (vmovdqu)
+> AVX2 (vpunpcklbw)
+> NOVLX (vpaddd)
+> AVX512 (vpbroadcastd)
+> CDI (vptestnmd)
+> CPU Generation: Unknown
+>
+> The users will download the program that is compiled on debian buildd machines, which has support for AVX, AVX2 etc.
+> And so as per this little test, it _seems_ like this will crash on baseline that is lower than AVX.
+
+It will not crash on baseline that is lower than AVX.
+
+The report from elfx86exts shows that instructions from all these categories appear in the text segment. It says nothing about whether any particular instruction or function is ever executed, or if it is, the conditions under which those instructions or functions might get called.
+
+Debian maintainers who are not on holiday can look at rans_enc_func() and rans_dec_func() and confirm for yourselves that it works on x86 as I described: the code for everything up to AVX512 is present, but each SIMD implementation will only be used if cpuid() reports that the CPU it's running on is capable of executing that code. With [1] applied these functions will do similar runtime selection on ARM.
+
+*My* x86-64 machine does not support AVX512. That AVX512 code is present, but my programs don't crash because it is never called -- because the AVX2 implementation is chosen at runtime instead.
+
+> if you could provide a patch, me/others would be more than happy to merge it and upload.
+
+The point is that no patching (on x86 or aarch64 or most others [2]) is needed.
+
+    John
+
+
+[1] https://github.com/samtools/htscodecs/pull/63
+[2] On 32-bit ARM a patch like [1] would be warranted. Or you may prefer to leave Neon suppressed on 32-bit ARM until a future upstream release includes something like that PR.

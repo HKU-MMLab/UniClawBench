@@ -1,0 +1,86 @@
+Message-ID: <ZXbe88lLgN9LX4BP@d-and-j.net>
+X-Clawbench-ID: BIO-2024-0043
+Date: Mon, 11 Dec 2023 10:05:39 +0000
+From: Julian Gilbey <jdg@debian.org>
+To: "Kingsley G. Morse Jr." <kingsley@loaner.com>
+Subject: Re: pandas 1.5 -> 2.1?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_12_msg00035.html
+
+Hi Kingsley,
+
+On Sun, Dec 10, 2023 at 12:55:43PM -0800, Kingsley G. Morse Jr. wrote:
+> Hi Rebecca, Julian and all science minded pythonistas of debian, great and small!
+>
+> I like your correspondence about upgrading from
+> version 1.5 of pandas to 2.1.
+>
+> It's open, scientific and explores the ideal of
+> proceeding wisely in a matter of public interest.
+>
+> My humble thoughts are:
+>
+> 1.) Rebecca: *Why* did you write that you'd like
+>     to move forward with the pandas 1.5 -> 2.1
+>     transition? What's your reason?
+
+A thought from me on this: pandas 2.1 has many improvements over
+pandas 1.5.  And increasingly, other packages will be requiring these
+new features.  So why would one not want to move forward with it?
+
+> 2.) What may be the advantage of migrating to
+>     version 3.0 of Cython?
+
+It is compatible with Python 3.12, whereas the current version of
+Cython in Debian (0.29.x) is not really.  (For example, it has an
+"import imp" in it, and this breaks with Python 3.12, which has
+removed this deprecated module.)  As Cython 0.29.x is no longer
+maintained upstream, having been superseded by Cython 3.x after many
+years of development, our options are to either continue to patch
+Cython 0.29.x within Debian to keep it working with Python 3.12 or to
+upgrade to Cython 3.x.  As there is also software which now depends on
+Cython 3.x to build, the former option seems unappealing.  (At best,
+we might wish to keep the cython-legacy package around for building
+packages which can't yet use Cython 3.x, but that should be a
+short-term thing, not a long-term one.)
+
+> 3.) The following one-liner suggests 44 debian
+>     packages might be affected by the breaks
+>     Rebecca said would be caused by pandas 2.x:
+>
+>     $ for s in augur cnvkit dyda emperor esda mirtop pymatgen pyranges python-anndata python-biom-format python-cooler python-nanoget python-skbio python-ulmo q2-quality-control q2-demux q2-taxa q2-types q2templates sklearn-pandas ; do apt-cache search "$s" ; done | less
+
+This does not seem like a particularly helpful one-liner; it picks up
+packages such as python3-dyda-pipeline-config which are not in the
+original list.  Instead, you perhaps want to count the number of
+packages depending on these packages.  But what Rebecca is looking at
+(I think) is how many packages would need fixing by the pandas
+upgrade.
+
+(But it is probably worse than this: I'm guessing these are only the
+packages which fail to build with pandas 2.x or whose autopkgtest
+fails with pandas 2.x.  But there may well be other breakage caused by
+the upgrade which is not detectable in this way.  That is an issue
+which will have to be handled by individual packages as they are
+discovered, and the timing of the pandas upgrade is not related to
+this problem.)
+
+> 4.) The break that worries me the most is
+>     sklearn-pandas, because it seems to me that
+>     sklearn is
+>
+>         popular and
+>
+>         fundamental.
+
+It seems that sklearn-pandas is abandoned; there were just two commits
+in 2022, and prior to that was May 2021.  There has been no activity
+since.  If someone is willing to patch it for Pandas 2.x, great
+(perhaps you might help the maintainer to do this?), otherwise it
+might have to drop out of Debian.
+
+Best wishes,
+
+   Julian

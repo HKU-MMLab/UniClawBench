@@ -1,0 +1,28 @@
+Message-ID: <AF40EEDE-B65C-11D6-8F61-00039396ECF2@deersoft.com>
+X-Clawbench-ID: CAM-2003-1060
+Date: Thu, 22 Aug 2002 22:53:44 -0700
+From: "Craig R.Hughes" <craig@deersoft.com>
+To: Scott A Crosby <scrosby@cs.rice.edu>
+Subject: Re: results for giant mass-check (phew)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01309.2bec637bc28145370e47c323f994e6eb
+
+I never claimed it could learn *all* combinatorial
+possibilities, but it certainly can learn some.
+
+C
+
+On Thursday, August 22, 2002, at 07:21  PM, Scott A Crosby wrote:
+
+> On Thu, 22 Aug 2002 09:20:05 -0700, Craig R.Hughes
+> <craig@deersoft.com> writes:
+>
+>> It *can* learn combinatorial stuff in a more subtle way.  Imagine
+>
+> No it can't..
+>
+> It can learn a few examples that happen to be linearily seperable,
+> like those you gave. It cannot learn the example I gave below, which
+> is not linearily seperable.

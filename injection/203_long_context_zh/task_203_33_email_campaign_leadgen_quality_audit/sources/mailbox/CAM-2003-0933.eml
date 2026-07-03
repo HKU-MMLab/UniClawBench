@@ -1,0 +1,37 @@
+Message-ID: <1029630592.29122.TMDA@deepeddy.vircio.com>
+X-Clawbench-ID: CAM-2003-0933
+Date: Sat, 17 Aug 2002 19:29:51 -0500
+From: Chris Garrigues <cwg-exmh@DeepEddy.Com>
+To: exmh-users@spamassassin.taint.org
+Subject: Re: V2.4 keeps incorrectly blue-ing folders
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00783.c4f1bbae8bcdcbcd25a2090effe54deb
+
+> From:  Harlan Feinstein <harlan@feinsteins.net>
+> Date:  Sat, 17 Aug 2002 19:40:21 -0400
+>
+> Exmh keeps turning the folder indicator blue for one folder, and I've read
+> all the messages in the folder.  Driving me nuts.  I've packed the folder,
+> I've deleted the .mh_sequences file there, keeps doing it.  Help!
+>
+> I've just recently started using 2.4 (was using 2.2), so perhaps there are
+> things that needed to be deleted/changed in my settings?
+
+2.4?
+
+2.5 has been out for over a year.
+
+I can't think of anything with those symptoms in 2.4, but why don't you try
+the upgrade and see if you still have the problem.
+
+Chris
+
+--
+Chris Garrigues                 http://www.DeepEddy.Com/~cwg/
+virCIO                          http://www.virCIO.Com
+716 Congress, Suite 200
+Austin, TX  78701		+1 512 374 0500
+
+  World War III:  The Wrong-Doers Vs. the Evil-Doers.

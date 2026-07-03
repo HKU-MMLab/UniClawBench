@@ -1,0 +1,92 @@
+Message-ID: <1165107943.190747.1636660251116@webmail.mijndomein.nl>
+X-Clawbench-ID: BIO-2024-0122
+Date: Thu, 11 Nov 2021 20:50:51 +0100 (CET)
+From: Ben Tris <benattris@gezapig.nl>
+To: Andreas Tille <andreas@an3as.eu>
+Subject: Re: debian med blend thermometer unrelated crux should probably be crux-toolkit
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_11_msg00064.html
+
+I wont argument on crux anymore.
+The list I make is seperated by last news years on tracker source pages and also contains all packages listed on med qa and removed packages also (although not (yet) complete and did not check salsa repo names) has standard links to the FSD and search on Repology. Some people might like it this way, like I do.
+
+This way I have also made lists by maintainer name as can seen on the tracker source pages.
+now also made maintainer groups lists.
+
+https://www.gezapig.nl/Software/MaintGroup/Debian_Med_Packaging_Team2021.html
+
+
+> Op 11-11-2021 20:26 schreef Andreas Tille :
+>
+>
+> Hi Ben,
+>
+> Am Thu, Nov 11, 2021 at 08:02:15PM +0100 schrieb Ben Tris:
+> > I think that
+> > https://salsa.debian.org/med-team/crux
+> > needs to be renamed
+>
+> But why is there any "need" for it.  That other source package crux was
+> removed and the Debian Med crux is not uploaded (and I checked and think
+> it is really tough work to get this done).  So what actually is the
+> *need*?
+>
+> > > Op 11-11-2021 18:46 schreef Ben Tris :
+> > > Sorry I can't help with packaging or anything.
+> > > Maybe I do not exactly understand, but the tracker name crux is a source name that already exists,
+> > > that crux is not related to Debian Med.
+>
+> That other crux was part of Debian in 2003 and was removed later.
+> So what?
+>
+> > > For a type like me at least these lists are handy.
+> > > I have more oversight over these packages and can look for possible new versions etc. more quickly.
+>
+> The Thermometer page has the version information automatically
+> generated.  I was wondering why you are crafting another list
+> manually.
+>
+> Kind regards
+>
+>     Andreas.
+>
+> > > > Op 11-11-2021 07:26 schreef Andreas Tille :
+> > > >
+> > > >
+> > > > Am Thu, Nov 11, 2021 at 06:15:04AM +0100 schrieb Ben Tris:
+> > > > > The removed package crux is unrelated to debian-med
+> > > > > https://tracker.debian.org/pkg/crux
+> > > > >
+> > > > > At least crux is to be found
+> > > > > https://blends.debian.org/med/thermometer/
+> > > > > https://salsa.debian.org/med-team/crux
+> > > > >
+> > > > > The packagelist only lists crux-toolkit (not on the thermometer page)
+> > > > > https://blends.debian.org/med/tasks/packagelist
+> > > >
+> > > > The thermometer page is listing source package names and the source
+> > > > package (as you pointed out to salsa is named crux) which would build
+> > > > the binary package crux-toolkit ... if it would have been uploaded to
+> > > > Debian at all which is not the case (that's why the white color code
+> > > > which is "Not packaged" per marginal inscription).  If you have any
+> > > > specific interest in this package please let us know.
+> > > >
+> > > > > Medical category I,ll try to keep up.
+> > > > > https://www.gezapig.nl/Software/Category/Medical2021.html
+> > > >
+> > > > I think we talked about this page when you announced it here.  I
+> > > > need to admit it is not fully clear to me what audience you try to
+> > > > address with this page and how it is maintained.
+> > > >
+> > > > Kind regards
+> > > >
+> > > >       Andreas.
+> > > >
+> > > > --
+> > > > http://fam-tille.de
+> >
+>
+> --
+> http://fam-tille.de

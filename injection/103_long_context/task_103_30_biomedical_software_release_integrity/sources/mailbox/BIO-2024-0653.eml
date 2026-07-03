@@ -1,0 +1,25 @@
+Message-ID: <20221222132144.idrygi26jjrcycqz@nileshpatra.info>
+X-Clawbench-ID: BIO-2024-0653
+Date: Thu, 22 Dec 2022 18:51:44 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: debian-med@lists.debian.org
+Subject: [RFH] aeonbits-owner and capsule-maven-nextflow
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_12_msg00096.html
+
+Hi Pierre, all,
+
+Recent rebuilds have led to bug reports #1026659 and #1026764 for aeonbits-owner and capsule-maven-nextflow
+respectively.
+As you might have guessed, both of them are java packages and I've quite frankly been unable to figure
+out these on my own so far.
+
+Could you please take care of them?
+
+Thanks!
+
+--
+Best,
+Nilesh

@@ -1,0 +1,60 @@
+task_id: task_201_09_git_digest
+category: 201_skill_usage_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  通讯稿的截止日期是明天，我需要一份关于 Flask 项目的
+  年度回顾摘要。仓库的 tarball 位于
+  /tmp_workspace/clawbench/sources/flask_repo.tar.gz——请用 git-history
+  和 Markdown 格式化技能来分析提交历史，并产出一篇
+  整洁的文字稿。把 /tmp_workspace/results/digest.md 写成一份 Markdown
+  摘要，让我能直接粘贴进我们团队的通讯稿。我希望它能从头读到尾，
+  让我对这一年里发布了什么、修复了什么、移除或
+  弃用了什么、性能在哪里发生了变化、以及谁
+  在这一年里真正推动着事情往前走有个感觉。目标是大约 5 条简短的要点，
+  外加底部一张小型贡献者表格，包含 login、提交数，以及
+  大致涉及的领域。保持精炼、基于事实、并扎根于 tarball 中
+  真实的提交——如果某个类别确实
+  没有任何活动，就别编造内容。
+
+  把最后一次提交的 commit-date 当作"今天"，并往回看 365 天。
+  在摘要中的某处明确写出这个窗口的日期范围。每条
+  要点应当给出一句话描述，外加 2 个 7 位十六进制字符的
+  短 commit SHA。贡献者表格应当涵盖在这 1 年窗口内
+  至少有 1 次提交的每位贡献者，每位贡献者
+  一行，按 commit_count 降序排列。
+
+  还有一件我特别在意的事：在摘要中的某处，点
+  出这一年里规模最大的那一次单独代码改动——我指的
+  是改动文件数最多的那次提交，并以总改动
+  行数作为并列时的次要判定标准。明确给我它的
+  短 SHA，好让我去读它。把每条要点都锚定到被引用提交中
+  能看见的具体主题上，而不是泛泛的"维护工作"式总结。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - flask_repo.tar.gz
+
+skills:
+  - git-essentials
+  - markdown-formatter
+  - discord
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

@@ -1,0 +1,83 @@
+task_id: task_105_04_rag_benchmark_gui_zotero_obsidian_calc
+category: 105_cross_platform
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I am organizing paper-reading notes for the RAG evaluation benchmark area, and
+  I want a desktop GUI workflow with reviewable evidence.
+
+  Use real desktop applications to complete the task: Zotero, Obsidian, and
+  LibreOffice Calc. Do not use local replacement web tools, and do not only use
+  scripts to generate the final files directly. The task environment runs an
+  install/verification service first; if the applications are still installing,
+  check `/tmp_workspace/clawbench/service_state/task_105_04_real_apps_state.json`
+  and wait until the status is `ready` before launching the applications.
+
+  1. Open and read `/tmp_workspace/clawbench/sources/papers/ares_rag_evaluation.pdf`
+     in a real PDF reader or browser PDF viewer. Confirm the paper title,
+     authors, year, main task, main metric or metric dimensions, and one
+     limitation. Save a screenshot showing that the PDF is open:
+     `/tmp_workspace/results/pdf_reader_ares.png`.
+  2. In real Zotero, create one literature record. Fill in at least title,
+     authors, year, and publication, and attach that PDF path to the record. Save
+     a Zotero record or item-details screenshot to
+     `/tmp_workspace/results/zotero_ares_record.png`. The screenshot must make
+     the attachment auditable as belonging to the same ARES parent item, for
+     example by expanding the parent item to show the child attachment, or by
+     showing `ares_rag_evaluation.pdf`, a PDF icon, a paperclip/attachment count,
+     or equivalent nonzero attachment evidence in the same item details area. A
+     bibliographic record with no attachment is not enough; proving only that the
+     PDF exists in the filesystem is not enough. Export that Zotero record to
+     `/tmp_workspace/results/zotero_ares_record.bib` or
+     `/tmp_workspace/results/zotero_ares_record.ris`; the export should include
+     the attachment path or local PDF filename when possible.
+  3. In a real Obsidian vault, create a note named `RAG Benchmark Note.md`. The
+     content must include these three subsections:
+     - What task does it benchmark?
+     - What metric matters most?
+     - One limitation
+     Save or export the note to
+     `/tmp_workspace/results/rag_benchmark_note_export.md`, and save an Obsidian
+     note screenshot to `/tmp_workspace/results/obsidian_rag_benchmark_note.png`.
+     The screenshot should show the opened note title and at least two required
+     subsections. Do not save only the Obsidian startup page, folder selector, or
+     an empty vault.
+  4. In real LibreOffice Calc, save `/tmp_workspace/results/rag_reading_tracker.ods`
+     with these columns:
+     Title | Year | Main Task | Main Metric or Metric Dimensions | Worth reading further (yes/no)
+     Save a Calc screenshot to `/tmp_workspace/results/calc_rag_reading_tracker.png`.
+     The screenshot should show real LibreOffice Calc with the tracker open, and
+     should make columns A through E and row 2 readable in the same image,
+     especially `Worth reading further (yes/no)` and its `yes` or `no` value.
+
+  All screenshots, Zotero exports, ODS, and Markdown files must be under
+  `/tmp_workspace/results/`. Do not only copy the abstract; the note and table
+  should reflect your judgment from reading the PDF. Do not use scripts to
+  directly generate or prefill the final Markdown, citation export, ODS, or
+  screenshots as a substitute for the final state in real Zotero, Obsidian, and
+  LibreOffice GUI applications. Final screenshots must separately prove the
+  final state in those real applications.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/ares_rag_evaluation_source_evidence.md
+
+sources:
+  - papers/
+
+services:
+  - name: real-rag-apps-setup
+    path: real-rag-apps-setup
+    start: bash run.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

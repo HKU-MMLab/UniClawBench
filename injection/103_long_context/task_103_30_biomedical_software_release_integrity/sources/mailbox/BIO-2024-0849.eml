@@ -1,0 +1,42 @@
+Message-ID: <trinity-3551a7b7-9bcd-4109-81bc-46fec55544d3-1721972456726@3c-app-gmx-bap23>
+X-Clawbench-ID: BIO-2024-0849
+Date: Fri, 26 Jul 2024 07:40:56 +0200
+From: Steffen Möller <steffen_moeller@gmx.de>
+To: debian-med@lists.debian.org
+Subject: Aw: Re: PyMol 3.0 is out - salsa upload works for me
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_07_msg00036.html
+
+Hi Étienne,
+
+> Nilesh Patra, on 2024-07-18:
+> > On Thu, Jul 18, 2024 at 05:29:55PM +0530, Nilesh Patra wrote:
+> > > On Thu, Jul 18, 2024 at 01:21:15PM +0200, Steffen Möller wrote:
+> > > > I addressed the lintian errors/warnings and introduced d/u/edam besides
+> > > > updating d/u/metadata.
+>
+> I proceeded to the sponsored upload minutes ago.
+> Thank you for the version bump to the newer major version!
+
+Thank you for your review and upload. I still have to check if it has truly arrived :-) but PyMol 3 meant to have adopted the generation of structural representations of DNA sequences, a shift over from their commercial branch
+https://github.com/schrodinger/pymol-open-source/issues/351
+
+> > > > Did not find anything to contribute to the problem of the reproducibility test but did not want to just disable it either. IMHO we should just raise an issue with upstream and let them fix that :) Sadly, reprotest is not indicating the exact files that are contributing to the difference, I only know it is in the python3-pymol package. Hm.
+> > >
+> > > Maybe this helps you:
+> > >
+> > > $ debdiff control/source-root/pymol-data_3.0.0+dfsg-1+salsaci+20240718+11_all.deb experiment-1/source-root/pymol_3.0.0+dfsg-1+salsaci+20240718+11_all.deb
+> >
+> > Minutes after sending this I realised I compared the wrong files in a hurry.
+> > Oops :/
+> >
+> > I tried to diff again and everything is identical. Only diff is in dbgsym.
+> > Seems like some embedded buildpath issue.
+
+Good idea.
+
+Best,
+
+Steffen

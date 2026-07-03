@@ -1,0 +1,31 @@
+Message-ID: <udlh6wdz0ml.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-1011
+Date: Thu, 26 Jan 2023 12:06:26 -0500
+From: ucko@debian.org (Aaron M. Ucko)
+To: Paul Gevers <elbrus@debian.org>
+Subject: Thanks for helping sra-sdk 3 migrate!
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_01_msg00047.html
+
+Hi, Paul.
+
+I see that https://qa.debian.org/excuses.php?package=sra-sdk now has
+
+> autopkgtest for ngs-sdk/2.11.2-4: amd64: Pass, arm64: Pass, armel:
+> Ignored failure, armhf: Ignored failure, i386: Ignored failure,
+> ppc64el: Ignored failure, s390x: Ignored failure
+
+presumably courtesy of your hint
+
+> # 20230126
+> # on its way out
+> force-badtest ngs-sdk/2.11.2-4
+
+Thanks for helping it along, and sorry for cutting the timing closer
+than I should have!
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

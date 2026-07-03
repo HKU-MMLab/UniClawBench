@@ -1,0 +1,21 @@
+Message-ID: <ZlgPRjf0QFCn8ntm@an3as.eu>
+X-Clawbench-ID: BIO-2024-1423
+Date: Thu, 30 May 2024 07:31:50 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: [Help] Re: [bredelings/BAli-Phy] Test suite error in 4.0-beta7 (Issue #17)]
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_05_msg00011.html
+
+Am Wed, May 29, 2024 at 09:39:01AM +0200 schrieb Étienne Mollier:
+> I'm having a look at BAli-Phy 4.0 beta 13 and after a few
+> adjustments, I see the test suite is passing alright.  I pushed
+> my changes on salsa and am preparing an experimental upload.
+
+Thanks a lot
+    Andreas.
+
+--
+https://fam-tille.de

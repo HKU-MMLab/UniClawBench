@@ -1,0 +1,32 @@
+task_id: task_103_23_global_earthquake_report
+category: 103_long_context
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I have a frozen snapshot of USGS earthquake data at `/tmp_workspace/clawbench/sources/usgs_data/earthquakes_m45_past30days.geojson`. It is the "M4.5+ earthquakes, past 30 days" feed in GeoJSON form: each feature has a magnitude (`properties.mag`), a place name (`properties.place`), a timestamp (`properties.time`, milliseconds since epoch UTC), and `geometry.coordinates` = `[longitude, latitude, depth_km]` (longitude first).
+
+  Please build a single self-contained interactive HTML analysis report from THIS snapshot, saved to `/tmp_workspace/results/earthquake_report.html`. Build everything from the injected file — do not rely on your prior knowledge of recent earthquakes.
+
+  The HTML must include:
+  1. An interactive geographic map of epicenters using longitude/latitude. Points must land in the correct places — remember coordinates are [lon, lat], longitude first; do not swap them.
+  2. A working time control (a slider or animation) over the roughly 30-day window that visibly changes which events are shown as you move through time.
+  3. A magnitude distribution chart (for example a histogram of magnitudes).
+  4. A short written analysis grounded in this data: where the events cluster (e.g. the Pacific Ring of Fire), the largest event in the window, and the shape of the magnitude distribution.
+
+  Before you finish, open the HTML yourself and verify the map points are in plausible locations (not all at 0,0, not mirrored), the time control actually filters events, and the charts are not blank. If something is wrong, fix it. Save the final file to `/tmp_workspace/results/earthquake_report.html`.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+sources:
+  - usgs_data/
+
+codex:
+  max_user_followups: 2

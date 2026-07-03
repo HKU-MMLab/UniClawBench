@@ -1,0 +1,60 @@
+Message-ID: <YYFTFZeDtEMJ93oh@an3as.eu>
+X-Clawbench-ID: BIO-2024-0424
+Date: Tue, 2 Nov 2021 16:02:45 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-science@lists.debian.org
+Subject: Re: Debian Math Team
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_11_msg00014.html
+
+Am Tue, Nov 02, 2021 at 08:04:40AM +0100 schrieb Ole Streicher:
+> I'd really disagree here. We should avoid a fragmentation of the policy
+> without a really good reason. This makes it difficult for people to step
+> in, as they have to learn all the small differences in the team
+> policy. And it is hard to find them in the full text.
+
+I agree that it would be great to settle with some common policy and a
+minimum set of necessary deviations like Salsa repository and Maintainer
+field and whatever.  Unfortunately I'm not sure that Debian Science
+policy is written in a way that this is easily possible.  So we should
+probably work on this (and than adapt not only Debian Mathematics policy
+but also Debian Med and others).
+
+> Instead, I would suggest to keep (and improve) the Science Team policy,
+> and then to have a *tiny* Math team policy, which could just be a
+> 5..10-liner, like
+>
+> | We inherit the Science Team policy, except:
+> | * The maintainer field should be set to
+> |   "Debian Math Team ".
+> | * The VCS location is in the Salsa namespace
+> |   https://salsa.debian.org/math-team/
+>
+> Having many nearly-identical policies for relatively small teams
+> otherwise creates problems in consistency, and I am afraid that useful
+> changes are not always "upstreamed" to the science umbrella otherwise.
+>
+> I would also suggest (also for the science team policy) that a package
+> under team maintainance *must* be git version controlled and under the
+> team's namespace.
+
+I'm a fan of clearly outspoken must. :-)
+I'm guilty for a couple of "team-hijacks" in the past and besides one single
+case where an outsider told me that I'm not permitted to do this (which is
+technically correct) this was good for the packages and for the users of the
+packages.
+
+> I would (again, also for science team) not put the metapackages into the
+> policy, as the policy should remain rather stable, but the metapackages
+> are ongoing work.
+
+Amen. ;-)
+
+Kind regards
+
+     Andreas.
+
+--
+http://fam-tille.de

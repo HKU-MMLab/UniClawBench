@@ -1,0 +1,53 @@
+Message-ID: <SA1PR14MB45954FCC31B535CB3FB78040F1D7A@SA1PR14MB4595.namprd14.prod.outlook.com>
+X-Clawbench-ID: ASF-2024-0987
+Date: Mon, 16 Oct 2023 20:28:50 +0000
+From: Cory McIntire <cory.mcintire@webpros.com>
+To: "dev@httpd.apache.org" <dev@httpd.apache.org>
+Subject: Re: [VOTE] Release httpd-2.4.58-rc3 as httpd-2.4.58
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-10.mbox
+
++1
+
+Built/tested on:
+CentOS 6
+CentOS 7
+AlmaLinux 9
+Ubuntu 20.04
+Ubuntu 22.04
+
+
+Regards,
+Cory McIntire | Lead – cPanel Application Security Team | Release Manager – EasyApache
+cory.mcintire@webpros.com<mailto:cory.mcintire@webpros.com> | cPanel – a webpros company
+
+
+From: Stefan Eissing via dev <dev@httpd.apache.org>
+Date: Monday, October 16, 2023 at 10:08
+To: dev@httpd.apache.org <dev@httpd.apache.org>
+Cc: Stefan Eissing <stefan@eissing.org>
+Subject: [VOTE] Release httpd-2.4.58-rc3 as httpd-2.4.58
+Hi all,
+
+after fixing my merge mistake in rc2 (sorry!), we go again:
+
+Please find below the proposed release tarball and signatures:
+
+https://nam10.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdist.apache.org%2Frepos%2Fdist%2Fdev%2Fhttpd%2F&data=05%7C01%7Ccory%40cpanel.net%7Ce5c41228d1ce4a24971208dbce59cb59%7Cf8497356a834406086b6d4b1d8059ee0%7C0%7C0%7C638330657304238920%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=Hvd0FLQKHpx%2F4%2Flfj2iYh2mCcE4jNevfMZDL0piuolQ%3D&reserved=0<https://dist.apache.org/repos/dist/dev/httpd/>
+
+I would like to call a VOTE over the next few days to release
+this candidate tarball httpd-2.4.58-rc3 as 2.4.58:
+[ ] +1: It's not just good, it's good enough!
+[ ] +0: Let's have a talk.
+[ ] -1: There's trouble in paradise. Here's what's wrong.
+
+The computed digests of the tarball up for vote are:
+sha256: 503a7da4a4a27fd496037998b17078dc9fe004db32c657c96cce8356b8aa2eb6 *httpd-2.4.58-rc3.tar.gz
+sha512: 5c11faf0572035ef67b27775d975999411c689cb774553175299a9e99b63d3d7138b0c7f15048ec28038494d8513689f916202c2289d557947d8b190d46ca9f3 *httpd-2.4.58-rc3.tar.gz
+
+The SVN candidate source is found at tags/2.4.58-rc3-candidate.
+
+Cheers,
+Stefan

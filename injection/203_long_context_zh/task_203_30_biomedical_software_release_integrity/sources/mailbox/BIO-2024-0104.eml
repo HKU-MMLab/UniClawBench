@@ -1,0 +1,37 @@
+Message-ID: <Y0AnLJMDQ8A/Qswa@an3as.eu>
+X-Clawbench-ID: BIO-2024-0104
+Date: Fri, 7 Oct 2022 15:18:36 +0200
+From: Andreas Tille <tille@debian.org>
+To: Martin Uecker <uecker@tugraz.at>
+Subject: Re: BART 0.8.0
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00017.html
+
+Hi Martin,
+
+Am Sat, Oct 01, 2022 at 02:45:21PM +0200 schrieb Martin Uecker:
+> I updated the Debian packages for BART (bart and bart-cuda)
+> to our new upstream version.
+
+Thanks a lot for preparing these packages which I just uploaded.
+
+> This time I also managed to run the CI on salsa for bart-cuda
+> There are still some failures, but it seems ok to me.
+
+I admit in my local pbuilder I also observed issues but it seems
+to be OK in Salsa CI.
+
+> Please upload if it looks ok to you.
+
+Is there any reason to stick to gcc-10.  I'm not sure when this
+GCC version will be removed - but sooner or later this will be
+the case.
+
+Kind regards and thanks again for your contribution
+
+    Andreas.
+
+--
+http://fam-tille.de

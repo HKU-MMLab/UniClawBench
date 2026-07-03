@@ -1,0 +1,17 @@
+Message-ID: <200210010801.g9181uK15731@dogma.slashnull.org>
+X-Clawbench-ID: CAM-2003-0431
+Date: Tue, 01 Oct 2002 08:01:56 -0000
+From: zawodny <rssfeeds@spamassassin.taint.org>
+To: yyyy@spamassassin.taint.org
+Subject: FreeBSD or Linux for your MySQL Server?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 02137.eeb2c9168c0f339904baf7c8099bf9c2
+
+URL: http://jeremy.zawodny.com/blog/archives/000203.html
+Date: 2002-09-30T17:22:34-08:00
+
+This is an issue that comes up all the time at work. It is an issue for roughly
+four reasons: Yahoo is a FreeBSD shop Someone has heard that MySQL runs better
+on Linux Someone knows that we run some...

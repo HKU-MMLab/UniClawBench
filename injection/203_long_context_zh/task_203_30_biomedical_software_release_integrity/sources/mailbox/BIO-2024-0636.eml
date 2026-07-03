@@ -1,0 +1,55 @@
+Message-ID: <YYfXCje0YDaKEf6B@an3as.eu>
+X-Clawbench-ID: BIO-2024-0636
+Date: Sun, 7 Nov 2021 14:39:22 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-science@lists.debian.org
+Subject: Re: Debian Math Team
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_11_msg00055.html
+
+Hi Doug,
+
+Am Sun, Nov 07, 2021 at 11:56:11AM +0000 schrieb Torrance, Douglas:
+> On Mon 01 Nov 2021 10:28:55 AM EDT, Andreas Tille  wrote:
+>
+> Maintainer must not be sufficient, as this option doesn't appear to me
+> for debian-science packages.
+
+Yes, I think you need to be owner to delete a repository and transfering
+is finally a deletion at the original place.
+
+> Would anyone be able to either grant me owner
+> permissions, or alternatively transfer the following from debian-science to
+> debian-math?
+
+You are owner now.
+
+> cohomcalg
+> coinor-csdp
+> fflas-ffpack
+> frobby
+> geneagrapher
+> gfan
+> givaro
+> linbox
+> macaulay2
+> macaulay2-jupyter-kernel
+> mathic
+> mathicgb
+> memtailor
+> mpsolve
+> qepcad
+> saclib
+> topcom
+>
+> Thanks!
+> Doug
+
+Thanks a lot for working on this
+
+   Andreas.
+
+--
+http://fam-tille.de

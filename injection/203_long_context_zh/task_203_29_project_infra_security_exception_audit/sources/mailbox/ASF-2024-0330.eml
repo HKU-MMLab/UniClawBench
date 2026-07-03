@@ -1,0 +1,64 @@
+Message-ID: <CABw-3Ye1y_MKBSbQ+azgi3APDiPRA_u4fVPu_qXShiKFVumi7g@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0330
+Date: Mon, 27 Jun 2022 21:19:32 +0300
+From: Ivan Zhakov <ivan@visualsvn.com>
+To: dev@apr.apache.org, dev@httpd.apache.org
+Subject: Issues with shipping apr_thread_current() in APR 1.8.0 and an  alternative approach for PCRE2 allocations in HTTPD
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-06.mbox
+
+Hi,
+
+I have some concerns about the apr_thread_current() functionality that is a
+part of the APR 1.8.x branch, but is not yet released.
+
+The short version is: I think that the apr_thread_current() API has
+multiple problems and that shipping it in 1.8.0 in its current state would
+be a mistake. As this API was introduced to implement a specific allocation
+scheme for httpd and PCRE2, I would like to propose an alternative solution
+for that part and that we drop the apr_thread_current() API and
+APR_THREAD_LOCAL, because they would no longer be required.
+
+For the longer version, let me first outline a few problems with the
+current apr_thread_current() API:
+
+1) apr_thread_current_create() leaks the memory allocated in alloc_thread()
+after the thread exits.
+
+2) apr_thread_current_create() requires passing in the apr_threadattr_t
+value that may be unknown to the caller, so the result may not correspond
+to the actual thread attributes.
+
+3) apr_thread_current() allows for situations where it can return NULL,
+such as with !APR_THREAD_LOCAL, making the API easy to misuse.
+
+4) apr_thread_current_after_fork() callback has to be called by the API
+user in the appropriate moments of time, allowing for a hard-to-spot API
+misuse.
+
+Since apr_thread_current() was added to implement the specific allocation
+scheme for PCRE2, I think that we could try an alternative approach for
+that part of the problem. The alternative approach would have the same
+characteristics as the approach that had been used for PCRE1:
+
+-- Supply PCRE2 with a custom context with malloc and free implementations.
+-- Those implementations would work by either using a stack buffer for
+small allocations or by doing a malloc().
+-- This allocation scheme would have the same properties as the existing
+scheme used when compiling with PCRE1.
+
+With that in mind, the overall plan would be as follows:
+
+A) Implement the above approach for PCRE2 allocations in httpd.
+B) Remove the apr_thread_current() and APR_THREAD_LOCAL from APR trunk and
+1.8.x.
+C) Release APR 1.8.0.
+
+Just in case, I would be happy to give step A) and B) a try.
+
+Thoughts?
+
+--
+Ivan Zhakov

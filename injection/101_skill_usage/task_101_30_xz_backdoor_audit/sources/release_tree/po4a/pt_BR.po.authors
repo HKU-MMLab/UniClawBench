@@ -1,0 +1,5 @@
+PO4A-HEADER: position=^\.\\" Author; mode=after; beginboundary=^\.\\"$
+.\"
+.\" Brazilian Portuguese translations for xz package
+.\" Traduções em português brasileiro para o pacote xz.
+.\" Rafael Fontenelle <rafaelff@gnome.org>, 2022-2023.

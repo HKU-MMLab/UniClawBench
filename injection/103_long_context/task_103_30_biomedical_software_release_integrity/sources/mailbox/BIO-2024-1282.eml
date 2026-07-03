@@ -1,0 +1,48 @@
+Message-ID: <YT+6sJbZa9vh/NIg@mapreri.org>
+X-Clawbench-ID: BIO-2024-1282
+Date: Mon, 13 Sep 2021 22:55:12 +0200
+From: Mattia Rizzolo <mattia@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: soname question
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_09_msg00027.html
+
+On Mon, Sep 13, 2021 at 07:51:59PM +0200, Maarten L. Hekkelman wrote:
+> So I followed the advice and the new binary package for the library is named
+> libzeep5.1. This is all accepted into unstable but now I run into
+> regressions. libpdb-redo is linked against libzeep5 and an application built
+> with libpdb-redo is linked against both libzeep5 and libzeep5.1...
+
+ahem.
+That's some scary situation (that happened in the past, although much
+more rarely than you'd think).  I think this is more about what is
+loaded at runtime, with a library picking up a version of a shared
+library X, while the binary also load X but with a different soname that
+have clashing symbols, right?
+
+Really, you should figure a way to prevent such situation from
+happening.  I suspect that in this case it's fair for bin:libzeep5.1 to
+"Breaks: libpdb-redo1 ( Ehrm... now what? I guess I need to upload a new version of libpdb-redo so
+> it will build with libzeep5.1 instead of libzeep5? Or is there anything else
+> I need to do?
+
+Incidentally, I suspect you'd also need something like that to make
+autopkgtest pick up the right pieces while trying things for the testing
+migrations (because uploading a new libpdb-redo as it is would not case
+the autopkgtest run triggered from src:libzeep to succeed).
+
+
+After you handle that, you should probably also upload src:tortoize and
+src:density-fitness; I see there are new upstream minor releases, so
+that seems fair to do together.
+
+--
+regards,
+                        Mattia Rizzolo
+
+GPG Key: 66AE 2B4A FCCF 3F52 DA18  4D18 4B04 3FCD B944 4540      .''`.
+More about me:  https://mapreri.org                             : :'  :
+Launchpad user: https://launchpad.net/~mapreri                  `. `'`
+Debian QA page: https://qa.debian.org/developer.php?login=mattia  `-

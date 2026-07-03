@@ -1,0 +1,45 @@
+Message-ID: <18feb87b-0254-1b46-0660-0d7d563c4d58@apache.org>
+X-Clawbench-ID: ASF-2024-0454
+Date: Mon, 12 Aug 2024 11:17:56 +0200
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: 2.4.62 and UNCList config errors
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-08.mbox
+
+On 8/7/24 2:37 PM, Ruediger Pluem wrote:
+>
+>
+> On 7/30/24 9:52 AM, SteffenAL wrote:
+>>
+>> Please have a look
+>>
+>> https://www.apachelounge.com/viewtopic.php?p=42911
+>
+> Can we have the full LogLevel trace8 error_log posted here or in the forum (the link above only contains a snipped).
+
+Meanwhile I got the logs off-list. Thanks. Can you please add the UNC flag
+(https://httpd.apache.org/docs/2.4/rewrite/flags.html#flag_unc) to each of your .htaccess / per directory rewriterules?
+
+To my fellow developers:
+
+I think the slash merging block in case of a per-dir rewrite is wrong:
+
+    if (!(p->flags & RULEFLAG_UNC)) {
+        /* merge leading slashes, unless they were literals in the sub */
+        if (!AP_IS_SLASH(p->output[0]) || !AP_IS_SLASH(p->output[1])) {
+            while (AP_IS_SLASH(r->filename[0]) &&
+                   AP_IS_SLASH(r->filename[1])) {
+                r->filename++;
+            }
+        }
+    }
+
+The dir prefix which is already added at this point of time can start with '//' while the output of the rule does not as it is
+relative to the directory. I think in the per-dir context this check is not needed and should be removed.
+
+Regards
+
+Rüdiger

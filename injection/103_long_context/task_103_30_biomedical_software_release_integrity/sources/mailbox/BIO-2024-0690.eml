@@ -1,0 +1,60 @@
+Message-ID: <Y4Z9g/qScrQHxZtX@fusion>
+X-Clawbench-ID: BIO-2024-0690
+Date: Tue, 29 Nov 2022 22:45:39 +0100
+From: Étienne Mollier <emollier@emlwks999.eu>
+To: Andreas Tille <andreas@an3as.eu>
+Subject: Re: Several issues solved but python issue remaining (Was: [Help] Build issue of latest version of libsbml (probably Java compatibility issue))
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_11_msg00109.html
+
+Hi Andreas,
+
+Andreas Tille, on 2022-11-29:
+> since libsbml supports only one Python3 version as upstream said.  I
+> left the former loop which contained the `-s` option to ease the
+> change in case upstream might support more versions.
+>
+> Unfortunately the autopkgtest fails:
+>
+> autopkgtest [10:28:57]: test autodep8-python3: set -e ; for py in $(py3versions -r 2>/dev/null) ; do cd "$AUTOPKGTEST_TMP" ; echo "Testing with $py:" ; $py -c "import sbml5;            print(sbml5)" ; done
+> autopkgtest [10:28:57]: test autodep8-python3: [-----------------------
+> Testing with python3.11:
+> Traceback (most recent call last):
+>   File "", line 1, in
+> ModuleNotFoundError: No module named 'sbml5'
+> autopkgtest [10:28:58]: test autodep8-python3: -----------------------]
+>
+>
+> So on one hand we need to tell autopkgtest to just use the default
+> Python3.  On the other hand if I install the resulting package on
+> my local host and do the test with python3.10 it also issues the
+> ModuleNotFoundError. :-(
+>
+> Any idea how to fix this?
+
+I hit the same issue on python-pysam and disabled the python
+specific autopkgtest for the time being, but noticed later that
+there seems to be a better way.  If I trust py3versions(1)
+manual, at the -r option description, I see that you can set an
+X-Python3-Version field in the source section of the control
+file.  With this statement
+
+	X-Python3-Version: 3.10
+
+py3versions -r will stick to that version:
+
+	$ py3versions -r 2>/dev/null
+	python3.10
+
+However it does not seem necessarily much sound to stick to a
+version this way.  Last idea might be to reimplement the
+superficial autopkgtest-pkg-python by hand to run the -r option
+instead.
+
+In hope this helps,
+--
+Étienne Mollier
+Fingerprint:  8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+Sent from /dev/pts/2, please excuse my verbosity.

@@ -1,0 +1,14 @@
+{
+  "task_id": "task_101_02_sales_csv_xlsx",
+  "notes_visible_to_executor": false,
+  "skill_changes": [
+    {
+      "original_skill": "excel-xlsx",
+      "injected_skill": "excel-xlsx",
+      "original_source": "clawhub",
+      "change_type": "benchmark environment adaptation",
+      "reason": "The skill is already injected for the task, so related-skill wording was changed to avoid asking the executor to install other skills.",
+      "executor_skill_path": "skills/excel-xlsx"
+    }
+  ]
+}

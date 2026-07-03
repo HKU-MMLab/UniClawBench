@@ -1,0 +1,35 @@
+Message-ID: <CAKQ1sVMUC12j_wuJLNBnntreOHKBLnRSYfz8ZVWa65MdNOo1eA@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0323
+Date: Thu, 14 Apr 2022 16:39:37 +0200
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: httpd-dev <dev@httpd.apache.org>
+Subject: Re: Faster start children after fatal signals?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-04.mbox
+
+On Thu, Apr 14, 2022 at 4:00 PM Ruediger Pluem <rpluem@apache.org> wrote:
+>
+> On 4/14/22 3:43 PM, Yann Ylavic wrote:
+> >
+> > I have not tested it yet but possibly without this if many children
+> > segfault successively we might enter a busy fork() loop.
+
+Tested and it seems to work..
+
+> > The above would restart killed children immediately (using the
+> > remaining_children_to_start mechanism) only if there are less than 3
+> > successively, otherwise sleep 1s and
+> > perform_idle_server_maintenance().
+> >
+> > WDYT?
+>
+> Having a stopper for the fork loop sounds sensible. We may should log something if we hit it to ease analysis for situations where
+> the childs quickly segfault.
+
+r1899858
+
+
+Thanks;
+Yann.

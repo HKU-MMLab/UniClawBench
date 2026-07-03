@@ -1,0 +1,49 @@
+Message-ID: <YidEtNv0zTHQqwx+@redhat.com>
+X-Clawbench-ID: ASF-2024-1120
+Date: Tue, 8 Mar 2022 11:57:40 +0000
+From: Joe Orton <jorton@redhat.com>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.53-rc1 as httpd-2.4.53
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-03.mbox
+
+On Mon, Mar 07, 2022 at 04:55:54PM +0100, Stefan Eissing wrote:
+> Hi all,
+>
+> Please find below the proposed release tarball and signatures:
+>
+> https://dist.apache.org/repos/dist/dev/httpd/
+>
+> I would like to call a VOTE over the next few days to release
+> this candidate tarball httpd-2.4.53-rc1 as 2.4.53:
+> [X] +1: It's not just good, it's good enough!
+> [ ] +0: Let's have a talk.
+> [ ] -1: There's trouble in paradise. Here's what's wrong.
+>
+> The computed digests of the tarball up for vote are:
+> sha256: 7559255a37adc5cb6f568ba224e435420f0a138cd9564162c9528b8ac08737b3 *httpd-2.4.53-rc1.tar.gz
+> sha512: a7734e2fa35389678be74bbc18136eef482ff9daecc2c1ed9c2c5eb410182735a94ff6ad248d0d4b6266e90161f2f8052d4871f381723c996ace0412b0219961 *httpd-2.4.53-rc1.tar.gz
+>
+> The SVN candidate source is found at tags/2.4.53-rc1-candidate.
+
++1 for release and thanks for RMing.  Passes test suite on Fedora 35,
+RHEL 8, and 9 Beta(ish).
+
+I got a new "may be uninitialized" warning with with the GCC 12 shapshot
+used in Fedora 36 (which is still under development and can be
+unreliable). I think it's unreachable, if we enter here:
+
+https://github.com/apache/httpd/blob/trunk/modules/lua/lua_request.c#L244
+
+r->remaining must be > 0 and hence length > rpos is guaranteed and the
+loop will iterate at least once.
+
+lua_request.c: In function ‘lua_read_body’:
+lua_request.c:260:12: error: ‘len_read’ may be used uninitialized [-Werror=maybe-uninitialized]
+  260 |         if (len_read < 0) {
+      |            ^
+lua_request.c:247:22: note: ‘len_read’ was declared here
+  247 |         apr_off_t    len_read, rpos = 0;
+      |                      ^~~~~~~~

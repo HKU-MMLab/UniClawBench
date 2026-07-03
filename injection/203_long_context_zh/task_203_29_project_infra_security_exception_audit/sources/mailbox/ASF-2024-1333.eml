@@ -1,0 +1,86 @@
+Message-ID: <DM6PR20MB300480AA0C16D29BB646D323AB339@DM6PR20MB3004.namprd20.prod.outlook.com>
+X-Clawbench-ID: ASF-2024-1333
+Date: Mon, 14 Feb 2022 20:14:48 +0000
+From: Doug Whitfield <dwhitfield@perforce.com>
+To: "dev@httpd.apache.org" <dev@httpd.apache.org>
+Subject: Re: PCRE2 compatibility
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-02.mbox
+
+Thanks Jeff, this is exactly what I am talking about!
+
+I see that there are some patches out that purport to fix this. Does anybody know if those work and if they are ever going to get merged since pcre is defunct?
+
+I saw references to some pcre backports on a httpd mailing list last week (I think dev, but I wouldn’t swear to it). I’m not sure if those were related or not.
+
+Best Regards,
+--
+
+Doug Whitfield | Enterprise Architect, OpenLogic
+
+
+From: Jeff McKenna <jmckenna@gatewaygeomatics.com>
+Date: Monday, February 14, 2022 at 2:11 PM
+To: dev@httpd.apache.org <dev@httpd.apache.org>
+Subject: Re: PCRE2 compatibility
+Hi Doug,
+
+If by "incompatible" you mean to ask if one can point to PCRE2 with
+CMake with Apache 2.4.51 & build successfully, I can tell you that yes
+it is incompatible, I was not able to build 2.4.51 with PCRE2 through
+CMake, with Visual Studio 2019.
+
+(at the time I found many reporting this online, and a long list of
+"workarounds", not easy to implement, so for my distribution I chose to
+remain at PCRE 8.45, for now, unfortunately)
+
+Thanks,
+
+-jeff
+
+
+--
+Jeff McKenna
+GatewayGeo: Developers of MS4W, MapServer Consulting and Training
+co-founder of FOSS4G
+https://nam12.safelinks.protection.outlook.com/?url=http%3A%2F%2Fgatewaygeo.com%2F&amp;data=04%7C01%7Cdwhitfield%40perforce.com%7C811b1090dc9e4d504a4408d9eff605f4%7C95b666d19a7549ab95a38969fbcdc08c%7C0%7C0%7C637804662810336546%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000&amp;sdata=oK59ByLjBZ%2BNDQbZgoNQY3d07HgvEtS7CgwPAzkePvQ%3D&amp;reserved=0
+
+
+On 2022-02-14 3:57 p.m., Doug Whitfield wrote:
+> Hi folks,
+>
+> Apologies is this is better suited for the user mailing list, but I’m
+> digging into the source do thought this might be best. I have read a
+> number of reports that pcre2 is not compatible with httpd.
+>
+>
+> However, it looks like pcre2 code went in in 2016:
+> https://github.com/apache/httpd/blob/12cfcf08fffc6e4ec597e0396016d09afdb89fa8/server/util_pcre.c
+>
+> Is pcre2 incompatible? Is there a specific set of circumstance where
+> individuals are running into this issue?
+>
+> Best Regards,
+>
+> --
+>
+>
+>
+> *Doug Whitfield | Enterprise Architect, **_OpenLogic_*
+>
+> _Perforce Software_
+>
+>
+> This e-mail may contain information that is privileged or confidential.
+> If you are not the intended recipient, please delete the e-mail and any
+> attachments and notify us immediately.
+>
+>
+
+
+CAUTION: This email originated from outside of the organization. Do not click on links or open attachments unless you recognize the sender and know the content is safe.
+
+
+This e-mail may contain information that is privileged or confidential. If you are not the intended recipient, please delete the e-mail and any attachments and notify us immediately.

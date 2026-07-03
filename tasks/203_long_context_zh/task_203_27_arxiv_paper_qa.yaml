@@ -1,0 +1,34 @@
+task_id: task_203_27_arxiv_paper_qa
+category: 203_long_context_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  在 `/tmp_workspace/clawbench/sources/papers/` 中有三篇研究论文 PDF：`paper_a.pdf`、`paper_b.pdf` 和 `paper_c.pdf`。我故意把它们重命名成了没有语义的名字，所以不要从文件名猜测——请阅读实际内容来辨识每篇论文。
+
+  请通过阅读这些 PDF 来回答以下问题。这些都是具体到数字层面的问题，所以请在论文中查找，而不要凭记忆作答。为每个答案说明它来自哪篇论文，并在可能的情况下指出来自哪个表或哪一节。
+
+  1. （paper_a）big model 在 WMT 2014 English-to-German 上取得的 BLEU 分数是多少，在 English-to-French 上的 BLEU 是多少？
+  2. （paper_a）encoder 中堆叠了多少个相同的层 N，base model 的模型维度 d_model 是多少？
+  3. （paper_b）集成模型在 ImageNet 测试集上取得的 top-5 error 是多少，论文报告的最大网络深度是多少？
+  4. （paper_b）34 层的 baseline 有多少 FLOPs（乘加运算），ResNet-110 有多少参数？
+  5. （paper_c）给出 BASE 和 LARGE 两种配置的层数 L、隐藏层大小 H、注意力头数 A 和总参数量。
+  6. （paper_c）论文报告的整体 GLUE 分数是多少，SQuAD v1.1 测试集 F1 是多少？
+  7. （跨论文）辨识这三篇论文各自的主题（一篇是 NLP 机器翻译，一篇是图像识别，一篇是语言理解的预训练），并在论文给出参数量的情况下，按参数量对各自的旗舰模型排序。
+
+  将你的答案写入 `/tmp_workspace/results/paper_qa.md`，并注明论文归属和节/表引用。如果某个值在某篇论文中确实未予说明，请如实说明，而不要编造。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+sources:
+  - papers/
+
+codex:
+  max_user_followups: 2

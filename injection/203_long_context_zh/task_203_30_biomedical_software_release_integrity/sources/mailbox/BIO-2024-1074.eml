@@ -1,0 +1,33 @@
+Message-ID: <Y3aSxzAMUJM9KENP@fusion>
+X-Clawbench-ID: BIO-2024-1074
+Date: Thu, 17 Nov 2022 21:00:07 +0100
+From: Étienne Mollier <emollier@debian.org>
+To: Gregory Sharp <gregsharp.geo@yahoo.com>
+Subject: Re: Plastimatch new version
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_11_msg00057.html
+
+Hi Greg,
+
+Gregory Sharp, on 2022-11-17:
+> Just a ping. This is still ready for review and upload. Please let me know if I missed something.
+
+Your mail provider seems to have filtered out [1], so I retry
+with my debian.org address (in case I broke something with my
+emlwks999.eu one; I'm not an email administrator and sometimes
+it shows).  For short, removing the dataset seems to have broken
+the autopkgtest.
+
+[1]: https://lists.debian.org/debian-med/2022/11/msg00008.html
+
+On Thursday, November 3, 2022, 03:14:53 PM EDT, Gregory Sharp  wrote:
+> I have updated plastimatch for the new upstream version, and it is ready for review and upload.
+
+Have a nice day,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  gpg: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/tty1, please excuse my verbosity
+   `-    on air: Allen/Olzon - One More Chance

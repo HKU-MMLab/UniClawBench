@@ -1,0 +1,38 @@
+task_id: task_202_04_sec_edgar_data_api
+category: 202_exploration_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我需要以编程方式追踪一家公司的 SEC 备案文件。我总是落到面向人工浏览的备案
+  文件浏览器上，但我想要它背后的结构化 JSON。
+
+  这是该公司在 SEC 的 EDGAR 上的备案文件页面：
+
+      https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000320193&type=10-K&owner=include&count=10
+
+  SEC 发布了一个结构化数据 API（与面向人工的站点是不同的主机），它以 JSON 形
+  式按公司的 CIK 提供该公司的备案历史。请找到那个 API 并使用它（而不是抓取
+  browse-edgar 的 HTML），为这家公司确定：
+
+  - 公司名称和股票代码（ticker），
+  - 它最近的一份年度报告（10-K 表）：备案日期、accession number 以及主文档的
+    文件名。
+
+  注意：SEC 要求在这些 API 请求上携带具有描述性的 User-Agent 头。
+
+  把结果保存到 `/tmp_workspace/results/sec_latest_10k.json`，并把你调用的确切请
+  求 URL 连同它们的原始 JSON 响应保存到 `/tmp_workspace/results/sec_evidence/`，
+  以便此次拉取可复现。
+
+references:
+  - references/eval_rule.md
+
+codex:
+  max_user_followups: 2

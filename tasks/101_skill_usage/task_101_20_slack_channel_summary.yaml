@@ -1,0 +1,114 @@
+task_id: task_101_20_slack_channel_summary
+category: 101_skill_usage
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  Finance call is in 30 minutes and I still haven't fully digested the Q3
+  budget planning thread that ran in #general this week. I need the full
+  picture of that one discussion, not a generic channel recap. Pull the
+  channel with the workspace's Slack integration skill and use the
+  summarization skill to walk the thread end to end. Hit the Slack Web API
+  with $SLACK_BOT_TOKEN and fetch the latest messages from #general (up to
+  200). The thread I'm after is the one Carol kicked off about the $1.85M
+  Q3 budget target — it has 8 messages total building up to a locked
+  allocation split.
+
+  What I need is a full reconstruction of the Q3 budget thread, not a generic
+  weekly digest. The thread starts when someone kicks off Q3 budget planning
+  and continues as a chain of replies that build on each other — every reply
+  references the previous numbers and adjusts them. I need every message in
+  that chain found and quoted, with every dollar figure and every date called
+  out, and a clear statement of where the thread landed.
+
+  Save /tmp_workspace/results/q3_budget_thread.md with these sections:
+  - Thread messages — list every message in the Q3 budget thread in
+    chronological order. For each one give the ts, the author, and a
+    one-sentence paraphrase of what that message added or changed. Miss one
+    message and the rest of the doc loses its meaning.
+  - Numbers called out — every dollar figure and percentage that appears in
+    the thread, with the ts of the message it came from. Include the total
+    Q3 envelope, the Q2 comparable, the infra ask, the headcount ask, the
+    residual remaining, the SaaS savings, the SWE deferral savings, the
+    Acme SOW figure, and the final per-bucket allocations.
+  - Dates and deadlines — every calendar date mentioned in the thread, with
+    its ts and what it refers to.
+  - Final decision — one paragraph stating the locked total, the per-bucket
+    split, and what gets deferred or moved to contingency, plus the
+    submission deadline. Match what the last message in the thread says.
+
+  Also save /tmp_workspace/results/q3_budget_thread.csv with one row per
+  thread message and columns ts, author, message_index, key_numbers,
+  key_dates, role_in_thread. message_index is 1 through 8 in chronological
+  order. role_in_thread is one of kickoff, infra_ask, headcount_ask,
+  deferral_proposal, ops_savings, risk_callout, revised_proposal,
+  final_decision.
+
+  Snapshot mode is fine if no Slack credentials are configured — read
+  /tmp_workspace/clawbench/sources/slack_snapshot.json directly in that case.
+
+task_snapshot: |
+  Finance call is in 30 minutes and I still haven't fully digested the Q3
+  budget planning thread that ran in #general this week. I need the full
+  picture of that one discussion, not a generic channel recap. Use the
+  workspace's slack helper and the summarize-pro workflow skill to walk
+  the thread end to end. The current newest non-empty messages have been
+  saved to /tmp_workspace/clawbench/sources/slack_snapshot.json — read from
+  there.
+
+  What I need is a full reconstruction of the Q3 budget thread, not a generic
+  weekly digest. The thread starts when someone kicks off Q3 budget planning
+  and continues as a chain of replies that build on each other — every reply
+  references the previous numbers and adjusts them. I need every message in
+  that chain found and quoted, with every dollar figure and every date called
+  out, and a clear statement of where the thread landed.
+
+  Save /tmp_workspace/results/q3_budget_thread.md with these sections:
+  - Thread messages — list every message in the Q3 budget thread in
+    chronological order. For each one give the ts, the author, and a
+    one-sentence paraphrase of what that message added or changed.
+  - Numbers called out — every dollar figure and percentage that appears in
+    the thread, with the ts of the message it came from.
+  - Dates and deadlines — every calendar date mentioned in the thread, with
+    its ts and what it refers to.
+  - Final decision — one paragraph stating the locked total, the per-bucket
+    split, what gets deferred or moved to contingency, and the submission
+    deadline.
+
+  Also save /tmp_workspace/results/q3_budget_thread.csv with one row per
+  thread message and columns ts, author, message_index, key_numbers,
+  key_dates, role_in_thread. message_index is 1 through 8 in chronological
+  order. role_in_thread is one of kickoff, infra_ask, headcount_ask,
+  deferral_proposal, ops_savings, risk_callout, revised_proposal,
+  final_decision.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - slack_snapshot.json
+
+skills:
+  - slack
+  - summarize-pro
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+pre_exec:
+  - ops/populate.py
+
+pre_exec_parallel_safe: true
+
+codex:
+  max_user_followups: 2

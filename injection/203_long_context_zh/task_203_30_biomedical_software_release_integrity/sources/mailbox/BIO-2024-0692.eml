@@ -1,0 +1,39 @@
+Message-ID: <udlk07qb9sq.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-0692
+Date: Tue, 02 Aug 2022 17:44:05 -0400
+From: ucko@debian.org (Aaron M. Ucko)
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Re: igblast accepted - how can it be used to test igdiscover
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_08_msg00010.html
+
+Steffen Moeller  writes:
+
+> Thank you both for your help.
+
+No problem.
+
+> Am 02.08.2022 um 10:48 schrieb Andreas Tille:
+[...]
+>> Do you have any other hint how to create the main binaries reliably?
+
+Ah, sorry, a closer look indicates that the build system needs
+additional hints to find system VDB:
+
+--with-vdb=/usr VDB_INCLUDE=-I/usr/include/ncbi-vdb
+
+> I wanted to see it compile and thus withouted as much as possible in a
+> first run to reduce the complexity.
+
+That's fair.  FWIW, most of these options have no bearing on the package
+anyway and are just artifacts of IgBLAST's origin in a larger tree.
+Also, there's one option I'd suggest actively enabling: --with-openmp.
+If you specify neither --with-openmp nor --without-openmp, the build
+system uses OpenMP on a limited basis, but explicit --with-openmp
+enables it across the board, from which (Ig)BLAST generally benefits.
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

@@ -1,0 +1,45 @@
+task_id: task_204_38_suddenly_first120s_subtitles
+category: 204_multimodal_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  请打开视频文件：
+  /tmp_workspace/clawbench/sources/clip.mp4
+
+  你必须真正播放、观看并聆听本地视频片段，然后自己转写。不要下载已有的字幕、
+  剧本、电影对白文稿，也不要依赖对电影的了解；最终的字幕和时间轴必须基于这段
+  本地视频。
+
+  请只处理视频的前 120 秒，为该片段生成一个字幕文件，并保存为：
+  /tmp_workspace/results/clip.srt
+
+  要求：
+  1. 只覆盖 0:00-2:00 片段
+  2. 使用标准 SRT 格式
+  3. 按照自然停顿合理地切分旁白或连续的长句
+  4. 完成初稿后，再看一遍前 120 秒，检查是否存在：
+     - 持续时间过长、难以阅读的字幕块
+     - 明显遗漏的字词
+     - 字幕条目之间异常的重叠或空隙
+  5. 如果发现问题，直接修正原文件
+
+  如果 `/tmp_workspace/results/` 不存在，请先创建它。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/reference_clip.srt
+  - references/selected_clips_manifest.json
+
+sources:
+  - clip.mp4
+
+codex:
+  max_user_followups: 2

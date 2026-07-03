@@ -1,0 +1,40 @@
+Message-ID: <ZCSLr9rdiGzf84Dx@an3as.eu>
+X-Clawbench-ID: BIO-2024-0309
+Date: Wed, 29 Mar 2023 21:04:15 +0200
+From: Andreas Tille <tille@debian.org>
+To: Pierre Gruet <pgt@debian.org>
+Subject: Re: New version bali-phy 4.0-beta2
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_03_msg00005.html
+
+Hi Benjamin,
+
+Am Tue, Mar 28, 2023 at 07:04:52AM +0200 schrieb Pierre Gruet:
+> Probably you wouold like to do something as in
+> 	https://sources.debian.org/src/gedit-plugins/44.1-2/debian/watch/?hl=2#L2
+> for the gedit-plugins package? This was found by typing "path:debian/watch
+> beta" in the search field of sources.debian.org. There are other packages
+> which you could check there.
+
+ACK.
+
+> > Secondly, I suppose that any new version would need to go into
+> > experimental, since we are in a hard freeze?  I would like to start
+> > working on packaging for version 4 now, since some things have changed
+> > and I'd like to figure out how to deal with them now.
+>
+> Yes, uploading to experimental is the right thing to do right now :)
+
+I'm wondering whether any beta versions should go to experimental in
+general.  The fact that upstream marks it as beta is usually a sign that
+the code is not for end users production systems.  I wrote a couple of
+watch files that do not even report any alpha/beta versions as new
+version.
+
+Kind regards
+    Andreas.
+
+--
+http://fam-tille.de

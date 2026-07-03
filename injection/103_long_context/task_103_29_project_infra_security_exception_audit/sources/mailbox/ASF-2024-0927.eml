@@ -1,0 +1,71 @@
+Message-ID: <ebcb394e-87b8-02f2-0378-08f49f1db084@gmail.com>
+X-Clawbench-ID: ASF-2024-0927
+Date: Wed, 3 May 2023 14:54:17 +0200
+From: jean-frederic clere <jfclere@gmail.com>
+To: dev@httpd.apache.org, Steffen <info@apachelounge.com>
+Subject: Re: build trunk in windows
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-05.mbox
+
+On 4/24/23 18:25, Steffen wrote:
+> There is a howto Building Apache and dependencies using CMake at
+>
+> https://www.apachelounge.com/viewtopic.php?t=8609
+> <https://www.apachelounge.com/viewtopic.php?t=8609>
+>
+>
+
+I ended fixing include/http_protocol.h see patch, did I miss something?
+
+
+>
+>> Op 24 apr. 2023 om 18:18 heeft jean-frederic clere <jfclere@gmail.com>
+>> het volgende geschreven:
+>>
+>> ﻿On 4/24/23 13:36, Ruediger Pluem wrote:
+>>> I am not a Windows guy, but I guess the best way to build trunk on
+>>> Windows is to use cmake which is integrated in later versions
+>>> of Visual studio.
+>>
+>> So I need first apr, then apr-util, in apr-util
+>> +++
+>> -- Could NOT find OpenSSL, try to set the path to OpenSSL root folder
+>> in the system variable OPENSSL_ROOT_DIR (missing:
+>> OPENSSL_CRYPTO_LIBRARY OPENSSL_INCLUDE_DIR)
+>> -- Could NOT find EXPAT (missing: EXPAT_LIBRARY EXPAT_INCLUDE_DIR)
+>> CMake Error at CMakeLists.txt:36 (MESSAGE):
+>>  APR include directory C:/Program Files (x86)/APR-Util/include is not
+>>  correct.
+>> +++
+>> Are all libraries mandatory? (apr-util needs some and httpd some more).
+>>
+>>> Regards
+>>> Rüdiger
+>>> On 4/24/23 1:05 PM, jean-frederic clere wrote:
+>>>> Hi,
+>>>>
+>>>> I am trying to build httpd on windoze...
+>>>>
+>>>> "The .dsp project files are distributed in Visual Studio 6.0 (98)
+>>>> format. Visual C++ 5.0 (97) will recognize them. Visual Studio
+>>>> 2002 (.NET) and later users must convert Apache.dsw plus the .dsp
+>>>> files into an Apache.sln plus .msproj files. Be sure you
+>>>> reconvert the .msproj file again if its source .dsp file changes!
+>>>> This is really trivial, just open Apache.dsw in the VC++ 7.0 IDE
+>>>> once again and reconvert."
+>>>>
+>>>> Where can I find the VC++ 7.0 IDE to convert the .dsp I can't use?
+>>>>
+>>
+>> --
+>> Cheers
+>>
+>> Jean-Frederic
+>>
+
+--
+Cheers
+
+Jean-Frederic

@@ -1,0 +1,24 @@
+Message-ID: <437a3857-c6b6-f29a-c695-0a3c4a964dd5@apache.org>
+X-Clawbench-ID: ASF-2024-0907
+Date: Wed, 08 Jun 2022 09:43:35 +0000
+From: Stefan Eissing <icing@apache.org>
+To: announce@apache.org, dev@httpd.apache.org
+Subject: CVE-2022-29404: Apache HTTP Server: Denial of service in mod_lua  r:parsebody
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-06.mbox
+
+Severity: low
+
+Description:
+
+In Apache HTTP Server 2.4.53 and earlier, a malicious request to a lua script that calls r:parsebody(0) may cause a denial of service due to no default limit on possible input size.
+
+Credit:
+
+The Apache HTTP Server project would like to thank Ronald Crane (Zippenhop LLC) for reporting this issue
+
+References:
+
+https://httpd.apache.org/security/vulnerabilities_24.html

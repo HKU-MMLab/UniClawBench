@@ -1,0 +1,55 @@
+Message-ID: <Z2SF44AUNQQmsu7B@emlwks999.eu>
+X-Clawbench-ID: BIO-2024-0753
+Date: Thu, 19 Dec 2024 21:45:23 +0100
+From: Étienne Mollier <emollier@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: [Advent Calendar] door for December 18th
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_12_msg00025.html
+
+Hi all,
+
+Andreas Tille, on 2024-12-19:
+> Am Wed, Dec 18, 2024 at 07:04:14PM +0100 schrieb Étienne Mollier:
+> > The list was still manually deduced from alioth-lists[1],
+> > although regexes greatly helped.  If your bugs are missing,
+> > don't hesitate to advertise them and add them to the count.
+>
+> Just announcing that I've fixed
+>
+> Thursday, December 12th:
+> 88. #1048735 r-cran-commonmark: Fails to build source after successful build
+> 89. #1088546 r-cran-commonmark: fails to migrate to testing for too long: fails its own autopkgtest
+>
+> Wednesday, December 18th:
+> 90. #1089197 dh-r: Becommends/Suggests missing from rebuilt R packages
+> 91. #1090094 blends: FTBFS: ERROR: Invalid value `None` in intersphinx_mapping['https://docs.python.org/']. Expected a two-element tuple or list.
+>
+> which will not come up on our mailing list but the intention was clearly
+> on behalf of the Debian Med team.  If someone else fixed some r-*
+> packages I consider this in the set of advent bug squashing.
+
+Thanks Andreas for the pointers, if I merge your additional bugs
+with the remaining ones from the Debian Med development list,
+that gives for yesterday's door:
+
+Wednesday, December 18th:
+
+90. #1089197 dh-r: Becommends/Suggests missing from rebuilt R packages
+91. #1090094 blends: FTBFS: ERROR: Invalid value `None` in intersphinx_mapping['https://docs.python.org/']. Expected a two-element tuple or list.
+92. #1045898: nanook: Fails to build source after successful build
+93. #1045023: grabix: Fails to build source after successful build
+94. #1045341: librg-utils-perl: Fails to build source after successful build
+95. #1049488: librg-utils-perl: Fails to build binary packages again after successful build
+
+Finally, looking at the status for December 19th, it seems that
+we reached 100 bugs closed.  It's more than feasible, we did it!
+
+Have a nice day,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  pgp: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/2, please excuse my verbosity
+   `-

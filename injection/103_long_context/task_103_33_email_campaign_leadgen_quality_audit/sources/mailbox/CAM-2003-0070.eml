@@ -1,0 +1,28 @@
+Message-ID: <3C5A2B2E.9050400@shaw.ca>
+X-Clawbench-ID: CAM-2003-0070
+Date: Thu, 31 Jan 2002 22:44:14 -0700
+From: rob bains <robinderbains@shaw.ca>
+To: rpm-zzzlist@freshrpms.net
+Subject: Please help a newbie compile mplayer :-)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01061.6610124afa2a5844d41951439d1c1068
+
+Hello,
+
+         I just installed redhat 7.2 and I think I have everything
+working properly.  Anyway I want to install mplayer because I heard it
+can play quicktime movs.  I apt-get source mplayer and dl'd it to
+/usr/src.
+
+         I tried to just rpm --rebuild mplayer-20020106-fr1.src.rpm,
+then I get ; mplayer-20020106-fr1.src.rpm: No such file or directory.
+
+         Any help or a link to some document would be appreciated, Thanks
+-rob
+
+
+_______________________________________________
+RPM-List mailing list <RPM-List@freshrpms.net>
+http://lists.freshrpms.net/mailman/listinfo/rpm-list

@@ -1,0 +1,25 @@
+Message-ID: <CAOu7+y+s3q+W-Z9YgZ+ovf4WETBaXuiP0J5EvN66cQh_KtEzZQ@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1215
+Date: Wed, 20 Dec 2023 11:03:02 -0500
+From: "Eric Norris via dev" <dev@httpd.apache.org>
+To: dev@httpd.apache.org
+Subject: Re: [PATCH] mod_deflate: remove filter after seeing EOS
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-12.mbox
+
+On Wed, Dec 20, 2023 at 10:58 AM Joe Orton <jorton@redhat.com> wrote:
+>
+> On Wed, Dec 20, 2023 at 04:24:32PM +0100, Ruediger Pluem wrote:
+> > On 12/20/23 4:08 PM, Yann Ylavic wrote:
+> > > On Wed, Dec 20, 2023 at 2:40 PM Joe Orton <jorton@redhat.com> wrote:
+> > >> https://github.com/apache/httpd/pull/400
+> > >
+> > > Thanks, looks good to me.
+> >
+> > +1
+>
+> Thanks a lot for the quick reviews. Merged in r1914804 and happy Xmas :)
+
+Likewise, thanks for taking a look everyone, and enjoy the holidays!

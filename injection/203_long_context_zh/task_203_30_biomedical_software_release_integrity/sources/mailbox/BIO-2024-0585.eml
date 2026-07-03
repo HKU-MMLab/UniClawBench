@@ -1,0 +1,30 @@
+Message-ID: <Y4vDsuh7n6x6P6Gb@fusion>
+X-Clawbench-ID: BIO-2024-0585
+Date: Sat, 3 Dec 2022 22:46:26 +0100
+From: Étienne Mollier <emollier@emlwks999.eu>
+To: Andreas Tille <andreas@an3as.eu>
+Subject: Re: Help for unifrac autopkgtest needed
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_12_msg00028.html
+
+Hi Andreas,
+
+Andreas Tille, on 2022-12-01:
+> ImportError: /lib/x86_64-linux-gnu/liblapacke.so.3: undefined symbol: ztrsyl3_
+[…]
+> Any idea what might be wrong here?
+
+Probably nothing outstanding, liblapacke introduced the ztrsyl3_
+in its version 3.11 and unifrac built against that, but the test
+might have run against liblapacke 3.10 in testing which didn't
+have this symbal.
+
+> [1] https://ci.debian.net/data/autopkgtest/testing/amd64/u/unifrac/28811608/log.gz
+
+Have a nice day,  :)
+--
+Étienne Mollier
+Fingerprint:  8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+Sent from /dev/pts/2, please excuse my verbosity.

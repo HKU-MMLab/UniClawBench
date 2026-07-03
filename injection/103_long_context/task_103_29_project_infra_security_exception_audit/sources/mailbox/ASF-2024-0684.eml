@@ -1,0 +1,133 @@
+Message-ID: <00bfe7a7-8248-0a25-1bc3-c33eb4eebe59@apache.org>
+X-Clawbench-ID: ASF-2024-0684
+Date: Mon, 8 Jan 2024 10:46:47 +0100
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: process_regexp bug, infinite recursion
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-01.mbox
+
+On 1/5/24 3:08 PM, Yann Ylavic wrote:
+> On Fri, Jan 5, 2024 at 3:11 AM Eric Covener <covener@gmail.com> wrote:
+>> On Thu, Jan 4, 2024 at 9:04 PM Jason Pyeron <jpyeron@pdinc.us> wrote:
+>>> I am having some issue searching Bugzilla for any issue involving process_regexp in mod_headers.c .
+>>>
+>>> It finds nothing, so I am assuming I did something wrong in my search. Will file bug if not already filed.
+>>>
+>>> We are investigating an infinite loop (stack overflow) issue, caused by "securing" a system.
+>>>
+>>> ZZZ-STIG-SV-214288r881493_rule.conf:Header always edit* Set-Cookie ^(.*)$ $1;HttpOnly;secure
+>> edit* just makes no sense at all here when you are capturing/replacing
+>> the entire string and will loop by definition.
+> Maybe we should avoid infinite recursion in any case, like in the
+> attached patch?
+> How does it work for you Jason?
+>
+> Regards;
+> Yann.
+>
+>
+> process_regexp.diff
+>
+> Index: modules/metadata/mod_headers.c
+> ===================================================================
+> --- modules/metadata/mod_headers.c	(revision 1914804)
+> +++ modules/metadata/mod_headers.c	(working copy)
+> @@ -622,41 +622,70 @@ static char* process_tags(header_entry *hdr, reque
+>      }
+>      return str ? str : "";
+>  }
+> -static const char *process_regexp(header_entry *hdr, const char *value,
+> -                                  request_rec *r)
+> +
+> +static const char *process_regexp_rec(header_entry *hdr, const char *value,
+> +                                      request_rec *r, ap_regmatch_t pmatch[],
+> +                                      int flags)
+>  {
+> -    ap_regmatch_t pmatch[AP_MAX_REG_MATCH];
+> -    const char *subs;
+> -    const char *remainder;
+>      char *ret;
+> -    int diffsz;
+> -    if (ap_regexec(hdr->regex, value, AP_MAX_REG_MATCH, pmatch, 0)) {
+> +    const char *subs, *remainder;
+> +    apr_size_t val_len, subs_len, rem_len;
+> +    apr_size_t match_start, match_end;
+> +
+> +    val_len = strlen(value);
+> +    if (ap_regexec_len(hdr->regex, value, val_len,
+> +                       AP_MAX_REG_MATCH, pmatch,
+> +                       flags)) {
+>          /* no match, nothing to do */
+>          return value;
+>      }
+> +
+>      /* Process tags in the input string rather than the resulting
+>         * substitution to avoid surprises
+>         */
+> -    subs = ap_pregsub(r->pool, process_tags(hdr, r), value, AP_MAX_REG_MATCH, pmatch);
+> +    subs = ap_pregsub(r->pool, process_tags(hdr, r), value,
+> +                      AP_MAX_REG_MATCH, pmatch);
+>      if (subs == NULL)
+>          return NULL;
+> -    diffsz = strlen(subs) - (pmatch[0].rm_eo - pmatch[0].rm_so);
+> +    subs_len = strlen(subs);
+> +
+> +    ap_assert(pmatch[0].rm_so >= 0 && pmatch[0].rm_so <= pmatch[0].rm_eo);
+> +    match_start = pmatch[0].rm_so;
+> +    match_end = pmatch[0].rm_eo;
+>      if (hdr->action == hdr_edit) {
+> -        remainder = value + pmatch[0].rm_eo;
+> +        remainder = value + match_end;
+>      }
+>      else { /* recurse to edit multiple matches if applicable */
+> -        remainder = process_regexp(hdr, value + pmatch[0].rm_eo, r);
+> -        if (remainder == NULL)
+> -            return NULL;
+> -        diffsz += strlen(remainder) - strlen(value + pmatch[0].rm_eo);
+> +        if (match_end == 0 && val_len) {
+> +            /* advance on empty match to avoid infinite recursion */
+> +            match_start = match_end = 1;
+
+Not debating that
+
+Header edit* headername ^ prefix
+
+should be be
+
+Header edit headername ^ prefix
+
+but wouldn't that do the wrong thing and add the prefix *after* the first character of the header value?
+
+> +        }
+> +        if (match_end < val_len) {
+> +            remainder = process_regexp_rec(hdr, value + match_end,
+
+Shouldn't we increase match_end just here by 1 if match_end == 0 && val_len ?
+
+> +                                           r, pmatch, AP_REG_NOTBOL);
+> +            if (remainder == NULL)
+> +                return NULL;
+> +        }
+> +        else {
+> +            remainder = "";
+> +        }
+>      }
+> -    ret = apr_palloc(r->pool, strlen(value) + 1 + diffsz);
+> -    memcpy(ret, value, pmatch[0].rm_so);
+> -    strcpy(ret + pmatch[0].rm_so, subs);
+> -    strcat(ret, remainder);
+> +    rem_len = strlen(remainder);
+> +
+> +    ret = apr_palloc(r->pool, match_start + subs_len + rem_len + 1);
+> +    memcpy(ret, value, match_start);
+> +    memcpy(ret + match_start, subs, subs_len);
+> +    memcpy(ret + match_start + subs_len, remainder, rem_len + 1);
+>      return ret;
+>  }
+
+Regards
+
+Rüdiger

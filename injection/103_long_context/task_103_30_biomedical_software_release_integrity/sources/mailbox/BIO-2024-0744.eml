@@ -1,0 +1,32 @@
+Message-ID: <20220403050419.1530.60436@mail.envs.net>
+X-Clawbench-ID: BIO-2024-0744
+Date: Sun, 03 Apr 2022 05:04:19 -0000
+From: "Mohd Bilal" <rmb@envs.net>
+To: debian-med@lists.debian.org
+Subject: Re: RFS: added autopkgtest for intake
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_04_msg00007.html
+
+Nilesh Patra  wrote:
+>On Sat, Apr 02, 2022 at 11:16:07PM +0000, Mohd Bilal wrote:
+>&gt; Hello team,
+>&gt;
+>&gt; I&#39;ve added autopkgtest for the package intake[1]. I&#39;ve opened an MR[2] and would like someone to review my changes. I would also require sponsoring for my changes.
+>
+>Uploaded, thanks for your work!
+>I did a minor change though, please take a look at it.
+>
+>Also,
+>
+>- you don&#39;t need to open a merge request, feel free to push directly.
+>- Please keep d/ch entry to UNRELEASED when you need sponsoring, as it creates confusion otherwise.
+
+I did try to push directly but was unable to do so since git throwed  an error saying I'm not allowed to push to a protected branch. I'll keep these points in mind and thanks for sponsoring :)
+
+>Regards,
+>Nilesh
+
+Thanks,
+Mohd Bilal

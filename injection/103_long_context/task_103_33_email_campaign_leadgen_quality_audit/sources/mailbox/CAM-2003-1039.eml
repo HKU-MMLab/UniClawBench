@@ -1,0 +1,21 @@
+Message-ID: <15740.63464.611324.2220@12-248-11-90.client.attbi.com>
+X-Clawbench-ID: CAM-2003-1039
+Date: Mon, 09 Sep 2002 14:35:04 -0500
+From: skip@pobox.com
+To: recipient@example.net
+Subject: [Spambayes] deleting "duplicate" spam before training?  good idea        orbad?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01742.e5c02ab6101d2a7759f059da0e6385ca
+
+Greg> OTOH, look into DCC (Distributed Checksum Clearinghouse,
+    Greg> http://www.rhyolite.com/anti-spam/dcc/), which uses fuzzy
+    Greg> checksums.  It's quite likely that DCC's checksumming scheme is
+    Greg> better than something any of us would throw together for personal
+    Greg> use (no offense, Skip!).
+
+None taken.  I wrote my little script before I was aware DCC existed.  Even
+now, it seems like overkill for my use.
+
+Skip

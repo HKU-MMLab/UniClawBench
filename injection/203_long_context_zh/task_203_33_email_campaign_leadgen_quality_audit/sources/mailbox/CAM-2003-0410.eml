@@ -1,0 +1,48 @@
+Message-ID: <20020930200201.148FB479@gray.impulse.net>
+X-Clawbench-ID: CAM-2003-0410
+Date: Mon, 30 Sep 2002 13:02:01 -0700
+From: Ted Cabeen <secabeen@pobox.com>
+To: Hal DeVore <haldevore@acm.org>
+Subject: Re: Working My_Mark2CurSeen
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01144.b3cbc4db9d2eac4cd0bea04fd75fc859
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+Content-Type: text/plain; charset=us-ascii
+
+In message <3703.1033415613@dimebox.bmc.com>, Hal DeVore writes:
+>>>>>> On Mon, 30 Sep 2002, "Ted" == Ted Cabeen wrote:
+>
+>  Ted> Here's the code for everybody and the list archives in
+>  Ted> case anyone wants it in the future.
+>
+>Very cool!  I vote for this being added to CVS, any objections?
+
+Not from me, although you probably want to change the name of the procedure.
+:)
+
+- --
+Ted Cabeen           http://www.pobox.com/~secabeen            ted@impulse.net
+Check Website or Keyserver for PGP/GPG Key BA0349D2         secabeen@pobox.com
+"I have taken all knowledge to be my province." -F. Bacon  secabeen@cabeen.org
+"Human kind cannot bear very much reality."-T.S.Eliot        cabeen@netcom.com
+
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.0.7 (FreeBSD)
+Comment: Exmh version 2.5 07/13/2001
+
+iD8DBQE9mK24oayJfLoDSdIRAs21AKDYeoDgFYgSUldYusaLxJTbcsPxuQCdHaFG
+Z4P4FqmRJlqCbvmKFJMNgJI=
+=dC6l
+-----END PGP SIGNATURE-----
+
+
+_______________________________________________
+Exmh-workers mailing list
+Exmh-workers@redhat.com
+https://listman.redhat.com/mailman/listinfo/exmh-workers

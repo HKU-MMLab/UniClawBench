@@ -1,0 +1,41 @@
+Message-ID: <20020921233650.AFB1488D3A@belphegore.hughes-family.org>
+X-Clawbench-ID: CAM-2003-0828
+Date: Sat, 21 Sep 2002 16:36:50 -0700
+From: bugzilla-daemon@hughes-family.org
+To: spamassassin-devel@example.sourceforge.net
+Subject: [SAdev] [Bug 1008] SpamAssassin does not work with Glance for    Outlook 2k
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01497.7bd463ca8ed96d9d4e12ed6a3958008c
+
+http://www.hughes-family.org/bugzilla/show_bug.cgi?id=1008
+
+jm@jmason.org changed:
+
+           What    |Removed                     |Added
+----------------------------------------------------------------------------
+             Status|NEW                         |RESOLVED
+         Resolution|                            |INVALID
+
+
+------- Additional Comments From jm@jmason.org  2002-09-21 16:36 -------
+Hi David --
+
+I'm afraid this bug-tracking system is only used for the open-source
+SpamAssassin (the UNIX one ;).   You need to talk to somebody
+at deersoft.com instead.
+
+
+------- You are receiving this mail because: -------
+You are the assignee for the bug, or are watching the assignee.
+
+
+-------------------------------------------------------
+This sf.net email is sponsored by:ThinkGeek
+Welcome to geek heaven.
+http://thinkgeek.com/sf
+_______________________________________________
+Spamassassin-devel mailing list
+Spamassassin-devel@lists.sourceforge.net
+https://lists.sourceforge.net/lists/listinfo/spamassassin-devel

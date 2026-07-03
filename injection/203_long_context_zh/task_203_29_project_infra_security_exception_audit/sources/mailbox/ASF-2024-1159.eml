@@ -1,0 +1,34 @@
+Message-ID: <CAKQ1sVNS-j6aN067aLA5B8cHUoBeCe0exyHOpZHkDbs80db2FA@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1159
+Date: Tue, 25 Jan 2022 19:16:45 +0100
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: httpd-dev <dev@httpd.apache.org>
+Subject: Re: mpm event assertion failures
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-01.mbox
+
+On Tue, Jan 25, 2022 at 1:12 PM Stefan Eissing <stefan@eissing.org> wrote:
+>
+> Also, while running the http2 test suite, I get repeated assert failures in event.c:1230
+>
+> if (rv != APR_SUCCESS && !APR_STATUS_IS_EEXIST(rv)) {
+> ->  AP_DEBUG_ASSERT(0);
+>     TO_QUEUE_REMOVE(cs->sc->wc_q, cs);
+>     apr_thread_mutex_unlock(timeout_mutex);
+>     ap_log_error(APLOG_MARK, APLOG_ERR, rv, ap_server_conf, APLOGNO(03465)
+>                  "process_socket: apr_pollset_add failure for "
+>                  "write completion");
+>     close_connection(cs);
+>     signal_threads(ST_GRACEFUL);
+> }
+>
+> Seems something is fishy with the recent changes.
+
+I'll add that most tests now take 2x (or even 3x) more time to complete.
+Graham, something on your radar?
+
+
+Regards;
+Yann.

@@ -1,0 +1,25 @@
+Message-ID: <ZY7D4lVVDE-1AS8Q@an3as.eu>
+X-Clawbench-ID: BIO-2024-0486
+Date: Fri, 29 Dec 2023 14:04:34 +0100
+From: Andreas Tille <tille@debian.org>
+To: Nilesh Patra <nilesh@debian.org>
+Subject: Re: Please help fixing meson/cmake code of btllib to use Debian packaged libargparse
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_12_msg00081.html
+
+Am Fri, Dec 29, 2023 at 11:35:41AM +0530 schrieb Nilesh Patra:
+> On a brief look, it does not seem easy and would mean maintaining a debian specific
+> patch for ever which maybe non-trivial for future versions.
+>
+> Can we not support just the default python3-dev?
+
+Sure.  Feel free to implement this - I'm just not available for the next
+couple of days.
+
+Kind regards
+     Andreas.
+
+--
+http://fam-tille.de

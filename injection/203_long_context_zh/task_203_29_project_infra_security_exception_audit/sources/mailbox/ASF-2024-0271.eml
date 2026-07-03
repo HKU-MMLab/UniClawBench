@@ -1,0 +1,82 @@
+Message-ID: <CALK=YjPtOq7w__aJawy33XdqF+Q+1paVCxKPF6YzYm0f5HRqLw@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0271
+Date: Mon, 8 Apr 2024 07:47:56 -0400
+From: Eric Covener <covener@gmail.com>
+To: Apache HTTP Server Development List <dev@httpd.apache.org>
+Subject: Fwd: [Bug 68872] New: xmlhttprequest.onprogress behavior changed  after updated to 2.4.59
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-04.mbox
+
+Any concerns with documenting the ap_trust_cgilike_cl variable in e.g.
+https://httpd.apache.org/docs/2.4/env.html ?
+
+
+---------- Forwarded message ---------
+From: <bugzilla@apache.org>
+Date: Sun, Apr 7, 2024 at 5:49 PM
+Subject: [Bug 68872] New: xmlhttprequest.onprogress behavior changed
+after updated to 2.4.59
+To: <bugs@httpd.apache.org>
+
+
+https://bz.apache.org/bugzilla/show_bug.cgi?id=68872
+
+            Bug ID: 68872
+           Summary: xmlhttprequest.onprogress behavior changed after
+                    updated to 2.4.59
+           Product: Apache httpd-2
+           Version: 2.4.59
+          Hardware: All
+                OS: All
+            Status: NEW
+          Severity: regression
+          Priority: P2
+         Component: All
+          Assignee: bugs@httpd.apache.org
+          Reporter: admin@e-blokos.com
+  Target Milestone: ---
+
+Hi Folks,
+
+xmlhttprequest.onprogress does not work anymore since I updated to 2.4.59,
+the progress bar is to zero until the end of the progress with this piece of
+code in javascript that worked for more than 10 years.
+
+xhr.onprogress = function(event){
+        if(responseType == "blob"){
+                if(downSockTab){
+                        if(event){
+                                bytesLoaded = event.loaded;
+                                bytesTotal =
+event.target.getResponseHeader('x-decompressed-content-length') ||
+event.target.getResponseHeader('content-length') || event.total;
+                                if(downSockBar){
+                                        downSockBar =
+document.getElementById(downSockBar.id);
+                                        if(downSockBar){
+                                                downSockBar.style.width =
+Math.floor(bytesLoaded / bytesTotal * 200)+"px";
+                                        }
+                                }
+                        }
+                }
+        }
+};
+
+any clue how to make onprogress work as before?
+
+thanks
+
+--
+You are receiving this mail because:
+You are the assignee for the bug.
+---------------------------------------------------------------------
+To unsubscribe, e-mail: bugs-unsubscribe@httpd.apache.org
+For additional commands, e-mail: bugs-help@httpd.apache.org
+
+
+--
+Eric Covener
+covener@gmail.com

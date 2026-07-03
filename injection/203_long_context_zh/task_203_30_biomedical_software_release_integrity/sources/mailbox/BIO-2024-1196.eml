@@ -1,0 +1,35 @@
+Message-ID: <20220405001956.1365.36926@mail.envs.net>
+X-Clawbench-ID: BIO-2024-1196
+Date: Tue, 05 Apr 2022 00:19:56 -0000
+From: "Mohd Bilal" <rmb@envs.net>
+To: nilesh@debian.org
+Subject: Re: Help Required : Add autopkgtest for atropos
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_04_msg00015.html
+
+Nilesh Patra  wrote:
+>On Mon, Apr 04, 2022 at 04:58:53PM -0000, Mohd Bilal wrote:
+>&gt; I would like to add autopkgtest for atropos[1] but I&#39;m stuck with some .pyx files that the tests import from.
+>&gt; I guess the tests require these C extensions to be built before running the test. I&#39;ve tried building[2] the extensions
+>&gt; using `$py setup.py build_ext --inplace` but it didn&#39;t work out. Can anyone guide on how to move forward?
+>
+>Usually you would want to run the autopkgtests in a tempdir rather than inplace, since you want to
+>check whether the &quot;installed&quot; package works or not, and not the source tree.
+>Simple solution is to copy the tests dir to a tempdir and run the tests there.
+>I did not do that for your previous package because the test structure was messy and
+>was failing on copying the test dirs.
+>
+>But even after doing so tests were failing since the package did not build the extensions for
+>all supported py versions, it rather built only the default one (_align.cpython-39-x86_64-linux-gnu.so)
+>so we needed to change the B-D from python3-dev to python3-all-dev, after which the package got green on
+>autopkgtests.
+>
+>Please take a look at my commits.
+>
+
+Ok I'll make use of the tempdir for running the tests and Thank you for your detailed explanation.
+
+>Best,
+>Nilesh

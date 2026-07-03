@@ -1,0 +1,70 @@
+Message-ID: <YTdOYJFO6/noCxzd@angband.pl>
+X-Clawbench-ID: BIO-2024-0757
+Date: Tue, 7 Sep 2021 13:34:56 +0200
+From: Adam Borowski <kilobyte@angband.pl>
+To: Lisa Julia Nebel <lisa_julia.nebel@tu-dresden.de>
+Subject: Re: Help needed to sign and upload dune packages (part of debian-science) to experimental
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_09_msg00009.html
+
+On Tue, Sep 07, 2021 at 10:43:45AM +0200, Lisa Julia Nebel wrote:
+> Hello debian science team and debian mentors,
+>
+> thanks for all the help so far with uploading the dune-packages to the
+> debian archive!!!
+>
+> We are currently looking into the problems regarding alberta, and apart from
+> that, then there are only two unreviewed packages left:
+>
+>  * https://mentors.debian.net/package/dune-functions/
+>  * https://mentors.debian.net/package/dune-pdelab/
+
+They still fail for me:
+ 7/23 Test  #7: globalvaluedlfetest ...............***Failed    0.40 sec
+Reading 2d Gmsh grid...
+Dune reported error: Dune::IOError [read:/usr/include/dune/grid/io/file/gmshreader.hh:372]: Could not open /usr/share/doc/dune-grid/grids/gmsh/curved2d.msh
+
+      Start  8: gridviewfunctionspacebasistest
+ 8/23 Test  #8: gridviewfunctionspacebasistest ....***Failed    0.92 sec
+   +++++++++++  Testing on structured 1d grids  ++++++++++++
+  Testing B-spline basis with open knot vectors
+   order: 0
+   order: 1
+   order: 2
+  Testing B-spline basis with non-open knot vectors
+   order: 0
+   order: 1
+   order: 2
+   +++++++++++  Testing on structured 2d grids  ++++++++++++
+  Testing B-spline basis with open knot vectors
+   order: 0
+   order: 1
+   order: 2
+  Testing B-spline basis with non-open knot vectors
+   order: 0
+   order: 1
+   order: 2
+   +++++++++++  Testing on structured 3d grids  ++++++++++++
+  Testing B-spline basis with open knot vectors
+   order: 0
+   order: 1
+   order: 2
+  Testing B-spline basis with non-open knot vectors
+   order: 0
+   order: 1
+   order: 2
+   +++++++++++  Testing on hybrid 2d grid  ++++++++++++
+Reading 2d Gmsh grid...
+Dune reported error: Dune::IOError [read:/usr/include/dune/grid/io/file/gmshreader.hh:372]: Could not open /usr/share/doc/dune-grid/grids/gmsh/hybrid-testgrid-2d.msh
+
+and dune-pdelab B-Depends on dune-functions.
+
+
+Meow!
+--
+⢀⣴⠾⠻⢶⣦⠀
+⣾⠁⢠⠒⠀⣿⡁ How to exploit the Bible for weight loss:
+⢿⡄⠘⠷⠚⠋⠀ Pr28:25: he that putteth his trust in the ʟᴏʀᴅ shall be made fat.
+⠈⠳⣄⠀⠀⠀⠀

@@ -1,0 +1,34 @@
+{
+  "video_id": "kJ8nqM3pYwA",
+  "url": "https://www.youtube.com/watch?v=kJ8nqM3pYwA",
+  "title": "Fixing Python Virtualenv Conflicts: The Classic venv Approach",
+  "channel": "PyDevTalks",
+  "published_at": "2022-03-14",
+  "duration_seconds": 612,
+  "view_count": 184000,
+  "tags": ["python", "virtualenv", "venv", "tutorial", "macos"],
+  "transcript_format": "json_segments",
+  "transcript": [
+    {"start": 0.0, "end": 18.5, "text": "Hey everyone, welcome back. Today we're going to fix that classic Python virtualenv conflict where pip says it cannot find your packages because the wrong Python is on your PATH."},
+    {"start": 18.5, "end": 42.0, "text": "The fix I'm going to show you is the textbook one. Use python -m venv to create a fresh isolated environment, activate it, and install your dependencies inside that env. This has been the recommended approach since around 2019."},
+    {"start": 42.0, "end": 78.0, "text": "Step one: open your terminal, cd into your project, and run python3 -m venv .venv. This creates a .venv folder containing its own copy of Python and pip."},
+    {"start": 78.0, "end": 110.0, "text": "Step two: activate it with source .venv/bin/activate. You'll see the (.venv) prefix appear in your prompt. That tells you the activation worked and your shell is now pointing at the virtualenv's Python."},
+    {"start": 110.0, "end": 152.0, "text": "Step three: pip install -r requirements.txt. Because the env is isolated, you won't pollute your system Python and you won't see those PATH conflicts anymore."},
+    {"start": 152.0, "end": 198.0, "text": "If you ever see a conflict where the wrong package version loads, the fix is almost always to deactivate, delete the .venv folder, recreate it from scratch with python -m venv .venv, and reinstall."},
+    {"start": 198.0, "end": 245.0, "text": "I want to be clear: this is the OFFICIAL recommended approach as of 2022. The Python core team ships venv in the standard library specifically so you don't need anything fancier. No pyenv, no Poetry, no Conda — just venv."},
+    {"start": 245.0, "end": 288.0, "text": "A common gotcha is forgetting to activate before running pip. If you pip install without activating, the packages land in your system Python, not the virtualenv. That's where most of the PATH conflicts I see in comments come from."},
+    {"start": 288.0, "end": 340.0, "text": "Another gotcha: if you have multiple Python versions installed via the python.org installer, make sure you invoke the right one. python3.10 -m venv .venv is more explicit than python3 -m venv .venv."},
+    {"start": 340.0, "end": 392.0, "text": "Some people in the comments will ask about pyenv. My take in 2022 is you don't need it. venv handles isolation. pyenv adds complexity for marginal benefit. Stick with the standard library."},
+    {"start": 392.0, "end": 450.0, "text": "If your conflict is specifically about the system Python on macOS shadowing your installed Python, the fix is to put /usr/local/bin or /opt/homebrew/bin earlier in your PATH. Edit your .zshrc and add the export PATH line at the end."},
+    {"start": 450.0, "end": 510.0, "text": "To summarize: python -m venv solves 95 percent of virtualenv conflicts. Activate, install, and you're done. This is the canonical approach and it has not changed since the venv module was introduced."},
+    {"start": 510.0, "end": 568.0, "text": "I'll drop a link to the official Python venv docs in the description. If you found this helpful, subscribe for more Python tutorials. See you next time."},
+    {"start": 568.0, "end": 612.0, "text": "One last thing — if you're on Windows, replace source .venv/bin/activate with .venv\\Scripts\\activate. Otherwise the workflow is identical. Bye!"}
+  ],
+  "key_points": [
+    "Use python -m venv .venv (standard library) for isolation",
+    "Activate before any pip install",
+    "Delete and recreate .venv on conflicts",
+    "Recommends AGAINST pyenv, Poetry, Conda as of 2022",
+    "Edit PATH in .zshrc for macOS system-Python shadowing"
+  ]
+}

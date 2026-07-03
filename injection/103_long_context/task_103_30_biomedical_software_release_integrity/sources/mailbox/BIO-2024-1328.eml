@@ -1,0 +1,44 @@
+Message-ID: <Y1APsZhPqlR8kcud@fusion>
+X-Clawbench-ID: BIO-2024-1328
+Date: Wed, 19 Oct 2022 16:54:41 +0200
+From: Étienne Mollier <emollier@emlwks999.eu>
+To: James Bonfield <jkb@sanger.ac.uk>
+Subject: Re: Htslib plugins
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00066.html
+
+Hi James,
+
+James Bonfield, on 2022-10-19:
+> The rules file for Htslib appear to use an undefined variable $(plugindir).
+>
+> https://salsa.debian.org/med-team/htslib/-/blob/master/debian/rules
+>
+> 	dh_auto_configure -- --enable-libcurl --enable-gcs --enable-s3
+> 	--enable-plugins --with-plugin-dir='$(libdir)/htslib'
+> 	--with-external-htscodecs
+> 	--with-plugin-path='/usr/local/lib/htslib:/usr/local/libexec/htslib:$(plugindir)'
+>
+> Note the $(plugindir) at the end.  This doesn't seem to be specified
+> anywhere, and has caused a problem for one of our users.  This is
+> evidenced by running "samtools version" to dump out the current
+> configuration.
+>
+> It would be a trivial fix to just copy the $(libdir)/htslib definition
+> supplied to --with-plugin-dir here instead of $(plugindir).  Or if we
+> do define plugindir somewhere, it should be passed into
+> --with-plugin-dir so at least the two definitions are in sync.
+
+Thanks for the report, actually the libdir variable is also
+missing definition in this context, and --with-plugin-dir points
+to /htslib at the configure step, which causes issues at the
+installation later in the package construction.  I'm having a
+look at the moment.
+
+Have a nice day,  :)
+--
+Étienne Mollier
+Fingerprint:  8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+Sent from /dev/pts/2, please excuse my verbosity.

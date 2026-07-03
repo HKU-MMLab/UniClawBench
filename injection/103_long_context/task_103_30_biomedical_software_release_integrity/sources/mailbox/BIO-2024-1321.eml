@@ -1,0 +1,31 @@
+Message-ID: <Y9/sFZFe3WyDE/hW@fusion>
+X-Clawbench-ID: BIO-2024-1321
+Date: Sun, 5 Feb 2023 18:49:09 +0100
+From: Étienne Mollier <emollier@emlwks999.eu>
+To: Andreas Tille <andreas@an3as.eu>
+Subject: Re: Please add hint to remove q2-feature-classifier from testing to enable scikit-learn migrating
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_02_msg00014.html
+
+Hi,
+
+Andreas Tille, on 2023-02-05:
+> we need to check why q2-feature-classifier does not work with
+> scikit-learn.  But for the moment it would help if scikit-learn could
+> migrate to testing to free lots of its rdepends from testing removal
+> warnings.
+
+q2-feature-classifier and also q2-sample-classifier might need
+hinting.  They both benefit from fixes in unstable but pending
+migration to testing, which should occur in 2 and 4 days
+respectively.  I'm not sure whether all three packages are in
+deadlock due to transition freeze policy though.
+
+Have a nice Sunday,  :)
+--
+Étienne Mollier
+Fingerprint:  8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+Sent from /dev/pts/6, please excuse my verbosity.
+On air: Saga - What Do I Know?

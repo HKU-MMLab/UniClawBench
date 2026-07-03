@@ -1,0 +1,27 @@
+Message-ID: <ZY0grtbzkopy67YW@an3as.eu>
+X-Clawbench-ID: BIO-2024-0589
+Date: Thu, 28 Dec 2023 08:15:58 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Please help fixing meson/cmake code of btllib to use Debian packaged libargparse
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_12_msg00073.html
+
+Hi,
+
+libargparse was accepted by ftpmaster.  Now meson code needs to be
+adjusted to create a proper cmake input file to use the Debian packaged
+version of libargparse (may be even that needs some cmake helper to be
+detected properly).  Currently I do not have time to care for this[1]:
+
+../meson.build:57:35: ERROR: Unknown variable "argparse_subproject".
+
+Any help would be welcome
+    Andreas.
+
+[1] https://salsa.debian.org/med-team/btllib/-/jobs/5088102
+
+--
+http://fam-tille.de

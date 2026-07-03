@@ -1,0 +1,59 @@
+Message-ID: <4f08a71ea17cf481a3b9244f6ae4c4f1@enron.com>
+X-Clawbench-ID: ANL-2001-0795
+Date: 2000-11-20T08:20:00-03:00
+From: Stinson Gibner <Stinson Gibner>
+To: John J Lavorato <John J Lavorato>
+Subject: EOL WTI maket maker simulation model
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Enron kaminski-v public mailbox index.json
+X-Original-Folder: kaminski-v_001/kaminski-v/Discussion threads
+
+John,
+
+
+Here is the spreadsheet Zimin built for estimaing P/L from trading WTI
+
+forwards.     Let Zimin, Vince, or I know if you have questions or comments.
+
+
+--Stinson
+
+
+---------------------- Forwarded by Stinson Gibner/HOU/ECT on 11/20/2000
+
+11:14 AM ---------------------------
+
+
+Zimin Lu
+
+11/17/2000 04:37 PM
+
+To: Stinson Gibner/HOU/ECT@ECT
+
+cc: Vince J Kaminski/HOU/ECT@ECT
+
+Subject: EOL WTI maket maker simulation model
+
+
+Stinson,
+
+
+I add the total P/L due to contract rollover.  When the number of trades is
+
+large
+
+and the spread is not too small, the model prints a lot of money, dominated by
+
+those trade earning the half of BO spread.
+
+
+I also wrote an explaination about the model on the front page. I think we
+
+are
+
+ready to deliever the model V.1.
+
+
+Zimin

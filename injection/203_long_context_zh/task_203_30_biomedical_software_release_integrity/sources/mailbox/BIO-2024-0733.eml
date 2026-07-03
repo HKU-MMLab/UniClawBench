@@ -1,0 +1,45 @@
+Message-ID: <Ze9gyEPP6tNlxYoe@fusion>
+X-Clawbench-ID: BIO-2024-0733
+Date: Mon, 11 Mar 2024 20:51:36 +0100
+From: Étienne Mollier <emollier@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: How is autopkgtest working in Perl packages
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_03_msg00007.html
+
+Hi Andreas,
+
+Andreas Tille, on 2024-03-11:
+> when trying to exclude clustalw and emboss from bioperl-run I learned
+> that its autopkgtest is failing for all architectures but amd64.  The
+> reason is that the test wants to install pftools which is only available
+> on amd646.  Thus all autopkgtests for other architectures are failing
+> with
+>
+>    Broken autopkgtest-satdep:ppc64el Depends on pftools:ppc64el
+>
+> (and other not installable dependencies.)  Unfortunately I do not see
+> any debian/tests/control file which is hidden by some Perl test magic
+> I do not know.  Any hint how to relax the depencency from non-existent
+> packages?
+
+The operation of autodep8-pkg-perl is described on the Debian
+Perl Team pages[1] (the other DPT).  Give that the suite that is
+failing is the one which attempts to install recommended
+packages no matter what, I think it may be skipped for now by
+creating a debian/tests/pkg-perl/SKIP file containing:
+
+runtime-deps-and-recommends
+
+I can do that for you if you are busy on other fronts.
+
+[1]: https://perl-team.pages.debian.net/autopkgtest.html
+
+Have a nice evening,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  pgp: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/1, please excuse my verbosity
+   `-    on air: Acid Rain - Solitude

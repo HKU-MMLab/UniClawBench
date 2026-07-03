@@ -1,0 +1,73 @@
+Message-ID: <004F3A6B-92E6-494C-8ADB-B6EDB0F8BCE9@sharp.fm>
+X-Clawbench-ID: ASF-2024-1138
+Date: Mon, 7 Feb 2022 13:21:21 +0200
+From: Graham Leggett <minfrin@sharp.fm>
+To: dev@httpd.apache.org
+Subject: Re: Python test suite - failures on Fedora Rawhide / MacOS
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-02.mbox
+
+On 07 Feb 2022, at 12:42, Stefan Eissing <stefan@eissing.org> wrote:
+
+>> curl -V
+> curl 7.77.0 (x86_64-apple-darwin21.0) libcurl/7.77.0 (SecureTransport) LibreSSL/2.8.3 zlib/1.2.11 nghttp2/1.42.0
+> Release-Date: 2021-05-26
+> Protocols: dict file ftp ftps gopher gophers http https imap imaps ldap ldaps mqtt pop3 pop3s rtsp smb smbs smtp smtps telnet tftp
+> Features: alt-svc AsynchDNS GSS-API HSTS HTTP2 HTTPS-proxy IPv6 Kerberos Largefile libz MultiSSL NTLM NTLM_WB SPNEGO SSL UnixSockets
+>
+> It should list "HTTP2" in the Features line.
+
+I don’t have HTTP2:
+
+Little-Net:httpd-trunk6 minfrin$ which curl
+/opt/local/bin/curl
+Little-Net:httpd-trunk6 minfrin$ curl -V
+curl 7.80.0 (x86_64-apple-darwin20.6.0) libcurl/7.80.0 OpenSSL/3.0.1 zlib/1.2.11 zstd/1.5.2 libidn2/2.3.2 libpsl/0.21.1 (+libidn2/2.3.2)
+Release-Date: 2021-11-10
+Protocols: dict file ftp ftps gopher gophers http https imap imaps mqtt pop3 pop3s rtsp smb smbs smtp smtps telnet tftp
+Features: alt-svc AsynchDNS HSTS HTTPS-proxy IDN IPv6 Largefile libz NTLM NTLM_WB PSL SSL TLS-SRP UnixSockets zstd
+
+Looks like you need to explicitly request it:
+
+Little-Net:httpd-trunk6 minfrin$ sudo port install curl +http2
+Password:
+Warning: The macOS 11 SDK does not appear to be installed. Ports may not build correctly.
+Warning: You can install it as part of the Xcode Command Line Tools package by running `xcode-select --install'.
+--->  Computing dependencies for curl
+--->  Fetching archive for curl
+--->  Attempting to fetch curl-7.80.0_0+http2+ssl.darwin_20.x86_64.tbz2 from https://mse.uk.packages.macports.org/curl
+--->  Attempting to fetch curl-7.80.0_0+http2+ssl.darwin_20.x86_64.tbz2 from https://packages.macports.org/curl
+--->  Attempting to fetch curl-7.80.0_0+http2+ssl.darwin_20.x86_64.tbz2 from https://ema.uk.packages.macports.org/curl
+--->  Fetching distfiles for curl
+--->  Attempting to fetch curl-7.80.0.tar.xz from https://distfiles.macports.org/curl
+--->  Verifying checksums for curl
+--->  Extracting curl
+--->  Applying patches to curl
+--->  Configuring curl
+Warning: Configuration logfiles contain indications of -Wimplicit-function-declaration; check that features were not accidentally disabled:
+  getpass_r: found in curl-7.80.0/config.log
+  malloc: found in curl-7.80.0/config.log
+  strchr: found in curl-7.80.0/config.log
+  memrchr: found in curl-7.80.0/config.log
+  free: found in curl-7.80.0/config.log
+  calloc: found in curl-7.80.0/config.log
+  CloseSocket: found in curl-7.80.0/config.log
+  closesocket: found in curl-7.80.0/config.log
+--->  Building curl
+--->  Staging curl into destroot
+--->  Installing curl @7.80.0_0+http2+ssl
+--->  Deactivating curl @7.80.0_0+ssl
+--->  Cleaning curl
+--->  Activating curl @7.80.0_0+http2+ssl
+--->  Cleaning curl
+--->  Scanning binaries for linking errors
+--->  No broken files found.
+--->  No broken ports found.
+
+I suspect we need tests at the very beginning of the test suite to fail if the required tools are missing / incomplete.
+
+Regards,
+Graham
+—

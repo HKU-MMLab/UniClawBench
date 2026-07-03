@@ -1,0 +1,63 @@
+Message-ID: <15733.15859.462448.155446@cerise.nosuchdomain.co.uk>
+X-Clawbench-ID: CAM-2003-0718
+Date: Tue, 03 Sep 2002 23:55:47 +0100
+From: Glynn Clements <glynn.clements@virgin.net>
+To: Yannick Gingras <ygingras@ygingras.net>
+Subject: Re: Secure Sofware Key
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01412.c6d74476958fabc3a2a7572079a6ce8c
+
+Yannick Gingras wrote:
+
+> > What do you mean by "CD-Key or the like" (I presume that "of" was a
+> > typo)? And what do you mean by "unbreakable"?
+>
+> "of" was a typo
+>
+> Unbreakable would mean here that no one, even previously authorised entity,
+> could use the system without paying the periodic subscription fee.
+>
+> > You need to be far more explicit about the problem which you wish to
+> > solve, and about the constraints involved.
+>
+> It could be an online system that work 95% offline but poll frequently an
+> offsite server.  No mass production CDs, maybe mass personalised d/l like Sun
+> JDK.
+>
+> Nothing is fixed yet, we are looking at the way a software can be protected
+> from unauthorized utilisation.
+>
+> Is the use of "trusted hardware" really worth it ?
+
+Answering that requires fairly complete knowledge of the business
+model. But, in all probability: no, it isn't usually worth it. So, it
+comes down to how difficult you want to make the cracker's job.
+
+If the product requires occasional authentication, simple copying
+won't work; the product has to be cracked. In which case, the issue is
+whether you're actually going to enter into battle with the crackers,
+or just make sure that it isn't trivial.
+
+A lot of it comes down to your customer base. Teenage kids tend to be
+more concerned about cost and less concerned about viruses/trojans,
+and so more willing to use warez. Fortune-500 corporations are likely
+to view matters differently.
+
+> Does it really make it more secure ?
+
+Yes; software techniques will only get you so far. Actually, the same
+is ultimately true for hardware, but cracking hardware is likely to
+require resources other than just labour.
+
+Almost (?) anything can be reverse engineered. But it may be possible
+to ensure that doing so is uneconomical.
+
+> Look at the DVDs.
+
+IIRC, CSS was cracked by reverse-engineering a software player; and
+one where the developers forgot to encrypt the decryption key at that.
+
+--
+Glynn Clements <glynn.clements@virgin.net>

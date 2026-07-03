@@ -1,0 +1,71 @@
+Message-ID: <YcRn1H+CCj3Rs1yi@an3as.eu>
+X-Clawbench-ID: BIO-2024-1210
+Date: Thu, 23 Dec 2021 13:13:08 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>,	919052@bugs.debian.org
+Subject: Re: python-pbcore: some docs for pbcore are not found
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_12_msg00158.html
+
+Hi,
+
+despite I changed the call to create the docs from
+
+	$(MAKE) doc
+
+to
+
+	PYTHONPATH=$(shell pybuild --print build_dir --interpreter python3) $(MAKE) doc
+
+(OK, I appended '|| true' to get the package built) the doc creation
+is not properly done as you can see in Salsa CI[1]:
+
+...
+WARNING: autodoc: failed to import module 'chemistry.chemistry' from module 'pbcore'; the following exception was raised:
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/sphinx/ext/autodoc/importer.py", line 70, in import_module
+    return importlib.import_module(modname)
+  File "/usr/lib/python3.9/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "", line 1030, in _gcd_import
+  File "", line 1007, in _find_and_load
+  File "", line 986, in _find_and_load_unlocked
+  File "", line 680, in _load_unlocked
+  File "", line 850, in exec_module
+  File "", line 228, in _call_with_frames_removed
+  File "/builds/med-team/python-pbcore/debian/output/source_dir/.pybuild/cpython3_3.9_pbcore/build/pbcore/chemistry/__init__.py", line 1, in
+    from .chemistry import *
+  File "/builds/med-team/python-pbcore/debian/output/source_dir/.pybuild/cpython3_3.9_pbcore/build/pbcore/chemistry/chemistry.py", line 51, in
+    _BARCODE_MAPPINGS = _loadBarcodeMappings()
+  File "/builds/med-team/python-pbcore/debian/output/source_dir/.pybuild/cpython3_3.9_pbcore/build/pbcore/chemistry/chemistry.py", line 37, in _loadBarcodeMappings
+    mappingFname = resource_filename(Requirement.parse(
+  File "/usr/lib/python3/dist-packages/pkg_resources/__init__.py", line 1135, in resource_filename
+    return get_provider(package_or_requirement).get_resource_filename(
+  File "/usr/lib/python3/dist-packages/pkg_resources/__init__.py", line 347, in get_provider
+    return working_set.find(moduleOrReq) or require(str(moduleOrReq))[0]
+  File "/usr/lib/python3/dist-packages/pkg_resources/__init__.py", line 891, in require
+    needed = self.resolve(parse_requirements(requirements))
+  File "/usr/lib/python3/dist-packages/pkg_resources/__init__.py", line 777, in resolve
+    raise DistributionNotFound(req, requirers)
+pkg_resources.DistributionNotFound: The 'pbcore' distribution was not found and is required by the application
+WARNING: autodoc: failed to import module 'chemistry' from module 'pbcore'; the following exception was raised:
+
+
+I can confirm if I install the package I can easily
+
+   import pbcore.chemistry.chemistry
+
+so something is wrong when seeking the proper Python3 module at
+doc time creation.  Any hint would be welcome.
+
+Kind regards
+
+       Andreas.
+
+
+[1] https://salsa.debian.org/med-team/python-pbcore/-/jobs/2304143#L1657
+
+--
+http://fam-tille.de

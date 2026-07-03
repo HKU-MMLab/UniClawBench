@@ -1,0 +1,51 @@
+Message-ID: <CALF6qJ=69QzaNwPHwZ+fPYHfn5yM-Gx-Op0fcSV1PgabobJyMA@mail.gmail.com>
+X-Clawbench-ID: BIO-2024-0064
+Date: Wed, 26 Jan 2022 07:26:09 +0100
+From: Anton Gladky <gladk@debian.org>
+To: Markus Blatt <markus@dr-blatt.de>, 	Debian Science List <debian-science@lists.debian.org>
+Subject: Re: RFS: opm-common/2021.10-3 [QA] -- Tools for Eclipse reservoir simulation files
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2022_01_msg00026.html
+
+Hi Markus,
+
+I will upload it in the evening. Please prepare all other involved
+packages if any. Thanks. Regards
+
+Anton
+
+Am Di., 25. Jan. 2022 um 00:00 Uhr schrieb Markus Blatt :
+>
+> Hi,
+>
+> I am looking for a sponsor for my package "opm-common" to do a source upload:
+>
+>   * Package name    : opm-common
+>     Version         : 2021.10-3
+>     Upstream Author : opm@opm-project.org
+>   * URL             : http://opm-project.org
+>   * License         : GPL-2.0+, GPL-3.0+, ODBL-1.0 and DBCL-1.0
+>   * Vcs             : https://salsa.debian.org/science-team/opm-common
+>     Section         : libs
+>
+> The package was still not good enough.
+> We had limited the architectures in d/control to 64bit, but not in d/tests/control and
+> that would have prevented the source package from migrating to testing as the autopkgtests
+> for 32bit would still be executed and fail due to missing binary packages.
+>
+> After a fruitful discussions on the mentors list, see
+> https://lists.debian.org/debian-mentors/2022/01/msg00185.html, I have now
+>
+> - used "Architecture: any" in d/control to let buildd try to build all (32bit builds will fail due to failing ctest)
+> - limited to 64bit architectures in d/tests/control to prevent failing autopkgtest
+>
+> I hope that this will allow for migration to testing.
+>
+> Thanks a lot.
+>
+> Cheers,
+>
+> Markus
+>

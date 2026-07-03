@@ -1,0 +1,93 @@
+Message-ID: <96584E17-EDCF-465D-AB2F-C640002F2AF0@apachelounge.com>
+X-Clawbench-ID: ASF-2024-1306
+Date: Wed, 14 Aug 2024 07:19:21 +0200
+From: Steffen <info@apachelounge.com>
+To: dev@httpd.apache.org
+Subject: Re: 2.4.62 and UNCList config errors
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-08.mbox
+
+> Op 13 aug 2024 om 10:26 heeft Steffen <info@apachelounge.com> het volgende geschreven:
+>
+> ﻿
+>
+>
+>>> Op 13 aug 2024 om 10:00 heeft Ruediger Pluem <rpluem@apache.org> het volgende geschreven:
+>>>
+>> ﻿
+>>
+>>> On 8/13/24 9:56 AM, SteffenAL wrote:
+>>>
+>>>
+>>>> On Tuesday 13/08/2024 at 08:54, Ruediger Pluem wrote:
+>>>>
+>>>>
+>>>> On 8/12/24 5:44 PM, Eric Covener wrote:
+>>>>> On Mon, Aug 12, 2024 at 5:18 AM Ruediger Pluem <rpluem@apache.org> wrote:
+>>>>>>
+>>>>>>
+>>>>>>
+>>>>>> On 8/7/24 2:37 PM, Ruediger Pluem wrote:
+>>>>>>>
+>>>>>>>
+>>>>>>> On 7/30/24 9:52 AM, SteffenAL wrote:
+>>>>>>>>
+>>>>>>>> Please have a look
+>>>>>>>>
+>>>>>>>> https://www.apachelounge.com/viewtopic.php?p=42911
+>>>>>>>
+>>>>>>> Can we have the full LogLevel trace8 error_log posted here or in the forum (the link above only contains a snipped).
+>>>>>>
+>>>>>> Meanwhile I got the logs off-list. Thanks. Can you please add the UNC flag
+>>>>>> (https://httpd.apache.org/docs/2.4/rewrite/flags.html#flag_unc) to each of your .htaccess / per directory rewriterules?
+>>>>>>
+>>>>>> To my fellow developers:
+>>>>>>
+>>>>>> I think the slash merging block in case of a per-dir rewrite is wrong:
+>>>>>>
+>>>>>>       if (!(p->flags & RULEFLAG_UNC)) {
+>>>>>>           /* merge leading slashes, unless they were literals in the sub */
+>>>>>>           if (!AP_IS_SLASH(p->output[0]) || !AP_IS_SLASH(p->output[1])) {
+>>>>>>               while (AP_IS_SLASH(r->filename[0]) &&
+>>>>>>                      AP_IS_SLASH(r->filename[1])) {
+>>>>>>                   r->filename++;
+>>>>>>               }
+>>>>>>           }
+>>>>>>       }
+>>>>>>
+>>>>>> The dir prefix which is already added at this point of time can start with '//' while the output of the rule does not as it is
+>>>>>> relative to the directory. I think in the per-dir context this check is not needed and should be removed.
+>>>>>
+>>>>> Good find. It seems like the substitution itself could still be
+>>>>> tricked into // in perdir context though, and then no prefix is added.
+>>>>> So I guess we should track directly whether any prefix was added as in
+>>>>> https://people.apache.org/~covener/patches/rewrite-unc-perdir.diff ?
+>>>>>
+>>>>
+>>>> +1. Can you commit?
+>>>>
+>>>> @SteffenAl: Is there a way for the reporter in the forum to test the patch from Eric?
+>>>>
+>>>> Regards
+>>>>
+>>>> Rüdiger
+>>>
+>>> Done
+>>
+>> Thanks
+>>
+>> Regards
+>>
+>> Rüdiger
+>>
+> He is out of office until Thursday August 15th
+
+Good news :
+
+Confirmed - using the provided test version of mod_rewrite allows the site to load and function as expected, without errors.
+
+The UNC flag was not added to any of the site .htaccess files for the test.
+
+Cheers, Steffen

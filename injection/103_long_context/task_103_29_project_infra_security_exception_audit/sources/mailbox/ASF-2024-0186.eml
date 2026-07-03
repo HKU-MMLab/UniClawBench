@@ -1,0 +1,52 @@
+Message-ID: <CAFQGv+a+eZGWwODFuhY4FAX6SuOeAPQQ==VtDEU8gw-14z_nzQ@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0186
+Date: Thu, 15 Feb 2024 17:46:51 -0500
+From: Joe Schaefer <joe@sunstarsys.com>
+To: dev@httpd.apache.org
+Subject: Re: release apreq 2.18 and mothball the project
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-02.mbox
+
+Nobody gives a flying f what you released from trunk. I personally will be
+dead and buried before you release httpd 3.0.  So like you I don’t give a
+damned what you do with it.
+
+I just want the warfare against existing libapreq2 users to cease and
+desist.
+
+If there are known vulnerabilities in the existing codebase, you have a
+professional obligation to report them to the security team, who have
+assured me they will send them my way for proper handling by a competent
+engineer.
+
+None have been forthcoming, so that’s reason to release 2.18 as-is and
+mothball the subproject so we need not deal with each other again over it.
+
+Thanks
+
+Joe Schaefer, Ph.D.
+<https://sunstarsys.com/orion/features>
+Orion - The Enterprise Jamstack Wiki <https://sunstarsys.com/orion/features>
+<joe@sunstarsys.com>
+954.253.3732 <//954.253.3732>
+
+
+On Thu, Feb 15, 2024 at 5:17 PM Eric Covener <covener@gmail.com> wrote:
+
+> On Wed, Feb 14, 2024 at 11:57 PM Joe Schaefer <joe@sunstarsys.com> wrote:
+>
+>> Twenty years in core, with one bug to fix.
+>> And you couldn’t even manage without three different botched releases.
+>>
+>
+> I think you are mixing up apreq and httpd releases here.
+> AIUI the apreq stuff in the core of httpd-trunk has only ever been in one
+> alpha release, and predates the regression.
+>
+> I'll keep any advice about an apreq release to myself, good luck and
+> please be mindful of the CoC
+> https://www.apache.org/foundation/policies/conduct
+>
+>

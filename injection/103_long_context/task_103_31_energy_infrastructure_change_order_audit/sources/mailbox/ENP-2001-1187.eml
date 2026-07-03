@@ -1,0 +1,27 @@
+Message-ID: <22dc8674c3b9891eb765ddf3ba3e7f17@enron.com>
+X-Clawbench-ID: ENP-2001-1187
+Date: 2001-10-03T13:49:45-03:00
+From: Jones <Jones>
+To: Cook <Cook>, Mary </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Mcook>, Gray <Gray>, Barbara N. </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Bgray>, Greenberg <Greenberg>, Mark </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Mgreenbe>, Leite <Leite>, Francisco Pinto </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Fleite>, Nelson <Nelson>, Cheryl </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Cnelson4>, Sayre <Sayre>, Frank </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Fsayre>, Shackleton <Shackleton>, Sara </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Sshackl>, Taylor <Taylor>, Mark E (Legal) </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Mtaylo1>, Bailey <Bailey>, Susan </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Sbaile2>, Boyd <Boyd>, Samantha </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Sboyd2>, Heard <Heard>, Marie </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Mheard>, Panus <Panus>, Stephanie </O=ENRON/OU=NA/CN=RECIPIENTS/CN=Spanus>
+Subject: Lotus Notes-Status Choices
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Enron shackleton-s public mailbox index.json
+X-Original-Folder: zl_shackleton-s_000/shackleton-s/Inbox
+
+Please remember that once a master has been executed the status SHOULD NEVER be changed from its "executed" status.  To accomodate the master upgrades and master netting agreements I have added additional selections to the status bar, so you now have the following selections to choose within the "executed" status bar:
+
+
+1.  "executed"
+
+2.  "executed-under amendment" - to be used when we are amending a master
+
+3.  "executed-inactive" - to be used when a master is executed but we are no longer trading under it
+
+4.  "executed-master upgrade" - to be used when we are doing an ISDA replacement master or replacing one master with another master
+
+5.  "executed-master netting agreement" - to be used when we have a master in place and we are upgrading it to add a master netting agreement
+
+
+Thanks for your attention herewith.

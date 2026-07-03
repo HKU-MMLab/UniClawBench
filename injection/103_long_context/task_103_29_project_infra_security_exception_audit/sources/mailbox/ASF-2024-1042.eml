@@ -1,0 +1,50 @@
+Message-ID: <e94bef62-f418-42f8-d2e5-1a9938528c75@gmail.com>
+X-Clawbench-ID: ASF-2024-1042
+Date: Mon, 17 Apr 2023 16:16:51 +0200
+From: jean-frederic clere <jfclere@gmail.com>
+To: dev@httpd.apache.org, Eric Covener <covener@gmail.com>
+Subject: Re: graceful stop of child process in a module
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-04.mbox
+
+On 4/17/23 01:00, Eric Covener wrote:
+> On Fri, Apr 14, 2023 at 11:49 AM jean-frederic clere <jfclere@gmail.com> wrote:
+>>
+>> Hi,
+>>
+>> I am try to gracefully stop a child process instead using ap_assert(0),
+>> is there a "clean way" to do that?
+>
+> I added something like this to our distribution in IBM to address a
+> hairy problem with our security library.
+>
+> Each MPM already has a way to terminate the process due to
+> MaxRequestsPerChild, e.g. check_infinite_requests() in worker and
+> event or the block like this in winnt:
+>
+>          /* Have we hit MaxConnectionsPerChild connections? */
+>          if (ap_max_requests_per_child) {
+>              requests_this_child++;
+>              if (requests_this_child > ap_max_requests_per_child) {
+>                  SetEvent(max_requests_per_child_event);
+>              }
+>          }
+>
+
+I don't see how I can get the right event: max_requests_per_child_event.
+May be I need to remember more on windows :-(
+
+>
+> If you look at the "mpm_get_name" hook, this gives a pattern where
+> each MPM can provide the impl itself. Then there would just be some
+> non-static thing in e.g. core.c that does the ap_run_foo part.
+
+Something like ap_run_child_stopping(r->pool, 1); seems to do the job
+for event, prefork and worker... I am stuck for windows.
+
+--
+Cheers
+
+Jean-Frederic

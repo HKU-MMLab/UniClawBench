@@ -1,0 +1,37 @@
+Message-ID: <alpine.DEB.2.21.2202161347150.629578@lenin.acc.umu.se>
+X-Clawbench-ID: ASF-2024-0905
+Date: Wed, 16 Feb 2022 13:50:18 +0100 (CET)
+From: Niklas Edmundsson <nikke@acc.umu.se>
+To: dev@httpd.apache.org
+Subject: Re: opinion poll, stale issues
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-02.mbox
+
+On Wed, 16 Feb 2022, Stefan Eissing wrote:
+
+> How about we close stale issues on our bugzilla after a year without changes with
+>
+> WONTFIX
+> We are sorry, but no one found the interest/time to work on this.
+>
+> ideally as an automated job somewhere?
+
+I'd suggest a two-step process with STALLED or similar as a first step
+(including explanations/reasoning on why it's done, and suggestions on
+how to help the issue along), and then the WONTFIX close if nothing
+happens.
+
+Just automatically closing issues out without warning might be
+considered rude, and likely deter affected individuals from reporting
+further issues. At least, I find such projects rude.
+
+
+/Nikke
+--
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+  Niklas Edmundsson, Admin @ {acc,hpc2n}.umu.se      |     nikke@acc.umu.se
+---------------------------------------------------------------------------
+  Feature : BUG with seniority.
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=

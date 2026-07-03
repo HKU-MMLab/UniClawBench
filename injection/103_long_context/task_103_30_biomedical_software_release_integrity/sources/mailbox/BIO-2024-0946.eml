@@ -1,0 +1,25 @@
+Message-ID: <Yz/JFf6/mMmFZyXh@an3as.eu>
+X-Clawbench-ID: BIO-2024-0946
+Date: Fri, 7 Oct 2022 08:37:09 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: pufferfish wants to link with twopaco and ntcard
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00016.html
+
+Am Fri, Oct 07, 2022 at 09:26:32AM +0300 schrieb Andrius Merkys:
+> > IMHO we need some fast migration path of pufferfish into Debian to
+> > get salmon fixed / updated.  I do not have the feeling that aligning
+> > upstreams is a promising way to be fast.
+>
+> Agree. I would suggest bringing back the embedded twopaco and ntcard for
+> now, launching upstream alignment in the background.
+
+Perfect!  Thanks a lot
+
+    Andreas.
+
+--
+http://fam-tille.de

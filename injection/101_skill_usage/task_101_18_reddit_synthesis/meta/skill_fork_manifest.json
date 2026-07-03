@@ -1,0 +1,22 @@
+{
+  "task_id": "task_101_18_reddit_synthesis",
+  "notes_visible_to_executor": false,
+  "skill_changes": [
+    {
+      "original_skill": "reddit-readonly",
+      "injected_skill": "reddit-readonly",
+      "original_source": "clawhub",
+      "change_type": "no_changes",
+      "reason": "Skill is used as-is from clawhub; documented here for fork-manifest completeness.",
+      "executor_skill_path": "skills/reddit-readonly"
+    },
+    {
+      "original_skill": "data-analysis",
+      "injected_skill": "data-analysis",
+      "original_source": "clawhub",
+      "change_type": "benchmark environment adaptation",
+      "reason": "The skill is already injected for the task, so related-skill wording was changed to avoid asking the executor to install other skills.",
+      "executor_skill_path": "skills/data-analysis"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+Message-ID: <ZoQvhkqDBe-4D3ql@redhat.com>
+X-Clawbench-ID: ASF-2024-0653
+Date: Tue, 2 Jul 2024 17:49:10 +0100
+From: Joe Orton <jorton@redhat.com>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.61-rc1 as httpd-2.4.61
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-07.mbox
+
+On Tue, Jul 02, 2024 at 09:29:53AM -0400, Eric Covener wrote:
+> Hi all,
+>
+> Please find below the proposed release tarball and signatures:
+>
+> https://dist.apache.org/repos/dist/dev/httpd/
+>
+> === Different from template ===
+> I would like to call an expedited VOTE (due to regression in 2.4.60)
+> over the next 1-2 days to release this candidate tarball
+> httpd-2.4.61-rc1 as 2.4.61:
+>
+> (sorry)
+> === end not from a template
+>
+> [X] +1: It's not just good, it's good enough!
+> [ ] +0: Let's have a talk.
+> [ ] -1: There's trouble in paradise. Here's what's wrong.
+
+No apologies necessary! Thanks again Eric.
+
++1 for release, tests pass on Fedora 40, RHEL8+9, CentOS Stream 10.
+
+Regards, Joe

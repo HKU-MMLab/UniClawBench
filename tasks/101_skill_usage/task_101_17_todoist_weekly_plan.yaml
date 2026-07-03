@@ -1,0 +1,110 @@
+task_id: task_101_17_todoist_weekly_plan
+category: 101_skill_usage
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I keep overcommitting and then dropping balls — help me actually plan
+  my week realistically for once. Grab my tasks with the workspace's
+  Todoist skill and use the day-planning skill to lay out the time blocks.
+  The Todoist API token is in $TODOIST_API_TOKEN.
+
+  Plan the 7-day window from Saturday 2026-04-25 through Friday
+  2026-05-01 inclusive. Use those exact seven dates as the day labels
+  in your plan and the calendar.
+
+  Save /tmp_workspace/results/weekly.md with one section per day,
+  ordered chronologically from 2026-04-25 to 2026-05-01. Each section
+  must contain 1 to 3 time blocks for that day, with a duration on
+  every block. Higher-priority tasks should get earlier and longer
+  blocks. The first block on each day must point at the most important
+  task due that day. Skip any tasks already marked completed in
+  Todoist.
+
+  Save /tmp_workspace/results/weekly_schedule.csv with one row per
+  scheduled block. Columns in this exact order: date, start_time,
+  end_time, duration_minutes, task_title, project, priority, due_date,
+  reason. Use the Todoist duration when available, keep each day to 1
+  to 3 blocks, and do not let blocks overlap on the same date.
+
+  Save /tmp_workspace/results/weekly.ics with the same scheduled blocks
+  as VEVENT entries. The event SUMMARY must include the task title and
+  project. The DESCRIPTION must include the priority and due date.
+  DTSTART and DTEND must use UTC format YYYYMMDDTHHMMSSZ. Each VEVENT
+  UID must follow the pattern task_<id>@todoist-weekly-plan, where
+  <id> is the Todoist task id.
+
+  If you have to push a task to a later day than its original due
+  date, the corresponding block must record both the original due date
+  and a one-line reason for moving it.
+
+task_snapshot: |
+  I keep overcommitting and then dropping balls — help me actually plan
+  my week realistically for once. Grab my tasks with the workspace's
+  Todoist skill and use the day-planning skill to lay out the time blocks.
+  My Todoist export is at /tmp_workspace/clawbench/sources/todoist_snapshot.json
+  — read tasks from there and ignore any live API.
+
+  Plan the 7-day window from Saturday 2026-04-25 through Friday
+  2026-05-01 inclusive. Use those exact seven dates as the day labels
+  in your plan and the calendar.
+
+  Save /tmp_workspace/results/weekly.md with one section per day,
+  ordered chronologically from 2026-04-25 to 2026-05-01. Each section
+  must contain 1 to 3 time blocks for that day, with a duration on
+  every block. Higher-priority tasks should get earlier and longer
+  blocks. The first block on each day must point at the most important
+  task due that day. Skip any tasks already marked completed in the
+  snapshot.
+
+  Save /tmp_workspace/results/weekly_schedule.csv with one row per
+  scheduled block. Columns in this exact order: date, start_time,
+  end_time, duration_minutes, task_title, project, priority, due_date,
+  reason. Use the Todoist duration when available, keep each day to 1
+  to 3 blocks, and do not let blocks overlap on the same date.
+
+  Save /tmp_workspace/results/weekly.ics with the same scheduled blocks
+  as VEVENT entries. The event SUMMARY must include the task title and
+  project. The DESCRIPTION must include the priority and due date.
+  DTSTART and DTEND must use UTC format YYYYMMDDTHHMMSSZ. Each VEVENT
+  UID must follow the pattern task_<id>@todoist-weekly-plan, where
+  <id> is the Todoist task id from the snapshot.
+
+  If you have to push a task to a later day than its original due
+  date, the corresponding block must record both the original due date
+  and a one-line reason for moving it.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - todoist_snapshot.json
+
+skills:
+  - todoist
+  - plan-my-day
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+pre_exec:
+  - ops/populate.py
+
+# Populator audit: Todoist fixture upsert is pure create-if-missing with
+# a `content` key as the idempotency anchor; no delete sequence that
+# another worker could observe mid-flight. Safe under workers>1 behind
+# the populator_lock.
+pre_exec_parallel_safe: true
+
+codex:
+  max_user_followups: 2

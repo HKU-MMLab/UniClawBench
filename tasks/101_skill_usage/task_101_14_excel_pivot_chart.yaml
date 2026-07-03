@@ -1,0 +1,60 @@
+task_id: task_101_14_excel_pivot_chart
+category: 101_skill_usage
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+recording: none
+headed: auto
+task: |
+  I have a leadership review Thursday and all I've got is a raw CSV. I need
+  a proper analytical workbook, not just a flat pivot table. The source is
+  at /tmp_workspace/clawbench/sources/sales_2011_q1.csv — use the
+  Office document skill together with the Excel dashboard skill to turn it
+  into something presentable. The
+  CSV has booked transactions plus returns, voids, and late adjustments,
+  and I need to slice net revenue by region against product, walk the
+  monthly progression month-over-month with the actual deltas so I can see
+  Jan to Feb to Mar momentum at a glance, spot the top and bottom
+  performers within each region, see voids and returns and late
+  adjustments cleanly isolated rather than silently rolled into the
+  headline number, and at least get a directional read on whether Q1
+  looks better or worse than the prior comparable period — or call out
+  that a prior-period baseline isn't in the source — so the headline
+  grand total has some context.
+
+  Please turn it into /tmp_workspace/results/pivot.xlsx with:
+  - a cleaned-data sheet that keeps the original rows and makes clear which
+    rows are excluded or negative;
+  - a region by product pivot of net revenue where void rows are
+    excluded, return rows stay negative, and late_adjustment rows count
+    in their correction_month;
+  - grand totals for the pivot;
+  - a monthly momentum sheet using correction_month, with net revenue and
+    month-over-month % change; and
+  - a chart that plots monthly net revenue and MoM % change.
+
+  Use real numeric currency and percent formats, not plain-text values.
+  Also export /tmp_workspace/results/reconciliation.csv with one row for
+  each status — booked, return, void, late_adjustment — showing row
+  count, gross signed revenue, excluded revenue, included net revenue, and
+  the rule used. Add a QA_Checks sheet to the workbook that ties the CSV
+  reconciliation total to the pivot grand total and flags whether the void,
+  return, and late-adjustment rules were applied.
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+sources:
+  - sales_2011_q1.csv
+skills:
+  - office-document-specialist-suite
+  - excel-weekly-dashboard
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+codex:
+  max_user_followups: 2

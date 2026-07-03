@@ -1,0 +1,82 @@
+Message-ID: <004401c26025$c4aa3260$01000001@iS3Inc>
+X-Clawbench-ID: CAM-2003-1368
+Date: Thu, 19 Sep 2002 14:44:22 -0700
+From: Michael McKay <mmckay@iscubed.com>
+To: 'Bryan Feir' <bryan@sgl.crestech.ca>, secprog@securityfocus.com, strange@nsk.yi.org
+Subject: RE: Secure Sofware Key
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01631.2cba1b5addc12959348f0318a6cd9bee
+
+Bryan Feir [mailto:bryan@sgl.crestech.ca] wrote:
+
+>Of course, once one player key was broken, dealing with the rest became
+> a known plaintext attack, and the rest of the player keys went down
+like
+> a row of dominos.
+
+The actual follow-up to the Xing player break was more interesting than
+that.  The mere knowledge of known plaintext (a corresponding input and
+output) does not necessarily make it trivial to break a properly
+designed systems and/or algorithm. The primary reason it was easy for
+CSS is because the CSS key was only 40-bits, and thereby easy to break
+with exhaustive search attacks.  It was only 40-bits (speculated)
+because of a misunderstanding of the government cryptography export
+rules at the time.
+
+Even more interesting, to me at least, was that soon after the Xing
+player break, people started studying the CSS algorithm itself.  They
+rapidly found serious design flaws which left the 40-bit CSS algorithm
+with an actual strength of around 23-bits (from memory, and new attacks
+might have further reduced the strength).  This is another great example
+showing why proprietary cryptography algorithms should be viewed with
+the greatest of suspicion.
+
+
+On Tue, Sep 03, 2002 at 09:03:40PM -0400, Yannick Gingras wrote:
+> This make me wonder about the relative protection of smart cards.
+They have
+> an internal procession unit around 4MHz.  Can we consider them as
+trusted
+> hardware ?
+
+Yes and no.  You can put a limited amount of trust in a smart card.
+There have been any number of very clever attacks against smartcards
+(Ross Anderson in the UK has documented quite a few of these), and
+smartcard manufactures are usually one step behind these attacks.  A
+well designed system assumes that a system smartcard will be completely
+compromised at some point, giving an adversary all of the secrets
+contained in the smartcard.  The cryptography industry has developed a
+variety of techniques that can reduce the impact of a compromise,
+including unique keys per smartcard and forward security techniques.
+
+
+Luciano Rocha [strange@nsk.yi.org] wrote:
+
+> The problem is that that piece of hardware is trustworthy, but the
+rest of
+> the PC isn't, so a cracker just needs to simulate the lock/smart card,
+or
+> peek at the executable after the lock has been deactivated.
+
+Going back to the original question, once the encrypted material goes
+outside the trusted hardware, it is impossible to "unbreakably" protect
+it.  There may be some mitigation steps you can take, such as the SDMI
+watermarking, but most schemes to date have been easily broken.
+
+Another consideration is the value of what you are trying to protect.
+While there is no such thing as unbreakable, adding more cost (both in
+terms of price and hassle-factor) can greatly improve the protection.
+Since you are talking about the use of standard PC workstations, I
+presume what you are trying to protect is not THAT valuable.  I'm afraid
+most security measures don't come for free.
+
+
+Michael McKay
+Director of Software Development
+mmckay@iscubed.com
+
+  Information Security Systems & Services Inc.
+  19925 Stevens Creek Blvd. Cupertino, CA 95014
+  Phone: 408.725.7136  x 4138    Fax: 408.973.7239   www.iscubed.com

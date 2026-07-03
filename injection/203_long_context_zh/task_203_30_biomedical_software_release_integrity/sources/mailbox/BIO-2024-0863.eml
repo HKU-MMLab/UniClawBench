@@ -1,0 +1,33 @@
+Message-ID: <ZJXDXcH1injjo/zJ@fusion>
+X-Clawbench-ID: BIO-2024-0863
+Date: Fri, 23 Jun 2023 18:07:57 +0200
+From: Étienne Mollier <emollier@emlwks999.eu>
+To: debian-med@lists.debian.org
+Subject: Re: bumping htslib stack to version 1.17
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_06_msg00016.html
+
+Hi Andreas,
+
+Andreas Tille, on 2023-06-23:
+> Am Thu, Jun 22, 2023 at 10:39:49PM +0200 schrieb Étienne Mollier:
+> > I don't expect any difficulties, and this should unlock the
+> > possibility to bump the version of all sorts of packages part of
+> > the htslib ecosystem.  Hopefully this won't throw too much more
+> > entropy in the archive.
+>
+> In case some helping hands are needed if something might break feel free
+> to ping me.  I currently pulled the CRAN stack on my desk but this can
+> also wait a couple of days if some other things might be more urgent.
+
+Thanks for the offer, any helping hands are welcome as usual.
+There are no urgencies for the moment, so if you prefer to end
+your work on the CRAN ecosystem first, it is all fine by me.
+
+Have a nice day,  :)
+--
+Étienne Mollier
+Fingerprint:  8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+Sent from /dev/pts/4, please excuse my verbosity.

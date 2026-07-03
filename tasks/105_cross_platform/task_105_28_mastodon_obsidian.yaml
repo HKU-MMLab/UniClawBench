@@ -1,0 +1,67 @@
+task_id: task_105_28_mastodon_obsidian
+category: 105_cross_platform
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I want to organize some favorite Mastodon posts into my Obsidian
+  knowledge base. This time I picked 5 from the @Mastodon official
+  account and 3 from founder @Gargron — 8 posts total, all on
+  mastodon.social.
+
+  Turn each post into an Obsidian-style markdown card — start with YAML
+  frontmatter using Dataview-friendly short field names (id, author,
+  date, url, replies, reblogs — don't use the raw API field names).
+  Convert the HTML body to markdown, and render hashtags using Obsidian
+  tag syntax. One file per post, named by the post ID.
+
+  Fetch data via Mastodon's public API using curl — no token needed.
+
+  Also give me an index page INDEX.md split into @Mastodon and @Gargron
+  sections, listed by date descending, using Obsidian wiki-links to each
+  card file, with the date and a one-sentence summary alongside each
+  entry.
+
+  Additionally, produce a cards.json as a metadata index. The top level
+  should have a posts array in date-descending order with all 8 records,
+  each containing id, author, url, created_at, replies_count,
+  reblogs_count, card_filename, and primary_language. Also include
+  top-level hashtag_freq frequency stats and language_distribution.
+
+  Cards and INDEX.md go under /tmp_workspace/results/vault/; cards.json
+  goes under /tmp_workspace/results/.
+
+  Status IDs:
+
+    @Mastodon:
+      116494498602625362
+      116402716327956884
+      116296392095869320
+      116160846932470950
+      116086899600949599
+
+    @Gargron:
+      116460783363908188
+      116373951728885118
+      116342823659882398
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources: []
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

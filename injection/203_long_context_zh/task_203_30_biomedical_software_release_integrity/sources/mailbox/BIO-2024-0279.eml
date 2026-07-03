@@ -1,0 +1,27 @@
+Message-ID: <12239806.O9o76ZdvQC@riemann>
+X-Clawbench-ID: BIO-2024-0279
+Date: Tue, 04 Jul 2023 09:27:26 -0500
+From: Steven Robbins <steve@sumost.ca>
+To: debian-med@lists.debian.org
+Subject: Re: Droping .py extension in cnvkit
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_07_msg00005.html
+
+On Tuesday, July 4, 2023 5:25:34 A.M. CDT Andreas Tille wrote:
+
+> The thread[2] actually was about the cnvkit example and IMHO we should
+> decide now what to do here.  I'm persinally in favour of shipping
+> upstream names.  They moved from setup.py to pyproject.toml so our patch
+> does not work any more.  I wonder whether we want to fix the patch or
+> rather our rules file which does a lot of renaming which we could drop
+> and by doing so simplify the packaging.
+>
+> What do you think?
+
+I 100% agree with the sentiment of not changing upstream names.  Policy is a
+guide, and a good one, but in this particular aspect (don't use suffixes) it is
+at best a nice-to-have.
+
+-Steve

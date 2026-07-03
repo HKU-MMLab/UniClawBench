@@ -1,0 +1,67 @@
+Message-ID: <62b16928-4705-4e39-a753-51ed5155b307@gmail.com>
+X-Clawbench-ID: ASF-2024-0632
+Date: Thu, 15 Feb 2024 13:44:39 +0100
+From: jean-frederic clere <jfclere@gmail.com>
+To: dev@httpd.apache.org, Ruediger Pluem <rpluem@apache.org>
+Subject: Re: reset in proxy_balancer_method
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-02.mbox
+
+On 2/15/24 13:04, Ruediger Pluem wrote:
+>
+>
+> On 2/15/24 9:28 AM, jean-frederic clere wrote:
+>> On 2/14/24 20:54, Ruediger Pluem wrote:
+>>>
+>>>
+>>> On 2/14/24 3:45 PM, jean-frederic clere wrote:
+>>>> On 2/14/24 08:19, Ruediger Pluem wrote:
+>>>>>
+>>>>>
+>>>>> On 2/9/24 11:59 AM, jean-frederic clere wrote:
+>>>>>> Hi,
+>>>>>>
+>>>>>> I have noted to the reset() clean up too much in the balancers:
+>>>>>> mod_lbmethod_bybusyness.c for example does:
+>>>>>> +++
+>>>>>>        for (i = 0; i < balancer->workers->nelts; i++, worker++) {
+>>>>>>            (*worker)->s->lbstatus = 0;
+>>>>>>            ap_proxy_set_busy_count(*worker, 0); /* BAD */
+>>>>>>        }
+>>>>>> +++
+>>>>>> In fact reset() is called by ap_proxy_initialize_balancer() when a child process is created... Resetting the counters messes up
+>>>>>> the logic.
+>>>>>>
+>>>>>> Does it make sense to stop calling reset() from ap_proxy_initialize_balancer() or is it better to fix all reset()?
+>>>>>
+>>>>> I am not sure what the original idea / intention of reset was. Until this is clarified I would not remove the call to reset in
+>>>>> ap_proxy_initialize_balancer(). In ap_proxy_sync_balancer the call to it is guarded by a check for the need_reset flag. Maybe
+>>>>> this
+>>>>> gives a hint.
+>>>
+>>> Rethinking this. I guess we lack a clear API definition of the reset method of a balancer provider and it does not really seem
+>>> sensible to reset the stats in case a new child is created. Hence I guess the regression risk is rather low when just removing
+>>> this call to reset.
+>>>
+>>>>
+>>>> The need_reset is set when a worker is enabled or when the load balancing method is changed.
+>>>
+>>> Isn't that a similar situation to when a worker is added (in respect to the point below)?
+>>
+>> The worker are added disabled.
+>
+> Which means stuff gets reset once they get enabled?
+
+Correct ;-)
+
+>
+> Regards
+>
+> Rüdiger
+
+--
+Cheers
+
+Jean-Frederic

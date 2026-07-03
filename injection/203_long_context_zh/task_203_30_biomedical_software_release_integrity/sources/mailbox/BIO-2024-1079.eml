@@ -1,0 +1,33 @@
+Message-ID: <ZLE/1RWqp7jA9/cV@an3as.eu>
+X-Clawbench-ID: BIO-2024-1079
+Date: Fri, 14 Jul 2023 14:30:13 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: "Michael R. Crusoe" <michael.r.crusoe@gmail.com>
+Subject: Re: [Help] One remaining build time error in toil
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_07_msg00070.html
+
+Am Fri, Jul 14, 2023 at 01:31:00PM +0200 schrieb Michael R. Crusoe:
+> I thought I patched out all the WDL tests; I suggest adding `WdlToilTest`
+> to the skip list.
+
+Since you've won the race condition to skip the last test why not
+uploading? ;-)  (I'm going offline for a couple of hours now so feel
+free to finalise this.)
+
+BTW, I pushed some preliminary packaging for miniwdl to Salsa[1].  It
+has quite some test suite failures and for now I gave up on checking
+whether these are easy to fix or rather a consequence of the missing git
+submodules.  No idea whether it is worth finalising this but at least
+a start is made.
+
+Kind regards
+    Andreas.
+
+
+[1] https://salsa.debian.org/med-team/miniwdl
+
+--
+http://fam-tille.de

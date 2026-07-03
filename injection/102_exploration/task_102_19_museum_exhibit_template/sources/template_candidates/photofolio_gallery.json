@@ -1,0 +1,21 @@
+{
+  "display_name": "PhotoFolio \u2014 Gallery",
+  "based_on": "generic photographer portfolio gallery template",
+  "item_metadata_fields": [
+    "title",
+    "caption",
+    "date",
+    "tags"
+  ],
+  "features": {
+    "timeline": false,
+    "map": false,
+    "iiif_large_images": true,
+    "browse_by_filter": true,
+    "search": false,
+    "responsive": true,
+    "lightbox": true
+  },
+  "note": "BEAUTIFUL image gallery with lightbox \u2014 but the schema has no credit, no rights, no accession_number (not suitable for archival provenance)",
+  "id": "photofolio_gallery"
+}

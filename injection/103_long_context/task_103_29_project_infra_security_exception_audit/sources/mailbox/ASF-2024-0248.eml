@@ -1,0 +1,32 @@
+Message-ID: <CAKQ1sVNJnKyQxjAwUH0-5Fy=2QMaYo7OZoqdFnz=2pu+dAQAjw@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0248
+Date: Fri, 5 Jan 2024 15:08:36 +0100
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: process_regexp bug, infinite recursion
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-01.mbox
+
+On Fri, Jan 5, 2024 at 3:11 AM Eric Covener <covener@gmail.com> wrote:
+>
+> On Thu, Jan 4, 2024 at 9:04 PM Jason Pyeron <jpyeron@pdinc.us> wrote:
+> >
+> > I am having some issue searching Bugzilla for any issue involving process_regexp in mod_headers.c .
+> >
+> > It finds nothing, so I am assuming I did something wrong in my search. Will file bug if not already filed.
+> >
+> > We are investigating an infinite loop (stack overflow) issue, caused by "securing" a system.
+> >
+> > ZZZ-STIG-SV-214288r881493_rule.conf:Header always edit* Set-Cookie ^(.*)$ $1;HttpOnly;secure
+>
+> edit* just makes no sense at all here when you are capturing/replacing
+> the entire string and will loop by definition.
+
+Maybe we should avoid infinite recursion in any case, like in the
+attached patch?
+How does it work for you Jason?
+
+Regards;
+Yann.

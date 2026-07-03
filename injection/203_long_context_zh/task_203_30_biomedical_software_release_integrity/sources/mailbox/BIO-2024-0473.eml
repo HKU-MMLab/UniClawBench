@@ -1,0 +1,39 @@
+Message-ID: <CA+7wUsxex98fx8eeVbWYwT_HNWbTno8u3FO+gZPikpcOzq_JQA@mail.gmail.com>
+X-Clawbench-ID: BIO-2024-0473
+Date: Sat, 20 Aug 2022 16:04:54 +0200
+From: Mathieu Malaterre <malat@debian.org>
+To: Mohd Bilal <mdbilal@disroot.org>
+Subject: Re: RFS -- autopkgtests for dcmtk
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_08_msg00044.html
+
+On Fri, Aug 19, 2022 at 7:52 PM Mohd Bilal  wrote:
+>
+> Hello team,
+>
+> I have added autopkgtests for dcmtk[1]. Requesting a review on my
+> changes and sponsor the upload if everything's good.
+>
+> I have included the autopkgtest log as an attachment since salsa-ci
+> doesn't have an autopkgtest job for this package.
+
+Are you going to make dcmtk depends on python package ?
+
+```
+cp -a /usr/lib/python3/dist-packages/pydicom/data/test_files/CT_small.dcm
+"${AUTOPKGTEST_TMP}"
+```
+
+That looks odd to me for a c++ package.
+
+> [1] -
+> https://salsa.debian.org/med-team/dcmtk/-/commit/61bcbf663b79ee177dee878c72d6eda9b33683ea
+>
+> Thanks
+> --
+> ╭───────────────────────────────────────────────────╮
+> │ Mohammed Bilal                                    │
+> │ 2D65 BC1E B966 5A6E 97F9 730A B3F5 9452 8521 9E1F │
+> ╰───────────────────────────────────────────────────╯

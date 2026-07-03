@@ -1,0 +1,25 @@
+Message-ID: <6A57CECD-DCE4-4715-96DD-95EA4865B86A@sharp.fm>
+X-Clawbench-ID: ASF-2024-0993
+Date: Mon, 24 Jan 2022 16:34:11 +0200
+From: Graham Leggett <minfrin@sharp.fm>
+To: dev@httpd.apache.org
+Subject: Re: http and http/1.x separation
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-01.mbox
+
+On 24 Jan 2022, at 16:28, Stefan Eissing <stefan@eissing.org> wrote:
+
+> The main idea is to introduce a META "HEADERS" bucket that is used for
+> final/interim responses and footers as well. This will safely pass through
+> all filters that do not know about it. This is similar to the ERROR bucket
+> type we already have.
+
+Big +1.
+
+We don’t use metadata buckets enough, and life is made significantly easier when used.
+
+Regards,
+Graham
+—

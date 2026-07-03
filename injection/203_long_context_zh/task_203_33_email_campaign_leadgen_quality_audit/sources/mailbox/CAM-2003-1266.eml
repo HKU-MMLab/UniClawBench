@@ -1,0 +1,29 @@
+Message-ID: <01da01c24ef6$585238a0$023c7bc0@A700>
+X-Clawbench-ID: CAM-2003-1266
+Date: Wed, 28 Aug 2002 20:52:25 -0400
+From: Ken <ken@ramblernet.com>
+To: spamassassin-talk@example.sourceforge.net
+Subject: [SAtalk] Having a problem
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01376.d80cb9df41061f317f7a1b8e5c6c4038
+
+Now that I have spam assassin and mailscanner working, how can I have smap
+deleted rather than forwarded?
+
+I changed spam.actions.conf to "default	delete" but it is still sending it
+to the recipient.
+
+Thanks,
+Ken
+
+
+-------------------------------------------------------
+This sf.net email is sponsored by: Jabber - The world's fastest growing
+real-time communications platform! Don't just IM. Build it in!
+http://www.jabber.com/osdn/xim
+_______________________________________________
+Spamassassin-talk mailing list
+Spamassassin-talk@lists.sourceforge.net
+https://lists.sourceforge.net/lists/listinfo/spamassassin-talk

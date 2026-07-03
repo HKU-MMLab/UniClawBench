@@ -1,0 +1,28 @@
+Message-ID: <AC735CD3-F22F-44E0-A6F6-6FBDCD28C09E@sharp.fm>
+X-Clawbench-ID: ASF-2024-1226
+Date: Thu, 18 Apr 2024 14:41:49 +0100
+From: "Graham Leggett via dev" <dev@httpd.apache.org>
+To: dev@httpd.apache.org
+Subject: Re: [WIP] mod_authnz_ldap / mod_ldap support for APR v2 LDAP API
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-04.mbox
+
+On 18 Apr 2024, at 14:21, Joe Orton <jorton@redhat.com> wrote:
+
+> This design decision seems surprising to me, what does this add? Adding
+> another abstraction layer to allow runtime selection of the LDAP library
+> seems like a step backwards (a lot of complexity with no benefit).
+> Unlike with e.g. a database backend selection users don't care about
+> picking/configuring among many LDAP libraries.
+
+Can you read through the following and confirm whether your questions are answered?
+
+https://github.com/apache/apr/blob/trunk/include/apr_ldap.h#L27
+
+If any specific questions aren't answered, can you confirm so I can make these clear in the docs?
+
+Regards,
+Graham
+--

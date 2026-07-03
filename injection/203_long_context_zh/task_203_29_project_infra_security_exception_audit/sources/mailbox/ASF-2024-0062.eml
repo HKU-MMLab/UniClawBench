@@ -1,0 +1,26 @@
+Message-ID: <CO1PR05MB7960B9BCC1CE5E1C7CA5BD53DF9A9@CO1PR05MB7960.namprd05.prod.outlook.com>
+X-Clawbench-ID: ASF-2024-0062
+Date: Tue, 11 Apr 2023 20:08:32 +0000
+From: =?iso-8859-1?Q?Jes=FAs_Gonz=E1lez?= <jesusgm@vmware.com>
+To: "dev@httpd.apache.org" <dev@httpd.apache.org>
+Subject: Re: mod_wasm: Contributing Upstream to Apache
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-04.mbox
+
+Hola!
+
+
+We have released recent versions of mod_wasm allowing Wasm modules to return any output type via stdout, including binaries with non UTF-8 bytes sequences or \0 NULL terminators in the middle, among other fixes (see CHANGELOG<https://github.com/vmware-labs/mod_wasm/blob/main/CHANGELOG.md> for details).
+
+
+These new versions allowed us to run new fully functional and unmodified applications (such as Drupal) in a safe WebAssembly environment. We will release a demo soon and a post with all the details.
+
+
+We believe mod_wasm is getting ready for a v1.0.0 release. So, we really would like to get feedback from the HTTPD committers here. Still our plan is contributing this module upstream and helping to maintain it.
+
+
+Cheers!
+
+Jesús

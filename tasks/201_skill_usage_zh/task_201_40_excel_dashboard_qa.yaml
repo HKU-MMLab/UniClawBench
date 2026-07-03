@@ -1,0 +1,63 @@
+task_id: task_201_40_excel_dashboard_qa
+category: 201_skill_usage_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  运营团队有人在 Excel 里草草拼凑了一份销售仪表盘，而我不信任这些
+  数字——我已经发现一个看起来有误的单元格。在我把它分享给财务之前，我需要
+  做一遍像样的 QA。请用 Excel 读取技能读取工作簿，用工作区的 Excel 检查
+  技能逐一走查工作簿并追踪存储值中的异常，再用 DuckDB SQL 技能对源数据库
+  运行全新的 SQL，并标出仪表盘与之不符的每一处。
+
+  工作簿是 /tmp_workspace/clawbench/sources/sales_dashboard_2024.xlsx，
+  包含一个 Raw 工作表以及 Pivot、Chart 和 Summary 工作表。事实来源是
+  /tmp_workspace/clawbench/sources/sales.db——凡是仪表盘与全新查询不符
+  之处，就是一个 bug。
+
+  把你的发现写入 /tmp_workspace/results/qa.md，分为三部分：
+    - 列出仪表盘与 sales.db 之间的每一处不一致。对每一处，给出工作表和
+      单元格、仪表盘所显示的内容、数据库认为应当是的内容，以及一句话对该
+      bug 的解释。涵盖数值不匹配、标签拼写错误、缺失的地区、错误的日期
+      筛选、缺失的合计行，以及任何工作簿与数据库不符之处。
+    - 对每一处不一致，给出你在 sales.db 上运行、产生正确值的那条确切
+      DuckDB SQL 查询。我需要能把每一条粘贴下来并重新运行。
+    - 结尾给出一段简短的总体结论，不超过六句——我该信任这份仪表盘，还是
+      我们需要重做？
+    - 提醒：工作簿中有几个单元格带有 Excel 单元格批注，记录了一处有意为之
+      的带外覆盖——CFO 备忘、RMA 退货调整、审计预留。在分类之前先读每个
+      单元格的批注。带有书面业务覆盖说明的单元格不是 bug，不应出现在
+      不一致清单中。
+
+  另外保存 /tmp_workspace/results/qa_repro.csv，每处不一致一行，包含列
+  sheet、cell、category、xlsx_value、sql_value、duckdb_sql 和 status。
+  这是我要交给仪表盘负责人的东西，所以该 CSV 必须覆盖与 qa.md 相同的
+  问题集合。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - sales_dashboard_2024.xlsx
+  - sales.db
+
+skills:
+  - excel-xlsx
+  - automate-excel
+  - duckdb-cli-ai-skills
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

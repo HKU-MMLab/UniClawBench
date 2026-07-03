@@ -1,0 +1,39 @@
+Message-ID: <YX7zZGOWX8fYJLRg@debian>
+X-Clawbench-ID: BIO-2024-0438
+Date: Mon, 1 Nov 2021 01:19:56 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: debian-science@lists.debian.org
+Subject: Re: Debian Math Team
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_10_msg00055.html
+
+On Sun, Oct 31, 2021 at 04:15:28PM +0100, Julien Puydt wrote:
+> Hi,
+> Count me in on this team (on salsa & mailing-list).
+
+Added to salsa.
+@Doug, do you intend asking out for a mailing list?
+
+> But about moving things, my feelings are mixed. Indeed, this very week,
+> I joined the OCaml Team and packaged src:elpi there -- which is
+> mathematics software. But since it's written in OCaml, I feel it's
+> better to keep it in the language-specific team.
+
+Sure.
+
+> For all packages in the debian science team, I'm ok with them moving to
+> the new team. [I have no clue how to move them]
+
+I fiddled a bit, and figured out the way.
+
+Settings > General > Advanced > Transfer
+
+Now transfer it to the namespace you want. I just did it for python-pulp from science -> math (my package)
+
+> Perhaps the debian sagemath team should be merged in the math team?
+
+Yep, that was the plan. Hope sagemath folks agree there.
+
+Nilesh

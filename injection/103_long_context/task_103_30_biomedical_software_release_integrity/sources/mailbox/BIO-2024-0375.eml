@@ -1,0 +1,48 @@
+Message-ID: <YYAQvfoXT3pFm2wP@debian>
+X-Clawbench-ID: BIO-2024-0375
+Date: Mon, 1 Nov 2021 21:37:25 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: Accepted cif-tools 1.0.0-4 (source) into unstable
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_11_msg00003.html
+
+Hi Maarten,
+
+On Mon, Nov 01, 2021 at 04:55:31PM +0100, Maarten L. Hekkelman wrote:
+> Hi Nilesh,
+>
+> I see you're updating these tools depending on libcifpp. Cool, saves me some
+> work.
+
+I am actually not actively working on libcifpp. I uploaded cif-tools since
+a bug was lying unfixed there, and needed a simple recompilation.
+And I did a source-only for libcifpp since this was creating a autoremoval havoc :)
+
+> But are you planning to re-submit libpdb-redo as well? That would solve a
+> lot of issues with potential removals from testing.
+
+I don't plan to do this yet, but if this is very high prio then....
+
+> E.g., libzeep is threatened to be be kicked out due to the fact that a test
+> in libpdb-redo links against libzeep5.1 itself and via libpdb-redo to
+> libzeep5.0 as well. And that crashes of course.
+
+Right.
+
+> Now I don't think a lot of other tools are using libpdb-redo yet. So simply
+> recompiling libpdb-redo would solve this.
+
+Right again.
+
+> I can also do some work on this, but it is perhaps not smart to work on this
+> concurrently, some scheduling might be appropriate.
+
+It'd be nice if you could carry fwd the work here. I'm sorry that we ran into a race-condition.
+Since you already have DM perms on these, please make desired changes and dput as needed.
+
+Admittedly, I need to focus my energies on other set of packages for now. Hope you understand.
+
+Nilesh

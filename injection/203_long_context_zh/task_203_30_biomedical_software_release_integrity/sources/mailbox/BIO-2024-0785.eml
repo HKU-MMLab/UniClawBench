@@ -1,0 +1,32 @@
+Message-ID: <YvUCpD8iejP4JKnl@an3as.eu>
+X-Clawbench-ID: BIO-2024-0785
+Date: Thu, 11 Aug 2022 15:22:44 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: RFS -- delly 1.3.1
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_08_msg00040.html
+
+Hi Bilal
+
+Am Thu, Aug 11, 2022 at 04:56:46PM +0530 schrieb Mohd Bilal:
+> I've updated delly[1] to the latest upstream version (1.3.1) . Also I've
+> added in autopkgtests,fixed blhc and made the builds reproducible. The CI
+> shows an autopkgtest failure as of now[2] which I think is related to an
+> issue with the CI infra. The autopkgtests works fine when run locally :
+>
+> ...
+>
+> Requesting someone to review and sponsor my changes :)
+
+Thanks a lot for your thorough work (which also passes autopkgtest at
+my side).  I've uploaded delly with your changes.
+
+Kind regards
+
+     Andreas.
+
+--
+http://fam-tille.de

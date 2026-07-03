@@ -1,0 +1,138 @@
+{
+  "canonical_finals": [
+    {
+      "year": 2008,
+      "edition": "Beijing 2008",
+      "gold_medalist": "Lin Dan",
+      "silver_medalist": "Lee Chong Wei",
+      "score": "21-12, 21-8",
+      "match_format": "straight_games",
+      "final_point_game": 2,
+      "winner_country": "China",
+      "runner_up_country": "Malaysia",
+      "accepted_search_aliases": [
+        "Beijing 2008 badminton men's singles final",
+        "Lin Dan Lee Chong Wei Beijing final"
+      ]
+    },
+    {
+      "year": 2012,
+      "edition": "London 2012",
+      "gold_medalist": "Lin Dan",
+      "silver_medalist": "Lee Chong Wei",
+      "score": "15-21, 21-10, 21-19",
+      "match_format": "three_games",
+      "final_point_game": 3,
+      "winner_country": "China",
+      "runner_up_country": "Malaysia",
+      "accepted_search_aliases": [
+        "London 2012 badminton men's singles final",
+        "Lin Dan Lee Chong Wei London final"
+      ]
+    },
+    {
+      "year": 2016,
+      "edition": "Rio 2016",
+      "gold_medalist": "Chen Long",
+      "silver_medalist": "Lee Chong Wei",
+      "score": "21-18, 21-18",
+      "match_format": "straight_games",
+      "final_point_game": 2,
+      "winner_country": "China",
+      "runner_up_country": "Malaysia",
+      "accepted_search_aliases": [
+        "Rio 2016 badminton men's singles final",
+        "Chen Long Lee Chong Wei Rio final"
+      ]
+    },
+    {
+      "year": 2020,
+      "edition": "Tokyo 2020",
+      "gold_medalist": "Viktor Axelsen",
+      "silver_medalist": "Chen Long",
+      "score": "21-15, 21-12",
+      "match_format": "straight_games",
+      "final_point_game": 2,
+      "winner_country": "Denmark",
+      "runner_up_country": "China",
+      "accepted_search_aliases": [
+        "Tokyo 2020 badminton men's singles final",
+        "Tokyo 2021 badminton men's singles final",
+        "Axelsen Chen Long Olympic final"
+      ]
+    },
+    {
+      "year": 2024,
+      "edition": "Paris 2024",
+      "gold_medalist": "Viktor Axelsen",
+      "silver_medalist": "Kunlavut Vitidsarn",
+      "score": "21-11, 21-11",
+      "match_format": "straight_games",
+      "final_point_game": 2,
+      "winner_country": "Denmark",
+      "runner_up_country": "Thailand",
+      "accepted_search_aliases": [
+        "Paris 2024 badminton men's singles final",
+        "Axelsen Kunlavut Olympic final"
+      ]
+    }
+  ],
+  "canonical_output_schema": {
+    "prompt_required_summary_fields": [
+      "year",
+      "Olympic edition",
+      "final players",
+      "winner",
+      "final score",
+      "watched source video title or URL",
+      "last point start/end timestamp",
+      "brief rally note"
+    ],
+    "helpful_optional_summary_fields": [
+      "deciding game"
+    ],
+    "clip_filename_guidance": "filenames should include year and finalists",
+    "all_five_years_required": true
+  },
+  "timestamp_acceptance_policy": {
+    "preferred_window_for_full_match_uploads": "timestamp should be near the final rally in the deciding game, typically within the last 90 seconds of the upload",
+    "preferred_window_for_highlight_uploads": "timestamp should point to the final rally itself or to the start of the final-point clip",
+    "reject_if": [
+      "timestamp clearly points to game 1 or a non-decisive stretch",
+      "timestamp is absent for multiple finals"
+    ]
+  },
+  "search_cues": {
+    "required_years": [
+      2008,
+      2012,
+      2016,
+      2020,
+      2024
+    ],
+    "accepted_event_name": "Olympic men's singles badminton final",
+    "timestamp_requirement": "Reported timestamps should point to the winning rally in the deciding game or, for straight-games finals, the second game."
+  },
+  "candidate_answer_boundaries": {
+    "full_credit_requires": [
+      "all 5 finals are covered",
+      "all pairings and scores are correct",
+      "2012 is explicitly treated as a game-3 decider",
+      "straight-games finals use game 2 as the last-point target"
+    ],
+    "partial_credit_if": [
+      "historical facts are correct but one or two timestamps are weak",
+      "all 5 years are covered but one clip artifact is missing"
+    ],
+    "reject_if": [
+      "the output confuses finals with semifinals or bronze-medal matches",
+      "the summary drops one of the required Olympic years"
+    ]
+  },
+  "common_mistakes": [
+    "Mixing semifinal clips into the final-point set.",
+    "For 2012, using the last point of game 2 instead of the deciding third game.",
+    "Confusing Tokyo 2020 with calendar year 2021 in a way that drops the correct Olympic edition."
+  ],
+  "authoring_note": "Historical pairing and score facts are fixed. Video source URLs remain dynamic, so hidden evaluation should be strict on the match facts, the deciding-game logic, and the timestamp semantics rather than on one particular upload."
+}

@@ -1,0 +1,210 @@
+{
+  "source_accessed_on": "2026-04-23",
+  "evidence_basis": [
+    "Current YouTube watch-page metadata and available video-facing evidence for ndAJTy8X3eU."
+  ],
+  "resource": {
+    "url": "https://www.youtube.com/watch?v=ndAJTy8X3eU",
+    "video_id": "ndAJTy8X3eU",
+    "title": "5-Day Beijing Itinerary + Top Things to Do for First Timers ✈️ Solo China Vlog",
+    "channel": "Roseanne Ducut",
+    "published_date": "2024-04-13",
+    "view_snapshot": "305K views"
+  },
+  "ordered_day_clusters": [
+    {
+      "cluster_id": "day1_historic_core",
+      "label": "Day 1 — Historic Sites",
+      "reference_group": [
+        "Tiananmen Square",
+        "Forbidden City",
+        "Jingshan Park"
+      ],
+      "ordering_note": "These are useful reference historic-core stops. Do not require this exact day-cluster or internal order unless the executor's video evidence supports it.",
+      "good_optional_additions": [
+        "Beihai Park",
+        "Qianmen Street"
+      ]
+    },
+    {
+      "cluster_id": "day2_great_wall",
+      "label": "Day 2 — Great Wall of China",
+      "reference_include_one_of": [
+        "Mutianyu Great Wall",
+        "Great Wall of China"
+      ]
+    },
+    {
+      "cluster_id": "day3_parks_shopping",
+      "label": "Day 3 — Parks and Shopping",
+      "good_candidates": [
+        "Temple of Heaven",
+        "Wangfujing",
+        "Pearl Market"
+      ]
+    },
+    {
+      "cluster_id": "day4_cultural_modern",
+      "label": "Day 4 — Cultural and Modern Sites in Beijing",
+      "good_candidates": [
+        "Lama Temple",
+        "Summer Palace"
+      ]
+    }
+  ],
+  "core_anchor_names": [
+    "Tiananmen Square",
+    "Forbidden City",
+    "Mutianyu Great Wall"
+  ],
+  "relative_order_constraints": [
+    {
+      "id": "qianmen_before_historic_core",
+      "rule": "Qianmen, Dashilan, or Zhengyangmen class stops, if used, belong before Tiananmen Square."
+    },
+    {
+      "id": "historic_core_sequence",
+      "rule": "Tiananmen Square must appear before Forbidden City / Palace Museum."
+    },
+    {
+      "id": "historic_before_wall_segment",
+      "rule": "Forbidden City / Palace Museum must appear before the Mutianyu Great Wall segment."
+    },
+    {
+      "id": "early_secondary_stops",
+      "rule": "Wangfujing or a Hutong segment, if used from early-video evidence, must not be placed after late-video stops without explicit visual timestamp support."
+    },
+    {
+      "id": "outlying_wall_is_distinct_segment",
+      "rule": "Mutianyu Great Wall must be treated as a distinct trip segment, not merged into central Beijing."
+    },
+    {
+      "id": "late_additions_require_timestamp_order",
+      "rule": "Late-video additions such as 798 Art Zone, Jingshan Park, Beihai Park, or Temple of Heaven must be ordered by cited video timestamp/frame evidence if included."
+    }
+  ],
+  "coordinate_tolerances_km": {
+    "central_beijing_landmarks": 2,
+    "mutianyu_great_wall": 8,
+    "declared_approximate_area_rows": "coordinate must remain within the declared neighborhood or bounded visual area"
+  },
+  "canonical_landmark_pool": [
+    {
+      "name": "Tiananmen Square",
+      "acceptable_synonyms": [
+        "Tiananmen",
+        "Tiananmen Plaza"
+      ]
+    },
+    {
+      "name": "Forbidden City",
+      "acceptable_synonyms": [
+        "Palace Museum",
+        "故宫"
+      ]
+    },
+    {
+      "name": "Jingshan Park",
+      "acceptable_synonyms": [
+        "Jingshan",
+        "Coal Hill Park"
+      ]
+    },
+    {
+      "name": "Mutianyu Great Wall",
+      "acceptable_synonyms": [
+        "Great Wall of China",
+        "Great Wall",
+        "Mutianyu section"
+      ]
+    },
+    {
+      "name": "Temple of Heaven",
+      "acceptable_synonyms": [
+        "Tiantan",
+        "Temple of Heaven Park"
+      ]
+    },
+    {
+      "name": "Wangfujing",
+      "acceptable_synonyms": [
+        "Wangfujing Street",
+        "Wangfujing shopping street"
+      ]
+    },
+    {
+      "name": "Qianmen Street",
+      "acceptable_synonyms": [
+        "Qianmen",
+        "Qianmen pedestrian street"
+      ]
+    },
+    {
+      "name": "Pearl Market",
+      "acceptable_synonyms": [
+        "Hongqiao Pearl Market",
+        "Hongqiao Market"
+      ]
+    },
+    {
+      "name": "Lama Temple",
+      "acceptable_synonyms": [
+        "Yonghe Temple",
+        "Yonghegong"
+      ]
+    },
+    {
+      "name": "Summer Palace",
+      "acceptable_synonyms": [
+        "Yiheyuan"
+      ]
+    },
+    {
+      "name": "Beihai Park",
+      "acceptable_synonyms": [
+        "Beihai"
+      ]
+    }
+  ],
+  "canonical_output_schema": {
+    "expected_csv_columns": [
+      "order",
+      "landmark_name",
+      "location_text",
+      "lat",
+      "lng"
+    ],
+    "expected_notes_fields": [
+      "video grounding note",
+      "ordering rationale",
+      "alternate names if used",
+      "how each landmark was matched from the video"
+    ],
+    "minimum_landmarks": 5,
+    "map_must_show": [
+      "at least 5 markers",
+      "ordered connection between stops"
+    ]
+  },
+  "candidate_answer_boundaries": {
+    "full_credit_requires": [
+      "at least 5 concrete Beijing landmarks visible or plausibly grounded in the linked video",
+      "route order supported by the executor's video-grounding notes",
+      "HTML map and CSV use the same ordered sequence"
+    ],
+    "partial_credit_if": [
+      "the output is Beijing-grounded and gets 5 real landmarks but day clustering is fuzzy",
+      "one or two landmark names use accepted aliases or secondary Beijing stops"
+    ],
+    "reject_if": [
+      "the map or CSV is about Tokyo or another city",
+      "the landmark names are too generic to identify concrete Beijing stops"
+    ]
+  },
+  "common_mistakes": [
+    "Producing a Tokyo map or reusing the original prompt intent instead of following the current Beijing resource.",
+    "Listing Beijing attractions with no attempt to preserve the vlog's visit order.",
+    "Using generic city labels like 'shopping street' or 'park' without identifiable landmark names."
+  ],
+  "supervisor_note": "The prompt text drifted from an older Tokyo-style task, but the current linked asset is a Beijing travel video. Hidden evaluation should bind to the linked video and the public output contract, not to a separate travel-guide itinerary."
+}

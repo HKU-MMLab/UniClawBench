@@ -1,0 +1,79 @@
+Message-ID: <7dab5cf76100870435b158c7d16f94bf5139d3a7.camel@gmail.com>
+X-Clawbench-ID: BIO-2024-0224
+Date: Wed, 10 Nov 2021 21:32:25 +0100
+From: Julien Puydt <julien.puydt@gmail.com>
+To: debian-science@lists.debian.org
+Subject: Re: Upgrading pandas
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_11_msg00084.html
+
+Le mercredi 10 novembre 2021 à 19:36 +0000, Alastair McKinstry a
+écrit :
+>
+>
+> ﻿On 10/11/2021, 16:33, "Timo Röhling"  wrote:
+>
+>     Hi Andreas,
+>
+>     * Andreas Tille  [2021-11-10 18:14]:
+>     >   nbsphinx.NotebookError: TypeError in user_guide/style.ipynb:
+>     >   'coroutine' object is not subscriptable
+>     This seems to be an issue with nbconvert 5.6.1, which apparently
+> is
+>     not playing nice with updated Jupyter notebook packages [1].
+>
+>
+>     Cheers
+>     Timo
+>
+>
+>     [1] https://stackoverflow.com/a/67061046/13476707
+>
+> I've the same error in python-xarray, both 0.20.1 I'm packaging and
+> the current 0.19.0 now FTBFS due to this.
+> Can we prioritise upgrading nbconvert to 6+ ?
+>
+
+I've wanted to do that since months already, but never found the time
+to actually get it done. Here are my notes on the matter -- my last
+serious attempt dates back to july, so things might have moved
+(hopefully not backwards...) :
+
+
+- nbconvert wants a newer nbsphinx ;
+
+
+- nbsphinx wants a more recent ipywidgets ;
+
+
+- ipywidgets wants jupyterlab ;
+
+
+- I have a very preliminary work on jupyterlab where:
+
+ * I managed to "compile" its packages coreutils, settingregistry,
+statedb, nbformat, observables, rendermime-interfaces, mathjax2,
+metapackage and pdf-extension
+
+ * for ui-components, typestyle would be needed ;
+
+ * for vdom, @nteract/transform-vdom would be needed ;
+
+
+- typestyle depends on csstype and free-style ;
+- csstype officially depends from prettier but that can be
+worked around.
+
+
+- freestyle I don't know what was lacking.
+
+
+as you'll notice, we quickly go out of Debian Python Team's reach to
+wander into the savage lands of Debian JavaScript Team -- of which I'm
+a member too.
+
+Cheers,
+
+J.Puydt

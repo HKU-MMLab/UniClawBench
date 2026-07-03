@@ -1,0 +1,160 @@
+{
+  "task_id": "task_101_40_excel_dashboard_qa",
+  "difficulty": "Hard",
+  "schema": "a",
+  "schema_notes": "Cross-source QA: dashboard xlsx vs canonical sales.db. Executor must run DuckDB SQL against sales.db and flag every dashboard cell that disagrees with the database.",
+  "skills_declared": [
+    "excel-xlsx",
+    "automate-excel",
+    "duckdb-cli-ai-skills"
+  ],
+  "ground_truth": {
+    "canonical_db_aggregates": {
+      "total_revenue_2024": 45167871.87,
+      "transaction_count": 2400,
+      "average_transaction_revenue": 18819.95,
+      "revenue_by_region": {
+        "NA": 15584918.04,
+        "EMEA": 11077793.60,
+        "APAC": 10718509.25,
+        "UK": 7786650.98
+      },
+      "revenue_by_quarter": {
+        "Q1": 11604289.01,
+        "Q2": 10631214.46,
+        "Q3": 11485204.78,
+        "Q4": 11447163.62
+      },
+      "units_by_product": {
+        "Alpha": 213024,
+        "Beta": 217401,
+        "Gamma": 193472,
+        "Delta": 112544
+      },
+      "top_region": "NA",
+      "top_region_share_pct": 34.5
+    },
+    "min_inconsistencies": 9,
+    "anomaly_types_min": 6,
+    "min_seeded_hits": 9,
+    "min_qa_repro_rows": 9,
+    "max_documented_override_misflags": 0,
+    "strict_override_handling": true,
+    "qa_repro_columns": [
+      "sheet",
+      "cell",
+      "category",
+      "xlsx_value",
+      "sql_value",
+      "duckdb_sql",
+      "status"
+    ],
+    "expected_inconsistencies": [
+      {
+        "sheet": "Pivot",
+        "cell": "B3",
+        "category": "aggregation_error",
+        "xlsx_value": 110777936.00,
+        "sql_value": 11077793.60,
+        "sql_query": "SELECT ROUND(SUM(revenue),2) FROM sales WHERE region='EMEA';",
+        "issue": "EMEA region revenue is 10x inflated versus sales.db rollup."
+      },
+      {
+        "sheet": "Pivot",
+        "cell": "B5",
+        "category": "missing_region",
+        "xlsx_value": 0,
+        "sql_value": 7786650.98,
+        "sql_query": "SELECT ROUND(SUM(revenue),2) FROM sales WHERE region='UK';",
+        "issue": "UK region total is 0 although sales.db has UK transactions worth ~7.79M."
+      },
+      {
+        "sheet": "Pivot",
+        "cell": "B11",
+        "category": "quarter_rollup_error",
+        "xlsx_value": 11585204.78,
+        "sql_value": 11485204.78,
+        "sql_query": "SELECT ROUND(SUM(revenue),2) FROM sales WHERE txn_date >= '2024-07-01' AND txn_date < '2024-10-01';",
+        "issue": "Q3 revenue is overstated by 100,000 versus sales.db."
+      },
+      {
+        "sheet": "Pivot",
+        "cell": "B12",
+        "category": "wrong_date_filter",
+        "xlsx_value": 0,
+        "sql_value": 11447163.62,
+        "sql_query": "SELECT ROUND(SUM(revenue),2) FROM sales WHERE txn_date >= '2024-10-01' AND txn_date < '2025-01-01';",
+        "issue": "Q4 total is 0 — the dashboard's date filter excludes Q4 transactions that exist in sales.db."
+      },
+      {
+        "sheet": "Pivot",
+        "cell": "A6",
+        "category": "missing_total_row",
+        "xlsx_value": "(blank)",
+        "sql_value": 45167871.87,
+        "sql_query": "SELECT ROUND(SUM(revenue),2) FROM sales;",
+        "issue": "Region pivot is missing a Grand Total row at A6/B6 after the four-region rollup."
+      },
+      {
+        "sheet": "Chart",
+        "cell": "A3",
+        "category": "typo_product_name",
+        "xlsx_value": "Bata",
+        "sql_value": "Beta",
+        "sql_query": "SELECT DISTINCT product FROM sales ORDER BY product;",
+        "issue": "Product label 'Bata' is a typo — sales.db's product is 'Beta'."
+      },
+      {
+        "sheet": "Chart",
+        "cell": "B5",
+        "category": "wrong_value",
+        "xlsx_value": 1125440,
+        "sql_value": 112544,
+        "sql_query": "SELECT SUM(units) FROM sales WHERE product='Delta';",
+        "issue": "Delta units are 10x the sales.db total."
+      },
+      {
+        "sheet": "Summary",
+        "cell": "B2",
+        "category": "wrong_value",
+        "xlsx_value": 22583935.93,
+        "sql_value": 45167871.87,
+        "sql_query": "SELECT ROUND(SUM(revenue),2) FROM sales;",
+        "issue": "Total Revenue 2024 is roughly half of the sales.db total."
+      },
+      {
+        "sheet": "Summary",
+        "cell": "B5",
+        "category": "average_value_error",
+        "xlsx_value": 90335.74,
+        "sql_value": 18819.95,
+        "sql_query": "SELECT ROUND(SUM(revenue) * 1.0 / COUNT(*), 2) FROM sales;",
+        "issue": "Average transaction revenue divides total revenue by 500 instead of by COUNT(*) from sales.db (2400)."
+      }
+    ],
+    "documented_override_cells": [
+      {
+        "sheet": "Pivot",
+        "cell": "B16",
+        "value": -12500.00,
+        "expected_label": "documented / business override / not anomaly",
+        "explanation_in_cell_comment": "Manual reconciliation entry approved by CFO per memo MEMO-CFO-2024-Q4-03 — catalog-migration credit, intentionally not in sales.db."
+      },
+      {
+        "sheet": "Chart",
+        "cell": "B6",
+        "value": -847,
+        "expected_label": "documented / business override / not anomaly",
+        "explanation_in_cell_comment": "RMA returns adjustment per RMA-2024 procedures — separate from primary product mix."
+      },
+      {
+        "sheet": "Summary",
+        "cell": "B7",
+        "value": "~$30k under audit",
+        "expected_label": "documented / business override / not anomaly",
+        "explanation_in_cell_comment": "Q4 audit holdback (Crowe LLP, AUD-2024-CLW-Q4) — discrepancies vs sales.db expected during audit window."
+      }
+    ],
+    "expected_excluded_decoy_cells_note": "Pivot!B16, Chart!B6, Summary!B7 each carry an Excel cell COMMENT documenting an out-of-band business override (CFO memo, RMA adjustment, audit holdback). They mismatch sales.db on purpose. Listing any of them as a real anomaly in qa_repro.csv triggers §6 cap 0.45."
+  }
+}

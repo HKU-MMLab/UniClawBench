@@ -1,0 +1,38 @@
+Message-ID: <CAOu7+yK92puLXjAaUQ6b40MGzGhaCkEPLLwEhWBGFBxWaL+i4w@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0114
+Date: Wed, 20 Dec 2023 11:00:05 -0500
+From: "Eric Norris via dev" <dev@httpd.apache.org>
+To: Eric Norris via dev <dev@httpd.apache.org>
+Subject: Re: [PATCH] mod_deflate: remove filter after seeing EOS
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-12.mbox
+
+On Wed, Dec 20, 2023 at 10:43 AM Joe Orton <jorton@redhat.com> wrote:
+>
+> In the repro case you posted, only one brigade is passed by the handler,
+> with that I saw the "delayed last chunk" behaviour but not the Zlib
+> double-deinit error log. I think the Zlib error would only be triggered
+> by passing a second brigade with a FLUSH.
+
+Ah, now that you mention it, that sounds right. That might have been
+another piece of context I had lost between writing the patches and
+sending them :)
+
+> > If I understand correctly, either patch would send the flush bucket after
+> > the last chunk marker and before the EOS bucket (i.e. [crlf last-chunk
+> > FLUSH EOS]), so there's no need for "userspace" to send an additional flush
+> > after the EOS bucket, and so mod_deflate wouldn't complain. Does that sound
+> > right?
+>
+> I don't think the mod_deflate patch fixed the "delayed last-chunk"
+> problem in my testing, but it is definitely correct & necessary to fix
+> the Zlib error as above.
+
+Right, I wasn't expecting the mod_deflate patch to fix the "delayed
+last-chunk" issue - by "either patch", I meant either your proposed
+chunk filter patch or my not-submitted-and-only-in-my-local-fork chunk
+filter patch. My understanding now is that my patch to mod_deflate
+makes it more robust, but the real underlying issue is the "delayed
+last-chunk" problem, which you're fixing.

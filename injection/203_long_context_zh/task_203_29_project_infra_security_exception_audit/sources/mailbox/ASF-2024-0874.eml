@@ -1,0 +1,24 @@
+Message-ID: <f5eddae5-0bb6-5166-f2de-8dbddb0a6d61@apache.org>
+X-Clawbench-ID: ASF-2024-0874
+Date: Mon, 20 Dec 2021 10:36:28 +0000
+From: Stefan Eissing <icing@apache.org>
+To: announce@apache.org, dev@httpd.apache.org
+Subject: CVE-2021-44790: Possible buffer overflow when parsing multipart  content in mod_lua of Apache HTTP Server 2.4.51 and earlier
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2021-12.mbox
+
+Severity: high
+
+Description:
+
+A carefully crafted request body can cause a buffer overflow in the mod_lua multipart parser (r:parsebody() called from Lua scripts).
+The Apache httpd team is not aware of an exploit for the vulnerabilty though it might be possible to craft one.
+
+This issue affects Apache HTTP Server 2.4.51 and earlier.
+
+Credit:
+
+Chamal
+Anonymous working with Trend Micro Zero Day Initiative

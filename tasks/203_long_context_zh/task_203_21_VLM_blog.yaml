@@ -1,0 +1,56 @@
+task_id: task_203_21_VLM_blog
+category: 203_long_context_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我需要制作一篇关于 Generalized Visual Language Models 主题的论文阅读 HTML 博客。
+  请围绕以下主线来组织：
+  1. Why combine vision and language
+    - 解释 VLM 的目标：把视觉感知与语言推理连接起来。
+    - 引出图像表示如何进入语言模型这一问题。
+
+  2. Joint image-text pretraining
+    - 讨论 VisualBERT 和 SimVLM 等联合训练图文表示的方法。
+
+  3. Image embeddings as language-model prefixes
+    - 讨论 Frozen 和 ClipCap 等把图像 embedding 映射为 LM 前缀（prefix）的方法。
+    - 强调语言模型可以轻量训练或冻结。
+
+  4. Cross-attention fusion
+    - 讨论 Flamingo 等通过 cross-attention 把视觉特征注入语言模型的方法。
+
+  5. Contrastive captioner foundation models
+    - 讨论 CoCa 如何把对比学习与图像描述（captioning）结合，以支持检索和生成任务。
+
+  6. No-training and tool-composition approaches
+    - 讨论 PICa、Socratic Models 等不重新训练大模型、而是通过提示词或工具组合来完成视觉-语言任务的方法。
+
+  7. Practical synthesis
+    - 总结 VLM 的核心设计问题：视觉信息从何处进入语言模型，是通过联合融合、前缀、cross-attention、对比-描述（contrastive-captioning），还是工具组合。
+
+  候选论文都在 `/tmp_workspace/clawbench/sources/papers/` 中，我把文件重命名成了没有语义的数字，所以不要从文件名猜测。阅读这些论文，并为每一节（包括开篇的问题引言）选出应当讨论的论文。
+
+  让博客图文并茂。你可以从论文中截取图/表，但截图必须完整、清晰、与内容相符，且细节足够清楚到能读出文字和细节。公式可以写成截图或 LaTeX。使用已准备好的 `/tmp_workspace/clawbench/sources/assets/`，其中包含页面模板所需的 CSS、JavaScript 和 MathJax 公式渲染依赖。
+
+  将最终博客保存到 `/tmp_workspace/results/VLM_blog/`；它应包含 HTML 文件和对应的 assets。把 HTML 引用的图片放到 `/tmp_workspace/clawbench/results/assets/images`，并为博客中的每一张图注明来源论文。
+
+  同时保存 `/tmp_workspace/results/selection_note.md`，说明每一节为什么选择了这些论文。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/VLM_blog/
+  - references/paper_mapping.json
+sources:
+  - papers/
+  - assets/
+
+codex:
+  max_user_followups: 2

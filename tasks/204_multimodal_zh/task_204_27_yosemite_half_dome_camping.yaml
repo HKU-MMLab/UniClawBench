@@ -1,0 +1,58 @@
+task_id: task_204_27_yosemite_half_dome_camping
+category: 204_multimodal_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  请打开 Yosemite National Park 官方网站上的这两个页面：
+
+  1. Half Dome 徒步信息页面：
+     https://www.nps.gov/yose/planyourvisit/halfdome.htm
+  2. 露营信息页面：
+     https://www.nps.gov/yose/planyourvisit/camping.htm
+
+  如果你需要打开官方营地详情页面来汇总 Yosemite Valley 营地的信息，
+  你可以继续浏览 NPS 站点内的相关页面。
+
+  请完成以下事项：
+
+  1. 从 Half Dome 页面提取：
+     - 往返距离
+     - 海拔爬升
+     - 预计所需时间
+     - 是否需要许可证以及如何申请
+     - 主要安全注意事项
+  2. 将至少 2 张官方网站截图保存到 `/tmp_workspace/results/`，每张都要显示可辨认的页面内容：
+     - Half Dome 描述 / 地图 / 重要提示区域
+     - Yosemite 露营 / 营地信息区域
+     不要只截取官方站点的页眉、导航、警告横幅或空白区域。
+  3. 从官方露营页面汇总 Yosemite Valley 营地的关键信息，
+     至少涵盖 Upper Pines、Lower Pines、North Pines 和 Camp 4。
+  4. 阅读 `/tmp_workspace/clawbench/sources/yosemite_trip.json`。
+  5. 在 `/tmp_workspace/results/` 下生成以下文件：
+     - `half_dome_guide.md`
+     - `campground_options.csv`
+     - `trip_assessment.md`
+     - `half_dome_reference.png`
+     - `campground_reference.png`
+
+  `campground_options.csv` 必须至少包含营地名称、开放季节、是否需要预订、费用说明
+  （只纳入官方页面上可见或可由你的截图证明的信息；如果无法确认，则注明未明确显示）以及简要备注。
+  `trip_assessment.md` 必须明确判断这次行程是否适合尝试 Half Dome，并说明更合适的营地和准备建议。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/campgrounds_ground_truth.csv
+
+sources:
+  - yosemite_trip.json
+
+codex:
+  max_user_followups: 2

@@ -1,0 +1,35 @@
+Message-ID: <d101f423acbe26ec421fd58b64079f26b10e6c71.camel@med.uni-goettingen.de>
+X-Clawbench-ID: BIO-2024-0959
+Date: Fri, 31 Dec 2021 12:35:36 +0000
+From: "Uecker, Martin" <Martin.Uecker@med.uni-goettingen.de>
+To: "nilesh@riseup.net" <nilesh@riseup.net>, "debian-med@lists.debian.org"	<debian-med@lists.debian.org>
+Subject: Re: bart-cuda fails its autopkgtest (Was: Re: bart: version 0.7.00)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_12_msg00201.html
+
+Am Freitag, den 31.12.2021, 17:13 +0530 schrieb Nilesh Patra:
+> On 12/30/21 12:47 PM, Uecker, Martin wrote:
+> > Also the identical bart-cuda package (in master-contrib)
+> > fails to build on salsa because it says the
+> > nvidia-cuda-toolkit  is uninstallable. But I guess one
+> > could give it a try.
+>
+> Martin, bart-cuda fails its (last) autopkgtest stalling testing migration, see here[1]
+> Can you fix this?
+>
+> [1]: https://qa.debian.org/excuses.php?package=bart-cuda
+
+Yes, it was running the tests for the bart package but then
+the older version of the package was still installed and
+the test failed. I pushed a fix.  But I am still
+pondering why it is not fully reproducible....
+
+Thanks again for your help!  Can I do something to make
+this easier?  For bart-cuda  I think it is is Ok to
+only upload for amd64.  But it would be good if we
+could extend the CI pipeline on salsa to test
+beforehand.
+
+Martin

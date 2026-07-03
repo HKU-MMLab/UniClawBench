@@ -1,0 +1,50 @@
+Message-ID: <202a47755d04da2f8d491b9a202c6600@enron.com>
+X-Clawbench-ID: ANL-2001-0310
+Date: 2001-04-16T06:16:00-03:00
+From: Tanya Tamarchenko <Tanya Tamarchenko>
+To: Jaesoo Lew <Jaesoo Lew>
+Subject: Re: clustering for power
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Enron kaminski-v public mailbox index.json
+X-Original-Folder: kaminski-v_000/kaminski-v/VAR
+
+Jaesoo,
+
+as we discussed last week on Wednesday meeting can you, please,
+
+implement clustering for power curves by geographical region. This involves
+
+the following:
+
+
+1. Deciding together with Risk Control how many geographical regions we want
+
+to use
+
+and which Enron's curves belong to each region.
+
+2. Deciding together with Risk Control how to choose core curves for each
+
+region. This decision can
+
+be maid based on the a) position size; b) statistical analysis. There might
+
+be other considerations.
+
+3. Doing regression analysis for each curve versus the corresponding core
+
+curve.
+
+
+Winston,
+
+can is it possible to run VAR for the clustering results obtained by Jaesoo
+
+with clustering done by SAS?
+
+Should we wait for the stage re-fresh and what is the status on this?
+
+
+Tanya.

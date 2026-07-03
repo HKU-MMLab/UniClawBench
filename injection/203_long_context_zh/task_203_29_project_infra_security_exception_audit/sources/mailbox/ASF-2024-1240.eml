@@ -1,0 +1,94 @@
+Message-ID: <BAB77F54-9776-479C-AB8A-DB15C972BF04@eissing.org>
+X-Clawbench-ID: ASF-2024-1240
+Date: Mon, 7 Feb 2022 11:42:55 +0100
+From: Stefan Eissing <stefan@eissing.org>
+To: dev@httpd.apache.org
+Subject: Re: Python test suite - failures on Fedora Rawhide / MacOS
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-02.mbox
+
+> Am 07.02.2022 um 11:26 schrieb Graham Leggett <minfrin@sharp.fm>:
+>
+> On 07 Feb 2022, at 12:23, Stefan Eissing <stefan@eissing.org> wrote:
+>
+>> could you attach a complete failed output of your pytest run? I use it on MacOS all the time and
+>> it seems most likely that some prerequisites have not been documented well enough or checks must
+>> add more information in output.
+>
+> I reduced the tests to http2 only:
+>
+> pytest test/modules/http2
+
+Do you have a locally built curl that has no HTTP2 support? To check run
+
+> curl -V
+curl 7.77.0 (x86_64-apple-darwin21.0) libcurl/7.77.0 (SecureTransport) LibreSSL/2.8.3 zlib/1.2.11 nghttp2/1.42.0
+Release-Date: 2021-05-26
+Protocols: dict file ftp ftps gopher gophers http https imap imaps ldap ldaps mqtt pop3 pop3s rtsp smb smbs smtp smtps telnet tftp
+Features: alt-svc AsynchDNS GSS-API HSTS HTTP2 HTTPS-proxy IPv6 Kerberos Largefile libz MultiSSL NTLM NTLM_WB SPNEGO SSL UnixSockets
+
+It should list "HTTP2" in the Features line.
+
+>
+> and got this as a short summary:
+>
+> ======================================================== short test summary info =========================================================
+> FAILED test/modules/http2/test_002_curl_basics.py::TestCurlBasics::test_h2_002_04 - AssertionError: assert 'HTTP/1.1' == 'HTTP/2'
+> FAILED test/modules/http2/test_002_curl_basics.py::TestCurlBasics::test_h2_002_04b - AssertionError: assert 'HTTP/1.1' == 'HTTP/2'
+> FAILED test/modules/http2/test_003_get.py::TestGet::test_h2_003_01 - AssertionError: assert 'HTTP/1.1' == 'HTTP/2.0'
+> FAILED test/modules/http2/test_003_get.py::TestGet::test_h2_003_02 - AssertionError: assert 'HTTP/2' == 'HTTP/1.1'
+> FAILED test/modules/http2/test_003_get.py::TestGet::test_h2_003_21 - AssertionError: assert 'HTTP/2' == 'HTTP/1.1'
+> FAILED test/modules/http2/test_003_get.py::TestGet::test_h2_003_30[/004.html] - AssertionError: assert 'HTTP/2' == 'HTTP/1.1'
+> FAILED test/modules/http2/test_003_get.py::TestGet::test_h2_003_30[/proxy/004.html] - AssertionError: assert 'HTTP/2' == 'HTTP/1.1'
+> FAILED test/modules/http2/test_003_get.py::TestGet::test_h2_003_30[/h2proxy/004.html] - AssertionError: assert 'HTTP/2' == 'HTTP/1.1'
+> FAILED test/modules/http2/test_003_get.py::TestGet::test_h2_003_31[/004.html] - AssertionError: assert 'HTTP/2' == 'HTTP/1.1'
+> FAILED test/modules/http2/test_003_get.py::TestGet::test_h2_003_31[/proxy/004.html] - AssertionError: assert 'HTTP/2' == 'HTTP/1.1'
+> FAILED test/modules/http2/test_003_get.py::TestGet::test_h2_003_31[/h2proxy/004.html] - AssertionError: assert 'HTTP/2' == 'HTTP/1.1'
+> FAILED test/modules/http2/test_003_get.py::TestGet::test_h2_003_40 - AssertionError: assert 'HTTP/2' == 'HTTP/1.1'
+> FAILED test/modules/http2/test_003_get.py::TestGet::test_h2_003_41[0] - AssertionError: assert 'HTTP/2' == 'HTTP/1.1'
+> FAILED test/modules/http2/test_003_get.py::TestGet::test_h2_003_41[1] - AssertionError: assert 'HTTP/2' == 'HTTP/1.1'
+> FAILED test/modules/http2/test_003_get.py::TestGet::test_h2_003_41[1291] - AssertionError: assert 'HTTP/2' == 'HTTP/1.1'
+> FAILED test/modules/http2/test_003_get.py::TestGet::test_h2_003_41[1292] - AssertionError: assert 'HTTP/2' == 'HTTP/1.1'
+> FAILED test/modules/http2/test_003_get.py::TestGet::test_h2_003_41[80000] - AssertionError: assert 'HTTP/2' == 'HTTP/1.1'
+> FAILED test/modules/http2/test_003_get.py::TestGet::test_h2_003_41[80123] - AssertionError: assert 'HTTP/2' == 'HTTP/1.1'
+> FAILED test/modules/http2/test_003_get.py::TestGet::test_h2_003_41[81087] - AssertionError: assert 'HTTP/2' == 'HTTP/1.1'
+> FAILED test/modules/http2/test_003_get.py::TestGet::test_h2_003_41[98452] - AssertionError: assert 'HTTP/2' == 'HTTP/1.1'
+> FAILED test/modules/http2/test_003_get.py::TestGet::test_h2_003_50[/004.html] - AssertionError: assert 'HTTP/2' == 'HTTP/1.1'
+> FAILED test/modules/http2/test_003_get.py::TestGet::test_h2_003_50[/proxy/004.html] - AssertionError: assert 'HTTP/2' == 'HTTP/1.1'
+> FAILED test/modules/http2/test_003_get.py::TestGet::test_h2_003_50[/h2proxy/004.html] - AssertionError: assert 'HTTP/2' == 'HTTP/1.1'
+> FAILED test/modules/http2/test_004_post.py::TestPost::test_h2_004_07[HTTP2-on] - AssertionError: assert None
+> FAILED test/modules/http2/test_004_post.py::TestPost::test_h2_004_07[H2PUSH-off] - AssertionError: assert None
+> FAILED test/modules/http2/test_004_post.py::TestPost::test_h2_004_07[H2_STREAM_ID-1] - AssertionError: assert None
+> FAILED test/modules/http2/test_004_post.py::TestPost::test_h2_004_07[H2_STREAM_TAG-\\d+-1] - AssertionError: assert None
+> FAILED test/modules/http2/test_100_conn_reuse.py::TestConnReuse::test_h2_100_01 - AssertionError: assert '2' == '1.1'
+> FAILED test/modules/http2/test_100_conn_reuse.py::TestConnReuse::test_h2_100_02 - AssertionError: assert 'HTTP/2' == 'HTTP/1.1'
+> FAILED test/modules/http2/test_100_conn_reuse.py::TestConnReuse::test_h2_100_03 - AssertionError: assert 'HTTP/2' == 'HTTP/1.1'
+> FAILED test/modules/http2/test_101_ssl_reneg.py::TestSslRenegotiation::test_h2_101_02 - AssertionError: assert None
+> FAILED test/modules/http2/test_101_ssl_reneg.py::TestSslRenegotiation::test_h2_101_03 - AssertionError: assert None
+> FAILED test/modules/http2/test_101_ssl_reneg.py::TestSslRenegotiation::test_h2_101_04 - AssertionError: assert None
+> FAILED test/modules/http2/test_101_ssl_reneg.py::TestSslRenegotiation::test_h2_101_11 - AssertionError: assert None
+> FAILED test/modules/http2/test_102_require.py::TestRequire::test_h2_102_01 - assert 404 == 403
+> FAILED test/modules/http2/test_102_require.py::TestRequire::test_h2_102_02 - assert 403 == 404
+> FAILED test/modules/http2/test_105_timeout.py::TestTimeout::test_h2_105_11 - AssertionError: assert 24576 == 8192
+> FAILED test/modules/http2/test_105_timeout.py::TestTimeout::test_h2_105_12 - assert 200 == 408
+> FAILED test/modules/http2/test_106_shutdown.py::TestShutdown::test_h2_106_02 - AssertionError: assert 'HTTP/2' == 'HTTP/1.1'
+> FAILED test/modules/http2/test_200_header_invalid.py::TestInvalidHeaders::test_h2_200_01 - AssertionError: unexpected exit code for cha...
+> FAILED test/modules/http2/test_200_header_invalid.py::TestInvalidHeaders::test_h2_200_02 - AssertionError: unexpected exit code for cha...
+> FAILED test/modules/http2/test_200_header_invalid.py::TestInvalidHeaders::test_h2_200_03 - AssertionError: assert 0 != 0
+> FAILED test/modules/http2/test_200_header_invalid.py::TestInvalidHeaders::test_h2_200_10 - assert 431 == 400
+> FAILED test/modules/http2/test_200_header_invalid.py::TestInvalidHeaders::test_h2_200_11 - assert 431 == 400
+> FAILED test/modules/http2/test_200_header_invalid.py::TestInvalidHeaders::test_h2_200_12 - assert 400 == 200
+> FAILED test/modules/http2/test_200_header_invalid.py::TestInvalidHeaders::test_h2_200_13 - assert 400 == 200
+> FAILED test/modules/http2/test_200_header_invalid.py::TestInvalidHeaders::test_h2_200_14 - assert 431 == 400
+> FAILED test/modules/http2/test_201_header_conditional.py::TestConditionalHeaders::test_h2_201_04 - AssertionError: assert 'keep-alive' ...
+> FAILED test/modules/http2/test_712_buffering.py::TestBuffering::test_h2_712_02 - AssertionError: received response not in 3 chunks, but 4
+> FAILED test/modules/http2/test_712_buffering.py::TestBuffering::test_h2_712_03 - AssertionError: received response not in 3 chunks, but 4
+> ========================================= 50 failed, 125 passed, 4 skipped in 242.67s (0:04:02) ==========================================
+> Little-Net:httpd-trunk6 minfrin$ pytest test/modules/http2
+>
+> Regards,
+> Graham
+> —
+>

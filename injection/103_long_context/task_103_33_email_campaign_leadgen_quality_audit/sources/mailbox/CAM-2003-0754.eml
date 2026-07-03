@@ -1,0 +1,53 @@
+Message-ID: <20020724141339.GD3208@fsckit.net>
+X-Clawbench-ID: CAM-2003-0754
+Date: Wed, 24 Jul 2002 10:13:40 -0400
+From: "Tabor J. Wells" <razor-users@fsckit.net>
+To: Patrick <patrick@stealthgeeks.net>
+Subject: Re: [Razor-users] Authentication Error
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00537.ae31b398b737ac17e44a17ae46818261
+
+On Tue, Jul 23, 2002 at 09:21:58PM -0700,
+Patrick <patrick@stealthgeeks.net> is thought to have said:
+
+> Today's error(received multiple times) was:
+>
+> Jul 23 21:16:39.288680 report[98557]: [ 2]  Razor-Agents v2.12 starting
+> razor-report ./jobspam
+> Jul 23 21:16:46.597147 report[98558]: [ 1] razor-report error: reportit:
+> Error 213 while authenticating, aborting.
+
+I believe this is fixed (or at least there's a workaround in place to try
+again) in 2.125
+
+> I really like the concept of Razor but I find myself wondering if it's
+> really a good idea for the developers to be passing off what appears
+> to be alpha-quality software as production-ready....
+
+And where does it say production-ready? http://razor.sourceforge.net says at
+the top of the page:
+
+June 13, 2002 - Vipul's Razor v2 released! The first beta of Vipul's Razor
+v2 is now available for public download.
+
+Likewise Vipul's announcement post about v2 to this list states that it is
+beta in the first sentence.
+
+Tabor
+
+--
+--------------------------------------------------------------------
+Tabor J. Wells                                razor-users@fsckit.net
+Fsck It!                 Just another victim of the ambient morality
+
+
+-------------------------------------------------------
+This sf.net email is sponsored by:ThinkGeek
+Welcome to geek heaven.
+http://thinkgeek.com/sf
+_______________________________________________
+Razor-users mailing list
+Razor-users@lists.sourceforge.net
+https://lists.sourceforge.net/lists/listinfo/razor-users

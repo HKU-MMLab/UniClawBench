@@ -1,0 +1,45 @@
+Message-ID: <f4bce2e5-8003-4c4a-9873-4ed9aefdc48d@kippdata.de>
+X-Clawbench-ID: ASF-2024-0736
+Date: Wed, 3 Apr 2024 20:53:14 +0200
+From: Rainer Jung <rainer.jung@kippdata.de>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.59-rc1 as httpd-2.4.59
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-04.mbox
+
+Minor nit: the format of the SHA hash files has changes. Example:
+
+2.4.58:
+
+fa16d72a078210a54c47dd5bef2f8b9b8a01d94909a51453956b3ec6442ea4c5
+*httpd-2.4.58.tar.bz2
+
+2.4.59:
+
+SHA2-256(httpd-2.4.59-rc1.tar.bz2)=
+ec51501ec480284ff52f637258135d333230a7d229c3afa6f6c2f9040e321323
+
+I need to see how to check scripted with commandline tools.
+
+Am 03.04.24 um 14:26 schrieb Eric Covener:
+> Hi all,
+>
+> (After only minor embarrassment of patching tags/2.4.55 instead of 2.4.x...)
+>
+> Please find below the proposed release tarball and signatures:
+>
+> https://dist.apache.org/repos/dist/dev/httpd/
+>
+> I would like to call a SHORTENED VOTE to release
+> this candidate tarball httpd-2.4.59-rc1 as 2.4.59:
+> [ ] +1: It's not just good, it's good enough!
+> [ ] +0: Let's have a talk.
+> [ ] -1: There's trouble in paradise. Here's what's wrong.
+>
+> The computed digests of the tarball up for vote are:
+> = e4ec4ce12c6c8f5a794dc2263d126cb1d6ef667f034c4678ec945d61286e8b0f
+> = baa96a7c9bba48f758ca9b3e3d63f0c65db960653618109d4d7bcbf3d4776d1d51453beb65e5af57655f0b1cfb88913842bc3a117fe7acc754ddb43d4524bc82
+>
+> The SVN candidate source is found at tags/2.4.59-rc1-candidate.

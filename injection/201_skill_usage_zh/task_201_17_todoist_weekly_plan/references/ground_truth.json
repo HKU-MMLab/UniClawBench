@@ -1,0 +1,262 @@
+{
+  "task_id": "task_101_17_todoist_weekly_plan",
+  "difficulty": "Medium",
+  "schema": "a+b",
+  "schema_notes": "accept-set structure + per-day priority expectations; canonical 7-day window now hardcoded in the prompt (2026-04-25 .. 2026-05-01)",
+  "skills_declared": [
+    "todoist",
+    "plan-my-day"
+  ],
+  "ground_truth": {
+    "day_count": 7,
+    "canonical_dates": [
+      "2026-04-25",
+      "2026-04-26",
+      "2026-04-27",
+      "2026-04-28",
+      "2026-04-29",
+      "2026-04-30",
+      "2026-05-01"
+    ],
+    "canonical_window_note": "The public prompt now fixes the 7-day window to 2026-04-25 (Saturday) .. 2026-05-01 (Friday). The supervisor must match these exact dates rather than re-deriving 'today..today+6'.",
+    "projects_min": 2,
+    "projects_all": [
+      "Work",
+      "Personal",
+      "Learning",
+      "Home"
+    ],
+    "snapshot_task_count": 55,
+    "active_task_count": 25,
+    "active_id_range": [1000, 1024],
+    "completed_distractor_ids": [
+      1101,
+      1102,
+      1103,
+      1104,
+      1105,
+      1206,
+      1207,
+      1208,
+      1209,
+      1210,
+      1211,
+      1212,
+      1213,
+      1214,
+      1215,
+      1216,
+      1217,
+      1218,
+      1219,
+      1220,
+      1221,
+      1222,
+      1223,
+      1224,
+      1225,
+      1226,
+      1227,
+      1228,
+      1229,
+      1230
+    ],
+    "completed_distractor_note": "30 distractor records have `checked: true` and a `completed_at` timestamp. They sit in the same `items[]` array as the 25 active tasks. The executor must filter them out (treat checked=true OR completed_at present as 'already done, do not schedule'). Including any of these IDs in weekly_schedule.csv, weekly.ics, or weekly.md is a hard fail (see §6 cap 0.50).",
+    "snapshot_total_minutes": 1080,
+    "blocks_per_day_max": 3,
+    "per_day_high_priority": [
+      {
+        "date": "2026-04-25",
+        "task_count": 4,
+        "high_priority_tasks": [
+          {
+            "id": 1021,
+            "priority": 1,
+            "content": "Prepare the board pre-read for Thursday's meeting"
+          }
+        ]
+      },
+      {
+        "date": "2026-04-26",
+        "task_count": 4,
+        "high_priority_tasks": [
+          {
+            "id": 1015,
+            "priority": 1,
+            "content": "Finish Chapter 7 of Designing Data-Intensive Applications"
+          },
+          {
+            "id": 1022,
+            "priority": 2,
+            "content": "Check flight prices for parents' visit in June (LAX ↔ BOS)"
+          }
+        ]
+      },
+      {
+        "date": "2026-04-27",
+        "task_count": 4,
+        "high_priority_tasks": [
+          {
+            "id": 1002,
+            "priority": 1,
+            "content": "Sign off on vendor SOW — Acme MSA renewal"
+          },
+          {
+            "id": 1023,
+            "priority": 2,
+            "content": "Write up 1:1 notes from Tuesday's session with Sam"
+          }
+        ]
+      },
+      {
+        "date": "2026-04-28",
+        "task_count": 4,
+        "high_priority_tasks": [
+          {
+            "id": 1017,
+            "priority": 1,
+            "content": "Submit the MIT 6.824 distributed-systems course quiz"
+          },
+          {
+            "id": 1003,
+            "priority": 2,
+            "content": "Work through SQL window-function exercises (Blau course, ch. 4)"
+          }
+        ]
+      },
+      {
+        "date": "2026-04-29",
+        "task_count": 3,
+        "high_priority_tasks": [
+          {
+            "id": 1011,
+            "priority": 1,
+            "content": "Respond to Globex escalation ticket #8821 (latency regression)"
+          }
+        ]
+      },
+      {
+        "date": "2026-04-30",
+        "task_count": 3,
+        "high_priority_tasks": [
+          {
+            "id": 1012,
+            "priority": 1,
+            "content": "Call Walgreens about the prescription refill (Lisinopril)"
+          }
+        ]
+      },
+      {
+        "date": "2026-05-01",
+        "task_count": 3,
+        "high_priority_tasks": [
+          {
+            "id": 1020,
+            "priority": 2,
+            "content": "Reconcile the invoice mismatch with AR team (INV-20943)"
+          }
+        ]
+      }
+    ],
+    "per_day_first_block_anchors": {
+      "2026-04-25": "Prepare the board pre-read for Thursday's meeting",
+      "2026-04-26": "Finish Chapter 7 of Designing Data-Intensive Applications",
+      "2026-04-27": "Sign off on vendor SOW",
+      "2026-04-28": "Submit the MIT 6.824 distributed-systems course quiz",
+      "2026-04-29": "Respond to Globex escalation ticket #8821",
+      "2026-04-30": "Call Walgreens about the prescription refill",
+      "2026-05-01": "Reconcile the invoice mismatch with AR team"
+    },
+    "must_appear_on_specific_day": [
+      {
+        "id": 1021,
+        "priority": 1,
+        "content_substring": "Prepare the board pre-read",
+        "scheduled_date": "2026-04-25",
+        "rationale": "P1 task whose due_date is 2026-04-25; the prompt requires the first block on each day to point at the most important task due that day, so this id MUST appear on this date in weekly.md, the CSV, and the ICS."
+      },
+      {
+        "id": 1015,
+        "priority": 1,
+        "content_substring": "Finish Chapter 7 of Designing Data-Intensive Applications",
+        "scheduled_date": "2026-04-26",
+        "rationale": "P1 task due 2026-04-26 (Sunday); must appear on its due date as the first block."
+      },
+      {
+        "id": 1002,
+        "priority": 1,
+        "content_substring": "Sign off on vendor SOW",
+        "scheduled_date": "2026-04-27",
+        "rationale": "P1 task due 2026-04-27 (Monday); must appear on its due date as the first block."
+      },
+      {
+        "id": 1017,
+        "priority": 1,
+        "content_substring": "Submit the MIT 6.824",
+        "scheduled_date": "2026-04-28",
+        "rationale": "P1 task due 2026-04-28 (Tuesday); must appear on its due date as the first block."
+      },
+      {
+        "id": 1011,
+        "priority": 1,
+        "content_substring": "Respond to Globex escalation",
+        "scheduled_date": "2026-04-29",
+        "rationale": "P1 task due 2026-04-29 (Wednesday); must appear on its due date as the first block."
+      },
+      {
+        "id": 1012,
+        "priority": 1,
+        "content_substring": "Call Walgreens",
+        "scheduled_date": "2026-04-30",
+        "rationale": "P1 task due 2026-04-30 (Thursday); must appear on its due date as the first block."
+      },
+      {
+        "id": 1020,
+        "priority": 2,
+        "content_substring": "Reconcile the invoice mismatch",
+        "scheduled_date": "2026-05-01",
+        "rationale": "Highest-priority task due 2026-05-01 (P2 because no P1 is due that day); must appear on its due date as the first block."
+      }
+    ],
+    "must_appear_on_specific_day_note": "Strict task -> date pairings derived from the canonical 7-day window (2026-04-25..2026-05-01) and the prompt rule 'the first block on each day must point at the most important task due that day'. Each listed id MUST appear on the listed date in all three deliverables (weekly.md, weekly_schedule.csv, weekly.ics). One missing pairing in any deliverable fails §5 CP 'must_appear_on_specific_day strict pairings' (binary 0.16).",
+    "deferred_block_required_fields": ["moved_from_date", "defer_reason"],
+    "deferred_block_strict": true,
+    "deferred_block_strict_note": "If the executor produces deferred blocks, every one must include both fields (or prose equivalents). Strict binary: any deferred block missing either field fails the line. If no deferred blocks are produced, the line passes by default.",
+    "ics_uid_pattern_required": "task_<id>@todoist-weekly-plan",
+    "ics_uid_strict": true,
+    "ics_uid_strict_note": "Strict 100%: every VEVENT must have a canonical-pattern UID. Any one mismatched UID fails the line.",
+    "ics_dtstart_dtend_format_required": "YYYYMMDDTHHMMSSZ",
+    "ics_dtformat_strict": true,
+    "output_requirements": {
+      "markdown_path": "/tmp_workspace/results/weekly.md",
+      "csv_path": "/tmp_workspace/results/weekly_schedule.csv",
+      "ics_path": "/tmp_workspace/results/weekly.ics",
+      "csv_required_columns": [
+        "date",
+        "start_time",
+        "end_time",
+        "duration_minutes",
+        "task_title",
+        "project",
+        "priority",
+        "due_date",
+        "reason"
+      ],
+      "ics_expectation": "VEVENT entries should match the scheduled CSV blocks; summary includes task title and project, description includes priority and due date.",
+      "no_overlap_required": true
+    },
+    "snapshot_mode_separation": {
+      "rule": "When SNAPSHOT_MODE=1 is exported, the executor was given the task_snapshot variant of the prompt (which references the snapshot file). When SNAPSHOT_MODE is unset, the live-API variant of the prompt was given (which references $TODOIST_API_TOKEN). In live-API mode the supervisor should NOT expect the snapshot file to be the canonical source.",
+      "live_api_mode_snapshot_leak_cap": 0.50,
+      "live_api_mode_snapshot_leak_note": "If the trace in live-API mode shows the executor reading /tmp_workspace/clawbench/sources/todoist_snapshot.json directly to source the weekly plan, cap at 0.50."
+    },
+    "notes": [
+      "Strict (binary) checkpoints: priority-first 7/7, must_appear_on_specific_day, low-priority count 7/7, deferred-block fields, ICS UID pattern, ICS DT format. No '>= X / Y' soft thresholds.",
+      "Reverse constraint: first block on every day must point at the canonical anchor (P1/P2) for that day.",
+      "Project coverage: >=2 of 4 is sufficient.",
+      "Invented tasks not in snapshot trigger 0.60 cap.",
+      "Scheduling any task from completed_distractor_ids triggers 0.50 cap.",
+      "Snapshot leak in live-API mode triggers 0.50 cap."
+    ]
+  }
+}

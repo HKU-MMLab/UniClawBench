@@ -1,0 +1,77 @@
+task_id: task_105_34_academic_poster_inkscape
+category: 105_cross_platform
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I'm presenting on Mistral 7B (arxiv 2310.06825) at a reading group
+  next week and want to draft a poster panel — produce a PDF first, then
+  I'll refine the layout myself later.
+
+  The panel should look roughly like this: top section has the paper
+  title, first few authors, and page count; middle section has 5 core
+  concepts, each with a short Wikipedia blurb (~80 characters from the
+  first paragraph), annotated with whether that concept appears in the
+  paper — ✓ if found, ✗ if not. Overall it should look like a poster
+  panel, not a wall of text.
+
+  I've pinned 5 specific Wikipedia revisions (to avoid future edits
+  breaking things) — please use these exact oldids:
+    1. Mistral_AI                            oldid=1352105656
+    2. Large_language_model                  oldid=1351510195
+    3. Mixture_of_experts                    oldid=1346279093
+    4. Generative_pre-trained_transformer    oldid=1351783271
+    5. Open-source_artificial_intelligence   oldid=1350744847
+
+  Download the paper PDF with wget, convert to text with pdftotext, then
+  search for keywords to determine concept presence — e.g. "mixture of
+  experts", "large language model", "open-source" — finding any match
+  counts as ✓. Extract paper metadata with pdfinfo. Fetch Wikipedia data
+  with curl via the MediaWiki API (pass the revids parameter to lock the
+  version).
+
+  Data deliverables: paper metadata (arxiv_id, title, full authors list
+  as authors, page_count) saved as paper_meta.json; the 5 concepts' Wiki
+  results saved as wiki_lookups.json with a concepts array in the 1-5
+  order above, each containing name, wiki_revision_id, wiki_url, and
+  first_para_first_100_chars; cross-check results saved as
+  cross_check.csv with header: concept,paper_mentions,wiki_revision_id,
+  verification_status — mark those found in the paper as
+  verified_in_paper, those not found as wiki_only; multi-language
+  availability of the 5 concepts on Chinese/Japanese Wikipedia saved as
+  multi_lang_availability.json, also using a concepts array with each
+  entry containing name, en, zh, ja — values are "yes" or "no" (check
+  via the langlinks API).
+
+  Build the poster panel with inkscape — source file poster.svg goes in
+  /tmp_workspace/work/ for later refinement, then export a
+  poster_panel.pdf from the SVG.
+
+  Finally open poster_panel.pdf with evince (run headless under xvfb)
+  and take a screenshot named evince_screenshot.png so I can preview the
+  rendering.
+
+  Except for poster.svg in /tmp_workspace/work/, put all other artifacts
+  under /tmp_workspace/results/. When done, just tell me which concepts
+  got ✓ and which got ✗.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources: []
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

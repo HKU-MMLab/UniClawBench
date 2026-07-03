@@ -1,0 +1,29 @@
+Message-ID: <218639a9-7177-66a1-683c-4765096f9977@kippdata.de>
+X-Clawbench-ID: ASF-2024-1337
+Date: Tue, 17 May 2022 15:24:35 +0200
+From: Rainer Jung <rainer.jung@kippdata.de>
+To: dev@httpd.apache.org
+Subject: Re: travis CI failing in 2.4.x
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-05.mbox
+
+Not yet a full explanation but:
+
+- the build fails due to "The job exceeded the maximum log length, and
+has been terminated." shortly before line 30.000
+
+- the difference to the succeeeding "Linux Ubuntu Focal, ASan" is, that
+the ErrorLog of the run is not part of this log output handled by Travis.
+
+- the lines you saw look pretty normal to me (depending on the modules
+we build). And it is not the exact same line repeating, but just the
+same type of line for every request executed during the tests.
+
+I guess, the build configs differ, so that travis handled the ErrorLog
+differently?
+
+Best regards,
+
+Rainer

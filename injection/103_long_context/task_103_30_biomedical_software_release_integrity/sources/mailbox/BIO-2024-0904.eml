@@ -1,0 +1,54 @@
+Message-ID: <4150c02b779b32355818a3fe6ce54948747ff002.camel@tugraz.at>
+X-Clawbench-ID: BIO-2024-0904
+Date: Thu, 13 Oct 2022 21:41:19 +0200
+From: Martin Uecker <uecker@tugraz.at>
+To: Andreas Tille <andreas@fam-tille.de>
+Subject: Re: BART 0.8.0
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00053.html
+
+Hi Andreas,
+
+Am Sonntag, den 09.10.2022, 09:39 +0200 schrieb Martin Uecker:
+> Hi Andreas,
+>
+> Am Sonntag, den 09.10.2022, 06:39 +0200 schrieb Andreas Tille:
+> ....
+
+
+> > > > I will do this soon, but probably wait in case other issues
+> > > > emerge with the new packages.
+> >
+> > Seems there are build issues on some architectures:
+> >
+> >    https://buildd.debian.org/status/package.php?p=bart
+> >
+> > Could you have a look?
+>
+> Yes, the issue is numerical unit tests failing on
+> some archs. This not entirely surprising as we had this
+> before, and we added *many* new tests in this version.
+>
+> I will see that it get it running on some ARM64 myself
+> and then push some fixes.
+
+Ok, I pushed some changes which should address this.
+There was some issue affecting 32bit archs
+and also some other issue we could reproduce
+on ARM64. This is still under investigation but
+turning off some optimizations seems to fix it
+for now.
+
+There also is the issue that some autopkgtests
+were sometimes failing. I tried to address this
+too.
+
+For bart-cuda I also changed the build dependency
+to g++-11 and maybe this works now with the new
+nvidia-toolkit
+
+So please upload bart and bart-cuda. Thank you!
+
+Martin

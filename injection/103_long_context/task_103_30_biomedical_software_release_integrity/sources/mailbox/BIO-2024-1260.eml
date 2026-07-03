@@ -1,0 +1,38 @@
+Message-ID: <ZPYoGf/l5f5KuW+T@an3as.eu>
+X-Clawbench-ID: BIO-2024-1260
+Date: Mon, 4 Sep 2023 20:55:21 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: César Pomar <cesarpomar18@gmail.com>
+Subject: Re: Request for Sponsorship: VeryFastTree - Parallelized and Optimized Version of FastTree
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_09_msg00003.html
+
+Hi César,
+
+sorry for beeing a bit short but I'm in preparation of my DebConf
+travel thus answering only where you directly addressed me.
+
+Am Mon, Sep 04, 2023 at 03:11:38PM +0200 schrieb César Pomar:
+> >If you're interested in proceeding to prepare the package update
+> >for Debian yourself, you can lookup the team policy[1] chapter
+> >on the update topic if you need a refresh.  Once you think your
+> >repository in Salsa is ready for uploading the new version,
+> >please come back to us requesting for sponsorship.
+>
+> The last package updates were done directly by Andreas, although I know
+> how to do them. What do you think, Andreas?
+
+Inside Debian Med team there is a culture that any team member is
+permitted to touch any package.  Sometimes its just helpful if someone
+does a quick update while beeing verbose in commit logs.  I did never
+intend to drain your motivation somehow.  I'm just usually running
+`routine-update -f` before sponsoring a package or if I have some kind
+of other reason.
+
+Kind regards and thank you for maintaining VeryFastTree
+    Andreas.
+
+--
+http://fam-tille.de

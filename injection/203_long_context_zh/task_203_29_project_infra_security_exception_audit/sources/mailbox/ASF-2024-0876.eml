@@ -1,0 +1,30 @@
+Message-ID: <CALK=YjNbdagmF7dbm4LUKSWRSnq1WTTPyr64ds5W015HEBX=Fw@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0876
+Date: Sat, 4 Jun 2022 11:45:10 -0400
+From: Eric Covener <covener@gmail.com>
+To: Apache HTTP Server Development List <dev@httpd.apache.org>
+Subject: Re: [VOTE] Release httpd-2.4.54-rc2 as httpd-2.4.54
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-06.mbox
+
+On Sat, Jun 4, 2022 at 8:59 AM Stefan Eissing <stefan@eissing.org> wrote:
+>
+> Hi all,
+>
+> next attempt at 2.5.54. Thanks everyone for participating!
+>
+> Please find below the proposed release tarball and signatures:
+>
+> https://dist.apache.org/repos/dist/dev/httpd/
+>
+> I would like to call a VOTE over the next few days to release
+> this candidate tarball httpd-2.4.54-rc2 as 2.4.54:
+> [ ] +1: It's not just good, it's good enough!
+> [ ] +0: Let's have a talk.
+> [ ] -1: There's trouble in paradise. Here's what's wrong.
+
++1 AIX/xlc/ppc64 100% pass in maintainer mode (but limited modules)
+
+Thanks for RM'ing!

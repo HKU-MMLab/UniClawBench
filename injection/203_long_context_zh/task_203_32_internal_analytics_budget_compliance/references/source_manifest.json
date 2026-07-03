@@ -1,0 +1,106 @@
+{
+  "task_id": "task_103_32_internal_analytics_budget_compliance",
+  "real_email_source": "Enron public mailbox kaminski-v index.json from mail.enroncorp.com",
+  "source_mailbox": "kaminski-v",
+  "source_index_emails_loaded": 15486,
+  "candidate_real_email_count_after_cleaning": 5863,
+  "real_email_count": 1456,
+  "synthetic_implant_count": 44,
+  "total_email_count": 1500,
+  "construction": "1500-message mailbox: Enron kaminski-v public mailbox emails plus sparse controlled implants. Surface issues are intentionally small; the deep Blue Ridge / Northstar chain requires cross-linking research budget lines, consulting invoices, model workpapers, data subscriptions, payment routing, conflict certification, closeout transfers, and records handling clues.",
+  "surface_issues": {
+    "surface_01_travel_charged_to_research_budget": {
+      "theme": "conference or training travel charged to analytics research budget despite weak project nexus",
+      "ids": [
+        "ANL-2001-0156",
+        "ANL-2001-0476",
+        "ANL-2001-0731",
+        "ANL-2001-0895"
+      ],
+      "minimum_ids_for_credit": 2
+    },
+    "surface_02_shared_data_subscription": {
+      "theme": "market/model data subscription named seats shared across analysts or coded as group research utility",
+      "ids": [
+        "ANL-2001-0214",
+        "ANL-2001-0588",
+        "ANL-2001-1022",
+        "ANL-2001-1376"
+      ],
+      "minimum_ids_for_credit": 2
+    },
+    "surface_03_vague_consulting_invoice": {
+      "theme": "consulting invoices described only as analysis support without clear deliverables or acceptance evidence",
+      "ids": [
+        "ANL-2001-0332",
+        "ANL-2001-0644",
+        "ANL-2001-1181"
+      ],
+      "minimum_ids_for_credit": 2
+    },
+    "surface_04_cost_transfer_justification_gap": {
+      "theme": "research budget cost transfer or reclass near closeout lacks contemporaneous justification",
+      "ids": [
+        "ANL-2001-0448",
+        "ANL-2001-0910",
+        "ANL-2001-1329"
+      ],
+      "minimum_ids_for_credit": 2
+    }
+  },
+  "deep_issue": {
+    "theme": "Blue Ridge Quant / Northstar Research analytics-budget concern involving related-party/vendor-control issues, vague analysis-support invoices, splitting across research lines, deliverables reused from internal model work, subscription and data costs shifted before closeout, conflict disclosure incomplete, premature payment release, and support records separated from the official budget file.",
+    "core_ids": [
+      "ANL-2001-0037",
+      "ANL-2001-0084",
+      "ANL-2001-0129",
+      "ANL-2001-0176",
+      "ANL-2001-0223",
+      "ANL-2001-0284",
+      "ANL-2001-0341",
+      "ANL-2001-0404",
+      "ANL-2001-0469",
+      "ANL-2001-0532",
+      "ANL-2001-0611",
+      "ANL-2001-0688",
+      "ANL-2001-0746",
+      "ANL-2001-0823",
+      "ANL-2001-0914",
+      "ANL-2001-0977",
+      "ANL-2001-1058",
+      "ANL-2001-1116",
+      "ANL-2001-1194",
+      "ANL-2001-1267",
+      "ANL-2001-1338",
+      "ANL-2001-1410",
+      "ANL-2001-1463",
+      "ANL-2001-1492"
+    ],
+    "minimum_ids_for_credit": 12,
+    "strong_credit_ids": 18,
+    "critical_link_ids": [
+      "ANL-2001-0084",
+      "ANL-2001-0223",
+      "ANL-2001-0284",
+      "ANL-2001-0404",
+      "ANL-2001-0469",
+      "ANL-2001-0532",
+      "ANL-2001-0688",
+      "ANL-2001-0914",
+      "ANL-2001-1116",
+      "ANL-2001-1194",
+      "ANL-2001-1463",
+      "ANL-2001-1492"
+    ]
+  },
+  "distractor_ids": [
+    "ANL-2001-0260",
+    "ANL-2001-0620",
+    "ANL-2001-0869",
+    "ANL-2001-0990",
+    "ANL-2001-1088",
+    "ANL-2001-1244"
+  ],
+  "updated_at": "2026-05-03T00:00:00+08:00",
+  "format_note": "During construction, raw public Enron JSON and a cleaned 1456-message real pool were used as intermediate inputs; these are NOT shipped. Only the final mixed corpus under sources/mailbox ships to the executor. Synthetic implant IDs are distributed across ANL-2001 numeric positions."
+}

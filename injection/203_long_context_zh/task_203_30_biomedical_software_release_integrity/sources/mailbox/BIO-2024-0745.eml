@@ -1,0 +1,60 @@
+Message-ID: <52f56c74-fe72-42b9-e039-945c1629b2fb@karssen.org>
+X-Clawbench-ID: BIO-2024-0745
+Date: Mon, 21 Feb 2022 00:44:32 +0100
+From: "L.C. Karssen" <lennart@karssen.org>
+To: Andreas Tille <andreas@an3as.eu>, Debian Med Project List <debian-med@lists.debian.org>
+Subject: Re: Can we remove probabel?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_02_msg00093.html
+
+Dear Andreas,
+
+Thanks for contacting me. I agree, let's remove ProbABEL from Debian,
+completely. The package is no longer actively maintained and I have
+neither had any support requests, nor public bug reports in the last
+year, maybe two.
+
+
+Best regards,
+
+Lennart.
+
+On 19-02-2022 18:47, Andreas Tille wrote:
+> Hi,
+>
+> probabel fails its test suite for some architectures[1].  I reported
+> this upstream and got the response[2]
+>
+> @lckarssen Shall we ask if they remove Probabel from the Debian project as a package? Since there is no workforce to maintain the software, it is better not to use it. ( so also distribution and installing is not a good idea)
+>
+> Popcon is low[3] - but that's not unusual for our packages.
+>
+> I see two options:
+>
+>   1. Remove probabel for the failing architectures only
+>   2. Remove probabel completely from Debian
+>
+> What do you think?
+>
+> Kind regards
+>
+>       Andreas.
+>
+>
+> [1] https://buildd.debian.org/status/package.php?p=probabel
+> [2] https://github.com/GenABEL-Project/ProbABEL/issues/47#issuecomment-939993369
+> [3] https://qa.debian.org/popcon-graph.php?packages=probabel&show_vote=on&want_legend=on&want_ticks=on&from_date=&to_date=&hlght_date=&date_fmt=%25Y-%25m&beenhere=1
+>
+
+--
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+L.C. Karssen
+'s-Hertogenbosch
+The Netherlands
+
+lennart@karssen.org
+http://blog.karssen.org
+GPG key ID: A88F554A
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-

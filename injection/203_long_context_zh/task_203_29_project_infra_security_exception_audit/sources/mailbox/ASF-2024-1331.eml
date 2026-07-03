@@ -1,0 +1,39 @@
+Message-ID: <E9A44F8B-1FBA-4696-9E2D-3DEB61B81F95@eissing.org>
+X-Clawbench-ID: ASF-2024-1331
+Date: Tue, 17 Sep 2024 13:20:18 +0200
+From: "Stefan Eissing via dev" <dev@httpd.apache.org>
+To: dev@httpd.apache.org
+Subject: Re: intent to rip out mod_tls
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-09.mbox
+
+I count several 0s and one +0.5, added my own +1.
+
+I now removed mod_tls from trunk and 2.4.x. I hope I caught all place in source, documentation and test.
+
+Thanks,
+Stefan
+
+PS.
+@Christophe: I know you want to re-use the tests for mod_ssl. Maybe resurrect them in a modules/ssl directory?
+
+> Am 13.09.2024 um 15:26 schrieb Stefan Eissing via dev <dev@httpd.apache.org>:
+>
+> Folks,
+>
+> the 'rustls-ffi' project <https://github.com/rustls/rustls-ffi> keeps on changing their API and consider themselves "pre-1.0". The recent 0.14.0 release does not work with mod_tls, again. While one of their devs is willing to make another PR for fixing that on heir spare time - appreciated - this means our module is not just "experimental", but just "unstable".
+>
+> I therefore think it should not sit in our source tree, but be a separate GH project. I am willing to host that, review/merge PRs and tag v0.x releases of the module there.
+>
+> Would anyone object to that? Or, the other way around, does anyone here want to carry the torch and maintain it in our source tree?
+>
+> How about an informal vote?
+>
+> +1: yes, rip it out
+> +0: no opinion
+> -1: no, leave it here, I'll take care of it
+>
+> Cheers,
+> Stefan

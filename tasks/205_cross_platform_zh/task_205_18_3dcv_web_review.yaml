@@ -1,0 +1,16 @@
+task_id: task_205_18_3dcv_web_review
+category: 205_cross_platform_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+recording: none
+headed: auto
+task: "你是一名在 3D 计算机视觉 / Gaussian Splatting 方向选择复现课题的研究生，你想判断某篇论文是否值得花一周时间进行初步复现尝试。只使用浏览器完成以下任务：找一篇 2026 年或之后、主题明确与 3D Gaussian Splatting、NeRF 加速渲染或 3D 场景重建相关的论文；确认它是否有官方 GitHub 仓库；如果仓库或 README 引用了 Hugging Face、模型权重、数据集下载页面或项目主页，也要查看这些页面；最后将论文摘要、代码仓库活跃度、模型/数据依赖情况以及你的结论写入：\n\n    /tmp_workspace/results/gaussian_splatting_reproduction_web_review.md\n\n该 Markdown 必须包含五个顶级章节：\n- paper\n- repo activity\n- model/data dependencies\n- reproduction risk\n- 1-week verdict (yes/no/maybe)\n\n不要只提供一堆链接；要给出明确的判断。最终结论必须说明该项目是否适合在一周内进行初步复现尝试，并简要说明主要风险，例如环境搭建、GPU 需求、数据集大小、训练时间或官方代码维护状态。\n"
+codex:
+  max_user_followups: 2
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json

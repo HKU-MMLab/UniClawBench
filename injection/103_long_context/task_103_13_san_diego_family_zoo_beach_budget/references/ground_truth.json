@@ -1,0 +1,126 @@
+{
+  "task_id": "task_103_13_san_diego_family_zoo_beach_budget",
+  "created_at": "2026-05-03T00:00:00+00:00",
+  "date_range": [
+    "next Friday",
+    "the following Monday"
+  ],
+  "activity_date_range": [
+    "next Friday",
+    "the following Monday"
+  ],
+  "restaurant_date_range": [
+    "next Friday",
+    "next Sunday"
+  ],
+  "party": {
+    "adults": 2,
+    "children": 2,
+    "total": 4
+  },
+  "route": {
+    "origin_airports": [
+      "SFO",
+      "SJC",
+      "OAK"
+    ],
+    "destination_airport": "SAN"
+  },
+  "flight_constraints": [
+    "Bay Area to SAN outbound on next Friday",
+    "outbound Bay Area departure 08:00-14:00",
+    "SAN to Bay Area return on the following Monday",
+    "return SAN departure 14:00-20:00",
+    "check Google Flights, Southwest official site, and at least one Alaska or United official site",
+    "price for 2 adults and 2 children"
+  ],
+  "hotel_constraints": {
+    "checkin": "next Friday",
+    "checkout": "the following Monday",
+    "adults": 2,
+    "children": 2,
+    "rooms": 1,
+    "sources": [
+      "Booking.com",
+      "official hotel site"
+    ],
+    "choose_count": 3,
+    "hotel_whitelist": [
+      "Catamaran Resort Hotel and Spa",
+      "Bahia Resort Hotel",
+      "Hilton San Diego Bayfront",
+      "Kings Inn San Diego"
+    ]
+  },
+  "rental_car_constraints": {
+    "pickup_location": "SAN airport",
+    "return_location": "SAN airport",
+    "pickup_time": "next Friday 12:30",
+    "return_time": "the following Monday 12:30",
+    "sources": [
+      "Enterprise",
+      "Hertz or Budget"
+    ],
+    "vehicle_classes": [
+      "Economy",
+      "Compact",
+      "Midsize",
+      "SUV",
+      "Minivan"
+    ],
+    "family_requirements": [
+      "record child-seat fees if visible",
+      "family-friendly vehicle results"
+    ]
+  },
+  "zoo_family_activity_whitelist": [
+    "San Diego Zoo",
+    "San Diego Zoo Safari Park",
+    "Birch Aquarium",
+    "Belmont Park",
+    "Balboa Park Explorer Pass"
+  ],
+  "beach_outdoor_whitelist": [
+    "La Jolla Cove",
+    "Mission Beach",
+    "Coronado Beach"
+  ],
+  "restaurant_whitelist": [
+    "The Crack Shack",
+    "Duke's La Jolla",
+    "Miguel's Cocina",
+    "Puesto La Jolla"
+  ],
+  "restaurant_time_constraints": [
+    "next Friday to next Sunday",
+    "party of 4",
+    "dinner 17:30-19:30"
+  ],
+  "budget_targets": {
+    "comfortable_total_target_usd_for_4_people": 4800,
+    "required_versions": [
+      "budget option",
+      "comfortable option"
+    ]
+  },
+  "final_artifact": "/tmp_workspace/results/san_diego_family_zoo_beach_plan.md",
+  "process_reference_screenshots": [
+    "process_evidence/Coronado_Beach.png",
+    "process_evidence/Enterprise.png",
+    "process_evidence/booking_Bahia_Resort_Hotel.png",
+    "process_evidence/booking_Catamaran_Resort_Hotel_and_Spa.png",
+    "process_evidence/booking_Hilton_San_Diego_Bayfront.png",
+    "process_evidence/google_flight.png",
+    "process_evidence/opentable_Puesto_La_Jolla.png",
+    "process_evidence/southwest_flight.png",
+    "process_evidence/united_flight.png"
+  ],
+  "manual_reference_gaps": [
+    "The user noted that not all relevant screenshots were added to process_evidence; several attraction and restaurant screenshots are intentionally absent.",
+    "Missing likely categories include some official Zoo/Safari Park/Birch Aquarium/Belmont Park/Balboa Park ticket pages, La Jolla Cove and Mission Beach visitor pages, and several restaurant reservation pages unless supplied by the executor during the run.",
+    "Do not treat missing hidden screenshots as fixed ground truth failures; evaluate whether the executor obtained current evidence or honestly documented blocks.",
+    "Exact prices, child policies, attraction ticket availability, beach rules, restaurant availability, and fees should not be treated as fixed ground truth."
+  ],
+  "grading_note": "Score process evidence and constraint-following. If live sites block prices, child policies, tickets, beach visitor pages, or reservations, an honest insufficient-information conclusion can still score well when the executor documents real attempts, screenshots, and constraints. The hidden evidence set is illustrative and incomplete.",
+  "final_plan_not_required_when_blocked": "A full budget is expected when enough data is available; when live sites block key data, accept a clearly qualified plan with missing-data notes rather than hallucinated prices."
+}

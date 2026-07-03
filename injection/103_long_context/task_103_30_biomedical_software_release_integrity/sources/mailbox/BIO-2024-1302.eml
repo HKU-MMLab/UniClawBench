@@ -1,0 +1,21 @@
+Message-ID: <362381c8-7fd2-95d2-72f1-8a46ed568665@debian.org>
+X-Clawbench-ID: BIO-2024-1302
+Date: Thu, 9 Jun 2022 18:38:07 +0300
+From: Andrius Merkys <merkys@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: Added autopkgtest for busco - Closes #1010653
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_06_msg00021.html
+
+On 2022-06-08 21:54, Andreas Tille wrote:
+>> Or try finding some other dataset that is free and can be used for testing.
+> Yes, this would be another option.  Hoping for input from busco users
+> here.
+
+I have used busco in my research, but not enough to understand the
+datasets, alas.
+
+Best,
+Andrius

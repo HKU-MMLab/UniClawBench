@@ -1,0 +1,40 @@
+task_id: task_102_03_arcgis_rest_query
+category: 102_exploration
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I'm working with a US map service and I need to pull data out of it with an
+  actual query, not by reading a map by eye.
+
+  The map service lives here:
+
+      https://sampleserver6.arcgisonline.com/arcgis/rest/services/USA/MapServer
+
+  This is an ArcGIS REST service. It exposes its layers and each layer's
+  fields as JSON, and it supports a query operation. Please explore the service
+  to find the layer that holds US **states**, learn that layer's real field
+  names (don't assume them), and then run a query that returns every state with
+  a year-2000 population greater than 10,000,000.
+
+  Report:
+  - the layer id and name you used for states,
+  - the exact field name for year-2000 population,
+  - how many states match,
+  - the list of matching states with their population, sorted descending.
+
+  Save the result to `/tmp_workspace/results/arcgis_states.json`, and save the
+  exact request URLs you called (service metadata, layer metadata, and the
+  query) plus their raw JSON responses to `/tmp_workspace/results/arcgis_evidence/`.
+
+references:
+  - references/eval_rule.md
+
+codex:
+  max_user_followups: 2

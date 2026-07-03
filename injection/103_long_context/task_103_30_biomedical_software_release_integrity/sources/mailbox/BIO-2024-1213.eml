@@ -1,0 +1,64 @@
+Message-ID: <udlee51tbk4.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-1213
+Date: Fri, 21 Jan 2022 09:20:43 -0500
+From: ucko@debian.org (Aaron M. Ucko)
+To: debian-science@lists.debian.org
+Subject: Re: RFS: reupload of opm-common/2021.10-1
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2022_01_msg00020.html
+
+FWIW, reuploads are generally in order following acceptance from NEW --
+uploads to NEW still require binary packages for the FTP team's
+convenience, but migration to testing requires a source-only upload so
+that all binaries will have been autobuilt.
+
+Thanks for your contributions, at any rate!
+
+-- Aaron
+
+Markus Blatt  writes:
+
+> Turns out that I was a bit too fast with my request. Seems like there are build issues with libfmt now,
+> that I need to resolve. Will do that and test on my system and report back.
+>
+> Sorry.
+>
+> Markus
+>
+> Am Fri, Jan 21, 2022 at 01:23:20PM +0100 schrieb Markus Blatt:
+>>Hi,
+>>
+>>opm-common [0] and opm-material [1] have now been accepted by ftpmaster into unstable. Thanks a lot for that.
+>>
+>>The upload to ftpmaster was in 11/2021 and as a result the binary-package opm-common still has
+>>a dependency on libfmt7. That library is now replaced by libfmt8. Hence the package has an unsatisfied
+>>dependency on libfmt7.
+>>
+>>Would be cool if somebody would reupload the source package opm-common [2] again to resolve this.
+>>
+>>Due to opm-common not building opm-material has an unsatisfied dependency on libopm-common-dev. I
+>>hope that this gets resolved automatically by just reuploading the opm-common source package.
+>>
+>>If there is something that I can help with or need to do then please yell.
+>>
+>>Thanks a lot.
+>>
+>>Regards,
+>>
+>>Markus
+>>
+>>[0] https://tracker.debian.org/pkg/opm-common
+>>[1] https://tracker.debian.org/pkg/opm-material
+>>[2] https://salsa.debian.org/science-team/opm-common
+>>[3] https://salsa.debian.org/science-team/opm-material
+>> --
+>>
+>>Dr. Markus Blatt - HPC-Simulation-Software & Services http://www.dr-blatt.de
+>>Pedettistr. 38, 85072 Eichstätt, Germany,  USt-Id: DE279960836
+>>Tel.: +49 (0) 160 97590858
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

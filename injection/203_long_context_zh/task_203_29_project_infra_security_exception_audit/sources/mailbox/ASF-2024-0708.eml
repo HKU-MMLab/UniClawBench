@@ -1,0 +1,49 @@
+Message-ID: <CAKQ1sVPYi+1NTe2_0zwv11CTRJ5wy7=zyk0XnLdxr65ELw+BJg@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0708
+Date: Mon, 21 Aug 2023 12:20:06 +0200
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: new HTTPProtocolOption for C-L+chunked?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-08.mbox
+
+On Wed, Aug 16, 2023 at 1:43 PM Ruediger Pluem <rpluem@apache.org> wrote:
+>
+> On 8/16/23 1:32 PM, Eric Covener wrote:
+> >>> So a few questions:
+> >>>
+> >>> - Is it reasonable as a standalone additional HTTPProtocolOption to
+> >>> decide the behavior?
+> >>> - Thoughts on behavior change in 2.4.x?
+> >>> - 400 as a status code?
+> >>>
+> >>> https://httpwg.org/specs/rfc9112.html#rfc.section.6.1.p.15
+> >>>
+> >>> A server MAY reject a request that contains both Content-Length and
+> >>> Transfer-Encoding or process such a request in accordance with the
+> >>> Transfer-Encoding alone. Regardless, the server MUST close the
+> >>> connection after responding to such a request to avoid the potential
+> >>> attacks.
+> >>
+> >> We currently ignore the content-length header, proceed and close the connection
+> >> afterwards as suggested above. Do you suggest that we should reject such requests
+> >> based on a configuration setting?
+> >
+> > Yes, reject when both are set.
+> >
+>
+> Sounds fine for me as long as we don't make it the default, at least not in 2.4
+
+Fine by me too, likely those requests come mainly/solely from the
+usual suspects (pentesters, auditors, papers..), so I'd be fine with
+blocking by default with an opt-out too (eg. HttpProtocolOptions
+Allow_CL+TE). I've never seen a "legitimate" request with both set
+personally, if it happens for some app it might be interesting for the
+users to know it and fix their chain, we've done the same for "Strict"
+and "Allow0.9" without too much pain IIRC.
+
+
+Regards;
+Yann.

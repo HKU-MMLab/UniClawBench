@@ -1,0 +1,145 @@
+{
+  "task_id": "task_101_35_en_zh_tech_daily",
+  "difficulty": "Hard",
+  "schema": "c",
+  "schema_notes": "ranked list with deterministic per-day cap on news + latest-day stars on repos; multi-day data with strict ordering, exact category counts, and exact day distribution",
+  "skills_declared": ["news-snapshot-zh", "repo-snapshot-cn", "translate"],
+  "input_facts": {
+    "news_snapshot_size": 60,
+    "news_per_day": 20,
+    "repo_snapshot_size": 45,
+    "repos_per_day": 15,
+    "capture_days": ["2026-04-18", "2026-04-19", "2026-04-20"]
+  },
+  "ground_truth": {
+    "top_count": 10,
+    "split": {"news": 5, "repo": 5},
+    "expected_top_10_in_order": [
+      {
+        "final_rank": 1,
+        "source_tag": "[news]",
+        "source_day": "2026-04-20",
+        "title": "中芯国际：3nm GAA 工艺试产成功，明年 H1 量产",
+        "url": "https://36kr.com/newsflashes/3774997345944401",
+        "popularity_value": "2026-04-20 22:10:00  +0800",
+        "category": "chip",
+        "selection_reason": "Day-capped recency: newest news on 2026-04-20"
+      },
+      {
+        "final_rank": 2,
+        "source_tag": "[news]",
+        "source_day": "2026-04-20",
+        "title": "海光信息：DCU-Z 系列 GPU 流片完成，FP16 算力达 H100 的 90%",
+        "url": "https://36kr.com/newsflashes/3774997345944402",
+        "popularity_value": "2026-04-20 21:30:00  +0800",
+        "category": "chip",
+        "selection_reason": "Day-capped recency: 2nd-newest news on 2026-04-20"
+      },
+      {
+        "final_rank": 3,
+        "source_tag": "[news]",
+        "source_day": "2026-04-19",
+        "title": "寒武纪：思元 690 训练芯片完成流片，FP8 算力达 H100 的 80%",
+        "url": "https://36kr.com/newsflashes/3774880001000099",
+        "popularity_value": "2026-04-19 22:30:00  +0800",
+        "category": "chip",
+        "selection_reason": "Day-capped recency: newest news on 2026-04-19"
+      },
+      {
+        "final_rank": 4,
+        "source_tag": "[news]",
+        "source_day": "2026-04-19",
+        "title": "亚马逊 AWS Bedrock 中国区正式商用，与中信云合作",
+        "url": "https://36kr.com/newsflashes/3774880001000022",
+        "popularity_value": "2026-04-19 22:00:00  +0800",
+        "category": "cloud",
+        "selection_reason": "Day-capped recency: 2nd-newest news on 2026-04-19"
+      },
+      {
+        "final_rank": 5,
+        "source_tag": "[news]",
+        "source_day": "2026-04-18",
+        "title": "华为云盘古大模型 6.0 正式商用，专注科学计算",
+        "url": "https://36kr.com/newsflashes/3774820001000099",
+        "popularity_value": "2026-04-18 22:30:00  +0800",
+        "category": "cloud",
+        "selection_reason": "Day-capped recency: newest news on 2026-04-18"
+      },
+      {
+        "final_rank": 6,
+        "source_tag": "[repo]",
+        "source_day": "2026-04-20",
+        "title": "opendatalab/MinerU",
+        "url": "https://github.com/opendatalab/MinerU",
+        "popularity_value": 60591,
+        "category": "AI",
+        "selection_reason": "Latest-day stars: rank 1 on 2026-04-20"
+      },
+      {
+        "final_rank": 7,
+        "source_tag": "[repo]",
+        "source_day": "2026-04-20",
+        "title": "openai/swarm",
+        "url": "https://github.com/openai/swarm",
+        "popularity_value": 21351,
+        "category": "AI",
+        "selection_reason": "Latest-day stars: rank 2 on 2026-04-20"
+      },
+      {
+        "final_rank": 8,
+        "source_tag": "[repo]",
+        "source_day": "2026-04-20",
+        "title": "Skyvern-AI/skyvern",
+        "url": "https://github.com/Skyvern-AI/skyvern",
+        "popularity_value": 21287,
+        "category": "web",
+        "selection_reason": "Latest-day stars: rank 3 on 2026-04-20"
+      },
+      {
+        "final_rank": 9,
+        "source_tag": "[repo]",
+        "source_day": "2026-04-20",
+        "title": "emcie-co/parlant",
+        "url": "https://github.com/emcie-co/parlant",
+        "popularity_value": 17987,
+        "category": "AI",
+        "selection_reason": "Latest-day stars: rank 4 on 2026-04-20"
+      },
+      {
+        "final_rank": 10,
+        "source_tag": "[repo]",
+        "source_day": "2026-04-20",
+        "title": "PKU-YuanGroup/Open-Sora-Plan",
+        "url": "https://github.com/PKU-YuanGroup/Open-Sora-Plan",
+        "popularity_value": 12156,
+        "category": "AI",
+        "selection_reason": "Latest-day stars: rank 5 on 2026-04-20"
+      }
+    ],
+    "expected_category_distribution": {
+      "AI": 4,
+      "chip": 3,
+      "cloud": 2,
+      "web": 1
+    },
+    "expected_day_distribution_news": {
+      "2026-04-20": 2,
+      "2026-04-19": 2,
+      "2026-04-18": 1
+    },
+    "selection_audit_columns": [
+      "final_rank",
+      "source_tag",
+      "source_day",
+      "title",
+      "url",
+      "popularity_value",
+      "category",
+      "selection_reason"
+    ],
+    "ranking_rule": {
+      "news": "Per-day cap: take top-2 newest news on 2026-04-20, top-2 newest news on 2026-04-19, top-1 newest news on 2026-04-18 (5 picks total). Within each day sort by pub_date descending. Ties broken by source-file order.",
+      "repos": "Among items with captured_on == '2026-04-20', sort by stars descending and take top 5. Ties broken by source-file order. Older captures of the same repo are not surfaced again."
+    }
+  }
+}

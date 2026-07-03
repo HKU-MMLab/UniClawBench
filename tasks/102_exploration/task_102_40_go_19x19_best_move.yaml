@@ -1,0 +1,43 @@
+task_id: task_102_40_go_19x19_best_move
+category: 102_exploration
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  This is a single-position Go (Weiqi/Baduk) problem on a full 19x19 board. Find
+  the single best move for the side to play — not a whole game, just the one
+  globally best move in this position.
+
+  The position is provided two ways:
+
+      /tmp_workspace/clawbench/sources/board.txt    (human-readable grid)
+      /tmp_workspace/clawbench/sources/position.sgf (SGF, komi 7)
+
+  In board.txt, `X` is Black (the side to move), `O` is White, `.` is empty;
+  rows are 0-18 top to bottom and columns 0-18 left to right. It is Black's turn.
+
+  Analyze the position and determine Black's best move. Report it BOTH as a
+  (row, column) coordinate in the 0-indexed convention above AND as a standard
+  GTP coordinate (column letter A-T skipping I, row number 1-19 from the
+  bottom), and briefly explain why it is best.
+
+  Save your answer to `/tmp_workspace/results/best_move.json` with fields
+  `row`, `col`, `gtp`, and `reasoning`, plus any analysis notes under
+  `/tmp_workspace/results/`.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+sources:
+  - board.txt
+  - position.sgf
+
+codex:
+  max_user_followups: 2

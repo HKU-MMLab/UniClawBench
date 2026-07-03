@@ -1,0 +1,31 @@
+Message-ID: <200209101916.g8AJGJd17943@shelob.ce.ttu.edu>
+X-Clawbench-ID: CAM-2003-1008
+Date: Tue, 10 Sep 2002 14:16:19 -0500
+From: "David B. Thompson" <thompson@shelob.ce.ttu.edu>
+To: exmh-users@spamassassin.taint.org
+Subject: Re: Sorting
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00995.11200ae0fc914c7056dcbf7dcfb4c107
+
+> > You're probably running exmh on a local machine.  I'm running it on a
+> > very remote machine.  In this scenario, the mime handling is weak.
+>
+> Nope.  I run exmh on my desktops at home and at work with the resulting
+> exmh windows being displayed on both my work and home desktops (gratis
+> SSH X11 forwarding).
+
+I run exmh routinely from home (broadband) using an XWindows Client tunneled through ssh under <ahem> WinXP.  It works very well in this fashion.
+
+FWIW, I use Eudora under Winder$ because it's less of a virus magnet.  :)
+
+There's more to the story why I run Winder$, but that's really off-topic and I'm already guilty!
+
+-=d
+
+
+_______________________________________________
+Exmh-users mailing list
+Exmh-users@redhat.com
+https://listman.redhat.com/mailman/listinfo/exmh-users

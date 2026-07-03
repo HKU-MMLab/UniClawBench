@@ -1,0 +1,114 @@
+Message-ID: <bfa7356a-c31f-3021-7686-9011d7668633@gmail.com>
+X-Clawbench-ID: ASF-2024-1231
+Date: Wed, 6 Sep 2023 13:17:15 +0200
+From: jean-frederic clere <jfclere@gmail.com>
+To: dev@httpd.apache.org, Jim Jagielski <jim@jaguNET.com>
+Subject: Re: balancers bybusyness, bytraffic and byrequest thread/process safe  issues
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-09.mbox
+
+On 8/31/23 18:20, Jim Jagielski wrote:
+> Isn't the call to find the best balancer mutex protected?
+
+Look to apr_atomic_cas32() and the APR code (1.7.x) I noted that we
+don't test the return value of __atomic_compare_exchange_n()
+
++++
+PR_DECLARE(apr_uint32_t) apr_atomic_cas32(volatile apr_uint32_t *mem,
+apr_uint32_t val,
+                                            apr_uint32_t cmp)
+{
+#if HAVE__ATOMIC_BUILTINS
+     __atomic_compare_exchange_n(mem, &cmp, val, 0, __ATOMIC_SEQ_CST,
+__ATOMIC_SEQ_CST);
+     return cmp;
+#else
+     return __sync_val_compare_and_swap(mem, cmp, val);
+#endif
++++
+
+and:
+https://gcc.gnu.org/onlinedocs/gcc/_005f_005fatomic-Builtins.html
+Says:
+Otherwise, false is returned and memory is affected according to
+failure_memorder. This memory order cannot be __ATOMIC_RELEASE nor
+__ATOMIC_ACQ_REL. It also cannot be a stronger order than that specified
+by success_memorder.
+
+So we use __ATOMIC_SEQ_CST so we can't fail or do I miss something?
+
+>
+>> On Aug 31, 2023, at 7:44 AM, jean-frederic clere <jfclere@gmail.com>
+>> wrote:
+>>
+>> On 8/30/23 17:33, Rainer Jung wrote:
+>>> Hi JFC,
+>>> I have not checked ur current code, but the topic reminds me of our
+>>> history in mod_jk land. There we switched the counters to atomics
+>>> were available. The other problematic part could be how to handle
+>>> process local counters versus global counters.
+>>
+>> Using apr_atomic_inc32()/apr_atomic_dec32 on apr_size_t busy won't work?
+>> Actual apr_size_t for busy is probably overkill does using
+>> apr_atomic_add64() and apr_atomic_dec64() makes sense here?
+>>
+>> Anyway I will give it a try.
+>>
+>>> Busyness was especially problematic for mod_jk as well, because we
+>>> never deremented below zero if we lost increments, but if we lost
+>>> decrements the counters stayed elevated. I think there we now have no
+>>> longer such problems.
+>>> Best regards,
+>>> Rainer
+>>> Am 30.08.23 um 17:19 schrieb jean-frederic clere:
+>>>> Hi,
+>>>>
+>>>> All the balancers have thread/process safe issues, but with
+>>>> bybusyness the effect is worse, basically a worker may stay with a
+>>>> busy count greater than zero even no request is being processed.
+>>>>
+>>>> busy is displayed in the balancer_handler() so users/customers will
+>>>> notice the value doesn't return to zero...
+>>>>
+>>>> If you run a load test the value of busy will increase by time and
+>>>> in all the workers
+>>>>
+>>>> When using bybusyness, having pics in the load and later no much
+>>>> load makes the lowest busy workers used and the ones with a wrong
+>>>> higher value not being used.
+>>>>
+>>>> In a test with 3 workers, I end with busy:
+>>>> worker1: 3
+>>>> worker2: 0
+>>>> worker3: 2
+>>>> Doing the load test several time the buys values are increasing in
+>>>> all workers.
+>>>>
+>>>> I am wondering is we could end with something like:
+>>>> worker1: 1000
+>>>> worker2: 0
+>>>> worker3: 1000
+>>>>
+>>>> in this case bybusyness will send all the load to worker2 until we
+>>>> reach 1000 simultaneous request on worker2... Obvious that looks bad.
+>>>>
+>>>> How to fix that?
+>>>> 1 - reset the busy using a watchdog and elected (or
+>>>> transferred+read) unchanged for some time (using one of timeout we
+>>>> have on workers).
+>>>> 2 - warn in the docs that bybusyness is not the best choice for
+>>>> loadbalancing.
+>>>> 3 - create another balancer that just choose random a worker.
+>>
+>> --
+>> Cheers
+>>
+>> Jean-Frederic
+>
+
+--
+Cheers
+
+Jean-Frederic

@@ -1,0 +1,31 @@
+Message-ID: <3c5e7bb6-a852-0bcc-632a-40c7e50b3bd4@apache.org>
+X-Clawbench-ID: ASF-2024-0406
+Date: Tue, 20 Aug 2024 09:52:25 +0200
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE CLOSED] Switch read/write repository from Subversion to Git
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-08.mbox
+
+On 8/19/24 7:44 PM, Roy T. Fielding wrote:
+>> On Aug 19, 2024, at 8:22 AM, Eric Covener <covener@gmail.com> wrote:
+>>
+>> To bring the convo back here out of cwiki -- in a world where we moved
+>> to read/write git, with reviews happening in the context of a pull
+>> request, does anyone else have any feelings about ditching or keeping
+>> the STATUS file?
+>
+> I created STATUS to help drive dev conversations toward a release.
+> A resource-based window on open issues, organized by tag or priority,
+> would be just as good and easier to maintain. +1 to a replacement.
+>
+> I suggest leaving STATUS as a static file containing a link to the new resource
+> and maybe examples of using the GH API to download a local copy of issues.
+
+Let's try this. If it does not work out we just change it to something else that works better.
+
+Regards
+
+Rüdiger

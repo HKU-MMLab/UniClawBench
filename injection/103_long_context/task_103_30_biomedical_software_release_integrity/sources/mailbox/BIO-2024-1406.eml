@@ -1,0 +1,57 @@
+Message-ID: <ZKRibLmqSUVdZHZP@an3as.eu>
+X-Clawbench-ID: BIO-2024-1406
+Date: Tue, 4 Jul 2023 20:18:20 +0200
+From: Andreas Tille <tille@debian.org>
+To: César Pomar <cesarpomar18@gmail.com>
+Subject: Re: Request for Sponsorship: VeryFastTree - Parallelized and Optimized Version of FastTree
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_07_msg00006.html
+
+Hi César,
+
+Am Tue, Jul 04, 2023 at 04:19:45PM +0200 schrieb César Pomar:
+> >   TopHits: 1.00*sqrtN close=default refresh=0.80
+> >   ML Model: Jones-Taylor-Thorton, CAT approximation with 20 rate
+> categories
+> >   Error parsing header line:
+> >
+> > as you can see in the log on salsa[2].
+>
+> Ohh, well, the test has done its job, it found a bug. I have already fixed
+> it,
+
+Cool.  I'm happy to hear this is found and fixed.  Our goal is to
+enhance bioinformatics software out there. ;-)
+
+> so is everything ready for the release now?
+
+You are the author - from my point yes.
+
+> > I did not checked (yet) but you might like to have a look into
+> > SIMDEverywhere[3]
+>
+> Thank you, but I meant that I was enabling AMD64 features on ARM. I've
+> taken a
+> look at the log and I see what the problem might be. Considering that
+> aarch64-linux-gnu-g++ is being used, it appears to be a compilation for
+> ARM,
+> but with BUILD_ARCH=amd64 and HOST_ARCH=arm64, shouldn't it be the other
+> way
+> around? In any case, if this isn't an error, I would look for when
+> HOST_ARCH=arm64 and wouldn't use USE_AVX2=ON, which is the parameter that
+> sends -mavx2. Because right now, I'm using BUILD_ARCH, and since it's
+> amd64,
+> it assumes it should use USE_AVX2=ON.
+
+I admit I'm not very educated with ARM.  However, mixing two different
+architectures in BUILD_ARCH and HOST_ARCH sounds suspicious to me and is
+IMHO only relevant for cross-building (but I repeat I'm not very
+educated here).
+
+Kind regards
+    Andreas.
+
+--
+http://fam-tille.de

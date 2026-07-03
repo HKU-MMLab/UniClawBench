@@ -1,0 +1,54 @@
+task_id: task_101_07_stock_snapshot_chart
+category: 101_skill_usage
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+recording: none
+headed: auto
+task: |
+  I'm putting together a quick brief on five big-cap tech names for
+  Q1 2024 and I'd love your help. The names I care about are AAPL, NVDA,
+  TSLA, MSFT, and GOOG. Use the workspace's stock analysis skill to
+  crunch the Q1 2024 OHLCV data for these five names. The skill should be
+  able to fetch and analyze the data on its own — just make sure you don't
+  hit any live market API.
+
+  Here's what I want out of it:
+
+  1. /tmp_workspace/results/analysis.md — a short Markdown brief. Give
+     me a per-ticker table that shows, at minimum, the Q1 total return
+     in percent and the max peak-to-trough drawdown in percent for each
+     of the five names over the window. After the table, write a couple
+     of paragraphs of commentary so I can hand this to a colleague —
+     who won the quarter, who got hurt the most, where the painful
+     pullbacks were. Mention concrete numbers, don't hand-wave. If you
+     also want to surface a couple of additional flavor metrics like
+     realized volatility or a rough beta read, that's fine, but the two
+     I really need are total return % and max drawdown %.
+
+  2. /tmp_workspace/results/chart.png — one comparison chart that lets
+     me eyeball all five tickers on one panel over the same Q1 window.
+     Cumulative-return overlay is fine, K-line side-by-side is fine,
+     whatever the skill renders cleanly — just make sure all five
+     tickers show up as legend entries so I can tell the lines apart.
+
+  Numbers should match the snapshot exactly to one decimal place — this
+  is going to a colleague who will spot-check, so accuracy matters more
+  than commentary length.
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+sources:
+  - snapshot.json
+skills:
+  - stock-analysis
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+codex:
+  max_user_followups: 2

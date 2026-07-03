@@ -1,0 +1,27 @@
+{
+  "task_id": "task_101_14_excel_pivot_chart",
+  "skills": [
+    {
+      "original_skill": "office-document-specialist-suite",
+      "injected_skill": "office-document-specialist-suite",
+      "original_source": "clawhub",
+      "change_type": "benchmark environment adaptation",
+      "changes": [
+        "Replaced the setup.sh installation instruction with a note that the workspace already provides the required Office-document Python libraries.",
+        "Changed setup.sh so running it does not create a virtual environment or install packages."
+      ],
+      "reason": "The task setup service installs the required packages before the executor starts."
+    },
+    {
+      "original_skill": "excel-weekly-dashboard",
+      "injected_skill": "excel-weekly-dashboard",
+      "original_source": "clawhub",
+      "change_type": "benchmark environment adaptation",
+      "changes": [
+        "Added a Runtime note that the skill is pre-injected and Python deps (openpyxl, pandas) are prepared during task setup, so no executor-side install is needed.",
+        "Kept the upstream Power Query / M-code-oriented workflow guidance as-is (no rewriting to openpyxl), so the executor must judge which parts of the skill apply on a Linux container."
+      ],
+      "reason": "Replacing the prior data-analyst-pro injection (which had only a one-sentence template SKILL.md) with a structured Excel-dashboard skill that actually matches the task's pivot/momentum/QA workbook needs."
+    }
+  ]
+}

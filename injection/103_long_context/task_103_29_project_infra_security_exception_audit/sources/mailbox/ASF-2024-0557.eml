@@ -1,0 +1,50 @@
+Message-ID: <1377795e-c8f4-91cd-7eed-71ab601dd8a3@kippdata.de>
+X-Clawbench-ID: ASF-2024-0557
+Date: Wed, 5 Oct 2022 12:26:37 +0200
+From: Rainer Jung <rainer.jung@kippdata.de>
+To: "dev@httpd.apache.org" <dev@httpd.apache.org>
+Subject: Escaping double quotation marks in the error log
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-10.mbox
+
+Hi there,
+
+I looked at our escaping functions for logs due to the need of doing
+JSON logging. In principle one can output JSON by using appropriate log
+format definitions in the httpd config. Most special characters in JSON
+are already properly escaped in our output.
+
+But there is one important difference between the escaping of access log
+items and of error log items. The escaping function for the access log
+also escapes double quotation marks as \", the one for the error log
+does not (ap_escape_errorlog_item). It contains the comment "no need for
+this in error log". This is true all the way since the time the escaping
+was introduced at all.
+
+I wonder, whether there is a real necessity for not escaping double
+quotation marks in the error log?
+
+Note, that I am not talking about markup that appears in the definition
+of the ErrorLogFormat itself. This is "just" about double quotation
+marks showing up in the error message itself (or logged headers, env
+vars or notes).
+
+Unfortunately the use of ap_escape_errorlog_item() is buried deep down
+in the code levels and accessing virtual host config seems not possible,
+not even in the callers of ap_escape_errorlog_item().
+
+If there's no other nice idea, I wonder whether:
+
+- it would be OK, to escape double quotation marks as \" in the error
+log for trunk
+
+- add a global config item to do this as well for 2.4.x (default off)
+
+What do you think? Or did you find a better solution for error log json
+logging?
+
+Best regards,
+
+Rainer

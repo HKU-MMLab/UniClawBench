@@ -1,0 +1,20 @@
+{
+  "display_name": "MujiLiving \u2014 Catalog",
+  "ecommerce": {
+    "cart": true,
+    "checkout": true,
+    "product_pages": true,
+    "inventory": true
+  },
+  "responsive": true,
+  "palette": [
+    "#F7F4EF",
+    "#E4DDD1",
+    "#C2A98E",
+    "#7A746B",
+    "#2E2E2E"
+  ],
+  "product_image_area_ratio": 0.28,
+  "note": "muted minimalist responsive ecommerce, on-palette \u2014 but a dense text/catalog layout with small product images",
+  "id": "muji_living"
+}

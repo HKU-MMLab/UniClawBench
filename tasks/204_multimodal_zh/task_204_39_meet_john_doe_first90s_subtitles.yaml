@@ -1,0 +1,44 @@
+task_id: task_204_39_meet_john_doe_first90s_subtitles
+category: 204_multimodal_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  请打开视频文件：
+  /tmp_workspace/clawbench/sources/clip.mp4
+
+  你必须真正播放、观看并聆听本地视频片段，然后自己转写。不要下载已有的字幕、
+  剧本、电影对白文稿，也不要依赖对电影的了解；最终的字幕和时间轴必须基于这段
+  本地视频。
+
+  请只为视频的前 90 秒生成字幕，并保存为：
+  /tmp_workspace/results/clip.srt
+
+  要求：
+  1. 使用 SRT 格式
+  2. 只标注 0:00-1:30 内实际说出的内容
+  3. 如果出现专有名词、称谓或数字，请按照你所听到的准确写出；如果无法确认，
+     请在复查文件中标注对应的时间区间和不确定的内容
+  4. 完成初稿后，重点复查 0:10-0:40 这段较快的对白
+  5. 最后，再输出 /tmp_workspace/results/clip_review.md，简要说明你在第二遍
+     做了哪些修正
+
+  如果 `/tmp_workspace/results/` 不存在，请先创建它。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/reference_clip.srt
+  - references/selected_clips_manifest.json
+
+sources:
+  - clip.mp4
+
+codex:
+  max_user_followups: 2

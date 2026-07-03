@@ -1,0 +1,53 @@
+task_id: task_205_29_pr_mermaid_diagram
+category: 205_cross_platform_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  又到了季度团队复盘的时间——我想回顾一下 cli/cli 里几个与 issue 视图
+  相关的 PR 这些年是怎么演进的。你能不能产出一份带 Mermaid 图的 markdown
+  报告?
+
+  这三个 PR 都已经合并:
+
+  - https://github.com/cli/cli/pull/2462   samcoe 在 2020 年底加入了 issue 评论视图
+  - https://github.com/cli/cli/pull/3196   g14a 在 2021 年初给 issue 列表加了搜索
+  - https://github.com/cli/cli/pull/10941  iamazeem 在 2025 年扩展了 JSON 字段
+
+  对每个 PR 我想要:基本信息(作者、创建/合并时间戳、改动了多少行和多少
+  文件)、改动最多的前 5 个文件、由谁 review、以及从创建到合并花了多长
+  时间(以小时计)。
+
+  用 gh 从 GitHub API 获取 PR 数据。画一张 Mermaid 图,可视化这三个 PR
+  的生命周期——选择任何能把 2020 到 2025 的演进时间线表现清楚的图表类型,
+  并用 mmdc 渲染。
+
+  还要写一段中文叙述做交叉对比:哪个最快,哪个 diff 最大。从评论中估计
+  讨论的氛围——大致有多少问题 / 赞同 / 建议,以及哪个 PR 讨论得最激烈。
+
+  把所有产物放在 /tmp_workspace/results/ 下。把三个 PR 的结构化数据保存
+  为 pr_summary.json,Mermaid 源文件保存为 pr_flow.mmd 并渲染成
+  pr_flow.png(svg 也行)。写一份最终的 pr_doc.md markdown 报告,标题为
+  "cli/cli 季度 PR 复盘",其中嵌入 Mermaid 图、中文叙述,以及每个 PR
+  改动最多的文件列表。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources: []
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

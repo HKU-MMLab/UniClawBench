@@ -1,0 +1,47 @@
+Message-ID: <93C5EC1A-DBB0-4F86-BF6B-496CF0CFBE54@jaguNET.com>
+X-Clawbench-ID: ASF-2024-0283
+Date: Thu, 31 Aug 2023 12:23:07 -0400
+From: Jim Jagielski <jim@jaguNET.com>
+To: dev@httpd.apache.org
+Subject: Re: balancers bybusyness, bytraffic and byrequest thread/process safe  issues
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-08.mbox
+
+IIRC, the goal of having an "aging" function was to handle this exact kind of thing, where values could be normalized over a long period of time so that old entries that may skew results are not weighted as heavily as new ones.
+
+> On Aug 30, 2023, at 11:19 AM, jean-frederic clere <jfclere@gmail.com> wrote:
+>
+> Hi,
+>
+> All the balancers have thread/process safe issues, but with bybusyness the effect is worse, basically a worker may stay with a busy count greater than zero even no request is being processed.
+>
+> busy is displayed in the balancer_handler() so users/customers will notice the value doesn't return to zero...
+>
+> If you run a load test the value of busy will increase by time and in all the workers
+>
+> When using bybusyness, having pics in the load and later no much load makes the lowest busy workers used and the ones with a wrong higher value not being used.
+>
+> In a test with 3 workers, I end with busy:
+> worker1: 3
+> worker2: 0
+> worker3: 2
+> Doing the load test several time the buys values are increasing in all workers.
+>
+> I am wondering is we could end with something like:
+> worker1: 1000
+> worker2: 0
+> worker3: 1000
+>
+> in this case bybusyness will send all the load to worker2 until we reach 1000 simultaneous request on worker2... Obvious that looks bad.
+>
+> How to fix that?
+> 1 - reset the busy using a watchdog and elected (or transferred+read) unchanged for some time (using one of timeout we have on workers).
+> 2 - warn in the docs that bybusyness is not the best choice for loadbalancing.
+> 3 - create another balancer that just choose random a worker.
+>
+> --
+> Cheers
+>
+> Jean-Frederic

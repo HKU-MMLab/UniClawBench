@@ -1,0 +1,59 @@
+Message-ID: <df9ad116-cb8d-48e6-d673-05d66333efd6@debian.org>
+X-Clawbench-ID: BIO-2024-0429
+Date: Fri, 5 Nov 2021 15:44:22 +0200
+From: Andrius Merkys <merkys@debian.org>
+To: debian-science@lists.debian.org
+Subject: Re: Debian Math Team
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_11_msg00051.html
+
+Hi Ole,
+
+On 2021-11-03 13:52, Ole Streicher wrote:
+> Andrius Merkys  writes:
+>> problem: How would we define what is math software? What would be done
+>> with interdisciplinary software? For example, I maintain two packages,
+>> spglib and voronota, which deal with crystallography (chemistry?), but
+>> employ heavy math. Should I put them in debichem or debian-math? I
+>> believe the classification problem cannot be solved in general way,
+>> leading to looking for more "pragmatic" classification.
+>
+> I sometimes have this problem for Debian Astro packages, and then I
+> decide on whether the package is (intended to be) useful outside of
+> astronomy. Sometimes this is difficult; f.e. I just uploaded
+> "mpl-animators" which does animations with matplotlib, but this depends
+> on astropy for many functions which hints me that the authors focus on
+> astronomy (and not general) usage.
+
+This might be a candidate for objective criterion, yes.
+
+>>> By this logic, we could push entire debian-med python packages into
+>>> python-team, java packages into java-team and so on...
+>
+> I really think this is a bit problematic; IMO the problem here is mainly
+> that we imply disjunct teams.
+>
+> Why can't a Python math package be maintained by both the Python and the
+> math team?
+>
+> Maintainer: Debian Math Team
+> Uploaders: Debian Python Team , me
+>
+> This would set a primary team (and the place in the Salsa directory
+> structure), but also allow the Python team to exercise required changes
+> as team upload.
+>
+> Probably policies and scripts should be adjusted to make use of
+> this. And "somehow" the Salsa permissions should match this.
+
+This suggestion gives some feed for thought. I think it should be
+proposed on debian-devel first to see if it is possible to adjust
+policies, scripts and salsa permissions accordingly.
+
+I am replying to this message instead of yours from Fri, 05 Nov 2021
+14:14:35 +0100 just to cite your whole proposal.
+
+Best,
+Andrius

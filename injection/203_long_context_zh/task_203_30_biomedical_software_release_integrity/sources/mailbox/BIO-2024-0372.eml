@@ -1,0 +1,39 @@
+Message-ID: <22ba584b-49ee-fc9c-20ec-41ab6ca4e902@tchncs.de>
+X-Clawbench-ID: BIO-2024-0372
+Date: Mon, 6 Sep 2021 20:34:38 +0530
+From: Nilesh Patra <nilesh@tchncs.de>
+To: Andreas Tille <tille@debian.org>, Gilles Filippini <pini@debian.org>
+Subject: Re: Help needed for r-bioc-rhdf5 in BioConductor transition
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_09_msg00002.html
+
+On 9/6/21 8:29 PM, Andreas Tille wrote:
+> Gilles, do you see any chance to bump the minor version of hdf5 which
+> should be hopefully easier than just upgrade to the latest upstream
+> (1.12.0).  This would help us a lot.
+
++1
+
+Little more information: rhdf5 is not compatible with 1.12 of hdf5 (currently in experimental)
+Build ends with:
+
+gcc -std=gnu99 -I"/usr/share/R/include" -DNDEBUG  -I'/usr/lib/R/site-library/Rhdf5lib/include'    -fpic  -g -O2 -ffile-prefix-map=/build/r-base-kpovBh/r-base-4.1.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c H5constants.c -o H5constants.o
+H5constants.c: In function ‘_H5constants’:
+H5constants.c:183:8: error: ‘H5I_REFERENCE’ undeclared (first use in this function); did you mean ‘H5T_REFERENCE’?
+  183 |        H5I_REFERENCE, H5I_VFL, H5I_GENPROP_CLS, H5I_GENPROP_LST,
+      |        ^~~~~~~~~~~~~
+      |        H5T_REFERENCE
+H5constants.c:183:8: note: each undeclared identifier is reported only once for each function it appears in
+make[2]: *** [/usr/lib/R/etc/Makeconf:168: H5constants.o] Error 1
+make[2]: Leaving directory '/>/src'
+make[2]: Entering directory '/>/src'
+make[2]: Leaving directory '/>/src'
+ERROR: compilation failed for package ‘rhdf5’
+
+So, 1.10.7 would be best
+
+>> [1]: https://salsa.debian.org/r-pkg-team/r-bioc-rhdf5/-/blob/master/inst/NEWS.Rd#L8-9
+>> [2]: https://www.hdfgroup.org/2020/09/release-of-hdf5-1-10-7-newsletter-175/
+Nilesh

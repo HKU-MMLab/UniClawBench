@@ -1,0 +1,31 @@
+Message-ID: <CA+7wUsznUY2F7Q02Y+tKNwjSf9sSYTYH8WJn6hfUH1b63V3O9g@mail.gmail.com>
+X-Clawbench-ID: BIO-2024-0720
+Date: Fri, 21 Jan 2022 17:18:01 +0100
+From: Mathieu Malaterre <malat@debian.org>
+To: Andreas Tille <andreas@an3as.eu>
+Subject: Re: New version of muscle contains asm statements which prevent building on non-Intel architectures
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_01_msg00058.html
+
+On Fri, Jan 21, 2022 at 5:05 PM Andreas Tille  wrote:
+>
+> Hi,
+>
+> I've checked the build logs of muscle version 5.1[1] and noticed that
+> for instance on arm64 the build fails with:
+>
+> g++ -Wdate-time -D_FORTIFY_SOURCE=2 -DNDEBUG -pthread -g -O2 -ffile-prefix-map=/>=. -fstack-protector-strong -Wformat -Werror=format-security -O3 -fopenmp -ffast-math -c -o Linux/transaln.o transaln.cpp
+> In file included from testlog.cpp:2:
+> timing.h: In function ‘void cmd_testlog()’:
+> timing.h:26:9: error: impossible constraint in ‘asm’
+>    26 |         __asm__ __volatile__ ("rdtsc" : "=a" (lo), "=d" (hi));
+>       |         ^~~~~~~
+
+This assembly is for x86 based system. On arm64 you would want
+something like this:
+
+* https://stackoverflow.com/a/67968296/136285
+
+Something is definitely wrong upstream.

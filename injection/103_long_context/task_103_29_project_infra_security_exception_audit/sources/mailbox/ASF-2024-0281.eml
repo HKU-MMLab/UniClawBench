@@ -1,0 +1,24 @@
+Message-ID: <PR_kwDODoHalM51ay1V-36843a5a-04ba-4b44-967a-7ff8429d7a1e@gitbox.apache.org>
+X-Clawbench-ID: ASF-2024-0281
+Date: Mon, 15 Jul 2024 18:16:01 -0000
+From: =?utf-8?q?asfgit_=28via_GitHub=29?= <git@apache.org>
+To: dev@httpd.apache.org
+Subject: =?utf-8?q?Re=3A_=5BPR=5D_Typo_in_rewrite_test_for_2=2E4=2E60_=5Bhttpd-tests?=  =?utf-8?q?=5D?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-07.mbox
+
+asfgit closed pull request #1: Typo in rewrite test for 2.4.60
+URL: https://github.com/apache/httpd-tests/pull/1
+
+
+--
+This is an automated message from the Apache Git Service.
+To respond to the message, please log on to GitHub and use the
+URL above to go to the specific comment.
+
+To unsubscribe, e-mail: dev-unsubscribe@httpd.apache.org
+
+For queries about this service, please contact Infrastructure at:
+users@infra.apache.org

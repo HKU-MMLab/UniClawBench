@@ -1,0 +1,48 @@
+task_id: task_103_16_diffusion_blog
+category: 103_long_context
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I need to make a paper-reading HTML blog on the topic of Diffusion Models. I want the opening to start with a problem-driven introduction, beginning from the limitations of GAN / VAE / Flow and leading into diffusion. Explain the core intuition: gradually add noise, then learn to denoise step by step. Point out the tradeoff: stable training and high quality, but slow sampling.
+  Then expand according to the following sections:
+  1. Basic framework
+   - Introduce the common main thread of diffusion probabilistic models, noise-conditioned score networks (NCSN), and denoising diffusion probabilistic models (DDPM): noise perturbation + reverse recovery.
+  2. Forward and Reverse Diffusion
+   - Explain how the forward process adds noise and how the reverse process learns to denoise and generate samples.
+  3. DDPM training objective
+   - Explain why DDPM writes the objective as noise prediction and why this step is important.
+  4. Score-Based View
+   - Use the score function and NCSN to explain why noise prediction works.
+  5. Quality and stability improvements
+   - Cover work that improves quality/stability.
+  6. Sampling acceleration
+   - Cover work that reduces sampling steps.
+  7. Practical deployment
+   - Conclude with representative work such as Latent Diffusion and answer why diffusion truly became usable.
+
+  The candidate papers are all in `/tmp_workspace/clawbench/sources/papers/`, and I renamed the files to non-semantic numbers, so do not guess from filenames. Read these papers and select the papers that should be discussed for each section, including the opening problem introduction.
+
+  Make the blog rich in both text and figures. You may screenshot figures/tables from the papers, but the screenshots must be complete, clear, matched to the content, and detailed enough to read text and details. Formulas may be written as screenshots or LaTeX. Use the prepared `/tmp_workspace/clawbench/sources/assets/`, which contains the CSS, JavaScript, and MathJax formula-rendering dependencies needed by the page template.
+
+  Save the final blog to `/tmp_workspace/results/diffusion_blog/`; it should contain the HTML file and corresponding assets. Put images referenced by the HTML into `/tmp_workspace/clawbench/results/assets/images`, and cite the source paper for every figure in the blog.
+
+  Also save `/tmp_workspace/results/selection_note.md` explaining why each section selected these papers.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/diffusion_blog/
+  - references/paper_mapping.json
+sources:
+  - papers/
+  - assets/
+
+codex:
+  max_user_followups: 2

@@ -1,0 +1,24 @@
+Message-ID: <f20ef77b-3edd-d397-1262-0a3006a8700d@paclan.it>
+X-Clawbench-ID: ASF-2024-0764
+Date: Wed, 11 Jan 2023 16:43:14 +0100
+From: giovanni@paclan.it
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.55-rc1 as httpd-2.4.55
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-01.mbox
+
+On 1/10/23 14:40, Eric Covener wrote:
+> Hi all,
+>
+> Please find below the proposed release tarball and signatures:
+>
+> https://dist.apache.org/repos/dist/dev/httpd/
+>
+> I would like to call a VOTE over the next few days to release
+> this candidate tarball httpd-2.4.55-rc1 as 2.4.55
++1 for release
+looks fine on OpenBSD 7.2 and CentOS8-Stream (x86_64),
+thank you for RMing.
+  Giovanni

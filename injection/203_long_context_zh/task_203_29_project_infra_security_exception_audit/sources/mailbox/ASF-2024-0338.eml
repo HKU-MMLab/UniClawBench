@@ -1,0 +1,79 @@
+Message-ID: <CAFQGv+ZLt5saBEzfqZigr6fiBc=uQrji+V9iazGSaeHkTjW-7A@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0338
+Date: Thu, 15 Feb 2024 21:40:29 -0500
+From: Joe Schaefer <joe@sunstarsys.com>
+To: dev@httpd.apache.org
+Subject: Re: release apreq 2.18 and mothball the project
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-02.mbox
+
+The mediocre talent pool in this community doesn’t mind the code
+duplication of having many different form data parsers inside a common code
+base because, really, collaboration and common cause is not your thing.
+
+So live it up with the user base while they ponder your architectural
+rationales like this guy does:
+
+https://stackoverflow.com/questions/60281807/get-post-request-body-and-decode-using-mod-lua-apache-http-2-4
+
+
+Joe Schaefer, Ph.D.
+<https://sunstarsys.com/orion/features>
+Orion - The Enterprise Jamstack Wiki <https://sunstarsys.com/orion/features>
+<joe@sunstarsys.com>
+954.253.3732 <//954.253.3732>
+
+
+On Thu, Feb 15, 2024 at 8:47 PM Joe Schaefer <joe@sunstarsys.com> wrote:
+
+> Stupid shit like this is everyone's problem:
+>
+> https://www.tenable.com/plugins/nessus/161454
+>
+> Hating me for solving it cleanly is par for the course for the current
+> httpd committer community.
+>
+> On Thu, Feb 15, 2024 at 8:41 PM Joe Schaefer <joe@sunstarsys.com> wrote:
+>
+>> Back in the day, httpd was a celebrated integration point for dozens of
+>> apache projects. Literally the flagship of the organization.
+>>
+>> It's also why people were judicious about what to include in core, versus
+>> codebases remaining elsewhere in the org as third party modules.
+>>
+>> Of course at this point, there's no good reason to hook a dynamic
+>> language into core in a non-thread-safe way.  Yet mod_lua exists.
+>> If there's no good reason to hook a thread-safe httpd-specific HTML form
+>> parser technology into the mix, what is mod_dav doing in here?
+>>
+>> The obvious answer is because peevishness rules the day at Apache.  Very
+>> Important People's pet projects have staying power, not because users
+>> demand it, but because the personalities behind them would give you serious
+>> shit for discarding the module on a whim.
+>>
+>> All I ask for is to be able to bow out and never return to this group
+>> again.
+>>
+>>
+>>
+>> On Thu, Feb 15, 2024 at 8:20 PM Joe Schaefer <joe@sunstarsys.com> wrote:
+>>
+>>> The proof is in the pudding, as it were.
+>>>
+>>> There's prima facia evidence in this very thread that he lied about ever
+>>> running the test suite for apreq, because Joe wouldn't have had to patch it
+>>> for him 8 months later had he ever bothered in the first place.
+>>>
+>>> But when everyone around you is no better than that, there's
+>>> participation trophies for all of you!
+>>>
+>>> On Thu, Feb 15, 2024 at 8:17 PM Eric Covener <covener@gmail.com> wrote:
+>>>
+>>>> > And because you are such a prima donna Yann
+>>>>
+>>>> Yann is an amazing programmer and super easy to work with. Maybe it's
+>>>> hard to tell from the backseat.
+>>>>
+>>>

@@ -1,0 +1,51 @@
+task_id: task_103_40_nonogram_25x25
+category: 103_long_context
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+
+recording: none
+headed: auto
+success_threshold: 0.9
+
+task: |
+  A service has already started a live Nonogram (Picross) terminal session for you. Do not start the game yourself.
+  Begin by reading `/tmp_workspace/results/nonogram_service.log`, choose the current attempt from the listed prestarted sessions, and play through that running session.
+
+  This is a 25x25 nonogram. Each cell is either filled or empty. The numbers on the left of each row and on top of each column are "clues": each clue lists the lengths of the consecutive runs of filled cells in that row or column, in order, separated by gaps of one or more empty cells. A `0` clue means the entire row/column is empty.
+
+  Use `row col F` to fill a cell, `row col X` to mark a cell as empty, or `row col C` to clear a cell back to unknown. Rows and columns are zero-based: `0` through `24`. Marking empty (`X`) is only a personal annotation — only filled (`F`) cells count toward the solution.
+
+  Rule:
+  - Deduce which cells are filled so that every row and every column matches its clue exactly.
+  - The puzzle has a unique solution; you must reproduce it.
+  - A cell counts as correct only if it is filled (`#`) where the solution is filled. Filling a cell that should be empty counts against you.
+
+  Each attempt entry gives you a prestarted stdin fifo, a board snapshot txt, a terminal transcript, and a duration txt. Do not launch a new game process, rebuild the startup flow, or inspect hidden runtime service files. Use only the prestarted service session.
+
+  Each attempt has its own board txt file, for example `/tmp_workspace/results/nonogram_sessions/attempt_1_board.txt`. The exact path for your attempt is listed in `/tmp_workspace/results/nonogram_service.log` and `/tmp_workspace/results/nonogram_sessions/summary.tsv`. After every move, the game rewrites the same board txt with the latest state; read it after each move.
+
+  The board txt includes the current 25x25 grid with row clues on the left and column clues on top (`#` filled, `x` marked-empty, `.` unknown), plus `Filled cells correct: K / 338`, `Filled cells that should be empty: W`, and `Status`.
+
+  Each attempt also has a duration txt recording timing from game startup: `game_start_unix`, `first_move_unix`, `last_move_unix`, `end_unix`, and `duration_seconds`. Before any valid move it shows `duration_seconds=NOT_STARTED`. Use the matching duration txt for your attempt when applying the time-based score rule.
+
+  Scoring:
+  - `net_correct = (filled cells matching the solution) - (filled cells that should be empty)`, not below 0.
+  - `base_score = net_correct / 338` (this board needs 338 cells filled).
+  - If `duration_seconds <= 420`, `final_score = base_score`; otherwise `final_score = base_score * (420 / duration_seconds)`.
+  - Filling all 338 solution cells with no wrong cells within 420 seconds scores 1.0; taking longer applies the time multiplier, so it must be less than 1.0.
+
+  In your final `/tmp_workspace/results/nonogram_result.md`, include: whether the puzzle was fully solved; how many solution cells were filled correctly and how many wrong cells were filled; the total cells needed (338); the final score calculation; and the final board txt content you relied on as evidence.
+
+references:
+  - references/eval_rule.md
+  - references/solution.py
+services:
+  - name: nonogram
+    path: nonogram
+    start: bash install.sh
+
+codex:
+  max_user_followups: 2

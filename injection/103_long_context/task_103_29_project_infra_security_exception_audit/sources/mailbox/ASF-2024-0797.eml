@@ -1,0 +1,73 @@
+Message-ID: <a34a52ac-6591-0648-9855-ec62591b782a@apache.org>
+X-Clawbench-ID: ASF-2024-0797
+Date: Fri, 14 Jan 2022 14:01:10 +0100
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: [Regression in httpd 2.4.52] mod_dav: Potentially unbounded  memory usage in PROPFIND with dav_get_props() and dav_propfind_walker()
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-01.mbox
+
+On 1/14/22 1:57 PM, Evgeny Kotkov wrote:
+> Hi,
+>
+> I might have stumbled across a regression in httpd 2.4.52 where mod_dav was
+> changed in a way where dav_get_props() now allocates data in resource->pool.
+>
+> I think that r1879889 [1] is the change that is causing the new behavior.
+> This change has been backported to 2.4.x in r1895893 [2].
+>
+> Consider the new part of the dav_get_props() function:
+>
+> DAV_DECLARE(dav_get_props_result) dav_get_props()
+> {
+>    …
+>    element = apr_pcalloc(propdb->resource->pool, sizeof(dav_liveprop_elem));
+>    element->doc = doc;
+>    …
+>
+> This code unconditionally allocates data in resource->pool (this is the only
+> such place, other allocations performed by this function happen in propdb->p).
+>
+> The dav_get_props() is called by dav_propfind_walker().  The walker function
+> is driven by a specific provider.  Both of the two implementations known to
+> me, mod_dav_fs and mod_dav_svn, happen to use a long-living pool as the
+> resource->pool during the walk.
+>
+> I think that with this change, the PROPFIND walks are going to make O(N)
+> allocations for O(N) walked items — which is an unbounded memory usage
+> and a regression, compared to 2.4.51.
+>
+> [1] https://svn.apache.org/r1879889
+> [2] https://svn.apache.org/r1895893
+
+Can you please check if the below patch fixes your issue?
+
+Index: modules/dav/main/props.c
+===================================================================
+--- modules/dav/main/props.c	(revision 1896810)
++++ modules/dav/main/props.c	(working copy)
+@@ -805,9 +805,15 @@
+     /* we lose both the document and the element when calling (insert_prop),
+      * make these available in the pool.
+      */
+-    element = apr_pcalloc(propdb->resource->pool, sizeof(dav_liveprop_elem));
++    element = dav_get_liveprop_element(propdb->resource);
++    if (!element) {
++        element = apr_pcalloc(propdb->resource->pool, sizeof(dav_liveprop_elem));
++        apr_pool_userdata_setn(element, DAV_PROP_ELEMENT, NULL, propdb->resource->pool);
++    }
++    else {
++        memset(element, 0, sizeof(dav_liveprop_elem));
++    }
+     element->doc = doc;
+-    apr_pool_userdata_setn(element, DAV_PROP_ELEMENT, NULL, propdb->resource->pool);
+
+     /* ### NOTE: we should pass in TWO buffers -- one for keys, one for
+        the marks */
+
+
+Regards
+
+Rüdiger

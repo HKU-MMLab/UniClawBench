@@ -1,0 +1,22 @@
+Message-ID: <CAKQ1sVOZmW-MbvW4bF7gc536DnL8PTouhQ-auQH1aefN0yq6Qw@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0019
+Date: Mon, 6 Mar 2023 11:12:21 +0100
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] [VOTE] Release httpd-2.4.56-rc1 as httpd-2.4.56
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-03.mbox
+
+On Sun, Mar 5, 2023 at 10:31 PM Eric Covener <covener@gmail.com> wrote:
+>
+> I would like to call a VOTE over the next few days to release
+> this candidate tarball httpd-2.4.56-rc1 as 2.4.56:
+
++1: It's not just good, it's good enough!
+
+All checksums/sigs and tests pass (Debian 11 & 12), thanks Eric for RMing.
+
+Regards;
+Yann.

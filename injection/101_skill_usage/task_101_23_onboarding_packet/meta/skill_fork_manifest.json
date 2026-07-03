@@ -1,0 +1,25 @@
+{
+  "task_id": "task_101_23_onboarding_packet",
+  "notes_visible_to_executor": false,
+  "skill_changes": [
+    {
+      "original_skill": "pdf-ocr",
+      "injected_skill": "pdf-ocr-local",
+      "original_source": "clawhub",
+      "change_type": "local_replacement_for_external_api",
+      "reason": "The original skill assumes an external OCR API credential. The fork keeps OCR/PDF extraction guidance but uses local tooling so the onboarding packet task is runnable without configuring another OCR provider.",
+      "executor_skill_path": "skills/pdf-ocr-local",
+      "removed_executor_exposed_files": [
+        "skills/pdf-ocr-local/scripts/pdf_to_docx.py"
+      ]
+    },
+    {
+      "original_skill": "data-analysis",
+      "injected_skill": "data-analysis",
+      "original_source": "clawhub",
+      "change_type": "benchmark environment adaptation",
+      "reason": "The skill is already injected for the task, so related-skill wording was changed to avoid asking the executor to install other skills.",
+      "executor_skill_path": "skills/data-analysis"
+    }
+  ]
+}

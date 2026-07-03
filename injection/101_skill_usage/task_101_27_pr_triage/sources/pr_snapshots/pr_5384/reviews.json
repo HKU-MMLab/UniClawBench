@@ -1,0 +1,7 @@
+[
+  {
+    "reviewer": "davidism",
+    "state": "CHANGES_REQUESTED",
+    "comment": "We don't redirect official docs at unofficial third-party forks of unmaintained extensions. If flask-mongoengine itself adopts your fork, that's a different conversation."
+  }
+]

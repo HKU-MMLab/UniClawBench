@@ -1,0 +1,410 @@
+{
+  "task_id": "task_104_11_mrbeast_top5_challenge_prizes",
+  "snapshot": {
+    "utc": "2026-04-23T01:42:41Z",
+    "local": "2026-04-23T09:42:41+0800 CST",
+    "platform": "YouTube",
+    "note": "Score against this fixed snapshot. Later view drift is acceptable, but the canonical challenge-video set below is fixed for grading."
+  },
+  "channel": {
+    "name": "MrBeast",
+    "url": "https://www.youtube.com/@MrBeast/videos",
+    "collection_method": "Channel /videos tab snapshot with manual challenge-prize filtering applied to high-view videos."
+  },
+  "canonical_videos": [
+    {
+      "rank_within_task": 1,
+      "video_id": "0e3GPea1Tyg",
+      "title": "$456,000 Squid Game In Real Life!",
+      "url": "https://www.youtube.com/watch?v=0e3GPea1Tyg",
+      "view_snapshot": {
+        "views": 918764102,
+        "display": "918,764,102"
+      },
+      "challenge_rules": {
+        "canonical": "456 contestants play recreated Squid Game-style elimination rounds until one final player wins the cash prize.",
+        "allowed_synonyms": [
+          "456 players compete through Squid Game games for a single winner",
+          "last surviving contestant wins the money after multiple elimination games",
+          "real-life Squid Game with 456 contestants"
+        ]
+      },
+      "participant_count": {
+        "canonical": "456 contestants",
+        "accepted_values": [
+          "456 contestants",
+          "456 players",
+          "456 people"
+        ]
+      },
+      "key_stages": [
+        {
+          "canonical": "Red Light, Green Light",
+          "allowed_synonyms": [
+            "red light green light"
+          ]
+        },
+        {
+          "canonical": "Honeycomb / Dalgona challenge",
+          "allowed_synonyms": [
+            "honeycomb",
+            "dalgona"
+          ]
+        },
+        {
+          "canonical": "Tug of War",
+          "allowed_synonyms": [
+            "tug of war"
+          ]
+        },
+        {
+          "canonical": "Marbles",
+          "allowed_synonyms": [
+            "marbles round"
+          ]
+        },
+        {
+          "canonical": "Glass Bridge",
+          "allowed_synonyms": [
+            "glass bridge"
+          ]
+        },
+        {
+          "canonical": "Final chairs / final elimination game",
+          "allowed_synonyms": [
+            "musical chairs",
+            "final chairs",
+            "final elimination round"
+          ]
+        }
+      ],
+      "winner": {
+        "canonical": "Player 079",
+        "allowed_synonyms": [
+          "contestant 079",
+          "player 79",
+          "number 079"
+        ]
+      },
+      "prize": {
+        "canonical": "$456,000",
+        "accepted_values": [
+          "$456,000",
+          "456000 dollars",
+          "456k"
+        ]
+      },
+      "uncertainty": []
+    },
+    {
+      "rank_within_task": 2,
+      "video_id": "FM7Z-Xq8Drc",
+      "title": "Ages 1 - 100 Fight For $500,000",
+      "url": "https://www.youtube.com/watch?v=FM7Z-Xq8Drc",
+      "view_snapshot": {
+        "views": 462836229,
+        "display": "462,836,229"
+      },
+      "challenge_rules": {
+        "canonical": "100 contestants, one for each age from 1 to 100, compete through elimination rounds until one finalist wins $500,000.",
+        "allowed_synonyms": [
+          "ages 1 through 100 compete for 500k",
+          "100 contestants of different ages get eliminated round by round",
+          "one contestant from every age fights for the final prize"
+        ]
+      },
+      "participant_count": {
+        "canonical": "100 contestants aged 1 to 100",
+        "accepted_values": [
+          "100 contestants",
+          "100 players",
+          "one contestant for each age 1-100"
+        ]
+      },
+      "key_stages": [
+        {
+          "canonical": "Contestants begin in age-numbered cubes / cells",
+          "allowed_synonyms": [
+            "numbered rooms",
+            "age-labeled cells",
+            "contestants in cubes"
+          ]
+        },
+        {
+          "canonical": "A series of elimination rounds reduces the field dramatically",
+          "allowed_synonyms": [
+            "round-by-round elimination",
+            "multiple mini-games",
+            "field shrinks through several rounds"
+          ]
+        },
+        {
+          "canonical": "The video ends with a briefcase / final-decision finish",
+          "allowed_synonyms": [
+            "briefcase ending",
+            "final briefcase decision",
+            "final case challenge"
+          ]
+        }
+      ],
+      "winner": {
+        "canonical": "Joe, the 40-year-old contestant",
+        "allowed_synonyms": [
+          "the 40-year-old contestant",
+          "age 40 won",
+          "Joe",
+          "40-year-old Joe"
+        ]
+      },
+      "prize": {
+        "canonical": "$500,000",
+        "accepted_values": [
+          "$500,000",
+          "500000 dollars",
+          "500k"
+        ]
+      },
+      "uncertainty": [
+        "Do not require exact recall of every intermediate mini-game. It is enough if the answer captures the age-based elimination structure and the final briefcase-style finish."
+      ]
+    },
+    {
+      "rank_within_task": 3,
+      "video_id": "4SNThp0YiU4",
+      "title": "50 YouTubers Fight For $1,000,000",
+      "url": "https://www.youtube.com/watch?v=4SNThp0YiU4",
+      "view_snapshot": {
+        "views": 456923530,
+        "display": "456,923,530"
+      },
+      "challenge_rules": {
+        "canonical": "50 YouTubers compete through multiple elimination games until one creator wins the grand prize for their subscribers / community.",
+        "allowed_synonyms": [
+          "50 creators battle through mini-games for the final million",
+          "50 YouTubers are eliminated round by round until one remains",
+          "creator competition with elimination rounds and a million-dollar headline prize"
+        ]
+      },
+      "participant_count": {
+        "canonical": "50 YouTubers",
+        "accepted_values": [
+          "50 YouTubers",
+          "50 creators",
+          "50 contestants"
+        ]
+      },
+      "key_stages": [
+        {
+          "canonical": "Multiple elimination rounds cut the field down to a final group",
+          "allowed_synonyms": [
+            "many mini-games",
+            "round-by-round creator elimination",
+            "field narrows to a final few"
+          ]
+        },
+        {
+          "canonical": "The endgame includes negotiation / deal-making tension around the prize",
+          "allowed_synonyms": [
+            "side deal",
+            "deal discussion",
+            "buyout / split discussion"
+          ]
+        },
+        {
+          "canonical": "JaidenAnimations is the final winner",
+          "allowed_synonyms": [
+            "Jaiden won",
+            "JaidenAnimations won"
+          ]
+        }
+      ],
+      "winner": {
+        "canonical": "JaidenAnimations",
+        "allowed_synonyms": [
+          "Jaiden Animations",
+          "Jaiden",
+          "JaidenAnimations"
+        ]
+      },
+      "prize": {
+        "canonical": "Headline prize: $1,000,000. Also accept answers that correctly explain a later retained amount of $700,000 after a side deal.",
+        "accepted_values": [
+          "$1,000,000",
+          "1000000 dollars",
+          "1 million dollars",
+          "$700,000 retained after the deal",
+          "700000 dollars after the deal"
+        ]
+      },
+      "uncertainty": [
+        "Accept either the headline prize '$1,000,000' or a clearly justified '$700,000 after a side deal' answer. The response should show it understands why those numbers differ."
+      ]
+    },
+    {
+      "rank_within_task": 4,
+      "video_id": "9RhWXPcKBI8",
+      "title": "Survive 100 Days Trapped, Win $500,000",
+      "url": "https://www.youtube.com/watch?v=9RhWXPcKBI8",
+      "view_snapshot": {
+        "views": 449768777,
+        "display": "449,768,777"
+      },
+      "challenge_rules": {
+        "canonical": "Two strangers are trapped together for 100 days and must make it to the end; the finale resolves with a split-or-steal style prize decision.",
+        "allowed_synonyms": [
+          "two people must survive 100 days trapped together",
+          "Bailey and Suzie endure isolation for 100 days",
+          "endurance challenge for two contestants with a final split decision"
+        ]
+      },
+      "participant_count": {
+        "canonical": "2 participants",
+        "accepted_values": [
+          "2 participants",
+          "2 contestants",
+          "two strangers"
+        ]
+      },
+      "key_stages": [
+        {
+          "canonical": "Long isolation / endurance period inside the trapped environment",
+          "allowed_synonyms": [
+            "100-day endurance",
+            "surviving confinement",
+            "living together while trapped"
+          ]
+        },
+        {
+          "canonical": "Temptations and spending choices reduce the possible final payout",
+          "allowed_synonyms": [
+            "temptation offers",
+            "money deductions",
+            "offers that shrink the prize pot"
+          ]
+        },
+        {
+          "canonical": "The ending is a split-or-steal / split-decision finale",
+          "allowed_synonyms": [
+            "split or steal",
+            "final split decision",
+            "cooperative endgame decision"
+          ]
+        }
+      ],
+      "winner": {
+        "canonical": "Bailey and Suzie as co-winners after choosing to split",
+        "allowed_synonyms": [
+          "Bailey and Suzie both won",
+          "they split the prize",
+          "co-winners Bailey and Suzie"
+        ]
+      },
+      "prize": {
+        "canonical": "Headline challenge prize is $500,000, but the accepted resolved payout is a split of the reduced final pot: $179,949.50 each / $359,899 total.",
+        "accepted_values": [
+          "split prize",
+          "$179,949.50 each",
+          "179949.50 each",
+          "$359,899 total",
+          "359899 total",
+          "$500,000 challenge prize split at the end"
+        ]
+      },
+      "uncertainty": [
+        "Many summaries remember only the headline '$500,000'. Give full credit only if the answer clearly states that the final outcome is a split. Accept the exact reduced payout or a correct high-level 'they split the remaining prize' summary."
+      ]
+    },
+    {
+      "rank_within_task": 5,
+      "video_id": "gHzuabZUd6c",
+      "title": "Survive 100 Days In Circle, Win $500,000",
+      "url": "https://www.youtube.com/watch?v=gHzuabZUd6c",
+      "view_snapshot": {
+        "views": 407419207,
+        "display": "407,419,207"
+      },
+      "challenge_rules": {
+        "canonical": "One main challenger must stay inside a large circle for 100 days; leaving the circle loses the challenge and surviving all 100 days wins the prize.",
+        "allowed_synonyms": [
+          "stay inside the circle for 100 days to win",
+          "single endurance challenge inside a giant circle",
+          "if he leaves the circle he loses, if he lasts 100 days he wins"
+        ]
+      },
+      "participant_count": {
+        "canonical": "1 main challenger",
+        "accepted_values": [
+          "1 contestant",
+          "one main challenger",
+          "a single participant"
+        ]
+      },
+      "key_stages": [
+        {
+          "canonical": "The challenge is pure endurance inside the circle over 100 days",
+          "allowed_synonyms": [
+            "100-day endurance",
+            "remaining inside the circle",
+            "long-term circle challenge"
+          ]
+        },
+        {
+          "canonical": "Temptations, weather, or comfort trade-offs try to make the challenger leave",
+          "allowed_synonyms": [
+            "temptations",
+            "outside distractions",
+            "conditions make the challenge harder"
+          ]
+        },
+        {
+          "canonical": "The challenger completes the full 100 days and wins",
+          "allowed_synonyms": [
+            "lasts the full 100 days",
+            "survives to the end",
+            "completes the challenge"
+          ]
+        }
+      ],
+      "winner": {
+        "canonical": "Shawn Hendrix",
+        "allowed_synonyms": [
+          "Shawn",
+          "Shawn Hendrix"
+        ]
+      },
+      "prize": {
+        "canonical": "$500,000",
+        "accepted_values": [
+          "$500,000",
+          "500000 dollars",
+          "500k"
+        ]
+      },
+      "uncertainty": [
+        "Treat guest visitors and helpers as non-contestants. The graded participant count is one main challenger."
+      ]
+    }
+  ],
+  "explicit_exclusions": [
+    {
+      "video_id": "zxYjTTXc-J8",
+      "title": "Last To Leave Circle Wins $500,000",
+      "exclude_reason": "Do not accept for this task variant. Even though it is a challenge video, this benchmark fixes a different self-contained set."
+    },
+    {
+      "video_id": "1WEAJ-DFkHE",
+      "title": "$1 vs $500,000 Plane Ticket!",
+      "exclude_reason": "Prize-showcase / comparison video, not a challenge-prize competition with a resolved winner."
+    },
+    {
+      "video_id": "KrLj6nc516A",
+      "title": "$1 vs $100,000,000 Car!",
+      "exclude_reason": "Prize-showcase / comparison video, not a challenge-prize competition with a resolved winner."
+    },
+    {
+      "video_id": "48h57PspBec",
+      "title": "$1 vs $1,000,000,000 Yacht!",
+      "exclude_reason": "Prize-showcase / comparison video, not a challenge-prize competition with a resolved winner."
+    }
+  ]
+}

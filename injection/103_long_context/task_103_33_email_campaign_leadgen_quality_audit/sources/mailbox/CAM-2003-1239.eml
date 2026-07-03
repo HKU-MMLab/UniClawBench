@@ -1,0 +1,17 @@
+Message-ID: <DAV32l8aii08N8yxdZj00009342@hotmail.com>
+X-Clawbench-ID: CAM-2003-1239
+Date: Sun, 01 Sep 2002 20:43:51 -0700
+From: "Mr. FoRK" <fork_list@hotmail.com>
+To: fork@spamassassin.taint.org
+Subject: Re: Java is for kiddies
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00082.b40e4eedafc60aef72a0a0cbb63c2406
+
+>
+> 6.  Hardware is getting so fast that I'm not sure if the performance
+> difference between Java and C/C++ are relevant any more.
+
+When out-of-the-box parsing & transform of XML in java is 25x slower than
+C++ on the same hardware then it does matter.

@@ -1,0 +1,29 @@
+Message-ID: <78132fd4-3cdc-4712-a81d-22199d6d048c@kippdata.de>
+X-Clawbench-ID: ASF-2024-0491
+Date: Tue, 25 Jun 2024 12:40:18 +0200
+From: Rainer Jung <rainer.jung@kippdata.de>
+To: "dev@httpd.apache.org" <dev@httpd.apache.org>
+Subject: Backport worker listener wakeup from trunk?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-06.mbox
+
+Hi there,
+
+Yann implemented an improvement for the listener wakeup when stopping in
+the worker MPM. This was a fix for observed pytest failures, at least on
+RHEL 9.
+
+The change was not yet proposed for backport. I think it would be good
+to propose it, once 2.4.60 is shipped.
+
+The changes are:
+
+- 1916925 (event, preparatory)
+- 1916926 (worker)
+- 1916929 (comment added)
+
+Best regards,
+
+Rainer

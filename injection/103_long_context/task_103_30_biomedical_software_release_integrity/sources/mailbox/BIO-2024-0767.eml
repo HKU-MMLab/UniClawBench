@@ -1,0 +1,35 @@
+Message-ID: <Yks15xIQaie6tlwi@an3as.eu>
+X-Clawbench-ID: BIO-2024-0767
+Date: Mon, 4 Apr 2022 20:16:07 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Help Required : Add autopkgtest for atropos
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_04_msg00010.html
+
+Am Mon, Apr 04, 2022 at 11:11:30PM +0530 schrieb Nilesh Patra:
+> Usually you would want to run the autopkgtests in a tempdir rather than inplace, since you want to
+> check whether the "installed" package works or not, and not the source tree.
+> Simple solution is to copy the tests dir to a tempdir and run the tests there.
+> I did not do that for your previous package because the test structure was messy and
+> was failing on copying the test dirs.
+>
+> But even after doing so tests were failing since the package did not build the extensions for
+> all supported py versions, it rather built only the default one (_align.cpython-39-x86_64-linux-gnu.so)
+> so we needed to change the B-D from python3-dev to python3-all-dev, after which the package got green on
+> autopkgtests.
+>
+> Please take a look at my commits.
+
+In general I'd recommend to follow the packaging example of our team:
+
+    https://salsa.debian.org/med-team/community/package_template/-/tree/master/debian/tests
+
+Kind regards
+
+       Andreas.
+
+--
+http://fam-tille.de

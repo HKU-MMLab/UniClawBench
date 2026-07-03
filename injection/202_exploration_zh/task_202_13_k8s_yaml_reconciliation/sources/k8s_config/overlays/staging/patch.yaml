@@ -1,0 +1,25 @@
+# Staging overlay: two documents in one file.
+# Document 1 patches the orders-config ConfigMap.
+# Document 2 patches the Deployment replicas + image.
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: orders-config
+  namespace: shop
+data:
+  LOG_LEVEL: "warn"
+  FEATURE_CHECKOUT_V2: "true"
+  MAX_CONNECTIONS: "150"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: orders
+  namespace: shop
+spec:
+  replicas: 3
+  template:
+    spec:
+      containers:
+        - name: orders
+          image: registry.example.com/orders:1.4.0

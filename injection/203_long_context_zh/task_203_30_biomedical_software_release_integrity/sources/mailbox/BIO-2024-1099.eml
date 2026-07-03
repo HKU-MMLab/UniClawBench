@@ -1,0 +1,23 @@
+Message-ID: <Y358JMrsKtCab8zn@an3as.eu>
+X-Clawbench-ID: BIO-2024-1099
+Date: Wed, 23 Nov 2022 21:01:40 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Help needed with python-cobra and python-pyani
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_11_msg00078.html
+
+Hi,
+
+I've just updated the watch file of python-cobra and python-pyani and
+realised that both packages fail their build-time test.  If someone
+might have some spare cycles it would be great if someone could have a
+look.
+
+Kind regards
+    Andreas.
+
+--
+http://fam-tille.de

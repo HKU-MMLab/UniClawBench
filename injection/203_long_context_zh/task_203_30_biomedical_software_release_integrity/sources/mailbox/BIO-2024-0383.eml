@@ -1,0 +1,74 @@
+Message-ID: <YjhU3hMteQ4s0IJh@an3as.eu>
+X-Clawbench-ID: BIO-2024-0383
+Date: Mon, 21 Mar 2022 11:35:10 +0100
+From: Andreas Tille <tille@debian.org>
+To: "Aaron M. Ucko" <ucko@debian.org>
+Subject: Re: ncbi-igblast - compiles so much redundant general NCBI bits - wrong source tree?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_03_msg00018.html
+
+Hi Aaron,
+
+Am Thu, May 07, 2020 at 10:36:55AM -0400 schrieb Aaron M. Ucko:
+> Steffen Möller  writes:
+>
+> > This ftp://ftp.ncbi.nih.gov/blast/executables/igblast/release/1.15.0/ is
+> > where I got the source tree. It is not the case that igblast also occurs
+> > elsewhere, say together with the regular NCBI tools, and I am not aware
+> > of it.
+>
+> ncbi-blast+ and ncbi-igblast are both offshoots of the unpackaged NCBI
+> C++ Toolkit, albeit with their own release cycles.  I'd suggest building
+> the helper libraries statically here, by changing --with-dll to
+> --without-dll.  (The default is somewhere in between, producing PIC
+> static libraries, whereas you want PIE if anything.)
+
+I tried to follow your hint by
+
+diff --git a/debian/rules b/debian/rules
+index 9c8541d..b6617c2 100755
+--- a/debian/rules
++++ b/debian/rules
+@@ -10,7 +10,7 @@ override_dh_auto_configure:
+          --without-ncbi-crypt \
+          --without-vdb \
+          --without-ngs \
+-         --with-dll --without-debug --with-strip \
++         --without-dll --without-debug --with-strip \
+          --without-openmp --without-mt --without-mesa --without-glut --without-orbacus --without-sp \
+          --without-local-lbsm --without-cppkafka --without-librdkafka --without-apache-arrow --without-hiredis --without-aws-sdk --without-msgsl --without-grpc --without-protobuf --without-libxlsxwriter --without-influxdb --without-h2o --without-nghttp2 --without-cassandra \
+          --without-libssh2 --without-libuv --without-lmdb --without-mongodb --without-leveldb --without-gmock --without-gsoap --without-avro --without-cereal --without-oechem --without-zorba --without-xalan --without-xerces --without-libexslt --without-sablot --without-icu --without-sybase \
+
+
+but I get the same result as without this change:
+
+...
+Testing, please wait...
+
+ERR [127] --  [util/lmdb] lmdb_test.sh 1     (unparsable timing stats)
+ERR [127] --  [util/lmdb] lmdb_test.sh 2     (unparsable timing stats)
+ERR [127] --  [util/lmdb] lmdb_test.sh 3     (unparsable timing stats)
+ERR [127] --  [util/lmdb] lmdb_test.sh 4     (unparsable timing stats)
+ERR [127] --  [util/lmdb] lmdb_test.sh 5     (unparsable timing stats)
+ERR [127] --  [serial/datatool] datatool.sh     (unparsable timing stats)
+ERR [127] --  [serial/datatool] datatool_xml.sh     (unparsable timing stats)
+DIS --  [objtools/blast/seqdb_reader/test] scan_blastdb_mt
+DIS --  [objtools/blast/seqdb_reader/test] scan_blastdb_st
+DIS --  [objtools/blast/seqdb_reader/test] get_blastdb_metadata
+
+Succeeded : 0
+Timeout   : 0
+Failed    : 7
+Absent    : 3
+
+make[2]: *** [/build/ncbi-igblast-1.18.0/c++/src/build-system/Makefile.meta_r:46: check_r.real] Error 7
+
+
+Kind regards
+
+      Andreas.
+
+--
+http://fam-tille.de

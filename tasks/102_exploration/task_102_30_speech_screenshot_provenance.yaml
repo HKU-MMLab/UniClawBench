@@ -1,0 +1,42 @@
+task_id: task_102_30_speech_screenshot_provenance
+category: 102_exploration
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I have a screenshot grabbed from a video of someone giving a speech, but
+  there's no caption, no channel name, and no on-screen title — just the frame.
+  I want to find the original video it came from. The screenshot is here:
+
+      /tmp_workspace/clawbench/sources/screenshot.jpg
+
+  Please identify who the speaker is and what the occasion is, then find the
+  ORIGINAL, official video — not a re-upload, a reaction/clip channel, or a news
+  article about it.
+
+  Tell me:
+  - who the speaker is and what event/speech this is,
+  - the date,
+  - a link to the canonical original video (and which official channel /
+    institution published it),
+  - if available, the official transcript page.
+
+  Save your conclusion and the evidence chain (how you identified the speaker
+  and traced the canonical original) to
+  `/tmp_workspace/results/video_provenance.json`, plus notes/screenshots under
+  `/tmp_workspace/results/`.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+sources:
+  - screenshot.jpg
+
+codex:
+  max_user_followups: 2

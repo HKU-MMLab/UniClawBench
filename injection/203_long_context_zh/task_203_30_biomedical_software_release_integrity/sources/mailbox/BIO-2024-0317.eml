@@ -1,0 +1,61 @@
+Message-ID: <ZnQPUuGYE9zvg-zy@an3as.eu>
+X-Clawbench-ID: BIO-2024-0317
+Date: Thu, 20 Jun 2024 13:15:30 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Science List <debian-science@lists.debian.org>,	Debian Med Project List <debian-med@lists.debian.org>,	debian-hpc@lists.debian.org, debian-astro@lists.debian.org,	DebiChem Project <debichem-devel@lists.alioth.debian.org>,	debian-math@lists.debian.org, debian-ai@lists.debian.org
+Subject: If someone wants to join (Was: Any input for some talk about usage of Debian in HPC)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_06_msg00009.html
+
+Hi,
+
+feel free to pick the relevant data from this document
+
+   https://docs.google.com/document/d/1rcvtsD5QVmmLxSDNxm6FBrWdI0GjXSZtfJ-vkGfKPO4
+
+if you want to join.  Thanks to all who provided input which
+was really valuable for me.
+
+Kind regards
+    Andreas.
+
+
+Am Sun, May 19, 2024 at 01:12:40PM +0200 schrieb Andreas Tille:
+> Hi,
+>
+> I have an invitation to have some talk with the title
+>
+>    Debian GNU/Linux for Scientific Research
+>
+> Abstract:
+>
+>    Over the past decade, Enterprise Linux has dominated large-scale
+>    research computing infrastructure. However, recent developments have
+>    sparked increased interest in community-led alternatives. Debian
+>    GNU/Linux, a long-standing choice among researchers for supporting
+>    scientific work, is experiencing a renewed interest for High-Throughput
+>    Computing (HTC) and High-Performance Computing (HPC) applications.  This
+>    presentation will provide an overview of how Debian is being utilized to
+>    support scientific research and will include a case study showcasing the
+>    migration of HTC operations from Enterprise Linux 7 (EL7) to Debian.
+>
+> While I could talk about Debian Science and Debian Med in general it
+> would be cool to reference to some real life examples where Debian is
+> used in Science and what might be the reason to use Debian.
+>
+> I personally would like to stress the "we package what we use" aspect
+> and the "we mentor upstream to merge competence of the program with
+> packaging skills" idea.  Any input would be welcome to cover more ideas.
+>
+> Kind regards
+>     Andreas.
+>
+> --
+> https://fam-tille.de
+>
+>
+
+--
+https://fam-tille.de

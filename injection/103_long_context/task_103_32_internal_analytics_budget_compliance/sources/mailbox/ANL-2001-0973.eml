@@ -1,0 +1,59 @@
+Message-ID: <dbb87198ee9240d878285fbabf150f1e@enron.com>
+X-Clawbench-ID: ANL-2001-0973
+Date: 1999-12-22T14:18:00-03:00
+From: Anjam Ahmad <Anjam Ahmad>
+To: James New <James New>, Richard Lewis <Richard Lewis>, Barry Pearce <Barry Pearce>, Amir Ghodsian <Amir Ghodsian>, Simon Hastings <Simon Hastings>, Ali Lloyd <Ali Lloyd>
+Subject: New Volatility Curve Generator for UK Power
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Enron kaminski-v public mailbox index.json
+X-Original-Folder: kaminski-v_001/kaminski-v/Discussion threads
+
+We have established a set of power volatility curves down to the EFA/monthly
+
+level of detail that can be marked to market up to 6 years out.  Beyond this,
+
+the volatility decays to what we understand to be the long-term level for
+
+power volatility, given our understanding of the behaviour of forward prices
+
+over large time-scales.
+
+
+The swaption traders can now fit the first 5-6 years of the volatility curve
+
+to the market-observed baseload swaption implied volatilities (typically 3 to
+
+12 months duration for the underlying swap) and then be in a good position to
+
+price other swaptions (including swaptions on individual EFA slots)
+
+consistent with the curve.  There may also be an impact on the daily VaR
+
+calculation.
+
+
+An illustration of the current volatility curves is pasted below:-
+
+
+These curves will be reset as the market moves, and allow a mark-to-market
+
+approach to be followed for our volatility book.  The spreadsheet model is
+
+saved in T:\READWRTE\ELEC_UK\MODELS\VOLCURVEGENERATORNEW.XLS and also
+
+attached below for Houston staff to review.
+
+
+[Stinson - I'd be grateful if you could offer an opinion/audit to ensure that
+
+I haven't missed anything, thanks.]
+
+
+Regards,
+
+
+Anjam
+
+x35383

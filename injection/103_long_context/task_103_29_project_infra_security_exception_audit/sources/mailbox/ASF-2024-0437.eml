@@ -1,0 +1,102 @@
+Message-ID: <8116BDE3-653E-442B-AC8B-B8F3C22E14AC@eissing.org>
+X-Clawbench-ID: ASF-2024-0437
+Date: Thu, 30 Jun 2022 11:11:19 +0200
+From: Stefan Eissing <stefan@eissing.org>
+To: dev@httpd.apache.org
+Subject: Re: pytest for 2.4.x: crashes in mod_md during child shutdown
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-06.mbox
+
+Hi Rainer,
+
+that reminds me of buried bodies in the basement. Any watchdog task is in danger of missing a shutdown, as no one waits for it. Checking in the task itself does not help. A task like mod_md, communicating with another server, may check after a read(), but that may already be too late, e.g. the mpm having shutdown everything and the child is in pool destroys.
+
+Yann proposed a patch a long while ago to remedy watchdogs exiting "too late". I to not know if this still can apply in the current trunk.
+
+Kind Regards,
+Stefan
+
+
+Am 26.09.2019 um 13:10 schrieb Yann Ylavic <ylavic.dev@gmail.com>:
+
+On Thu, Sep 26, 2019 at 8:20 AM Pluem, Ruediger, Vodafone Group
+<ruediger.pluem@vodafone.com> wrote:
+>
+>> -----Ursprüngliche Nachricht-----
+>> Von: Yann Ylavic <ylavic.dev@gmail.com>
+>>
+>> Likewise, I think the MPMs themselves shouldn't use pchild for their
+>> internal allocations possibly still in use at exit().
+>> So v2 (attached) may be the thing..
+>
+> Hm, haven't checked, but aren't there any cleanups that should run and
+> currently run before exit that will not run any longer when we tie
+> stuff to pconf instead of pchild?
+> I guess pure allocations are not a problem, since the process dies,
+> but I would be a little worried about other OS resources like
+> shared memory or locks not being cleaned up properly.
+
+I think you are right, proc mutexes at least need to cleanup properly
+on child exit.
+I updated the patch (attached) to keep them on pchild.
+
+> Regarding the watchdog threads I guess we could handle this
+> like Stefan suggested by handling it similar to still running connections.
+> Give them a grace period and kill them afterwards during regular shutdown.
+> For an immediate shutdown kill them off directly.
+
+Killing threads is going to be hard to achieve, all the more so in a
+portable way. There is no apr_thread_kill() for instance,
+pthread_kill() is not suitable, I know of tgkill() on linux...
+But we shouldn't take that road IMHO, and regarding the state of
+shared/proc resources potentially used by these threads it looks like
+a can of worms..
+Asking for watchdog callbacks (including third-parties') to
+[un]gracefully stop is not something in the current "contract"
+unfortunately, we are quite weaponless here I'm afraid.
+
+So I can only think of _exit() like in attached v3, although in
+addition to not run atexit() handlers _exit() also potentially does
+not flush stdios, but all fds are closed so pending outputs should
+still finish (for whatever that means in linux/BSD docs..).
+This is still going to be racy with anything initialized on pchild
+though, like mod_ssl caches mutexes (session, stapling) :/
+
+Regards,
+Yann.
+
+
+> Am 30.06.2022 um 10:59 schrieb Rainer Jung <rainer.jung@kippdata.de>:
+>
+> Hi there,
+>
+> I ran the pytest suite on SLES 12+15 and RHEL 7+8 for 2.4.54 plus OpenSSL 1.1.1p. Ran it for event, worker and prefork and with OpenSSL 1.1.1 and 3.0 in the client.
+>
+> I observe sporadic segmentation faults on all of those platforms and for all MPMs and all OpenSSL versions in the client.
+>
+> The crashes are not especially frequent and I only have backtraces on one platform (RHEL 8). There the pattern seems to be consistently:
+>
+> - only two threads shown, also for event and worker
+>
+> - one thread is in various stacks underneath clean_child_exit()
+>
+> - the other thread is somewhere below
+>
+> md_reg_renew()
+> run_renew()
+> acme_renew()
+> ...
+>
+> - it looks like things have already been deinitialized by the thread in clean_child_exit() when mod_md gets a renew job from mod_watchdog.
+>
+> Before I investigate further: is there already an expectation, that mod_watchdog should not dispatch a job after shutdown has started and vice versa shutdown should wait for a running mod_watchdog job at least some time? Or that mod_md should not execute on such a job after shutdown has started?
+>
+> It is probably a niche experience, but I got 20 segfaults in roughly 48 pytest suite runs.
+>
+> Test for httpd using OpenSSL 3.0.4 on the server side will run later today.
+>
+> Best regards,
+>
+> Rainer

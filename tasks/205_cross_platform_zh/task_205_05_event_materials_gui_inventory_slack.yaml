@@ -1,0 +1,84 @@
+task_id: task_205_05_event_materials_gui_inventory_slack
+category: 205_cross_platform_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我把八张现场活动物料照片放在了：
+
+      /tmp_workspace/clawbench/sources/event_materials_photos/
+
+  使用真实的桌面 GUI 工作流来整理库存清单。不要使用 Slack
+  mock，也不要使用任何 benchmark 电子表格回退/mock。
+
+  1. 用文件管理器打开这个图片目录，并在
+     图片查看器中检查每一张照片。
+  2. 从每张图片读取物料类别和数量。类别必须
+     严格为以下之一：
+     badge, poster, sticker, notebook, misc。
+  3. 使用 LibreOffice Calc GUI 创建一份库存电子表格，至少包含
+     以下列：
+     filename, category, quantity, note。
+     每张图片占一行，并写一句简短的备注描述你所
+     看到的内容。
+  4. 添加物料总数以及数量最多的类别。
+  5. 将电子表格保存为：
+
+      /tmp_workspace/results/event_materials_inventory.ods
+
+     ODS 本身必须包含这八行图片记录、物料总数以及
+     数量最多的类别。CSV 或 Markdown 审计文件不能替代缺失或
+     不完整的 ODS。
+
+  6. 打开真实的 Slack Desktop 客户端，登录到一个真实可用的 workspace，并
+     在一个可审计的频道或私信中发送一条不超过 120 个字符的消息。消息
+     应说明物料总数和数量最多的
+     类别。如果当前环境没有 Slack 凭据或
+     workspace，仍然要启动真实的 Slack Desktop 客户端，保存一张
+     登录/受阻状态的截图，并在证据中说明受阻原因。在没有真实 Slack 凭据的情况下，
+     Slack 子项无法获得满分。
+     Slack 截图必须真实地显示 Slack Desktop 的频道、消息、登录
+     页面、workspace 选择页面或明确的错误页面。内容
+     为文件管理器、Calc 或其他应用的截图文件不
+     算作 Slack 证据。
+
+  7. 将 GUI 证据保存在 `/tmp_workspace/results/` 下，至少包括：
+
+      /tmp_workspace/results/file_manager_event_materials.png
+      /tmp_workspace/results/image_viewer_event_materials.png
+      /tmp_workspace/results/calc_inventory.png
+      /tmp_workspace/results/slack_evidence.png
+
+     如果发送了真实的 Slack 消息，你也可以将 Slack 导出文件、复制的
+     消息链接、审计日志或其他人工可审计的证据保存到
+     `/tmp_workspace/results/slack_evidence.*`。
+
+  8. 最后，写一份非常简短的 GUI 使用记录：
+
+      /tmp_workspace/results/gui_evidence.md
+
+     说明你使用了文件管理器、图片查看器、LibreOffice Calc GUI
+     以及真实的 Slack Desktop 客户端。如果 Slack 登录或安装受阻，
+     请说明原因并引用对应的截图文件。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - event_materials_photos/
+
+services:
+  - name: real-gui-setup
+    path: real-gui-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

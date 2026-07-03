@@ -1,0 +1,62 @@
+Message-ID: <c08233e6-21cf-0122-8829-8b924d68fdc1@kippdata.de>
+X-Clawbench-ID: ASF-2024-1018
+Date: Fri, 17 Dec 2021 16:22:11 +0100
+From: Rainer Jung <rainer.jung@kippdata.de>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.52-rc1 as httpd-2.4.52
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2021-12.mbox
+
+At least on Linux (SLES 11/12/15, RHEL 6/7/8) I run into a configure
+error for APR from the deps tarball due to that configure being created
+with autoconf 2.70 instead of 2.69 used for 2.4.51:
+
+configure: error: could not determine the string function for int64_t
+
+It comes from defining some things once in conftest.c and again in the
+included confdefs.h.
+
+The problem seems to be known and at least some changes were added to
+the 1.7.x APR branch, but we didn't have a release there for a long time
+... :(
+
+Some pointers:
+
+https://www.mail-archive.com/bug-autoconf@gnu.org/msg04695.html
+
+https://github.com/apache/apr/pull/25
+
+https://gcc.gnu.org/bugzilla/show_bug.cgi?id=97998
+
+I will check, whether combining 2.4.52 with the deps tarball from 2.4.52
+fixes this, or whether the httpd part of configure runs into the same
+problem.
+
+Regards,
+
+Rainer
+
+Am 16.12.2021 um 15:03 schrieb Stefan Eissing:
+>
+> Hi all,
+>
+> Please find below the proposed release tarball and signatures:
+>
+> https://dist.apache.org/repos/dist/dev/httpd/
+>
+> I would like to call a VOTE over the next few days to release
+> this candidate tarball httpd-2.4.52-rc1 as 2.4.52:
+> [ ] +1: It's not just good, it's good enough!
+> [ ] +0: Let's have a talk.
+> [ ] -1: There's trouble in paradise. Here's what's wrong.
+>
+> The computed digests of the tarball up for vote are:
+> sha256: 296c74a8adde1a8acd6617b21fc3d19719ff4fa39319b2bdbd898aca4d5df97f *httpd-2.4.52-rc1.tar.gz
+> sha512: b9012096d6658f7d34a3c655eac31b39ffd439c11de6f3e6e9f309d55f4186a4fb26134eb97522e416ae8ca10ed008a14e96fa01a3e3105d9e547f72e2dc3bc2 *httpd-2.4.52-rc1.tar.gz
+>
+> The SVN candidate source is found at tags/candidate-2.4.52-rc1.
+>
+> Kind Regards,
+> Stefan

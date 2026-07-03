@@ -1,0 +1,23 @@
+Message-ID: <20230713162654.flncaeegpxicssxh@office.mailbox.org>
+X-Clawbench-ID: BIO-2024-0985
+Date: Thu, 13 Jul 2023 21:56:54 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: Andreas Tille <andreas@an3as.eu>
+Subject: Re: [Help] undefined symbol: H5Oget_info  in  uncalled
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_07_msg00063.html
+
+On Thu, Jul 13, 2023 at 05:53:51PM +0200, Andreas Tille wrote:
+> Hi,
+>
+> I could need some help for uncalled, where build time test fails with
+
+Seems to be because of
+https://github.com/skovaka/UNCALLED/commit/8a8585c8b2e3bf6748c231fb679888433bd44687
+
+Fix pushed to salsa.
+
+Best,
+Nilesh

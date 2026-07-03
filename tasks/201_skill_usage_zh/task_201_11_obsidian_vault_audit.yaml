@@ -1,0 +1,62 @@
+task_id: task_201_11_obsidian_vault_audit
+category: 201_skill_usage_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  下个季度我要大量依赖我的 Obsidian vault 来做项目规划，
+  但我不太信得过它现在的状态——链接会失效、标签会漂移、
+  笔记会变成孤立笔记却没人注意到。你能用 Obsidian
+  vault 分析技能对 /tmp_workspace/clawbench/sources/vault/ 这个 vault 做一次
+  全面的健康检查吗，好让我在它真正出问题之前把屋子收拾干净？
+
+  请保存 /tmp_workspace/results/report.md，包含三个简短的小节，分别覆盖
+  笔记图谱的健康状况、失效或陈旧的引用，以及你
+  希望我去做的分类整理工作。
+
+  在笔记图谱小节里，列出你发现的每一条孤立笔记——也就是
+  vault 中没有任何其他笔记链接到它的笔记。在引用小节里
+  列出每一个目标无法解析的 wikilink——前提是你已经应用了
+  Obsidian 正常的查找规则，从而不会把仅大小写不同或相对路径的变体
+  当作失效链接。在分类小节里，把每一组
+  因大小写或连字符漂移而产生的标签变体归在一起，并附上
+  每个变体出现的文件路径。
+
+  每条要点都应当以 vault 相对路径给出受影响的文件，以及
+  足够让我据此行动的证据。
+
+  另外请保存两个交接文件：
+  - /tmp_workspace/results/fix_plan.csv，列为 issue_type、
+    affected_path、evidence、proposed_fix、priority。包含你
+    发现的每一个需要做内容或链接修复的问题——每条孤立笔记、每个
+    失效的 wikilink，以及每一组标签漂移。
+  - /tmp_workspace/results/tag_normalization.json，把每个漂移的标签
+    变体映射到你推荐的规范化标签上，每组
+    对应一个对象，并附一句简短理由。选取大多数文件看起来正在
+    迁移采用的那种形式，而不是机械的默认值。同时为每个变体
+    包含其总使用次数，好让我核对一下多数派信号是否站得住脚。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - vault/
+
+skills:
+  - obsidian
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

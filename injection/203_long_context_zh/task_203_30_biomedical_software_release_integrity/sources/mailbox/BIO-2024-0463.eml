@@ -1,0 +1,28 @@
+Message-ID: <Yhp3ZIeGWyOqAU3O@hermes.hilbert.loc>
+X-Clawbench-ID: BIO-2024-0463
+Date: Sat, 26 Feb 2022 19:54:28 +0100
+From: Karsten Hilbert <Karsten.Hilbert@gmx.net>
+To: debian-med@lists.debian.org
+Subject: Re: Acquiring Dental RVG on Linux
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_02_msg00121.html
+
+Am Sun, Feb 13, 2022 at 12:15:13AM +0530 schrieb Mayuresh:
+
+> Please do have a look at a sample header attached. If you find any fields
+> that may give any hints about the calibration or post processing that the
+> vendor software applies, please do highlight.
+
+The only fields appearing relevant are related to sharpness:
+
+> (0009, 11b0)  Private tag data  1 item(s) ----
+>    (0009, 0011) Private Creator                     LO: 'TROPHY'
+>    (0009, 11b1) Private tag data                    CS: 'SHARPNESS'
+>    (0009, 11b2) Private tag data                    US: 4
+>    (0009, 11b3) Private tag data                    SS: 3
+
+Karsten
+--
+GPG  40BE 5B0E C98E 1713 AFA6  5BC0 3BEA AC80 7D4F C89B

@@ -1,0 +1,50 @@
+Message-ID: <YW12ZdkNPSNTA8WV@an3as.eu>
+X-Clawbench-ID: BIO-2024-1449
+Date: Mon, 18 Oct 2021 15:28:05 +0200
+From: Andreas Tille <tille@debian.org>
+To: "Aaron M. Ucko" <ucko@debian.org>
+Subject: Re: sortmerna: "/usr/bin/ld: cannot find -lpthreads"
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00102.html
+
+Hi Aaron,
+
+Am Mon, Oct 18, 2021 at 07:55:18AM -0400 schrieb Aaron M. Ucko:
+>
+> Please look (much) earlier in the log for the actual error, in this case[1]
+>
+>   CMake Error at src/sortmerna/CMakeLists.txt:15 (find_package):
+>     Could not find a package configuration file provided by "RocksDB" with any
+>     of the following names:
+>       RocksDBConfig.cmake
+>       rocksdb-config.cmake
+>     Add the installation prefix of "RocksDB" to CMAKE_PREFIX_PATH or set
+>     "RocksDB_DIR" to a directory containing one of the above files.  If
+>     "RocksDB" provides a separate development package or SDK, be sure it has
+>     been installed.
+>   -- Configuring incomplete, errors occurred!
+
+Ahhh, thanks a lot for the helpful hint.  Unfortunately librocksdb-dev
+is lacking the needed cmake input files (bug filed[1] - argh, the
+packaging is neither team maintained nor in Salsa :-().  Is anybody able
+to convice cmake to set the according variables anyway so that we can
+continue without waiting for the maintainer?
+
+> In general, the -lpthreads error is harmless noise from standard CMake
+> logic, and just appears at the end of the log because debhelper's standard
+> practice is to dump the contents of CMakeError.log in the event of any
+> errors, since in other cases that file can provide crucial details.
+
+Hopefully I'll remember this time ...
+
+Thank you
+
+     Andreas.
+
+
+[1] https://bugs.debian.org/996774
+
+--
+http://fam-tille.de

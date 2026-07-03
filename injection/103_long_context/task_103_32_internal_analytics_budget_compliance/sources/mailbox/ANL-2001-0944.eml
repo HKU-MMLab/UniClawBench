@@ -1,0 +1,46 @@
+Message-ID: <942cd13fbcb4964e43eb551c77b1838b@enron.com>
+X-Clawbench-ID: ANL-2001-0944
+Date: 2001-04-27T15:24:00-03:00
+From: Tom Barkley <Tom Barkley>
+To: Vince J Kaminski <Vince J Kaminski>, Vasant Shanbhogue <Vasant Shanbhogue>, Zimin Lu <Zimin Lu>, Bob Lee <Bob Lee>
+Subject: EOL Crude Oil Data
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Enron kaminski-v public mailbox index.json
+X-Original-Folder: kaminski-v_002/kaminski-v/Discussion threads
+
+I must apologize regarding the lateness of this e-mail. I sent the Excel file
+
+with crude oil data as an e-mail attachment earlier this afternoon, and when
+
+I checked my mail just now, I discovered that it had been rejected because of
+
+its size.
+
+
+I have reduced the amount of data somewhat by using the following
+
+limitations: WTI Crude Oil swap transactions only, starting from January 1,
+
+2001, with delivery in the USA. This allowed me to get rid of some
+
+unnecessary fields. Please note that there are no calendar spread options or
+
+basis options included in the data, and, as this is from Clayton's database,
+
+it does not include failed trades or limit-order trades.
+
+
+The Excel file ("Crude Data") can be found in:
+
+
+O:\_Dropbox\Tom Barkley
+
+
+I have started looking at the data already, but it does not seem possible to
+
+plot all 24000+ points in one Excel chart. I hope this helps.
+
+
+Tom

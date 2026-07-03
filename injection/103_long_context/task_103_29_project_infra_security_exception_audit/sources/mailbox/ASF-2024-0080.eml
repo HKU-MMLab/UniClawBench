@@ -1,0 +1,22 @@
+Message-ID: <CALK=YjMGsquF_gVcyJV6ZmFLEdEsGwNZ=_Ob99JnYzZ-rEbrEA@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0080
+Date: Wed, 18 Dec 2024 15:45:43 -0500
+From: Eric Covener <covener@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: Move to git (Was: Re: httpd 2.4 -> next)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-12.mbox
+
+> The doc translation trackers are based on svn revision numbers. Or at least
+> used to be, I'm actually not entirely sure about the current state :P
+
+Ah yes, thanks! It seems to be via
+https://svn.apache.org/repos/asf/httpd/docs-build/trunk/lib/metafile.pl
+and keywords in the XML files:
+<!-- $LastChangedRevision$ -->
+
+I wonder if we can get by without baking it in either the XML or the
+translations and just provide tooling to compare the english and
+non-english commits?

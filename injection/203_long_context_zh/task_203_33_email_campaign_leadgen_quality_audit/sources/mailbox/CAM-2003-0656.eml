@@ -1,0 +1,32 @@
+Message-ID: <20021007194559.0482f194.matthias@rpmforge.net>
+X-Clawbench-ID: CAM-2003-0656
+Date: Mon, 07 Oct 2002 19:45:59 +0200
+From: Matthias Saou <matthias@rpmforge.net>
+To: rpm-zzzlist@freshrpms.net
+Subject: Re: RH 8 no DMA for DVD drive
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01278.a6b5dc8309ecd924c2ee872d35899de7
+
+Once upon a time, Jesse wrote :
+
+> When I worked as a PC repair tech for a Computer store chain, I did
+> run across quite a few DVD drives that would lock up if DMA was
+> enabled.  It's more of a chipset/drive problem than a Drive by itself.
+
+Chipset? Let me guess : VIA or SiS? :-))))
+OK, so I'll follow Red Hat's choice of leaving the DMA setting alone and
+orienting the users to some page explaining how to enable it "at your own
+risk" ;-)
+
+Matthias
+
+--
+Clean custom Red Hat Linux rpm packages : http://freshrpms.net/
+Red Hat Linux release 7.3 (Valhalla) running Linux kernel 2.4.18-10acpi
+Load : 0.03 0.09 0.10
+
+_______________________________________________
+RPM-List mailing list <RPM-List@freshrpms.net>
+http://lists.freshrpms.net/mailman/listinfo/rpm-list

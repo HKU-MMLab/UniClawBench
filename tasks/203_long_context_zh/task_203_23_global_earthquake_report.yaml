@@ -1,0 +1,32 @@
+task_id: task_203_23_global_earthquake_report
+category: 203_long_context_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我在 `/tmp_workspace/clawbench/sources/usgs_data/earthquakes_m45_past30days.geojson` 处有一份冻结的 USGS 地震数据快照。它是 "M4.5+ earthquakes, past 30 days" 这一数据源的 GeoJSON 形式：每个 feature 都有震级（`properties.mag`）、地名（`properties.place`）、时间戳（`properties.time`，自 epoch 起的毫秒数，UTC），以及 `geometry.coordinates` = `[longitude, latitude, depth_km]`（经度在前）。
+
+  请基于这份快照构建一份单一、自包含的交互式 HTML 分析报告，保存到 `/tmp_workspace/results/earthquake_report.html`。一切都基于注入的文件来构建——不要依赖你对近期地震的既有知识。
+
+  该 HTML 必须包含：
+  1. 一张使用经度/纬度的交互式震中地理地图。点位必须落在正确的位置——记住坐标是 [lon, lat]，经度在前；不要把它们调换。
+  2. 一个可用的时间控件（滑块或动画），覆盖大约 30 天的时间窗口，随着你在时间上移动，所显示的事件会明显变化。
+  3. 一张震级分布图（例如震级直方图）。
+  4. 一段基于本数据的简短文字分析：事件在何处聚集（例如环太平洋火山地震带）、窗口内最大的事件，以及震级分布的形态。
+
+  完成之前，请自己打开 HTML 并核实：地图点位处在合理的位置（不是全部位于 0,0，也没有镜像翻转），时间控件确实能筛选事件，且图表不为空白。如果有问题，请修复。将最终文件保存到 `/tmp_workspace/results/earthquake_report.html`。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+sources:
+  - usgs_data/
+
+codex:
+  max_user_followups: 2

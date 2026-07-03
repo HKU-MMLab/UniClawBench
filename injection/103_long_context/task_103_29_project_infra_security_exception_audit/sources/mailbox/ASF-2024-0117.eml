@@ -1,0 +1,25 @@
+Message-ID: <YidrfDqxu5JNdP17@redhat.com>
+X-Clawbench-ID: ASF-2024-0117
+Date: Tue, 8 Mar 2022 14:43:08 +0000
+From: Joe Orton <jorton@redhat.com>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.53-rc1 as httpd-2.4.53
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-03.mbox
+
+On Tue, Mar 08, 2022 at 02:01:42PM +0100, Ruediger Pluem wrote:
+> > I got a new "may be uninitialized" warning with with the GCC 12 shapshot
+> > used in Fedora 36 (which is still under development and can be
+> > unreliable). I think it's unreachable, if we enter here:
+> >
+> > https://github.com/apache/httpd/blob/trunk/modules/lua/lua_request.c#L244
+> >
+> > r->remaining must be > 0 and hence length > rpos is guaranteed and the
+> > loop will iterate at least once.
+>
+> I agree, but I am also fine to init len_read to -1 to avoid this. But I think this is not a blocker.
+> Thanks for bringing it to attention. r1898731.
+
+Nice, thank you.  +1 to that for 2.4.x.

@@ -1,0 +1,68 @@
+task_id: task_205_33_calendar_scheduling
+category: 205_cross_platform_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+skills:
+  - cli-anything-zoom
+
+task: |
+  我同事昨晚把下周的 6 个会议安排一股脑丢进了我们的群聊——一大段混乱的
+  文本，里面各种时间格式（"10am"、"14:00"）和诸如"半小时"或"45 minutes"
+  这样的时长，根本没法直接复制到日历里。我已经把那段原始文本保存到了
+  ~/clawbench-schedule.txt。
+
+  你能帮我把这一周理顺吗：从那段文本中提取出 6 个会议，清晰地列出每个
+  会议的标题、开始时间和时长（开始时间用 ISO 8601，时长在 JSON 中用整数
+  分钟表示），生成一个我可以导入日历的 .ics 文件，然后真正把它导入
+  gnome-calendar——这台机器已经安装了 gnome-calendar 并配有 Xvfb，用
+  DISPLAY=:99 来启动它——并对日历窗口截图，让我看看下周有多满。
+
+  会议链接方面，请创建真实的 Zoom 会议——不要占位 URL。我用的是公司的
+  Zoom 测试账号；OAuth 凭据（client_id / client_secret / 长期有效的
+  refresh_token）已经作为环境变量 ZOOM_CLIENT_ID、ZOOM_CLIENT_SECRET 和
+  ZOOM_REFRESH_TOKEN 注入。zoom CLI（来自 HKUDS 的 CLI-Anything 项目）
+  已经通过 pip 安装在 PATH 上，但认证还没配置好——~/.cli-anything-zoom/
+  目录是空的。你需要用这些环境变量自己写入 config 和 tokens（config 需要
+  client_id / client_secret / redirect_uri——redirect_uri 用
+  http://localhost:4199/callback；tokens 需要 refresh_token，并把
+  access_token 设为占位值，以便 CLI 在下次调用时刷新它）。然后运行
+  `zoom auth status` 确认它能刷新并拿到 200。认证成功后，用
+  `zoom meeting create --topic <title> --start-time <ISO8601>
+  --duration <minutes>` 为每个事件创建一个会议，取返回的 join_url（形如
+  https://us05web.zoom.us/j/<digits>）放进对应 VEVENT 的 LOCATION 字段——
+  6 个会议，6 个独立的 Zoom 会议 ID，不要复用同一个房间。最后运行
+  `zoom meeting list --json` 确认 6 个都创建成功。
+
+  另外做一个合理性检查：这 6 个会议之间是否存在时间冲突（时间窗重叠），
+  或者同一天连续的会议之间间隔不足 60 分钟？把这些单独指出来，并加到
+  parsed_events.json 的 conflict_check 字段里（hard_conflicts 数组 +
+  near_conflicts 数组）。也在报告中提及。如果完全没有冲突，就说
+  "no conflicts, no near-conflicts"。
+
+  最后写一个 scheduling_report.md，涵盖解析出的事件、ICS 文件、日历截图
+  和 6 个 Zoom 链接。把所有产物放在 /tmp_workspace/results/ 下：
+  parsed_events.json、schedule.ics、calendar_screenshot.png 和
+  scheduling_report.md。完成后告诉我解析出了多少个会议，以及 6 个 Zoom
+  会议 ID 分别是什么。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources: []
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

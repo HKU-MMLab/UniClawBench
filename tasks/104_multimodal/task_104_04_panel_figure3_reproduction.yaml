@@ -1,0 +1,45 @@
+task_id: task_104_04_panel_figure3_reproduction
+category: 104_multimodal
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  First locate `图 3` within this full image, then use Python + matplotlib to recreate `图 3`:
+  /tmp_workspace/clawbench/sources/panel_sheet.png
+
+  The image provided here is a full sheet containing 6 panels, not a separately cropped target figure.
+  Correctly locating `图 3` is part of the task. Your output should recreate only `图 3`; do not redraw the entire 6-panel sheet.
+
+  `图 3` is the panel labeled as `图 3` in the image, containing:
+  - a larger circle on the left and a smaller circle on the right
+  - a horizontal baseline passing through `C3 / O / B3`
+  - a line running diagonally up and to the right from `C3` through the construction
+  - multiple helper lines passing through the middle
+  - multiple point and circle-center labels
+
+  Specific requirements:
+  1. The geometric relationships must be correct; do not draw only a rough outline.
+  2. After each drawing pass, repeatedly compare with the original and make at least one revision.
+  3. The final goal is for the overall visual result to closely resemble `图 3` in the original,
+     including the relative positions of circles and lines, intersections, where lines cut through the construction, line layering, and label placement.
+  4. Save the runnable script to
+     /tmp_workspace/results/reproduce_prompt4_geometry_thales.py
+  5. Save the final image to
+     /tmp_workspace/results/prompt4_geometry_replicate.png
+  6. Save a short revision note to
+     /tmp_workspace/results/prompt4_geometry_notes.md
+
+references:
+  - references/eval_rule.md
+
+sources:
+  - panel_sheet.png
+
+codex:
+  max_user_followups: 2

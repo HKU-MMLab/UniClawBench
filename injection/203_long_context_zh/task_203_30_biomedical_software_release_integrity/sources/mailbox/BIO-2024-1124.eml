@@ -1,0 +1,32 @@
+Message-ID: <YwOnb/OIufLCo4Rb@an3as.eu>
+X-Clawbench-ID: BIO-2024-1124
+Date: Mon, 22 Aug 2022 17:57:35 +0200
+From: Andreas Tille <tille@debian.org>
+To: Mathieu Malaterre <malat@debian.org>
+Subject: Re: RFS -- autopkgtests for dcmtk
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_08_msg00049.html
+
+Ahhh, forget my mail - I've thought you would have uploaded to DELAYED-6
+but its Debian revision -6 which was uploaded.  Sorry for the noise, Andreas.
+
+Am Mon, Aug 22, 2022 at 05:20:48PM +0200 schrieb Andreas Tille:
+> Am Mon, Aug 22, 2022 at 05:10:36PM +0200 schrieb Mathieu Malaterre:
+> > > IHM this is fine
+> >
+> > I've uploaded -6 a minute ago.
+>
+> Thanks.  Please note:  -1 is really welcome ... -0 the option we are usually
+> using in Debian Med team (as you might remember. ;-) )
+>
+> Kind regards
+>
+>      Andreas.
+>
+> --
+> http://fam-tille.de
+
+--
+http://fam-tille.de

@@ -1,0 +1,32 @@
+Message-ID: <CAM70yxA+3GNAWMxvfNcvCaFVJs9WJD+73YBbLQMgxqt29=0+fw@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0535
+Date: Wed, 23 Aug 2023 02:02:01 -0300
+From: Emile Cormier <emile.cormier.jr@gmail.com>
+To: dev@httpd.apache.org
+Subject: Can't find definition of ap_run_child_stopping
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-08.mbox
+
+Hi Everyone,
+
+I'm studying parts of httpd to help me in the development of a TCP server
+I'm working on. In particular, I'm looking at how httpd handles socket
+errors.
+
+Anyway, I've stumbled upon an ap_run_child_stopping function call within
+the signal_threads function (
+https://github.com/apache/httpd/blob/a834e62ebf6279ce9e35193151aec809f7f58df1/server/mpm/worker/worker.c#L332C5-L332C26
+).
+
+For the life of me, I cannot seem to find the definition of
+ap_run_child_stopping. I've downloaded the source tarballs for httpd, APR,
+and APR-util, and performed a find-in-files to no avail (with no file
+extension filtering).
+
+If someone can point me to where ap_run_child_stopping is defined, it would
+be greatly appreciated.
+
+Cheers,
+Emile Cormier

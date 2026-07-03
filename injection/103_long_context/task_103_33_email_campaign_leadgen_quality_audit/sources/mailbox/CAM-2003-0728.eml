@@ -1,0 +1,37 @@
+Message-ID: <20020204233001.H2626@pihlaja.kotilo>
+X-Clawbench-ID: CAM-2003-0728
+Date: Mon, 04 Feb 2002 23:30:01 +0200
+From: Peter Peltonen <pisara@iki.fi>
+To: rpm-zzzlist@freshrpms.net
+Subject: Re: About apt, kernel updates and dist-upgrade
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01087.cbaefdc8d4dc306f627eac05955cb858
+
+On Mon, Feb 04, 2002 at 04:53:14PM +0100, Matthias Saou wrote:
+> It skips it. See the /etc/apt/apt.conf file for this.
+
+In my apt.conf reads:
+
+--<snip>--
+RPM
+{
+   // Leave list empty to disable
+   AllowedDupPkgs {"^kernel$"; "kernel-smp"; "kernel-enterprise"; };
+   HoldPkgs {"kernel-source"; "kernel-headers"; };
+}
+--</snip>--
+
+If I understand this correctly, then only kernel-source and kernel-headers
+are held from being installed, but kernel will be installed, right?
+
+Maybe I should test this on some vanilla system...
+
+--
+Peter
+
+
+_______________________________________________
+RPM-List mailing list <RPM-List@freshrpms.net>
+http://lists.freshrpms.net/mailman/listinfo/rpm-list

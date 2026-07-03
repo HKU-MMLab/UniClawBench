@@ -1,0 +1,71 @@
+task_id: task_205_03_rust_tokyo_meetup_gui_calendar
+category: 205_cross_platform_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  使用真实的公开网页整理 Rust Global: Tokyo 活动信息，
+  然后在真实的本地桌面日历 GUI 中创建一个提醒事件。
+
+  请从以下真实网页核对信息。不要使用本地模拟
+  站点或本地镜像页面：
+
+  - Rust Foundation 活动页面: https://rustfoundation.org/event/rust-global-tokyo/
+  - 活动背景页面: https://rustfoundation.org/media/rust-global-tokyo-connecting-the-rust-ecosystem-across-industries-regions/
+  - 注册页面: https://register.linuxfoundation.org/event/rust-global-tokyo-2025/register
+  - 场地/出行页面: https://events.linuxfoundation.org/open-source-summit-japan/attend/venue-travel/
+
+  日历部分请使用 GNOME Calendar 或系统中已安装的同等真实桌面
+  日历应用。不要使用 Calendar Mock，也不要
+  仅手写一个日历文件。如果日历或文本编辑器仍在
+  安装中，请稍等片刻再启动它。安装服务会在此处
+  记录状态：
+  `/tmp_workspace/clawbench/service_state/real-calendar-text-editor.json`
+
+  要求：
+  1. 从真实网页确认活动标题、日期、官方开始/结束时间、场地、注册
+     规则以及注册链接。
+  2. 在真实的日历 GUI 中创建一个事件。标题必须包含
+     `Rust Global: Tokyo`。
+  3. 将事件开始时间设为官方开始时间前 30 分钟，并
+     将结束时间设为活动页面上显示的官方结束时间。
+  4. 在日历事件描述中，清晰地包含场地、注册
+     链接以及注册/费用要求。
+  5. 保存一张证明事件已在真实日历 GUI 中创建的截图：
+     `/tmp_workspace/results/calendar_gui.png`；如果日历支持导出，
+     同时保存 `/tmp_workspace/results/rust_global_tokyo.ics`。
+     ICS 导入预览、未选择任何日历的画面，或尚未点击导入/保存的
+     对话框都不算作已创建的事件。截图应显示事件已存在于日历
+     主视图或事件详情中。
+  6. 同时将一份审计 JSON 文件写入 `/tmp_workspace/results/calendar_evidence.json`。
+     记录所用的日历应用、事件标题、开始/结束时间、时区、
+     场地、注册链接以及证据文件路径。如果事件仍
+     仅处于待导入状态，请在 JSON 中明确写入 `pending_import`，并
+     不要将其标记为已创建。
+  7. 使用图形化文本编辑器（例如 gedit）将活动摘要写入
+     `/tmp_workspace/results/rust_global_tokyo.md`。不要逐字复制页面
+     简介；用你自己的话概括要点。
+
+  最终需要的输出：
+  `/tmp_workspace/results/rust_global_tokyo.md`
+  `/tmp_workspace/results/calendar_evidence.json`
+  `/tmp_workspace/results/calendar_gui.png`
+  如果可以导出，同时保存 `/tmp_workspace/results/rust_global_tokyo.ics`
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+codex:
+  max_user_followups: 2
+services:
+  - name: real-calendar-gui-setup
+    path: real-calendar-gui-setup
+    start: bash install.sh
+    oneshot: true

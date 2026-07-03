@@ -1,0 +1,14 @@
+{
+  "id": "R01",
+  "title": "Migrant Mother, California",
+  "type": "photograph",
+  "collection_rights": "varies",
+  "item_rights": "No known restrictions on publication",
+  "image": {
+    "thumbnail": true,
+    "full_image": true,
+    "iiif": true,
+    "width": 4000
+  },
+  "dedup_group": "g_migrant_mother"
+}

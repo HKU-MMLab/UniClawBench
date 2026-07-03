@@ -1,0 +1,90 @@
+Message-ID: <CALK=YjO5AGmtrsMYtmdyBkysexEK+mBbP8vLppXei_ZN5bYVWg@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0407
+Date: Tue, 10 Jan 2023 10:21:55 -0500
+From: Eric Covener <covener@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.55-rc1 as httpd-2.4.55
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-01.mbox
+
+On Tue, Jan 10, 2023 at 10:17 AM Giovanni Bechis <giovanni@paclan.it> wrote:
+>
+> On Tue, Jan 10, 2023 at 08:40:52AM -0500, Eric Covener wrote:
+> > Hi all,
+> >
+> > Please find below the proposed release tarball and signatures:
+> >
+> > https://dist.apache.org/repos/dist/dev/httpd/
+> >
+> > I would like to call a VOTE over the next few days to release
+> > this candidate tarball httpd-2.4.55-rc1 as 2.4.55:
+> > [ ] +1: It's not just good, it's good enough!
+> > [ ] +0: Let's have a talk.
+> > [ ] -1: There's trouble in paradise. Here's what's wrong.
+> >
+> > The computed digests of the tarball up for vote are:
+> > sha256: 5276ea8bc6fff31eed5c82132ae51a0b2ee05f9e6b61a00fa877f6cadab3b638
+> > *httpd-2.4.55-rc1.tar.gz
+> > sha512: ca0d03b5e74078977378fe711ca3ed8cf63c109b7dbe73f2c43f7f30f7e522bbe46f93189a183b7675394d57fffb0c2526facd8d40508be984a7a8f64d18f8d6
+> > *httpd-2.4.55-rc1.tar.gz
+> >
+> > The SVN candidate source is found at tags/2.4.55-rc1-candidate.
+> >
+> on Fedora 37 (gcc 12.2.1 or clang 15.0.6) build fails with:
+> -------------------------------------------------------------------------------------------------------------------------------------
+> /usr/lib64/apr-1/build/libtool --silent --mode=compile gcc    -std=c89 -Werror -Wall -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -Wdeclaration-after-statement -Wpointer-arith -Wformat -Wformat-security -Wunused     -DLINUX -D_REENTRANT -D_GNU_SOURCE -DAP_DEBUG  \
+>       -I. -I [...]/httpd/httpd-2.4/modules/mappers  -prefer-non-pic -static -c ab.c && touch ab.lo
+> ab.c: In function 'ssl_proceed_handshake':
+> ab.c:769:25: error: 'EVP_PKEY_get1_EC_KEY' is deprecated: Since OpenSSL 3.0 [-Werror=deprecated-declarations]
+>   769 |                         EC_KEY *ec = EVP_PKEY_get1_EC_KEY(key);
+>       |                         ^~~~~~
+> In file included from /usr/include/openssl/x509.h:29,
+>                  from ab.c:171:
+> /usr/include/openssl/evp.h:1374:19: note: declared here
+>  1374 | struct ec_key_st *EVP_PKEY_get1_EC_KEY(EVP_PKEY *pkey);
+>       |                   ^~~~~~~~~~~~~~~~~~~~
+> ab.c:770:25: error: 'EC_KEY_get0_group' is deprecated: Since OpenSSL 3.0 [-Werror=deprecated-declarations]
+>   770 |                         int nid = EC_GROUP_get_curve_name(EC_KEY_get0_group(ec));
+>       |                         ^~~
+> In file included from /usr/include/openssl/x509.h:33:
+> /usr/include/openssl/ec.h:1034:39: note: declared here
+>  1034 | OSSL_DEPRECATEDIN_3_0 const EC_GROUP *EC_KEY_get0_group(const EC_KEY *key);
+>       |                                       ^~~~~~~~~~~~~~~~~
+> ab.c:771:25: error: 'EC_KEY_free' is deprecated: Since OpenSSL 3.0 [-Werror=deprecated-declarations]
+>   771 |                         EC_KEY_free(ec);
+>       |                         ^~~~~~~~~~~
+> /usr/include/openssl/ec.h:1003:28: note: declared here
+>  1003 | OSSL_DEPRECATEDIN_3_0 void EC_KEY_free(EC_KEY *key);
+>       |                            ^~~~~~~~~~~
+> ab.c: In function 'start_connect':
+> ab.c:1431:13: error: 'BIO_set_callback' is deprecated: Since OpenSSL 3.0 [-Werror=deprecated-declarations]
+>  1431 |             BIO_set_callback(bio, ssl_print_cb);
+>       |             ^~~~~~~~~~~~~~~~
+> In file included from /usr/include/openssl/asn1.h:27,
+>                  from /usr/include/openssl/rsa.h:21,
+>                  from ab.c:169:
+> /usr/include/openssl/bio.h:279:28: note: declared here
+>   279 | OSSL_DEPRECATEDIN_3_0 void BIO_set_callback(BIO *b, BIO_callback_fn callback);
+>       |                            ^~~~~~~~~~~~~~~~
+> cc1: all warnings being treated as errors
+> -------------------------------------------------------------------------------------------------------------------------------------
+>
+> Is this considered a blocker ?
+> This can be workarounded by building with different "-Werror" options.
+>  Giovanni
+
+I think it's a known issue in ab.c and openssl 3.0
+I think no regression, no veto -- but everyones vote (beyond veto) is
+their own. AFAIK it has been there since 3.0 toleration was added.
+
+I was going to send an email on this one, reminded by the recent
+Actions CI activity.  I think we could drop the -wno-error-deprecated
+from CI if ab.c was either fixed or maybe had something in its build
+to set this itself. That way deprecated stuff sneaking in elsewhere
+would not be supresed in maintainer mode.
+
+--
+Eric Covener
+covener@gmail.com

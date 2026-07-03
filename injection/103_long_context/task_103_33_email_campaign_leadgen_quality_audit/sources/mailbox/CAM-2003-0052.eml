@@ -1,0 +1,37 @@
+Message-ID: <AMEPKEBLDJJCCDEJHAMICEKBFDAA.ejw@cse.ucsc.edu>
+X-Clawbench-ID: CAM-2003-0052
+Date: Thu, 01 Aug 2002 10:36:32 -0700
+From: Jim Whitehead <ejw@cse.ucsc.edu>
+To: FoRK <FoRK@xent.com>
+Subject: Tablet PC
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00755.6ca22fe516192bac1845392406ff918d
+
+Last week I had a chance to see some TabletPC's demonstrated, and I was very
+impressed.
+
+* Handwriting recognition was good, as was the ability to parse text from
+diagrammatic or graphic elements.
+* TabletPC form factors, while not perfect, are quite usable (light,
+relatively thin, some can convert from laptop to tablet use by flipping the
+screen).
+* Pushbutton switching between portrait and landscape screen orientation.
+* TabletPCs I saw came with built-in WiFi.
+* Good to very good integration of handwriting into existing applications,
+and there is a very nice new note-taking application specifically for
+handwritten notes.
+* Good set of APIs for adding handwriting into existing applications (at the
+most simple, it's only a few additional lines of code)
+* Prices of the hardware will be around mid-range laptop (will vary by
+model)
+
+I believe the TabletPC will be very successful, and is a much bigger deal
+than the relative lack of press coverage would suggest. I'm definitely
+starting to think about how I could incorporate one into my routine...
+
+- Jim
+
+
+http://xent.com/mailman/listinfo/fork

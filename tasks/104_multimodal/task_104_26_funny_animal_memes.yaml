@@ -1,0 +1,62 @@
+task_id: task_104_26_funny_animal_memes
+category: 104_multimodal
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  Please open this YouTube video:
+  `https://www.youtube.com/watch?v=39ColarOWKo`
+
+  If the YouTube page is temporarily unavailable, use this backup video with the same content instead:
+  `https://www.dailymotion.com/video/x9rlvem`
+  The backup video must also let you actually play the full video. Do not rely only on a subtitle page,
+  clip list, or text summary; choose meme moments based on footage you actually viewed.
+
+  In this video, find the segment where a groundhog / woodchuck steals food and eats it in front of
+  the surveillance camera.
+  Do not guess from subtitles or summaries only; your answer must be based on the video footage you actually saw.
+
+  After finding the segment, identify every distinct food item that the groundhog eats or holds while eating
+  in that segment.
+  For each food item, in the order it appears in the video, capture 1 original key frame that best shows
+  both the food and the groundhog, then create 1 meme image from that same key frame.
+
+  Then use Python (Pillow) to add meme text to each image:
+  - Large white text with an outline
+  - Prefer placing the text at the bottom of the image; if the bottom would cover the subject, place it
+    somewhere else that does not obscure the groundhog or the food
+
+  Output requirements:
+  1. Save the original key frame for each food item to `/tmp_workspace/results/groundhog_frames/`
+  2. Save the finished meme image for each food item to `/tmp_workspace/results/memes/`
+  3. Also generate `/tmp_workspace/results/meme_index.md`, listing one row per item in video order:
+     - Index number
+     - Food name / type
+     - Video timestamp (required, in a format such as `mm:ss` or `hh:mm:ss`)
+     - Original key frame filename
+     - Finished meme filename
+     - Scene description
+     - The meme caption you wrote
+
+sources: []
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/reference_meme_index.md
+  - references/reference_meme_notes.md
+  - references/marmot_food_reference_sheet.png
+  - references/marmot_food_frames/food_01_small_yellow_green_snack.png
+  - references/marmot_food_frames/food_02_red_apple.png
+  - references/marmot_food_frames/food_03_banana.png
+  - references/marmot_food_frames/food_04_carrot.png
+  - references/marmot_food_frames/food_05_leafy_green.png
+
+codex:
+  max_user_followups: 2

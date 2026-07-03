@@ -1,0 +1,57 @@
+task_id: task_105_26_music_crossid
+category: 105_cross_platform
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+skills:
+  - netease-music-cli
+
+task: |
+  A friend hummed a few lyrics to me but I'm not sure which songs they
+  are. Can you look them up? I'd also like to cross-check the metadata
+  between NetEase Cloud Music and YouTube to see if the durations match.
+
+  The lyrics are at the end, labeled A, B, and C.
+
+  For each song, first confirm the title and original artist — no cover
+  versions. Then look it up on both NetEase Cloud Music and YouTube.
+  For NetEase, note the song_id, album, and duration. For YouTube, find
+  the official MV (prefer the artist's own channel or the record label's
+  channel, not fan re-uploads), and note the video_id, channel, duration,
+  and upload date. Finally compare the durations from both sides — within
+  5 seconds I'll consider it a match.
+
+  Use ncm-cli for NetEase lookups, and yt-dlp for YouTube search and
+  metadata.
+
+  Give me a JSON summarizing all three songs' cross-references at
+  /tmp_workspace/results/song_identification.json, plus a brief Chinese
+  report.md discussing the results — which song matched best across both
+  platforms, which has the most cover versions, that sort of observation.
+
+  Lyrics:
+
+    A: 缘分让我们相遇乱世以外,命运却要我们危难中相爱
+    B: 人潮内愈文静愈变得不受理睬
+    C: 我和我最後的倔強,握緊雙手絕對不放
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources: []
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

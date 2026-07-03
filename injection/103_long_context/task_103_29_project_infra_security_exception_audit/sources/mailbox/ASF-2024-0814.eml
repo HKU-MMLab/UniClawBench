@@ -1,0 +1,37 @@
+Message-ID: <ZsN0aspObwiQ6FrD@redhat.com>
+X-Clawbench-ID: ASF-2024-0814
+Date: Mon, 19 Aug 2024 17:35:54 +0100
+From: Joe Orton <jorton@redhat.com>
+To: dev@httpd.apache.org
+Subject: Re: linux.yml: missing libsasl2-dev dependency
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-08.mbox
+
+On Mon, Aug 19, 2024 at 01:21:32PM +0200, Ruediger Pluem wrote:
+>
+>
+> On 8/19/24 1:06 PM, Graham Leggett via dev wrote:
+> > Hi all,
+> >
+> > Tests are failing on Ubuntu because of this bug:
+> >
+> > https://bugs.launchpad.net/ubuntu/+source/openldap2/+bug/2077320
+> >
+> > libldap2-dev is missing a dependency on libsasl2-dev, and as a result the moment you try use ldap_sasl_interactive_bind the build fails.
+> >
+> > Is it possible as a workaround for someone more clued up than me to update linux.yml to manually add this dependency?
+> >
+>
+> I am not familar with this either but probably the below gives you what you need:
+
+https://svn.apache.org/viewvc?view=revision&revision=1919997
+adds direct use of <sasl.h> so apr-util 1.7.x builds fail without the
+cyrus-sasl headers installed. We could adjust every apr-util 1.7.x job
+or just install that package everywhere. Trying the latter in:
+https://github.com/apache/httpd/pull/474
+I'll do a second commit which adds LDAP testing for apr-util 1.7.x
+which is not currently covered AFAICT.
+
+Regards, Joe

@@ -1,0 +1,59 @@
+Message-ID: <CAKQ1sVOvqBQCgv3PyCq-dr2bP+ZEGsS02qWg7NKM+5ViH4049Q@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0845
+Date: Mon, 15 May 2023 12:32:28 +0200
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: Stefan Eissing <stefan@eissing.org>
+Subject: Re: PR 66499
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-05.mbox
+
+On Mon, May 15, 2023 at 9:31 AM Stefan Eissing <stefan@eissing.org> wrote:
+>
+> > Am 14.05.2023 um 21:27 schrieb Yann Ylavic <ylavic.dev@gmail.com>:
+> >
+> > On Fri, May 12, 2023 at 6:35 PM Stefan Eissing via dev
+> > <dev@httpd.apache.org> wrote:
+> >>
+> >> How is mod_http2 supposed to know which case is in play? Any ideas?
+> >
+> > It can't know I agree, but possibly mod_h2 could fill in r->parsed_uri
+> > when creating the request_rec (as if a full uri-path were received),
+> > that's what proxy_detect() needs to allow forward-proxying (in
+> > addition to ProxyRequests on). Reverse-proxying won't use
+> > r->parsed_uri.{scheme,hostname} anyway so ProxyRequests on/off would
+> > be the only criteria, which seems fine?
+>
+> Hmm, sounds hacky. I think I'd rather add a directive like `H2ForwardProxy on`.
+
+Not that much hacky I think, if an HTTP/1 request is received with
+full uri-path (which is allowed) then r->parsed_uri is fully populated
+regardless of how the request will be handled (local, cgi, proxy
+reverse/forward). That's on the handler to use it (or not) and format
+an eventual upstream request according to the configured protocol. And
+since :scheme and :authority are (always?) available in HTTP/2, it
+makes sense to me to provide them in r->parsed_uri too. It seems that
+vhost selection (and r->hostname / Host header) are based on
+:authority if available already, just like HTTP/1.
+
+>
+> > PS: Since we are discussing PRs, maybe we can talk about PR 66597 :p
+> > There it seems that in 2.4.x (i.e. !AP_HAS_RESPONSE_BUCKETS), the
+> > H2_C2_REQUEST_IN filter will insert chunk encoding (via
+> > read_and_chunk()) at AP_FTYPE_PROTOCOL, which is the same level as the
+> > HTTP_IN filter supposed to consume this chunking (IIUC).
+> > Could it be possible that H2_C2_REQUEST_IN gets added earlier than
+> > HTTP_IN such that the order of the two is backward (i.e. the chunk
+> > encoding is never consumed), which is why mod_proxy ends up
+> > reading/forwarding chunked encoding as if HTTP_IN was not called?
+>
+> Maybe, but I do not understand the difference between mod_proxy_* and mod_cgid in chunked input processing. For the latter I have test cases that work.
+
+That's mod_proxy_fcgi but yeah, it should work the same as
+mod_proxy_http for instance (common code). Let's see what the logs
+show in the PR and if the proposed patch helps..
+
+
+Regards;
+Yann.

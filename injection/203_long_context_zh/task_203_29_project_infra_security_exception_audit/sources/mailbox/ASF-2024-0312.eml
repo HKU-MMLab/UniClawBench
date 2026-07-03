@@ -1,0 +1,268 @@
+Message-ID: <CALK=YjNxt6aXKZUGmcFU2upf3__0V7TT4Yk3CwYqGq4MmqScTw@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0312
+Date: Wed, 3 Jul 2024 08:28:25 -0400
+From: Eric Covener <covener@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: (httpd-site) branch asf-site updated: Automatic Site Publish by Buildbot
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-07.mbox
+
+It is because the release process adds:
+-                        "lang": "eng",
+-                        "time": "2024-07-01",
+-                        "value": "2.4.60 released"
+
+But it does not go back to cveprocess.a.o, so you cannot continue to
+edit on cveprocess.a.o and replace the content/ here.
+
+On Wed, Jul 3, 2024 at 8:13 AM Eric Covener <covener@gmail.com> wrote:
+>
+> On Wed, Jul 3, 2024 at 8:09 AM <git-site-role@apache.org> wrote:
+> >
+> > This is an automated email from the ASF dual-hosted git repository.
+> >
+> > git-site-role pushed a commit to branch asf-site
+> > in repository https://gitbox.apache.org/repos/asf/httpd-site.git
+> >
+> >
+> > The following commit(s) were added to refs/heads/asf-site by this push:
+> >      new f918752  Automatic Site Publish by Buildbot
+> > f918752 is described below
+> >
+> > commit f91875275839c194cc80cd7e56b26e2682cd627a
+> > Author: buildbot <users@infra.apache.org>
+> > AuthorDate: Wed Jul 3 12:08:19 2024 +0000
+> >
+> >     Automatic Site Publish by Buildbot
+> > ---
+> >  output/security/json/CVE-2024-38473.json   | 184 ++++++++++++++---------------
+> >  output/security/vulnerabilities-httpd.json |  22 ++--
+> >  output/security/vulnerabilities_24.html    |   9 --
+> >  3 files changed, 101 insertions(+), 114 deletions(-)
+> >
+> > diff --git a/output/security/json/CVE-2024-38473.json b/output/security/json/CVE-2024-38473.json
+> > index 3a07f16..5b99730 100644
+> > --- a/output/security/json/CVE-2024-38473.json
+> > +++ b/output/security/json/CVE-2024-38473.json
+> > @@ -1,98 +1,96 @@
+> >  {
+> > -  "containers": {
+> > -    "cna": {
+> > -      "affected": [
+> > -        {
+> > -          "defaultStatus": "unaffected",
+> > -          "product": "Apache HTTP Server",
+> > -          "vendor": "Apache Software Foundation",
+> > -          "versions": [
+> > -            {
+> > -              "lessThanOrEqual": "2.4.59",
+> > -              "status": "affected",
+> > -              "version": "2.4.0",
+> > -              "versionType": "semver"
+> > -            }
+> > -          ]
+> > -        }
+> > -      ],
+> > -      "credits": [
+> > -        {
+> > -          "lang": "en",
+> > -          "type": "finder",
+> > -          "value": "Orange Tsai (@orange_8361) from DEVCORE"
+> > -        }
+> > -      ],
+> > -      "descriptions": [
+> > -        {
+> > -          "lang": "en",
+> > -          "supportingMedia": [
+> > -            {
+> > -              "base64": false,
+> > -              "type": "text/html",
+> > -              "value": "Encoding problem in mod_proxy in Apache HTTP Server 2.4.59 and earlier allows request URLs with incorrect encoding to be sent to backend services, potentially bypassing authentication via crafted requests.<br>Users are recommended to upgrade to version 2.4.60, which fixes this issue."
+> > -            }
+> > -          ],
+> > -          "value": "Encoding problem in mod_proxy in Apache HTTP Server 2.4.59 and earlier allows request URLs with incorrect encoding to be sent to backend services, potentially bypassing authentication via crafted requests.\nUsers are recommended to upgrade to version 2.4.60, which fixes this issue."
+> > -        }
+> > -      ],
+> > -      "metrics": [
+> > -        {
+> > -          "other": {
+> > -            "content": {
+> > -              "text": "moderate"
+> > +    "containers": {
+> > +        "cna": {
+> > +            "affected": [
+> > +                {
+> > +                    "defaultStatus": "unaffected",
+> > +                    "product": "Apache HTTP Server",
+> > +                    "vendor": "Apache Software Foundation",
+> > +                    "versions": [
+> > +                        {
+> > +                            "lessThanOrEqual": "2.4.59",
+> > +                            "status": "affected",
+> > +                            "version": "2.4.0",
+> > +                            "versionType": "semver"
+> > +                        }
+> > +                    ]
+> > +                }
+> > +            ],
+> > +            "credits": [
+> > +                {
+> > +                    "lang": "en",
+> > +                    "type": "finder",
+> > +                    "value": "Orange Tsai (@orange_8361) from DEVCORE"
+> > +                }
+> > +            ],
+> > +            "descriptions": [
+> > +                {
+> > +                    "lang": "en",
+> > +                    "supportingMedia": [
+> > +                        {
+> > +                            "base64": false,
+> > +                            "type": "text/html",
+> > +                            "value": "Encoding problem in mod_proxy in Apache HTTP Server 2.4.59 and earlier allows request URLs with incorrect encoding to be sent to backend services, potentially bypassing authentication via crafted requests. This affects configurations where mechanisms other than ProxyPass/ProxyPassMatch or RewriteRule with the 'P' flag are used to configure a request to be proxied, such as SetHandler or inadvertent proxying via&nbsp;CVE-2024-39573.&nbsp; Note that the [...]
+> > +                        }
+> > +                    ],
+> > +                    "value": "Encoding problem in mod_proxy in Apache HTTP Server 2.4.59 and earlier allows request URLs with incorrect encoding to be sent to backend services, potentially bypassing authentication via crafted requests. This affects configurations where mechanisms other than ProxyPass/ProxyPassMatch or RewriteRule with the 'P' flag are used to configure a request to be proxied, such as SetHandler or inadvertent proxying via CVE-2024-39573.  Note that these alternate mecha [...]
+> > +                }
+> > +            ],
+> > +            "metrics": [
+> > +                {
+> > +                    "other": {
+> > +                        "content": {
+> > +                            "text": "moderate"
+> > +                        },
+> > +                        "type": "Textual description of severity"
+> > +                    }
+> > +                }
+> > +            ],
+> > +            "problemTypes": [
+> > +                {
+> > +                    "descriptions": [
+> > +                        {
+> > +                            "cweId": "CWE-116",
+> > +                            "description": "CWE-116 Improper Encoding or Escaping of Output",
+> > +                            "lang": "en",
+> > +                            "type": "CWE"
+> > +                        }
+> > +                    ]
+> > +                }
+> > +            ],
+> > +            "providerMetadata": {
+> > +                "orgId": "f0158376-9dc2-43b6-827c-5f631a4d8d09"
+> >              },
+> > -            "type": "Textual description of severity"
+> > -          }
+> > -        }
+> > -      ],
+> > -      "problemTypes": [
+> > -        {
+> > -          "descriptions": [
+> > -            {
+> > -              "cweId": "CWE-116",
+> > -              "description": "CWE-116 Improper Encoding or Escaping of Output",
+> > -              "lang": "en",
+> > -              "type": "CWE"
+> > +            "references": [
+> > +                {
+> > +                    "tags": [
+> > +                        "vendor-advisory"
+> > +                    ],
+> > +                    "url": "https://httpd.apache.org/security/vulnerabilities_24.html"
+> > +                }
+> > +            ],
+> > +            "source": {
+> > +                "discovery": "UNKNOWN"
+> > +            },
+> > +            "timeline": [
+> > +                {
+> > +                    "lang": "en",
+> > +                    "time": "2024-04-01T12:00:00.000Z",
+> > +                    "value": "reported"
+> > +                }
+> > +            ],
+> > +            "title": "Apache HTTP Server proxy encoding problem",
+> > +            "x_generator": {
+> > +                "engine": "Vulnogram 0.1.0-dev"
+> >              }
+> > -          ]
+> > -        }
+> > -      ],
+> > -      "providerMetadata": {
+> > -        "orgId": "f0158376-9dc2-43b6-827c-5f631a4d8d09"
+> > -      },
+> > -      "source": {
+> > -        "discovery": "UNKNOWN"
+> > -      },
+> > -      "timeline": [
+> > -        {
+> > -          "lang": "en",
+> > -          "time": "2024-04-01T12:00:00.000Z",
+> > -          "value": "reported"
+> > -        },
+> > -        {
+> > -          "time": "2024-07-01",
+> > -          "lang": "en",
+> > -          "value": "fixed by r1918559, r1918666, r1918600, r1918625, r1918668 in 2.4.x"
+> > -        },
+> > -        {
+> > -          "lang": "eng",
+> > -          "time": "2024-07-01",
+> > -          "value": "2.4.60 released"
+> >          }
+> > -      ],
+> > -      "title": "Apache HTTP Server proxy encoding problem",
+> > -      "x_generator": {
+> > -        "engine": "Vulnogram 0.1.0-dev"
+> > -      }
+> > -    }
+> > -  },
+> > -  "cveMetadata": {
+> > -    "assignerOrgId": "f0158376-9dc2-43b6-827c-5f631a4d8d09",
+> > -    "cveId": "CVE-2024-38473",
+> > -    "serial": 1,
+> > -    "state": "PUBLISHED"
+> > -  },
+> > -  "dataType": "CVE_RECORD",
+> > -  "dataVersion": "5.0"
+> > +    },
+> > +    "cveMetadata": {
+> > +        "assignerOrgId": "f0158376-9dc2-43b6-827c-5f631a4d8d09",
+> > +        "cveId": "CVE-2024-38473",
+> > +        "serial": 1,
+> > +        "state": "PUBLISHED"
+> > +    },
+> > +    "dataType": "CVE_RECORD",
+> > +    "dataVersion": "5.0"
+> >  }
+> > diff --git a/output/security/vulnerabilities-httpd.json b/output/security/vulnerabilities-httpd.json
+> > index ddf1590..57e23bd 100644
+> > --- a/output/security/vulnerabilities-httpd.json
+> > +++ b/output/security/vulnerabilities-httpd.json
+> > @@ -31904,10 +31904,10 @@
+> >                              {
+> >                                  "base64": false,
+> >                                  "type": "text/html",
+> > -                                "value": "Encoding problem in mod_proxy in Apache HTTP Server 2.4.59 and earlier allows request URLs with incorrect encoding to be sent to backend services, potentially bypassing authentication via crafted requests.<br>Users are recommended to upgrade to version 2.4.60, which fixes this issue."
+> > +                                "value": "Encoding problem in mod_proxy in Apache HTTP Server 2.4.59 and earlier allows request URLs with incorrect encoding to be sent to backend services, potentially bypassing authentication via crafted requests. This affects configurations where mechanisms other than ProxyPass/ProxyPassMatch or RewriteRule with the 'P' flag are used to configure a request to be proxied, such as SetHandler or inadvertent proxying via&nbsp;CVE-2024-39573.&nbsp; Note that [...]
+> >                              }
+> >                          ],
+> > -                        "value": "Encoding problem in mod_proxy in Apache HTTP Server 2.4.59 and earlier allows request URLs with incorrect encoding to be sent to backend services, potentially bypassing authentication via crafted requests.\nUsers are recommended to upgrade to version 2.4.60, which fixes this issue."
+> > +                        "value": "Encoding problem in mod_proxy in Apache HTTP Server 2.4.59 and earlier allows request URLs with incorrect encoding to be sent to backend services, potentially bypassing authentication via crafted requests. This affects configurations where mechanisms other than ProxyPass/ProxyPassMatch or RewriteRule with the 'P' flag are used to configure a request to be proxied, such as SetHandler or inadvertent proxying via CVE-2024-39573.  Note that these alternate m [...]
+> >                      }
+> >                  ],
+> >                  "metrics": [
+> > @@ -31935,6 +31935,14 @@
+> >                  "providerMetadata": {
+> >                      "orgId": "f0158376-9dc2-43b6-827c-5f631a4d8d09"
+> >                  },
+> > +                "references": [
+> > +                    {
+> > +                        "tags": [
+> > +                            "vendor-advisory"
+> > +                        ],
+> > +                        "url": "https://httpd.apache.org/security/vulnerabilities_24.html"
+> > +                    }
+> > +                ],
+> >                  "source": {

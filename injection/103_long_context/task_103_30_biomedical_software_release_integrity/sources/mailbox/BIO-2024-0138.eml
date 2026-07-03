@@ -1,0 +1,21 @@
+Message-ID: <udlsewckauy.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-0138
+Date: Sat, 13 Jul 2024 21:42:29 -0400
+From: "Aaron M. Ucko" <ucko@debian.org>
+To: Pierre Gruet <pgt@debian.org>
+Subject: Re: sra-sdk: drop B-D on markdown
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_07_msg00015.html
+
+Pierre Gruet  writes:
+
+> And we are done, the package without the whole markdown B-D line has
+> reached testing, and also it is in experimental.
+
+Merci beaucoup, et bon 14 juillet !
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

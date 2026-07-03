@@ -1,0 +1,43 @@
+Message-ID: <c9bf3524-d48c-664c-8428-47c18bfe79f7@drdanz.it>
+X-Clawbench-ID: BIO-2024-1091
+Date: Wed, 1 Sep 2021 15:54:01 +0200
+From: "Daniele E. Domenichelli" <ddomenichelli@drdanz.it>
+To: Debian Science List <debian-science@lists.debian.org>
+Subject: Help with YARP packaging
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_09_msg00000.html
+
+Hello all,
+
+I'm trying to package YARP [1][2], a middleware for humanoid robots.
+
+
+I think the package is almost ready (I pushed it on salsa [3], and I'm
+already testing it on a ubuntu PPA [4]), but it is quite a large source
+package that generate a lot of binary packages, and I might have missed
+something, therefore I'd really appreciate if someone could review it.
+
+
+Unfortunately I'm having some issue with the salsa-ci (I have no issues
+when I build it locally), the builds end with this error [5].
+
+  Job's log exceeded limit of 4194304 bytes.
+  Job execution will continue but no more output will be collected.
+
+
+Did anyone experience any similar issue with other packages?
+
+
+Thanks!
+
+
+ Daniele
+
+
+[1]https://github.com/robotology/yarp/
+[2]https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=682756
+[3]https://salsa.debian.org/science-team/yarp
+[4]https://launchpad.net/~robotology/+archive/ubuntu/test/
+[5]https://salsa.debian.org/science-team/yarp/-/jobs/1858645#L1298

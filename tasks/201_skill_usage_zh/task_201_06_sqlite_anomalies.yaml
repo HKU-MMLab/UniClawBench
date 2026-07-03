@@ -1,0 +1,54 @@
+task_id: task_201_06_sqlite_anomalies
+category: 201_skill_usage_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我们即将把一份遗留的订单导出数据导入新系统，我需要
+  在导入之前知道哪里出了问题。这份 SQLite 导出文件位于
+  /tmp_workspace/clawbench/sources/orders.db.sql——请用
+  SQL toolkit 技能或 database operations 技能把它加载进来，四处查看，并标记出那些
+  会让本次导入有风险的明显数据质量问题：
+  负的单价、重复的业务标识符、表与表之间
+  断裂的关系，以及落在原始
+  2010 年 12 月导入窗口之外的行。
+
+  请把发现的问题放入 /tmp_workspace/results/anomalies.json，按
+  问题类型分组，并提供足够的细节，让我能自己把出问题的
+  行调出来。不要过度上报——只包含真正违反
+  规则的行。
+
+  另外请保存：
+  - /tmp_workspace/results/anomaly_rows.csv，每个出问题的行对应一行，
+    列为 anomaly_type、table_name、primary_key、order_number、
+    customer_id、product_id、evidence_value、lookup_sql。
+    如果某一行违反了不止一条规则，就为每条规则各写一个 CSV 行，让
+    每个原因都能看到。
+  - /tmp_workspace/results/reproduce.sql，包含你对每种问题类型
+    所使用的确切 SELECT 语句，方便我重新运行这些检查。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - orders.db.sql
+
+skills:
+  - sql-toolkit
+  - database-operations
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

@@ -1,0 +1,56 @@
+task_id: task_101_04_audio_transcript
+category: 101_skill_usage
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I missed this morning's standup and need to catch up fast. There's a
+  recording at /tmp_workspace/clawbench/sources/standup.wav — run it
+  through the speech-to-text skill to get me timestamped subtitles,
+  and save the result to /tmp_workspace/results/transcript.srt in standard
+  SRT format. Keep the original English, no translation needed.
+
+  The SRT is the main deliverable. On top of that, I'd like a short
+  bottom note inside the SRT, or a sidecar at
+  /tmp_workspace/results/standup_notes.md, where you describe in your
+  own words: how the agenda actually flowed, what was actually decided,
+  who took on which action item, what was left open or unresolved, and
+  how the room split when anyone pushed back. Just write it like you
+  were telling a teammate who missed the meeting — a few lines is plenty,
+  no need for a rigid format.
+
+  I also want a structured json record at
+  /tmp_workspace/results/standup_struct.json so I can grep it later. It
+  should have three arrays — decisions, action_items, open_questions.
+  For each decision give me what was decided and a short quote from the
+  transcript that backs it up. For each action item include the owner,
+  what they're doing, a deadline if one was mentioned or null, and a
+  quote. For each open question include the question and a quote. If
+  the meeting genuinely had nothing in one of these buckets, just leave
+  that array empty and say so in the note — please don't pad it to look
+  complete.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - standup.wav
+
+skills:
+  - openai-whisper-api
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

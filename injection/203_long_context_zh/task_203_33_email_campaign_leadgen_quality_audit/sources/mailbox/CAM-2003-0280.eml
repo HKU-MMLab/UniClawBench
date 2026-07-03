@@ -1,0 +1,32 @@
+Message-ID: <20020802093912.GA19703@skynet.ie>
+X-Clawbench-ID: CAM-2003-0280
+Date: Fri, 02 Aug 2002 10:39:12 +0100
+From: Stephen Shirley <diamond@skynet.ie>
+To: "Irish Linux User's Group (E-mail)" <ilug@linux.ie>
+Subject: Re: [ILUG] Quake 3
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00227.69a8ffbe70b32f6532a151b0854d24a6
+
+On Fri, Aug 02, 2002 at 09:41:52AM +0100, Gregory McRandal (ext 722) wrote:
+> I've installed Quake 3 onto my computer and it starts to run up ok but as
+> soon as the graphics start it bails out.  It complains that there is an
+> error in sis_drv.o,  the line before this says that it is starting Quake in
+> 24 bit depth, now from http://www.winischhofer.net/linuxsis630.shtml I
+> understand that the sis630 won't do 24 bit depth.  So is there a way to make
+> Quake start up in 16 bit depth?  I've done some "google"ing but drawn a
+> blank.....
+
+Hmm. Check to see what colour-depth your X session is running in. Try
+changing DefaultDepth to 16 (in /etc/X11/XF86Cnfig-4), and restarting X.
+Letting us know what distro you're using would help too.
+
+Steve
+--
+"Oh look, it's the Pigeon of Love."
+
+--
+Irish Linux Users' Group: ilug@linux.ie
+http://www.linux.ie/mailman/listinfo/ilug for (un)subscription information.
+List maintainer: listmaster@linux.ie

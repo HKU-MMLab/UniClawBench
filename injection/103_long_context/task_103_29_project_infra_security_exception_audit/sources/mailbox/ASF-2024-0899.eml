@@ -1,0 +1,31 @@
+Message-ID: <3438769e-135d-8bf1-e3e3-b10efbf42336@apache.org>
+X-Clawbench-ID: ASF-2024-0899
+Date: Fri, 13 Sep 2024 16:16:06 +0200
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: intent to rip out mod_tls
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-09.mbox
+
+On 9/13/24 3:26 PM, Stefan Eissing via dev wrote:
+> Folks,
+>
+> the 'rustls-ffi' project <https://github.com/rustls/rustls-ffi> keeps on changing their API and consider themselves "pre-1.0". The recent 0.14.0 release does not work with mod_tls, again. While one of their devs is willing to make another PR for fixing that on heir spare time - appreciated - this means our module is not just "experimental", but just "unstable".
+>
+> I therefore think it should not sit in our source tree, but be a separate GH project. I am willing to host that, review/merge PRs and tag v0.x releases of the module there.
+>
+> Would anyone object to that? Or, the other way around, does anyone here want to carry the torch and maintain it in our source tree?
+>
+> How about an informal vote?
+>
+> +1: yes, rip it out
+> +0: no opinion
+> -1: no, leave it here, I'll take care of it
+
++0.5 :-). Probably rip it out for now and bring it back later once rustls-ffi is more stable API wise.
+
+Regards
+
+Rüdiger

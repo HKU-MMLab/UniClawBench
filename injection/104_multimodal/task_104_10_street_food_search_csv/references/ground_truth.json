@@ -1,0 +1,209 @@
+{
+  "task_id": "task_104_10_street_food_search_csv",
+  "snapshot_utc": "2026-04-23T01:42:41Z",
+  "snapshot_local": "2026-04-23T09:42:41+0800 CST",
+  "platform": "YouTube",
+  "fixed_target_video": {
+    "video_id": "RNePQW56rDU",
+    "video_title": "I Tried $1 Street Food Around The World",
+    "creator": "Joshua Weissman"
+  },
+  "row_baseline": [
+    {
+      "country": "India",
+      "city": "Mumbai",
+      "snack": "fire paan",
+      "price_text_accepted": ["under $1", "$1-ish", "about $1"],
+      "review_keywords": ["mouth freshener", "minty", "astringent", "rose", "coconut"]
+    },
+    {
+      "country": "India",
+      "city": "Mumbai",
+      "snack": "black plum popsicle",
+      "price_text_accepted": ["70 cents", "$0.70"],
+      "review_keywords": ["delicious", "cooling", "sweet treat"]
+    },
+    {
+      "country": "India",
+      "city": "Mumbai",
+      "snack": "jalebi fafda breakfast plate",
+      "price_text_accepted": ["70 cents", "$0.70"],
+      "review_keywords": ["texture layers", "spicy", "sweet", "salty", "buttery", "incredible"]
+    },
+    {
+      "country": "India",
+      "city": "Mumbai",
+      "snack": "vada pav",
+      "price_text_accepted": ["3 for $1", "$1"],
+      "review_keywords": ["soft bread", "fluffy", "craveable", "filling", "great value"]
+    },
+    {
+      "country": "United States",
+      "city": "New York City",
+      "snack": "no true $1 American street-food winner",
+      "price_text_accepted": ["none", "not found", "could not find", "slice no longer $1"],
+      "review_keywords": ["couldn't find", "pizza is above $1", "samosa is not really American"]
+    },
+    {
+      "country": "Thailand",
+      "city": "Bangkok",
+      "snack": "fresh coconut",
+      "price_text_accepted": ["$1", "exactly a dollar"],
+      "review_keywords": ["hydrating", "sweet", "refreshing", "lots of water"]
+    },
+    {
+      "country": "Thailand",
+      "city": "Bangkok",
+      "snack": "grilled pork with sticky rice",
+      "price_text_accepted": ["$1 worth of pork", "$1 sticky rice", "$1"],
+      "review_keywords": ["fatty", "rich", "savory", "garlicky", "addictive"]
+    },
+    {
+      "country": "Thailand",
+      "city": "Bangkok",
+      "snack": "shrimp fritter / crispy shrimp disk",
+      "price_text_accepted": ["$1", "one dollar"],
+      "review_keywords": ["sweet shrimp", "light", "crispy", "one of the best bites"]
+    },
+    {
+      "country": "Thailand",
+      "city": "Bangkok",
+      "snack": "chive rice cake",
+      "price_text_accepted": ["$1", "one dollar"],
+      "review_keywords": ["crispy outside", "rice custard inside", "delicious"]
+    },
+    {
+      "country": "South Korea",
+      "city": "Seoul",
+      "snack": "twisted donut",
+      "price_text_accepted": ["under $1", "$1 range"],
+      "review_keywords": ["sugary", "crisp outside", "chewy", "rice one is better"]
+    },
+    {
+      "country": "South Korea",
+      "city": "Seoul",
+      "snack": "eomuk / odeng fish cake skewers",
+      "price_text_accepted": ["2 skewers for $1", "$1"],
+      "review_keywords": ["perfect", "sweet broth", "salty", "peppery", "favorite bite"]
+    },
+    {
+      "country": "South Korea",
+      "city": "Seoul",
+      "snack": "kimchi or red-bean croquette",
+      "price_text_accepted": ["under $1", "$1 range"],
+      "review_keywords": ["worth it", "tasty", "good value"]
+    },
+    {
+      "country": "Vietnam",
+      "city": "Hanoi",
+      "snack": "xoi / sticky rice breakfast bowl",
+      "price_text_accepted": ["about $1", "$1 even without egg"],
+      "review_keywords": ["perfectly cooked", "phenomenal", "filling breakfast"]
+    },
+    {
+      "country": "Vietnam",
+      "city": "Hanoi",
+      "snack": "fried bananas",
+      "price_text_accepted": ["60 cents", "$0.60"],
+      "review_keywords": ["fantastic", "ridiculous value"]
+    },
+    {
+      "country": "Vietnam",
+      "city": "Hanoi",
+      "snack": "banh mi with beef jerky and fermented pork",
+      "price_text_accepted": ["80 cents", "$0.80"],
+      "review_keywords": ["sweet and sour", "good value", "different from American banh mi"]
+    },
+    {
+      "country": "Malaysia",
+      "city": "Kuala Lumpur",
+      "snack": "rice-flour crepe / egg crepe",
+      "price_text_accepted": ["under $1", "$1 range"],
+      "review_keywords": ["tender", "lacy", "praised texture"]
+    },
+    {
+      "country": "Malaysia",
+      "city": "Kuala Lumpur",
+      "snack": "shaved ice dessert",
+      "price_text_accepted": ["under $1", "$1 range"],
+      "review_keywords": ["cold", "sweet", "good value"]
+    },
+    {
+      "country": "Malaysia",
+      "city": "Kuala Lumpur",
+      "snack": "stir-fried noodles",
+      "price_text_accepted": ["50 cents", "$0.50"],
+      "review_keywords": ["shockingly amazing flavor", "great value"]
+    },
+    {
+      "country": "Mexico",
+      "city": "Mexico City",
+      "snack": "churros",
+      "price_text_accepted": ["$1.20 for three", "3 for $1.20"],
+      "review_keywords": ["perfectly crisp", "custardy inside", "insane"]
+    },
+    {
+      "country": "Mexico",
+      "city": "Mexico City",
+      "snack": "stewed meat tacos / guisado tacos",
+      "price_text_accepted": ["$0.65 each", "65 cents"],
+      "review_keywords": ["filled to the brim", "classic", "great cheap taco"]
+    },
+    {
+      "country": "Mexico",
+      "city": "Mexico City",
+      "snack": "large pastry",
+      "price_text_accepted": ["$0.92", "92 cents"],
+      "review_keywords": ["tasty", "not the favorite"]
+    },
+    {
+      "country": "Mexico",
+      "city": "Mexico City",
+      "snack": "al pastor taco",
+      "price_text_accepted": ["around $1", "under $1-ish"],
+      "review_keywords": ["star of the show", "insane value", "meat mountain"]
+    },
+    {
+      "country": "China",
+      "city": "Shanghai",
+      "snack": "jianbing",
+      "price_text_accepted": ["$1.10", "$1.20", "$1.10-$1.20"],
+      "review_keywords": ["simple", "multiple textures", "great morning food"]
+    },
+    {
+      "country": "China",
+      "city": "Shanghai",
+      "snack": "scallion pancake",
+      "price_text_accepted": ["around $1", "$1 range"],
+      "review_keywords": ["crispy", "flaky", "fatty", "best scallion pancake"]
+    },
+    {
+      "country": "China",
+      "city": "Chengdu",
+      "snack": "guokui",
+      "price_text_accepted": ["around $1", "$1 range"],
+      "review_keywords": ["fresh peppercorn", "citrusy", "crispy outside", "favorite bite"]
+    },
+    {
+      "country": "China",
+      "city": "Chengdu",
+      "snack": "$2 buffet noted as exceptional value but above strict $1 threshold",
+      "price_text_accepted": ["$2", "half price for kids or elderly"],
+      "review_keywords": ["great stretch", "not really within the rule"]
+    }
+  ],
+  "grading_expectations": {
+    "minimum_rows_for_full_credit_band": 10,
+    "required_columns": [
+      "video_id",
+      "video_title",
+      "creator",
+      "country",
+      "city",
+      "snack",
+      "price_text",
+      "review"
+    ],
+    "notes": "Use Joshua Weissman's fixed target video only. Full credit requires single-video grounding plus recovery of a substantial subset of these canonical food rows."
+  }
+}

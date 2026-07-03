@@ -1,0 +1,33 @@
+Message-ID: <YhHs4l+QnNx7olWR@an3as.eu>
+X-Clawbench-ID: BIO-2024-0133
+Date: Sun, 20 Feb 2022 08:25:22 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Cmake help needed for ncbi-vdb
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_02_msg00086.html
+
+Hi,
+
+I think I need some cmake help for ncbi-vdb.  In former versions
+ncbi-vdb came with a hand-crafted build system.  Now cmake is provided
+alternatively which is a great progress IMHO since that hand-crafted
+system always created issues for every new version.  I started using
+cmake but its not finished yet[1].
+
+The point is that the linker flags to libmbedtls-dev, zlib and others
+need to be set.  Excluding references to code copies was easy[2] ... but
+now we need the according -l options and my cmake knowledge is to weak.
+
+Any help would be welcome
+
+      Andreas.
+
+
+[1] https://salsa.debian.org/med-team/ncbi-vdb/-/jobs/2489631
+[2] https://salsa.debian.org/med-team/ncbi-vdb/-/blob/master/debian/patches/fix_cmake.patch#L30
+
+--
+http://fam-tille.de

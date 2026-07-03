@@ -1,0 +1,56 @@
+task_id: task_203_20_transformer_blog
+category: 203_long_context_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我需要制作一篇关于 Large Transformer Model Inference Optimization 主题的论文阅读 HTML 博客。
+  请围绕以下主线来组织：
+  1. The inference bottleneck
+    - 解释大型 Transformer 推理的主要瓶颈：GPU 显存、带宽、attention 成本，以及低延迟服务。
+
+  2. Distillation
+    - 讨论用更小的学生模型去模仿更大的教师模型，从而降低推理成本。
+
+  3. Quantization
+    - 讨论低比特权重/激活如何降低显存和计算。
+    - 重点关注离群值（outlier）问题、LLM.int8、SmoothQuant，以及量化粒度。
+
+  4. Structured sparsity and pruning
+    - 讨论剪枝和 N:M 稀疏如何跳过部分计算。
+    - 强调结构化稀疏更易于用硬件加速。
+
+  5. Mixture-of-Experts
+    - 解释 MoE 如何只激活部分专家，以更低的计算获得更大的模型容量。
+
+  6. Architectural optimization
+    - 讨论 sparse attention、递归（recurrence）、节省显存的设计以及自适应计算等架构层面的优化。
+
+  7. Practical synthesis
+    - 总结实际部署通常需要把量化、kernels/batching、蒸馏、剪枝和架构优化结合起来。
+
+  候选论文都在 `/tmp_workspace/clawbench/sources/papers/` 中，我把文件重命名成了没有语义的数字，所以不要从文件名猜测。阅读这些论文，并为每一节（包括开篇的问题引言）选出应当讨论的论文。
+
+  让博客图文并茂。你可以从论文中截取图/表，但截图必须完整、清晰、与内容相符，且细节足够清楚到能读出文字和细节。公式可以写成截图或 LaTeX。使用已准备好的 `/tmp_workspace/clawbench/sources/assets/`，其中包含页面模板所需的 CSS、JavaScript 和 MathJax 公式渲染依赖。
+
+  将最终博客保存到 `/tmp_workspace/results/transformer_blog/`；它应包含 HTML 文件和对应的 assets。把 HTML 引用的图片放到 `/tmp_workspace/clawbench/results/assets/images`，并为博客中的每一张图注明来源论文。
+
+  同时保存 `/tmp_workspace/results/selection_note.md`，说明每一节为什么选择了这些论文。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/transformer_blog/
+  - references/paper_mapping.json
+sources:
+  - papers/
+  - assets/
+
+codex:
+  max_user_followups: 2

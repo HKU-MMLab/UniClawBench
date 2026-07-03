@@ -1,0 +1,43 @@
+Message-ID: <Ye0J1vQoA73rNczW@an3as.eu>
+X-Clawbench-ID: BIO-2024-0868
+Date: Sun, 23 Jan 2022 08:55:02 +0100
+From: Andreas Tille <tille@debian.org>
+To: "Aaron M. Ucko" <ucko@debian.org>
+Subject: Re: [Help] librostlab-blast fails its autopkgtest with C++ issue
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_01_msg00072.html
+
+Hi Aaron,
+
+Am Sun, Jan 23, 2022 at 12:10:05AM -0500 schrieb Aaron M. Ucko:
+> Andreas Tille  writes:
+>
+> > Any idea how to fix
+> [...]
+> > [1] https://salsa.debian.org/med-team/librostlab-blast/-/jobs/2383360
+>
+> Please try the attached patch, which eliminates the need to force an old
+> C++ standard version (which this package can't expect callers to use) in
+> debian/rules.
+
+Thanks a lot for the patch which was definitely helpful to overcome the
+said problem.  However, it is not solved yet[1]:
+
+/usr/bin/ld: /tmp/ccv6wJk4.o: in function `main':
+parseblast.cpp:(.text+0x7c): undefined reference to `rostlab::blast::parser_driver::parse(bool, bool)'
+/usr/bin/ld: /tmp/ccv6wJk4.o: in function `rostlab::blast::parser_driver::parser_driver(_IO_FILE*, std::__cxx11::basic_string, std::allocator > const&)':
+parseblast.cpp:(.text._ZN7rostlab5blast13parser_driverC2EP8_IO_FILERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE[_ZN7rostlab5blast13parser_driverC5EP8_IO_FILERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE]+0x70): undefined reference to `rostlab::blast::parser_driver::_scan_init()'
+/usr/bin/ld: /tmp/ccv6wJk4.o: in function `rostlab::blast::parser_driver::~parser_driver()':
+parseblast.cpp:(.text._ZN7rostlab5blast13parser_driverD2Ev[_ZN7rostlab5blast13parser_driverD5Ev]+0x22): undefined reference to `rostlab::blast::parser_driver::_scan_destroy()'
+collect2: error: ld returned 1 exit status
+
+Kind regards
+
+       Andreas.
+
+[1] https://salsa.debian.org/med-team/librostlab-blast/-/jobs/2391994
+
+--
+http://fam-tille.de

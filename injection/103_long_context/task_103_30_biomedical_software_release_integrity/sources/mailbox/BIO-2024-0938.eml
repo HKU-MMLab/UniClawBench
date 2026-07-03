@@ -1,0 +1,23 @@
+Message-ID: <udl7dd4qgb1.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-0938
+Date: Fri, 19 Nov 2021 11:08:18 -0500
+From: ucko@debian.org (Aaron M. Ucko)
+To: Andreas Tille <andreas@an3as.eu>
+Subject: Re: ncbi-vdb does not build on i386 thus migration is blocked
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_11_msg00114.html
+
+Andreas Tille  writes:
+
+> I hope you can find some spare minutes to check the i386 build[1] since
+> migration is blocked.  I guess we should also extend the list of
+> architectures to some arm* variants - but I'll leave this to your
+> decision.
+
+Yes, that's all still on my to-do list.
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

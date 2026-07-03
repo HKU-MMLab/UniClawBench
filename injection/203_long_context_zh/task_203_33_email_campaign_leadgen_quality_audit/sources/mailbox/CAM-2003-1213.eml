@@ -1,0 +1,44 @@
+Message-ID: <20020820010002.6b55dcac.matthias@egwn.net>
+X-Clawbench-ID: CAM-2003-1213
+Date: Tue, 20 Aug 2002 01:00:02 +0200
+From: Matthias Saou <matthias@egwn.net>
+To: rpm-zzzlist@freshrpms.net
+Subject: Re: when building a rpm i386-redhat-linux- is appended to man page
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01263.3bb6affa5c6c572955280dd0d5ae8ae7
+
+Once upon a time, Harig, wrote :
+
+> Actually, I was hoping that you could answer the question "how can we
+> override an existing switch?"  For example, %configure uses the command-
+> line switch '--prefix'.  How can we override that value?
+>
+>   %configure ???
+
+Quite honestly, I thought that the last occurrence was the one that
+counted. I'm almost sure I've already done something like :
+%configure --bindir=%{_sbindir}
+or even
+%configure --sysconfdir=%{_sysconfdir}/%{name}
+
+Are you sure that it was the first for you? Maybe you're forgetting to also
+override it in %makeinstall like follows :
+%makeinstall bindir=%{buildroot}%{_sbindir}
+or even
+%makeinstall sysconfdir=%{buildroot}%{_sysconfdir}/%{name}
+
+Is that it?
+
+Matthias
+
+--
+Matthias Saou                                World Trade Center
+-------------                                Edificio Norte 4 Planta
+System and Network Engineer                  08039 Barcelona, Spain
+Electronic Group Interactive                 Phone : +34 936 00 23 23
+
+_______________________________________________
+RPM-List mailing list <RPM-List@freshrpms.net>
+http://lists.freshrpms.net/mailman/listinfo/rpm-list

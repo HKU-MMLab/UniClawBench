@@ -1,0 +1,106 @@
+Message-ID: <ZWsuke8Hof6cP_0i@fusion>
+X-Clawbench-ID: BIO-2024-0511
+Date: Sat, 2 Dec 2023 14:18:09 +0100
+From: Étienne Mollier <emollier@debian.org>
+To: debian-med@lists.debian.org
+Subject: [Advent bug squashing] eegdev_0.2-8_source.changes ACCEPTED into unstable
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_12_msg00002.html
+
+Hi, technically this upload doesn't squash a debbugs entry, but
+I thought it might count anyway.  I happen to have uploaded an
+eegdev version with udev rules migrated to /usr/lib to
+experimental during Cambridge MiniDebCamp, in coordination with
+Helmut Grohne's work on the usr merge:
+
+  * Team upload.
+  * d/*{postinst,postrm,preinst}: protect udev rule.
+    /lib/udev/rules.d/60-eegdev-plugins-free.rules may disappear when
+    dh_installudev will move files to /usr/lib in certain multi-arch
+    setups, so this files needs protection using diversion before this
+    occurs.  Upload to experimental so that dumat can catch regressions in
+    the upcoming three days.
+    Thanks to Helmut Grohne
+  * d/rules: build --with movetousr.
+    This moves the /lib udev rule to /usr/lib.  This can be safely removed
+    once dh_installudev implements this change itself.
+  * d/eegdev-plugins-free.lintian-overrides: new.
+    Override the unrecognized diversion on the udev rule.
+
+ -- Étienne Mollier   Fri, 24 Nov 2023 16:34:30 +0100
+
+Today's upload migrated the package to unstable.  Some may have
+noticed yesterday's message from Helmut about pausing usr-merge
+moves (I didn't notice until after I uploaded the few packages
+affected), but this category of migration turned out to not be
+on hold, see the point three of Helmut's exceptions:
+
+> Exceptions:
+>  * With more uploads, more systemd units will move. While such moves may
+>    trigger the new problem, I expect that to be rare.
+>  * Continue fixing RC bugs, in particular those that are due to
+>    dh_installsystemd or systemd.pc having moved to /usr.
+>  * Continue applying DEP17P7 mitigations for udev rules. Patches for
+>    these have been sent by Christian Hofstaedler and a few people from
+>    the Cambridge miniconf. These are unrelated.
+
+Have a nice day,  :)
+Étienne.
+
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Format: 1.8
+Date: Sat, 02 Dec 2023 11:36:35 +0100
+Source: eegdev
+Architecture: source
+Version: 0.2-8
+Distribution: unstable
+Urgency: medium
+Maintainer: Debian Med Packaging Team
+Changed-By: Étienne Mollier
+Changes:
+ eegdev (0.2-8) unstable; urgency=medium
+ .
+   * Migrate eegdev from experimental to unstable, since dumat didn't croak on
+     the migration of udev rules from lib to usr/lib, thanks to the protection
+     brought by the temporary diversion at installation time.
+Checksums-Sha1:
+ bcd487a019aab9f413af7a760530284941a18651 2161 eegdev_0.2-8.dsc
+ a7c4195524d4cd3bfa0d565b8de8536b0f121587 11048 eegdev_0.2-8.debian.tar.xz
+ 5ad1ff13e250fffae9a432a063f62cd29621b8f6 7431 eegdev_0.2-8_amd64.buildinfo
+Checksums-Sha256:
+ bac9239879f9d9b50619aa7e1011dcc45fbdd19702daffec8fe72951a3093e6d 2161 eegdev_0.2-8.dsc
+ 35e5a4e33d265ce9c3d2db1cc7f0cf70555a021467a125f7bbb80c1638472fc8 11048 eegdev_0.2-8.debian.tar.xz
+ fc51af36ca864ccc550b06098f406c1dae2321f6e8b441a749e3d508ee92e58f 7431 eegdev_0.2-8_amd64.buildinfo
+Files:
+ fae305ff25e962500a75f2b73cf849e3 2161 libs optional eegdev_0.2-8.dsc
+ e31221a07e5790f8b92b6db5d9be1038 11048 libs optional eegdev_0.2-8.debian.tar.xz
+ 37323cb8fc655f1db0f50fe4bdec10de 7431 libs optional eegdev_0.2-8_amd64.buildinfo
+
+-----BEGIN PGP SIGNATURE-----
+
+iQJIBAEBCgAyFiEEj5GyJ8fW8rGUjII2eTz2fo8NEdoFAmVrCwIUHGVtb2xsaWVy
+QGRlYmlhbi5vcmcACgkQeTz2fo8NEdqvFQ//auDBVucEudpZytZYWP+7r25kKnIQ
+SiyJbLb7Ujlm5ztM4oT/AAkY9sQyaFnD4sz7vVOXKEojJoByUWNmxkVh0QWlVhju
+W+BsuqBq8GSFIerdtVav0osCxFD+kcakBiAIevae20c0caknieXKUSV/GhYErQ5K
+LoH35x3N3H4psXhXbIDIfzS0znpzgz/FiIgafuLpwtiibKf/R4quozcNKIjwZmfD
+ChaxXYSlM2pQhRq7YMldYnPugXZ0plBoj6+xhhh6xqe/891b2LCGPuMYqVTkOdYQ
+9bnfLE8yJ2vCIlGAKg8iiVuGpNfOm8yaKUYCDd5z+Ughk+RCsjLmPFybwTvHcQIl
+DIdh5FupkmP/wt5BFIWV8IiwpNgURBvqmvXLueR550NlHEPj55G2/4k1BPNu3kHX
+pA3M6T4nYgVDIgSMJ6STO6SjxJexPa4AzDfNMvo2mStpPJL1rWB+1yvma4d+x7Tq
+zgkCKmVXQauqliRbbNZiwyTUYMSeDADI9xU4QOAfdQ2rxc7txerHdwbvxNLqJEw6
+m0IWBW3c7O5TtdsItfKZnoHfeiEgKEZqBLmqczZG+OTxC5SCWGW+gAKJk+KR5eaO
+EIbFEpNa17NbCjuHCmz3N6SLIR0TQ4XhpYqLIU4X2AtOyVdMDRGKoDYkFTWijAa/
+UiLZcU9MZaARhmo=
+=93OA
+-----END PGP SIGNATURE-----
+
+--
+  .''`.  Étienne Mollier
+ : :' :  gpg: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/1, please excuse my verbosity
+   `-    on air: Dream Theater - Under A Glass Moon

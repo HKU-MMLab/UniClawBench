@@ -1,0 +1,41 @@
+Message-ID: <200208211844.TAA16226@lugh.tuatha.org>
+X-Clawbench-ID: CAM-2003-0149
+Date: Wed, 21 Aug 2002 19:44:28 +0100
+From: elvin@eircom.net
+To: webdev@linux.ie
+Subject: [Webdev] PHP/MySQL Virtual Hosting Recommendations?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00521.1142a34d4fa26153d40064954ca10da9
+
+Hi,
+
+I am looking at the options for a UNIX/Linux Virtual Server capable of holding multiple domains - preferably not tooo expensive as I am not a business. I wish to build a few PHP/MySQL sites and host them...
+
+A rough list of features I am after are
+
+Circa 50MB-100MB web space for now
+POP email accounts
+Account Control Panel
+Perl
+PHP
+MySQL
+FTP and Telnet Access 24/7
+Own CGI-BIN
+Webalizer Graphical Stats
+Server Side Includes
+Good Reachable Technical Support
+
+I have seen a great looking 300MB solution in the region of 600Euro p.a. which at the moment is a bit over my financial head in one payment - I haven't completed any sites yet, but have a few potential jobs coming up.
+
+Any tips/pointers much appreciated!
+
+Regards,
+Elvin
+
+
+_______________________________________________
+Webdev mailing list
+Webdev@linux.ie
+http://www.linux.ie/mailman/listinfo/webdev

@@ -1,0 +1,56 @@
+Message-ID: <YhTLM7Q1DZcsw2kZ@an3as.eu>
+X-Clawbench-ID: BIO-2024-1057
+Date: Tue, 22 Feb 2022 12:38:27 +0100
+From: Andreas Tille <tille@debian.org>
+To: Andrius Merkys <merkys@debian.org>
+Subject: Re: sockjs-client is in Debian but needs update (Was: [covid-19] shiny-server (Was: dependencies Re: ITP: streamlit))
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2022_02_msg00048.html
+
+Hi Andrius,
+
+Am Tue, Feb 22, 2022 at 01:27:57PM +0200 schrieb Andrius Merkys:
+> On 2022-02-22 13:20, Andreas Tille wrote:
+> > Unfortunately we have a new problem as
+> > autopkgtest shows[4]
+> >
+> >    sockjs-client : Depends: node-json3 (>= 3.3.2) but it is not installable
+> >
+> > while we had this package before it was removed[5] from Debian.
+> >
+> > I need to admit that I have no idea how to sensibly proceed from here
+> > and would love if someone from Debian Javascript Maintainers would take
+> > over from here.
+>
+> Citing [6]:
+>
+>   JSON 3 is **deprecated** and **no longer maintained**. Please don't
+>   use it in new projects, and migrate existing projects to use the
+>   native `JSON.parse` and `JSON.stringify` instead.
+>
+> My sense is that sockjs-client needs node-json3 usage replaced with
+> calls to native JSON module (by upstream or by patch).
+
+I'd fully agree here but I decided to let the needed action be taken
+by someone who is comfortable with JS universe (which I'm not).
+
+Kind regards
+
+      Andreas.
+
+> > [1] https://tracker.debian.org/pkg/sockjs-client
+> > [2] https://salsa.debian.org/js-team/node-sockjs-client
+> > [3] https://bugs.debian.org/979958
+> > [4] https://salsa.debian.org/js-team/node-sockjs-client/-/jobs/2499248
+> > [5] https://bugs.debian.org/931653
+>
+> [6] https://www.npmjs.com/package/json3
+>
+> Best,
+> Andrius
+>
+
+--
+http://fam-tille.de

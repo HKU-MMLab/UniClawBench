@@ -1,0 +1,39 @@
+Message-ID: <3be4e6f9739da56b924461726cdd3a23@enron.com>
+X-Clawbench-ID: ANL-2001-1335
+Date: 2001-06-02T04:00:17-03:00
+From: Exchange System Administrator <Exchange System Administrator>
+To: Kaminski <Kaminski>, Vince J </o=ENRON/ou=NA/cn=Recipients/cn=VKAMINS>
+Subject: WARNING:  Your mailbox is approaching the size limit
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Enron kaminski-v public mailbox index.json
+X-Original-Folder: kaminski-v_002/kaminski-v/Deleted Items
+
+^This warning is sent automatically to inform you that your mailbox is approaching the maximum size limit.
+
+Your mailbox size is currently 80279 KB.
+
+
+Mailbox size limits:
+
+
+        When your mailbox reaches 75000 KB you will receive this message.To check the size of your mailbox:
+
+
+  Right-click the mailbox (Outlook Today),
+
+  Select Properties and click the Folder Size button.
+
+  This method can be used on individual folders as well.
+
+
+To make more space available, delete any items that are no longer needed such as Sent Items and Journal entries.
+
+
+You must empty the Deleted Items folder after deleting items or the space will not be freed.
+
+
+To turn Journaling off,
+
+ click Tools

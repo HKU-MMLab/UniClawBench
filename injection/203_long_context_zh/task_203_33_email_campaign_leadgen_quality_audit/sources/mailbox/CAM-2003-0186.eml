@@ -1,0 +1,127 @@
+Message-ID: <CBB1BBDAD04ED6119CAE009027B8C58301DD7826@bryxmedc05.bray.ie.dell.com>
+X-Clawbench-ID: CAM-2003-0186
+Date: Wed, 04 Dec 2002 04:05:38 -0600
+From: Conor_D_Wynne@Dell.com
+To: ilug@linux.ie
+Subject: RE: [ILUG] NVIDIA and Debian Woody
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01400.f897f0931e461e7b2e964d28e927c35e
+
+Hi there,
+
+Now this is probably of no use to you whatsoever, but...
+
+Not a deb-head, but I also have a problem regards NVidia. I've two machines,
+pretty much the same hardware.
+athlon 1700XP's, both have NVidia cards, one Gforce3 Ti and a Gforce2MX,
+both use the same driver module.
+
+Both have same kernel version albeit it compiled for their particular
+hardware.
+
+One works perfectly, the other fails to load. When I check with lsmod, I can
+see the NVdriver is loaded, but not used ;--(
+Thus when I startx, it bombs out.
+
+IU still have X with the default nv driver and crappy accelleration -->
+650fps with glxgears [should be over 2000fps]
+Its not a hardware issue with the cards as I swapped them over and get the
+same symptoms.
+
+I reckon my mobo is cack, I've tried swapping slots around, reserving
+resources etc all to no avail.
+Should there be an interrupt for the nv card? I haven't checked the other
+box yet.
+
+Regards,
+CW
+
+-------------------
+On Tue, 03 Dec 2002, Mark Page wrote:
+
+> Was running Debian Woody perfectly well until I installed the NVIDIA 3D
+> tar packages.
+
+You probably stil are ;)
+
+> Both the kernel and GLX packages installed with no problem and I then
+> amended the XFree config file appropriately (according to all
+> instructions). Neither GDM nor KDM will now fire up returning me to the
+> console screen.
+
+ie X is broken.
+
+> Running startx I isolated the problem to a failure to load the nvidia
+> kernel module - By cd'ing to the kernel module file and re-running 'make
+> install' I can get a workable xserver
+
+so you fixed X.
+
+> minus the preferences you would get from either gdm or kdm and to be
+> honest the GUI is horrible.
+
+If X is working and you get a brief Nvidia splash screen then this is
+likely nothing to do with the driver itself.  You should be able to use kdm
+or gdm with the nvidia Xserver.  What exactly did you change in your
+XF86Config?  Will gdm/kdm not start?
+
+> I followed the nvidia suggestion of 'make install
+> SYSINCLUDE=/path/to/kernel/headers' and whilst this appears to install
+> ok upon reboot I am back to the same console login and having to go
+> through the same reinstall of the kernel module. I have tried rewriting
+> the XF config file to it's original state with no success.
+
+Well, this sounds like the NVIDIA kernel module isn't loading on boot.
+When it *is* working do a quick
+
+/sbin/lsmod
+
+and look for the module name (something like 'NVDriver').  Then put this on
+a new line in
+
+/etc/modules
+
+in order that linux will load it on boot.  You can just do
+
+modprobe nvdriver
+
+to load it by hand.  Your make install did this as well as reinstalling the
+driver in /lib etc.  You should also get a message saying loading the
+nvidia driver taints your kernel (which it does, in the sense that it's not
+open source).
+
+> Is this a problem anyone else has encountered and what is the best
+> solution? Can I rid myself of the tar file installations and find some
+> specific .deb packages?
+
+The nvidia driver source is in the Woody tree.
+
+http://packages.debian.org/stable/x11/nvidia-kernel-src.html
+
+so you can do
+
+apt-get install nvidia-kernel-src
+
+and then compile, although I've always gone the route you're doing now.
+
+Ideally the nvidia driver would be a part of the kernel from day 1.
+However, nvidia have not open sourced it (most of the above source is
+pre-compiled object code), but in order for it to work with your specific
+kernel you must compile against your kernel headers (as you did).  As
+debian has lots of potential kernels they can't have one nvdriver package
+and have chosen instead to provide the source.  Actually I don't know if
+they're permitted to distribute binaries by nvidia's license anyway.
+
+Gavin
+
+--
+Irish Linux Users' Group: ilug@linux.ie
+http://www.linux.ie/mailman/listinfo/ilug for (un)subscription information.
+List maintainer: listmaster@linux.ie
+
+--
+Irish Linux Users' Group: ilug@linux.ie
+http://www.linux.ie/mailman/listinfo/ilug for (un)subscription information.
+List maintainer: listmaster@linux.ie

@@ -1,0 +1,26 @@
+{
+  "room_name": "bedroom reading nook",
+  "wall_dimensions_cm": {
+    "width": 140,
+    "height": 90
+  },
+  "wall_color": "desaturated blue-gray",
+  "dominant_materials": [
+    "oak wood",
+    "cream linen",
+    "charcoal metal"
+  ],
+  "natural_light": "soft north-facing daylight",
+  "preferred_mood": [
+    "quiet",
+    "contemplative",
+    "low-contrast",
+    "dusk-like rather than noon-bright"
+  ],
+  "avoid": [
+    "very saturated yellows",
+    "restless high-energy brushwork",
+    "anything that makes the corner feel louder"
+  ],
+  "placement_note": "I want one medium horizontal print above a low bookshelf."
+}

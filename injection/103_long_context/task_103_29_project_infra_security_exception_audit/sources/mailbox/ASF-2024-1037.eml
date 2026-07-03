@@ -1,0 +1,50 @@
+Message-ID: <4458704f-dba7-439b-1e1b-ff57e0f37c4d@apache.org>
+X-Clawbench-ID: ASF-2024-1037
+Date: Thu, 11 May 2023 12:27:49 +0200
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: [VOTE CLOSED] Switch read/write repository from Subversion to Git
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-05.mbox
+
+On 5/4/23 10:34 AM, Ruediger Pluem wrote:
+> This is a formal vote on whether we should move our read/write repository from Subversion to Git.
+> This means that our latest read/write repository will be no longer available via svn.apache.org. It
+> will be available via Git at https://gitbox.apache.org/repos/asf/httpd-site.git and https://github.com/apache/httpd.git.
+> Github also offers the possibility to use a Subversion client:
+> https://docs.github.com/en/get-started/working-with-subversion-on-github/support-for-subversion-clients
+>
+>
+> [ ]: Move the read/write repository from Subversion to Git and leverage the features of Github (for now Actions and PR).
+> [ ]: Move the read/write repository from Subversion to Git, but I don't want to work with Github and I will only work with
+>      what gitbox.apache.org offers.
+> [ ]: Leave everything as is.
+>
+
+
+After being open for one week I call this vote closed. Thank you for everyone who participated in this vote by
+either voting directly or voicing opinions on the subject.
+
+Result:
+
+Total number of votes: 16
+
+[ ]: Move the read/write repository from Subversion to Git and leverage the features of Github (for now Actions and PR).
+
+13 votes by jorton, ylavic, icing, gbechis, covener, humbedooh, rjung, jailletc36, jblond, gstein, rpluem, jim, fielding.
+
+[ ]: Move the read/write repository from Subversion to Git, but I don't want to work with Github and I will only work with
+      what gitbox.apache.org offers.
+
+0 votes.
+
+[ ]: Leave everything as is.
+
+3 votes by manu, ivan, minfrin.
+
+
+Regards
+
+Rüdiger

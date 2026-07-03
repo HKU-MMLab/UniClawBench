@@ -1,0 +1,43 @@
+Message-ID: <ZiolxCZxZjk-IICM@an3as.eu>
+X-Clawbench-ID: BIO-2024-0796
+Date: Thu, 25 Apr 2024 11:43:32 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Could someone have a look into bali-phy [notifications@github.com: Re: [bredelings/BAli-Phy] Test suite error in 4.0-beta7 (Issue #17)]
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_04_msg00049.html
+
+Hi folks,
+
+this is residing since some time in my inbox but I will not be able to
+deal with this.  It would be great if someone might subscribe the issue
+below and update the bali-phy package accordingly.
+
+Kind regards
+   Andreas.
+
+----- Weitergeleitete Nachricht von Benjamin Redelings  -----
+
+Date: Mon, 01 Apr 2024 07:32:34 -0700
+From: Benjamin Redelings
+To: bredelings/BAli-Phy
+Cc: Andreas Tille , Author
+Subject: Re: [bredelings/BAli-Phy] Test suite error in 4.0-beta7 (Issue #17)
+
+Hi Andreas,
+I finally did a beta9 release, so the issue should be fixed.  Would you be able to build beta9 for experimental?
+-BenRI
+
+--
+Reply to this email directly or view it on GitHub:
+https://github.com/bredelings/BAli-Phy/issues/17#issuecomment-2029850883
+You are receiving this because you authored the thread.
+
+Message ID:
+
+----- Ende weitergeleitete Nachricht -----
+
+--
+https://fam-tille.de

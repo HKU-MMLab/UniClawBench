@@ -1,0 +1,26 @@
+Message-ID: <09c08912-0fa2-c67d-723f-5b243f18451f@apache.org>
+X-Clawbench-ID: ASF-2024-0885
+Date: Tue, 25 Jun 2024 16:05:50 +0200
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.60-rc1 as httpd-2.4.60
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-06.mbox
+
+On 6/25/24 3:30 PM, Yann Ylavic wrote:
+> On Tue, Jun 25, 2024 at 2:50 PM Eric Covener <covener@gmail.com> wrote:
+>>
+>>  - whether backing out
+>> https://github.com/apache/httpd/commit/9494aa8d52e3c263bc0413b77ac8a73b0d524388.diff
+>> from the candidate helps?
+>
+> I'm not sure r1918553 made it to rc1, did it?
+>
+
+I cannot see it there.
+
+Regards
+
+Rüdiger

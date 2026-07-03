@@ -1,0 +1,33 @@
+Message-ID: <e54883c3-1e29-ae5d-38a6-54dd7f75cb44@paclan.it>
+X-Clawbench-ID: ASF-2024-0942
+Date: Mon, 6 Mar 2023 09:05:21 +0100
+From: giovanni@paclan.it
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] [VOTE] Release httpd-2.4.56-rc1 as httpd-2.4.56
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-03.mbox
+
+On 3/5/23 22:31, Eric Covener wrote:
+> Hi all,
+>
+> Please find below the proposed release tarball and signatures:
+>
+> https://dist.apache.org/repos/dist/dev/httpd/
+>
+> I would like to call a VOTE over the next few days to release
+> this candidate tarball httpd-2.4.56-rc1 as 2.4.56:
+> [ ] +1: It's not just good, it's good enough!
+> [ ] +0: Let's have a talk.
+> [ ] -1: There's trouble in paradise. Here's what's wrong.
+>
+> The computed digests of the tarball up for vote are:
+> sha256: db0d4c76007b231fd3ab41b580548dc798ae3844bb7c3d5ce1e4174ca2364698
+> *httpd-2.4.56-rc1.tar.gz
+> sha512: 68b1e8c3e3436e6947c0ccfeee6fea83254560e4d43bddbc79a4206d804a6dda6662cf5734e0b2f4019ab5c1fff40141a16dd7698e8fe72b7fd343fbebd42724
+> *httpd-2.4.56-rc1.tar.gz
+>
++1
+tested on Fedora 37 and OpenBSD 7.2 and 7.3-beta
+  Giovanni

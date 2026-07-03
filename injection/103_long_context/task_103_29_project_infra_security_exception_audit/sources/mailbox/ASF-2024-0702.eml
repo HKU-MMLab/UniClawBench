@@ -1,0 +1,19 @@
+Message-ID: <46407949-CC6A-4B08-BBCB-440BB681917F@eissing.org>
+X-Clawbench-ID: ASF-2024-0702
+Date: Thu, 17 Aug 2023 13:42:01 +0200
+From: "Stefan Eissing via dev" <dev@httpd.apache.org>
+To: dev@httpd.apache.org
+Subject: release?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-08.mbox
+
+How are people feeling about another release?
+
+Since I have tons of bugfixes in 2.4.x and some pending features to port back, I offer to RM this.
+
+We have 5 items in 2.4.x/STATUS which lack votes. Would be nice if people could find time to look into those where they feel comfortable to vote on.
+
+Cheers,
+Stefan

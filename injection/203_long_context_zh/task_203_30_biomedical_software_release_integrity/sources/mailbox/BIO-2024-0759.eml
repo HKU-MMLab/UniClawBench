@@ -1,0 +1,34 @@
+Message-ID: <YfAvqriCZavHuqrH@an3as.eu>
+X-Clawbench-ID: BIO-2024-0759
+Date: Tue, 25 Jan 2022 18:13:14 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: routine-update adds debhelpe (Was: Sight needs to be ported to insighttoolkit5 [Fwd: sight is marked for autoremoval from testing])
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_01_msg00098.html
+
+Am Tue, Jan 25, 2022 at 09:44:52PM +0530 schrieb Nilesh Patra:
+> @Andreas,
+> something is wrong with lintian-brush/routine-update and it is adding "debhelper" as a B-D, for instance
+> here[1] and here[2] and pretty much every other package that you updated.
+> This is completely uncalled for since debhelper-compat already takes care of this.
+>
+> Please consider to fix it in r-u or fix it manually before you upload, as it introduces extra noise to take care of for later :)
+
+I confirm that I realised this.  Its done by one of the Debian Janitor
+tools and I assume this is a bug in those tools.  I admit I was to lazy
+to dig into those tools and file a bug report about this.  I'm not
+really motivated to revert those changes afterwards in routine-update
+(but I'm fine if you want to ...)
+
+Kind regards
+
+     Andreas.
+
+> [1]: https://salsa.debian.org/med-team/pftools/-/commit/4a13523419c3be98eced4804875436eb9b992d0b
+> [2]: https://salsa.debian.org/med-team/sight/-/commit/7db5abc531beb55747a35c06e4cf9e1385f695f8
+
+--
+http://fam-tille.de

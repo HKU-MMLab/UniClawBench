@@ -1,0 +1,310 @@
+{
+  "trip_context": {
+    "dates": [
+      "2026-03-14",
+      "2026-03-16"
+    ],
+    "route": "Shanghai <-> Shenzhen",
+    "traveler": "Lin Yu",
+    "purpose": "client workshop, office visits, dinner meeting, short exhibition stop"
+  },
+  "source_bundle": {
+    "path": "/tmp_workspace/clawbench/sources/trip_mess/",
+    "file_count": 14,
+    "reference_sheet": {
+      "path": "references/source_document_reference_sheet.jpg",
+      "sha256": "9f01e2082fe3e52d58197dd78cc49cf3ee210b74fe8c336acdad36ed95c89970",
+      "description": "Contact sheet showing the current doc_01 through doc_14 source bundle, including the PDF first page rendered as doc_07."
+    },
+    "source_filenames_are_labels": false,
+    "note": "The current benchmark source files are named doc_01..doc_14. Older run artifacts with semantic filenames should not be used as current ground truth."
+  },
+  "document_inventory": [
+    {
+      "source_file": "doc_01.jpg",
+      "sha256": "9a0b13be523bb4bf9f3e7f757dec832970ea05ceff6d86f539a6424d9001bb8c",
+      "document_type": "taxi receipt",
+      "keep": true,
+      "category": "transport",
+      "key_fields": {
+        "merchant_or_item": "SZ Transit Taxi",
+        "date": "2026-03-14",
+        "amount": 86,
+        "currency": "CNY"
+      }
+    },
+    {
+      "source_file": "doc_02.jpg",
+      "sha256": "9f8c35f77273df689fe3240a422b1802598a6c5bdfff67b9836e4204ec491d90",
+      "document_type": "restaurant receipt",
+      "keep": true,
+      "category": "meals",
+      "key_fields": {
+        "merchant_or_item": "Haiyun Kitchen",
+        "date": "2026-03-15",
+        "amount": 268,
+        "currency": "CNY"
+      }
+    },
+    {
+      "source_file": "doc_03.jpg",
+      "sha256": "95d123e8e2bff10d36948c42144ca6fbd7c11f9877cf42813bcb19a338484226",
+      "document_type": "unrelated cat photo",
+      "keep": false,
+      "category": "drop",
+      "cleanup_reason": "unrelated personal cat image"
+    },
+    {
+      "source_file": "doc_04.png",
+      "sha256": "dc77d6462c1ab92b067d38c94d2966f9655de16e1549e6c13019d689be83a860",
+      "document_type": "museum admission ticket",
+      "keep": true,
+      "category": "tickets",
+      "key_fields": {
+        "merchant_or_item": "Design Museum Shenzhen",
+        "date": "2026-03-16",
+        "visitor": "Lin Yu",
+        "entry_time": "10:30-12:00",
+        "amount": 120,
+        "currency": "CNY"
+      }
+    },
+    {
+      "source_file": "doc_05.png",
+      "sha256": "fec448284b668f7bd4fc5ee3bbd9ab14491a3bf11c69c3e1ceba0b9208480430",
+      "document_type": "boarding pass",
+      "keep": true,
+      "category": "flights",
+      "key_fields": {
+        "flight": "MU 5351",
+        "route": "SHA to SZX",
+        "date": "2026-03-14",
+        "passenger": "Lin Yu",
+        "note": "Boarding pass confirms outbound flight but does not itself carry the reimbursable amount."
+      }
+    },
+    {
+      "source_file": "doc_06.png",
+      "sha256": "026c565e35e8550e4ab92f6297a27b9296d4dc8b1d3266d7846b7c1d4487e83c",
+      "document_type": "return flight confirmation",
+      "keep": true,
+      "category": "flights",
+      "key_fields": {
+        "merchant_or_item": "MU 5368 Shenzhen to Shanghai",
+        "flight": "MU 5368",
+        "route": "SZX to SHA",
+        "date": "2026-03-16",
+        "departure": "19:05 Shenzhen Bao'an",
+        "amount": 880,
+        "currency": "CNY"
+      }
+    },
+    {
+      "source_file": "doc_07.pdf",
+      "sha256": "c2c00a610bf8b502b654b35883a3782a13f0ee7d6971e401dc783b2769f233d0",
+      "document_type": "trip notes PDF",
+      "keep": true,
+      "category": "other",
+      "key_fields": {
+        "route": "Shanghai <-> Shenzhen",
+        "date_range": "2026-03-14 to 2026-03-16",
+        "note": "Trip notes summarize itinerary and reimbursement scope."
+      }
+    },
+    {
+      "source_file": "doc_08.jpg",
+      "sha256": "a57562d3984811ac1607a33ad913826dfb1f7c3315af913e5f6619d5cc35cfe1",
+      "document_type": "hotel booking duplicate",
+      "keep": false,
+      "category": "duplicate",
+      "cleanup_reason": "duplicate of the clearer hotel booking in doc_13.jpg"
+    },
+    {
+      "source_file": "doc_09.png",
+      "sha256": "491e25bf8718fa8cbc715b33e23a6ad841540f0afcc490eba89493bf4c9d274c",
+      "document_type": "outbound flight e-ticket",
+      "keep": true,
+      "category": "flights",
+      "key_fields": {
+        "merchant_or_item": "MU 5351 Shanghai to Shenzhen",
+        "flight": "MU 5351",
+        "route": "SHA to SZX",
+        "date": "2026-03-14",
+        "departure": "08:10 Hongqiao T2",
+        "amount": 920,
+        "currency": "CNY"
+      }
+    },
+    {
+      "source_file": "doc_10.jpg",
+      "sha256": "efed827f06635383b8bc97361545d6469471c58bec95697c01650b7b51cb2ebf",
+      "document_type": "blurred receipt",
+      "keep": false,
+      "category": "unreadable",
+      "cleanup_reason": "too blurry / unreadable to extract reliable expense details"
+    },
+    {
+      "source_file": "doc_11.png",
+      "sha256": "f7a8896c6dab40b30c69a5507345fb99abceea1ac16697f59a69f1decde17827",
+      "document_type": "itinerary email screenshot",
+      "keep": true,
+      "category": "other",
+      "key_fields": {
+        "date_range": "2026-03-14 to 2026-03-16",
+        "route": "Shanghai to Shenzhen and return",
+        "note": "Email itinerary confirms client workshop, office visit, dinner, museum stop, and reimbursable scope."
+      }
+    },
+    {
+      "source_file": "doc_12.jpg",
+      "sha256": "58cef98cd36da3f293733b4e963c2caf39bfe7221579df7e671053b2ecb53626",
+      "document_type": "coffee receipt",
+      "keep": true,
+      "category": "meals",
+      "key_fields": {
+        "merchant_or_item": "Blue Bottle Coffee",
+        "date": "2026-03-15",
+        "amount": 58,
+        "currency": "CNY"
+      }
+    },
+    {
+      "source_file": "doc_13.jpg",
+      "sha256": "165301ea87e5abf22ca0619a621be62b0441b6b979e163d8a7acb9a2cef06374",
+      "document_type": "hotel booking confirmation",
+      "keep": true,
+      "category": "hotel",
+      "key_fields": {
+        "merchant_or_item": "Nanshan Central Hotel",
+        "guest": "Lin Yu",
+        "check_in": "2026-03-14 after 14:00",
+        "check_out": "2026-03-16 before 12:00",
+        "room": "Business Queen Room x 2 nights",
+        "amount": 1880,
+        "currency": "CNY"
+      }
+    },
+    {
+      "source_file": "doc_14.png",
+      "sha256": "d7c4706b5cfabd4103d3d75dd2089588aa4cc33d5d2ab825ec60769783ee64f9",
+      "document_type": "metro top-up receipt",
+      "keep": true,
+      "category": "transport",
+      "key_fields": {
+        "merchant_or_item": "Shenzhen Metro top-up",
+        "date": "2026-03-15",
+        "amount": 50,
+        "currency": "CNY"
+      }
+    }
+  ],
+  "keep_and_category": {
+    "doc_09.png": "flights",
+    "doc_05.png": "flights",
+    "doc_06.png": "flights",
+    "doc_13.jpg": "hotel",
+    "doc_01.jpg": "transport",
+    "doc_14.png": "transport",
+    "doc_02.jpg": "meals",
+    "doc_12.jpg": "meals",
+    "doc_04.png": "tickets",
+    "doc_07.pdf": "other",
+    "doc_11.png": "other"
+  },
+  "cleanup_notes": {
+    "doc_08.jpg": "duplicate of the hotel booking in doc_13.jpg",
+    "doc_03.jpg": "unrelated personal cat image",
+    "doc_10.jpg": "too blurry / unreadable to extract reliable expense details"
+  },
+  "expenses": [
+    {
+      "date": "2026-03-14",
+      "category": "flights",
+      "merchant_or_item": "MU 5351 Shanghai to Shenzhen",
+      "amount": 920,
+      "currency": "CNY",
+      "source_file": "doc_09.png"
+    },
+    {
+      "date": "2026-03-16",
+      "category": "flights",
+      "merchant_or_item": "MU 5368 Shenzhen to Shanghai",
+      "amount": 880,
+      "currency": "CNY",
+      "source_file": "doc_06.png"
+    },
+    {
+      "date": "2026-03-14",
+      "category": "hotel",
+      "merchant_or_item": "Nanshan Central Hotel",
+      "amount": 1880,
+      "currency": "CNY",
+      "source_file": "doc_13.jpg"
+    },
+    {
+      "date": "2026-03-14",
+      "category": "transport",
+      "merchant_or_item": "SZ Transit Taxi",
+      "amount": 86,
+      "currency": "CNY",
+      "source_file": "doc_01.jpg"
+    },
+    {
+      "date": "2026-03-15",
+      "category": "transport",
+      "merchant_or_item": "Shenzhen Metro top-up",
+      "amount": 50,
+      "currency": "CNY",
+      "source_file": "doc_14.png"
+    },
+    {
+      "date": "2026-03-15",
+      "category": "meals",
+      "merchant_or_item": "Haiyun Kitchen",
+      "amount": 268,
+      "currency": "CNY",
+      "source_file": "doc_02.jpg"
+    },
+    {
+      "date": "2026-03-15",
+      "category": "meals",
+      "merchant_or_item": "Blue Bottle Coffee",
+      "amount": 58,
+      "currency": "CNY",
+      "source_file": "doc_12.jpg"
+    },
+    {
+      "date": "2026-03-16",
+      "category": "tickets",
+      "merchant_or_item": "Design Museum Shenzhen",
+      "amount": 120,
+      "currency": "CNY",
+      "source_file": "doc_04.png"
+    }
+  ],
+  "total_spend_cny": 4262,
+  "expected_output_contract": {
+    "expense_summary_required_columns": [
+      "date",
+      "category",
+      "merchant_or_item",
+      "amount",
+      "currency",
+      "source_file"
+    ],
+    "archive_required_categories": [
+      "flights",
+      "hotel",
+      "transport",
+      "meals",
+      "tickets",
+      "other"
+    ],
+    "cleanup_notes_required_files": [
+      "doc_08.jpg",
+      "doc_03.jpg",
+      "doc_10.jpg"
+    ],
+    "renaming_policy": "Renamed files should preserve enough date/category/key-info/source-file signal to audit the original doc_XX source."
+  }
+}

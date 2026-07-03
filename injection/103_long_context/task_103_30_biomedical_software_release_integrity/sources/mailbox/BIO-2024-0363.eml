@@ -1,0 +1,123 @@
+Message-ID: <ZXiu9bAIB2ZhK_9m@an3as.eu>
+X-Clawbench-ID: BIO-2024-0363
+Date: Tue, 12 Dec 2023 20:05:25 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>,	Pierre Gruet <pgtdebian@free.fr>
+Subject: Thanks a lot [ftpmaster@ftp-master.debian.org: ugene_49.1+dfsg-1_amd64.changes ACCEPTED into unstable]
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_12_msg00041.html
+
+Hi Pierre,
+
+this is really good and important work.  Thanks a lot for it
+
+    Andreas.
+
+----- Weitergeleitete Nachricht von Debian FTP Masters  -----
+
+Date: Tue, 12 Dec 2023 19:00:13 +0000
+From: Debian FTP Masters
+To: Debian Med Packaging Team , Pierre Gruet
+Subject: ugene_49.1+dfsg-1_amd64.changes ACCEPTED into unstable
+
+Thank you for your contribution to Debian.
+
+
+Accepted:
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Format: 1.8
+Date: Tue, 12 Dec 2023 14:49:53 +0100
+Source: ugene
+Binary: ugene ugene-data ugene-dbgsym
+Architecture: source all amd64
+Version: 49.1+dfsg-1
+Distribution: unstable
+Urgency: medium
+Maintainer: Debian Med Packaging Team
+Changed-By: Pierre Gruet
+Description:
+ ugene      - integrated bioinformatics toolkit
+ ugene-data - required data for UGENE - integrated bioinformatics toolkit
+Closes: 1010358 1018252 1032688
+Changes:
+ ugene (49.1+dfsg-1) unstable; urgency=medium
+ .
+   * Team upload
+   * New upstream version 49.1+dfsg
+   * Refreshing patches
+   * Shipping to main instead of non-free (Closes: #1018252):
+     - Excluding files with non-free license (*.so and psipred)
+     - Rewriting d/copyright
+   * Updating install paths
+   * Setting the runpaths so that private shared libraries can be found
+   * Fixing spelling mistakes
+   * Using python3 instead of python in shebangs
+   * Fixing Lintian override syntax
+   * Overriding Lintian warnings about spelling errors due to false positives
+ .
+   [ Andreas Tille ]
+   * Fix watch file
+   * Standards-Version: 4.6.2 (routine-update)
+   * Build-Depends: s/libprocps-dev/libproc2-dev/ (Closes: #1032688)
+ .
+   [ Michael R. Crusoe ]
+   * debian/patches/Fix-for-non-constant-SIGSTKSZ.patch: from Ubuntu,
+     Closes: #1010358
+Checksums-Sha1:
+ 94b7823fb1fc97799fbfe4df06950b8651d6ae7c 2290 ugene_49.1+dfsg-1.dsc
+ 5a8f61ab1ef8a884ffd57cd5ee8f8c2cb4a8c594 16227828 ugene_49.1+dfsg.orig.tar.xz
+ f7c9a78fda51e047a8c1630d98c5b9deb9d4e39b 40636 ugene_49.1+dfsg-1.debian.tar.xz
+ 024ec6144aecdde337e85fd01371704ab0bdd4b0 7612600 ugene-data_49.1+dfsg-1_all.deb
+ 3581df8eda69842e4d996c76428bf4384c85bd6d 608828980 ugene-dbgsym_49.1+dfsg-1_amd64.deb
+ 8513bc897a1929f09f843b28f9460adf1f99ad67 13359 ugene_49.1+dfsg-1_amd64.buildinfo
+ c5361fc2e28811066b4f6d687437d66b0b8ed183 22210740 ugene_49.1+dfsg-1_amd64.deb
+Checksums-Sha256:
+ d6b50935c791298da631f297312be1a56f97684acefb2f462152d4f9cb544feb 2290 ugene_49.1+dfsg-1.dsc
+ 0e84cb5ebc26bacddd0d538b9ccf0906c49ac867a39cc81c033f8d3adf796b6d 16227828 ugene_49.1+dfsg.orig.tar.xz
+ 8dfa17a74603f24075957774dd602d7bf1e27c5c3494aca5fbb690f7fd5ac793 40636 ugene_49.1+dfsg-1.debian.tar.xz
+ 73a0e7773901fc7bf59488ace2ef35c5d04dba0db5af8fbb9912da4cbe1560b2 7612600 ugene-data_49.1+dfsg-1_all.deb
+ f627e3ca06edc61b7fff9ff33af4f5b0da70e7b1ae9e45d6e4220351c3fa5030 608828980 ugene-dbgsym_49.1+dfsg-1_amd64.deb
+ 954a1daca20405613f306cdbba456a469ebab70b3a94711e33d56dbd4515582b 13359 ugene_49.1+dfsg-1_amd64.buildinfo
+ 18b07770fb8abd57a756f2454386e1df0c0290b239923b21ac14b40832b204c3 22210740 ugene_49.1+dfsg-1_amd64.deb
+Files:
+ 4741a35a40dff8d6a425ea8d2772e62f 2290 science optional ugene_49.1+dfsg-1.dsc
+ c2423d8701dc5fb5a007684882d3d167 16227828 science optional ugene_49.1+dfsg.orig.tar.xz
+ 8a36134d6fed4abd7e1424770ec22227 40636 science optional ugene_49.1+dfsg-1.debian.tar.xz
+ 5be3f6a848d90b76512e81251b53cd83 7612600 science optional ugene-data_49.1+dfsg-1_all.deb
+ c31a479dfc5ba8d9b8982ac92662e1ea 608828980 debug optional ugene-dbgsym_49.1+dfsg-1_amd64.deb
+ f336fa8fdc484f38d594f6d1784fdab2 13359 science optional ugene_49.1+dfsg-1_amd64.buildinfo
+ 180f6b1502a223163062a95437b1bd96 22210740 science optional ugene_49.1+dfsg-1_amd64.deb
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCgAdFiEEM8soQxPpC9J9y0UjYAMWptwndHYFAmV4kFcACgkQYAMWptwn
+dHYEhRAAlbfyripVaCFyMh1w3S1E+LtpMnXAuH97NfaX6aQ0rOxLlKIj8rXifFzv
+308w8/EXks+EbenRPqXcCwXgtasntaOfJZ2r2ENzl/avGmTg3DQ/TD6YDYb5zeSC
+5RoQcZ7SF+UmMi5/jS6fphROzjbsTvg+7tH4N4W0bxF1Y3ARRnz+20ytbuORhgHz
+F+5zA9VVvsYr/enVb62FZBcn0ATAM9b8B3TAhlwShWRQXVDx3ylpca9vi+u2DwWz
+4xoA0HayspzoEXiOh7Rx7dq1GeKWjkp69OL/Vs5u6gzY21Iw7VFDFifww2JwfNJS
+jDW3EqZiGnBu4t4Zz4xYodgCkAbCtTJbhxRL+LCeaD8OtbSglg9bsCfQOC8geyBd
+LExivKjCyroFe3Pd6K6vbI2o5XdWTkQM07r2Qwpg/Fh3FikEhfvi0AhFJJJIbunj
+M18QRYtidz7mBgkKi4p8rVKVuS665Eag1+hjVvzcU3Qij6qe3TD9MzJON+OEnMUP
+2kUKZ+J+U1sRo09PwEYtBkj6845PSRbFxeLpv51hnxqcWbiOR52j+9imhqBVL2gn
+UB0bb5bF297FmCmKxxmRczkeUlZy6A49el+iD8UG1hSrBzrWGRI0qsmhqaO3fu3s
+qIiOTa/2/34aj4QJ1WcNyqB/uv8x36kCJsZ07PB0oSrirQL4GK8=
+=1Bbg
+-----END PGP SIGNATURE-----
+
+
+_______________________________________________
+Debian-med-packaging mailing list
+Debian-med-packaging@alioth-lists.debian.net
+https://alioth-lists.debian.net/cgi-bin/mailman/listinfo/debian-med-packaging
+
+
+----- Ende weitergeleitete Nachricht -----
+
+--
+http://fam-tille.de

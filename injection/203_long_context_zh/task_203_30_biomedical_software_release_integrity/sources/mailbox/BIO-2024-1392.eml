@@ -1,0 +1,25 @@
+Message-ID: <ZXfxROEoG6TlGNgu@lark>
+X-Clawbench-ID: BIO-2024-1392
+Date: Mon, 11 Dec 2023 21:36:04 -0800
+From: tony mancill <tmancill@debian.org>
+To: Martin Uecker <uecker@tugraz.at>
+Subject: Re: bart version 0.9.00
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_12_msg00040.html
+
+On Mon, Dec 11, 2023 at 12:59:18PM -0800, tony mancill wrote:
+> > thank you! Unfortunately, the i386 builds were hanging. I fixed this
+> > and fix/improved couple of other things.
+
+I successfully ran the autopkgtest locally before uploading, so I'm not
+convinced that the pipeline failure reported below is an actual problem.
+It could be an issue with the CI configuration instead.
+
+  https://salsa.debian.org/med-team/bart/-/pipelines/612443
+
+And the i386 build is now fixed.
+
+Thanks!
+tony

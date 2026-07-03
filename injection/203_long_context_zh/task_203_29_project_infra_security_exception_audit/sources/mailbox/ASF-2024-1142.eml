@@ -1,0 +1,31 @@
+Message-ID: <CALK=YjNbJD6EdaxHMzKSiU=X_CW_1wTL9yxfP4TME6Nmksjx8Q@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1142
+Date: Wed, 20 Nov 2024 07:53:03 -0500
+From: Eric Covener <covener@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: modules-dev: advice on http client library?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-11.mbox
+
+On Wed, Nov 20, 2024 at 7:03 AM Dirk-Willem van Gulik
+<dirkx@webweaving.org> wrote:
+>
+> On 20 Nov 2024, at 12:45, Eric Covener <covener@gmail.com> wrote:
+>
+> > I need a very basic HTTP client library (not even HTTPS) to introduce
+> > in a micro release of a module (really of a httpd fork with some
+> > proprietary modules).  It is a new dependency of a proprietary
+> > library that we might have to move up to at any time.
+> ...
+> > Anyone have additional useful ideas/pointers?
+>
+> The trival code in 'ab', in test().
+
+:facepalm: thanks!
+
+> https://github.com/minfrin/mod_crowdsec/blob/main/mod_crowdsec.c#L336
+
+Thanks, that is a helpful one to contrast using mod_proxy_http vs.
+extracting the core parts of it.

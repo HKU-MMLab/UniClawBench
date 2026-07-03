@@ -1,0 +1,92 @@
+task_id: task_105_08_event_materials_gui_full_stack
+category: 105_cross_platform
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I put eight on-site event material photos in:
+
+      /tmp_workspace/clawbench/sources/event_materials_photos/
+
+  Use a GUI workflow to complete a cross-application inventory task:
+
+  1. Open this image directory with the desktop file manager, and inspect each
+     photo in an image viewer.
+  2. Read the material category and quantity from each image. Categories must be
+     exactly one of:
+     badge, poster, sticker, notebook, misc.
+  3. Use real LibreOffice Calc to create an inventory spreadsheet with at least
+     these columns:
+     filename, category, quantity, note.
+     Use one row per image, and write a short one-sentence note describing what
+     you saw.
+  4. Add the total item count and the category with the largest quantity.
+  5. Save the spreadsheet as:
+
+      /tmp_workspace/results/event_materials_inventory.ods
+
+     The ODS itself should contain the eight image rows, total item count, all
+     category totals, and the largest category. Do not use CSV, Markdown, or a
+     script-generated table as a substitute for the ODS saved from real
+     LibreOffice Calc.
+
+  6. Use real LibreOffice Writer to create a short summary containing the
+     eight-image inventory list, total item count, all category totals, and the
+     largest category. Save it as:
+
+      /tmp_workspace/results/event_materials_summary.odt
+
+     Do not use TXT, Markdown, or a script-generated summary as a substitute for
+     the ODT saved from real LibreOffice Writer.
+
+  7. Open the real Slack Desktop installed by the service. If the environment is
+     already logged in to a Slack workspace, send a message of no more than 120
+     characters to `#social` stating the total item count and the largest
+     category, and save a message/channel screenshot:
+
+      /tmp_workspace/results/slack_desktop_evidence.png
+
+     Also save an auditable text record:
+
+      /tmp_workspace/results/slack_message_evidence.md
+
+     If Slack Desktop is not logged in or there are no usable workspace
+     credentials, still launch real Slack Desktop, save a login/workspace
+     selection screenshot to the path above, and explain why the message could
+     not be sent in `slack_message_evidence.md`. Do not use a local Slack mock.
+     `slack_desktop_evidence.png` must actually show a Slack Desktop channel,
+     message, login page, workspace selection page, or explicit error page. If
+     the screenshot content is the file manager, Calc, Writer, or another
+     application, it does not count as Slack evidence even if the filename is
+     correct.
+
+  8. Finally, write a very short GUI usage record:
+
+      /tmp_workspace/results/gui_evidence.md
+
+     State that you used the file manager, image viewer, LibreOffice Calc,
+     LibreOffice Writer, and real Slack Desktop, and list screenshot or window
+     evidence. The installation verification record is saved at
+     `/tmp_workspace/clawbench/service_state/real_event_gui_apps_task_105_08.json`.
+
+sources:
+  - event_materials_photos/
+
+services:
+  - name: real-event-gui-apps-setup
+    path: real-event-gui-apps-setup
+    start: bash install.sh
+    oneshot: true
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+codex:
+  max_user_followups: 2

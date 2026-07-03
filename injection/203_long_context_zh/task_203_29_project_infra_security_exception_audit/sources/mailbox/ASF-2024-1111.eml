@@ -1,0 +1,26 @@
+Message-ID: <A5C82D8E-00E8-40FD-B16F-C5EEECF253EE@m3y3r.de>
+X-Clawbench-ID: ASF-2024-1111
+Date: Thu, 09 Mar 2023 20:57:57 +0100
+From: Thomas Meyer <thomas@m3y3r.de>
+To: dev@httpd.apache.org
+Subject: mod_log_json
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-03.mbox
+
+Hi,
+
+Today I did stumble upon mod_log_json in trunk, sadly it's not available in 2.4.x.
+
+This json loggers would be really helpful in k8s deployments.
+
+Can this module get please get back ported to 2.4.
+
+Are there any reasons that speak against it? Security concerns?
+
+Mfg
+Thomas
+
+--
+Diese Nachricht wurde von meinem Android-Gerät mit K-9 Mail gesendet.

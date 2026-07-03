@@ -1,0 +1,27 @@
+Message-ID: <CAFQGv+bHLskk5qZKWE6MmBfx25u7BpY6ktDrKREAR-JswPKUKg@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1093
+Date: Thu, 15 Feb 2024 20:20:36 -0500
+From: Joe Schaefer <joe@sunstarsys.com>
+To: dev@httpd.apache.org
+Subject: Re: release apreq 2.18 and mothball the project
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-02.mbox
+
+The proof is in the pudding, as it were.
+
+There's prima facia evidence in this very thread that he lied about ever
+running the test suite for apreq, because Joe wouldn't have had to patch it
+for him 8 months later had he ever bothered in the first place.
+
+But when everyone around you is no better than that, there's participation
+trophies for all of you!
+
+On Thu, Feb 15, 2024 at 8:17 PM Eric Covener <covener@gmail.com> wrote:
+
+> > And because you are such a prima donna Yann
+>
+> Yann is an amazing programmer and super easy to work with. Maybe it's hard
+> to tell from the backseat.
+>

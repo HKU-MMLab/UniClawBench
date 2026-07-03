@@ -1,0 +1,22 @@
+{
+  "days": 3,
+  "known_requirements": [
+    "laptop",
+    "charger",
+    "one smart-casual outfit for client workshop",
+    "toiletries",
+    "medication"
+  ],
+  "constraints": [
+    "prefer not to check baggage",
+    "need to move between hotel and office easily",
+    "one pair of nicer shoes is enough"
+  ],
+  "nice_to_have": [
+    "light sweater if space allows"
+  ],
+  "possible_extras": [
+    "gym gear only if the schedule leaves time to use the hotel gym",
+    "extra bulky coat only if the weather looks cold"
+  ]
+}

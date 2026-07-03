@@ -1,0 +1,47 @@
+Message-ID: <ZUu1p0cRAxBfuc_-@fusion>
+X-Clawbench-ID: BIO-2024-1412
+Date: Wed, 8 Nov 2023 17:21:59 +0100
+From: Étienne Mollier <emollier@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: migration to htslib ecosystem 1.18
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_11_msg00020.html
+
+Hi Andreas,
+
+Étienne Mollier, on 2023-11-08:
+> Andreas Tille, on 2023-11-08:
+> > These timeout thingies are really hard to debug.  Maybe we should simply
+> > shorten the jellyfish test suite to avoid this.  For instance droping
+> > the `/usr/lib/jellyfish/bin/test_all` call at the end makes the test
+> > more sensible (also in terms of not stressing debci infrastructure to
+> > much?
+> >
+> > What do you think?
+>
+> I did not anticipate that issue with the experimental upload.
+> Drop of the affected would be the fastest way of "correcting"
+> the issue.  I'm a bit bugged that this affects the arm64
+> platform only and not the 32-bit variants, but perhaps the test
+> suite is already disabled for them.
+>
+> My "go to" mitigation for these sort of weird issues on arm
+> platforms would be to rebuild with option -fsigned-char, to
+> ensure this is not a case of char types being used as a short
+> integer assumed to be signed.  I'm having a look at these now;
+> there is also the risk that the test enters the infinite loop
+> unpredictably.
+
+Test pass on arm64 on my end.  Either there is something off
+with one of the arm64 runners or the test if flaky.  I'll
+trigger a rerun of the official CI to see; also a couple more
+test attempts locally just in case.
+
+Have a nice day,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  gpg: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/2, please excuse my verbosity
+   `-    on air: Aviations - Blink

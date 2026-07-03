@@ -1,0 +1,14 @@
+{
+  "id": "R05",
+  "title": "Studio portrait, 1940s",
+  "type": "photograph",
+  "collection_rights": "No known restrictions",
+  "item_rights": "Rights status: Restricted \u2014 publication may require permission",
+  "image": {
+    "thumbnail": true,
+    "full_image": true,
+    "iiif": true,
+    "width": 3000
+  },
+  "dedup_group": "g_studio_portrait"
+}

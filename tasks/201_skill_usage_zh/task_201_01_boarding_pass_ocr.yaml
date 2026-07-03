@@ -1,0 +1,42 @@
+task_id: task_201_01_boarding_pass_ocr
+category: 201_skill_usage_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我需要核对上个季度的差旅费用，第一步是把我扫描的一堆登机牌照片
+  整理成结构化数据。它们都放在
+  /tmp_workspace/clawbench/sources/boarding_passes/ 目录下——请用工作区的
+  OCR 技能读取这些图片，并从每张图片中提取关键字段。
+
+  把提取出的信息写入 /tmp_workspace/results/passes.json，存为一个 JSON 数组。
+  每条记录应包含 passenger_name、flight、departure、arrival 和 date。
+
+  同时保存 /tmp_workspace/results/itinerary_review.csv，每张登机牌占一行，
+  列为 file、passenger_name、flight、departure、arrival、date 和
+  boarding_time。这个 CSV 就是我要粘贴到费用报表里的内容。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - boarding_passes/
+
+skills:
+  - ocr-local
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

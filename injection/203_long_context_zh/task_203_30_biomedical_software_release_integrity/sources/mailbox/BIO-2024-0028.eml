@@ -1,0 +1,37 @@
+Message-ID: <CA+7wUsxjovkrsn0y+mAS531vBCjfPSrAbVMT9Cec90=PCgPQEQ@mail.gmail.com>
+X-Clawbench-ID: BIO-2024-0028
+Date: Wed, 28 Sep 2022 13:00:28 +0200
+From: Mathieu Malaterre <malat@debian.org>
+To: Mohd Bilal <mdbilal@disroot.org>
+Subject: How to check ? Re: RFS -- autopkgtests for dcmtk
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_09_msg00029.html
+
+Mohd,
+
+Is there a way to (quickly) run the autopkgtests for dcmtk ? Or else
+where can I see the output (somewhere on debian/ci) ?
+
+Thanks much
+
+On Fri, Aug 19, 2022 at 7:52 PM Mohd Bilal  wrote:
+>
+> Hello team,
+>
+> I have added autopkgtests for dcmtk[1]. Requesting a review on my
+> changes and sponsor the upload if everything's good.
+>
+> I have included the autopkgtest log as an attachment since salsa-ci
+> doesn't have an autopkgtest job for this package.
+>
+> [1] -
+> https://salsa.debian.org/med-team/dcmtk/-/commit/61bcbf663b79ee177dee878c72d6eda9b33683ea
+>
+> Thanks
+> --
+> ╭───────────────────────────────────────────────────╮
+> │ Mohammed Bilal                                    │
+> │ 2D65 BC1E B966 5A6E 97F9 730A B3F5 9452 8521 9E1F │
+> ╰───────────────────────────────────────────────────╯

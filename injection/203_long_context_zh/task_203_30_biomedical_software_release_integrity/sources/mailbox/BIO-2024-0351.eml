@@ -1,0 +1,42 @@
+Message-ID: <ZWyZZ901zBmwUYMp@fusion>
+X-Clawbench-ID: BIO-2024-0351
+Date: Sun, 3 Dec 2023 16:06:15 +0100
+From: Étienne Mollier <emollier@debian.org>
+To: debian-med@lists.debian.org
+Subject: [Advent bug squashing] #1048281, #1046135 and #1015668
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_12_msg00008.html
+
+Hi,
+
+Three more bugs closed for today, with:
+
+  * #1048281 being a double build bug affecting unifrac-tools,
+  * #1046135 being another double build bug affecting srst2,
+  * and #1015668 being a build failure in spades with LTO
+    enabled, which looks to have stemmed from a compile bug.
+
+The double source build bugs are usually just a matter of filing
+the debian/clean file with leftover build artifacts so they do
+not pollute the directory tree on subsequent build attempts.
+The double binary build bugs are usually symptoms of files moved
+around instead of being copied, causing build failures on
+subsequent builds.  These are relatively low hanging fruits, and
+well documented in the wiki[1].  There are plenty of those, if
+people want to tackle them.
+
+[1]: https://wiki.debian.org/qa.debian.org/FTBFS/DoubleBuild
+
+Ideally the LTO bugs should be resolved in a way that one can
+enable optimizations, but this is sometimes near impossible to
+acheive, e.g. in the case affecting spades, due to the probable
+compiler bug.
+
+Have a nice Sunday,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  gpg: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/1, please excuse my verbosity
+   `-    on air: Delusion Squared - The Departure

@@ -1,0 +1,25 @@
+Message-ID: <ZW5fpfn3rEaApDyd@fusion>
+X-Clawbench-ID: BIO-2024-1125
+Date: Tue, 5 Dec 2023 00:24:21 +0100
+From: Étienne Mollier <emollier@debian.org>
+To: debian-med@lists.debian.org
+Subject: [Advent bug squashing] double source build failures #1043957 and #1047043
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_12_msg00011.html
+
+Hi,
+
+Still counting for December 4th if counting from UTC+0000, I
+fixed two minor cases of double source build failures for today.
+#1047043 notably affected insighttoolkit5 which is rather heavy
+to build, so people running on laptops do not lose too much time
+on it.
+
+Have a good night,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  gpg: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/2, please excuse my verbosity
+   `-    on air: Queen - It's Late

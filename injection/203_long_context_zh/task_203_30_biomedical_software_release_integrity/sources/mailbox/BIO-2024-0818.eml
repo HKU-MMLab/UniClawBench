@@ -1,0 +1,32 @@
+Message-ID: <YuTmuP7i01c991B4@an3as.eu>
+X-Clawbench-ID: BIO-2024-0818
+Date: Sat, 30 Jul 2022 10:07:20 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: igblast accepted - how can it be used to test igdiscover
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_07_msg00095.html
+
+Hi Steffen,
+
+you droped the note
+
+     BLOCKER: Still needs igblast to test
+
+into igdiscover changelog.  Igblast is accepted now.  However, despite I did
+the final upload I did not checked for actual binaries which are all "hidden"
+in usr/lib/ncbi-igblast/bin.  I simply took over your and David's packaging
+layout and cared that it builds latest upstream.
+
+I wonder if there should be some binaries exposed in /usr/bin of igblast which
+than can be used inside the test of igdiscover.  I can build the current status
+of igdiscover in Salsa.  I wonder what the actual problem might be.
+
+Kind regards
+
+    Andreas.
+
+--
+http://fam-tille.de

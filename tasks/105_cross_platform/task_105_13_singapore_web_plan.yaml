@@ -1,0 +1,44 @@
+task_id: task_105_13_singapore_web_plan
+category: 105_cross_platform
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+recording: none
+headed: auto
+task: |
+  You are a tourist visiting Singapore on a business trip for the first time.
+  Plan for next Saturday, when you are free from 13:30 to 18:30, and the fixed
+  starting point is Raffles Place MRT Station. If next Saturday is a public
+  holiday, closed day, special-hours day, sold out, or the official pages do
+  not provide enough date-specific opening/admission information, use the
+  following Saturday instead and explain why. Use only the browser to create a
+  half-day travel plan. Candidate attractions are limited to National Gallery
+  Singapore, Gardens by the Bay, ArtScience Museum, and Singapore Botanic
+  Gardens.
+
+  You need to visit at least 2 official attraction websites to check opening
+  hours, last admission, and reservation/ticket rules for the selected date;
+  use a map webpage to check travel times from the starting point and between
+  attractions; find one candidate cafe webpage to confirm operating hours;
+  check one public transit/route webpage to verify the main route segment;
+  then write the result to:
+
+      /tmp_workspace/results/singapore_sat_trip_5p.md
+
+  The final route must be 2 attractions plus 1 rest stop, and must satisfy:
+  total duration no more than 5 hours, each individual transfer preferably no
+  more than 35 minutes, and no location with clearly uncertain rules. The
+  Markdown must include: candidate checks, route timing, rest stop, final
+  itinerary, why rejected others. State the selected date in the final plan.
+codex:
+  max_user_followups: 2
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/process_evidence/National_Gallery_Singapore.png
+  - references/process_evidence/gardens_by_the_bay.png
+  - references/process_evidence/google_map_NGS_to_Gardens_by_the_bay.png
+  - references/process_evidence/google_map_RPS_to_NGS.png

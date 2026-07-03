@@ -1,0 +1,38 @@
+Message-ID: <CALK=YjM9oKHksxdMHUgvZsJpjLtQCW_-kfTmAnN6PUauhkK3+g@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1188
+Date: Mon, 9 Jan 2023 11:01:38 -0500
+From: Eric Covener <covener@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: stable branch
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-01.mbox
+
+On Mon, Jan 9, 2023 at 10:35 AM Ruediger Pluem <rpluem@apache.org> wrote:
+>
+>
+>
+> On 1/9/23 3:54 PM, Emmanuel Dreyfus wrote:
+> > On Mon, Jan 09, 2023 at 09:37:37AM -0500, Eric Covener wrote:
+> >> svn relocate http://svn.apache.org https://svn.apache.org
+> >
+> > That did it! I made the commit, but someone knowledgable should
+> > probably check I did not break something
+>
+> Looks good. Typically commit messages for backports start with:
+>
+> Merge rXXX, rYYY from trunk:
+>
+> See e.g.
+>
+> http://svn.apache.org/viewvc?rev=1906489&view=rev
+
+I use http://people.apache.org/~jorton/svn.merge which sets this up in
+the "clog" output.
+I edit "clog" to put some info from STATUS in before committing.
+
+
+--
+Eric Covener
+covener@gmail.com

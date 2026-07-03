@@ -1,0 +1,77 @@
+task_id: task_105_33_calendar_scheduling
+category: 105_cross_platform
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+skills:
+  - cli-anything-zoom
+
+task: |
+  My colleague dumped next week's 6 meeting arrangements into our group
+  chat last night — a messy block of text with all sorts of time formats
+  ("10am", "14:00") and durations like "half an hour" or "45 minutes",
+  impossible to copy straight into a calendar. I've already saved that
+  raw text to ~/clawbench-schedule.txt.
+
+  Can you sort out my week: extract the 6 meetings from that text, list
+  each one's title, start time, and duration clearly (start times in
+  ISO 8601, durations as integer minutes in a JSON), produce an .ics
+  file I can import into a calendar, then actually import it into
+  gnome-calendar — this machine already has gnome-calendar installed
+  with Xvfb, use DISPLAY=:99 to launch it — and take a screenshot of
+  the calendar window so I can see how packed next week looks.
+
+  For the meeting links, please create real Zoom meetings — no
+  placeholder URLs. I'm using our company's Zoom test account; OAuth
+  credentials (client_id / client_secret / long-lived refresh_token) are
+  already injected as environment variables ZOOM_CLIENT_ID,
+  ZOOM_CLIENT_SECRET, and ZOOM_REFRESH_TOKEN. The zoom CLI (from HKUDS's
+  CLI-Anything project) is already pip-installed on PATH, but auth isn't
+  set up — the ~/.cli-anything-zoom/ directory is empty. You'll need to
+  write the config and tokens yourself using the env vars (config needs
+  client_id / client_secret / redirect_uri — use
+  http://localhost:4199/callback for redirect_uri; tokens needs
+  refresh_token with access_token as a placeholder so the CLI refreshes
+  it on next call). Then run `zoom auth status` to confirm it can
+  refresh and get a 200. Once auth is working, create a meeting for each
+  event with `zoom meeting create --topic <title> --start-time <ISO8601>
+  --duration <minutes>`, take the returned join_url (like
+  https://us05web.zoom.us/j/<digits>) and put it in the corresponding
+  VEVENT's LOCATION field — 6 meetings, 6 separate Zoom meeting IDs,
+  don't reuse the same room. Finally run `zoom meeting list --json` to
+  confirm all 6 were created successfully.
+
+  Also do a sanity check: are there any time conflicts among the 6
+  meetings (overlapping windows), or any consecutive same-day meetings
+  with less than 60 minutes between them? Call these out separately and
+  add them to parsed_events.json in a conflict_check field
+  (hard_conflicts array + near_conflicts array). Mention this in the
+  report too. If there are zero conflicts, just say "no conflicts, no
+  near-conflicts."
+
+  Finally write a scheduling_report.md covering the parsed events, ICS
+  file, calendar screenshot, and the 6 Zoom links. Put all artifacts
+  under /tmp_workspace/results/: parsed_events.json, schedule.ics,
+  calendar_screenshot.png, and scheduling_report.md. When done, tell me
+  how many meetings were parsed and what the 6 Zoom meeting IDs are.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources: []
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

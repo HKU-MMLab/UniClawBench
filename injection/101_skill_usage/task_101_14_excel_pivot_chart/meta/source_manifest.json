@@ -1,0 +1,11 @@
+{
+  "task_id": "task_101_14_excel_pivot_chart",
+  "note": "UCI Online Retail II (Chen 2019, CC-BY 4.0), Q1 2011 aggregated by month \u00d7 top-5 country \u00d7 product category (kitchen/decor/stationery/bag). GBP\u2192USD at 2010 mid-year reference rate 1.545.",
+  "source_citation": "Chen, D. (2019). Online Retail II [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C5CG6D",
+  "entries": [
+    {
+      "path": "sales_2011_q1.csv",
+      "description": "240 rows: Q1 2011 aggregate sales across regions, product categories, returns, voids, and late adjustments."
+    }
+  ]
+}

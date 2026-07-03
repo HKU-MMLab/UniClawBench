@@ -1,0 +1,30 @@
+Message-ID: <CAKQ1sVOB+A17yvOGXpaZeFd1JNQ1w5pGt8CMVnA0FZfr_CAQhA@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1442
+Date: Thu, 25 Jan 2024 15:49:32 +0100
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: PR #363
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-01.mbox
+
++1
+
+On Thu, Jan 25, 2024 at 3:45 PM Eric Covener <covener@gmail.com> wrote:
+>
+> I wouldn't mind move/rename to README.md
+>
+> On Thu, Jan 25, 2024, 10:40 AM Joe Orton <jorton@redhat.com> wrote:
+>>
+>> On Thu, Jan 25, 2024 at 08:12:24AM +0100, Ruediger Pluem wrote:
+>> > Tried it in r1915391 and it seems to work. Not sure if there are
+>> > general downsides / objections with regards to symlinks in our
+>> > repository. But trunk is CTR :-).
+>>
+>> Oh, that looks really nice. +1
+>>
+>> Thanks to you, Rich, and Mayank Patil.
+>>
+>> Regards, Joe
+>>

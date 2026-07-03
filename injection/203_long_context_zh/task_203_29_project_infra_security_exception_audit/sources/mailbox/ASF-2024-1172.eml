@@ -1,0 +1,23 @@
+Message-ID: <CAF5zYkTWbbtkMkEcPKrnErq8uY9_PVTNUe-dyMMAZsr-zf6p8g@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1172
+Date: Mon, 16 Oct 2023 13:24:54 +0300
+From: =?UTF-8?B?2YXYrdmF2K8g2LHYttin?= <mrida88@gmail.com>
+To: dev@httpd.apache.org
+Subject: Httpd PR to edit balancer member HC timeout
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-10.mbox
+
+Hello all, I hope this email finds you well.
+
+I have recently opened a PR on apache httpd project (
+https://github.com/apache/httpd/pull/385) . After upgrading to httpd
+version 55, we have lost the capability to define a timeout for the health
+check that is different from that of the request.
+
+As this PR will be closed soon, I really appreciate any insights or
+feedback you might have about it.
+
+Regards,
+Mohamad

@@ -1,0 +1,20 @@
+{
+  "display_name": "BoldBazaar \u2014 Market",
+  "ecommerce": {
+    "cart": true,
+    "checkout": true,
+    "product_pages": true,
+    "inventory": true
+  },
+  "responsive": true,
+  "palette": [
+    "#FFFFFF",
+    "#E63946",
+    "#F4A261",
+    "#2A9D8F",
+    "#264653"
+  ],
+  "product_image_area_ratio": 0.5,
+  "note": "responsive ecommerce, but a colorful saturated palette \u2014 not Japanese-minimalist",
+  "id": "bold_bazaar"
+}

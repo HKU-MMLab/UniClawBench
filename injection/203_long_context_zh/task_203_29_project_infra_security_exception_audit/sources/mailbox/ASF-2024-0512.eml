@@ -1,0 +1,79 @@
+Message-ID: <b4f8ae75-f074-13aa-9989-ecfc973e936b@apache.org>
+X-Clawbench-ID: ASF-2024-0512
+Date: Wed, 9 Mar 2022 14:57:40 +0100
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: backports
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-03.mbox
+
+On 3/8/22 4:15 PM, Stefan Eissing wrote:
+>
+>
+>> Am 08.03.2022 um 14:34 schrieb Jim Jagielski <jim@jaguNET.com>:
+>>
+>>> On Mar 8, 2022, at 7:58 AM, Graham Leggett <minfrin@sharp.fm> wrote:
+>>>
+>>>
+>>> I would far rather the empty APLOGNO check was part of the build.
+>>>
+>>> Vastly simpler.
+>>>
+>>
+>> I agree w/ that...
+>
+> I have the feeling that the work that has went into making our
+> tests run on travis is not sufficiently honoured in this discussion.
+>
+> Looking back on the last 6 years I participated here, the situation
+> now is *vastly* improved to what we had before. For me, the Travis CI
+> status is now *the* objective status of healthiness of our branches.
+> Not because I am a Travis fanboy, but because we had nothing in the
+> project before that was available to every team member.
+>
+> Speaking as RM, I will *never* make a release on a branch that is
+> not "green". That would be unprofessional. As it is not the task
+> of an RM to make it green, it already needs to be that way.
+>
+> As a developer, I very much prefer to commit to a "green" branch and
+> see that it stays green with my changes. On a red branch, this becomes
+> harder to analyse. The recent example of the async handshake showed
+> that it become more and more difficult to isolate the breaking
+> changes and progress for everyone was hindered by this.
+>
+> Now, that does not mean Travis CI is the end of all efforts. But
+> it is a good start and it is worth expanding on, IMO.
+>
+> Also we need to realise that aligning our way of working more to
+> what is now common practise in the field actually *lowers* the
+> barriers for participation.
+>
+
++1 to this. While I agree that the ultimate decision on merging or not should be with us and that
+there should be no blocking from Github in the end, I can only imagine very rare conditions where
+merging a PR that fails the checks makes sense. Mainly in case of time pressure due to a security release
+and the failure is known to be unrelated.
+Otherwise I would strongly encourage to either fix the test that fails or the code that causes this test to fail.
+Since we use the CI on every commit much effort was done to clean our test suite such that we no longer
+have these "yeah I know it fails for ages for unknown reasons, but I don't care" tests any longer.
+
+I understand and appreciate the concerns that we don't want to force people to create a Github account if they don't like.
+>From my point of view this is exactly what gitbox is for when it comes to committing. With regards to workflows though we could
+still use the good old STATUS file for backport decisions, but I am not sure if most people would like to continue using it if
+we would have a voting workflow on PR's (which we don't have yet, but which looks like to be doable).
+I guess we should have an eye on whether we can somehow export all the data in addition to the code itself (issues, PR's, etc.)
+from Github such that there would be a chance to retain that data in case Github pulls the plug.
+
+With regards to the dependency on services like Github and Travis:
+Well as far as I can see there is already a trend in infra to move to SaaS services, Ponymail, Jira and Confluence come to my
+mind, that are already moved there or where there are plans for doing so. I guess we need to say a little bit goodbye to an all
+"onprem" infrastructure purely created from open source where noone can change conditions such that we cannot use them any longer
+or where we can quickly move to something else.
+Hence if Github and / or Travis would switch to whatever unacceptable conditions short term this would have a huge impact on the
+ASF and also already on this project. But we would still have access to the code via gitbox.
+
+Regards
+
+Rüdiger

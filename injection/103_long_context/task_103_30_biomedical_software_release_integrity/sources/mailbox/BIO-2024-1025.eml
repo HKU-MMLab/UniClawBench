@@ -1,0 +1,69 @@
+Message-ID: <ZvQ3q3WkwECAMDSW@eamanu>
+X-Clawbench-ID: BIO-2024-1025
+Date: Wed, 25 Sep 2024 13:17:47 -0300
+From: Emmanuel Arias <eamanu@debian.org>
+To: 919681@bugs.debian.org
+Subject: Re: Rust help needed for packaging sourmash, the replacement for "khmer"
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_09_msg00024.html
+
+Hi!
+
+On Wed, Sep 25, 2024 at 04:45:41PM +0200, Michael R. Crusoe wrote:
+> If we are removing the "khmer" bioinformatics tool for being abandoned upstream, then we need to finish packaging sourmash.
+>
+> Sourmash is a Python package with a rust core, and there are some rust crates that need brand NEW Debian packages according to "cargo-debstatus":
+>
+> - az v1.2.1
+> - counter v0.6.0
+> - murmurhash3 v0.0.5
+> - needletail v0.5.1
+> - histogram v0.11.0
+> - niffler v2.6.0
+> - proc-macro2-diagnostics v0.10.1
+> - piz v0.5.1
+> - codepage-437 v0.1.0
+> - rocksdb v0.21.0
+> - librocksdb-sys v0.11.0+8.1.1
+> - roots v0.0.8
+> - vec-collections v0.4.3
+> - sorted-iter v0.1.8
+>
+> Any volunteers to crank out some new Debian packages for these rust crates? I only have a small amount of rust for Debian experience myself.
+
+I can help with those. I saw that you start with az, I will start for
+bottom. :-D
+
+
+>
+> Bonus crate that is optional:
+> - finch v0.6.0
+>
+>
+> On 18/01/2019 16.08, Michael R. Crusoe wrote:
+> > Package: wnpp
+> > Severity: wishlist
+> > Owner: Debian Med team
+> >
+> > * Package name    : sourmash
+> >    Version         : 2.0.0~a11
+> >    Upstream Author : C. Titus Brown , Luiz C. Irber, Jr
+> > * URL             : http://sourmash.readthedocs.io/en/latest/
+> > * License         : BSD-3-Clause
+> >    Programming Lang: Python, C++
+> >    Description     : tools for comparing DNA sequences with MinHash sketches
+> >
+> >   Compute MinHash signatures for nucleotide (DNA/RNA) and protein sequences.
+> >   .
+> >   MinHash sketches provide a lightweight way to store “signatures” of large DNA
+> >   or RNA sequence collections, and then compare or search them using a Jaccard
+> >   index. MinHash sketches can be used to identify samples, find similar samples,
+> >   identify data sets with shared sequences, and build phylogenetic trees
+> >   (Ondov et al. 2015).
+> >   .
+> >   sourmash provides a command line script, a Python library, and a CPython
+> >   module for MinHash sketches
+> >
+> > Sourmash is team maintained by Debian-Med at https://salsa.debian.org/med-team/sourmash

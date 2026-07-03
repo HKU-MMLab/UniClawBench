@@ -1,0 +1,51 @@
+task_id: task_202_13_k8s_yaml_reconciliation
+category: 202_exploration_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我接手了一个小型 Kubernetes 配置仓库（kustomize base + staging/prod
+  overlays），但我不太信任它——我怀疑存在一些隐性冲突，即文件里写的内容
+  和实际部署出来的内容并不一致。仓库位于：
+
+      /tmp_workspace/clawbench/sources/k8s_config/
+
+  目录结构：一个 `base/`（ConfigMap + Deployment + kustomization），以及
+  `overlays/staging/` 和 `overlays/prod/`，它们对 base 进行 patch。
+
+  请仔细审计它，并核实每个环境实际解析出来的结果。不要只是用眼睛扫一遍
+  文件——要真正解析 YAML，并推理 kustomize strategic-merge + image-transformer
+  的语义，因为有几个 bug 只有解析后才会显现。尤其要留意：同一个 mapping 中
+  的重复键、YAML anchors/aliases、看起来像字符串但实际解析为其他类型的值、
+  patch 中被 images-transformer 覆盖的镜像 tag，以及与 autoscaler 冲突的
+  静态副本数。
+
+  请产出两样东西：
+
+  1. `/tmp_workspace/results/yaml_conflicts.json` —— 列出你找到的每一个冲突。
+     对每个冲突给出：一个 id/name、冲突类型、涉及的文件和 Kubernetes 对象、
+     简短说明为什么这是冲突，以及实际生效的值（相对于被遮蔽或被覆盖的值）。
+
+  2. `/tmp_workspace/results/yaml_resolved.json` —— 每个环境（base / staging /
+     prod）核实后的有效状态：最终生效的 `orders-config` ConfigMap data、
+     orders Deployment 最终生效的容器镜像，以及有效的副本数（注明哪些情况下
+     是由 autoscaler 而非静态值来管控）。
+
+  另外保存一份简短的 `/tmp_workspace/results/yaml_method.json`，说明你是如何
+  解析和核实的（使用的工具/命令、应用的 merge 规则），以便审计可复现。该仓库
+  完全离线——不要从网络获取任何内容。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+sources:
+  - k8s_config/
+
+codex:
+  max_user_followups: 2

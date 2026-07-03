@@ -1,0 +1,52 @@
+Message-ID: <43A85F2B-858E-4B81-8864-5AECD107DCC6@sharp.fm>
+X-Clawbench-ID: ASF-2024-0255
+Date: Sun, 6 Mar 2022 17:56:36 +0200
+From: Graham Leggett <minfrin@sharp.fm>
+To: dev@httpd.apache.org
+Subject: Re: backports
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-03.mbox
+
+On 04 Mar 2022, at 12:08, Stefan Eissing <stefan@eissing.org> wrote:
+
+> We should improve our backport procedure and provide guidance on how to use it after the next release.
+>
+> Post-mortem dbm backport:
+> - the patch pointed to the in 2.4.x/STATUS was incomplete, lacking APLOGNO()
+> - the incomplete patch was voted on and accepted, as local tests do not have the full CI checks
+> - Jim applied the voted on backport patch
+> - CI failed
+> No one did anything really wrong. We did just not apply the CI tools available until the damage was done.
+
+Just to confirm - no damage was done.
+
+We have a thorough, multistep process that ensures damage is not done. We do the work first on trunk and our CI, then we propose it for backport on trunk and it is tested again by multiple people through their votes. Then it hits our stable branch and then it gets tested by even more people, and our CI. Then it’s tested again when we propose a release. If we slip through all that, only then is damage done.
+
+> As noted in the related thread, backport proposal should really be PRs on github. Those are checked by
+> our CI and a PR can easily be improved by adding submits to the branch it is based on. In addition, we
+> get the github UI for review and comments. Should be a win for all.
+
+Github PRs are easy to use, and it’s entirely reasonable to use github to handle a backport if you choose to do so.
+
+Github PRs also have simple interfaces, like this one:
+
+curl https://[url-of-pr].diff | patch -p1
+
+I am however strongly opposed for Github to be our only promotion process.
+
+CI is great right until the point you get your first unrelated test failure, then it is a nightmare. The collectd project was completely stuck unable to merge a single PR for months and months because their CI broke and nobody had access to fix it. Github presented a “computer says no” button and the project ground to a complete halt. The project is now so backlogged that the chances of getting anything reviewed are slim.
+
+https://www.mail-archive.com/search?l=collectd@verplant.org&q=subject:%22Re%5C%3A+%5C%5Bcollectd%5C%5D+SNMPv3%5C%2BDTLS+support+for+collectd%5C-snmp%22&o=newest&f=1
+
+It is inevitable that at some point the generosity of the people supplying the CI will run out, and CI will stop working. We cannot allow ourselves to be jammed up because of this.
+
+To sum up:
+
++1 on the option to use Github PRs for backports.
+-1 to mandating the use of Github PRs for backports.
+
+Regards,
+Graham
+—

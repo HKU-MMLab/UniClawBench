@@ -1,0 +1,37 @@
+Message-ID: <ZUtIKG-fwUmDzz1A@an3as.eu>
+X-Clawbench-ID: BIO-2024-0917
+Date: Wed, 8 Nov 2023 09:34:48 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: migration to htslib ecosystem 1.18
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_11_msg00016.html
+
+Am Tue, Nov 07, 2023 at 10:27:04PM +0100 schrieb Étienne Mollier:
+>
+> Yup, there may be some tight coupling between samtools and
+
+Samtools and bcftools uploaded.
+
+> python-pysam, but the latter's upgrade will be needed for the
+> upcoming python 3.12 transission anyway.
+
+I've seen the bug report and will check this now.
+
+> If someone wants to
+> beat me at having a look at these while I sleep, they may be
+> good targets for help.  htslib 1.18 has been accepted in
+> unstable, so once it's built, this should facilitate things for
+> whoever who wants to have a look.
+
+I'd like to rewrite bcftools autopkgtest according to the model of
+samtools.  However, we need a new binary package bcftools-test which I
+rather delay util the set of packages has migrated to testing.
+
+Kind regards and thanks for starting with htslib
+    Andreas.
+
+--
+http://fam-tille.de

@@ -1,0 +1,53 @@
+Message-ID: <CAFQGv+aFu7Se08krr5ggL+kZgHLyt=nD6hu=m4bj7pjTtee5fw@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0912
+Date: Fri, 27 Jan 2023 17:31:28 -0500
+From: Joe Schaefer <joe@sunstarsys.com>
+To: dev@httpd.apache.org
+Subject: Re: Re: mod_wasm: Contributing Upstream to Apache
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-01.mbox
+
+Part of the really cool things you'd like to have as an app-server author
+that knows the APR/APU/HTTPd runtime are subrequests, including the
+portions that interact with the filter API.
+I'm always writing home-grown app-specific SSI-ish filters via mod_perl to
+process application pages as event-driven streams.  It will be interesting
+to compare mod_wasm with mod_perl2
+in terms of security / sandbox models and weigh them against other
+nonfunctional features (memory, latency, CPU, etc).
+
+
+On Fri, Jan 27, 2023 at 12:28 PM Jesús González <jesusgm@vmware.com> wrote:
+
+> Hi Eric,
+>
+> Thanks for the feedback. Though Wasm is relatively new it is being adopted
+> by other HTTP-related projects, like NGINX and Envoy proxy and even ASF
+> projects like APISIX. We want to contribute upstream to bring some of these
+> new features to the Apache web server, similarly to how we are working to
+> contribute our changes to other projects upstream (SQLite, PHP). We plan to
+> continue to development and maintenance regardless of future VMware
+> involvement. In fact, the reason we started this project was because our
+> manager Daniel Lopez was an early ASF member and he looks at this as a way
+> to contribute back to the community. We are initially targeting support for
+> regular web apps such as WordPress, but we plan for mod_wasm to enable
+> safely extending Apache's own functionality, providing access to the module
+> API from Wasm code.
+>
+> On 2023/01/24 20:36:44 Eric Covener wrote:
+> > > We are still very interested in contributing this module upstream and
+> helping to maintain it. Please, let us know what improvements or changes
+> would be needed for it to be considered ready for inclusion.
+> >
+> > As a pessimistic PMC member not caring about WASM or these languages,
+> > I worry that marrying the lifecycle together is not advantageous for
+> > either side. Of course I worry about being stuck with the pieces when
+> > employer interest wanes or after turnover. It does not seem like it's
+> > strictly necessary to be part of the server distribution (there are
+> > many examples of successful out-of-tree modules).
+> >
+> > However the above is no veto.
+> >
+>

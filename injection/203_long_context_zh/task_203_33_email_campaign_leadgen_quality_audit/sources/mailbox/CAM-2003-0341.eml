@@ -1,0 +1,12 @@
+Message-ID: <cam-2003-0341@campaign-audit.example>
+X-Clawbench-ID: CAM-2003-0341
+Date: Fri, 07 Mar 2003 10:43:00 -0500
+From: Katherine Marlow <k.marlow@brightwave-leads.example>
+To: colin@acme-mail.example
+Subject: recipient list format
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: synthetic email campaign lead-gen quality audit implant
+
+The list you sent has seed addresses, internal test accounts, and the west-region prospect file. We can suppress the seed rows later, but the current file is enough to build the forecast before final QA.

@@ -1,0 +1,160 @@
+Message-ID: <89B93028-52C9-4B76-8CE0-1E1B074EAE63@eissing.org>
+X-Clawbench-ID: ASF-2024-0669
+Date: Mon, 8 Apr 2024 13:25:54 +0200
+From: "Stefan Eissing via dev" <dev@httpd.apache.org>
+To: dev@httpd.apache.org
+Subject: Re: Problem with pypest and pebble 2.5.1
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-04.mbox
+
+r1916861 updates to mod_md v2.4.26 and I adapted tests for Pebble v2.5.
+
+Sadly, this means disabling the EAB tests for now as Pebble no longer
+supports the EAB keys we test with.
+Opened issue https://github.com/letsencrypt/pebble/issues/455
+
+Hope this works for you as well,
+
+Stefan
+
+> Am 08.04.2024 um 11:02 schrieb Stefan Eissing via dev <dev@httpd.apache.org>:
+>
+> Looking into this now, see what pebble changed.
+>
+>> Am 07.04.2024 um 17:56 schrieb Rainer Jung <rainer.jung@kippdata.de>:
+>>
+>> Hi there,
+>>
+>> I tried to check, whether the few remaining sporadic test failures during pytest can be solved by updating pebble form 2.4.0 to 2.5.1 (which seems to be the same as 2.5.0).
+>>
+>> Unfortunately I get a lot of FAILED md tests with that version. Does anyone see the same?
+>>
+>> Here's some more detailed info:
+>>
+>> 17:10:10.216348 modules/md/test_502_acmev2_drive.py::TestDrivev2::test_md_502_100
+>> 17:10:10.216348 modules/md/test_502_acmev2_drive.py::TestDrivev2::test_md_502_101
+>> 17:10:10.216348 modules/md/test_502_acmev2_drive.py::TestDrivev2::test_md_502_103
+>> 17:10:10.216348 modules/md/test_502_acmev2_drive.py::TestDrivev2::test_md_502_105
+>> 17:10:10.216348 modules/md/test_502_acmev2_drive.py::TestDrivev2::test_md_502_107
+>> 17:10:10.216348 modules/md/test_502_acmev2_drive.py::TestDrivev2::test_md_502_108
+>> 17:10:10.216348 modules/md/test_502_acmev2_drive.py::TestDrivev2::test_md_502_200
+>> 17:10:10.216348 modules/md/test_602_roundtrip.py::TestRoundtripv2::test_md_602_000
+>> 17:10:10.216348 modules/md/test_602_roundtrip.py::TestRoundtripv2::test_md_602_001
+>> 17:10:10.216529 modules/md/test_602_roundtrip.py::TestRoundtripv2::test_md_602_002
+>> 17:10:10.216529 modules/md/test_702_auto.py::TestAutov2::test_md_702_001
+>> 17:10:10.216529 modules/md/test_702_auto.py::TestAutov2::test_md_702_002
+>> 17:10:10.216529 modules/md/test_702_auto.py::TestAutov2::test_md_702_003
+>> 17:10:10.216529 modules/md/test_702_auto.py::TestAutov2::test_md_702_004[tls-alpn-01]
+>> 17:10:10.216529 modules/md/test_702_auto.py::TestAutov2::test_md_702_004[http-01]
+>> 17:10:10.216529 modules/md/test_702_auto.py::TestAutov2::test_md_702_030
+>> 17:10:10.216529 modules/md/test_702_auto.py::TestAutov2::test_md_702_031
+>> 17:10:10.216529 modules/md/test_702_auto.py::TestAutov2::test_md_702_032
+>> 17:10:10.216529 modules/md/test_702_auto.py::TestAutov2::test_md_702_040
+>> 17:10:10.216529 modules/md/test_702_auto.py::TestAutov2::test_md_702_044[tls-alpn-01]
+>> 17:10:10.216529 modules/md/test_720_wildcard.py::TestWildcard::test_md_720_002b
+>> 17:10:10.216529 modules/md/test_720_wildcard.py::TestWildcard::test_md_720_004
+>> 17:10:10.216529 modules/md/test_720_wildcard.py::TestWildcard::test_md_720_005
+>> 17:10:10.216529 modules/md/test_720_wildcard.py::TestWildcard::test_md_720_006
+>> 17:10:10.216529 modules/md/test_720_wildcard.py::TestWildcard::test_md_720_007
+>> 17:10:10.216529 modules/md/test_750_eab.py::TestEab::test_md_750_003
+>> 17:10:10.216529 modules/md/test_750_eab.py::TestEab::test_md_750_004
+>> 17:10:10.216529 modules/md/test_750_eab.py::TestEab::test_md_750_005
+>> 17:10:10.216529 modules/md/test_750_eab.py::TestEab::test_md_750_010
+>> 17:10:10.216529 modules/md/test_750_eab.py::TestEab::test_md_750_011
+>> 17:10:10.216529 modules/md/test_750_eab.py::TestEab::test_md_750_012
+>> 17:10:10.216529 modules/md/test_750_eab.py::TestEab::test_md_750_013
+>> 17:10:10.216529 modules/md/test_750_eab.py::TestEab::test_md_750_014
+>> 17:10:10.216529 modules/md/test_750_eab.py::TestEab::test_md_750_015
+>> 17:10:10.216529 modules/md/test_750_eab.py::TestEab::test_md_750_016
+>> 17:10:10.216529 modules/md/test_750_eab.py::TestEab::test_md_750_022
+>>
+>> The failures in test_750_eab.py seem to be related to the following HS256 error messages in the httpd error log:
+>>
+>> [Sun Apr 07 17:13:24.571712 2024] [watchdog:debug] [pid 5554:tid 140101761058560] mod_watchdog.c(170): AH02972: Singleton Watchdog (_md_renew_) running
+>> [Sun Apr 07 17:13:24.571824 2024] [md:debug] [pid 5554:tid 140101761058560] mod_md_drive.c(203): AH10054: md watchdog start, auto drive 1 mds
+>> [Sun Apr 07 17:13:24.672025 2024] [md:debug] [pid 5554:tid 140101761058560] mod_md_drive.c(208): AH10055: md watchdog run, auto drive 1 mds
+>> [Sun Apr 07 17:13:24.672112 2024] [md:debug] [pid 5554:tid 140101761058560] mod_md_drive.c(109): AH10052: md(test-md-750-003-1712502785.org): state=1, driving
+>> [Sun Apr 07 17:13:24.672491 2024] [md:debug] [pid 5554:tid 140101761058560] md_reg.c(1112): test-md-750-003-1712502785.org: init done
+>> [Sun Apr 07 17:13:24.672512 2024] [md:debug] [pid 5554:tid 140101761058560] md_reg.c(1157): test-md-750-003-1712502785.org: run staging
+>> [Sun Apr 07 17:13:24.672553 2024] [md:debug] [pid 5554:tid 140101761058560] md_acme_drive.c(714): test-md-750-003-1712502785.org: staging started, state=1, attempt=0, acme=https://localhost:14000/dir, challenges='http-01'
+>> [Sun Apr 07 17:13:24.672755 2024] [md:debug] [pid 5554:tid 140101761058560] md_acme_drive.c(752): test-md-750-003-1712502785.org: setup staging
+>> [Sun Apr 07 17:13:24.673058 2024] [md:debug] [pid 5554:tid 140101761058560] md_acme.c(776): get directory from https://localhost:14000/dir
+>> [Sun Apr 07 17:13:24.686700 2024] [md:debug] [pid 5554:tid 140101761058560] md_acmev2_drive.c(101): test-md-750-003-1712502785.org: (ACMEv2) need certificate
+>> [Sun Apr 07 17:13:24.686756 2024] [md:debug] [pid 5554:tid 140101761058560] md_acme_drive.c(115): (2)No such file or directory: ACME: looking at existing accounts
+>> [Sun Apr 07 17:13:24.686925 2024] [md:debug] [pid 5554:tid 140101761058560] md_acme_acct.c(371): no account found, looking in STAGING
+>> [Sun Apr 07 17:13:24.687134 2024] [md:debug] [pid 5554:tid 140101761058560] md_acme_drive.c(128): (2)No such file or directory: ACME: creating new account
+>> [Sun Apr 07 17:13:24.687165 2024] [md:debug] [pid 5554:tid 140101761058560] md_acme_acct.c(583): create new account
+>> [Sun Apr 07 17:13:26.328321 2024] [md:debug] [pid 5554:tid 140101761058560] md_acme_acct.c(652): created new account key
+>> [Sun Apr 07 17:13:26.328362 2024] [md:debug] [pid 5554:tid 140101761058560] md_acme.c(344): sending req: POST https://localhost:14000/sign-me-up
+>> [Sun Apr 07 17:13:26.342090 2024] [md:debug] [pid 5554:tid 140101761058560] md_acme.c(400): req: POST https://localhost:14000/sign-me-up
+>> [Sun Apr 07 17:13:26.347562 2024] [md:warn] [pid 5554:tid 140101761058560] (22)Invalid argument: acme problem urn:ietf:params:acme:error:malformed: failed to decode external account binding: go-jose/go-jose: unexpected signature algorithm "HS256"; expected ["RS256" "ES256" "ES384" "ES512"]
+>> [Sun Apr 07 17:13:26.347617 2024] [md:debug] [pid 5554:tid 140101761058560] md_acme.c(419): (22)Invalid argument: req sent
+>> [Sun Apr 07 17:13:26.348863 2024] [md:error] [pid 5554:tid 140101761058560] (22)Invalid argument: md[test-md-750-003-1712502785.org] problem[urn:ietf:params:acme:error:malformed] detail[failed to decode external account binding: go-jose/go-jose: unexpected signature algorithm "HS256"; expected ["RS256" "ES256" "ES384" "ES512"]]
+>> [Sun Apr 07 17:13:26.348893 2024] [md:debug] [pid 5554:tid 140101761058560] md_result.c(254): (22)Invalid argument: md[test-md-750-003-1712502785.org] problem[urn:ietf:params:acme:error:malformed] detail[failed to decode external account binding: go-jose/go-jose: unexpected signature algorithm "HS256"; expected ["RS256" "ES256" "ES384" "ES512"]]
+>> [Sun Apr 07 17:13:26.348908 2024] [md:debug] [pid 5554:tid 140101761058560] md_result.c(254): (22)Invalid argument: md[test-md-750-003-1712502785.org] problem[urn:ietf:params:acme:error:malformed] detail[failed to decode external account binding: go-jose/go-jose: unexpected signature algorithm "HS256"; expected ["RS256" "ES256" "ES384" "ES512"]]
+>> [Sun Apr 07 17:13:26.348921 2024] [md:debug] [pid 5554:tid 140101761058560] md_reg.c(1163): (22)Invalid argument: test-md-750-003-1712502785.org: staging done
+>> [Sun Apr 07 17:13:26.349888 2024] [md:error] [pid 5554:tid 140101761058560] (22)Invalid argument: AH10056: processing test-md-750-003-1712502785.org: failed to decode external account binding: go-jose/go-jose: unexpected signature algorithm "HS256"; expected ["RS256" "ES256" "ES384" "ES512"]
+>> [Sun Apr 07 17:13:26.349992 2024] [md:info] [pid 5554:tid 140101761058560] AH10057: test-md-750-003-1712502785.org: encountered error for the 1. time, next run in 1 days 11 hours 54 minutes 21 seconds
+>> [Sun Apr 07 17:13:26.350635 2024] [md:debug] [pid 5554:tid 140101761058560] mod_md_drive.c(230): AH10107: next run in 11 hours 59 minutes 58 seconds
+>>
+>> Other tests fail for other reasons.
+>>
+>> For the sake of completeness: to build pebble 2.5.1 on ALMA 8.9 I has to apply the following small changes, since the go version there is a patches 1.20 instead of 1.21 and 1.20 does not yet have the max(int64, int64) function introduced in 1.21:
+>>
+>> diff --git a/go.mod b/go.mod
+>> index 7c78cd2..8de4c2f 100644
+>> --- a/go.mod
+>> +++ b/go.mod
+>> @@ -1,6 +1,6 @@
+>> module github.com/letsencrypt/pebble/v2
+>>
+>> -go 1.21
+>> +go 1.20
+>>
+>> require (
+>>       github.com/go-jose/go-jose/v4 v4.0.1
+>> diff --git a/vendor/github.com/go-jose/go-jose/v4/encoding.go b/vendor/github.com/go-jose/go-jose/v4/encoding.go
+>> index 4f6e0d4..1c94281 100644
+>> --- a/vendor/github.com/go-jose/go-jose/v4/encoding.go
+>> +++ b/vendor/github.com/go-jose/go-jose/v4/encoding.go
+>> @@ -98,6 +98,13 @@ func deflate(input []byte) ([]byte, error) {
+>>       return output.Bytes(), err
+>> }
+>>
+>> +func mymax(x, y int64) int64 {
+>> +       if x < y {
+>> +               return y
+>> +       }
+>> +       return x
+>> +}
+>> +
+>> // inflate decompresses the input.
+>> //
+>> // Errors if the decompressed data would be >250kB or >10x the size of the
+>> @@ -106,7 +113,7 @@ func inflate(input []byte) ([]byte, error) {
+>>       output := new(bytes.Buffer)
+>>       reader := flate.NewReader(bytes.NewBuffer(input))
+>>
+>> -       maxCompressedSize := max(250_000, 10*int64(len(input)))
+>> +       maxCompressedSize := mymax(250_000, 10*int64(len(input)))
+>>
+>>       limit := maxCompressedSize + 1
+>>       n, err := io.CopyN(output, reader, limit)
+>> diff --git a/vendor/modules.txt b/vendor/modules.txt
+>> index d81930c..03ddbe8 100644
+>> --- a/vendor/modules.txt
+>> +++ b/vendor/modules.txt
+>> @@ -1,5 +1,5 @@
+>> # github.com/go-jose/go-jose/v4 v4.0.1
+>> -## explicit; go 1.21
+>> +## explicit; go 1.20
+>> github.com/go-jose/go-jose/v4
+>> github.com/go-jose/go-jose/v4/cipher
+>> github.com/go-jose/go-jose/v4/json
+>>
+>> Best regards,
+>>
+>> Rainer
+>

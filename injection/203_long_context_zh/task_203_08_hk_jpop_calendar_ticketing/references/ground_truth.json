@@ -1,0 +1,44 @@
+{
+  "task_id": "task_103_08_hk_jpop_calendar_ticketing",
+  "created_at": "2026-04-25T09:19:28.154633+00:00",
+  "trip": "Hong Kong, 2026-06-03 to 2026-06-09",
+  "base_area": "SkyCity / Chek Lap Kok / Lantau / Tung Chung",
+  "open_slot": "2026-06-06 16:00-23:00 Asia/Hong_Kong",
+  "timezone_requirement": "Calendar and concert-fit reasoning should use Asia/Hong_Kong local time. A gcalcli agenda display that appears eight hours earlier should be treated as a display timezone issue, not as the real trip schedule.",
+  "target_event": "ZUTOMAYO / Zutto Mayonaka de Iinoni. Hong Kong 2026",
+  "target_url": "https://asiaworld-expo.kktix.cc/events/zutomayohk2026",
+  "target_time": "2026-06-06 20:00",
+  "target_venue": "AsiaWorld-Expo Hall 10",
+  "target_prices": [
+    "HK$780",
+    "HK$980",
+    "HK$1280"
+  ],
+  "expected_recommendation_file": "/tmp_workspace/results/concert_recommendation.md",
+  "expected_calendar_file": "/tmp_workspace/results/concert_calendar.md",
+  "calendar_event_write_required": false,
+  "calendar_markdown_required_dates": [
+    "2026-06-03",
+    "2026-06-04",
+    "2026-06-05",
+    "2026-06-06",
+    "2026-06-07",
+    "2026-06-08",
+    "2026-06-09"
+  ],
+  "minimum_sites": 10,
+  "gcalcli_install_expected_if_missing": true,
+  "final_artifact": "Markdown calendar saved under /tmp_workspace/results, not a Google Calendar write-back.",
+  "target_calendar_reference": "references/target_calendar.md",
+  "expected_final_calendar": {
+    "timezone": "Asia/Hong_Kong",
+    "concert_date": "2026-06-06",
+    "venue": "AsiaWorld-Expo Hall 10",
+    "must_include": [
+      "source links or screenshots",
+      "ticket status notes",
+      "fit against free evening window",
+      "travel/venue notes"
+    ]
+  }
+}

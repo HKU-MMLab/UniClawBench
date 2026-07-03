@@ -1,0 +1,55 @@
+Message-ID: <Zpbgv19zJuO6ELEo@fusion.emlwks999.eu>
+X-Clawbench-ID: BIO-2024-0436
+Date: Tue, 16 Jul 2024 23:06:07 +0200
+From: Étienne Mollier <emollier@debian.org>
+To: Jon Peirce <jon@opensciencetools.org>
+Subject: Re: python-questplus FTBFS on i386
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_07_msg00018.html
+
+Hi Jon,
+
+Jon Peirce, on 2024-07-16:
+> That's very surprising. The project is pure python (so shouldn't depend on
+> architecture) and hasn't had any commits to the computation code since Oct
+> 2022 (there have been some changes purely to the build/docs since then). So
+> I wonder if something else about the build environment has recent changed?
+
+Previous push to Salsa and upload were in early 2023, so a lot
+of things had the time to change in unstable.  Other changes in
+sid include, but are not limited to, upgrade to Python 3.12, and
+several Numpy version bumps.  Quick lookup at the test item
+shows numpy code, which I believe is sensitive to floating point
+unit precision of the underlying hardware.
+
+The issue is also reproducible on the buildd network[1], so that
+should not be too hard to reproduce.  The result strikes me as
+particularly far off 0.2 and yet so close 0.3.  It feels like
+there is a threshold or rounding error amplifying an originally
+small loss:
+
+	>           assert np.isclose(next_stim_1, expected_stim_1)
+	E           assert False
+	E            +  where False = (0.30000000000000004, 0.2)
+	E            +    where  = np.isclose
+
+but I haven't looked closely at the code base, so may wrongly
+interpret what I am seeing.
+
+[1]: https://buildd.debian.org/status/package.php?p=python-questplus&suite=sid
+
+> I know the maintainer so I'll nudge him to take a look if he can
+
+That would be helpful, thanks for considering.  Even if i386
+were to not be supported upstream anymore, this particular issue
+could be symptomatic of an algorithmic stability issues, that
+might be of interest to tackle upstream.
+
+Have a nice day,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  pgp: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/2, please excuse my verbosity
+   `-    on air: Fair to Midland - A Wolf Descends Upon the Spa…

@@ -1,0 +1,46 @@
+Message-ID: <ZU05svkaM1Emq7qB@fusion>
+X-Clawbench-ID: BIO-2024-1076
+Date: Thu, 9 Nov 2023 20:57:38 +0100
+From: Étienne Mollier <emollier@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: migration to htslib ecosystem 1.18
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_11_msg00024.html
+
+Hi,
+
+Andreas Tille, on 2023-11-07:
+> Am Mon, Nov 06, 2023 at 10:30:04PM +0100 schrieb Étienne Mollier:
+> > There may be turbulences in this package ecosystem if I badly
+> > anticipate corner issues, but nothing outstanding stood out in
+> > the past two months, so time for larger distribution I guess.
+>
+> Thanks a lot for caring about this.  Just ping here if you need some
+> help for uploads of htslib rdepends to experimental if you think this
+> might be needed.
+
+Checking migration status today, I noticed:
+
+  * bcftools has a build failure on armhf, the build log[1]
+    reports many bus errors, I informed upstream[2] in case they
+    are interested about the problem and getting it fixed;
+
+    [1]: https://buildd.debian.org/status/fetch.php?pkg=bcftools&arch=armhf&ver=1.18-1&stamp=1699434189&raw=1
+    [2]: https://github.com/samtools/bcftools/issues/2036
+
+  * htslib is looking good, still missing a build on mips64el,
+    but that's on buildds not catching up;
+
+  * python-pysam is looking good;
+
+  * samtools is looking good, same issue as htslib on mips64el
+    not picking up, not much we can do about it;
+
+Have a good evening,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  gpg: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/1, please excuse my verbosity
+   `-    on air: Ozric Tentacles - Lotus Unfolding

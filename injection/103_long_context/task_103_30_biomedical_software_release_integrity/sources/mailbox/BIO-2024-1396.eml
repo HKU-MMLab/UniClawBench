@@ -1,0 +1,72 @@
+Message-ID: <23242234.6Emhk5qWAg@riemann>
+X-Clawbench-ID: BIO-2024-1396
+Date: Tue, 27 Jun 2023 13:10:54 -0500
+From: Steven Robbins <steve@sumost.ca>
+To: debian-med@lists.debian.org
+Subject: Fwd: insighttoolkit | Failed pipeline for master | ebf68c2e
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_06_msg00024.html
+
+I keep getting pipeline error notices from Salsa about ITK.  Apparently
+"provisioning" has failed, but I fail to understand why.  Anyone know?
+
+The log doesn't help me.  In fact, it appears things are working up to the
+point of uploading artifacts, then there's some "bad gateway" messages:
+
+
+Uploading artifacts for successful job
+00:55
+Uploading artifacts...
+/builds/med-team/insighttoolkit/debian/output/: found 19114 matching artifact
+files and directories
+WARNING: Uploading artifacts as "archive" to coordinator... 502 Bad Gateway
+id=4370340 responseStatus=502 Bad Gateway status=502 token=64_FUELP
+WARNING: Retrying...                                context=artifacts-uploader
+error=invalid argument
+WARNING: Uploading artifacts as "archive" to coordinator... 502 Bad Gateway
+id=4370340 responseStatus=502 Bad Gateway status=502 token=64_FUELP
+WARNING: Retrying...                                context=artifacts-uploader
+error=invalid argument
+WARNING: Uploading artifacts as "archive" to coordinator... 502 Bad Gateway
+id=4370340 responseStatus=502 Bad Gateway status=502 token=64_FUELP
+FATAL: invalid argument
+
+
+----------  Forwarded Message  ----------
+
+Subject: insighttoolkit | Failed pipeline for master | ebf68c2e
+Date: Tuesday, June 27, 2023, 1:02:30 P.M. CDT
+From: Debian GitLab
+To: smr@debian.org
+
+
+Pipeline #545076 has failed!
+
+Project: insighttoolkit ( https://salsa.debian.org/med-team/insighttoolkit )
+Branch: master ( https://salsa.debian.org/med-team/insighttoolkit/-/commits/
+master )
+
+Commit: ebf68c2e ( https://salsa.debian.org/med-team/insighttoolkit/-/commit/
+ebf68c2e1da689e11538243a80c7a448852729a7 )
+Commit Message: Ready for release.
+
+Commit Author: Steve Robbins
+
+Pipeline #545076 ( https://salsa.debian.org/med-team/insighttoolkit/-/
+pipelines/545076 ) triggered by Steven Robbins ( https://salsa.debian.org/smr
+)
+had 1 failed job.
+
+Job #4370340 ( https://salsa.debian.org/med-team/insighttoolkit/-/jobs/
+4370340/raw )
+
+Stage: provisioning
+Name: extract-source
+
+--
+You're receiving this email because of your account on salsa.debian.org.
+
+
+-----------------------------------------

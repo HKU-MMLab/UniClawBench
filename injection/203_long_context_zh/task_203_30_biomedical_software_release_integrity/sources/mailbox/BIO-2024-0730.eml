@@ -1,0 +1,43 @@
+Message-ID: <B5A2AC0D-C4F7-40CB-8147-E534ABCE4B69@glasgow.ac.uk>
+X-Clawbench-ID: BIO-2024-0730
+Date: Fri, 30 Sep 2022 13:10:27 +0000
+From: John Marshall <John.W.Marshall@glasgow.ac.uk>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Re: [Help] New version of htslib does not build
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_09_msg00057.html
+
+Andreas Tille wrote:
+> Interestingly the missing symbols are mentioned in some warnings higher up in the changelog!
+
+As per the build log, those warnings were:
+
+Selecting previously unselected package libhtscodecs2:amd64.
+Preparing to unpack .../44-libhtscodecs2_1.2.2-1_amd64.deb ...
+Unpacking libhtscodecs2:amd64 (1.2.2-1) ...
+[…]
+cram/cram_io.c:1725:23: warning: implicit declaration of function 'tok3_decode_names'; did you mean 'decode_names'? [-Wimplicit-function-declaration]
+1725 |         uint8_t *cp = tok3_decode_names(b->data, b->comp_size, &out_len);
+     |                       ^~~~~~~~~~~~~~~~~
+     |                       decode_names
+[…]
+
+These function names (tok3_decode_names() et al) appeared in htscodecs 1.3.0 in response to [1]. Probably the underlying problem here is that you need to update the requirement on the external libhtscodecs to ensure htslib 1.16 is built against htscodecs 1.3.0.
+
+
+Perhaps separately, what is the reason for [2]?
+
+	Commit 2905146ffe547dd98617e32d8b834f4c802a7f77
+	Fix build options to make sure symbols will remain in library
+
+It would appear from the resulting additions to debian/libhts3.symbols that removing -fvisibility=hidden from DEB_CFLAGS_MAINT_APPEND has caused large numbers of HTSlib's non-HTSLIB_EXPORT-marked internal functions to be added to your libhts3.symbols file. Adding these to libhts3.symbols doesn't seem very correct (they are not part of the ABI), and I expect the upstream HTSlib maintainers will be extremely uninterested in any future complaints that non-exported symbols have changed or disappeared.
+
+Cheers,
+
+    John
+
+
+[1] https://github.com/samtools/htscodecs/issues/36
+[2] https://salsa.debian.org/med-team/htslib/-/commit/2905146ffe547dd98617e32d8b834f4c802a7f77

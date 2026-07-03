@@ -1,0 +1,36 @@
+{
+  "video_id": "Wm5tH7yJqRb",
+  "url": "https://www.youtube.com/watch?v=Wm5tH7yJqRb",
+  "title": "uv Is the Answer in 2024 — Replacing pyenv, Poetry, and venv on Every Mac",
+  "channel": "ToolingForward",
+  "published_at": "2024-09-18",
+  "duration_seconds": 942,
+  "view_count": 312000,
+  "tags": ["uv", "astral", "python", "package-manager", "macos", "sonoma", "rust"],
+  "transcript_format": "json_segments",
+  "transcript": [
+    {"start": 0.0, "end": 25.0, "text": "Hey everyone. After two years of telling people to use pyenv plus Poetry, I'm here to officially update that recommendation. As of September 2024, the answer for Python environment and package management on macOS — including the latest Sonoma builds and Sequoia — is uv from Astral. This video is the new canonical setup."},
+    {"start": 25.0, "end": 78.0, "text": "Quick background. uv is a Rust-based Python package manager that combines the responsibilities of pyenv, virtualenv, pip, pip-tools, and Poetry into one statically-linked binary. It is roughly 10 to 100 times faster than pip and Poetry on real workloads."},
+    {"start": 78.0, "end": 138.0, "text": "Crucially for macOS users: uv does NOT build Python from source. It downloads pre-built, signed Python distributions from Astral's CDN. That sidesteps the dylib issue that broke pyenv on Sonoma — the one I covered in the warning video back in December 2023. With uv, Sonoma users finally have a Python toolchain that just works."},
+    {"start": 138.0, "end": 195.0, "text": "Let me address two earlier recommendations directly. The plain venv advice from 2022: it was correct for its time but does not handle dependency resolution or version management. Treat it as outdated. The pyenv plus Poetry advice from 2023: it was the right answer for that year but it has the Sonoma linker bug. Treat that combination as legacy on macOS Sonoma and later."},
+    {"start": 195.0, "end": 252.0, "text": "Installation. brew install uv, or curl -LsSf https://astral.sh/uv/install.sh | sh if you do not use Homebrew. Single binary. No shims, no shell hooks, no $PATH editing in .zshrc. The binary just resolves Python on its own."},
+    {"start": 252.0, "end": 318.0, "text": "Project setup. cd into your project, run uv init, then uv python pin 3.12. uv downloads a pre-built Python 3.12 from Astral's CDN within seconds — no source compilation. uv add fastapi uvicorn — uv resolves and installs into a hidden .venv with a real lockfile uv.lock."},
+    {"start": 318.0, "end": 380.0, "text": "Activating? You don't have to. uv run python my_script.py automatically uses the project's environment. uv sync rebuilds the env from uv.lock. The whole 'forgetting to source activate' class of bugs goes away."},
+    {"start": 380.0, "end": 442.0, "text": "Migrating from venv: delete .venv, run uv init plus uv add for each dep. Migrating from Poetry: uv reads pyproject.toml directly, so usually it's just uv sync. uv even imports requirements.txt with uv pip compile."},
+    {"start": 442.0, "end": 508.0, "text": "Performance. On a real FastAPI project with 60 transitive deps, poetry install took 38 seconds on my M2 Pro. uv sync took 2.1 seconds. The cold-cache install is even more dramatic — Poetry took 3 minutes downloading wheels, uv took 14 seconds. The Astral CDN plus Rust resolver is genuinely an order-of-magnitude jump."},
+    {"start": 508.0, "end": 572.0, "text": "macOS Sonoma compatibility. I tested uv on Sonoma 14.5 with cryptography, psycopg2-binary, numpy, scipy, and pillow. All install and import cleanly. No segfaults, no missing dylibs. Because Astral ships its own Python builds against curated dynamic libraries, the Sonoma linker change is not a factor."},
+    {"start": 572.0, "end": 635.0, "text": "Caveats and honesty. uv is still under active development. Its workspace and monorepo support landed in 2024 but is less battle-tested than Poetry's. If you maintain a 50-package monorepo, evaluate carefully. For solo projects and small teams, uv is unambiguously better."},
+    {"start": 635.0, "end": 700.0, "text": "Another caveat: uv does not yet have a plugin ecosystem like Poetry. Poetry plugins for things like dynamic versioning or custom build backends do not have direct uv equivalents. If you depend on a specific plugin, check before migrating."},
+    {"start": 700.0, "end": 765.0, "text": "What about Conda? If you need non-Python dependencies — CUDA, MKL, system R — Conda still has a niche. But for pure Python, uv is leaner, faster, and has none of the Conda channel-priority headaches."},
+    {"start": 765.0, "end": 830.0, "text": "Recap. The current best-practice stack on macOS, as of September 2024, is: install uv via Homebrew, uv init in each project, uv python pin to your target Python version, uv add for dependencies, uv sync to rebuild from the lockfile, and uv run for execution. That replaces pyenv, plain venv, pip, and Poetry."},
+    {"start": 830.0, "end": 895.0, "text": "If you are starting a new Python project on macOS today: use uv. If you are on an older venv or pyenv-Poetry project that still works on Ventura: you can stay where you are, no rush. If you are on Sonoma and your existing setup has been segfaulting: migrate to uv this week."},
+    {"start": 895.0, "end": 942.0, "text": "I'll link the Astral docs and a migration cheatsheet in the description. This is genuinely the most significant Python tooling shift since virtualenv itself. Like and subscribe — and please share with anyone still fighting pyenv on Sonoma. See you next time."}
+  ],
+  "key_points": [
+    "uv (from Astral) is the 2024 recommended replacement for venv, pyenv, pip, Poetry",
+    "Explicitly labels venv-only (2022) and pyenv+Poetry (2023) as outdated/legacy on Sonoma",
+    "Solves Sonoma dylib bug because uv ships pre-built signed Python — no source build",
+    "10-100x faster than pip/Poetry; single statically-linked Rust binary",
+    "Caveats: monorepo support newer, no plugin ecosystem yet, Conda still wins for non-Python deps"
+  ]
+}

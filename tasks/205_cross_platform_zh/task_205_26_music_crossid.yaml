@@ -1,0 +1,53 @@
+task_id: task_205_26_music_crossid
+category: 205_cross_platform_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+skills:
+  - netease-music-cli
+
+task: |
+  一个朋友给我哼了几句歌词,但我不确定是哪些歌。你能帮我查一下吗?我还
+  想在网易云音乐和 YouTube 之间交叉核对元数据,看看时长是否一致。
+
+  歌词在末尾,分别标为 A、B、C。
+
+  对每首歌,先确认歌名和原唱——不要翻唱版本。然后在网易云音乐和 YouTube
+  两边都查一下。对网易,记下 song_id、专辑和时长。对 YouTube,找到官方
+  MV(优先选歌手自己的频道或唱片公司的频道,不要粉丝二次上传的),记下
+  video_id、频道、时长和上传日期。最后对比两边的时长——相差在 5 秒以内
+  我就认为算匹配。
+
+  网易查询用 ncm-cli,YouTube 搜索和元数据用 yt-dlp。
+
+  给我一个汇总三首歌交叉对照信息的 JSON,放在
+  /tmp_workspace/results/song_identification.json,外加一份简短的中文
+  report.md 讨论结果——哪首歌在两个平台上匹配得最好,哪首翻唱版本最多,
+  诸如此类的观察。
+
+  歌词:
+
+    A: 缘分让我们相遇乱世以外,命运却要我们危难中相爱
+    B: 人潮内愈文静愈变得不受理睬
+    C: 我和我最後的倔強,握緊雙手絕對不放
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources: []
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

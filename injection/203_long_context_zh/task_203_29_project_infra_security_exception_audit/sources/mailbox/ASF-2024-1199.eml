@@ -1,0 +1,52 @@
+Message-ID: <13928FA2-4CC1-46BA-9B52-909165C36F8B@eissing.org>
+X-Clawbench-ID: ASF-2024-1199
+Date: Tue, 14 Dec 2021 12:57:33 +0100
+From: Stefan Eissing <stefan@eissing.org>
+To: dev@httpd.apache.org
+Subject: Re: travis setup for 2.4.x
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2021-12.mbox
+
+> Am 14.12.2021 um 12:53 schrieb Joe Orton <jorton@redhat.com>:
+>
+> On Tue, Dec 14, 2021 at 11:34:24AM +0100, Stefan Eissing wrote:
+>> How is the relation between the .travis.yml in trunk and 2.4.x? We have checks for jobs in trunk with
+>>
+>> - if: *condition_not_24x
+>>
+>> and those jobs do not appear in the 2.4.x/.travis.yml. Is this a leftover? Are these 2 clearly separate or merged somehow?
+>
+> The intent was that .travis.yml (and test/travis*) can be kept the same
+> in 2.4.x as in trunk, with the "if" conditions then used to limit
+> exactly which tests are run in trunk vs 2.4. Then we should write the
+> tests for trunk in a way which should always be fine to backport as-is
+> to 2.4.
+
+Ah, I get it. Thanks.
+
+> In practice it gets a bit hard to disentangle some changes, and the 2.4
+> .travis.yml is a bit stale, so maybe there is a better practice.  e.g.
+> we could simply maintain two completely independent .travis.yml files
+> and copy and paste stuff from trunk where required.
+>
+> Not really sure to be honest, welcome any opinions.
+
+For me, I'd like to tinker with things in trunk without any fear
+of breaking stuff in our release testing. That is why I prefer copies
+of test/modules/* from trunk in 2.4.x that I refresh ideally on backports.
+
+I myself find this easier than version checking in test. ymmv.
+
+>
+> (Also, does anybody know why Travis notifications by e-mail are broken?)
+
+Would be interested in seeing them again, as well.
+
+Kind Regards,
+Stefan
+
+>
+> Regards, Joe
+>

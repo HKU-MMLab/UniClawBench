@@ -1,0 +1,49 @@
+Message-ID: <b88583d5-d785-bb48-5b88-9e6ad3a30335@debian.org>
+X-Clawbench-ID: BIO-2024-1059
+Date: Tue, 22 Feb 2022 12:35:55 +0200
+From: Andrius Merkys <merkys@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: Nanolyse autopkgtest broken - could someone provide a proper fastq file?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_02_msg00101.html
+
+Hi Andreas,
+
+On 2022-02-22 12:16, Andreas Tille wrote:
+> by chance I realised that the autopkgtest of nanolyse was not
+> working on the provided dataset.  After fixing this[1] the test
+> breaks unfortunately[2]:
+>
+> Traceback (most recent call last):
+>   File "/usr/bin/NanoLyse", line 33, in
+>     sys.exit(load_entry_point('NanoLyse==1.2.0', 'console_scripts', 'NanoLyse')())
+>   File "/usr/lib/python3/dist-packages/nanolyse/NanoLyse.py", line 53, in main
+>     filter_reads(aligner, sys.stdin)
+>   File "/usr/lib/python3/dist-packages/nanolyse/NanoLyse.py", line 122, in filter_reads
+>     for record in SeqIO.parse(reads, "fastq"):
+>   File "/usr/lib/python3/dist-packages/Bio/SeqIO/Interfaces.py", line 74, in __next__
+>     return next(self.records)
+>   File "/usr/lib/python3/dist-packages/Bio/SeqIO/QualityIO.py", line 1085, in iterate
+>     for title_line, seq_string, quality_string in FastqGeneralIterator(handle):
+>   File "/usr/lib/python3/dist-packages/Bio/SeqIO/QualityIO.py", line 950, in FastqGeneralIterator
+>     raise ValueError("Sequence and quality captions differ.")
+> ValueError: Sequence and quality captions differ.
+>
+> The problem occures when reading the perfectly random fastq file which I
+> have shamelessly stolen from ncbi-blast+ package[3] and which is most
+> probably a bad choice.  It would be great if some educated person would
+> provide a better example data set.
+
+My educated guess is that nanolyse is correct by saying that "Sequence
+and quality captions differ." The test input file should in principle
+work after having text in parenthesis removed, as subsequent lines
+starting with '@' and '+' in FASTQ format have to be otherwise identical
+(now they are not because of the parentheses and the text in them).
+
+> [1] https://salsa.debian.org/med-team/nanolyse/-/commit/847f0439ab66d47a512bab6fbea61268ffec4213
+> [2] https://salsa.debian.org/med-team/nanolyse/-/jobs/2498940
+> [3] https://salsa.debian.org/med-team/nanolyse/-/blob/master/debian/tests/data/README
+Hope this helps,
+Andrius

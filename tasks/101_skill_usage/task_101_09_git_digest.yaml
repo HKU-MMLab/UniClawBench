@@ -1,0 +1,60 @@
+task_id: task_101_09_git_digest
+category: 101_skill_usage
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  Newsletter deadline is tomorrow and I need a year-in-review digest
+  for the Flask project. The repo tarball is at
+  /tmp_workspace/clawbench/sources/flask_repo.tar.gz — use the git-history
+  and Markdown formatting skills to crunch the commit history and produce a
+  clean writeup. Write /tmp_workspace/results/digest.md as a Markdown
+  summary I can paste straight into our team newsletter. I want it to read
+  end-to-end so I get a feel for what shipped, what got fixed, what got
+  removed or deprecated, where performance moved, and who was actually
+  pushing things forward over the year. Aim for around 5 short bullets plus
+  a small contributor table at the bottom with login, commit count, and
+  rough areas touched. Keep it tight, fact-based, and grounded in real
+  commits in the tarball — don't make stuff up if a category genuinely
+  had no activity.
+
+  Use the last commit's commit-date as "today" and look back 365 days.
+  State the explicit window date-range somewhere in the digest. Each
+  bullet should give a 1-line description plus 2 short commit SHAs of
+  7 hex chars. The contributor table should cover every contributor
+  who made at least 1 commit in the 1-year window, one row per
+  contributor, sorted by commit_count descending.
+
+  One more thing I really care about: somewhere in the digest, call
+  out the single largest-scale code change in the year — by which I
+  mean the commit that touched the most files, with total lines
+  changed as a tiebreak. Give me its short SHA explicitly so I can go
+  read it. Anchor every bullet to a concrete theme visible in the
+  cited commits, not a generic "maintenance work" summary.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - flask_repo.tar.gz
+
+skills:
+  - git-essentials
+  - markdown-formatter
+  - discord
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

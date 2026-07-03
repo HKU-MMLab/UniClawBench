@@ -1,0 +1,42 @@
+Message-ID: <Ya0nfmjLKFAEGJmf@fusion>
+X-Clawbench-ID: BIO-2024-0033
+Date: Sun, 5 Dec 2021 21:56:30 +0100
+From: Étienne Mollier <emollier@emlwks999.eu>
+To: Nilesh Patra <nilesh@debian.org>
+Subject: [Advent bug squashing] src:prime-phylo: no autopkgtest available yet
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_12_msg00022.html
+
+Hi Nilesh,
+
+Nilesh Patra, on 2021-12-05:
+> prime-phylo has autopkgtests in the latest version. Please add this bug squash to advent calendar.
+
+Thanks for the triage, I added [Advent bug squashing] to the
+subject, to make the bug easier to spot.
+
+Have a nice day,  :)
+Étienne.
+
+> On Sat, 19 Sep 2020 18:23:55 +0200 =?utf-8?Q?=C3=89tienne?= Mollier  wrote:
+> > Package: src:prime-phylo
+> > Version: 1.0.11-9
+> > Severity: wishlist
+> > Tags: newcomer
+> >
+> > Greetings,
+> >
+> > it would be a nice addition for the package to have some test
+> > suite "autopkgtest" available.
+> >
+> > Kind Regards,
+> > Étienne.
+> >
+> > For newcomers: this package is maintained under the umbrella of
+> > the Debian Med Team , so feel free
+> > to send us an email and have a peek at the following location
+> > for a template of how we usually wrap up package unit tests:
+> >
+> >         https://salsa.debian.org/med-team/community/package_template/-/tree/master/debian/tests

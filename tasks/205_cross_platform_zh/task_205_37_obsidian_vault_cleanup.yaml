@@ -1,0 +1,60 @@
+task_id: task_205_37_obsidian_vault_cleanup
+category: 205_cross_platform_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我这里有一个杂乱的 Obsidian 研究 vault：
+
+      /tmp_workspace/clawbench/sources/project_vault/
+
+  它是从 GitHub 上公开的 Vite 文档 Markdown 的一个小快照导入的。原始
+  导入保留了许多文档风格的相对链接，Obsidian 组织结构薄弱，并且可能包含
+  来自审阅队列的一个重复页面。请在真正的 Obsidian 桌面应用中打开它并加以
+  整理。不要删除实质性的 Vite 文档内容或来源注释；把整理后的版本复制到：
+
+      /tmp_workspace/results/project_vault_cleaned/
+
+  整理后的 vault 必须包含：
+  - 一个 `INDEX.md`，链接到主要的 Vite guide/config/plugin 笔记
+  - 为 guide/config/plugin/build/deploy 主题规范化的标签
+  - 在导入的目标笔记存在时修复的本地内部链接
+  - 在目标页面未被导入时记录的未解析链接
+  - 一个 `duplicates.md`，列出重复或近似重复的导入，以及你的保留/合并
+    建议
+  - 一个 `orphans.md`，列出仍然没有明确入链的笔记
+
+  另外在以下位置写一份整理报告：
+
+      /tmp_workspace/results/vault_cleanup_report.md
+
+  报告应包含检查的笔记数量、发现并修复/记录的损坏或非 Obsidian 链接、
+  发现的重复分组、标签规范化前后对比，以及未解决的问题。在以下位置保存
+  一张展示整理后 vault 或索引笔记的 Obsidian 截图：
+
+      /tmp_workspace/results/obsidian_cleanup.png
+
+  请确实使用 Obsidian 来进行审查/截图；命令行文件编辑可以辅助，但 GUI
+  证据应展示最终的 vault。
+
+sources:
+  - project_vault/
+
+services:
+  - name: obsidian-vault-setup
+    path: obsidian-vault-setup
+    start: bash install.sh
+    oneshot: true
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+codex:
+  max_user_followups: 2

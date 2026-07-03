@@ -1,0 +1,80 @@
+Message-ID: <F6ABFFD2-F20D-43E7-8CE2-44E9D549B190@eissing.org>
+X-Clawbench-ID: ASF-2024-0737
+Date: Mon, 7 Feb 2022 12:23:54 +0100
+From: Stefan Eissing <stefan@eissing.org>
+To: dev@httpd.apache.org
+Subject: Re: mpm event assertion failures
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-02.mbox
+
+> Am 07.02.2022 um 12:19 schrieb Graham Leggett <minfrin@sharp.fm>:
+>
+> On 07 Feb 2022, at 12:35, Stefan Eissing <stefan@eissing.org> wrote:
+>
+>>> There are two parts that hook into the process_connection hook, the code you’ve cited above, and this code:
+>>>
+>>> void h2_c2_register_hooks(void)
+>>> {
+>>>    /* When the connection processing actually starts, we might
+>>>     * take over, if the connection is for a h2 stream.
+>>>     */
+>>>    ap_hook_process_connection(h2_c2_hook_process,
+>>>                               NULL, NULL, APR_HOOK_FIRST);
+>>>
+>>> Looks like this code is running before mod_ssl somehow.
+>>>
+>>> Is there a way to run the httpd under test in either lldb or gdb?
+>>
+>> The names "h2_c1..." and "h2_c2..." indicate, that the former operates on "primary" connections, e.g. the ones from a client where SSL is applied, and "secondary" connections (c->master != NULL), e.g. where h2 requests are processed and SSL is not involved.
+>
+> In theory it’s all the same hook though, so even though h2_c2_hook_process() is standing out of the way of anything not a secondary connection, it’s still running before mod_ssl, and it still throws away the AGAIN, leaving mod_ssl in an undefined state.
+
+I do not understand. h2_c2_process returns DECLINED on a c1 connection (!c->master). How does that mess with any return code a subsequent hook returns?
+>
+> I’m assuming h2_c2_hook_process just wants to run before h2_c1_hook_process_connection?
+
+No, it definitely wants to prevent any other process hook from running *if and only if* it processes the connection itself. It does not want any SSL module to insert its filters, specifically.
+
+>
+> I just tried this patch on rawhide (where I’m getting success with the http2 tests) and we still work:
+>
+> Index: modules/http2/h2_c1.c
+> ===================================================================
+> --- modules/http2/h2_c1.c	(revision 1897807)
+> +++ modules/http2/h2_c1.c	(working copy)
+> @@ -312,6 +312,7 @@
+>
+>  static const char* const mod_ssl[]        = { "mod_ssl.c", NULL};
+>  static const char* const mod_reqtimeout[] = { "mod_ssl.c", "mod_reqtimeout.c", NULL};
+> +static const char* const mod_h2_c2[]      = { "mod_ssl.c", "mod_reqtimeout.c", "h2_c2.c", NULL};
+>
+>  void h2_c1_register_hooks(void)
+>  {
+> @@ -322,7 +323,7 @@
+>       * a chance to take over before it.
+>       */
+>      ap_hook_process_connection(h2_c1_hook_process_connection,
+> -                               mod_reqtimeout, NULL, APR_HOOK_LAST);
+> +                               mod_h2_c2, NULL, APR_HOOK_LAST);
+>
+>      /* One last chance to properly say goodbye if we have not done so
+>       * already. */
+> Index: modules/http2/h2_c2.c
+> ===================================================================
+> --- modules/http2/h2_c2.c	(revision 1897807)
+> +++ modules/http2/h2_c2.c	(working copy)
+> @@ -707,7 +707,7 @@
+>       * take over, if the connection is for a h2 stream.
+>       */
+>      ap_hook_process_connection(h2_c2_hook_process,
+> -                               NULL, NULL, APR_HOOK_FIRST);
+> +                               NULL, NULL, APR_HOOK_LAST);
+>      /* We need to manipulate the standard HTTP/1.1 protocol filters and
+>       * install our own. This needs to be done very early. */
+>      ap_hook_post_read_request(h2_c2_hook_post_read_request, NULL, NULL, APR_HOOK_REALLY_FIRST);
+>
+> Regards,
+> Graham
+> —

@@ -1,0 +1,43 @@
+Message-ID: <YzwC2bz+F+hBh7C3@an3as.eu>
+X-Clawbench-ID: BIO-2024-1270
+Date: Tue, 4 Oct 2022 11:54:33 +0200
+From: Andreas Tille <tille@debian.org>
+To: Andrius Merkys <merkys@debian.org>
+Subject: Re: pufferfish wants to link with twopaco and ntcard
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00009.html
+
+Hi Andrius,
+
+Am Tue, Oct 04, 2022 at 10:38:01AM +0300 schrieb Andrius Merkys:
+> On 2022-10-03 18:32, Andreas Tille wrote:
+> > My main motivation to start ntcard and twopaco packages was to avoid
+> > code duplication in pufferfish.  I admit it seems I faild in doing this
+> > sensibly to forget creating a library package.  Simply do whatever
+> > brings you forward with pufferfish and fix what I failed to do.
+>
+> Thanks for replies, Andreas and Steffen!
+>
+> Alas, I did not get far. Static libraries for ntcard and twopaco are
+> easy to add (I have pushed 'static-library' branches to salsa for these
+> packages). However, pufferfish has patched main() functions of ntcard
+> and twopaco executables in order to use them in internal calls.
+
+This sounds like you should keep the code copies (which was your initial
+strategy anyway if I remember correctly).
+
+> At this point I do not think much can be done without getting the
+> upstreams of pufferfish, ntcard and twopaco to align their interfaces.
+
+IMHO we need some fast migration path of pufferfish into Debian to
+get salmon fixed / updated.  I do not have the feeling that aligning
+upstreams is a promising way to be fast.
+
+Kind regards
+
+    Andreas.
+
+--
+http://fam-tille.de

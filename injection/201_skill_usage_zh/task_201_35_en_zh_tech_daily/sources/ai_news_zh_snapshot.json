@@ -1,0 +1,494 @@
+{
+  "sources": [
+    "36kr newsflash RSS",
+    "geekpark RSS",
+    "rsshub 36kr hot-list"
+  ],
+  "captured_window": ["2026-04-18", "2026-04-19", "2026-04-20"],
+  "note": "Real Chinese tech news items captured from public RSS feeds across three consecutive days. Topics span AI, chip/hardware, cloud/infra, web/consumer, auto, finance, biotech, telecom.",
+  "count": 60,
+  "items": [
+    {
+      "title": "中芯国际：3nm GAA 工艺试产成功，明年 H1 量产",
+      "link": "https://36kr.com/newsflashes/3774997345944401",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-20 22:10:00  +0800",
+      "summary": "中芯国际官方宣布 3nm GAA 工艺试产成功，目标 2027 年上半年量产，首批客户为华为海思与寒武纪。",
+      "primary_category": "chip"
+    },
+    {
+      "title": "海光信息：DCU-Z 系列 GPU 流片完成，FP16 算力达 H100 的 90%",
+      "link": "https://36kr.com/newsflashes/3774997345944402",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-20 21:30:00  +0800",
+      "summary": "海光信息发布 DCU-Z 系列 GPU 流片完成报告，FP16 算力对标英伟达 H100 的 90%，主攻国产大模型训练市场。",
+      "primary_category": "chip"
+    },
+    {
+      "title": "阿里云推出通义灵境 Pro，向量库与 MaaS 一体化",
+      "link": "https://36kr.com/newsflashes/3774997345944403",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-20 21:00:00  +0800",
+      "summary": "阿里云通义灵境 Pro 正式商用，将 PolarDB 向量库、通义大模型 MaaS、Agent 编排打包，企业月均成本下降 35%。",
+      "primary_category": "cloud"
+    },
+    {
+      "title": "平安银行：管理层变动系谣言，已经向公安机关报案",
+      "link": "https://36kr.com/newsflashes/3774997345944323?f=rss",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-20 18:05:52  +0800",
+      "summary": "36氪获悉，据平安票号消息，针对近期网络上的不实信息，平安银行发言人表示：本行注意到有关本行管理层变动相关的不实报道及谣言，经核实，相关媒体也未有任何有关此事的报道。本行严厉谴责此类恶意造谣行为，并已经向公安机关报案，将造谣者绳之以法。",
+      "primary_category": "finance"
+    },
+    {
+      "title": "苹果在印度反垄断案中拒绝提交数据，监管机构确定最终听证会",
+      "link": "https://36kr.com/newsflashes/3774996552532487?f=rss",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-20 18:05:04  +0800",
+      "summary": "在调查认定苹果在 iPhone 应用市场滥用市场支配地位后，苹果并未按印度反垄断机构要求提交相关数据，监管机构定于下月举行最终听证会。",
+      "primary_category": "web"
+    },
+    {
+      "title": "2连板天通股份澄清：公司不生产光模块产品、不生产商业卫星",
+      "link": "https://36kr.com/newsflashes/3774991722906375?f=rss",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-20 18:00:09  +0800",
+      "summary": "2 连板天通股份公告：澄清网络上关于公司涉足光模块、商业航天、铌酸锂晶体的不实言论，主营业务未变化。",
+      "primary_category": "finance"
+    },
+    {
+      "title": "郑栅洁主任主持召开民营企业座谈会",
+      "link": "https://36kr.com/newsflashes/3774986997809672?f=rss",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-20 17:55:21  +0800",
+      "summary": "国家发展改革委主任郑栅洁主持召开民营企业座谈会，与海亮集团、小鹏集团、万洋集团、天齐锂业等企业负责人深入交流。",
+      "primary_category": "finance"
+    },
+    {
+      "title": "上周新增2家IPO受理企业",
+      "link": "https://36kr.com/newsflashes/3774980295475975?f=rss",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-20 17:48:32  +0800",
+      "summary": "上交所企业上市服务消息，上周新增 2 家受理企业，截至 4 月 19 日各板块在审企业共 291 家。",
+      "primary_category": "finance"
+    },
+    {
+      "title": "浦项制铁宣布向印度合资钢厂注资1.6万亿韩元",
+      "link": "https://36kr.com/newsflashes/3774976060834312?f=rss",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-20 17:44:13  +0800",
+      "summary": "韩国浦项制铁将向其与印度 JSW 集团设立的合资企业注资 1.6 万亿韩元，用于建设年产 500 万吨集成钢厂。",
+      "primary_category": "finance"
+    },
+    {
+      "title": "物产环能：一季度净利润1.73亿元，同比增长11.73%",
+      "link": "https://36kr.com/newsflashes/3774970902921736?f=rss",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-20 17:38:58  +0800",
+      "summary": "物产环能披露一季报，2026 年一季度营业收入 77.9 亿元同比下降 21.7%；净利润 1.73 亿元同比增长 11.73%。",
+      "primary_category": "finance"
+    },
+    {
+      "title": "中汽协：1-3月汽车销量排名前十位的企业共销售594万辆",
+      "link": "https://36kr.com/newsflashes/3774969370772233?f=rss",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-20 17:37:25  +0800",
+      "summary": "中国汽车工业协会统计：2026 年 1-3 月，汽车销量排名前十位的企业共销售 594 万辆，占总销量的 84.3%。",
+      "primary_category": "auto"
+    },
+    {
+      "title": "私募规模六连创新高，已攀升至22.72万亿",
+      "link": "https://36kr.com/newsflashes/3774965485273606?f=rss",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-20 17:33:28  +0800",
+      "summary": "中基协披露：截至 3 月末，私募存续总规模已达 22.72 万亿元，连续 6 个月攀升新高。",
+      "primary_category": "finance"
+    },
+    {
+      "title": "赛力斯公布个性化防晕车新专利",
+      "link": "https://36kr.com/newsflashes/3774961584407302?f=rss",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-20 17:29:30  +0800",
+      "summary": "赛力斯申请的个性化防晕车方法发明专利公布，通过基于用户主动触发反馈信号更新模型生成防晕车推荐信息。",
+      "primary_category": "auto"
+    },
+    {
+      "title": "新亚电缆：一季度净利润2573.68万元，同比下降14.98%",
+      "link": "https://36kr.com/newsflashes/3774956788482825?f=rss",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-20 17:24:37  +0800",
+      "summary": "新亚电缆披露一季报，营业收入 7.44 亿元同比增长 22.99%，归母净利润 2573.68 万元同比下降 14.98%。",
+      "primary_category": "finance"
+    },
+    {
+      "title": "爱奇艺：入驻纳逗Pro艺人库仅代表有接洽意愿",
+      "link": "https://36kr.com/newsflashes/3774948129702658?f=rss",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-20 17:15:48  +0800",
+      "summary": "爱奇艺表示有超百名艺人同意入驻纳逗 Pro 艺人库，入驻仅代表艺人有接洽 AI 影视项目的意愿。",
+      "primary_category": "media"
+    },
+    {
+      "title": "抖音李亮回应字节净利下滑70%：是国际会计准则的数字",
+      "link": "https://36kr.com/newsflashes/3774943438095107?f=rss",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-20 17:11:02  +0800",
+      "summary": "抖音集团李亮回应：相关报道中关于字节净利润下降 70%，是国际会计准则的数字，并非运营实质。",
+      "primary_category": "web"
+    },
+    {
+      "title": "江苏银行旗下凯基消费金融公司增资至47.3亿元",
+      "link": "https://36kr.com/newsflashes/3774941267149318?f=rss",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-20 17:08:50  +0800",
+      "summary": "苏银凯基消费金融注册资本由 42 亿元增至 47.3 亿元，增幅约 13%。",
+      "primary_category": "finance"
+    },
+    {
+      "title": "华为发布首款鸿蒙AI眼镜",
+      "link": "https://36kr.com/newsflashes/3774937990284035?f=rss",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-20 17:05:30  +0800",
+      "summary": "华为首款鸿蒙 AI 眼镜正式发布，搭载 1200 万超感光摄像头，支持 AI 构图矫正与 0.7s AI 闪拍。",
+      "primary_category": "AI"
+    },
+    {
+      "title": "香港证监会公布新监管框架，容许代币化投资产品在二级市场买卖",
+      "link": "https://36kr.com/newsflashes/3774934020408070?f=rss",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-20 17:01:27  +0800",
+      "summary": "香港证监会公布新监管框架，推动在港试行代币化证监会认可投资产品的二级市场买卖。",
+      "primary_category": "finance"
+    },
+    {
+      "title": "创维数字：一季度净利润8288.34万元，同比增长1455.79%",
+      "link": "https://36kr.com/newsflashes/3774933336097539?f=rss",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-20 17:00:46  +0800",
+      "summary": "创维数字披露一季报，营业收入 24.94 亿元同比增长 38.67%，归母净利润 8288.34 万元同比增长 1455.79%。",
+      "primary_category": "finance"
+    },
+
+    {
+      "title": "寒武纪：思元 690 训练芯片完成流片，FP8 算力达 H100 的 80%",
+      "link": "https://36kr.com/newsflashes/3774880001000099",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-19 22:30:00  +0800",
+      "summary": "寒武纪宣布思元 690 训练芯片完成流片，FP8 算力对标英伟达 H100 的 80%，主要面向国内大模型厂商训练需求。",
+      "primary_category": "chip"
+    },
+    {
+      "title": "亚马逊 AWS Bedrock 中国区正式商用，与中信云合作",
+      "link": "https://36kr.com/newsflashes/3774880001000022",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-19 22:00:00  +0800",
+      "summary": "AWS Bedrock 模型服务中国区正式商用，由中信云负责本地运营，覆盖 Claude、Llama、Titan 系列。",
+      "primary_category": "cloud"
+    },
+    {
+      "title": "国盾量子：千公里量子通信干线开通运营",
+      "link": "https://36kr.com/newsflashes/3774880001000020",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-19 21:50:00  +0800",
+      "summary": "国盾量子参与建设的合肥-上海量子通信干线正式开通运营，全长约 1100 公里。",
+      "primary_category": "telecom"
+    },
+    {
+      "title": "华虹半导体：12 寸晶圆产能利用率连续两月满载",
+      "link": "https://36kr.com/newsflashes/3774880001000019",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-19 21:20:00  +0800",
+      "summary": "华虹半导体公告，12 寸晶圆产能利用率连续两月达到 100%，主要由汽车电子和工业控制需求推动。",
+      "primary_category": "chip"
+    },
+    {
+      "title": "京东物流：自动化仓储覆盖率达 90%，机器人保有量超 5 万",
+      "link": "https://36kr.com/newsflashes/3774880001000018",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-19 21:00:00  +0800",
+      "summary": "京东物流公布自动化数据：仓储自动化覆盖率达 90%，机器人保有量超 5 万台。",
+      "primary_category": "web"
+    },
+    {
+      "title": "OpenAI GPT-5.1 在 SWE-Bench Verified 基准上达到 78%",
+      "link": "https://36kr.com/newsflashes/3774880001000017",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-19 20:50:00  +0800",
+      "summary": "OpenAI 公布 GPT-5.1 在 SWE-Bench Verified 基准达到 78%，较 GPT-5.0 提升 11 个百分点。",
+      "primary_category": "AI"
+    },
+    {
+      "title": "小米 SU8 旗舰轿车谍照流出",
+      "link": "https://36kr.com/newsflashes/3774880001000016",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-19 20:15:00  +0800",
+      "summary": "小米汽车 SU8 旗舰轿车谍照流出，定位对标保时捷 Taycan，预计 2027 年 Q1 上市。",
+      "primary_category": "auto"
+    },
+    {
+      "title": "字节剪映海外版 CapCut 全球月活突破 6 亿",
+      "link": "https://36kr.com/newsflashes/3774880001000015",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-19 19:45:00  +0800",
+      "summary": "字节剪映海外版 CapCut 月活突破 6 亿，AI 视频生成功能贡献 40% 增量。",
+      "primary_category": "web"
+    },
+    {
+      "title": "光线传媒：哪吒 3 项目立项，预算 12 亿元",
+      "link": "https://36kr.com/newsflashes/3774880001000014",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-19 19:10:00  +0800",
+      "summary": "光线传媒公告，哪吒 3 项目正式立项，预算 12 亿元，预计 2027 年春节档上映。",
+      "primary_category": "media"
+    },
+    {
+      "title": "理想汽车 i9 新车型曝光，纯电增程双版本",
+      "link": "https://36kr.com/newsflashes/3774880001000013",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-19 18:30:00  +0800",
+      "summary": "理想汽车 i9 新车型路试谍照曝光，将提供纯电与增程双版本，预计 2026 Q3 上市。",
+      "primary_category": "auto"
+    },
+    {
+      "title": "Mistral 推出 Large 3 模型，专注 European data residency",
+      "link": "https://36kr.com/newsflashes/3774880001000012",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-19 18:00:00  +0800",
+      "summary": "Mistral 发布 Large 3 模型，主打欧洲数据驻留合规，性能与 GPT-4o 相当，价格便宜 40%。",
+      "primary_category": "AI"
+    },
+    {
+      "title": "OpenAI Sora Turbo 国内首家代理上线，单次生成成本 1 美元",
+      "link": "https://36kr.com/newsflashes/3774880001000011",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-19 17:30:00  +0800",
+      "summary": "OpenAI Sora Turbo 视频生成服务由智谱代理上线国内市场，单次生成成本约 1 美元，10 秒 1080p 视频。",
+      "primary_category": "AI"
+    },
+    {
+      "title": "鸿蒙智行：Q1 销量 8.4 万辆，问界 M9 占比 60%",
+      "link": "https://36kr.com/newsflashes/3774880001000010",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-19 16:55:00  +0800",
+      "summary": "鸿蒙智行公布 2026 Q1 销量 8.4 万辆，其中问界 M9 占比 60%，享界 S9 占比 22%。",
+      "primary_category": "auto"
+    },
+    {
+      "title": "极氪 ZEEKR 9 上市，800V 平台 + 激光雷达 + 碳化硅",
+      "link": "https://36kr.com/newsflashes/3774880001000009",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-19 16:20:00  +0800",
+      "summary": "极氪 ZEEKR 9 旗舰 SUV 正式上市，搭载 800V 高压平台、双激光雷达、全碳化硅电驱，售价 39.8 万起。",
+      "primary_category": "auto"
+    },
+    {
+      "title": "美团：无人机配送日订单破百万单，续航突破 30 分钟",
+      "link": "https://36kr.com/newsflashes/3774880001000008",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-19 15:55:00  +0800",
+      "summary": "美团无人机配送业务公告：日订单量突破 100 万单，新一代无人机续航能力提升至 30 分钟。",
+      "primary_category": "web"
+    },
+    {
+      "title": "小红书电商：日活破 2 亿，直播 GMV 同比增长 130%",
+      "link": "https://36kr.com/newsflashes/3774880001000007",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-19 15:10:00  +0800",
+      "summary": "小红书电商业务披露季度数据：日活突破 2 亿，直播 GMV 同比增长 130%。",
+      "primary_category": "web"
+    },
+    {
+      "title": "字节火山引擎：MaaS 平台月调用次数突破 5 万亿",
+      "link": "https://36kr.com/newsflashes/3774880001000006",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-19 14:00:00  +0800",
+      "summary": "火山引擎 MaaS 平台公布运营数据：月调用次数突破 5 万亿，覆盖企业客户超 12 万家。",
+      "primary_category": "cloud"
+    },
+    {
+      "title": "腾讯云 TCE 8.0 发布，原生支持 Kubernetes 1.32",
+      "link": "https://36kr.com/newsflashes/3774880001000005",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-19 13:25:00  +0800",
+      "summary": "腾讯云专有云 TCE 8.0 发布，原生支持 Kubernetes 1.32，新增 GPU 算力池调度能力。",
+      "primary_category": "cloud"
+    },
+    {
+      "title": "AMD MI400 路线图曝光：2027 年 Q1 量产，FP4 算力翻倍",
+      "link": "https://36kr.com/newsflashes/3774880001000004",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-19 12:00:00  +0800",
+      "summary": "AMD 路线图显示 MI400 加速卡将于 2027 年 Q1 量产，FP4 算力较 MI350 翻倍至 40 PFLOPS。",
+      "primary_category": "chip"
+    },
+    {
+      "title": "Anthropic Claude 4.7 价格下调 30%",
+      "link": "https://36kr.com/newsflashes/3774880001000002",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-19 10:12:00  +0800",
+      "summary": "Anthropic 调整 Claude 4.7 定价，输入 token 由 2.0 美元/百万降至 1.4 美元/百万，输出 token 同步下调 25%。",
+      "primary_category": "AI"
+    },
+
+    {
+      "title": "华为云盘古大模型 6.0 正式商用，专注科学计算",
+      "link": "https://36kr.com/newsflashes/3774820001000099",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-18 22:30:00  +0800",
+      "summary": "华为云盘古大模型 6.0 正式商用，主打气象、药物分子、材料科学三个垂直场景，企业可一键部署。",
+      "primary_category": "cloud"
+    },
+    {
+      "title": "三星电子：HBM3E 12 层版本通过英伟达验证",
+      "link": "https://36kr.com/newsflashes/3774820001000020",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-18 22:00:00  +0800",
+      "summary": "三星电子宣布 HBM3E 12 层版本通过英伟达验证，预计 Q3 开始量产供应 H200 与 B100 平台。",
+      "primary_category": "chip"
+    },
+    {
+      "title": "高德地图升级实时路况，接入 200 万出租车数据",
+      "link": "https://36kr.com/newsflashes/3774820001000019",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-18 21:30:00  +0800",
+      "summary": "高德地图实时路况数据接入新增 200 万辆出租车浮动数据，覆盖全国 80 个主要城市。",
+      "primary_category": "web"
+    },
+    {
+      "title": "B 站游戏区 UP 主流量分成比例下调 5 个百分点",
+      "link": "https://36kr.com/newsflashes/3774820001000018",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-18 21:00:00  +0800",
+      "summary": "哔哩哔哩公告，自 5 月 1 日起调整游戏区 UP 主流量分成比例，下调 5 个百分点。",
+      "primary_category": "web"
+    },
+    {
+      "title": "上汽通用五菱：新能源汽车出口同比增长 89%",
+      "link": "https://36kr.com/newsflashes/3774820001000017",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-18 20:30:00  +0800",
+      "summary": "上汽通用五菱披露 Q1 数据，新能源汽车出口 8.4 万辆，同比增长 89%。",
+      "primary_category": "auto"
+    },
+    {
+      "title": "蔚来 ET9 启动交付，首月订单超 1.2 万",
+      "link": "https://36kr.com/newsflashes/3774820001000016",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-18 20:00:00  +0800",
+      "summary": "蔚来 ET9 旗舰行政轿车今日开始交付，首月锁单订单已超过 1.2 万辆。",
+      "primary_category": "auto"
+    },
+    {
+      "title": "百度文心一言月活突破 8 亿，海外版重启印尼试点",
+      "link": "https://36kr.com/newsflashes/3774820001000015",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-18 19:30:00  +0800",
+      "summary": "文心一言官方公布月活突破 8 亿，同时重启海外版本，首先在印尼地区开放公测。",
+      "primary_category": "AI"
+    },
+    {
+      "title": "宁德时代：钠离子电池量产线通线，单线年产能 5 GWh",
+      "link": "https://36kr.com/newsflashes/3774820001000014",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-18 19:00:00  +0800",
+      "summary": "宁德时代福鼎工厂钠离子电池量产线正式通线，单线年产能 5 GWh，能量密度达 165Wh/kg。",
+      "primary_category": "energy"
+    },
+    {
+      "title": "蚂蚁集团：消费金融牌照获批，注册资本 230 亿元",
+      "link": "https://36kr.com/newsflashes/3774820001000013",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-18 18:32:00  +0800",
+      "summary": "蚂蚁集团旗下蚂蚁消费金融获批增资至 230 亿元，成为行业内注册资本最高的消费金融公司。",
+      "primary_category": "finance"
+    },
+    {
+      "title": "京东工业品 IPO 正式获港交所聆讯通过",
+      "link": "https://36kr.com/newsflashes/3774820001000012",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-18 18:15:00  +0800",
+      "summary": "京东工业品 IPO 通过港交所聆讯，预计 5 月中旬挂牌，估值 280 亿港元。",
+      "primary_category": "finance"
+    },
+    {
+      "title": "腾讯混元图像 3.0 开源，文生图 FID 指标对标 Midjourney v6",
+      "link": "https://36kr.com/newsflashes/3774820001000011",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-18 18:00:00  +0800",
+      "summary": "腾讯今日开源混元图像 3.0 模型权重，COCO 数据集上 FID 指标 4.2，对标 Midjourney v6 的 4.0。",
+      "primary_category": "AI"
+    },
+    {
+      "title": "华为云盘古大模型 6.0 内测开启，专注科学计算",
+      "link": "https://36kr.com/newsflashes/3774820001000010",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-18 17:40:00  +0800",
+      "summary": "华为云盘古大模型 6.0 启动内测，主打气象、药物分子、材料科学三个垂直场景。",
+      "primary_category": "AI"
+    },
+    {
+      "title": "理想汽车：智驾 OTA 推送至 L9 用户，端到端模型上车",
+      "link": "https://36kr.com/newsflashes/3774820001000009",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-18 17:12:00  +0800",
+      "summary": "理想汽车向全部 L9 用户推送 8.0.0 OTA，本次升级核心是端到端智驾大模型上车，城区 NOA 接管率下降至每千公里 0.3 次。",
+      "primary_category": "auto"
+    },
+    {
+      "title": "比亚迪：4 月前两周新能源汽车销量 16.8 万辆",
+      "link": "https://36kr.com/newsflashes/3774820001000008",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-18 16:48:00  +0800",
+      "summary": "比亚迪披露 4 月 1-14 日新能源汽车销量 16.8 万辆，同比增长 22%。",
+      "primary_category": "auto"
+    },
+    {
+      "title": "拼多多海外版 Temu 上线巴西站，首周 GMV 破 5 亿元",
+      "link": "https://36kr.com/newsflashes/3774820001000007",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-18 16:05:00  +0800",
+      "summary": "Temu 巴西站正式上线，首周 GMV 突破 5 亿元，但物流时效仅为美国站的 60%。",
+      "primary_category": "web"
+    },
+    {
+      "title": "微信小店升级商家直连，无需经过公众号即可投放广告",
+      "link": "https://36kr.com/newsflashes/3774820001000006",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-18 15:22:00  +0800",
+      "summary": "微信小店宣布商家直连功能上线，商家可绕过公众号直接在朋友圈、视频号投放广告，分成比例下调 2 个百分点。",
+      "primary_category": "web"
+    },
+    {
+      "title": "阿里云推出通义灵境 3.0，整合 Agent + 数据库 + 向量检索",
+      "link": "https://36kr.com/newsflashes/3774820001000005",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-18 14:40:00  +0800",
+      "summary": "阿里云通义灵境 3.0 平台发布，将 Agent 编排、PolarDB、AnalyticDB、向量检索引擎打包，企业可一键部署。",
+      "primary_category": "cloud"
+    },
+    {
+      "title": "中芯国际：2026 年 Q1 营收 18.5 亿美元，环比增长 4.2%",
+      "link": "https://36kr.com/newsflashes/3774820001000003",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-18 11:32:00  +0800",
+      "summary": "中芯国际公布 2026 年一季报，营收 18.5 亿美元环比增长 4.2%，14nm 及以下产能利用率达 92%。",
+      "primary_category": "chip"
+    },
+    {
+      "title": "字节豆包大模型 1.6 上线，新增多模态推理能力",
+      "link": "https://36kr.com/newsflashes/3774820001000002",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-18 10:05:00  +0800",
+      "summary": "字节跳动豆包大模型 1.6 正式上线，相比 1.5 版本新增图文联合推理与视频理解能力。",
+      "primary_category": "AI"
+    },
+    {
+      "title": "DeepSeek 发布 V4 大模型，1万亿参数 MoE 在 8 张 H800 上完成训练",
+      "link": "https://36kr.com/newsflashes/3774820001000001",
+      "source": "https://36kr.com/feed-newsflash",
+      "pub_date": "2026-04-18 09:12:00  +0800",
+      "summary": "DeepSeek 今日发布 V4 大模型，宣称 1 万亿参数 MoE 架构，仅用 8 张 H800 完成全量训练。",
+      "primary_category": "AI"
+    }
+  ]
+}

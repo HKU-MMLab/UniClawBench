@@ -1,0 +1,51 @@
+Message-ID: <1A32DD4A-F1E9-411A-97B9-A531B554F9E0@eissing.org>
+X-Clawbench-ID: ASF-2024-0847
+Date: Tue, 8 Mar 2022 16:15:48 +0100
+From: Stefan Eissing <stefan@eissing.org>
+To: dev@httpd.apache.org
+Subject: Re: backports
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-03.mbox
+
+> Am 08.03.2022 um 14:34 schrieb Jim Jagielski <jim@jaguNET.com>:
+>
+>> On Mar 8, 2022, at 7:58 AM, Graham Leggett <minfrin@sharp.fm> wrote:
+>>
+>>
+>> I would far rather the empty APLOGNO check was part of the build.
+>>
+>> Vastly simpler.
+>>
+>
+> I agree w/ that...
+
+I have the feeling that the work that has went into making our
+tests run on travis is not sufficiently honoured in this discussion.
+
+Looking back on the last 6 years I participated here, the situation
+now is *vastly* improved to what we had before. For me, the Travis CI
+status is now *the* objective status of healthiness of our branches.
+Not because I am a Travis fanboy, but because we had nothing in the
+project before that was available to every team member.
+
+Speaking as RM, I will *never* make a release on a branch that is
+not "green". That would be unprofessional. As it is not the task
+of an RM to make it green, it already needs to be that way.
+
+As a developer, I very much prefer to commit to a "green" branch and
+see that it stays green with my changes. On a red branch, this becomes
+harder to analyse. The recent example of the async handshake showed
+that it become more and more difficult to isolate the breaking
+changes and progress for everyone was hindered by this.
+
+Now, that does not mean Travis CI is the end of all efforts. But
+it is a good start and it is worth expanding on, IMO.
+
+Also we need to realise that aligning our way of working more to
+what is now common practise in the field actually *lowers* the
+barriers for participation.
+
+Kind Regards,
+Stefan

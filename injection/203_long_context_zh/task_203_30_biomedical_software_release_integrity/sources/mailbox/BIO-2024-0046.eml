@@ -1,0 +1,24 @@
+Message-ID: <9ca2ffcf6a30fbf32ab3a53ac219be6c@riseup.net>
+X-Clawbench-ID: BIO-2024-0046
+Date: Thu, 17 Feb 2022 13:01:18 -0800
+From: Nilesh Patra <nilesh@riseup.net>
+To: Steffen Möller <steffen_moeller@gmx.de>
+Subject: Re: q2-emperor - flagged as "RFS"ed
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_02_msg00070.html
+
+On 2022-02-18 01:34, Steffen Möller wrote:
+> Hello,
+>
+> q2-emperor is flagged as "RFS" in
+> https://docs.google.com/spreadsheets/d/1tApLhVqxRZ2VOuMH_aPUgFENQJfbLlB_PFH_Ah_q7hM/edit#gid=1986383821
+> and late January, its dependency EMPEROR made it into the distribution.
+> I have not seen any rejection email in my inbox (and it should be
+> flagged as "new" then). May I ask for a peer review and upload?
+
+Uploaded after some scrutiny. Thanks!
+
+Regards,
+Nilesh

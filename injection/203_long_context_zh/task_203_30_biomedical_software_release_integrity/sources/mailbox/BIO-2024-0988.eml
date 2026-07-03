@@ -1,0 +1,36 @@
+Message-ID: <handler.s.C.17320102052557256.transcript@bugs.debian.org>
+X-Clawbench-ID: BIO-2024-0988
+Date: Tue, 19 Nov 2024 09:57:04 +0000
+From: "Debian Bug Tracking System" <owner@bugs.debian.org>
+To: Alexandre Detiste <alexandre.detiste@gmail.com>
+Subject: Processed: allign RFP med team
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_11_msg00014.html
+
+Processing commands for control@bugs.debian.org:
+
+> owner 890061 debian-med-packaging@lists.alioth.debian.org
+Bug #890061 [wnpp] ITP: galaxy-lib -- Subset of Galaxy core code base designed to be used
+Owner changed from Debian Med team  to debian-med-packaging@lists.alioth.debian.org.
+> owner 915852 debian-med-packaging@lists.alioth.debian.org
+Bug #915852 [wnpp] ITP: bagit -- Create and validate BagIt packages
+Owner changed from Debian Med team  to debian-med-packaging@lists.alioth.debian.org.
+> owner 919681 debian-med-packaging@lists.alioth.debian.org
+Bug #919681 [wnpp] ITP: sourmash -- tools for comparing DNA sequences with MinHash sketches
+Owner changed from Debian Med team  to debian-med-packaging@lists.alioth.debian.org.
+> owner 958172 debian-med-packaging@lists.alioth.debian.org
+Bug #958172 [wnpp] ITP: virusseeker-virome -- Mine sequence data to identify sequences of microbial origin
+Owner changed from Debian Med Team  to debian-med-packaging@lists.alioth.debian.org.
+>
+End of message, stopping processing here.
+
+Please contact me if you need assistance.
+--
+890061: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=890061
+915852: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=915852
+919681: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=919681
+958172: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=958172
+Debian Bug Tracking System
+Contact owner@bugs.debian.org with problems

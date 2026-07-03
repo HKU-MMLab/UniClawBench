@@ -1,0 +1,46 @@
+Message-ID: <20231230074805.wu3vvmc43yjsqxf3@office.mailbox.org>
+X-Clawbench-ID: BIO-2024-0392
+Date: Sat, 30 Dec 2023 13:18:05 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: debian-med@lists.debian.org
+Subject: [Advent Bug Squashing] My bug fixes during advent calendar
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_12_msg00086.html
+
+Hi,
+
+Instead of sending each bug fix mail to the list, I thought of sending
+a consolidated list instead, for the advent BSP, starting Dec 1.
+
++----------+------------------+-----------+
+| #1058558 | seqkit           | RC        |
++----------+------------------+-----------+
+| #1046668 | seqkit           | minor     |
++----------+------------------+-----------+
+| #1058011 | sorted-nearest   | important |
++----------+------------------+-----------+
+| #1056411 | imbalanced-learn | RC        |
++----------+------------------+-----------+
+| #1056464 | python-csb       | important |
++----------+------------------+-----------+
+| #1056408 | hdmf             | important |
++----------+------------------+-----------+
+| #1054602 | mosdepth         | important |
++----------+------------------+-----------+
+| #1056041 | tombo            | important |
++----------+------------------+-----------+
+| #1056892 | tombo            | important |
++----------+------------------+-----------+
+| #1056234 | circlator        | important |
++----------+------------------+-----------+
+| #1056037 | python-sqt       | important |
++----------+------------------+-----------+
+
+I was busier with other packages meanwhile, but it was fun anyway.
+
+Cheers!
+
+Best,
+Nilesh

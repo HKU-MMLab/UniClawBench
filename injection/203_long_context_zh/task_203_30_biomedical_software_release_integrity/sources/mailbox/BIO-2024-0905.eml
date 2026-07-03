@@ -1,0 +1,29 @@
+Message-ID: <20221118040428.hf3q34gkpspf7u7e@nileshpatra.info>
+X-Clawbench-ID: BIO-2024-0905
+Date: Fri, 18 Nov 2022 09:34:28 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: Étienne Mollier <emollier@debian.org>
+Subject: Re: oops.. could someone with the proper rights...
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_11_msg00060.html
+
+On Thu, Nov 17, 2022 at 10:19:46PM +0100, Étienne Mollier wrote:
+> Maarten L. Hekkelman, on 2022-11-17:
+> > Looking for an appropriate name I inadvertently created a project on salsa
+> > called libcfg. That clashes with a package already in Debian and I'm not
+> > allowed to remove that repository again. Could someone please remove that
+> > repository?
+
+Pruned.
+
+> I tried to have a look but this needs to be done by an Owner of
+> the med-team group on salsa; personally, I'm just a Maintainer.
+
+Fixed. You should be an owner now. I am not even sure as to why you
+were sitting at maintainer all this while :)
+
+--
+Best,
+Nilesh

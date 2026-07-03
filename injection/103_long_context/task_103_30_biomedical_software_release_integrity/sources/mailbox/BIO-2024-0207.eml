@@ -1,0 +1,37 @@
+Message-ID: <Yk2lry1WCplhv6gn@an3as.eu>
+X-Clawbench-ID: BIO-2024-0207
+Date: Wed, 6 Apr 2022 16:37:35 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Francois Gindraud <francois.gindraud@inria.fr>
+Subject: Re: New kissplice version (2.6.0) and packaging changes
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_04_msg00020.html
+
+Hi Francois,
+
+Am Wed, Apr 06, 2022 at 03:27:39PM +0200 schrieb Francois Gindraud:
+> Thanks for mentioning routine-update, this is the tool I was missing before.
+
+:-)
+
+> The user_guide.pdf is already installed by CMake along with binaries.
+> If I understand correctly, dh_installdocs is only needed for files not already installed by CMake, so it is unneeded here.
+> I have removed the docs entry, and the package now builds nicely.
+> The user_guide.pdf is correctly included in the CI-generated package.
+>
+> I have also removed debian/kissplice.manpages which used an old local copy instead of the upstream one.
+>
+> Looking at the current generated package everything seems good to me, and autopkgtests runs fine.
+> I think this is ready for release, but any review would be appreciated.
+
+Thanks a lot for your work.  That's really appreciated.  I wished
+cooperation with upstream would similarly smooth with every package. ;-)
+
+Kind regards
+
+      Andreas.
+
+--
+http://fam-tille.de

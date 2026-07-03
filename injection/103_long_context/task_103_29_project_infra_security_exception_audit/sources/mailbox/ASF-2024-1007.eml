@@ -1,0 +1,116 @@
+Message-ID: <09a601da3f70$65d38920$317a9b60$@pdinc.us>
+X-Clawbench-ID: ASF-2024-1007
+Date: Thu, 4 Jan 2024 19:44:50 -0500
+From: "Jason Pyeron" <jpyeron@pdinc.us>
+To: <dev@httpd.apache.org>
+Subject: process_regexp bug, infinite recursion
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-01.mbox
+
+I am having some issue searching Bugzilla for any issue involving process_regexp in mod_headers.c .
+
+It finds nothing, so I am assuming I did something wrong in my search. Will file bug if not already filed.
+
+We are investigating an infinite loop (stack overflow) issue, caused by "securing" a system.
+
+ZZZ-STIG-SV-214288r881493_rule.conf:Header always edit* Set-Cookie ^(.*)$ $1;HttpOnly;secure
+
+Note: the STIG is "bad", The PHP code was "weird" sending an empty Set-Cookie header. Using .+ bypasses the infinite loop of input = substation caused by matching and replacing an empty string.
+
+I am available for debugging this until fixed. Opinions welcomed. It is currently mitigated.
+
+I can test, and we will attempt to patch.
+
+OS          : RHEL 8 x86_64
+Name        : httpd
+Version     : 2.4.37
+Release     : 62.module+el8.9.0+19699+7a7a2044
+
+/var/log/httpd/error_log:[Thu Jan 04 18:43:23.469536 2024] [core:notice] [pid 1319:tid 140078043187520] AH00051: child pid 1364 exit signal Segmentation fault (11), possible coredump in /var/log/httpd/core/
+
+#0  0x00007f6675b9eef1 in match (eptr=eptr@entry=0x7f6628013b45 "", ecode=0x559019b00a79 "U\rx", mstart=mstart@entry=0x7f6628013b45 "", offset_top=offset_top@entry=2, md=md@entry=0x7f663e7fe410,
+    eptrb=eptrb@entry=0x0, rdepth=1) at pcre_exec.c:522
+#1  0x00007f6675ba146b in match (eptr=<optimized out>, eptr@entry=0x7f6628013b45 "", ecode=0x559019b00a74 "\205", mstart=mstart@entry=0x7f6628013b45 "", offset_top=offset_top@entry=2, md=md@entry=0x7f663e7fe410,
+    eptrb=eptrb@entry=0x0, rdepth=<optimized out>) at pcre_exec.c:989
+#2  0x00007f6675bb0651 in pcre_exec (argument_re=0x559019b00a30, extra_data=extra_data@entry=0x0, subject=0x7f6628013b45 "", length=0, start_offset=start_offset@entry=0, options=options@entry=0,
+    offsets=0x7f663e7fe590, offsetcount=30) at pcre_exec.c:6942
+#3  0x0000559018576a69 in ap_regexec_len (preg=0x559019ac4de0, buff=buff@entry=0x7f6628013b45 "", len=<optimized out>, nmatch=nmatch@entry=10, pmatch=pmatch@entry=0x7f663e7fe650, eflags=eflags@entry=0)
+    at util_pcre.c:252
+#4  0x0000559018576c32 in ap_regexec (preg=<optimized out>, string=string@entry=0x7f6628013b45 "", nmatch=nmatch@entry=10, pmatch=pmatch@entry=0x7f663e7fe650, eflags=eflags@entry=0) at util_pcre.c:219
+#5  0x00007f666db7dcce in process_regexp (hdr=hdr@entry=0x559019a10d58, value=value@entry=0x7f6628013b45 "", r=r@entry=0x7f662800e250) at mod_headers.c:642
+#6  0x00007f666db7dd62 in process_regexp (hdr=hdr@entry=0x559019a10d58, value=value@entry=0x7f6628013b45 "", r=r@entry=0x7f662800e250) at mod_headers.c:657
+#7  0x00007f666db7dd62 in process_regexp (hdr=hdr@entry=0x559019a10d58, value=value@entry=0x7f6628013b45 "", r=r@entry=0x7f662800e250) at mod_headers.c:657
+#8  0x00007f666db7dd62 in process_regexp (hdr=hdr@entry=0x559019a10d58, value=value@entry=0x7f6628013b45 "", r=r@entry=0x7f662800e250) at mod_headers.c:657
+#9  0x00007f666db7dd62 in process_regexp (hdr=hdr@entry=0x559019a10d58, value=value@entry=0x7f6628013b45 "", r=r@entry=0x7f662800e250) at mod_headers.c:657
+#10 0x00007f666db7dd62 in process_regexp (hdr=hdr@entry=0x559019a10d58, value=value@entry=0x7f6628013b45 "", r=r@entry=0x7f662800e250) at mod_headers.c:657
+#11 0x00007f666db7dd62 in process_regexp (hdr=hdr@entry=0x559019a10d58, value=value@entry=0x7f6628013b45 "", r=r@entry=0x7f662800e250) at mod_headers.c:657
+#12 0x00007f666db7dd62 in process_regexp (hdr=hdr@entry=0x559019a10d58, value=value@entry=0x7f6628013b45 "", r=r@entry=0x7f662800e250) at mod_headers.c:657
+#13 0x00007f666db7dd62 in process_regexp (hdr=hdr@entry=0x559019a10d58, value=value@entry=0x7f6628013b45 "", r=r@entry=0x7f662800e250) at mod_headers.c:657
+#14 0x00007f666db7dd62 in process_regexp (hdr=hdr@entry=0x559019a10d58, value=value@entry=0x7f6628013b45 "", r=r@entry=0x7f662800e250) at mod_headers.c:657
+#15 0x00007f666db7dd62 in process_regexp (hdr=hdr@entry=0x559019a10d58, value=value@entry=0x7f6628013b45 "", r=r@entry=0x7f662800e250) at mod_headers.c:657
+#16 0x00007f666db7dd62 in process_regexp (hdr=hdr@entry=0x559019a10d58, value=value@entry=0x7f6628013b45 "", r=r@entry=0x7f662800e250) at mod_headers.c:657
+#17 0x00007f666db7dd62 in process_regexp (hdr=hdr@entry=0x559019a10d58, value=value@entry=0x7f6628013b45 "", r=r@entry=0x7f662800e250) at mod_headers.c:657
+#18 0x00007f666db7dd62 in process_regexp (hdr=hdr@entry=0x559019a10d58, value=value@entry=0x7f6628013b45 "", r=r@entry=0x7f662800e250) at mod_headers.c:657
+...
+#52318 0x00007f666db7dd62 in process_regexp (hdr=hdr@entry=0x559019a10d58, value=value@entry=0x7f6628013b45 "", r=r@entry=0x7f662800e250) at mod_headers.c:657
+#52319 0x00007f666db7dd62 in process_regexp (hdr=hdr@entry=0x559019a10d58, value=value@entry=0x7f6628013b45 "", r=r@entry=0x7f662800e250) at mod_headers.c:657
+#52320 0x00007f666db7dd62 in process_regexp (hdr=hdr@entry=0x559019a10d58, value=value@entry=0x7f6628013b45 "", r=r@entry=0x7f662800e250) at mod_headers.c:657
+#52321 0x00007f666db7dd62 in process_regexp (hdr=hdr@entry=0x559019a10d58, value=value@entry=0x7f6628013b45 "", r=r@entry=0x7f662800e250) at mod_headers.c:657
+#52322 0x00007f666db7dd62 in process_regexp (hdr=hdr@entry=0x559019a10d58, value=value@entry=0x7f6628013b45 "", r=r@entry=0x7f662800e250) at mod_headers.c:657
+#52323 0x00007f666db7dd62 in process_regexp (hdr=hdr@entry=0x559019a10d58, value=value@entry=0x7f6628013b45 "", r=r@entry=0x7f662800e250) at mod_headers.c:657
+#52324 0x00007f666db7dd62 in process_regexp (hdr=hdr@entry=0x559019a10d58, value=value@entry=0x7f6628013b45 "", r=r@entry=0x7f662800e250) at mod_headers.c:657
+#52325 0x00007f666db7dd62 in process_regexp (hdr=hdr@entry=0x559019a10d58, value=value@entry=0x7f6628013b45 "", r=r@entry=0x7f662800e250) at mod_headers.c:657
+#52326 0x00007f666db7dd62 in process_regexp (hdr=hdr@entry=0x559019a10d58, value=value@entry=0x7f6628013b45 "", r=r@entry=0x7f662800e250) at mod_headers.c:657
+#52327 0x00007f666db7dd62 in process_regexp (hdr=0x559019a10d58, value=0x7f6628013af0 "MoodleSession=dm5ob7kn4olvp5e5i72u9ctddr; path=/lms/; secure; HttpOnly; SameSite=None", r=0x7f662800e250) at mod_headers.c:657
+#52328 0x00007f666db7de0f in edit_header (v=v@entry=0x7f663effa5f0, key=key@entry=0x7f6628013ae0 "Set-Cookie", val=<optimized out>) at mod_headers.c:686
+#52329 0x00007f6674d5e93f in apr_table_vdo (comp=0x7f666db7ddf0 <edit_header>, rec=0x7f663effa5f0, t=0x7f66280141c8, vp=vp@entry=0x7f663effa4c0) at tables/apr_tables.c:981
+#52330 0x00007f6674d5ea93 in apr_table_do (comp=comp@entry=0x7f666db7ddf0 <edit_header>, rec=rec@entry=0x7f663effa5f0, t=t@entry=0x7f66280141c8) at tables/apr_tables.c:925
+#52331 0x00007f666db7e063 in do_headers_fixup (r=0x7f662800e250, headers=0x7f66280141c8, early=early@entry=0, fixup=<optimized out>, fixup=<optimized out>) at mod_headers.c:829
+#52332 0x00007f666db7e659 in ap_headers_output_filter (f=0x7f66280115d0, in=0x7f66280136f0) at mod_headers.c:878
+#52333 0x00007f6666c12fe2 in session_output_filter (f=0x7f66280115a8, in=0x7f66280136f0) at mod_session.c:492
+#52334 0x00007f6668a178b6 in dispatch (conn=conn@entry=0x559019b7c110, conf=conf@entry=0x559019a334c0, r=r@entry=0x7f662800e250, setaside_pool=0x7f6628005098, err=err@entry=0x7f663effc900, bad_request=bad_request@entry=0x7f663effc8c8, has_responded=0x7f663effc8cc, input_brigade=0x7f6628011848, request_id=1) at mod_proxy_fcgi.c:839
+#52335 0x00007f6668a18a6f in fcgi_do_request (p=<optimized out>, origin=0x0, uri=<optimized out>, url=<optimized out>, input_brigade=0x7f6628011848, server_portstr=0x7f663effc970 "", conf=0x559019a334c0, conn=0x559019b7c110, r=0x7f662800e250) at mod_proxy_fcgi.c:981
+#52336 proxy_fcgi_handler (r=0x7f662800e250, worker=<optimized out>, conf=<optimized out>, url=<optimized out>, proxyname=<optimized out>, proxyport=<optimized out>) at mod_proxy_fcgi.c:1195
+#52337 0x00007f6669c5b6c4 in proxy_run_scheme_handler (r=r@entry=0x7f662800e250, worker=0x559019a3ed28, conf=conf@entry=0x559019a2eeb0, url=0x7f6628011740 "fcgi://localhost/var/www/html/lms/admin/index.php", proxyhost=proxyhost@entry=0x0, proxyport=proxyport@entry=0) at mod_proxy.c:3125
+#52338 0x00007f6669c5c479 in proxy_handler (r=0x7f662800e250) at mod_proxy.c:1267
+#52339 0x00005590185922c8 in ap_run_handler (r=r@entry=0x7f662800e250) at config.c:170
+#52340 0x0000559018592886 in ap_invoke_handler (r=r@entry=0x7f662800e250) at config.c:444
+#52341 0x00005590185a9a83 in ap_process_async_request (r=r@entry=0x7f662800e250) at http_request.c:453
+#52342 0x00005590185a5ed0 in ap_process_http_async_connection (c=0x7f65e4000f88) at http_core.c:154
+#52343 ap_process_http_connection (c=0x7f65e4000f88) at http_core.c:248
+#52344 0x000055901859c2b8 in ap_run_process_connection (c=c@entry=0x7f65e4000f88) at connection.c:42
+#52345 0x00007f6669e79a47 in process_socket (thd=thd@entry=0x559019b7b278, p=<optimized out>, sock=<optimized out>, cs=0x7f65e4000ee0, my_child_num=my_child_num@entry=1, my_thread_num=my_thread_num@entry=3) at event.c:1049
+#52346 0x00007f6669e7a3ea in worker_thread (thd=0x559019b7b278, dummy=<optimized out>) at event.c:2083
+#52347 0x00007f6674b2d1ca in start_thread (arg=<optimized out>) at pthread_create.c:479
+#52348 0x00007f6674595e73 in clone () at ../sysdeps/unix/sysv/linux/x86_64/clone.S:95
+
+./modules/metadata/mod_headers.c:
+4034b23cc0d (Nick Kew           2006-10-03 07:41:27 +0000  634) static const char *process_regexp(header_entry *hdr, const char *value,
+e8a15ec117f (Jim Jagielski      2013-11-09 14:37:23 +0000  635)                                   request_rec *r)
+4034b23cc0d (Nick Kew           2006-10-03 07:41:27 +0000  636) {
+b9196c6dfd5 (Stefan Fritsch     2011-10-18 20:51:35 +0000  637)     ap_regmatch_t pmatch[AP_MAX_REG_MATCH];
+4034b23cc0d (Nick Kew           2006-10-03 07:41:27 +0000  638)     const char *subs;
+76ea26f7a0a (Nick Kew           2009-12-27 00:05:12 +0000  639)     const char *remainder;
+4034b23cc0d (Nick Kew           2006-10-03 07:41:27 +0000  640)     char *ret;
+4034b23cc0d (Nick Kew           2006-10-03 07:41:27 +0000  641)     int diffsz;
+b9196c6dfd5 (Stefan Fritsch     2011-10-18 20:51:35 +0000  642)     if (ap_regexec(hdr->regex, value, AP_MAX_REG_MATCH, pmatch, 0)) {
+4034b23cc0d (Nick Kew           2006-10-03 07:41:27 +0000  643)         /* no match, nothing to do */
+4034b23cc0d (Nick Kew           2006-10-03 07:41:27 +0000  644)         return value;
+4034b23cc0d (Nick Kew           2006-10-03 07:41:27 +0000  645)     }
+e8a15ec117f (Jim Jagielski      2013-11-09 14:37:23 +0000  646)     /* Process tags in the input string rather than the resulting
+e8a15ec117f (Jim Jagielski      2013-11-09 14:37:23 +0000  647)        * substitution to avoid surprises
+e8a15ec117f (Jim Jagielski      2013-11-09 14:37:23 +0000  648)        */
+e8a15ec117f (Jim Jagielski      2013-11-09 14:37:23 +0000  649)     subs = ap_pregsub(r->pool, process_tags(hdr, r), value, AP_MAX_REG_MATCH, pmatch);
+646971c2148 (Stefan Fritsch     2011-11-07 21:29:57 +0000  650)     if (subs == NULL)
+646971c2148 (Stefan Fritsch     2011-11-07 21:29:57 +0000  651)         return NULL;
+4034b23cc0d (Nick Kew           2006-10-03 07:41:27 +0000  652)     diffsz = strlen(subs) - (pmatch[0].rm_eo - pmatch[0].rm_so);
+76ea26f7a0a (Nick Kew           2009-12-27 00:05:12 +0000  653)     if (hdr->action == hdr_edit) {
+76ea26f7a0a (Nick Kew           2009-12-27 00:05:12 +0000  654)         remainder = value + pmatch[0].rm_eo;
+76ea26f7a0a (Nick Kew           2009-12-27 00:05:12 +0000  655)     }
+76ea26f7a0a (Nick Kew           2009-12-27 00:05:12 +0000  656)     else { /* recurse to edit multiple matches if applicable */
+e8a15ec117f (Jim Jagielski      2013-11-09 14:37:23 +0000  657)         remainder = process_regexp(hdr, value + pmatch[0].rm_eo, r);
+646971c2148 (Stefan Fritsch     2011-11-07 21:29:57 +0000  658)         if (remainder == NULL)
+646971c2148 (Stefan Fritsch     2011-11-07 21:29:57 +0000  659)             return NULL;
+76ea26f7a0a (Nick Kew           2009-12-27 00:05:12 +0000  660)         diffsz += strlen(remainder) - strlen(value

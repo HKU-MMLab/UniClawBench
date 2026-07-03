@@ -1,0 +1,46 @@
+Message-ID: <ZyYN3bZJJaN54Bmc@DESKTOP-DQBDJ0U.localdomain>
+X-Clawbench-ID: ASF-2024-1488
+Date: Sat, 2 Nov 2024 12:32:45 +0100
+From: Thomas Meyer <thomas@m3y3r.de>
+To: dev@httpd.apache.org
+Subject: Re: Friendly nudge: PR #429 "mod_log_config: Add log_formatter  support and a JSON log_formatter"
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-11.mbox
+
+On Sat, Sep 21, 2024 at 09:49:49AM -0400, Eric Covener wrote:
+> On Sat, Sep 21, 2024 at 6:46 AM Thomas Meyer <thomas@m3y3r.de> wrote:
+>
+> a few minor requests after paging through again:
+>
+> 4. it's a massive pain to get started,  but test coverage in
+> https://svn.apache.org/repos/asf/httpd/test/framework/trunk .  I will
+> try to find some time to create a skeletal test for json and non-json
+> just so the code is actually running.
+
+Hi,
+
+to get some early feedback here some ideas regarding test coverage for
+mod_log_config, it's still unfinished but I hope you get the idea what I
+am aming for:
+
+https://github.com/apache/httpd-tests/compare/trunk...thomasmey:httpd-tests:tests/mod-log-config?expand=1
+
+With this new test I get around 74% code coverage on mod_log_config.
+
+Two questions from my side:
+1.) Not sure how to test the buffered log code, as this probably needs a
+separate httpd run as this is a global config
+2.) Do anybody has an idea how to test the "request line" contains a
+password functionality in log_request_line? How would an HTTP request
+look like that triggers this code path? Is that even reachable by normal
+http requests or only relevant for mod_ftp or mod_proxy or something
+like this?
+
+Please also see this PR https://github.com/apache/httpd/pull/494
+which runs httpd in the perl tests under code coverage and uploads the
+results as Github Action to the workflow.
+
+Mfg
+thomas

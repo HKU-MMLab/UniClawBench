@@ -1,0 +1,43 @@
+Message-ID: <Y4y4EHcP18QCd/f4@fusion>
+X-Clawbench-ID: BIO-2024-1082
+Date: Sun, 4 Dec 2022 16:09:04 +0100
+From: Étienne Mollier <emollier@emlwks999.eu>
+To: Mohd Bilal <mdbilal@disroot.org>
+Subject: Re: [Advent bug squashing] fixed in #1018506 in python-gtfparse
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_12_msg00042.html
+
+Hi Bilal,
+
+Mohd Bilal, on 2022-12-04:
+> I just updated python-gftparse[1] to a new upstream version and added a
+> patch to make the switch from nose->pytest (Bug #1018506).
+>
+> Can somebody review + sponsor an upload please ?
+
+I've strolled through the patch and I'm concerned by the
+translation of eq_ terms, which seems to go from:
+
+	eq_($1, $2)
+
+to:
+
+	assert $1, $2
+
+In such configuration, assert would test whether $1 is true,
+and print $2 if it is not.  I believe you might have wanted to
+conver to:
+
+	assert $1 == $2
+
+All changes look fine otherwise.
+
+> [1] - https://salsa.debian.org/med-team/python-gtfparse
+
+Thanks for your contribution,  :)
+--
+Étienne Mollier
+Fingerprint:  8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+Sent from /dev/pts/2, please excuse my verbosity.

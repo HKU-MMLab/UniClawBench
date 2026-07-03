@@ -1,0 +1,49 @@
+Message-ID: <CALK=YjN44KRGKA+-LYnF_2Mr4WgSks2re9kOz2zNw2ukXzLPRA@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1156
+Date: Thu, 1 Aug 2024 15:53:20 -0400
+From: Eric Covener <covener@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: [Bug 69203] proxy error from php-fpm backend for paths containing spaces
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-08.mbox
+
+On Thu, Aug 1, 2024 at 2:47 PM Yann Ylavic <ylavic.dev@gmail.com> wrote:
+>
+> On Thu, Aug 1, 2024 at 7:57 PM Eric Covener <covener@gmail.com> wrote:
+> >
+> > On Thu, Aug 1, 2024 at 1:37 PM Yann Ylavic <ylavic.dev@gmail.com> wrote:
+> > >
+> > > On Thu, Aug 1, 2024 at 5:51 PM Eric Covener <covener@gmail.com> wrote:
+> > > >
+> > > > But does it leave the splitting problem with decoded %3F?
+> > >
+> > > Yeah but I'm not sure that it's _our_ problem, a "proxy:" r->filename
+> > > does never contain the query-string in the first place, so any '?' in
+> > > there (hence in SCRIPT_FILENAME) is part of the actual file path
+> > > (which we'd encode for proxying any other scheme than fcgi). And the
+> > > '?' will be in SCRIPT_NAME/PATH_INFO/etc too. If the scripts want the
+> > > decoded uri-path they have to be consistent and consider that
+> > > SCRIPT_FILENAME is nothing else than a path (no query-string, which is
+> > > in ... QUERY_STRING).
+> >
+> > Just to recap, FPM doesn't want to find the query it in
+> > SCRIPT_FILENAME, it wants to toss it away because it used to
+> > accidentally end up in there (via mod_rewrite?)  But this is where the
+> > mismatch between what we've walked/mapped/authorized and what will be
+> > executed is.
+>
+> If FPM wants a decoded SCRIPT_FILENAME but no '?' character?
+> Decoding a path with %3f will inevitably give '?', even though it's
+> still the path, why would FPM decode it as a URL and find a query
+> string in there?
+
+I think as a workaround for what we can (or used to?) send:
+https://github.com/php/php-src/blob/master/sapi/fpm/fpm/fpm_main.c#L1043
+It also means an actual file with a literal question mark cannot be
+run through php-fpm.
+
+--
+Eric Covener
+covener@gmail.com

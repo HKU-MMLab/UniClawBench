@@ -1,0 +1,25 @@
+Message-ID: <da497135-9519-45cf-b64c-8ca707f1bee7@gmail.com>
+X-Clawbench-ID: ASF-2024-0726
+Date: Wed, 10 Apr 2024 17:58:51 +0200
+From: jean-frederic clere <jfclere@gmail.com>
+To: "dev@httpd.apache.org" <dev@httpd.apache.org>
+Subject: Re: pytest test/modules/md/test_310_conf_store.py
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-04.mbox
+
+On 4/9/24 19:06, jean-frederic clere wrote:
+> Hi,
+>
+> Has anyone run those tests recently?
+>
+> I have errors like "MD testdomain.org does not match any VirtualHost
+> with ...", probably I am doing something wrong...
+
+It seems ignoring the warnings AH10045 and AH10105 is a possible fix.
+
+--
+Cheers
+
+Jean-Frederic

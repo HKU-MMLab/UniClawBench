@@ -1,0 +1,46 @@
+Message-ID: <AA420CE7-5A6C-4CE1-B3C7-076F6DB7DD20@eissing.org>
+X-Clawbench-ID: ASF-2024-0561
+Date: Mon, 12 Jun 2023 16:40:35 +0200
+From: "Stefan Eissing via dev" <dev@httpd.apache.org>
+To: dev@httpd.apache.org
+Subject: Re: build trunk in windows
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-06.mbox
+
+> Am 12.06.2023 um 15:33 schrieb jean-frederic clere <jfclere@gmail.com>:
+>
+> On 5/4/23 11:31, Yann Ylavic wrote:
+>> On Wed, May 3, 2023 at 2:54 PM jean-frederic clere <jfclere@gmail.com> wrote:
+>>>
+>>> On 4/24/23 18:25, Steffen wrote:
+>>>> There is a howto Building Apache and dependencies using CMake at
+>>>>
+>>>> https://www.apachelounge.com/viewtopic.php?t=8609
+>>>> <https://www.apachelounge.com/viewtopic.php?t=8609>
+>>>>
+>>>>
+>>>
+>>> I ended fixing include/http_protocol.h see patch, did I miss something?
+>> Looks like ap_h1_response_out_filter() is declared in
+>> "include/mod_core.h" already, but without AP_CORE_DECLARE_NONSTD().
+>> Not sure if we should remove the AP_CORE_DECLARE_NONSTD() in
+>> "modules/http/http_filters.c" (where it's implemented) or add it in
+>> the declaration. For instance ap_http_outerror_filter() has no
+>> AP_CORE_DECLARE_NONSTD() anywhere..
+>
+> OK I have fixed ap_h1_response_out_filter() to follow include/http_protocol.h
+
+
+\o/
+
+>
+>> Regards;
+>> Yann.
+>
+> --
+> Cheers
+>
+> Jean-Frederic
+>

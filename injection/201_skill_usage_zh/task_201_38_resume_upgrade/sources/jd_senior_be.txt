@@ -1,0 +1,20 @@
+Senior Backend Engineer — Distributed Systems
+
+We are hiring a Senior Backend Engineer to own the checkout and payments
+pipeline. You will lead the migration of a monolith to a modular service
+fleet on Kubernetes, tune our Postgres and Redis layer, and design
+idempotent event-driven flows on Kafka.
+
+Must-have:
+- 6+ years of production backend experience with Go or Python
+- Deep familiarity with PostgreSQL (schema design, tuning, online migration)
+- Kafka / Pulsar or equivalent event stream system
+- Service-level reliability instincts (SLOs, error budgets)
+- Hands-on with Kubernetes at scale (deployments, horizontal pod autoscaling)
+
+Nice to have:
+- OpenTelemetry, eBPF, Rust
+- Prior checkout / payments work
+
+We prioritize candidates who can show measurable impact: reduced latency,
+eliminated toil, increased SLO attainment, grew throughput.

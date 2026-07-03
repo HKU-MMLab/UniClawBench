@@ -1,0 +1,27 @@
+Message-ID: <Ya903XDuRvBowEYv@an3as.eu>
+X-Clawbench-ID: BIO-2024-0331
+Date: Tue, 7 Dec 2021 15:51:09 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Nilesh Patra <nilesh@riseup.net>
+Subject: Re: [Advent bug squashing] r-bioc-dropletutils: autopkgtest failures ... fixed with new version thus closing the bug
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_12_msg00031.html
+
+Hi Nilesh,
+
+Am Tue, Dec 07, 2021 at 07:55:35PM +0530 schrieb Nilesh Patra:
+> >this issue i solved in version 1.14.1+ds-1 thus closing the bug.
+>
+> Just wished to ask: are R package bug fixes also candidates for advent calendar?
+
+BioConductor is clearly Debian Med land ... just maintained by pkg-r team.
+We want to clean up BTS for our users - so why not?
+
+Kind regards
+
+     Andreas.
+
+--
+http://fam-tille.de

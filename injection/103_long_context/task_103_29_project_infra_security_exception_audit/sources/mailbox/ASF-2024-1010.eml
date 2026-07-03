@@ -1,0 +1,99 @@
+Message-ID: <F72B5742-24A5-4052-BA9B-2A57EDBF585D@eissing.org>
+X-Clawbench-ID: ASF-2024-1010
+Date: Fri, 7 Oct 2022 19:11:04 +0200
+From: "Stefan Eissing via dev" <dev@httpd.apache.org>
+To: dev@httpd.apache.org
+Subject: Re: friends of mod_proxy
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-10.mbox
+
+> Am 07.10.2022 um 18:45 schrieb Yann Ylavic <ylavic.dev@gmail.com>:
+>
+> On Thu, Oct 6, 2022 at 5:32 PM Eric Covener <covener@gmail.com> wrote:
+>>
+>> On Thu, Oct 6, 2022 at 10:21 AM Stefan Eissing via dev
+>> <dev@httpd.apache.org> wrote:
+>>>
+>>> Friends of mod_proxy, I have a question:
+>>>
+>>> In <https://github.com/icing/mod_h2/issues/235> someone reported wrong connection reuse for a config like:
+>>>
+>>> ProxyPassMatch ^/(prod|dev)/([-a-z0-9]+)/(.*)$ h2://$2.internal/$1/$2/$3 enablereuse=on keepalive=on
+>>>
+>>> Leaving aside the issue that such a pattern is insecure due to the client influencing the hostname, the fact remains that mod_proxy_http2 will use a previous connection, even if the matched hostname is different. I replicated that, using "just" ports in a test case:
+>>>
+>>> ProxyPassMatch ^/h2proxy/([0-9]+)/(.*)$ h2c://127.0.0.1:$1/$2 enablereuse=on keepalive=on
+>>>
+>>> Then
+>>> 1. /h2proxy/5002/hello.py
+>>> 2. /h2proxy/5004/hello.py
+>>>
+>>> results in 2) re-using the connection of 1). The log file says for 2):
+>>>
+>>> [proxy:debug] proxy_util.c(2538): AH00942: H2C: has acquired connection for (127.0.0.1:80)
+>>> [proxy:debug] proxy_util.c(2596): [remote 127.0.0.1:60121] AH00944: connecting h2c://127.0.0.1:5004/hello.py to 127.0.0.1:5004
+>>> [proxy:debug] proxy_util.c(2819): [remote 127.0.0.1:60121] AH00947: connected /hello.py to 127.0.0.1:5002
+>>> [proxy_http2:trace1] mod_proxy_http2.c(374): [remote 127.0.0.1:60121] H2: determined connect to 127.0.0.1:5002
+>>> [proxy:trace2] proxy_util.c(3101): H2C: reusing backend connection 127.0.0.1:60120<>127.0.0.1:5002
+>>>
+>>> and that looks wrong.
+>>>
+>>> Question: do we have a bug or do we consider such ProxyPassMatch as broken and require at least enablereuse=off?
+>>
+>> I can't find all the history, but some time ago proxypassmatch never
+>> tried to find a matching worker
+>> https://bz.apache.org/bugzilla/show_bug.cgi?id=62167
+>>
+>> Later, we must have gotten some logic added but you still have to
+>> opt-in, I think it is likely
+>> http://home.apache.org/~ylavic/patches/httpd-2.4.x-ap_proxy_define_match_worker.patch
+>> or adjacent
+>
+> Yes, we have [1] that disables ProxyPassMatch workers reuse if they do
+> any $n substitution, precisely because reuse can't work in all cases
+> and particularly when the hostname[:port] part is substituted.
+>
+> ProxyPassMatch workers were introduced in 2.4.47:
+>  *) mod_proxy: Recognize parameters from ProxyPassMatch workers with dollar
+>     substitution, such that they apply to the backend connection.  Note that
+>     connection reuse is disabled by default to avoid compatibility issues.
+>
+> Before that there were no parameters (enablereuse, keepalive, timeout,
+> ...) applying to ProxyPassMatch connections, they fell back to the
+> generic "proxy:reverse" worker, all parameters were ignored and
+> connections never reused.
+>
+> Since 2.4.47 we have ProxyPassMatch workers
+> (worker->s->is_name_matchable == true), their name (match prefix) is
+> everything up to the first '$', so with "h2c://127.0.0.1:$1/$2" the
+> name is "h2c://127.0.0.1:", which obviously will match all the
+> possible ports to the same worker..
+>
+> So enablereuse=on is now possible with ProxyPassMatch, and makes sense
+> for things like:
+>  ProxyPassMatch ^/(prod|dev)/([-a-z0-9]+)/(.*)$
+> h2://backend.internal/$2/$1/$3 enablereuse=on
+> but it should not be used when the substitution involves the
+> hostname[:port] (besides the security issue..).
+>
+> The issue here (IIUC) is that the user had the explicit enablereuse=on
+> before 2.4.47 already but it was ignored, and now it breaks :/
+> Maybe we can do something to use the generic worker as before (and
+> ignore parameters) when we detect that the substitution happens in the
+> hostname[:port] part of the URL, but the damage is already done and
+> I'm not sure it's worth the change given how this kind of
+> configuration is not recommended in the first place.
+
+Thanks, Yann, for the detailed explanation on how this works and that the default does the right thing.
+
+My guess is that such configurations are pretty rare, as their security is not good in general. The only thing that comes to mind is logging a warning for such cases.
+
+Kind Regards,
+Stefan
+
+> Regards;
+> Yann.
+>
+> [1] https://github.com/apache/httpd/blob/2.4.x/modules/proxy/proxy_util.c#L2031

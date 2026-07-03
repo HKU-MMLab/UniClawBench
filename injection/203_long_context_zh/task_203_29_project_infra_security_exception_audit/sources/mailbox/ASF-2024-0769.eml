@@ -1,0 +1,31 @@
+Message-ID: <CALK=YjMVdHXO=p-JPD5fEhr2V-bJHTgbe=8_6qpa2V858GNzag@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0769
+Date: Tue, 25 Jun 2024 11:34:44 -0400
+From: Eric Covener <covener@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.60-rc1 as httpd-2.4.60
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-06.mbox
+
+Vote is abandoned, please look for an RC2 thread soon.
+
+On Tue, Jun 25, 2024 at 10:58 AM Eric Covener <covener@gmail.com> wrote:
+>
+> On Tue, Jun 25, 2024 at 9:38 AM Yann Ylavic <ylavic.dev@gmail.com> wrote:
+> >
+> > On Tue, Jun 25, 2024 at 2:50 PM Eric Covener <covener@gmail.com> wrote:
+> > >
+> > >  - whether backing out
+> > > https://github.com/apache/httpd/commit/9494aa8d52e3c263bc0413b77ac8a73b0d524388.diff
+> > > from the candidate helps?
+> >
+> > I'm not sure r1918553 made it to rc1, did it?
+>
+> Sorry -- I plan to re-spin to pick it up in the next few hours.
+
+
+--
+Eric Covener
+covener@gmail.com

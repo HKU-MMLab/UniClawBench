@@ -1,0 +1,25 @@
+Message-ID: <2D610B67-14A7-483A-8C64-E6AD1CD8BB1C@apache.org>
+X-Clawbench-ID: ASF-2024-0135
+Date: Wed, 18 May 2022 18:17:38 +0100
+From: Nick Kew <niq@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: strcasecmp raises its...
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-05.mbox
+
+> On 18 May 2022, at 16:34, Ruediger Pluem <rpluem@apache.org> wrote:
+>
+> Rüdiger
+
+What locale are YOU in there?  Any attempt at locale is going to have to draw lines:
+what are the rules for when Ruediger == Rüdiger?
+
+In a WWW (and hence httpd) context, internationalised domain names raise all kinds
+of issues, including for us potentially breaking case-insensitivity rules in matching
+hostnames, and perhaps other configuration matters.  What happens if we make
+locale a configurable parameter for hostnames and use strcasecmp_l?
+
+--
+Nick Kew

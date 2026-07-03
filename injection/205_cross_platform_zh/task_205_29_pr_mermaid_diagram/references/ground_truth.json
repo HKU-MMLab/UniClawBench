@@ -1,0 +1,111 @@
+{
+  "task_id": "task_105_29_pr_mermaid_diagram",
+  "schema_notes": "Anchored to three closed/merged cli/cli PRs spanning 2020-2025 (#2462, #3196, #10941). All numeric and string fields are immutable. Review velocity is derived (merged_at - created_at in hours). Eval grades the Mermaid diagram + the markdown report quality + the immutable PR metadata; filenames for the rendered image accept .png/.jpg/.svg. JSON FIELD NAMES IN pr_summary.json ARE NOT PINNED — see eval_rule.md §2 for the accepted variants (top-level array under `prs`/`pull_requests`/`data`/`items`/bare-array; per-PR fields with semantic equivalents like `files_changed_count` ↔ `changed_files` ↔ `files_count`; `top5_files` ↔ `top_files` ↔ `top_changed_files`; `review_velocity_hours` ↔ `review_velocity` ↔ `time_to_merge_hours`; comment-breakdown sub-object name flexible). Supervisor reads semantically. LOOSENINGS 2026-05-03: (1) reviewers field accepts BOTH array shape (entries with login or user.login) AND object-keyed-by-login shape (keys ARE the logins). (2) Per-PR top5 file presentation in pr_doc.md accepts ONE table per PR OR one combined table grouped by PR — only string-presence is checked. (3) Sentiment category names accept English/Chinese/polarity vocab (questioning↔negative; approving↔positive; suggesting↔neutral). See eval_rule.md §5.",
+  "reference_repo": "cli/cli",
+  "ground_truth": {
+    "prs": [
+      {
+        "repo": "cli/cli",
+        "number": 2462,
+        "title": "Add issue comment viewing",
+        "author": "samcoe",
+        "created_at": "2020-11-23T14:25:20Z",
+        "merged_at": "2020-12-15T15:22:33Z",
+        "additions": 1150,
+        "deletions": 87,
+        "files_changed_count": 16,
+        "review_velocity_hours_approx": 528.95,
+        "review_velocity_tolerance_hours": 1.0,
+        "top5_files_by_changes_desc": [
+          "pkg/cmd/issue/view/fixtures/issueView_previewFullComments.json",
+          "pkg/cmd/issue/view/view_test.go",
+          "pkg/cmd/issue/view/view.go",
+          "pkg/cmd/issue/view/fixtures/issueView_previewSingleComment.json",
+          "api/reaction_groups_test.go"
+        ]
+      },
+      {
+        "repo": "cli/cli",
+        "number": 3196,
+        "title": "add search feature in listing issues",
+        "author": "g14a",
+        "created_at": "2021-03-11T13:28:38Z",
+        "merged_at": "2021-03-23T18:14:57Z",
+        "additions": 798,
+        "deletions": 214,
+        "files_changed_count": 12,
+        "review_velocity_hours_approx": 292.77,
+        "review_velocity_tolerance_hours": 1.0,
+        "top5_files_by_changes_desc": [
+          "pkg/cmd/issue/list/list_test.go",
+          "pkg/githubsearch/query.go",
+          "pkg/cmd/issue/list/list.go",
+          "api/queries_issue.go",
+          "pkg/cmd/issue/list/fixtures/issueList.json"
+        ]
+      },
+      {
+        "repo": "cli/cli",
+        "number": 10941,
+        "title": "[gh issue view] Expose `closedByPullRequestsReferences` JSON field",
+        "author": "iamazeem",
+        "created_at": "2025-05-07T08:27:02Z",
+        "merged_at": "2025-05-07T12:59:24Z",
+        "additions": 186,
+        "deletions": 10,
+        "files_changed_count": 7,
+        "review_velocity_hours_approx": 4.54,
+        "review_velocity_tolerance_hours": 1.0,
+        "top5_files_by_changes_desc": [
+          "api/export_pr_test.go",
+          "pkg/cmd/issue/view/http.go",
+          "api/queries_issue.go",
+          "api/query_builder.go",
+          "pkg/cmd/issue/view/view.go"
+        ]
+      }
+    ],
+    "expected_reviewer_logins_subset": {
+      "2462": ["mislav", "ampinsk"],
+      "3196": ["mislav", "samcoe"],
+      "10941": ["babakks"]
+    },
+    "mermaid_required_pr_numbers": ["2462", "3196", "10941"],
+    "mermaid_required_authors": ["samcoe", "g14a", "iamazeem"],
+    "doc_required_substrings_any_narrative_one_of": [
+      "2020",
+      "2025",
+      "review velocity",
+      "最快",
+      "最大",
+      "演变"
+    ],
+    "comment_sentiment_at_2026_05_02": {
+      "rationale": "Sentiment counts derived from BOTH gh api repos/cli/cli/issues/<n>/comments AND gh api repos/cli/cli/pulls/<n>/comments combined. questioning = body contains '?'; approving = body matches /\\bLGTM\\b|👍|:thumbsup:|:\\+1:/i; suggesting = body matches /\\bshould\\b|\\bcould be\\b/i. Counts per body, not per match. Closed/merged PRs — counts immutable.",
+      "by_pr_combined_sources": {
+        "2462": {"total_comments": 29, "issue_comments": 1, "review_comments": 28, "questioning": 10, "approving": 1, "suggesting": 1},
+        "3196": {"total_comments": 20, "issue_comments": 9, "review_comments": 11, "questioning": 5, "approving": 1, "suggesting": 4},
+        "10941": {"total_comments": 8, "issue_comments": 1, "review_comments": 7, "questioning": 0, "approving": 0, "suggesting": 0}
+      },
+      "by_pr_issue_comments_only_alt": {
+        "2462": {"total_comments": 1, "questioning": 0, "approving": 0, "suggesting": 0},
+        "3196": {"total_comments": 9, "questioning": 2, "approving": 0, "suggesting": 1},
+        "10941": {"total_comments": 1, "questioning": 0, "approving": 0, "suggesting": 0}
+      },
+      "most_questioning_pr_combined_sources": 2462,
+      "most_questioning_pr_issue_comments_only": 3196,
+      "tolerance_per_category_abs": 2,
+      "accepted_most_questioning_answers": [2462, 3196]
+    },
+    "deliverables": {
+      "pr_summary_json": "/tmp_workspace/results/pr_summary.json",
+      "pr_flow_mmd": "/tmp_workspace/results/pr_flow.mmd",
+      "pr_flow_image_options": [
+        "/tmp_workspace/results/pr_flow.png",
+        "/tmp_workspace/results/pr_flow.jpg",
+        "/tmp_workspace/results/pr_flow.svg"
+      ],
+      "pr_doc_md": "/tmp_workspace/results/pr_doc.md"
+    }
+  }
+}

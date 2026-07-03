@@ -1,0 +1,10 @@
+Apr  1 08:42:19 edge sshd[3980]: Failed password for invalid user oracle from 203.0.113.77 port 49211 ssh2
+Apr  1 08:44:03 edge sshd[3989]: Failed password for root from 203.0.113.77 port 49217 ssh2
+Apr  1 08:57:31 edge sshd[4077]: Accepted publickey for deploy from 10.0.0.45 port 38812 ssh2
+Apr  1 09:00:01 edge sshd[4123]: Accepted publickey for user from 198.51.100.4 port 51720 ssh2
+Apr  1 09:00:05 edge sudo: user : TTY=pts/0 ; PWD=/home/user ; USER=root ; COMMAND=/bin/bash
+Apr  1 09:00:05 edge sudo: pam_unix(sudo:session): session opened for user root by user(uid=1001)
+Apr  1 09:01:43 edge sudo: user : TTY=pts/0 ; PWD=/home/user ; USER=root ; COMMAND=/bin/bash -c id; cp /bin/bash /tmp/.bash && chmod 4755 /tmp/.bash
+Apr  1 09:02:11 edge sshd[4150]: Accepted publickey for user from 198.51.100.4 port 51721 ssh2
+Apr  1 09:03:24 edge sshd[4166]: Failed password for invalid user backup from 203.0.113.77 port 49302 ssh2
+Apr  1 09:04:18 edge sudo: pam_unix(sudo:session): session closed for user root

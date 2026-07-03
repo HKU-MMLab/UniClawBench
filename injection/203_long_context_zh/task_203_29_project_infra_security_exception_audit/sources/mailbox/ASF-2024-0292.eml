@@ -1,0 +1,31 @@
+Message-ID: <51e9a872-ad24-18e3-4140-1aac1f224908@apache.org>
+X-Clawbench-ID: ASF-2024-0292
+Date: Wed, 18 Jan 2023 08:04:56 +0100
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: sporadic 500 errors with 2.4.55
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-01.mbox
+
+On 1/18/23 7:01 AM, Helmut K. C. Tessarek wrote:
+> Additional info:
+>
+> I reverted back to 2.4.54 and the errors are gone. It also seems that the responses are snappier. The perf observation is
+> subjective of course.
+>
+> Without any proof I suspect that there is some sort of contention/lock issue with h2 that might also result in a 500 now and then
+> due to maybe a race condition? This his highly speculative of course.
+
+Some questions:
+
+1. As you suspect h2 have you tried running 2.4.55 without mod_http2?
+2. As you see the 500 errors only in the access log are they only for HTTP/2.0 or also for other protocol versions?
+3. Do you use %L in your access and error log which eases correlating the logs?
+4. What loglevel do you use and what would be the highest one you could set given the nature of the error (sporadic) and the
+traffic on your side?
+
+Regards
+
+Rüdiger

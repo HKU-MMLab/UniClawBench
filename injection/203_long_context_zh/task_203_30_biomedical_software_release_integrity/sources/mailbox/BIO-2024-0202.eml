@@ -1,0 +1,39 @@
+Message-ID: <87mtmqd03o.fsf@nonempty.org>
+X-Clawbench-ID: BIO-2024-0202
+Date: Sat, 30 Oct 2021 17:05:32 +0200
+From: Gard Spreemann <gspr@nonempty.org>
+To: debian-science@lists.debian.org
+Subject: Re: Debian Math Team
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_10_msg00049.html
+
+Torrance, Douglas  writes:
+
+> During the Debian Science BoF at this year's DebConf, there was some
+> discussion of creating a team devoted to packaging mathematical software.
+>
+> This seemed like a pretty good idea, so I figured that I'd go ahead and
+> start working on getting it set up.  I've already created a Salsa group [1]
+> and a team on the Debian Package Tracker [2].  If you're interested in
+> joining, then you should be able to sign up at these links.
+>
+> I figured next would be applying for a mailing list, putting together a team policy, etc.  Any thoughts?
+
+Hi Douglas,
+
+Nice initiative! I do think I agree with the comments made by others
+about fragmentation thoguh; to me it would probably even make sense to
+have the science, med, AI, and math teams all together in one big lump
+(the "computational software" team?), rather than adding yet another
+separate one. That being said, my opinion on the matter is not a strong
+one, and if a math team is indeed formed, please do add me to it (Salsa
+user "gspr").
+
+I currently maintain the following math packages: gudhi, hera, lbfgsb,
+phat, python-pot, ripser.
+
+
+ Best,
+ Gard

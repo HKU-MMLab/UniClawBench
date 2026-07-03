@@ -1,0 +1,39 @@
+Message-ID: <2c1684e3-4566-406f-3ea3-3a61cff84f25@debian.org>
+X-Clawbench-ID: BIO-2024-0729
+Date: Thu, 10 Feb 2022 10:04:22 +0200
+From: Andrius Merkys <merkys@debian.org>
+To: Nilesh Patra <nilesh@nileshpatra.info>, "Maarten L. Hekkelman" <maarten@hekkelman.com>
+Subject: Re: mmdb2
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2022_02_msg00022.html
+
+Hello,
+
+On 2022-02-09 20:28, Nilesh Patra wrote:
+> $ reverse-depends libmmdb2-dev
+> Reverse-Depends
+> * libclipper-dev
+> * libssm-dev
+>
+> $ reverse-depends libmmdb2-dev -b
+> Reverse-Build-Depends
+> * clipper
+> * libccp4
+> * molmodel
+> * ssm
+
+I have checked with ratt, all these build fine. Thus I have uploaded
+mmdb, thanks Maarten for updating it!
+
+By the way, other ccp4 packages (clipper, libccp4 and ssm) may as well
+have new releases published in Paul Emsley's Coot dependencies
+directory. Maybe it is a good idea to update them as well.
+
+Some time ago I spent much effort to package Coot. It is still on my
+wishlist, but I could not get past the license collection stage. There
+is just too many files having vague copyright needing manual investigation.
+
+Best,
+Andrius

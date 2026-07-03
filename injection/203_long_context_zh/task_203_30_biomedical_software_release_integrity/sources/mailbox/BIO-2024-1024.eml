@@ -1,0 +1,82 @@
+Message-ID: <ZKRwcKZBjvY+0Zro@fusion>
+X-Clawbench-ID: BIO-2024-1024
+Date: Tue, 4 Jul 2023 21:18:08 +0200
+From: Étienne Mollier <emollier@debian.org>
+To: Andreas Tille <tille@debian.org>
+Subject: Re: Request for Sponsorship: VeryFastTree - Parallelized and Optimized Version of FastTree
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_07_msg00008.html
+
+Hi César, Hi Andreas
+
+Andreas Tille, on 2023-07-04:
+> Am Tue, Jul 04, 2023 at 04:19:45PM +0200 schrieb César Pomar:
+> > > I did not checked (yet) but you might like to have a look into
+> > > SIMDEverywhere[3]
+> >
+> > Thank you, but I meant that I was enabling AMD64 features on ARM. I've
+> > taken a
+> > look at the log and I see what the problem might be. Considering that
+> > aarch64-linux-gnu-g++ is being used, it appears to be a compilation for
+> > ARM,
+> > but with BUILD_ARCH=amd64 and HOST_ARCH=arm64, shouldn't it be the other
+> > way
+> > around? In any case, if this isn't an error, I would look for when
+> > HOST_ARCH=arm64 and wouldn't use USE_AVX2=ON, which is the parameter that
+> > sends -mavx2. Because right now, I'm using BUILD_ARCH, and since it's
+> > amd64,
+> > it assumes it should use USE_AVX2=ON.
+>
+> I admit I'm not very educated with ARM.  However, mixing two different
+> architectures in BUILD_ARCH and HOST_ARCH sounds suspicious to me and is
+> IMHO only relevant for cross-building (but I repeat I'm not very
+> educated here).
+
+If that helps, about the cross-building point, I believe that I
+identified a couple of the issues.  The missing definition of
+DEB_*_ARCH makefile variables can be obtained from dpkg
+resources, either with the following general directive in
+debian/rules:
+
+	include /usr/share/dpkg/default.mk
+
+or by loading only architecture specific variables:
+
+	include /usr/share/dpkg/architecture.mk
+
+The second difficulty is that in Debian vernacular[1], the build
+architecture is the architecture of the build environment, while
+the host architecture is the architecture of the binary packages
+to be produced, so you're after the DEB_HOST_ARCH variable.  My
+understanding is that there are contexts where the two concepts
+are the opposite, which can be very confusing.
+
+Besides, Debian handles a few more architectures than just
+x86_64 and Arm[2], so you might like to enable amd64 specific
+flags only when DEB_HOST_ARCH is amd64, not just when it's not
+Arm.
+
+Which leads me to the use of avx2 in build options: beware that
+some users of your package may not have an avx2 capable x86_64
+machines.  If your program doesn't gracefully fallback to the
+generic instruction set, then those users will witness "Illegal
+instruction" errors instead of being able to run your software.
+In such situation, the pointer from Andreas toward SIMDe would
+make very much sense to investigate[3] (otherwise the easy
+option would have been to disable avx2 extensions entirely, but
+I guess you would prefer to avoid penalizing performances on
+high end machines).
+
+[1]: https://wiki.debian.org/CrossBuildPackagingGuidelines
+[2]: https://release.debian.org/testing/arch_qualify.html
+> > > [3]: https://wiki.debian.org/SIMDEverywhere
+
+In hope this helps and is not too overwhelming,
+Have a nide day,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  gpg: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/2, please excuse my verbosity
+   `-    on air: D'Virgilio, Morse & Jennings - King For A Day

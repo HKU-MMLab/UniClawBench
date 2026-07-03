@@ -1,0 +1,42 @@
+task_id: task_102_02_steam_appdetails
+category: 102_exploration
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I'm building a tiny price/metadata tracker for a few PC games and I'd rather
+  pull the data from an API than scrape Steam store pages by hand.
+
+  Start from this Steam store page:
+
+      https://store.steampowered.com/app/1245620/ELDEN_RING/
+
+  Steam's storefront is backed by a JSON endpoint that the store page itself
+  calls to render game details — it isn't really documented, so you'll need to
+  find it (the app id in the URL is the key input). Please discover that
+  endpoint and use it (not by parsing the store page HTML) to retrieve, for
+  this game:
+
+  - the official title,
+  - the developer(s) and publisher(s),
+  - which platforms are supported (Windows / macOS / Linux),
+  - whether it's free, and the current price if it isn't,
+  - the release date,
+  - the Metacritic score if present.
+
+  Save the structured result to `/tmp_workspace/results/steam_appdetails.json`,
+  and save the exact request URL you called plus its raw JSON response to
+  `/tmp_workspace/results/steam_evidence/` so the pull is reproducible. A short
+  note on how you found the endpoint is welcome.
+
+references:
+  - references/eval_rule.md
+
+codex:
+  max_user_followups: 2

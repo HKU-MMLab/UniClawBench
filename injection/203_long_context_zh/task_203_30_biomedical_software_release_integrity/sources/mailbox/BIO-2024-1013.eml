@@ -1,0 +1,24 @@
+Message-ID: <20240806153215.GA3952414@schwarzgerat.orthanc>
+X-Clawbench-ID: BIO-2024-1013
+Date: Tue, 6 Aug 2024 11:32:15 -0400
+From: nick black <dankamongmen@gmail.com>
+To: "Michael R. Crusoe" <crusoe@debian.org>
+Subject: Re: Moving libdeflate from Debian-Med to a more appropriate team
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_08_msg00001.html
+
+Michael R. Crusoe left as an exercise for the reader:
+> libdeflate-dev has 3304 reverse-dependencies in "unstable"[0].
+> I would like to move it from Debian-Med to a more appropriate team.
+> Are there any volunteers?
+
+I maintain it for Fedora, and would be happy to handle it in
+Debian; it's a dependency for one of my other packages (notcurses).
+Happy to enter into a team maintainership as well.
+
+--
+nick black -=- https://nick-black.com
+to make an apple pie from scratch,
+you need first invent a universe.

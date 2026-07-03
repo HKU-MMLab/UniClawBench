@@ -1,0 +1,23 @@
+Message-ID: <6c34709e-b58c-b48e-b983-c393c8a341cd@apache.org>
+X-Clawbench-ID: ASF-2024-0014
+Date: Tue, 13 Dec 2022 20:45:21 +0100
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: mod_wasm: Contributing Upstream to Apache
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-12.mbox
+
+On 12/13/22 7:58 PM, Jesús González wrote:
+> Thank Jean-Frederic for your feedback!
+>
+> Regarding reviewing from the diff, I agree that a PR to GitHub will ease the review process.
+> I'm afraid I don't have enough permission to do it. Who/where can I ask for it?
+
+You don't need special permissions. Just create a fork of https://github.com/apache/httpd with your github account.
+Branch trunk to your feature branch in this fork. Commit mod_wasm to it and create a PR against https://github.com/apache/httpd
+
+Regards
+
+Rüdiger

@@ -1,0 +1,55 @@
+Message-ID: <20210910072623.GF14598@an3as.eu>
+X-Clawbench-ID: BIO-2024-0323
+Date: Fri, 10 Sep 2021 09:26:24 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>,	Flavien Bridault <fbridault@ircad.fr>
+Subject: Please deal with dh_missing in camp
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_09_msg00020.html
+
+Hi Flavien,
+
+due to the need to change the watch file I touched the camp package
+using routine-update.  This also changed debhelper-compat to 13.  One
+main change in this compat level is that dh_missing defaults now to
+--fail-missing which results in the following build-error:
+
+   dh_missing
+dh_missing: warning: usr/lib/pkgconfig/camp.pc exists in debian/tmp but is not installed to anywhere
+dh_missing: warning: usr/share/camp/README.txt exists in debian/tmp but is not installed to anywhere
+dh_missing: warning: usr/share/camp/cmake/CAMPConfig.cmake.in exists in debian/tmp but is not installed to anywhere
+dh_missing: warning: usr/share/camp/cmake/Config.cmake exists in debian/tmp but is not installed to anywhere
+dh_missing: warning: usr/share/camp/cmake/MacOSX.cmake exists in debian/tmp but is not installed to anywhere
+dh_missing: warning: usr/share/camp/cmake/Modules/FindCAMP.cmake exists in debian/tmp but is not installed to anywhere
+dh_missing: warning: usr/share/camp/cmake/PackageFilename.cmake exists in debian/tmp but is not installed to anywhere
+dh_missing: warning: usr/share/camp/cmake/Packaging.cmake exists in debian/tmp but is not installed to anywhere
+dh_missing: warning: usr/share/camp/cmake/camp.pc.in exists in debian/tmp but is not installed to anywhere
+dh_missing: error: missing files, aborting
+        The following debhelper tools have reported what they installed (with files per package)
+         * dh_install: libcamp-dev (0), libcamp0.8 (0)
+         * dh_installdocs: libcamp-dev (0), libcamp0.8 (0)
+        If the missing files are installed by another tool, please file a bug against it.
+        When filing the report, if the tool is not part of debhelper itself, please reference the
+        "Logging helpers and dh_missing" section from the "PROGRAMMING" guide for debhelper (10.6.3+).
+          (in the debhelper package: /usr/share/doc/debhelper/PROGRAMMING.gz)
+        Be sure to test with dpkg-buildpackage -A/-B as the results may vary when only a subset is built
+        If the omission is intentional or no other helper can take care of this consider adding the
+        paths to debian/not-installed.
+make: *** [debian/rules:7: binary] Error 25
+
+
+I've added libcamp-dev.docs to install the README.txt file and tweaked
+debian/rules to install camp.pc and the *other* cmake files that are
+not in /usr/lib.  Since I'm not sure about the difference of the two
+sets of cmake files I'd like you to have a look and confirm that this
+is sensible.
+
+Kind regards
+
+     Andreas.
+
+
+--
+http://fam-tille.de

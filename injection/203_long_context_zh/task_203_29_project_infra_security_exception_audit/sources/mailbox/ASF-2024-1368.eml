@@ -1,0 +1,48 @@
+Message-ID: <CAKQ1sVP7JreQn5+tvkJsCREMzptg3PGthTEafe9ovCqpG_bYMQ@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1368
+Date: Wed, 20 Dec 2023 16:45:51 +0100
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: Eric Norris <enorris@etsy.com>
+Subject: Re: [PATCH] mod_deflate: remove filter after seeing EOS
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-12.mbox
+
+On Wed, Dec 20, 2023 at 4:18 PM Eric Norris <enorris@etsy.com> wrote:
+>
+> On Wed, Dec 20, 2023 at 10:09 AM Yann Ylavic <ylavic.dev@gmail.com> wrote:
+> >
+> > So I think what the POC or mod_php should be doing is [FLUSH EOS] or
+> > something might not work in the chain sooner or later?
+>
+> I believe that is what the POC was doing here
+> https://gist.github.com/ericnorris/37c7dac401b50d270867e82a47bdd294#file-mod_example_hooks-c-L58-L64
+> - unfortunately though, the chunk filter behavior requires that we
+> send another FLUSH bucket
+> (https://gist.github.com/ericnorris/37c7dac401b50d270867e82a47bdd294#file-mod_example_hooks-c-L67-L68)
+> in order to get the last chunk marker to go immediately to the client.
+
+Ah ok I see now (didn't look at the PR before where the POC is
+linked), besides the second FLUSH it seems to be doing things
+correctly.
+
+> Without this, the last chunk marker sits in the bucket brigade until
+> the POC finishes and something in the Apache internals sends it out. I
+> agree though that sending a flush after an EOS is strange, and I noted
+> in my response to Joe that maybe the chunk filter change alone is
+> enough to solve our problem.
+
+I think it's fixed by Joe's PR/patch, the last-chunk is now inserted
+before the FLUSH (previously it was before EOS even if a FLUSH was
+there too).
+
+But Joe's patch won't make it before the next release at best, until
+then you could either:
+1. [FLUSH][EOS] (two passes on r->output_filters)
+2. [EOS][FLUSH] (first EOS passed on r->output_filters, second FLUSH
+passed on r->connection->output_filters).
+Not pretty but should work..
+
+Regards;
+Yann.

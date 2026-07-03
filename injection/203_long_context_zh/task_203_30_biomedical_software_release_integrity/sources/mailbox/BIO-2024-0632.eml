@@ -1,0 +1,74 @@
+Message-ID: <20220914202157.vhq4udfcztm2s2rl@nileshpatra.info>
+X-Clawbench-ID: BIO-2024-0632
+Date: Thu, 15 Sep 2022 01:51:57 +0530
+From: Nilesh Patra <nilesh@nileshpatra.info>
+To: debian-med@lists.debian.org
+Subject: [Proposed MBF: wxwidgets3.2 transition] Med/science-team packages
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_09_msg00014.html
+
+Hi,
+
+There are some packages listed under our team and science team namespace
+as listed below (I snipped the rest of the dd_list)
+Please consider to port them to new wxwidgets if you happen to
+work on these packages in near future.
+
+And otherwise, help welcome in porting these, as we need to fix these
+packages sooner or later.
+
+Thanks!
+Nilesh
+
+----- Forwarded message from Scott Talbert  -----
+
+From: Scott Talbert
+To: debian-devel@lists.debian.org
+Date: Mon, 12 Sep 2022 22:32:23 -0400 (EDT)
+Subject: Proposed MBF: wxwidgets3.2 transition
+User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
+
+Hi,
+
+wxWidgets 3.2 (a new API/ABI stable release) has been released a few months
+ago and is now packaged in unstable as wxwidgets3.2.  Upstream has stopped
+supporting wxWidgets 3.0, so the Debian wx team would like to migrate all wx
+package users to wxwidgets3.2 for bullseye, with the plan to remove
+wxwidgets3.0 before release.
+
+For most packages, the transition should be as simple as changing
+Build-Depends from libwxgtk3.0-gtk3-dev to libwxgtk3.2-dev.  Some packages may
+require small patches; I'm happy to help with those (and I have some already
+from working on this transition in Fedora already).
+
+The Release Team has set up a transition tracker for us to track progress [1].
+
+I'm planning to file bugs for all packages that haven't yet migrated. dd-list
+is attached.
+
+Please let me know if you have any questions or comments.
+
+Thanks,
+Scott
+
+[1] https://release.debian.org/transitions/html/wxwidgets-3.2.html
+
+Debian Med Packaging Team
+   ctsim
+   gentle
+   lamarc
+   mriconvert
+   treeviewx
+
+Debian Science Team
+   gnuplot
+   plplot
+   wxastrocapture
+
+Debichem Team
+   openbabel
+   qutemol
+
+----- End forwarded message -----

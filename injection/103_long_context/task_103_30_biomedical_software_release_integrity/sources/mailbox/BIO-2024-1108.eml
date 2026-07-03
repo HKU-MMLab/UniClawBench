@@ -1,0 +1,131 @@
+Message-ID: <ZJs87j0p5ZMvajIj@an3as.eu>
+X-Clawbench-ID: BIO-2024-1108
+Date: Tue, 27 Jun 2023 21:47:58 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: help with git errors
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_06_msg00026.html
+
+Hi,
+
+I admit I have no solution, but my attempt
+
+
+diff --git a/debian/changelog b/debian/changelog
+index 0e60fef3..ad73a613 100644
+--- a/debian/changelog
++++ b/debian/changelog
+@@ -1,3 +1,10 @@
++insighttoolkit5 (5.3.0-5) UNRELEASED; urgency=medium
++
++  * Team upload.
++  * Standards-Version: 4.6.2
++
++ -- Andreas Tille   Tue, 27 Jun 2023 21:45:00 +0200
++
+ insighttoolkit5 (5.3.0-4) unstable; urgency=medium
+
+   [ Steve Robbins ]
+diff --git a/debian/control b/debian/control
+index a640cf72..90156d82 100644
+--- a/debian/control
++++ b/debian/control
+@@ -23,7 +23,7 @@ Build-Depends: debhelper-compat (= 13),
+                libminc-dev,
+                libnifti2-dev,
+                libhdf5-dev
+-Standards-Version: 4.6.1
++Standards-Version: 4.6.2
+ Vcs-Browser: https://salsa.debian.org/med-team/insighttoolkit
+ Vcs-Git: https://salsa.debian.org/med-team/insighttoolkit.git
+ Homepage: http://www.itk.org/
+diff --git a/debian/control.in b/debian/control.in
+index f48db0f1..dfd76faa 100644
+--- a/debian/control.in
++++ b/debian/control.in
+@@ -23,7 +23,7 @@ Build-Depends: debhelper-compat (= 13),
+                libminc-dev,
+                libnifti2-dev,
+                libhdf5-dev
+-Standards-Version: 4.6.1
++Standards-Version: 4.6.2
+ Vcs-Browser: https://salsa.debian.org/med-team/insighttoolkit
+ Vcs-Git: https://salsa.debian.org/med-team/insighttoolkit.git
+ Homepage: http://www.itk.org/
+
+
+failed with the same issue you reported here.
+
+Kind regards
+    Andreas.
+
+Am Tue, Jun 27, 2023 at 12:59:46PM -0500 schrieb Steven Robbins:
+> Hello,
+>
+> I have a strange problem with Salsa's git repo for ITK.  Today I did a fresh
+> clone and confirmed that it's not something I did locally.  I don't understand
+> what the issue is and hoping someone here can help.
+>
+> After the clone, I did a simple change to the control file, built the source
+> package, uploaded, etc.  The problem comes with trying to push things back to
+> salsa:
+>
+> steve@riemann:~/Packages/insighttoolkit/salsa$ gbp push
+> gbp:info: Pushing debian/5.3.0-4 to origin
+> gbp:info: Pushing upstream/5.3.0 to origin
+> gbp:info: Pushing refs/heads/master to origin:refs/heads/master
+> gbp:info: Pushing b2132ae657fd350bd02946bf95a2fc27240d8efc to origin:refs/
+> heads/upstream
+> gbp:error: Error running git push: To salsa.debian.org:med-team/
+> insighttoolkit.git
+>  ! [rejected]          b2132ae657fd350bd02946bf95a2fc27240d8efc -> upstream
+> (non-fast-forward)
+> error: failed to push some refs to 'salsa.debian.org:med-team/
+> insighttoolkit.git'
+> hint: Updates were rejected because a pushed branch tip is behind its remote
+> hint: counterpart. Check out this branch and integrate the remote changes
+> hint: (e.g. 'git pull ...') before pushing again.
+> hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+> gbp:error: Failed to push some refs.
+>
+> OK, so just pull, resolve and push ???
+> Let's try:
+>
+> steve@riemann:~/Packages/insighttoolkit/salsa$ git checkout upstream
+> Switched to branch 'upstream'
+> Your branch is up to date with 'origin/upstream'.
+> steve@riemann:~/Packages/insighttoolkit/salsa$ git pull
+> Already up to date.
+> steve@riemann:~/Packages/insighttoolkit/salsa$ git push
+> Everything up-to-date
+> steve@riemann:~/Packages/insighttoolkit/salsa$ git checkout master
+> Switched to branch 'master'
+> Your branch is up to date with 'origin/master'.
+> steve@riemann:~/Packages/insighttoolkit/salsa$ gbp push
+> gbp:info: Pushing debian/5.3.0-4 to origin
+> gbp:info: Pushing upstream/5.3.0 to origin
+> gbp:info: Pushing refs/heads/master to origin:refs/heads/master
+> gbp:info: Pushing b2132ae657fd350bd02946bf95a2fc27240d8efc to origin:refs/
+> heads/upstream
+> gbp:error: Error running git push: To salsa.debian.org:med-team/
+> insighttoolkit.git
+>  ! [rejected]          b2132ae657fd350bd02946bf95a2fc27240d8efc -> upstream
+> (non-fast-forward)
+> error: failed to push some refs to 'salsa.debian.org:med-team/
+> insighttoolkit.git'
+> hint: Updates were rejected because a pushed branch tip is behind its remote
+> hint: counterpart. Check out this branch and integrate the remote changes
+> hint: (e.g. 'git pull ...') before pushing again.
+> hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+> gbp:error: Failed to push some refs.
+>
+> Same error!  Any ideas?
+> Thanks,
+> -Steve
+
+
+--
+http://fam-tille.de

@@ -1,0 +1,58 @@
+Message-ID: <20230705141800.bclwlvixdcj2qhm2@office.mailbox.org>
+X-Clawbench-ID: BIO-2024-0507
+Date: Wed, 5 Jul 2023 19:48:00 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: César Pomar <cesarpomar18@gmail.com>
+Subject: Re: Request for Sponsorship: VeryFastTree - Parallelized and Optimized Version of FastTree
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_07_msg00011.html
+
+On Tue, Jul 04, 2023 at 10:57:48PM +0200, César Pomar wrote:
+> What concerns me the most is not the way SSE, AVX256, or AVX512 are
+> manually
+> used in the code, even if a portable method is used. The performance of a
+> binary compiled without AVX will be worse because the compiler won't be
+> able to optimize it on its own.
+
+While that is true, do note that debian has set an architecture
+baseline[4] that you're supposed to follow. Otherwise, it is violating
+the baseline and a release-critical bug would be filed against the
+package.
+In its current state, unfortunately, it seems to violating the baseline
+here[5] at it has to be fixed.
+
+> My initial idea is to make sure everything works as
+> it is, and then I have been considering ways to address this issue. One
+> example
+> would be to create multiple binaries with different optimizations (if I'm
+> creating multiple versions, it would make sense to include AVX512 as well),
+> and then, if possible, create a postinst script that assigns the name
+> "VeryFastTree" to the binary that supports the user's system through a
+> softlink.
+
+You almost described the way we use simde[3] (Check point number 8 at that link).
+Create binaries for different baselines, with a different suffix (veryfasttree-avx2,
+veryfasttree-ssse3 etc), but instead of messing in the postinst, use a
+dispatcher script to select see baseline support from /proc/cpuinfo and
+use the one that the user's machine is capable of running.
+
+You can take a look at scrappie[6] which uses the script and simde in this way.
+Since your code can build on systems w/o forcing the build machine to
+have intel intrinsics, you might not need simde as such, and compiling
+with the right options (multiple times) would be enough, along with a
+dispatcher script, ofcourse.
+
+Also, you can use elfx86exts (apt-installable) to cross-check intrinsics on
+each of the binaries.
+
+> > [1]: https://wiki.debian.org/CrossBuildPackagingGuidelines
+> > [2]: https://release.debian.org/testing/arch_qualify.html
+[3]: https://wiki.debian.org/SIMDEverywhere
+[4]: https://wiki.debian.org/ArchitectureSpecificsMemo#amd64
+[5]: https://salsa.debian.org/med-team/veryfasttree/-/blob/master/debian/rules#L23
+[6]: https://salsa.debian.org/med-team/scrappie/-/tree/master/debian
+
+Best,
+Nilesh

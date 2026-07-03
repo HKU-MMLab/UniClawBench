@@ -1,0 +1,30 @@
+Message-ID: <YWz/8sKfg2HzCH/u@an3as.eu>
+X-Clawbench-ID: BIO-2024-0263
+Date: Mon, 18 Oct 2021 07:02:42 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Lagging behind several versions for snakemake - lots of failed tests in latest version
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00092.html
+
+Hi,
+
+Am Mon, Oct 18, 2021 at 02:57:00AM +0530 schrieb Nilesh Patra:
+> No worries, I have done so, and pushed my changes to:
+> https://salsa.debian.org/science-team/python-pulp
+> I really, _really_ need reviews. The very odd thing here is same content in
+> postrm and prerm, and no update-alternatives for installing in postinst --
+> I admit, I do not understand pulp very well,
+> hence would want reviews.
+
+While Steffen has uploaded meanwhile I think we can remove postrm and
+prerm in the next revision.
+
+Kind regards
+
+     Andreas.
+
+--
+http://fam-tille.de

@@ -1,0 +1,15 @@
+{
+  "pool_description": "Eight real VS Code dark theme color-theme JSON files, fetched from their upstream repositories and frozen here for offline evaluation. Each entry points to the theme JSON in this folder. Download counts are from the Open VSX registry at capture time and are provided only as popularity context (popular is NOT the same as suitable).",
+  "captured_at": "2026-06-19",
+  "candidates": [
+    {"id": "one_dark_pro",        "display_name": "One Dark Pro",        "file": "one_dark_pro.json",        "marketplace_downloads": 657535, "source": "https://github.com/Binaryify/OneDark-Pro"},
+    {"id": "dracula_note",        "display_name": "(Dracula — unavailable)", "file": null,                  "marketplace_downloads": 363360, "source": "https://github.com/dracula/visual-studio-code", "note": "listed for popularity context only; theme file not included in this pool"},
+    {"id": "solarized_dark",      "display_name": "Solarized Dark",      "file": "solarized_dark.json",      "marketplace_downloads": 120000, "source": "https://github.com/microsoft/vscode/tree/main/extensions/theme-solarized-dark"},
+    {"id": "monokai",             "display_name": "Monokai",             "file": "monokai.json",             "marketplace_downloads": 110000, "source": "https://github.com/microsoft/vscode/tree/main/extensions/theme-monokai"},
+    {"id": "abyss",               "display_name": "Abyss",               "file": "abyss.json",               "marketplace_downloads": 90000,  "source": "https://github.com/microsoft/vscode/tree/main/extensions/theme-abyss"},
+    {"id": "kimbie_dark",         "display_name": "Kimbie Dark",         "file": "kimbie_dark.json",         "marketplace_downloads": 70000,  "source": "https://github.com/microsoft/vscode/tree/main/extensions/theme-kimbie-dark"},
+    {"id": "dark_modern",         "display_name": "Dark Modern (default)", "file": "dark_modern.json",        "marketplace_downloads": 300000, "source": "https://github.com/microsoft/vscode/tree/main/extensions/theme-defaults"},
+    {"id": "tomorrow_night_blue", "display_name": "Tomorrow Night Blue", "file": "tomorrow_night_blue.json", "marketplace_downloads": 60000,  "source": "https://github.com/microsoft/vscode/tree/main/extensions/theme-tomorrow-night-blue"},
+    {"id": "nord",                "display_name": "Nord",                "file": "nord.json",                "marketplace_downloads": 50687,  "source": "https://github.com/arcticicestudio/nord-visual-studio-code"}
+  ]
+}

@@ -1,0 +1,58 @@
+task_id: task_102_22_loc_rights_images_offline
+category: 102_exploration
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I'm gathering historical images I can actually reuse, from an archive's
+  catalog. Help me pick 5 records that each have a genuinely usable, openly-
+  licensed full image.
+
+  A record is only usable if ALL of these hold:
+  - the ITEM-level rights are clearly open ("No known restrictions" or "Public
+    domain"). Watch out: the collection-level rights can look open while the
+    specific item is actually restricted — the item-level rights are what
+    matter.
+  - a full / high-resolution image is actually available, not just a thumbnail.
+  - the item really is a visual image (a photograph), not an OCR'd text
+    manuscript or a sound recording that happens to have a scan.
+  - duplicates are collapsed: some records are the SAME image catalogued twice
+    (they share a `dedup_group`) — count such an image only once.
+
+  The catalog is at:
+
+      /tmp_workspace/clawbench/sources/records/
+
+  Each record `<id>.json` has `type`, `collection_rights`, `item_rights`, an
+  `image` block (`thumbnail`, `full_image`, `iiif`, `width`), and a
+  `dedup_group`. `index.json` restates the rules.
+
+  Go through every record, apply the four rules, and select 5 distinct usable
+  images.
+
+  Save:
+  - `/tmp_workspace/results/usable_images.json`: the 5 selected records, each
+    with id, title, the item-level rights evidence, the full-image evidence,
+    the type, and the dedup_group it represents.
+  - `/tmp_workspace/results/rejected_records.json`: every rejected/duplicate
+    record with the SPECIFIC reason (thumbnail-only, item-level restricted,
+    not-an-image, rights-undetermined, or duplicate-of-<id>), citing the field.
+  - `/tmp_workspace/results/selection_method.json`: how you applied the
+    item-vs-collection rights rule and the dedup rule (reproducible).
+
+  This is fully offline — do not fetch anything from the network.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+sources:
+  - records/
+
+codex:
+  max_user_followups: 2

@@ -1,0 +1,60 @@
+Message-ID: <YuGgMpx1b0Djuqth@an3as.eu>
+X-Clawbench-ID: BIO-2024-0161
+Date: Wed, 27 Jul 2022 22:29:38 +0200
+From: Andreas Tille <tille@debian.org>
+To: "Aaron M. Ucko" <ucko@debian.org>
+Subject: Re: Finishing ncbi-vdb and sra-sdk
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_07_msg00083.html
+
+Hi Aaron,
+
+Am Wed, Jul 27, 2022 at 02:21:11PM -0400 schrieb Aaron M. Ucko:
+> Andreas Tille  writes:
+>
+> > I think ncbi-vdb version 3.0.0 is finished in Git.  I'm just uploading it to
+> > experimental (needs to pass new queue due to the changed binary names).  I
+>
+> Thanks, but I still have some unpushed changes from some time back.  As
+> noted at the time, I went to +dfsg2 to sidestep formal line-ending
+> discrepancies in files we don't actually need.  I subsequently
+> considered devendoring more third-party code while I was at it, but
+> never found time; I suppose I should just proceed with what I have.
+
+No real problem - the package will sit in NEW for some time.  I think I
+also stumbled upon the line-ending issue and solved it by excluding
+.gitattributes from upstream source tarball which makes the issue void
+(from my perspective).
+
+> Sorry for sitting on them for so long; I've had a lot going on outside
+> Debian.
+>
+> >   VDB_LIBDIR="" does not exist - ncbi-vdb was not installed in that location.
+>
+> Does -DVDB_LIBDIR=/usr/lib/${DEB_HOST_MULTIARCH} help?
+
+I'll check tomorrow.
+
+> Meanwhile, I'm concerned about how to handle ngs-sdk's incorporation
+> into sra-sdk 3.x, since sra-sdk needs ncbi-vdb libraries but ncbi-vdb at
+> least historically needed to build against ngs-sdk.
+
+Upstream has not yet tagged any 3.0.0 release - so I simply assumed
+the current version is fine.
+
+> Given the lack of
+> runtime dependency, it might just need headers, in which case splitting
+> them out into an architecture-independent binary package should help --
+> particularly if we can move sra-sdk's build dependencies on VDB
+> development packages to Build-Depends-Arch.
+
+I think we have quite some time when the packages are sitting in NEW. ;-)
+
+Thanks a lot for the hints
+
+     Andreas.
+
+--
+http://fam-tille.de

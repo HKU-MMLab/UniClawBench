@@ -1,0 +1,32 @@
+Message-ID: <d6009017-6c90-7be0-c966-911f85381218@debian.org>
+X-Clawbench-ID: BIO-2024-1219
+Date: Thu, 4 Nov 2021 13:21:41 +0200
+From: Andrius Merkys <merkys@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: libcifpp
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_11_msg00025.html
+
+Hi Maarten,
+
+On 2021-11-04 11:32, Maarten L. Hekkelman wrote:
+> Op 04-11-2021 om 07:25 schreef Andrius Merkys:
+>
+>> libcifpp has cleared NEW queue a couple of days ago. I see that salsa
+>> already contains changelog entry for 2.0.4-1 which will again require
+>> passing through NEW due to libcifpp1 -> libcifpp2. Maarten, is the
+>> packaging ready to be uploaded?
+>
+> Yes, as far as I can tell, libcifpp version 2 is ready for upload.
+
+Good then, I will check it and upload.
+
+> I will also package the updates for all the other packages that depend
+> on the new libcifpp.
+
+OK.
+
+Best,
+Andrius

@@ -1,0 +1,83 @@
+Message-ID: <b52d86bf-495d-8c40-7721-3c24c764f5d1@apache.org>
+X-Clawbench-ID: ASF-2024-1249
+Date: Tue, 8 Mar 2022 17:06:39 +0100
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.53-rc1 as httpd-2.4.53
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-03.mbox
+
+On 3/8/22 4:38 PM, Rainer Jung wrote:
+> Am 08.03.2022 um 16:33 schrieb Rainer Jung:
+>>
+>> Am 07.03.2022 um 16:55 schrieb Stefan Eissing:
+>>> Hi all,
+>>>
+>>> Please find below the proposed release tarball and signatures:
+>>>
+>>> https://dist.apache.org/repos/dist/dev/httpd/
+>>>
+>>> I would like to call a VOTE over the next few days to release
+>>> this candidate tarball httpd-2.4.53-rc1 as 2.4.53:
+>>> [ ] +1: It's not just good, it's good enough!
+>>> [ ] +0: Let's have a talk.
+>>> [ ] -1: There's trouble in paradise. Here's what's wrong.
+>>>
+>>> The computed digests of the tarball up for vote are:
+>>> sha256: 7559255a37adc5cb6f568ba224e435420f0a138cd9564162c9528b8ac08737b3 *httpd-2.4.53-rc1.tar.gz
+>>> sha512:
+>>> a7734e2fa35389678be74bbc18136eef482ff9daecc2c1ed9c2c5eb410182735a94ff6ad248d0d4b6266e90161f2f8052d4871f381723c996ace0412b0219961 *httpd-2.4.53-rc1.tar.gz
+>>>
+>>>
+>>> The SVN candidate source is found at tags/2.4.53-rc1-candidate.
+>>>
+>>> Kind Regards,
+>>> Stefan
+>>
+>> Not a vote yet, just an observation: on SLES12 (gcc 4.8.3, glibc 2.19) and RHEL7 (gcc 4.8.2, glibc 2.19) with platform
+>> compilers, configure detects it wants to set -std=gnu11. During make I get a compilation error:
+>>
+>> server/util.c:3183:1: error: unknown type name ‘_Thread_local’
+>>
+>> The type "_Thread_local" comes from include/httpd.h:
+>>
+>>    2438  #if defined(__cplusplus) && __cplusplus >= 201103L
+>>    2439  #define AP_THREAD_LOCAL thread_local
+>>    2440  #elif defined(__STDC_VERSION__) && __STDC_VERSION__ >= 201112
+>>    2441  #define AP_THREAD_LOCAL _Thread_local
+>> ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>>    2442  #elif defined(__GNUC__) /* works for clang too */
+>>    2443  #define AP_THREAD_LOCAL __thread
+>>    2444  #elif defined(WIN32) && defined(_MSC_VER)
+>>    2445  #define AP_THREAD_LOCAL __declspec(thread)
+>>    2446  #endif
+>>    2447  #endif /* ndef AP_NO_THREAD_LOCAL */
+>>
+>> It looks like the detection is broken?
+>
+> See also: https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=203066
+
+Thanks for the pointer. Does the below fix it?
+
+Index: include/httpd.h
+===================================================================
+--- include/httpd.h	(revision 1898730)
++++ include/httpd.h	(working copy)
+@@ -2587,7 +2587,9 @@
+  */
+ #if defined(__cplusplus) && __cplusplus >= 201103L
+ #define AP_THREAD_LOCAL thread_local
+-#elif defined(__STDC_VERSION__) && __STDC_VERSION__ >= 201112
++#elif defined(__STDC_VERSION__) && __STDC_VERSION__ >= 201112 && \
++      (!defined(__GNUC__) || \
++      __GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 9))
+ #define AP_THREAD_LOCAL _Thread_local
+ #elif defined(__GNUC__) /* works for clang too */
+ #define AP_THREAD_LOCAL __thread
+
+
+Regards
+
+Rüdiger

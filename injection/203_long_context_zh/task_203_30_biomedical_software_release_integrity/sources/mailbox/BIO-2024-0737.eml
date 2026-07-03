@@ -1,0 +1,66 @@
+Message-ID: <Z2sLUvc1--vye7kb@eamanu>
+X-Clawbench-ID: BIO-2024-0737
+Date: Tue, 24 Dec 2024 16:28:18 -0300
+From: Emmanuel Arias <eamanu@debian.org>
+To: Jon Peirce <jon@opensciencetools.org>
+Subject: Re: [Advent Calendar] third week bug work
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_12_msg00030.html
+
+Hello Jon,
+
+Thanks for reply me.
+
+On Tue, Dec 24, 2024 at 06:44:47AM -0800, Jon Peirce wrote:
+> Hi Emmanuel,
+>
+> If you want to talk directly with us about psychopy stuff, at an point,
+> then give us a shout. I'm on this list, but not exactly active (because I
+> don't know much about linux packaging) but I'm available to provide
+> expertise on the psychopy side. e.g. what would happen about a particular
+> dependency not being included etc.
+Sure, I didn't sit down to work on it, I hope tomorrow. If I have any
+doubt I will ping you for sure.
+
+Cheers!
+
+>
+> Best wishes,
+> Jon
+>
+> [image: image.png]
+> Jon Peirce (he/him)
+>
+> Founder and CEO
+>
+> *Open Science Tools Ltd* https://opensciencetools.org/>
+> Creators of PsychoPy and Pavlovia.org
+> Twitter https://twitter.com/psychopy> |  Facebook
+> https://www.facebook.com/PsychoPy> | Youtube (PsychoPy)
+> https://www.youtube.com/playlist?list=PLFB5A1BE51964D587>
+>
+> On December 22, 2024 at 11:34 PM, Emmanuel Arias (eamanu@debian.org) wrote:
+>
+> Hi team!
+>
+> This week was a poor work for the team, sorry for that!
+> I still have the intention to continue working on psychopy
+> in the next week
+>
+> Here's my report:
+>
+> * 16-12-2024
+> **  python-dicompylercore: Fix #1090137
+>
+> * 17-12-2024
+> ** Finish deepdiff work #1088239. Waiting for orderly-set.
+>
+> * 19-12-2024
+> ** Finally upload deppdiff.
+>
+> Cheers,
+> Emmanuel
+>
+>

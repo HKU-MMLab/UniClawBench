@@ -1,0 +1,28 @@
+Message-ID: <YcQNlRYpV272vXbo@an3as.eu>
+X-Clawbench-ID: BIO-2024-1275
+Date: Thu, 23 Dec 2021 06:48:05 +0100
+From: Andreas Tille <tille@debian.org>
+To: Sascha Steinbiss <satta@debian.org>
+Subject: Re: Provisional packaging for Aoache Arrow available
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_12_msg00017.html
+
+Hi Sascha,
+
+Am Mon, Dec 20, 2021 at 04:47:40PM +0100 schrieb Sascha Steinbiss:
+> just for the record in this RFP and to move this a bit into the
+> spotlight: I have moved my packaging repository for Apache Arrow to the
+> Debian Science project in Salsa [1]. See the corresponding thread in the
+> Debian Med mailing list for more context [2].
+>
+> TLDR: I have prepared a package to cover as much of Arrow as is possible
+> with what we have in Debian, dependency-wise. ...
+
+Thanks a lot Sascha
+
+     Andreas.
+
+--
+http://fam-tille.de

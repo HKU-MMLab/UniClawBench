@@ -1,0 +1,16 @@
+Message-ID: <EAFFE4A6-8CB1-4E87-9132-29CEE68FA825@eissing.org>
+X-Clawbench-ID: ASF-2024-0633
+Date: Mon, 20 Dec 2021 10:53:49 +0100
+From: Stefan Eissing <stefan@eissing.org>
+To: dev@httpd.apache.org
+Subject: announce mails
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2021-12.mbox
+
+The mailings to announce lists continue to bother me. The release announcement is the the moderation queue (hopefully) and the cveprocess mails go right through to the list. This is not the order I prefer.
+
+I am holden back the send about the second CVE until I see the release announcement winked through.
+
+- Stefan

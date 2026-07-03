@@ -1,0 +1,104 @@
+Message-ID: <20210925231257.mfwe5ngnpcschwqp@lark>
+X-Clawbench-ID: BIO-2024-0898
+Date: Sat, 25 Sep 2021 16:12:57 -0700
+From: tony mancill <tmancill@debian.org>
+To: Tony Travis <tony.travis@minke-informatics.co.uk>
+Subject: Re: Any volunteer to verify autopkgtest of spades?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_09_msg00055.html
+
+Hi Tony,
+
+In case it helps, here are the commands I used to build the latest
+spades package and run the autopkgtest against the resulting binary.
+
+On Thu, Sep 23, 2021 at 10:24:17PM +0100, Tony Travis wrote:
+> On 23/09/2021 21:26, Pierre Gruet wrote:
+> > [...]
+> > No problem!
+> > You could install git-buildpackage if you don't have it, and then type
+> >      gbp clone https://salsa.debian.org/med-team/spades.git
+> > to get all the relevant branches from Salsa. If you have a ssh key
+> > properly set up for Salsa,
+> >      gbp clone git:salsa.debian.org:med-team/spades
+> > also works.
+>
+> Hi, Pierre.
+>
+> AFAIK, I only have guest access to "salsa", but I've cloned it.
+>
+> > If you don't know git-buildpackage, you could refer to the pdf provided
+> > by the package debmake-doc [0] and also to the documentation of
+> > git-buildpackage [1], which is nice.
+>
+> I don't know it and I will read the doc's :-)
+
+One other bit of documentation that you might be helpful is that for
+sbuild:
+
+    https://wiki.debian.org/sbuild
+
+You can sbuild to build packages in a clean chroot, which (a) ensures
+that the build dependencies needed for compilation (and nothing else)
+are used at compile time, and (b) prevents you from having to install a
+lot of build dependencies locally.  sbuild also allows you to compile
+for different releases of Debians, other distributions like Ubuntu, or
+even for other architectures, and the same goes for running autopkgtest.
+
+After cloning the repo with `debcheckout spades`, I built the package
+with:
+
+cd spades
+gbp buildpackage
+
+You may have to iterate here to get your gbp configuration set up
+correctly; mine looks like this:
+
+```
+cat ~/.gbp.conf
+
+[DEFAULT]
+postbuild = lintian $GBP_CHANGES_FILE
+pristine-tar = True
+upstream-branch=upstream
+builder = /usr/bin/sbuild
+
+[buildpackage]
+export-dir = ../build-area/
+tarball-dir = ../tarballs/
+
+[import-orig]
+dch = False
+```
+
+After successful compilation, I ran the autopkgtest with:
+
+cd ../build-area
+autopkgtest -B spades_3.15.3+dfsg-1_amd64.deb spades_3.15.3+dfsg-1.dsc -- schroot sid-amd64-sbuild
+
+which eventually fails with:
+
+...
+== Error ==  system call for: "['/usr/libexec/spades/spades-hammer', '/tmp/tmp.q7nMFCxtMg/spades_test/corrected/configs/config.info']" finished abnormally, OS return value: 1
+None
+
+In case you have troubles running SPAdes, you can write to spades.support@cab.spbu.ru
+or report an issue on our GitHub repository github.com/ablab/spades
+Please provide us with params.txt and spades.log files from the output directory.
+
+SPAdes log can be found here: /tmp/tmp.q7nMFCxtMg/spades_test/spades.log
+
+Thank you for using SPAdes!
+autopkgtest [15:59:12]: test run-upstreams-tests: -----------------------]
+autopkgtest [15:59:12]: test run-upstreams-tests:  - - - - - - - - - - results - - - - - - - - - -
+run-upstreams-tests  FAIL non-zero exit status 1
+autopkgtest [15:59:12]: @@@@@@@@@@@@@@@@@@@@ summary
+run-upstreams-tests  FAIL non-zero exit status 1
+
+
+I hope that helps.
+
+Cheers,
+tony

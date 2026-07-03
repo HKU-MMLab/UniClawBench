@@ -1,0 +1,41 @@
+Message-ID: <Zce2025DSbYPU7JD@hermes.hilbert.loc>
+X-Clawbench-ID: BIO-2024-0888
+Date: Sat, 10 Feb 2024 18:48:03 +0100
+From: Karsten Hilbert <Karsten.Hilbert@gmx.net>
+To: Debian-Med <debian-med@lists.debian.org>
+Subject: Re: gnumed-client is marked for autoremoval from testing
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_02_msg00009.html
+
+Dear list members,
+
+Debian packaging CI is sending me this:
+
+> gnumed-client 1.8.18+dfsg-1 is marked for autoremoval from testing on 2024-03-15
+>
+> It (build-)depends on packages with these RC bugs:
+> 1062249: libchipcard: NMU diff for 64-bit time_t transition
+>  https://bugs.debian.org/1062249
+> 1062362: libgwenhywfar: NMU diff for 64-bit time_t transition
+>  https://bugs.debian.org/1062362
+
+but according to
+
+	https://packages.debian.org/source/sid/gnumed-client
+
+the source packages does not build-depend on either and
+according to
+
+	https://packages.debian.org/source/gnumed-client
+
+it only has a *Suggest* on libchipcard-tools.
+
+So, is the above irrelevant because libchipcard-tools will
+(indirectly) take care of that ?
+
+Thanks,
+Karsten
+--
+GPG  40BE 5B0E C98E 1713 AFA6  5BC0 3BEA AC80 7D4F C89B

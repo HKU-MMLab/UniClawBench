@@ -1,0 +1,22 @@
+Message-ID: <Y4zQUP1oVrTpdEs9@fusion>
+X-Clawbench-ID: BIO-2024-0858
+Date: Sun, 4 Dec 2022 17:52:32 +0100
+From: Étienne Mollier <emollier@emlwks999.eu>
+To: debian-med@lists.debian.org
+Subject: [Advent bug squashing] fixed bug #1018492 in python-fitbit
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_12_msg00046.html
+
+Bug #1018492 in python-fitbit was a case of test suite not run,
+thus the dependency on python3-nose was not needed.  Ideally the
+fix would have been to re-enable the test suite and port it to
+pytest.
+
+Have a nice day,  :)
+--
+Étienne Mollier
+Fingerprint:  8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+Sent from /dev/pts/2, please excuse my verbosity.
+On air: Steven Wilson - Grace For Drowning

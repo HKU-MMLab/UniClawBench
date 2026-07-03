@@ -1,0 +1,54 @@
+Message-ID: <ZFiae23j/T+T2L3q@kumo.plessy.net>
+X-Clawbench-ID: BIO-2024-0164
+Date: Mon, 8 May 2023 15:45:15 +0900
+From: Charles Plessy <plessy@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: Nextflow - have just used it on our HPC cluster and liked it
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_05_msg00001.html
+
+Hi Steffen and everybody,
+
+I also use Nextflow at work, and indeed, it makes it very easy to run a
+pipeline many times.  Also, Nextflow is a single Java executable, which
+makes it easy to deploy anywhere Java is already installed.
+
+You probably also saw the nf-core repository of modules and pipelines.
+I like the way they are organised and find them empowering.  The
+community is very nice too.
+
+BUT
+
+With my Debian background it is very hard for me to adapt to the conda /
+biocona / quay / galaxy ecosystem.  I just can not figure out who is
+responsible for what, no idea how long the whole thing will be
+supported, where is the source code used to build the the packages into
+Docker images in to Singularity images, etc.  Not to mention that the
+whole paradigm behind "one tool, one minimal image" deprives me from all
+the Unix tools that I use to enjoy on in a Debian context.  In bioconda
+you have no idea whether sed is from GNU of from busybox unless you try
+it or dig for a package recipe in GitHub...
+
+NOT TO MENTION THAT
+
+Everybody expects that these images will stay forever and for free at
+the URL where they are, while I have not seen any evidence of an
+organisation promising that it will really happen for at least a
+decade...  Without these images and the receipes to create them
+(remember the singularity https://github.com/oist/BioinfoUgrp/blob/master/DebianMedModules.md#creation-of-a-new-singularity-image
+
+The size of the images is a bit less than 8 GiB, and I make a new image
+at each point release.  Would there be some interest to make such images
+in a more official way ?
+
+Have a nice day,
+
+Charles
+
+--
+Charles Plessy                         Nagahama, Yomitan, Okinawa, Japan
+Debian Med packaging team         http://www.debian.org/devel/debian-med
+Tooting from home                  https://framapiaf.org/@charles_plessy
+- You  do not have  my permission  to use  this email  to train  an AI -

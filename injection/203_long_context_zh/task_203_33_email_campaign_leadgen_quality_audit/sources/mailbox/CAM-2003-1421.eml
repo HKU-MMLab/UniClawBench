@@ -1,0 +1,29 @@
+Message-ID: <3D9BEC4A.2050900@punkass.com>
+X-Clawbench-ID: CAM-2003-1421
+Date: Thu, 03 Oct 2002 10:05:46 +0300
+From: Roi Dayan <dejavo@punkass.com>
+To: rpm-zzzlist@freshrpms.net
+Subject: Mplayer
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01229.ac0aaae3ef49b84eee5d0749fa140f0b
+
+Hey
+
+Since I upgraded to redhat8 mplayer -vo sdl isnt working for me
+It gives me black screen and I only hear sound.
+
+can anyone help me with this ?
+
+btw,
+also the source rpm specified that I can do --without libdv
+but it didn't work, worked for lirc and arts.
+
+Thanks,
+Roi
+
+
+_______________________________________________
+RPM-List mailing list <RPM-List@freshrpms.net>
+http://lists.freshrpms.net/mailman/listinfo/rpm-list

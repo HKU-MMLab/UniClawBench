@@ -1,0 +1,72 @@
+Message-ID: <3BD16A73-5419-491E-B878-2C413BC8E39E@webweaving.org>
+X-Clawbench-ID: ASF-2024-1212
+Date: Mon, 6 Mar 2023 13:50:12 +0100
+From: Dirk-Willem van Gulik <dirkx@webweaving.org>
+To: dev@httpd.apache.org
+Subject: Re: expose SSL_SHARED_CIPHERs from SSL/TLS
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-03.mbox
+
+> On 6 Mar 2023, at 13:32, Ruediger Pluem <rpluem@apache.org> wrote:
+>
+>
+>
+> On 3/6/23 12:35 PM, Dirk-Willem van Gulik wrote:
+>> I was cleaning up some of our private code - and came across the patch below - exposing the SHARED_CHIPHERs.
+>>
+>> We scratch this itch in a few places to help force (or prevent) the forcing of a protocol upgrade from application land.
+>>
+>> No idea how common that is - any reason not to submit this as a suggestion for some future httpd version ?
+>
+> If you provide some documentation for the var, go for it :-)
+
+Draft against trunk below. As far as I could see mod_ssl.xml was the most sensible place to document this.
+
+Updated the SSL_CIPHER a little to clarify the relation between the two.
+
+Dw
+
+Index: docs/manual/mod/mod_ssl.xml
+===================================================================
+--- docs/manual/mod/mod_ssl.xml (revision 1908122)
++++ docs/manual/mod/mod_ssl.xml (working copy)
+@@ -66,7 +66,8 @@
+ <tr><td><code>SSL_SESSION_ID</code></td>                <td>string</td>    <td>The hex-encoded SSL session id</td></tr>
+ <tr><td><code>SSL_SESSION_RESUMED</code></td>           <td>string</td>    <td>Initial or Resumed SSL Session.  Note: multiple requests may be served over the same (Initial or Resumed) SSL session if HTTP KeepAlive is in use</td></tr>
+ <tr><td><code>SSL_SECURE_RENEG</code></td>              <td>string</td>    <td><code>true</code> if secure renegotiation is supported, else <code>false</code></td></tr>
+-<tr><td><code>SSL_CIPHER</code></td>                    <td>string</td>    <td>The cipher specification name</td></tr>
++<tr><td><code>SSL_SHARED_CIPHERS</code></td>            <td>string</td>    <td>Colon separated list of shared chiper (i.e. possible chipers that are present on both server and with the client))</td></tr>
++<tr><td><code>SSL_CIPHER</code></td>                    <td>string</td>    <td>The name of the selected cipher</td></tr>
+ <tr><td><code>SSL_CIPHER_EXPORT</code></td>             <td>string</td>    <td><code>true</code> if cipher is an export cipher</td></tr>
+ <tr><td><code>SSL_CIPHER_USEKEYSIZE</code></td>         <td>number</td>    <td>Number of cipher bits (actually used)</td></tr>
+ <tr><td><code>SSL_CIPHER_ALGKEYSIZE</code></td>         <td>number</td>    <td>Number of cipher bits (possible)</td></tr>
+Index: modules/ssl/ssl_engine_kernel.c
+===================================================================
+--- modules/ssl/ssl_engine_kernel.c (revision 1908122)
++++ modules/ssl/ssl_engine_kernel.c (working copy)
+@@ -1532,6 +1532,7 @@
+     "SSL_SERVER_A_SIG",
+     "SSL_SESSION_ID",
+     "SSL_SESSION_RESUMED",
++    "SSL_SHARED_CIPHERS",
+ #ifdef HAVE_SRP
+     "SSL_SRP_USER",
+     "SSL_SRP_USERINFO",
+Index: modules/ssl/ssl_engine_vars.c
+===================================================================
+--- modules/ssl/ssl_engine_vars.c (revision 1908122)
++++ modules/ssl/ssl_engine_vars.c (working copy)
+@@ -506,6 +506,11 @@
+     else if (ssl != NULL && strcEQ(var, "COMPRESS_METHOD")) {
+         result = ssl_var_lookup_ssl_compress_meth(ssl);
+     }
++    else if (ssl != NULL && strcEQ(var, "SHARED_CIPHERS")) {
++        char buf[ 1024 * 16 ];
++        if (SSL_get_shared_ciphers(ssl,buf,sizeof(buf)))
++               result = apr_pstrdup(p,buf);
++    }
+ #ifdef HAVE_TLSEXT
+     else if (ssl != NULL && strcEQ(var, "TLS_SNI")) {
+         result = apr_pstrdup(p, SSL_get_servername(ssl,

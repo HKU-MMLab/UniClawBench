@@ -1,0 +1,99 @@
+Message-ID: <81c4cecb-e7fd-0b55-27da-a22a3ea95fba@wanadoo.fr>
+X-Clawbench-ID: ASF-2024-1004
+Date: Tue, 4 Apr 2023 19:50:24 +0200
+From: Marion & Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.57-rc1 as httpd-2.4.57
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-04.mbox
+
+Le 03/04/2023 à 21:44, Christophe JAILLET a écrit :
+> Le 02/04/2023 à 18:10, Eric Covener a écrit :
+>> Hi all,
+>>
+>> Please find below the proposed release tarball and signatures:
+>>
+>> https://dist.apache.org/repos/dist/dev/httpd/
+>>
+>> I would like to call a VOTE over the next few days to release
+>> this candidate tarball httpd-2.4.57-rc1 as 2.4.57:
+>> [X] +1: It's not just good, it's good enough!
+>> [ ] +0: Let's have a talk.
+>> [ ] -1: There's trouble in paradise. Here's what's wrong.
+>>
+>> The computed digests of the tarball up for vote are:
+>> sha256: bc3e7e540b83ec24f9b847c6b4d7148c55b79b27d102e21227eb65f7183d6b45
+>> *httpd-2.4.57-rc1.tar.gz
+>> sha512:
+>> 730560d4aab3699aa59716bb75858f8432a902aeab3c380b4d3e0f6813e9ae4e278d3b7fdf63a4e94c07b5100933d8684d76f6095f3d60d48ea0f1458c9ed0b4
+>> *httpd-2.4.57-rc1.tar.gz
+>>
+>> The SVN candidate source is found at tags/2.4.57-rc1-candidate.
+>>
+>
+> +1
+>
+> Tested only with event.
+>
+> Tested with:
+> Linux pop-os 6.2.0
+> gcc (Ubuntu 12.1.0-2ubuntu1~22.04) 12.1.0
+> OpenSSL 3.0.2 15 Mar 2022 (Library: OpenSSL 3.0.2 15 Mar 2022)
+>    libssl-dev 3.0.2
+>    libbrotli-dev 1.0.9
+>    libjansson-dev 2.13.1
+>    libnghttp2-dev 1.43.0
+>    libpcre2-dev 10.39
+>    liblua5.3-dev 5.3.6
+>    libsystemd-dev 249.11
+>    libldap2-dev 2.5.14+dfsg
+>    libxml2-dev 2.9.13+dfsg
+>    libcurl4-openssl-dev 7.81.0
+>
+>
+> Still can't get the pytest run correctly.
+> I've tried to make some clean-ups. Should have a real look at it one day :(
+
+ > pip install -U multipart
+did the trick. (thanks error.log!)
+
+I don't know if it is a new requirement or if I did something wrong on
+my setup.
+
+Does is worth mentioning in README.pytest?
+
+
+Another point, when building mod_tls.
+After upgrading to latest github rustls-ffi, I now get:
+
+tls_core.c: In function ‘extract_client_hello_values’:
+tls_core.c:510:14: error: ‘rustls_client_hello’ has no member named
+‘sni_name’
+   510 |     if (hello->sni_name.len > 0) {
+       |              ^~
+tls_core.c:511:55: error: ‘rustls_client_hello’ has no member named
+‘sni_name’
+   511 |         cc->sni_hostname = apr_pstrndup(c->pool,
+hello->sni_name.data, hello->sni_name.len);
+       |                                                       ^~
+tls_core.c:511:77: error: ‘rustls_client_hello’ has no member named
+‘sni_name’
+   511 |         cc->sni_hostname = apr_pstrndup(c->pool,
+hello->sni_name.data, hello->sni_name.len);
+
+
+Apparently related to:
+
+https://github.com/rustls/rustls-ffi/commit/ed82a03f2481095f251e7aee604a2ca29b8c1c5e#diff-6f7bcae64b59e4d5ad181e43c27a22088434c36827db05f8767e00dabcd7973eR426
+
+
+So, maybe some trouble and conditional compilation to come in a close
+future.
+
+
+This module is tagged as experimental, so from my POV it can't be a show
+stopper.
+
+CJ

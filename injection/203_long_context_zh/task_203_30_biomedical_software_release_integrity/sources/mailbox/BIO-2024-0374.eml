@@ -1,0 +1,32 @@
+Message-ID: <YhTz3501aHdpkW66@debian>
+X-Clawbench-ID: BIO-2024-0374
+Date: Tue, 22 Feb 2022 20:01:59 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: PIQUE
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_02_msg00105.html
+
+On Tue, Feb 22, 2022 at 03:23:01PM +0100, Andreas Tille wrote:
+> > In short, I just noted my progress on the mailing list and stopped. I
+> > believe Tony said the test set he was using was the smallest possible, so
+> > it may not be feasible to have an autopkgtest for PIQUE.
+>
+> I do not like to say that it is the method of choice for several GB of
+> data in this specific case.  However, featuring decently large datasets
+> can be stored as described in team policy[1] and you can see it
+> implemented for instance in the package python-treetime.
+
+It was me who added in that to the policy, but I did not think about deciding/zero-ing
+down on an upper limit for the size of data that is acceptable for embedding.
+
+For now, I have been mostly going on my instincts and embedded what I considered as a sensible size,
+but we might want to decide on an acceptable
+size limit at that front; maybe ~100 MiB? -- I am not sure myself.
+
+Let me know.
+
+Regards,
+Nilesh

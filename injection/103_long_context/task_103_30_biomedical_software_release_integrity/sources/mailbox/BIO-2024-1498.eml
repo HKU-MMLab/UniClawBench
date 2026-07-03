@@ -1,0 +1,95 @@
+Message-ID: <YgyYZoH4U7D5pUac@an3as.eu>
+X-Clawbench-ID: BIO-2024-1498
+Date: Wed, 16 Feb 2022 07:23:34 +0100
+From: Andreas Tille <andreas@fam-tille.de>
+To: Chiara Marmo <marmochiaskl@gmail.com>
+Subject: Different failures for scikit-learn (Was: Failures for sklearn)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2022_02_msg00029.html
+
+Hi,
+
+Am Tue, Feb 15, 2022 at 01:39:30PM +0100 schrieb Andreas Tille:
+>
+> I'll try relaxing tolerance limits a bit to solve this issue.
+
+This worked for i386.
+
+Unfortunately there are several failing architectures remaining[1]
+(not finished building yet for all at the time of writing).
+
+I checked some logs and noticed that armel and armhf are failing with
+"Bus error".  While I subscribe to the reasoning that this could be
+caused by some coding bug which hides somewhere and is not detected on
+other architectures I think we should draw some line here.  Obviously we
+do not have the power to maintain this code for all architectures
+neither do I expect that there is any honest user of this code on the
+said architectures.  So I would simply exclude these from the list
+of architectures.  Please raise your hand if you disagree and volunteer
+to work on these problems.
+
+For arm64[2] its a single failing test:
+
+=================================== FAILURES ===================================
+________ [doctest] sklearn.ensemble._weight_boosting.AdaBoostRegressor _________
+1004     Examples
+1005     --------
+1006     >>> from sklearn.ensemble import AdaBoostRegressor
+1007     >>> from sklearn.datasets import make_regression
+1008     >>> X, y = make_regression(n_features=4, n_informative=2,
+1009     ...                        random_state=0, shuffle=False)
+1010     >>> regr = AdaBoostRegressor(random_state=0, n_estimators=100)
+1011     >>> regr.fit(X, y)
+1012     AdaBoostRegressor(n_estimators=100, random_state=0)
+1013     >>> regr.predict([[0, 0, 0, 0]])
+Expected:
+    array([4.7972...])
+Got:
+    array([5.74049295])
+
+/>/.pybuild/cpython3_3.9/build/sklearn/ensemble/_weight_boosting.py:1013: DocTestFailure
+= 1 failed, 22012 passed, 404 skipped, 7 deselected, 59 xfailed, 40 xpassed, 2350 warnings in 2090.20s (0:34:50) =
+
+
+Its the very same failure for ppc64el - I'll report this upstream.
+This error occures also on s390x where we see also an additional one[3]
+
+___________ [doctest] sklearn.feature_extraction._hash.FeatureHasher ___________
+081     DictVectorizer : Vectorizes string-valued features using a hash table.
+082     sklearn.preprocessing.OneHotEncoder : Handles nominal/categorical features.
+083
+084     Examples
+085     --------
+086     >>> from sklearn.feature_extraction import FeatureHasher
+087     >>> h = FeatureHasher(n_features=10)
+088     >>> D = [{'dog': 1, 'cat':2, 'elephant':4},{'dog': 2, 'run': 5}]
+089     >>> f = h.transform(D)
+090     >>> f.toarray()
+Expected:
+    array([[ 0.,  0., -4., -1.,  0.,  0.,  0.,  0.,  0.,  2.],
+           [ 0.,  0.,  0., -2., -5.,  0.,  0.,  0.,  0.,  0.]])
+Got:
+    array([[ 0.,  0.,  0., -1.,  0.,  0.,  0.,  4.,  0.,  2.],
+           [ 0.,  0.,  0., -2., -5.,  0.,  0.,  0.,  0.,  0.]])
+
+/>/.pybuild/cpython3_3.9/build/sklearn/feature_extraction/_hash.py:90: DocTestFailure
+
+
+ppc64 behaves like s390x and risc64 has also only the first error.
+
+So I'll contact upstream with two issues and will see what might
+happen next.
+
+Kind regards
+
+      Andreas.
+
+
+[1] https://buildd.debian.org/status/package.php?p=scikit-learn
+[2] https://buildd.debian.org/status/fetch.php?pkg=scikit-learn&arch=arm64&ver=1.0.2-1&stamp=1644956264&raw=0
+[3] https://buildd.debian.org/status/fetch.php?pkg=scikit-learn&arch=s390x&ver=1.0.2-1&stamp=1644952396&raw=0
+
+--
+http://fam-tille.de

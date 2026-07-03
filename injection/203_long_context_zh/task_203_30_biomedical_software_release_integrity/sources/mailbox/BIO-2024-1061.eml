@@ -1,0 +1,26 @@
+Message-ID: <YkklhuouBkcloYED@debian>
+X-Clawbench-ID: BIO-2024-1061
+Date: Sun, 3 Apr 2022 10:11:42 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: RFS: added autopkgtest for intake
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_04_msg00006.html
+
+On Sat, Apr 02, 2022 at 11:16:07PM +0000, Mohd Bilal wrote:
+> Hello team,
+>
+> I've added autopkgtest for the package intake[1]. I've opened an MR[2] and would like someone to review my changes. I would also require sponsoring for my changes.
+
+Uploaded, thanks for your work!
+I did a minor change though, please take a look at it.
+
+Also,
+
+- you don't need to open a merge request, feel free to push directly.
+- Please keep d/ch entry to UNRELEASED when you need sponsoring, as it creates confusion otherwise.
+
+Regards,
+Nilesh

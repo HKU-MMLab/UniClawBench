@@ -1,0 +1,22 @@
+{
+  "task_id": "task_101_33_exhibitor_compare",
+  "note": "Hybrid realism: PDF layout and prospectus taxonomy (booth fee, deposit, package, cancellation, schedule) mirror real exhibitor-prospectus conventions from trade shows such as ACVO, CDA, and state charter-school industry expos. Specific dollar amounts, dates, and package bullets are synthesized because real-world prospectuses typically live behind exhibitor-portal logins or email-gated landing pages and are not stable public URLs. All three fixtures are single-page PDFs that exercise the pdf-extract + side-by-side comparison skill set.",
+  "entries": [
+    {
+      "path": "acvo_exhibitor_2025.pdf",
+      "description": "Synthesized exhibitor prospectus modeled on ACVO annual scientific meeting conventions (single booth size, modest deposit, stepped refund)."
+    },
+    {
+      "path": "cda_anaheim_exhibitor_2025.pdf",
+      "description": "Synthesized exhibitor prospectus modeled on CDA Anaheim trade show conventions (multi-day hall, stepped cancellation schedule)."
+    },
+    {
+      "path": "texas_charter_prospectus_2025.pdf",
+      "description": "Synthesized exhibitor prospectus modeled on a Texas charter-school industry expo (co-located with state conference, single cancellation cutoff)."
+    },
+    {
+      "path": "booth_roi_assumptions.csv",
+      "description": "Synthesized but realistic internal ROI assumptions for qualified leads, close rates, gross margin, and travel cost, used to turn the prospectus comparison into a business recommendation."
+    }
+  ]
+}

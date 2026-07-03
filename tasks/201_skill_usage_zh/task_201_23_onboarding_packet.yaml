@@ -1,0 +1,75 @@
+task_id: task_201_23_onboarding_packet
+category: 201_skill_usage_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  Alex Morgan 周一入职，而 /tmp_workspace/clawbench/sources/onboard/
+  里的入职资料包一团糟——PDF、Word 文档、纯文本笔记，还有几张拍照
+  的表格全都堆在一个文件夹里。我需要把这些整理成真正能交给一位新
+  工程师的东西。对拍照的表格使用工作区的 PDF OCR 技能，对 Word 和
+  Excel 文件使用 Office 文档技能，对表格类的跟踪数据使用 data-analysis 技能。
+
+  请在 /tmp_workspace/results/ 下给我四份交付物。
+
+  1. checklist.md —— 一份 Markdown 清单，按 Day 1、Week 1 和
+     Month 1 标题分组。每一项都必须注明它来自的确切来源文件名，并且
+     整份清单合起来必须涵盖我能在欢迎资料包、政策手册、IT 配置清单、
+     福利文档和欢迎指南中看到的所有带时间节点的事项。只要某个带时间
+     节点的事项出现在资料包里，它就应该出现在清单中。
+
+  2. forms.xlsx —— 资料包里每个实体表格文件占一行。列必须包括表格
+     名称、截止日期、是否需要签名（用字面字符串 Yes 或 No 标记）、
+     状态（TODO、DONE 或 N_A）以及一个备注字段。把每个表格文件当作
+     单独一行来处理——你需要包含你在资料包里找到的所有表格。如果资料
+     包里同一个表格既有空白或拍照的模板，又有已签字的对应件，就把两
+     个实体文件分别保留在各自的行上，不要合并它们。状态应反映该具体
+     实体文件是否仍需 HR 处理：把空白或未签字的对应件标为 TODO
+     （仍需 HR 处理），把同一表格已签字的对应件标为 DONE。只有当文件
+     确实只是信息性的、从不需要 HR 处理时，才使用 N_A。
+
+  3. handoff_plan.md —— 一份给招聘经理的简短交接说明，它要列出你在
+     资料包里发现的每一个来源冲突、过时项或缺失引用项，并指明确切存
+     在分歧的文件名；列出第一天配置工作的依赖顺序，涵盖在权限申请、
+     仓库配置和 bootstrap 脚本之前必须先发生的事；以及任何在资料包中
+     被提及、但作为实体文件缺失的表格或培训资料。
+
+  4. onboarding_controls.xlsx —— 一个给招聘经理的小型工作簿，含两个
+     工作表。Conflicts 必须有 issue、source_files、impact、
+     owner_to_resolve 这几列，每个冲突或缺失引用项占一行。
+     Dependency_Order 必须有 action、blocked_by、due_window、
+     source_files 这几列，按依赖顺序列出第一周的配置动作。
+
+  这四个文件就位后，请也留下一份简短的 summary.md，或者在 forms.xlsx
+  顶部放一个 Summary 工作表，向经理说明资料包实际涵盖了哪些内容。我想
+  看到强制性表格签字是如何跟踪的、新员工需要配置哪些设备、第一个月的
+  培训日程是什么样的、需要进行哪些权限配置以及按什么顺序、以及伙伴或
+  导师机制是如何设置的。两三个短段落就足够了；把每一点都和支撑它的来
+  源文件关联起来。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - onboard/
+
+skills:
+  - pdf-ocr-local
+  - office
+  - data-analysis
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

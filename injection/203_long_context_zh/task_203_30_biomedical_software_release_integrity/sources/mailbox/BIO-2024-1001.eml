@@ -1,0 +1,54 @@
+Message-ID: <4303a2a9-88c6-09ca-f223-8c5b5ec6c72a@debian.org>
+X-Clawbench-ID: BIO-2024-1001
+Date: Mon, 31 Jan 2022 15:49:37 +0200
+From: Andrius Merkys <merkys@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: libcifpp transition
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_01_msg00122.html
+
+Hi Maarten,
+
+On 2022-01-31 15:13, Maarten L. Hekkelman wrote:
+> Okay, finally had time to work on this.
+>
+> I patched the libcifpp many times but I now feel confident it should
+> work. It builds on an experimental box (with i386 to make things more
+> difficult). When I install the packages from this new patch (v2.0.4-6) I
+> can build all the dependencies as well.
+
+Great!
+
+> Op 24-01-2022 om 12:46 schreef Andrius Merkys:
+>>>> In file included from src/cif2pdb.cpp:28:
+>>>> src/cif-tools.hpp:34:10: fatal error: cif++/Config.hpp: No such file or
+>>>> directory
+>>>>      34 | #include "cif++/Config.hpp"
+>>>>         |          ^~~~~~~~~~~~~~~~~~
+>>> The Config file was no longer needed thanks to the switch to cmake. The
+>>> API should be roughly the same.
+>
+> As suggested by other, I opted to put a stub file in the debian package.
+> That was the easiest thing to do.
+
+OK.
+
+> The page for the auto-package mentions a conflict with the also updated
+> libpdb-redo. Is this going to work?
+
+This is purely informational. It says you probably should not attempt
+transitioning libcifpp and libpdb-redo at the same time.
+> Anyway, now someone needs to file that bug to ask for a time slot. Who
+> is supposed to do that? Is that me? Or does anyone else volunteer?
+
+It would be great if you could do that. You may use my recent openmm
+transition bug report [1] as a template. What is important in libcifpp
+case is to tell that you are planning to patch the new libcifpp to make
+it backwards-compatible with the old libcifpp.
+
+[1] https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1004063
+
+Best wishes,
+Andrius

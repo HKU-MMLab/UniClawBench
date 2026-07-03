@@ -1,0 +1,26 @@
+{
+  "task_id": "task_102_29_owid_chart_crop_provenance",
+  "note": "Chart-provenance task. The executor gets a cropped chart image (sources/crop.jpg) with the TITLE and the SOURCE/footer removed. They must identify what the chart shows and trace it to the canonical chart page AND its underlying data source. The crop keeps the curves, country labels (China/US/India/Germany/Brazil/UK), and the y-axis units ('billion t'), but not the title or the data-source citation — so the executor must reconstruct provenance, not read it off the image.",
+  "crop_origin": {
+    "source_full_image": "OWID grapher PNG: https://ourworldindata.org/grapher/annual-co2-emissions-per-country.png",
+    "crop_box_xyxy_on_850x600": [0, 96, 850, 528],
+    "removed": "top title band ('Annual CO₂ emissions') and bottom source/footer band (the 'Data source: ...' line)"
+  },
+  "canonical_answer": {
+    "chart_title": "Annual CO₂ emissions",
+    "what_it_shows": "annual total CO₂ emissions by country/region over time, in tonnes (excludes land-use change)",
+    "canonical_chart_url": "https://ourworldindata.org/grapher/annual-co2-emissions-per-country",
+    "publisher": "Our World in Data (OWID)",
+    "underlying_data_source": "Global Carbon Budget (2025) / Global Carbon Project — 'Global Carbon Budget v15', with major processing by Our World in Data",
+    "data_download": "https://ourworldindata.org/grapher/annual-co2-emissions-per-country.csv",
+    "y_axis_unit": "tonnes (chart shows 'billion t')",
+    "last_updated": "2025-11-13"
+  },
+  "scoring_anchors": {
+    "must_identify": "the chart shows annual CO₂ emissions by country over time",
+    "canonical_chart_for_full_credit": "the OWID grapher page 'annual-co2-emissions-per-country'",
+    "must_name_underlying_source": "the Global Carbon Budget / Global Carbon Project (processed by OWID) — this is the key provenance step the cropped-out footer hid",
+    "primary_source_rule": "canonical = the OWID grapher page + its cited data provider (Global Carbon Project). A random news article reusing the chart, or just saying 'some CO2 chart', is insufficient.",
+    "tolerance": "The exact Global Carbon Budget YEAR/version (2025 / v15) may differ as OWID updates; accept naming the Global Carbon Project / Global Carbon Budget as the underlying source even if the version differs. Full credit = correct OWID grapher page + Global Carbon Project as the data origin."
+  }
+}

@@ -1,0 +1,26 @@
+Message-ID: <PR_kwDODoHalM51ay1V@gitbox.apache.org>
+X-Clawbench-ID: ASF-2024-0154
+Date: Mon, 15 Jul 2024 18:11:06 -0000
+From: =?utf-8?q?sgala_=28via_GitHub=29?= <git@apache.org>
+To: dev@httpd.apache.org
+Subject: =?utf-8?q?=5BPR=5D_Typo_in_rewrite_test_for_2=2E4=2E60_=5Bhttpd-tests=5D?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-07.mbox
+
+sgala opened a new pull request, #1:
+URL: https://github.com/apache/httpd-tests/pull/1
+
+   I think there is a typo in the test
+
+
+--
+This is an automated message from the Apache Git Service.
+To respond to the message, please log on to GitHub and use the
+URL above to go to the specific comment.
+
+To unsubscribe, e-mail: dev-unsubscribe@httpd.apache.org
+
+For queries about this service, please contact Infrastructure at:
+users@infra.apache.org

@@ -1,0 +1,102 @@
+{
+  "task_id": "task_105_22_ai_framework_q1_2026",
+  "schema_notes": "Anchor facts only. JSON shape, field names, ranking methodology and filenames are the executor's choice — the grader checks semantic content + roughly correct numbers (±20% on dynamic dims), not exact key naming. Q1 2026 (2026-01-01 .. 2026-03-31) traction snapshot for FIVE LLM agent frameworks, fetched live on 2026-05-02.",
+  "reference_date": "2026-05-02",
+  "ground_truth": {
+    "date_window": {"start": "2026-01-01", "end": "2026-03-31"},
+    "frameworks": [
+      {
+        "repo": "langchain-ai/langchain",
+        "q1_merged_prs": 611,
+        "q1_releases": 64,
+        "q1_issues_opened": 368,
+        "hn_q1_stories": 153,
+        "so_q1_question_count": 26,
+        "top3_contributors_example": ["baskaryan", "hwchase17", "ccurme"],
+        "team_breadth_score_example": 85
+      },
+      {
+        "repo": "run-llama/llama_index",
+        "q1_merged_prs": 343,
+        "q1_releases": 6,
+        "q1_issues_opened": 177,
+        "hn_q1_stories": 54,
+        "so_q1_question_count": 0,
+        "top3_contributors_example": ["logan-markewich", "jerryjliu", "Disiok"],
+        "team_breadth_score_example": 129
+      },
+      {
+        "repo": "crewAIInc/crewAI",
+        "q1_merged_prs": 280,
+        "q1_releases": 28,
+        "q1_issues_opened": 185,
+        "hn_q1_stories": 87,
+        "so_q1_question_count": 1,
+        "top3_contributors_example": ["joaomdmoura", "greysonlalonde", "lorenzejay"],
+        "team_breadth_score_example": 248
+      },
+      {
+        "repo": "pydantic/pydantic-ai",
+        "q1_merged_prs": 294,
+        "q1_releases": 36,
+        "q1_issues_opened": 358,
+        "hn_q1_stories": 16,
+        "so_q1_question_count": 2,
+        "top3_contributors_example": ["DouweM", "samuelcolvin", "Kludex"],
+        "team_breadth_score_example": 629
+      },
+      {
+        "repo": "langchain-ai/langgraph",
+        "q1_merged_prs": 256,
+        "q1_releases": 42,
+        "q1_issues_opened": 130,
+        "hn_q1_stories": 72,
+        "so_q1_question_count": 13,
+        "top3_contributors_example": ["nfcampos", "hinthornw", "vbarda"],
+        "team_breadth_score_example": 198
+      }
+    ],
+    "expected_winner": {
+      "repo": "langchain-ai/langchain",
+      "rationale": "Tops all 5 traction signals (PRs, releases, issues, HN stories, SO questions). The unanimous top-1 finding is the central result the user should derive."
+    },
+    "secondary_findings": {
+      "highest_team_breadth_repo": "pydantic/pydantic-ai",
+      "highest_team_breadth_rationale": "samuelcolvin (pydantic founder) alone has 300+ public repos.",
+      "highest_pr_to_issue_ratio_repo": "langchain-ai/langgraph",
+      "highest_pr_to_issue_ratio_rationale": "256 merged PRs vs 130 issues opened = ~1.97 — the team is shipping faster than complaints arrive."
+    },
+    "cross_framework_dep_overlap": {
+      "method_hint": "Fetch each framework's canonical runtime pyproject.toml (langchain monorepo: libs/langchain/pyproject.toml; langgraph monorepo: libs/langgraph/pyproject.toml; crewAI workspace: lib/crewai/pyproject.toml; pydantic-ai: pydantic_ai_slim/pyproject.toml; llama_index: root pyproject.toml + llama-index-core/pyproject.toml unioned). Extract names from PEP-621 [project] dependencies = [...] and/or [tool.poetry.dependencies]. Strip version specifiers, lowercase, dedupe. Then compute set overlap across the 5 frameworks.",
+      "expected_dep_files_or_data": [
+        "raw.githubusercontent.com/langchain-ai/langchain/master/libs/langchain/pyproject.toml",
+        "raw.githubusercontent.com/run-llama/llama_index/main/llama-index-core/pyproject.toml",
+        "raw.githubusercontent.com/crewAIInc/crewAI/main/lib/crewai/pyproject.toml",
+        "raw.githubusercontent.com/pydantic/pydantic-ai/main/pydantic_ai_slim/pyproject.toml",
+        "raw.githubusercontent.com/langchain-ai/langgraph/main/libs/langgraph/pyproject.toml"
+      ],
+      "shared_in_all_5_frameworks_at_snapshot": ["pydantic"],
+      "shared_in_4plus_frameworks_at_snapshot": ["pydantic"],
+      "shared_in_3plus_frameworks_at_snapshot": ["httpx", "pydantic", "pyyaml"],
+      "ecosystem_hub_package": "pydantic",
+      "ecosystem_hub_rationale": "pydantic is the only Python package depended on by ALL 5 LLM agent frameworks (langchain, llama_index, crewAI, pydantic-ai, langgraph). It functions as the universal data-validation / structured-output substrate of the LLM agent ecosystem. httpx and pyyaml are second-tier hubs (in 3 of 5 each).",
+      "per_framework_dep_lists_at_snapshot": {
+        "langchain": ["async-timeout", "jsonpatch", "langchain-core", "langchain-text-splitters", "langsmith", "packaging", "pydantic", "pyyaml", "requests", "sqlalchemy", "tenacity", "typing-extensions"],
+        "llama_index": ["aiohttp", "aiosqlite", "banks", "dataclasses-json", "deprecated", "dirtyjson", "filetype", "fsspec", "httpx", "llama-index-core", "llama-index-embeddings-openai", "llama-index-llms-openai", "llama-index-workflows", "nest-asyncio", "networkx", "nltk", "numpy", "pillow", "platformdirs", "pydantic", "pyyaml", "requests", "sqlalchemy", "tenacity", "tiktoken", "tinytag", "tqdm", "typing-extensions", "wrapt"],
+        "crewAI": ["aiofiles", "aiosqlite", "appdirs", "chromadb", "click", "httpx", "instructor", "json-repair", "json5", "jsonref", "lancedb", "mcp", "openai", "openpyxl", "opentelemetry-api", "opentelemetry-sdk", "pdfplumber", "portalocker", "pydantic", "pydantic-settings", "pyjwt", "python-dotenv", "pyyaml", "regex", "textual", "tokenizers", "tomli", "tomli-w", "uv"],
+        "pydantic-ai": ["exceptiongroup", "genai-prices", "griffe", "httpx", "opentelemetry-api", "pydantic", "pydantic-graph", "typing-inspection"],
+        "langgraph": ["langchain-core", "langgraph-checkpoint", "langgraph-prebuilt", "langgraph-sdk", "pydantic", "xxhash"]
+      },
+      "tolerance": "Dep lists drift over time as frameworks publish new versions. The grader checks: (a) the executor actually fetched a dep list per framework (file existence in trace, OR per-framework dependencies array in the data); (b) `pydantic` appears in the shared/hub set; (c) the hub is identified explicitly. The exact contents of `shared_in_3plus_frameworks` may shift slightly (e.g. httpx added/removed as a transitive becomes/stops being a direct dep) but pydantic-as-universal-hub is the stable property."
+    },
+    "tolerances": {
+      "q1_merged_prs": "±20% (immutable historical count, but tolerance absorbs methodology differences in date-window inclusivity / query construction)",
+      "q1_releases": "±20% (immutable historical count, but tolerance absorbs date-window edge cases on releases)",
+      "q1_issues_opened": "±20%",
+      "hn_q1_stories": "±30% (Algolia query phrasing varies)",
+      "so_q1_question_count": "±5 absolute (Stack Exchange search/advanced is sensitive to query phrasing; for sparse results absolute tolerance is more appropriate)",
+      "top3_contributors": "set equality with at-least-2-of-3 logins matching expected (contributor rankings drift slowly)",
+      "team_breadth_score": "±50% absolute; the rank ordering (pydantic-ai having the highest team breadth) is the stable property and is checked instead of absolute values"
+    }
+  }
+}

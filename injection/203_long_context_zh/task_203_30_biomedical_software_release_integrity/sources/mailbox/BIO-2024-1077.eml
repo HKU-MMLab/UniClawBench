@@ -1,0 +1,33 @@
+Message-ID: <Y2dlYRCZAp483Soe@an3as.eu>
+X-Clawbench-ID: BIO-2024-1077
+Date: Sun, 6 Nov 2022 08:42:25 +0100
+From: Andreas Tille <andreas@fam-tille.de>
+To: Étienne Mollier <emollier@emlwks999.eu>
+Subject: Re: salmon status in salsa
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_11_msg00021.html
+
+Am Sat, Nov 05, 2022 at 11:09:09PM +0100 schrieb Étienne Mollier:
+>
+> Further inspection of the backtrace shows the linker was
+> confused between the embedded and system version of libcereal.
+> Everything goes back to normal when the libcereal copy embedded
+> in pufferfish embedded in salmon is deleted (one more reason to
+> avoid vendoring).
+>
+> On upstream code, this situation can occur when their external/
+> directory is not properly cleaned up and there is a system
+> libcereal installed in the meantime.  Not sure what to do about
+> this, this looks like quite the corner case to make some noise
+> about it.
+
+Another $DRINK for this one. ;-)
+
+Thanks a lot
+   Andreas.
+
+
+--
+http://fam-tille.de

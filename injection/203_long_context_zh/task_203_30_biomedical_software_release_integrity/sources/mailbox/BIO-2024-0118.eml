@@ -1,0 +1,30 @@
+Message-ID: <Yc10vDb1GMSBFJQq@an3as.eu>
+X-Clawbench-ID: BIO-2024-0118
+Date: Thu, 30 Dec 2021 09:58:36 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Re: bart: version 0.7.00
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_12_msg00188.html
+
+Am Thu, Dec 30, 2021 at 02:01:32PM +0530 schrieb Nilesh Patra:
+> Uploaded, thanks for your work!
+
+Thanks to you both.
+
+> > Also the identical bart-cuda package (in master-contrib)
+> > fails to build on salsa because it says the
+> > nvidia-cuda-toolkit  is uninstallable.
+> > could give it a try.
+
+IMHO Salca-CI does not include non-free in sources.list so
+this is bound to fail.
+
+Kind regards
+
+     Andreas.
+
+--
+http://fam-tille.de

@@ -1,0 +1,23 @@
+Message-ID: <Y9/nx1aAWxgiRoLb@an3as.eu>
+X-Clawbench-ID: BIO-2024-1146
+Date: Sun, 5 Feb 2023 18:30:47 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>,	debian-release@bugs.debian.org
+Subject: Please add hint to remove q2-feature-classifier from testing to enable scikit-learn migrating
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_02_msg00013.html
+
+Hi,
+
+we need to check why q2-feature-classifier does not work with
+scikit-learn.  But for the moment it would help if scikit-learn could
+migrate to testing to free lots of its rdepends from testing removal
+warnings.
+
+Thanks a lot
+   Andreas.
+
+--
+http://fam-tille.de

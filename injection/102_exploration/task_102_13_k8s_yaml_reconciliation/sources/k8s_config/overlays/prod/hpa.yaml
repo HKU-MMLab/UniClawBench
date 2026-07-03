@@ -1,0 +1,23 @@
+# Prod HorizontalPodAutoscaler.
+# This controls replicas at runtime, which CONFLICTS with the static
+# spec.replicas: 5 set in patch.yaml — under an HPA, the Deployment's
+# replicas field should not be pinned (HPA min/max governs scaling).
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: orders
+  namespace: shop
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: orders
+  minReplicas: 4
+  maxReplicas: 10
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70

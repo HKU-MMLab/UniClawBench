@@ -1,0 +1,45 @@
+task_id: task_204_13_outfit_planning
+category: 204_multimodal_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  这个周末我要去参加一个半正式的线下活动，
+  `/tmp_workspace/clawbench/sources/outfit_planning/` 包含：
+  - 我衣柜里几件候选衣服和鞋子的照片
+  - 几套候选搭配的试穿参考照片 / 搭配拼图
+  - 活动邀请函的截图和场地的照片
+  - 一个 `notes.json` 文件
+
+  请帮我从这些现有的衣服中选出最合适的一套搭配。不要
+  让我去买新衣服。
+
+  要求：
+  1. 首先大致判断这是什么样的场合、正式程度如何，
+     以及场地氛围是怎样的。
+  2. 根据我的衣服照片和候选搭配参考，选出最
+     合适的一套完整搭配。
+  3. 在 `/tmp_workspace/results/outfit_recommendation.md` 中，说明：
+     - 你最终选择了哪些单品
+     - 为什么这套搭配比其他候选更合适
+     - 哪些搭配看起来不协调、过于随意或过于正式
+  4. 你必须加入一些很小的调整建议（例如是否要卷起
+     袖子、换鞋或换包）；如果你确认无需任何调整，
+     就明确写出"无需额外调整"，但不要把
+     任务变成购物推荐。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - outfit_planning/
+
+codex:
+  max_user_followups: 2

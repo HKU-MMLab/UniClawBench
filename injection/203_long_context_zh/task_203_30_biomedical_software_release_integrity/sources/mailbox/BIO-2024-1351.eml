@@ -1,0 +1,21 @@
+Message-ID: <D9661F33-5126-4CEF-845F-93FBDB68E38A@tchncs.de>
+X-Clawbench-ID: BIO-2024-1351
+Date: Wed, 02 Feb 2022 17:21:43 +0530
+From: Nilesh Patra <nilesh@tchncs.de>
+To: debian-med@lists.debian.org, "Maarten L. Hekkelman" <maarten@hekkelman.com>
+Subject: Re: libcifpp transition
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_02_msg00014.html
+
+On 2 February 2022 4:14:02 pm IST, "Maarten L. Hekkelman"  wrote:
+>OK, the transition for both has started, see [1]. But I wonder, what does the status 'partial' mean? Is there something I should do?
+
+Probably not, it's fine I guess.
+However you probably should fix/rebuild density-fitness, since that is showing out to be bad.
+
+>[1] https://release.debian.org/transitions/html/auto-libcifpp.html
+
+Regards,
+Nilesh

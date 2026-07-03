@@ -1,0 +1,28 @@
+Message-ID: <ZdCMOQZgqyvwQ2Sn@an3as.eu>
+X-Clawbench-ID: BIO-2024-1048
+Date: Sat, 17 Feb 2024 11:36:41 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Python <debian-python@lists.debian.org>
+Subject: Help needed to port qiime to Python3.12
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_02_msg00018.html
+
+Hi,
+
+as reported in a qiime2 issue[1] there is some problem with Python3.12
+in the tests of the q2-* packages which are all using the qiime package.
+This problem is currently hidden from the tests made by Python3.12
+porters but it became obvious now on Salsa CI[2].  I tried to fiddle
+around a bit with the qiime code but with no success at all.  Any help
+would be welcome.
+
+Kind regards
+    Andreas.
+
+[1] https://github.com/qiime2/qiime2/issues/751
+[2] https://salsa.debian.org/med-team/q2-types/-/jobs/5313640#L900
+
+--
+http://fam-tille.de

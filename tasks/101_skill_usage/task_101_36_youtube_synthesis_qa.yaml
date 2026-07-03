@@ -1,0 +1,68 @@
+task_id: task_101_36_youtube_synthesis_qa
+category: 101_skill_usage
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I've been watching YouTube videos about Python virtualenv management on
+  macOS Sonoma and I'm more confused than when I started — every video
+  contradicts the last. I just need one clear answer. Use the
+  YouTube transcript skill to read through the five transcripts under
+  /tmp_workspace/clawbench/sources/transcripts/ and synthesize what the
+  actual best current workflow is, rather than summarizing each video in
+  isolation. They were uploaded between 2022 and 2024 and they disagree.
+
+
+  Here's the mess: the 2022 video says just use python -m venv. A 2023
+  video says that advice is outdated and recommends pyenv plus Poetry.
+  Then a different 2023 video warns that pyenv plus Poetry has a known
+  compatibility issue on macOS Sonoma specifically. A 2024 video claims a
+  newer tool fixes everything. The fifth is more of a history lesson but
+  might still be useful for context.
+
+  I'm on Sonoma right now. I want the single recommended workflow I
+  should adopt today, with a clear note on which earlier recommendations
+  are now superseded and why, plus any caveats. Commit to one answer —
+  don't hedge with five.
+
+  Write the synthesis to /tmp_workspace/results/answer.md. Make it
+  concrete: name the specific tool I should install, walk through install
+  plus first-project setup, and for each older recommendation explain in
+  one or two sentences why it is no longer the best choice for me. If a
+  recommendation is outdated for a specific reason — like a macOS Sonoma
+  compatibility bug — call that out by name rather than vaguely saying
+  "it's older."
+
+  Cite the videos you draw from. Use either the video title or the
+  video_id from each transcript file so I can trace your reasoning back
+  to a specific source.
+
+  At the bottom of answer.md include a short "Caveats" section noting
+  any limitations of the recommended tool that came up in the videos —
+  even videos that overall recommended it. I don't want only the upside;
+  if a video flagged a real limitation, surface it.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - transcripts/
+
+skills:
+  - youtube-watcher
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

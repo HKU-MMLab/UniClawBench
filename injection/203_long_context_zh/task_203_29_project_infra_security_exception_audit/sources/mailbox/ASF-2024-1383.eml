@@ -1,0 +1,26 @@
+Message-ID: <760FDCD0-1DD3-4EB1-B475-7E691FB1F264@eissing.org>
+X-Clawbench-ID: ASF-2024-1383
+Date: Fri, 7 Jan 2022 11:34:47 +0100
+From: Stefan Eissing <stefan@eissing.org>
+To: dev@httpd.apache.org
+Subject: TLS neverbleed design
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-01.mbox
+
+A nice new year to everyone!
+
+I was looking at the design of https://github.com/h2o/neverbleed which
+- loads TLS private keys in a separate process
+- creates EVP_PKEY instances that in the sign callback call into the
+  separate process to create the TLS handshake signature
+
+This is surprisingly simple. With a little overhead, it keeps the keys
+in a separate address space, inaccessible to any exploits in the traffic
+serving workers.
+
+I wonder if it is worthwhile to add something similar to our server.
+
+Kind Regards,
+Stefan

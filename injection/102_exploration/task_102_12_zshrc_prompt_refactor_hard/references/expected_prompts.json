@@ -1,0 +1,131 @@
+{
+  "task_id": "task_102_12_zshrc_prompt_refactor_hard",
+  "note": "Hidden objective answer key. The legacy zshrc at sources/existing_zshrc contains entangled conflicts. The grader checks (a) that the audit identifies the real conflicts and which write wins, and (b) that the eight rendered scenarios satisfy machine-checkable assertions on the FINAL prompt — not the executor's prose description.",
+
+  "legacy_conflicts": [
+    {
+      "id": "L1_three_competing_PROMPT_defs",
+      "detail": "PROMPT is assigned THREE times: attempt#1 before oh-my-zsh (user@host+time), attempt#2 after oh-my-zsh (adds python --version), attempt#3 last (deep path + branch + time). The LAST assignment wins; attempts #1 and #2 are dead. A correct audit must identify all three and that #3 currently wins.",
+      "winning_line": "PROMPT='%F{cyan}%~%f %F{yellow}${vcs_info_msg_0_}%f %F{244}%D{%H:%M}%f %# '",
+      "severity": "high"
+    },
+    {
+      "id": "L2_agnoster_nerdfont_vs_no_glyph",
+      "detail": "ZSH_THEME=agnoster requires a Powerline/Nerd Font; on a server without it the prompt shows broken glyphs. This HARD-CONFLICTS with the requirement that the prompt must not rely on Nerd-Font-only glyphs. Resolution: drop/replace agnoster (or build a plain prompt) while STILL loading oh-my-zsh so the git/docker/kubectl plugins keep working.",
+      "severity": "high"
+    },
+    {
+      "id": "L3_raw_precmd_clobbers_omz",
+      "detail": "`precmd() { vcs_info }` is a raw function definition that REPLACES oh-my-zsh's own precmd instead of appending to precmd_functions. This silently disables theme/vcs hooks oh-my-zsh installed. Correct fix uses `precmd_functions+=(...)` or `add-zsh-hook precmd ...` so both coexist.",
+      "severity": "high"
+    },
+    {
+      "id": "L4_duplicate_PATH_entry",
+      "detail": "`export PATH=\"$HOME/.local/bin:$PATH\"` appears twice, so $HOME/.local/bin ends up duplicated in PATH. Audit must flag the duplicate and the final dedup'd order.",
+      "severity": "medium"
+    },
+    {
+      "id": "L5_startup_stdout_leak",
+      "detail": "`echo \"[motd] welcome back ...\"` runs unconditionally at startup, dumping text to stdout every time .zshrc is loaded. This corrupts any tooling that captures a shell's stdout (e.g. `zsh -ic 'cmd'` used by scripts/automation). Correct fix: remove the stdout echo, OR guard it to login shells only with `[[ -o login ]]` (a plain `[[ -o interactive ]]` guard does NOT help, because the test invocation `zsh -ic true` is itself interactive). Under the FINAL config, `zsh -ic true` must NOT emit this line to stdout; stdout must be empty.",
+      "severity": "high"
+    },
+    {
+      "id": "L6_RPROMPT_noise",
+      "detail": "RPROMPT shows time + user@host — server noise that should be removed by default.",
+      "severity": "medium"
+    },
+    {
+      "id": "L7_python_version_in_prompt",
+      "detail": "attempt#2 PROMPT injects `python --version` (runtime spam). Even though attempt#3 wins, the audit should note this runtime-version-in-prompt anti-pattern was present and must not reappear in the final prompt.",
+      "severity": "medium"
+    },
+    {
+      "id": "L8_nvm_after_omz_path_order",
+      "detail": "nvm is sourced after oh-my-zsh; conda hook before. Ordering is acceptable but must be preserved intentionally (conda hook + nvm sourcing must survive in the final config). Audit should confirm both initializers are retained.",
+      "severity": "low"
+    }
+  ],
+
+  "preserve_must_survive": {
+    "aliases": ["ll", "gs", "k", "gp"],
+    "plugins_loaded_via_omz": ["git", "docker", "kubectl", "python", "npm"],
+    "conda_hook": true,
+    "nvm_sourcing": true,
+    "path_prepends_present": ["$HOME/.local/bin", "$HOME/bin", "/usr/local/bin"],
+    "note": "oh-my-zsh must STILL be sourced so the plugins load; only the agnoster THEME and the conflicting prompt logic are replaced."
+  },
+
+  "final_prompt_requirements": {
+    "must_show": ["current path (may be compressed)", "git branch / status when in a repo"],
+    "must_not_show_by_default": ["username (%n)", "hostname (%m)", "wall-clock time (%D{%H:%M...})", "python/node/ruby runtime version", "Nerd-Font-only glyphs"],
+    "rprompt": "should be empty / removed by default"
+  },
+
+  "scenario_assertions": [
+    {
+      "scenario": "plain_shell",
+      "context": "interactive shell, not in a git repo, shallow path",
+      "must_contain": ["the current directory path"],
+      "must_not_contain_regex": ["@", "[0-9]{2}:[0-9]{2}", "Python", "[0-9]+\\.[0-9]+\\.[0-9]+"],
+      "note": "no user@host, no HH:MM time, no runtime version"
+    },
+    {
+      "scenario": "git_clean",
+      "context": "interactive shell inside a clean git repo on branch main",
+      "must_contain": ["path", "branch indicator (e.g. main)"],
+      "must_not_contain_regex": ["@", "[0-9]{2}:[0-9]{2}"],
+      "note": "branch shown; no dirty markers; no user@host/time"
+    },
+    {
+      "scenario": "git_dirty",
+      "context": "interactive shell inside a git repo with uncommitted changes",
+      "must_contain": ["path", "branch", "a dirty/changed indicator (e.g. *, +, or a status symbol)"],
+      "must_not_contain_regex": ["@", "[0-9]{2}:[0-9]{2}"],
+      "note": "must visibly differ from git_clean by signaling dirty state"
+    },
+    {
+      "scenario": "detached_head",
+      "context": "interactive shell with a detached HEAD checkout",
+      "must_contain": ["path", "a detached-HEAD indicator OR the short commit hash"],
+      "must_not_contain_regex": ["@(?![a-f0-9])", "[0-9]{2}:[0-9]{2}"],
+      "note": "should indicate detached state / short SHA, not a branch name; still no user@host/time"
+    },
+    {
+      "scenario": "rebase_or_merge_state",
+      "context": "interactive shell mid-rebase or mid-merge",
+      "must_contain": ["path", "an in-progress operation indicator (rebase/merge) OR at least the branch"],
+      "must_not_contain_regex": ["[0-9]{2}:[0-9]{2}"],
+      "note": "surfacing the rebase/merge state is ideal; minimally must not crash and must keep path+branch"
+    },
+    {
+      "scenario": "deep_path",
+      "context": "interactive shell in a very deep directory (>=6 levels)",
+      "must_contain": ["a path representation"],
+      "must_not_contain_regex": ["@", "[0-9]{2}:[0-9]{2}"],
+      "note": "deep path should be compressed/truncated, not dumped full-width; either compression or showing the tail is acceptable as long as it is not the raw absolute deep path verbatim"
+    },
+    {
+      "scenario": "python_venv_active",
+      "context": "interactive shell with a python virtualenv activated (VIRTUAL_ENV set)",
+      "must_contain": ["path"],
+      "may_contain": ["the venv NAME"],
+      "must_not_contain_regex": ["[0-9]+\\.[0-9]+\\.[0-9]+", "Python [0-9]"],
+      "note": "may show the venv name, but must NOT show the python VERSION number (that was the legacy spam)"
+    },
+    {
+      "scenario": "non_interactive",
+      "context": "run `zsh -ic true` (the .zshrc is sourced for interactive shells) and capture stdout. This simulates automation that captures a shell's stdout.",
+      "stdout_must_be_empty": true,
+      "must_not_contain_regex": ["\\[motd\\]", "welcome back"],
+      "note": "the startup motd echo must NOT leak to stdout; stdout must be empty. Note a plain interactive-guard does not fix this (zsh -ic is interactive) — the echo must be removed or guarded to login-only."
+    }
+  ],
+
+  "scoring_anchors": {
+    "must_identify_conflicts": ["L1_three_competing_PROMPT_defs", "L2_agnoster_nerdfont_vs_no_glyph", "L3_raw_precmd_clobbers_omz", "L5_startup_stdout_leak"],
+    "nice_to_identify": ["L4_duplicate_PATH_entry", "L6_RPROMPT_noise", "L7_python_version_in_prompt", "L8_nvm_after_omz_path_order"],
+    "minimum_conflicts_for_credit": 3,
+    "critical_scenario_assertions": ["non_interactive", "python_venv_active", "git_dirty", "detached_head"],
+    "rationale": "non_interactive (L5), python_venv (no version spam), git_dirty (must differ from clean), and detached_head (no branch/no user@host) are the assertions the original easy task did not objectively check; they are the discriminators here."
+  }
+}

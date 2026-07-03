@@ -1,0 +1,53 @@
+task_id: task_104_14_linked_fashion_alternatives
+category: 104_multimodal
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  Please open this YouTube video:
+  https://www.youtube.com/watch?v=O_C_VUtUm80
+
+  Based on the actual video content at this link, complete an outfit alternatives
+  report.
+  You must directly watch the video footage and movement. Do not download
+  subtitles, use frame-by-frame explanation pages, or guess from fashion knowledge;
+  screenshots and alternative-item judgments must both be based on the actual video.
+
+  Requirements:
+  1. Find the first 3 clear look / outfit segments in the video, capture clear
+     screenshots for each, and save them to `/tmp_workspace/results/fashion_looks/`.
+     In the report, label each screenshot with its corresponding order or timestamp
+     in the video.
+  2. For each look, identify the key items, covering at least:
+     - Jacket / top
+     - Bottoms
+     - Shoes (if visible)
+     - Main style keywords
+  3. Search Amazon for visually similar, relatively affordable alternatives. While
+     maintaining sufficient visual similarity, you must explain the price tradeoff
+     behind your chosen alternatives.
+     If Amazon's internal search page is currently inaccessible or unstable, you
+     may use other web searches to locate Amazon product detail pages first, but
+     the final links you provide must be Amazon product detail page links, not only
+     Amazon search result pages.
+  4. Generate the final report at `/tmp_workspace/results/fashion_alternatives.md`.
+
+  Each look in the report must include at least:
+  - Video screenshot reference
+  - Key item descriptions
+  - At least 2 Amazon alternative products (with the item role / name / price / link)
+  - Why you think these alternatives are visually close to the original look
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/reference_fashion_anchor_report.md
+
+codex:
+  max_user_followups: 2

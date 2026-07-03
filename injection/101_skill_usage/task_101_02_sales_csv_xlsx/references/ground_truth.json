@@ -1,0 +1,105 @@
+{
+  "task_id": "task_101_02_sales_csv_xlsx",
+  "difficulty": "Hard",
+  "schema": "b",
+  "schema_notes": "multi-currency workbook with row-level FX conversion checks",
+  "skills_declared": [
+    "excel-xlsx"
+  ],
+  "ground_truth": {
+    "sheet_name": "Sales",
+    "fx_sheet_name": "FX_Reconciliation",
+    "data_row_count": 240,
+    "total_row_count": 242,
+    "currencies": [
+      "AUD",
+      "CAD",
+      "EUR",
+      "GBP",
+      "JPY",
+      "USD"
+    ],
+    "expected_total_amount_usd": 44336.84,
+    "expected_total_by_currency_usd": {
+      "AUD": 5974.36,
+      "CAD": 5104.88,
+      "EUR": 10125.21,
+      "GBP": 5525.02,
+      "JPY": 5235.32,
+      "USD": 12372.05
+    },
+    "sample_rows": {
+      "2": {
+        "order_id": "FX24-0001",
+        "currency": "USD",
+        "fx_rate": 1.0,
+        "amount_usd": 8.21
+      },
+      "17": {
+        "order_id": "FX24-0016",
+        "currency": "JPY",
+        "fx_rate": 0.006713,
+        "amount_usd": 107.73
+      },
+      "89": {
+        "order_id": "FX24-0088",
+        "currency": "JPY",
+        "fx_rate": 0.006679,
+        "amount_usd": 72.13
+      },
+      "143": {
+        "order_id": "FX24-0142",
+        "currency": "CAD",
+        "fx_rate": 0.743601,
+        "amount_usd": 74.08
+      },
+      "241": {
+        "order_id": "FX24-0240",
+        "currency": "JPY",
+        "fx_rate": 0.006691,
+        "amount_usd": 48.64
+      }
+    },
+    "audit_check_order_ids": [
+      "FX24-0001",
+      "FX24-0016",
+      "FX24-0088",
+      "FX24-0142",
+      "FX24-0240"
+    ],
+    "expected_unmatched_fx_rows": 0,
+    "tolerance_usd": 0.05,
+    "tolerance_total_usd": 0.05,
+    "tolerance_currency_subtotal_usd": 0.10,
+    "tolerance_fx_rate": 0.000005,
+    "expected_audit_source_row_count": 240,
+    "expected_audit_workbook_usd_total": 44336.84,
+    "narrative_numeric_anchor": {
+      "primary": {
+        "field": "expected_total_amount_usd",
+        "value": 44336.84,
+        "tolerance": 0.50
+      },
+      "fallback": {
+        "field": "any_currency_in_expected_total_by_currency_usd",
+        "tolerance": 1.00
+      }
+    },
+    "requires_daily_fx_join": true,
+    "topic_dimensions": [
+      "per_currency_total",
+      "monthly_decomposition",
+      "store_breakdown",
+      "fx_methodology",
+      "discount_handling"
+    ],
+    "topic_dimension_keywords": {
+      "per_currency_total": ["AUD", "CAD", "EUR", "GBP", "JPY", "USD"],
+      "monthly_decomposition": ["January", "February", "March", "MoM"],
+      "store_breakdown": ["US-East", "US-West", "EU", "Europe"],
+      "fx_methodology": ["fx_date", "rate_to_usd", "lookup"],
+      "discount_handling": ["discount", "discount_pct", "net"]
+    },
+    "min_topic_dimensions_covered": 5
+  }
+}

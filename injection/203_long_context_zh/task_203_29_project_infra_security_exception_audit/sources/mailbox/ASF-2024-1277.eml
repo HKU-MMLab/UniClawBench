@@ -1,0 +1,26 @@
+Message-ID: <CAKQ1sVMqAVH2-WqB2auafruzH+Ycn-ax00qJXEVB7YZ4r=qJbQ@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1277
+Date: Sun, 19 Dec 2021 17:52:28 +0100
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: httpd-dev <dev@httpd.apache.org>
+Subject: Re: [VOTE] Release httpd-2.4.52-rc1 as httpd-2.4.52
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2021-12.mbox
+
+On Thu, Dec 16, 2021 at 3:03 PM Stefan Eissing <stefan@eissing.org> wrote:
+>
+> I would like to call a VOTE over the next few days to release
+> this candidate tarball httpd-2.4.52-rc1 as 2.4.52:
+
+[X] +1: It's not just good, it's good enough!
+
+All good on Debian 10, 11 & 12.
+
+buildconf and configure.in will probably need an update to please
+latest autotools from Debian 12, not for this release though.
+Also gcc-11 warns about the usage of APR_RINGs in apr-util-1.7.x
+brigades, possibly something to look at for the next APR(s) releases.
+
+Thanks Stefan and all the team for this release!

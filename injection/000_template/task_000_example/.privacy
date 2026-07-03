@@ -1,0 +1,15 @@
+# ── Template .privacy manifest ────────────────────────────────────
+# Each non-comment line is a single env-var NAME that your task needs.
+# The runner resolves values from configs/privacy.local.env at runtime
+# and injects them into the executor container as environment variables.
+#
+# Task prompts should refer to credentials by env-var name, e.g.:
+#
+#     Use the token in $API_TOKEN against $API_BASE.
+#
+# Leave this file empty (or delete it) if your task needs no
+# credentials at all. The lines below match the placeholder keys in
+# configs/privacy.example.env so `load_task` can demo the full
+# injection path end-to-end.
+API_TOKEN
+API_BASE

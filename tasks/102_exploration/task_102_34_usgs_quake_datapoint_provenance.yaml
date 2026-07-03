@@ -1,0 +1,36 @@
+task_id: task_102_34_usgs_quake_datapoint_provenance
+category: 102_exploration
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  A dataset row I'm checking lists a major earthquake — magnitude about 9.1,
+  off the Pacific coast of Tohoku, Japan, in March 2011 — but with no link to
+  an authoritative record. I want the official USGS record for this exact event
+  and confirmation of its parameters.
+
+  Please find the authoritative USGS record (not Wikipedia or news coverage) and
+  report:
+  - the USGS event id and event page,
+  - the magnitude, the epicenter coordinates (lat/lon), the depth, and the
+    origin time (UTC),
+  - confirmation of whether the row's "M~9.1, March 2011, Tohoku" attributes
+    match the USGS record.
+
+  Save your conclusion and the evidence chain (USGS event id, the API/page you
+  used, and the confirmed parameters) to
+  `/tmp_workspace/results/quake_provenance.json`, plus notes under
+  `/tmp_workspace/results/`.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+codex:
+  max_user_followups: 2

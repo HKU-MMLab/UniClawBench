@@ -1,0 +1,61 @@
+{
+  "task_id": "task_104_38_suddenly_first120s_subtitles",
+  "difficulty": "Easy",
+  "schema": "b",
+  "schema_notes": "partial-range subtitle transcription with strict cutoff handling",
+  "ground_truth": {
+    "source_clip": "clip.mp4",
+    "reference_srt": "references/reference_clip.srt",
+    "requested_time_range_seconds": {
+      "start": 0,
+      "end": 120
+    },
+    "expected_output_files": [
+      "/tmp_workspace/results/clip.srt"
+    ],
+    "reference_metrics": {
+      "reference_cues_within_requested_range": 55,
+      "acceptable_cue_count_min": 35,
+      "acceptable_cue_count_max": 70,
+      "first_cue_start_max_sec": 2,
+      "last_cue_end_min_sec": 110,
+      "last_cue_end_max_sec": 123
+    },
+    "semantic_acceptance": {
+      "minimum_anchor_windows_hit": 3,
+      "minimum_semantic_coverage_ratio": 0.8,
+      "interpretation": "Because this task has three required anchor windows, all three should be covered and each should have roughly 80% or better semantic content coverage."
+    },
+    "semantic_anchor_windows": [
+      {
+        "window": "00:00:00-00:00:20",
+        "keywords_any": [
+          "Ohm's law",
+          "Pidge",
+          "ball game",
+          "5,000 volts",
+          "Ellen"
+        ]
+      },
+      {
+        "window": "00:00:35-00:01:10",
+        "keywords_any": [
+          "electricity",
+          "wall plugs",
+          "grounded",
+          "grandpa"
+        ]
+      },
+      {
+        "window": "00:01:15-00:02:00",
+        "keywords_any": [
+          "special agent",
+          "Federal Bureau",
+          "F.B.I.",
+          "come right in",
+          "Treasury Department"
+        ]
+      }
+    ]
+  }
+}

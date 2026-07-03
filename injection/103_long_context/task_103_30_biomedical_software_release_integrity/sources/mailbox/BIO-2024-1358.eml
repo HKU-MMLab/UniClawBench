@@ -1,0 +1,20 @@
+Message-ID: <20220404165853.1365.4865@mail.envs.net>
+X-Clawbench-ID: BIO-2024-1358
+Date: Mon, 04 Apr 2022 16:58:53 -0000
+From: "Mohd Bilal" <rmb@envs.net>
+To: debian-med@lists.debian.org
+Subject: Help Required : Add autopkgtest for atropos
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_04_msg00008.html
+
+Hello team,
+
+I would like to add autopkgtest for atropos[1] but I'm stuck with some .pyx files that the tests import from. I guess the tests require these C extensions to be built before running the test. I've tried building[2] the extensions using `$py setup.py build_ext --inplace` but it didn't work out. Can anyone guide on how to move forward?
+
+[1] - https://salsa.debian.org/med-team/atropos
+[2] - https://salsa.debian.org/med-team/atropos/-/commit/18808ed7987f92face98a839bd945154ed39bf3d
+
+Thanks,
+rmb

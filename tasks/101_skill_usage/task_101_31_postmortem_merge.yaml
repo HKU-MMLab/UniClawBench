@@ -1,0 +1,100 @@
+task_id: task_101_31_postmortem_merge
+category: 101_skill_usage
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  My director wants a cross-incident writeup that actually teaches us
+  something from six past outages, and I need help putting it together.
+  Use the systematic debugging skill to walk through each PM consistently,
+  the Markdown formatter to keep the output clean, and the memory-management skill
+  plus the daily digest skill to organize the notes you pull out into a
+  proper synthesis.
+
+  The six postmortems live under /tmp_workspace/clawbench/sources/:
+  pm_2022_q2_bgp_misconfig.md, pm_2019_q3_waf_regex.md,
+  pm_2017_q1_db_outage.md, pm_2025_q1_outage.md,
+  pm_2025_q2_db_migration.md, and pm_2025_q3_config_drift.md.
+
+  The whole point of this exercise is surfacing the cross-cutting story.
+  The director wants the full set of root-cause patterns that recur
+  across multiple incidents — every cross-cutting pattern these six PMs
+  actually support, nothing left out. They also want every incident
+  represented in the matrix with the concrete facts that make each one
+  distinguishable; citing filenames without real incident detail won't
+  cut it. On top of that, the writeup needs to carry threads on
+  detection gaps, response and comms breakdowns, prevention coverage
+  across all six, and a clear systemic-versus-one-off classification.
+  Every one of those threads must be visible somewhere in the
+  deliverables or the writeup is incomplete.
+
+  Merge everything into /tmp_workspace/results/insights.md with four
+  sections:
+    - "Common Root Causes" — recurring causes across multiple incidents.
+      I want every cross-incident pattern the six PMs support; do not
+      stop at one or two and leave the rest unmentioned. Each pattern
+      should be backed by three or more incident files with concrete
+      source references into the postmortems.
+    - "Incident Taxonomy Matrix" — one row per incident, all six
+      represented, with trigger, blast radius, detection gap,
+      rollback/recovery gap, and the most relevant prevention owner.
+      Each row must mention the specific incident detail that
+      distinguishes that PM, not a generic restatement.
+    - "Prevention Checklist" — at least ten concrete preventative
+      actions, each tagged with one of infra, db, release, monitoring,
+      or process.
+    - "Open Gaps" — at least four guardrails that are missing or only
+      weakly covered across these postmortems but that we should
+      introduce anyway. Tie each gap back to the incidents that
+      motivate it; do not list a gap unless more than one incident
+      supports it.
+
+  Also save /tmp_workspace/results/action_register.csv for the director's
+  follow-up tracker. Columns: action_id, prevention_action, domain,
+  owner, source_incidents, root_cause_addressed, dependency, due_window,
+  success_signal. Make it tracker-ready with at least ten concrete
+  actions. The register has to do real work, not duplicate the prose
+  checklist — at minimum it must carry one action that addresses each
+  cross-incident root-cause pattern from the synthesis, and one action
+  specifically motivated by each of the six source incidents. Every
+  action must trace back to at least one source incident filename and
+  name the cross-incident pattern it addresses.
+
+  The four-section skeleton plus the register is the structural floor —
+  you still need the broader cross-cutting threads (root-cause patterns,
+  detection-gap patterns, response and comms gaps, prevention coverage,
+  systemic versus one-off classification) to come through somewhere
+  across the two deliverables.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - pm_2022_q2_bgp_misconfig.md
+  - pm_2019_q3_waf_regex.md
+  - pm_2017_q1_db_outage.md
+  - pm_2025_q1_outage.md
+  - pm_2025_q2_db_migration.md
+  - pm_2025_q3_config_drift.md
+
+skills:
+  - runesleo-systematic-debugging
+  - markdown-formatter
+  - memory-manager
+  - daily-digest
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

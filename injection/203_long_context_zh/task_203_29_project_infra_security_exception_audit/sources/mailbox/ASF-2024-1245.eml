@@ -1,0 +1,38 @@
+Message-ID: <feaa18b2-7fa5-4309-a3d5-4f486770915f@gmail.com>
+X-Clawbench-ID: ASF-2024-1245
+Date: Thu, 21 Dec 2023 08:23:42 +0100
+From: jean-frederic clere <jfclere@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: age in proxy_balancer_method
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-12.mbox
+
+On 12/20/23 21:22, Jim Jagielski wrote:
+> I'll have to go back through my notes... I do recall adding fields that although
+> were not being used at the time, were _going to be used_ as some point, and
+> I didn't want to have to worry about ABI compatibility.
+
+Cool I will wait before implementing something that breaks your design ;-)
+
+>
+>> On Dec 14, 2023, at 8:27 AM, jean-frederic clere <jfclere@gmail.com> wrote:
+>>
+>> Hi,
+>>
+>> Any examples or docs about:
+>> apr_status_t (*age)(proxy_balancer *balancer, server_rec *s);
+>>
+>> In struct proxy_balancer_method?
+>>
+>> --
+>> Cheers
+>>
+>> Jean-Frederic
+>
+
+--
+Cheers
+
+Jean-Frederic

@@ -1,0 +1,33 @@
+Message-ID: <YecQb8FasOWDD2Yl@an3as.eu>
+X-Clawbench-ID: BIO-2024-0945
+Date: Tue, 18 Jan 2022 20:09:35 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Nilesh Patra <nilesh@tchncs.de>
+Subject: Re: Any idea how to fix this C++ code in diann
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_01_msg00042.html
+
+Am Tue, Jan 18, 2022 at 10:53:48AM -0800 schrieb Nilesh Patra:
+> > I gave the packaging of diann a try but failed[1].  Any idea how
+> > to fix these goto statements?
+>
+> I have got the package building and sanitized a little (with a Makefile)
+
+That's for sure way better.  I simply refrained from it since I wanted
+to check whether the package makes sense at all.
+
+> however, admittedly the code looks a bit too messy to me, so I would
+> request/suggest skimming/reading the code before you upload so we are sure
+> there is nothing suspicious.
+
+I fully agree.  I just wanted to let my colleagues who are using this
+program test it first.
+
+Thanks a lot for your contribution
+
+      Andreas.
+
+--
+http://fam-tille.de

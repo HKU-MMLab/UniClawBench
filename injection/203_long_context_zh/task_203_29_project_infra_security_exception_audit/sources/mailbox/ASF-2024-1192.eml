@@ -1,0 +1,27 @@
+Message-ID: <DM6PR20MB300469A4763F21A57671F6CBAB339@DM6PR20MB3004.namprd20.prod.outlook.com>
+X-Clawbench-ID: ASF-2024-1192
+Date: Mon, 14 Feb 2022 19:57:04 +0000
+From: Doug Whitfield <dwhitfield@perforce.com>
+To: "dev@httpd.apache.org" <dev@httpd.apache.org>
+Subject: PCRE2 compatibility
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-02.mbox
+
+Hi folks,
+
+Apologies is this is better suited for the user mailing list, but I’m digging into the source do thought this might be best. I have read a number of reports that pcre2 is not compatible with httpd.
+
+However, it looks like pcre2 code went in in 2016: https://github.com/apache/httpd/blob/12cfcf08fffc6e4ec597e0396016d09afdb89fa8/server/util_pcre.c
+
+Is pcre2 incompatible? Is there a specific set of circumstance where individuals are running into this issue?
+
+Best Regards,
+--
+
+Doug Whitfield | Enterprise Architect, OpenLogic
+Perforce Software
+
+
+This e-mail may contain information that is privileged or confidential. If you are not the intended recipient, please delete the e-mail and any attachments and notify us immediately.

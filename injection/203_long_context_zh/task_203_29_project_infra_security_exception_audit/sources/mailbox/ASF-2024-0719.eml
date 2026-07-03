@@ -1,0 +1,105 @@
+Message-ID: <14a797c6-2e03-abde-414a-6d4e174cc676@gmail.com>
+X-Clawbench-ID: ASF-2024-0719
+Date: Tue, 13 Dec 2022 18:57:06 +0100
+From: jean-frederic clere <jfclere@gmail.com>
+To: dev@httpd.apache.org, =?UTF-8?Q?Jes=c3=bas_Gonz=c3=a1lez?=  <jesusgm@vmware.com>
+Subject: Re: mod_wasm: Contributing Upstream to Apache
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-12.mbox
+
+On 11/14/22 07:37, Jesús González wrote:
+> Hi everyone,
+>
+> I’m Jesús González, and I am part of VMware’s Wasm Labs: wasmlabs.dev
+> <https://wasmlabs.dev/>, a group focused on creating open source tools
+> for WebAssembly.
+>
+> We have created mod_wasm, an Apachemodule for running WebAssembly
+> binaries inside httpd, and we would like to contribute it upstream.
+> Please see below for more details. We would love to get your feedback
+> and understand what improvements would be needed (if any) before it
+> could be considered for contribution to the project.
+>
+> The details:
+>
+> WebAssembly <https://webassembly.org/>(Wasm) is a new binary instruction
+> format that is open, portable, efficient, secure, and polyglot. It
+> originated in the browser but is increasingly used in server
+> applications, in particular NGINX, Apache APISIX, Istio provide
+> Wasm-based plugin support (i.e.:
+> https://apisix.apache.org/docs/apisix/wasm/
+> <https://apisix.apache.org/docs/apisix/wasm/>).
+>
+> mod_wasm is a way to run WebAssembly modules inside Apache Server. This
+> is similar to how mod_php embeds a PHP runtime to run PHP code. This
+> enables any language that supports WebAssembly (including C++, Rust, Go
+> but also Python, PHP, Ruby) to run with mod_wasm and take advantage of
+> the extra level of security and sandboxing. To learn more about mod_wasm
+> you can check out the following resources:
+>
+>   * An overviewarticle
+>     <https://wasmlabs.dev/articles/apache-mod-wasm/>for the original
+>     release.
+>   * We presented mod_wasm at ApacheCon this year and here are theslides
+>     <https://apachecon.com/acna2022/slides/01_Gonz%c3%a1lez_mod-wasm_Bringing_WebAssembly.pdf>and the source code:https://github.com/vmware-labs/mod_wasm <https://github.com/vmware-labs/mod_wasm>.
+>   * CNCF Talk on mod_wasm showcasing how to run
+>     WordPress:https://www.youtube.com/watch?v=jXe8kulUscQ
+>     <https://www.youtube.com/watch?v=jXe8kulUscQ>
+>
+> In terms of mod_wasm architecture, the module is split into two parts:
+>
+>   * /mod_wasm.so/is the extension module for Apache and it’s written in C.
+>   * An external dependency:/libwasm_runtime.so/, which is written in
+>     Rust and needs to be installed into the system.
+>
+> We modelled this after mod_tls, a module that is part of httpd and also
+> has a Rust dependency.
+>
+> You can take a look at the architecture diagram and instructions on how
+> to build the module
+> here:https://github.com/vmware-labs/mod_wasm#%EF%B8%8F-building-mod_wasm
+> <https://github.com/vmware-labs/mod_wasm#%EF%B8%8F-building-mod_wasm>
+>
+> In terms of the actual contribution, please find a patch attached. We
+> tried to follow all existing conventions in terms of autoconf/automake,
+> providing module documentation, etc. Please let us know anything that
+> you see missing or could be improved. In particular, we do not know yet
+> if it is better to keep the Rust code separate, as an external
+> dependency (like mod_tls does) or in the Apache source code repository.
+>
+> In summary, we believe mod_wasm is a worthy addition to httpd and it
+> will allow us to catch up to some of the other web servers already
+> supporting Wasm, like NGINX. We were encouraged by Rich Bowen, Jim
+> Jagielski and Jean-Frederic Clere to submit it for contribution upstream
+> and we are looking forward to your feedback.
+
+Today I have send some time of mod_wasm, basically I have build the
+module and the runtime and run the hello demo. Using
+https://github.com/vmware-labs/mod_wasm.git (main)
+
+Reviewing that from a diff is hard, probably probably a PR again httpd
+(https://github.com/apache/httpd/tree/trunk for example) would more easy
+to review.
+
+When trying to run the hello I noted that requires a big runtime
+(basically I had unresolved wasm_return_const_char_ownership() which
+comes from a rust file).
+
+I also noted that the headers in the c and h file needs to updated.
+
+And to clarify your goal is to donate the modules code and help to
+maintain it, correct?
+
+
+>
+> Cheers!
+>
+> Jesús
+>
+
+--
+Cheers
+
+Jean-Frederic

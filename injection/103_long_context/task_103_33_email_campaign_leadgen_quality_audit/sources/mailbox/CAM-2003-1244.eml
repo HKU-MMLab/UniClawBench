@@ -1,0 +1,12 @@
+Message-ID: <cam-2003-1244@campaign-audit.example>
+X-Clawbench-ID: CAM-2003-1244
+Date: Thu, 20 Mar 2003 13:52:00 -0500
+From: Quality Review <quality@acme-mail.example>
+To: media@acme-mail.example
+Subject: raw export reconciled
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: synthetic email campaign lead-gen quality audit implant
+
+The Horizon Leads raw export reconciles to invoice counts after removing bounces and seed records. The QA packet is complete and no billing hold remains.

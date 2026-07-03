@@ -1,0 +1,14 @@
+{
+  "task_id": "task_101_02_sales_csv_xlsx",
+  "entries": [
+    {
+      "path": "retail_sales_q1_2024.csv",
+      "description": "240-row deterministic sample derived from real Q1 transactions in UCI Online Retail II (CC-BY-4.0), with dates relabelled to 2024 and realistic multi-currency store rows added for reconciliation."
+    },
+    {
+      "path": "fx_rates_q1_2024.csv",
+      "description": "Daily Q1 2024 FX table for converting each native-currency order row to USD by currency and fx_date."
+    }
+  ],
+  "note": "Hybrid real-data task: base transaction mix comes from UCI Online Retail II; added FX and store-currency variation make the spreadsheet conversion/reconciliation realistic without exposing proprietary retail data."
+}

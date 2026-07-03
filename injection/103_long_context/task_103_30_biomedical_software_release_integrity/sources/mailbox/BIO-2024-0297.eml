@@ -1,0 +1,31 @@
+Message-ID: <ZYSu4rXbJ8Yuy3bo@an3as.eu>
+X-Clawbench-ID: BIO-2024-0297
+Date: Thu, 21 Dec 2023 22:32:18 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>,	NeuroDebian Team <team@neuro.debian.net>
+Subject: Re: Do we need pynwb - if yes please care for its new dependency
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_12_msg00065.html
+
+Hi Yaroslav,
+
+Am Thu, Dec 21, 2023 at 03:52:26PM -0500 schrieb Yaroslav Halchenko:
+> So a solution would be to revert going to monitor github and then reimport
+> source.  I do not think it is worthwhile packaging nwb-schema at this point
+> since small and unlikely we would bother packaging any other package which
+> would use it directly.
+>
+> Do you agree to such changes -- then I could do the needed dance with git repo
+> , just let me know.
+
+I was more or less blindly following DPT advise to prefer Github over
+PiPY.  Just feel free to do whatever seems the most efficient solution
+for you.
+
+Thanks a lot for your quick response
+   Andreas.
+
+--
+http://fam-tille.de

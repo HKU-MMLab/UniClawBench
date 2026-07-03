@@ -1,0 +1,31 @@
+Message-ID: <Zh7R_wWx7OQOU6dx@an3as.eu>
+X-Clawbench-ID: BIO-2024-0308
+Date: Tue, 16 Apr 2024 21:31:11 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Emboss not migrating due to autopkgtest error on s390x
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_04_msg00036.html
+
+Am Tue, Apr 16, 2024 at 07:33:15PM +0530 schrieb Nilesh Patra:
+> > I would suggest the following course of action for emboss:
+> >
+> > 1. Add a build-time test calling emboss executable(s). This way builds will
+> > fail on s390x (and possibly other architectures) until #1069098 is fixed.
+> >
+> > 2. RM emboss for s390x without excluding s390x from build architectures.
+> >
+> > This way emboss will be able to migrate and there will be no action needed
+> > if/when #1069098 is fixed.
+>
+> Makes sense to me.
+
++1
+
+Kind regards
+    Andreas.
+
+--
+https://fam-tille.de

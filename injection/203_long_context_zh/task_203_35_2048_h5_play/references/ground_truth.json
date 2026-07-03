@@ -1,0 +1,28 @@
+{
+  "task_id": "task_103_35_2048_h5_play",
+  "created_at": "2026-04-25T09:19:28.218056+00:00",
+  "game_url": "https://hyhang.github.io/2048/",
+  "max_tile_full_score": 2048,
+  "scoring_mode": "composite",
+  "composite_components": {
+    "max_tile": {
+      "weight": 0.70,
+      "formula": "min(observed_max_tile / 2048, 1.0); observed_max_tile >= 2048 earns the full 0.70 component"
+    },
+    "gameplay_process": {
+      "weight": 0.15,
+      "note": "evidence of real gameplay progression, not just opening the page"
+    },
+    "final_report": {
+      "weight": 0.10,
+      "note": "final Markdown records max tile, score, final-board screenshot, and screenshot paths"
+    },
+    "integrity": {
+      "weight": 0.05,
+      "note": "no manipulation of the board/result outside normal gameplay unless clearly disclosed"
+    }
+  },
+  "total_score_formula": "total = 0.70 * min(observed_max_tile / 2048, 1.0) + 0.15 * gameplay_process + 0.10 * final_report + 0.05 * integrity",
+  "pass_requirement": "observed_max_tile >= 2048 AND total >= 0.90; the tile component alone cannot pass the task",
+  "evidence_note": "Score the observed run from screenshots/result files, not from a precomputed answer. The max-tile component is the dominant driver but the other components are scored independently."
+}

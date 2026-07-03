@@ -1,0 +1,17 @@
+task_id: task_205_15_gopro_web_compare
+category: 205_cross_platform_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+recording: none
+headed: auto
+task: "你是一名经常出差、周末徒步的工程师。你想购买一台适合旅行 vlog、骑行和轻量户外拍摄的运动相机。只使用浏览器完成以下任务：以 GoPro HERO12 Black 为目标型号，在 Amazon、eBay 和 AliExpress 上各找一个尽可能符合该规格的商品页面，同时打开 GoPro 官方商品页面以确认目标配置。\n\n对每个电商页面从以下方面进行比较：\n- 价格\n- 运费 / 送达时间预估\n- 退货政策\n- 卖家/店铺可信度\n- 是否包含套装内容，例如官方电池、安装配件或存储卡\n- 来自评论的 2 个最常见优点和 2 个缺点\n\n将最终结论写入：\n\n    /tmp_workspace/results/gopro_hero12_black_web_compare.md\n\n推荐时应综合考虑总成本、评论口碑、卖家可信度、退换货便利性以及套装实用性，而不是只看最低价。如果某个平台无法提供足够可信或足够匹配的商品，要明确说明，并解释缺失的字段。不要将 GoPro HERO11、HERO13、GoPro MAX、DJI Osmo Action 或翻新/二手商品混入对全新 GoPro HERO12 Black 的比较中。\n"
+codex:
+  max_user_followups: 2
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/process_evidence/amazon_gopro.png

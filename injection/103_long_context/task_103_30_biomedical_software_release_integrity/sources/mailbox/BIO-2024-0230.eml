@@ -1,0 +1,32 @@
+Message-ID: <ZWx8m43muH1LcD1U@an3as.eu>
+X-Clawbench-ID: BIO-2024-0230
+Date: Sun, 3 Dec 2023 14:03:23 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: [Advent bug squashing] #1057132 and #1057253 done
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_12_msg00005.html
+
+Hi,
+
+closed #1057132 yesterday and #1057253 today.
+
+For those who might consider reporting closed bugs here too much noise
+we can also report it on our Matrix channel[1].
+
+In any case I'd like to announce here that Étienne has fixed this year
+more bugs than I in Debian Med team.  I'm absolutely happy to be beaten
+and hope more people will follow Étienne's example and fix more bugs!
+
+Feel free to pick your bug of choice - there are a lot more targets.
+
+Kind regards
+    Andreas.
+
+[1] https://app.element.io/#/room/#debian-med:matrix.org
+[2] http://blends.debian.net/liststats/bugs_debian-med.png
+
+--
+http://fam-tille.de

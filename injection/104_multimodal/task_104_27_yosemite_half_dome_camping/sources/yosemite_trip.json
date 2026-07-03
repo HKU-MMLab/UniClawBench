@@ -1,0 +1,31 @@
+{
+  "trip_dates": {
+    "start": "2026-07-18",
+    "end": "2026-07-20"
+  },
+  "group_size": 3,
+  "trip_style": "first Yosemite car-camping trip",
+  "fitness_profile": {
+    "overall": "mixed",
+    "details": [
+      "two moderate hikers",
+      "one beginner who is only comfortable with 5-6 hour hikes",
+      "one traveler gets anxious on exposed heights"
+    ]
+  },
+  "gear": {
+    "hiking_boots": 2,
+    "gloves_for_cables": 0,
+    "headlamps": 1,
+    "rain_shells": 1,
+    "water_capacity_liters_per_person": 1.5
+  },
+  "permits": {
+    "half_dome_day_hike_permit": false
+  },
+  "preferences": {
+    "want_to_sleep_in_the_valley": true,
+    "prefer_reserved_car_camping": true,
+    "budget_sensitive": false
+  }
+}

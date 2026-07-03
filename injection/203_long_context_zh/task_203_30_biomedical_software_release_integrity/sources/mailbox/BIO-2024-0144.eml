@@ -1,0 +1,77 @@
+Message-ID: <20b5042785d473bc8b38a2b08ed9732512986412.camel@irisa.fr>
+X-Clawbench-ID: BIO-2024-0144
+Date: Wed, 07 Dec 2022 15:14:06 +0100
+From: olivier sallou <olivier.sallou@irisa.fr>
+To: Andrius Merkys <merkys@debian.org>, debian-med@lists.debian.org
+Subject: Re: Seqan2 FTBFS
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_12_msg00069.html
+
+On Wed, 2022-12-07 at 14:07 +0200, Andrius Merkys wrote:
+> Hello,
+>
+> On 2022-12-07 10:02, olivier sallou wrote:> Is it really failing ?
+> [1]
+> link only shows failure due to max execution
+> > time in CI and job was killed by CI.
+>
+> seqan2 indeed builds (it takes many hours on single CPU on
+> barriere.d.o), but fails most of its tests with the following:
+>
+> a bytes-like object is required, not 'str'
+
+this is a classic error when switching from python2 to python3...
+
+so tests should be updated to work with python3... or be dropped as
+python2 only....
+
+>
+> I gave a quick glance at 'app_test_yara':
+>
+> $ /usr/bin/python3
+> "/home/merkys/seqan2-2.4.0+dfsg/apps/yara/tests/run_tests.py"
+> "/home/merkys/seqan2-2.4.0+dfsg"
+> "/home/merkys/seqan2-2.4.0+dfsg/obj-x86_64-linux-gnu"
+> Executing test for Yara
+> ==============================
+>
+> /home/merkys/seqan2-2.4.0+dfsg/obj-x86_64-linux-gnu/bin/yara_indexer
+> /home/merkys/seqan2-2.4.0+dfsg/apps/yara/tests/input/adeno-genome.fa
+> -o
+> /tmp/tmpb51ofmfz/adeno-genome OK
+> Error when trying to compare
+> /home/merkys/seqan2-2.4.0+dfsg/apps/yara/tests/gold/adeno-
+> reads_1.t1.sam
+> to /tmp/tmpb51ofmfz/adeno-reads_1.t1.sam: a bytes-like object is
+> required, not 'str'
+> /home/merkys/seqan2-2.4.0+dfsg/obj-x86_64-linux-gnu/bin/yara_mapper
+> /home/merkys/seqan2-2.4.0+dfsg/apps/yara/tests/gold/adeno-genome
+> /home/merkys/seqan2-2.4.0+dfsg/apps/yara/tests/input/adeno-reads_1.fa
+> -o
+> /tmp/tmpb51ofmfz/adeno-reads_1.t1.sam --threads 1 FAILED
+> DELETING TEMP DIR /tmp/tmpb51ofmfz
+> ==============================
+>       total tests: 2
+>      failed tests: 1
+> successful tests: 1
+> ==============================
+>
+> It seems that one of the required output files is not produced. Any
+> idea
+> why?
+>
+> Andrius
+> > > [1]https://salsa.debian.org/med-team/seqan2/-/jobs/3622896
+>
+
+--
+Olivier Sallou
+Univ Rennes, Inria, CNRS, IRISA
+Irisa, Campus de Beaulieu
+F-35042 RENNES - FRANCE
+Tel: 02.99.84.71.95
+
+gpg key id: 4096R/326D8438  (keyring.debian.org)
+Key fingerprint = 5FB4 6F83 D3B9 5204 6335  D26D 78DC 68DB 326D 8438

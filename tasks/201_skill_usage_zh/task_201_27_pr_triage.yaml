@@ -1,0 +1,60 @@
+task_id: task_201_27_pr_triage
+category: 201_skill_usage_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我一直拖着没去处理 pallets/flask 上积压的一批 PR，最后我把其中 7 个的
+  快照拉到了 /tmp_workspace/clawbench/sources/pr_snapshots/。每个快照都
+  有一个 meta.json（含作者和 PR 元数据）、一个 reviews.json（含维护者
+  评审历史）和一个 diff.txt（含实际改动）。用工作区的代码分析技能来做
+  code-review 部分，用贡献者打标技能给每个贡献者打标——快照里包含它所
+  期望的 author_association 和 prior_merged_prs 字段——并用测试运行技能
+  根据快照数据检查每个 PR 的测试是否通过。
+
+  对每个 PR 我想要一个判定——如果你会原样发布它就 merge，如果你会把它
+  关掉而不合并就 reject。依据 diff、维护者评审信号、CI 状态以及贡献者的
+  过往记录。我还想要每个 PR 一个贡献者标签——如果作者是仓库维护者或
+  成员就是 core，对有大量已合并工作历史的外部贡献者用 veteran，对首次
+  或近乎首次提交者用 newcomer，对既不是新人、也不属于核心团队的外部
+  贡献者用 external。
+
+  请在 /tmp_workspace/results/ 下给我三个文件：
+
+    - triage.json —— 一个数组，每个 PR 一个条目，包含 pr_id、
+      verdict（merge 或 reject）、contributor_label，以及一行
+      reviewer_insight，它要点明贡献者标签并简要说明原因，引用来自
+      meta.json 或 reviews.json 的证据。
+    - triage.md —— 把同样这些 PR 分到 merge 和 reject 两个章节下，
+      每一行是 pr id 和一句话理由。
+    - triage_evidence.csv —— 每个 PR 一行，列为 pr_id、author、
+      author_association、approval_count、change_request_count、
+      contributor_label、touched_files_count 和 final_verdict，这样我
+      就能审核每一个判定，而不必重新打开每个快照。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - pr_snapshots/
+
+skills:
+  - code-analysis-skills
+  - who-is-actor
+  - test-runner
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

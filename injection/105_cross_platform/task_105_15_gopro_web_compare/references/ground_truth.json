@@ -1,0 +1,42 @@
+{
+  "task_id": "task_105_15_gopro_web_compare",
+  "created_at": "2026-05-04T00:00:00+00:00",
+  "task_type": "pure_web_product_comparison",
+  "target_product": "GoPro HERO12 Black",
+  "ship_to": "not fixed",
+  "marketplaces": [
+    "Amazon",
+    "eBay",
+    "AliExpress"
+  ],
+  "official_source": "GoPro official product page",
+  "review_source_required": null,
+  "required_fields": [
+    "price",
+    "shipping / delivery estimate",
+    "return policy",
+    "seller/store credibility",
+    "bundle contents",
+    "2 pros",
+    "2 cons"
+  ],
+  "unsuitable_variants": [
+    "GoPro HERO11",
+    "GoPro HERO13",
+    "GoPro MAX",
+    "DJI Osmo Action",
+    "renewed",
+    "used",
+    "open-box"
+  ],
+  "final_artifact": "/tmp_workspace/results/gopro_hero12_black_web_compare.md",
+  "grading_note": "Score current web evidence, target-spec matching, marketplace coverage, comparison completeness, unsuitable-variant handling, and recommendation rationale. Exact prices and availability are volatile.",
+  "process_reference_screenshots": [
+    "process_evidence/amazon_gopro.png"
+  ],
+  "manual_reference_gaps": [
+    "The process_evidence set may be absent or illustrative and incomplete.",
+    "Do not treat missing hidden screenshots as fixed ground truth failures; evaluate current web evidence, source links, or documented blocks.",
+    "Prices, availability, ratings, source pages, course contents, repository metrics, and page layouts are volatile."
+  ]
+}

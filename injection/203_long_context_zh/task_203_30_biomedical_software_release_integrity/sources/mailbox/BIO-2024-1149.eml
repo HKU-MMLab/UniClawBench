@@ -1,0 +1,26 @@
+Message-ID: <Y5JdyH/tZ40J5hOE@fusion>
+X-Clawbench-ID: BIO-2024-1149
+Date: Thu, 8 Dec 2022 22:57:28 +0100
+From: Étienne Mollier <emollier@emlwks999.eu>
+To: debian-med@lists.debian.org
+Subject: [Advent bug squashing] fixed bug #1018422 in nibabel
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_12_msg00072.html
+
+Hi,
+
+I removed python3-nose from build and autopkgtest dependency
+lists of nibabel.  I also caught a new upstream version, but
+noticed the combination of python3.11 and i386 architecture is
+raising a test failure in Salsa CI[1]; I'm considering sunseting
+architectures with failed test suite in this case.
+
+[1]: https://salsa.debian.org/med-team/nibabel/-/jobs/3632793
+
+Have a nice day,  :)
+--
+Étienne Mollier
+Fingerprint:  8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+Sent from /dev/pts/2, please excuse my verbosity.

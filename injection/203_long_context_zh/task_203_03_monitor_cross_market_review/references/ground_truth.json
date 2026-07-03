@@ -1,0 +1,92 @@
+{
+  "task_id": "task_103_03_monitor_cross_market_review",
+  "created_at": "2026-06-20T00:00:00+00:00",
+  "target_bilibili_creator": "野生的装机宅 (host self-identifies as 小峰)",
+  "target_bilibili_video": "（2025·年初显示器推荐）爆肝一个月！工厂级测试设备！教你选购一台高性价比显示器，实拍实测！涵盖所有规格/电竞/游戏/办公/设计",
+  "target_bilibili_video_url": "https://www.bilibili.com/video/BV1gkwHerEP5/",
+  "target_youtube_creator": "Monitors Unboxed",
+  "target_youtube_video": "Best 1440p Gaming Monitors of 2025, May Update",
+  "target_youtube_video_url": "https://www.youtube.com/watch?v=SnS3DC3ClSI",
+  "segment": "2K / 1440p, 27-inch, high refresh rate gaming monitors",
+  "creator_matching_note": "The Bilibili creator's channel/profile name is 野生的装机宅, but in the video he introduces himself as 小峰. Treat either as a correct identification of the same source. The intended video is his 2025 self-funded, no-ad round-up covering 40+ monitors across all specs.",
+  "bilibili_1440p_27_high_refresh_picks": [
+    "KTC H27T22C (a.k.a. H27T22S 护眼版)",
+    "KTC H27T22X",
+    "HKC G27H2",
+    "Titan Army / 泰坦军团 (深色) G73",
+    "ASUS VG27AQL3A (华硕)",
+    "KTC H2716",
+    "MSI MAG274QRFW (微星, white model)",
+    "ASUS VG27AQML EA (华硕, 240Hz)"
+  ],
+  "youtube_1440p_picks": [
+    "AOC Q27G3XMN (best mid-refresh / true-HDR pick)",
+    "MSI G274QPF-QD (budget 144/170Hz)",
+    "LG 27G83A / 27GP850 (budget high-refresh)",
+    "ASUS ROG Strix XG27ACS (budget high-refresh)",
+    "ASUS ROG Strix XG27AQDMG (favorite WOLED 240Hz)",
+    "MSI MPG271QRX / MPG 271QPX E2 (QD-OLED)",
+    "Dell Alienware AW2725DF (QD-OLED 360Hz)",
+    "Gigabyte FO27Q3 / FO27Q2 (QD-OLED)",
+    "ASUS ROG Strix XG27ACDNG (QD-OLED)",
+    "LG 27G83Q, Gigabyte M27QX, MSI G274QPX (1440p 240Hz LCD)",
+    "ASUS ROG Swift OLED PG27AQDP (ultimate 480Hz pick)"
+  ],
+  "shared_brands": [
+    "ASUS (华硕 / ROG)",
+    "MSI (微星)"
+  ],
+  "shared_brand_detail": {
+    "ASUS": {
+      "bilibili_models": ["ASUS VG27AQL3A", "ASUS VG27AQML EA"],
+      "youtube_models": ["ASUS ROG Strix XG27ACS", "ASUS ROG Strix XG27AQDMG", "ASUS ROG Strix XG27ACDNG", "ASUS ROG Swift OLED PG27AQDP"],
+      "note": "Both markets recommend ASUS in this segment, but with no overlapping model. The Bilibili guide leans on value VG-series IPS LCDs; Monitors Unboxed leans on ROG OLED/QD-OLED."
+    },
+    "MSI": {
+      "bilibili_models": ["MSI MAG274QRFW"],
+      "youtube_models": ["MSI G274QPF-QD", "MSI MPG271QRX", "MSI G274QPX"],
+      "note": "Both markets recommend MSI, again with no overlapping model in this segment."
+    }
+  },
+  "bilibili_unique_brands": [
+    "KTC",
+    "HKC",
+    "Titan Army / 泰坦军团 (深色)"
+  ],
+  "youtube_unique_brands": [
+    "AOC",
+    "LG",
+    "Dell / Alienware",
+    "Gigabyte"
+  ],
+  "cross_market_insight": "The central finding is that the two guides share brands (ASUS and MSI) in the 1440p 27-inch high-refresh segment but essentially NO shared specific models, because each market sells a different lineup. The Chinese guide heavily features domestic value brands (KTC, HKC, Titan Army/深色) that the North American guide never mentions; the North American guide leans on QD-OLED/WOLED from LG, Dell/Alienware, Gigabyte plus ASUS ROG and MSI. AOC and LG anchor the budget/value end for Monitors Unboxed, while KTC and HKC anchor it for the Bilibili guide. An executor that claims the two guides recommend the SAME models, or that misses the domestic-vs-international brand split, has not understood the cross-market comparison.",
+  "source_grounded_facts": {
+    "bilibili_examples": [
+      "KTC H27T22C: lowest-priced 27-inch 2K high-refresh brand monitor, hardware low-blue-light (护眼版), contrast ~1324:1, ~305 nit; S-tier value rating",
+      "KTC H27T22X: upgraded H27T22C, +200 RMB for a height-adjustable stand, BOE panel, wider sRGB, ~380 nit",
+      "HKC G27H2: AUO 8.b panel, very fast response (~2.59ms GtG / ~5.14ms MPRT), strong for FPS, weaker sRGB color accuracy",
+      "深色/Titan Army G73: 27-inch 2K 240Hz with height-adjustable stand around 999-1099 RMB, anti-reflective Innolux panel, S+ value rating",
+      "ASUS VG27AQML EA: 27-inch 2K 240Hz, ~1799 RMB, top-seller in its class, ~487 nit, excellent viewing angle (~22% luminance falloff at 30deg)"
+    ],
+    "youtube_examples": [
+      "AOC Q27G3XMN: 27-inch 1440p 180Hz VA with 336-zone full-array local dimming, >1000 nit peak, best mid-refresh true-HDR pick around $270",
+      "ASUS ROG Strix XG27AQDMG: glossy WOLED 27-inch 1440p 240Hz, the reviewer's favorite WOLED pick, ~$700 in the US",
+      "Dell Alienware AW2725DF: QD-OLED 360Hz, called a great option around $650 in the US",
+      "LG 27G83Q / Gigabyte M27QX / MSI G274QPX: 27-inch 1440p 240Hz IPS LCDs recommended as the non-OLED high-refresh options",
+      "ASUS ROG Swift OLED PG27AQDP: 27-inch 480Hz WOLED, the 'ultimate' 1440p pick around $1000"
+    ]
+  },
+  "video_only_detail_qa": {
+    "note": "These answers are stated only in the spoken video content (Bilibili narration / Monitors Unboxed voiceover) and do NOT appear in typical written best-of summaries or spec sheets. They are the anti-shortcut anchors: an executor that merely read a written 'best 1440p monitors' article cannot answer them. Require these to be correct for full credit; wrong or hand-wavy answers indicate the videos were not actually watched.",
+    "a_mixed_panel": "The HKC G27H2 previously had a 'mixed panel' (混发面板) issue; the host says the manufacturer confirmed it now uses the AUO (友达) 8.b panel across the whole line, so the mixed-panel problem no longer exists.",
+    "b_alternate_name": "The KTC H27T22C (the cheapest 27-inch 2K high-refresh model he recommends) is also called the H27T22S 护眼版 (eye-care edition).",
+    "c_best_calibrated": "Among the 1440p 360Hz QD-OLEDs, the Dell Alienware AW2725DF is called the 'best calibrated' version; it (along with the Gigabyte model) lacks decent USB-C power delivery.",
+    "d_oled_to_lcd_discount": "The Monitors Unboxed reviewer's rule of thumb is to aim for a 30-40% discount to step down from a 1440p 240Hz OLED to an equivalent LCD (and separately, budget 1440p should be ~60% of the cheapest OLED's price)."
+  },
+  "reference_screenshots": [
+    "source_evidence/bilibili_xiaofeng_video.png",
+    "source_evidence/youtube_monitors_unboxed_video.png"
+  ],
+  "screenshot_availability_note": "source_evidence/*.png are placeholders for human-prepared anchor screenshots and may be absent in this build; judge from text anchors and the executor's own screenshots when the prepared images are not present.",
+  "dynamic_content_note": "Both videos are static and already published. Model availability and prices change over time and differ by region, so do not require exact prices. The model lists, shared brands (ASUS, MSI), and the domestic-vs-international brand split are the stable anchors. The exact set of monitors a creator names can be long; partial-but-correct model extraction with the right shared-brand conclusion is acceptable."
+}

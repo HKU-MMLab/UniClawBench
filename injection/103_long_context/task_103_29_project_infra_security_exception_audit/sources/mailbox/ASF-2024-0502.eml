@@ -1,0 +1,32 @@
+Message-ID: <c0ab0f20-afec-36ce-4d19-706f0b23de3e@christopherschultz.net>
+X-Clawbench-ID: ASF-2024-0502
+Date: Fri, 8 Jul 2022 11:03:24 -0400
+From: Christopher Schultz <chris@christopherschultz.net>
+To: dev@httpd.apache.org
+Subject: Re: mod-proxy with sticky JSESSIONID and SiteMinder.
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-07.mbox
+
+Jon,
+
+On 7/7/22 16:56, jonmcalexander.wellsfargo.com via dev wrote:
+> Seem to have an issue with mod-proxy and making the JSESSIONID and the
+> SMSESSION cookie sticky. How can this be done? This setup was working
+> with mod-jk, but when moving to mod-proxy over https it’s not working.
+> We are configured to use mutual authentication between apache and tomcat
+> (for proxy only), but with the certificateVerification set to required
+> in Tomcat, we are getting a
+> java.base/sun.security.ssl.Alert.createSSLException and with setting it
+> to optional, we are getting a javax.net.ssl.SSLHandshakeException:
+> Received fatal alert: bad_certificate error (extensive).
+
+Did you double-check the client and server certs to make sure they
+haven't expired or anything silly like that?
+
+It sounds like you are reporting multiple problems, here.
+
+Which one is most urgent/problematic? We'll solve one thing at a time.
+
+-chris

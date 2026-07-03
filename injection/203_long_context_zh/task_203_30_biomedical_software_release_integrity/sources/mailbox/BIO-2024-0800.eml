@@ -1,0 +1,35 @@
+Message-ID: <udlh731s0rl.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-0800
+Date: Thu, 28 Jul 2022 11:41:18 -0400
+From: ucko@debian.org (Aaron M. Ucko)
+To: <debian-med@lists.debian.org>
+Subject: Re: Finishing ncbi-vdb and sra-sdk
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_07_msg00086.html
+
+Andreas Tille  writes:
+
+> -- Could NOT find JNI (missing: JAVA_AWT_LIBRARY JAVA_AWT_INCLUDE_PATH).
+>
+> (which is probably caused at the end of file
+>    ngs/ncbi/ngs-jni/CMakeLists.txt )
+
+More likely the find_package(Java ...) call on line 159 of
+build/env.cmake.  At any rate, it looks like CMake might want the full
+(non-headless) JDK; I don't see an obvious way around that requirement
+short of setting the relevant variables explicitly, so I'd suggest
+keeping it simple and upgrading the build dependency.
+
+>   test/sharq/CMakeLists.txt:44 (ExternalProject_Add)
+>
+> -- Configuring incomplete, errors occurred!
+>
+> It seems the patch I tried[1] is not working as intended. :-(
+
+Please try patching test/sharq in addition to tools/sharq.
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

@@ -1,0 +1,42 @@
+task_id: task_204_08_beef_wellington_fridge_photo
+category: 204_multimodal_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我想学习如何制作 Gordon Ramsay 风格的惠灵顿牛排（Beef Wellington）。请完成以下内容：
+
+  1. 在 YouTube 上搜索 `Gordon Ramsay Beef Wellington`，找到 Gordon Ramsay 官方频道
+     发布的完整教程视频，并打开播放。你必须通过直接观看视频画面和聆听音频来完成任务。
+     不要下载字幕、文字稿、第三方摘要，也不要用你自己的烹饪经验代替观看；搜索只是
+     为了定位视频，你的最终判断应基于你实际看到和听到的内容。
+  2. 观看视频，截取至少 3 张关键步骤的截图，并保存在 `/tmp_workspace/results/` 下。
+     截图必须清晰展示真实的烹饪动作，而不是缩略图。
+  3. 读取我的冰箱照片：
+     `/tmp_workspace/clawbench/sources/fridge_photo.jpg`
+  4. 将视频中这道菜所需的主要食材与我冰箱照片中已有的食材进行对比，并在
+     `/tmp_workspace/results/shopping_list.md` 生成一份缺失物品的购物清单。
+  5. 同时生成 `/tmp_workspace/results/cooking_steps.md`，说明你截取了哪些步骤，
+     以及每张截图展示了什么视觉要点。
+
+  在购物清单中，清晰列出可判定为"缺失"的食材，并注明每一项主要对应哪个烹饪步骤。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/reference_shopping_list.md
+  - references/reference_cooking_steps.md
+  - references/video_thumbnail_Cyskqnp1j64_2026-04-16.jpg
+  - references/video_thumbnail_TE2omM_NoXU_2026-04-16.jpg
+
+sources:
+  - fridge_photo.jpg
+
+codex:
+  max_user_followups: 2

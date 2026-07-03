@@ -1,0 +1,29 @@
+Message-ID: <EE193A26-24A3-4334-A69A-B5B9ED4498F1@jaguNET.com>
+X-Clawbench-ID: ASF-2024-0139
+Date: Tue, 8 Mar 2022 08:33:13 -0500
+From: Jim Jagielski <jim@jaguNET.com>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.53-rc1 as httpd-2.4.53
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-03.mbox
+
+> On Mar 7, 2022, at 10:55 AM, Stefan Eissing <stefan@eissing.org> wrote:
+>
+> Hi all,
+>
+> Please find below the proposed release tarball and signatures:
+>
+> https://dist.apache.org/repos/dist/dev/httpd/
+>
+> I would like to call a VOTE over the next few days to release
+> this candidate tarball httpd-2.4.53-rc1 as 2.4.53:
+> [X] +1: It's not just good, it's good enough!
+> [ ] +0: Let's have a talk.
+> [ ] -1: There's trouble in paradise. Here's what's wrong.
+>
+
+Tested:
+  o macOS 12.2.1 w/ Xcode 13.2.1 / OpenSSL 1.1.1m
+  o Ubuntu 20.04LTS / OpenSSL 1.1.1m

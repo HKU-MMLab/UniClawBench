@@ -1,0 +1,155 @@
+{
+  "task_id": "task_101_24_tender_recommendation",
+  "difficulty": "Hard",
+  "schema": "a",
+  "schema_notes": "Chinese bid recommendation with deterministic weighted scorecard",
+  "skills_declared": [
+    "pdf-smart-tool-cn",
+    "tender-finance-local",
+    "business-writing"
+  ],
+  "ground_truth": {
+    "vendor_names": [
+      "Vendor A — 上海华为",
+      "Vendor B — 杭州云启",
+      "Vendor C — 深圳麒麟",
+      "Vendor D — 北京腾云"
+    ],
+    "vendor_count": 4,
+    "required_columns": [
+      "规格符合度",
+      "价格分",
+      "交付分",
+      "风险分",
+      "总分"
+    ],
+    "required_reason_count": 3,
+    "accepted_recommendation_pairs": [
+      [
+        "Vendor D — 北京腾云",
+        "Vendor A — 上海华为"
+      ]
+    ],
+    "price_order_low_to_high": [
+      "Vendor B — 杭州云启",
+      "Vendor C — 深圳麒麟",
+      "Vendor A — 上海华为",
+      "Vendor D — 北京腾云"
+    ],
+    "delivery_order_fast_to_slow": [
+      "Vendor D — 北京腾云",
+      "Vendor A — 上海华为",
+      "Vendor C — 深圳麒麟",
+      "Vendor B — 杭州云启"
+    ],
+    "score_formula": {
+      "price": "25 * min_price / vendor_price",
+      "delivery": "20 * fastest_days / vendor_days",
+      "rounding": "one_decimal"
+    },
+    "scorecard_workbook": {
+      "required_sheet": "Scorecard",
+      "required_columns": [
+        "vendor",
+        "specs fit",
+        "total price",
+        "price score",
+        "delivery days",
+        "delivery score",
+        "risk score",
+        "total",
+        "rank"
+      ],
+      "formula_columns": [
+        "price score",
+        "delivery score",
+        "total"
+      ]
+    },
+    "expected_scorecard": {
+      "Vendor A — 上海华为": {
+        "specs_fit": 32.0,
+        "price_score": 17.3,
+        "delivery_score": 15.0,
+        "risk_score": 17.0,
+        "total": 81.3
+      },
+      "Vendor B — 杭州云启": {
+        "specs_fit": 24.0,
+        "price_score": 25.0,
+        "delivery_score": 10.0,
+        "risk_score": 10.0,
+        "total": 69.0
+      },
+      "Vendor C — 深圳麒麟": {
+        "specs_fit": 28.0,
+        "price_score": 19.1,
+        "delivery_score": 12.0,
+        "risk_score": 13.0,
+        "total": 72.1
+      },
+      "Vendor D — 北京腾云": {
+        "specs_fit": 30.0,
+        "price_score": 15.7,
+        "delivery_score": 20.0,
+        "risk_score": 18.0,
+        "total": 83.7
+      }
+    },
+    "close_gap_points": 2.4,
+    "risk_fact_anchors": {
+      "Vendor A — 上海华为": [
+        "7x24",
+        "3年",
+        "60天"
+      ],
+      "Vendor B — 杭州云启": [
+        "标准",
+        "2年",
+        "90天"
+      ],
+      "Vendor C — 深圳麒麟": [
+        "8x5",
+        "75天"
+      ],
+      "Vendor D — 北京腾云": [
+        "5年",
+        "7x24",
+        "45天"
+      ]
+    },
+    "topic_dimensions": [
+      "price competitiveness analysis (per unit, total, hidden fees)",
+      "delivery timeline & SLA realism",
+      "specs / quality compliance (mandatory vs nice-to-have)",
+      "vendor risk profile (financial / track record / SOC2 / sanctions)",
+      "contract / payment terms flexibility (advance payment, milestone, warranty)"
+    ],
+    "min_dimensions_covered": 5,
+    "min_recommendation_words": 150,
+    "scorecard_formula_strict_required": true,
+    "expected_audit_trail_yaml_per_vendor": {
+      "path": "/tmp_workspace/results/bid_audit_trail.yaml",
+      "required_vendor_count": 4,
+      "vendor_keys": [
+        "Vendor A — 上海华为",
+        "Vendor B — 杭州云启",
+        "Vendor C — 深圳麒麟",
+        "Vendor D — 北京腾云"
+      ],
+      "required_fields": [
+        "bid_id",
+        "extracted_price",
+        "delivery_days",
+        "risk_notes",
+        "source"
+      ],
+      "numeric_fields": [
+        "extracted_price",
+        "delivery_days"
+      ],
+      "strict_match": true,
+      "rationale": "Mandated by tender-finance-local skill workflow step 6; supervisor checks for this artefact as the implicit signal that the skill was actually followed and the bid figures are auditable."
+    }
+  }
+}

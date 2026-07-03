@@ -1,0 +1,30 @@
+Message-ID: <udl5ytkk5hj.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-0321
+Date: Mon, 25 Oct 2021 20:13:44 -0400
+From: ucko@debian.org (Aaron M. Ucko)
+To: Andreas Tille <tille@debian.org>
+Subject: Re: sra-sdk is lacking libngs
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00152.html
+
+Andreas Tille  writes:
+
+> Real life is taking over for me this week - so if you think this is
+> somehow ready please feel free to upload.
+
+It hadn't been quite ready yet, but I got it ready now (complete with a
+quick update to today's point release) and proceeded with an upload.
+
+The reason a portion of the autopkgtest was still failing turned out to
+be that VDB 2.11.0 had dropped support for centrally defined protected
+repositories; I adjusted the test setup to switch to the new --ngc
+approach, using an .ngc file cribbed from upstream's test/prefetch
+directory.
+
+Now I definitely need to get back to my own real life, though. :-)
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

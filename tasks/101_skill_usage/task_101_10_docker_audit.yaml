@@ -1,0 +1,59 @@
+task_id: task_101_10_docker_audit
+category: 101_skill_usage
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I'm about to ship a small Python service to production and I'm genuinely
+  nervous about what's lurking in the container setup. The files all live
+  under /tmp_workspace/clawbench/sources/: Dockerfile, requirements.txt,
+  server.py, plus a local vulnerability feed vuln_advisories.json. Use the
+  Docker skill and the security auditing skill to tear through the deployment packaging
+  and find every single dangerous security risk. Don't miss any, or I'll be
+  in real trouble.
+
+  Base your risk judgements on what the source files actually contain. For
+  dependency CVEs, compare against the entries in vuln_advisories.json
+  rather than guessing from memory, and don't blindly copy in entries from
+  that feed that have nothing to do with this service.
+
+  Once the audit is done, please write the results to
+  /tmp_workspace/results/audit.md. I just need to be able to see, for each
+  risk, which spot in the source files it points at, why it's dangerous, and
+  how to fix it.
+
+  Also draft two fix files I can take straight into a PR:
+    - /tmp_workspace/results/Dockerfile.fixed — a safer Dockerfile that
+      doesn't carry the old unsafe patterns forward.
+    - /tmp_workspace/results/requirements.fixed.txt — pin the direct
+      dependencies to versions that resolve the advisories actually hit by
+      this service. Don't toss in dependencies that aren't needed.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - Dockerfile
+  - requirements.txt
+  - server.py
+  - vuln_advisories.json
+
+skills:
+  - docker
+  - security-auditor
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

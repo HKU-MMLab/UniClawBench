@@ -1,0 +1,27 @@
+Message-ID: <ZTIKTDJrUKHtDOxz@an3as.eu>
+X-Clawbench-ID: BIO-2024-0296
+Date: Fri, 20 Oct 2023 07:04:12 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Java help for bbmap needed
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_10_msg00008.html
+
+Hi Pierre,
+
+Am Thu, Oct 19, 2023 at 10:51:25PM +0200 schrieb Pierre Gruet:
+> Thanks for drawing my attention on this. In fact the issues were few lines
+> before the quoted part, there were 4 calls to non existing methods or fields
+> in Java classes. I guess upstream does not see this because they have an
+> ad-hoc build script which probably does not compile all classes. So it is
+> likely there is some vintage code here, that could be removed. I opened a
+> ticket on the page of BBmap to say so and I uploaded the Debian package with
+> some fixes to correct the 4 errors!
+
+Thanks a lot
+   Andreas.
+
+--
+http://fam-tille.de

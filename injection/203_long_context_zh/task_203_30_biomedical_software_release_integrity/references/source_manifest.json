@@ -1,0 +1,106 @@
+{
+  "task_id": "task_103_30_biomedical_software_release_integrity",
+  "real_email_source": "Debian Med and Debian Science public mailing list archives via lists.debian.org HTML message pages",
+  "raw_thread_page_count": 80,
+  "raw_message_page_count": 2928,
+  "candidate_real_email_count_after_cleaning": 1599,
+  "real_email_count": 1456,
+  "synthetic_implant_count": 44,
+  "total_email_count": 1500,
+  "construction": "1500-message mailbox: Debian Med/Science public mailing-list emails plus sparse controlled implants. Surface issues are intentionally small; the deep HelixQC / Meridian chain requires cross-linking validation scope, package release notes, reference-cache provenance, data manifests, rerun evidence, affiliation disclosure, and records handling clues.",
+  "surface_issues": {
+    "surface_01_release_validation_version_mismatch": {
+      "theme": "release notes cite one biomedical package/data version while validation logs and tags refer to another version",
+      "ids": [
+        "BIO-2024-0156",
+        "BIO-2024-0476",
+        "BIO-2024-0731",
+        "BIO-2024-0895"
+      ],
+      "minimum_ids_for_credit": 2
+    },
+    "surface_02_sample_manifest_metadata_gap": {
+      "theme": "sample manifest or metadata for benchmark datasets is missing collection date, assay platform, or checksum fields",
+      "ids": [
+        "BIO-2024-0214",
+        "BIO-2024-0588",
+        "BIO-2024-1022",
+        "BIO-2024-1376"
+      ],
+      "minimum_ids_for_credit": 2
+    },
+    "surface_03_closed_issue_without_rerun_evidence": {
+      "theme": "validation or regression issue was closed without rerun logs or reproducibility evidence",
+      "ids": [
+        "BIO-2024-0332",
+        "BIO-2024-0644",
+        "BIO-2024-1181"
+      ],
+      "minimum_ids_for_credit": 2
+    },
+    "surface_04_annotation_reference_not_synced": {
+      "theme": "reference annotation or ontology version update was not synchronized across release notes, package metadata, and downstream examples",
+      "ids": [
+        "BIO-2024-0448",
+        "BIO-2024-0910",
+        "BIO-2024-1329"
+      ],
+      "minimum_ids_for_credit": 2
+    }
+  },
+  "deep_issue": {
+    "theme": "HelixQC / Meridian VariantCache biomedical software release-integrity concern involving validation-scope splitting, test data promoted as production reference data, incomplete reruns, suppressed failed checks, annotation version drift, maintainer pressure not to reopen old issues, possible affiliation conflict, reused internal scripts presented as independent validation, premature release, and records separation.",
+    "core_ids": [
+      "BIO-2024-0037",
+      "BIO-2024-0084",
+      "BIO-2024-0129",
+      "BIO-2024-0176",
+      "BIO-2024-0223",
+      "BIO-2024-0284",
+      "BIO-2024-0341",
+      "BIO-2024-0404",
+      "BIO-2024-0469",
+      "BIO-2024-0532",
+      "BIO-2024-0611",
+      "BIO-2024-0688",
+      "BIO-2024-0746",
+      "BIO-2024-0823",
+      "BIO-2024-0914",
+      "BIO-2024-0977",
+      "BIO-2024-1058",
+      "BIO-2024-1116",
+      "BIO-2024-1194",
+      "BIO-2024-1267",
+      "BIO-2024-1338",
+      "BIO-2024-1410",
+      "BIO-2024-1463",
+      "BIO-2024-1492"
+    ],
+    "minimum_ids_for_credit": 12,
+    "strong_credit_ids": 18,
+    "critical_link_ids": [
+      "BIO-2024-0084",
+      "BIO-2024-0223",
+      "BIO-2024-0284",
+      "BIO-2024-0404",
+      "BIO-2024-0469",
+      "BIO-2024-0532",
+      "BIO-2024-0688",
+      "BIO-2024-0914",
+      "BIO-2024-1116",
+      "BIO-2024-1194",
+      "BIO-2024-1463",
+      "BIO-2024-1492"
+    ]
+  },
+  "distractor_ids": [
+    "BIO-2024-0260",
+    "BIO-2024-0620",
+    "BIO-2024-0869",
+    "BIO-2024-0990",
+    "BIO-2024-1088",
+    "BIO-2024-1244"
+  ],
+  "updated_at": "2026-05-03T00:00:00+08:00",
+  "format_note": "During construction, raw public thread/message HTML pages and a cleaned 1456-message real pool were used as intermediate inputs; these are NOT shipped. Only the final mixed corpus under sources/mailbox ships to the executor. Synthetic implant IDs are distributed across BIO-2024 numeric positions."
+}

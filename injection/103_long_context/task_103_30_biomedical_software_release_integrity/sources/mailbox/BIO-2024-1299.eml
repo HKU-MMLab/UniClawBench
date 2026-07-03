@@ -1,0 +1,22 @@
+Message-ID: <Y45zcUbDi88RlT8Y@fusion>
+X-Clawbench-ID: BIO-2024-1299
+Date: Mon, 5 Dec 2022 23:40:49 +0100
+From: Étienne Mollier <emollier@debian.org>
+To: debian-med@lists.debian.org
+Subject: [Advent bug squashing] #989927 also fixed in past itk4 upload.
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_12_msg00056.html
+
+Version: 4.13.3withdata-dfsg2-4
+
+Oh, I just noticed introduction of denoise-build-log.patch also
+fixed #989927.
+
+Have a nice day,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  gpg: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/6, please excuse my verbosity
+   `-    on air: Alan Parsons Project - The Naked Robot

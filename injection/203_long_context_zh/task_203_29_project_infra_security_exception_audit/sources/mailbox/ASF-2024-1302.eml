@@ -1,0 +1,39 @@
+Message-ID: <791e233a-725e-4ab9-7515-db79c41deb82@evermeet.cx>
+X-Clawbench-ID: ASF-2024-1302
+Date: Tue, 17 Jan 2023 22:55:46 -0500
+From: "Helmut K. C. Tessarek" <tessarek@evermeet.cx>
+To: dev@httpd.apache.org
+Subject: sporadic 500 errors with 2.4.55
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-01.mbox
+
+After I have upgraded to 2.4.55, I get internal 500 errors now and then.
+The strange thing is that they do not show up in the error log, but only in
+the access log.
+
+Another weird thing is that they seem random and happen with random files,
+like the favicon.ico
+I don't do any redirects so it's not a rewrite engine bug or misconfiguration.
+
+I am sorry that this bug report is so vague, but I don't have a record in the
+error_log, nor do I actually see the error when browsing to that web server.
+
+I've only noticed this because I get emails when someone encounters a 500 error.
+
+But maybe someone has seen this as well, in which case you have at least the
+info that someone else experiences this also. It has happened about 30 times
+in the last 4 hours. It's intermittent and makes no sense.
+
+Cheers,
+   K. C.
+
+--
+regards Helmut K. C. Tessarek              KeyID 0x172380A011EF4944
+Key fingerprint = 8A55 70C1 BD85 D34E ADBC 386C 1723 80A0 11EF 4944
+
+/*
+    Thou shalt not follow the NULL pointer for chaos and madness
+    await thee at its end.
+*/

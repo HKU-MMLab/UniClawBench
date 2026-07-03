@@ -1,0 +1,68 @@
+Message-ID: <11cc6588-888c-a5db-00c3-ff793e5a0ff1@christopherschultz.net>
+X-Clawbench-ID: ASF-2024-1325
+Date: Fri, 8 Jul 2022 11:45:55 -0400
+From: Christopher Schultz <chris@christopherschultz.net>
+To: dev@httpd.apache.org
+Subject: Re: mod-proxy with sticky JSESSIONID and SiteMinder.
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-07.mbox
+
+Jon,
+
+On 7/8/22 11:30, jonmcalexander.wellsfargo.com via dev wrote:
+> Hi Christopher, nice to see a familiar name. :-)
+>
+> Currently we have it down to a SSL Handshake Failure between the Tomcat server and the SiteMinder server.
+>
+> com.wellsfargo.mortgage.feature.wff.authorization.login.mvc.UserLoginChannelSecureHelper 08 Jul 2022 08:06:39,505 ERROR [https-jsse-nio-8305-exec-6]: DEVT: ilonline: Unable to get Channel Secure Session: Unable to perform siteminder handshake
+> java.lang.Exception: Unable to perform siteminder handshake
+
+Any more detail, other than a stack trace? Did you check your certs?
+
+This looks like the Tomcat side of the connection, since it's a Java
+stack trace. Is this what happens when mod_proxy connects to Tomcat, or
+is this your application or some other component reaching-out from
+Tomcat to elsewhere? I ask because Tomcat is unlikely to emit an error
+message saying "Unable to perform siteminder handshake".
+
+Another dumb question: I've been assuming we are talking about:
+
+client (e.g. browser) -> mod_proxy -> Tomcat -> application
+
+This is because you said "this was working with mod_jk" and mod_jk
+doesn't do forward-proxying, only reverse-proxying.
+
+But the error message suggests that this has nothing to do with the
+connection from httpd / mod_proxy -> Tomcat.
+
+-chris
+
+>> -----Original Message-----
+>> From: Christopher Schultz <chris@christopherschultz.net>
+>> Sent: Friday, July 8, 2022 10:03 AM
+>> To: dev@httpd.apache.org
+>> Subject: Re: mod-proxy with sticky JSESSIONID and SiteMinder.
+>>
+>> Jon,
+>>
+>> On 7/7/22 16:56, jonmcalexander.wellsfargo.com via dev wrote:
+>>> Seem to have an issue with mod-proxy and making the JSESSIONID and the
+>>> SMSESSION cookie sticky. How can this be done? This setup was working
+>>> with mod-jk, but when moving to mod-proxy over https it’s not working.
+>>> We are configured to use mutual authentication between apache and
+>>> tomcat (for proxy only), but with the certificateVerification set to
+>>> required in Tomcat, we are getting a
+>>> java.base/sun.security.ssl.Alert.createSSLException and with setting
+>>> it to optional, we are getting a javax.net.ssl.SSLHandshakeException:
+>>> Received fatal alert: bad_certificate error (extensive).
+>>
+>> Did you double-check the client and server certs to make sure they haven't
+>> expired or anything silly like that?
+>>
+>> It sounds like you are reporting multiple problems, here.
+>>
+>> Which one is most urgent/problematic? We'll solve one thing at a time.
+>>
+>> -chris

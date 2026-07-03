@@ -1,0 +1,75 @@
+task_id: task_101_08_receipts_reconcile
+category: 101_skill_usage
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  Monthly expense reconciliation time — I've got three scanned German
+  supermarket receipts sitting in /tmp_workspace/clawbench/sources/receipts/,
+  one each from dm, Kaisers, and Penny. Grab the text off them with the
+  image OCR skill, then use the Excel generation skill to roll everything into an
+  Excel expense sheet so I can match it against my bank statement.
+
+  Pull every line item from all three receipts and write them into
+  /tmp_workspace/results/reconcile.xlsx. The first worksheet should have one
+  row per item, and each row should clearly say which store it came from, the
+  receipt date, which scan image filename it ties to, what the item itself is,
+  how many were bought, the unit price, the EUR subtotal for that line, plus
+  one column noting whether this row needs a manual re-check. The second
+  worksheet should be a per-store summary comparison, putting the total I add
+  up from the line items next to the total printed on the receipt, so I can
+  see at a glance whether anything fails to match.
+
+  In the summary sheet, the line-item total and the difference columns must
+  use formulas that reference the detail table in the first sheet, not
+  hardcoded number constants. Money columns must use real numeric or currency
+  format, not plain text strings. Please also write
+  /tmp_workspace/results/review_flags.csv, one row per receipt, containing the
+  source image filename, the number of items, the printed receipt total, the
+  total I add up myself, the delta between the two, and a brief one-line
+  review note.
+
+  For every receipt I want a few angles of information presented together in
+  the expense file. First, line-by-line detail spelling out each item row with
+  its quantity and unit price. Second, member discounts or in-store promotions
+  flagged separately so I can see immediately which line went through a deal.
+  Third, the tax breakdown laid out by the standard German receipt VAT
+  brackets. Fourth, note down whether this receipt ended up paid in cash, by
+  card, or some other way. Fifth, a one-line reconciliation verdict checking
+  whether the receipt total and my computed total agree, and if they don't,
+  write out where the gap is and whether it looks like rounding.
+
+  You can put these five angles in an extra notes sheet inside the workbook,
+  or write them out separately at /tmp_workspace/results/reconcile_notes.md.
+  The goal is that two weeks from now when I reopen this file, I can
+  immediately see what I bought, how much I spent, which lines got a
+  discount, how the tax was computed, and whether each receipt itself
+  reconciles.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - receipts/receipt_dm_2014-12-11.jpg
+  - receipts/receipt_kaisers_2015-08-31.jpg
+  - receipts/receipt_penny_2014-10-18.jpg
+
+skills:
+  - image-ocr
+  - xlsx-cn
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

@@ -1,0 +1,12 @@
+Message-ID: <bio-2024-0332@biodebian.example>
+X-Clawbench-ID: BIO-2024-0332
+Date: Tue, 09 Jan 2024 14:49:00 +0000
+From: Dana Holt <dholt@biodebian.example>
+To: debian-med@lists.debian.org
+Subject: closing regression 184
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: synthetic Debian Med-style biomedical release-integrity implant
+
+Regression 184 was closed after the parser patch, but I cannot find rerun logs for the three failing BAM fixtures. Was the rerun done locally or only inferred from the unit-test pass?

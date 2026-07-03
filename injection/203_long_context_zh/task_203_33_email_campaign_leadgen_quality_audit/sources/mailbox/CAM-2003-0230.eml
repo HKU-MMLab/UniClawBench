@@ -1,0 +1,308 @@
+Message-ID: <Pine.LNX.4.43.0208061003200.9767-100000@mail.securityfocus.com>
+X-Clawbench-ID: CAM-2003-0230
+Date: Tue, 06 Aug 2002 10:03:52 -0600
+From: John Boletta <jboletta@securityfocus.com>
+To: linux-secnews@securityfocus.com
+Subject: SecurityFocus Linux Newsletter #92
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01345.c40d5798193a4a060ec9f3d2321e37e4
+
+SecurityFocus Linux Newsletter #92
+----------------------------------
+
+This newsletter is sponsored by: SecurityFocus DeepSight Threat Management
+System
+
+>>From June 24th - August 31st, 2002, SecurityFocus announces a FREE
+two-week trial of the DeepSight Threat Management System: the only early
+warning system providing customizable and comprehensive early warning of
+cyber attacks and bulletproof countermeasures to prevent attacks before
+they hit your network.
+
+With the DeepSight Threat Management System, you can focus on proactively
+deploying prioritized and specific patches to protect your systems from
+attacks, rather than reactively searching dozens of Web sites or hundreds
+of emails frantically trying to gather information on the attack and how
+to recover from it.
+
+Sign up today!
+http://www.securityfocus.com/corporate/products/promo/tmstrial-lx.shtml
+-------------------------------------------------------------------------------
+
+I. FRONT AND CENTER
+     1. Advanced Log Processing
+     2. Assessing Internet Security Risk, Part Three: an Internet...
+     3. Copyright, Security, and the Hollywood Hacking Bill
+     4. SecurityFocus DPP Program
+II. LINUX VULNERABILITY SUMMARY
+     1. OpenSSL SSLv2 Malformed Client Key Remote Buffer Overflow...
+     2. Abyss Web Server HTTP GET Request Directory Contents Disclosure...
+     3. DotProject User Cookie Authentication Bypass Vulnerability
+     4. OpenSSL SSLv3 Session ID Buffer Overflow Vulnerability
+     5. phpBB2 Gender Mod Remote SQL Injection Vulnerability
+     6. ShoutBox Form Field HTML Injection Vulnerability
+     7. Sympoll File Disclosure Vulnerability
+     8. OpenSSL ASN.1 Parsing Error Denial Of Service Vulnerability
+     9. William Deich Super SysLog Format String Vulnerability
+     10. Frederic Tyndiuk Eupload Plain Text Password Storage...
+     11. Util-linux File Locking Race Condition Vulnerability
+     12. OpenSSL Kerberos Enabled SSLv3 Master Key Exchange Buffer...
+     13. OpenSSL ASCII Representation Of Integers Buffer Overflow...
+     14. ParaChat Phantom User Denial Of Service Vulnerability
+     15. OpenSSH Trojan Horse Vulnerability
+     16. Bharat Mediratta Gallery Remote File Include Vulnerability
+     17. John G. Myers MUnpack Malformed MIME Encoded Message Buffer...
+     18. Dispair Remote Command Execution Vulnerability
+     19. Mailreader Session Hijacking Vulnerability
+     20. John G. Myers MPack/MUnpack Malformed Filename Vulnerability
+     21. Fake Identd Client Query Remote Buffer Overflow Vulnerability
+III. LINUX FOCUS LIST SUMMARY
+     1. LDAP Auth? (Thread)
+     2. LDAP auth (Thread)
+     3. Administrivia: Gone Fishin' (Thread)
+IV. NEW PRODUCTS FOR LINUX PLATFORMS
+     1. Gateway Guardian
+     2. PakSecured Linux
+     3. Progressive Systems VPN
+V. NEW TOOLS FOR LINUX PLATFORMS
+     1. Astaro Security Linux (Stable 3.x) v3.202
+     2. FCheck 2.07.59
+     3. The @stake Sleuth Kit (TASK) v1.50
+VI. SPONSORSHIP INFORMATION
+
+
+I. FRONT AND CENTER
+-------------------
+1. Advanced Log Processing
+By Anton Chuvakin
+
+Reading logs is a crucial part of incident detection and response.
+However, it is easy for security personnel to be overwhelmed by the sheer
+volume of logs. This article will offer a brief overview of log analysis,
+particularly: log transmission, log collection and log analysis. It will
+also briefly touch upon log storing and archival.
+
+http://online.securityfocus.com/infocus/1613
+
+2.  Assessing Internet Security Risk, Part Three: an Internet Assessment
+Methodology Continued
+by Charl van der Walt
+
+This article is the third in a series that is designed to help readers to
+assess the risk that their Internet-connected systems are exposed to. In
+the first installment, we established the reasons for doing a technical
+risk assessment. In the second part, we started to discuss the methodology
+that we follow in performing this kind of assessment. In this installment,
+we will continue to discuss methodology, particularly visibility and
+vulnerability scanning.
+
+http://online.securityfocus.com/infocus/1612
+
+3. Copyright, Security, and the Hollywood Hacking Bill
+By Richard Forno
+
+Proposed copyright enforcement legislation may allow the powerful
+entertainment lobby to circumvent fundamental constitutional protections,
+and may create chaos on the Internet.
+
+http://online.securityfocus.com/columnists/99
+
+4. SecurityFocus DPP Program
+
+Attention Non-profit Organizations and Universities!!
+Sign-up now for preferred pricing on the only global early-warning system
+for cyber attacks - SecurityFocus DeepSight Threat Management System.
+
+Click here for more information:
+http://www.securityfocus.com/corporate/products/dpsection.shtml
+
+
+II. BUGTRAQ SUMMARY
+-------------------
+1. OpenSSL SSLv2 Malformed Client Key Remote Buffer Overflow Vulnerability
+BugTraq ID: 5363
+Remote: Yes
+Date Published: Jul 30 2002 12:00AM
+Relevant URL:
+http://www.securityfocus.com/bid/5363
+Summary:
+
+OpenSSL is an open source implementation of the SSL protocol. It is used
+by a number of other projects, including but not restricted to Apache,
+Sendmail, Bind, etc.. It is commonly found on Linux and Unix based
+systems.
+
+A buffer overflow vulnerability has been reported in some versions of
+OpenSSL.
+
+When initiating an OpenSSL session, some information is shared between the
+client and the server, including key data. The reported vulnerability lies
+in the handling of the client key value during the negotiation of the
+SSLv2 protocol.
+
+A malicious client may exploit this vulnerability by transmitting a
+malformed key to the vulnerable server. Careful exploitation may result in
+execution of arbitrary code as the server process, and the attacker
+gaining local access to the vulnerable system. More primitive attacks may
+result in the server process crashing, possibly producing a denial of
+service condition.
+
+The consequences of exploitation may vary with the nature of the
+application using OpenSSL.
+
+Oracle reports that CorporateTime Outlook Connector is only vulnerable
+under Microsoft Windows 98, NT, 2K, and XP.
+
+** This vulnerability was originally part of BID 5353, Multiple OpenSSL
+Buffer Overflow Vulnerabilities. It has now been reissued as a separate
+vulnerability.
+
+2. Abyss Web Server HTTP GET Request Directory Contents Disclosure Vulnerability
+BugTraq ID: 5345
+Remote: Yes
+Date Published: Jul 29 2002 12:00AM
+Relevant URL:
+http://www.securityfocus.com/bid/5345
+Summary:
+
+Abyss Web Server is a freely available personal web server. It is
+maintained by Aprelium Technologies and runs on Microsoft Windows
+operating systems, as well as Linux.
+
+A vulnerability has been reported for Abyss Web Server 1.0.3 running on a
+Microsoft Windows platform. It is possible for an attacker to make a
+request such that the contents of the specified directory are revealed.
+
+The vulnerability occurs due to the manner in which excessive '/'
+characters are handled in web requests. An attacker making a GET request
+followed by 256 '/' characters will cause Abyss Web Server to return an
+error page containing the directory listing of the specified directory.
+
+An attacker may be able to use this information to launch further,
+potentially damaging attacks, against a vulnerable system.
+
+3. DotProject User Cookie Authentication Bypass Vulnerability
+BugTraq ID: 5347
+Remote: Yes
+Date Published: Jul 29 2002 12:00AM
+Relevant URL:
+http://www.securityfocus.com/bid/5347
+Summary:
+
+dotproject is web-based project management software, written in PHP.  It
+is designed to run on Unix and Linux variants.
+
+dotproject is prone to an issue which may allow remote attackers to bypass
+authentication and gain administrative access to the software.
+
+This may be accomplished by submitting a maliciously crafted 'user_cookie'
+value either manually or via manipulation of URI parameters.  For example,
+the attacker may manually craft a cookie with a 'user_cookie' value of 1
+and submit it to the project management system.  An attacker may also
+submit a malicious web request with the 'user_cookie' URI parameter set to
+1.  In both instances, the attacker will gain administrative access to the
+project management system.
+
+This problem is due to the software relying on the 'user_cookie' value to
+authenticate the user.
+
+4. OpenSSL SSLv3 Session ID Buffer Overflow Vulnerability
+BugTraq ID: 5362
+Remote: Yes
+Date Published: Jul 30 2002 12:00AM
+Relevant URL:
+http://www.securityfocus.com/bid/5362
+Summary:
+
+OpenSSL is an open source implementation of the SSL protocol. It is used
+by a number of other projects, including but not restricted to Apache,
+Sendmail, Bind, etc.. It is commonly found on Linux and Unix based
+systems.
+
+A vulnerability has been reported for OpenSSL. The vulnerability affects
+SSLv3 session IDs.
+
+When initiating contact with SSLv3 servers, clients and servers alike
+exchange information. Session information is stored in a session key with
+a unique session ID.
+
+Reportedly when a an oversized SSL version 3 session ID is supplied to a
+client from a malicious server, it is possible to overflow a buffer on the
+remote system. This could result in key memory areas on the vulnerable,
+remote system being overwritten, including stack frame data.
+
+An attacker may be able to take advantage of this vulnerability to execute
+malicious code on a vulnerable SSLv3 client machine.
+
+Oracle reports that CorporateTime Outlook Connector is only vulnerable
+under Microsoft Windows 98, NT, 2K, and XP.
+
+** This vulnerability was originally part of BID 5353, Multiple OpenSSL
+Buffer Overflow Vulnerabilities. It has now been reissued as a separate
+vulnerability.
+
+5. phpBB2 Gender Mod Remote SQL Injection Vulnerability
+BugTraq ID: 5342
+Remote: Yes
+Date Published: Jul 29 2002 12:00AM
+Relevant URL:
+http://www.securityfocus.com/bid/5342
+Summary:
+
+phpBB2 is an open-source web forum application that is written in PHP and
+backended by a number of database products. It will run on most Unix and
+Linux variants, as well as Microsoft Windows operating systems.
+
+Gender Mod is a modification for phpBB2 which allows the association of a
+gender with a given user profile. A SQL injection vulnerability has been
+reported in this mod.
+
+A malicious user may modify the specified value for 'gender' when updating
+their profile. It is possible to include additional SQL statements in this
+string, and subvert the SQL statement used to update the user profile.
+
+It has been reported possible to gain administrative access to the phpBB2
+site through exploitation of this issue. Other attacks may be possible,
+including the ability to view sensitive database information or to modify
+additional information stored in the database.
+
+6. ShoutBox Form Field HTML Injection Vulnerability
+BugTraq ID: 5354
+Remote: Yes
+Date Published: Jul 29 2002 12:00AM
+Relevant URL:
+http://www.securityfocus.com/bid/5354
+Summary:
+
+shoutBOX is web-based user feedback software.  It is written in PHP and
+runs on Unix and Linux variants as well as Microsoft Windows operating
+systems.
+
+ShoutBox does not sufficiently sanitize HTML tags from input supplied via
+form fields.  In particular, the user website URL field of the feedback
+form is not sanitized of HTML tags.
+
+Attackers may exploit this lack of input validation to inject arbitrary
+HTML and script code into pages that are generated by the script.  This
+may result in execution of attacker-supplied code in the web client of a
+user who visits such a page.  HTML and script code will be executed in the
+security context of the site hosting the software.
+
+This condition may be exploited to hijack web content or potentially steal
+cookie-based authentication credentials.
+
+7. Sympoll File Disclosure Vulnerability
+BugTraq ID: 5360
+Remote: Yes
+Date Published: Jul 30 2002 12:00AM
+Relevant URL:
+http://www.securityfocus.com/bid/5360
+Summary:
+
+Sympoll is web-based voting booth software.  It is implemented in PHP and
+will run on most Unix and Linux variants as well as Microsoft Windows
+operating systems.
+
+Sympoll is prone to an issue which may allow remote attacker

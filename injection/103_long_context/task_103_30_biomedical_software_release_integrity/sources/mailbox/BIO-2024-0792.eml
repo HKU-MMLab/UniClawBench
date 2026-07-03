@@ -1,0 +1,63 @@
+Message-ID: <Y27nde5KsrSxE/zN@hermes.hilbert.loc>
+X-Clawbench-ID: BIO-2024-0792
+Date: Sat, 12 Nov 2022 01:23:17 +0100
+From: Karsten Hilbert <Karsten.Hilbert@gmx.net>
+To: Andreas Tille <andreas@fam-tille.de>
+Subject: Re: Command line switches for aeskulap
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_11_msg00027.html
+
+Am Fri, Nov 11, 2022 at 09:57:36PM +0100 schrieb Andreas Tille:
+
+> Am Fri, Nov 11, 2022 at 07:39:53AM -0800 schrieb L Peter Deutsch:
+> > Dear M. Pipelka and M. Tille,
+> >
+> > I found your names and e-mail addresses on the aeskulap man page.
+> >
+> > A hospital has provided us with a CD of CT scans in DICOM format that are
+> > essential for my husband's surgery.  The surgeon's staff has been unable to
+> > view them; convert (ImageMagick), dcm2pnm, and dcmj2pnm all produce images
+> > that are gray with only tiny shade variations.  aeskulap produces beautiful
+> > clear images, but the surgeon's office does not run Linux and cannot use
+> > aeskulap.
+> >
+> > I have been unable to find any documentation for aeskulap other than a very
+> > short man page.  I could have sworn I saw a man page that gave instructions
+> > for a command line switch that caused aeskulap to write an image file in
+> > some more usable format (PNG, PDF, ...), but I cannot find this page
+> > anywhere now.  Does such documentation exist, and if so, where?
+
+As fas as I remember there were not really any switches.
+
+Discussion was on adding DICOMDIR support to the command line
+somehow.
+
+Have you tried importing the images into the Orthanc DICOM
+server and re-retrieving images from that as PNG ?
+
+	www.orthanc-server.com
+
+There's a Debian package available.
+
+Retrieval can be done with some simple Python.
+
+If you get the images into that, and if you can display them
+OK with the integrated browser based viewer, I can try to
+help out with some Python code. For starters on that, go
+here:
+
+	https://github.com/ncqgm/gnumed/blob/master/gnumed/gnumed/client/business/gmDICOM.py
+
+Bast,
+Karsten
+
+
+> > 					L Peter Deutsch
+> > 					(original author of Ghostscript)
+
+Thanks.
+
+--
+GPG  40BE 5B0E C98E 1713 AFA6  5BC0 3BEA AC80 7D4F C89B

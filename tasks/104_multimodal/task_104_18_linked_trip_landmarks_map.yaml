@@ -1,0 +1,42 @@
+task_id: task_104_18_linked_trip_landmarks_map
+category: 104_multimodal
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  Please open this YouTube video:
+  https://www.youtube.com/watch?v=ndAJTy8X3eU
+
+  Based on the travel video that this link currently points to, complete a "landmark order map" task.
+  You must watch the video directly and determine the landmark order from the sightseeing sequence shown on screen. Do not download subtitles first or rely on
+  travel guide pages; both the map and the order must come from the video.
+
+  Requirements:
+  1. Extract at least 5 landmarks / attractions that clearly appear in the video, and record their names and approximate visit order.
+  2. You must find the corresponding location for each identifiable landmark and use Python to generate an interactive HTML map;
+     if any landmark cannot be confirmed, explain the reason separately in the report.
+     - Mark each landmark with a marker
+     - Connect them with lines in visit order
+  3. Generate the following in `/tmp_workspace/results/`:
+     - `linked_trip_map.html`
+     - `landmarks_order.csv`
+     - `landmarks_notes.md`
+
+  `landmarks_order.csv` must contain at least:
+  `order,landmark_name,location_text,lat,lng`
+
+  `landmarks_notes.md` must briefly explain how you identified these landmarks and their order from the video frames;
+  each confirmed landmark should include per-row video evidence, such as an approximate timestamp, screenshot/frame description, on-screen text,
+  or identifiable visual features.
+
+references:
+  - references/eval_rule.md
+
+codex:
+  max_user_followups: 2

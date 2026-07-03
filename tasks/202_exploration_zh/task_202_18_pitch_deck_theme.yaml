@@ -1,0 +1,60 @@
+task_id: task_202_18_pitch_deck_theme
+category: 202_exploration_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我正在用 reveal.js 为一家气候科技初创公司制作一份面向投资人的 pitch deck，
+  需要挑选一个主题。它应该看起来暗色且专业（不要 light/学术风格），在房间里
+  投影时要高度易读，而且它的强调色应当与我们的绿色品牌相符（目标强调色
+  大约是 #2EAA78）。
+
+  候选主题以它们真实的 reveal.js 主题 CSS 形式离线提供，位于：
+
+      /tmp_workspace/clawbench/sources/theme_css/
+
+  清单和品牌目标见 `/tmp_workspace/clawbench/sources/candidates.json`。每个
+  主题以 CSS 自定义属性的形式暴露其颜色（`--r-background-color`、
+  `--r-main-color`、`--r-heading-color`、`--r-link-color`）。请客观评估这些
+  主题，方法是解析这些值，并对每个主题计算：
+
+  - HARD 约束（必须全部通过）：
+    1. 暗色背景（背景亮度 < 0.2）。
+    2. 正文文本相对背景的对比度 >= 7.0。
+    3. 标题相对背景的对比度 >= 7.0。
+    4. 链接/强调色相对背景的对比度 >= 4.5。
+
+  - SOFT 偏好（在通过 hard 约束者之间打破平局）：主题的强调/链接色与品牌
+    目标 #2EAA78 之间的色差（deltaE）更小者优先，其次是最小对比度更高者。
+
+  请恰好挑选一个主题，并用计算出的数字来论证。注意：对比度全场最高的那个
+  主题实际上是一个 light 主题（不适合这个品牌的外观），而有些暗色主题的
+  强调色与绿色品牌相去甚远。
+
+  请保存：
+  - `/tmp_workspace/results/deck_choice.json`：你的选择（`selected_id` + 指标）、
+    通过所有 hard 约束的暗色主题，以及打破平局的理由（品牌契合度 + 对比度）。
+  - `/tmp_workspace/results/deck_evaluation.json`：每个主题的计算指标
+    （是否暗色、文本/标题/强调色对比度、强调色到品牌的 deltaE），附 pass/fail
+    和所违反的约束名称。
+  - `/tmp_workspace/results/deck_method.json`：你是如何解析 CSS 变量并计算
+    对比度 / deltaE 的（可复现）。
+
+  这是完全离线的——不要从网络获取任何内容。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/reference_analysis.py
+sources:
+  - theme_css/
+  - candidates.json
+
+codex:
+  max_user_followups: 2

@@ -1,0 +1,62 @@
+Message-ID: <CABD8fLUqvUEywHZRbX2+XfKaop=EAfkNy-D8U6wNWA5oZjYpdA@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0128
+Date: Thu, 4 May 2023 19:37:08 -0500
+From: Greg Stein <gstein@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: ci vs PR approvals? (was: [apache/httpd] Fix a possible NULL  pointer dereference in hook_uri2file (PR #355))
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-05.mbox
+
+On Tue, Apr 25, 2023 at 1:45 AM Ruediger Pluem <rpluem@apache.org> wrote:
+>...
+
+> 2. Switching from Subversion to Git is mostly an emotional problem for me.
+> We have some closer ties to Subversion by some
+>    overlaps in the community and via mod_dav_svn we kind of partially eat
+> our very own dogfood here by using Subversion.
+>    We wouldn't do that any longer with Git. Plus it would switch another
+> of our development tools from an Apache license to GPL.
+>    Apart from technical aspects that this change would create we should
+> check if all of the current active committers are fine
+>    using Github. While people could use Gitbox and thus avoid Github when
+> we use Git I would like us to leverage the features of
+>    Github when we would do this switch and I think this cannot be done if
+> active committers would have issues with Github.
+>
+
+Today 0% of httpd developers can use those features of GitHub. Switching
+allows (say:) 90% of our developers, and potentially some downstream
+developers and users who are familiar with "how to work with upstream code
+providers, who use GitHub".
+
+Stick with 0%, or go with "more than 0%" ?
+
+As noted elsewhere, the GitHub Subversion support has been *sunsetted* and
+will go away. That should be kept in mind. People will not be able to stick
+to their svn client, whether readonly or read/write.
+
+JoeS notes elsewhere that the git support provided by Infra is
+strongly-linked to GitHub. From the Foundation's standpoint, the amount of
+utility is provided is vastly higher than any business risk associated with
+GitHub going dark or pulling their support for our Foundation. We have all
+our data, all the provenance, and everything we need, should that day ever
+arise. But it should not concern anybody in the community to create a
+reliance/dependency upon GitHub.
+
+Down-thread, Giovanni asks about security patch handling. We can continue
+to use repos/private/pmc/httpd/ for that. That area will not go away. If
+people want to go "all git", then Infra can provide projects with a single,
+private repository that would function similarly.
+
+IMO, I definitely think svn is a superior version control system to git. It
+is much more approachable and easy to use, compared to git. I helped to
+build svn, yet I use git daily; this isn't knee-jerk svn partisanship; svn
+is simply better/easier. But *GitHub* is a fabulous tool. I will take the
+inferior VCS in order to access the GitHub feature set. It is unfortunate
+that such a site never got built for svn, but it is what it is. GitHub >
+svn > git.
+
+Cheers,
+-g

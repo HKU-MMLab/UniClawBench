@@ -1,0 +1,49 @@
+Message-ID: <CAKQ1sVOb6CvafMBRmGpLr3Oyb8K2NAQnD2wQz7hz96hXUz0GrQ@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0289
+Date: Wed, 12 Apr 2023 14:02:04 +0200
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: ci vs PR approvals? (was: [apache/httpd] Fix a possible NULL  pointer dereference in hook_uri2file (PR #355))
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-04.mbox
+
+On Wed, Apr 12, 2023 at 1:31 PM Eric Covener <covener@gmail.com> wrote:
+>
+> On Wed, Apr 12, 2023 at 6:36 AM Yann Ylavic <ylavic.dev@gmail.com> wrote:
+> >
+> > On Wed, Apr 12, 2023 at 12:26 PM Yann Ylavic <ylavic.dev@gmail.com> wrote:
+> > >
+> > > On Wed, Apr 12, 2023 at 12:18 PM ylavic <notifications@github.com> wrote:
+> > > >
+> > > > @ylavic approved this pull request.
+> > > >
+> > > > Three approvals to get ci started?
+> > >
+> > > Nope.. It seems that gh actions don't run for PRs whatever we do.
+> > > The docs[1] say that there should be an "Approve and run" button near
+> > > the "workflow awaiting approval" text, but it's not the case for httpd
+> > > mirror, while approving the whole PR looks inefficient..
+> >
+> > We (PMC/committers) once had the right to close any PRs, but that
+> > seems to not be the case anymore either.
+> > Something changed since
+> > https://lists.apache.org/thread/g7bb70ymlmkzjlx1rpvq46dwz54qcpdb
+> > probably.
+> >
+> > >
+> > > Any more ideas? Help from infra needed?
+> > >
+> > > Regards;
+> > > Yann.
+> > >
+> > > [1] https://docs.github.com/en/actions/managing-workflow-runs/approving-workflow-runs-from-public-forks
+>
+>
+> We are chatting with Daniel about it on ASF slack.
+
+Ah ok, I created https://issues.apache.org/jira/browse/INFRA-24457 FWIW..
+
+Regards;
+Yann.

@@ -1,0 +1,196 @@
+Message-ID: <ZJ1Brjnd6oBQtkgC@an3as.eu>
+X-Clawbench-ID: BIO-2024-0036
+Date: Thu, 29 Jun 2023 10:32:46 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Re: Request for Sponsorship: VeryFastTree - Parallelized and Optimized Version of FastTree
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_06_msg00036.html
+
+Hi,
+
+for some reason I do not know Cesar's mail did not come through to the
+list.  I'm doing full quotes in my response.  Unfortunately the quoting
+is badly formatted and I might have not fixed them all manually.
+
+> Hi Andreas,
+> I'm forwarding this email to you because I noticed that it's not appearing on debian-med@lists.debian.org.> https://lists.debian.org/debian-med/2023/06/> Am I doing something wrong?
+> Best regards,> César
+>
+>
+> De:>  PIÑEIRO POMAR CESAR ALFREDO
+> Enviado:>  miércoles, 28 de junio de 2023 12:42
+> Para:>  debian-med@lists.debian.org
+> Asunto:>  Re: Request for Sponsorship: VeryFastTree - Parallelized and Optimized Version of FastTree
+> Hi Andreas,
+> > These tags are no problem at all.  The only problem I see is that you
+> > did not tagged the actual target of your packaging version 4.0.  I've
+> > created a watch file which would fetch this version if it would be
+> > tagged but it is missing.  Please do so on Github.
+>
+> I created the tag and the release. I was waiting for some details that
+> I have already added.
+
+
+> > I'd volunteer to do so once I can download a tarball from Github which
+> > will be possible once the version is tagged.
+>
+> Thanks.
+
+> > Definitely for only release.  While there is a packaging workflow which
+> > works with cloning Github this is not the usual way we deal with
+> > packages inside the Debian Med team.  This does not mean you could not
+> > do so but I can not give any advise and you will create trouble for your
+> > sponsor who always needs to remember how that workflow was working.  We
+> > have established a pretty easy way to upgrade packages.  It is the
+> > package `routine-update` and you just need to call the script in that
+> > package which will fetch new upstream tarballs, injects it into Git and
+> > builds the package after adjusting to latest packaging standards.
+> >
+> > Thus I would strongly recommend to run this script.  I would even
+> > demonstarte that script - however, first I need a version 4.0 tarball.
+>
+> If I understood correctly, I just need to worry about updating GitHub and
+> then use routine-update to update in Salsa when a release needs to be made.
+> In fact, today I made a couple of changes to the README and the
+> dependencies on GitHub , so now I can see what the update would look like.
+
+OK.
+
+> > BTW, I so no real need to provide the manpage inside the debian/ dir.
+> > It might be useful for other distributions as well.
+>
+> I stored the manpage inside the Debian folder because that's what the
+> packaging guide instructed. How should I store it to make use of it in
+> other distributions?
+
+Just somewhere else than inside the debian/ dir which is for Debian
+packaging only.  If the Debian maintainer creates a manpage that belongs
+to debian/ (and should be forwarded upstream to enable inclusion inside
+the main tarball / upstream code).  You can put it into your main
+directory in some dir man/, doc/ or only_wimps_are_reading_docs/ -
+whatever you decide.  Its your upstream project.  You just need to point
+debian/manpages to that location to install it into the Debian package.
+
+Favourably your CMakeLists.txt file will install this manpage at the
+correct place which means that you can even drop debian/manpages.
+
+> > I noticed that you followed the advise of Thorsten Alteholz to add the
+> > copyright statements for the included third party libraries.  That was
+> > probably quite some work but its only the second best way to deal with
+> > these.  In Debian you should try really hard to link against the
+> > Debian packaged versions of these libraries.  At a first look all these
+> > are available.  The development packages of the libraries should be
+> > added as Build-Depends and it should be ensured that these are linked.
+> > The best way to ensure this is to remove the code copies from the
+> > source tarball.  You can do so by adding them inside a
+> >
+> >    Files-Excluded:
+> >
+> > field in debian/copyright.  However, looking at the libs I really
+> > wonder whether you should simply remove boost*, bzip2 and zlib in any
+> > case.  These libs are existing on any known Linux distribution - there
+> > is no point in carrying around those code copies (since you always
+> > need to expect that there might be hidden security issues which you
+> > can not maintain on your own).  But that's up to you - the Debian
+> > source tarball Files-Excluded procedure can easily approach this.
+>
+> I have added code to search for the Boost libraries on the system
+> instead of using the ones stored in the "lib" directory. With this
+> change, the project now uses Boost*, Bzip2, and Zlib.
+
+Good.  See the Files-Excluded paragraph in d/copyright which I added to
+provide you with some working example.  I also removed the according
+paragraphs in d/copyright which do not make sense any more once the
+source code is removed.
+
+BTW, to get the package finally built I had to do some changes in the
+packaging and finally also inside your CMakeLists.txt file which I did
+in a quilt patch[1].  This patch is a bit rude and you probably want to
+solve this upstream inside a conditional statement.  I simply intended
+to do this rather quickly and leave the final decision to you.
+
+> The other
+> libraries are minor and it's more complicated to add them:
+>
+> * bxzstr: It's a small library and not available in Debian.
+
+Fine for the moment.
+
+> * mman-win32: It is ignored because it is only for Windows.
+
+So you should leave this for your upstream code but for the Debian
+packaging we can / should drop it.  Droping Windows only code makes
+perfectly sense in cases when the upstream source tarball needs to be
+stripped anyway.  It does not consume space and bandwidth on Debian
+servers and does not create any need for mentioning it in d/copyright
+for the maintainer.  (See Files-Excluded)
+
+> * robin-map and xxhash: They are available in Debian, but
+>   they are not compatible. For example, in the case of xxhash,
+>   they have updated the hash methods, and it will cause issues.
+
+That's an interesting thing to discuss
+
+I checked the Debian source of robin-map which has the same Copyright
+date as yours but there are quite some differences inside the files.
+That's a bit confusing to me.  I would have a way better feeling if the
+Debian packaged version would work without changes.  If you have own
+patches applied please make sure these are documented - at best inside
+the issue tracker of upstream to let them know the issues you have.
+
+In libs/xxhash/include/xxh64.hpp I read
+  Copyright (c) 2015 Daniel Kirchner
+which is different from what the LICENSE statement says and ftpmaster
+will definitely stumble upon this.  It also looks like outdated code
+and if you ask me you are well advised to check your upstream code,
+whether you could port it to the recent library.
+
+Apropos "cause issues":  It would be strongly recommended that you
+provide some minimal test case by providing some sequence(s) run the
+program and compare it with expected results.  We would like to use
+this in some autopkgtest which we would like to establish as default
+for all Debian Med packages.
+
+> * CLI11: I haven't found it in Debian, and yet I still need that
+>   specific implementation.
+
+OK.
+
+> I haven't found an example of using "Files-Excluded:". Do I need to
+> change "Files" to "Files-Excluded"?
+
+Just watch at my changes in d/copyright as well as all commits I did.
+Those that were done by routine-update were properly marked by
+routine-update itself or by lintian-brush (which is called by
+routine-update)
+
+> > As a final remark:  Please remove the debian/ dir from your master
+> > branch.  If the package is maintained on Salsa by the Debian Med team
+> > this is the natural place to maintain this dir.  It has no real use for
+> > non-Debian user and for Debian its only helpful on Salsa.  So there is
+> > no point in keeping this inside your repository or download tarball.
+>
+> I didn't upload the Debian folder on GitHub, it's only available on Salsa.
+
+Fine.
+
+Short summary:  I'd recommend resolving the cmake patch in your upstream
+code and add an example that might be sensible for some CI test.  Also
+move the manpage to some proper place.  Once this is done you might like
+to consider some new micro-release 4.0.1 (or whatever you prefer) to
+enable fetching this via uscan easily.
+
+If you think the hash libraries should remain as they are please make
+sure the copyright holder that is mentioned inside the header file is
+mentioned in d/copyright.
+
+Kind regards and thanks for your work on this package
+    Andreas.
+
+[1] https://salsa.debian.org/med-team/veryfasttree/-/blob/master/debian/patches/use_debian_packaged_boost.patch
+
+--
+http://fam-tille.de

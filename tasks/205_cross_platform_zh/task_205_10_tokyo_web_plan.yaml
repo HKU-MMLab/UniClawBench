@@ -1,0 +1,55 @@
+task_id: task_205_10_tokyo_web_plan
+category: 205_cross_platform_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+recording: none
+headed: auto
+task: |
+  你是一名上班族，第一次到东京出差。
+  请为下周六制定计划，那天你只有 13:30-18:30 有空，而且
+  固定出发点是 Tokyo Station Marunouchi North Exit。如果下
+  周六是公共假日、闭馆日、特殊营业时间日、售罄，或者
+  官方页面没有提供足够的针对该日期的开放/入场
+  信息，则改用再下一个周六并说明原因。仅使用
+  浏览器和网页信息制定一份半日游计划，并
+  保存到：
+
+      /tmp_workspace/results/tokyo_saturday_afternoon_plan.md
+
+  候选景点仅限于：Tokyo National Museum、Ueno Zoo、
+  teamLab Planets TOKYO 和 Tokyo Skytree。你必须先查看这四个
+  候选景点的官方网站，了解所选日期的开放时间、最后入场
+  时间以及预约/购票规则，然后使用地图
+  网页查看从出发点到各景点以及
+  景点之间的通行时间。最终计划必须恰好选择两个景点。
+
+  最终路线必须满足：
+  - 游览时间加上交通时间总计不超过 5 小时。
+  - 每段单独的换乘最好不超过 35 分钟。
+  - 当入场无法确认时，不要选择需要复杂当日预约
+    的景点。
+  - 在行程中安排一次 15-30 分钟的咖啡或休息时间。
+
+  Markdown 必须包含且仅围绕以下五个顶级
+  部分进行组织：
+  - chosen attractions
+  - official rule summary
+  - travel times
+  - final schedule
+  - why not choose the others
+
+  在最终计划中注明所选日期。不要只提供链接或列出
+  景点介绍；要提供一份可执行的日程安排和权衡
+  理由。
+codex:
+  max_user_followups: 2
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/process_evidence/google_map_TNM_to_Zoo.png
+  - references/process_evidence/google_map_tokyo_station_to_TNM.png
+  - references/process_evidence/official_tokyo_national_museum.png

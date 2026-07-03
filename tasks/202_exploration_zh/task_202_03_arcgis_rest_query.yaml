@@ -1,0 +1,39 @@
+task_id: task_202_03_arcgis_rest_query
+category: 202_exploration_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我正在使用一个美国地图服务，我需要用真正的查询把数据从中提取出来，而不是靠
+  肉眼读地图。
+
+  该地图服务位于：
+
+      https://sampleserver6.arcgisonline.com/arcgis/rest/services/USA/MapServer
+
+  这是一个 ArcGIS REST 服务。它以 JSON 形式暴露其各个图层以及每个图层的字段，
+  并且支持查询操作。请探索该服务，找到存放美国**州**的那个图层，弄清楚该图层
+  真实的字段名（不要凭空假设），然后运行一个查询，返回所有 2000 年人口大于
+  10,000,000 的州。
+
+  请报告：
+  - 你用于州的图层 id 和名称，
+  - 2000 年人口对应的确切字段名，
+  - 有多少个州符合条件，
+  - 符合条件的州及其人口的列表，按降序排序。
+
+  把结果保存到 `/tmp_workspace/results/arcgis_states.json`，并把你调用的确切请
+  求 URL（服务元数据、图层元数据以及查询）连同它们的原始 JSON 响应保存到
+  `/tmp_workspace/results/arcgis_evidence/`。
+
+references:
+  - references/eval_rule.md
+
+codex:
+  max_user_followups: 2

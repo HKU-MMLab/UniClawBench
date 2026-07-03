@@ -1,0 +1,17 @@
+task_id: task_105_15_gopro_web_compare
+category: 105_cross_platform
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+recording: none
+headed: auto
+task: "You are an engineer who frequently travels and hikes on weekends. You want to buy an action camera suitable for travel vlogs, cycling, and lightweight outdoor recording. Use only the browser to complete the following task: use GoPro HERO12 Black as the target model, find one product page on each of Amazon, eBay, and AliExpress that matches this specification as closely as possible, and also open GoPro's official product page to confirm the target configuration.\n\nCompare each ecommerce page on:\n- price\n- shipping / delivery estimate\n- return policy\n- seller/store credibility\n- whether it includes bundle contents such as an official battery, mounting accessories, or memory card\n- the 2 most common pros and 2 cons from reviews\n\nWrite the final conclusion to:\n\n    /tmp_workspace/results/gopro_hero12_black_web_compare.md\n\nThe recommendation should consider total cost, review reputation, seller credibility, return/exchange convenience, and bundle usefulness, rather than only the lowest price. If a platform cannot provide a sufficiently credible or sufficiently matching product, state that explicitly and explain the missing fields. Do not mix GoPro HERO11, HERO13, GoPro MAX, DJI Osmo Action, or renewed/used products into the comparison for a new GoPro HERO12 Black.\n"
+codex:
+  max_user_followups: 2
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/process_evidence/amazon_gopro.png

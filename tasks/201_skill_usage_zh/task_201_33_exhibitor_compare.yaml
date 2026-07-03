@@ -1,0 +1,73 @@
+task_id: task_201_33_exhibitor_compare
+category: 201_skill_usage_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我们需要决定下个季度投资哪个展会，而我已经盯着三份招展手册 PDF
+  看了很久却毫无进展。请用 PDF 提取技能从这些 PDF 中抽取事实，再用
+  商业写作技能起草一份我可以交给我的 VP 的推荐方案。
+
+  文件位于 /tmp_workspace/clawbench/sources/ 下：
+  acvo_exhibitor_2025.pdf、cda_anaheim_exhibitor_2025.pdf 以及
+  texas_charter_prospectus_2025.pdf，外加 booth_roi_assumptions.csv，
+  其中包含我们当前的线索量和毛利率假设。
+
+  提取出商务条款、日程约束、套餐包含内容，以及任何会影响 ROI 的内容，
+  然后把这三个展会并排放入 /tmp_workspace/results/compare.md。
+
+  再附上第二张 ROI 表，涵盖全部三个展会，包含总现金支出、预期毛利、
+  预期净贡献、盈亏平衡所需成交数，以及盈亏平衡所需合格线索数。模型使用
+  CSV 中的假设，现金支出使用 PDF 中的展位费。对于盈亏平衡所需合格线索数，
+  直接计算为 cash_outlay 除以每条线索边际贡献的向上取整，其中每条线索
+  边际贡献等于每笔成交的毛利乘以线索到成交的转化率。不要从盈亏平衡所需
+  成交数推导得出。
+
+  然后写一段不超过 8 句的简短推荐段落，给出你的首选和次选并附上理由，
+  并至少引用对比表或 ROI 表中的两个具体数值。
+
+  另外保存 /tmp_workspace/results/roi_model.xlsx，其中包含一个名为 ROI
+  的工作表。每个展会一行，展位费、人员/差旅成本、总现金支出、预期毛利、
+  预期净贡献、盈亏平衡成交数和盈亏平衡合格线索数等列均由公式支撑。我希望
+  之后能更改线索或毛利假设，让模型重新计算。
+
+  在收尾之前，在 compare.md 底部添加一个简短的叙述性段落，与推荐段落
+  分开，逐一说明这三个展会的对比情况。对每个展会，涵盖展位经济性，包括
+  费用、押金和套餐内容；流量预估，包括预期到场人数、线索数及到成交的
+  转化；针对我们宠物/兽医方向的垂直契合度；时间和后勤安排，包括日程、
+  搭建、撤展，以及取消政策何时收紧；以及 ROI 盈亏平衡测算，包括所需成交数
+  和所需合格线索数。把每一点都与对比表和 ROI 表中的具体数字挂钩，以便
+  推荐方案可被审计核查。
+
+  对比表准备好后，再用邮件起草技能起草一封简短邮件，我可以把它连同
+  核心推荐转发给市场团队。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - acvo_exhibitor_2025.pdf
+  - cda_anaheim_exhibitor_2025.pdf
+  - texas_charter_prospectus_2025.pdf
+  - booth_roi_assumptions.csv
+
+skills:
+  - pdf-extract
+  - business-writing
+  - imap-smtp-email
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

@@ -1,0 +1,24 @@
+Message-ID: <CALK=YjPo-zCDMA1BdL2G9C2BS9HwGnFCQ66E=o40yc1wGPFOgA@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0143
+Date: Thu, 27 Oct 2022 07:11:04 -0400
+From: Eric Covener <covener@gmail.com>
+To: dev@httpd.apache.org,  	"Payyavula, Manjula Vani" <manjula.v.payyavula@accenture.com>
+Subject: Re: FasterXML jackson-databind version 2.13.3 vulnerabilities
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-10.mbox
+
+On Thu, Oct 27, 2022 at 3:43 AM Payyavula, Manjula Vani via dev
+<dev@httpd.apache.org> wrote:
+>
+> Hi Team,
+>
+> Please reply to my below  query.
+> We are using FasterXML jackson-databind version 2.13.3 but facing vulnerabilities like CVE-2022-42003
+> So we have used FasterXML jackson-databind version 2.14.0-rc1but vulnerabilities hasn't fixed.
+> Latest release 2.14.0-rc2 will have fix for these vulnerabilities?
+>
+> Team, could you please let us know when/which version of future releases these vulnerabilities will have fixed.
+
+Doesn't sound like a problem for dev@httpd.apache.org

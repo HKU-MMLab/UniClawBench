@@ -1,0 +1,38 @@
+Message-ID: <5dde4ad900af2537737f543edeea1d12@enron.com>
+X-Clawbench-ID: ANL-2001-0411
+Date: 2000-10-26T15:02:00-03:00
+From: Tanya Tamarchenko <Tanya Tamarchenko>
+To: Naveen Andrews <Naveen Andrews>
+Subject: Re: trying to find fat tails
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Enron kaminski-v public mailbox index.json
+X-Original-Folder: kaminski-v_002/kaminski-v/All documents
+
+Naveen,
+
+I was trying to find "fat tails". I looked at NG prompt month prices'
+
+log-returns for 5 years  9 months.
+
+On the figure below you can see the comparison of empirical cumulative
+
+probability function with normal
+
+cumulative for this time series (standardized: mean subtracted, divided by
+
+stdev). The effect of fat tails
+
+is not pronounced so much. The "fat tails" effect was much more visible on
+
+your plot when you looked at the
+
+oct-00 prices log-returns versus my time series of prompt month's prices.
+
+The shape of the distribution is different from normal, though, and fits well
+
+with the volatility switching model.
+
+
+Tanya.

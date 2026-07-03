@@ -1,0 +1,42 @@
+Message-ID: <20020809103423.28a52d56.matthias@egwn.net>
+X-Clawbench-ID: CAM-2003-0102
+Date: Fri, 09 Aug 2002 10:34:23 +0200
+From: Matthias Saou <matthias@egwn.net>
+To: rpm-zzzlist@freshrpms.net
+Subject: Re: Pango problems
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01198.36d6b4ab547f4246dea55380b9504064
+
+Once upon a time, Julian wrote :
+
+> One of the things you need to understand with gnome2 is that while they
+> did simplify a lot of things, most of the configuration options people
+> found very useful are still available through gconf. Learn to love
+> gconf-editor ;) -- metacity can have sloppy focus (Desktop Preferences
+> -> Window Focus -- there's actually GUI for that), and the delay until
+> raising (and whether it raises) can be set in gconf-editor,
+> /apps/metacity/general/auto_raise and auto_raise_delay
+
+Well, I stand corrected :-)
+The thing is, I hadn't used gconf-editor yet... and it's exactly what I
+feared, old "not so good" memories are coming back : It looks exactly like
+a GNOME RegEdit :-/ Oh well.
+I still hope that the few missing features I'm still looking for will be
+added in the next 2.0.x releases, like for example being able to have the
+panel always under *all* other windows (if you know how to do that, I'm
+really interested! ;-)).
+
+Cheers,
+Matthias
+
+--
+Matthias Saou                                World Trade Center
+-------------                                Edificio Norte 4 Planta
+System and Network Engineer                  08039 Barcelona, Spain
+Electronic Group Interactive                 Phone : +34 936 00 23 23
+
+_______________________________________________
+RPM-List mailing list <RPM-List@freshrpms.net>
+http://lists.freshrpms.net/mailman/listinfo/rpm-list

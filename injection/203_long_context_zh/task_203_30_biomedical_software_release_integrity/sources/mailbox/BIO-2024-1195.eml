@@ -1,0 +1,55 @@
+Message-ID: <YWPv+mPxIXiSu9vw@an3as.eu>
+X-Clawbench-ID: BIO-2024-1195
+Date: Mon, 11 Oct 2021 10:04:10 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: xiao sheng wen (Xiao Shengwen) <atzlinux@sina.com>
+Subject: Re: rtax sponsoring help
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00031.html
+
+Hi,
+
+Am Sun, Oct 10, 2021 at 10:54:10AM +0800 schrieb xiao sheng wen (Xiao Shengwen):
+> hi,
+>
+>     I updated the rtax package from 0.984-7 to 0.984-8.
+
+Thank you for updating the repository.  I have uploaded after running
+
+     routine-update -f
+
+which added debian/salsa-ci.yml.  In general I recommend to use
+routine-update - it would have done basically what you did automaically.
+
+> Please see git repo:
+>
+> git@salsa.debian.org:med-team/rtax.git
+>
+> Please help to review and sponsoring.
+
+You are welcome
+
+    Andreas.
+
+PS: One remark about the changelog entries.  We have entries by
+
+   [ Xiao Shengwen ]
+
+and by
+
+   [ xiao sheng wen ]
+
+which I guess is both you.  I use the term "guess" since my text
+terminal does not display the Chinese characters.  I'd recommend to
+stick to the same spelling (preferably in ASCII-characters but its your
+choice for sure).  This makes changelog entries more consistent and
+easier readable.  You can approach this by setting
+
+   DEBFULLNAME
+
+in your environment.  When using dch it will use this variable.
+
+--
+http://fam-tille.de

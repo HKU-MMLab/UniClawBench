@@ -1,0 +1,50 @@
+Message-ID: <CAKQ1sVNgtxQaq48-QzYLcRkYQhcOxJ9NjGgtDSbbwr0v4+ouRA@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0276
+Date: Mon, 4 Dec 2023 15:32:00 +0100
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: mod_ssl: Add support for loading keys from OpenSSL 3.x providers  via STORE
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-12.mbox
+
+Hi;
+
+On Mon, Dec 4, 2023 at 8:53 AM Ingo Franzki <ifranzki@linux.ibm.com> wrote:
+>
+> On 02.12.2023 11:20, Graham Leggett via dev wrote:
+> > On 27 Nov 2023, at 15:02, Ingo Franzki <ifranzki@linux.ibm.com> wrote:
+> >
+> >> The mod_ssl module has support for loading keys and certificates from OpenSSL engines via PKCS#11 URIs at SSLCertificateFile and SSLCertificateKeyFile, e.g. using the PKCS#11 engine part of libp11 (https://github.com/OpenSC/libp11).
+> >>
+> >> This works fine, but with OpenSSL 3.0 engines got deprecated, and a new provider concept is used.
+> >> OpenSSL 1.1.1 is no longer supported by the OpenSSL organization (https://www.openssl.org/blog/blog/2023/09/11/eol-111/),
+> >> and newer distributions all have OpenSSL 3.x included.
+> >> Currently, engines do still work, bit since they are deprecated, they will at some point in time no longer be working.
+> >>
+> >> With OpenSSL 3.x providers one can implements loading of keys and certificates by implementing a STORE method.
+> >> With this, keys and certificates can be loaded for example from PKCS#11 modules via PKCS#11 URIs, just like it was possible with an PKCS#11 engine.
+> >>
+> >> Please find below some code changes required to support loading the server private key and certificates from a PKCS#11 provider using OpenSSL STORE providers.
+> >
+> > Definite +1 in principle.
+
++1, thanks for the patch!
+
+>
+> Please see the patch file attached.
+> I also fixed to minor bugs that I found during testing.
+>
+> You can also look at the patch here:
+> https://github.com/ifranzki/httpd/commit/4bb3ea191bc2c77608b4811817ad7f63177dd931
+>
+> If you want, I can even submit a pull request to https://github.com/apache/httpd.
+> Let me know what you prefer.
+
+Yes please do this, it's easier to comment on the code and it also
+gets tested by the ci.
+
+
+Regards;
+Yann.

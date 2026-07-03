@@ -1,0 +1,45 @@
+{
+  "captured_at": "2024-06-18T15:09:33Z",
+  "permalink": "https://www.reddit.com/r/Python/comments/1dij7vc/",
+  "post": {
+    "title": "Underrated stdlib additions in Python 3.8–3.11 you actually use in production",
+    "author": "stdlib_appreciator",
+    "url": "https://www.reddit.com/r/Python/comments/1dij7vc/",
+    "permalink": "/r/Python/comments/1dij7vc/underrated_stdlib_additions_in_python_3811/",
+    "selftext": "I keep reaching for third-party packages out of habit when the stdlib has had something perfectly serviceable for years. What are the underrated 3.8+ stdlib modules / functions you actually rely on day to day? I'll start: `functools.cached_property` and `dataclasses.field(default_factory=...)`.",
+    "num_comments": 64,
+    "score": 218,
+    "subreddit": "Python",
+    "created_utc": 1718723373.0
+  },
+  "top_level_comments": [
+    {
+      "id": "l9k4abc",
+      "author": "metadata_maven",
+      "score": 73,
+      "body": "`importlib.metadata` (added in 3.8). I see so many codebases still pulling in setuptools at runtime just to call `pkg_resources.get_distribution(...).version`, when the stdlib has shipped `importlib.metadata.version(\"pkg\")` for 4+ years now. It's faster, has no third-party dependency, and the API is dead simple.",
+      "permalink": "/r/Python/comments/1dij7vc/_/l9k4abc/"
+    },
+    {
+      "id": "l9k55de",
+      "author": "dataclasses_dan",
+      "score": 51,
+      "body": "`dataclasses` from 3.7 obviously, but the underrated bit is `dataclasses.replace()` for making a modified copy. People keep writing `attrs.evolve` clones in helpers when this is right there.",
+      "permalink": "/r/Python/comments/1dij7vc/_/l9k55de/"
+    },
+    {
+      "id": "l9k6ahf",
+      "author": "tomllib_tom",
+      "score": 44,
+      "body": "`tomllib` in 3.11. Killed our `tomli` dependency in three repos.",
+      "permalink": "/r/Python/comments/1dij7vc/_/l9k6ahf/"
+    },
+    {
+      "id": "l9k7bgg",
+      "author": "zoneinfo_zee",
+      "score": 19,
+      "body": "`zoneinfo` from 3.9. `pytz` is officially in maintenance and the API is worse anyway.",
+      "permalink": "/r/Python/comments/1dij7vc/_/l9k7bgg/"
+    }
+  ]
+}

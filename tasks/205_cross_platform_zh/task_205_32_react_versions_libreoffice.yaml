@@ -1,0 +1,55 @@
+task_id: task_205_32_react_versions_libreoffice
+category: 205_cross_platform_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我收集了 8 个 React 教程视频准备分享给团队，但担心其中一些可能已经
+  过时。你能做一个 LibreOffice 电子表格，标注每个视频的时效性吗？
+
+  视频 ID（按此顺序）：
+
+    uN0dioTiAwI, BnasObkCGtQ, _B7pGf8QJWo, N0DhCV_-Qbg,
+    dCLhUialKPQ, TtPXvEcE11E, 8D-rWP3c088, jLS0TkAHvRg
+
+  用 gh 查看 facebook/react 在 2026-04-25T00:00:00Z 之前发布的 release，
+  获取截至 2026-04-25 的最新稳定 React 版本。用 yt-dlp 获取视频元数据。
+  通过 npm 查询 react-router 各大版本的发布日期。
+
+  我想知道每个视频涵盖的是哪个 React 大版本、它比 2026-04-25 的稳定
+  React 大版本落后几代，以及风险级别——与截至当日的稳定版同一大版本 =
+  低，落后一代 = 中，落后两代或以上 = 高。另外计算一个新鲜度分数，越
+  接近截至当日的稳定大版本分数越高。同时标注距对应 release 已过去多少天。
+
+  另外推断每个视频应搭配哪个 react-router 大版本——根据上传日期和各大
+  版本的 npm 发布日期，估算兼容的版本。
+
+  用 soffice 生成 .ods 电子表格：用红色条件格式高亮高风险行，添加一个
+  计算平均新鲜度的公式，并在 .ods 内嵌入一个作为 chart 对象的柱状图——
+  用 odfpy 或直接编辑 XML，关键是图表确实可见。
+
+  另外生成一个验证用 JSON，汇总每个视频的版本分析。
+
+  将产物放在 /tmp_workspace/results/ 下。完成后告诉我截至 2026-04-25
+  的 React 版本是什么、平均新鲜度是多少，以及有多少个视频匹配该最新版本。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources: []
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

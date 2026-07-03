@@ -1,0 +1,34 @@
+Message-ID: <CAKQ1sVOOoW8KNYL7_GCJ7bugL0fAxVPvi=h=O_DbjJeVgUYnJQ@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0887
+Date: Tue, 8 Feb 2022 18:01:52 +0100
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: httpd-dev <dev@httpd.apache.org>
+Subject: Re: mpm event assertion failures
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-02.mbox
+
+On Tue, Feb 8, 2022 at 2:15 PM Graham Leggett <minfrin@sharp.fm> wrote:
+>
+> On 07 Feb 2022, at 18:13, Yann Ylavic <ylavic.dev@gmail.com> wrote:
+>
+> All green: https://app.travis-ci.com/github/apache/httpd/builds/246021482  \o/
+>
+>
+> I’ve been load testing these changes with the fixed trunk version of ab
+
+Thanks!
+
+> The most concurrent requests I can get out of MacOS appears to be roughly 2000 concurrent requests before “connection reset by peer” kills the test.
+>
+> One small detail I have uncovered is that a small percentage of requests fail, caused by httpd gracefully shutting the connection down before returning a response. Stopping ab in a debugger confirms that openssl returns SSL_ERROR_ZERO_RETURN on read, which is what openssl does when the other side gracefully triggers close notify.
+>
+> Is this something anyone has seen before while I go digging?
+
+I tried with ab too and indeed there was some (dead-)locking issue at
+some point, could you please retry with the latest pushes I just made
+to the PR?
+
+Regards;
+Yann.

@@ -1,0 +1,38 @@
+Message-ID: <SA1PR14MB4595C2E08709048205FFD792F13D2@SA1PR14MB4595.namprd14.prod.outlook.com>
+X-Clawbench-ID: ASF-2024-1053
+Date: Wed, 3 Apr 2024 17:24:18 +0000
+From: Cory McIntire <cory.mcintire@webpros.com>
+To: "dev@httpd.apache.org" <dev@httpd.apache.org>
+Subject: Re: [VOTE] Release httpd-2.4.59-rc1 as httpd-2.4.59
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-04.mbox
+
++1
+
+CentOS 6
+CentOS 7
+AlmaLinux 8
+AlmaLinux 9
+Ubuntu 20
+Ubuntu 22
+
+Thanks for RM’n.
+
+Regards,
+Cory McIntire | Release Manager
+cory.mcintire@webpros.com<mailto:cory.mcintire@webpros.com> | cPanel – a webpros company
+
+
+From: Eric Covener <covener@gmail.com>
+Date: Wednesday, April 3, 2024 at 07:26
+To: Apache HTTP Server Development List <dev@httpd.apache.org>
+Subject: [VOTE] Release httpd-2.4.59-rc1 as httpd-2.4.59
+Hi all,
+
+I would like to call a SHORTENED VOTE to release
+this candidate tarball httpd-2.4.59-rc1 as 2.4.59:
+[ ] +1: It's not just good, it's good enough!
+[ ] +0: Let's have a talk.
+[ ] -1: There's trouble in paradise. Here's what's wrong.

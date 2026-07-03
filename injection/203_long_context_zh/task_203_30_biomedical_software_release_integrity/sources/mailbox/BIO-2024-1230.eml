@@ -1,0 +1,38 @@
+Message-ID: <YfxHq6uCjna/IEp4@an3as.eu>
+X-Clawbench-ID: BIO-2024-1230
+Date: Thu, 3 Feb 2022 22:22:51 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: New version of snpeff in Git (Was: snpeff_4.3t+dfsg1-1_amd64.changes REJECTED)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_02_msg00027.html
+
+Am Thu, Feb 03, 2022 at 02:42:40PM +0100 schrieb Pierre Gruet:
+>
+> Yes, just before looking at king/libpdfbox-graphics2d-java I was updating
+> snpeff and seeing if I could turn some unit tests into autopkgtests -- and I
+> trust I can, this is my current task.
+
+Fine.
+
+> So if you think putting snpeff can be delayed 2 or 3 days, let's just wait I
+> write the tests. Else, please consider uploading, this is fine :)
+
+Well, the arrival of snpeff took years - so a couple of days for an updated
+version does not matter at all.  I just stumbled upon the uscan issue and
+was wondering what might be going on.
+
+Thanks for all your work
+
+     Andreas.
+
+PS: If you are seeking for new challenges my colleagues would be happy about
+      https://salsa.debian.org/med-team/rockhopper
+    I just realised that there is an issue even with Build-Depends and I
+    remember it was quite some mess with lots of binary *.class files included.
+    Definitely nothing you can work out in one evening. ;-)
+
+--
+http://fam-tille.de

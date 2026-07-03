@@ -1,0 +1,33 @@
+Message-ID: <YY9hBQNvVv1DzQMW@an3as.eu>
+X-Clawbench-ID: BIO-2024-1094
+Date: Sat, 13 Nov 2021 07:53:57 +0100
+From: Andreas Tille <tille@debian.org>
+To: "Aaron M. Ucko" <ucko@debian.org>
+Subject: Re: Accepted ncbi-vdb 2.11.2+dfsg-2 (source) into unstable
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_11_msg00070.html
+
+Hi Aaron,
+
+Am Fri, Nov 12, 2021 at 12:59:15PM -0500 schrieb Aaron M. Ucko:
+>
+> >  ncbi-vdb (2.11.2+dfsg-2) unstable; urgency=medium
+> >  .
+> >    * Binary package libncbi-vdb-dev Depends: libzstd-dev
+>
+> Thanks!  Meanwhile, I'll try to find time to finalize and push my other
+> tuneups this weekend -- last week obviously didn't happen. :-/
+
+it was actually an accident that I uploaded so late.  I pushed the
+changes way earlier and made skesa depending from that Debian revision
+... and forgot to upload.  I only realised since skesa did not build on
+autobuilders. :-(
+
+Kind regards
+
+      Andreas.
+
+--
+http://fam-tille.de

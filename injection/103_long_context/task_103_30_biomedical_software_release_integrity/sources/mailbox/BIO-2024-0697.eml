@@ -1,0 +1,67 @@
+Message-ID: <YXF0ILSwnAn8jCxR@an3as.eu>
+X-Clawbench-ID: BIO-2024-0697
+Date: Thu, 21 Oct 2021 16:07:28 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: 984243@bugs.debian.org,	Debian Med Project List <debian-med@lists.debian.org>
+Subject: Help: mothur: ftbfs with GCC-11
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00135.html
+
+Control: tags -1 help
+
+Hi,
+
+I've solved one gcc-11 issue that was mentioned in this bug report but
+now there are other gcc-11 issues that go beyond my C++ knowledge:
+
+...
+g++ -g -O2 -ffile-prefix-map=/build/mothur-1.46.1=. -fstack-protector-strong -Wformat -Werror=format-security -O3 -std=c++11 -pthread -DVERSION="\"1.46.1\"" -DRELEASE_DATE="\"9/01/      21\"" -DUSE_READLINE -Isource  -I source/calculators/  -I source/chimera/  -I source/classifier/  -I source/clearcut/  -I source/commands/  -I source/communitytype/  -I source/          datastructures/  -I source/engines/  -I source/metastats/  -I source/read/  -I source/svm/ -Wdate-time -D_FORTIFY_SOURCE=2  -c -o source/svm/svm.o source/svm/svm.cpp
+cd source/uchime_src && export CXX=g++ && make clean && make && mv uchime ../../ && cd ..
+make[3]: Entering directory '/build/mothur-1.46.1/source/uchime_src'
+make[3]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
+make[3]: Leaving directory '/build/mothur-1.46.1/source/uchime_src'
+make[3]: Entering directory '/build/mothur-1.46.1/source/uchime_src'
+make[3]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
+g++ -O3 -D_FILE_OFFSET_BITS=64 -DNDEBUG=1 -DUCHIMES=1 -Wdate-time -D_FORTIFY_SOURCE=2  -c -o addtargets2.o addtargets2.cpp
+In file included from addtargets2.cpp:3:
+myutils.h:176:1: error: reference to 'byte' is ambiguous
+  176 | byte *ReadAllStdioFile(FILE *f, off_t &FileSize);
+      | ^~~~
+In file included from /usr/include/c++/11/bits/stl_algobase.h:61,
+                 from /usr/include/c++/11/bits/char_traits.h:39,
+                 from /usr/include/c++/11/string:40,
+                 from myutils.h:8,
+                 from addtargets2.cpp:3:
+/usr/include/c++/11/bits/cpp_type_traits.h:404:30: note: candidates are: 'enum class std::byte'
+  404 |   enum class byte : unsigned char;
+      |                              ^~~~
+In file included from addtargets2.cpp:3:
+myutils.h:42:23: note:                 'typedef unsigned char byte'
+   42 | typedef unsigned char byte;
+      |                       ^~~~
+myutils.h:177:1: error: reference to 'byte' is ambiguous
+  177 | byte *ReadAllStdioFile(const string &FileName, off_t &FileSize);
+      | ^~~~
+In file included from /usr/include/c++/11/bits/stl_algobase.h:61,
+                 from /usr/include/c++/11/bits/char_traits.h:39,
+                 from /usr/include/c++/11/string:40,
+                 from myutils.h:8,
+                 from addtargets2.cpp:3:
+/usr/include/c++/11/bits/cpp_type_traits.h:404:30: note: candidates are: 'enum class std::byte'
+  404 |   enum class byte : unsigned char;
+      |                              ^~~~
+In file included from addtargets2.cpp:3:
+myutils.h:42:23: note:                 'typedef unsigned char byte'
+   42 | typedef unsigned char byte;
+      |                       ^~~~
+
+
+Any help is welcome
+
+       Andreas.
+
+
+--
+http://fam-tille.de

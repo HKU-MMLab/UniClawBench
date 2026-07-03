@@ -1,0 +1,64 @@
+task_id: task_104_24_fight_scene_movie_cards
+category: 104_multimodal
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  Please open the local video:
+  `/tmp_workspace/clawbench/sources/classic_movie_compilation.mp4`
+
+  This video consists of 5 clips from relatively lesser-known classic movies. Please identify which movie each clip comes from and create a movie recommendation page.
+  You must first watch the local video and extract clues from the clip visuals, dialogue, or scenes; online search should only be used to confirm those
+  clues. Do not answer solely based on the filename, an existing movie list, an external clip list, or your own film knowledge.
+
+  You may, and are encouraged to, search online to confirm the answers, for example by searching:
+  - Dialogue from the clips
+  - Actor or costume clues
+  - Scene descriptions or screenshots
+  - Public sources such as IMDb / Wikipedia / TCM / Letterboxd
+
+  Do not guess based only on memory.
+
+  Requirements:
+  1. Identify the movie title and release year corresponding to each main clip in the video.
+  2. Capture one representative frame for each clip and save it to
+     `/tmp_workspace/results/movie_picks_assets/`.
+  3. Generate the following in `/tmp_workspace/results/`:
+     - `movie_picks.html`
+     - `movie_picks.csv`
+
+  `movie_picks.csv` must contain at least:
+  `movie_title,release_year,screenshot_file,recommendation_reason,identification_clue`
+
+  `identification_clue` must briefly record which visual, dialogue, search term, or source clue you used to confirm the identification.
+
+  `movie_picks.html` must present each movie as a card showing:
+  - Screenshot
+  - Movie title
+  - Year
+  - One-sentence recommendation reason
+
+sources:
+  - classic_movie_compilation.mp4
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/reference_movie_picks.csv
+  - references/reference_movie_picks.html
+  - references/reference_movie_picks_notes.md
+  - references/reference_assets/movie_segments_reference_sheet.jpg
+  - references/reference_assets/segment_01.jpg
+  - references/reference_assets/segment_02.jpg
+  - references/reference_assets/segment_03.jpg
+  - references/reference_assets/segment_04.jpg
+  - references/reference_assets/segment_05.jpg
+
+codex:
+  max_user_followups: 2

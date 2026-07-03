@@ -1,0 +1,21 @@
+Message-ID: <Y7u4pARScsf67KuH@an3as.eu>
+X-Clawbench-ID: BIO-2024-0812
+Date: Mon, 9 Jan 2023 07:48:04 +0100
+From: Andreas Tille <tille@debian.org>
+To: Graham Inggs <ginggs@debian.org>
+Subject: Re: Packages in non-free can be autobuilt
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_01_msg00015.html
+
+Am Sun, Jan 08, 2023 at 10:54:23AM +0200 schrieb Graham Inggs:
+> [2] https://web.archive.org/web/20150509003045/http://rana.lbl.gov/EisenSoftwareSource.htm
+
+Added to d/copyright in git.
+
+Kind regards
+   Andreas.
+
+--
+http://fam-tille.de

@@ -1,0 +1,25 @@
+Message-ID: <YZAkI6EQFJhczK8i@an3as.eu>
+X-Clawbench-ID: BIO-2024-0805
+Date: Sat, 13 Nov 2021 21:46:27 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Science List <debian-science@lists.debian.org>,	Ghislain Antony Vaillant <ghisvail@gmail.com>
+Subject: New version of forge needs new predepends
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_11_msg00094.html
+
+Hi,
+
+I found some time to check "smelling" packages that have not yet updated
+VCS URLs and stumbled upon forge.  I've updated the packaging and also
+injected new upstream version.  Unfortunately it seems to need new
+predepends.  I have no spare time to track this down.  Ghislain, could
+you take over.
+
+Kind regards
+
+        Andreas.
+
+--
+http://fam-tille.de

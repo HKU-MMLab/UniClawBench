@@ -1,0 +1,73 @@
+Message-ID: <Ywh2BlHjdJihJY7e@an3as.eu>
+X-Clawbench-ID: BIO-2024-0671
+Date: Fri, 26 Aug 2022 09:28:06 +0200
+From: Andreas Tille <tille@debian.org>
+To: Federico Grau <donfede@casagrau.org>
+Subject: Re: upcoming public discussion on Open Source use at FDA during 2022 Scientific Computing Days forum
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_08_msg00059.html
+
+Hi Federico,
+
+Am Thu, Aug 25, 2022 at 03:16:40PM -0400 schrieb Federico Grau:
+>
+> Here is a link to the submitted slides -- https://casagrau.org/~donfede/fda/scd2022_FOSS_at_FDA_cmk_2022-08-16_submit.pdf
+> They should be posted publicly after the event.
+
+Please note:  If you publish a link here on this publicly archived
+mailing list it is "posted publicly" right now.
+
+I've browsed your slides and have some nitpicking comments:
+
+   Slide 3 "Speaker introduction"
+     - I would use
+        Using FOSS at home and work since YEAR
+       Rationale: I do not mention things that should not be mentioned
+       like an OS that nobody wants to use. ;-)
+     - You wrote
+        "package maintainer, but not an official Debian Developer"
+       I do not know the audience but IMHO that's a detail that is not
+       that interesting - thank you for working on those packages BTW!
+
+   Slide 10 "Names and Definitions"
+     - Open Source "Launched circa 1998"
+       -> that's misleading.  Open Source is way older.  I guess you
+          mean that the community settled to a definition of Open Source
+
+     - Specific words used matter less than principles followed
+       -> I *really* like this sentence! :-)
+
+   Remark about "Cautions in FOSS"
+     - In several cases I consider the Freedom to create a solution
+       for a problem that was solved by someone else not helpful.
+       For instance I do not think that having 2-3 "major desktops"+
+       2-3 "main editory" etc. not helpful for the global acceptance
+       of Linux.  I know lots of users who simply want something that
+       works and not the "burden to decide between different solutions".
+       And yes, I know that's a controversal opinion amongst developers
+       who always want the freedom to pick from.
+
+
+BTW, since some time I'm using this slide
+
+    https://people.debian.org/~tille/talks/20210321_fossasia_stay_home/stay_home.pdf#page=5
+
+to somehow visualise what Debian is.  In your case you could replace the
+pretty unknown wordnet by some package of yours.  (There is also some talk
+with video coverage[1] featuring that slide.)
+
+
+Thanks for sharing your slides in advance and asking for comments.
+
+Good luck for the talk
+
+    Andreas.
+
+
+[1] https://people.debian.org/~tille/talks/20200829_debconf_stay-home_debian-med/
+
+
+--
+http://fam-tille.de

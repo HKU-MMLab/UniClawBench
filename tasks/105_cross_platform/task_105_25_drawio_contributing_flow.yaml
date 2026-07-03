@@ -1,0 +1,55 @@
+task_id: task_105_25_drawio_contributing_flow
+category: 105_cross_platform
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  Our team wants to write an onboarding doc for new contributors, and we
+  need a "how to contribute" flowchart for GitHub CLI (cli/cli). The
+  content must be faithful to the repo's .github/CONTRIBUTING.md — don't
+  invent anything; reviewers will cross-check against the original text.
+
+  To guard against future doc changes, pin to tag v2.65.0
+  (commit b3be16e98e1413f5bb0943c06402516cec3fd3b4). Use gh to fetch
+  this version's CONTRIBUTING.md from the GitHub API.
+
+  I'd like these deliverables:
+
+  Extract roughly 5 key steps from CONTRIBUTING.md — something like
+  check existing issue → open issue → branch → PR → review/merge, but
+  follow the document's actual flow using wording that can be found in
+  the original text. Tag each step with who does it (contributor,
+  maintainer, reviewer, etc.). Save the extraction as flow_steps.json.
+
+  Then draw it as a contributing_flow.drawio flowchart — nodes should
+  reflect steps and roles, arrows should connect the flow, and it should
+  look like a proper flowchart. Export a contributing_flow.png (or .svg)
+  for pasting into Notion.
+
+  Finally write a Chinese-language onboarding summary as
+  contributing_summary.md, including the repo link, the pinned commit,
+  the step list, an image reference, and a tip for "what to do if you
+  get stuck."
+
+  Put all files under /tmp_workspace/results/.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources: []
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

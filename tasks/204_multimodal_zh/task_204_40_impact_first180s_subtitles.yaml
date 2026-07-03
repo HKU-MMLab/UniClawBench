@@ -1,0 +1,43 @@
+task_id: task_204_40_impact_first180s_subtitles
+category: 204_multimodal_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  请打开视频文件：
+  /tmp_workspace/clawbench/sources/clip.mp4
+
+  你必须真正播放、观看并聆听本地视频片段，然后自己转写。不要下载已有的字幕、
+  剧本、电影对白文稿，也不要依赖对电影的了解；最终的字幕和时间轴必须基于这段
+  本地视频。
+
+  请为视频的前 180 秒生成一个字幕文件，并保存为：
+  /tmp_workspace/results/clip.srt
+
+  要求：
+  1. 只处理 0:00-3:00
+  2. 使用标准 SRT 格式
+  3. 如果开头有很长一段没有对白，不要强行往里塞字幕；只在有实际说话内容时
+     才标注字幕
+  4. 完成后，再看一遍这 180 秒，检查字幕是否与画面中说话的时间相符
+  5. 如有必要，直接修改原文件；不要额外保存一个单独的版本
+
+  如果 `/tmp_workspace/results/` 不存在，请先创建它。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/reference_clip.srt
+  - references/selected_clips_manifest.json
+
+sources:
+  - clip.mp4
+
+codex:
+  max_user_followups: 2

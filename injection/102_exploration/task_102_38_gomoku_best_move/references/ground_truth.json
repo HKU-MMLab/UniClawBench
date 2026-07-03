@@ -1,0 +1,71 @@
+{
+  "task_id": "task_102_38_gomoku_best_move",
+  "board_size": 15,
+  "to_move": "Black (X)",
+  "black": [
+    [
+      7,
+      4
+    ],
+    [
+      7,
+      5
+    ],
+    [
+      7,
+      6
+    ],
+    [
+      7,
+      7
+    ],
+    [
+      5,
+      7
+    ],
+    [
+      8,
+      4
+    ],
+    [
+      10,
+      10
+    ]
+  ],
+  "white": [
+    [
+      7,
+      3
+    ],
+    [
+      5,
+      5
+    ],
+    [
+      6,
+      8
+    ],
+    [
+      8,
+      6
+    ],
+    [
+      9,
+      9
+    ]
+  ],
+  "best_move": {
+    "row": 7,
+    "col": 8
+  },
+  "why": "Black has four in a row at row 7, columns 4-5-6-7. The left end (col 3) is blocked by White. Playing (7,8) completes five-in-a-row (cols 4-8) \u2014 an immediate win. It is the unique immediate winning move.",
+  "unique_winning_move": true,
+  "accepted": [
+    {
+      "row": 7,
+      "col": 8
+    }
+  ],
+  "rejected_note": "(7,3) is occupied by White; no other move wins immediately. Any move other than (7,8) fails to win this turn and is therefore not the global best.",
+  "scoring": "Exact match to (7,8) = full credit. Identifying the four-in-a-row threat but playing a non-winning move = partial. Coordinate convention must be stated/consistent."
+}

@@ -1,0 +1,84 @@
+task_id: task_201_31_postmortem_merge
+category: 201_skill_usage_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我的总监想要一份跨事件的书面报告，能真正从过去六次故障中让我们学到点
+  东西，我需要帮忙把它整理出来。用系统化调试技能一致地梳理每一份事后
+  分析（PM），用 Markdown 格式化器保持输出整洁，并用内存管理技能加上
+  daily digest 技能把你提取出的笔记组织成一份像样的综合分析。
+
+  这六份事后分析位于 /tmp_workspace/clawbench/sources/ 下：
+  pm_2022_q2_bgp_misconfig.md、pm_2019_q3_waf_regex.md、
+  pm_2017_q1_db_outage.md、pm_2025_q1_outage.md、
+  pm_2025_q2_db_migration.md，以及 pm_2025_q3_config_drift.md。
+
+  这次工作的全部意义在于把那个贯穿性的整体故事呈现出来。总监想要在多个
+  事件中反复出现的全套根因模式——这六份 PM 实际支撑的每一个贯穿性模式，
+  一个都不漏。他们还想要每个事件都出现在矩阵中，并带上使各事件可区分的
+  具体事实；只引用文件名而没有真实事件细节是不够的。除此之外，报告还
+  需要承载关于检测缺口、响应与沟通失效、六个事件整体的预防覆盖，以及
+  清晰的系统性与一次性分类的线索。这些线索中的每一条都必须在交付物的
+  某处可见，否则报告就是不完整的。
+
+  把所有内容合并到 /tmp_workspace/results/insights.md，分为四个章节：
+    - "Common Root Causes" —— 跨多个事件反复出现的原因。我想要这六份
+      PM 支撑的每一个跨事件模式；不要只停在一两个就把其余的略过不提。
+      每个模式都应当由三份或更多事件文件支撑，并带上指向各份事后分析的
+      具体来源引用。
+    - "Incident Taxonomy Matrix" —— 每个事件一行，六个全部呈现，带上
+      trigger、blast radius、detection gap、rollback/recovery gap，以及
+      最相关的预防负责人。每一行都必须提及使那份 PM 与众不同的具体事件
+      细节，而不是泛泛的复述。
+    - "Prevention Checklist" —— 至少十项具体的预防措施，每项都用 infra、
+      db、release、monitoring 或 process 中的一个来标记。
+    - "Open Gaps" —— 至少四个在这些事后分析中缺失、或仅被薄弱覆盖、但
+      我们无论如何都应该引入的护栏。把每个缺口与促成它的那些事件关联
+      起来；除非有不止一个事件支撑，否则不要列出某个缺口。
+
+  另外为总监的跟进追踪器保存 /tmp_workspace/results/action_register.csv。
+  列为：action_id、prevention_action、domain、owner、source_incidents、
+  root_cause_addressed、dependency、due_window、success_signal。把它做成
+  可直接用于追踪的形式，至少包含十项具体行动。这份登记表必须做实事，
+  而不是把散文式的清单重复一遍——它至少必须包含一项行动来应对综合分析
+  中的每一个跨事件根因模式，以及一项专门由六个来源事件中的每一个促成的
+  行动。每一项行动都必须能追溯回至少一个来源事件文件名，并点明它所应对
+  的跨事件模式。
+
+  这个四章节的骨架加上登记表是结构上的最低底线——你仍然需要让更广泛的
+  贯穿性线索（根因模式、检测缺口模式、响应与沟通缺口、预防覆盖、系统性
+  与一次性分类）在这两份交付物中的某处体现出来。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - pm_2022_q2_bgp_misconfig.md
+  - pm_2019_q3_waf_regex.md
+  - pm_2017_q1_db_outage.md
+  - pm_2025_q1_outage.md
+  - pm_2025_q2_db_migration.md
+  - pm_2025_q3_config_drift.md
+
+skills:
+  - runesleo-systematic-debugging
+  - markdown-formatter
+  - memory-manager
+  - daily-digest
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

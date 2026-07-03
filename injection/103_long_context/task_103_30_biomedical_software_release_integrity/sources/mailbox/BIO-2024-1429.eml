@@ -1,0 +1,39 @@
+Message-ID: <ZXmAifWV1ez8i05Z@an3as.eu>
+X-Clawbench-ID: BIO-2024-1429
+Date: Wed, 13 Dec 2023 10:59:37 +0100
+From: Andreas Tille <tille@debian.org>
+To: Pierre Gruet <pgt@debian.org>
+Subject: Re: Thanks a lot [ftpmaster@ftp-master.debian.org: ugene_49.1+dfsg-1_amd64.changes ACCEPTED into unstable]
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_12_msg00046.html
+
+Hi Pierre,
+
+Am Tue, Dec 12, 2023 at 09:09:46PM +0100 schrieb Pierre Gruet:
+> You're welcome! I am astonished to see it cleared NEW in one hour anf a half,
+
+Yes, I had to double check when I've seen this.  Very nice!!!!
+
+> I had not even the time to prepare my Advent Calendar email related to it.
+
+:-))))
+
+> That said, I am always very happy when we move software out of non-free!
+
+That's definitely the best we can do!  I've adde Ugene to our
+SoftwareLiberation Wiki page[1]
+
+> Bug #1032688 was solved by you, and bug #1010358 by Michael :)
+
+Well, I'm perfectly fine if these go on your account in team metrics
+(which works per changelog owner). ;-)
+
+Kind regards
+   Andreas.
+
+[1] https://wiki.debian.org/DebianMed/SoftwareLiberation
+
+--
+http://fam-tille.de

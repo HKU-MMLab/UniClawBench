@@ -1,0 +1,64 @@
+task_id: task_101_28_meeting_structure
+category: 101_skill_usage
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  We just wrapped our Q3 Platform Planning Sync — about forty minutes,
+  five people, eight agenda items — and I need proper minutes before the
+  decisions fade. The recording is at
+  /tmp_workspace/clawbench/sources/meeting.mp4 and the slides we walked
+  through are in /tmp_workspace/clawbench/sources/slides/. Transcribe
+  with the workspace's speech-to-text skill, pull key frames using
+  the video frame extraction skill, and use the video editing skill for any clip
+  extraction. I want a structured minutes file at
+  /tmp_workspace/results/minutes.md.
+
+  The five people on the call were Alice running it, plus Bob, Carol,
+  David, and Erin. We got through eight agenda items, ranging from short
+  status updates to debates that ran several minutes. I want one section
+  per topic with HH:MM:SS start and end timestamps, two to four bullets
+  summarizing what was actually said, and a thumbnail key frame saved
+  under /tmp_workspace/results/thumbs/ that the section references.
+
+  At the bottom, one Action Items block listing every commitment with
+  the owner's name and the specific due date, plus a short Open
+  Questions block for anything we deferred. Several decisions hinge
+  on specific calendar dates we said out loud during the meeting, so
+  please make sure those exact dates land in the minutes verbatim
+  rather than rounded to "next quarter".
+
+  The minutes should clearly cover what topics came up, the decisions
+  we landed on, the action items with their owners and due dates, and
+  any upstream or downstream dependencies that came up. The
+  per-section bullets are fine for capturing this, I just want each
+  thread visible somewhere in minutes.md rather than dropped on the
+  floor.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - meeting.mp4
+  - slides/
+
+skills:
+  - openai-whisper-api
+  - video-frames
+  - ffmpeg-video-editor
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

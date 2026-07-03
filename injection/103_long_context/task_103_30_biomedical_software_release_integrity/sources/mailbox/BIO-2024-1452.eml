@@ -1,0 +1,28 @@
+Message-ID: <YX2q0nYsaWjPnygw@debian>
+X-Clawbench-ID: BIO-2024-1452
+Date: Sun, 31 Oct 2021 01:58:02 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: debian-science@lists.debian.org
+Subject: Re: Debian Math Team
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_10_msg00050.html
+
+On Sat, Oct 30, 2021 at 05:05:32PM +0200, Gard Spreemann wrote:
+
+Hi,
+
+> That being said, my opinion on the matter is not a strong
+> one, and if a math team is indeed formed, please do add me to it (Salsa
+> user "gspr").
+
+Done, thanks!
+
+> I currently maintain the following math packages: gudhi, hera, lbfgsb,
+> phat, python-pot, ripser.
+
+Do consider moving $things there.
+
+Regards,
+Nilesh

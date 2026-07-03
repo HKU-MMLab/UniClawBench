@@ -1,0 +1,14 @@
+Message-ID: <B42E38DF-A378-4285-9F52-7EAC791861FB@vmware.com>
+X-Clawbench-ID: ASF-2024-0542
+Date: Wed, 1 Feb 2023 14:15:23 +0000
+From: =?utf-8?B?SmVzw7pzIEdvbnrDoWxleg==?= <jesusgm@vmware.com>
+To: "dev@httpd.apache.org" <dev@httpd.apache.org>
+Subject: Re: mod_wasm: Contributing Upstream to Apache
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-02.mbox
+
+Yes, the usage of Wasm for filters makes a lot of sense. This is why I previously mentioned the Envoy’s proxy-wasm spec<https://github.com/proxy-wasm/spec>, which is essentially an ABI specification for running WebAssembly in proxies. Beyond Envoy, you can find similar approaches in Nginx<https://wasmedge.org/book/en/use_cases/frameworks/mesh/wasm-nginx-module.html> and in APISIX<https://github.com/apache/apisix/blob/master/docs/en/latest/wasm.md>. One of our long term goals is to implement this specification for Apache itself.
+
+mod_wasm’s initial goal is to allow running unmodified apps under WebAssembly in Apache (i.e.: WordPress, Drupal, etc.). Having said that, it is also a great fit to expose the internal Apache APIs, enabling safely building Apache modules using ANY language, not just filters but any functionality. Basically, a lot of the functionality you need to use mod_lua and mod_perl (or having to write your own C module) but language independence and with other benefits inherited by running Wasm code: sandboxing security, running at almost native, etc.

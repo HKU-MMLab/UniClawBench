@@ -1,0 +1,68 @@
+task_id: task_201_03_access_log_regex
+category: 201_skill_usage_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我手上有大约 7 万行 Web 日志，存放在
+  /tmp_workspace/clawbench/sources/access.log，来自我们以前的 NASA 镜像站，
+  再加上一部分来自其他主机的内容——全都是 Apache common log 格式。
+  有人一直在用各种奇怪的请求疯狂打我们的站，我想搞清楚
+  是谁、在什么时候干的。请用工作区里的 log-analysis 技能帮我把
+  这些日志梳理一遍；我真的不想再手写正则了。
+
+  请在 /tmp_workspace/results/summary.json 给我一份 JSON 摘要，包含：
+    - total_requests        : 可解析的请求数
+    - malformed_line_count  : 无法按 CLF 解析的行数
+    - top_urls              : 请求量最高的 50 个 URL 路径组成的数组，
+                              每项为 {path, count}，先按 count 降序、
+                              再按 path 升序排列
+    - status_distribution   : 将每个 HTTP 状态码映射到其
+                              请求数的对象
+    - error_rate_by_hour    : 将每个小时桶
+                              "DD/Mon/YYYY HH" 映射到其 4xx+5xx 比率的对象，
+                              使用日志行中打印的小时，不要
+                              进行时区转换
+    - suspicious_ips        : 至少有 10 次 4xx 命中的 IP 组成的数组，每项为
+                              {ip, fourxx_count}，按 count 降序排列——
+                              那些扫描器才是我真正想标记出来的
+
+  在 summary.json 之外，请在 /tmp_workspace/results/report.md
+  另外放一份简短的配套说明，让我能真正读懂发生了什么。
+  我不需要正式的报告——只要让我对整体情况有个感觉：
+  流量在整个时间窗内如何起伏，
+  状态码的构成是什么样子，尤其是非 200 的那一部分，
+  哪些 IP 行为异常、这些恶意行为呈现出什么样的形态，
+  以及哪些 URL 被打得最狠。
+
+  还有一件我特别需要确定下来的事：告诉我大致从什么时候开始
+  情况变得不对劲。别只说"窗口的早期"——给我
+  错误率失控的那个确切的小时桶，以及该桶中
+  确切的 4xx+5xx 错误数，两者都直接从
+  summary.json 取出，好让数字能对得上。这就是我接下来
+  用来判断从哪里深入排查的锚点。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - access.log
+
+skills:
+  - log-analyzer
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

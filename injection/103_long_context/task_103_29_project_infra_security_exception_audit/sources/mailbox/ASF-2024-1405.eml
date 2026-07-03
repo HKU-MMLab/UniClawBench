@@ -1,0 +1,32 @@
+Message-ID: <af832281-2abd-c21b-5b62-d18096c075e8@christopherschultz.net>
+X-Clawbench-ID: ASF-2024-1405
+Date: Wed, 15 Dec 2021 11:42:18 -0500
+From: Christopher Schultz <chris@christopherschultz.net>
+To: dev@httpd.apache.org
+Subject: Re: Free MFA hardware tokens for your project
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2021-12.mbox
+
+All,
+
+On 12/14/21 14:25, Arnaud Le Hors wrote:
+> I work with the Developer Best Practices Working Group of the
+> Linux Foundation's Open Source Security Foundation (OpenSSF)
+ >
+ > [snip]
+ >
+> We'd like to give your project *free* MFA hardware tokens from Google
+> and GitHub, for use by your maintainers.
+
+Any particular reasons why TOTP won't work just as well and not generate
+electronic waste?
+
+Also no-cost and provides the same benefits as hardware tokens. And
+doesn't suffer from things like [1].
+
+-chris
+
+[1]
+https://www.theverge.com/2019/5/15/18625028/google-titan-security-keys-bluetooth-vulnerability-replacement-free

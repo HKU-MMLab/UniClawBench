@@ -1,0 +1,60 @@
+Message-ID: <YkZ+3CbwVFdThWN3@debian>
+X-Clawbench-ID: BIO-2024-0797
+Date: Fri, 1 Apr 2022 09:56:04 +0530
+From: Nilesh Patra <nilesh@nileshpatra.info>
+To: debian-med@lists.debian.org
+Subject: Re: Self Introduction
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_04_msg00002.html
+
+Please do not reply to me personally, rather reply on the list.
+See below :-
+
+On Fri, Apr 01, 2022 at 01:14:09AM +0530, Vinay wrote:
+>> Cool. But I do not see this package in the archive.
+>> Am I misunderstanding something?
+> The package isn't uploaded to the archive yet.
+
+Okay, do you need sponsoring for this?
+Where are your packaging changes, if you can link up?
+
+> > Great, what tasks are you interested in doing?
+> > If you are not sure, then for newcomer tasks you
+> > could look into packages needing autopkgtest[1] pick a package
+> > and add an autopkgtest to it.
+> Sure will package and if any doubts can i drop the question on the
+> matrix room or to the mailing list?
+
+Mailing list is better for most queries, matrix is good for quick reports/quick queries.
+Also, please head over to this link[2] and subscribe to the mailing list if you haven't already.
+
+Let me know once you are done, so I/others will not have to CC you everytime and
+you could read the replies from list mail.
+
+> I would like to choose the package python-seqcluster ,
+
+python-seqcluster is in contrib, and I am not sure if debci runs for contrib packages or not.
+In any case, as first task, please do not work on seqcluster, rather
+choose a different package which is in main section instead.
+
+> i'm new to
+> autopkgtest any wiki links to refer to get started
+
+Sure, you can take a look at the HOWTO here[3]
+There are plenty of examples, you can for instance refer these[4-8]
+
+Do not hesitate to ask if you need more help :)
+
+> [1]: https://salsa.debian.org/med-team/community/helper-scripts/-/blob/master/debian-med-tests.txt
+[2]: https://lists.debian.org/debian-med/
+[3]: https://salsa.debian.org/ci-team/autopkgtest/-/blob/master/doc/README.package-tests.rst
+[4]: https://salsa.debian.org/med-team/shovill/-/tree/master/debian/tests
+[5]: https://salsa.debian.org/med-team/bustools/-/tree/master/debian/tests
+[6]: https://salsa.debian.org/med-team/busco/-/tree/master/debian/tests
+[7]: https://salsa.debian.org/med-team/mafft/-/tree/master/debian/tests
+[8]: https://salsa.debian.org/med-team/seqkit/-/tree/master/debian/tests
+
+Regards,
+Nilesh

@@ -1,0 +1,12 @@
+Message-ID: <bio-2024-1088@biodebian.example>
+X-Clawbench-ID: BIO-2024-1088
+Date: Thu, 08 Feb 2024 16:10:00 +0000
+From: Data Governance <data-gov@biodebian.example>
+To: debian-med@lists.debian.org
+Subject: public data schedule completed
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: synthetic Debian Med-style biomedical release-integrity implant
+
+The MicroRef data schedule is signed. The bundle contains public simulated reads only, and the review documents why no sample identifiers or clinical-like labels are included.

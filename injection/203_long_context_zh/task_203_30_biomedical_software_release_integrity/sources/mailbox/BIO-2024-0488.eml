@@ -1,0 +1,27 @@
+Message-ID: <udlmtncs7ld.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-0488
+Date: Wed, 13 Oct 2021 21:44:46 -0400
+From: ucko@debian.org (Aaron M. Ucko)
+To: Andreas Tille <andreas@an3as.eu>
+Subject: Re: sra-sdk is lacking libngs
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00047.html
+
+Andreas Tille  writes:
+
+> Is libngs a new project or is it possible that I failed to update
+> ncbi-vdb or some other related project properly and those sources also
+> contain the missing code?
+
+Please try updating ngs-sdk to 2.11.2 -- AFAICT, it's still at 2.10.9.
+I'm not entirely sure that update will suffice, but it certainly
+shouldn't hurt -- it's generally best to update ngs-sdk, ncbi-vdb, and
+sra-sdk in lockstep.
+
+Thanks for checking, and for taking care of this update!
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

@@ -1,0 +1,25 @@
+Message-ID: <967a76c2-574a-1ccf-f5b9-8dd8fd362581@debian.org>
+X-Clawbench-ID: BIO-2024-0047
+Date: Mon, 14 Mar 2022 07:03:04 +0200
+From: Andrius Merkys <merkys@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: Advice needed: building new gatk-bwamem-jni against another version of bwa
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_03_msg00007.html
+
+Hi Pierre,
+
+On 2022-03-13 16:35, Pierre Gruet wrote:
+> My proposal would be to design a multiple upstream tarball for
+> gatk-bwamem-jni: original one + the sources at the tip of the Apache2
+> branch of bwa. It would build a libbwa.a lib which would not be
+> installed in /usr/lib, but in a private directory of gatk-bwamem-jni.
+
+Quick question. AFAIU, libbwa.a would be statically linked to
+gatk-bwamem-jni binaries. So would there still be a need to install
+libbwa.a anywhere?
+
+Best,
+Andrius

@@ -1,0 +1,113 @@
+Message-ID: <ZKXDWOiXyeLw5Aty@an3as.eu>
+X-Clawbench-ID: BIO-2024-0871
+Date: Wed, 5 Jul 2023 21:24:08 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Re: Request for Sponsorship: VeryFastTree - Parallelized and Optimized Version of FastTree
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_07_msg00013.html
+
+Am Wed, Jul 05, 2023 at 09:16:38PM +0200 schrieb César Pomar:
+> Thanks Nilesh. I have created a new implementation based on your
+> guidelines.
+>
+> I am still considering whether it would be necessary to include all
+> possible
+> compilations. Perhaps with only SSE2, AVX2, and AVX512F, it would be
+> sufficient,
+> or even just SSE2 and AVX2. What do you think, Andreas?
+
+I admit I need to fully trust your insight and possibly the performance
+tests you did.  I have not inspected your code - not to mention that I
+do not feel competent to judge about hardware optimisation means.
+
+> The only change would be in the rules. I'm leaving the code here before
+> uploading
+
+Just for the terminology:  You are not permitted to "upload" - this can
+only be done by a Debian Developer or Maintainer.  What you can do is
+pushing to the Git repository and doing so is fine.  The package was
+uploaded to new queue and any changes you do will go to the next release
+of the package (in case it will be accepted by ftpmaster).
+
+>  it in case you have any suggestions.
+
+I had only a quick view on the code.  If you tested this change in
+d/rules and the resulting package contains the changes you want to
+implement feel free to push.
+
+Kind regards and thank you for your contribution
+    Andreas.
+
+>     #!/usr/bin/make -f
+>
+>     # Output every command that modifies files on the build system.
+>     #export DH_VERBOSE = 1
+>
+>     export DEB_BUILD_MAINT_OPTIONS=hardening=+all
+>     include /usr/share/dpkg/default.mk
+>
+>     DEB_HOST_ARCH ?= $(shell dpkg-architecture -qDEB_HOST_ARCH )
+>
+>     %:
+>         dh $@
+>
+>
+>     override_dh_auto_configure:
+>     ifeq (amd64,$(DEB_HOST_ARCH))
+>         for i in "sse2 SEE2" "sse4_1 SEE4" "avx AVX" "avx2 AVX2" "avx512f
+> AVX512" ; do \
+>             set -- $${i} ; \
+>             dh_auto_configure --builddirectory build_$${1} -- \
+>                 -DUSE_NATIVE=OFF -DUSE_SHARED=ON -DUSE_$${2}=ON ; \
+>         done
+>     else
+>         dh_auto_configure -- \
+>             -DUSE_NATIVE=OFF -DUSE_SHARED=ON
+>     endif
+>
+>
+>     override_dh_auto_build:
+>     ifeq (amd64,$(DEB_HOST_ARCH))
+>         printf "#!/bin/sh\n\n" > VeryFastTree
+>         for SIMD in avx512f avx2 avx sse4_1 sse2 ; do \
+>             dh_auto_build --builddirectory build_$${SIMD} && \
+>             cp build_$${SIMD}/VeryFastTree
+> build_$${SIMD}/VeryFastTree-$${SIMD} ; \
+>             printf "if grep -q $${SIMD} /proc/cpuinfo; then\n  exec
+> /usr/bin/VeryFastTree-$${SIMD} \"\$$@\"\nfi\n\n" >> VeryFastTree ; \
+>         done
+>         chmod +x VeryFastTree
+>     else
+>         dh_auto_build
+>     endif
+>
+>
+>     override_dh_auto_test:
+>     ifeq (amd64,$(DEB_HOST_ARCH))
+>         dh_auto_test --builddirectory build_SEE2
+>     else
+>         dh_auto_test
+>     endif
+>
+>
+>     override_dh_auto_install:
+>     ifeq (amd64,$(DEB_HOST_ARCH))
+>         dh_install build_*/VeryFastTree-* /usr/bin/
+>         dh_install VeryFastTree /usr/bin/
+>     else
+>         dh_auto_install
+>     endif
+>
+>     override_dh_auto_clean:
+>         dh_auto_clean
+>         rm -Rf build_*
+>         rm -f VeryFastTree
+>
+>
+> César
+
+--
+http://fam-tille.de

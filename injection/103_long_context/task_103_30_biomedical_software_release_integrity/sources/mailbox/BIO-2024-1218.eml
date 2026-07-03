@@ -1,0 +1,23 @@
+Message-ID: <YWq7UnsnU19jsvJV@an3as.eu>
+X-Clawbench-ID: BIO-2024-1218
+Date: Sat, 16 Oct 2021 13:45:22 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: RFH: Getting fastp building on more archs
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00081.html
+
+Am Sat, Oct 16, 2021 at 11:24:08AM +0530 schrieb Nilesh Patra:
+> I am not sure of the best way to proceed in this case, and would appreciate any help.
+
+Just file a bug report against ftpmaster asking for removal of the
+builds for those architectures that are not possible any more.
+
+Kind regards
+
+      Andreas.
+
+--
+http://fam-tille.de

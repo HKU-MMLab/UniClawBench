@@ -1,0 +1,36 @@
+Message-ID: <4fe81e0d-1417-ffdf-ff23-a7564438344f@apache.org>
+X-Clawbench-ID: ASF-2024-0751
+Date: Thu, 18 May 2023 14:52:47 +0200
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: Fwd: [apache/httpd] don't forward invalid query strings (d78a166)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-05.mbox
+
+On 5/18/23 1:55 PM, Eric Covener wrote:
+> On Thu, May 18, 2023 at 6:40 AM Ruediger Pluem <rpluem@apache.org> wrote:
+>>
+>>
+>>
+>> On 5/18/23 3:17 AM, Eric Covener wrote:
+>>> bump? Just was reminded by a thread on reddit (config unclear but
+>>> probably not  non-cfgi proxy as it's a PHP app)
+>>>
+>>> If the proxy modules would trap it, and the encoded spaces were
+>>> happily accepted by other modules before the fix, can we let spaces
+>>> through mod_rewrite?
+>>
+>> Any reason why we should not encode the spaces as proposed below?
+>
+> I am just afraid it breaks the applications that were getting them
+> decoded forever.
+>
+
+But r->args is encoded. Hence they need to decode anyway as there could be other
+encoded stuff in it or spaces that have not been taken decoded from the path.
+
+Regards
+
+Rüdiger

@@ -1,0 +1,80 @@
+Message-ID: <4272242.O5hK6EvpVX@riemann>
+X-Clawbench-ID: BIO-2024-1016
+Date: Sat, 11 Dec 2021 17:12:50 -0600
+From: Steven Robbins <steve@sumost.ca>
+To: debian-med@lists.debian.org
+Subject: How to do 32-bit build in AMD64 chroot -- problem with SSE instructions?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_12_msg00074.html
+
+Hi,
+
+I've built the ITK package on my AMD64 machine without trouble, but the 32-bit
+build is failing with the error below.
+
+The errors seem to point to using SSE instructions.  Is there a recommended
+set of flags to use when building for x86?  I tried "-march=i686" but it gives
+the same error.
+
+Below is the first warning and error -- there are several more similar errors.
+
+Thanks!
+-Steve
+
+In file included from /home/steve/Packages/insighttoolkit/build-area/
+InsightToolkit-5.2.1/Modules/Core/Common/include/itkMath.h:32,
+                 from /home/steve/Packages/insighttoolkit/build-area/
+InsightToolkit-5.2.1/Modules/Core/Common/include/itkVector.hxx:21,
+                 from /home/steve/Packages/insighttoolkit/build-area/
+InsightToolkit-5.2.1/Modules/Core/Common/include/itkVector.h:332,
+                 from /home/steve/Packages/insighttoolkit/build-area/
+InsightToolkit-5.2.1/Modules/Core/Common/include/itkPoint.h:23,
+                 from /home/steve/Packages/insighttoolkit/build-area/
+InsightToolkit-5.2.1/Modules/Core/Common/include/itkContinuousIndex.h:21,
+                 from /home/steve/Packages/insighttoolkit/build-area/
+InsightToolkit-5.2.1/Modules/Core/Common/include/itkImageRegion.h:34,
+                 from /home/steve/Packages/insighttoolkit/build-area/
+InsightToolkit-5.2.1/Modules/Core/Common/include/itkImageRegionSplitterBase.h:
+21,
+                 from /home/steve/Packages/insighttoolkit/build-area/
+InsightToolkit-5.2.1/Modules/Core/Common/include/
+itkImageRegionSplitterSlowDimension.h:21,
+                 from /home/steve/Packages/insighttoolkit/build-area/
+InsightToolkit-5.2.1/Modules/Core/Common/src/
+itkImageRegionSplitterSlowDimension.cxx:19:
+/home/steve/Packages/insighttoolkit/build-area/InsightToolkit-5.2.1/Modules/
+Core/Common/include/itkMathDetail.h: In function ‘itk::int32_t
+itk::Math::Detail::RoundHalfIntegerToEven_32(double)’:
+/home/steve/Packages/insighttoolkit/build-area/InsightToolkit-5.2.1/Modules/
+Core/Common/include/itkMathDetail.h:151:24: warning: SSE vector return without
+SSE enabled changes the ABI [-Wpsabi]
+  151 |   return _mm_cvtsd_si32(_mm_set_sd(x));
+      |          ~~~~~~~~~~~~~~^~~~~~~~~~~~~~~
+In file included from /home/steve/Packages/insighttoolkit/build-area/
+InsightToolkit-5.2.1/Modules/Core/Common/include/itkMathDetail.h:37,
+                 from /home/steve/Packages/insighttoolkit/build-area/
+InsightToolkit-5.2.1/Modules/Core/Common/include/itkMath.h:32,
+                 from /home/steve/Packages/insighttoolkit/build-area/
+InsightToolkit-5.2.1/Modules/Core/Common/include/itkVector.hxx:21,
+                 from /home/steve/Packages/insighttoolkit/build-area/
+InsightToolkit-5.2.1/Modules/Core/Common/include/itkVector.h:332,
+                 from /home/steve/Packages/insighttoolkit/build-area/
+InsightToolkit-5.2.1/Modules/Core/Common/include/itkPoint.h:23,
+                 from /home/steve/Packages/insighttoolkit/build-area/
+InsightToolkit-5.2.1/Modules/Core/Common/include/itkContinuousIndex.h:21,
+                 from /home/steve/Packages/insighttoolkit/build-area/
+InsightToolkit-5.2.1/Modules/Core/Common/include/itkImageRegion.h:34,
+                 from /home/steve/Packages/insighttoolkit/build-area/
+InsightToolkit-5.2.1/Modules/Core/Common/include/itkImageRegionSplitterBase.h:
+21,
+                 from /home/steve/Packages/insighttoolkit/build-area/
+InsightToolkit-5.2.1/Modules/Core/Common/include/
+itkImageRegionSplitterSlowDimension.h:21,
+                 from /home/steve/Packages/insighttoolkit/build-area/
+InsightToolkit-5.2.1/Modules/Core/Common/src/
+itkImageRegionSplitterSlowDimension.cxx:19:
+/usr/lib/gcc/i686-linux-gnu/11/include/emmintrin.h:867:1: error: inlining
+failed in call to ‘always_inline’ ‘int _mm_cvtsd_si32(__m128d)’: target
+specific option mismatch

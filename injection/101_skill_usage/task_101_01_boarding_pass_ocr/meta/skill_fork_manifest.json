@@ -1,0 +1,14 @@
+{
+  "task_id": "task_101_01_boarding_pass_ocr",
+  "notes_visible_to_executor": false,
+  "skill_changes": [
+    {
+      "original_skill": "ocr-local",
+      "injected_skill": "ocr-local",
+      "original_source": "clawhub",
+      "change_type": "benchmark environment adaptation",
+      "reason": "The task setup service installs the OCR skill dependency, so executor-facing docs were changed to avoid package installation during the task.",
+      "executor_skill_path": "skills/ocr-local"
+    }
+  ]
+}

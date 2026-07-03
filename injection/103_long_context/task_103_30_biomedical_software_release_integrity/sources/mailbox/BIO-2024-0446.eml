@@ -1,0 +1,79 @@
+Message-ID: <Y6f/xY7Cgv/VnDML@an3as.eu>
+X-Clawbench-ID: BIO-2024-0446
+Date: Sun, 25 Dec 2022 08:46:13 +0100
+From: Andreas Tille <tille@debian.org>
+To: Nilesh Patra <nilesh@debian.org>, g@an3as.eu
+Subject: Re: [Advent Bug Squashing] My bug fixes during advent calendar
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_12_msg00107.html
+
+Hi Debian Med team,
+
+thank you all for joining the bug squashing party.  I think we cleaned
+up the list of bugs quite a bit.  The last round of freshly filed bugs
+was cleaned up quite quickly - thank you for working on this so busily.
+
+I personally became a bit distracted the last couple of days.  I'll
+be a bit distracted by my family until start of next year.  Than I try
+to work on testing migrations and upgrading packages to their latest
+upstream versions to make sure our set of packages will be up to date
+for the freeze.
+
+Thanks again for all your work and have some nice days
+   Andreas.
+
+
+Am Sat, Dec 24, 2022 at 06:42:04PM +0530 schrieb Nilesh Patra:
+> Hi,
+>
+> Instead of sending each bug fix mail to the list, I thought of sending
+> a consolidated list instead, for the advent BSP, starting Dec 1.
+>
+> Here are the bugs that I have fixed in debian-med team during this time:
+>
+> ╔═════════╤════════════════╤═══════════╗
+> ║ Bug     │ Package        │ Severity  ║
+> ╠═════════╪════════════════╪═══════════╣
+> ║ 1018365 │ gfapy          │ Important ║
+> ╟─────────┼────────────────┼───────────╢
+> ║ 1026297 │ unifrac-tools  │ RC        ║
+> ╟─────────┼────────────────┼───────────╢
+> ║ 1026590 │ svim           │ RC        ║
+> ╟─────────┼────────────────┼───────────╢
+> ║ 1026474 │ python-skbio   │ RC        ║
+> ╟─────────┼────────────────┼───────────╢
+> ║ 1026484 │ nipy           │ RC        ║
+> ╟─────────┼────────────────┼───────────╢
+> ║ 1026472 │ kineticstools  │ RC        ║
+> ╟─────────┼────────────────┼───────────╢
+> ║ 1026815 │ ball           │ RC        ║
+> ╟─────────┼────────────────┼───────────╢
+> ║ 1018317 │ biomaj3-daemon │ Important ║
+> ╟─────────┼────────────────┼───────────╢
+> ║ 1018316 │ biomaj3-cli    │ Important ║
+> ╚═════════╧════════════════╧═══════════╝
+>
+> Admittedly, I have been more fixated on squashing bugs affecting key packages[1] and I
+> did fix a bunch of bugs on that front, since we are closer to freeze, and un-surprisingly
+> most of these bugs are not in packes maintained by debian-med, and the day job has been quite
+> draining in the initial weeks of Dec as well; and so this was all I could manage.
+>
+> I hope to do more on the med-team front in the coming months.
+>
+> I'd probbaly not do much for the rest of the year, since it's (holiday?) season.
+>
+> Merry Christmas to y'all, and I hope to see you next year!
+>
+> [1]: https://udd.debian.org/dev/bugs.cgi?release=bookworm_and_sid&merged=ign&keypackages=only&fnewerval=7&flastmodval=7&rc=1&ctags=1&cdeferred=1&clastupload=1&cwhykey=1&sortby=last_modified&sorto=asc&format=html#results
+>
+> Cheers!
+>
+> --
+> Best,
+> Nilesh
+
+
+--
+http://fam-tille.de

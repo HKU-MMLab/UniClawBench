@@ -1,0 +1,35 @@
+Message-ID: <YX1ZTohPmd22LVbW@mapreri.org>
+X-Clawbench-ID: BIO-2024-0274
+Date: Sat, 30 Oct 2021 16:40:14 +0200
+From: Mattia Rizzolo <mattia@debian.org>
+To: Ben Tris <benattris@gezapig.nl>
+Subject: Re: unmaintained potential important CaRMetal (GeoGebra alike)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_10_msg00048.html
+
+On Wed, Oct 27, 2021 at 10:15:15AM +0200, Ben Tris wrote:
+> This package can probably be updated to version 4.3 from 2019.
+> I think it is written in the Java language therefore also cc to Java list.
+>
+> CaRMetal is probably more advanced than GeoGebra in Debian.
+>
+> Already made a reply with more info to a message from 2012.
+> https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=664828
+
+
+I went ahead and orphaned the package, as it was maintained by somebody
+who is no DD/DM, matinaining only one package and no uploads in more
+than a decade.
+
+Feel free to adopt it if anybody is interested.  https://bugs.debian.org/998117
+
+--
+regards,
+                        Mattia Rizzolo
+
+GPG Key: 66AE 2B4A FCCF 3F52 DA18  4D18 4B04 3FCD B944 4540      .''`.
+More about me:  https://mapreri.org                             : :'  :
+Launchpad user: https://launchpad.net/~mapreri                  `. `'`
+Debian QA page: https://qa.debian.org/developer.php?login=mattia  `-

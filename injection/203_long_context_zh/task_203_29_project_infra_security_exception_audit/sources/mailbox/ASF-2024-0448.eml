@@ -1,0 +1,12 @@
+Message-ID: <asf-2024-0448@httpd.apache.org>
+X-Clawbench-ID: ASF-2024-0448
+Date: Fri, 12 Jan 2024 09:28:00 +0000
+From: Priya Raman <priya@apache.org>
+To: dev@httpd.apache.org
+Subject: dependency audit attachment
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: synthetic Apache-style project infrastructure review implant
+
+The QuartzCache upgrade review ticket is open, but the dependency audit attachment did not come through. The release branch is asking whether it can keep moving while we wait for the scanner output.

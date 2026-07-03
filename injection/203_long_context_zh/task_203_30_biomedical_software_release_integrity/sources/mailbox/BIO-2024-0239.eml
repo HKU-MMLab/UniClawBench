@@ -1,0 +1,24 @@
+Message-ID: <ZXTtoS5u2MXUCkPF@an3as.eu>
+X-Clawbench-ID: BIO-2024-0239
+Date: Sat, 9 Dec 2023 23:43:45 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: "Aaron M. Ucko" <ucko@debian.org>,	Debian Med Project List <debian-med@lists.debian.org>
+Subject: Attempt to upgrade sra-sdk
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_12_msg00023.html
+
+Hi Aaron,
+
+I've spent some time into the new version of sra-sdk and tried to adapt
+the patches to the new upstream version.  Salsa CI was not working at
+the time of pushing so there is no build log but if you might like to
+try on your side you will notice that my attempt failed.  I'd be super
+happy if you might find some time to get the build working again.
+
+Kind regards
+    Andreas.
+
+--
+http://fam-tille.de

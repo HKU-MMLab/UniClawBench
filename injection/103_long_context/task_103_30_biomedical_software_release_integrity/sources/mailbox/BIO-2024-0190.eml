@@ -1,0 +1,58 @@
+Message-ID: <20240210185814.tfx34yg7lgwbercq@office.mailbox.org>
+X-Clawbench-ID: BIO-2024-0190
+Date: Sun, 11 Feb 2024 00:28:14 +0530
+From: Nilesh Patra <nilesh@iki.fi>
+To: Debian-Med <debian-med@lists.debian.org>
+Subject: Re: gnumed-client is marked for autoremoval from testing
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_02_msg00010.html
+
+On Sat, Feb 10, 2024 at 06:48:03PM +0100, Karsten Hilbert wrote:
+> Dear list members,
+>
+> Debian packaging CI is sending me this:
+>
+> > gnumed-client 1.8.18+dfsg-1 is marked for autoremoval from testing on 2024-03-15
+> >
+> > It (build-)depends on packages with these RC bugs:
+> > 1062249: libchipcard: NMU diff for 64-bit time_t transition
+> >  https://bugs.debian.org/1062249
+> > 1062362: libgwenhywfar: NMU diff for 64-bit time_t transition
+> >  https://bugs.debian.org/1062362
+>
+> but according to
+>
+> 	https://packages.debian.org/source/sid/gnumed-client
+>
+> the source packages does not build-depend on either and
+> according to
+>
+> 	https://packages.debian.org/source/gnumed-client
+>
+> it only has a *Suggest* on libchipcard-tools.
+>
+> So, is the above irrelevant because libchipcard-tools will
+> (indirectly) take care of that ?
+
+You needed to go one level deep. The same page has gnumed-client-de which is a binary
+package of this source package. On checking the same at
+
+        https://packages.debian.org/sid/gnumed-client-de
+
+You'd see:
+
+        * dep: libchipcard-tools
+        tools for accessing chipcards
+
+Hence, gnumed-client is indeed threatended by the removal of libchipcard-tools.
+
+> So, is the above irrelevant because libchipcard-tools will
+> (indirectly) take care of that ?
+
+libchipcard and libgwenhywfar both need to take care of their
+individual RC bugs, yes. Nothing to be done from gnumed-client side AFAICS.
+
+Best,
+Nilesh

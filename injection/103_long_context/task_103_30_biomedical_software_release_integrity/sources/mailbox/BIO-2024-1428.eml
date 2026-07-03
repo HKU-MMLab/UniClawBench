@@ -1,0 +1,39 @@
+Message-ID: <Y4wxiXWeE7xnicPt@an3as.eu>
+X-Clawbench-ID: BIO-2024-1428
+Date: Sun, 4 Dec 2022 06:35:05 +0100
+From: Andreas Tille <tille@debian.org>
+To: Tony Travis <tony.travis@minke-informatics.co.uk>
+Subject: [Advent bug squashing] Re: PIQUE
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_12_msg00030.html
+
+Hi Tony,
+
+Am Sun, Dec 04, 2022 at 01:39:40AM +0000 schrieb Tony Travis:
+> Thanks for creating the "pique" package for my GWAS pipeline. I've just
+> installed it under Ubuntu 22.04 LTS and it installed quite a lot of
+> packages, but fails to run my tests with the error:
+>
+> > Error in library(multtest) : there is no package called ‘multtest’
+
+Fixed in new upload.
+
+> I'll file a BUG report.
+
+Since I want to fix a bug every day I simply take this one for today
+even if not filed yet. ;-)
+
+BTW, could you recommend some kind of test with some small example data
+set?  We could wrap this into a CI test and would be able to detect
+these issues immediately.
+
+Kind regards
+
+        Andreas.
+
+PS: Will you join our sprint in January?
+
+--
+http://fam-tille.de

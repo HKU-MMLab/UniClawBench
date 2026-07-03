@@ -1,0 +1,24 @@
+Message-ID: <88dd9ad9-e0a0-cbc2-82ec-85b4c637c48b@apache.org>
+X-Clawbench-ID: ASF-2024-1100
+Date: Wed, 08 Jun 2022 09:43:25 +0000
+From: Stefan Eissing <icing@apache.org>
+To: announce@apache.org, dev@httpd.apache.org
+Subject: CVE-2022-28614: Apache HTTP Server: read beyond bounds via  ap_rwrite()
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-06.mbox
+
+Severity: low
+
+Description:
+
+The ap_rwrite() function in Apache HTTP Server 2.4.53 and earlier may read unintended memory if an attacker can cause the server to reflect very large input using ap_rwrite() or ap_rputs(), such as with mod_luas r:puts() function.
+
+Credit:
+
+The Apache HTTP Server project would like to thank Ronald Crane (Zippenhop LLC) for reporting this issue
+
+References:
+
+https://httpd.apache.org/security/vulnerabilities_24.html

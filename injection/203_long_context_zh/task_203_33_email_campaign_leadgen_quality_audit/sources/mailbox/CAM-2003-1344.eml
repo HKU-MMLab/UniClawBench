@@ -1,0 +1,65 @@
+Message-ID: <1027579516.15921.18.camel@localhost.localdomain>
+X-Clawbench-ID: CAM-2003-1344
+Date: Thu, 25 Jul 2002 01:45:15 -0500
+From: Lance <lance_tt@bellsouth.net>
+To: rpm-zzzlist@freshrpms.net
+Subject: Re: Ximian apt repos?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01160.3f6d380219ed7939e4ee8e4a2c4b5546
+
+Well, from the looks of things, I can import all my mail settings from
+Evolution to Sylpheed.  Has anyone successfully run Sylpheed in Gnome
+2.0?  I noticed with 'apt-get install gnome-session' from the 'rpm
+http://apt.sunnmore.net gnome2 73' repository, Sylpheed isn't one of the
+packages selected for deletion.
+
+Lance
+
+On Wed, 2002-07-24 at 14:05, Julian Missig wrote:
+> On Wed, 2002-07-24 at 03:50, Angles Puglisi wrote:
+> > Lance (lance_tt@bellsouth.net) wrote*:
+> > >
+> > >well, from the looks of things, Evolution mail client isn't supported
+> > >just yet, so I reckon I'll wait a bit.  Whoever posted these gnome2 apt
+> > >repositories, thanks!!!
+> > >
+> >
+> > I'm uising Havoc Pennington's Gnomehide and it rocks. I installed it before I
+> > knew about apt, but one of the previous emails had an apt repository that
+> > claimed to have gnomehide. Just remember there is one kew file that makes the
+> > difference between Gnome1 and Gnome2 being used. I *think* it is "gnome-core"
+> > vs. "gnome-session" but I can not remember.
+> >
+> > Note that that those same files are probably in the Limbo beta, except
+> > updated. There has not been a major change to "gnomehide" in a while, I
+> > suspect Havoc's work went into Limbo then.
+>
+> Right, gnomehide is only updated when it's been a while since the last
+> red hat release, and the next beta isn't out yet. Since the beta is out
+> now, gnomehide won't be updated again for a while.
+>
+> Julian
+>
+>
+> _______________________________________________
+> RPM-List mailing list <RPM-List@freshrpms.net>
+> http://lists.freshrpms.net/mailman/listinfo/rpm-list
+--
+:
+####[ Linux One Stanza Tip (LOST) ]###########################
+
+Sub : Monitoring su attempts                         LOST #115
+
+In a multiuser system you may like to monitor all su attempts.
+Edit /etc/login.defs and edit SULOG_FILE as follows:
+SULOG_FILE    /var/log/sulog   ... (name of file to hold info)
+
+####<bish@nde.vsnl.net.in>####################################
+:
+
+
+_______________________________________________
+RPM-List mailing list <RPM-List@freshrpms.net>
+http://lists.freshrpms.net/mailman/listinfo/rpm-list

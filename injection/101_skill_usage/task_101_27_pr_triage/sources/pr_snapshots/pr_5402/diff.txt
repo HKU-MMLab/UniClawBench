@@ -1,0 +1,13 @@
+diff --git a/README.rst b/README.rst
+index 11aa..22bb 100644
+--- a/README.rst
++++ b/README.rst
+@@ -32,6 +32,10 @@ A Simple Example
+         def hello():
+             return "Hello, World!"
+
++        if __name__ == "__main__":
++            app.run(debug=True)
++
++
+ .. code-block:: text

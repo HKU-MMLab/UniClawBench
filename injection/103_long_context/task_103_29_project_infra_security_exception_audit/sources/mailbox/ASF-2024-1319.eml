@@ -1,0 +1,37 @@
+Message-ID: <E3FFD8C9-9B30-4D92-8EDD-8CE4F2D59395@sharp.fm>
+X-Clawbench-ID: ASF-2024-1319
+Date: Tue, 25 Jan 2022 21:06:49 +0200
+From: Graham Leggett <minfrin@sharp.fm>
+To: dev@httpd.apache.org
+Subject: Re: http and http/1.x separation
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-01.mbox
+
+On 24 Jan 2022, at 16:53, Stefan Eissing <stefan@eissing.org> wrote:
+
+> Yes, it's 0 length like ERROR and has a struct as that holds:
+> - int status, opt 0
+> - const char *reason, opt NULL
+> - apr_table_t *headers
+> - apr_table_t *notes
+>
+> on responses, shallow copied from the request_rec, etc.
+>
+> The nice thing is that the HTTP/1.x transcode out filter can
+> now check in one place that
+> - there is indeed a HEADERS before data buckets
+> - there is only one HEADERS with status >= 200
+>
+> And "above" the transcode layer, a data bucket is content, period.
+
+I have a module that parses multipart/mime headers and puts them into a metadata bucket, that has a lot of similarity to what you’re after:
+
+https://github.com/minfrin/mod_multipart/blob/main/mod_multipart.c#L514
+
+Some of the functions above would be useful in httpd.
+
+Regards,
+Graham
+—

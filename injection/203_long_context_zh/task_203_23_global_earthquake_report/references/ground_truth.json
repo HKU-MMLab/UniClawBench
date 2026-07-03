@@ -1,0 +1,38 @@
+{
+  "task_id": "task_103_23_global_earthquake_report",
+  "created_at": "2026-06-20T00:00:00+00:00",
+  "dataset": "sources/usgs_data/earthquakes_m45_past30days.geojson",
+  "dataset_description": "Frozen snapshot of the USGS real-time feed 'M4.5+ earthquakes, past 30 days', downloaded 2026-06-20 (GeoJSON FeatureCollection). Each feature has properties.mag, properties.place, properties.time (ms epoch UTC), and geometry.coordinates = [lon, lat, depth_km]. This injected snapshot is the authoritative source; the report and interactive map must be built from THIS file, not a fresh live pull.",
+  "required_outputs": [
+    "/tmp_workspace/results/earthquake_report.html (a single self-contained interactive HTML)"
+  ],
+  "interactive_requirements": [
+    "a geographic scatter/map of epicenters using lon/lat (points must land in the correct places, no lon/lat swap, no everything-at-0,0)",
+    "a time control (slider or animation) over the ~30-day window that visibly changes which events are shown",
+    "a magnitude distribution chart (e.g. histogram of mag)"
+  ],
+  "ground_truth_anchors": {
+    "note": "Computed directly from the injected snapshot. The exact count is fixed by the file; small differences only if the executor filters. Anchors are used to confirm the report read the real data.",
+    "total_events": 523,
+    "magnitude_range": [4.5, 7.8],
+    "time_window_utc": ["2026-05-21", "2026-06-20"],
+    "largest_event": {"mag": 7.8, "place": "24 km SW of Kablalan, Philippines", "depth_km": 57},
+    "top5_by_magnitude": [
+      "M7.8 Philippines (Kablalan)",
+      "M6.9 Chile (Calama)",
+      "M6.7 Indonesia (Palu)",
+      "M6.6 Russia (Petropavlovsk-Kamchatsky)",
+      "M6.6 central Mid-Atlantic Ridge"
+    ],
+    "pacific_ring_share_approx_pct": 80,
+    "coordinate_convention": "geometry.coordinates = [longitude, latitude, depth_km]; longitude first. A map that swaps these will place points in the wrong hemisphere."
+  },
+  "expected_analysis_points": [
+    "Most M4.5+ events cluster along the Pacific Ring of Fire (~80% of events by a rough lon/lat heuristic): west Pacific (Philippines, Indonesia, Japan, Kamchatka) and east Pacific (Andes/Chile, Central America, Alaska)",
+    "Mid-ocean ridges (e.g. Mid-Atlantic Ridge) also produce notable events but fewer",
+    "The largest event in the window was ~M7.8 near the Philippines",
+    "Magnitude distribution is heavily skewed: many events near M4.5-5.0, very few above M6"
+  ],
+  "scoring_notes": "Build from the injected GeoJSON. Reward a working interactive HTML whose map points are geographically correct (Ring-of-Fire pattern visible, no coordinate reversal), whose time control actually filters events, and whose magnitude chart matches the data. Penalize fabricated counts, reversed coordinates, a static (non-interactive) page, blank charts, or a report that is generic seismology prose not tied to this snapshot.",
+  "dynamic_content_note": "The live USGS feed changes daily, but the injected snapshot is frozen and authoritative. Judge against the injected snapshot, not a current pull. If the executor re-downloads live data and the counts differ, that is acceptable only if the methodology is sound and it is clearly noted; prefer the injected snapshot as ground truth."
+}

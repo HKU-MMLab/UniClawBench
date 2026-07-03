@@ -1,0 +1,23 @@
+Message-ID: <udly25tjlvw.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-0875
+Date: Fri, 12 Nov 2021 12:59:15 -0500
+From: ucko@debian.org (Aaron M. Ucko)
+To: Andreas Tille <tille@debian.org>
+Subject: Re: Accepted ncbi-vdb 2.11.2+dfsg-2 (source) into unstable
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_11_msg00067.html
+
+Debian FTP Masters  writes:
+
+>  ncbi-vdb (2.11.2+dfsg-2) unstable; urgency=medium
+>  .
+>    * Binary package libncbi-vdb-dev Depends: libzstd-dev
+
+Thanks!  Meanwhile, I'll try to find time to finalize and push my other
+tuneups this weekend -- last week obviously didn't happen. :-/
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

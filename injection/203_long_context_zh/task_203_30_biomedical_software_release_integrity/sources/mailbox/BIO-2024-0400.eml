@@ -1,0 +1,26 @@
+Message-ID: <ZJtGTcV3ZVG/FLuL@an3as.eu>
+X-Clawbench-ID: BIO-2024-0400
+Date: Tue, 27 Jun 2023 22:27:57 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: help with git errors
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_06_msg00028.html
+
+Am Tue, Jun 27, 2023 at 09:54:19PM +0200 schrieb Étienne Mollier:
+> I'm short of options that wouldn't involve a force push.
+
+If a forced push might be the solution its probably sensible to
+go that road.
+
+> In any case, thanks for having pushed ITK 5.3.0!
+
++1
+
+Kind regards
+     Andreas.
+
+--
+http://fam-tille.de

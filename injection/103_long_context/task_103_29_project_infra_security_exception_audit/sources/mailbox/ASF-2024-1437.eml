@@ -1,0 +1,45 @@
+Message-ID: <2632ea16-17f7-ca77-6316-e33096b60c42@christopherschultz.net>
+X-Clawbench-ID: ASF-2024-1437
+Date: Wed, 18 May 2022 14:55:33 -0400
+From: Christopher Schultz <chris@christopherschultz.net>
+To: dev@httpd.apache.org
+Subject: Re: CVE-2022-1388
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-05.mbox
+
+Eric,
+
+On 5/18/22 08:31, Eric Covener wrote:
+>> Given the above, I believe the interpretation of X-F5-Auth-Token should
+>> be that it is an end-to-end header, and should therefore NOT be removed
+>> from the proxied request.
+>>
+>> The text does say "All other headers *defined by HTTP/1.1* are
+>> end-to-end headers" (emphasis mine, of course), and the X-F5-Auth-Token
+>> header isn't defined by HTTP/1.1 (it's a custom one), but I think the
+>> definition of specific hop-by-hop headers implies that *all* other
+>> headers should be considered end-to-end.
+>
+> I don't think that interpretation can be squared with e.g.
+>
+> https://datatracker.ietf.org/doc/html/rfc7230#section-3.2.1
+> https://datatracker.ietf.org/doc/html/rfc7230#section-6.1
+
+Thanks for those references. So the client /is/ expected to be able to
+tell the proxy that certain headers are hop-by-hop by specifying them in
+the Connection header.
+
+It appears that Big-IP wasn't aware of this and wasn't ensuring that
+headers associated with authentication should always be proxied (perhaps
+by copying inbound header -> outbound header) by overriding httpd's
+spec-compliant default behavior.
+
+Thanks for clearing that up for me.
+
+(I was previously unaware of this nuance of the Connection header. It's
+a pretty important nuance :)
+
+Thanks,
+-chris

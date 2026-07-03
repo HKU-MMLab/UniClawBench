@@ -1,0 +1,43 @@
+Message-ID: <618a91aa.1c69fb81.7b3f5.f894@mx.google.com>
+X-Clawbench-ID: BIO-2024-0896
+Date: Tue, 09 Nov 2021 20:50:08 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: debian-science@lists.debian.org
+Subject: Re: What should be moved to math-team (Re: Debian Math Team
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_11_msg00064.html
+
+On Mon, Nov 08, 2021 at 10:54:35AM -0500, M. Zhou wrote:
+> Hi,
+>
+> At this point I have some doubt on "what should be moved to
+> math team." The borderline and the expected outcome are
+> not discussed in some specific cases.
+>
+> In my understanding, domain-specific mathematical applications,
+> such as theorem prover, would be a good fit for the new team.
+> And this is not likely of interest by a larger range of audience.
+>
+> However, as we know, mathematics is the underlying core of
+> many engineering and science fields. The critical mathematical
+> libraries such as BLAS and LAPACK should have the attention
+> to the whole science team, instead of limited attention of
+> a small team.
+>
+> In brief, my personal opinion is: packages that are too important
+> and generic should be kept in science team as they may affect
+> any sub-area of science; packages are less likely used in
+> other sub-areas of science can be moved to smaller but dedicated
+> teams for better care.
+>
+> The borderline should depend on the influence of a package,
+> and its expected usage.
+
+Makes sense to me.
+Maybe, it is also a fine idea to move packages which are important in the science team,
+but are unmaintained.
+Ofcourse, only if some volunteer is willing to take care of it.
+
+Nilesh

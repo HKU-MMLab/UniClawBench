@@ -1,0 +1,31 @@
+Message-ID: <Yu6E+kOloOTwI5ZS@an3as.eu>
+X-Clawbench-ID: BIO-2024-1420
+Date: Sat, 6 Aug 2022 17:12:58 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: RFS - Fixes for #1014104,#1016454
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_08_msg00030.html
+
+Hi Bilal,
+
+Am Sat, Aug 06, 2022 at 08:09:45PM +0530 schrieb Mohd Bilal:
+> Hello team,
+>
+> I've fixed the autopkgtest regressions for megadepth[1] and mothur[2].
+>
+> For megadepth the upstream[3] currently doesn't support architectures
+> outside x86. So as a workaround we may have to skip the tests in s390 arch.
+>
+> Requesting someone to review and sponsor these packages[4][5].
+
+Uploaded megadepth and about to upload mothur.
+
+Thanks a lot for working on these packages
+
+      Andreas.
+
+--
+http://fam-tille.de

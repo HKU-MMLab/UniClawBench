@@ -1,0 +1,33 @@
+Message-ID: <Y45xFCB+BIozJiPN@fusion>
+X-Clawbench-ID: BIO-2024-1469
+Date: Mon, 5 Dec 2022 23:30:44 +0100
+From: Étienne Mollier <emollier@debian.org>
+To: debian-med@lists.debian.org
+Subject: [Advent bug squashing] bugs addressed by last itk4 upload (#801367, #977473)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_12_msg00055.html
+
+Version: 4.13.3withdata-dfsg2-4
+
+I'm mostly triaging remaining issues to see what's still current
+for insighttoolkit5.
+
+The last upload of insighttoolkit4 included the removal of
+python wrappers, effectively resolving #801367.
+Also #977473 became effectively moot, although I hesitated with
+marking it wontfix, as the patch is still present in the last
+insighttoolkit4, but makes no difference anymore.
+
+I'm not sure what to think of #759794, but I suspect the heavy
+weight has been partly resolved by python wrappers removal too.
+Finally, #989927 does not affect itk5, and the latter should
+probably be preferred over itk4 if possible.
+
+Have a nice day,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  gpg: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/4, please excuse my verbosity
+   `-    on air: Tyler Kamen - Stringbean

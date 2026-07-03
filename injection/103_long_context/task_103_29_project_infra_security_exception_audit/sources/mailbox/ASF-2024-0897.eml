@@ -1,0 +1,29 @@
+Message-ID: <CALK=YjMDVaB9o7hVF_QX=CrnVNXsxaAuzZK8SDGTG=3FoSMyKQ@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0897
+Date: Tue, 25 Jun 2024 12:42:04 -0400
+From: Eric Covener <covener@gmail.com>
+To: Apache HTTP Server Development List <dev@httpd.apache.org>
+Subject: Re: [VOTE] Release httpd-2.4.60-rc2 as httpd-2.4.60
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-06.mbox
+
+On Tue, Jun 25, 2024 at 11:36 AM Eric Covener <covener@gmail.com> wrote:
+>
+> Hi all,
+>
+> (sorry for the rework)
+>
+> Please find below the proposed release tarball and signatures:
+>
+> https://dist.apache.org/repos/dist/dev/httpd/
+>
+> I would like to call a VOTE over the next few days to release
+> this candidate tarball httpd-2.4.60-rc2 as 2.4.60:
+> [x] +1: It's not just good, it's good enough!
+> [ ] +0: Let's have a talk.
+> [ ] -1: There's trouble in paradise. Here's what's wrong.
+
+
+my +1, perl fw on AIX/xlc/ppc64 with only known perl/ssl errors in proxy.t

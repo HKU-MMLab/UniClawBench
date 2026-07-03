@@ -1,0 +1,37 @@
+Message-ID: <20020719183016.3297b423.matthias_haase@bennewitz.com>
+X-Clawbench-ID: CAM-2003-0724
+Date: Fri, 19 Jul 2002 18:30:16 +0200
+From: Matthias Haase <matthias_haase@bennewitz.com>
+To: rpm-zzzlist@freshrpms.net
+Subject: Re: gentoo 0.11.28 is out..
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00674.bce8a0d5cf2fcc9888c9c2f88725df78
+
+On Thu, 18 Jul 2002 13:00:29 +0200
+Matthias Saou <matthias@egwn.net> wrote:
+
+> Once upon a time, Matthias wrote :
+> > ..see subject.
+> ..see valhalla.freshrpms.net ;-)
+
+Hi, Matthias,
+
+You should temporarly remove gentoo 0.11.29 from valhalla.freshrpms.net.
+This build (and 0.11.28) has a strong bug: Problems with copying "deep"
+directories.
+
+Have reported this to Emil, he looks currently into it, a fix should be
+available soon..
+
+Sorry
+
+--
+regards from Germany
+                   Matthias
+
+
+_______________________________________________
+RPM-List mailing list <RPM-List@freshrpms.net>
+http://lists.freshrpms.net/mailman/listinfo/rpm-list

@@ -1,0 +1,31 @@
+Message-ID: <Yv4jLKhNpMfhr4wA@redhat.com>
+X-Clawbench-ID: ASF-2024-0609
+Date: Thu, 18 Aug 2022 12:31:56 +0100
+From: Joe Orton <jorton@redhat.com>
+To: dev@httpd.apache.org, dev@perl.apache.org
+Subject: [VOTE] Release libapreq2-2.17
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-08.mbox
+
+Hi, I've prepared a candidate release tarball for libapreq2 v2.17 here:
+
+https://dist.apache.org/repos/dist/dev/httpd/libapreq/
+
+I would like to call a VOTE over the next week to release this candidate
+tarball as v2.17:
+
+[ ] +1: It's not just good, it's good enough!
+[ ] +0: Let's have a talk.
+[ ] -1: There's trouble in paradise. Here's what's wrong.
+
+SHA-256 and SHA-512 checksums for the tarball are as follows:
+
+046487f084c12fa1c822affc5f7de56efed9b48905a426e631a6b949c114d86c  libapreq2-2.17.tar.gz
+89b139b8673145d9e2d8fd77d36f878c519c1deb7f9b853cda2a15d34cbb619d1c5e784ba21553f23c2ef07803f07c75a83d96cd770f80e1b36283a4cbb88999  libapreq2-2.17.tar.gz
+
+The release is prepared from:
+https://svn.apache.org/repos/asf/httpd/apreq/branches/v2.17 at r1903514
+
+Regards, Joe

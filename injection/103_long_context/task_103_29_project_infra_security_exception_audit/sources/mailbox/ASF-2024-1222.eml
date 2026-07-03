@@ -1,0 +1,25 @@
+Message-ID: <9380C115-6F1C-4C72-B5C1-FCFA1F0225C3@sharp.fm>
+X-Clawbench-ID: ASF-2024-1222
+Date: Fri, 14 Apr 2023 15:08:52 +0100
+From: "Graham Leggett via dev" <dev@httpd.apache.org>
+To: dev@httpd.apache.org,  Graham Leggett <minfrin@sharp.fm>
+Subject: Re: mod_dav and PATH_INFO - MKCOL silently creates the parent  directory
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-04.mbox
+
+On 13 Apr 2023, at 16:27, Graham Leggett <minfrin@sharp.fm> wrote:
+
+> Changing the config to this makes it work:
+>
+> Alias /storage /var/www/dav/storage
+>
+> It looks like the detail that’s missing that we don’t identify the rest of the URL after the alias and pass it on by calling alias_matches() to identify the prefix:
+>
+> https://github.com/apache/httpd/blob/trunk/modules/mappers/mod_alias.c#L549 <https://github.com/apache/httpd/blob/trunk/modules/mappers/mod_alias.c#L549>
+This is fixed in http://svn.apache.org/viewvc?rev=1909137&view=rev <http://svn.apache.org/viewvc?rev=1909137&view=rev>.
+
+Regards,
+Graham
+—

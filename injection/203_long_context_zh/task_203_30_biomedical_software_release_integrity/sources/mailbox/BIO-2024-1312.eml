@@ -1,0 +1,26 @@
+Message-ID: <YW1cL2Q/pa5gOloK@an3as.eu>
+X-Clawbench-ID: BIO-2024-1312
+Date: Mon, 18 Oct 2021 13:36:15 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Uros Gaber <uros@powercom.si>
+Subject: Re: sortmerna: "/usr/bin/ld: cannot find -lpthreads"
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00098.html
+
+Hi Uros,
+
+Am Mon, Oct 18, 2021 at 09:13:51AM +0000 schrieb Uros Gaber:
+>
+> Please make sure that the library reference is "pthread" not "pthreads".
+
+Thanks for the hint - but how can I approach this?  Grep does not find the
+string "pthreads" in the source tree.
+
+Kind regards and thank you in any case
+
+     Andreas.
+
+--
+http://fam-tille.de

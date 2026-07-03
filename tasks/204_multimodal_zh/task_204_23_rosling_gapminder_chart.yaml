@@ -1,0 +1,47 @@
+task_id: task_204_23_rosling_gapminder_chart
+category: 204_multimodal_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  请在 TED 官方网站上打开这个 Hans Rosling 的演讲页面：
+  https://www.ted.com/talks/hans_rosling_the_best_stats_you_ve_ever_seen
+
+  我想了解他演讲中那个经典的国家发展气泡图。
+  你必须直接播放演讲，并在视频画面中找到目标气泡图。不要只是下载 TED 字幕或依赖
+  文字稿；截图、复现的图表和高亮分析都必须基于实际观看。
+
+  1. 播放演讲，找到以人均 GDP 为横轴的国家发展气泡图片段，
+     并记录屏幕上显示的年份和坐标轴标签；截图必须基于真实的 TED 视频画面。
+  2. 截取一帧清晰的图表画面，并保存为 `/tmp_workspace/results/rosling_chart_screenshot.png`。
+  3. 然后访问 Gapminder 的官方数据门户（https://www.gapminder.org/data/）以及任何必要的官方文档 / 数据下载页面，
+     获取与演讲图表画面相同年份或相近年份的数据；如果你使用了相邻的年份，请说明原因。
+  4. 使用 Python 复现一张风格相似、满足下方指标要求的气泡图，并保存：
+     - `/tmp_workspace/results/rosling_chart_reproduced.png`
+     - `/tmp_workspace/results/rosling_chart_reproduced.py`
+  5. 阅读 `/tmp_workspace/clawbench/sources/my_countries.csv` 中的国家列表，在你复现的图表中高亮这些国家，
+     并在 `/tmp_workspace/results/my_countries_analysis.md` 中说明它们的位置、差异和大致的发展水平。
+
+  复现的图表至少必须满足：
+  - X 轴：人均 GDP（对数刻度）
+  - Y 轴：预期寿命
+  - 气泡大小：人口
+  - 颜色：大洲或等效的大洲分组
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/highlighted_countries_2003.csv
+  - references/rosling_reference_frame_13m30s.png
+
+sources:
+  - my_countries.csv
+
+codex:
+  max_user_followups: 2

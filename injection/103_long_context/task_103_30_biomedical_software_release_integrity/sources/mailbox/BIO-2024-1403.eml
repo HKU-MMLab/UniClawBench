@@ -1,0 +1,34 @@
+Message-ID: <YufrdmrGdeIh540O@an3as.eu>
+X-Clawbench-ID: BIO-2024-1403
+Date: Mon, 1 Aug 2022 17:04:22 +0200
+From: Andreas Tille <tille@debian.org>
+To: Flavien Bridault <flavien.bridault@ircad.fr>
+Subject: Re: sight failing to build
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_08_msg00004.html
+
+Hi Flavien,
+
+Am Mon, Aug 01, 2022 at 09:39:33AM +0200 schrieb Flavien Bridault:
+> Thank you for the notice. If I understand well, this is a duplicate of
+> #1013036.
+
+This bug was just closed - so I removed it from changelog.
+
+> I added a patch to fix this and forwarded upstream. I also fixed most
+> lintian warnings.
+>
+> Can you check if this looks fine and upload if all is good ?
+
+Uploaded.
+
+BTW, it would be great to have an autopkgtest for this package.
+
+Kind regards
+
+     Andreas.
+
+--
+http://fam-tille.de

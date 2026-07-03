@@ -1,0 +1,22 @@
+Message-ID: <Y5+QTHw7VUGVLuFc@fusion>
+X-Clawbench-ID: BIO-2024-0501
+Date: Sun, 18 Dec 2022 23:12:28 +0100
+From: Étienne Mollier <emollier@emlwks999.eu>
+To: debian-med@lists.debian.org
+Subject: [Advent bug squashing] fixed bug #1026344 in insilicoseq
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_12_msg00090.html
+
+I had a few cycles left today to address the test failure in
+insilicoseq caused by the new numpy version, close the
+corresponding RC bug (once ftpmaster processing host is back
+online), and inform upstream of the issue.
+
+Have a nice day,  :)
+--
+Étienne Mollier
+Fingerprint:  8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+Sent from /dev/pts/1, please excuse my verbosity.
+On air: Emerson, Lake & Palmer - Keith Emerson - Piano Concerto…

@@ -1,0 +1,44 @@
+Message-ID: <Y0VvIDNT3BAyPjxm@an3as.eu>
+X-Clawbench-ID: BIO-2024-1199
+Date: Tue, 11 Oct 2022 15:26:56 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Mohd Bilal <mdbilal@disroot.org>
+Subject: Re: RFS -- autopkgtest for gatb-core
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00036.html
+
+Hi Bilal,
+
+seems this RFS was unanswered ... I did so now.
+
+Sorry for the delay
+
+     Andreas.
+
+Am Sat, Sep 03, 2022 at 10:06:25PM +0530 schrieb Mohd Bilal:
+> Hello team,
+>
+> I've added autopkgtests for gatb-core[1]. For the reprotest failure, the
+> source includes some system level interfaces[2] that fetches system info
+> which is used in other parts of the code. I tried patching but one or the
+> other way it ends in a build failure. So it would be better if someone with
+> more knowledge of the codebase can look into it.
+>
+> If this is something which can be skipped for now. Kindly sponsor my changes
+> :)
+>
+> [1] - https://salsa.debian.org/med-team/gatb-core/
+> [2] - https://salsa.debian.org/med-team/gatb-core/-/tree/master/gatb-core/src/gatb/system/impl
+>
+> Thanks
+> --
+> ╭───────────────────────────────────────────────────╮
+> │ Mohammed Bilal                                    │
+> │ 2D65 BC1E B966 5A6E 97F9 730A B3F5 9452 8521 9E1F │
+> ╰───────────────────────────────────────────────────╯
+
+
+--
+http://fam-tille.de

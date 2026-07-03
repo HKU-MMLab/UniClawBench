@@ -1,0 +1,32 @@
+Message-ID: <Yt7ZoEDGTuiAtZmP@fusion>
+X-Clawbench-ID: BIO-2024-0685
+Date: Mon, 25 Jul 2022 19:57:52 +0200
+From: Étienne Mollier <emollier@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: GCC-12 bugs became RC - some low hanging fruits remaining + one or two harder ones
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_07_msg00067.html
+
+Hi Andreas,
+
+Andreas Tille, on 2022-07-25:
+> I think the insighttoolkit one is a
+> hard one any may be there is another harder one amongst the remainings.
+
+Thanks for the reminder, I realized I forgot to push a first
+step to fix the failure to build from source in itk4.  This is
+not sufficient to make the package pass through buildd though,
+since I recall I hit a test failure after that.  I don't expect
+the fix for the test failure will be an easy one.
+
+I'm also checking also the status of itk5.  There are no open
+reports at the moment, but in doubt…
+
+Have a nice day,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  gpg: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/2, please excuse my verbosity
+   `-    on air: After Forever - Leaden Legacy (The Embrace Tha…

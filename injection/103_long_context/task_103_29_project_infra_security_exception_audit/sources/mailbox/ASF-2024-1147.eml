@@ -1,0 +1,41 @@
+Message-ID: <CAMD-=V+fu7WzUQmAiEaFRFxQhWqy-CA4POUqxSyWzn1qejM3sQ@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1147
+Date: Sat, 14 Dec 2024 14:22:58 +1000
+From: Nick Edwards <nick.z.edwards@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: httpd 2.4 -> next
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-12.mbox
+
+On Sat, Dec 14, 2024 at 7:13 AM Eric Covener <covener@gmail.com> wrote:
+
+>
+>
+> but is there something we can do on top of pingora (the rust
+> cloudflare library-ish thing) that makes it easier for people who like
+
+
+oh hell no... let's stay away from rust, it's worse than systemd (and I
+never thought that possible)
+
+rust libs from today are not compat with rust of 12 to 18 months ago,
+forcing the OS maintainer to manually force and install of latest rust,
+often b source, over riding the distro. now that might be fine for home
+geeks, but thats never going to happen in a server environment like ASP's,
+ISP's big corporates, governments other ngo's.
+
+One example, we are using an outdated particular software engine because
+although the OS is not even 2 years old, its rust major/minor is not compat
+with current engine, and I'll out them, Cisco, recently told us "go update
+rust", really????  207 machines or 7, about that, nahhh not gonna happen,
+we'll find a replacement.
+
+So unless you are prepared to release new majors (2.8) 2 years later, (3.0)
+2 years after that and so on,  for gods sake, forget rust.
+
+It is aptly named, because rust should be left to rust away to a crumbling
+pile of ....
+
+Merry Christmas y'all

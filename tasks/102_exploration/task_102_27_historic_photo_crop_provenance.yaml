@@ -1,0 +1,42 @@
+task_id: task_102_27_historic_photo_crop_provenance
+category: 102_exploration
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I have this cropped close-up of a famous historic photograph, with no caption
+  or credit, and I want to know exactly what it depicts and find the original
+  archival record from the source institution (not a Wikipedia or news copy).
+  The image is here:
+
+      /tmp_workspace/clawbench/sources/crop.jpg
+
+  It's only a detail of the full photo — no caption, no ID text — so identify it
+  from the image itself and then trace it back to the authoritative archive.
+
+  Tell me:
+  - what the photograph depicts (event/subject and people if identifiable),
+  - the date it was taken,
+  - the holding archive and the canonical record (the archive's own
+    page / image-library id), and the photo's archive id,
+  - the photographer if known.
+
+  Save your conclusion and the supporting evidence (how you identified it, and
+  the canonical archive record URL) to
+  `/tmp_workspace/results/photo_provenance.json`, plus notes/screenshots under
+  `/tmp_workspace/results/`.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+sources:
+  - crop.jpg
+
+codex:
+  max_user_followups: 2

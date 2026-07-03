@@ -1,0 +1,56 @@
+task_id: task_201_28_meeting_structure
+category: 201_skill_usage_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我们刚开完 Q3 Platform Planning Sync——大约四十分钟，五个人，八个
+  议程项——我需要在决定还没淡忘之前整理出像样的会议纪要。录像在
+  /tmp_workspace/clawbench/sources/meeting.mp4，我们过了一遍的幻灯片在
+  /tmp_workspace/clawbench/sources/slides/。用工作区的语音转文字技能转写，
+  用视频抽帧技能提取关键帧，并用视频剪辑技能做任何片段提取。我想要一个
+  结构化的纪要文件，放在 /tmp_workspace/results/minutes.md。
+
+  会上五个人是主持会议的 Alice，外加 Bob、Carol、David 和 Erin。我们
+  过完了八个议程项，从简短的状态更新到持续好几分钟的争论都有。我想要
+  每个话题一个章节，带 HH:MM:SS 的起止时间戳、两到四个要点来概括实际
+  说了什么，以及一张保存在 /tmp_workspace/results/thumbs/ 下、由该章节
+  引用的缩略关键帧。
+
+  在最底部，放一个 Action Items 块，列出每一项承诺，带负责人的名字和
+  具体的截止日期，外加一个简短的 Open Questions 块，记录我们搁置的任何
+  事情。有几个决定取决于我们在会上说出口的具体日历日期，所以请确保那些
+  确切日期逐字落入纪要，而不是被四舍五入成"下个季度"。
+
+  纪要应当清楚地涵盖出现了哪些话题、我们最终敲定的决定、带负责人和截止
+  日期的行动项，以及出现的任何上游或下游依赖。用每个章节的要点来记录这些
+  就可以，我只是想让每条线索都在 minutes.md 里的某处可见，而不是被丢在
+  一边不管。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - meeting.mp4
+  - slides/
+
+skills:
+  - openai-whisper-api
+  - video-frames
+  - ffmpeg-video-editor
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

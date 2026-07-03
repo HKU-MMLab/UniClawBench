@@ -1,0 +1,41 @@
+task_id: task_102_08_openfda_drug_label
+category: 102_exploration
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I need to look up drug label information from the FDA's open data, by brand
+  name, using their API.
+
+  The FDA's open data portal is here:
+
+      https://open.fda.gov/
+
+  There's a drug label dataset/endpoint there. Please find it and use the API
+  to query for the brand name **Tylenol**. From the matching label record(s),
+  report:
+
+  - the brand name and the generic (active ingredient) name,
+  - the route of administration,
+  - the total number of label records the API says match this brand,
+  - the manufacturer/labeler name if present.
+
+  Heads up: the brand/generic/route fields live under a nested `openfda`
+  object, so a naive top-level search won't match — you'll need the right
+  field-path search syntax.
+
+  Save the result to `/tmp_workspace/results/openfda_tylenol.json`, and save the
+  exact request URL(s) you called plus their raw JSON response(s) to
+  `/tmp_workspace/results/openfda_evidence/`.
+
+references:
+  - references/eval_rule.md
+
+codex:
+  max_user_followups: 2

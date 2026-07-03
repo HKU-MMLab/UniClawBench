@@ -1,0 +1,108 @@
+{
+  "task_id": "task_104_36_his_girl_friday_dialogue_subtitles",
+  "difficulty": "Medium",
+  "schema": "b",
+  "schema_notes": "structural SRT checks plus semantic spot checks against the hidden clip reference",
+  "ground_truth": {
+    "source_clip": "clip.mp4",
+    "reference_srt": "references/reference_clip.srt",
+    "requested_time_range_seconds": {
+      "start": 0,
+      "end": 480
+    },
+    "expected_output_files": [
+      "/tmp_workspace/results/clip.srt",
+      "/tmp_workspace/results/clip_notes.md"
+    ],
+    "reference_metrics": {
+      "cue_count": 175,
+      "acceptable_cue_count_min": 120,
+      "acceptable_cue_count_max": 230,
+      "first_cue_start_max_sec": 2,
+      "last_cue_end_min_sec": 470,
+      "last_cue_end_max_sec": 481
+    },
+    "semantic_acceptance": {
+      "minimum_anchor_windows_hit": 4,
+      "minimum_semantic_coverage_ratio": 0.85,
+      "minimum_window_coverage_ratio": 0.75,
+      "interpretation": "The candidate should capture at least about 85% of meaningful spoken content overall and at least about 75% in each locked window, allowing paraphrase and minor punctuation differences when speaker/action meaning is preserved."
+    },
+    "semantic_anchor_windows": [
+      {
+        "window": "00:00:00-00:01:30",
+        "keywords_any": [
+          "Williams",
+          "roof",
+          "drainpipe",
+          "window",
+          "Mollie",
+          "Bruce",
+          "Baldwin",
+          "murderers"
+        ],
+        "anchor_facts": "Reporters discuss Williams, the roof, drainpipe/windows, the story walking in the window, Mollie, how Williams got the gun, Bruce's money, Mrs. Baldwin calling the men murderers, and Mollie saying she knows where Williams is before jumping."
+      },
+      {
+        "window": "00:01:30-00:03:15",
+        "keywords_any": [
+          "ambulance",
+          "Williams",
+          "desk",
+          "Bruce",
+          "mother",
+          "Louie Peluso",
+          "jail",
+          "Morning Post"
+        ],
+        "anchor_facts": "The jump/ambulance aftermath, Williams hidden in the desk, Bruce's mother, Louie Peluso taking her away, Hildy trying to get Bruce out of jail, and Walter arguing this is war while Earl Williams captured by the Morning Post is the story."
+      },
+      {
+        "window": "00:03:15-00:06:00",
+        "keywords_any": [
+          "Livingston",
+          "Stanley",
+          "La Guardia",
+          "ward healers",
+          "Hildy Johnson",
+          "pulleys",
+          "Duffy",
+          "European war",
+          "Bruce",
+          "Albany"
+        ],
+        "anchor_facts": "Walter's career pitch covers Livingston/Stanley, La Guardia, exposing/crucifying ward heelers, a Hildy Johnson cigar, moving Williams in the desk with pulleys, calling Duffy, ignoring the European war, Bruce returning from jail after wiring Albany for $100, and the money/wallet/check confusion."
+      },
+      {
+        "window": "00:06:00-00:08:00",
+        "keywords_any": [
+          "9 o'clock train",
+          "spy",
+          "biggest thing in my life",
+          "icebox",
+          "suburban bridge player",
+          "newspaperman",
+          "mock turtle",
+          "Butch",
+          "life and death"
+        ],
+        "anchor_facts": "Bruce and Hildy argue over the 9 o'clock train, whether Hildy wants to leave, Walter calling Bruce a spy, the biggest thing in my life exchange, icebox/love accusations, Hildy choosing newspaperman identity over suburban life, the mock turtle line, and Butch being needed as a matter of life and death."
+      }
+    ],
+    "notes_expectations": {
+      "must_reference_any": [
+        "前60秒",
+        "60 秒",
+        "0:00-1:00",
+        "开头一分钟"
+      ],
+      "should_reference_any": [
+        "复核",
+        "校对",
+        "修正",
+        "时间轴",
+        "同步"
+      ]
+    }
+  }
+}

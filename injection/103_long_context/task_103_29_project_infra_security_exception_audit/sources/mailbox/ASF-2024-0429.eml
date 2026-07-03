@@ -1,0 +1,50 @@
+Message-ID: <c4f9bc00-f531-2ef8-a7a9-6aab1d5ebcc2@apache.org>
+X-Clawbench-ID: ASF-2024-0429
+Date: Fri, 19 Apr 2024 10:01:24 +0200
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: [WIP] mod_authnz_ldap / mod_ldap support for APR v2 LDAP API
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-04.mbox
+
+On 4/18/24 3:21 PM, Joe Orton wrote:
+> On Thu, Apr 18, 2024 at 09:40:21AM +0100, Graham Leggett via dev wrote:
+>> Hi all,
+>>
+>> The attached patch is a current work in progress patch for httpd-trunk to use the new apr_ldap API that just landing in APR.
+>>
+>> The highlights:
+>>
+>> - Complete replacement of the previous API.
+>> - Will work against apr-2 (just landed) and apr-util-1.7 (after backport).
+>> - Linking to the underlying LDAP API has been removed and is no longer needed.
+>
+> This design decision seems surprising to me, what does this add? Adding
+> another abstraction layer to allow runtime selection of the LDAP library
+> seems like a step backwards (a lot of complexity with no benefit).
+> Unlike with e.g. a database backend selection users don't care about
+> picking/configuring among many LDAP libraries.
+
+First of all I haven't gone through the patch. Hence I may be off below.
+
+I think the core issue with the LDAP API we have in APR-UTIL 1.x today and that let to the
+removal discussions on APR side in 2010 (https://lists.apache.org/thread/pz5c28g0gf248fvpds53zl1f8by9n8n4)
+and 2011 (https://lists.apache.org/thread/cslw4gj0jgx3bmr8trz0jtfq5bmv1tfl) is that it is an incomplete
+abstraction of the LDAP libraries. mod_authnz_ldap and mod_ldap as consumers of the current API
+have LDAP library specific code and need to link directly against the specific LDAP library.
+The point back then on APR side was that this incomplete API should be either "completed" or removed from APR
+and that its code should move to httpd which should deal then directly with all the gory details of the various
+LDAP libraries not just with a subset. This happened on APR trunk side, but not on httpd trunk side.
+
+I agree that it is of limited sense to decide during runtime which LDAP library to use as typically there is
+only one available on a particular system. This is substantially different from the situation with databases.
+Nevertheless I think it is a good idea to concentrate the LDAP library abstraction in one place (either in httpd
+or in APR) and don't continue the partial / mixed model we have today.
+If we have further consumers of this API but httpd and APR is willing to have the code APR seems like to be the correct
+place for it. If not we could do what we need just in httpd and decide during build time what library we want to build against.
+
+Regards
+
+Rüdiger

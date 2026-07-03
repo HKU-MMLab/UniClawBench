@@ -1,0 +1,22 @@
+{
+  "task_id": "task_101_06_sqlite_anomalies",
+  "notes_visible_to_executor": false,
+  "skill_changes": [
+    {
+      "original_skill": "sql-toolkit",
+      "injected_skill": "sql-toolkit",
+      "original_source": "clawhub",
+      "change_type": "no_changes",
+      "reason": "Upstream `sql-toolkit` (top-1000) is injected as-is.",
+      "executor_skill_path": "skills/sql-toolkit"
+    },
+    {
+      "original_skill": "database-operations",
+      "injected_skill": "database-operations",
+      "original_source": "clawhub",
+      "change_type": "no_changes",
+      "reason": "Upstream `database-operations` (top-1000) is injected as-is.",
+      "executor_skill_path": "skills/database-operations"
+    }
+  ]
+}

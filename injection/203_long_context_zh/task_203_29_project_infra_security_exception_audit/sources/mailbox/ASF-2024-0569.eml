@@ -1,0 +1,51 @@
+Message-ID: <f0d0f405-922c-496f-bffd-d6569b85194f@kippdata.de>
+X-Clawbench-ID: ASF-2024-0569
+Date: Sun, 7 Apr 2024 14:15:12 +0200
+From: Rainer Jung <rainer.jung@kippdata.de>
+To: dev@httpd.apache.org
+Subject: Re: pytest results for 2.4.59
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-04.mbox
+
+Am 07.04.24 um 09:42 schrieb jean-frederic clere:
+> On 4/6/24 20:02, Rainer Jung wrote:
+>> Hi Jean-Frederic and all,
+>>
+>> you didn't write at what point in time you take the thread dump. I see
+>> the SIGTERM messages logged during test execution always during the
+>> last test in each group (http2, md, ...) just because that is the time
+>> the logs are checked by teardown for error messages. At the time the
+>> test complains it already starts to kill the children and at least
+>> during my test runs it success with killing them (I think). So finding
+>> a good point in time to attach the debugger and see the right
+>> situation might not be easy?
+>
+> I might have taken the thread dump late because I have taken it just
+> after the ap_log_error("sending a SIGTERM") at that time there is only
+> one thread running and it is "waiting" for the listener thread that has
+> already stopped. There I have found that the behavior of pthread_kill()
+> changed in "recent" fedora/rhel.
+>
+> Are you suggesting I should also try to get dumps earlier in the
+> shutdown process?
+>
+>>
+>> When you say Yann's patch helps, it means especially there are not
+>> more SIGTERM messages in the logs resp. no more teardown checks failing?
+>
+> Yes with Yann's patch, the "AH00045: child process nnnnn still did not
+> exit, sending a SIGTERM" messages are gone and teardown checks are passing.
+
+I could now also do some tests and for me the SIGTERM messages for
+worker on RHEL 9 during pytest are also gone with Yann's woker MPM
+patch. Plus I didn't get any new failures. Perl test framework is fine
+and pytest only some of the few occasional failures and errors I had
+also seen before.
+
+So it would be nice if we would apply Yann's patch for the worker mpm.
+
+Thanks and best regards,
+
+Rainer

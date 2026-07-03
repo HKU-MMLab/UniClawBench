@@ -1,0 +1,38 @@
+Message-ID: <20021008132740.GG23820@jinny.ie>
+X-Clawbench-ID: CAM-2003-0812
+Date: Tue, 08 Oct 2002 14:27:40 +0100
+From: "John P. Looney" <valen@tuatha.org>
+To: Irish LUG list <ilug@linux.ie>
+Subject: [ILUG] cups question
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00168.a13640e4b9528891d2e6690008307683
+
+I seem to be having a little trouble with it. My printers.conf is:
+
+<DefaultPrinter lp>
+Info Hp4050
+Location locals
+DeviceURI ipp://192.168.2.90:9100/
+State Idle
+Accepting Yes
+JobSheets none none
+QuotaPeriod 0
+PageLimit 0
+KLimit 0
+</Printer>
+
+ and cupds uses that to make a printcap of:
+
+lp:
+
+ Sounds dodgy to me. If someone has an example printers.conf/printcap for
+a JetDirect printer, I'd appreciate it if they sent it on.
+
+John
+
+--
+Irish Linux Users' Group: ilug@linux.ie
+http://www.linux.ie/mailman/listinfo/ilug for (un)subscription information.
+List maintainer: listmaster@linux.ie

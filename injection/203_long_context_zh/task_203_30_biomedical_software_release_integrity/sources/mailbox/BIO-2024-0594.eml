@@ -1,0 +1,63 @@
+Message-ID: <YeQhDaiNNdk/jFLe@an3as.eu>
+X-Clawbench-ID: BIO-2024-0594
+Date: Sun, 16 Jan 2022 14:43:41 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Debian Med video conference tomorrow, Monday 2022-01-17 18:00 UTC
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_01_msg00025.html
+
+Hi,
+
+this is the call for the next video conference of the Debian Med team
+that are an established means to organise the tasks inside our team.
+We do these conferences twice per month on every
+
+   2th  and  17th
+
+of a month.  Usually it takes us only 15-20min depending what we are
+talking about and how many people are joining.  The next meeting is
+tomorrow 18:00 UTC
+
+     https://www.timeanddate.com/worldclock/fixedtime.html?msg=Debian+CoViD-19+Biohackathon+Video+Conference&iso=20220117T18
+
+The meeting is on the Debian Social channel
+
+     https://jitsi.debian.social/DebianMedCovid19
+
+These video meetings were started in the Debian Med Biohackathon.
+The topic is what contributors have done in the past period and to
+coordinate the work until the next meeting.
+
+For those who are interested in hot topics we want to tackle, here
+are some items:
+
+  - Discussing options for next team sprint
+
+  - Effort to package tensorflow and other ML software which is
+    used in several applications that are used to fight COVID-19.
+    The precondition bazel to package tensorflow was a direct
+    consequence of a Debian Med hackathon and it was even
+    acknowledged[1]
+
+  - Package software that is used to fight COVID-19 which we are
+    listing in some spreadsheet[2].  It reaches from small tools
+    up to complex software packages.  There should be targets for
+    everybody who wants to join us.
+
+  - General Debian Med issues not directly connected to COVID-19
+
+Newcomers are always welcome.
+
+Lets keep on the great work and see you tomorrow
+
+       Andreas.
+
+[0] https://lists.debian.org/debian-med/2021/12/msg00000.html
+[1] https://blog.bazel.build/2021/03/04/bazel-debian-packaging.html
+[2] https://docs.google.com/spreadsheets/d/1tApLhVqxRZ2VOuMH_aPUgFENQJfbLlB_PFH_Ah_q7hM/edit#gid=543782716
+
+--
+http://fam-tille.de

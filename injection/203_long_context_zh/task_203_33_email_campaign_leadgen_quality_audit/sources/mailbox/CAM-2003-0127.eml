@@ -1,0 +1,22 @@
+Message-ID: <00a901c2492a$0d7daf70$e600000a@XENON16>
+X-Clawbench-ID: CAM-2003-0127
+Date: Wed, 21 Aug 2002 16:47:28 +0100
+From: wintermute <cout@eircom.net>
+To: ilug@linux.ie
+Subject: Re: [ILUG] Formatting a windows partition from Linux
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00019.c6b272a04ec32252f7c685f464ae3942
+
+Hmm.
+
+Make sure you formatted the partition with fat 16 and have made the
+partition /dev/hda1 a size such that dos won't have a problem recognising
+it!
+
+
+--
+Irish Linux Users' Group: ilug@linux.ie
+http://www.linux.ie/mailman/listinfo/ilug for (un)subscription information.
+List maintainer: listmaster@linux.ie

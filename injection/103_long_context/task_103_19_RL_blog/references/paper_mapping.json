@@ -1,0 +1,91 @@
+[
+  {
+    "file": "papers/paper_01.pdf",
+    "title": "Concrete Problems in AI Safety",
+    "authors": "Amodei et al.",
+    "year": 2016,
+    "url": "https://arxiv.org/pdf/1606.06565",
+    "sections": [
+      "1. Reward functions and specification gaps"
+    ],
+    "note": "Frames reward hacking as a core concrete AI safety problem."
+  },
+  {
+    "file": "papers/paper_02.pdf",
+    "title": "Shortcut Learning in Deep Neural Networks",
+    "authors": "Geirhos et al.",
+    "year": 2020,
+    "url": "https://arxiv.org/pdf/2004.07780",
+    "sections": [
+      "2. Shortcut learning as a source of hacking"
+    ],
+    "note": "Explains how models exploit spurious correlations instead of robust task features."
+  },
+  {
+    "file": "papers/paper_03.pdf",
+    "title": "The Effects of Reward Misspecification: Mapping and Mitigating Misaligned Models",
+    "authors": "Pan et al.",
+    "year": 2022,
+    "url": "https://arxiv.org/pdf/2201.03544",
+    "sections": [
+      "3. Reward hacking in RL environments"
+    ],
+    "note": "Maps how agents exploit misspecified rewards and studies mitigation."
+  },
+  {
+    "file": "papers/paper_04.pdf",
+    "title": "Reward Tampering Problems and Solutions in Reinforcement Learning",
+    "authors": "Everitt et al.",
+    "year": 2019,
+    "url": "https://arxiv.org/pdf/1908.04734",
+    "sections": [
+      "1. Reward functions and specification gaps"
+    ],
+    "note": "Analyzes corrupted reward channels and reward tampering through causal influence diagrams."
+  },
+  {
+    "file": "papers/paper_05.pdf",
+    "title": "Scaling Laws for Reward Model Overoptimization",
+    "authors": "Gao et al.",
+    "year": 2023,
+    "url": "https://arxiv.org/pdf/2210.10760",
+    "sections": [
+      "4. Reward hacking in RLHF for LLMs"
+    ],
+    "note": "Shows how optimizing a learned reward model can degrade true objective performance."
+  },
+  {
+    "file": "papers/paper_06.pdf",
+    "title": "Feedback Loops With Language Models Drive In-Context Reward Hacking",
+    "authors": "Pan et al.",
+    "year": 2024,
+    "url": "https://arxiv.org/pdf/2402.06627",
+    "sections": [
+      "5. Evaluator and in-context reward hacking"
+    ],
+    "note": "Demonstrates that models can exploit evaluator patterns visible in context."
+  },
+  {
+    "file": "papers/paper_07.pdf",
+    "title": "Language Models Learn to Mislead Humans via RLHF",
+    "authors": "Wen et al.",
+    "year": 2024,
+    "url": "https://arxiv.org/pdf/2409.12822",
+    "sections": [
+      "4. Reward hacking in RLHF for LLMs"
+    ],
+    "note": "Shows misleading behavior can emerge under RLHF-style optimization."
+  },
+  {
+    "file": "papers/paper_08.pdf",
+    "title": "Sycophancy to Subterfuge: Investigating Reward Tampering in Language Models",
+    "authors": "Denison et al.",
+    "year": 2024,
+    "url": "https://arxiv.org/pdf/2406.10162",
+    "sections": [
+      "6. Generalization of hacking skills",
+      "7. Detection and mitigation"
+    ],
+    "note": "Studies more severe reward tampering and generalization risks in language models."
+  }
+]

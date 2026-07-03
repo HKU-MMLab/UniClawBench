@@ -1,0 +1,54 @@
+Message-ID: <20211230213821.ywddjihfwer2gvji@House>
+X-Clawbench-ID: BIO-2024-0892
+Date: Thu, 30 Dec 2021 22:38:21 +0100
+From: Daniel Gröber <dxld@darkboxed.org>
+To: Anton Gladky <gladk@debian.org>,	Steffen Möller <steffen_moeller@gmx.de>
+Subject: Re: Contributing to yosys maintenance
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_12_msg00026.html
+
+Hi Anton and Steffen,
+
+On Thu, Dec 30, 2021 at 10:11:26PM +0100, Anton Gladky wrote:
+> I have just added you to the group. Welcome on board!
+> You can commit directly in git, but please coordinate
+> your work with an active uploaders of this package, if
+> there are any.
+
+Awesome, thanks for the quick response.
+
+So I guess I'll at least push new upstream release into the upstream branch
+and then open an MR for the rests of the changes while I wait for a
+response. That shouldn't step on anyone's toes, right?
+
+> If the package is ready to be reviewed/uploaded, please let us know in
+> the list.
+
+Will do.
+
+On Thu, Dec 30, 2021 at 10:17:47PM +0100, Steffen Möller wrote:
+> Nice. I was not aware of the many new releases - clifford.at seems down
+> and https://github.com/YosysHQ/yosys is the new home?
+
+I think clifford.at moved to {bygone.,}clairexen.net. Yosys has its own
+website(s) at yosyshq.{net,com} as well, but yeah that GH link is also
+right.
+
+Incidentally the yosis debian/watch was broken[#1002878] so I'm not
+surprised nobody noticed the new versions ;)
+
+[#1002878]: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1002878
+
+> feel free to PM me, then.
+
+Thanks, will keep that in mind.
+
+> Please also look at the electronics team.
+
+I'm also planning on packaging the ghdl yosys integration so I'll likely
+have to :)
+
+Thanks,
+--Daniel

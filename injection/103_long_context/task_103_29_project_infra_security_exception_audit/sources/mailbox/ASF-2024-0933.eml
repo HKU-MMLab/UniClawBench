@@ -1,0 +1,143 @@
+Message-ID: <73fde3de-27f0-4868-8353-b878de366d32@kippdata.de>
+X-Clawbench-ID: ASF-2024-0933
+Date: Tue, 25 Jun 2024 01:12:08 +0200
+From: Rainer Jung <rainer.jung@kippdata.de>
+To: dev@httpd.apache.org
+Subject: httpd-2.4.60-rc1: pytest http2 failures w.r.t. assets
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-06.mbox
+
+I am getting some pytest failures when checking for assets (leading "/"
+missing):
+
+=================================== FAILURES
+===================================
+__________________________ TestAssets.test_h2_006_03
+___________________________
+
+self = <http2.test_006_assets.TestAssets object at 0x7fe70af578e0>
+env = <http2.env.H2TestEnv object at 0x7fe70ac94be0>
+
+     def test_h2_006_03(self, env):
+         # create the tiles files we originally had checked in
+         exp_assets = [
+             {"status": 200, "size": "10K", "path": "/004.html"},
+             {"status": 200, "size": "742", "path": "/004/gophertiles.jpg"},
+         ]
+         for i in range(2, 181):
+             with
+open(f"{env.server_docs_dir}/test1/004/gophertiles_{i:03d}.jpg", "w") as fd:
+                 fd.write("0123456789\n")
+             exp_assets.append(
+                 {"status": 200, "size": "11", "path":
+f"/004/gophertiles_{i:03d}.jpg"},
+             )
+
+         url = env.mkurl("https", "test1", "/004.html")
+         r = env.nghttp().assets(url, options=["-Haccept-encoding: none"])
+         assert 0 == r.exit_code
+         assert 181 == len(r.assets)
+ >       assert r.assets == exp_assets
+E       AssertionError: assert [{'path': '/0...s': 200}, ...] ==
+[{'path': '/0...s': 200}, ...]
+E         At index 1 diff: {'path': '004/gophertiles.jpg', 'status':
+200, 'size': '742'} != {'status': 200, 'size': '742', 'path':
+'/004/gophertiles.jpg'}
+E         Full diff:
+E           [
+E            {'path': '/004.html', 'size': '10K', 'status': 200},
+E         -  {'path': '/004/gophertiles.jpg', 'size': '742', 'status': 200},
+E         ?            -
+E         +  {'path': '004/gophertiles.jpg', 'size': '742', 'status':
+200},...
+E
+E         ...Full output truncated (539 lines hidden), use '-vv' to show
+
+modules/http2/test_006_assets.py:52: AssertionError
+----------------------------- Captured stdout call
+-----------------------------
+execute: nghttp --header=host: test1.tests.httpd.apache.org:5001
+-Haccept-encoding: none -ans https://127.0.0.1:5001//004.html
+__________________________ TestAssets.test_h2_006_04
+___________________________
+
+self = <http2.test_006_assets.TestAssets object at 0x7fe70af54d90>
+env = <http2.env.H2TestEnv object at 0x7fe70ac94be0>
+
+     def test_h2_006_04(self, env):
+         url = env.mkurl("https", "test1", "/006.html")
+         r = env.nghttp().assets(url, options=["-Haccept-encoding: none"])
+         assert 0 == r.exit_code
+         assert 3 == len(r.assets)
+ >       assert r.assets == [
+             {"status": 200, "size": "543", "path": "/006.html"},
+             {"status": 200, "size": "216", "path": "/006/006.css"},
+             {"status": 200, "size": "839", "path": "/006/006.js"}
+         ]
+E       AssertionError: assert [{'path': '/0...status': 200}] ==
+[{'path': '/0...status': 200}]
+E         At index 1 diff: {'path': '006/006.css', 'status': 200,
+'size': '216'} != {'status': 200, 'size': '216', 'path': '/006/006.css'}
+E         Full diff:
+E           [
+E            {'path': '/006.html', 'size': '543', 'status': 200},
+E         -  {'path': '/006/006.css', 'size': '216', 'status': 200},
+E         ?            -
+E         +  {'path': '006/006.css', 'size': '216', 'status': 200},...
+E
+E         ...Full output truncated (5 lines hidden), use '-vv' to show
+
+modules/http2/test_006_assets.py:60: AssertionError
+----------------------------- Captured stdout call
+-----------------------------
+execute: nghttp --header=host: test1.tests.httpd.apache.org:5001
+-Haccept-encoding: none -ans https://127.0.0.1:5001//006.html
+__________________________ TestAssets.test_h2_006_05
+___________________________
+
+self = <http2.test_006_assets.TestAssets object at 0x7fe70af54be0>
+env = <http2.env.H2TestEnv object at 0x7fe70ac94be0>
+
+     def test_h2_006_05(self, env):
+         url = env.mkurl("https", "test1", "/003.html")
+         r = env.nghttp().assets(url, options=["--window-bits=24",
+"-Haccept-encoding: none"])
+         assert 0 == r.exit_code
+         assert 2 == len(r.assets)
+ >       assert r.assets == [
+             {"status": 200, "size": "316", "path": "/003.html"},
+             {"status": 200, "size": "88K", "path": "/003/003_img.jpg"}
+         ]
+E       AssertionError: assert [{'path': '/0...status': 200}] ==
+[{'path': '/0...status': 200}]
+E         At index 1 diff: {'path': '003/003_img.jpg', 'status': 200,
+'size': '88K'} != {'status': 200, 'size': '88K', 'path': '/003/003_img.jpg'}
+E         Full diff:
+E           [
+E            {'path': '/003.html', 'size': '316', 'status': 200},
+E         -  {'path': '/003/003_img.jpg', 'size': '88K', 'status': 200},
+E         ?            -
+E         +  {'path': '003/003_img.jpg', 'size': '88K', 'status': 200},...
+E
+E         ...Full output truncated (2 lines hidden), use '-vv' to show
+
+modules/http2/test_006_assets.py:72: AssertionError
+----------------------------- Captured stdout call
+-----------------------------
+execute: nghttp --header=host: test1.tests.httpd.apache.org:5001
+--window-bits=24 -Haccept-encoding: none -ans
+https://127.0.0.1:5001//003.html
+
+
+These seem to happen consistently.
+
+Currently I don't know, whether it is a problem with the test, or a real
+problem.
+
+If it isn't reproducible for others, I can try to investigate deeper.
+
+Best Regards,
+
+Rainer

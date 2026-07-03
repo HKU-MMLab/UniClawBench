@@ -1,0 +1,45 @@
+Message-ID: <YfwBRf5z+LOSnCbT@an3as.eu>
+X-Clawbench-ID: BIO-2024-0299
+Date: Thu, 3 Feb 2022 17:22:29 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Scott Kitterman <ftpmaster@ftp-master.debian.org>,	Debian Science List <debian-science@lists.debian.org>
+Subject: Re: onetbb_2021.4.0-1~exp1_amd64.changes REJECTED
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2022_02_msg00000.html
+
+Hi Scott,
+
+Am Thu, Feb 03, 2022 at 03:00:08PM +0000 schrieb Scott Kitterman:
+>
+> Normally for a package already in Debian I wouldn't reject due to copyright/
+> license documentation, but I am making an exception is this case.  I only
+> started to look at this package by doing grep -ir copyright * over the source.
+> I made redirected the output of that to a file and made a list of all the
+> copyright notices that are not currently reflected in debian/copyright.  It
+> has 806 lines.
+>
+> It looks clear to me that either the package has been completely reworked by
+> upstream and the maintainer didn't check or it's been years (looks like five)
+> since anyone looked at debian/copyright.
+>
+> Please fix and reupload.  This package needs a comprehensive review of
+> copyright and licensing and the documentation of the results in debian/
+> copyright per policy.
+
+Thanks a lot for your review.  I think I've fixed d/copyright in Git[1].
+
+@Mo: I had trouble with pristine-tar to extract the source tarball of
+version 2021.4.0-1 which you uploaded.  Since there is a new upstream
+version meanwhile I'm currently building 2021.5.0-1 with the intention
+to upload it to experimental via NEW.
+
+Kind regards
+
+       Andreas.
+
+[1] https://salsa.debian.org/science-team/tbb/-/blob/master/debian/copyright
+
+--
+http://fam-tille.de

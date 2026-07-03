@@ -1,0 +1,42 @@
+Message-ID: <68e5d649-2008-3ebd-113c-236f0fd4b52d@debian.org>
+X-Clawbench-ID: BIO-2024-0233
+Date: Wed, 6 Oct 2021 09:45:03 +0300
+From: Andrius Merkys <merkys@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: Do users know about README.Debian and /usr/share/doc/packagename (Was: libcifpp)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00022.html
+
+Hi Pierre,
+
+On 2021-10-04 22:18, Pierre Gruet wrote:
+> Do you know if users read our manpages? I feel we can expect /some/
+> users will type
+>
+>     man command
+>
+> if something is not working as expected, but for sure not all of them will.
+
+I have few years of experience in teaching administration, programming
+and data analysis on Debian. I have the opportunity to peek over the
+shoulder at how students work, with their experience ranging from day
+one to around two years or so. My samples are quite modest, though.
+
+My experience is that rarely anyone I encounter look at system-provided
+files and documentation, be it manpages or PDFs in -doc packages.
+Students are used to look up for everything using their favorite search
+engines, usually ending up at Stack Exchange or outdated/too up-to-date
+web-hosted documentation. Encouragement to use manpages (even when they
+are literally at one's fingertips) rarely works. Probably because the
+command line environment is overly intimidating for the newcomers.
+
+Of course this is only my experience, and only with the beginners. Just
+thought that it might be worth sharing.
+
+As for less subjective analysis, does anyone know whether popcon is able
+to detect usage frequencies of individual files?
+
+Best,
+Andrius

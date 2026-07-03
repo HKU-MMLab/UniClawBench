@@ -1,0 +1,233 @@
+Message-ID: <5D5CC294-BA08-11D6-837F-000393A46DEA@alumni.caltech.edu>
+X-Clawbench-ID: CAM-2003-0760
+Date: Tue, 27 Aug 2002 15:00:13 -0700
+From: Rohit Khare <khare@alumni.caltech.edu>
+To: fork@spamassassin.taint.org
+Subject: DataPower announces XML-in-silicon
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00931.c27bf5c9bcb24c213aafe1b28fcbcc7a
+
+No analysis yet... don't know what to make of it yet. But here's the raw
+bits for all to peruse and check out what's really going on... Best,
+Rohit
+
+===========================================================
+
+DataPower delivers XML acceleration device
+By Scott Tyler Shafer
+August 27, 2002 5:46 am PT
+
+DATAPOWER TECHNOLOGY ON Monday unveiled its network device designed
+specifically to process XML data. Unlike competing solutions that
+process XML data in software, DataPower's device processes the data in
+hardware -- a technology achievement that provides greater performance,
+according to company officials.
+
+The new device, dubbed DataPower XA35 XML Accelerator, is the first in a
+family of products expected from the Cambridge, Mass.-based startup. The
+DataPower family is based on a proprietary processing core technology
+called XG3 that does the analysis, parsing, and processing of the XML
+data.
+
+According to Steve Kelly, CEO of DataPower, the XA35 Accelerator was
+conceived to meet the steady adoption of XML, the anticipated future
+proliferation of Web services, and as a means to share data between two
+businesses.
+
+"Our vision is to build out an XML-aware infrastructure," Kelly said.
+"The XA35 is the first of a family."
+
+Kelly explained that converting data into XML increases the file size up
+to 20 times. This, he said, makes processing the data very taxing on
+application servers; DataPower believes an inline device is the best
+alternative.
+
+In addition to the large file sizes, security is also of paramount
+importance in the world of XML.
+
+"Today's firewalls are designed to inspect HTTP traffic only," Kelly
+said. "A SOAP packet with XML will go straight through a firewall.
+Firewalls are blind to XML today."
+
+Future products in DataPowers family will focus more specifically on
+security, especially as Web services proliferate, Kelly said.
+
+According to DataPower, most existing solutions to offload XML
+processing are homegrown and done in software -- an approach the company
+itself tried initially and found to be inadequate with regards to speed
+and security. After trying the software path, the company turned to
+creating a solution that would process XML in hardware.
+
+"Our XG3 execution core converts XML to machine code," said Kelly,
+adding that to his knowledge no other company's solution does. Kelly
+said in the next few months he expects the market to be flooded with
+technologies that claim to do XML processing -- claims that he believes
+will be mostly false.
+Other content-aware switches, such as SSL (secure socket layer)
+accelerators and load balancers, look at the first 64 bytes of a packet,
+while the XA35 provides deeper packet inspection, looking at 1,400 bytes
+and thus enabling greater processing of XML data, Kelly explained.
+
+The 1U-high network device has been tested against a large collection of
+XML and XSL data types and can learn new flavors of the markup language
+as they pass through the device.
+
+The XA35 can be deployed in proxy mode behind a firewall and a load
+balancer, and it will inspect all traffic that passes and will identify
+and process those packets that are XML, Kelly said.
+
+In addition to proxy mode, the device can also be used as an application
+co-processor. This deployment method gives administrators more granular
+control over what data is inspected and the application server itself
+controls the device.
+
+DataPower is not the only company chasing this emerging market. Startup
+Sarvega, based in Burr Ridge, Ill., introduced the Sarvega XPE switch in
+May, and earlier this month Tarari, an Intel spin-off, launched with a
+focus on content processing and acceleration.
+The DataPower device is now available, priced starting at $54,995. The
+company has announced one customer to date and says the product is in
+field trails at a number of other enterprises.
+
+=========================================================================
+
+DataPower has been addressing enterprise networking needs since it was
+founded in early 1999 by Eugene Kuznetsov, a technology visionary who
+foresaw the adverse effects XML and other next generation protocols
+would have on enterprise networks. Long before industry interest in XML
+grew, Kuznetsov assembled a team of world-class M.I.T. engineers and
+designed the industry's first solutions to address the unique
+requirements for processing XML. The first such solution was a software
+interpreter called DGXT. This software-based approach to XML processing
+is still licensed by many companies for use in their own products today.
+
+Leveraging the detailed knowledge and customer experience gained from
+developing software-based accelerators, Kuznetsov's team raised the bar
+and designed a system for processing XML in purpose-built hardware. In
+2001, DataPower's effort produced XML Generation Three (XG3™), the
+industry's fastest technology for XML processing, bar none.
+
+Today, XG3™ technology powers the industry's first wire-speed XML
+network devices, enabling secure, high-speed applications and XML Web
+Services. While other companies are just now marketing first versions of
+products, DataPower is delivering its third generation of technology,
+providing an immediate return on technology investments to
+industry-leading customers and partners.
+
+DataPower's M.I.T. heritage is complemented by a management team that
+brings decades of experience in the networking and computing industries,
+drawing veteran leaders from several successful companies including
+Akamai, Argon, Cascade, Castle Networks, Sycamore and Wellfleet.
+
+=========================================================================
+
+DataPower Technology Secures $9.5 Million in Funding
+
+Venrock Associates, Mobius Venture Capital and Seed Capital Back Pioneer
+in XML-Aware Networking for Web Services
+
+CAMBRIDGE, Mass. - July 8, 2002 - DataPower Technology, Inc., the
+leading provider of XML-Aware network infrastructure, today announced
+that it has secured $9.5 million in series B financing. Investors for
+this round include Venrock Associates, Mobius Venture Capital and Seed
+Capital Partners. Michael Tyrrell, of Venrock, Bill Burnham, of Mobius,
+and Jeff Fagnan, of Seed Capital, have joined DataPower’s Board of
+Directors.
+
+DataPower will use this funding to accelerate development, marketing and
+sales of the company’s breakthrough technology for XML-Aware networking.
+Founded in 1999, DataPower invented the world’s first intelligent XML
+networking devices, capable of transforming XML traffic and transactions
+at the wire-speed enterprises need to effectively embrace Web services
+and other XML-centric initiatives. DataPower’s solutions are based on
+its patent-pending XML Generation Three (XG3™) technology.
+
+"Enterprises are adopting XML at rapid rate to facilitate inter-and
+intra-company communications but their network infrastructure is ill
+prepared to support the requirements of this new traffic type.
+DataPower’s XML-acceleration devices enable the wirespeed processing of
+XML that is required to support next generation enterprise
+applications," said Eugene Kuznetsov, CTO and founder of DataPower
+Technology.
+
+"DataPower gives companies the ability to use XML that’s critical to Web
+services projects without sacrificing an ounce of performance." A single
+DataPower acceleration engine delivers the processing power of 10
+servers—breaking the performance bottleneck associated with XML
+processing and delivering an extraordinary return on investment. In
+addition, the DataPower platform provides enhanced XML security,
+protection against XML-based denial-of-service attacks, connection of
+e-business protocols for incompatible XML data streams, load balancing
+between back-end servers and real-time statistics reports.
+
+"In the post-bubble economy, technology investment decisions require
+laser-focused scrutiny. DataPower’s patent-pending technology addresses
+a very real and growing pain point for enterprises," said Michael
+Tyrrell of Venrock Associates. "By turbo-charging their networks with
+DataPower’s unique XML-Aware networking technology, companies will be
+free to adopt next generation Web services without encountering
+performance and security pitfalls."
+
+"We looked long and hard for a company capable of addressing the rapidly
+growing problems surrounding XML message processing performance and
+security," said Bill Burnham of Mobius Venture Capital. "DataPower is on
+their third generation of technology. Their patent pending XML
+Generation Three (XG3) technology was quite simply the single most
+compelling technology solution we have seen to date."
+
+"XML is not a nice-to-have, it is a must have for enterprises serious
+about optimizing application efficiency. Since 1999, DataPower has been
+developing solutions to facilitate enterprise use of XML and Web
+services," said Jeff Fagnan of Seed Capital Partners. "DataPower’s
+XML-acceleration devices are a key requirement for enterprises that rely
+on XML for mission critical applications."
+
+About Venrock Associates
+Venrock Associates was founded as the venture capital arm of the
+Rockefeller Family and continues a tradition of funding entrepreneurs
+that now spans over seven decades. Laurance S. Rockefeller pioneered
+early stage venture financing in the 1930s. With over 300 investments
+over a span of more than 70 years, the firm has an established a track
+record of identifying and supporting promising early stage, technology-
+based enterprises. As one of most experienced venture firms in the
+United States, Venrock maintains a tradition of collaboration with
+talented entrepreneurs to establish successful, enduring companies.
+Venrock's continuing goal is to create long-term value by assisting
+entrepreneurs in building companies from the formative stages. Their
+consistent focus on Information Technology and Life Sciences-related
+opportunities provides a reservoir of knowledge and a network of
+contacts that have proven to be a catalyst for the growth of developing
+organizations. Venrock's investments have included CheckPoint Software,
+USinternetworking, Caliper Technologies, Illumina, Niku, DoubleClick,
+Media Metrix, 3COM, Intel, and Apple Computer. With offices in New York
+City, Cambridge, MA, and Menlo Park, CA, Venrock is well positioned to
+respond to opportunities in any locale. For more information on Venrock
+Associates, please visit www.venrock.com
+
+About Mobius Venture Capital
+Mobius Venture Capital, formerly SOFTBANK Venture Capital, is a $2.5
+billion U.S.-based private equity venture capital firm managed by an
+unparalleled team of former CEOs and entrepreneurs, technology pioneers,
+senior executives from major technology corporations, and leaders from
+the investment banking community. Mobius Venture Capital specializes
+primarily in early-stage investments in the areas of: communications
+systems software and services; infrastructure software and services;
+professional services; enterprise applications; healthcare informatics;
+consumer and small business applications; components; and emerging
+technologies. Mobius Venture Capital combines its technology expertise
+and broad financial assets with the industry's best entrepreneurs to
+create a powerhouse portfolio of over 100 of the world's leading high
+technology companies. Mobius Venture Capital can be contacted by
+visiting their web site www.mobiusvc.com.
+
+About Seed Capital Partners
+Seed Capital Partners is an early-stage venture fund affiliated with
+SoftBank Corporation, one of the world's leading Internet market forces.
+Seed Capital manages funds focused primarily on companies addressing
+Internet-enabled business-to-business digital information technology
+opportunities, which are located in the Northeastern U.S., the
+southeastern region of the Province of Ontario, Canada, and Israel. Seed
+Capital’s portfolio includes Spearhead Technologies, Concentric Visions
+and CompanyDNA. F

@@ -1,0 +1,56 @@
+Message-ID: <63bd99ce.38a8.3364.5e60@land10.nl>
+X-Clawbench-ID: ASF-2024-0838
+Date: Tue, 10 Jan 2023 18:01:02 +0100
+From: SteffenAL <info@apachelounge.com>
+To: <dev@httpd.apache.org>
+Subject: Re: [VOTE] Release httpd-2.4.55-rc1 as httpd-2.4.55
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-01.mbox
+
+So far ok.
+
+Made build available for the Windows Community  for testing
+at  https://www.apachelounge.com/viewtopic.php?p=41617
+
+Little thing noticed:
+
+in changes mod_http2 v 2.0.10 , but log says 2.0.11.
+
+http2-status not working anymore:
+<Location /xxxx>
+
+    SetHandler http2-status
+    Require all granted
+ </Location>
+
+Steffen
+
+
+On Tuesday 10/01/2023 at 14:41, Eric Covener  wrote:
+> Hi all,
+>
+> Please find below the proposed release tarball and signatures:
+>
+> https://dist.apache.org/repos/dist/dev/httpd/
+>
+> I would like to call a VOTE over the next few days to release
+> this candidate tarball httpd-2.4.55-rc1 as 2.4.55:
+> [ ] +1: It's not just good, it's good enough!
+> [ ] +0: Let's have a talk.
+> [ ] -1: There's trouble in paradise. Here's what's wrong.
+>
+> The computed digests of the tarball up for vote are:
+> sha256:
+> 5276ea8bc6fff31eed5c82132ae51a0b2ee05f9e6b61a00fa877f6cadab3b638
+> *httpd-2.4.55-rc1.tar.gz
+> sha512:
+> ca0d03b5e74078977378fe711ca3ed8cf63c109b7dbe73f2c43f7f30f7e522bbe46f93189a183b7675394d57fffb0c2526facd8d40508be984a7a8f64d18f8d6
+> *httpd-2.4.55-rc1.tar.gz
+>
+> The SVN candidate source is found at tags/2.4.55-rc1-candidate.
+>
+> --
+> Eric Covener
+> covener@gmail.com

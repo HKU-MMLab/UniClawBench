@@ -1,0 +1,68 @@
+Message-ID: <4c1a4134-cda6-fe40-ccfa-349ee9d98181@wanadoo.fr>
+X-Clawbench-ID: ASF-2024-1443
+Date: Sat, 15 Oct 2022 12:33:49 +0200
+From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+To: dev@httpd.apache.org, Rainer Jung <rainer.jung@kippdata.de>
+Subject: Re: Escaping double quotation marks in the error log
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-10.mbox
+
+Le 05/10/2022 à 12:26, Rainer Jung a écrit :
+> Hi there,
+>
+> I looked at our escaping functions for logs due to the need of doing
+> JSON logging. In principle one can output JSON by using appropriate log
+> format definitions in the httpd config. Most special characters in JSON
+> are already properly escaped in our output.
+>
+> But there is one important difference between the escaping of access log
+> items and of error log items. The escaping function for the access log
+> also escapes double quotation marks as \", the one for the error log
+> does not (ap_escape_errorlog_item). It contains the comment "no need for
+> this in error log". This is true all the way since the time the escaping
+> was introduced at all.
+>
+> I wonder, whether there is a real necessity for not escaping double
+> quotation marks in the error log?
+>
+> Note, that I am not talking about markup that appears in the definition
+> of the ErrorLogFormat itself. This is "just" about double quotation
+> marks showing up in the error message itself (or logged headers, env
+> vars or notes).
+>
+> Unfortunately the use of ap_escape_errorlog_item() is buried deep down
+> in the code levels and accessing virtual host config seems not possible,
+> not even in the callers of ap_escape_errorlog_item().
+>
+> If there's no other nice idea, I wonder whether:
+>
+> - it would be OK, to escape double quotation marks as \" in the error
+> log for trunk
+>
+> - add a global config item to do this as well for 2.4.x (default off)
+>
+> What do you think? Or did you find a better solution for error log json
+> logging?
+>
+> Best regards,
+>
+> Rainer
+>
+
+Hi,
+
+not sure it answers your questions but r1829898 is already about JSON
+logging.
+
+
+Also, jkaluza's ap_errorlog_provider proposal (see ISSUES THAT ARE
+STALLED in 2.4.x/STATUS) should be able to provide flexibility about how
+and what is logged.
+
+I've never looked at the proposed API, but I *would* expect that "raw"
+strings are passed to the logger. If so, it should be able to escape or
+not whatever it wants, the way it wants.
+
+CJ

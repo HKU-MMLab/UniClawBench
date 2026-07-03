@@ -1,0 +1,46 @@
+Message-ID: <CA+Ua4eWGG3nBYDDCjtzmQgrJ7zCt8acnNnNzFhdPjWrzXoGOfQ@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0358
+Date: Sun, 17 Nov 2024 16:16:26 +0100
+From: Jakub Zelenka <jakub.sysop@gmail.com>
+To: Eric Covener <covener@gmail.com>
+Subject: Re: [Bug 69203] proxy error from php-fpm backend for paths containing spaces
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-11.mbox
+
+On Fri, Sep 27, 2024 at 2:48 PM Eric Covener <covener@gmail.com> wrote:
+
+> > Feel free to ask if you want to clarify some bits in FPM or its tests. I
+> will also try to find some time to test this patch (most likely next week)
+> and later I plan to do some integration tests which could potentially run
+> daily against trunk (it's a bit longer term plan though).
+>
+> Hi Jakub, do you have a result from current/recent trunk vs 2.4.62 w/
+> the added tests?  I think if we are improving relative to 2.4.62 it
+> might be better to at least get this stuff released, even if it still
+> disrupts some things from the historical behavior (that are likely
+> busted in 2.4.62 too)
+>
+
+Hi Eric, apology for the long delay. I have been quite busy with some
+unrelated PHP security isseus and also wanted to get my FPM integration
+tool working with httpd which I finally menaged to do. I created few
+SetHandler using tests in
+https://github.com/wstool/wst-php-fpm/blob/bf390dd1dda196ea9339b4d3d26caf5fbf306226/spec/instances/httpd-proxy-fcgi-handler-basic.yaml
+and they are all good when testing https://github.com/apache/httpd/pull/470
+. That PR looks good to me and should be safe to merge IMHO. I would like
+to do some UDS testing next week (I got it as a priority now so should
+really happen next week - not like last time... :) ) but I wouldn't expect
+issues there too.
+
+In terms of https://github.com/apache/httpd/pull/489 , I will need to think
+about it a bit more. It took me a bit to get my head around the current
+code and still need a bit more time to fully understand it. I will also
+need a bit more time to produce some integration tests for ProxyPass and
+ProxyPassMatch. But as I said I have got it as my main FPM prioirity so it
+should not hopefully take too long.
+
+Kind regards,
+
+Jakub

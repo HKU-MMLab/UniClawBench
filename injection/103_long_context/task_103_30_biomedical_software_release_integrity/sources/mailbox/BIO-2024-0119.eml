@@ -1,0 +1,37 @@
+Message-ID: <YZU/NOnWjkYdF13U@an3as.eu>
+X-Clawbench-ID: BIO-2024-0119
+Date: Wed, 17 Nov 2021 18:43:16 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Heudiconv moved to Debian Med repository
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_11_msg00104.html
+
+Am Wed, Nov 17, 2021 at 12:08:18PM -0500 schrieb Yaroslav Halchenko:
+> > Nilesh asked me to move this one and I guess he has some reason to pick
+> > this.  Current Debian stable has debhelper 13 so this should be no
+> > issue.  Debhelper 13 is also backported for old-stable - so I do not see
+> > any potential breaks here.
+>
+> if need comes (e.g. upstream wants backports on older
+> debian/ubuntu), I just would like to reserve the right
+
+You remain Uploader of this package and thus for sure you have any
+"right" on it. ;-)
+
+> to provide
+> "dsc" patches under debian/patches -- they would not be listed in
+> debian/patches/series, so will not interfere but would simplify building
+> backports for neurodebian
+
+That's perfectly fine.
+
+Kind regards
+
+       Andreas.
+
+
+--
+http://fam-tille.de

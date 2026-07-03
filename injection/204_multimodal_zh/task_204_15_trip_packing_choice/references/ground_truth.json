@@ -1,0 +1,50 @@
+{
+  "trip_read": {
+    "duration_days": 3,
+    "travel_type": "short business / client trip with one workshop and one dinner meeting",
+    "weather": "warm, humid, rainy",
+    "constraints": [
+      "prefer not to check baggage",
+      "frequent short transfers",
+      "must carry laptop and charger",
+      "one smart-casual outfit is required"
+    ]
+  },
+  "best_main_bag": {
+    "item": "option_03.png",
+    "why": [
+      "fits a 3-day trip without checked baggage",
+      "better for keeping clothing neat for the client workshop",
+      "more practical than the backpack or weekender duffel for mixed work clothes plus toiletries and electronics",
+      "still manageable for a short trip"
+    ]
+  },
+  "must_pack": [
+    "laptop",
+    "charger / cables",
+    "smart shirt",
+    "trousers",
+    "toiletries",
+    "medication",
+    "one nicer pair of shoes",
+    "compact umbrella or rain-ready layer"
+  ],
+  "packing_logic": {
+    "main_compartment": [
+      "folded clothing",
+      "toiletry kit in pouch",
+      "nicer shoes protected in a bag"
+    ],
+    "quick_access": [
+      "laptop",
+      "charger",
+      "medication",
+      "travel documents"
+    ]
+  },
+  "not_needed": [
+    "gym gear",
+    "extra bulky coat",
+    "both pairs of shoes if space is tight"
+  ]
+}

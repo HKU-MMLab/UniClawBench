@@ -1,0 +1,33 @@
+Message-ID: <60ec8f3b-4dcf-021b-82d0-676358f3f77e@debian.org>
+X-Clawbench-ID: BIO-2024-0678
+Date: Mon, 20 Dec 2021 16:47:40 +0100
+From: Sascha Steinbiss <satta@debian.org>
+To: 970021@bugs.debian.org
+Subject: Provisional packaging for Aoache Arrow available
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_12_msg00016.html
+
+Hi,
+
+just for the record in this RFP and to move this a bit into the
+spotlight: I have moved my packaging repository for Apache Arrow to the
+Debian Science project in Salsa [1]. See the corresponding thread in the
+Debian Med mailing list for more context [2].
+
+TLDR: I have prepared a package to cover as much of Arrow as is possible
+with what we have in Debian, dependency-wise. There is still a review of
+d/copyright missing, and some bundled code might need some extra love or
+removal.
+
+If someone wants to work on this and wants to maintain it for longer,
+feel free to let me know and I might help get it finished. :)
+I just feel I won't be able to keep this updated in time on my own given
+how busy upstream seems to be.
+
+Cheers
+Sascha
+
+[1] https://salsa.debian.org/science-team/arrow
+[2] https://lists.debian.org/debian-med/2021/08/msg00066.html

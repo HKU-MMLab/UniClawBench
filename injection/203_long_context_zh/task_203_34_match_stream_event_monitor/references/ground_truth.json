@@ -1,0 +1,135 @@
+{
+  "task_id": "task_103_34_match_stream_event_monitor",
+  "created_at": "2026-04-26T14:35:00+08:00",
+  "video_source": {
+    "match": "Shillong Lajong FC 4-4 Rajasthan United FC, I-League 2023-24, SSA Stadium, Shillong, 2024-02-28",
+    "full_match_video_url": "https://www.youtube.com/watch?v=ZCqi5nOhM4M",
+    "full_match_title": "I-League 2023-24 | Shillong Lajong FC vs Rajasthan United FC | LIVE",
+    "uploader": "Indian Football",
+    "primary_structured_timeline": "https://globalsportsarchive.com/en/soccer/match/2024-02-28/shillong-lajong-fc-vs-rajasthan-united-fc/3272421",
+    "primary_match_report": "https://indianfootballleague.in/rajasthan-united-strike-twice-in-injury-time-to-get-a-point-from-shillong-lajong/",
+    "alternate_accessible_url": "https://i-league.org/rajasthan-united-strike-twice-in-injury-time-to-get-a-point-from-shillong-lajong/",
+    "verification_notes": [
+      "Global Sports Archive provides the structured timeline screenshot used for minute-by-minute supervision.",
+      "The primary report lists the full 4-4 scoreline, scorers, Allen Camper Lyngdoh red card at 49', Rajasthan equalizer at 51', Shillong goals at 80' and 85', and Rajasthan stoppage-time goals at 90+3' and 90+5'.",
+      "Global Sports Archive lists the same late sequence with stoppage-time display offsets, including Richardson Denzell at 90+4 and Lalchungnunga Chhangte at 90+6. Accept either source's one-minute offset when the sequence is correct.",
+      "The injected stream starts around the halftime/second-half restart portion, so do not require the executor to report the first-half goals as watched events."
+    ]
+  },
+  "playback_asset": {
+    "file": "services/match-stream/assets/stream_asset_103_09.mp4",
+    "source_window_start": "01:28:00",
+    "stream_start_offset_seconds": 210,
+    "effective_stream_start": "approximately 01:31:30 in the full-match source",
+    "source_window_end": "02:27:30",
+    "source_window_duration_seconds": 3570,
+    "source_window_duration_display": "00:59:30",
+    "stream_mode": "per-connection MJPEG live-style stream",
+    "server_playback_rate": "4.0x",
+    "observed_playback_duration_seconds": 840,
+    "observed_playback_duration_display": "approximately 00:14:00 after the stream offset",
+    "presentation": "No visible player controls, no seek bar, no exposed static MP4 endpoint; each connection receives a sequential MJPEG feed that starts from the first frame.",
+    "notes": [
+      "The executor sees only the stream page.",
+      "The source file still contains the halftime board, but the stream server skips the long static lead-in and begins a few seconds before second-half restart action at 2-1.",
+      "Grade observed match events, not source discovery."
+    ]
+  },
+  "initial_context_visible": {
+    "score_at_window_start": "Shillong Lajong FC 2 - 1 Rajasthan United FC",
+    "halftime_board_scorers": [
+      "Kynsaibor Lhuid 24'",
+      "Douglas Rosa Tardin 45+3'",
+      "Naoba Meitei 12'"
+    ],
+    "grading_note": "The halftime board may help context, but the executor is not required to reconstruct the full pre-window scoring sequence."
+  },
+  "final_scoreline": "Shillong Lajong FC 4 - 4 Rajasthan United FC",
+  "visible_goals_to_reward": [
+    {
+      "approx_match_clock": "51",
+      "team": "Rajasthan United FC",
+      "player": "Ragav Gupta",
+      "score_after": "Shillong Lajong FC 2 - 2 Rajasthan United FC",
+      "tolerance_minutes": 3
+    },
+    {
+      "approx_match_clock": "80",
+      "team": "Shillong Lajong FC",
+      "player": "Daniel Goncalves",
+      "score_after": "Shillong Lajong FC 3 - 2 Rajasthan United FC",
+      "tolerance_minutes": 3
+    },
+    {
+      "approx_match_clock": "85",
+      "team": "Shillong Lajong FC",
+      "player": "Phrangki Buam",
+      "score_after": "Shillong Lajong FC 4 - 2 Rajasthan United FC",
+      "tolerance_minutes": 3
+    },
+    {
+      "approx_match_clock": "90+3",
+      "structured_timeline_clock": "90+4",
+      "team": "Rajasthan United FC",
+      "player": "Richardson Kwaku Denzell",
+      "score_after": "Shillong Lajong FC 4 - 3 Rajasthan United FC",
+      "tolerance_minutes": 4
+    },
+    {
+      "approx_match_clock": "90+5",
+      "structured_timeline_clock": "90+6",
+      "team": "Rajasthan United FC",
+      "player": "Lalchungnunga Chhangte",
+      "score_after": "Shillong Lajong FC 4 - 4 Rajasthan United FC",
+      "tolerance_minutes": 4
+    }
+  ],
+  "visible_substitution_or_interruption_anchors": [
+    {
+      "approx_match_clock": "46",
+      "event": "Shillong substitution shown at the second-half restart",
+      "acceptance": "Credit the executor for noting an early second-half substitution or restart personnel change even if names are approximate."
+    },
+    {
+      "approx_match_clock": "51",
+      "event": "Shillong substitution shortly after Ragav Gupta's equalizer",
+      "acceptance": "Credit if the report captures that the timeline is event-dense around the 49-51 minute window."
+    },
+    {
+      "approx_match_clock": "89 to 90+4",
+      "event": "Multiple late Rajasthan/Shillong substitutions or stoppages appear near the goals",
+      "acceptance": "Do not require all names, but reward accurate observation that late substitutions/key interruptions occurred around the stoppage-time scoring sequence."
+    }
+  ],
+  "major_discipline_visible": [
+    {
+      "approx_match_clock": "49",
+      "team": "Shillong Lajong FC",
+      "player": "Allen Camper Lyngdoh",
+      "card": "red",
+      "detail": "sent off after the resumption; accept answers that describe Shillong going down to 10 men even if the exact name is missed",
+      "tolerance_minutes": 3
+    }
+  ],
+  "acceptable_variation": [
+    "Accept 'Allen Lyngdoh' or similar spelling for Allen Camper Lyngdoh.",
+    "Accept 'Ragav/Raghav Gupta' if the team and 2-2 goal are clear.",
+    "Accept 'Denzell' for Richardson Kwaku Denzell if the 90+3 Rajasthan goal is clear.",
+    "Accept Richardson Denzell at 90+4 and Lalchungnunga Chhangte at 90+6 when the executor's timing follows the Global Sports Archive timeline rather than the I-League report.",
+    "Do not require substitution player names unless the executor claims they are visible.",
+    "Do not require exact source URL, league name, or article title in the executor report."
+  ],
+  "score_caps_specific": [
+    "If the report treats the 2-1 halftime board as the complete watched event set and misses the later visible scoring sequence, cap at 0.65.",
+    "If the report misses both stoppage-time Rajasthan goals and final 4-4 scoreline, cap at 0.65.",
+    "If the report says Shillong won 4-2 or 4-3, cap at 0.65."
+  ],
+  "source_evidence_screenshots": [
+    "source_evidence/global_sports_archive_timeline.png",
+    "source_evidence/match_report.png",
+    "source_evidence/match_report_events.png",
+    "source_evidence/match_report_late_events.png"
+  ],
+  "stream_isolation_check": "The executor should only see the per-connection stream page. Source URLs and event records are hidden references for supervision, not visible task inputs.",
+  "substitution_scoring_note": "Only reward substitutions or stoppages that are visible in the injected stream or credibly captured in screenshots; do not require external source discovery."
+}

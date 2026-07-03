@@ -1,0 +1,94 @@
+{
+  "task_id": "task_105_27_sketch_ui_replica",
+  "schema_notes": "Anchored to https://www.python.org/ — the live Python Software Foundation homepage, visually rich (header / hero carousel / nav / featured news / footer), structurally stable for years, gzipped by default (executor must use curl --compressed). The eval validates a 4-stage cross-platform pipeline: (1) chromium screenshot, (2) htmlq/curl extraction of <title>+hero <h1>+nav <a>+CSS color, (3) sketch-cli–compatible JSON design spec, (4) real .sketch ZIP produced by `node /opt/cli-anything/sketch/agent-harness/src/cli.js build`. Anchors are tight on the page title (substring 'Python.org' or 'Welcome to Python', canonical 'Welcome to Python.org'), at least one canonical hero slide heading, and at least one canonical internal nav href. The CSS color value is intentionally loose (any non-empty string) because the palette hex codes drift across releases. Difficulty is in the chain — ui_spec.json must drive sketch-cli to a real .sketch whose unzipped JSON contains 'Python'.",
+  "reference_url": "https://www.python.org/",
+  "reference_url_alt_https": "https://python.org/",
+  "ground_truth": {
+    "extracted": {
+      "page_title_canonical": "Welcome to Python.org",
+      "page_title_must_contain_any_of_case_insensitive": ["Python.org", "Welcome to Python"],
+      "hero_heading_canonical_any_of": [
+        "Intuitive Interpretation",
+        "Compound Data Types",
+        "All the Flow You'd Expect",
+        "Functions Defined",
+        "Quick & Easy to Learn"
+      ],
+      "hero_heading_match_rule": "case-sensitive substring; OR any other <h1> text actually present in a live fetch of python.org",
+      "nav_link_href_must_contain_any_of_case_insensitive": [
+        "/downloads/",
+        "/doc/",
+        "/community/",
+        "/about/",
+        "/jobs/",
+        "/psf/",
+        "/success-stories/",
+        "/blogs/",
+        "/events/"
+      ],
+      "primary_color_examples_any_non_empty_string_accepted": [
+        "#fff",
+        "#3673a5",
+        "#004d7a",
+        "#006dad",
+        "#ffdf76",
+        "#606060"
+      ]
+    },
+    "sketch_spec_shape": {
+      "top_level_keys_required": ["pages"],
+      "pages_min_length": 1,
+      "page_required_keys": ["artboards"],
+      "artboards_min_length": 1,
+      "artboard_required_keys": ["layers"],
+      "layers_min_length": 1,
+      "layer_text_value_must_contain": "Python"
+    },
+    "deliverables": {
+      "source_screenshot_png": "/tmp_workspace/results/source_screenshot.png",
+      "ui_spec_json": "/tmp_workspace/results/ui_spec.json",
+      "replica_sketch": "/tmp_workspace/results/replica.sketch",
+      "comparison_md": "/tmp_workspace/results/comparison.md"
+    },
+    "screenshot_constraints": {
+      "magic_bytes": "89PNG",
+      "min_width_px": 1024,
+      "min_height_px": 600
+    },
+    "replica_sketch_constraints": {
+      "magic_bytes": "PK",
+      "min_filesize_bytes": 5120,
+      "must_contain_substring_in_any_unzipped_text_entry": "Python",
+      "expected_internal_entries_any_of": ["meta.json", "document.json", "user.json", "pages/"]
+    },
+    "comparison_md_constraints": {
+      "min_total_chars": 200,
+      "must_mention_any_of": ["python.org"],
+      "must_mention_replica_synonym_any_of": ["replica", "复刻", "Sketch"],
+      "must_reference_ui_element_any_of": [
+        "Welcome to Python.org",
+        "Python",
+        "heading",
+        "标题",
+        "hero",
+        "nav",
+        "导航",
+        "color",
+        "颜色",
+        "#fff",
+        "#3673a5",
+        "layout",
+        "布局",
+        "link",
+        "链接",
+        "footer",
+        "页脚"
+      ]
+    },
+    "live_fetch_hints": {
+      "curl_must_use_compressed_flag": true,
+      "rationale": "python.org responds with Content-Encoding: gzip; without --compressed, curl emits raw gzipped bytes that look like garbage to htmlq."
+    },
+    "build_command_anchor": "node /opt/cli-anything/sketch/agent-harness/src/cli.js build --input <spec.json> --output /tmp_workspace/results/replica.sketch"
+  }
+}

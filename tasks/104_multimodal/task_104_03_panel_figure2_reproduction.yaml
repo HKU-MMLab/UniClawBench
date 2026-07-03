@@ -1,0 +1,48 @@
+task_id: task_104_03_panel_figure2_reproduction
+category: 104_multimodal
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  First locate `图 2` within this full image, then use Python to recreate `图 2`:
+  /tmp_workspace/clawbench/sources/panel_sheet.png
+
+  The image provided here is a full sheet containing 6 panels, not a separately cropped target figure.
+  Correctly locating `图 2` is part of the task. Your output should recreate only `图 2`; do not redraw the entire 6-panel sheet.
+
+  `图 2` is the middle panel in the top row, containing:
+  - the top edge `D2-C2`
+  - the bottom edge `A2-B2`
+  - two outer side curves `l3` / `l4`
+  - a large U-shaped bottom curve whose lowest point is `O`
+  - multiple solid and dashed helper lines
+  - multiple point markers and text labels
+
+  Requirements:
+  1. Recreate `图 2`'s monochrome geometric composition, point positions, labels, and solid/dashed line relationships.
+  2. The outer frame, bottom curve, central vertical axis, crossing diagonals, and dashed helper lines must be accurate.
+  3. After each drawing pass, compare carefully with the original and perform at least one iterative revision.
+  4. The final goal is for the overall visual result to closely resemble `图 2` in the original,
+     including spatial layout, point positions, intersection locations, solid/dashed line relationships, and text-label placement.
+  5. Save the runnable script to
+     /tmp_workspace/results/reproduce_prompt3_complex_diagram.py
+  6. Save the final image to
+     /tmp_workspace/results/prompt3_complex_diagram_replicate.png
+  7. Also write a short notes file to
+     /tmp_workspace/results/prompt3_complex_diagram_notes.md
+     explaining what adjustments you made after comparing with the original
+
+references:
+  - references/eval_rule.md
+
+sources:
+  - panel_sheet.png
+
+codex:
+  max_user_followups: 2

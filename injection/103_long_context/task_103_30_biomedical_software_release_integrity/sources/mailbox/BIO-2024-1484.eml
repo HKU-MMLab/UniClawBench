@@ -1,0 +1,40 @@
+Message-ID: <875yqpuet0.fsf@nonempty.org>
+X-Clawbench-ID: BIO-2024-1484
+Date: Wed, 12 Jan 2022 16:54:40 +0100
+From: Gard Spreemann <gspr@nonempty.org>
+To: Andrius Merkys <merkys@debian.org>
+Subject: Re: alphafold Debian packaging ?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2022_01_msg00010.html
+
+Andrius Merkys  writes:
+
+> On 2022-01-12 17:34, Gard Spreemann wrote:
+>> And their code repository is Apache. Or did you find the actual
+>> pretrained models somewhere under CC-BY-NC?
+>
+> Interesting. Maybe I am looking at some other source. Am I right to
+> assume we are talking about [3]? If so, it says that the parameters are
+> CC-BY-NC here: [4].
+>
+> [3] https://github.com/deepmind/alphafold
+> [4] https://github.com/deepmind/alphafold#model-parameters
+
+Interesting indeed! So we have:
+
+ – Training data: A plethora of different licenses.
+
+ – Code: Apache
+
+ – Trained model: CC-BY-NC-4.0
+
+ – Output of said trained model: CC-BY-4.0 [5]
+
+Nightmarish!
+
+[5] See under "license and attributions" on https://alphafold.com
+
+
+ -- Gard

@@ -1,0 +1,27 @@
+Message-ID: <CALK=YjMV=Wa6d4a2tM2o2d=G2bMJ1Mm=xEeOgOSG5qu_4bdTsQ@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1013
+Date: Tue, 25 Jun 2024 18:35:35 -0400
+From: Eric Covener <covener@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.60-rc1 as httpd-2.4.60
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-06.mbox
+
+On Tue, Jun 25, 2024 at 6:34 PM Eric Covener <covener@gmail.com> wrote:
+>
+> On Tue, Jun 25, 2024 at 6:32 PM Helmut K. C. Tessarek
+> <tessarek@evermeet.cx> wrote:
+> >
+> > On 2024-06-25 18:25, Eric Covener wrote:
+> > > As discussed in this thread earlier, the commit that jumped to mind
+> > > was not in the rc's (and was hence obviously not the culprit)
+> >
+> > I missed that, sorry.
+> >
+> > My question still stands. What is the barnch from which the rcs are cut?
+>
+> In both GH (read only mirror) and SVN, there is a 2.4.x branch and a tag per rc.
+
+Whoops,e.g. https://github.com/apache/httpd/tree/2.4.60-rc2-candidate

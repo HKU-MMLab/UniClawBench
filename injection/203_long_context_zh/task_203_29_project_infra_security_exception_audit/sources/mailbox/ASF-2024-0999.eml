@@ -1,0 +1,88 @@
+Message-ID: <CAOY50muY9N8-cj0SvjEfUXBJ5a5jGQjavBZq=Fr4-k-HM77d2g@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0999
+Date: Thu, 1 Jun 2023 16:42:16 -0400
+From: Frank Gingras <thumbs@apache.org>
+To: dev@httpd.apache.org, Dan Ehrlich <dan@ehrlichserver.com>
+Subject: Re: mod_wasm: Contributing Upstream to Apache
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-06.mbox
+
+As per the instructions:
+
+To unsubscribe, send a messages to *users-unsubscribe@httpd.apache.org
+<users-unsubscribe@httpd.apache.org>* (or, if you are subscribed to the
+digest version of the list, send to *users-digest-unsubscribe@httpd.apache.org
+<users-digest-unsubscribe@httpd.apache.org>* ). You must send the
+unsubscribe message from the same email address that you used to subscribe
+to the list.
+
+To complete the unsubscription process you must reply to a confirmation
+email. If you do not receive this confirmation email, please check your
+spam filters to see if they are capturing the message.
+
+
+In this case, you would want to email dev-unsubscribe@httpd.apache.org
+
+
+On Thu, Jun 1, 2023 at 4:32 PM Dan Ehrlich via dev <dev@httpd.apache.org>
+wrote:
+
+> Hi:
+>
+> Can I be unsubscribed from this list?
+>
+> Have sent previous messages following all the instructions on this page
+> but to no avail:
+> https://httpd.apache.org/userslist.html.
+>
+>
+> Best,
+>
+> Dan
+>
+> On Fri, Jan 27, 2023 at 11:36 AM Jesús González <jesusgm@vmware.com>
+> wrote:
+>
+>> Thanks Joe. You are correct, this initial implementation is the simplest
+>> one to get it off the ground. We plan to continue development and add the
+>> streaming functionality, which we know we will need for things like large
+>> PDF file generation or support for Proxy-Wasm.
+>>
+>>
+>>
+>> Yes, isolating language runtimes (PHP, Python, ...) per thread is a cool
+>> feature that enables new possibilities like simultaneously supporting
+>> multiple versions of PHP as well as better multi-tenancy (you will be able
+>> to keep user's code and assets separate from each other using Wasm built-in
+>> isolation mechanism).
+>>
+>>
+>>
+>> Regarding apreq, right now we have not had a need to use it as we pass
+>> most of the headers and body to the runtimes themselves as the language
+>> runtimes code for handling requests, etc. takes care of it as part of the
+>> CGI implementation, etc. As we look to add different functionality (i.e.
+>> extending Apache itself) we will probably provide access to it from Wasm.
+>>
+>>
+>>
+>>
+>>
+>> *De: *Joe Schaefer <joe@sunstarsys.com>
+>> *Responder a: *"dev@httpd.apache.org" <dev@httpd.apache.org>
+>> *Fecha: *jueves, 26 de enero de 2023, 5:17
+>> *Para: *"dev@httpd.apache.org" <dev@httpd.apache.org>
+>> *Asunto: *Re: mod_wasm: Contributing Upstream to Apache
+>>
+>>
+>>
+>> Still, the idea is wicked cool if mod_wasm really can isolate the Python,
+>> PHP, etc targets onto individual POSIX threads.
+>>
+>>
+>>
+>> Very exciting stuff for HTTP/2 Webapps.
+>>
+>

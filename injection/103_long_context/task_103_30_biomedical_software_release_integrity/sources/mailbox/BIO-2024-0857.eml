@@ -1,0 +1,22 @@
+Message-ID: <ZK6kHIrcRJydL4Zw@an3as.eu>
+X-Clawbench-ID: BIO-2024-0857
+Date: Wed, 12 Jul 2023 15:01:16 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>,	Pierre Gruet <pgtdebian@free.fr>
+Subject: GATK
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_07_msg00053.html
+
+Hi Pierre,
+
+I was wondering whether we might be able to package GATK for the next
+release.  I've just fixed the watch file in Git.  It would be great if
+you could have a look once you might find some spare cycles.
+
+Kind regards
+   Andreas.
+
+--
+http://fam-tille.de

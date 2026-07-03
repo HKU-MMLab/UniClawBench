@@ -1,0 +1,42 @@
+Message-ID: <29369CCC-C17D-4795-AB78-15352B93B10F@m3y3r.de>
+X-Clawbench-ID: ASF-2024-1284
+Date: Sat, 21 Sep 2024 12:44:51 +0200
+From: Thomas Meyer <thomas@m3y3r.de>
+To: dev@httpd.apache.org
+Subject: =?UTF-8?Q?Friendly_nudge=3A_PR_=23429_=22mod=5Flog=5Fconfig=3A_Add_lo?=  =?UTF-8?Q?g=5Fformatter_support_and_?=  =?UTF-8?Q?a_JSON_log=5Fformatter=22_=F0=9F=93=9D?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-09.mbox
+
+Hi all,
+
+I hope you're all doing well and keeping your servers running smoothly! 🚀
+
+A little while ago, I submitted PR #429 to add support for log_formatter and a shiny new JSON log formatter to mod_log_config. It's been sitting quietly, waiting for a bit of love (or at least a review), but it seems everyone has been busy keeping the web safe and sound, so it hasn't gotten much attention.
+
+I know you're all swamped, but if anyone has a moment to take a quick look, I'd really appreciate it! The logs are patiently waiting to be formatted in style (and JSON!). If there’s anything I can do to help move it along or make it easier to review, feel free to let me know.
+
+Thanks a lot for your time! I'll buy the first round of virtual coffee ☕ for anyone who can help push this one through. 😉
+
+Best regards,
+Thomas
+
+Am 9. September 2024 08:41:44 MESZ schrieb Thomas Meyer <thomas@m3y3r.de>:
+>
+>
+>Am 30. Juli 2024 23:28:20 MESZ schrieb Thomas Meyer <thomas@m3y3r.de>:
+>>Am Sun, Jun 02, 2024 at 04:08:06PM +0200 schrieb Thomas Meyer:
+>
+>Good day!
+>
+>Summer seems to come to an end this week in Germany, a lot of rain and colder weather is forecasted this week, so a good chance to greet the beginning autumn and to make yourself a cup of hot chocolate and review some pull requests, like this one:
+>
+>>> https://github.com/apache/httpd/pull/429
+>
+>
+>>> Mfg
+>>> Thomas
+
+--
+Diese Nachricht wurde von meinem Android-Gerät mit K-9 Mail gesendet.

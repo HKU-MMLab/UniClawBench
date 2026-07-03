@@ -1,0 +1,96 @@
+{
+  "task_id": "task_105_26_music_crossid",
+  "schema_notes": "Three songs identified from lyric fragments. NetEase canonical IDs and YouTube official MV ids are immutable historical anchors (the songs / videos / channels won't change). Eval grades on goal achievement (correct songs + correct platform IDs + duration cross-check), NOT exact JSON shape — see eval_rule.md §5.",
+  "reference_date": "2026-05-02",
+  "ground_truth": {
+    "songs": [
+      {
+        "lyrics_fragment": "缘分让我们相遇乱世以外，命运却要我们危难中相爱",
+        "identified": {
+          "song_name": "光年之外",
+          "artist_canonical": "G.E.M.邓紫棋",
+          "artist_aliases_accept": ["G.E.M.", "邓紫棋", "鄧紫棋", "GEM"]
+        },
+        "netease": {
+          "song_id": 449818741,
+          "name": "光年之外",
+          "album": "光年之外",
+          "duration_ms": 235505,
+          "artists_canonical": ["G.E.M.邓紫棋"]
+        },
+        "youtube": {
+          "video_id": "T4SimnaiktU",
+          "channel": "GEM鄧紫棋",
+          "channel_id": "UCQpe3zrQZeyeqI_BjRhdmFA",
+          "duration_seconds": 236,
+          "upload_date": "20161230"
+        },
+        "duration_diff_seconds": 0.495,
+        "match_status": "match"
+      },
+      {
+        "lyrics_fragment": "人潮内愈文静愈变得不受理睬",
+        "identified": {
+          "song_name": "浮夸",
+          "artist_canonical": "陈奕迅",
+          "artist_aliases_accept": ["陳奕迅", "Eason Chan", "Eason"]
+        },
+        "netease": {
+          "song_id": 66282,
+          "name": "浮夸",
+          "album": "U87",
+          "duration_ms": 283520,
+          "artists_canonical": ["陈奕迅"]
+        },
+        "youtube": {
+          "video_id": "0xFFGzZq75w",
+          "channel": "Eason Chan",
+          "channel_id": "UC2rCynaFhWz7MeRoqJLvcow",
+          "duration_seconds": 284,
+          "upload_date": "20190110"
+        },
+        "duration_diff_seconds": 0.48,
+        "match_status": "match"
+      },
+      {
+        "lyrics_fragment": "我和我最後的倔強，握緊雙手絕對不放",
+        "identified": {
+          "song_name": "倔强",
+          "artist_canonical": "五月天",
+          "artist_aliases_accept": ["Mayday", "五月天 Mayday"]
+        },
+        "netease": {
+          "song_id": 386175,
+          "name": "倔强",
+          "album": "神的孩子都在跳舞",
+          "duration_ms": 261618,
+          "artists_canonical": ["五月天"]
+        },
+        "youtube": {
+          "video_id": "R2s-H_crYkc",
+          "channel": "滾石唱片 ROCK RECORDS",
+          "channel_id": "UCPcF3KTqhD67ADkukx_OeDg",
+          "duration_seconds": 263,
+          "upload_date": "20120417"
+        },
+        "duration_diff_seconds": 1.382,
+        "match_status": "match"
+      }
+    ],
+    "summary": {
+      "all_three_match_status": ["match", "match", "match"],
+      "tightest_duration_diff_song": "浮夸",
+      "tightest_duration_diff_seconds": 0.48,
+      "loosest_duration_diff_song": "倔强",
+      "loosest_duration_diff_seconds": 1.382
+    },
+    "tolerances": {
+      "song_id": "exact integer",
+      "duration_ms": "+/- 1000 (different masters/bitrates)",
+      "video_id": "exact 11-char",
+      "youtube_duration_seconds": "+/- 2 (re-encode drift)",
+      "upload_date": "exact YYYYMMDD",
+      "match_status": "all three should be 'match' (diff < 5s)"
+    }
+  }
+}

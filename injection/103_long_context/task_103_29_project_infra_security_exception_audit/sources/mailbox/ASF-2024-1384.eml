@@ -1,0 +1,37 @@
+Message-ID: <CAKQ1sVMzLEb97jHnaeoiq12MY7NdzOEHNqXoXewjC4dNocMYMg@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1384
+Date: Tue, 11 Oct 2022 11:54:36 +0200
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: friends of mod_proxy
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-10.mbox
+
+On Tue, Oct 11, 2022 at 9:47 AM Stefan Eissing via dev
+<dev@httpd.apache.org> wrote:
+>
+> > Am 10.10.2022 um 20:39 schrieb Ruediger Pluem <rpluem@apache.org>:
+> >
+> > On 10/10/22 6:35 PM, Eric Covener wrote:
+> >> On Mon, Oct 10, 2022 at 11:55 AM Yann Ylavic <ylavic.dev@gmail.com> wrote:
+> >>>
+> >>> How about a patch like the attached one now, which disables connection
+> >>> reuse definitively (regardless of enablereuse) if there is a $
+> >>> substitution in the hostname or port part of the URL?
+> >>> The patch uses the existing "is_address_reusable" flag (set to false
+> >>> initially in this case), and since it's not configurable by the user
+> >>> we are safe from a connection reuse point of vue in any case.
+> >>
+> >> +1 in concept
+> >
+> > Looks sensible. +1.
+>
+> I like the patch. +1
+
+Thanks, r1904513.
+
+
+Cheers;
+Yann.

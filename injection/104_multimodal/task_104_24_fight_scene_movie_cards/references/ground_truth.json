@@ -1,0 +1,159 @@
+{
+  "source_accessed_on": "2026-04-23",
+  "evidence_basis": [
+    "Frozen local compilation created from five local movie dialogue clips stored in Clawbench-main.",
+    "Hidden reference screenshots were extracted directly from the local compilation."
+  ],
+  "resource": {
+    "local_path": "/tmp_workspace/clawbench/sources/classic_movie_compilation.mp4",
+    "title": "classic_movie_compilation.mp4",
+    "type": "local_video",
+    "duration_seconds": 50.0,
+    "segment_count": 5,
+    "segment_length_seconds": 10,
+    "sha256": "30c95bb40620e2c16fca54f1018656c6b75a2164ca56beaaa0dd86d3062ab5aa",
+    "note": "Five frozen local classic-movie segments in fixed order."
+  },
+  "reference_outputs": {
+    "reference_csv": "references/reference_movie_picks.csv",
+    "reference_html": "references/reference_movie_picks.html",
+    "reference_notes": "references/reference_movie_picks_notes.md",
+    "reference_assets_dir": "references/reference_assets"
+  },
+  "reference_visual_evidence": {
+    "contact_sheet": {
+      "path": "references/reference_assets/movie_segments_reference_sheet.jpg",
+      "sha256": "2a3c66b0147226c17d135dce2706f2b9aab0d0b93c0365198ac288103320d0ad",
+      "description": "One representative hidden frame for each of the five ten-second local-video segments."
+    }
+  },
+  "canonical_clips": [
+    {
+      "segment_index": 1,
+      "segment_window": "0:00-0:10",
+      "representative_timestamp": "0:05",
+      "segment_label": "segment 1",
+      "movie_title": "Dressed to Kill",
+      "release_year": 1941,
+      "reference_screenshot_file": "segment_01.jpg",
+      "reference_screenshot_sha256": "baf5119c94eebaab60a3353c8f59dff5b550ef8bb6f22d01e1d71592700b014a",
+      "reference_reason": "Sharp noir interior confrontation with tense blocking and period detail.",
+      "acceptable_synonyms": [
+        "Dressed to Kill (1941)"
+      ],
+      "reject_common_confusions": [
+        "His Girl Friday",
+        "Impact"
+      ]
+    },
+    {
+      "segment_index": 2,
+      "segment_window": "0:10-0:20",
+      "representative_timestamp": "0:15",
+      "segment_label": "segment 2",
+      "movie_title": "His Girl Friday",
+      "release_year": 1940,
+      "reference_screenshot_file": "segment_02.jpg",
+      "reference_screenshot_sha256": "6bbab11f83dadb80591fc9758881a580aa2d9de1935665d40cc6c52b5d9ed4f6",
+      "reference_reason": "Crowded newsroom-style screwball staging with rapid character interaction.",
+      "acceptable_synonyms": [
+        "His Girl Friday (1940)"
+      ],
+      "reject_common_confusions": [
+        "Meet John Doe",
+        "Dressed to Kill"
+      ]
+    },
+    {
+      "segment_index": 3,
+      "segment_window": "0:20-0:30",
+      "representative_timestamp": "0:25",
+      "segment_label": "segment 3",
+      "movie_title": "Impact",
+      "release_year": 1949,
+      "reference_screenshot_file": "segment_03.jpg",
+      "reference_screenshot_sha256": "60e88ae8eb1142c70a3d8fd406970ddb18f293ab3854c6c7ec3e9c660cf5b7fd",
+      "reference_reason": "Noir close-up tension and suspicious framing around the face and barrier.",
+      "acceptable_synonyms": [
+        "Impact (1949)"
+      ],
+      "reject_common_confusions": [
+        "Suddenly",
+        "Dressed to Kill"
+      ]
+    },
+    {
+      "segment_index": 4,
+      "segment_window": "0:30-0:40",
+      "representative_timestamp": "0:35",
+      "segment_label": "segment 4",
+      "movie_title": "Meet John Doe",
+      "release_year": 1941,
+      "reference_screenshot_file": "segment_04.jpg",
+      "reference_screenshot_sha256": "82d4829b6cae078769e8d0126ba9b9d1c3c5848c2d74c373b7ea4b9a3c8f3829",
+      "reference_reason": "Public-speaking group tension with a charismatic central figure and visible audience reaction.",
+      "acceptable_synonyms": [
+        "Meet John Doe (1941)"
+      ],
+      "reject_common_confusions": [
+        "His Girl Friday",
+        "Suddenly"
+      ]
+    },
+    {
+      "segment_index": 5,
+      "segment_window": "0:40-0:50",
+      "representative_timestamp": "0:45",
+      "segment_label": "segment 5",
+      "movie_title": "Suddenly",
+      "release_year": 1954,
+      "reference_screenshot_file": "segment_05.jpg",
+      "reference_screenshot_sha256": "7d61e2b85ed18b5a91669f067ab240b2483dba86d1a467af5bd3f7d3583f9bcd",
+      "reference_reason": "Domestic-room suspense tableau with multiple characters under pressure.",
+      "acceptable_synonyms": [
+        "Suddenly (1954)"
+      ],
+      "reject_common_confusions": [
+        "Impact",
+        "Meet John Doe"
+      ]
+    }
+  ],
+  "canonical_output_schema": {
+    "expected_csv_columns": [
+      "movie_title",
+      "release_year",
+      "screenshot_file",
+      "recommendation_reason",
+      "identification_clue"
+    ],
+    "expected_html_card_fields": [
+      "title",
+      "year",
+      "screenshot",
+      "recommendation reason"
+    ],
+    "expected_asset_count": 5
+  },
+  "candidate_answer_boundaries": {
+    "full_credit_requires": [
+      "all 5 canonical clips identified, with screenshots traceable to their segment windows",
+      "release years are correct",
+      "screenshots come from the right segment windows",
+      "recommendation reasons are consistent with the clip-specific action style shown in the reference outputs"
+    ],
+    "partial_credit_if": [
+      "4 of 5 clips are correct and the fifth is the right franchise but wrong installment",
+      "the HTML is complete but one card uses an accepted alias instead of the canonical title"
+    ],
+    "reject_if": [
+      "the output mostly guesses movies from the compilation thumbnail or genre alone",
+      "the segment mapping is scrambled with no sign of actual clip-level identification"
+    ]
+  },
+  "common_mistakes": [
+    "Identifying the right franchises but wrong installments.",
+    "Using one screenshot from the compilation thumbnail instead of representative frames from each segment.",
+    "Missing one of the five segment labels that is explicitly listed in the description."
+  ]
+}

@@ -1,0 +1,54 @@
+task_id: task_201_07_stock_snapshot_chart
+category: 201_skill_usage_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+recording: none
+headed: auto
+task: |
+  我正在为五只大盘科技股整理一份关于
+  2024 年 Q1 的简要分析，希望你帮个忙。我关注的这几只股票是 AAPL、NVDA、
+  TSLA、MSFT 和 GOOG。请用工作区里的 stock analysis 技能
+  对这五只股票的 2024 年 Q1 OHLCV 数据进行计算分析。这个技能应当
+  能够自行获取并分析数据——只要确保你不会
+  调用任何实时行情 API 即可。
+
+  我想从中得到的是：
+
+  1. /tmp_workspace/results/analysis.md——一份简短的 Markdown 分析。给
+     我一张按个股列出的表格，至少展示这五只股票在该时间窗内
+     各自的 Q1 总回报率（百分比）和最大峰谷
+     回撤（百分比）。在表格之后，写
+     几段评述，让我能把它交给同事——
+     谁赢下了这个季度、谁受伤最重、那些令人难受的
+     回调出现在哪里。要提到具体数字，别含糊其辞。如果你
+     还想呈现一两个额外的辅助指标，比如
+     已实现波动率或一个大致的 beta 读数，也可以，但我
+     真正需要的两个是总回报率 % 和最大回撤 %。
+
+  2. /tmp_workspace/results/chart.png——一张对比图，让
+     我能在同一个面板上对这五只股票在相同的 Q1 窗口内一目了然。
+     累计回报叠加图可以，K 线并排图也可以，
+     只要是技能能干净地渲染出来的都行——只要确保这五只
+     股票都作为图例条目出现，让我能分清各条线。
+
+  数字应当与快照精确匹配到小数点后一位——这
+  是要交给一位会抽查核对的同事的，所以准确性比
+  评述的长短更重要。
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+sources:
+  - snapshot.json
+skills:
+  - stock-analysis
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+codex:
+  max_user_followups: 2

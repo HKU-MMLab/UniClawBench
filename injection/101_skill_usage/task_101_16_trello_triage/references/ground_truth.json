@@ -1,0 +1,191 @@
+{
+  "task_id": "task_101_16_trello_triage",
+  "difficulty": "Medium",
+  "schema": "a",
+  "schema_notes": "concept-level booleans with evidence pointers (must-hit findings)",
+  "skills_declared": [
+    "trello",
+    "summarize-pro"
+  ],
+  "ground_truth": {
+    "min_chase_action_chars": 20,
+    "min_unblockers_passing_chase_action_min_length": 3,
+    "min_unblockers_count": 4,
+    "min_unblockers_chase_action_chars": 30,
+    "min_unblockers_passing_strict": 4,
+    "top_4_urgent_canonical_ids": [
+      "69e52b2a375cdae87ce6f3e7",
+      "69e52b2bd87f6eec667b78c4",
+      "69e52b340ba1ccee744acc5c",
+      "69e52b3143bf7e13e65017d8"
+    ],
+    "urgent_card_required_fields": ["sla_hours", "due_pressure_score"],
+    "urgent_card_min_with_fields": 4,
+    "adversarial_urgent_card_names": [
+      "Audit vendor SOC2 reports",
+      "Write integration tests for /checkout"
+    ],
+    "expected_count": 25,
+    "bucket_set": [
+      "urgent",
+      "routine",
+      "blocked",
+      "done"
+    ],
+    "bucket_counts": {
+      "urgent": 4,
+      "routine": 10,
+      "blocked": 4,
+      "done": 7
+    },
+    "per_card_bucket": {
+      "69e52b2fc2c3841ad8cbc845": "routine",
+      "69e52b2d69de0ad09ca1373f": "routine",
+      "69e52b2bd87f6eec667b78c4": "urgent",
+      "69e52b2e55feeae97a4dd566": "routine",
+      "69e52b2a375cdae87ce6f3e7": "urgent",
+      "69e52b2cb2b89ed39ea50889": "routine",
+      "69e52b340ba1ccee744acc5c": "urgent",
+      "69e52b36daf7a1d87d3eb9cd": "routine",
+      "69e52b3711ffb8a24d334bac": "routine",
+      "69e52b35be47fffe951035a7": "routine",
+      "69e52b33f4890383cc2c5b34": "routine",
+      "69e52b3098b9ab154defa262": "routine",
+      "69e52b3252b2beefd69e4ddd": "routine",
+      "69e52b3143bf7e13e65017d8": "urgent",
+      "69e52b3bd87f6eec667b9dfa": "blocked",
+      "69e52b39f0e2779d42fea58f": "blocked",
+      "69e52b3ac27a4bc7d6e7ba50": "blocked",
+      "69e52b38e877c6a9cba92472": "blocked",
+      "69e52b3eeba220e784dca1be": "done",
+      "69e52b412b2b966000a14b64": "done",
+      "69e52b40cf764888bbc6eb6d": "done",
+      "69e52b423a34faa7ea23bf83": "done",
+      "69e52b3fb41193790d757bc4": "done",
+      "69e52b3df0be02f5d84c0c7b": "done",
+      "69e52b3c30191663fa5b17ec": "done"
+    },
+    "priority_by_card": {
+      "69e52b2fc2c3841ad8cbc845": "P4",
+      "69e52b2d69de0ad09ca1373f": "P3",
+      "69e52b2bd87f6eec667b78c4": "P1",
+      "69e52b2e55feeae97a4dd566": "P3",
+      "69e52b2a375cdae87ce6f3e7": "P1",
+      "69e52b2cb2b89ed39ea50889": "P4",
+      "69e52b340ba1ccee744acc5c": "P2",
+      "69e52b36daf7a1d87d3eb9cd": "P3",
+      "69e52b3711ffb8a24d334bac": "P3",
+      "69e52b35be47fffe951035a7": "P4",
+      "69e52b33f4890383cc2c5b34": "P3",
+      "69e52b3098b9ab154defa262": "P2",
+      "69e52b3252b2beefd69e4ddd": "P3",
+      "69e52b3143bf7e13e65017d8": "P2",
+      "69e52b3bd87f6eec667b9dfa": "P2",
+      "69e52b39f0e2779d42fea58f": "P1",
+      "69e52b3ac27a4bc7d6e7ba50": "P2",
+      "69e52b38e877c6a9cba92472": "P1",
+      "69e52b3eeba220e784dca1be": "P4",
+      "69e52b412b2b966000a14b64": "P4",
+      "69e52b40cf764888bbc6eb6d": "P4",
+      "69e52b423a34faa7ea23bf83": "P4",
+      "69e52b3fb41193790d757bc4": "P4",
+      "69e52b3df0be02f5d84c0c7b": "P4",
+      "69e52b3c30191663fa5b17ec": "P4"
+    },
+    "blocked_list_name": "Blocked",
+    "done_list_name": "Done",
+    "urgent_window_hours": 48,
+    "top_work_order": [
+      {
+        "id": "69e52b2a375cdae87ce6f3e7",
+        "name": "Sign client contract — Acme MSA renewal",
+        "bucket": "urgent",
+        "priority": "P1",
+        "score": 8
+      },
+      {
+        "id": "69e52b2bd87f6eec667b78c4",
+        "name": "Prepare board meeting deck (Q2 financials)",
+        "bucket": "urgent",
+        "priority": "P1",
+        "score": 7
+      },
+      {
+        "id": "69e52b340ba1ccee744acc5c",
+        "name": "Audit vendor SOC2 reports",
+        "bucket": "urgent",
+        "priority": "P2",
+        "score": 7
+      },
+      {
+        "id": "69e52b3143bf7e13e65017d8",
+        "name": "Write integration tests for /checkout",
+        "bucket": "urgent",
+        "priority": "P2",
+        "score": 7
+      },
+      {
+        "id": "69e52b3098b9ab154defa262",
+        "name": "Refactor billing service error handling",
+        "bucket": "routine",
+        "priority": "P2",
+        "score": 3.5
+      },
+      {
+        "id": "69e52b2e55feeae97a4dd566",
+        "name": "Schedule 1:1s with reports for next week",
+        "bucket": "routine",
+        "priority": "P3",
+        "score": 3
+      },
+      {
+        "id": "69e52b3252b2beefd69e4ddd",
+        "name": "Review engineering hiring pipeline",
+        "bucket": "routine",
+        "priority": "P3",
+        "score": 3
+      },
+      {
+        "id": "69e52b2d69de0ad09ca1373f",
+        "name": "Draft Q3 OKR proposal",
+        "bucket": "routine",
+        "priority": "P3",
+        "score": 3
+      }
+    ],
+    "expected_unblockers": [
+      {
+        "id": "69e52b39f0e2779d42fea58f",
+        "name": "Blocked on AWS quota increase ticket",
+        "bucket": "blocked",
+        "priority": "P1",
+        "score": 4.5,
+        "chase_action": "Bump AWS Support quota ticket; CC infra lead; ask for ETA on quota grant by EOW"
+      },
+      {
+        "id": "69e52b38e877c6a9cba92472",
+        "name": "Waiting on legal review of DPA",
+        "bucket": "blocked",
+        "priority": "P1",
+        "score": 4.5,
+        "chase_action": "Email legal counsel; CC Casey; request marked-up DPA back by Friday or escalate to GC"
+      },
+      {
+        "id": "69e52b3bd87f6eec667b9dfa",
+        "name": "Awaiting vendor response on pricing tier",
+        "bucket": "blocked",
+        "priority": "P2",
+        "score": 4.5,
+        "chase_action": "Email vendor account exec; CC procurement; request confirmed pricing tier by Friday"
+      },
+      {
+        "id": "69e52b3ac27a4bc7d6e7ba50",
+        "name": "Need design decision from Kai on nav hierarchy",
+        "bucket": "blocked",
+        "priority": "P2",
+        "score": 3.5,
+        "chase_action": "Slack Kai with two nav-hierarchy options; ask for a pick by tomorrow standup or default to option A"
+      }
+    ]
+  }
+}

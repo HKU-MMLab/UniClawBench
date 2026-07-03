@@ -1,0 +1,42 @@
+Message-ID: <30a02200-5055-316a-0414-dca7ec2d2d44@tchncs.de>
+X-Clawbench-ID: BIO-2024-0056
+Date: Thu, 16 Sep 2021 02:57:15 +0530
+From: Nilesh Patra <nilesh@tchncs.de>
+To: debian-med@lists.debian.org
+Subject: Re: Is pigx-rnaseq ready to be uploaded?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_09_msg00034.html
+
+Hi Steffen,
+
+On 9/15/21 5:31 PM, Steffen Möller wrote:
+>> I don't know about the software myself, if you could take a look and push what
+>> you deem sensible, that'd be very cool.
+>
+> Done. Also eliminated some lintian warnings. All dependencies have been
+> transitioned, so it cowbuilds now. Good to go imho.
+
+Cool, salsa CI agrees with you as well. Thanks a lot, uploaded.
+
+Also, I saw that you added in me to uploaders, thanks a lot for doing this,
+but I admit I've no interest in maintaining pigx-rnaseq.
+I worked on this package as a part of the team-stuff that I do. Hence, I removed myself from Uploaders field
+and uploaded.
+
+That said, I'm even motivated to remove myself from uploaders in med-packages which I don't have any interest in,
+and which has co-maintainers. Let's see.
+
+Thanks again for your efforts!
+
+Cheers,
+
+--
+Nilesh Patra
+
+Debian Developer, Uploading
+  ⢀⣴⠾⠻⢶⣦⠀
+  ⣾⠁⢠⠒⠀⣿⡁
+  ⢿⡄⠘⠷⠚⠋   nilesh@debian.org / nileshpatra.info / tchncs.de
+  ⠈⠳⣄

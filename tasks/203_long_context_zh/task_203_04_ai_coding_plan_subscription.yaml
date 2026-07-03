@@ -1,0 +1,33 @@
+task_id: task_203_04_ai_coding_plan_subscription
+category: 203_long_context_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我想订阅一个 AI coding 套餐/订阅，目标是拥有一个相对稳定、可以接入 Claude Code 的模型供应商。
+
+  直接使用 API 太贵了，在我看来并不划算，所以本任务请不要推荐纯 API、按 token 计费、算力租赁平台、模型网关或 API 聚合平台。请寻找固定月费套餐、包月套餐，或明确声明面向 AI coding 工具的 coding 套餐/订阅，并整理至少 10 个选项。我听说中国的 coding 套餐也相当不错，所以请认真调研中国是否有好的 coding 套餐/订阅，并推荐至少 3 个与中国相关的 coding 套餐。注意，我说的不是单纯的 IDE、插件、编辑器、产品自带订阅、算力租赁平台或模型 API 聚合器。这些可以作为横向参考，但如果某套餐只能在其自家产品内使用，或只是按量计费的模型 API，就不要把它算作可接入 Claude Code 的供应商套餐。对每个选项，至少记录：原始链接、页面截图、计费方式、使用方式、可用额度或使用限制、能否作为 Claude Code 模型供应商接入、是否只能在官方产品内使用，以及是否支持任何额外功能。
+
+  我希望你找到至少 3 个可以直接在 Claude Code 中使用的供应商套餐，供我从中选择。对于这些可接入的套餐，请继续查阅官方文档或帮助页面，确认如何将它们接入 Claude Code，例如它们是否提供 Claude Code 配置、Anthropic 兼容端点、专用 key 或等效说明，并保存能证明可接入 Claude Code 的文档截图。这张截图很重要；不要仅凭定价页面就下结论。
+
+  我每月可能开发数万行代码。请分析哪个套餐最适合我。最后给出你的推荐，并打开所推荐套餐的官方订阅入口页面并截图，以便我自己确认。将结果、对比表、截图路径和接入说明截图路径保存到 `/tmp_workspace/results/coding_plan_recommendation.md`。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/provider_evidence/alibaba_coding_plan.png
+  - references/provider_evidence/claude_max_plan.png
+  - references/provider_evidence/claude_pricing.png
+  - references/provider_evidence/kimi_benefits.png
+  - references/provider_evidence/kimi_third_party_agents.png
+  - references/provider_evidence/minimax_claude_code.png
+  - references/provider_evidence/zai_configuration.png
+  - references/provider_evidence/zai_quick_start.png
+codex:
+  max_user_followups: 2

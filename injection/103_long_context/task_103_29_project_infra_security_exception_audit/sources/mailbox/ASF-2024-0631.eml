@@ -1,0 +1,43 @@
+Message-ID: <YicT1szJYpXouoK5@redhat.com>
+X-Clawbench-ID: ASF-2024-0631
+Date: Tue, 8 Mar 2022 08:29:10 +0000
+From: Joe Orton <jorton@redhat.com>
+To: dev@httpd.apache.org
+Subject: Re: backports
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-03.mbox
+
+On Mon, Mar 07, 2022 at 01:28:19PM +0200, Graham Leggett wrote:
+> On 07 Mar 2022, at 11:21, Stefan Eissing <stefan@eissing.org> wrote:
+>
+> > I'd really like, as a reviewer of backports, you can:
+> > - see that it passes all our tests. No need to patch/compile/test locally.
+>
+> “No need to patch/compile locally" is not a good idea - currently the
+> travis tests target Ubuntu only, and this is a practical limitation
+> forced upon us by the nature of the Travis service. I want to see
+> reviewers try out the patch on different architectures. I for example
+> work on MacOS, but deploy to Redhat, so those are my two environments.
+> Others will have different environments.
+>
+> Our testing needs to be wide and diverse.
+
+Definitely +1 on the sentiment and I'm keen to help with any effort to
+add more diversity to the CI.  Travis natively supports a bunch of
+non-Linux platforms so if someone cares about that they should be able
+to hook it up by tweaking the .travis.yml.
+https://docs.travis-ci.com/user/reference/overview/
+
+(I'll note the empty APLOGNO() check in question here was added because
+some Windows build broke for that case and it blocked a release, IIRC.)
+
+> This way we learn far more than what Github will give to us. Has my
+> patch been broken by another backport ahead of it and is now stale?
+> Very useful to know. It would be nice to be told “your patch is stale”
+> in CI rather than finding that out when the backport is applied.
+
+You get this in Github PRs at least if mergeability test fails.
+
+Regards, Joe

@@ -1,0 +1,43 @@
+{
+  "task_id": "task_103_15_embodiment_long_horizon_ppt",
+  "created_at": "2026-04-25T09:19:16.684104+00:00",
+  "target_papers": [
+    "Hi Robot: Open-Ended Instruction Following with Hierarchical Vision-Language-Action Models",
+    "MEM: Multi-Scale Embodied Memory for Vision Language Action Models"
+  ],
+  "target_section": "long-horizon + hierarchical planning",
+  "expected_sections": [
+    "motivation",
+    "method",
+    "experiment"
+  ],
+  "source_template": "presentation_template.pptx",
+  "roadmap_expectation": "The deck should include an overview that places every candidate paper into one of the four course blocks before focusing on Hi Robot and MEM.",
+  "ppt_quality_checks": [
+    "PPTX opens without corruption and contains enough slides for two paper-reading mini-sections plus transitions",
+    "Slides use the provided template's visual language rather than plain default white slides",
+    "Text density is presentation-appropriate; no slide has visible text overflow, clipping, or tiny unreadable paragraphs",
+    "Figures are readable, relevant to the cited paper, and not stretched/cropped into unusability",
+    "Each paper has clear motivation, method, and experiment slides or slide regions",
+    "The deck explains why the selected papers fit long-horizon + hierarchical planning",
+    "The rendered deck remains visually usable in slide-show view and is close enough to the template style to be used in a course paper-reading presentation"
+  ],
+  "target_paper_files": [
+    "papers/doc_01.pdf",
+    "papers/doc_05.pdf"
+  ],
+  "reference_deck": "references/group5_reference_deck.pptx",
+  "paper_mapping_reference": "references/paper_mapping.json",
+  "all_candidate_roadmap_files": [
+    "papers/doc_01.pdf",
+    "papers/doc_02.pdf",
+    "papers/doc_03.pdf",
+    "papers/doc_04.pdf",
+    "papers/doc_05.pdf",
+    "papers/doc_06.pdf",
+    "papers/doc_07.pdf",
+    "papers/doc_08.pdf",
+    "papers/doc_09.pdf",
+    "papers/doc_10.pdf"
+  ]
+}

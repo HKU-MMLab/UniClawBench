@@ -1,0 +1,26 @@
+Message-ID: <YjpOYPB2a2Uhr0R4@debian>
+X-Clawbench-ID: BIO-2024-0902
+Date: Wed, 23 Mar 2022 04:02:00 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: Andreas Tille <andreas@an3as.eu>
+Subject: Re: Help needed for dipy autopkgtest
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_03_msg00027.html
+
+On Tue, Mar 22, 2022 at 10:19:09PM +0100, Andreas Tille wrote:
+> I've updated dipy to latest upstream but the autopkgtest is failing[1].
+> There are lots of own modules that are not found and I have no idea why.
+
+That is because it is trying to run tests in the source-tree itself
+and it does not seem working w/o compilation.
+
+> Since I'm basically AFK for the next three days I'd be happy if someone
+> could come up with some solution.
+
+I pushed something to salsa that I think might move it fwd. Time for me to $sleep,
+will check CI tomorrow.
+
+Regards,
+Nilesh

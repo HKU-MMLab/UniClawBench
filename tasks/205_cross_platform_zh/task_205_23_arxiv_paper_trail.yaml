@@ -1,0 +1,55 @@
+task_id: task_205_23_arxiv_paper_trail
+category: 205_cross_platform_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我正在写一篇综述,想了解 arxiv 论文"Generative Agents"(2304.03442)
+  被接受和讨论的深度如何。光看 PDF 还不够——我想看看这篇论文当前的
+  "足迹":它有多少学术引用?GitHub 上有没有复现?它当年在 Hacker News
+  上是不是引发了热烈讨论?
+
+  能不能把这些都汇总起来,给我一份关于这篇论文当前影响力的分析报告?在
+  GitHub 这一侧,我特别想知道哪个 repo 是论文作者的官方实现——不是衍生
+  项目,不是粉丝制作的主题游戏或 fork,而是第一作者或团队账号下的原始
+  repo。如果 star 数最高的 repo 恰好就是官方的那个,那最好;如果不是,
+  也请说明 star 数最高的那个实际上是什么。对于 HN,也请在报告中点出讨论
+  度最高的那个 story。
+
+  另外,如果第一作者还有其他论文,查一下他们引用次数最高的另一篇工作是
+  什么——使用 Semantic Scholar 的 author papers 端点,按 citationCount
+  排序,取排除 Generative Agents 本身之后的第一篇。
+
+  我还想看一个时间线问题:这篇论文在四月初上了 arxiv——GitHub 复现是在
+  几天之内就开始出现,还是过了好几个月才冒出来?找出 star 数排名前 3 的
+  GitHub 实现,然后用 `gh api repos/<r>/commits?per_page=1` 抓取 Link
+  header 中 rel="last" 的页码,再运行 `?per_page=1&page=<last>` 来找到
+  每个 repo 的首次 commit 日期。计算每个 repo 的首次 commit 比论文发表
+  日期(2023-04-07)晚了多少天。最后,清楚地告诉我哪个复现出现得最快
+  ——是作者自己后来才发布的官方 repo,还是社区里有人在同一周内就赶出了
+  一个?
+
+  把报告和数据文件放在 /tmp_workspace/results/ 下。
+
+  arxiv ID 是 2304.03442,PDF 在 https://arxiv.org/pdf/2304.03442v2。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources: []
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

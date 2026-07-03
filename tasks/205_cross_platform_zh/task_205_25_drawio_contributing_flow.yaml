@@ -1,0 +1,52 @@
+task_id: task_205_25_drawio_contributing_flow
+category: 205_cross_platform_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我们团队想给新贡献者写一份上手文档,需要一张 GitHub CLI(cli/cli)的
+  "如何贡献"流程图。内容必须忠实于该 repo 的 .github/CONTRIBUTING.md
+  ——不要凭空编造;审核者会对照原文交叉核对。
+
+  为了防范将来文档发生变化,固定到 tag v2.65.0
+  (commit b3be16e98e1413f5bb0943c06402516cec3fd3b4)。用 gh 从 GitHub API
+  获取这个版本的 CONTRIBUTING.md。
+
+  我想要这些交付物:
+
+  从 CONTRIBUTING.md 中提取大约 5 个关键步骤——类似于
+  检查已有 issue → 开 issue → 建分支 → PR → review/merge,但要遵循
+  文档实际的流程,使用能在原文中找到的措辞。给每个步骤标注由谁执行
+  (contributor、maintainer、reviewer 等)。把提取结果保存为
+  flow_steps.json。
+
+  然后把它画成一张 contributing_flow.drawio 流程图——节点应反映步骤和
+  角色,箭头应连接整个流程,整体看起来要像一张规范的流程图。导出一张
+  contributing_flow.png(或 .svg)以便粘贴进 Notion。
+
+  最后写一份中文的上手总结,保存为 contributing_summary.md,包含 repo
+  链接、固定的 commit、步骤列表、图片引用,以及一条"卡住了该怎么办"的
+  提示。
+
+  把所有文件放在 /tmp_workspace/results/ 下。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources: []
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

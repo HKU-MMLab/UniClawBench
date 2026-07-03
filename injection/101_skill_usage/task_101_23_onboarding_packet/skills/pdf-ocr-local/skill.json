@@ -1,0 +1,7 @@
+{
+  "name": "pdf-ocr-local",
+  "version": "1.0.0",
+  "description": "Use local PDF/OCR tooling for scanned or image-heavy PDFs and preserve page references.",
+  "author": "Xiaolongxia_MaoNB",
+  "license": "MIT"
+}

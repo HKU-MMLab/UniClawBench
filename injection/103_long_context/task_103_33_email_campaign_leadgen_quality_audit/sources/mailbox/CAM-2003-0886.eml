@@ -1,0 +1,36 @@
+Message-ID: <200209102354.g8ANscL17172@lin12.triumf.ca>
+X-Clawbench-ID: CAM-2003-0886
+Date: Tue, 10 Sep 2002 16:54:38 -0700
+From: Rick Baartman <baartman@lin12.triumf.ca>
+To: exmh-users@spamassassin.taint.org
+Subject: Re: Sorting
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00998.84daa7907ccbbee4f20c4da1288cb196
+
+Thanks Brent: now it's clearer (to me) what's needed. I've used the global
+sort and J C Lawrence's re-scan, but there is still a vulnerability there:
+If I have an instance of exmh running, the folder I'm visiting will have
+its new, correct .xmhcache overwritten with an incorrect one when I switch
+folders. I can cron the sort and re-scan process, but I should kill running
+exmh's first.
+
+Best would be to have a button for "Global sort and update all scan caches"
+in the exmh More... menu
+
+--
+rick
+
+>>>>> "Brent" == Brent Welch <welch@panasas.com>
+>>>>> wrote the following on Tue, 10 Sep 2002 14:31:48 -0700
+
+  Brent> There is an "Update all scan caches" menu entry that rescans your
+  Brent> folders similar to the short scripts folks have shared around.  It
+  Brent> runs in the background.
+
+
+_______________________________________________
+Exmh-users mailing list
+Exmh-users@redhat.com
+https://listman.redhat.com/mailman/listinfo/exmh-users

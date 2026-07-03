@@ -1,0 +1,134 @@
+# ═══════════════════════════════════════════════════════════════════
+# Clawbench Task Template
+# ═══════════════════════════════════════════════════════════════════
+#
+# Copy this file to tasks/{category}/task_xxx_name.yaml and fill in.
+#
+# Directory layout for injection resources:
+#
+#   injection/{category}/{task_id}/
+#     references/            ← Hidden evaluation materials (supervisor only)
+#       eval_rule.md         ← Structured hidden judging spec (REQUIRED)
+#       *.jpg / *.png        ← Optional hidden evidence / checkpoint screenshots
+#     sources/               ← Public materials visible to executor
+#     skills/                ← Custom skills installed to /root/skills
+#     services/              ← Background services started by harness
+#     .privacy               ← [Optional] Plain-text manifest listing env-var
+#                              NAMES the task needs. One KEY per line; blank
+#                              lines and `# ...` comments are skipped. Committed
+#                              (no secrets). Values resolve from the shared
+#                              configs/privacy.local.env at runtime and are
+#                              injected into the executor container as env
+#                              vars. Never visible to the public user simulator.
+#
+# ═══════════════════════════════════════════════════════════════════
+
+task_id: task_000_example
+category: 000_template
+agent_sys: openclaw                    # openclaw | openclaw_edict | nanobot
+agent_id: main                         # use taizi only when the backend is openclaw_edict
+model: gpt-5.4                         # executor model; provider resolves from local config by default
+timeout_seconds: 1200                  # per-turn EXECUTOR-only budget (20 min)
+max_total_seconds: 1800                # cumulative EXECUTOR-only budget across all turns (30 min)
+                                       # Supervisor / user-simulator time is infrastructure and NOT counted.
+success_threshold: 1.0                 # score threshold for pass
+
+# ── Recording + browser-headed ─────────────────────────────────────
+# ``recording`` picks the ffmpeg desktop-capture tier:
+#   none (default) — no ffmpeg, smallest footprint.
+#   low            — 5 fps / 1280x720, useful for low-cost debug
+#                    video.
+#   high           — 10 fps / 1440x900, needed for GUI-fidelity
+#                    grading (cross-platform suites, image
+#                    fidelity checks).  Adds ~5–10% wall-clock
+#                    and 50–100 MB / cycle.
+recording: none
+# ``headed`` picks the executor browser mode:
+#   auto (default) — couple to ``recording``: ``high`` runs
+#                    headed, anything else runs headless.
+#   true / headed  — force visible Chromium even at low/none
+#                    recording (rarely needed; useful for
+#                    Playwright-vs-DOM debug).
+#   false / headless — force headless even when recording=high
+#                    (useful for diagnostic captures on a
+#                    headless target).
+headed: auto
+
+# ── Public Task ────────────────────────────────────────────────────
+# Natural language request shown to the executor.
+# Do NOT include hidden evaluation details or the answer.
+# Keep it close to something a real user would actually type.
+# Mention exact paths / files only when they are needed to make the task runnable.
+task: |
+  Replace this with the public end-user request.
+  Keep it natural and close to a real user instruction.
+
+# ── Hidden References ──────────────────────────────────────────────
+# Paths relative to injection/{category}/{task_id}/
+# Only the supervisor sees these; executor and user simulator do not.
+# eval_rule.md is the primary judging spec — always include it.
+# It should be structured, not just a few loose rules. Recommended content:
+#   1. Grading philosophy (result/checkpoint-first, not path-first)
+#   2. Task understanding / public-task restatement
+#   3. Source-selection and target-resolution rules (only where needed)
+#   4. Ground-truth rule or accepted-answer set
+#   5. Weighted checkpoints tied to observable states / saved results
+#   6. Scoring rubric / score caps
+#   7. Continue vs fail guidance
+#   8. Hidden reference assets and dynamic-content notes
+references:
+  - references/eval_rule.md
+
+# ── Codex Supervision ─────────────────────────────────────────────
+codex:
+  max_user_followups: 2                # total attempts = 1 initial + N followups
+  # Optional: override the default Codex role runtime only when the task
+  # needs a non-default model/provider/config/prompt.
+  # user_simulator:
+  #   model: gpt-5.4
+  #   provider: ""
+  #   config: configs/codex.local.toml
+  #   reasoning_effort: high
+  #   policy: |
+  #     Optional task-specific override.
+  # supervisor:
+  #   model: gpt-5.4
+  #   provider: ""
+  #   config: configs/codex.local.toml
+  #   reasoning_effort: high
+  #   instructions: |
+  #     Optional task-specific override.
+
+# ── Optional: Public Sources ──────────────────────────────────────
+# The whole injection/{category}/{task_id}/sources/ directory is injected.
+# The optional list below is declarative metadata, and helps EDICT choose
+# a repo dir when exactly one source entry is declared.
+# sources:
+#   - README.md
+#   - data/
+
+# ── Optional: Skills ──────────────────────────────────────────────
+# Skill directories under injection/{category}/{task_id}/skills/
+# Installed to /root/skills inside the container.
+# skills:
+#   - ocr-local
+
+# ── Optional: Services ────────────────────────────────────────────
+# Background services under injection/{category}/{task_id}/services/
+# services:
+#   - name: example-service
+#     path: example-service
+#     start: bash run.sh
+# `services[].name` is used in log filenames; keep it shell-safe
+# (letters/digits/._- only). `services[].path` must stay a safe relative path.
+
+# ── Optional: Privacy / credentials ───────────────────────────────
+# Declare required env-var names in injection/{category}/{task_id}/.privacy
+# (plain text, one KEY per line). Do NOT use a `privacy:` field in this
+# YAML — it is rejected at load time. At runtime the runner pulls values
+# from configs/privacy.local.env (gitignored) and injects them into the
+# executor container as env vars. Task prompts should reference
+# credentials by name, e.g. "$API_TOKEN" or "$EMAIL_PASSWORD".
+# Fresh clones must copy configs/privacy.example.env to
+# configs/privacy.local.env and fill real values; load_task() raises a
+# loud missing-key error otherwise.

@@ -1,0 +1,33 @@
+Message-ID: <1E3839C3-E371-4C68-B52C-6A4BC6A031A6@glasgow.ac.uk>
+X-Clawbench-ID: BIO-2024-1434
+Date: Tue, 4 Oct 2022 13:38:49 +0000
+From: John Marshall <John.W.Marshall@glasgow.ac.uk>
+To: Nilesh Patra <nilesh@debian.org>
+Subject: Re: [Help] New version of htslib does not build
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00010.html
+
+On 1 Oct 2022, at 07:21, Nilesh Patra  wrote:
+> I have fixed a bunch of things with htscodecs and htslib, both
+> of which were not building on !amd64. Hopefully it is
+> fine now.
+
+If htscodecs or htslib is failing to build on !amd64 due to a problem outside your Debian-specific build scripts, you should report the problem upstream.
+
+Presumably this is a reference to
+
+   * Do not build on higher baseline so as to not violate arch baseline
+   * Remove avx or sse specific symbols
+   * undef neon to build on arm properly as well
+
+which undefines HAVE_{AVX2,AVX512,POPCNT,SSE3,SSE4_1} and __ARM_NEON, thus preventing the SIMD-using code in rANS_static32x16pr_{avx2,avx512,neon,sse4}.c from being built.
+
+These are probed for in configure and should be only defined on Intel or ARM respectively (and only when the build machine's compiler is capable), where they exist. So this should not itself be causing failures on !amd64.
+
+Moreover, see rans_enc_func() and rans_dec_func() in rANS_static4x16pr.c. On x86-64, these check the CPU's capabilities at runtime and use the best available SIMD rANS implementation or the scalar implementation, as appropriate. On ARM, brief googling suggests there isn't an obvious unprivileged intrinsic to detect Neon availability and these functions will use the Neon implementation unless disabled via rans_set_cpu(). (There are platform-specific APIs that could be used to check Neon availability, at least on Linux.) But are you aware of a platform supported by ARM Linux that does not provide Neon, where this code always using the Neon implementation would fail?
+
+You don't explain what you mean by avoiding "violat[ing] arch baseline", but as these SIMD-using functions are only invoked depending on runtime host capabilities, I suspect flatly disabling them is unnecessary. Certainly it will make CRAM-using code less efficient on Debian.
+
+    John

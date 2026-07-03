@@ -1,0 +1,31 @@
+Message-ID: <a4f12d37-e9bd-459a-8f7a-e2ca577dd365@kippdata.de>
+X-Clawbench-ID: ASF-2024-1418
+Date: Wed, 3 Apr 2024 21:16:10 +0200
+From: Rainer Jung <rainer.jung@kippdata.de>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.59-rc1 as httpd-2.4.59
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-04.mbox
+
+Thanks!
+
+Am 03.04.24 um 21:13 schrieb Eric Covener:
+> On Wed, Apr 3, 2024 at 3:03 PM Eric Covener <covener@gmail.com> wrote:
+>>
+>> On Wed, Apr 3, 2024 at 2:54 PM Rainer Jung <rainer.jung@kippdata.de> wrote:
+>>>
+>>> Minor nit: the format of the SHA hash files has changes. Example:
+>>>
+>>> 2.4.58:
+>>>
+>>> fa16d72a078210a54c47dd5bef2f8b9b8a01d94909a51453956b3ec6442ea4c5
+>>> *httpd-2.4.58.tar.bz2
+>>>
+>>> 2.4.59:
+>>>
+>>> SHA2-256(httpd-2.4.59-rc1.tar.bz2)=
+>>> ec51501ec480284ff52f637258135d333230a7d229c3afa6f6c2f9040e321323
+>
+> fixed and repaired the ones on dist/dev

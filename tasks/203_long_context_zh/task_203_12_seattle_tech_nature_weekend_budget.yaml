@@ -1,0 +1,40 @@
+task_id: task_203_12_seattle_tech_nature_weekend_budget
+category: 203_long_context_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我想和一位朋友去西雅图过一个科技 + 自然的周末。日期是：下周五到再下周一（周五到周一共住 3 晚），2 人，从 SFO 飞往 SEA。请实际调研并制定一份完整的预算和行程方案，但不要支付、不要订机票、不要订酒店、不要租车、不要买景点门票、不要预订餐厅，也不要提交任何不可逆的订单。把所有截图和文档保存到 `/tmp_workspace/results/`。
+
+  搜索从 SFO 到 SEA 的往返航班。去程航班必须在下周五 08:00 到 12:00 之间从 SFO 出发；返程航班必须在再下周一 15:00 到 20:00 之间从 SEA 飞往 SFO。在 Google Flights 以及 Delta 或 United 至少一家航空公司的官网上搜索；从每个平台记录 1 个最合适的结果，包括航空公司、出发/到达时间、是否直飞、票价、行李/改签限制和截图。
+
+  住宿方面，从 citizenM Seattle South Lake Union、Hyatt Place Seattle/Downtown、The Mediterranean Inn 和 Staypineapple The Maxwell Hotel 中任选 2 家。在 Booking.com 和每家酒店官网搜索从下周五到再下周一、2 人、1 间房的住宿。记录房型、3 晚总价、是否含税费、取消政策、评分/地址和截图。如果某网站拦截了查询或无法显示价格，就截图并在最终方案中如实说明；不要编造价格。
+
+  自然部分需要比较租车 vs 不租车。租车方面，只考虑 SEA 机场或西雅图市中心取还车，下周五 08:30 取车，再下周一 20:00 还车。在 Enterprise 搜索 Economy、Compact 和 Midsize，并从每个平台记录 2 个最合适的结果并截图。公共交通方面，查询 King County Metro 和 Sound Transit 的线路和时刻表，记录从住宿区域前往各景点的交通方式、行程时间、费用和截图。
+
+  科技/城市景点方面，只考虑 Space Needle、Museum of Flight 和 Amazon Spheres 的参观信息。使用官方页面查询行程期间 2 名成人的门票或参观信息，记录成人价格、开放时间、套票、预约要求、取消/改期规则和截图。
+
+  自然景点方面，只考虑 Mount Rainier National Park、Snoqualmie Falls、Discovery Park 以及 Bainbridge Island 渡轮一日游。查询官方的参观/费用/分时入场页面，记录门票或通票费用、停车、开放时间、交通时间、是否需要预约和截图。
+
+  最后生成 `/tmp_workspace/results/seattle_tech_nature_plan.md`，包含每日行程、一张涵盖机票/酒店/租车或公共交通/景点/餐厅/停车/油费/活动备用金的预算表，以及两套方案：省钱版和舒适版。尽量把舒适版的总预算控制在 $3,400 / 2 人以内。最终文档必须列出所用的所有截图路径，并清晰标注任何被拦截、缺少价格或不可用的数据。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/process_evidence/Delta_flight.png
+  - references/process_evidence/Enterprise.png
+  - references/process_evidence/booking_Hyatt.png
+  - references/process_evidence/booking_The_Mediterranean_Inn.png
+  - references/process_evidence/google_flights.png
+  - references/process_evidence/official_Hyatt.png
+  - references/process_evidence/official_Mount_rainier_National_park.png
+  - references/process_evidence/official_The_Mediterranean_Inn.png
+  - references/process_evidence/official_space_needle.png
+codex:
+  max_user_followups: 2

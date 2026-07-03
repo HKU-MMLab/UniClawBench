@@ -1,0 +1,19 @@
+Message-ID: <B0679845-E535-4360-A569-EAAC0321B3D8@vmware.com>
+X-Clawbench-ID: ASF-2024-1335
+Date: Tue, 17 Jan 2023 18:12:35 +0000
+From: =?utf-8?B?SmVzw7pzIEdvbnrDoWxleg==?= <jesusgm@vmware.com>
+To: "dev@httpd.apache.org" <dev@httpd.apache.org>
+Subject: Re: mod_wasm: Contributing Upstream to Apache
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-01.mbox
+
+Hola!
+
+Did anyone have the chance to take a look to the latest PR?
+It would be great to receive any additional feedback with the upstream contribution in mind.
+
+We are making great progress in our end, now focused on porting more PHP apps for mod_wasm, and support for new language runtimes such as Python and Ruby.
+
+Thanks!

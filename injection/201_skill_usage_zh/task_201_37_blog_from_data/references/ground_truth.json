@@ -1,0 +1,91 @@
+{
+  "task_id": "task_101_37_blog_from_data",
+  "difficulty": "Hard",
+  "schema": "a",
+  "schema_notes": "concept-level booleans with evidence pointers (must-hit findings)",
+  "skills_declared": [
+    "csv-pipeline",
+    "python-dataviz",
+    "newsletter-blog-writer"
+  ],
+  "ground_truth": {
+    "min_words": 700,
+    "max_words": 1100,
+    "key_metrics": 3,
+    "total_revenue_usd": 13457369.32,
+    "total_orders": 18153,
+    "required_metrics": [
+      "total_revenue_usd",
+      "total_orders",
+      "peak_month_row"
+    ],
+    "peak_month_row": {
+      "month": "2010-11",
+      "all_store_revenue_usd": 2074426.98,
+      "all_store_orders": 2584,
+      "top_store": {
+        "name": "United Kingdom",
+        "revenue_usd": 1970772.86,
+        "orders": 2520,
+        "share_pct": 95.0032
+      }
+    },
+    "stores": [
+      "United Kingdom",
+      "EIRE",
+      "Netherlands"
+    ],
+    "analysis_workbook": {
+      "path": "/tmp_workspace/results/analysis.xlsx",
+      "required_sheets": [
+        "Monthly",
+        "Store_Summary",
+        "Callouts"
+      ],
+      "monthly_columns": [
+        "month",
+        "total_revenue",
+        "total_orders",
+        "average_order_value",
+        "mom_revenue_change"
+      ],
+      "store_summary_columns": [
+        "store",
+        "revenue",
+        "orders",
+        "share_of_total_revenue",
+        "peak_month"
+      ],
+      "formula_expectation": "MoM revenue change and share-of-total revenue should be formulas, and Callouts should point back to calculation cells."
+    },
+    "topic_dimensions": [
+      "monthly totals & MoM trend",
+      "regional / store ranking",
+      "peak month / season anchor",
+      "average order value / order count perspective",
+      "forward-looking takeaway / actionable insight for next quarter"
+    ],
+    "min_dimensions_covered": 5,
+    "data_precision_callouts": {
+      "total_revenue_usd": 13457369.32,
+      "total_orders": 18153,
+      "peak_month": "2010-11",
+      "peak_month_total_revenue_usd": 2074426.98,
+      "peak_month_top_store_share_pct": 95.0032,
+      "uk_country_share_pct": 92.9456
+    },
+    "callout_value_tolerance_pct": 0.005,
+    "min_callouts_with_value": 6,
+    "callout_notes": "peak_month_total_revenue_usd is the all-store November total (UK 1970772.86 + EIRE 47943.37 + Netherlands 55710.75 = 2074426.98). peak_month_top_store_share_pct is UK's share of that all-store total (~95.00%). uk_country_share_pct is UK's share of the full-year all-store total (~92.95%). Posts that cite the UK-only November figure 1,970,772.86 also satisfy peak_month_total_revenue_usd only if they make clear it is UK November and pair it with the all-store November total elsewhere; otherwise this callout should be marked missed.",
+    "regional_second_anchor_callouts": {
+      "second_country_share_pct": 4.1431,
+      "eire_peak_month": "2010-01",
+      "nl_monthly_share_pct": 2.9113
+    },
+    "min_regional_callouts_within_tolerance": 3,
+    "regional_tolerance_pct": 1.0,
+    "regional_callout_notes": "second_country_share_pct = EIRE share of total revenue (~4.14%; EIRE is the 2nd-largest country after UK). eire_peak_month = month with EIRE's highest monthly revenue (2010-01 at $100,824.27; verified directly from CSV — previous GT value 2010-11 was incorrect). nl_monthly_share_pct = Netherlands share of total revenue (~2.91%). Tolerance is +-1.0 percentage points (absolute) for share values; eire_peak_month must match exactly (2010-01 / January 2010 / Jan 2010 accepted).",
+    "min_post_word_count_strict": 700,
+    "min_distinct_callouts_required": 3
+  }
+}

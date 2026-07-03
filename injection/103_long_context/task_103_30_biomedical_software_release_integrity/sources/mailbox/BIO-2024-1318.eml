@@ -1,0 +1,27 @@
+Message-ID: <Y6YMcL+I9nCAMuGE@fusion>
+X-Clawbench-ID: BIO-2024-1318
+Date: Fri, 23 Dec 2022 21:15:44 +0100
+From: Étienne Mollier <emollier@emlwks999.eu>
+To: debian-med@lists.debian.org
+Subject: [Advent bug squashing] fixed ftbfs on !x86 in python-biopython
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_12_msg00103.html
+
+Hi, biopython 1.80 with muscle3 support by default (and fallback
+to muscle unversionned if this is muscle version 3 indeed)
+failed to migrate to testing for a couple of days.  It turned
+out that I might have made a logical error in the case none of
+muscle3 or muscle are available, as test was still expecting
+some kind of proper output in such condition apparently.
+
+Not sure if that counts for the Advent bug squashing marathon,
+but in doubt, I add it for today.
+
+Have a nice day,  :)
+--
+Étienne Mollier
+Fingerprint:  8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+Sent from /dev/pts/2, please excuse my verbosity.
+On air: Crimson Glory - Touch The Sun

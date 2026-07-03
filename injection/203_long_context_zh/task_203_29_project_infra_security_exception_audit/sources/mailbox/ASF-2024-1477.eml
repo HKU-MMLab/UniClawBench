@@ -1,0 +1,65 @@
+Message-ID: <SHXPR01MB0720DC5D58D9BE1049F2215883ED9@SHXPR01MB0720.CHNPR01.prod.partner.outlook.cn>
+X-Clawbench-ID: ASF-2024-1477
+Date: Tue, 12 Apr 2022 09:20:04 +0000
+From: =?gb2312?B?wfXDzw==?= <liumeng@telemap.com.cn>
+To: "dev@httpd.apache.org" <dev@httpd.apache.org>
+Subject: [apache]maxconnectionsperchild problem
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-04.mbox
+
+Dear Engineer,
+
+
+Please allow me to ask my question in Chinese.
+
+
+Recently, when using Apache's forwarding feature, there has been internal disagreement about the
+
+MaxConnectionsPerChild parameter in prefork mode.
+
+
+During peak hours, each server has around 1000 child processes.
+
+MaxConnectionsPerChild is currently set to 0. In order to periodically resolve the DNS of the access target,
+
+we plan to adjust MaxConnectionsPerChild so that each child process
+
+restarts approximately once every half day.
+
+
+My question is: after setting this parameter, is it possible that all 1000 processes reach the configured
+
+connection count at the same time and terminate simultaneously, causing a service interruption?
+
+
+Current server settings: maxsparechild = 20, minsparchild = 10.
+
+If MaxConnectionsPerChild is set, should these two values also be adjusted synchronously
+
+(to prevent all child processes from restarting at the same time during peak hours)?
+
+
+If there is insufficient information, please let me know.
+
+My phone number is below; you are welcome to call.
+
+I can communicate in Chinese or Japanese.
+
+I am also able to respond in Japanese.
+
+
+Sorry to bother you during your busy schedule.
+
+Best wishes for your work.
+
+
+-------------------------------------------------------------------------------------------
+Liu Meng
+Project Development Dept.
+Tel : 010 82306399-7526 /Phone : 18500386112
+
+NavInfo Co., Ltd.  Southeast Crossing of BeiQing Rd. and YongFeng Rd., HaiDian District, Beijing  NavInfo Building Block A-8F
+Address : 8Floor,A Block,NavInfo Building, Southeast Crossing of BeiQing Rd. and YongFeng Rd., HaiDian District, Beijing（100094）
+-------------------------------------------------------------------------------------------

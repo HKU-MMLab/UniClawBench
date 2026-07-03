@@ -1,0 +1,105 @@
+{
+  "task_id": "task_103_29_project_infra_security_exception_audit",
+  "real_email_source": "Apache httpd dev public mailing list archives via lists.apache.org mbox API",
+  "raw_archive_count": 36,
+  "candidate_real_email_count_after_cleaning": 1456,
+  "real_email_count": 1456,
+  "synthetic_implant_count": 44,
+  "total_email_count": 1500,
+  "construction": "1500-message mailbox: Apache httpd dev public mailing-list emails plus sparse controlled implants. Surface issues are intentionally small; the deep Peregrine BuildWorks / Nightjar CI chain requires cross-linking infra access, service ownership, log export, token release, affiliation disclosure, external-service review, and records-handling clues.",
+  "surface_issues": {
+    "surface_01_stale_ci_token": {
+      "theme": "temporary CI/deploy token extended and left active after the migration window",
+      "ids": [
+        "ASF-2024-0156",
+        "ASF-2024-0476",
+        "ASF-2024-0731",
+        "ASF-2024-0895"
+      ],
+      "minimum_ids_for_credit": 2
+    },
+    "surface_02_shared_release_account": {
+      "theme": "shared release/signing account used by multiple maintainers instead of named credentials",
+      "ids": [
+        "ASF-2024-0214",
+        "ASF-2024-0588",
+        "ASF-2024-1022",
+        "ASF-2024-1376"
+      ],
+      "minimum_ids_for_credit": 2
+    },
+    "surface_03_hosted_metrics_data_scope": {
+      "theme": "hosted metrics mirror classified as public-only despite collecting reporter addresses, IPs, or private issue metadata",
+      "ids": [
+        "ASF-2024-0332",
+        "ASF-2024-0644",
+        "ASF-2024-1181"
+      ],
+      "minimum_ids_for_credit": 2
+    },
+    "surface_04_missing_dependency_audit_attachment": {
+      "theme": "dependency/security review attachment missing while a release or infrastructure change continues",
+      "ids": [
+        "ASF-2024-0448",
+        "ASF-2024-0910",
+        "ASF-2024-1329"
+      ],
+      "minimum_ids_for_credit": 2
+    }
+  },
+  "deep_issue": {
+    "theme": "Peregrine BuildWorks / Nightjar CI infrastructure exception chain involving split access requests, understated data exposure, missing security review materials, token and artifact access before signoff, legal/service-owner mismatch, possible maintainer affiliation concern, reused project scripts presented as vendor validation, release pressure, and records split across dev, infra, and private threads.",
+    "core_ids": [
+      "ASF-2024-0037",
+      "ASF-2024-0084",
+      "ASF-2024-0129",
+      "ASF-2024-0176",
+      "ASF-2024-0223",
+      "ASF-2024-0284",
+      "ASF-2024-0341",
+      "ASF-2024-0404",
+      "ASF-2024-0469",
+      "ASF-2024-0532",
+      "ASF-2024-0611",
+      "ASF-2024-0688",
+      "ASF-2024-0746",
+      "ASF-2024-0823",
+      "ASF-2024-0914",
+      "ASF-2024-0977",
+      "ASF-2024-1058",
+      "ASF-2024-1116",
+      "ASF-2024-1194",
+      "ASF-2024-1267",
+      "ASF-2024-1338",
+      "ASF-2024-1410",
+      "ASF-2024-1463",
+      "ASF-2024-1492"
+    ],
+    "minimum_ids_for_credit": 12,
+    "strong_credit_ids": 18,
+    "critical_link_ids": [
+      "ASF-2024-0084",
+      "ASF-2024-0223",
+      "ASF-2024-0284",
+      "ASF-2024-0404",
+      "ASF-2024-0469",
+      "ASF-2024-0532",
+      "ASF-2024-0688",
+      "ASF-2024-0914",
+      "ASF-2024-1116",
+      "ASF-2024-1194",
+      "ASF-2024-1463",
+      "ASF-2024-1492"
+    ]
+  },
+  "distractor_ids": [
+    "ASF-2024-0260",
+    "ASF-2024-0620",
+    "ASF-2024-0869",
+    "ASF-2024-0990",
+    "ASF-2024-1088",
+    "ASF-2024-1244"
+  ],
+  "updated_at": "2026-05-03T00:00:00+08:00",
+  "format_note": "Raw public mbox files are stored under sources/raw_public_emails; cleaned 1456 real emails are stored under sources/clean_real_emails; final mixed corpus is under sources/mailbox. Synthetic implant IDs are distributed across ASF-2024 numeric positions."
+}

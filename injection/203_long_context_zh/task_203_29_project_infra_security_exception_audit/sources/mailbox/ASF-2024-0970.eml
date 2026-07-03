@@ -1,0 +1,34 @@
+Message-ID: <CAKQ1sVP0Qok46nB1B71aAajc9ct4XH4JG_QJtwCrJPqTTKro2w@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0970
+Date: Wed, 9 Mar 2022 13:11:55 +0100
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: httpd-dev <dev@httpd.apache.org>
+Subject: Re: backports
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-03.mbox
+
+On Tue, Mar 8, 2022 at 2:34 PM Jim Jagielski <jim@jagunet.com> wrote:
+>
+>> On Mar 8, 2022, at 7:58 AM, Graham Leggett <minfrin@sharp.fm> wrote:
+>>
+>> I would far rather the empty APLOGNO check was part of the build.
+>>
+>> Vastly simpler.
+>
+>
+> I agree w/ that...
+
+I for one prefer post processing of APLOGNO()s, if `make` started to
+fail because of that while coding (i.e. while adding/removing
+APLOGNO()s when "playing" with the code) it would be a pain IMO.
+So I prefer our ci failing occasionally because one[1] forgot a final
+`make update-log-tags` (the fix is easy and no one is really blocked
+by this in the meantime) rather than more work with APLOGNO()s while
+coding.
+
+Regards;
+Yann.
+
+[1] well, mainly Stefan but he's doing (other) great things by the way :)

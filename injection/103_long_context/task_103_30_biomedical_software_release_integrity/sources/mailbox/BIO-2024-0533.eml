@@ -1,0 +1,38 @@
+Message-ID: <Z1SFyWNlkbmN3LA6@an3as.eu>
+X-Clawbench-ID: BIO-2024-0533
+Date: Sat, 7 Dec 2024 18:28:41 +0100
+From: Andreas Tille <tille@debian.org>
+To: Étienne Mollier <emollier@debian.org>
+Subject: Re: [Advent Calendar] bug repors for the first week
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_12_msg00008.html
+
+Hi,
+
+Am Fri, Dec 06, 2024 at 09:12:07PM +0100 schrieb Étienne Mollier:
+> You will find the first few doors for the Advent Calendar Bug
+> Squashing party.  Thanks to everyone involved in the resolution
+> of bugs!
+>
+> Anticipated uploads from Saturday, November 30th:
+> ...
+>
+> Those are many bugs tackled, let's keep up the good work!
+
+Thanks a lot for your summary.  I hope this is motivating for all
+team members to step in and fix more bugs!
+
+> I have done some manual copying and paste from alioth-lists[1],
+> and notably had to have a peek at email timestamps to get the
+> bug closures dates.  Hopefully I haven't messed up too much the
+> lists.
+
+Looks good to me.
+
+Kind regards
+    Andreas.
+
+--
+https://fam-tille.de

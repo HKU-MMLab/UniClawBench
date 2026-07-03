@@ -1,0 +1,30 @@
+Message-ID: <9AE0F788-7252-45FF-AADE-70B05BF131BF@eissing.org>
+X-Clawbench-ID: ASF-2024-0413
+Date: Tue, 7 Jun 2022 14:51:47 +0200
+From: Stefan Eissing <stefan@eissing.org>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.54-rc3 as httpd-2.4.54
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-06.mbox
+
+> Am 07.06.2022 um 12:21 schrieb Yann Ylavic <ylavic.dev@gmail.com>:
+>
+> On Mon, Jun 6, 2022 at 4:25 PM Stefan Eissing <stefan@eissing.org> wrote:
+>>
+>> I would like to call a VOTE over the next few days to release
+>> this candidate tarball httpd-2.4.54-rc3 as 2.4.54:
+>
+> [X] +1: It's not just good, it's good enough!
+>
+> All good on Linux Debian(s).
+>
+> Thanks Stefan for RMing!
+
+:)
+
+If no negative votes come in, I will make the release tomorrow morning.
+
+Cheers,
+Stefan

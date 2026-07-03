@@ -1,0 +1,24 @@
+Message-ID: <Y6DgVlkfyJTCxYCo@fusion>
+X-Clawbench-ID: BIO-2024-0252
+Date: Mon, 19 Dec 2022 23:06:14 +0100
+From: Étienne Mollier <emollier@emlwks999.eu>
+To: debian-med@lists.debian.org
+Subject: [Advent bug squashing] fixed bug #988848 in bamtools
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_12_msg00092.html
+
+Hello,
+
+I found a low hanging fruit in #988848 affecting bamtools.  The
+fix consisted in adding the suggested dependency to the
+documentation package.  Curious thing is piuparts didn't raise
+alarm bells earlier; maybe I have not been running it with the
+right settings until then.
+
+Have a nice day,  :)
+--
+Étienne Mollier
+Fingerprint:  8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+Sent from /dev/pts/2, please excuse my verbosity.

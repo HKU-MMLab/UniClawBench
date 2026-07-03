@@ -1,0 +1,41 @@
+Message-ID: <0EF9EAED-F08F-4896-AB24-3660CD4626C9@eissing.org>
+X-Clawbench-ID: ASF-2024-1391
+Date: Thu, 11 Jul 2024 10:27:12 +0200
+From: "Stefan Eissing via dev" <dev@httpd.apache.org>
+To: dev@httpd.apache.org
+Subject: Re: Version-Info in 2.4.x modules/http2/h2_version.h
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-07.mbox
+
+Yeah, tricky with out rtc patch policy. I try to make a full sync now and then. This time it became side tracked by Yann as he wants to make mpm:event even better...
+
+- Stefan
+
+> Am 10.07.2024 um 18:15 schrieb Rainer Jung <rainer.jung@kippdata.de>:
+>
+> Hi all,
+>
+> file modules/http2/h2_version.h in 2.4.x contains
+>
+> #define MOD_HTTP2_VERSION "2.0.22"
+>
+> and
+>
+> #define MOD_HTTP2_VERSION_NUM 0x020016
+>
+> which differs from upstream
+>
+> #define MOD_HTTP2_VERSION "2.0.29-git"
+>
+> ...
+>
+> #define MOD_HTTP2_VERSION_NUM 0x02001d
+>
+> quite a bit. I think the version numbers hasn't been updated after backporting changes for some time. I don't know, what a good value would be, or if it would be better to drop it, but it would be nice, if we wouldn't ship an mod_h2 specific but outdated version number.
+>
+> Thanks and regards,
+>
+> Rainer
+>

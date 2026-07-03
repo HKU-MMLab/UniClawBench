@@ -1,0 +1,56 @@
+Message-ID: <CAP_GPNi86U4hjE0C93pnGHyRwY_dqD-2R4eY=eBeznpKwtORyQ@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0203
+Date: Tue, 2 Jul 2024 13:33:00 +0200
+From: "Evgeny Kotkov via dev" <dev@httpd.apache.org>
+To: dev@httpd.apache.org
+Subject: [RFC/PATCH] Avoid redefining apr_filepath_merge() for UNC path checks
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-07.mbox
+
+Hi all,
+
+Currently, `httpd.h` redefines the `apr_filepath_merge()` function on Win32
+as follows:
+```
+#ifdef WIN32
+#define apr_filepath_merge  ap_filepath_merge
+#endif
+```
+
+The intent behind this redefinition seems to be to retroactively apply
+the recently introduced UNC path checks to any existing calls of
+apr_filepath_merge(), including those in third-party module code.
+
+However, this approach has several downsides, because the security-related
+behavior of the code is now tied to the inclusion of <httpd.h>:
+
+- Utility layers that do not include httpd.h but use apr_filepath_merge()
+  will need to include this header to ensure appropriate security behavior.
+
+- Refactorings that involve adding or removing #include <httpd.h> can
+  inadvertently change the security properties of the code.
+
+- It becomes challenging to understand the code behavior by inspection alone.
+
+Personally, I find these issues quite significant.
+
+An alternative would be to explicitly use ap_filepath_merge() everywhere and
+remove the platform-specific define.  This alternative is demonstrated in the
+attached patch:
+[[[
+* include/httpd.h
+  (apr_filepath_merge): Remove this Win32-specific #define, and …
+
+* modules/*, server/*:
+  …replace all its usages with ap_filepath_merge().  This ensures explicit and
+  consistent security-related behavior that doesn't depend on the inclusion
+  of the <httpd.h> header.
+]]]
+
+What do you think?
+
+
+Thanks,
+Evgeny Kotkov

@@ -1,0 +1,41 @@
+Message-ID: <87fssbrm7b.fsf@nonempty.org>
+X-Clawbench-ID: BIO-2024-1179
+Date: Fri, 05 Nov 2021 10:22:32 +0100
+From: Gard Spreemann <gspr@nonempty.org>
+To: debian-science@lists.debian.org
+Subject: Re: Blends framework for Debian Math (Was: Science Subgroups [was Re: Debian Math Team])
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_11_msg00044.html
+
+Torrance, Douglas  writes:
+
+> On Thu 04 Nov 2021 12:06:47 PM EDT, Andreas Tille  wrote:
+>>> All mathematics
+>>> packages? How do the categories work, and what conditions warrant a new
+>>> category?
+>>
+>> You need to ask the mathematicians what might be sensible tasks.
+>> The tasks mathematics and mathematics-dev are definitely non-sense
+>> but it was the easiest way for me to kickstart something.
+>
+> One possible source of task categories is to use the American Mathematical
+> Society's Mathematics Subject Classification [1].  This is already used to
+> classify academic papers, and the problem of classifying mathematics
+> software is certainly similar.
+>
+> Doug
+>
+> [1] https://mathscinet.ams.org/mathscinet/msc/msc2020.html
+
+I think that's a really good idea! That classification – while seemingly
+complicated to outsiders – is probably quite well-known to anyone
+interested in the mathematics Debian tasks in the first place.
+
+I will try to categorize the few packages I maintain myself, and issue a
+merge request so that there are examples for people to go by.
+
+
+ Best,
+ Gard

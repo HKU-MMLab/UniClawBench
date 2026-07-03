@@ -1,0 +1,26 @@
+Team lead request for week of 2026-07-06, timezone America/Los_Angeles.
+Working hours are 09:00-17:00. For each meeting, use the first listed
+candidate slot that is fully free for the required attendees. Keep the
+title exactly as written.
+
+1. Launch kickoff, 60 minutes, attendees Alice and Bruno.
+   Candidates: Mon 2026-07-06 09:30, Mon 2026-07-06 10:30, Tue 2026-07-07 09:00.
+
+2. Data migration dry run, 90 minutes, attendees Alice.
+   Candidates: Tue 2026-07-07 09:30, Tue 2026-07-07 11:15, Wed 2026-07-08 09:00.
+
+3. Support handoff, 45 minutes, attendees Bruno.
+   Candidates: Thu 2026-07-09 14:30, Thu 2026-07-09 15:45, Fri 2026-07-10 10:00.
+
+4. Metrics readout, 30 minutes, attendees Alice and Bruno.
+   Candidates: Wed 2026-07-08 13:45, Wed 2026-07-08 15:00, Fri 2026-07-10 11:30.
+
+5. Partner Q&A, 60 minutes, attendees Bruno.
+   Candidates: Fri 2026-07-10 11:15, Fri 2026-07-10 13:00, Thu 2026-07-09 09:00.
+
+6. Retro prep, 30 minutes, attendees Alice.
+   Candidates: Mon 2026-07-06 16:30, Wed 2026-07-08 14:00, Wed 2026-07-08 15:45.
+
+Also flag near-conflicts: any scheduled meeting that starts less than
+60 minutes after an existing busy block or another scheduled meeting for
+one of its attendees.

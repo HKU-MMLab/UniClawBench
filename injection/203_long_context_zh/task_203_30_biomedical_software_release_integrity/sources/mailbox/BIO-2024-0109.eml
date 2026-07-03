@@ -1,0 +1,39 @@
+Message-ID: <ZUHsq4mGv7TjGAFm@an3as.eu>
+X-Clawbench-ID: BIO-2024-0109
+Date: Wed, 1 Nov 2023 07:14:03 +0100
+From: Andreas Tille <tille@debian.org>
+To: Sébastien Jodogne <s.jodogne@orthanc-labs.com>
+Subject: Re: Orthanc Integration Test using Orthanc-wsi
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_11_msg00000.html
+
+Hi Sébastien,
+
+Am Tue, Oct 31, 2023 at 10:46:15AM +0100 schrieb Sébastien Jodogne:
+>
+> Please however could you explain me how to execute autopkgtests on my
+> development Debian, without having to recompile the package from scratch
+> everytime I try to modify the "debian/test/*" files?
+
+Generally we try to support users by copying the run-unit-test script
+to /usr/share/doc/PKG.  However, in the orthanc-wsi package this is not
+the case since it seems, that the large TIFF file would blow up the
+package size too much.  You might like to try running
+
+   sh debian/tests/run-dicom-image-transcode-test
+
+on your local machine.  Please note: If you would include a sensible
+test suite image right into your upstream tarball we could drop that
+extra image from somewhere else which would be way more sensible (also
+for other distributions).
+
+> I have strictly no experience with autopkgtests, and I don't have much time
+> to gather all the pieces by myself.
+
+Hope this helps
+   Andreas.
+
+--
+http://fam-tille.de

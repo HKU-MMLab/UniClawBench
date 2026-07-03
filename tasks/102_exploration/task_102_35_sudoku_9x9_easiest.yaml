@@ -1,0 +1,37 @@
+task_id: task_102_35_sudoku_9x9_easiest
+category: 102_exploration
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  Solve this 9x9 Sudoku puzzle. The puzzle is at:
+
+      /tmp_workspace/clawbench/sources/puzzle.txt
+
+  It is a grid of 9 rows and 9 columns; empty cells are shown as a dot
+  (`.`) and given cells hold their value. The rules:
+  - Fill every empty cell with a number from 1 to 9.
+  - Each row contains 1 to 9 exactly once.
+  - Each column contains 1 to 9 exactly once.
+  - Each 3x3 box contains 1 to 9 exactly once.
+  - The given (pre-filled) numbers must not be changed.
+
+  Save the completed grid to `/tmp_workspace/results/solution.txt` as 9 lines
+  of 9 space-separated numbers (no dots), and also save
+  `/tmp_workspace/results/solution.json` with a 2D array `solution` (9x9)
+  and a short note on your solving approach.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+sources:
+  - puzzle.txt
+
+codex:
+  max_user_followups: 2

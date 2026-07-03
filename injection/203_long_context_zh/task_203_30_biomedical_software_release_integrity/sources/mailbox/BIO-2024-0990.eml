@@ -1,0 +1,12 @@
+Message-ID: <bio-2024-0990@biodebian.example>
+X-Clawbench-ID: BIO-2024-0990
+Date: Tue, 06 Feb 2024 15:33:00 +0000
+From: Validation Review <validation-review@biodebian.example>
+To: debian-med@lists.debian.org
+Subject: rerun evidence received
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: synthetic Debian Med-style biomedical release-integrity implant
+
+For AlignQC regression 77, the missing rerun log was received today and attached before the issue was closed. No validation hold remains.

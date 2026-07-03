@@ -1,0 +1,118 @@
+Message-ID: <CAKQ1sVNSig5j6L-o2KyV0eFqrcWg+8zcph3AUB64xk+qYs_ygA@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0691
+Date: Mon, 8 Jan 2024 13:37:48 +0100
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: process_regexp bug, infinite recursion
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-01.mbox
+
+On Mon, Jan 8, 2024 at 10:49 AM Ruediger Pluem <rpluem@apache.org> wrote:
+>
+> On 1/5/24 3:08 PM, Yann Ylavic wrote:
+> >
+> > process_regexp.diff
+> >
+> > Index: modules/metadata/mod_headers.c
+> > ===================================================================
+> > --- modules/metadata/mod_headers.c    (revision 1914804)
+> > +++ modules/metadata/mod_headers.c    (working copy)
+> > @@ -622,41 +622,70 @@ static char* process_tags(header_entry *hdr, reque
+> >      }
+> >      return str ? str : "";
+> >  }
+> > -static const char *process_regexp(header_entry *hdr, const char *value,
+> > -                                  request_rec *r)
+> > +
+> > +static const char *process_regexp_rec(header_entry *hdr, const char *value,
+> > +                                      request_rec *r, ap_regmatch_t pmatch[],
+> > +                                      int flags)
+> >  {
+> > -    ap_regmatch_t pmatch[AP_MAX_REG_MATCH];
+> > -    const char *subs;
+> > -    const char *remainder;
+> >      char *ret;
+> > -    int diffsz;
+> > -    if (ap_regexec(hdr->regex, value, AP_MAX_REG_MATCH, pmatch, 0)) {
+> > +    const char *subs, *remainder;
+> > +    apr_size_t val_len, subs_len, rem_len;
+> > +    apr_size_t match_start, match_end;
+> > +
+> > +    val_len = strlen(value);
+> > +    if (ap_regexec_len(hdr->regex, value, val_len,
+> > +                       AP_MAX_REG_MATCH, pmatch,
+> > +                       flags)) {
+> >          /* no match, nothing to do */
+> >          return value;
+> >      }
+> > +
+> >      /* Process tags in the input string rather than the resulting
+> >         * substitution to avoid surprises
+> >         */
+> > -    subs = ap_pregsub(r->pool, process_tags(hdr, r), value, AP_MAX_REG_MATCH, pmatch);
+> > +    subs = ap_pregsub(r->pool, process_tags(hdr, r), value,
+> > +                      AP_MAX_REG_MATCH, pmatch);
+> >      if (subs == NULL)
+> >          return NULL;
+> > -    diffsz = strlen(subs) - (pmatch[0].rm_eo - pmatch[0].rm_so);
+> > +    subs_len = strlen(subs);
+> > +
+> > +    ap_assert(pmatch[0].rm_so >= 0 && pmatch[0].rm_so <= pmatch[0].rm_eo);
+> > +    match_start = pmatch[0].rm_so;
+> > +    match_end = pmatch[0].rm_eo;
+> >      if (hdr->action == hdr_edit) {
+> > -        remainder = value + pmatch[0].rm_eo;
+> > +        remainder = value + match_end;
+> >      }
+> >      else { /* recurse to edit multiple matches if applicable */
+> > -        remainder = process_regexp(hdr, value + pmatch[0].rm_eo, r);
+> > -        if (remainder == NULL)
+> > -            return NULL;
+> > -        diffsz += strlen(remainder) - strlen(value + pmatch[0].rm_eo);
+> > +        if (match_end == 0 && val_len) {
+> > +            /* advance on empty match to avoid infinite recursion */
+> > +            match_start = match_end = 1;
+>
+> Not debating that
+>
+> Header edit* headername ^ prefix
+>
+> should be be
+>
+> Header edit headername ^ prefix
+>
+> but wouldn't that do the wrong thing and add the prefix *after* the first character of the header value?
+
+Yes correct, this patch won't set the skipped char at the right place finally.
+New v2 attached.
+
+>
+> > +        }
+> > +        if (match_end < val_len) {
+> > +            remainder = process_regexp_rec(hdr, value + match_end,
+>
+> Shouldn't we increase match_end just here by 1 if match_end == 0 && val_len ?
+
+See v2, match_end is not used below anyway.
+
+
+>
+> > +                                           r, pmatch, AP_REG_NOTBOL);
+
+As noted in v2 we have an issue here by "losing" the beginning of the
+value on recursion:
+            /* XXX: recursing by using AP_REG_NOTBOL (because we are not at ^
+             * anymore) and then "losing" the beginning of the string is not
+             * always correct. Say we match "(?<=a)ba" against "ababa", on
+             * recursion ap_regexec_len() will not know that the second "b" is
+             * preceded by "a" thus not match. We'd need a new ap_regexec_ex()
+             * that can take match_end as an offset to fix this..
+             */
+
+Not sure how far we should go with this patch..
+
+
+Regards;
+Yann.

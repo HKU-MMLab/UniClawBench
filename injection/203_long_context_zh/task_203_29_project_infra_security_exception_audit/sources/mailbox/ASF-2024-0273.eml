@@ -1,0 +1,25 @@
+Message-ID: <CAKQ1sVOa+CfJAqU1yxQd9dTzfN4x9Y9_Uu-=c0Y=A+A6e7C-FQ@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0273
+Date: Thu, 4 Apr 2024 13:16:26 +0200
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.59-rc1 as httpd-2.4.59
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-04.mbox
+
+On Thu, Apr 4, 2024 at 12:52 PM Steffen Land <steffenal@apache.org> wrote:
+>
+> -1
+> Get an error:
+>
+> Error   C2065   'DAV_WALKTYPE_TOLERANT': undeclared identifier  mod_dav_fs      C:\VS17\Win32\httpd-2.4\modules\dav\fs\repos.c  1599
+
+Are you compiling with an old "mod_dav.h" somewhere in the -I[nclude] path?
+Because DAV_WALKTYPE_TOLERANT is well defined in the new "mod_dav.h"
+(of 2.4.59) which is also correctly #include'd in
+"modules\dav\fs\repos.c"..
+
+Regards;
+Yann.

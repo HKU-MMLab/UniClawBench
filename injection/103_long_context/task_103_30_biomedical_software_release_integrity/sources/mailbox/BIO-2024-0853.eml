@@ -1,0 +1,27 @@
+Message-ID: <ZKsRP7N9efSlEcXQ@an3as.eu>
+X-Clawbench-ID: BIO-2024-0853
+Date: Sun, 9 Jul 2023 21:57:51 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: biopython 1.81 in experimental
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_07_msg00032.html
+
+Hi Étienne,
+
+Am Sun, Jul 09, 2023 at 09:30:11PM +0200 schrieb Étienne Mollier:
+> I pushed python-biopython 1.81 in experimental.  We should be
+> able to begin investigate changes needed in reverse dependencies
+> before migrating it to unstable.
+
+Thanks a lot.  I'm currently busy with r-cran stuff but if you need
+help on the BioPython migration just let me know.
+
+Kind regards
+     Andreas.
+
+
+--
+http://fam-tille.de

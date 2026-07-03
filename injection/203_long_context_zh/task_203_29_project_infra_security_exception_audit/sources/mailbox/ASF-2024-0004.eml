@@ -1,0 +1,44 @@
+Message-ID: <0d8efc95-d1cb-c854-c208-a3bfcfaf814f@apache.org>
+X-Clawbench-ID: ASF-2024-0004
+Date: Tue, 9 May 2023 12:55:15 +0200
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: Fwd: [apache/httpd] don't forward invalid query strings (d78a166)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-05.mbox
+
+On 5/9/23 12:16 PM, Eric Covener wrote:
+> Still getting feedback in the PR about breakage. Any thoughts on options here, like allowing spaces or encoding rather than failing?
+
+Allowing spaces is out of question for me as it creates an invalid request and opens the door to response splitting. At best we
+could encode automatically. It is really a good question if we could not make BCTLS the default.
+
+
+>
+> ---------- Forwarded message ---------
+> From: *Ivan Zahariev* <notifications@github.com <mailto:notifications@github.com>>
+> Date: Tue, May 9, 2023, 5:25 AM
+> Subject: Re: [apache/httpd] don't forward invalid query strings (d78a166)
+> To: apache/httpd <httpd@noreply.github.com <mailto:httpd@noreply.github.com>>
+> Cc: Eric Covener <covener@apache.org <mailto:covener@apache.org>>, Mention <mention@noreply.github.com
+> <mailto:mention@noreply.github.com>>
+>
+>
+> Hi @covener <https://github.com/covener>. This is impacting lots of existing websites already.
+>
+> What is the downside if BCTLS can be enabled by default with an Apache config option, and there is a new flag to disable it in
+> each RewriteRule in the rare case where we need to forward a non-encoded URL?
+>
+> —
+> Reply to this email directly, view it on GitHub
+> <https://github.com/apache/httpd/commit/d78a166fedd9d02c23e4b71d5f53bd9b2c4b9a51#commitcomment-112499050>, or unsubscribe
+> <https://github.com/notifications/unsubscribe-auth/AAG5WPKUFT7PN7ND5BMAD5TXFIEQBANCNFSM6AAAAAAV34NVFM>.
+> You are receiving this because you were mentioned.Message ID:
+> <apache/httpd/commit/d78a166fedd9d02c23e4b71d5f53bd9b2c4b9a51/112499050@github.com>
+>
+
+Regards
+
+Rüdiger

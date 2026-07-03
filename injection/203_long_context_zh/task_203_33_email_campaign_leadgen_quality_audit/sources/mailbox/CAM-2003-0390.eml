@@ -1,0 +1,31 @@
+Message-ID: <Pine.LNX.4.33.0209260102140.17974-100000@bridget.crompton.com>
+X-Clawbench-ID: CAM-2003-0390
+Date: Thu, 26 Sep 2002 01:05:28 -0400
+From: Doug Crompton <doug@crompton.com>
+To: SpamAssassin-Talk list <SpamAssassin-talk@example.sourceforge.net>
+Subject: [SAtalk] Razor problem
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01505.736da2d34e20948b7287da130be6e7da
+
+I just picked up Razor SDK 2.03 and  2.14 agents from the the razor site.
+I am using SuSe 7.3 - intalled SDK with no problems. All tests passed.
+
+When I try to make the 2.14 agents I get all kinds of errors. In
+particuliar it says the net::dns is missing. But it seems to be there. The
+SDK test passes it.
+
+Any help would be appreciated.
+
+Doug
+
+
+-------------------------------------------------------
+This sf.net email is sponsored by:ThinkGeek
+Welcome to geek heaven.
+http://thinkgeek.com/sf
+_______________________________________________
+Spamassassin-talk mailing list
+Spamassassin-talk@lists.sourceforge.net
+https://lists.sourceforge.net/lists/listinfo/spamassassin-talk

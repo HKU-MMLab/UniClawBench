@@ -1,0 +1,24 @@
+Message-ID: <udl35lekutf.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-0003
+Date: Sun, 23 Jan 2022 16:26:20 -0500
+From: ucko@debian.org (Aaron M. Ucko)
+To: Andreas Tille <tille@debian.org>
+Subject: Re: [Help] librostlab-blast fails its autopkgtest with C++ issue
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_01_msg00073.html
+
+Andreas Tille  writes:
+
+> /usr/bin/ld: /tmp/ccv6wJk4.o: in function `main':
+> parseblast.cpp:(.text+0x7c): undefined reference to `rostlab::blast::parser_driver::parse(bool, bool)'
+
+Please try adjusting the test script to list parseblast.cpp ahead of the
+-l flags; now that --as-needed is in effect by default, the linker
+otherwise discards the libraries as not needed at the time of their
+appearance.
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

@@ -1,0 +1,278 @@
+Message-ID: <5AF03265-5AA0-4697-B09F-F97D4D6564C5@sharp.fm>
+X-Clawbench-ID: ASF-2024-1169
+Date: Mon, 24 Apr 2023 18:09:18 +0100
+From: "Graham Leggett via dev" <dev@httpd.apache.org>
+To: dev@httpd.apache.org,  Graham Leggett <minfrin@sharp.fm>
+Subject: Re: POC: updated ldapi:// support for mod_ldap
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-04.mbox
+
+On 22 Apr 2023, at 20:17, Graham Leggett via dev <dev@httpd.apache.org> wrote:
+
+> This patch adds limited support for SASL binds. Depends on updated POC patch at the dev@apr list.
+
+Updated patch that handles authname and pass for SASL.
+
+    <If "%{SSL_CLIENT_VERIFY} == 'SUCCESS' || %{SSL_CLIENT_VERIFY} == 'GENEROUS'">
+
+      SSLUserName SSL_CLIENT_CERT_RFC4523_CEA
+
+      LDAPBind mechanism EXTERNAL
+      AuthLDAPURL ldapi://%2frun%2fslapd-seawitch.socket/dc=xxx,dc=xx,dc=xx?uid,inetSubscriberAccountId?sub?inetSubscriberAccountId=*
+      require ldap-group cn=https://xxx.xxx.xx.xx/xxx,ou=xxx,ou=xxx,dc=xxx,dc=xx,dc=xx
+
+    </If>
+
+Regards,
+Graham
+—
+
+
+Index: include/util_ldap.h
+===================================================================
+--- include/util_ldap.h	(revision 1909117)
++++ include/util_ldap.h	(working copy)
+@@ -45,6 +45,10 @@
+ /* this whole thing disappears if LDAP is not enabled */
+ #if APR_HAS_LDAP
+
++#ifndef APR_HAS_LDAP_INITIALIZE
++#define APR_HAS_LDAP_INITIALIZE 0
++#endif
++
+ #if defined(LDAP_UNAVAILABLE) || APR_HAS_MICROSOFT_LDAPSDK
+ #define AP_LDAP_IS_SERVER_DOWN(s)                ((s) == LDAP_SERVER_DOWN \
+                 ||(s) == LDAP_UNAVAILABLE)
+@@ -126,8 +130,8 @@
+     const char *reason;                 /* Reason for an error failure */
+
+     struct util_ldap_connection_t *next;
+-    struct util_ldap_state_t *st;        /* The LDAP vhost config this connection belongs to */
+-    int keep;                            /* Will this connection be kept when it's unlocked */
++    struct util_ldap_state_t *st;       /* The LDAP vhost config this connection belongs to */
++    int keep;                           /* Will this connection be kept when it's unlocked */
+
+     int ChaseReferrals;                 /* [on|off] (default = AP_LDAP_CHASEREFERRALS_ON)*/
+     int ReferralHopLimit;               /* # of referral hops to follow (default = AP_LDAP_DEFAULT_HOPLIMIT) */
+@@ -136,12 +140,39 @@
+     int must_rebind;                    /* The connection was last bound with other then binddn/bindpw */
+     request_rec *r;                     /* request_rec used to find this util_ldap_connection_t */
+     apr_time_t last_backend_conn;       /* the approximate time of the last backend LDAP request */
++
++#if APR_HAS_LDAP_INITIALIZE
++    apr_pool_t *init_pool;              /* Pool from which this connection is initialised */
++    apu_err_t result;                   /* result of prior operations on this connection */
++    const char *url;                    /* URL of the LDAP server (or space separated list) */
++    apr_ldap_t *ld;
++    const char *mech;                   /* SASL bind mechanism */
++    const char *realm;                  /* SASL realm for the authentication attempt */
++    const char *user;                   /* SASL username to use for proxy authorization */
++    const char *authname;               /* SASL username to authenticate */
++    const char *pass;                   /* SASL password for the provided username */
++#endif
+ } util_ldap_connection_t;
+
+ typedef struct util_ldap_config_t {
+     int ChaseReferrals;
+     int ReferralHopLimit;
+-    apr_array_header_t *client_certs;  /* Client certificates */
++    apr_array_header_t *client_certs;   /* Client certificates */
++    const char *mech;                   /* SASL mechanism */
++    const char *realm;                  /* SASL realm for the authentication attempt */
++    const char *user;                   /* SASL username to use for proxy authorization */
++    const char *authname;               /* SASL username to authenticate */
++    const char *pass;                   /* SASL password for the provided username */
++    unsigned int inherit:1;
++    unsigned int inherit_set:1;
++    unsigned int client_certs_set:1;
++    unsigned int ReferralHopLimit_set:1;
++    unsigned int ChaseReferrals_set:1;
++    unsigned int mech_set:1;
++    unsigned int realm_set:1;
++    unsigned int user_set:1;
++    unsigned int authname_set:1;
++    unsigned int pass_set:1;
+ } util_ldap_config_t;
+
+ /* LDAP cache state information */
+@@ -241,6 +272,7 @@
+  * @fn util_ldap_connection_t *util_ldap_connection_find(request_rec *r, const char *host, int port,
+  *                                                           const char *binddn, const char *bindpw, deref_options deref,
+  *                                                           int netscapessl, int starttls)
++ * @deprecated Replaced by uldap_connection_find_ex()
+  */
+ APR_DECLARE_OPTIONAL_FN(util_ldap_connection_t *,uldap_connection_find,(request_rec *r, const char *host, int port,
+                                                   const char *binddn, const char *bindpw, deref_options deref,
+@@ -247,6 +279,26 @@
+                                                   int secure));
+
+ /**
++ * Find a connection in a list of connections
++ * @param r The request record
++ * @param url The URL to connect to (multiple URLs space separated)
++ * @param binddn The DN to bind with
++ * @param bindpw The password to bind with
++ * @param deref The dereferencing behavior
++ * @param secure use SSL on the connection
++ * @tip Once a connection is found and returned, a lock will be acquired to
++ *      lock that particular connection, so that another thread does not try and
++ *      use this connection while it is busy. Once you are finished with a connection,
++ *      apr_ldap_connection_close() must be called to release this connection.
++ * @fn util_ldap_connection_t *util_ldap_connection_find_ex(request_rec *r, const char *url,
++ *                                                           const char *binddn, const char *bindpw, deref_options deref,
++ *                                                           int netscapessl, int starttls)
++ */
++APR_DECLARE_OPTIONAL_FN(util_ldap_connection_t *,uldap_connection_find_ex,(request_rec *r, const char *url,
++                                                  const char *binddn, const char *bindpw, deref_options deref,
++                                                  int secure));
++
++/**
+  * Compare two DNs for sameness
+  * @param r The request record
+  * @param ldc The LDAP connection being used.
+Index: modules/aaa/mod_authnz_ldap.c
+===================================================================
+--- modules/aaa/mod_authnz_ldap.c	(revision 1909117)
++++ modules/aaa/mod_authnz_ldap.c	(working copy)
+@@ -104,7 +104,7 @@
+ module AP_MODULE_DECLARE_DATA authnz_ldap_module;
+
+ static APR_OPTIONAL_FN_TYPE(uldap_connection_close) *util_ldap_connection_close;
+-static APR_OPTIONAL_FN_TYPE(uldap_connection_find) *util_ldap_connection_find;
++static APR_OPTIONAL_FN_TYPE(uldap_connection_find_ex) *util_ldap_connection_find_ex;
+ static APR_OPTIONAL_FN_TYPE(uldap_cache_comparedn) *util_ldap_cache_comparedn;
+ static APR_OPTIONAL_FN_TYPE(uldap_cache_compare) *util_ldap_cache_compare;
+ static APR_OPTIONAL_FN_TYPE(uldap_cache_check_subgroups) *util_ldap_cache_check_subgroups;
+@@ -453,9 +453,7 @@
+             bindpw = req->password;
+     }
+
+-    return util_ldap_connection_find(r, sec->host, sec->port,
+-                                     binddn, bindpw,
+-                                     sec->deref, sec->secure);
++    return util_ldap_connection_find_ex(r, sec->url, binddn, bindpw, sec->deref, sec->secure);
+ }
+ /*
+  * Authentication Phase
+@@ -527,7 +525,7 @@
+     }
+
+     /* There is a good AuthLDAPURL, right? */
+-    if (sec->host) {
++    if (sec->url) {
+         const char *binddn = sec->binddn;
+         const char *bindpw = sec->bindpw;
+         if (sec->initial_bind_as_user) {
+@@ -535,13 +533,13 @@
+             binddn = ldap_determine_binddn(r, user);
+         }
+
+-        ldc = util_ldap_connection_find(r, sec->host, sec->port,
+-                                       binddn, bindpw,
+-                                       sec->deref, sec->secure);
++        ldc = util_ldap_connection_find_ex(r, sec->url,
++                                           binddn, bindpw,
++                                           sec->deref, sec->secure);
+     }
+     else {
+         ap_log_rerror(APLOG_MARK, APLOG_WARNING, 0, r, APLOGNO(01690)
+-                      "auth_ldap authenticate: no sec->host - weird...?");
++                      "auth_ldap authenticate: no sec->url - weird...?");
+         return AUTH_GENERAL_ERROR;
+     }
+
+@@ -1436,13 +1434,14 @@
+  * host and port.
+  */
+ static const char *mod_auth_ldap_parse_url(cmd_parms *cmd,
+-                                    void *config,
+-                                    const char *url,
+-                                    const char *mode)
++                                           void *config,
++                                           const char *url,
++                                           const char *mode)
+ {
+-    int rc;
++    int rc, i;
+     apr_ldap_url_desc_t *urld;
+     apr_ldap_err_t *result;
++    const char *end = url;
+
+     authn_ldap_config_t *sec = config;
+
+@@ -1450,8 +1449,18 @@
+     if (rc != APR_SUCCESS) {
+         return result->reason;
+     }
+-    sec->url = apr_pstrdup(cmd->pool, url);
+
++    /* isolate the host/port part of the URL */
++    for (i = 0; end && i < 3; i++) {
++        end = strchr((char *)end + 1, '/');
++    }
++    if (end) {
++        sec->url = apr_pstrndup(cmd->pool, url, end - url);
++    }
++    else {
++        sec->url = apr_pstrdup(cmd->pool, url);
++    }
++
+     /* Set all the values, or at least some sane defaults */
+     if (sec->host) {
+         sec->host = apr_pstrcat(cmd->pool, urld->lud_host, " ", sec->host, NULL);
+@@ -1528,9 +1537,10 @@
+     sec->have_ldap_url = 1;
+
+     ap_log_error(APLOG_MARK, APLOG_TRACE1, 0, cmd->server,
+-                 "auth_ldap url parse: `%s', Host: %s, Port: %d, DN: %s, "
++                 "auth_ldap url parse: `%s', Url: %s, Host: %s, Port: %d, DN: %s, "
+                  "attrib: %s, scope: %s, filter: %s, connection mode: %s",
+                  url,
++                 sec->url,
+                  urld->lud_host,
+                  urld->lud_port,
+                  urld->lud_dn,
+@@ -1921,13 +1931,13 @@
+
+ static void ImportULDAPOptFn(void)
+ {
+-    util_ldap_connection_close  = APR_RETRIEVE_OPTIONAL_FN(uldap_connection_close);
+-    util_ldap_connection_find   = APR_RETRIEVE_OPTIONAL_FN(uldap_connection_find);
+-    util_ldap_cache_comparedn   = APR_RETRIEVE_OPTIONAL_FN(uldap_cache_comparedn);
+-    util_ldap_cache_compare     = APR_RETRIEVE_OPTIONAL_FN(uldap_cache_compare);
+-    util_ldap_cache_checkuserid = APR_RETRIEVE_OPTIONAL_FN(uldap_cache_checkuserid);
+-    util_ldap_cache_getuserdn   = APR_RETRIEVE_OPTIONAL_FN(uldap_cache_getuserdn);
+-    util_ldap_ssl_supported     = APR_RETRIEVE_OPTIONAL_FN(uldap_ssl_supported);
++    util_ldap_connection_close      = APR_RETRIEVE_OPTIONAL_FN(uldap_connection_close);
++    util_ldap_connection_find_ex    = APR_RETRIEVE_OPTIONAL_FN(uldap_connection_find_ex);
++    util_ldap_cache_comparedn       = APR_RETRIEVE_OPTIONAL_FN(uldap_cache_comparedn);
++    util_ldap_cache_compare         = APR_RETRIEVE_OPTIONAL_FN(uldap_cache_compare);
++    util_ldap_cache_checkuserid     = APR_RETRIEVE_OPTIONAL_FN(uldap_cache_checkuserid);
++    util_ldap_cache_getuserdn       = APR_RETRIEVE_OPTIONAL_FN(uldap_cache_getuserdn);
++    util_ldap_ssl_supported         = APR_RETRIEVE_OPTIONAL_FN(uldap_ssl_supported);
+     util_ldap_cache_check_subgroups = APR_RETRIEVE_OPTIONAL_FN(uldap_cache_check_subgroups);
+ }
+
+Index: modules/ldap/util_ldap.c
+===================================================================
+--- modules/ldap/util_ldap.c	(revision 1909117)
++++ modules/ldap/util_ldap.c	(working copy)
+@@ -199,9 +199,19 @@
+             if (ldc->r) {
+                 ap_log_rerror(APLOG_MARK, APLOG_TRACE5, 0, ldc->r, "LDC %pp unbind", ldc);
+             }
++#if !APR_HAS_LDAP_INITIALIZE
+             ldap_unbind_s(ldc->ldap);
++#endif
+             ldc->ldap = NULL;
+         }
++
++#if APR_HAS_LDAP_INITIALIZE
++        if (ldc->ld) {
++            apr_pool_clear(ldc->init_pool);
++            ldc->ld = NULL;
++        }
++#endif
++

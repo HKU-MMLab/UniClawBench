@@ -1,0 +1,63 @@
+{
+  "task_id": "task_103_02_robot_vacuum_review_price_compare",
+  "created_at": "2026-06-19T00:00:00+00:00",
+  "target_bilibili_creator": "Mona's Home (莫娜的家Mona)",
+  "target_bilibili_video": "无广 | 12台2026年新款扫地机 横向对比视频（第一期） (No-ad | head-to-head comparison of 12 new 2026 robot vacuums, Episode 1)",
+  "target_bilibili_video_url": "https://www.bilibili.com/video/BV1Mg5g67EN7/",
+  "target_youtube_creator": "Vacuum Wars",
+  "target_youtube_video": "Dreame L50 Ultra Review - The BEST Robot Vacuum of 2025...So Far",
+  "target_youtube_video_url": "https://www.youtube.com/watch?v=cjryvaNYado",
+  "bilibili_product": "Dreame X60 Master (追觅 X60 Master)",
+  "youtube_product": "Dreame L50 Ultra",
+  "shared_brand": "Dreame (追觅)",
+  "retailer_targets": [
+    "Amazon",
+    "Walmart"
+  ],
+  "prompt_misremembered_creator": "something like `Mona's Home` (莫娜)",
+  "creator_matching_note": "The public prompt intentionally gives a natural, slightly imprecise memory of the Bilibili creator name. Treat `Mona's Home / 莫娜` as a fuzzy clue, not an exact-name requirement. The correct creator is `莫娜的家Mona`, and the intended video is her no-ad, self-funded round-up that tests 12 new 2026 robot vacuums, Episode 1 (which covers Ecovacs X12 Pro, Narwal/云鲸 Freo 003, Roborock G30S Pro, and Dreame X60 Master among the first four). Credit the executor for resolving the clue to that creator/video even with corrected spelling. The YouTube clue (Vacuum Wars, a Dreame model rated best robot vacuum of 2025 so far) resolves to the Dreame L50 Ultra review.",
+  "expected_shared_brand": "Dreame (追觅)",
+  "expected_comparison_mode": "Different Dreame models (Bilibili recommends the Dreame X60 Master; the Vacuum Wars video reviews the Dreame L50 Ultra), so compare model parameters and prices rather than forcing one common SKU.",
+  "source_grounded_facts": {
+    "youtube_dreame_l50_ultra": [
+      "Vacuum Wars' current #1 overall on their Top 20 list at time of the video",
+      "dual brush roll + single side brush; ranked top-five all-time in carpet deep-clean (90%) and perfect 100% on flattened pet-hair-on-carpet test",
+      "two spinning mop pads, magnetic, auto-lift ~10.5mm over carpet; mop-along-the-grain option",
+      "ProLeap threshold crossing: single 42mm (1.65in), two-tiered up to 2.65in",
+      "top-mounted LiDAR navigation; front lasers + RGB camera + LED for obstacle avoidance (20/24)",
+      "large 6,400mAh battery but below-average measured efficiency (~823 sq ft/charge), has fast charging + recharge-and-resume",
+      "flagship/top-end price"
+    ],
+    "bilibili_dreame_x60_master": [
+      "tested in Mona's Home Episode 1 among the first four machines",
+      "track/roller-type (履带式) mop pad with larger water-holding area, washes mop pads well",
+      "dual roller brush design: front rubber roller pats the carpet, rear rubber-bristle roller lifts dust — highlighted as good for homes with carpet",
+      "cleaning efficiency relatively slow (~100 minutes, similar to Ecovacs X12 Pro)",
+      "edge/side brush and rear roller can tangle long hair somewhat; mop-pad install called unusually complex",
+      "active-water (活水) real-time mop washing approach"
+    ]
+  },
+  "expected_comparison_parameters": [
+    "Amazon price",
+    "Walmart price",
+    "suction power (Pa)",
+    "mopping method (vibrating / spinning / roller-track pad)",
+    "max threshold-climbing height",
+    "navigation / obstacle-avoidance approach (LiDAR / camera / laser)",
+    "battery capacity or rated runtime"
+  ],
+  "reference_screenshots": [
+    "product_evidence/bilibili_monas_home_video.png",
+    "product_evidence/youtube_vacuum_wars_video.png",
+    "product_evidence/amazon_dreame_l50_ultra_search.png",
+    "product_evidence/amazon_dreame_x60_master_search.png",
+    "product_evidence/walmart_dreame_l50_ultra_search.png",
+    "product_evidence/walmart_dreame_x60_master_search.png",
+    "product_evidence/dreame_l50_ultra_specs.png",
+    "product_evidence/dreame_l50_ultra_specs_2.png",
+    "product_evidence/dreame_x60_master_specs.png"
+  ],
+  "screenshot_capture_notes": "Captured 2026-06-20. Retail-availability reality at capture time: the Dreame L50 Ultra IS listed on Amazon US (~$849, 19,500 Pa). The Dreame X60 Master was NOT found as a distinct US retail listing: walmart_dreame_x60_master_search.png and amazon_dreame_x60_master_search.png show searches that return other Dreame models (X60 Max Ultra, L60, G10/C10 wet-dry sticks) but not the X60 Master itself, and walmart_dreame_l50_ultra_search.png likewise shows Walmart returning only Dreame wet-dry stick vacuums, not the L50 Ultra robot. These 'no exact match' screenshots are the correct, honest evidence for those product/platform combinations — they are not normal product pages. Spec anchors come from Dreame's official pages: dreame_l50_ultra_specs.png + dreame_l50_ultra_specs_2.png (L50 Ultra: 19,500 Pa, 2.65in two-step threshold, LDS, 6,400mAh) and dreame_x60_master_specs.png (X60 Master: 36,000 Pa, 8.8cm two-step threshold, VersaLift DToF + AI camera, 6,400mAh).",
+  "parameter_evidence_note": "Use current official Dreame / Amazon / Walmart pages as factual anchors for prices and specs. Prices, availability, and regional listings are volatile; accept the executor's current screenshots/links over the hidden reference values when they conflict. The Dreame X60 Master may be sold under a regional name or have limited US retail availability — if a model is not listed on a US retailer, an honestly documented 'not available / out of stock' screenshot is acceptable rather than an invented price.",
+  "screenshot_availability_note": "product_evidence/*.png are placeholders for human-prepared anchor screenshots and may be absent in this build; judge from text anchors and the executor's own screenshots when the prepared images are not present."
+}

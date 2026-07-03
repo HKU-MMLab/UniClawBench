@@ -1,0 +1,7 @@
+order,landmark_name,location_text,lat,lng,why_it_matches
+1,Tiananmen Square,Beijing historic center,39.9055,116.3976,day-1 historic opening landmark
+2,Forbidden City,Palace Museum / central Beijing,39.9163,116.3972,follows Tiananmen in the historic core
+3,Jingshan Park,north of Forbidden City,39.9240,116.3964,viewpoint after Forbidden City
+4,Mutianyu Great Wall,Beijing outskirts,40.4319,116.5704,great-wall day and separate later stop
+5,Temple of Heaven,Tiantan area,39.8837,116.4120,major later-city stop
+6,Wangfujing,Wangfujing shopping street,39.9156,116.4040,secondary city stop

@@ -1,0 +1,25 @@
+Message-ID: <YYRYS+bKq8peVige@debian>
+X-Clawbench-ID: BIO-2024-0516
+Date: Fri, 5 Nov 2021 03:31:47 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: RFH: Getting fastp building on more archs
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_11_msg00028.html
+
+Hi Andrius, all,
+
+On Sun, Oct 17, 2021 at 09:44:36AM +0300, Andrius Merkys wrote:
+> On the same thread Graham reported success in building isal on armhf,
+> ppc64el and riscv64. This gives some hope for fastp as well.
+
+Ondrej was very kind to extend isal support to more archs. However,
+it does not build on i386 and s390x, and fastp is still stalled from migrating.
+
+Is there $something-else we could do? Do you think simply asking for removals on i386 and s390x
+would be the right thing to do?
+
+Let me know,
+Nilesh

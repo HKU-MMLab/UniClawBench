@@ -1,0 +1,53 @@
+task_id: task_101_39_music_analysis
+category: 101_skill_usage
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I'm putting together a sync-licensing pitch and I need a proper
+  breakdown of a track before I send it out. The file is at
+  /tmp_workspace/clawbench/sources/song.wav. Use the music-analysis skill to
+  analyze it — I need the tempo in BPM, the musical key, section
+  structure with timestamps, and a one-paragraph summary of how the
+  energy flows through the track.
+
+  Save the human-readable write-up to /tmp_workspace/results/analysis.md
+  and a structured sidecar to /tmp_workspace/results/sections.json so I
+  can grep it programmatically.
+
+  A few specifics:
+  - Tempo as BPM rounded to one decimal place.
+  - Key as tonic plus mode, e.g. C major or A minor.
+  - For sections, list every section in source order with a start time,
+    end time, and a label drawn from the usual pop vocabulary — intro,
+    verse, pre-chorus, chorus, bridge, outro. Don't merge them into
+    one block, and don't invent extra ones.
+  - In the prose summary tell me how the energy moves from start to
+    end and which section is the loudest moment of the track.
+  - The sidecar JSON should at minimum carry bpm, key, and a sections
+    array where each entry has start, end, and label.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - song.wav
+
+skills:
+  - songsee
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

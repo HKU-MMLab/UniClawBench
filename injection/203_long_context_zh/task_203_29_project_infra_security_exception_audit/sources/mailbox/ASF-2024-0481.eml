@@ -1,0 +1,32 @@
+Message-ID: <YiNNMx7mkWcg1/bS@bigio.paclan.it>
+X-Clawbench-ID: ASF-2024-0481
+Date: Sat, 5 Mar 2022 12:44:51 +0100
+From: Giovanni Bechis <giovanni@paclan.it>
+To: dev@httpd.apache.org
+Subject: Re: backports
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-03.mbox
+
+On Fri, Mar 04, 2022 at 09:40:49AM -0800, Roy T. Fielding wrote:
+> > On Mar 4, 2022, at 6:17 AM, Eric Covener <covener@gmail.com> wrote:
+> >
+> > On Fri, Mar 4, 2022 at 9:05 AM Jim Jagielski <jim@jagunet.com> wrote:
+> >>
+> >> A question: Would it be easier for all this if we moved to being Github canon?
+> >
+> > I think it is much more straightforward.  The original work, reviews
+> > and travis results are all in the same place and nothing is copied
+> > around.
+> > I have had the same thought a few times this week. But I was hesitant
+> > to reopen that thread/discussion because I'm pessimistic we can get
+> > anywhere on it.
+>
+> I think we are far beyond that point where staying with svn/bugzilla is actively
+> hurting the project for little or no benefit.
+>
+> I'd +1 a switch just to get real issue management and PRs.
+>
++1 to switch.
+ Giovanni

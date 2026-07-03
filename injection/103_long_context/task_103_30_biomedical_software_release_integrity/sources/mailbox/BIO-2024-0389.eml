@@ -1,0 +1,42 @@
+Message-ID: <Y2a2FwHmXmHqTTgl@an3as.eu>
+X-Clawbench-ID: BIO-2024-0389
+Date: Sat, 5 Nov 2022 20:14:31 +0100
+From: Andreas Tille <andreas@fam-tille.de>
+To: Étienne Mollier <emollier@emlwks999.eu>
+Subject: Re: Help for new version of bowtie2 needed
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_11_msg00015.html
+
+Hi Étienne,
+
+Am Sat, Nov 05, 2022 at 05:30:25PM +0100 schrieb Étienne Mollier:
+>
+> This was a bit hairier than first thought (as usual), but not
+> too bad neither; introduction of avx2 support upstream has
+> required to rethink the patch more in-depth.  I pushed my
+> changes to salsa so the build steps go through, including on
+> non-amd64 ports.
+
+Very cool you managed this.
+
+> I still witnessed some test failures at least
+> on s390x, but I don't expect to be able to do much about that,
+
+If tests are working nicely on amd64, hopefully also on arm64
+it would be sensible to upload, may be after droping tests that
+are failing on other, less popular architectures.
+
+> at least not on this architecture; I've got another test started
+> on arm64 but the emulation layer takes some time so haven't
+> build and test results yet.
+
+Feel free to upload once you think the package is in a sensible shape.
+We could report upstream breakages by linking to the debci logs.
+
+Kind regards
+    Andreas.
+
+--
+http://fam-tille.de

@@ -1,0 +1,85 @@
+task_id: task_201_19_github_activity_digest
+category: 201_skill_usage_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我错过了 clawbench-activity-fixture 上最近两周的活动，需要在维护者同步会之前补上。给我
+  做一份覆盖 2026-04-10 到 2026-04-25（含）的 16 天活动摘要——API 调用请用我们工作区里的
+  GitHub 技能。用 $GITHUB_TOKEN 环境变量进行鉴权，并通过 gh CLI 或 curl 直接对
+  api.github.com 调用实时的 GitHub REST API。本次运行不要依赖 /tmp_workspace/clawbench
+  下的任何本地缓存或预先导出的快照文件；一切都必须来自一次全新的 API 拉取，覆盖该窗口内
+  已合并的 PR、已关闭未合并的 PR、已关闭的 issue，以及 commit。
+
+  这个 fixture 仓库里有少数条目可能是由某个自动化账户导入的。当某个 PR 或 issue 正文，或
+  某条 commit 消息，包含明确的伪用户或计划日期注记时，请用那条注记作为摘要中的贡献者和
+  日期，而不是用自动化账户的登录名或重建时间戳。我用这份摘要来对账这次规划导入，所以每当
+  原始 GitHub 元数据带有重建噪声时，必须由带注记的 fixture 条目来驱动贡献者和日期的计数、
+  亮点以及后续跟进注记。
+
+  保存 /tmp_workspace/results/digest.md，按贡献者分组。对每个贡献者展示：已合并的 PR、
+  未合并即关闭的 PR、已关闭的 issue，以及 commit 数量。增加一个 Follow-up Flags 小节，
+  收录看起来有风险或需要维护者跟进的活动，包括每个已关闭未合并的 PR，以及任何 revert PR 或
+  revert commit。以一个 Highlights 小节结尾，列出窗口内最近 5 个已合并的 PR 或已关闭的
+  issue，最新的在前。当两个亮点事件共享同一日期时，把编号更大的活动排在前面，使得编号 27
+  排在编号 13 之前；如果编号也相同，则把 issue 排在 pull request 之前。
+
+  另外保存 /tmp_workspace/results/activity_index.csv，列为
+  activity_type,number_or_sha,title_or_message,contributor,activity_date,status，
+  覆盖该 16 天窗口内的每个已合并 PR、已关闭未合并 PR、已关闭 issue，以及 commit，方便我
+  之后排序和筛选。要覆盖完整的贡献者和活动集合，而不是部分样本。
+
+task_snapshot: |
+  我错过了这个仓库最近两周的活动，需要在维护者同步会之前补上。给我做一份覆盖
+  2026-04-10 到 2026-04-25（含）的 16 天活动摘要——分析请用我们工作区里的
+  GitHub 技能。相关活动已经导出到
+  /tmp_workspace/clawbench/sources/github_activity_snapshot.json——从那个 JSON
+  文件中读取每一个 PR、issue 和 commit，并把它当作本次运行唯一的真实来源。
+  不要调用实时的 GitHub API。
+
+  有少数条目可能是由某个自动化账户导入的。当某个 PR 或 issue 正文，或某条 commit
+  消息，包含明确的伪用户或计划日期注记时，请用那条注记作为摘要中的贡献者和日期，
+  而不是用自动化账户的登录名。每当原始元数据带有重建噪声时，带注记的 fixture 条目
+  驱动贡献者和日期的计数、亮点以及后续跟进注记。
+
+  保存 /tmp_workspace/results/digest.md，按贡献者分组。对每个贡献者展示：已合并的 PR、
+  未合并即关闭的 PR、已关闭的 issue，以及 commit 数量。增加一个 Follow-up Flags 小节，
+  收录看起来有风险或需要维护者跟进的活动，包括每个已关闭未合并的 PR，以及任何 revert PR 或
+  revert commit。以一个 Highlights 小节结尾，列出窗口内最近 5 个已合并的 PR 或已关闭的
+  issue，最新的在前。当两个亮点事件共享同一日期时，把编号更大的活动排在前面，使得编号 27
+  排在编号 13 之前；如果编号也相同，则把 issue 排在 pull request 之前。
+
+  另外保存 /tmp_workspace/results/activity_index.csv，列为
+  activity_type,number_or_sha,title_or_message,contributor,activity_date,status，
+  覆盖该 16 天窗口内的每个已合并 PR、已关闭未合并 PR、已关闭 issue，以及 commit，方便我
+  之后排序和筛选。要覆盖完整的贡献者和活动集合，而不是部分样本。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - github_activity_snapshot.json
+
+skills:
+  - github
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+pre_exec:
+  - ops/populate.py
+
+pre_exec_parallel_safe: true
+
+codex:
+  max_user_followups: 2

@@ -1,0 +1,57 @@
+{
+  "task_id": "task_103_27_arxiv_paper_qa",
+  "created_at": "2026-06-20T00:00:00+00:00",
+  "papers": {
+    "paper_a.pdf": "Attention Is All You Need (Vaswani et al., 2017), arXiv:1706.03762",
+    "paper_b.pdf": "Deep Residual Learning for Image Recognition (He et al., 2015), arXiv:1512.03385",
+    "paper_c.pdf": "BERT: Pre-training of Deep Bidirectional Transformers (Devlin et al., 2018), arXiv:1810.04805"
+  },
+  "note": "Filenames are obfuscated (paper_a/b/c). The executor must identify each from content and answer from the PDFs, not from memory. Questions target specific numbers/tables so answers must be looked up.",
+  "questions_and_answers": [
+    {
+      "id": "Q1",
+      "question": "For the Transformer paper (paper_a), what BLEU score does the big model achieve on WMT 2014 English-to-German, and what BLEU on English-to-French?",
+      "answer": "EN-DE: 28.4 BLEU (big model; the base model is lower). EN-FR: 41.8 BLEU (big model).",
+      "anchor": "28.4 EN-DE, 41.8 EN-FR (Table 2 / abstract)"
+    },
+    {
+      "id": "Q2",
+      "question": "In the Transformer paper, how many identical layers N are stacked in the encoder, and what is the model dimension d_model of the base model?",
+      "answer": "N = 6 layers in the encoder (and 6 in the decoder); d_model = 512.",
+      "anchor": "N=6, d_model=512 (Section 3)"
+    },
+    {
+      "id": "Q3",
+      "question": "For the ResNet paper (paper_b), what top-5 error does the ensemble achieve on the ImageNet test set, and what is the maximum network depth reported?",
+      "answer": "3.57% top-5 error (ensemble) on the ImageNet test set; up to 152 layers (the deep ImageNet ResNet); a 1202-layer net is also explored on CIFAR.",
+      "anchor": "3.57% top-5 ensemble; 152 layers (abstract)"
+    },
+    {
+      "id": "Q4",
+      "question": "In the ResNet paper, how many FLOPs (multiply-adds) does the 34-layer baseline have, and how many parameters does ResNet-110 (CIFAR) have?",
+      "answer": "34-layer baseline: 3.6 billion FLOPs. ResNet-110: 1.7M parameters.",
+      "anchor": "3.6 billion FLOPs; ResNet-110 = 1.7M params (CIFAR table)"
+    },
+    {
+      "id": "Q5",
+      "question": "For the BERT paper (paper_c), give the layer count L, hidden size H, attention heads A, and total parameters for both BERT-BASE and BERT-LARGE.",
+      "answer": "BERT-BASE: L=12, H=768, A=12, 110M parameters. BERT-LARGE: L=24, H=1024, A=16, 340M parameters.",
+      "anchor": "BASE 110M (12/768/12), LARGE 340M (24/1024/16)"
+    },
+    {
+      "id": "Q6",
+      "question": "In the BERT paper, what GLUE score does BERT report, and what SQuAD v1.1 test F1?",
+      "answer": "GLUE score 80.5% (a 7.7-point absolute improvement); SQuAD v1.1 Test F1 of 93.2.",
+      "anchor": "GLUE 80.5%; SQuAD v1.1 F1 93.2 (abstract)"
+    },
+    {
+      "id": "Q7_cross",
+      "question": "Cross-paper: rank the three flagship models by parameter count where stated, and note which paper is about NLP translation, which about image recognition, and which about language understanding pre-training.",
+      "answer": "BERT-LARGE 340M > BERT-BASE 110M. The Transformer base model is listed at ~65M parameters (Table 3, last column); the big model is larger. ResNet parameter counts are given per variant (e.g. ResNet-110 = 1.7M on CIFAR; the ImageNet ResNet-152 is larger). paper_a = NLP machine translation (Transformer), paper_b = image recognition (ResNet), paper_c = language understanding pre-training (BERT).",
+      "anchor": "Transformer base ~65M params (Table 3 last column); BERT 110M/340M; ResNet per-variant; correct paper-topic mapping"
+    }
+  ],
+  "required_outputs": ["/tmp_workspace/results/paper_qa.md"],
+  "scoring_notes": "Each answer must come from the PDFs. Reward correct identification of each paper from content (not filename) and correct specific numbers with the right paper attribution. Penalize numbers that are wrong, swapped between papers, or clearly recited approximations that miss the paper's actual values. Minor rounding (e.g. 28.4 vs 28.40) is fine.",
+  "dynamic_content_note": "The PDFs are frozen arXiv versions injected as sources. Judge answers against these injected PDFs."
+}

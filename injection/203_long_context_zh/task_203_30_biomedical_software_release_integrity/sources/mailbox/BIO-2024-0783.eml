@@ -1,0 +1,62 @@
+Message-ID: <Y4heeAbCbe5wWzoG@an3as.eu>
+X-Clawbench-ID: BIO-2024-0783
+Date: Thu, 1 Dec 2022 08:57:44 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Help for unifrac autopkgtest needed
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_12_msg00003.html
+
+Hi,
+
+the problem did not occured on my local autopkgtest run, but
+debci says[1]:
+
+
+======================================================================
+ERROR: tests.test_api (unittest.loader._FailedTest)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: tests.test_api
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/unittest/loader.py", line 436, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/usr/lib/python3.10/unittest/loader.py", line 377, in _get_module_from_name
+    __import__(name)
+  File "/tmp/autopkgtest-lxc.lgyjfa1e/downtmp/build.7tN/src/unifrac/tests/test_api.py", line 21, in
+    from unifrac import ssu, faith_pd, ssu_inmem
+  File "/usr/lib/python3/dist-packages/unifrac/__init__.py", line 30, in
+    from unifrac._api import ssu, faith_pd, ssu_to_file, ssu_inmem
+ImportError: /lib/x86_64-linux-gnu/liblapacke.so.3: undefined symbol: ztrsyl3_
+
+
+======================================================================
+ERROR: tests.test_methods (unittest.loader._FailedTest)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: tests.test_methods
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/unittest/loader.py", line 436, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/usr/lib/python3.10/unittest/loader.py", line 377, in _get_module_from_name
+    __import__(name)
+  File "/tmp/autopkgtest-lxc.lgyjfa1e/downtmp/build.7tN/src/unifrac/tests/test_methods.py", line 14, in
+    from unifrac import meta
+  File "/usr/lib/python3/dist-packages/unifrac/__init__.py", line 30, in
+    from unifrac._api import ssu, faith_pd, ssu_to_file, ssu_inmem
+ImportError: /lib/x86_64-linux-gnu/liblapacke.so.3: undefined symbol: ztrsyl3_
+
+
+----------------------------------------------------------------------
+
+Any idea what might be wrong here?
+
+Kind regards
+
+     Andreas.
+
+
+[1] https://ci.debian.net/data/autopkgtest/testing/amd64/u/unifrac/28811608/log.gz
+
+--
+http://fam-tille.de

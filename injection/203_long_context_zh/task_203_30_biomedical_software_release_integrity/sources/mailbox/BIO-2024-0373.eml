@@ -1,0 +1,44 @@
+Message-ID: <20220711105617.5zcjrdghotmk5f35@debian>
+X-Clawbench-ID: BIO-2024-0373
+Date: Mon, 11 Jul 2022 16:26:17 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: "Frith, Martin" <mcfrith@edu.k.u-tokyo.ac.jp>
+Subject: Re: suggesting dnarrange and lamassemble
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_07_msg00017.html
+
+Hi Martin and Katoh,
+
+On Mon, Jul 11, 2022 at 06:40:51PM +0900, Frith, Martin wrote:
+> Dear Nilesh and Debian Med
+> (cc MAFFT author Katoh-san)
+>
+> I have partly tracked down this lamassemble issue. First, I tested
+> lamassemble on x86_64: the tests passed as expected. Then, I recompiled
+> MAFFT after adding "-m32" to CFLAGS, which compiled it in 32-bit mode. Now,
+> the tests in
+> lamassemble/tests/lama-tests.sh
+> do not give the expected results, as you found.
+
+Thanks a lot for digging in!!
+
+> So it seems that MAFFT sometimes outputs different results in 32-bit mode,
+> versus 64-bit mode.
+>
+> I speculate that this is due to floating point calculations, which can
+> produce different results in 32-bit versus 64-bit mode. I think this is
+> because CPUs use "extended precision" in one mode but not the other. This
+> is arguably not a "bug". I guess this must be a frequently occurring issue,
+> how does Debian usually resolve it?
+
+For floating point issues on i386, usually using a `-ffloat-store` flag during
+compilation does the trick. I compiled mafft on i386 chroot using the same and tried
+testing but unfortunately that does not help (it fails with same errors)
+
+If nothing comes up, I'll disable testing on i386.
+
+--
+Best,
+Nilesh

@@ -1,0 +1,25 @@
+Message-ID: <3703.1033415613@dimebox.bmc.com>
+X-Clawbench-ID: CAM-2003-0732
+Date: Mon, 30 Sep 2002 14:53:33 -0500
+From: Hal DeVore <haldevore@acm.org>
+To: exmh-workers@spamassassin.taint.org
+Subject: Re: Working My_Mark2CurSeen
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01143.77077715a838bb473dad6a466d2e2403
+
+>>>>> On Mon, 30 Sep 2002, "Ted" == Ted Cabeen wrote:
+
+  Ted> Here's the code for everybody and the list archives in
+  Ted> case anyone wants it in the future.
+
+Very cool!  I vote for this being added to CVS, any objections?
+
+--Hal
+
+
+_______________________________________________
+Exmh-workers mailing list
+Exmh-workers@redhat.com
+https://listman.redhat.com/mailman/listinfo/exmh-workers

@@ -1,0 +1,67 @@
+Message-ID: <0874A7A6-32EC-43E6-9955-835496853283@eissing.org>
+X-Clawbench-ID: ASF-2024-0426
+Date: Mon, 15 May 2023 09:31:42 +0200
+From: "Stefan Eissing via dev" <dev@httpd.apache.org>
+To: Yann Ylavic <ylavic.dev@gmail.com>
+Subject: Re: PR 66499
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-05.mbox
+
+> Am 14.05.2023 um 21:27 schrieb Yann Ylavic <ylavic.dev@gmail.com>:
+>
+> On Fri, May 12, 2023 at 6:35 PM Stefan Eissing via dev
+> <dev@httpd.apache.org> wrote:
+>>
+>> Regarding https://bz.apache.org/bugzilla/show_bug.cgi?id=66499 I have a question.
+>>
+>> When using httpd in a forward proxy setup ("ProxyRequests On"), we expect absolute URLs in HTTP/1.1 requests. Fine.
+>>
+>> When accessing such a setup via HTTP/2, we get :scheme, :auhority and :path and, usually, do NOT want to convert that to absolute URIs in the reuqest line. That is what 66499 complained about. However, in the forward proxy case, we need it.
+>>
+>> How is mod_http2 supposed to know which case is in play? Any ideas?
+>
+> It can't know I agree, but possibly mod_h2 could fill in r->parsed_uri
+> when creating the request_rec (as if a full uri-path were received),
+> that's what proxy_detect() needs to allow forward-proxying (in
+> addition to ProxyRequests on). Reverse-proxying won't use
+> r->parsed_uri.{scheme,hostname} anyway so ProxyRequests on/off would
+> be the only criteria, which seems fine?
+
+Hmm, sounds hacky. I think I'd rather add a directive like `H2ForwardProxy on`.
+
+> PS: Since we are discussing PRs, maybe we can talk about PR 66597 :p
+> There it seems that in 2.4.x (i.e. !AP_HAS_RESPONSE_BUCKETS), the
+> H2_C2_REQUEST_IN filter will insert chunk encoding (via
+> read_and_chunk()) at AP_FTYPE_PROTOCOL, which is the same level as the
+> HTTP_IN filter supposed to consume this chunking (IIUC).
+> Could it be possible that H2_C2_REQUEST_IN gets added earlier than
+> HTTP_IN such that the order of the two is backward (i.e. the chunk
+> encoding is never consumed), which is why mod_proxy ends up
+> reading/forwarding chunked encoding as if HTTP_IN was not called?
+
+Maybe, but I do not understand the difference between mod_proxy_* and mod_cgid in chunked input processing. For the latter I have test cases that work.
+
+-Stefan
+
+> So maybe the below patch would make the ordering more robust:
+>
+> Index: modules/http2/h2_c2.c
+> ===================================================================
+> --- modules/http2/h2_c2.c    (revision 1909607)
+> +++ modules/http2/h2_c2.c    (working copy)
+> @@ -854,7 +854,7 @@ void h2_c2_register_hooks(void)
+>                               NULL, AP_FTYPE_NETWORK);
+>
+>     ap_register_input_filter("H2_C2_REQUEST_IN", h2_c2_filter_request_in,
+> -                             NULL, AP_FTYPE_PROTOCOL);
+> +                             NULL, AP_FTYPE_PROTOCOL - 1);
+>     ap_register_output_filter("H2_C2_RESPONSE_OUT", h2_c2_filter_response_out,
+>                               NULL, AP_FTYPE_PROTOCOL);
+>     ap_register_output_filter("H2_C2_TRAILERS_OUT", h2_c2_filter_trailers_out,
+> ?
+>
+>
+> Regards;
+> Yann.

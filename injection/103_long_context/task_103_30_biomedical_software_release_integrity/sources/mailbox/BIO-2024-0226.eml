@@ -1,0 +1,47 @@
+Message-ID: <Zv0vwI_0SxVotLh5@kumo.plessy.net>
+X-Clawbench-ID: BIO-2024-0226
+Date: Wed, 2 Oct 2024 20:34:24 +0900
+From: Charles Plessy <plessy@debian.org>
+To: debian-med@lists.debian.org, debian-r@lists.debian.org
+Subject: Re: Dropping big-endian (s390x) support for some r-bioc-* packages
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_10_msg00001.html
+
+Le Wed, Oct 02, 2024 at 12:53:56PM +0200, Michael R. Crusoe a écrit :
+>
+> So I propose to add a "architecture-is-little-endian" build-dep to the following packages and request the removal of their s390x builds from the archive:
+>
+
+Hi Michael and everybody,
+
+I am all for it but I would like to propose something bigger.
+
+Let r-bioc-biocgenerics (or r-bioc-biocbase) provide a virtual package
+called r-bioc-supported-architectures available for amd64 and arm64
+only, and make all r-boc-* depend on it at the next BioC release (which
+takes place this month).
+
+People who want r-bioc-* packages on other architectures can first work
+on portability issues outside the Debian main archive, and can create
+a local version of r-bioc-supported-architectures to enable building
+BiocC on what they want.  If the mass-build looks sustainable we can
+consider add, maybe after consulting BioC upstream about future
+prospects.
+
+I think that bioinformaticians can aim for other architectures if they
+have appetite for the work it represents, and portrers can aim for
+bioinformatics if they have the workforce for it, but by default we
+should not build these packages everywhere because it puts the whole
+burden on mostly just us.
+
+Have a nice day,
+
+Charles
+
+--
+Charles Plessy                         Nagahama, Yomitan, Okinawa, Japan
+Debian Med packaging team         http://www.debian.org/devel/debian-med
+Tooting from home                  https://framapiaf.org/@charles_plessy
+- You  do not have  my permission  to use  this email  to train  an AI -

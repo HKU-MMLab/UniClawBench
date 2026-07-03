@@ -1,0 +1,38 @@
+Message-ID: <ZJsv3ZyZuh4t57jL@fusion>
+X-Clawbench-ID: BIO-2024-0148
+Date: Tue, 27 Jun 2023 20:52:13 +0200
+From: Étienne Mollier <emollier@emlwks999.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Fwd: insighttoolkit | Failed pipeline for master | ebf68c2e
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_06_msg00025.html
+
+Hi Steve,
+
+Steven Robbins, on 2023-06-27:
+> I keep getting pipeline error notices from Salsa about ITK.  Apparently
+> "provisioning" has failed, but I fail to understand why.  Anyone know?
+
+I'm not sure of the root cause of the issue, but this might have
+to do with either with the git branches layout (itk4 and itk5
+were maintained in parallel in this repository), or the
+repository name versus the source package name (repository
+"insighttoolkit" versus source package "insighttoolkit5")
+
+One way to silence the CI pipeline until it works might be to
+allow failure of the source extraction job by appending this
+snippet in d/salsa-ci.yml:
+
+-------88-------------->8------------->8------------->8---------
+
+Or we can just disable the default pipeline alltogether for this
+package if this just generates unduely noise.
+
+Have a nice day,  :)
+--
+Étienne Mollier
+Fingerprint:  8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+Sent from /dev/pts/2, please excuse my verbosity.
+On air: Anathema - Endless Ways

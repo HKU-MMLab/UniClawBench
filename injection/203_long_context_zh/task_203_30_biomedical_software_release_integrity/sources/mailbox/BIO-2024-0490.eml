@@ -1,0 +1,29 @@
+Message-ID: <Y4khOn0m9uMXn4ch@fusion>
+X-Clawbench-ID: BIO-2024-0490
+Date: Thu, 1 Dec 2022 22:48:42 +0100
+From: Étienne Mollier <emollier@emlwks999.eu>
+To: Andreas Tille <andreas@fam-tille.de>
+Subject: Re: Several issues solved but python issue remaining (Was: [Help] Build issue of latest version of libsbml (probably Java compatibility issue))
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_12_msg00007.html
+
+Hi Andreas,
+
+Andreas Tille, on 2022-11-30:
+> […] the problem of the not loadable module in python3-sbml
+> persists also for python3.10.
+
+Right, I saw that on my end as well.  This seems to have been
+caused by forceful run of autopkgtest-pkg-python without it
+being configured in the package.  I pushed a couple of changes
+in salsa to fix the import name, and enable explicitly the
+autopkgtest-pkg-python for upcoming uploads.
+
+In hope this helps,
+--
+Étienne Mollier
+Fingerprint:  8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+Sent from /dev/pts/2, please excuse my verbosity.
+On air: Helreid - Stranger In A Strange Land

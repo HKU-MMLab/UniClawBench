@@ -1,0 +1,96 @@
+Message-ID: <ZdcemyO80DPK5Q4Z@an3as.eu>
+X-Clawbench-ID: BIO-2024-0707
+Date: Thu, 22 Feb 2024 11:14:51 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Emmanuel Promayon <Emmanuel.Promayon@univ-grenoble-alpes.fr>
+Subject: Re: New CamiTK 5.2.0 release
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_02_msg00021.html
+
+Hi Emmanuel,
+
+Am Thu, Feb 22, 2024 at 07:48:53AM +0100 schrieb Emmanuel Promayon:
+> I hope you had a great sprint (seems a lot was done, congrats!).
+
+All was fine, thank you.
+
+> I was wondering if any of you had any time to check the new CamiTK version
+> package in between all of the bug fixing and python transition?
+
+I admit I was avoiding doing larger builds on my laptop and wanted
+to do this at home.  Thanks for pinging in any case.
+
+> On 16/02/2024 11:01, Emmanuel Promayon wrote:
+> > Dear all,
+> >
+> > First of all, I'd like to wish the whole team a great sprint in Berlin.
+> >
+> > As far as CamiTK is concerned, version 5.2.0 has been released upstream
+> > and I have updated the package on salsa.
+> > I did not tag the master branch with the debian/5.2.0 tag, as I am not
+> > 100% sure that everything is valid.
+> > The pristine-tar branches were updated this time (hopefully the right
+> > way!).
+
+Hmmm, sorry, no.  If you check that branch[1] you see the names for the
+two last releases are the original download names with camel case letters,
+a '-' instead of '_' separating the name and the version and lacking the
+'.orig' string inside the tarball name.  I would have fixed this by doing
+
+    uscan --verboe --force-download
+    pristine-tar commit ../camitk_5.2.0.orig.tar.gz
+
+but after doing so I got:
+
+dpkg-source: info: local changes detected, the modified files are:
+ camitk-5.2.0/sdk/libraries/core/CamiTKVersion.h
+dpkg-source: error: aborting due to unexpected upstream changes, see /tmp/camitk_5.2.0-1.diff.LLSDXq
+
+So it seems there are some differences inside the tarball.  I try to
+repeat what you need to do when there is a new upstream version:
+
+    uscan --verbose
+    gbp import-orig --pristine-tar --no-interactive camitk_VERSION.orig.tar.gz
+    dch -i "New upstream version"
+
+I also tried to write the according paragraph in Debian Med policy[2]
+more verbosely.  Maybe even the hint to `routine-update` is helpful.
+It simply does all you want to do (including the steps above).
+
+If there would not have been the conflict between the repository and
+the original tarball I would have went on after fixing pristine-tar
+branch.  But I don't know what to do with this diff:
+
+--- camitk-5.2.0.orig/sdk/libraries/core/CamiTKVersion.h
++++ camitk-5.2.0/sdk/libraries/core/CamiTKVersion.h
+@@ -32,5 +32,5 @@ const char * Core::version = "CamiTK 5.2
+ const char * Core::shortVersion = "camitk-5.2";
+ const char * Core::soVersion = "5";
+ const char * Core::debugPostfix = "-debug";
+-const char * Core::libDir = "lib";
++const char * Core::libDir = "lib/x86_64-linux-gnu";
+ }
+
+The repository has the line with "lib/x86_64-linux-gnu" while the
+downloaded tarball has only "lib".  If you really need to adapt the
+original tarball to some Debian specific things this needs to be done in
+a quilt patch.  Please also note:  This change only works for amd64
+architecture which currently is the only architecture where the Debian
+package is built.  However, this restriction is only due to the fact
+that libinsighttoolkit5-dev is only available for this architecture.  In
+case it might be available for other architectures as well your patch
+above will fail on those.
+
+Please let me know if you need further hints.
+
+Thanks a lot for working on camitk package
+    Andreas.
+
+[1] https://salsa.debian.org/med-team/camitk/-/tree/pristine-tar?ref_type=heads
+[2] https://med-team.pages.debian.net/policy/#updating-a-source-package-managed-with-git
+
+
+--
+http://fam-tille.de

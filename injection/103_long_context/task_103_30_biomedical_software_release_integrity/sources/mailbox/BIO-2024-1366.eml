@@ -1,0 +1,38 @@
+Message-ID: <108001675.305702.1658253879627.JavaMail.zimbra@cti.gov.br>
+X-Clawbench-ID: BIO-2024-1366
+Date: Tue, 19 Jul 2022 15:04:39 -0300 (BRT)
+From: Thiago Franco de Moraes <thiago.moraes@cti.gov.br>
+To: Andreas Tille <andreas@an3as.eu>
+Subject: Re: Upgrading invesalius
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_07_msg00036.html
+
+Hi Andreas,
+
+Yes, I have intention to update the package. I'll try to do that in the next days. I just need to relearn some parts of packaging.
+
+Best regards.
+
+----- Original Message -----
+From: "Andreas Tille"
+To: "debian-med" , "Thiago Franco Moraes"
+Sent: Tuesday, July 19, 2022 9:51:31 AM
+Subject: Upgrading invesalius
+
+Hi Thiago,
+
+the Debian package of invesalius is some micro versions behind
+upstream.  Do you intend to prepare an updated package?
+
+Kind regards
+
+      Andreas.
+
+--
+http://fam-tille.de
+--
+Ressalva: Esta mensagem de correio eletrônico do Centro de Tecnologia da Informação Renato Archer - CTI é enviada exclusivamente a seu(s) destinatário(s) e pode conter informações confidenciais, protegidas por sigilo profissional. Sua utilização desautorizada é ilegal e sujeita o infrator às penas da lei. Se você a recebeu indevidamente, queira, por gentileza, reenviá-la ao remetente, esclarecendo o equívoco.
+
+Disclaimer: This e-mail message from Centro de Tecnologia da Informação Renato Archer - CTI is directed exclusively to its addressee(s) and may contain confidential data, protected under professional secrecy rules. Its unauthorized use is illegal and may subject the transgressor to the law's penalties. If you are not the addressee, please send it back, clarifying the failure.

@@ -1,0 +1,175 @@
+Message-ID: <SJ0P114MB134238EA2235717B213D61B7B1339@SJ0P114MB1342.NAMP114.PROD.OUTLOOK.COM>
+X-Clawbench-ID: ASF-2024-0868
+Date: Thu, 27 Oct 2022 07:43:19 +0000
+From: "Payyavula, Manjula Vani via dev" <dev@httpd.apache.org>
+To: "dev@httpd.apache.org" <dev@httpd.apache.org>, "dev-info@httpd.apache.org" 	<dev-info@httpd.apache.org>
+Subject: FasterXML jackson-databind version 2.13.3 vulnerabilities
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-10.mbox
+
+Hi Team,
+
+Please reply to my below  query.
+We are using FasterXML jackson-databind version 2.13.3 but facing vulnerabilities like CVE-2022-42003
+So we have used FasterXML jackson-databind version 2.14.0-rc1but vulnerabilities hasn't fixed.
+Latest release 2.14.0-rc2 will have fix for these vulnerabilities?
+
+Team, could you please let us know when/which version of future releases these vulnerabilities will have fixed.
+
+Kindly confirm.
+
+-----Original Message-----
+From: dev-help@httpd.apache.org <dev-help@httpd.apache.org>
+Sent: Thursday, October 27, 2022 1:02 PM
+To: Payyavula, Manjula Vani <manjula.v.payyavula@accenture.com>
+Subject: [External] Already subscribed to dev@httpd.apache.org
+
+This message is from an EXTERNAL SENDER - be CAUTIOUS, particularly with links and attachments.
+
+Hi! This is the ezmlm program. I'm managing the dev@httpd.apache.org mailing list.
+
+Acknowledgment: The address
+
+   manjula.v.payyavula@accenture.com
+
+was already on the dev mailing list when I received your request, and remains a subscriber.
+
+
+--- Administrative commands for the dev list ---
+
+I can handle administrative requests automatically. Please do not send them to the list address! Instead, send your message to the correct command address:
+
+To subscribe to the list, send a message to:
+   <dev-subscribe@httpd.apache.org>
+
+To remove your address from the list, send a message to:
+   <dev-unsubscribe@httpd.apache.org>
+
+Send mail to the following for info and FAQ for this list:
+   <dev-info@httpd.apache.org>
+   <dev-faq@httpd.apache.org>
+
+Similar addresses exist for the digest list:
+   <dev-digest-subscribe@httpd.apache.org>
+   <dev-digest-unsubscribe@httpd.apache.org>
+
+To get messages 123 through 145 (a maximum of 100 per request), mail:
+   <dev-get.123_145@httpd.apache.org>
+
+To get an index with subject and author for messages 123-456 , mail:
+   <dev-index.123_456@httpd.apache.org>
+
+They are always returned as sets of 100, max 2000 per request, so you'll actually get 100-499.
+
+To receive all messages with the same subject as message 12345, send a short message to:
+   <dev-thread.12345@httpd.apache.org>
+
+The messages should contain one line or word of text to avoid being treated as sp@m, but I will ignore their content.
+Only the ADDRESS you send to is important.
+
+You can start a subscription for an alternate address, for example "john@host.domain", just add a hyphen and your address (with '=' instead of '@') after the command word:
+<dev-subscribe-john=host.domain@httpd.apache.org>
+
+To stop subscription for this address, mail:
+<dev-unsubscribe-john=host.domain@httpd.apache.org>
+
+In both cases, I'll send a confirmation message to that address. When you receive it, simply reply to it to complete your subscription.
+
+If despite following these instructions, you do not get the desired results, please contact my owner at dev-owner@httpd.apache.org. Please be patient, my owner is a lot slower than I am ;-)
+
+--- Enclosed is a copy of the request I received.
+
+Return-Path: <manjula.v.payyavula@accenture.com>
+Received: (qmail 2616923 invoked by uid 116); 27 Oct 2022 07:32:29 -0000
+Received: from spamproc1-he-de.apache.org (HELO spamproc1-he-de.apache.org) (116.203.196.100)  by apache.org (qpsmtpd/0.94) with ESMTP; Thu, 27 Oct 2022 07:32:29 +0000
+Authentication-Results: apache.org; auth=none
+Received: from localhost (localhost [127.0.0.1])
+        by spamproc1-he-de.apache.org (ASF Mail Server at spamproc1-he-de.apache.org) with ESMTP id EBDD71FF65B
+        for <dev-sc.1666855488.dafpdikjjokohbmaoioe-manjula.v.payyavula=accenture.com@httpd.apache.org>; Thu, 27 Oct 2022 07:32:28 +0000 (UTC)
+X-Virus-Scanned: Debian amavisd-new at spamproc1-he-de.apache.org
+X-Spam-Flag: NO
+X-Spam-Score: -0.202
+X-Spam-Level:
+X-Spam-Status: No, score=-0.202 tagged_above=-999 required=6.31
+        tests=[DKIMWL_WL_MED=-0.001, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+        DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H2=-0.001,
+        SPF_PASS=-0.001, URIBL_BLOCKED=0.001] autolearn=disabled
+Authentication-Results: spamproc1-he-de.apache.org (amavisd-new);
+        dkim=pass (2048-bit key) header.d=accenture.com
+Received: from mx1-ec2-va.apache.org ([116.203.227.195])
+        by localhost (spamproc1-he-de.apache.org [116.203.196.100]) (amavisd-new, port 10024)
+        with ESMTP id tHB0FseOkHUC
+        for <dev-sc.1666855488.dafpdikjjokohbmaoioe-manjula.v.payyavula=accenture.com@httpd.apache.org>;
+        Thu, 27 Oct 2022 07:32:27 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=40.107.236.100; helo=nam11-bn8-obe.outbound.protection.outlook.com; envelope-from=manjula.v.payyavula@accenture.com; receiver=<UNKNOWN>
+Received: from NAM11-BN8-obe.outbound.protection.outlook.com (mail-bn8nam11on2100.outbound.protection.outlook.com [40.107.236.100])
+        by mx1-ec2-va.apache.org (ASF Mail Server at mx1-ec2-va.apache.org) with ESMTPS id 50DCBBBC94
+        for <dev-sc.1666855488.dafpdikjjokohbmaoioe-manjula.v.payyavula=accenture.com@httpd.apache.org>; Thu, 27 Oct 2022 07:32:27 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;  b=iF9oAtGlomqo664EPyaP1m7/MNFQ9dML1JbTBZz6HT+Q01DlfpGHdk/sOUPaHwJoQTCyTEUVzMqTVPRZ/gUtiWMv/9cxyIaHOx5uYfMfRI5ZNTgAkN4OQ7KJykwDv1YuQUmXpiTh9DS90L9xdlJOFtZQFsfWM5bvmY/Lfi3N6W9gDsE5a4A1zXKFxhTWBuqpaajantLm91JJVDh6fXsSMWi9abBbP3VeqNC1K7f1DQFRaidBeeo42N81njgso9nP4mM7S5hQbRSVx1XbWPtKX3DvRND4Mec12L1RVauxUmg2rGGNinvkTyaHLdg0+PXrbYcRUvtTKEDygKXWhwkCxg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;  s=arcselector9901;  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=UMQ4AllN0YIjQ2AgxCNnQBBlUrmn/byV2eqyFrpJdxI=;
+ b=TsIoIKH7RnkRB5EYCyHRfh4h8BOi3CbcPtHmtSasRIvTyLjfoI4uGJt6lZeSAkEtktnT1hm8us0ZHiA4Rtoz6Ps1O5TImmmzZDVtNbhXxm5pRRbrx4WlP6ZOeLAweeyjoP9offT5EZZz6PMRo2rkV0C6i1ipXE0xXqVPhOeys2sKWsEtYwbIpX66sENTkj0lZvqLh3MWFTdfjxvRme+LNclTJekCx/hejUHclHRb/typUKOKDxQVaO44+/cPrVCiwa3TYjHW1QktadbQCcs6GVS28AsVR5dbO4h9U8lNe+LI5fU8VzGTH803dlQ076Lnu2RmOHHFeXB6pogOoWs26w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass  smtp.mailfrom=accenture.com; dmarc=pass action=none  header.from=accenture.com; dkim=pass header.d=accenture.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=accenture.com;  s=selector2;  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=UMQ4AllN0YIjQ2AgxCNnQBBlUrmn/byV2eqyFrpJdxI=;
+ b=Jcta98MQYTpVJjBkJ5WrVw9hToztKYGUdsRyR1RWc7rKVodzIBLnTIZXwbC3ZfUA9WpEw8zemUlvjpSfPBuxm1RtIP/F7JZwE3/X167sCVE3jpYnlyg25f6gV6jYWFt+Mp3e6CA1+0g2vtl5lYFFLbeXFHYhYTL6QTlunK85zZkLADy+tE3Hj5yagFrod33nbhhpINVJALteVlY65Avk/AcPpoxDMJo92x5pXXIa2h66yYGlkEsKpYBv7uYlMqsfOBkWU/XwGYrlJvZiEuwQCg64C5F5SP1J2b7+afF2y8RJY9QH0r/f+HYHJWgl+esrYLexbqPX5XbVSyGym6O1Hw==
+Received: from SJ0P114MB1342.NAMP114.PROD.OUTLOOK.COM (2603:10b6:a03:256::16)  by SJ0P114MB1360.NAMP114.PROD.OUTLOOK.COM (2603:10b6:a03:2a6::7) with  Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5746.29; Thu, 27 Oct
+ 2022 07:32:19 +0000
+Received: from SJ0P114MB1342.NAMP114.PROD.OUTLOOK.COM
+ ([fe80::a4b2:997:fda:996]) by SJ0P114MB1342.NAMP114.PROD.OUTLOOK.COM
+ ([fe80::a4b2:997:fda:996%4]) with mapi id 15.20.5746.029; Thu, 27 Oct 2022
+ 07:32:19 +0000
+From: "Payyavula, Manjula Vani" <manjula.v.payyavula@accenture.com>
+To: "dev-sc.1666855488.dafpdikjjokohbmaoioe-manjula.v.payyavula=accenture.com@httpd.apache.org"
+        <dev-sc.1666855488.dafpdikjjokohbmaoioe-manjula.v.payyavula=accenture.com@httpd.apache.org>
+Subject: RE: [External] confirm subscribe to dev@httpd.apache.org
+Thread-Topic: [External] confirm subscribe to dev@httpd.apache.org
+Thread-Index: AQHY6dU1vbSo9njYPkygVUbfLJur2a4h2IDA
+Date: Thu, 27 Oct 2022 07:32:18 +0000
+Message-ID:
+ <SJ0P114MB134263DA20632013D4C3BDCFB1339@SJ0P114MB1342.NAMP114.PROD.OUTLOOK.COM>
+References: <1666855488.2598298.ezmlm@httpd.apache.org>
+In-Reply-To: <1666855488.2598298.ezmlm@httpd.apache.org>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach:
+X-MS-TNEF-Correlator:
+authentication-results: dkim=none (message not signed)  header.d=none;dmarc=none action=none header.from=accenture.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SJ0P114MB1342:EE_|SJ0P114MB1360:EE_
+x-ms-office365-filtering-correlation-id: 37f350ac-a837-4f13-b2ad-08dab7ed6113
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info:
+ cGobb18Qy8NZd5EsAVljg0PCfmQcIHOVekU6S/mHYwMVk8M+xdvF/W/U3cHDuYliY8Gdq11dWY3SgMkZ9iQkHt6d7N2G2QddJbgEyHumx0abLohuI/h4+y6xtR8Miw4CSUFIFL4I/H/dLGzFSuZd3xeGc0FrS74TLeVW28s9KkW/tEFal+B0+3eVjd8kg0+lAPAo+Q5ERbHNNJp3IlnQZbLtA0zxnfcxYA2NEH2aRXU4SPW4pMQgLAYgoziRg5U5fF4reYXbNQK8KEkR63F/Wp4c0h8+6YmTgZK65l7ptMtMcWRQSchFk8rPIAFQlK133i/L3Dj0TtMtEC+F8/KgR5xHhqiBcZiWXH+HtAx02PDAru/yTsEK6QW+xNco2VBQjqrWgrGOPHdOdVLlUYyLbKIH/+ILMpxnduPvLgdqsaCe4k/RTUWvNWOSJgAPy5qrkj8vjeW33rKOrrbKQetsZ6Dnentv3CBqlnVaEB6T78UrxqvgC6sJaPNgvKTwznxcBuO5J32XwWewRtFSdzFV5S2+jPPYVlATweGXguss6hUYbXYAWRATs7RfdbV9p5M/O93/+ysmhMU9yrWosr+OX4kNcxEOMuoHWKxomftu4gU1tODbRwREjF8t6lhc6kY9xCfUxQHqCYz1Qo8Rh9GF0/dNiWzzfdKVx2tFPqFy1tYXD4L9s/LhrO0IBI7nfvU52apI8swMx0bWhLd6HzVbxWL8l5JfIk3qMQEEzCm3ZQhyVr+r21twhb9Q8RN2RdCAl6Tw8786DWlQYG0UhBNoA92gEwEF2ms1XdV7sFXGVinUTS7dxfeJ+9zHQ5NYFi5m4XWe/gak8FX5wNrtfGRbtch1lsAUp0RZUPTZr1ZV8qIFLQ/PLnZ/1z14HX0ltLT+ic1SRQCtCXchaGQHKqQedw==
+x-forefront-antispam-report:
+ CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SJ0P114MB1342.NAMP114.PROD.OUTLOOK.COM;PTR:;CAT:NONE;SFS:(13230022)(4636009)(346002)(39860400002)(376002)(136003)(366004)(396003)(451199015)(966005)(71200400001)(45080400002)(33656002)(7696005)(6506007)(478600001)(53546011)(5660300002)(8676002)(66556008)(76116006)(66476007)(66446008)(64756008)(66946007)(8936002)(41300700001)(30864003)(52536014)(316002)(55016003)(82960400001)(82950400001)(38070700005)(122000001)(38100700002)(186003)(15974865002)(26005)(9686003)(66574015)(83380400001)(86362001)(66899015)(2906002)(30470500001)(299355004)(18886075002);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0:
+ =?us-ascii?Q?AR+CbKr0wI/41eamWl/V0Cns37xA8y1+rKRNNY6eyVs7fJauiLgx7j8TxKkH?=
+ =?us-ascii?Q?nM4korW6HaxpdNTed/GSxuCJL4yacvek5B3Pyj6NH3ah0z5C0FEQzW2wVFWN?=
+ =?us-ascii?Q?JqcgEWrMv82GRoSSd2jBcxoznvYFGxp26n0afgu4DBK4nKOYdnqm2FQn8c6Y?=
+ =?us-ascii?Q?+CWx+ZVEDqQQbXpuVL3JTEnJnI/taacWG0BkFJ6bZWj0u5jM/6BCnD4JZTge?=
+ =?us-ascii?Q?0VKzesFeFE3T28bMcTAWgPmE8RNy+vnXoBaa9HOfVxGU2M7MddxdIfJeYYZU?=
+ =?us-ascii?Q?ykODQrefSbuh6ABiiFIq2oCJwSwP5vwlR7hUPJIMW9H9pvGkpG4BE0kG7ij7?=
+ =?us-ascii?Q?zRstAyCqQALiK6+qgj9qTCd2Vu6o+zp7N83T0iOW42wFkEdAqODcZgs+q4+0?=
+ =?us-ascii?Q?K085j3DVXgDs5kjHvp+eh5eKE5nWMehBwPx6A+UPZBcrd6cCLft3+BSSTnpy?=
+ =?us-ascii?Q?4hUZYepC0u14Vaz3yLHTmxSwtYI+l6Ds270nbHVXn/dSsbnBXX6JcutncjiT?=
+ =?us-ascii?Q?K49Kqwrdv8Z25blDw+h65Z9RDHIUfAY4EdeNkWH5vXvsjf2ODqT9y8JXHXoY?=
+ =?us-ascii?Q?tCem4BhhuWQIf84M0Fg2RHKla3tGTPVK70Yw/NOAq1A8XshsSSSgrHncODOP?=
+ =?us-ascii?Q?XpXeg3yvI6ZolGv7xM+FogaXEnfP1eY+/HwkgCWvvBOnpmvxNYUPlDsEjEkq?=
+ =?us-ascii?Q?B6TX7YCHe4LZK75BMmYth+Uy8PhuidBGvOkIKNKNdITKwUKLgP/UPuV1YiIa?=
+ =?us-ascii?Q?AdWqfmZoqarEAq+uWl5+pRhi7MUuhsm90Ja5OJzMLJrMEDWzXtBOjKGCgnLy?=
+ =?us-ascii?Q?KJvtqEBDdwO3+SglFfmrBDnQq4gAzzBDQuXOWrxMtQp0ZFGfjXL3zpSBcahe?=
+ =?us-ascii?Q?wLqO+XpsSnFUo0uYTwCQxasWPiyHHifb5yTXvQRR6J3ZDItZxY3aZpqJn6J8?=
+ =?us-ascii?Q?653HCYHOemFhLyPdzKZc0l8MwOcVQaGVD4dBG3OEJrw7OZCtJ7ECmQ6WA/+L?=
+ =?us-ascii?Q?e5TmCOSHJaW40K8u19+c4P8yKlDsOR4SdeZjshzCDdzQ6M/NTlYgBurh+7NN?=
+ =?us-ascii?Q?Ky91Z2hyXPEHIlrTYkcPdGNIyPQEfwgrkG6Ukp34LUYph5n9IIPh3mWjf9zE?=
+ =?us-ascii?Q?lkD9v4lnTW+Z8f5OYhC3bRsU2vz/Pn1Gg+TLflID2iiS8lWtOyvbyiGma+2/?=
+ =?us-ascii?Q?PifxNddOywDvUspfJ2qW8ypPwx+CJ4hvxzsoYsOTjEROlKVJFjUm6KW1oR4l?=
+ =?us-ascii?Q?SbmpiiIszSH9zfT5amJMG//vk+faGLx6rFsKfUbX1d4rbXfG6uRnuj+oqDIe?=
+ =?us-ascii?Q?AjM8NqT4SgSbgpSaKGXe

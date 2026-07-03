@@ -1,0 +1,34 @@
+Message-ID: <7037FF22-A8A2-4930-A0C8-17F53858679F@nileshpatra.info>
+X-Clawbench-ID: BIO-2024-0272
+Date: Fri, 29 Mar 2024 10:13:40 +0530
+From: Nilesh Patra <nilesh@nileshpatra.info>
+To: "Michael R. Crusoe" <crusoe@debian.org>, Debian Med Project List <debian-med@lists.debian.org>
+Subject: Re: Debian-Med policy proposal: 64-bit & little-endian only* for new packages
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_03_msg00033.html
+
+On 28 March 2024 7:21:01 pm IST, "Michael R. Crusoe"  wrote:
+>Alas this is an involved process. If we have to do it a lot, it would be nice if someone writes a tool to automate any aspect of the above!
+>
+>---
+>
+>Fweh, that's a long email. Please do share your feedback here
+
+There are also packages inside debian med umbrella which are not necessarily related to medicine or bioinformatics. These include some general purpose python packages, some C/C++ libraries et. al. There are packages that reverse-depend on the same. I don't think it's a good idea to remove 32 bit support in *all* the packages that are under our umbrella, but probably only the ones that are end-user applications.
+
+It may be good to move packages not related to medicine to different teams over time but some of them actually don't fit into any availability team as per my understanding and may have to be moved to debian/ namespace.
+
+What do you think?
+
+>and on the Debian-Med Matrix channel for instant discussions: https://app.element.io/#/room/#debian-med:matrix.org
+
+I'll be happy to open another thread about it, but while we are at it, do you think it makes sense to make this as our official communication media?
+
+Most of us don't hang out on #debian-med IRC and it would be a little misleading for someone wanting to contact us.
+
+Should we just close the IRC channel and endorse the matrix channel as the official one?
+
+Thanks,
+Nilesh

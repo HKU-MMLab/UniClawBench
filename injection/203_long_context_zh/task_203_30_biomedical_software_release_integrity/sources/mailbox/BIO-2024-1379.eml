@@ -1,0 +1,45 @@
+Message-ID: <YWiRCqmKUXIZHM76@an3as.eu>
+X-Clawbench-ID: BIO-2024-1379
+Date: Thu, 14 Oct 2021 22:20:26 +0200
+From: Andreas Tille <andreas@fam-tille.de>
+To: Nilesh Patra <nilesh@tchncs.de>
+Subject: Re: Autopkgtest fails in new version of shasta
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00060.html
+
+Hi,
+
+Am Fri, Oct 15, 2021 at 01:12:01AM +0530 schrieb Nilesh Patra:
+> > It ran fine today, so it looks like you beat me to fixing it.
+> >
+> > Unfortunately my faculty now blocks connections via the SMTP port, so email communications are more difficult. That is, until I set up a method around it.
+>
+> Damn, what a mess :/
+
+I just chatted with Nilesh today about a private virtual server which I'm
+using for my mail. ;-)
+
+> > Is there anything outstanding that you would like me to look at? node-destroy still needs uploading
+
+Shiny, shiny and shiny. ;-)
+
+> (from a month ago). Other than that, this weekend looks much more free for me.
+>
+> node-destroy has 50ish lines of code, and this looks something that FTP masters will not accept, see here[1]
+> They sent out an email to instead embed a node package if it is too small -- this was due to ever increasing javascript
+> in the archive. I can't seem to locate the exact email now though.
+>
+> I guess your target package is also javascript right? Just follow the same link for embedding it in.
+
+I guess all these are proconditions for shiny.
+
+Kind regards
+
+      Andreas.
+
+> [1]: https://wiki.debian.org/Javascript/GroupSourcesTutorial#When_is_it_recommended_to_embed_a_node_module.3F
+
+--
+http://fam-tille.de

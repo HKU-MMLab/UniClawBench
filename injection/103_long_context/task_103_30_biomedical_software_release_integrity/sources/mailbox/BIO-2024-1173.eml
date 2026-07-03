@@ -1,0 +1,26 @@
+Message-ID: <b18bd5c3a299ee88935a48597f610e82197bcbb7.camel@igh.cnrs.fr>
+X-Clawbench-ID: BIO-2024-1173
+Date: Mon, 29 Nov 2021 21:15:48 +0100
+From: Patrice Duroux <patrice.duroux@igh.cnrs.fr>
+To: debian-science@lists.debian.org
+Subject: interested in another equational theorem prover?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_11_msg00122.html
+
+Hi,
+
+I am neither a DM nor any mentor student but I have tried to start working on
+packaging the following:
+https://www.eprover.org/ or https://github.com/eprover/eprover
+
+My first attempt is here on Salsa:
+https://salsa.debian.org/Peutch-guest/eprover
+
+Is this interesting?
+(before going further with RFP/ITP, etc.)
+
+
+Cheers,
+Patrice

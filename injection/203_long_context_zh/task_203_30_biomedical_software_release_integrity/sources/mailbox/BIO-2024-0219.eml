@@ -1,0 +1,133 @@
+Message-ID: <20221012095417.t5qq4dqwsgdsakqw@nileshpatra.info>
+X-Clawbench-ID: BIO-2024-0219
+Date: Wed, 12 Oct 2022 15:24:17 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: James Bonfield <jkb@sanger.ac.uk>
+Subject: Re: [Help] New version of htslib does not build [EXT]
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00042.html
+
+Hi James,
+
+On Wed, Oct 12, 2022 at 09:47:04AM +0100, James Bonfield wrote:
+> On Wed, Oct 12, 2022 at 01:30:40AM +0530, Nilesh Patra wrote:
+> > On Thu, Oct 06, 2022 at 01:59:23AM +0000, John Marshall wrote:
+> > > If you omitted these internal symbols, there would be no problem. I believe upstream's attitude would be that these particular symbols are not declared in htscodecs's installed public header files, so they are unusable unless the user cheats by making their own declarations, so they are not meaningfully part of either htscodecs's API or ABI. So they should not be listed in a symbols file.
+> > >
+> > > These two views are of course unreconcilable.
+> >
+> > Unfortunately yes, and dpkg-gensymbols generates them and takes a diff despite them being internal/private symbols.
+>
+> I have a question regarding dpkg-gensymbols. Is it that blinkered and
+> hard-line that it absolutely blocks a build, or is this purely
+> guidance for the package maintainer?
+
+dpkg-gensymbols works on a debian/*.symbols file which lists all the ABI
+symbols that a package contains. dpkg-gensymbols generates a symbols list
+of its own and tries to take a diff with the symbols file provided and check
+if they match or not.
+
+The symbols file in the debian/ directory is upto the maintainer to add.
+If it is not present, none of this would happen.
+
+> Does it have the ability to
+> specify a whitelist of known symbols, which can be written once and
+> then you're only notified when something new appears?
+
+Yes, that is the way it happens. We add in this symbols file because there
+are upstream projects that break the ABI without bumping SOVERSION, even in
+patch releases (!!)
+So this is the whole point of adding in that file. Another take is to
+also check which new symbols got added in new version.
+
+In case of htscodecs it broke the build because your new version added in
+AVX2/AVX512/SSSE3 etc. specific symbols which were not present in previous
+versions.
+These symbols (i.e. symbols above arch baseline) have been marked optional
+for now, so they don't choke on machines where this is not present.
+
+> Note I am upstream for htscodecs.
+
+Hello! and thanks John for getting this into upstream's radar.
+
+> I decided it's just less hassle to
+> subscribe and have the conversation here than deal with the potential
+> fall-out later on.  Yes, this is a small dig - upstream usually want
+> to hear of things much earlier, and to *engage via proper channels*
+> such as github issues.  It's simply less problematic than finding out
+> a local patch had been applied later on, some of which have previously
+> broken things, such as where we once had internal functions of htslib
+> made external by a distribution due to some buggy 3rd party tool that
+> was trying to access things it shouldn't have been.
+>
+> If John hadn't nipped this in the bud, we'd have seen another case of
+> a distro breaking code without ever asking upstream about it.  PLEASE
+> consider this a request to engage with the tool authors earlier.
+
+I agree with you. But I'd like to give you a bit more context.
+We are a few volunteers working in 1000+ packages just in the med team
+well.... err, even more if you add in a few more teams where we are involved.
+
+And it becomes humanely impossible to engage with upstream for each and every
+patch and each and every issue. We all are volunteers and have limited availability.
+
+While I don't mean to say that engaging with upstream is something we should't be
+doing -- we absolutely should be involved. But I hope this helps you understand
+the wider picture a little better.
+
+> If
+> they ignore you, then fine, but don't just assume you know best.
+
+I believe you understand your codebase much better than I do, so
+this was never an assumption at my end.
+
+> > > They were reconciled in htslib by upstream implementing symbol visibility and hiding the internal global symbols.
+> > > You may wish to suggest to upstream htscodecs that they may wish to implement symbol visibility in libhtscodecs.so too.
+> >
+> > Hmm, I agree. But I think it'd be a little hard to convince upstream from my side, as to ask them
+> > to do extra work, which is lowkey un-necessary at their end but useful for the debian package.
+> For what it's worth, it *may* be relatively straight forward, but I'd
+> need to work out how best to fit it into an autoconf generated build
+> system.  You must have faced this thousands of times over as there are
+> many more libraries out there, so any guidance you have for the path
+> of least resistance would be most welcome.
+
+Honestly, I have not seen many library-only packages providing AVX based optimizations.
+Usually it is binary packages doing so, where there are no symbols file involved because
+there is no library.
+
+In other cases, I mark this optional. My guess is if you could hide in these symbols
+by marking this as private, that could help.
+
+I have added in @Etienne in case he has seen such libs earlier and would have some input.
+
+> > > [1] https://github.com/samtools/htscodecs/pull/63
+> > > [2] On 32-bit ARM a patch like [1] would be warranted. Or you may prefer to leave Neon suppressed on 32-bit ARM until a future upstream release includes something like that PR.
+> >
+> > This is what is currently being done with the latest upload, so I hope everything is sorted for now.
+>
+> Is https://salsa.debian.org/med-team/htscodecs/-/tree/master/debian
+> the best spot to see what's happening here?
+
+Yep. More specifically the change we are talking about is being done in the debian/rules file, here:
+
+	https://salsa.debian.org/med-team/htscodecs/-/blob/master/debian/rules#L27
+
+> I see a patch to add -lm to linking (link_with_libm).  Why was this
+> never reported upstream?
+
+Michael added in that patch, and he probably missed to do so. And then nobody
+took notice of this later.
+
+That said, I understand that this might not have been a good answer to all your questions,
+and I am sorry about that. But I hope to have addressed some of these well.
+Also I would like to point out that not all upstream projects are as quick as you to respond
+and react to patches, so things keep falling behind sometimes.
+
+Thanks for your work on htscodecs,
+
+--
+Best,
+Nilesh

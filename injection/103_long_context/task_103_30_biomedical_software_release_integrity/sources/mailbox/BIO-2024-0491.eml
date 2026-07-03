@@ -1,0 +1,44 @@
+Message-ID: <Y3/jijdg5RSQ6CIV@fusion>
+X-Clawbench-ID: BIO-2024-0491
+Date: Thu, 24 Nov 2022 22:35:06 +0100
+From: Étienne Mollier <emollier@emlwks999.eu>
+To: Andreas Tille <andreas@an3as.eu>
+Subject: Re: python3-biopython: incompatible with muscle >= 5
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_11_msg00093.html
+
+Hi all,
+
+Andreas Tille, on 2022-11-24:
+> Am Thu, Nov 24, 2022 at 06:58:04PM +0100 schrieb Étienne Mollier:
+> > Thanks for the upload, I further adjusted the muscle wrapper so
+> > it would catch the muscle3 binary if it finds it in the path, as
+> > I see your new package provides the executable /usr/bin/muscle3.
+> > If no such executable is available, the default switches to
+> > plain muscle.  In any case it is possible for a user of the
+> > biopython wrapper to enforce a given executable name by setting
+> > the cmd argument of the constructor.  Changes are available in
+> > the muscle3 patch[2] on salsa.  I'm hopeful to upload biopython
+> > 1.80 to experimental this evening.
+>
+> This sounds all very sensible.  Thanks a lot
+
+This is also all very experimental.  ;)
+
+python-biopython 1.80 is uploaded to experimental and should
+build soon[1], if this is not the case already.  I haven't had a
+lot of opportunities to extensively test interactions between
+muscle3 and 5; I guess the situation will be clearer when
+muscle3 makes it through NEW.  It would be nice that people
+using biopython and muscle give this a try as early as possible.
+
+[1]: https://buildd.debian.org/status/package.php?p=python-biopython&suite=experimental
+
+Have a nice day,  :)
+--
+Étienne Mollier
+Fingerprint:  8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+Sent from /dev/pts/2, please excuse my verbosity.
+On air: Martin Orford - Out in the Darkness

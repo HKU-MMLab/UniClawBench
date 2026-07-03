@@ -1,0 +1,42 @@
+task_id: task_202_25_painting_crop_provenance
+category: 202_exploration_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  一位朋友发给我这张某幅画作的裁剪特写，没有任何说明文字，我
+  很想知道它究竟是什么、原作藏在哪里，这样我就能去亲眼看看
+  它。图片在这里：
+
+      /tmp_workspace/clawbench/sources/crop.jpg
+
+  它只是一处内部细节——标题、签名和画框都不在
+  裁剪范围内——所以请仅凭图像本身识别这幅画作，然后将它
+  追溯回权威来源。
+
+  请告诉我：
+  - 画作的标题和艺术家，
+  - 大致的创作年代，
+  - 哪家博物馆收藏它，以及它的编目/入藏记录（博物馆自己的
+    页面或藏品 API，而非第三方复制品），
+  - 如果有的话，博物馆的对象 id / 入藏编号。
+
+  把你的结论和支撑证据（你是如何识别它的，以及
+  你追溯到的规范博物馆记录 URL）保存到
+  `/tmp_workspace/results/painting_provenance.json`，并把任何笔记/截图
+  放在 `/tmp_workspace/results/` 下。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+sources:
+  - crop.jpg
+
+codex:
+  max_user_followups: 2

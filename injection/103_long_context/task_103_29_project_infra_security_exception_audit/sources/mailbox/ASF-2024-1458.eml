@@ -1,0 +1,44 @@
+Message-ID: <CALK=YjPrSE-BpYqHw31DXbfUx_7h0D_VsO-kNKy+FiRoEgjb=Q@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1458
+Date: Tue, 9 May 2023 14:01:54 -0400
+From: Eric Covener <covener@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: Fwd: [apache/httpd] don't forward invalid query strings (d78a166)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-05.mbox
+
+On Tue, May 9, 2023 at 11:51 AM Ruediger Pluem <rpluem@apache.org> wrote:
+>
+>
+>
+> On 5/9/23 4:33 PM, Yann Ylavic wrote:
+> > On Tue, May 9, 2023 at 2:10 PM Yann Ylavic <ylavic.dev@gmail.com> wrote:
+> >>
+> >> On Tue, May 9, 2023 at 12:55 PM Ruediger Pluem <rpluem@apache.org> wrote:
+> >>>
+> >>> On 5/9/23 12:16 PM, Eric Covener wrote:
+> >>>> Still getting feedback in the PR about breakage. Any thoughts on options here, like allowing spaces or encoding rather than failing?
+> >>>
+> >>> Allowing spaces is out of question for me as it creates an invalid request and opens the door to response splitting. At best we
+> >>> could encode automatically. It is really a good question if we could not make BCTLS the default.
+> >>
+> >> BCTLS by default looks fine to me, it changes the behaviour for users
+> >> that (used to) expect/handle decoded spaces in the query-string in
+> >> their scripts, but it's blocked now anyway..
+> >
+> > Hm, actually we don't really know where the backref is placed (either
+> > in the uri-path or in the query-string), so escaping unconditionally
+> > might lead to double-escaping in the uri-path. Maybe it's simpler to
+> > remove the check and leave it to mod_proxy only..
+>
+> Do we have an example config where this currently breaks that does not forward it to a proxy backend?
+
+>From some of the GH activity, I think there is some mod_proxy_fcgi
+sending to FPM and PHP. In this case the query is in an environment
+variable.
+
+Are spaces over proxy_http really that much of a smoking gun? Wouldn't
+any smuggling/splitting/desynch already be fatal if it's in the
+request line? It can't be terminated early if we only allow spaces.

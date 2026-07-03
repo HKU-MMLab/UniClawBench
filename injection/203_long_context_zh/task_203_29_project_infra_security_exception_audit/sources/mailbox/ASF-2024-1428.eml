@@ -1,0 +1,25 @@
+Message-ID: <ZV+O8jY66F5Qgvye@homeworld.netbsd.org>
+X-Clawbench-ID: ASF-2024-1428
+Date: Thu, 23 Nov 2023 17:42:10 +0000
+From: Emmanuel Dreyfus <manu@netbsd.org>
+To: dev@apr.apache.org, dev@httpd.apache.org
+Subject: Re: mod_dav_fs locking / Re: apr_dbm and concurrency
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-11.mbox
+
+On Thu, Nov 23, 2023 at 05:36:06PM +0000, Joe Orton wrote:
+> 3) in the mean time I worked up a PR for mod_dav_fs which adds a global
+> mutex around the dbm lockdb use. This passes my stress tests for the
+> first time.
+
+How concurent is the stress test?
+
+In the past, I have been badly hurt by a few WebDAV clients proactively
+exploring the filesystem using locksdiscovery. That compeltely killed the
+service. I introduced the DavLockDiscovery directive to work it around.
+
+--
+Emmanuel Dreyfus
+manu@netbsd.org

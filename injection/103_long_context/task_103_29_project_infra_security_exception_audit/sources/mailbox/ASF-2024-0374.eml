@@ -1,0 +1,46 @@
+Message-ID: <061b7ac4-a3c6-8954-c6a8-ca260d816fc7@apache.org>
+X-Clawbench-ID: ASF-2024-0374
+Date: Thu, 6 Oct 2022 16:34:22 +0200
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: friends of mod_proxy
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-10.mbox
+
+On 10/6/22 4:20 PM, Stefan Eissing via dev wrote:
+> Friends of mod_proxy, I have a question:
+>
+> In <https://github.com/icing/mod_h2/issues/235> someone reported wrong connection reuse for a config like:
+>
+> ProxyPassMatch ^/(prod|dev)/([-a-z0-9]+)/(.*)$ h2://$2.internal/$1/$2/$3 enablereuse=on keepalive=on
+>
+> Leaving aside the issue that such a pattern is insecure due to the client influencing the hostname, the fact remains that mod_proxy_http2 will use a previous connection, even if the matched hostname is different. I replicated that, using "just" ports in a test case:
+>
+> ProxyPassMatch ^/h2proxy/([0-9]+)/(.*)$ h2c://127.0.0.1:$1/$2 enablereuse=on keepalive=on
+>
+> Then
+> 1. /h2proxy/5002/hello.py
+> 2. /h2proxy/5004/hello.py
+>
+> results in 2) re-using the connection of 1). The log file says for 2):
+>
+> [proxy:debug] proxy_util.c(2538): AH00942: H2C: has acquired connection for (127.0.0.1:80)
+> [proxy:debug] proxy_util.c(2596): [remote 127.0.0.1:60121] AH00944: connecting h2c://127.0.0.1:5004/hello.py to 127.0.0.1:5004
+> [proxy:debug] proxy_util.c(2819): [remote 127.0.0.1:60121] AH00947: connected /hello.py to 127.0.0.1:5002
+> [proxy_http2:trace1] mod_proxy_http2.c(374): [remote 127.0.0.1:60121] H2: determined connect to 127.0.0.1:5002
+> [proxy:trace2] proxy_util.c(3101): H2C: reusing backend connection 127.0.0.1:60120<>127.0.0.1:5002
+>
+> and that looks wrong.
+>
+> Question: do we have a bug or do we consider such ProxyPassMatch as broken and require at least enablereuse=off?
+
+Depends on your point of view :-). As you state such setups can be considered unsafe in general, but maybe we should set
+enablereuse=off implicitly if we detect a $ in the host or port component or we should reject them completely.
+But I guess enablereuse=off is more backwards compatible.
+If you still need to reuse connections for such cases you can still use RewriteRules and appropriate <Proxy blocks.
+
+Regards
+
+Rüdiger

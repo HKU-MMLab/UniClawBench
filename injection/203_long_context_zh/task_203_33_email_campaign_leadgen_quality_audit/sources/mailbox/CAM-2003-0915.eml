@@ -1,0 +1,28 @@
+Message-ID: <20020902204053.GD15737@kluge.net>
+X-Clawbench-ID: CAM-2003-0915
+Date: Mon, 02 Sep 2002 16:40:53 -0400
+From: Theo Van Dinter <felicity@kluge.net>
+To: Justin Mason <yyyy@spamassassin.taint.org>
+Subject: Re: [SAdev] SpamAssassin v2.40 released (finally)!
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01425.c6c34c1234e8b04e01326868202110fd
+
+On Mon, Sep 02, 2002 at 06:53:24PM +0100, Justin Mason wrote:
+>   - Razor v2 now supported fully
+
+Hmmm...  I just upgraded from my modified 2.31 to a slightly modified 2.40
+(I add a routine to EvalTests) and get:
+
+Sep  2 15:32:24 eclectic spamd[20506]: razor2 check skipped: No such file or directory Can't call method
+"log" on unblessed reference at /usr/lib/perl5/site_perl/5.6.1/Razor2/Client/Agent.pm line 211, <STDIN>
+line 22.
+
+I haven't quite figured out why yet, more to come.
+
+--
+Randomly Generated Tagline:
+"So on one hand, honey is an amazingly sophisticated and efficient food
+ source. On the other hand it's bee backwash."
+             - Alton Brown, Good Eats, "Pantry Raid IV: Comb Alone"

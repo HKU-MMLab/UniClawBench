@@ -1,0 +1,63 @@
+Message-ID: <YYKzPKfiY3Hqo3il@an3as.eu>
+X-Clawbench-ID: BIO-2024-1378
+Date: Wed, 3 Nov 2021 17:05:16 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-science@lists.debian.org
+Subject: Re: Science Subgroups [was Re: Debian Math Team]
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_11_msg00024.html
+
+Hi,
+
+Am Wed, Nov 03, 2021 at 03:41:43PM +0530 schrieb Nilesh Patra:
+> I could agree that there will initially be a few people looking after, but I do expect
+> this team to grow, like several other teams in Debian have too. Maybe Andreas could give
+> better pointers here.
+
+Since my name was mentioned here:  I hope I gave sufficient pointers
+in this discussion. ;-)
+
+> I think this is repeating the same argument made above again, that we've fewer people,
+> I'd simply say that many active people in other blends projects (like -med, -science et. al.) are also
+> involved here, and there are good chances that it grows with time.
+> I can very well understand your fears that some of our packages undergo bitrot, but then I've two thinsg to point at.
+
+Always if I meet Matthias Klose I expects me to care for better quality
+of Debian Science packages.  I usually defend this "generic" blaming of
+Debian Science in general but yes, he has a point.  Since Debian Science
+maintains a lot of packages and also quite complex ones there is always
+a number of packages that has issues.  "Outsiders" of the Debian Science
+team have a different view on this as we who know these issues.  So my
+hope is that a Debian Math team will not raise that signal for people
+like Matthias and others.
+
+> First, its not like the science team has all packages in excellent condition - from my experience of contributing in the science
+> team for around two years, I've found several packages lying around, broken. It's not an opinion, its a fact UDD and bug tracker
+> show proofs. I'm not pointing fingers at anyone here, please assume my best of intentions here.
+> Second, having a separate team with dedicated set of people working on it can make the condition better. In the best case,
+> we will see nice QA, in the worst case, I don't expect stuff to change drastically.
+
+I fully agree.
+
+> Again, please consider good intention here.
+
+This is by our code of conduct. ;-)
+
+> > We should remember that having blends packages, blends web pages and
+> > informative wiki pages are completely independent of having a defined team with
+> > separate VCS and mailing list. All that needs is one or more people to curate
+> > them.
+>
+> That's correct. I talked with Andreas yesterday on the debian-med bi-weekly call, and
+> tasks for math packages should be done soonish :)
+
+I just wanted to work on it right now ... but now I had to answer mails first! ;-)
+
+Kind regards
+
+      Andreas.
+
+--
+http://fam-tille.de

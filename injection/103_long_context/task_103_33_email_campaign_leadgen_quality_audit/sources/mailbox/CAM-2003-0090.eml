@@ -1,0 +1,23 @@
+Message-ID: <33038.194.125.220.138.1030489896.squirrel@spamassassin.taint.org>
+X-Clawbench-ID: CAM-2003-0090
+Date: Wed, 28 Aug 2002 00:11:36 +0100
+From: Justin Mason <yyyy@spamassassin.taint.org>
+To: quinlan@pathname.com
+Subject: Re: [SAdev] SpamAssassin POP3 proxy
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01335.7ea8fb1b5cbb5f10d5e59ce2dffbe2d6
+
+> I would be in favor of creating new SpamAssassin CVS modules and
+> Bugzilla categories for other clients (provided there is sufficient
+> interest and a maintainer).
+
+yeah, I'd be with that -- as long as they have a maintainer ;)
+
+however regarding CVS, I'd say many projects might find it easier
+to just sign up as a new proj with sf.net -- it might save them having
+to go through us (not sure, depends on what sf.net's procedures
+are like).
+
+--j.

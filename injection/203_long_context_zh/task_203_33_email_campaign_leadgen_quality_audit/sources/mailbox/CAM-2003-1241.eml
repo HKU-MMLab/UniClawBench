@@ -1,0 +1,34 @@
+Message-ID: <20020921233755.7D8D188D3A@belphegore.hughes-family.org>
+X-Clawbench-ID: CAM-2003-1241
+Date: Sat, 21 Sep 2002 16:37:55 -0700
+From: bugzilla-daemon@hughes-family.org
+To: spamassassin-devel@example.sourceforge.net
+Subject: [SAdev] [Bug 886] Add a rule to detect Content-type message/partial
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01498.e0d9701d1bf2798b86efb602a44d072b
+
+http://www.hughes-family.org/bugzilla/show_bug.cgi?id=886
+
+
+------- Additional Comments From jm@jmason.org  2002-09-21 16:37 -------
+I'd prefer to wait and see if spammers do anything about it.  my
+guess is they will not, as it'd mean modifying their spamware to
+send >1 msg per recipient.
+
+I vote WONTFIX as a result ;)
+
+
+------- You are receiving this mail because: -------
+You are the assignee for the bug, or are watching the assignee.
+
+
+-------------------------------------------------------
+This sf.net email is sponsored by:ThinkGeek
+Welcome to geek heaven.
+http://thinkgeek.com/sf
+_______________________________________________
+Spamassassin-devel mailing list
+Spamassassin-devel@lists.sourceforge.net
+https://lists.sourceforge.net/lists/listinfo/spamassassin-devel

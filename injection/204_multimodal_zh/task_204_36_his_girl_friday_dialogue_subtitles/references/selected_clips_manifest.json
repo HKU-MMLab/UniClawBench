@@ -1,0 +1,16 @@
+[
+  {
+    "slug": "his_girl_friday",
+    "title": "His Girl Friday",
+    "identifier": "his_girl_friday",
+    "clip_start_sec": 3840,
+    "clip_end_sec": 4320,
+    "duration_sec": 480,
+    "clip_video": "clip.mp4",
+    "resolution": [
+      640,
+      480
+    ],
+    "fps": 29.97
+  }
+]

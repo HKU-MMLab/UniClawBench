@@ -1,0 +1,30 @@
+Message-ID: <YzWackCAaD7JOcdQ@an3as.eu>
+X-Clawbench-ID: BIO-2024-0414
+Date: Thu, 29 Sep 2022 15:15:30 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: [Help] New version of htslib does not build
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_09_msg00049.html
+
+Hi,
+
+I tried to catch up with htslib since we are lagging behind two releases
+(counted from experimental - its three release in unstable).
+Unfortunately it does not build since the linker does not find some
+symbols ... despite these are inside libhts.a when grepping the strings
+output for it.  Interestingly the missing symbols are mentioned in some
+warnings higher up in the changelog![1]  Any idea what might be wrong
+here?
+
+Kind regards
+
+    Andreas.
+
+
+[1] https://salsa.debian.org/med-team/htslib/-/jobs/3315633
+
+--
+http://fam-tille.de

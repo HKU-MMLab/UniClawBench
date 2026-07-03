@@ -1,0 +1,66 @@
+Message-ID: <Yt1qqMbeJnpg8+Ac@fusion>
+X-Clawbench-ID: BIO-2024-0873
+Date: Sun, 24 Jul 2022 17:52:08 +0200
+From: Étienne Mollier <emollier@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: spades: truspades command deprecation since v3.15
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_07_msg00064.html
+
+Hi Nilesh,
+
+Nilesh Patra, on 2022-07-24:
+> On 7/24/22 12:55 PM, Étienne Mollier wrote:
+> >    * Is it still worth testing/fixing truspades, given that
+> >      getting it sorted does not look very obvious on first sight,
+> >      or should I just comment out truspades self-test in the
+> >      autopkgtest?
+>
+> If it is unsupported then it probably isn't worth our time either.
+
+Thank you for your suggestion, it makes sense.  In that case,
+I consider running the self-test, but just outputing a warning
+when the command fails them.
+
+> >    * Should I drop a NEWS item to notify end users?
+>
+> While it gives a warning, IMHO it still does not hurt to add in a NEWS entry to
+> notify the users.
+
+Current draft NEWS entry looks like the below; I'm sure there is
+room for improvement:
+
+-------8 Thanks for the report. truSPAdes is not maintained anymore for many reasons
+  > (the technology is dead, etc.), so these issues will likely be fixed in
+  > radical way when truSPAdes will be deprecated and removed
+
+  [1]: https://github.com/ablab/spades/issues/560#issuecomment-675915841
+
+  It is quite possible that the truspades version still provided by Debian Med
+  is not working well anymore.  At least it has been noticed that it failed its
+  self-test since version 3.15.5.  The test fails by not outputting the
+  assemble scaffolds file then supposed to be processed by the `bwa` program in
+  the sample workflow.
+
+  The command truspades will probably not make it beyond spades version 3.16.
+
+ -- Étienne Mollier   Sun, 24 Jul 2022 16:05:54 +0200
+------->8-------------->8-------------->8-------------->8-------
+
+I'm a bit concerned that there are no ways to replace the
+command by something else, but I assume truspades is going away
+for good reasons.
+
+> PS: I am not a user of the package, but only suggesting here.
+
+Neither am I a spades user, for the record.  I'm taker of
+further details on the topic if someone is from the field.
+
+Have a nice day,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  gpg: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/3, please excuse my verbosity
+   `-

@@ -1,0 +1,113 @@
+{
+  "task_id": "task_101_04_audio_transcript",
+  "difficulty": "Easy",
+  "schema": "b",
+  "schema_notes": "row-level expected values with accepted variants; content-level expected lists for decisions / action_items / open_questions",
+  "skills_declared": [
+    "openai-whisper-api"
+  ],
+  "ground_truth": {
+    "language": "en",
+    "min_cues": 1,
+    "max_cues": 30,
+    "duration_seconds_approx": 31,
+    "min_anchor_hits": 5,
+    "ordered_anchor_phrases": [
+      {
+        "canonical": "good morning team, quick standup",
+        "accepted": ["quick stand up"]
+      },
+      {
+        "canonical": "pagination refactor for the admin dashboard",
+        "accepted": ["pagination refactor", "admin dashboard"]
+      },
+      {
+        "canonical": "pull request is now in staging",
+        "accepted": ["shipped the pull request", "in staging"]
+      },
+      {
+        "canonical": "notification service latency bug",
+        "accepted": ["latency bug", "notification service latency"]
+      },
+      {
+        "canonical": "missing database index",
+        "accepted": ["database index"]
+      },
+      {
+        "canonical": "need access to the staging logs",
+        "accepted": ["staging logs", "access to the staging logs"]
+      },
+      {
+        "canonical": "next speaker please",
+        "accepted": ["next speaker"]
+      }
+    ],
+    "topic_dimensions": {
+      "agenda_progression": ["agenda", "first", "next", "follow up"],
+      "decisions_made": ["decided", "agreed", "approved", "let's go with"],
+      "action_items": ["I'll", "we'll", "owns", "by Friday", "due"],
+      "open_questions": ["unclear", "TBD", "still figuring out", "need to confirm"],
+      "speaker_dynamics": ["disagree", "concern", "push back", "support"]
+    },
+    "min_dimensions_covered": 5,
+    "min_disagreement_handling_clauses": 1,
+    "acceptable_disagreement_phrases": ["disagree", "concern", "push back", "no disagreement", "no concerns", "team aligned", "no pushback", "everyone aligned", "no objections"],
+    "expected_struct_state": {
+      "decisions": {
+        "expected_count": 0,
+        "explanation": "Audio is a single-speaker status update with no consensus moments; an empty array is the correct answer here. Items here must be supported by SRT-verifiable evidence."
+      },
+      "action_items": {
+        "min_count": 1,
+        "anchor_phrases": ["investigate", "look at", "needs to", "will", "i'll", "we'll", "going to", "by end of day", "today"],
+        "explanation": "The speaker mentions investigating the notification service latency bug today (≥1 action item). At least one item with quoted evidence supportable from the SRT is required."
+      },
+      "open_questions": {
+        "min_count": 1,
+        "anchor_phrases": ["unclear", "still figuring out", "need to confirm", "tbd", "need access", "blocked", "waiting on"],
+        "explanation": "There's at least one unresolved item flagged (e.g. needing access to staging logs)."
+      }
+    },
+    "expected_decisions": [],
+    "expected_decisions_note": "The standup is a single-speaker status update — no consensus / decision points are recorded in the audio. The correct value here is an empty array.",
+    "expected_action_items": [
+      {
+        "owner_canonical": "speaker",
+        "owner_accepted": ["i", "i'll", "the speaker", "me", "myself", "self"],
+        "task_canonical": "investigate the notification service latency bug",
+        "task_accepted": [
+          "investigate the latency bug",
+          "look at the notification service latency",
+          "look into the notification service latency",
+          "debug the latency",
+          "investigate the missing database index",
+          "fix the latency bug"
+        ],
+        "deadline_canonical": "today",
+        "deadline_accepted": ["today", "by end of day", "eod", null],
+        "evidence_anchor_canonical": "notification service latency bug",
+        "evidence_anchor_accepted": ["latency bug", "notification service latency", "missing database index"]
+      }
+    ],
+    "expected_open_questions": [
+      {
+        "question_canonical": "need access to the staging logs to confirm the missing database index",
+        "question_accepted": [
+          "needs access to the staging logs",
+          "blocked on staging logs access",
+          "waiting on staging logs access",
+          "missing index needs to be confirmed",
+          "unclear which index is missing without staging logs",
+          "need to confirm the missing database index"
+        ],
+        "evidence_anchor_canonical": "need access to the staging logs",
+        "evidence_anchor_accepted": ["staging logs", "access to the staging logs"]
+      }
+    ],
+    "content_match_policy": {
+      "case_insensitive": true,
+      "match_method": "substring_or_paraphrase",
+      "explanation": "For each expected_action_items[i] entry, the executor's standup_struct.json must contain ≥1 action_items entry whose `owner` matches owner_canonical or any owner_accepted variant (case-insensitive substring), AND whose `what` field matches task_canonical or any task_accepted variant (case-insensitive substring), AND whose `source_evidence_quote` contains evidence_anchor_canonical or any evidence_anchor_accepted variant (case-insensitive substring). Same shape applies to expected_open_questions[i]. Deadline is matched only if non-null in GT — null in GT means deadline_or_null may be null or any matching string variant. expected_decisions is empty so the executor's decisions array MUST be empty (or contain only items whose source_evidence_quote is independently verifiable in the SRT cue text)."
+    }
+  }
+}

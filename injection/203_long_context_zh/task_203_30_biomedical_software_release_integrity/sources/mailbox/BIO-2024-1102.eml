@@ -1,0 +1,50 @@
+Message-ID: <7664600744a526f3d18fa309c02f4fdf98d753eb.camel@tugraz.at>
+X-Clawbench-ID: BIO-2024-1102
+Date: Mon, 24 Oct 2022 21:20:21 +0200
+From: Martin Uecker <uecker@tugraz.at>
+To: Nilesh Patra <nilesh@debian.org>
+Subject: Re: BART 0.8.0
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00078.html
+
+Am Dienstag, den 25.10.2022, 00:41 +0530 schrieb Nilesh Patra:
+> Hello,
+>
+> On Mon, Oct 24, 2022 at 08:39:33PM +0200, Martin Uecker wrote:
+> > Hi Andreas and all,
+> >
+> > I updated the package and turned off some unit tests on
+> > i386 for now (and turned on other tests and made some
+> > other changes).
+> >
+> > If you or somebody else could sponser an upload, this
+> > would be great!
+>
+> Sorry for being lazy and not checking this for myself here, but does your
+> update also fix the recent release-critical bug against bart-view?
+>
+> 	https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1022324
+>
+> If so, please close this in changelog.
+
+No, this will additionally also require also
+an update of bart-view.
+
+> Also, salsa CI is failing the build pipeline,
+>
+> 	https://salsa.debian.org/med-team/bart-view/-/jobs/3422195
+>
+> this is not expected right?
+
+I am still working on the update of bart-view.
+But bart has to be updated first anyway.
+
+> Lastly, please consider to add in your new commit e-mail to your salsa profile so it
+> is easy to associate your account w/ your commits.
+
+I will update it.
+
+Best,
+Martin

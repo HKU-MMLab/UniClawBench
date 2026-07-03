@@ -1,0 +1,18 @@
+Message-ID: <ZFNpiEqjXxfnqcRz@redhat.com>
+X-Clawbench-ID: ASF-2024-0039
+Date: Thu, 4 May 2023 09:15:04 +0100
+From: Joe Orton <jorton@redhat.com>
+To: dev@httpd.apache.org
+Subject: Re: ci vs PR approvals? (was: [apache/httpd] Fix a possible NULL  pointer dereference in hook_uri2file (PR #355))
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-05.mbox
+
+On Wed, May 03, 2023 at 02:31:35PM -0500, Daniel Gruno wrote:
+> I am +1 on moving. I do not have any particular love for git or svn on their
+> own, and I realize that the proposed change does make outside contributions
+> and certain workflows easier.
+
++1 for the same reasons here. Might be better to call a formal VOTE
+thread on this with a clearer Subject.

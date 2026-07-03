@@ -1,0 +1,16 @@
+task_id: task_105_17_rag_web_review
+category: 105_cross_platform
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+recording: none
+headed: auto
+task: "You are a graduate student preparing to choose a paper reproduction topic. Your topic is grounding / attribution / citation quality in RAG, and you care most about whether it is worth spending one week on reproduction. Use only the browser and webpages to complete the following task: find a paper published in 2026 or later on a paper website whose topic is clearly related to RAG grounding / attribution / citation quality; then find its official or author-provided GitHub repository page, and collect the stars, open issues count, most recent code update time, and whether the README provides training or inference instructions.\n\nWrite the final conclusion to:\n\n    /tmp_workspace/results/rag_grounding_paper_review.md\n\nThe Markdown must include six top-level sections:\n- paper title\n- paper link\n- publication venue/year\n- repo link\n- repo activity summary\n- reproduction readiness judgment\n\nThe final conclusion must explicitly answer: \"Is it worth spending one week trying to reproduce: yes / no / maybe\", and give a reason of no more than 120 words. Do not only write a summary, and do not choose a pure generation paper unrelated to general RAG retrieval.\n"
+codex:
+  max_user_followups: 2
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json

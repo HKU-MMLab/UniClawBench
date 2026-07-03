@@ -1,0 +1,389 @@
+{
+  "task_id": "task_104_09_veritasium_top5_science_popular",
+  "snapshot": {
+    "utc": "2026-04-23T01:42:41Z",
+    "local": "2026-04-23T09:42:41+0800 CST",
+    "platform": "YouTube",
+    "note": "Score against this fixed snapshot. Reported views may drift later, but the canonical video set and snapshot counts below are the grading anchor."
+  },
+  "channel": {
+    "name": "Veritasium",
+    "url": "https://www.youtube.com/@veritasium/videos",
+    "collection_method": "Channel /videos tab snapshot sorted by visible current views at capture time."
+  },
+  "snapshot_top5_exact_order": [
+    {
+      "rank": 1,
+      "video_id": "uxPdPpi5W4o",
+      "title": "Why Are 96,000,000 Black Balls on This Reservoir?",
+      "views": 110273106
+    },
+    {
+      "rank": 2,
+      "video_id": "4Wrc4fHSCpw",
+      "title": "These are the asteroids to worry about",
+      "views": 80580076
+    },
+    {
+      "rank": 3,
+      "video_id": "AeJ9q45PfD0",
+      "title": "World's Lightest Solid!",
+      "views": 62024160
+    },
+    {
+      "rank": 4,
+      "video_id": "2OSrvzNW9FE",
+      "title": "Backspin Basketball Flies Off Dam",
+      "views": 60195787
+    },
+    {
+      "rank": 5,
+      "video_id": "AF8d72mA41M",
+      "title": "Why It Was Almost Impossible to Make the Blue LED",
+      "views": 49050522
+    }
+  ],
+  "canonical_videos": [
+    {
+      "rank": 1,
+      "video_id": "uxPdPpi5W4o",
+      "title": "Why Are 96,000,000 Black Balls on This Reservoir?",
+      "url": "https://www.youtube.com/watch?v=uxPdPpi5W4o",
+      "view_snapshot": {
+        "views": 110273106,
+        "display": "110,273,106"
+      },
+      "core_question": {
+        "canonical": "Why were 96 million black shade balls placed on the Los Angeles reservoir?",
+        "allowed_synonyms": [
+          "why are black balls floating on the reservoir",
+          "what are the shade balls for",
+          "why did they cover the reservoir with black plastic balls",
+          "why are there millions of black balls on this reservoir"
+        ]
+      },
+      "key_stages": [
+        {
+          "canonical": "The video shows Derek on the reservoir among the shade balls and frames the common evaporation explanation.",
+          "allowed_synonyms": [
+            "boat / on-site reservoir demonstration",
+            "standing among the shade balls",
+            "explaining the initial evaporation hypothesis"
+          ]
+        },
+        {
+          "canonical": "The video explains that sunlight plus bromide / chlorine chemistry can create bromate in the water.",
+          "allowed_synonyms": [
+            "sunlight can create bromate",
+            "blocking light prevents bromate formation",
+            "water-treatment chemistry problem",
+            "bromide + chlorine + sunlight issue"
+          ]
+        },
+        {
+          "canonical": "The video contrasts water-quality protection with secondary benefits like reduced evaporation and keeping birds away.",
+          "allowed_synonyms": [
+            "evaporation is not the whole story",
+            "bird deterrence is secondary",
+            "multiple benefits but chemistry is the main reason"
+          ]
+        }
+      ],
+      "conclusion": {
+        "canonical": "The main reason for the shade balls is blocking sunlight to suppress bromate formation and protect water quality; reducing evaporation and deterring birds are secondary benefits.",
+        "allowed_synonyms": [
+          "they are mainly there to block sunlight and stop bromate, not just to reduce evaporation",
+          "the real reason is water chemistry / water safety",
+          "they protect the reservoir from sunlight-driven contamination while also helping with evaporation"
+        ]
+      },
+      "counterintuitive": {
+        "expected": true,
+        "why": "Most viewers guess the balls are mainly for evaporation, but the video emphasizes water-quality chemistry as the key reason."
+      },
+      "intuition_vs_truth": {
+        "canonical": "Intuition: the balls are mainly to stop water from evaporating. Truth: the key purpose is to block sunlight and reduce bromate formation in treated water.",
+        "allowed_synonyms": [
+          "intuition says evaporation; truth says water chemistry",
+          "looks like an evaporation hack, but it is really about preventing bromate"
+        ]
+      },
+      "uncertainty": []
+    },
+    {
+      "rank": 2,
+      "video_id": "4Wrc4fHSCpw",
+      "title": "These are the asteroids to worry about",
+      "url": "https://www.youtube.com/watch?v=4Wrc4fHSCpw",
+      "view_snapshot": {
+        "views": 80580076,
+        "display": "80,580,076"
+      },
+      "core_question": {
+        "canonical": "Which asteroids are actually the dangerous ones we should worry about, and why?",
+        "allowed_synonyms": [
+          "which asteroids pose the real impact threat",
+          "what kind of asteroid is most dangerous",
+          "what should planetary defense focus on",
+          "which near-earth asteroids matter most"
+        ]
+      },
+      "key_stages": [
+        {
+          "canonical": "The video compares asteroid risk using size, impact damage, and how likely we are to detect an object early enough.",
+          "allowed_synonyms": [
+            "risk depends on both size and detectability",
+            "not just impact energy but whether we can see it coming",
+            "planetary-defense framing"
+          ]
+        },
+        {
+          "canonical": "It discusses why some objects can be practically more worrying than the largest known asteroids if they are harder to track or discover in time.",
+          "allowed_synonyms": [
+            "unknown / poorly tracked asteroids are the practical problem",
+            "hard-to-detect asteroids matter more than famous giant ones",
+            "the danger is missing one until late"
+          ]
+        },
+        {
+          "canonical": "The video frames asteroid risk as a detection-and-warning problem rather than only a 'biggest asteroid wins' problem.",
+          "allowed_synonyms": [
+            "finding them early is the key defense issue",
+            "planetary defense is mostly about detection",
+            "warning time matters as much as size"
+          ]
+        }
+      ],
+      "conclusion": {
+        "canonical": "The asteroids to worry about are not simply the biggest known ones; the practical danger comes from damaging objects that we still might miss or discover too late, so detection and tracking are central.",
+        "allowed_synonyms": [
+          "the real threat is the asteroid we have not found in time",
+          "mid-size / hard-to-detect asteroids can be more practically dangerous than giant famous ones",
+          "the key issue is early detection and tracking, not just size"
+        ]
+      },
+      "counterintuitive": {
+        "expected": true,
+        "why": "A naive answer is 'the biggest asteroid is the one to fear'; the video argues that detectability and warning time are a large part of the real risk."
+      },
+      "intuition_vs_truth": {
+        "canonical": "Intuition: the biggest known asteroid is automatically the scariest. Truth: the more relevant risk is a damaging asteroid that is hard to detect and track in time.",
+        "allowed_synonyms": [
+          "intuition says biggest; truth says the one we might miss",
+          "the scary part is not only size but discovery lag"
+        ]
+      },
+      "uncertainty": [
+        "Accept answers that emphasize detection difficulty, tracking uncertainty, warning time, or practical planetary-defense risk. Do not require one exact named asteroid as the only correct emphasis."
+      ]
+    },
+    {
+      "rank": 3,
+      "video_id": "AeJ9q45PfD0",
+      "title": "World's Lightest Solid!",
+      "url": "https://www.youtube.com/watch?v=AeJ9q45PfD0",
+      "view_snapshot": {
+        "views": 62024160,
+        "display": "62,024,160"
+      },
+      "core_question": {
+        "canonical": "How can aerogel be the world's lightest solid, and what properties does that give it?",
+        "allowed_synonyms": [
+          "what makes aerogel so light",
+          "how can a solid be mostly air",
+          "why is aerogel called the lightest solid"
+        ]
+      },
+      "key_stages": [
+        {
+          "canonical": "The video presents aerogel as an ultralow-density material that is mostly air while still being a solid network.",
+          "allowed_synonyms": [
+            "mostly air but still a solid",
+            "extremely low density solid",
+            "tiny solid scaffold with lots of empty space"
+          ]
+        },
+        {
+          "canonical": "It demonstrates or discusses aerogel's unusual physical behavior and lightweight appearance.",
+          "allowed_synonyms": [
+            "handling an aerogel sample",
+            "showing how fragile / light it is",
+            "visual demo of the ultralight material"
+          ]
+        },
+        {
+          "canonical": "It highlights aerogel's insulating performance and related applications.",
+          "allowed_synonyms": [
+            "excellent thermal insulator",
+            "insulation demo",
+            "practical use because it resists heat transfer"
+          ]
+        }
+      ],
+      "conclusion": {
+        "canonical": "Aerogel is an ultralight solid because it is mostly empty space / air, yet it remains a solid structure and is an excellent insulator.",
+        "allowed_synonyms": [
+          "aerogel is basically a solid scaffold full of air",
+          "it is still a solid even though it is mostly air",
+          "its low density gives it remarkable insulation"
+        ]
+      },
+      "counterintuitive": {
+        "expected": true,
+        "why": "People do not expect something that looks so empty or fragile to still count as a solid and work as a strong insulator."
+      },
+      "intuition_vs_truth": {
+        "canonical": "Intuition: if a material is that light, it is barely a real solid. Truth: aerogel is a genuine solid structure that is mostly air and can be a superb insulator.",
+        "allowed_synonyms": [
+          "it seems too airy to be a solid, but it is",
+          "ultralight does not mean useless; it means highly porous"
+        ]
+      },
+      "uncertainty": [
+        "Do not require one exact demo sequence. Accept any correct explanation centered on aerogel being an ultralight porous solid with strong insulation properties."
+      ]
+    },
+    {
+      "rank": 4,
+      "video_id": "2OSrvzNW9FE",
+      "title": "Backspin Basketball Flies Off Dam",
+      "url": "https://www.youtube.com/watch?v=2OSrvzNW9FE",
+      "view_snapshot": {
+        "views": 60195787,
+        "display": "60,195,787"
+      },
+      "core_question": {
+        "canonical": "Can a basketball with strong backspin curve away from a dam instead of simply dropping straight down, and why?",
+        "allowed_synonyms": [
+          "what does backspin do to a basketball dropped from a dam",
+          "can spin change the ball's path through the Magnus effect",
+          "why does the spinning basketball fly outward"
+        ]
+      },
+      "key_stages": [
+        {
+          "canonical": "The video compares a spinning basketball's path with an ordinary falling trajectory from a high drop.",
+          "allowed_synonyms": [
+            "basketball drop / throw from dam",
+            "spinning vs non-spinning comparison",
+            "trajectory comparison"
+          ]
+        },
+        {
+          "canonical": "It explains the Magnus effect as the physical reason spin can create lift / sideways force.",
+          "allowed_synonyms": [
+            "airflow difference from spin",
+            "spin creates a pressure difference",
+            "Magnus-force explanation"
+          ]
+        },
+        {
+          "canonical": "The dramatic outward motion is framed as a real physical effect rather than a camera trick.",
+          "allowed_synonyms": [
+            "the ball actually curves away",
+            "spin really changes the path",
+            "the flight path is not just visual illusion"
+          ]
+        }
+      ],
+      "conclusion": {
+        "canonical": "Strong backspin generates a Magnus-force lift / outward deflection, so the basketball curves away from the dam rather than simply falling straight down.",
+        "allowed_synonyms": [
+          "backspin makes the ball fly outward through the Magnus effect",
+          "spin changes the pressure around the ball and bends the trajectory",
+          "the ball does not just drop vertically because spin creates lift"
+        ]
+      },
+      "counterintuitive": {
+        "expected": true,
+        "why": "Most people expect a dropped basketball to fall more or less straight down; the video shows spin can dramatically reshape the path."
+      },
+      "intuition_vs_truth": {
+        "canonical": "Intuition: gravity should make the ball mostly just fall. Truth: backspin can create a large Magnus-force that bends the trajectory outward.",
+        "allowed_synonyms": [
+          "gravity-only intuition vs spin-driven lift reality",
+          "people expect a drop, but the ball can glide outward"
+        ]
+      },
+      "uncertainty": []
+    },
+    {
+      "rank": 5,
+      "video_id": "AF8d72mA41M",
+      "title": "Why It Was Almost Impossible to Make the Blue LED",
+      "url": "https://www.youtube.com/watch?v=AF8d72mA41M",
+      "view_snapshot": {
+        "views": 49050522,
+        "display": "49,050,522"
+      },
+      "core_question": {
+        "canonical": "Why were blue LEDs so much harder to invent than red and green LEDs?",
+        "allowed_synonyms": [
+          "why was the blue LED so difficult",
+          "what made blue LEDs nearly impossible",
+          "why did semiconductor engineers struggle with blue light"
+        ]
+      },
+      "key_stages": [
+        {
+          "canonical": "The video contrasts earlier red / green LEDs with the much harder blue-LED materials problem.",
+          "allowed_synonyms": [
+            "red and green were solved earlier",
+            "blue required a harder semiconductor",
+            "wide-bandgap material challenge"
+          ]
+        },
+        {
+          "canonical": "It focuses on gallium nitride and the materials / doping bottleneck needed to make an efficient blue device.",
+          "allowed_synonyms": [
+            "GaN materials breakthrough",
+            "p-type doping challenge",
+            "making gallium nitride workable"
+          ]
+        },
+        {
+          "canonical": "It connects the breakthrough to major downstream impact such as white LEDs and energy-efficient lighting.",
+          "allowed_synonyms": [
+            "blue LED enabled white LED lighting",
+            "huge lighting / energy impact",
+            "technology changed modern lighting"
+          ]
+        }
+      ],
+      "conclusion": {
+        "canonical": "Blue LEDs were exceptionally hard because the necessary GaN-based materials and efficient p-type device engineering were major bottlenecks; solving that problem unlocked white LEDs and huge practical impact.",
+        "allowed_synonyms": [
+          "the difficulty was materials science, especially GaN and doping",
+          "blue LEDs were almost impossible until the semiconductor breakthrough",
+          "once GaN / p-type issues were solved, modern white LEDs became possible"
+        ]
+      },
+      "counterintuitive": {
+        "expected": true,
+        "why": "It seems like changing LED color should be incremental, but the video explains that blue required a qualitatively difficult materials breakthrough."
+      },
+      "intuition_vs_truth": {
+        "canonical": "Intuition: if red and green LEDs exist, blue should be just another easy color variant. Truth: blue demanded a much harder GaN materials breakthrough that resisted engineers for years.",
+        "allowed_synonyms": [
+          "people assume blue was just the next step; in reality it was a major materials-science breakthrough",
+          "not a simple color swap but a hard semiconductor problem"
+        ]
+      },
+      "uncertainty": [
+        "Do not require very specific semiconductor sub-steps beyond the accepted GaN / p-type-doping / materials-breakthrough framing."
+      ]
+    }
+  ],
+  "common_wrong_substitutions": [
+    {
+      "video_id": "094y1Z2wpJg",
+      "title": "The Simplest Math Problem No One Can Solve - Collatz Conjecture",
+      "reason": "High-view Veritasium video, but it is not in the canonical top-5 snapshot for this task."
+    },
+    {
+      "video_id": "pir_muTzYM8",
+      "title": "Inside The Navy's Indoor Ocean",
+      "reason": "High-view Veritasium video, but it is ranked below the canonical top-5 snapshot."
+    }
+  ]
+}

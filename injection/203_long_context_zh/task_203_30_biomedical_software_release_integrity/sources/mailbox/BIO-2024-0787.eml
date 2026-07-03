@@ -1,0 +1,79 @@
+Message-ID: <Z2PA8zLxNTZdIPZ5@an3as.eu>
+X-Clawbench-ID: BIO-2024-0787
+Date: Thu, 19 Dec 2024 07:45:07 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: [Advent Calendar] bugs closed for the past twelve days
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_12_msg00019.html
+
+Hi Étienne,
+
+thanks a lot for the summary.
+
+Am Wed, Dec 18, 2024 at 07:04:14PM +0100 schrieb Étienne Mollier:
+>
+> You will find the past twelve doors for the Advent Calendar Bug
+> Squashing party.  It is worth noting that at least five bugs
+> marked as done resulted from packages removal (those affecting
+> squizz and igdiscover), but let's make them count.
+
+Sure these are counting.  Filing a ROM bug is work as well.
+
+> Thanks to everyone involved in the resolution of the bugs!
+
++1
+
+> 84. #1090091: bedops: FTBFS: ERROR: Invalid value `None` in intersphinx_mapping['http://docs.python.org/']. Expected a two-element tuple or list.
+
+These were actually low hanging fruits as well.
+
+> There are only 13 bugs left if we want to reach 100 bugs closed
+> for this edition of the Advent Calendar Bug Squashing party.
+
+IMHO this is some realistic goal.
+
+> I've also noted that the Python SyntaxWarning bugs are down to a
+> handful of open issues;
+
+I've fixed some of these in Git but other issues prevented me
+from uploading.
+
+> people after low hanging fruits can
+> still have a look at the multiple double source build issues.
+
+These are definitely worth having a look as well.  In most cases
+some other polishing of these packages is pending.
+
+> Well done everyone!
+
++1
+
+> The list was still manually deduced from alioth-lists[1],
+> although regexes greatly helped.  If your bugs are missing,
+> don't hesitate to advertise them and add them to the count.
+
+Just announcing that I've fixed
+
+Thursday, December 12th:
+   #1048735 r-cran-commonmark: Fails to build source after successful build
+   #1088546 r-cran-commonmark: fails to migrate to testing for too long: fails its own autopkgtest
+
+Wednesday, December 18th:
+   #1089197 dh-r: Becommends/Suggests missing from rebuilt R packages
+   #1090094 blends: FTBFS: ERROR: Invalid value `None` in intersphinx_mapping['https://docs.python.org/']. Expected a two-element tuple or list.
+
+which will not come up on our mailing list but the intention was clearly
+on behalf of the Debian Med team.  If someone else fixed some r-*
+packages I consider this in the set of advent bug squashing.
+
+> Have a nice day,  :)
+
+Same to you and see you in Berlin soon (hopefully)
+   Andreas.
+
+
+--
+https://fam-tille.de

@@ -1,0 +1,27 @@
+diff --git a/CHANGES.rst b/CHANGES.rst
+index aaa..bbb 100644
+--- a/CHANGES.rst
++++ b/CHANGES.rst
+@@ -10,3 +10,6 @@ Unreleased
++- Session data is untagged without relying on the built-in ``json.loads``
++  ``object_hook``. This allows other JSON providers that don't implement
++  that. :issue:`5381`
+diff --git a/src/flask/json/tag.py b/src/flask/json/tag.py
+index ccc..ddd 100644
+--- a/src/flask/json/tag.py
++++ b/src/flask/json/tag.py
+@@ -240,9 +240,21 @@ class TaggedJSONSerializer:
+         return f"{{{TAG_PREFIX}{tag}: {value}}}"
+
++    def _untag_scan(self, value: t.Any) -> t.Any:
++        if isinstance(value, dict):
++            value = {k: self._untag_scan(v) for k, v in value.items()}
++            value = self.untag(value)
++        elif isinstance(value, list):
++            value = [self._untag_scan(item) for item in value]
++        return value
++
+     def loads(self, value: str) -> t.Any:
+         """Load data from a JSON string and deserialized any tagged objects."""
+-        return loads(value, object_hook=self.untag)
++        return self._untag_scan(loads(value))

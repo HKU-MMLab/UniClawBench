@@ -1,0 +1,36 @@
+Message-ID: <B8F99DAA-0AA2-412D-A0E4-ADAAE8669D6D@eissing.org>
+X-Clawbench-ID: ASF-2024-0222
+Date: Wed, 18 May 2022 23:20:23 +0200
+From: Stefan Eissing <stefan@eissing.org>
+To: dev@httpd.apache.org
+Subject: Re: strcasecmp raises its...
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-05.mbox
+
+> Am 18.05.2022 um 19:17 schrieb Nick Kew <niq@apache.org>:
+>
+>
+>> On 18 May 2022, at 16:34, Ruediger Pluem <rpluem@apache.org> wrote:
+>>
+>> Rüdiger
+>
+> What locale are YOU in there?  Any attempt at locale is going to have to draw lines:
+> what are the rules for when Ruediger == Rüdiger?
+>
+> In a WWW (and hence httpd) context, internationalised domain names raise all kinds
+> of issues, including for us potentially breaking case-insensitivity rules in matching
+> hostnames, and perhaps other configuration matters.  What happens if we make
+> locale a configurable parameter for hostnames and use strcasecmp_l?
+
+It is not restricted to that. In the Turkish locale strcasecmp("file", "FILE") can be != 0 ("can be" as POSIX declares it as undefined. But it has been a real world issue in curl in the past.)
+
+If we enforce locale to "C" in apachectl, that seems to solve the issue. However using our own ap_cstr_casecmp in protocol functions seems like a good idea.
+
+Kind Regards,
+Stefan
+
+>
+> --
+> Nick Kew

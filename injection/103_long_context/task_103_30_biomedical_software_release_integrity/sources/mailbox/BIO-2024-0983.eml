@@ -1,0 +1,52 @@
+Message-ID: <Ya/HiEc5Exri6nLZ@fusion>
+X-Clawbench-ID: BIO-2024-0983
+Date: Tue, 7 Dec 2021 21:43:52 +0100
+From: Étienne Mollier <emollier@emlwks999.eu>
+To: Andreas Tille <andreas@an3as.eu>
+Subject: Re: Any help to get pydicom build welcome
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_12_msg00034.html
+
+Hi Andreas, Hi Yaroslav, Hi Michael,
+
+Andreas Tille, on 2021-12-07:
+> as you can see pydicom fails its test suite really hard
+>
+>    https://salsa.debian.org/med-team/pydicom/-/jobs/2254331
+>
+> Any idea how to fix this?
+
+After having tried to follow how pytest data are parametrized,
+it seemed to me that some test data are not bundled in pydicom
+anymore.  In pydicom/tests/test_pillow_pixel_data.py for
+instance, I see:
+
+	J2KI_16_10_1_0_1F_M1 = get_testdata_file("RG3_J2KI.dcm")
+
+but from the root of the pydicom source code, I do not find such
+file:
+
+	$ find -name RG3_J2KI.dcm
+
+	$ _
+
+So I /believe/ that the fpath ends up staying "None" because of
+these missing files.
+
+Actually, I ended up discovering the following statement in the
+file pydicom/data/test_files/README.txt:
+
+>> 2020-06 Many files were moved to an external data store,
+>> and are downloaded as needed.
+
+So maybe it is possible to disable pytest parameters referring
+to missing data, given that it is not authorized to download
+resources while building the package.
+
+In hope this helps,
+--
+Étienne Mollier
+Fingerprint:  8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+Sent from /dev/pts/2, please excuse my verbosity.

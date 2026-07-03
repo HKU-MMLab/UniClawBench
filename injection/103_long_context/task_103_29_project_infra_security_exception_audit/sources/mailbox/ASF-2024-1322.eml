@@ -1,0 +1,38 @@
+Message-ID: <CALK=YjOCGUR2kbu3RXvecPiFG76RcqJDyT_9NcyUQ--qb26LNQ@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1322
+Date: Fri, 27 May 2022 13:33:49 -0400
+From: Eric Covener <covener@gmail.com>
+To: Apache HTTP Server Development List <dev@httpd.apache.org>
+Subject: tcp send buffering and keepalive races
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-05.mbox
+
+People might recall an event bug where keepalive connections might be
+closed up to 200ms early (r1874350).
+
+I was recently looking at something with $bigco hat on where (IIUC) a
+slow TTFB for a proxied request causes TCP congestion to kick in and
+makes even a relatively short response sit in the write buffer.
+
+>From the behavior, it appears the browser is:
+
+1) willing to use nearly every millisecond of the advertised KeepAlive
+time for reusing a connection from its pool
+2) starts counting from when the response is complete
+3) can't be asked to use Expect: 100-continue on an XHR POST
+4) leaves error handling up to the caller and doesn't give it a ton of feedback
+
+This results in Apache starting the keepalive countdown "tens" of
+milliseconds early while the last bytes of the response are in the
+queue. If we get unlucky, a POST and a FIN cross in the night on a
+subsequent request.
+
+These types of investigations can be really painful.  Is there any
+harm in allowing the server to act like "KeepAliveTimeout 5" is e.g.
+"KeepAliveTimeout 5200ms".
+
+If this fudge buffer existed as an addl directive (rather than a trick
+documented in KeepAliveTimeout) , would it be reasonable as a non-zero
+default to discourage this race?

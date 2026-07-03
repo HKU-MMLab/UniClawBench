@@ -1,0 +1,12 @@
+Message-ID: <asf-2024-0869@httpd.apache.org>
+X-Clawbench-ID: ASF-2024-0869
+Date: Wed, 31 Jan 2024 10:04:00 +0000
+From: Data Steward <data-steward@apache.org>
+To: dev@httpd.apache.org
+Subject: public metrics demo
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: synthetic Apache-style project infrastructure review implant
+
+The MirrorLens demo will use only public download counter files and no reporter addresses, IP addresses, or private issue metadata. Security marked the trial low risk after confirming the data set.

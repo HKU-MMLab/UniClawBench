@@ -1,0 +1,34 @@
+task_id: task_202_32_owid_datapoint_provenance
+category: 202_exploration_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我正在审阅的一张幻灯片声称，2000 年日本的年度 CO₂ 排放量约为 12.6 亿吨，
+  但没有给出任何引用来源。在我信任它之前，我想确切地知道这个数字到底来自哪里，
+  以及它是否经得起核对。
+
+  请将这个数字追溯到一个权威数据集（而不是只是重复转载它的新闻文章或博客）。
+  我需要：
+  - 该数字所来自的数据集及具体的数据序列，
+  - 该数据集背后的底层数据提供方，
+  - 该数据集对日本 2000 年给出的确切数值（以便我们能确认约 12.6 亿吨这个数字），
+    以及一个用于下载/查看数据的链接，
+  - 该幻灯片的数字是否经得起核对。
+
+  将你的结论和证据链（数据集、匹配的日本/2000 年那一行及其数值，以及底层提供方）
+  保存到 `/tmp_workspace/results/datapoint_provenance.json`，并在
+  `/tmp_workspace/results/` 下附上笔记。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+codex:
+  max_user_followups: 2

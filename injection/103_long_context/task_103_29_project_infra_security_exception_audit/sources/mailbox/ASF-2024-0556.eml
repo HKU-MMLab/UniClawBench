@@ -1,0 +1,45 @@
+Message-ID: <Y8e/nM+mSQHbmsOE@eb6.srv.ke3.speedkom.net>
+X-Clawbench-ID: ASF-2024-0556
+Date: Wed, 18 Jan 2023 10:45:00 +0100
+From: "Andreas S. Kerber" <ask@ag-trek.de>
+To: dev@httpd.apache.org
+Subject: Re: sporadic 500 errors with 2.4.55
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-01.mbox
+
+Am Wed, Jan 18, 2023 at 10:19:39AM +0100 schrieb Ruediger Pluem:
+> Thanks. I understand it only happens with HTTP/2.0 not with other protocol versions, correct? Anything in the error logs?
+
+Indeed only HTTP/2.0. No logged 500 errors since Jan 1st. Really started right after running 2.4.55.
+
+> Would it be possible for you to run 2.4.55 with loglevel increased?
+> If yes would it be possible for you to add %L to access log and error log?
+
+Sure, I'm now running with:
+
+LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-agent}i\" %L"
+LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-agent}i\" %L" common
+LogLevel info
+
+access log:
+XXX.179.130.67 - - [18/Jan/2023:10:37:22 +0100] "GET /XXX/img/Karriere_rdax_720x390s.jpg HTTP/2.0" 500 - "https://www.XXX/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:108.0) Gecko/20100101 Firefox/108.0" -
+XXX.116.188.146 - - [18/Jan/2023:10:41:10 +0100] "GET /XXX/img/St%202018_Lisa%20Viertel_025_1570x850px_rdax_720x390p.jpg HTTP/2.0" 500 - "https://www.XXX/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36 Edg/109.0.1518.52" -
+
+
+webspace error log:
+[Wed Jan 18 10:37:22.741094 2023] [core:info] [pid 17529:tid 139803164256000] [remote XXX.179.130.67:38661] AH00128: File does not exist: /data/wwwcust/virt1/html/XXX/XXX/css/ajax-loader.gif, referer: https://www.XXX/XXX/css/style.css
+
+server error log:
+[Wed Jan 18 10:32:47.130811 2023] [mpm_worker:notice] [pid 16656:tid 139803628373824] AH00292: Apache/2.4.55 (Unix) OpenSSL/1.1.1q configured -- resuming normal operations
+[Wed Jan 18 10:32:47.130833 2023] [mpm_worker:info] [pid 16656:tid 139803628373824] AH00293: Server built: Jan 17 2023 15:58:35
+[Wed Jan 18 10:32:47.130859 2023] [core:notice] [pid 16656:tid 139803628373824] AH00094: Command line: '/usr/local/apache2/bin/httpd'
+[Wed Jan 18 10:32:47.131948 2023] [http2:info] [pid 17532:tid 139803628373824] h2_workers: created with min=64 max=96 idle_ms=600000
+[Wed Jan 18 10:32:47.132285 2023] [http2:info] [pid 17529:tid 139803628373824] h2_workers: created with min=64 max=96 idle_ms=600000
+[Wed Jan 18 10:32:47.132858 2023] [http2:info] [pid 17530:tid 139803628373824] h2_workers: created with min=64 max=96 idle_ms=600000
+[Wed Jan 18 10:32:47.133224 2023] [http2:info] [pid 17531:tid 139803628373824] h2_workers: created with min=64 max=96 idle_ms=600000
+[Wed Jan 18 10:32:58.145502 2023] [http2:info] [pid 18070:tid 139803628373824] h2_workers: created with min=64 max=96 idle_ms=600000
+[Wed Jan 18 10:33:08.158243 2023] [http2:info] [pid 18218:tid 139803628373824] h2_workers: created with min=64 max=96 idle_ms=600000
+[Wed Jan 18 10:42:33.709887 2023] [http2:info] [pid 19017:tid 139803628373824] h2_workers: created with min=64 max=96 idle_ms=600000
+[Wed Jan 18 10:42:36.714291 2023] [http2:info] [pid 19150:tid 139803628373824] h2_workers: created with min=64 max=96 idle_ms=600000

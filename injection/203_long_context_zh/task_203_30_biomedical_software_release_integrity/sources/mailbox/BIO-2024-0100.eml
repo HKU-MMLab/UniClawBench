@@ -1,0 +1,25 @@
+Message-ID: <ZG2t1qb/hHGSjQAD@an3as.eu>
+X-Clawbench-ID: BIO-2024-0100
+Date: Wed, 24 May 2023 08:25:26 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Please review release notes patch
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_05_msg00010.html
+
+Hi,
+
+as for every release we want to increase or visibility to show
+up in the release notes.  I've drafted a patch
+
+  https://salsa.debian.org/med-team/community/communication/-/blob/master/releasenotes/bookworm/release-notes.patch
+
+Please review and comment on it (or just push fixes and enhancements)!
+
+Kind regards
+    Andreas.
+
+--
+http://fam-tille.de

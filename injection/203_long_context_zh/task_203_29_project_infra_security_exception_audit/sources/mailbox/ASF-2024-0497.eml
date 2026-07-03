@@ -1,0 +1,40 @@
+Message-ID: <91e8de8c-7f10-4ffc-1e5a-25ab9f902da6@gmail.com>
+X-Clawbench-ID: ASF-2024-0497
+Date: Thu, 20 Oct 2022 15:55:17 +0200
+From: Nick Gearls <nickgearls@gmail.com>
+To: Development Apache <dev@httpd.apache.org>
+Subject: Define variable in modules
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-10.mbox
+
+<html>
+  <head>
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  </head>
+  <body>
+    <font face="Arial">Hello,<br>
+      <br>
+      It would sometimes be very handy to be able to define a variable
+      (like -D on command-line or "Define xxx" in the config) inside a
+      module.<br>
+      This would, for instance, allow to have a config file based on a
+      define from the module, knowing if the new syntax is known or not,
+      etc.<br>
+      <br>
+      Concrete example: in mod_security2, they introduced a new
+      "collection".<br>
+      If you use this collection in an old version, it's a syntax error.<br>
+      If mod_security2 defines the variable "support_new_collection"
+      (OK, very bad name obviously), then we can enclose the rule using
+      a "&lt;IfDefine support_new_collection&gt;.<br>
+      <br>
+      Would it be possible to export a function to define such a
+      variable?<br>
+      <br>
+      Thanks<br>
+    </font>
+  </body>
+</html>

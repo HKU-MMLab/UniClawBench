@@ -1,0 +1,56 @@
+task_id: task_103_20_transformer_blog
+category: 103_long_context
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I need to make a paper-reading HTML blog on the topic of Large Transformer Model Inference Optimization.
+  Please organize it around the following main thread:
+  1. The inference bottleneck
+    - Explain the main bottlenecks in large Transformer inference: GPU memory, bandwidth, attention cost, and low-latency serving.
+
+  2. Distillation
+    - Discuss using a smaller student model to imitate a larger teacher model and reduce inference cost.
+
+  3. Quantization
+    - Discuss how low-bit weights/activations reduce memory and compute.
+    - Focus on the outlier problem, LLM.int8, SmoothQuant, and quantization granularity.
+
+  4. Structured sparsity and pruning
+    - Discuss how pruning and N:M sparsity skip part of the computation.
+    - Emphasize that structured sparsity is easier to accelerate with hardware.
+
+  5. Mixture-of-Experts
+    - Explain how MoE activates only part of the experts to obtain larger model capacity at lower compute.
+
+  6. Architectural optimization
+    - Discuss architectural optimizations such as sparse attention, recurrence, memory-saving design, and adaptive computation.
+
+  7. Practical synthesis
+    - Summarize that real deployment usually needs to combine quantization, kernels/batching, distillation, pruning, and architectural optimization.
+
+  The candidate papers are all in `/tmp_workspace/clawbench/sources/papers/`, and I renamed the files to non-semantic numbers, so do not guess from filenames. Read these papers and select the papers that should be discussed for each section, including the opening problem introduction.
+
+  Make the blog rich in both text and figures. You may screenshot figures/tables from the papers, but the screenshots must be complete, clear, matched to the content, and detailed enough to read text and details. Formulas may be written as screenshots or LaTeX. Use the prepared `/tmp_workspace/clawbench/sources/assets/`, which contains the CSS, JavaScript, and MathJax formula-rendering dependencies needed by the page template.
+
+  Save the final blog to `/tmp_workspace/results/transformer_blog/`; it should contain the HTML file and corresponding assets. Put images referenced by the HTML into `/tmp_workspace/clawbench/results/assets/images`, and cite the source paper for every figure in the blog.
+
+  Also save `/tmp_workspace/results/selection_note.md` explaining why each section selected these papers.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/transformer_blog/
+  - references/paper_mapping.json
+sources:
+  - papers/
+  - assets/
+
+codex:
+  max_user_followups: 2

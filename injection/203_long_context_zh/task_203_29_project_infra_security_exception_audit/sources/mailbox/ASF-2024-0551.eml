@@ -1,0 +1,37 @@
+Message-ID: <43a6672a-9bf0-d3c2-4aea-b8f4962be651@apache.org>
+X-Clawbench-ID: ASF-2024-0551
+Date: Fri, 20 May 2022 08:44:54 +0200
+From: Ruediger Pluem <rpluem@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: strcasecmp raises its...
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-05.mbox
+
+On 5/19/22 7:54 PM, Stefan Eissing wrote:
+>
+>
+>> Am 19.05.2022 um 17:20 schrieb Ruediger Pluem <rpluem@apache.org>:
+>>
+>>
+
+>>>
+>>> +1 from me for replacing our protocol+config handling code with the ap_cstr_casecmp().
+>>
+>> +1. Just to mention: Christophe already did quite some work in this area.
+>
+> Thanks, Christophe.
+>
+> For my understanding: the code in APR for tables uses strcasecmp() and I am probably just too stupid to see where this is redefined?
+>
+
+>From my point of view apr_tables use strcasecmp and this is not redefined. I guess one of the reasons is that the apr_tables stuff
+has been there forever in APR and the apr_cstr stuff only came into APR 2016 and the code of apr_tables was not adjusted after
+this. The other reason at least for 1.x might be concerns that switching to apr_cstr might change the behavior of apr_tables in a
+way that is incompatible with the versioning rules of APR.
+But this is a discussion for dev@apr.
+
+Regards
+
+Rüdiger

@@ -1,0 +1,106 @@
+{
+  "task_id": "task_103_11_nyc_broadway_museum_budget",
+  "created_at": "2026-05-03T00:00:00+00:00",
+  "date_range": [
+    "next Friday",
+    "the following Tuesday"
+  ],
+  "party_size": 2,
+  "origin_airport": "SFO",
+  "destination_airports": [
+    "JFK",
+    "EWR",
+    "LGA"
+  ],
+  "flight_constraints": [
+    "nonstop only",
+    "airlines limited to United or Delta",
+    "outbound SFO departure next Friday 07:00-12:30",
+    "return NYC-area departure the following Tuesday 15:00-20:30",
+    "check Kayak and at least one official United or Delta site"
+  ],
+  "hotel_constraints": {
+    "checkin": "next Friday",
+    "checkout": "the following Tuesday",
+    "adults": 2,
+    "rooms": 1,
+    "sources": [
+      "Booking.com",
+      "official hotel site"
+    ],
+    "hotel_whitelist": [
+      "M Social Hotel Times Square New York",
+      "Hilton Garden Inn Times Square Central",
+      "citizenM New York Times Square"
+    ]
+  },
+  "broadway_whitelist": [
+    "The Lion King",
+    "Hamilton",
+    "Wicked",
+    "Moulin Rouge! The Musical"
+  ],
+  "broadway_constraints": [
+    "next Friday to the following Monday",
+    "2 tickets",
+    "prefer 19:00-20:30 evening performances or weekend matinee",
+    "use official show/ticketing page and at least one of TodayTix, Broadway.com, Ticketmaster"
+  ],
+  "museum_whitelist": [
+    "The Metropolitan Museum of Art",
+    "MoMA",
+    "American Museum of Natural History",
+    "Guggenheim Museum"
+  ],
+  "museum_constraints": [
+    "official ticket/admission pages",
+    "travel-period tickets",
+    "2 adults"
+  ],
+  "restaurant_candidates": [
+    "Carmine's Italian Restaurant Times Square",
+    "Joe Allen",
+    "The Smith",
+    "Junior's Restaurant",
+    "Le Bernardin",
+    "Kochi"
+  ],
+  "restaurant_time_constraints": [
+    "choose 5 restaurants from the allowed list",
+    "next Friday to the following Monday",
+    "party of 2",
+    "dinner 18:00-20:30"
+  ],
+  "budget_targets": {
+    "comfortable_total_target_usd_for_2_people": 5000,
+    "required_versions": [
+      "budget option",
+      "comfortable option"
+    ]
+  },
+  "process_reference_screenshots": [
+    "process_evidence/Delta_flight.png",
+    "process_evidence/Kayak_flight.png",
+    "process_evidence/TodayTix_hamilton.png",
+    "process_evidence/booking_M_Social_hotel.png",
+    "process_evidence/booking_citizenM.png",
+    "process_evidence/booking_hilton_garden_inn.png",
+    "process_evidence/official_Le_Bernadin.png",
+    "process_evidence/official_M_Social_hotel.png",
+    "process_evidence/official_citizenM.png",
+    "process_evidence/official_hamilton.png",
+    "process_evidence/official_hilton_garden_inn.png",
+    "process_evidence/official_wicked.png",
+    "process_evidence/opentable_Joe_Allen.png",
+    "process_evidence/opentable_Kochi.png",
+    "process_evidence/opentable_carmine.png",
+    "process_evidence/opentablee_The_Smith.png"
+  ],
+  "manual_reference_gaps": [
+    "The visible evidence set may not include every required category; missing live-site categories should be judged by executor-provided current screenshots or honest documented blocks.",
+    "Exact prices, policies, ticket availability, flight inventory, and reservation availability should not be treated as fixed ground truth."
+  ],
+  "grading_note": "Score process evidence and constraint-following. If live sites block prices, Broadway seats, museum ticket details, or reservations, an honest insufficient-information conclusion can still score well when the executor documents real attempts, screenshots, and constraints.",
+  "final_plan_not_required_when_blocked": "A full budget is expected when enough data is available; when live sites block key data, accept a clearly qualified plan with missing-data notes rather than hallucinated prices.",
+  "final_artifact": "/tmp_workspace/results/nyc_broadway_museum_plan.md"
+}

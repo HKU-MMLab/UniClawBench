@@ -1,0 +1,27 @@
+Message-ID: <5784883.DvuYhMxLoT@riemann>
+X-Clawbench-ID: BIO-2024-0243
+Date: Mon, 20 May 2024 15:00:11 -0500
+From: Steven Robbins <steve@sumost.ca>
+To: debian-med@lists.debian.org
+Subject: Re: Any input for some talk about usage of Debian in HPC
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_05_msg00007.html
+
+Hello,
+
+On Sunday, May 19, 2024 9:31:02 A.M. CDT Tony Travis wrote:
+
+> You can't ignore the host OS when you talk about HPC applications and
+> the HEP (High Energy Physics) community put a lot of effort into
+> developing good node provisioning systems and job-scheduling for HPC.
+> Consequently, there was a significant bias towards support for HEP
+> applications running under CentOS and less support for bioinformatics.
+
+I've been out of academia for decades, but HEP was my first love and
+neuroimaging my second, so this paragraph really piqued my interest.  Can you
+briefly say what are the different needs of HEP and bioinformatics and how they
+are in conflict?
+
+-Steve

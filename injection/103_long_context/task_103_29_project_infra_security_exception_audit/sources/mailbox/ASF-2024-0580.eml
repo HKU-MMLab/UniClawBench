@@ -1,0 +1,61 @@
+Message-ID: <CAMD-=V+qFUOWj92qH4DAFeCBP4igDnCQLfD9c3Rt2Gz-PZcVrg@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0580
+Date: Sat, 11 Dec 2021 11:03:31 +1000
+From: Nick Edwards <nick.z.edwards@gmail.com>
+To: dev <dev@httpd.apache.org>
+Subject: Re: release vibes?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2021-12.mbox
+
+Release often?  let me tell you of a story from a System Administrators
+perspective as to why thats bad and should be avoided and you should learn
+from other people's mistakes
+
+There is a reason sysads dislike developers, they have this "oh new code
+gotta push it out right away" mentality, but we push back saying nope we
+just did your upgrade it can wait will another one, and the golden rule is
+nobody updates anything during the christmas "embargo" period which I
+believe Noel was referring to, this generally is from two weeks before
+Christmas, til two weeks after the start of the New Year.
+
+There was once this young guy who developed this shiny new yet highly
+popular internet daemon, in its infancy it was a wizzbang and everybody
+loved it and was moving to it, the problem soon arose that every new
+feature was pushed out, and as murphy dictates, problem be found, sometimes
+sysads were having to update this highly popular software every few weeks,
+sometimes more, there was even a few times we recall having to update it
+three times in just ONE week because of this push push push mentality, this
+results in a large percentage of sysads pushing back and refusing to test
+let alone update, over time this continued, new releases every few weeks,
+tiresome - like we have nothing better to do but upgrade the same software
+over and over and over, wasn't going to happen, and didn't happen, some of
+these were to fix nasty exploitable problems, but almost nobody bothered
+because "jesus christ another bloody update"... a lot of people were burned.
+
+That same project did get a lot better with a rewrite of its code and a
+move to a new "major release" the updates still came, but not thick and
+fast, this made sysads much happier, the developer had learned push often
+is not what system and network operators want, now days sysads love that
+project, it releases every few months on average which we can accept and
+has much fewer bugs, and rarely anything severe.
+
+That project, is called   dovecot
+
+
+On Wed, Dec 8, 2021 at 1:17 AM Mladen Turk <mturk@apache.org> wrote:
+
+>
+>
+> On 06/12/2021 11:36, Stefan Eissing wrote:
+> > Friends of httpd, how do you feel about a release in the next two weeks?
+> >
+>
+> +1
+> Release early, release often
+>
+> Regards
+> --
+> ^TM
+>

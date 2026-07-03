@@ -1,0 +1,80 @@
+Message-ID: <CACsi25239h5BB4qfDnoQY88vaXBYk7d5n5VG7WC1ZpvjRrKLOQ@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0559
+Date: Fri, 14 Jan 2022 17:52:04 -0600
+From: William A Rowe Jr <wrowe@rowe-clan.net>
+To: dev@httpd.apache.org, APR Developer List <dev@apr.apache.org>
+Subject: Re: Possible apr 1.7.1 showstopper from httpd test framework
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-01.mbox
+
+On Fri, Jan 14, 2022 at 5:44 AM Joe Orton <jorton@redhat.com> wrote:
+>
+> On Fri, Jan 14, 2022 at 11:37:35AM +0100, Ruediger Pluem wrote:
+> >
+> > On 1/14/22 6:47 AM, William A Rowe Jr wrote:
+> > > In addition to a broken release of brotli (where enc/dec don't specify
+> > > -lbrotlicommon,
+> > > even on trunk, for openssl and other consumers to ferret out that binding), and
+> > > lots of fun changes to build flags in curl 7.81 minor release (who does that?)
+> > > there appears to be one test failure with date formatting in httpd 2.4.x branch
+> > > (including release 2.4.52) and apr 1.7.x branch (including release 1.7.0);
+> > >
+> > > t/modules/include.t ................. 56/98 # Failed test 64 in
+> > > t/modules/include.t at line 373
+> > >
+> > > Have not had time to investigate whether this is a change in perl behavior, or
+> > > possibly a regression caused by apr datetime handling in 1.7.x itself., but any
+> > > release apr-side should hold off just a bit to resolve this question.
+> >
+> > I cannot reproduce this with APR 1.7.x on RedHat 8 and our Travis builds at least for some builds
+> > on Ubuntu use APR 1.7 as well and do not fail.
+> > Is this probably a Windows specific issue? Can anyone reproduce on Windows?
+
+Fun guess. Not on Windows at the moment. This is on ubuntu 18.04
+running as a vmw
+workstation guest vm with the following snapshot revisions (all just a
+bit beyond the
+current releases, including apr 1.7;
+
+apr_ver=1.7.x-1896808
+aprutil_ver=1.7.x-1894932
+brotli_rev=e83c7b8
+brotli_ver=master
+curl_rev=d4492b6d1
+curl_ver=master
+expat_rev=9c42ebdd
+expat_ver=master
+httpd_ver=2.4.x-1896743
+httpdtest_rev=763e0201
+httpdtest_ver=trunk
+jansson_rev=addeeef
+jansson_ver=master
+libxml2_rev=dea91c97
+libxml2_ver=master
+lua_ver=5.4.3
+nghttp2_rev=02e6cad1
+nghttp2_ver=master
+openssl_rev=2080da84a4
+openssl_ver=master
+pcre_rev=81d3729
+pcre_ver=master
+zlib_rev=cacf7f1
+zlib_ver=master
+
+> IIRC there is some test case which can be sensitive to filesystems, and
+> e.g. sometimes fails if NFS mounted?  I may be mixing it up with another
+> test. The output of "./t/TEST -v t/modules/include.t" should help
+> diagnose.
+
+I will dig deeper and check some other linux flavors.
+
+> That phrase "including release 1.7.0" implies it's not a 1.7.x
+> regression if it also failed with 1.7.0, Bill? i.e. no reason to hold up
+> a release?
+
+It's a good point, I just don't care to tag a release when we have been making
+changes to apr time logic as part of the next release. Hopefully it is something
+interesting in the local deployment and perhaps a bad assumption in the test?
+Will report back.

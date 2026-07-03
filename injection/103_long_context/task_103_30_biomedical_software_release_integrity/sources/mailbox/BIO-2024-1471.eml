@@ -1,0 +1,26 @@
+Message-ID: <Zvcq2eTdicbZ6xB-@an3as.eu>
+X-Clawbench-ID: BIO-2024-1471
+Date: Fri, 27 Sep 2024 23:59:53 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: GNUmed (-client/-server): new upstream available
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_09_msg00030.html
+
+Am Wed, Sep 25, 2024 at 08:41:43PM +0200 schrieb Karsten Hilbert:
+>
+> It should be. Andreas had been packaging GNUmed for the last
+> ten years or so. Off the top of my head I don't recall
+> changes that would ask for a change in packaging
+> infrastructure, this being a maintenance release.
+
+It was a `routine-update`-ish change the last couple of
+years.
+
+Kind regards
+    Andreas.
+
+--
+https://fam-tille.de

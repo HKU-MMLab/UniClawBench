@@ -1,0 +1,37 @@
+Message-ID: <CCD40F92-D991-49B5-9003-0EE8DB5801F6@apachelounge.com>
+X-Clawbench-ID: ASF-2024-0326
+Date: Tue, 7 Jun 2022 14:58:44 +0200
+From: Steffen <info@apachelounge.com>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.54-rc3 as httpd-2.4.54
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-06.mbox
+
++1 All looks fine on Windows.
+
+> Op 6 jun. 2022 om 16:25 heeft Stefan Eissing <stefan@eissing.org> het volgende geschreven:
+>
+> ﻿Here we go again! Sorry for the repeats, but that is why we build candidates, right?
+>
+> Hi all,
+>
+> Please find below the proposed release tarball and signatures:
+>
+> https://dist.apache.org/repos/dist/dev/httpd/
+>
+> I would like to call a VOTE over the next few days to release
+> this candidate tarball httpd-2.4.54-rc3 as 2.4.54:
+> [ ] +1: It's not just good, it's good enough!
+> [ ] +0: Let's have a talk.
+> [ ] -1: There's trouble in paradise. Here's what's wrong.
+>
+> The computed digests of the tarball up for vote are:
+> sha256: c687b99c446c0ef345e7d86c21a8e15fc074b7d5152c4fe22b0463e2be346ffb *httpd-2.4.54-rc3.tar.gz
+> sha512: e9599df48a73b07b3a11dd44db2c22a671e8a41cdd5021bb434bbcde39d6fc498d165d9b0c4ed2b66a6321d9760b031c1c1c84c23661dbf44c42c52f637ec4dd *httpd-2.4.54-rc3.tar.gz
+>
+> The SVN candidate source is found at tags/2.4.54-rc3-candidate.
+>
+> Kind Regards,
+> Stefan

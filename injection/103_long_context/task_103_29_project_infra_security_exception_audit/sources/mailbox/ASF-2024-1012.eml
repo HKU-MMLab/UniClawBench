@@ -1,0 +1,88 @@
+Message-ID: <SA1PR05MB9836F6AF4B8D58FAD67FA5C8BF479@SA1PR05MB9836.namprd05.prod.outlook.com>
+X-Clawbench-ID: ASF-2024-1012
+Date: Fri, 26 May 2023 13:05:16 +0000
+From: Asen Alexandrov <alexandrov@vmware.com>
+To: "dev@httpd.apache.org" <dev@httpd.apache.org>
+Subject: RE: mod_wasm: A way for creating Apache HTTPD modules securely and in  many languages
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-05.mbox
+
+Hello everyone,
+
+A quick update on this. Here's a picture that says this in a simpler way - https://github.com/vmware-labs/mod_wasm/blob/9e85da9ba045fec36ad40f987c40b010aaa62793/examples/rust-src/edit_headers/docs/Apr_mod_wasm-overview.drawio.png
+
+Also, we now have a multi-platform demo container which runs equally fast on arm64 and amd64 (and has a more-intuitive color-coded output). Just run this command to try it out.
+```
+docker run --rm -d -p 8080:8080 --name mod-wasm-apr-demo ghcr.io/vmware-labs/httpd-mod-wasm-experimental:latest && docker exec -ti mod-wasm-apr-demo /usr/local/apache2/headers-filter/run_me.sh && docker rm -f mod-wasm-apr-demo
+```
+
+Best regards,
+Asen
+
+From: Asen Alexandrov <alexandrov@vmware.com>
+Sent: Wednesday, May 24, 2023 3:43 PM
+To: dev@httpd.apache.org
+Subject: mod_wasm: A way for creating Apache HTTPD modules securely and in many languages
+
+
+Hello everyone,
+
+
+We have been working on a new version of mod_wasm (introduced here - https://lists.apache.org/thread/mo3onsk8odcw808dsr44l6kzo8lrkn57) that allows you not only to run existing applications compiled to WebAssembly (ie WordPress), but to extend the functionality of Apache itself with WebAssembly. Basically, the ability to create modules securely and using any programming language.
+
+
+For context, back in January Joe Schaefer suggested that it would be cool if we could expose the APR interface to Wasm modules (https://lists.apache.org/thread/q3td45pf5mhpfv4t86w1k4qrbf2fyg8w).
+
+
+This would bring two benefits:
+
+- Wasm is sandboxed, so failures in any "APR based Apache module" running via mod_wasm can be contained and difficult to exploit or destabilize the server.
+
+- Many languages can compile to Wasm so the range of options to implement some logic is highly increased - people can now reuse knowledge or pre-existing code as opposed to needing to know C to write an Apache module.
+
+
+This is similar in spirit to what mod_lua offers with .lua scripts but extended to any language that would build for Wasm.
+
+
+We have a working proof of concept of this approach (where we exposed apr_table_get, apr_table_set and apr_table_unset for the headers in request->headers_in) to the Wasm module. This is on-par with the RequestHeader add/set/unset directive for mod_headers. The significant difference, however, is that we can easily add programming logic around the header modification.
+
+
+You can see this in action by running
+
+```
+
+docker run --rm -d -p 8080:8080 --name mod-wasm-apr-demo --platform linux/amd64 ghcr.io/assambar/httpd-mod-wasm-experimental:latest && docker exec -ti mod-wasm-apr-demo /usr/local/apache2/headers-filter/run_me.sh && docker rm -f mod-wasm-apr-demo
+
+```
+
+If you cannot run the above example, you can look at the self-descriptive output (result from a test run available at https://gist.github.com/ereslibre/fdf25c2a0c322483ecd074a3676e8571) and you will see examples of how to use mod_wasm for:
+
+
+- Modifying a 'target' header based on the value of an 'operation' header with mod_headers
+
+- The same, but with mod_wasm and edit_headers.wasm
+
+- Evaluating a header's value with mod_wasm and edit_headers.wasm. Cannot do with mod_headers
+
+- Hashing a header's value with mod_wasm and edit_headers.wasm. Cannot do with mod_headers
+
+- Demo of division-by-zero and invalid-file-access in edit_headers.wasm, which do not affect Apache's stability.
+
+
+This new functionality is a proof of concept based of a subset of the Apache API, and the code may need tweaking, but we wanted to share with you early on to get your feedback.
+
+
+The code for this can be found at mod_wasm's repo in this branch -  https://github.com/vmware-labs/mod_wasm/tree/assambar/apache2-apr. To get a look at the specific code changes you can visit https://github.com/vmware-labs/mod_wasm/compare/main...assambar/apache2-apr
+
+
+This is also a steppingstone towards implementing proxy-wasm support in Apache httpd, which would bring it on parity with Apisix / nginx (https://api7.ai/blog/how-apisix-supports-wasm).
+
+A talk from my coworkers Angel and Rafael on extending Istio with proxy-wasm and other programming languages can be found here - https://www.youtube.com/watch?v=_y3f18gf4FA
+
+
+Looking forward to your feedback.
+
+
+Asen

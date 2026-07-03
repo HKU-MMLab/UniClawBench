@@ -1,0 +1,37 @@
+Message-ID: <C419FBC2-2356-4A5D-88BE-668A1E7EA83D@eissing.org>
+X-Clawbench-ID: ASF-2024-0745
+Date: Wed, 28 Sep 2022 15:46:28 +0200
+From: "Stefan Eissing via dev" <dev@httpd.apache.org>
+To: dev@httpd.apache.org
+Subject: Re: mod_proxy_http2 setting Transfer-Encoding chunked for a GET  request
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-09.mbox
+
+Hi Rainer,
+
+> Am 28.09.2022 um 15:33 schrieb Rainer Jung <rainer.jung@kippdata.de>:
+>
+> Hi all,
+>
+> today I stumbled into an unexpected request denial by a rule in the mod_security Core Rule Set 3. It denies requests without body, that have Transfer-Encoding chunked set.
+>
+> When I send a normal GET request, without body, no Transfer-Encoding and no Content-Length, to httpd and proxy it via mod_proxy_http2 to the same server, the proxied request gets "Transfer-Encoding: chunked" added by mod_proxy_http2 and is then denied by mod_security on the receiving side. No such addition when using mod_proxy_http.
+>
+> It seems to me, that "Transfer-Encoding: chunked" is not allowed for http/2 (due to its always streaming behavior), and at least it is unexpected for a GET or HEAD request.
+>
+> Any chance we can get rid of it when proxying a request, that has no body and doesn't bring the header by its own?
+>
+> Should I open a PR in our bugzilla, or on the mod_h2 Github repos?
+
+bugzilla seems good. this might affect more than http2.
+
+We'll see what exactly happens. I suspect it is not mod_proxy_http2, but mod_http2 that adds "chunked" when the EOS of an incoming request has not been received yet and the request is started. If it has no content-length, mod_http2 must chunk the possibly still incoming request body.
+
+This is in 2.4.x. In trunk we changed the filters to no longer require that.
+
+>
+> Thanks and best regards,
+>
+> Rainer

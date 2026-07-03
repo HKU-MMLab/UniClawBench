@@ -1,0 +1,45 @@
+Message-ID: <ZZA3J3F616vc03Je@fusion>
+X-Clawbench-ID: BIO-2024-0405
+Date: Sat, 30 Dec 2023 16:28:39 +0100
+From: Étienne Mollier <emollier@debian.org>
+To: Andreas Tille <tille@debian.org>
+Subject: Re: Please help fixing meson/cmake code of btllib to use Debian packaged libargparse
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_12_msg00091.html
+
+Hi Andreas,
+
+Andreas Tille, on 2023-12-30:
+> Am Sat, Dec 30, 2023 at 04:27:31PM +0530 schrieb Nilesh Patra:
+> > libsbml tests fail due to us running it for supporter pyvers[1]. I don't think it should be an issue.
+>
+> But this is due to
+>
+>    Testsuite: autopkgtest-pkg-python
+>
+> by simply loading the module with any pyvers.  Loading libsbml would be
+> a sensible test as well but I have no idea how to tell
+> autopkgtest-pkg-python to use simply default Python3 version.
+
+autopkgtest-pkg-python can be requested to use only one python3
+version by specifying the X-Python3-Version field in d/control,
+first paragraph.  It is a consequence of autopkgtest-pkg-python
+using `py3versions --requested`.
+
+That being said, routine-update looks to drop this field without
+checking the python3 version selected.  I assume there was a
+good reason to drop this field extension in the past, but
+py3versions(1) manual does not really hint that this field is
+obsolete.  Perhaps switching the build dependency to enforce
+python3.11 (or python3.12) over generic python3 would be a
+working alternative.  In any case, both methods will require
+manual work on python3 version upgrades.
+
+Have a nice day,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  pgp: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/5, please excuse my verbosity
+   `-    on air: Focus - Focus [Instrumental]

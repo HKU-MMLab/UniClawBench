@@ -1,0 +1,61 @@
+task_id: task_102_23_terminal_theme_ansi
+category: 102_exploration
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I want to pick a dark terminal color scheme for a developer who lives in
+  colorized CLI output — git diff, ls colors, syntax-highlighted logs. The most
+  important thing is that the ANSI colors stay clearly distinguishable from each
+  other (especially blue vs purple and red vs green), and that text stays
+  readable. Help me choose the best one from a fixed set of candidates.
+
+  The candidate schemes are provided offline as real Windows Terminal theme JSON
+  files at:
+
+      /tmp_workspace/clawbench/sources/theme_candidates/
+
+  Each file has the 16 ANSI colors plus `background`/`foreground` as hex.
+  Evaluate them objectively — parse the hex and compute, for each scheme:
+
+  - HARD constraints (must pass ALL):
+    1. foreground vs background contrast >= 4.5 (WCAG AA),
+    2. the minimum colour difference (deltaE) between any two of the 6 chromatic
+       normal ANSI colours (red, green, yellow, blue, purple, cyan) >= 18,
+    3. blue vs purple deltaE >= 18,
+    4. red vs green deltaE >= 25.
+
+  - SOFT preferences (tie-break among schemes passing all hard constraints):
+    prefer the larger minimum ANSI deltaE, then higher fg/bg contrast.
+
+  Pick exactly ONE scheme and justify it with the computed numbers. Watch out:
+  a popular muted scheme may have ANSI colours that are too close together, and
+  a high-contrast scheme may actually reuse the same colour for two different
+  ANSI slots.
+
+  Save:
+  - `/tmp_workspace/results/theme_choice.json`: your pick (`selected_id` + the
+    metrics), the schemes that passed all hard constraints, and the tie-break.
+  - `/tmp_workspace/results/theme_evaluation.json`: per-scheme metrics (fg/bg
+    contrast, min ANSI deltaE, blue-purple deltaE, red-green deltaE) with
+    pass/fail and the failing constraint named.
+  - `/tmp_workspace/results/theme_method.json`: how you parsed and computed the
+    contrasts / deltaE (reproducible).
+
+  This is fully offline — do not fetch anything from the network.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/reference_analysis.py
+sources:
+  - theme_candidates/
+
+codex:
+  max_user_followups: 2

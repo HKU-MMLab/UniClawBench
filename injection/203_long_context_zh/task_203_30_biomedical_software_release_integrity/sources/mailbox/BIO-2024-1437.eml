@@ -1,0 +1,27 @@
+Message-ID: <Yo3DZ6EdNEHg2HTR@an3as.eu>
+X-Clawbench-ID: BIO-2024-1437
+Date: Wed, 25 May 2022 07:49:27 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Added autopkgtests for minc-tools
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_05_msg00022.html
+
+Hi Bilal,
+
+Am Wed, May 25, 2022 at 12:56:57AM +0530 schrieb Mohd Bilal:
+> I've added autopkgtests for minc-tools[1]. Requesting someone to review. If
+> ok you may grant me upload permissions and I'll upload the same :)
+
+Looks good and I'll upload after a really minor change (see Git).
+Since I've build here on my side I'll upload but will grant upload
+permissions anyway in case you want to push further changes.
+
+Thanks a lot for your contribution
+
+      Andreas.
+
+--
+http://fam-tille.de

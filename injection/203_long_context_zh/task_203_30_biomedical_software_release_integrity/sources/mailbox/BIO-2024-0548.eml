@@ -1,0 +1,26 @@
+Message-ID: <20231230074932.ukbto6pyzfpebetx@office.mailbox.org>
+X-Clawbench-ID: BIO-2024-0548
+Date: Sat, 30 Dec 2023 13:19:32 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: Please help fixing meson/cmake code of btllib to use Debian packaged libargparse
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_12_msg00087.html
+
+On Fri, Dec 29, 2023 at 02:04:34PM +0100, Andreas Tille wrote:
+> Am Fri, Dec 29, 2023 at 11:35:41AM +0530 schrieb Nilesh Patra:
+> > On a brief look, it does not seem easy and would mean maintaining a debian specific
+> > patch for ever which maybe non-trivial for future versions.
+> >
+> > Can we not support just the default python3-dev?
+>
+> Sure.  Feel free to implement this - I'm just not available for the next
+> couple of days.
+
+This is the currently existing solution itself. Only additional change needed is to
+replace python3-all-dev with python3-dev in d/control.
+
+Best,
+Nilesh

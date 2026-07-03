@@ -1,0 +1,66 @@
+Message-ID: <CA+7wUsxiUjjaUzym1P1Cby590YqxFex+A3DHnX+P31ZLm3uFbA@mail.gmail.com>
+X-Clawbench-ID: BIO-2024-1228
+Date: Fri, 10 Dec 2021 14:50:10 +0100
+From: Mathieu Malaterre <malat@debian.org>
+To: Andreas Tille <tille@debian.org>
+Subject: Re: Any help to get pydicom build welcome
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_12_msg00063.html
+
+On Fri, Dec 10, 2021 at 2:40 PM Andreas Tille  wrote:
+>
+> Hi Mathieu,
+>
+> Am Fri, Dec 10, 2021 at 02:31:20PM +0100 schrieb Mathieu Malaterre:
+> > On Fri, Dec 10, 2021 at 12:22 PM Étienne Mollier  wrote:
+> > [...]
+> > > My impression by looking at it to unroll is that something seems
+> > > caught in a recursive loop.
+> >
+> > The bug is upstream. One cannot do:
+> >
+> >     image = gdcm.Image()
+> >
+> > This will not work with the simple shared pointer implementation in
+> > upstream gdcm.
+>
+> I'f volunteer to open an upstream issue about this - but could you
+> give some more verbose information what will work instead?
+
+You can copy/paste the following
+
+[...]
+GDCM is a C++ project, that is wrapped to python using swig. It use a
+simple reference counting mechanism (c++98 style), where application
+programmer are required to write:
+
+gdcm::SmartPointer im = new gdcm::Image;
+
+Since SmartPointer is a class template it is not accessible from
+python. A predefined set of class have been explicitly wrapped to
+python using something like:
+
+%template(SmartPtrScan) gdcm::SmartPointer;
+
+this is not the case for gdcm.Image as of release 3.0.10.
+
+---
+
+A potential solution would be to use an image instance from an
+ImageReader/ImageWriter .
+
+writer = gdcm.ImageWriter()
+proper_image_ref_count = writer.GetImage()
+
+[...]
+
+> > I would just remove the gdcm test suite from pydicom.
+>
+> I'll do so - but it would be great to get this working in the next
+> release.
+
+Agreed.
+
+Thanks

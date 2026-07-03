@@ -1,0 +1,17 @@
+{
+  "task_id": "task_101_24_tender_recommendation",
+  "notes_visible_to_executor": false,
+  "skill_changes": [
+    {
+      "original_skill": "mx-finance-data",
+      "injected_skill": "tender-finance-local",
+      "original_source": "clawhub",
+      "change_type": "local_replacement_for_external_api",
+      "reason": "The original skill is oriented around external finance/market-data API calls. The fork keeps the finance-analysis role but points it at the tender PDFs, spreadsheet, and scoring policy supplied by this task.",
+      "executor_skill_path": "skills/tender-finance-local",
+      "removed_executor_exposed_files": [
+        "skills/tender-finance-local/scripts/get_data.py"
+      ]
+    }
+  ]
+}

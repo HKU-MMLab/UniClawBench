@@ -1,0 +1,90 @@
+Message-ID: <YutS7w4+bCpOH2jf@an3as.eu>
+X-Clawbench-ID: BIO-2024-0068
+Date: Thu, 4 Aug 2022 07:02:39 +0200
+From: Andreas Tille <tille@debian.org>
+To: "Aaron M. Ucko" <ucko@debian.org>
+Subject: Re: igblast accepted - how can it be used to test igdiscover
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_08_msg00015.html
+
+Hi Aaron,
+
+Am Wed, Aug 03, 2022 at 04:14:53PM -0400 schrieb Aaron M. Ucko:
+> >> --with-vdb=/usr VDB_INCLUDE=-I/usr/include/ncbi-vdb
+> >
+> > Hmmm, this was running into an error which I tried to fix with
+>
+> Do you happen to remember what the error was?  It worked for me, albeit
+> in a rather non-minimal build environment.
+
+Hmmmm, very strange.  I "simply" pushed and wanted to show you in Salsa-CI
+to show you the problem ... but there is no such error as here:
+
+...
+checking for Zorba... no
+checking for libsqlite3... no
+checking for ncbi-vdb in //usr... no
+configure: error: --with-vdb explicitly specified, but no usable version found.
+make[1]: *** [debian/rules:7: override_dh_auto_configure] Error 1
+make[1]: Leaving directory '/build/ncbi-igblast-1.19.0'
+make: *** [debian/rules:4: binary] Error 2
+dpkg-buildpackage: error: debian/rules binary subprocess returned exit status 2
+I: copying local configuration
+E: Failed autobuilding of package
+
+
+In any case I think it makes sense to fix all those
+
+...
+checking for libssl... no
+checking for krb5-config... no
+checking for libgssapi_krb5... no
+checking for libcurl... no
+checking for reentrant Sybase libraries... no
+checking for Sybase... no
+checking for FreeTDS... no
+checking for mysql_config... no
+checking for Berkeley DB libraries... no
+checking for python... no
+checking for python2.5... no
+checking for python2.6... no
+checking for python2.7... no
+checking for python3... no
+checking for perl... /usr/bin/perl
+checking for usable Perl libraries... no
+checking Boost version...
+checking for Boost library name tag... -gcc121-mt-d-x64- (autodetected)
+checking for Boost.Regex... no
+checking for Boost.Spirit... no
+checking for Boost.System... no
+checking for Boost.Chrono... no
+checking for Boost.Filesystem... no
+checking for Boost.Iostreams... no
+checking for Boost.Program-Options... no
+checking for Boost.Serialization... no
+checking for Boost.Test... no
+checking for Boost.Thread... no
+checking for the NCBI C toolkit... no
+...
+
+"no"s by the according Build-Depends if we have the actual library (not
+sure yet what is checked by NCBI C toolkit but others are clear, thought.
+
+
+> > I've cleared most of the --without options and added --with-openmp with
+> > the according Build-Depends.
+>
+> Thanks!  However, please note that OpenMP is a compiler feature and
+> doesn't require any special build dependencies; OpenMPI, meanwhile, is a
+> third-party library that doesn't come into play here.
+
+OK, I removed libopenmpi-dev from Build-Depends.
+
+Kind regards
+
+       Andreas.
+
+--
+http://fam-tille.de

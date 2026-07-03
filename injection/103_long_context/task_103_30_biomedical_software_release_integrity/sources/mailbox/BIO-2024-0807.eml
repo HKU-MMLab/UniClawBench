@@ -1,0 +1,47 @@
+Message-ID: <Y2VzdVOC7o5TJWzU@fusion>
+X-Clawbench-ID: BIO-2024-0807
+Date: Fri, 4 Nov 2022 21:17:57 +0100
+From: Étienne Mollier <emollier@emlwks999.eu>
+To: Andreas Tille <andreas@an3as.eu>
+Subject: Re: Help for new version of bowtie2 needed
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_11_msg00010.html
+
+Hi Andreas,
+
+Andreas Tille, on 2022-11-04:
+> Hi folks,
+>
+> I'm afraid that we see some SIMDE issues here:
+>
+>    https://salsa.debian.org/med-team/bowtie2/-/jobs/3474326
+>
+> I'm not sure whether I refreshed the according patches properly so some
+> review might make sense.
+
+In the raw output, the error spewing begins with this paragraph:
+
+	In file included from aligner_sw.h:73,
+	                 from bt2_search.cpp:54:
+	sse_wrap.h:122:2: error: #else after #else
+	  122 | #else
+	      |  ^~~~
+	sse_wrap.h:30: error: the conditional began here
+	   30 | #ifdef SSE_AVX2
+	      |
+	sse_wrap.h:214:2: error: #endif without #if
+	  214 | #endif /* SSE_WRAP_H_ */
+	      |  ^~~~~
+
+With some luck, it is just a matter of identifying which #else
+is the proper one.  I may have a look this weekend if it turns
+out to be more hairy than first thought.
+
+Have a good evening,  :)
+--
+Étienne Mollier
+Fingerprint:  8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+Sent from /dev/pts/2, please excuse my verbosity.
+On air: Shumaun - Nafsi Ammara

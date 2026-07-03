@@ -1,0 +1,38 @@
+Message-ID: <20020816004531.GA5461@marvin.home.priv>
+X-Clawbench-ID: CAM-2003-1399
+Date: Thu, 15 Aug 2002 17:45:31 -0700
+From: Gary Peck <gbpeck@sbcglobal.net>
+To: rpm-zzzlist@freshrpms.net
+Subject: Re: making rpms from already-compiled source trees
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01237.8118bdf78e98c631ffa4c979e203eb24
+
+Well, thanks everyone for the explanations. I still disagree with the
+reasoning, but it seems this is one of those philosophical questions
+that I'm on the losing end of :)
+
+The checkinstall utility that someone mentioned seems useful, but I
+don't really have the time to figure it out right now. After searching
+the web some more, I found out that Mandrake's version of rpm is
+patched to support what I wanted. So I guess I'll look into that when
+I get a chance.
+
+On Thu, Aug 15, 2002 at 05:14:47PM +0200, Ralf Ertzinger wrote:
+> Do nothing in the %build section, and copy the existing binaries
+> in %install.
+
+As far as I can tell, this could be useful for my situation too. It's
+not a complete solution since I can't really distribute the SRPMS with
+full certainty that they work, but at least I can make RPMS for local
+use by tarring up the buildroot directory and then using the above
+technique. All I really want is to get dependency tracking for
+everything installed on my system (including software from cvs). This
+just makes it a little bit faster.
+
+gary
+
+_______________________________________________
+RPM-List mailing list <RPM-List@freshrpms.net>
+http://lists.freshrpms.net/mailman/listinfo/rpm-list

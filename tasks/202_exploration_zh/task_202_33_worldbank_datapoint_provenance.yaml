@@ -1,0 +1,32 @@
+task_id: task_202_33_worldbank_datapoint_provenance
+category: 202_exploration_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  一份财务演示文稿引用了一个约 4.44 万亿美元的数字，作为日本 2015 年的 GDP，
+  但没有给出来源。我想在重新使用它之前，对照权威数据集对其进行核实。
+
+  请将这个数字追溯到其规范来源（而不是只是重复转载它的新闻文章或第三方统计网站）。
+  我需要：
+  - 该数字所来自的数据集及具体指标（名称 + 代码），
+  - 该数据集对日本 2015 年给出的精确数值，以便我们能确认约 4.44 万亿美元这个数字，
+  - 一个指向权威数据的链接（该数据集自己的 API 或数据页面），
+  - 该演示文稿的数字是否经得起核对。
+
+  将你的结论和证据链（数据集、指标代码、匹配的日本/2015 年数值，以及权威链接）
+  保存到 `/tmp_workspace/results/datapoint_provenance.json`，并在
+  `/tmp_workspace/results/` 下附上笔记。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+codex:
+  max_user_followups: 2

@@ -1,0 +1,29 @@
+Message-ID: <udly226p48g.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-0774
+Date: Sat, 19 Feb 2022 23:10:55 -0500
+From: ucko@debian.org (Aaron M. Ucko)
+To: <debian-med@lists.debian.org>
+Subject: Re: Datasets to design autopkgtests for our packages
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_02_msg00083.html
+
+Andrius Merkys  writes:
+
+> It depends whether you need simple protein FASTA sequences or
+> alignments. You may find simple sequences in PDB, for example [1], go to
+> "Download Files" and FASTA format is just there. AFAIR, PDB data is
+> freely distributable.
+
+Likewise for everything in GenBank/GenPept, ENA, and DDBJ per [2] and
+everything in UniProt per [3].
+
+> [1] https://www.rcsb.org/structure/6fti
+
+[2] https://www.insdc.org/policy.html
+[3] https://www.uniprot.org/help/license
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

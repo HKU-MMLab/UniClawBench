@@ -1,0 +1,172 @@
+{
+  "task_id": "task_103_04_ai_coding_plan_subscription",
+  "created_at": "2026-04-26T00:00:00+08:00",
+  "minimum_sources": 10,
+  "minimum_claude_code_provider_plans": 3,
+  "minimum_china_coding_plans": 3,
+  "exclude_pure_api_pay_as_you_go": true,
+  "seed_links": [
+    "https://help.aliyun.com/zh/model-studio/coding-plan",
+    "https://help.aliyun.com/zh/model-studio/claude-code-coding-plan",
+    "https://docs.z.ai/devpack/quick-start",
+    "https://www.kimi.com/code/docs/en/",
+    "https://platform.minimax.io/docs/coding-plan/claude-code",
+    "https://www.cursor.com/en/pricing",
+    "https://docs.cursor.com/account/rate-limits",
+    "https://windsurf.com/redirect/windsurf/learn-pricing",
+    "https://docs.windsurf.com/plugins/accounts/usage",
+    "https://www.augmentcode.com/pricing",
+    "https://www.qodo.ai/pricing/",
+    "https://www.jetbrains.com/help/ai-assistant/licensing-and-subscriptions.html",
+    "https://replit.com/pricing",
+    "https://www.tabnine.com/pricing/"
+  ],
+  "expected_claude_code_provider_compatible": [
+    {
+      "name": "Alibaba Cloud Model Studio Coding Plan Pro",
+      "official_source": "https://help.aliyun.com/zh/model-studio/coding-plan",
+      "compatibility_source": "https://help.aliyun.com/zh/model-studio/claude-code-coding-plan",
+      "snapshot": "Pro plan is listed at ¥200/month, with 6,000 requests per 5 hours, 45,000 requests per week, and 90,000 requests per month; official docs say it can be configured in Claude Code with the Coding Plan Anthropic-compatible Base URL and dedicated API key.",
+      "why_not_pure_api": "The plan page says it is for AI coding tools such as Claude Code/OpenClaw and warns against direct non-interactive API use."
+    },
+    {
+      "name": "Z.ai GLM Coding Plan",
+      "official_source": "https://docs.z.ai/devpack/quick-start",
+      "compatibility_source": "https://zcode.z.ai/docs/configuration",
+      "snapshot": "Official Z.ai docs describe GLM Coding Plan subscription for coding models and setup through Z Code / Claude Code-style coding tools.",
+      "why_not_pure_api": "The plan is positioned as a coding plan for tools rather than generic pay-as-you-go API usage."
+    },
+    {
+      "name": "Kimi Code membership",
+      "official_source": "https://www.kimi.com/code/docs/en/",
+      "compatibility_source": "https://www.kimi.com/code/docs/en/",
+      "snapshot": "Official Kimi Code docs state that member API Key integration can be used on supported platforms and that individual personal use in Claude Code and Roo Code is permitted; plan credits refresh according to the billing cycle.",
+      "why_not_pure_api": "It is a membership benefit for Kimi Code workflows, not a generic API-only recommendation."
+    },
+    {
+      "name": "MiniMax M2.x coding plan / Claude Code integration",
+      "official_source": "https://platform.minimax.io/docs/coding-plan/claude-code",
+      "compatibility_source": "https://platform.minimax.io/docs/coding-plan/claude-code",
+      "snapshot": "Official MiniMax docs have a Claude Code page for using M2.x in AI coding tools and configuring the Anthropic-compatible endpoint.",
+      "why_not_pure_api": "Accept only if the executor finds a current coding-plan/subscription page rather than a generic token-price page."
+    }
+  ],
+  "china_plan_focus": [
+    "Alibaba Cloud Model Studio Coding Plan",
+    "Z.ai GLM Coding Plan",
+    "Kimi Code membership",
+    "MiniMax coding plan / M2.x Claude Code integration"
+  ],
+  "product_only_examples_not_counted_as_claude_code_provider": [
+    "Tongyi Lingma product subscription unless official docs show a Claude Code provider path",
+    "TRAE product subscription unless official docs show a Claude Code provider path",
+    "Qoder product subscription unless official docs show a Claude Code provider path",
+    "Tencent Cloud CodeBuddy IDE subscription unless official docs show a Claude Code provider path",
+    "Qodo IDE/CLI quality tooling subscription unless official docs show a Claude Code provider path",
+    "SiliconFlow or other compute-rental/model-gateway/API-aggregator platforms unless a fixed coding plan directly usable as a Claude Code provider is documented"
+  ],
+  "accepted_subscription_examples": [
+    "Cursor Pro/Ultra/Teams",
+    "Windsurf Pro/Max/Teams",
+    "Augment Indie/Standard/Max",
+    "Qodo Developer/Teams",
+    "JetBrains AI Pro/Ultimate",
+    "Replit Core/Pro",
+    "Tabnine Code Assistant",
+    "Alibaba Cloud Model Studio Coding Plan",
+    "Z.ai GLM Coding Plan",
+    "Kimi Code membership",
+    "Anthropic Claude Max / Pro if documented as a subscription usable in the target workflow",
+    "OpenAI ChatGPT Team / Plus / Pro if documented as a coding subscription rather than direct API",
+    "Google Gemini Advanced / AI Pro if documented as a coding subscription rather than direct API",
+    "GitHub Copilot Pro / Pro+ / Business"
+  ],
+  "quota_snapshot_examples": [
+    {
+      "name": "Alibaba Cloud Model Studio Coding Plan Pro",
+      "source": "https://help.aliyun.com/zh/model-studio/coding-plan",
+      "quota_snapshot": "¥200/month; 6,000 requests per 5 hours; 45,000 requests per week; 90,000 requests per month; only for interactive coding tools such as Claude Code/OpenClaw, not direct API automation."
+    },
+    {
+      "name": "Z.ai GLM Coding Plan",
+      "source": "https://docs.z.ai/devpack/overview",
+      "quota_snapshot": "Lite about 80 prompts per 5 hours / 400 per week; Pro about 400 per 5 hours / 2,000 per week; Max about 1,600 per 5 hours / 8,000 per week; supports Claude Code, Roo Code, Cline, OpenCode, OpenClaw and others; API calls are billed separately and do not use coding-plan quota."
+    },
+    {
+      "name": "Kimi Code membership",
+      "source": "https://www.kimi.com/code/docs/en/",
+      "quota_snapshot": "Kimi Code membership benefit; 5-hour token quota supports approximately 300-1,200 API calls, up to 30 concurrent requests; Kimi Code docs permit personal use in Claude Code and Roo Code; quotas refresh on a 7-day rolling cycle."
+    },
+    {
+      "name": "MiniMax Token Plan / former Coding Plan",
+      "source": "https://platform.minimax.io/docs/coding-plan/intro",
+      "quota_snapshot": "Standard plans: Starter 1,500 M2.7 requests per 5 hours; Plus 4,500 per 5 hours; Max 15,000 per 5 hours. Highspeed plans: Plus-Highspeed 4,500 M2.7-highspeed requests per 5 hours; Max-Highspeed 15,000; Ultra-Highspeed 30,000."
+    },
+    {
+      "name": "Cursor Pro / Pro+ / Ultra",
+      "source": "https://docs.cursor.com/account/rate-limits",
+      "quota_snapshot": "Individual plans include agent usage charged against included usage: Pro $20 of API agent usage plus bonus, roughly 225 Sonnet 4 / 550 Gemini / 500 GPT-5 requests for a median user; Pro+ $70 included; Ultra $400 included."
+    },
+    {
+      "name": "Windsurf Pro / Teams / Enterprise",
+      "source": "https://docs.windsurf.com/plugins/accounts/usage",
+      "quota_snapshot": "Windsurf uses prompt credits/quotas for Cascade and premium models; documentation states paid Pro/Max, Teams and Enterprise plans, add-on credits, automatic refills, and plan-dependent model/usage limits that must be checked on the current pricing page."
+    },
+    {
+      "name": "Augment Indie / Standard / Max",
+      "source": "https://www.augmentcode.com/pricing",
+      "quota_snapshot": "Indie $20/month includes 40,000 credits; Standard $60/developer/month includes 130,000 credits; Max $200/developer/month includes 450,000 credits; auto top-up $15 per 24,000 credits; credits can be used for coding agent and code review."
+    },
+    {
+      "name": "Qodo Developer / Teams",
+      "source": "https://www.qodo.ai/pricing/",
+      "quota_snapshot": "Developer includes IDE/CLI credits and Teams lists larger credit pools for Qodo's own tools. This may be a useful coding subscription comparison, but do not count it as Claude Code provider compatible unless current official docs show a Claude Code provider path."
+    },
+    {
+      "name": "JetBrains AI Pro / Ultimate",
+      "source": "https://www.jetbrains.com/help/ai-assistant/licensing-and-subscriptions.html",
+      "quota_snapshot": "Quota is measured in AI Credits. Published tiers include AI Pro and AI Ultimate with monthly dedicated quotas; each AI Credit corresponds to about $1 USD, and JetBrains gives rough per-credit request equivalents such as about 10 AI Chat code-generation requests or 40 editor code-generation requests."
+    },
+    {
+      "name": "Replit Core / Pro",
+      "source": "https://replit.com/pricing",
+      "quota_snapshot": "Core is $25/month or $20/month billed annually and includes $25 monthly credits; Pro is $100/month or $95/month billed annually and includes $100 monthly credits, stronger models and commercial/professional build features."
+    },
+    {
+      "name": "Tabnine Code Assistant / Agentic Platform",
+      "source": "https://www.tabnine.com/pricing/",
+      "quota_snapshot": "Code Assistant annual subscription is $39/user/month; Agentic Platform annual subscription is $59/user/month and includes terminal-native Tabnine CLI / agentic workflows. Unlimited usage is available with customer-owned LLM endpoints; Tabnine-provided LLM access uses reserved token quota / provider prices plus handling fee."
+    }
+  ],
+  "excluded_examples": [
+    {
+      "name": "Sourcegraph Amp",
+      "source": "https://ampcode.com/pricing",
+      "reason": "Official pricing says there is no subscription or commitment and usage is deducted from credits at provider API cost; it should not be counted under the prompt's no pure API/pay-as-you-go constraint."
+    },
+    {
+      "name": "SiliconFlow",
+      "source": "https://siliconflow.cn/",
+      "reason": "Treat as a compute/model-service/API platform unless the executor finds a current fixed coding plan directly usable as a Claude Code provider. Generic model API billing or token packages do not count."
+    }
+  ],
+  "required_instruction_evidence": [
+    "official Claude Code setup or Anthropic-compatible endpoint docs screenshot",
+    "official plan page screenshot showing monthly/subscription quota or credits",
+    "evidence that any counted compatible plan can be used directly as a Claude Code provider outside a product-only chat UI",
+    "evidence that product-only IDE/plugin/tool subscriptions were not counted as Claude Code provider plans",
+    "evidence that pure API/pay-as-you-go options were excluded from recommendations"
+  ],
+  "reference_screenshots": [
+    "provider_evidence/alibaba_coding_plan.png",
+    "provider_evidence/claude_max_plan.png",
+    "provider_evidence/claude_pricing.png",
+    "provider_evidence/kimi_benefits.png",
+    "provider_evidence/kimi_third_party_agents.png",
+    "provider_evidence/minimax_claude_code.png",
+    "provider_evidence/zai_configuration.png",
+    "provider_evidence/zai_quick_start.png"
+  ],
+  "prompt_alignment_note": "Prompt excludes pure API/pay-as-you-go/compute-rental/model-gateway/API-aggregator options as final recommendations, requires at least 10 plans, and at least 3 China-related coding plans plus at least 3 plans usable directly as Claude Code providers.",
+  "claude_code_evidence_required": true
+}

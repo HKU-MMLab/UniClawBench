@@ -1,0 +1,38 @@
+Message-ID: <udlmta1lptb.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-1070
+Date: Tue, 11 Oct 2022 22:48:48 -0400
+From: ucko@debian.org (Aaron M. Ucko)
+To: Pierre Gruet <pgt@debian.org>
+Subject: Re: Finishing ncbi-vdb and sra-sdk
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_10_msg00040.html
+
+Pierre Gruet  writes:
+
+> Indeed, this warning should be overridden, usually I do so and add a
+> pointer to the discussion in
+> https://lists.debian.org/debian-java/2018/06/msg00021.html in the
+> comment in the .lintian-overrides file.
+
+Got it, thanks!
+
+> Do you have an idea of the exact way the .so is loaded by the Java
+> code? The methods in LibManager.java are a bit involved and I am
+> unsure to see which behaviour is expected exactly. If you don't, I
+> shall investigate further in order to help, no worry.
+
+No, sorry.  That said, this issue is neither new nor urgent; I just
+noticed it and wanted to take the opportunity to address it if it would
+be reasonably easy to do so.
+
+>>> A comment to your question in your other mail:  Sorry, I have no idea
+>>> how to teach CI to pick from experimental.
+
+FTR, https://salsa.debian.org/salsa-ci-team/pipeline turned out to have
+tips on this; I successfully set up Aptly here.
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

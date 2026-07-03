@@ -1,0 +1,12 @@
+Message-ID: <asf-2024-1329@httpd.apache.org>
+X-Clawbench-ID: ASF-2024-1329
+Date: Fri, 16 Feb 2024 11:42:00 +0000
+From: Release Manager <rm@apache.org>
+To: dev@httpd.apache.org
+Subject: QuartzCache release status
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: synthetic Apache-style project infrastructure review implant
+
+QuartzCache is still waiting on the missing dependency audit attachment, but the release checklist moved to final vote yesterday. Please confirm whether security intended to release the hold.

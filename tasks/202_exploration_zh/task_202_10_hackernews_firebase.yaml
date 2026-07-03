@@ -1,0 +1,34 @@
+task_id: task_202_10_hackernews_firebase
+category: 202_exploration_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我读 Hacker News（https://news.ycombinator.com/），我想以编程方式从中拉取数
+  据。网站本身在页面上并没有暴露一个明显的 API，但 Hacker News 有一个官方的公开
+  数据 API。
+
+  请找到那个官方 API 并使用它（而不是抓取 news.ycombinator.com 的 HTML），完成
+  两件事：
+
+  1. 获取当前首页的热门故事（top stories）列表，取出此刻排在第 1 位的故事，并报
+     告它的 id、标题、url（如果有）、作者（`by`）、得分（score）以及评论数
+     （`descendants`）。
+  2. 作为一个固定的交叉验证，再获取 id 为 **8863** 的条目并报告它的标题和作者
+     ——这是一个特定的历史条目，所以它的核心字段不会变化。
+
+  把结果保存到 `/tmp_workspace/results/hackernews.json`（一个 `top_story` 对象和
+  一个 `item_8863` 对象），并把你调用的确切请求 URL 连同它们的原始 JSON 响应保存
+  到 `/tmp_workspace/results/hackernews_evidence/`。
+
+references:
+  - references/eval_rule.md
+
+codex:
+  max_user_followups: 2

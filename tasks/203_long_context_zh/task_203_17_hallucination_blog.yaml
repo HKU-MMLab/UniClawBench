@@ -1,0 +1,48 @@
+task_id: task_203_17_hallucination_blog
+category: 203_long_context_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我需要制作一篇关于 Extrinsic Hallucinations in LLMs 主题的论文阅读 HTML 博客。
+  请围绕以下主线来组织：
+  1. Problem setup: what is extrinsic hallucination
+   - 将 hallucination 定义为事实依据（factual grounding）的失败；简要区分 in-context inconsistency 与 extrinsic hallucination；说明一个理想的系统应当知道何时回答、何时拒答、何时表达不确定。
+  2. Why hallucinations happen
+   - 解释诸如预训练数据缺失、过时、错误以及相互矛盾等问题；说明 fine-tuning/RLHF 不一定能解决事实性，反而可能让模型对错误答案更加自信。
+  3. Measuring factuality with atomic claims
+   - 介绍把长答案拆分为原子事实（atomic facts），再通过检索、搜索或可靠来源加以验证；涵盖 FActScore 和 SAFE / LongFact 这条评测脉络。
+  4. Detecting unsupported claims and uncertainty
+   - 介绍 SelfCheckGPT 的多次采样一致性思路；介绍 calibration / TruthfulQA / SelfAware 以及模型是否知道自己不知道什么。
+  5. Inference-time mitigation: retrieve, verify, revise
+   - 从 RAG 出发，进一步讨论 RARR / FAVA 等检索并修订（retrieve-and-revise）方法、Self-RAG 的检索-生成-批判（retrieve-generate-critique）思路，以及 Chain-of-Verification 的草稿-核查-修订（draft-check-revise）思路。
+  6. Training models for factuality and attribution
+   - 简要讨论训练模型使其更偏好可归因、有证据支撑的答案。
+  7. Practical synthesis
+   - 总结短问答、长文本生成和生产系统应如何结合检索、引用、弃答（abstention）、生成后的检查器以及面向事实性的训练。
+
+  候选论文都在 `/tmp_workspace/clawbench/sources/papers/` 中，我把文件重命名成了没有语义的数字，所以不要从文件名猜测。阅读这些论文，并为每一节（包括开篇的问题引言）选出应当讨论的论文。
+
+  让博客图文并茂。你可以从论文中截取图/表，但截图必须完整、清晰、与内容相符，且细节足够清楚到能读出文字和细节。公式可以写成截图或 LaTeX。使用已准备好的 `/tmp_workspace/clawbench/sources/assets/`，其中包含页面模板所需的 CSS、JavaScript 和 MathJax 公式渲染依赖。
+
+  将最终博客保存到 `/tmp_workspace/results/hallucination_blog/`；它应包含 HTML 文件和对应的 assets。把 HTML 引用的图片放到 `/tmp_workspace/clawbench/results/assets/images`，并为博客中的每一张图注明来源论文。
+
+  同时保存 `/tmp_workspace/results/selection_note.md`，说明每一节为什么选择了这些论文。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/hallucination_blog/
+  - references/paper_mapping.json
+sources:
+  - papers/
+  - assets/
+
+codex:
+  max_user_followups: 2

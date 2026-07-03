@@ -1,0 +1,32 @@
+Message-ID: <6286.194.237.142.30.1029506959.squirrel@mail.nologic.org>
+X-Clawbench-ID: CAM-2003-1072
+Date: Fri, 16 Aug 2002 15:09:19 +0100
+From: Ciaran Johnston <cj@nologic.org>
+To: ilug@linux.ie
+Subject: [ILUG] Backup solutions
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00428.65ae29d057a34273b8b064e934868ee0
+
+Hi folks,
+I maintain a colocated server on behalf of a small group of individuals,
+and am looking at backup solutions. Is it possible to get some sort of low-
+end internal tape / other solution that could be used to back up approx. 40
+Gigs of data or am I just dreaming? My ISP does offer backups at extra cost
+but the only problem with that is, well, the extra cost.
+
+What I was hoping to do was to install some kind of internal tape device,
+then swap tapes round every month, so I had an onsite backup of say the
+last 24 hours and an offsite backup of the last month. Is this feasible?
+I'm beginning to think it isn't. External devices are not an option as part
+of the charge for colocation is rackspace.
+
+Thanks,
+Ciaran.
+
+
+--
+Irish Linux Users' Group: ilug@linux.ie
+http://www.linux.ie/mailman/listinfo/ilug for (un)subscription information.
+List maintainer: listmaster@linux.ie

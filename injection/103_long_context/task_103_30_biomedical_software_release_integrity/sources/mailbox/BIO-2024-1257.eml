@@ -1,0 +1,79 @@
+Message-ID: <20211015222212.rm3haqvmbmrbo6o5@ShayanLaptop.lan>
+X-Clawbench-ID: BIO-2024-1257
+Date: Fri, 15 Oct 2021 23:22:12 +0100
+From: Shayan Doust <hello@shayandoust.me>
+To: Andreas Tille <andreas@fam-tille.de>, Nilesh Patra <nilesh@tchncs.de>
+Subject: Re: Autopkgtest fails in new version of shasta
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00074.html
+
+Hello Andreas and Nilesh,
+
+> I just chatted with Nilesh today about a private virtual server which I'm
+> using for my mail. ;-)
+
+Very nice :). I'll probably set up wireguard and forward SMTP traffic through that.
+
+> Shiny, shiny and shiny. ;-)
+
+Already on it, albeit very slowly :/.
+
+> > node-destroy has 50ish lines of code, and this looks something that FTP masters will not accept, see here[1]
+> > They sent out an email to instead embed a node package if it is too small -- this was due to ever increasing javas>
+> > in the archive. I can't seem to locate the exact email now though.
+> >
+> > I guess your target package is also javascript right? Just follow the same link for embedding it in.
+>
+> I guess all these are proconditions for shiny.
+
+I didn't put much thought into this as node-destroy already existed on Salsa, so I just made it upload-ready.
+Thanks for the pointer; I'll embed this as needed.
+
+Yes, node-destroy is a dependency for shiny.
+
+Kind regards,
+Shayan
+
+On Thu, Oct 14, 2021 at 10:20:26PM +0200, Andreas Tille wrote:
+> Hi,
+>
+> Am Fri, Oct 15, 2021 at 01:12:01AM +0530 schrieb Nilesh Patra:
+> > > It ran fine today, so it looks like you beat me to fixing it.
+> > >
+> > > Unfortunately my faculty now blocks connections via the SMTP port, so email communications are more difficult. That is, until I set up a method around it.
+> >
+> > Damn, what a mess :/
+>
+> I just chatted with Nilesh today about a private virtual server which I'm
+> using for my mail. ;-)
+>
+> > > Is there anything outstanding that you would like me to look at? node-destroy still needs uploading
+>
+> Shiny, shiny and shiny. ;-)
+>
+> > (from a month ago). Other than that, this weekend looks much more free for me.
+> >
+> > node-destroy has 50ish lines of code, and this looks something that FTP masters will not accept, see here[1]
+> > They sent out an email to instead embed a node package if it is too small -- this was due to ever increasing javascript
+> > in the archive. I can't seem to locate the exact email now though.
+> >
+> > I guess your target package is also javascript right? Just follow the same link for embedding it in.
+>
+> I guess all these are proconditions for shiny.
+>
+> Kind regards
+>
+>       Andreas.
+>
+> > [1]: https://wiki.debian.org/Javascript/GroupSourcesTutorial#When_is_it_recommended_to_embed_a_node_module.3F
+>
+> --
+> http://fam-tille.de
+
+--
+Shayan Doust - 201427418
+Fingerprint: 0401 A810 A6F2 4303 1EA3 9759 6D7D 4419 19D0 2395
+
+Note: all emails sent by me are signed with my PGP key.

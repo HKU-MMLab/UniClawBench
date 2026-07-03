@@ -1,0 +1,47 @@
+task_id: task_104_23_rosling_gapminder_chart
+category: 104_multimodal
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  Please open this Hans Rosling talk page on the TED official website:
+  https://www.ted.com/talks/hans_rosling_the_best_stats_you_ve_ever_seen
+
+  I want to understand the classic country development bubble chart from his talk.
+  You must directly play the talk and find the target bubble chart in the video frames. Do not just download TED subtitles or rely on
+  the transcript; the screenshot, reproduced chart, and highlighted analysis must all be based on actual viewing.
+
+  1. Play the talk, find the country development bubble chart segment that uses GDP per capita as the horizontal axis,
+     and record the year and axis labels shown on screen; the screenshot must be based on the actual TED video frame.
+  2. Capture a clear chart frame and save it as `/tmp_workspace/results/rosling_chart_screenshot.png`.
+  3. Then visit Gapminder's official data portal (https://www.gapminder.org/data/) and any necessary official documentation / data download pages,
+     and obtain data for the same year as the talk's chart frame or a nearby year; if you use an adjacent year, explain why.
+  4. Use Python to reproduce a bubble chart with a similar style that satisfies the metric requirements below, and save:
+     - `/tmp_workspace/results/rosling_chart_reproduced.png`
+     - `/tmp_workspace/results/rosling_chart_reproduced.py`
+  5. Read the country list in `/tmp_workspace/clawbench/sources/my_countries.csv`, highlight those countries in your reproduced chart,
+     and explain their positions, differences, and approximate development levels in `/tmp_workspace/results/my_countries_analysis.md`.
+
+  The reproduced chart must satisfy at least:
+  - X axis: GDP per capita (log scale)
+  - Y axis: life expectancy
+  - Bubble size: population
+  - Color: continent or an equivalent continent grouping
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/highlighted_countries_2003.csv
+  - references/rosling_reference_frame_13m30s.png
+
+sources:
+  - my_countries.csv
+
+codex:
+  max_user_followups: 2

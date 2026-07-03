@@ -1,0 +1,33 @@
+Message-ID: <udlr1cnbmde.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-0489
+Date: Thu, 14 Oct 2021 12:29:49 -0400
+From: ucko@debian.org (Aaron M. Ucko)
+To: Andreas Tille <andreas@an3as.eu>
+Subject: Re: golang-github-dataence-porter2 fails autopkgtest
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00055.html
+
+First off, thanks for taking care of the update!
+
+Andreas Tille  writes:
+
+> Am Thu, Oct 14, 2021 at 01:18:06PM +0530 schrieb Nilesh Patra:
+>
+>> And on a related note, do you think it makes sense to move this package to
+>> the golang team instead?
+>> This also doesn't look exactly bioinformatics either, rather a
+>> porter-stemmer. So for the sake of consistency, it'd IMO be good to move it
+>> there -- thoughts?
+>
+> I'm perfectly fine with this.  Just do what you consider sensible.
+
+I'd opted to go with a team to which I already belong, corresponding to
+the package's sole reverse dependency of any sort (ncbi-entrez-direct).
+That said, if somebody (e.g. Nilesh) from the Go team wants to take the
+package over, they're certainly welcome to it. :-)
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

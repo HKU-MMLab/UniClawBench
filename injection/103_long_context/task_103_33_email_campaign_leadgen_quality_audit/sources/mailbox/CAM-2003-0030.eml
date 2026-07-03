@@ -1,0 +1,30 @@
+Message-ID: <1033651236.19916.1.camel@opus>
+X-Clawbench-ID: CAM-2003-0030
+Date: Thu, 03 Oct 2002 09:20:33 -0400
+From: seth vidal <skvidal@phy.duke.edu>
+To: rpm-zzzlist@freshrpms.net
+Subject: Re: Python 2.2 site libs?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01233.e83467b2f6c65830f00860df89f3b0c5
+
+On Thu, 2002-10-03 at 08:16, Mark Derricutt wrote:
+> Anyone know where one could get rpms for alot of the python libraries for
+> 2.2?
+>
+> Its darn annoying the way RH ship python 1.5.2 and python 2.2 (as python2)
+> and libs that only work with one or the other :(
+>
+> esp. the pgdb and xml modules.
+>
+> Anyone know why Red Hat insist on sticking with python 1.5.2?
+>
+
+they are on python 2.2 for 8.0 - but they don't like to break
+compatibility during major releases.
+
+therefore: 6.X was 1.5.2 b/c that was current
+7.x was 1.5.2 b/c that was current when 7.0 was released.
+
+-sv

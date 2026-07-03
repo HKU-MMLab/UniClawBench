@@ -1,0 +1,17 @@
+task_id: task_205_14_iwatch_web_compare
+category: 205_cross_platform_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+recording: none
+headed: auto
+task: "你是一名经常出差、同时希望追踪运动和健康指标的工程师。你想购买一块 Apple Watch Series 9，45mm，午夜色铝金属表壳，午夜色运动型表带，GPS 版本，配送到美国洛杉矶。只使用浏览器完成以下任务：在 Amazon、eBay 和 AliExpress 上各找一个尽可能符合该规格的商品页面，同时打开 Apple 官方商品页面以确认目标配置。\n\n对每个电商页面从以下方面进行比较：\n- 价格\n- 运费 / 送达时间预估\n- 退货政策\n- 卖家/店铺可信度\n- 成色（必须区分全新 / 翻新 / 二手 / 开盒）\n- GPS / Cellular 版本是否匹配\n- 表壳尺寸、颜色、材质和表带是否匹配\n- 来自评论或页面信息的 2 个最常见优点和 2 个缺点\n\n将最终结论写入：\n\n    /tmp_workspace/results/apple_watch_series9_45mm_midnight_web_compare.md\n\n推荐时应综合考虑总成本、卖家可信度、退换货便利性、是否全新、GPS 版本是否正确，以及与 Apple 官方规格的一致性，而不是只看最低价。如果某个平台无法提供足够可信或足够匹配的商品，要明确说明，并解释缺失的字段。不要将 Apple Watch SE、Series 8、Series 10、Ultra、41mm、不同颜色、不同表壳材质、Cellular 版本或翻新/二手商品混入对全新 Apple Watch Series 9 45mm 午夜色铝金属 GPS 的推荐比较中；如果只有这些不匹配的商品可选，必须将其标记为不适合推荐。\n"
+codex:
+  max_user_followups: 2
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/process_evidence/amazon_iwatch.png

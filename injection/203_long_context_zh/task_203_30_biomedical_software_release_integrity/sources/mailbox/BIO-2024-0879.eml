@@ -1,0 +1,42 @@
+Message-ID: <YmeisitP+vrkxl8B@an3as.eu>
+X-Clawbench-ID: BIO-2024-0879
+Date: Tue, 26 Apr 2022 09:43:46 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Paul Novotny <paul@paulnovo.us>, 997265@bugs.debian.org,	912110@bugs.debian.org
+Subject: Removing opensurgsim from Debian (Was: [simquest/opensurgsim] Build failures with libeigen3-3.4.0 (Issue #5))
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_04_msg00041.html
+
+Hi,
+
+as far as I can see the Debian Med team is not able to take over
+upstream work on opensurgsim.  Thus I'd suggest to remove this
+package from Debian if nobody might step in.
+
+Kind regards
+
+      Andreas.
+
+----- Weitergeleitete Nachricht von Harald Scheirich  -----
+
+Date: Mon, 25 Apr 2022 13:38:05 -0700
+From: Harald Scheirich
+To: simquest/opensurgsim
+Cc: Andreas Tille , Comment
+Subject: Re: [simquest/opensurgsim] Build failures with libeigen3-3.4.0 (Issue #5)
+
+Sorry there really isn't any work being done using OSS at the moment on our side, any change will have to come from the community
+
+--
+Reply to this email directly or view it on GitHub:
+https://github.com/simquest/opensurgsim/issues/5#issuecomment-1109017448
+You are receiving this because you commented.
+
+Message ID:
+
+----- Ende weitergeleitete Nachricht -----
+
+--
+http://fam-tille.de

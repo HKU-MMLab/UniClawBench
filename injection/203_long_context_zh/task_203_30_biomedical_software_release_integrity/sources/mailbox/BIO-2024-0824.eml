@@ -1,0 +1,27 @@
+Message-ID: <YqXxybNXYHgYzhZR@an3as.eu>
+X-Clawbench-ID: BIO-2024-0824
+Date: Sun, 12 Jun 2022 16:01:45 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Added autopkgtests for nifti2dicom
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_06_msg00028.html
+
+Hi Bilal,
+
+Am Sun, Jun 12, 2022 at 02:32:25PM +0530 schrieb Mohd Bilal:
+> I've added autopkgtests for nifti2dicom[1].Requesting someone to review my
+> changes
+
+I've uploaded after `routine-update -f` which changed the watch file to version 4.
+I'd recommend you run this script in future to apply the changes we usually do
+for new uploads.
+
+Thanks for writings the autopkgtest
+
+    Andreas.
+
+--
+http://fam-tille.de

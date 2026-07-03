@@ -1,0 +1,42 @@
+{
+  "task_id": "task_101_29_flask_hotspots_2yr",
+  "difficulty": "Hard",
+  "schema": "c",
+  "schema_notes": "sorted / ranked list with deterministic tie-break",
+  "skills_declared": [
+    "code-analysis-skills",
+    "git",
+    "log-analyzer"
+  ],
+  "ground_truth": {
+    "row_count": 10,
+    "window_years": 2,
+    "hotspot_formula": "churn * log(1 + bugfix_commits)",
+    "latest_author_date": "2026-04-08",
+    "window_start": "2024-04-08",
+    "commit_counting": "non-merge commits only (git log --no-merges); avoids history-simplification ambiguity from per-file pathspec filtering",
+    "bugfix_match_rule": "case-insensitive substring 'fix' or 'bug' in commit message",
+    "top_10": [
+      {"rank": 1,  "file": "uv.lock",                      "churn": 8132, "bugfix": 1, "hotspot": 5636.67},
+      {"rank": 2,  "file": "src/flask/app.py",             "churn":  531, "bugfix": 4, "hotspot":  854.61},
+      {"rank": 3,  "file": "tests/test_basic.py",          "churn":  335, "bugfix": 3, "hotspot":  464.41},
+      {"rank": 4,  "file": "requirements/dev.txt",         "churn":  643, "bugfix": 1, "hotspot":  445.69},
+      {"rank": 5,  "file": "src/flask/sansio/app.py",      "churn":  322, "bugfix": 2, "hotspot":  353.75},
+      {"rank": 6,  "file": "src/flask/helpers.py",         "churn":  201, "bugfix": 4, "hotspot":  323.50},
+      {"rank": 7,  "file": "pyproject.toml",               "churn":  280, "bugfix": 2, "hotspot":  307.61},
+      {"rank": 8,  "file": "docs/appcontext.rst",          "churn":  244, "bugfix": 2, "hotspot":  268.06},
+      {"rank": 9,  "file": "CHANGES.rst",                  "churn":  120, "bugfix": 7, "hotspot":  249.53},
+      {"rank": 10, "file": "docs/config.rst",              "churn":  142, "bugfix": 3, "hotspot":  196.85}
+    ],
+    "topic_dimensions": [
+      "hotspot files (top-10 list)",
+      "contributor concentration patterns (single-author vs distributed)",
+      "churn distribution shape (long-tail vs spike)",
+      "bug-fix clustering by subsystem (extensions / blueprints / templating / etc.)",
+      "temporal trends (early window vs recent half)"
+    ],
+    "min_dimensions_covered": 5,
+    "path_match_rule": "leading 'src/' prefix on flask/* paths is optional; otherwise byte-exact",
+    "hotspot_tolerance": "±0.5 absolute"
+  }
+}

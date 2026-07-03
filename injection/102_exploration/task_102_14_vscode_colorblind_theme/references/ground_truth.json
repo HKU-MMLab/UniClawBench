@@ -1,0 +1,55 @@
+{
+  "task_id": "task_102_14_vscode_colorblind_theme",
+  "note": "Objective answer key. All verdicts below were computed from the SHIPPED theme JSON files (sources/theme_candidates/*.json) by references/reference_analysis.py using standard WCAG 2.x relative-luminance contrast, Machado-2009 colorblind simulation matrices, and CIE76 deltaE. The pool is offline and frozen, so the answer is deterministic and never goes stale. The numbers below are reproducible by running reference_analysis.py against the pool.",
+
+  "hard_constraints": {
+    "HC1_editor_contrast": "editor.foreground on editor.background WCAG contrast >= 7.0 (AAA for normal text)",
+    "HC2_meaning_token_contrast": "every MEANING syntax token (keyword/string/function/variable/constant) has contrast >= 3.0 on editor.background (comments are exempt — conventionally dim)",
+    "HC3_red_green_separation": "keyword color vs string color must stay distinguishable for red-green colorblindness: CIE76 deltaE >= 20 under BOTH deuteranopia and protanopia simulation"
+  },
+
+  "soft_constraints": {
+    "SC1_max_colorblind_separation": "prefer the larger worst-case (min of deut/prot) keyword<->string deltaE — more robust under colorblindness",
+    "SC2_max_min_meaning_contrast": "prefer the higher minimum meaning-token contrast — more readable overall"
+  },
+
+  "per_candidate_results": [
+    {"id": "one_dark_pro",        "editor_contrast": 6.57,  "min_meaning_contrast": 4.75,  "dE_deuteranopia": 68.3, "dE_protanopia": 84.0, "hard_pass": false, "fails": ["HC1 (6.57 < 7.0)"], "trap": "MOST POPULAR (657k downloads) and attractive, but editor fg/bg contrast is below AAA — the popularity/beauty trap"},
+    {"id": "solarized_dark",      "editor_contrast": 4.75,  "min_meaning_contrast": 3.30,  "dE_deuteranopia": 62.6, "dE_protanopia": 66.2, "hard_pass": false, "fails": ["HC1 (4.75 < 7.0)"], "trap": "low base contrast (famous low-contrast palette)"},
+    {"id": "monokai",             "editor_contrast": 13.94, "min_meaning_contrast": 3.93,  "dE_deuteranopia": 41.3, "dE_protanopia": 53.8, "hard_pass": true,  "fails": [], "trap": null},
+    {"id": "abyss",               "editor_contrast": 5.59,  "min_meaning_contrast": 2.55,  "dE_deuteranopia": 22.4, "dE_protanopia": 22.3, "hard_pass": false, "fails": ["HC1 (5.59 < 7.0)", "HC2 (min meaning token 2.55 < 3.0)"], "trap": null},
+    {"id": "kimbie_dark",         "editor_contrast": 8.38,  "min_meaning_contrast": 5.59,  "dE_deuteranopia": 0.0,  "dE_protanopia": 0.0,  "hard_pass": false, "fails": ["HC3 (keyword and string share the SAME color, deltaE 0)"], "trap": "monochrome-ish: keyword and string are the same hue → invisible distinction even for normal vision"},
+    {"id": "dark_modern",         "editor_contrast": 10.26, "min_meaning_contrast": null,  "dE_deuteranopia": null, "dE_protanopia": null, "hard_pass": false, "fails": ["HC2/HC3 (default theme ships almost no tokenColors → no semantic syntax differentiation to evaluate)"], "trap": "high base contrast but no syntax token colors → cannot satisfy semantic differentiation"},
+    {"id": "tomorrow_night_blue", "editor_contrast": 15.32, "min_meaning_contrast": 10.64, "dE_deuteranopia": 0.0,  "dE_protanopia": 0.0,  "hard_pass": false, "fails": ["HC3 (keyword and string both #FFFFFF, deltaE 0)"], "trap": "highest contrast of all, but keyword==string==white → zero red/green separation"},
+    {"id": "nord",                "editor_contrast": 9.25,  "min_meaning_contrast": 4.64,  "dE_deuteranopia": 43.5, "dE_protanopia": 44.6, "hard_pass": true,  "fails": [], "trap": null}
+  ],
+
+  "hard_pass_survivors": ["monokai", "nord"],
+
+  "tiebreak": {
+    "monokai": {"worst_case_colorblind_dE": 41.3, "min_meaning_contrast": 3.93},
+    "nord":    {"worst_case_colorblind_dE": 43.5, "min_meaning_contrast": 4.64},
+    "winner": "nord",
+    "reason": "Among the two hard-constraint survivors, Nord wins BOTH soft constraints: higher worst-case colorblind keyword<->string separation (43.5 > 41.3) AND higher minimum meaning-token contrast (4.64 > 3.93)."
+  },
+
+  "gold": {
+    "selected_id": "nord",
+    "selected_file": "nord.json",
+    "acceptable_alternative": "monokai (the only other hard-constraint survivor); selecting monokai with an explicit, correct tradeoff explanation may earn up to ~0.85 but is not the optimal pick",
+    "key_facts_executor_must_get_right": {
+      "one_dark_pro_is_a_trap": "must NOT be selected; it fails HC1 despite being the most popular/pretty",
+      "tomorrow_night_blue_and_kimbie_trap": "highest contrast but keyword==string → fail red/green separation; must be rejected",
+      "survivors": ["monokai", "nord"],
+      "optimal": "nord"
+    }
+  },
+
+  "scoring_anchors": {
+    "must_reject_with_reason": ["one_dark_pro", "tomorrow_night_blue", "solarized_dark"],
+    "must_identify_survivors": ["monokai", "nord"],
+    "optimal_selection": "nord",
+    "min_candidates_evaluated": 6,
+    "tolerance_note": "Executors may compute slightly different absolute numbers depending on the exact colorblind-simulation matrix / deltaE variant they use; grade on the ORDINAL outcome (which themes pass HC1/HC2/HC3, who the survivors are, and that nord >= monokai on the soft criteria), not on exact decimals. The qualitative verdicts above are robust across standard methods."
+  }
+}

@@ -1,0 +1,22 @@
+Message-ID: <CALK=YjPr_aidvUNxCsz8nesTobONiekjQkaWjjBGge_gnRtpeg@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1136
+Date: Sun, 6 Mar 2022 13:28:27 -0500
+From: Eric Covener <covener@gmail.com>
+To: Apache HTTP Server Development List <dev@httpd.apache.org>
+Subject: Re: backports
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-03.mbox
+
+>
+> To sum up:
+>
+> +1 on the option to use Github PRs for backports.
+> -1 to mandating the use of Github PRs for backports.
+>
+For backports specifically: Is a middle ground to not have GH block merging
+based on CI checks?   This way PRs could be required, so revieers (the same
+reviewers we have today in STATUS) can see test results.
+
+Or is there something else objectionable about doing the work in a PR?

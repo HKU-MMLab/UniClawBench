@@ -1,0 +1,49 @@
+task_id: task_201_30_xz_backdoor_audit
+category: 201_skill_usage_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  在我把这个发布版本镜像到我们的内部 registry 之前，我需要一次供应链
+  风险评估。源码树位于 /tmp_workspace/clawbench/sources/release_tree/，
+  它有些地方让我感觉不对劲。对这棵树运行工作区的安全审计技能和渗透测试
+  技能，并告诉我你发现了什么。如果它看起来是干净的，就直说。如果它看起来
+  有风险，我需要你能挖出的每一个 IOC——失陷指标（indicator of
+  compromise）。这里有一组已知的；请把它们全部找出来。要从发布证据中
+  真正不同的部分去取材，这样 SOC 看到的是对攻击面的真实覆盖，而不是同一
+  条发现的多个变体。
+
+  把书面报告放到 /tmp_workspace/results/findings.md。使用清晰的结构化
+  格式，并为每一条发现给我 artifact、evidence、attribution 和 impact，
+  好让我的 SOC 能据此行动。我不想要一份仅凭记忆写出来的报告；每条发现
+  都需要在这棵树里有具体的东西，并且应当解释那个 artifact 为什么有风险。
+
+  另外在 /tmp_workspace/results/release_hunt.yar 保存一个 YARA 狩猎文件，
+  至少包含两条针对你发现的风险模式的规则，并用注释注明每条规则支撑的是
+  哪些发现。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - release_tree/
+
+skills:
+  - security-auditor
+  - pentest
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

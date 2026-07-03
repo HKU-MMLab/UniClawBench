@@ -1,0 +1,29 @@
+Message-ID: <CAD6Vres7t6tJATwdirVy=BxLzSLaJgEKhcMe10WRaT9DSdu2dA@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0995
+Date: Wed, 24 Jan 2024 17:31:29 -0500
+From: Rich Bowen <rbowen@rcbowen.com>
+To: dev@httpd.apache.org
+Subject: Re: PR #363
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-01.mbox
+
+Well, it turns out that in order for this to actually work, we would need
+to rename README to README.md, so I'm inclined to revert this change unless
+someone thinks differently.
+
+Rich
+
+On Wed, Jan 24, 2024, 10:06 <rbowen@rcbowen.com> wrote:
+
+> I've been poking at some of our open PRs looking for docs-only changes
+> that we can possibly clean up.
+>
+> PR #363 - https://github.com/apache/httpd/pull/363 - converts README
+> from plaintext to markdown, and makes no other changes. This makes it
+> prettier on GitHub.
+>
+> I almost just CTR'ed it, but it occurred to me that someone might find
+> this objectionable, so I thought I'd ask first.
+>

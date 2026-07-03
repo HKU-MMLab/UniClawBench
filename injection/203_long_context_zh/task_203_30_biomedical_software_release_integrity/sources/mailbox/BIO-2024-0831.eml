@@ -1,0 +1,36 @@
+Message-ID: <ZW1mgZqSiK4kzKiy@an3as.eu>
+X-Clawbench-ID: BIO-2024-0831
+Date: Mon, 4 Dec 2023 06:41:21 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: [Advent bug squashing] 9 bugs + 1 bug = 10 bugs
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_12_msg00009.html
+
+Hi Étienne,
+
+Am Sun, Dec 03, 2023 at 03:54:57PM +0100 schrieb Étienne Mollier:
+> > Please leave some low hanging fruits for me! ;-P
+>
+> I see at least four screenful worth of low hanging fruits in the
+> bug tracking system affecting Debian Med packages, if not more.
+> That should be plenty for everyone.  ;)
+
+Psssst, don't tell here on a public list.  You are uncovering the reason
+why I was able to close so many bugs in the past.  Newcommers might step
+in and start closing bugs ...   Or even people claiming to have to less
+time find out it just takes less than 5min to close a bug.
+
+> > Honestly, if you both as well as Nilesh would not have joined the team
+> > we would not manage to do all the work.  Its a great pleasure for me to
+> > work together with you all.
+>
+> You're welcome!
+
+Thanks again
+    Andreas.
+
+--
+http://fam-tille.de

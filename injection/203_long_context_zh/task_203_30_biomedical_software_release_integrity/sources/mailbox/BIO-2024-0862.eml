@@ -1,0 +1,66 @@
+Message-ID: <d138dfeb-e39c-4f38-a780-beb24eb4631f@app.fastmail.com>
+X-Clawbench-ID: BIO-2024-0862
+Date: Fri, 10 Feb 2023 22:30:18 +0100
+From: "Arnd Bergmann" <arnd@arndb.de>
+To: "Vagrant Cascadian" <vagrant@debian.org>, "Mathieu Malaterre" <malat@debian.org>, ARM <debian-arm@lists.debian.org>
+Subject: Re: neon: armhf baseline for next release ?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_02_msg00040.html
+
+On Fri, Feb 10, 2023, at 19:23, Vagrant Cascadian wrote:
+> On 2023-02-10, Mathieu Malaterre wrote:
+>> On Thu, Feb 9, 2023 at 8:43 PM Andreas Tille  wrote:
+>> [...]
+>>> according to the build logs[1] armhf fails to build (as only
+>>> architecture) with
+>> [...]
+>>> LLVM ERROR: Symbol not found: __sync_fetch_and_add_4
+>>
+>> I see that abel.d.o porterbox is offline. There is currently no other
+>> porterbox for a DD to actually check armhf code on neon-less machine.
+>>
+>> Would it be possible to raise the armhf baseline to have some minimal
+>> neon instructions ?
+>
+> I am pretty sure the answer in the short term is "no", as that would
+> effectively be a new architecture... longer term, "maybe someday ... but
+> not terribly likely"?
+
+I agree that the short term for the Bookwork release, it makes no sense
+to drop currently supported hardware. However, I don't think changing
+the target to include NEON and VFPv3-D32 in itself would qualify as a new
+architecture, but is the same as raising the minimum supported ISA
+for armel from ARMv4T to ARMv5 in Buster, or from i586 to i686 in
+Stretch, while keeping the ABI compatible.
+
+> Mostly because 32-bit arm is arguably a legacy platform; there is little
+> to no new debian-capable hardware coming out, and so adding support for
+> an entire new port seems unlikely, or at the very least, a very niche
+> target. Either it supports armhf as it is, or more likely it supports
+> arm64.
+
+This does not sound quite correct either: while no new SoCs have come
+out without NEON for ten years now (the last ones were Tegra 2,
+Armada 370/XP, Berlin2, Dove, MMP3 and apparently SPEAr13xx), there
+are definitely new SoCs based on Cortex-A7 coming out all the time.
+In 2022, we added support for 14 ARMv7-A SoCs (plus one ARMv5 SoC
+and one ARMv7-M SoC), and a lot of low-end ARMv8 boards are too memory
+limited to sensibly run an arm64 userspace but can work fine with
+a 64-bit kernel and an armhf rootfs.
+
+> For an individual package that wants to make use of neon, the correct
+> thing to do is to make the neon support detected at run-time rather than
+> rely on it at build-time and enabling or disabling codepaths, features,
+> etc. as appropriate.
+
+The more common problem I think is not packages that want to use
+NEON for performance reasons, it's packages that drop support for
+non-NEON systems inadvertently or because upstream decides that
+those are too old for them. Keeping all packages VFPv3-D16 clean
+is an uphill battle and losing the relatively obscure Tegra2 and
+Armada XP support may be worthwhile if that makes maintaining
+armhf easier in the long run.
+
+     Arnd

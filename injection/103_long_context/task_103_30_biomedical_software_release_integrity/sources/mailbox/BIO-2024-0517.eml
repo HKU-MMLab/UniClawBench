@@ -1,0 +1,44 @@
+Message-ID: <ZvMNUTeChqO1aef8@emlwks999.eu>
+X-Clawbench-ID: BIO-2024-0517
+Date: Tue, 24 Sep 2024 21:04:49 +0200
+From: Étienne Mollier <emollier@debian.org>
+To: Steffen Möller <steffen_moeller@gmx.de>
+Subject: Re: GENtle package updated - dropped GFDL licensed documentation
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_09_msg00021.html
+
+Hi Steffen,
+
+Steffen Möller, on 2024-09-22:
+> thank you tons for pointing out that the license of the documentation is not as Free as it should be. I guess this will be addressed with the next major release. For now I have removed docs/manual.adoc and docs/images from the source tree as you suggested.
+>
+> https://salsa.debian.org/med-team/gentle
+
+Sounds good, hopefully this is just a matter for upstream to be
+explicit about the fact that there are no Invariant Sections in
+their documentation, along their use of GFDL.  :)
+
+As far as I can parse, the package is in fair enough shape.  It
+inherited most of informational and pedantic lintian notices[1]
+from previous package version, but the national-encoding warning
+is resolved, which is nice.  I think a couple of informational
+items are actionable and would suggest you have a look at them.
+But I think they shouldn't be blockers for the package refresh,
+so triggered an upload.  Thank you for the contribution!
+
+[1]: https://udd.debian.org/lintian/?packages=gentle&lt_error=on&lt_warning=on&lt_information=on&lt_pedantic=on
+
+> I am testing this mostly on a Mac and just ran into some platform-specific bug, but, anyway this version is better than the currently in the archive and so this should be uploaded :)
+
+The "Mac" bit confuses me.  You did work on the package from
+within at Debian sid system, virtual machine, or at least some
+form of container or chroot, right?
+
+Have a nice day,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  pgp: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/2, please excuse my verbosity
+   `-

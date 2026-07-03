@@ -1,0 +1,530 @@
+Message-ID: <ZjokVEDSfBPZcOt_@an3as.eu>
+X-Clawbench-ID: BIO-2024-1264
+Date: Tue, 7 May 2024 14:53:40 +0200
+From: Andreas Tille <tille@debian.org>
+To: crespialba+debian@gmail.com, merkys@debian.org, debian@eikel.org,	carlos.borroto@gmail.com, plessy@debian.org, lawrencc@debian.org,	christopher.hoskin@gmail.com, edd@debian.org, dtorrance@debian.org,	dtorrance@piedmont.edu, bob.dybian@gmail.com, daissi@debian.org,	eb@ericebrown.com, lopippo@debian.org, gordon@chronitis.net,	ginggs@debian.org, josch@debian.org, jon@thon.cc, kdmfoss@gmail.com,	leo@alaxarxa.net, magnus.hagdorn@ed.ac.uk, crusoe@debian.org,	michael.crusoe@gmail.com, dechant@dal.ca, ondrej@debian.org,	rinni@debian.org, ballaneypranav@gmail.com, rodrigorsdc@gmail.com,	scarneiro@speedy.com.ar, sgibb.debian@gmail.com,	hello@shayandoust.me, moeller@debian.org, sebastien@debian.org
+Subject: Re: Action needed for R-pkg Uploaders
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_05_msg00000.html
+
+Hi again,
+
+I would be *really* happy if those who are in CC could clarify their
+intention to maintain the packages that have their names set as
+Uploader.  Julian Gilbey and Joost van Baal-Ilić where the only ones who
+responed to the initial mail from two months ago.
+
+I just realised that there is a new version of r-cran-amelia which has
+Chris Lawrence as Uploader.  Chris, according to UDD did the last
+uploads of other packages at 2023-08-19 so you seem to be active in
+Debian in some way.  It would help if you could give us some update
+about your R packages, if you think these make sense inside Debian or
+whether some can be removed and you intend to care for the others or
+not.
+
+I also realised that Jonathon Love had his last changelog entry
+  r-cran-rprotobuf | 0.4.5-1  | 2016-09-06 16:15:13+00
+Jonathon, it would be great if you give some status update about your
+interest in the packages where you are listed as Uploader.
+
+I did not checked other uploaders yet, but it would be great to clarify
+the status of your involvement.  This would help me a lot to save my
+time and concentrate on more important things.
+
+As a general remark: You can add your ID / replace my ID by yours in any
+package where I'm listed as Uploader.  I'd be really happy about this.
+
+Kind regards
+    Andreas.
+
+Am Mon, Mar 11, 2024 at 03:47:42PM +0100 schrieb Andreas Tille:
+> Hi R-pkg team members,
+>
+> as you might have possibly read I nominated myself for DPL for the next
+> term[1].  I will pronounce in my platform clearly that I will stop my
+> uploading activity to rather concentrate on my DPL tasks.  I hope I will
+> be able to really stop myself from uploading in case I might be elected.
+>
+> I will also express that I'm a bit afraid about the effect on the teams
+> where I'm very active in.  This is specifically true for the R-pkg team.
+> I did lots of team uploads in this team as you might have observed for
+> those packages where you are listed as Uploader (see below).  I simply
+> worked down the list of packages needing an update[2] if I have some
+> spare minutes - no matter whether I'm Uploader or not.  The
+> `routine-update` script was of great help here since it basically does
+> what it says.
+>
+> The fact that the list[2] became a bit longish is simply a sign that I
+> was focussing on other things the last weeks - drafting my DPL platform
+> etc.  I might upload some packages from list if other things like
+> cleaning up after time_t transition in some packages might occupy all my
+> time.  However, you need to expect that this list will grow even longer
+> if nobody will stand up and fulfill the task I more or less silently
+> did the last couple of years.
+>
+> I've put all those contributors in CC who had a hit in the UDD query
+>
+>    SELECT DISTINCT uploaders FROM sources WHERE maintainer_email = 'r-pkg-team@alioth-lists.debian.net' AND release = 'sid';
+>
+> which means the package is maintained by R-pkg team and the package is
+> in sid (so no old Uploaders).  Below you see a list of the actual
+> package which is listing you as Uploader.  Please note that some people
+> are mentioned with different e-mail addresses.  BTW, this list also
+> contains Nilesh Patra who declared to leave the team[3].  We need to
+> replace him as Uploader (and he is not mentioned in To-Field).
+>
+> What I would like you to do is:
+>
+>   1. Verify the list of packages whether you want to keep on working
+>      on this/these package(s) (and if you have different e-mail
+>      addresses please stick to only one)
+>   2. If you do not want to serve as Uploader any more please try to
+>      find a different Uploader (in the best case) and let this
+>      contributor replace your ID or simply remove your ID to not
+>      nurish the false hope that someone will care for this package
+>      actively
+>   3. Make sure you are uploading your packages regularly for new
+>      upstream versions and check for potential bugs (listed at the
+>      end of[2])
+>   4. I'd be happy if you would do me the favour to upload those
+>      packages that are listing me as Uploader as long as I might
+>      serve as DPL (I do not plan to do so more than one year)
+>
+> Thanks a lot for your cooperation inside R-pkg team
+>    Andreas.
+>
+> [1] https://lists.debian.org/debian-vote/2024/03/msg00002.html
+> [2] https://salsa.debian.org/r-pkg-team/maintenance-utilities/-/blob/master/outdated_r-packages.txt
+> [3] https://lists.debian.org/debian-r/2023/11/msg00054.html
+>
+> Packages maintained by Uploaders in R-pkg team.
+>
+> Alba Crespi :
+>  r-cran-data.table
+>  r-cran-fastmatch
+>  r-cran-metamix
+>  r-cran-nmf
+>  r-cran-nnls
+>  r-cran-phangorn
+>  r-cran-pkgmaker
+>  r-cran-registry
+>  r-cran-rngtools
+>
+> Andrius Merkys :
+>  r-cran-cyclocomp
+>  r-cran-lintr
+>  r-cran-rlinsolve
+>  r-cran-xmlparsedata
+>
+> Benjamin Eikel :
+>  r-cran-ggplot2
+>  r-cran-munsell
+>  r-cran-scales
+>
+> Carlos Borroto :
+>  r-cran-plyr
+>
+> Charles Plessy :
+>  r-bioc-genomeinfodb
+>  r-bioc-genomeinfodbdata
+>  r-bioc-genomicalignments
+>  r-bioc-hdf5array
+>  r-bioc-iranges
+>  r-bioc-matrixgenerics
+>  r-bioc-rtracklayer
+>  r-bioc-s4arrays
+>  r-bioc-s4vectors
+>  r-bioc-summarizedexperiment
+>  r-bioc-xvector
+>  r-bioc-zlibbioc
+>  r-cran-biocmanager
+>  r-cran-epitools
+>  r-cran-genetics
+>
+> Chris Lawrence :
+>  r-cran-aer
+>  r-cran-amelia
+>  r-cran-bayesm
+>  r-cran-coda
+>  r-cran-eco
+>  r-cran-gam
+>  r-cran-geepack
+>  r-cran-gmaps
+>  r-cran-jsonlite
+>  r-cran-mapdata
+>  r-cran-mapproj
+>  r-cran-maps
+>  r-cran-matchit
+>  r-cran-mcmc
+>  r-cran-mcmcpack
+>  r-cran-mnp
+>  r-cran-pscl
+>  r-cran-psy
+>  r-cran-rjags
+>  r-cran-vgam
+>  r-cran-zelig
+>
+> Christopher Hoskin :
+>  r-bioc-rbgl
+>
+> Dirk Eddelbuettel :
+>  r-cran-rocr
+>
+> Doug Torrance :
+>  r-cran-m2r
+>  r-cran-orthopolynom
+>  r-cran-partitions
+>  r-cran-r.devices
+>  r-cran-r.rsp
+>  r-cran-sets
+>
+> Doug Torrance :
+>  r-cran-latte
+>  r-cran-mpoly
+>
+> Dylan Aïssi :
+>  r-cran-fitbitscraper
+>  r-cran-fitcoach
+>  r-cran-leaps
+>  r-cran-prettyr
+>
+> Dylan Aïssi :
+>  dh-r
+>  r-bioc-bioccheck
+>  r-bioc-biocviews
+>  r-bioc-impute
+>  r-bioc-mergeomics
+>  r-bioc-rhdf5filters
+>  r-bioc-tcgabiolinksgui.data
+>  r-bioc-zlibbioc
+>  r-cran-ape
+>  r-cran-beeswarm
+>  r-cran-bigmemory
+>  r-cran-bigmemory.sri
+>  r-cran-biocmanager
+>  r-cran-calibrate
+>  r-cran-clipr
+>  r-cran-clisymbols
+>  r-cran-devtools
+>  r-cran-factominer
+>  r-cran-flashclust
+>  r-cran-gee
+>  r-cran-ggsci
+>  r-cran-gh
+>  r-cran-ini
+>  r-cran-isoband
+>  r-cran-isospecr
+>  r-cran-locfit
+>  r-cran-lubridate
+>  r-cran-metamix
+>  r-cran-modeldata
+>  r-cran-qqman
+>  r-cran-ranger
+>  r-cran-rcmdcheck
+>  r-cran-rematch2
+>  r-cran-remotes
+>  r-cran-reprex
+>  r-cran-reticulate
+>  r-cran-rstatix
+>  r-cran-rvest
+>  r-cran-selectr
+>  r-cran-sessioninfo
+>  r-cran-testthat
+>  r-cran-tidyverse
+>  r-cran-tinytest
+>  r-cran-tm
+>  r-cran-usethis
+>  r-cran-xopen
+>
+> Eric Brown :
+>  r-cran-pingr
+>  r-cran-skimr
+>
+> Filippo Rusconi :
+>  r-cran-base64enc
+>  r-cran-downloader
+>  r-cran-isospecr
+>  r-cran-maldiquant
+>  r-cran-maldiquantforeign
+>  r-cran-readbrukerflexdata
+>  r-cran-readmzxmldata
+>  r-cran-rnetcdf
+>
+> Gordon Ball :
+>  dh-r
+>  r-cran-irdisplay
+>  r-cran-irkernel
+>  r-cran-pbdzmq
+>  r-cran-r6
+>  r-cran-repr
+>  r-cran-uuid
+>
+> Graham Inggs :
+>  r-bioc-delayedarray
+>
+> Johannes 'josch' Schauer :
+>  r-cran-tufte
+>
+> Jonathon Love :
+>  r-cran-afex
+>  r-cran-bayesfactor
+>  r-cran-bms
+>  r-cran-ca
+>  r-cran-coin
+>  r-cran-contfrac
+>  r-cran-conting
+>  r-cran-desolve
+>  r-cran-elliptic
+>  r-cran-estimability
+>  r-cran-hypergeo
+>  r-cran-logspline
+>  r-cran-lsmeans
+>  r-cran-modeltools
+>  r-cran-pbapply
+>  r-cran-pbivnorm
+>  r-cran-rprotobuf
+>  r-cran-vcdextra
+>  r-cran-xtable
+>
+> Kevin Murray :
+>  r-bioc-limma
+>
+> Leopold Palomo-Avellaneda :
+>  r-cran-miniui
+>  r-cran-shinyjs
+>  r-cran-v8
+>
+> Magnus Hagdorn :
+>  r-cran-rgooglemaps
+>
+> Michael R. Crusoe :
+>  r-bioc-bluster
+>  r-bioc-dexseq
+>  r-bioc-glmgampoi
+>  r-bioc-scrnaseq
+>  r-bioc-tximportdata
+>  r-cran-argparse
+>  r-cran-bench
+>  r-cran-blockmodeling
+>  r-cran-findpython
+>  r-cran-future
+>  r-cran-globals
+>  r-cran-goplot
+>  r-cran-listenv
+>  r-cran-network
+>  r-cran-profmem
+>  r-cran-r.cache
+>  r-cran-rook
+>  r-cran-sna
+>  r-cran-statnet.common
+>
+> Michael R. Crusoe :
+>  r-bioc-deseq2
+>  r-bioc-dnacopy
+>  r-bioc-ebseq
+>  r-bioc-geneplotter
+>  r-cran-locfit
+>  r-cran-pscbs
+>
+> Nilesh Patra :
+>  r-bioc-netsam
+>  r-bioc-qtlizer
+>  r-bioc-residualmatrix
+>  r-bioc-tximeta
+>  r-cran-actuar
+>  r-cran-bslib
+>  r-cran-cpp11
+>  r-cran-eaf
+>  r-cran-genoplotr
+>  r-cran-gprofiler2
+>  r-cran-gunifrac
+>  r-cran-jinjar
+>  r-cran-jquerylib
+>  r-cran-knitr
+>  r-cran-maotai
+>  r-cran-partitions
+>  r-cran-qqconf
+>  r-cran-rcppml
+>  r-cran-s2
+>  r-cran-seqinr
+>  r-cran-sf
+>  r-cran-spatstat.random
+>  r-cran-stablelearner
+>  r-cran-svmisc
+>  r-cran-testthat
+>  r-cran-timechange
+>  r-cran-uniqtag
+>
+> Oliver Dechant :
+>  r-cran-pracma
+>
+> Ondřej Surý :
+>  r-cran-rpostgresql
+>  rapache
+>
+> Philip Rinn :
+>  r-cran-scatterplot3d
+>
+> Pranav Ballaney :
+>  r-bioc-htsfilter
+>
+> Rodrigo Carvalho :
+>  r-cran-ecosolver
+>  r-cran-gmp
+>
+> Sebastian Carneiro :
+>  r-cran-surveillance
+>
+> Sebastian Gibb :
+>  r-cran-maldiquant
+>  r-cran-readbrukerflexdata
+>
+> Shayan Doust :
+>  r-cran-bios2cor
+>  r-cran-circular
+>  r-cran-cmstatr
+>  r-cran-dslabs
+>  r-cran-ksamples
+>  r-cran-poissonbinomial
+>  r-cran-rcppparallel
+>  r-cran-suppdists
+>
+> Steffen Moeller :
+>  r-bioc-affxparser
+>  r-bioc-arrayexpress
+>  r-bioc-basilisk
+>  r-bioc-basilisk.utils
+>  r-bioc-beachmat
+>  r-bioc-biocneighbors
+>  r-bioc-biocsingular
+>  r-bioc-ctc
+>  r-bioc-dada2
+>  r-bioc-degnorm
+>  r-bioc-delayedmatrixstats
+>  r-bioc-demixt
+>  r-bioc-dir.expiry
+>  r-bioc-drimseq
+>  r-bioc-dropletutils
+>  r-bioc-dupradar
+>  r-bioc-eir
+>  r-bioc-experimenthub
+>  r-bioc-fishpond
+>  r-bioc-genomicfiles
+>  r-bioc-geoquery
+>  r-bioc-ggbio
+>  r-bioc-grohmm
+>  r-bioc-gseabase
+>  r-bioc-gsva
+>  r-bioc-hdf5array
+>  r-bioc-hilbertvis
+>  r-bioc-isoformswitchanalyzer
+>  r-bioc-limma
+>  r-bioc-megadepth
+>  r-bioc-mofa
+>  r-bioc-multiassayexperiment
+>  r-bioc-noiseq
+>  r-bioc-oligo
+>  r-bioc-oligoclasses
+>  r-bioc-org.hs.eg.db
+>  r-bioc-organismdbi
+>  r-bioc-progeny
+>  r-bioc-qusage
+>  r-bioc-qvalue
+>  r-bioc-rcpi
+>  r-bioc-rsubread
+>  r-bioc-scater
+>  r-bioc-scran
+>  r-bioc-singlecellexperiment
+>  r-bioc-singler
+>  r-bioc-stringdb
+>  r-bioc-structuralvariantannotation
+>  r-bioc-tximport
+>  r-cran-airr
+>  r-cran-alakazam
+>  r-cran-amap
+>  r-cran-apcluster
+>  r-cran-argparser
+>  r-cran-bio3d
+>  r-cran-bitops
+>  r-cran-biwt
+>  r-cran-calibratr
+>  r-cran-catools
+>  r-cran-cgdsr
+>  r-cran-circlize
+>  r-cran-cmdfun
+>  r-cran-combinat
+>  r-cran-corrplot
+>  r-cran-dbscan
+>  r-cran-diptest
+>  r-cran-downlit
+>  r-cran-dtplyr
+>  r-cran-dynamictreecut
+>  r-cran-emdbook
+>  r-cran-evd
+>  r-cran-factoextra
+>  r-cran-ff
+>  r-cran-ffield
+>  r-cran-fit.models
+>  r-cran-fitdistrplus
+>  r-cran-future.apply
+>  r-cran-future.batchtools
+>  r-cran-g.data
+>  r-cran-genabel
+>  r-cran-genetics
+>  r-cran-ggalluvial
+>  r-cran-ggrepel
+>  r-cran-ggseqlogo
+>  r-cran-globaloptions
+>  r-cran-gsubfn
+>  r-cran-gwidgets
+>  r-cran-gwidgetstcltk
+>  r-cran-haplo.stats
+>  r-cran-hdf5r
+>  r-cran-ica
+>  r-cran-itertools
+>  r-cran-jpeg
+>  r-cran-jquerylib
+>  r-cran-jrc
+>  r-cran-kaos
+>  r-cran-kedd
+>  r-cran-labdsv
+>  r-cran-lsd
+>  r-cran-lsei
+>  r-cran-maotai
+>  r-cran-markovchain
+>  r-cran-matlab
+>  r-cran-mclustcomp
+>  r-cran-metap
+>  r-cran-minerva
+>  r-cran-mixsqp
+>  r-cran-npsurv
+>  r-cran-optimalcutpoints
+>  r-cran-parmigene
+>  r-cran-pcapp
+>  r-cran-pkgdown
+>  r-cran-proc
+>  r-cran-propclust
+>  r-cran-qtl
+>  r-cran-r2d2
+>  r-cran-r2html
+>  r-cran-ragg
+>  r-cran-randomforest
+>  r-cran-randomglm
+>  r-cran-rann
+>  r-cran-rcppdist
+>  r-cran-rcpphnsw
+>  r-cran-rcsdp
+>  r-cran-rcurl
+>  r-cran-rmarkdown
+>  r-cran-rmpfr
+>  r-cran-robust
+>  r-cran-robustrankaggreg
+>  r-cran-rocr
+>  r-cran-rook
+>  r-cran-rrcov
+>  r-cran-rslurm
+>  r-cran-rsvd
+>  r-cran-sctransform
+>  r-

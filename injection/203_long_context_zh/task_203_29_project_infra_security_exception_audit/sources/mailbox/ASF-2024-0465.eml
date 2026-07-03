@@ -1,0 +1,46 @@
+Message-ID: <CAM70yxCPjWYnhsb=+5_YSrfrTrg7wD97e8zt6X1n9kNnVnVTfg@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0465
+Date: Wed, 23 Aug 2023 02:23:18 -0300
+From: Emile Cormier <emile.cormier.jr@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: Can't find definition of ap_run_child_stopping
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-08.mbox
+
+It just occurred to me that I could git blame that line for hints about
+where ap_run_child_stopping is defined. So I ended up finding
+AP_DECLARE_HOOK(void, child_stopping, ...) and can now take it from there.
+For others wondering the same thing, it is defined here:
+https://github.com/apache/httpd/blob/a834e62ebf6279ce9e35193151aec809f7f58df1/include/mpm_common.h#L522
+
+To facilitate searching, may I suggest that ap_run_child_stopping be added
+to the comment block of its associated AP_DECLARE_HOOK? The same goes for
+the other generated AP_DECLARE_HOOK names.
+
+On Wed, Aug 23, 2023 at 2:02 AM Emile Cormier <emile.cormier.jr@gmail.com>
+wrote:
+
+> Hi Everyone,
+>
+> I'm studying parts of httpd to help me in the development of a TCP server
+> I'm working on. In particular, I'm looking at how httpd handles socket
+> errors.
+>
+> Anyway, I've stumbled upon an ap_run_child_stopping function call within
+> the signal_threads function (
+> https://github.com/apache/httpd/blob/a834e62ebf6279ce9e35193151aec809f7f58df1/server/mpm/worker/worker.c#L332C5-L332C26
+> ).
+>
+> For the life of me, I cannot seem to find the definition of
+> ap_run_child_stopping. I've downloaded the source tarballs for httpd, APR,
+> and APR-util, and performed a find-in-files to no avail (with no file
+> extension filtering).
+>
+> If someone can point me to where ap_run_child_stopping is defined, it
+> would be greatly appreciated.
+>
+> Cheers,
+> Emile Cormier
+>

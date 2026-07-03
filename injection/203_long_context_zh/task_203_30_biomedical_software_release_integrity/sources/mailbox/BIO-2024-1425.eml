@@ -1,0 +1,24 @@
+Message-ID: <YYItAl4k+CKcqhlB@an3as.eu>
+X-Clawbench-ID: BIO-2024-1425
+Date: Wed, 3 Nov 2021 07:32:34 +0100
+From: Andreas Tille <tille@debian.org>
+To: Nilesh Patra <nilesh@debian.org>
+Subject: pyranges has two test failures
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_11_msg00014.html
+
+Hi Nilesh,
+
+I was building pyranges over night but unfortunately there are two test
+issues.  I've seen these dtype-errors in other projects and I somehow
+remember that it was scipy related.  But I have no real idea what to do
+now.
+
+Kind regards
+
+      Andreas.
+
+--
+http://fam-tille.de

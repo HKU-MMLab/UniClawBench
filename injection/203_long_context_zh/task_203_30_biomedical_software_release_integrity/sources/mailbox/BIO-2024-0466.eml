@@ -1,0 +1,25 @@
+Message-ID: <udl3586faw2.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-0466
+Date: Thu, 19 Jan 2023 16:54:37 -0500
+From: ucko@debian.org (Aaron M. Ucko)
+To: debian-med@lists.debian.org
+Subject: Re: Help needed to upgrade ncbi-igblast
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_01_msg00037.html
+
+Hi, Andreas.
+
+Andreas Tille  writes:
+
+>    https://salsa.debian.org/med-team/ncbi-igblast/-/jobs/3822434
+
+This compiler crash looks like
+https://gcc.gnu.org/bugzilla/show_bug.cgi?id=108137 , already fixed in
+the gcc-12 branch.  I can supply a workaround if necessary, but am
+hopeful that an upcoming gcc-12 upload will include a proper fix.
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

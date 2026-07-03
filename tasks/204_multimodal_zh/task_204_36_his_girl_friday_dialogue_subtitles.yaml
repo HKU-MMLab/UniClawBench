@@ -1,0 +1,43 @@
+task_id: task_204_36_his_girl_friday_dialogue_subtitles
+category: 204_multimodal_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  请打开视频文件：
+  /tmp_workspace/clawbench/sources/clip.mp4
+
+  你必须真正播放、观看并聆听本地视频片段，然后自己转写。不要下载已有的字幕、
+  剧本、电影对白文稿，也不要依赖对电影的了解；最终的字幕和时间轴必须基于这段
+  本地视频。
+
+  请为这段电影对白片段生成一个字幕文件，并保存为：
+  /tmp_workspace/results/clip.srt
+
+  要求：
+  1. 使用标准 SRT 格式
+  2. 按照实际的对白来切分字幕；不要把整段内容压缩成一个很长的字幕块
+  3. 完成初稿后，从头再看一遍视频，检查前 60 秒的字幕是否存在任何时间错位
+  4. 如果发现问题，直接修改 SRT 文件
+  5. 最后，保存 /tmp_workspace/results/clip_notes.md，说明你重点复查了哪些
+     段落
+
+  如果 `/tmp_workspace/results/` 不存在，请先创建它。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/reference_clip.srt
+  - references/selected_clips_manifest.json
+
+sources:
+  - clip.mp4
+
+codex:
+  max_user_followups: 2

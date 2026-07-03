@@ -1,0 +1,58 @@
+Message-ID: <212cded0-94c1-458e-bca8-c5c8cf180ada@gmail.com>
+X-Clawbench-ID: ASF-2024-0623
+Date: Thu, 4 Apr 2024 13:24:13 +0200
+From: jean-frederic clere <jfclere@gmail.com>
+To: dev@httpd.apache.org, Steffen Land <steffenal@apache.org>
+Subject: Re: [VOTE] Release httpd-2.4.59-rc1 as httpd-2.4.59
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-04.mbox
+
+On 4/4/24 12:49, Steffen Land wrote:
+> -1
+> Get an error:
+>
+> Error	C2065	'DAV_WALKTYPE_TOLERANT': undeclared identifier	mod_dav_fs	C:\VS17\Win32\httpd-2.4\modules\dav\fs\repos.c	1599
+
+I didn't see any problem while building on windows (using cmake and VS19).
+
++++
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-a----         4/3/2024   7:56 AM         101376 mod_dav.so
+-a----         4/3/2024   7:56 AM          51200 mod_dav_fs.so
+-a----         4/3/2024   7:56 AM          23552 mod_dav_lock.so
++++
+
+DAV_WALKTYPE_TOLERANT is in ./modules/dav/main/mod_dav.h line 1826
+
+>
+> Steffen
+>
+> On 2024/04/03 12:26:09 Eric Covener wrote:
+>> Hi all,
+>>
+>> (After only minor embarrassment of patching tags/2.4.55 instead of 2.4.x...)
+>>
+>> Please find below the proposed release tarball and signatures:
+>>
+>> https://dist.apache.org/repos/dist/dev/httpd/
+>>
+>> I would like to call a SHORTENED VOTE to release
+>> this candidate tarball httpd-2.4.59-rc1 as 2.4.59:
+>> [ ] +1: It's not just good, it's good enough!
+>> [ ] +0: Let's have a talk.
+>> [ ] -1: There's trouble in paradise. Here's what's wrong.
+>>
+>> The computed digests of the tarball up for vote are:
+>> = e4ec4ce12c6c8f5a794dc2263d126cb1d6ef667f034c4678ec945d61286e8b0f
+>> = baa96a7c9bba48f758ca9b3e3d63f0c65db960653618109d4d7bcbf3d4776d1d51453beb65e5af57655f0b1cfb88913842bc3a117fe7acc754ddb43d4524bc82
+>>
+>> The SVN candidate source is found at tags/2.4.59-rc1-candidate.
+>>
+
+--
+Cheers
+
+Jean-Frederic

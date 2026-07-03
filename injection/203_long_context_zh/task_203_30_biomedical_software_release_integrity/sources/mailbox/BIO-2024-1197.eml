@@ -1,0 +1,22 @@
+Message-ID: <Ycn/p4noe2PNEafY@hermes.hilbert.loc>
+X-Clawbench-ID: BIO-2024-1197
+Date: Mon, 27 Dec 2021 19:02:15 +0100
+From: Karsten Hilbert <Karsten.Hilbert@gmx.net>
+To: Mayuresh <mayuresh@acm.org>
+Subject: Re: Acquiring Dental RVG on Linux
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_12_msg00175.html
+
+Am Tue, Dec 21, 2021 at 01:04:21PM +0530 schrieb Mayuresh:
+
+> Would appreciate some inputs on figuring out the transformation from [3]
+> to [4] - brightness, contrast, gamma etc. and suitable tools (preferably
+> non interactive) to carry them out.
+
+imagemagick would be scriptable
+
+Karsten
+--
+GPG  40BE 5B0E C98E 1713 AFA6  5BC0 3BEA AC80 7D4F C89B

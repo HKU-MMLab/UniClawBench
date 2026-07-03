@@ -1,0 +1,66 @@
+Message-ID: <2840F2C1-5145-4BB9-90DC-5946B748EC0C@eissing.org>
+X-Clawbench-ID: ASF-2024-1288
+Date: Thu, 24 Feb 2022 13:13:52 +0100
+From: Stefan Eissing <stefan@eissing.org>
+To: dev@httpd.apache.org
+Subject: Re: module threads and mpm lifecycle
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-02.mbox
+
+Added in r1898369 on trunk as `child_stopped`.
+
+Kind Regards,
+Stefan
+
+> Am 23.02.2022 um 15:49 schrieb Niklas Edmundsson <nikke@acc.umu.se>:
+>
+> On Wed, 23 Feb 2022, Stefan Eissing wrote:
+>
+>>>> On 2/23/22 11:39 AM, Stefan Eissing wrote:
+>>>>> One thing that is currently missing is a way to shutdown/reap/join module threads when the mpm exits.
+>>>>>
+>>>>> Example:
+>>>>>
+>>>>> mod_watchdog creates several threads post_config which are only joined on pool destruction.
+>>>>>
+>>>>> Problem:
+>>>>>
+>>>>> pool destruction is not ordered between modules and dependencies on order are not
+>>>>> fully known. This leads to crashes in OpenSSL, for example, when mod_ssl is destructed
+>>>>> before all watchdogs using OpenSSL are joined (OpenSSL 3.x seems to do better on this,
+>>>>> but the point remains valid).
+>>>>>
+>>>>> There has been attempts by Yann to make a patch that make the OpenSSL termination
+>>>>> way later (adding it to a 'higher' pool destruction). But that would only solve
+>>>>> this particular problem and not any other 3rd party dependency.
+>>>>>
+>>>>> Proposal:
+>>>>>
+>>>>> Add a hook 'child_exiting(int graceful)' where modules can register
+>>>>> and do their own thread join/reap.
+>>>>
+>>>> How does that differ from the child_stopping hook? Or is child_stopping only used when we shutdown the whole httpd not just one child?
+>>>
+>>> child_is_stopping is called when the shutdown is initiated.
+>>> child_is_exiting would be called before pool destruction begins.
+>>>
+>>> The difference is that between those two, ongoing requests are still being served on graceful shutdowns.
+>
+> FWIW, I'm +1 to the idea. The current situation is no fun for our home-grown cache module (ie it has threads that crashes on pool destruction now and then).
+>
+>
+>> Opening the bike shed: child_has_stopped?
+>
+> Neither name is fully self-explanatory, I'd need to look at the descriptive function header to figure out when to use it. However, I don't know if a name such as child_pre_pooldestroy or somesuch would be any better...
+>
+> As long as it's not elvis_leaving_building I'm happy ;)
+>
+> /Nikke
+> --
+> -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+> Niklas Edmundsson, Admin @ {acc,hpc2n}.umu.se      |     nikke@acc.umu.se
+> ---------------------------------------------------------------------------
+> Gene Roddenberry showed us the future...Make It So!
+> =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=

@@ -1,0 +1,21 @@
+Message-ID: <705d1567-fe75-0949-66b9-b23a2c7d26d5@debian.org>
+X-Clawbench-ID: BIO-2024-0386
+Date: Wed, 29 Sep 2021 16:24:28 +0300
+From: Andrius Merkys <merkys@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: libcifpp
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_09_msg00065.html
+
+On 2021-09-29 16:19, Maarten L. Hekkelman wrote:
+> I cannot upload anyway, there will be new libs with new SONAMES and thus
+> new binary packages.
+
+I see. @Andreas: Maybe it is worth to ask ftpmaster to REJECT your
+upload of 1.0.1-4 in order not to make libcifpp get through NEW two
+times in a row?
+
+Best,
+Andrius

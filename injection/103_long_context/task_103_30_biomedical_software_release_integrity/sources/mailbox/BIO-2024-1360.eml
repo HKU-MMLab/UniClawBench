@@ -1,0 +1,164 @@
+Message-ID: <ZK++uRRtyRcflCIT@an3as.eu>
+X-Clawbench-ID: BIO-2024-1360
+Date: Thu, 13 Jul 2023 11:07:05 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Public answer to doc who wants to help w GNUmed
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_07_msg00058.html
+
+Hi Vance,
+
+I've put your e-mail in BCC to not expose it to spammers in case you
+might care.  All other content of your private mail which I'm responding
+to is not really private so I see no point in hiding my answer from
+other readers of the Debian Med mailing list.
+
+At first also thanks to Karsten to keep me in the row. ;-)
+
+Am Wed, Jul 12, 2023 at 08:44:43PM -0500 schrieb Vance R. Burns, MD:
+> Thank you for the quick response. I have an interest in helping with
+> whatever I can.  I'm not sure what goes into maintaining packages but if it
+> can be learned from web resources and a Mentor I am willing to give it a
+> try.
+
+Inside the Debian Med team we are actually running a project to mentor
+newcomers:
+
+   https://salsa.debian.org/med-team/community/MoM/-/wikis/Mentoring-of-the-Month-(MoM)
+
+However, I think the gnumed package is neither a good candidate for
+learning packaging (since all work is done) and the effort to maintain the
+package tends to zero.  Karsten usually sends me a mail about a new release.
+When I receive this mail I'm firing up the script `routine-update` which in
+>95% does what it needs to do.  So things are semi-automated and for this
+task no help is needed, actually.
+
+But I always want to invite newcomers who are positively interested into
+our nice project with a friendly team.  The first I would like to recommend
+is to subscribe our mailing list
+
+   https://lists.debian.org/debian-med/
+
+There might be some technical discussion, very frequently about
+bioinformatics software which might not be your field of interest.  Feel
+free to browse the web archive of previous postings first, whether this
+is some information you can bear with.
+
+> This might be brainstorming too far ahead, but I am wondering about a niche
+> distro
+
+Could you please explain your term "niche distro"?
+
+The Debian Med project is definitely the contrary of a niche distro since
+it is just plain Debian and we simply work with the Debian infra structure.
+Debian and its well known derivatives Ubuntu, Mint and countless others
+which all profit from the work of the Debian Med project (since it is pure
+Debian) are the contrary than a niche distro.
+
+I have seen in the past several Debian derivatives who maintained their
+own repository of packages.  I'm observing this field since more than 20
+years.  I have not seen a single one of these niche derivatives that
+survived more than 10 years.  They have all one thing in common:  In the
+beginning some very enthusiastic developers started with some higher
+degree of freedom since they are not bound to all rules that are implied
+by Debian policy.  In the run of the project they have spent a lot of
+time into their cute project.  Later it turned out that they changed job,
+interests, less spare time whatever and the project became orphaned.  The
+best example under these projects is Biolinux which did a great job and
+started to contribute directly to Debian somehow merging and thus saving
+quite a bit of their work.
+
+In short:  I'm a bit careful if I hear "niche distro" and would like to
+hear what you might have in mind before I raise my opinion about this.
+
+> coming pre-packaged with your EHR, Dicom, libre office, a browser,
+> and webapp desktop links to uptodate, pubmed and so forth.  Target user
+> would be medical, and it perhaps would be XFCE so that it could run on the
+> thin client PC's we use in the hospital.
+
+If you ask me you should check what you are actually missing inside Debian.
+Could we possibly design some metapackages that simply install what you
+want?  If you are wondering what metapackages might be:  These are defining
+dependencies from other packages.  If you install a metapackage those
+dependencies will be installed.  We have developed some web representation
+of those metapackages and here you can see the metapackages designed by
+the Debian Med team:
+
+   https://blends.debian.org/med/tasks/
+
+If you are missing some task or missing some depenency inside those
+metapackages please let us know.
+
+> I have an MX Linux distro that
+> I built out that way for use w citrix and cerner and then I use it from a
+> USB drive.  It has all the cacerts built in so it trusts Entrust
+> certificate we use at work.  I was using snapshot to back it up w gnome
+> disks, and realized, If I remove my username but keep all the mods, it's
+> basically MX for medical use.
+
+I do not know MX Linux and thus I can't judge about it.  You are able to
+create live images from Debian as well if it is your main focus.
+
+> so I did a repo search for medical in the .deb distros and that is how I
+> found GNUmed.
+
+Nice. :-)
+
+> Imagine if we had a FOSS distro that could be put on limited hardware, for
+> community hospitals that can't afford a $37 million dollar EHR, AND
+> replace  Windows Licence.
+
+Debian itself is not specifically designed for "limited" hardware.  On
+the other hand it supports really cheap hardware like Raspberry Pi and
+others.  Debian is not know for beeing specifically hungry for resources
+and I've recently installed it on several low performance laptops
+without any problem.
+
+> The $37 million we spent on EHR at my hospital would have bought a lot of
+> prenatal care and well child care, etc.  I am going to work this week to
+> get an iso together of a live distro based on MX, with your EHR, and get
+> the clinic visit software we use (webex), as well as skype and some
+> others.  When I get the distro I will capture some screenshots and get them
+> to you.
+
+Good luck in doing so in any case.  Karsten might be more verbose about
+the use of GNUmed in hospitals, thought.
+
+Kind regards
+
+     Andreas.
+
+> > Hi Vance,
+> >
+> > I have pulled Andreas Tille into the loop because this
+> >
+> > > I have been using Linux, mostly Debian since 2012.  I have worked on I.T.
+> > > for my hospital and for a time was Chief Medical Information Officer.
+> > > I was quite pleased to see that someone is working on an EMR in the FOSS
+> > > Arena, and wonder if I could contribute somehow.  I have no coding
+> > > experience, but I build my own machines and use command line in Debian,
+> > > Arch, Fedora when I use those systems.
+> >
+> > sounds like you might be interested in learning how to
+> > package software for Debian, eventually taking over care for
+> > the GNUmed debian packages currently being maintained by
+> > Andreas Tille (who's got a few more hats to put on...) ?
+> >
+> > It likely doesn't require much coding experience and Andreas
+> > is not unlikely to both appreciate help and offer counselling
+> > on package maintenance.
+> >
+> > Does that pique your interest ?
+> >
+> > Beyond that there's also user-facing documentation to be
+> > improved, as always. That would encompass your poking at
+> > GNUmed (reporting bugs), delving into what can be done with
+> > it, and writing some ASCIIDOC to tell others how to do so.
+> >
+> > Let us know.
+
+--
+http://fam-tille.de

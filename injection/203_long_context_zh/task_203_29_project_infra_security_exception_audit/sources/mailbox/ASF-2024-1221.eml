@@ -1,0 +1,29 @@
+Message-ID: <7F3654CF-6CA6-4500-A45C-E830E0FB02DE@eissing.org>
+X-Clawbench-ID: ASF-2024-1221
+Date: Thu, 3 Mar 2022 10:37:13 +0100
+From: Stefan Eissing <stefan@eissing.org>
+To: dev@httpd.apache.org
+Subject: intent to make a release candidate on Monday
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-03.mbox
+
+There are some important fixes pending release. Work does not appear to
+slow down in the foreseeable future, so I'd like us to make them available.
+
+Looking at 2.4.x STATUS, there are 3 backport proposals lacking 1 vote:
+- dbm: Split the loading of a dbm driver
+- mod_proxy: Bump shared worker name to 384 chars. PR 53218
+- mod_http2: preserve the port number given in a HTTP/1.1
+
+Maybe someone finds the time to look at those.
+
+If you see something that definitely should be in the next
+release, but lack the time to make it ready for Monday, please
+let us know and we can discuss how we can help or adjust the
+schedule.
+
+Kind Regards,
+
+Stefan

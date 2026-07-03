@@ -1,0 +1,30 @@
+Message-ID: <YkNVi5GA68GgGuax@debian>
+X-Clawbench-ID: BIO-2024-1247
+Date: Wed, 30 Mar 2022 00:22:59 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: Mohd Bilal <mdbilal@disroot.org>
+Subject: Re: Add autopkgtests for python-datacache, parallel-fastq-dump
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_03_msg00048.html
+
+On Wed, Mar 30, 2022 at 12:12:27AM +0530, Nilesh Patra wrote:
+> > Also the ci reprotest fails[5] for python-datacache and I don't know how to proceed further.
+> > I would like someone to guide as to what is to be done inorder to fix this.
+>
+> That failure is odd, reprotest works fine for me locally. However if I download the artefacts from salsa and run a diffoscope[7]
+> I see:
+>
+> │ │ │ │ │ --rw-r--r--   0 root         (0) root         (0)     8625 2022-03-28 18:25:48.000000 ./usr/lib/python3/dist-packages/datacache/download.py
+> │ │ │ │ │ +-rw-r--r--   0 root         (0) root         (0)     8625 1970-10-13 05:44:00.000000 ./usr/lib/python3/dist-packages/datacache/download.py
+>
+>
+> I do not see any timestamp, so maybe this is random. In any case reprotest is not very important and
+> can be ignored if it is hard to find what went south.
+
+And the pipeline passed now.
+
+	https://salsa.debian.org/med-team/python-datacache/-/commit/4e5a8695789c8261e461fb7e6d775652e5db6c92/pipelines?ref=master
+
+I did nothing in the direction of fixing it, so probably it was just a flaky failure.

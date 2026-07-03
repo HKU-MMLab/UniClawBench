@@ -1,0 +1,57 @@
+Message-ID: <YYeBM32yMKBA2rcO@an3as.eu>
+X-Clawbench-ID: BIO-2024-1078
+Date: Sun, 7 Nov 2021 08:33:07 +0100
+From: Andreas Tille <andreas@fam-tille.de>
+To: Filippo Rusconi <filippo.rusconi@universite-paris-saclay.fr>
+Subject: Re: Where can we find latest upstream source of beads
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_11_msg00035.html
+
+Hi Filippo,
+
+Am Sat, Nov 06, 2021 at 11:37:12PM +0100 schrieb Filippo Rusconi:
+> Dear Andreas,
+>
+> On Fri, Nov 05, 2021 at 07:53:55AM +0100, Andreas Tille wrote:
+> > > you uploaded beads 1.1.19 and 1.1.20 but the watch file points to some
+> > > location[1] where only 1.1.18 is listed.  The Homepage field even points
+> > > to some URL[2] where only 1.1.13 is advertised.
+> > >
+> > > Could you please fix the watch file and Homepage (or at least point us
+> > > to the new location of the latest source)?
+>
+> Finally coming back from vacations on monday. Seeing your messages, thank you
+> for them !
+>
+> Well, yes, this was an old repos. We switched to salsa.
+>
+> Oh! I need to get my head around the watch file grammar again :-(.
+>
+> This is the actual location:
+>
+> https://salsa.debian.org/med-team/beads/-/tags/1.1.20
+>
+> I edited the watch file and committed the edit. You can see it here:
+>
+> https://salsa.debian.org/med-team/beads/-/blob/master/debian/watch
+>
+> I hope it works for you: the watch file syntax is beyond my
+> neuropsychointellectual capabilities...
+
+Hmmm, you develop the **upstream** code at salsa?  That's very unusual
+and I wonder whether this is a good idea.  Usually upstream goes to
+gitlab / github / whatever and we fetch the source tarball from there.
+
+I can not see any reason why using salsa is really a bad idea for
+upstream - I have never seen this before and its just a gut feeling.
+In any case it is definitely not a good idea if the homepage of
+beads does not point to the latest source.  Could you please fix this?
+
+Kind regards
+
+    Andreas.
+
+--
+http://fam-tille.de

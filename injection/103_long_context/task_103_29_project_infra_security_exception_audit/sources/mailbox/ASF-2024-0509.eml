@@ -1,0 +1,89 @@
+Message-ID: <CAKQ1sVP4VxprBYVm2cQu9VLAY2j8P3n+hBSMxJXh2RXJiBwFvg@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0509
+Date: Thu, 14 Apr 2022 11:52:51 +0200
+From: Yann Ylavic <ylavic.dev@gmail.com>
+To: httpd-dev <dev@httpd.apache.org>
+Subject: Re: Faster start children after fatal signals?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-04.mbox
+
+On Thu, Apr 14, 2022 at 11:21 AM Ruediger Pluem <rpluem@apache.org> wrote:
+>
+> On 4/13/22 5:41 PM, Yann Ylavic wrote:
+> > On Wed, Apr 13, 2022 at 4:30 PM Ruediger Pluem <rpluem@apache.org> wrote:
+> >>
+> >> While looking at PR65769 I stumbled across the below in event.c (same in worker.c)
+> >>
+> >> 3460                /* Don't perform idle maintenance when a child dies,
+> >> 3461                 * only do it when there's a timeout.  Remember only a
+> >> 3462                 * finite number of children can die, and it's pretty
+> >> 3463                 * pathological for a lot to die suddenly.
+> >> 3464                 */
+> >> 3465                continue;
+> >>
+> >> In case several processes or even all die by a segfault we would wait until we have processed all that processes plus one second
+> >> until we start new processes. Shouldn't we perform an perform_idle_server_maintenance in case the process died because of a fatal
+> >> signal?
+> >
+> > +1
+> >
+>
+> In order to solve this I would like to add another APEXIT_ constant (e.g. APEXIT_FATAL_SIGNAL).
+
+Maybe something like:
+
+Index: server/mpm/event/event.c
+===================================================================
+--- server/mpm/event/event.c    (revision 1899818)
++++ server/mpm/event/event.c    (working copy)
+@@ -3462,7 +3462,9 @@ static void server_main_loop(int remaining_childre
+              * finite number of children can die, and it's pretty
+              * pathological for a lot to die suddenly.
+              */
+-            continue;
++            if (!APR_PROC_CHECK_SIGNALED(exitwhy)) {
++                continue;
++            }
+         }
+         else if (remaining_children_to_start) {
+             /* we hit a 1 second timeout in which none of the previous
+--
+
+could do?
+Any signal that killed the process would mean something unexpected
+happened since we clean_child_exit() otherwise?
+
+
+> Looking at httpd.h
+> the values of the existing constants seem a little bit strange:
+>
+> /** a normal exit */
+> #define APEXIT_OK               0x0
+> /** A fatal error arising during the server's init sequence */
+> #define APEXIT_INIT             0x2
+> /**  The child died during its init sequence */
+> #define APEXIT_CHILDINIT        0x3
+> /**
+>  *   The child exited due to a resource shortage.
+>  *   The parent should limit the rate of forking until
+>  *   the situation is resolved.
+>  */
+> #define APEXIT_CHILDSICK        0x7
+> /**
+>  *     A fatal error, resulting in the whole server aborting.
+>  *     If a child exits with this error, the parent process
+>  *     considers this a server-wide fatal error and aborts.
+>  */
+> #define APEXIT_CHILDFATAL       0xf
+>
+>
+> I haven't found any hint during my investigation why they are as they are on not just 1, 2, 3, ....
+> Any ideas?
+
+Nope :/
+
+
+Regards;
+Yann.

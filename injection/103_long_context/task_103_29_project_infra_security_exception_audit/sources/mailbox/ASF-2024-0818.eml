@@ -1,0 +1,21 @@
+Message-ID: <BY3PR05MB81297C799AE91252C9D1795ADF4B9@BY3PR05MB8129.namprd05.prod.outlook.com>
+X-Clawbench-ID: ASF-2024-0818
+Date: Tue, 30 May 2023 18:57:01 +0000
+From: =?iso-8859-1?Q?Jes=FAs_Gonz=E1lez?= <jesusgm@vmware.com>
+To: "dev@httpd.apache.org" <dev@httpd.apache.org>
+Subject: mod_wasm: v0.12.0 release
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-05.mbox
+
+Hola,
+
+We just released mod_wasm v0.12.0<https://github.com/vmware-labs/mod_wasm/blob/main/CHANGELOG.md#0120-20230630>!
+
+This new version introduces a new directive, WasmMapCGIFileNames, providing the ability to configure CGI applications using custom guest directories, eliminating the need for both the host and the guest to use the same paths. It also normalizes SCRIPT_FILENAME to use Unix-like forward slashes. This feature is particularly helpful when setting up Windows applications, as it allows for the use of paths that may not be compatible in Windows (with backslashes and drive letters).
+
+Looking forward to your feedback.
+
+Cheers,
+Jesús

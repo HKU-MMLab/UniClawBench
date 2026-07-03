@@ -1,0 +1,47 @@
+Message-ID: <020B5764-3B0B-4251-9ACD-B1F624FDC70F@sharp.fm>
+X-Clawbench-ID: ASF-2024-0337
+Date: Wed, 20 Nov 2024 12:25:54 +0000
+From: "Graham Leggett via dev" <dev@httpd.apache.org>
+To: dev@httpd.apache.org
+Subject: Re: modules-dev: advice on http client library?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-11.mbox
+
+On 20 Nov 2024, at 11:45, Eric Covener <covener@gmail.com> wrote:
+
+> Hi all, finding myself in a bit of a predicament.
+>
+> In a proprietary module used on lots of historical operating systems
+> where curl isn't available as a first-class package (and I don't want
+> to embed/own it!) so I am trying to avoid the dependency.
+>
+> I need a very basic HTTP client library (not even HTTPS) to introduce
+> in a micro release of a module (really of a httpd fork with some
+> proprietary modules).  It is a new dependency of a proprietary
+> library that we might have to move up to at any time.
+>
+> Some of the options I've considered at a high level:
+>
+> - borrow from modules/ssl/ssl_util_ocsp.c (I lucked out finding this,
+> I was actually only hunting for apr_brigade_pflatten)
+> - depend on mod_proxy (act like a bare-bones mod_proxy_http)
+> - serf (looks cool, but a bit much)
+> - Some combination of APR and an existing lightweight HTTP parser.
+>
+> Anyone have additional useful ideas/pointers?
+
+I have used mod_proxy in the past for this, here is a working example.:
+
+https://github.com/minfrin/mod_crowdsec/blob/main/mod_crowdsec.c#L336
+
+You create a sub request, and then update the filename to point at the proxy url, then you run the sub request.
+
+One thing that might go wrong - if mod_proxy_http isn't present, the default handler kicks in, and returns 404 Not Found on the URL, which could confuse you horribly if you think the 404 is coming from the proxied request.
+
+One thing I'd like to fix is to make the core more aware of proxied requests, so it's clear there is a URL on the back and not a file.
+
+Regards,
+Graham
+--

@@ -1,0 +1,93 @@
+{
+  "meeting_context": "Q3 launch readiness sync for a beta/public launch",
+  "source_materials": {
+    "note_handwritten_1.jpg": "notebook summary with top-line decisions, funnel metric, one owner, and major uncertainties",
+    "note_handwritten_2.jpg": "follow-up owner list with deadlines and one fallback plan",
+    "whiteboard_photo.jpg": "sectioned whiteboard with blockers, decisions, metrics, and owners",
+    "sticky_photo.jpg": "desk photo with sticky notes capturing unresolved items and launch prep tasks",
+    "projector_slide.png": "launch readiness slide with decision log, open items, and KPI box",
+    "doc_screenshot.png": "typed synthesis draft with decisions, open questions, and owners"
+  },
+  "themes": [
+    "webinar timing relative to public launch",
+    "pilot / beta should go to the existing waitlist first",
+    "pricing and annual-plan / annual-discount questions",
+    "invite-step funnel drop and launch KPIs",
+    "Safari / iPad chart freeze as a launch blocker",
+    "customer proof or quote approval pending legal review",
+    "launch scope decisions around packaging and import-flow docs"
+  ],
+  "decisions": [
+    "The webinar happens before the public launch.",
+    "The pilot / beta opens to the existing waitlist first.",
+    "The annual plan stays visible on the pricing page.",
+    "Packaging changes are deferred / not shipped before launch.",
+    "Import-flow / CSV docs are in scope before launch."
+  ],
+  "open_questions": [
+    "Whether the annual discount should be 15% or 20% is unresolved.",
+    "The public launch target around the week of June 24 is still tentative.",
+    "The customer proof / quote is still pending legal approval."
+  ],
+  "action_items": [
+    {
+      "owner": "Maya",
+      "task": "Prepare the launch email and webinar recap draft",
+      "deadline": "Jun 12"
+    },
+    {
+      "owner": "Ravi",
+      "task": "Fix the Safari chart freeze and complete iPad QA",
+      "deadline": "Jun 10"
+    },
+    {
+      "owner": "Ben",
+      "task": "Confirm the speaker and run the webinar dry run",
+      "deadline": "Jun 11"
+    },
+    {
+      "owner": "Alice",
+      "task": "Clean up event naming / dashboard QA",
+      "deadline": "Jun 13"
+    },
+    {
+      "owner": "Nina",
+      "task": "Get legal sign-off for the pricing FAQ",
+      "deadline": "Jun 14"
+    }
+  ],
+  "uncertainties": [
+    "The invite-step drop appears as roughly 37% to 38% across different materials.",
+    "The landing-page CVR target appears as roughly 8.5% to 9%.",
+    "Some materials phrase the social-proof blocker as a generic customer proof item, while others mention a Northstar quote specifically."
+  ],
+  "supporting_details": {
+    "metrics": [
+      "invite-step drop about 37% to 38%",
+      "signup target 1,200",
+      "landing-page CVR goal about 8.5% to 9%"
+    ],
+    "fallback_plan": "If the quote slips, use a logo wall only."
+  },
+  "provenance": {
+    "source_accessed_on": "2026-04-23",
+    "real_internet_bases": [
+      {
+        "output_file": "note_handwritten_1.jpg",
+        "url": "https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?auto=format&fit=crop&w=1800&q=80",
+        "note": "real desk/notebook base with local handwriting-style overlay"
+      },
+      {
+        "output_file": "sticky_photo.jpg",
+        "url": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1800&q=80",
+        "note": "real desk/laptop base with sticky-note overlay"
+      }
+    ],
+    "generated_or_local_composites": [
+      "note_handwritten_2.jpg",
+      "whiteboard_photo.jpg",
+      "projector_slide.png",
+      "doc_screenshot.png"
+    ]
+  }
+}

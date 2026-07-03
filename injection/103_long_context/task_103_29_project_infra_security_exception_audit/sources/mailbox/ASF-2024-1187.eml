@@ -1,0 +1,48 @@
+Message-ID: <606C0A25-A7F5-4279-865F-0775D8750AE2@m3y3r.de>
+X-Clawbench-ID: ASF-2024-1187
+Date: Wed, 23 Oct 2024 09:57:01 +0200
+From: Thomas Meyer <thomas@m3y3r.de>
+To: dev@httpd.apache.org, Eric Covener <covener@gmail.com>
+Subject: =?UTF-8?Q?Re=3A_Friendly_nudge=3A_PR_=23429_=22mod=5Flog=5Fconfig=3A_Add_?=  =?UTF-8?Q?log=5Fformatter_support_and?=  =?UTF-8?Q?_a_JSON_log=5Fformatter=22_=F0=9F=93=9D?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-10.mbox
+
+Hi,
+
+Quick question how to raise a pull request or how to get code into the Apache httpd test framework repo? I have some ideas and fixes for this repo.
+
+Mfg
+Thomas
+
+Am 21. September 2024 15:49:49 MESZ schrieb Eric Covener <covener@gmail.com>:
+>On Sat, Sep 21, 2024 at 6:46 AM Thomas Meyer <thomas@m3y3r.de> wrote:
+>>
+>> Hi all,
+>>
+>> I hope you're all doing well and keeping your servers running smoothly! 🚀
+>>
+>> A little while ago, I submitted PR #429 to add support for log_formatter and a shiny new JSON log formatter to mod_log_config. It's been sitting quietly, waiting for a bit of love (or at least a review), but it seems everyone has been busy keeping the web safe and sound, so it hasn't gotten much attention.
+>>
+>> I know you're all swamped, but if anyone has a moment to take a quick look, I'd really appreciate it! The logs are patiently waiting to be formatted in style (and JSON!). If there’s anything I can do to help move it along or make it easier to review, feel free to let me know.
+>>
+>> Thanks a lot for your time! I'll buy the first round of virtual coffee ☕ for anyone who can help push this one through. 😉
+>
+>
+>a few minor requests after paging through again:
+>
+>1. doc (mod_log_config.xml, logs.xml -- not just for the obvious
+>reasons, but it helps reviewers too)
+>2. changelog entry (is the only expected change that you can pick JSON
+>or are there other subtle things to declare?)
+>3. Some of the TODOS might be a little alarming to reviewers, it is
+>unclear which ones are status quo for example
+>4. it's a massive pain to get started,  but test coverage in
+>https://svn.apache.org/repos/asf/httpd/test/framework/trunk .  I will
+>try to find some time to create a skeletal test for json and non-json
+>just so the code is actually running.
+>5. replace "gruppenwechsel" in comments
+
+--
+Diese Nachricht wurde von meinem Android-Gerät mit K-9 Mail gesendet.

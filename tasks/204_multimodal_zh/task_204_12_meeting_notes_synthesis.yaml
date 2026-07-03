@@ -1,0 +1,48 @@
+task_id: task_204_12_meeting_notes_synthesis
+category: 204_multimodal_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  `sources/meeting_notes_raw/` 包含我最近一次会议的原始材料，
+  混在一起，包括：
+  - 手写笔记的照片
+  - 白板的照片
+  - 幻灯片或文档的截图
+  - 会后随手拍的补充便利贴
+
+  请帮我把这些杂乱的材料整理成我以后真正
+  能用的会议纪要。
+
+  要求：
+  1. 首先通读并理解这些图片中的内容，判断
+     哪些信息彼此对应，哪些是重复的
+     记录。
+  2. 将会议内容整理到 `/tmp_workspace/results/meeting_summary.md`，
+     至少包含：
+     - 会议讨论了哪些议题
+     - 已经做出的决定
+     - 仍未确定的问题
+     - 明确的行动项、负责人和时间安排（如果能从
+       图片中确定）
+  3. 如果不同图片中的记录相互矛盾，或有任何内容难以
+     辨认，请将其单独列在 `/tmp_workspace/results/meeting_uncertainties.md` 中，
+     而不要假装它们是确定的。
+  4. 你的整理必须明确基于图片中的实际内容，
+     而不只是泛泛的总结。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - meeting_notes_raw/
+
+codex:
+  max_user_followups: 2

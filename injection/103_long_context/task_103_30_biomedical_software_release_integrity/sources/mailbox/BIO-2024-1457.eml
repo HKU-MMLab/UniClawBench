@@ -1,0 +1,34 @@
+Message-ID: <ZZGDaEmPTeIq_DDP@fusion>
+X-Clawbench-ID: BIO-2024-1457
+Date: Sun, 31 Dec 2023 16:06:16 +0100
+From: Étienne Mollier <emollier@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: Please help fixing meson/cmake code of btllib to use Debian packaged libargparse
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_12_msg00097.html
+
+Hi all,
+
+Étienne Mollier, on 2023-12-30:
+> Andreas Tille, on 2023-12-30:
+> > I've fixed routine-update to not remove that field.  I do not
+> > have more time now - so if you feel like fixing libsbml that
+> > would be great.
+>
+> Thank you for the modification, I'm running some test builds to
+> see how things evolve with the newer python3.12, just in case,
+> and may come up with an upload in the upcoming day or two.
+
+libsbml is uploaded with autopkgtest restricted to running with
+python3.11 for the time being.  This will need adjustment in a
+near future when python3.12 is out, but for the time being, this
+is sufficient and fixes the outstanding migration issues.
+
+Have a nice day,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  pgp: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/3, please excuse my verbosity
+   `-    on air: Riverside - Rapid Eye Movement

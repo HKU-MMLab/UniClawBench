@@ -1,0 +1,50 @@
+Message-ID: <20220212184513.5vxqasnqvr3k4iph@localhost>
+X-Clawbench-ID: BIO-2024-1073
+Date: Sun, 13 Feb 2022 00:15:13 +0530
+From: Mayuresh <mayuresh@acm.org>
+To: debian-med@lists.debian.org
+Subject: Re: Acquiring Dental RVG on Linux
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_02_msg00058.html
+
+On Wed, Jan 05, 2022 at 03:19:12PM +0100, Karsten Hilbert wrote:
+> > You may want to give CLAHE (Contrast Limited Adaptive Histogram Equalization) a try.
+> >
+> > It's implemented in OpenCV.
+>
+> For what it's worth, here's code which so does:
+
+Some updates:
+
+- Using various OpenCV recipes or interactive tools like gimp, it's
+  turning out to be hard to figure out exact processing needed. Most
+  probably it's multiple such operations in a sequence.
+
+- Tried neural network. It kind of works, but given the nature of data,
+  there is no margin for error. Also it's a brute force approach. Tried
+  just for the sake of it.
+
+- Will possibly try an LUT now. Again not very elegant, but might be more
+  accurate than neural net and less costly. But not sure, whether across
+  images the lookup table would be uniform or not.
+
+- Experimented with the relation between raw pixel value and vendor's
+  final image. It becomes a function when 2 adjacent pixels (overall 9x9)
+  matrix are considered together. But this was studied on only 1 image.
+
+- Will need more images. Gathering raw data from usbmon every time will
+  take a lot of time. Instead, found that the vendor software provides a
+  way to export the raw image. This makes it easy to gather several images
+  for study.
+
+- Using pydicom package, found several details from the dicom header,
+  placed by the vendor software.
+
+Please do have a look at a sample header attached. If you find any fields
+that may give any hints about the calibration or post processing that the
+vendor software applies, please do highlight.
+
+--
+Mayuresh

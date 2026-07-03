@@ -1,0 +1,14 @@
+{
+  "id": "R11",
+  "title": "Brooklyn Bridge (duplicate scan)",
+  "type": "photograph",
+  "collection_rights": "varies",
+  "item_rights": "Public domain",
+  "image": {
+    "thumbnail": true,
+    "full_image": true,
+    "iiif": true,
+    "width": 3500
+  },
+  "dedup_group": "g_brooklyn_bridge"
+}

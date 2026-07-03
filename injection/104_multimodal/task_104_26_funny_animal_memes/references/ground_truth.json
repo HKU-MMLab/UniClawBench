@@ -1,0 +1,167 @@
+{
+  "source_accessed_on": "2026-05-02",
+  "evidence_basis": [
+    "Primary benchmark target is the YouTube video https://www.youtube.com/watch?v=39ColarOWKo.",
+    "An accessible same-content mirror used for hidden verification is https://www.dailymotion.com/video/x9rlvem.",
+    "The target answer is the groundhog / woodchuck food-stealing segment in the linked video, verified from the playable video frames and the subtitle cue that says the groundhog keeps stealing food from the farmer and eats it in front of the security camera.",
+    "The public task intentionally does not disclose the timestamp. Hidden verification uses the visual segment beginning near 00:10:28 within the broader narration cue around 00:10:20-00:10:34."
+  ],
+  "resource": {
+    "primary_url": "https://www.youtube.com/watch?v=39ColarOWKo",
+    "accepted_mirror_urls": [
+      "https://www.dailymotion.com/video/x9rlvem"
+    ],
+    "title": "Funniest Animal Videos Ever (Part 1)",
+    "type": "online_video",
+    "duration_seconds": 1233
+  },
+  "hidden_target": {
+    "segment_description": "A groundhog / woodchuck, shown with the on-frame credit 'Chunk The Groundhog', steals food from a farmer and eats it directly in front of a security camera.",
+    "approx_segment_start": "00:10:28",
+    "approx_segment_end": "00:10:40",
+    "subtitle_cue": "This groundhog keeps stealing food from this farmer and always eats it directly in front of the security camera.",
+    "public_task_must_not_reveal_timestamp": true,
+    "reference_sheet": {
+      "path": "references/marmot_food_reference_sheet.png",
+      "sha256": "25ef583dc6bd186f581fc95aab9122fca5f810ea5b8aa0e3d61afb5d72c47dea"
+    }
+  },
+  "required_food_moments": [
+    {
+      "ordinal": 1,
+      "food_id": "small_yellow_green_snack",
+      "approx_timestamp": "00:10:28",
+      "accepted_food_labels": [
+        "yellow-green food piece",
+        "small yellow-green snack",
+        "yellow pepper or vegetable piece",
+        "green or yellow fruit/vegetable chunk",
+        "first small food item"
+      ],
+      "visual_requirements": [
+        "groundhog centered or clearly visible",
+        "small yellow or yellow-green food visible in its paws or mouth"
+      ],
+      "reference_frame": "references/marmot_food_frames/food_01_small_yellow_green_snack.png",
+      "reference_frame_sha256": "39f6d7c0993076361e3a06ae4a40a2d8f1b0a5f907597e142b2f7cd3d65278e1"
+    },
+    {
+      "ordinal": 2,
+      "food_id": "red_apple",
+      "approx_timestamp": "00:10:29",
+      "accepted_food_labels": [
+        "red apple",
+        "apple"
+      ],
+      "visual_requirements": [
+        "groundhog visible",
+        "large red apple clearly visible"
+      ],
+      "reference_frame": "references/marmot_food_frames/food_02_red_apple.png",
+      "reference_frame_sha256": "c88c0b753a80bfb46ef2e71135833e04d88667ffb0f2e25b1ec06d6b9262311c"
+    },
+    {
+      "ordinal": 3,
+      "food_id": "banana",
+      "approx_timestamp": "00:10:30",
+      "accepted_food_labels": [
+        "banana"
+      ],
+      "visual_requirements": [
+        "groundhog visible",
+        "banana clearly visible in its paws or mouth"
+      ],
+      "reference_frame": "references/marmot_food_frames/food_03_banana.png",
+      "reference_frame_sha256": "98729c22ff51e85f956a539c5ab18caa80be03823703df3526dbde2b18bf33ef"
+    },
+    {
+      "ordinal": 4,
+      "food_id": "carrot",
+      "approx_timestamp": "00:10:34",
+      "accepted_food_labels": [
+        "carrot"
+      ],
+      "visual_requirements": [
+        "groundhog visible",
+        "orange carrot clearly visible"
+      ],
+      "reference_frame": "references/marmot_food_frames/food_04_carrot.png",
+      "reference_frame_sha256": "88da45d3a8871b708d714120bee0738c40fd000c6343b641de42aee50b289fc3"
+    },
+    {
+      "ordinal": 5,
+      "food_id": "leafy_green",
+      "approx_timestamp": "00:10:38",
+      "accepted_food_labels": [
+        "lettuce",
+        "leafy green",
+        "green leaf",
+        "leafy vegetable"
+      ],
+      "visual_requirements": [
+        "groundhog visible",
+        "large green leaf or lettuce clearly visible"
+      ],
+      "reference_frame": "references/marmot_food_frames/food_05_leafy_green.png",
+      "reference_frame_sha256": "96846dd5727d1ca4c1ff6098f826942efa34467f1caf825b1238014da6a3d5fe"
+    }
+  ],
+  "canonical_output_schema": {
+    "expected_raw_frame_count": 5,
+    "expected_meme_count": 5,
+    "expected_raw_frame_dir": "/tmp_workspace/results/groundhog_frames/",
+    "expected_meme_dir": "/tmp_workspace/results/memes/",
+    "expected_index_file": "/tmp_workspace/results/meme_index.md",
+    "expected_index_fields": [
+      "ordinal",
+      "food name or type",
+      "video timestamp",
+      "raw frame filename",
+      "meme filename",
+      "scene description",
+      "caption text"
+    ],
+    "timestamp_field_mandatory": true,
+    "order_field_mandatory": true,
+    "food_order_must_match_video": true
+  },
+  "caption_expectations": {
+    "style": "short meme-style overlaid caption",
+    "must_be_readable": true,
+    "caption_can_vary_freely_if_scene_grounding_is_correct": true,
+    "preferred_rendering": [
+      "large white text",
+      "visible outline or strong contrast",
+      "placed where it does not fully block the groundhog or food"
+    ]
+  },
+  "candidate_answer_boundaries": {
+    "full_credit_requires": [
+      "the answer is grounded in the target linked video or accepted mirror",
+      "the selected segment is the groundhog / woodchuck stealing and eating food in front of the security camera",
+      "all five required food moments are represented exactly once in the correct order",
+      "one raw keyframe and one meme image exist for each food moment",
+      "the index records food label, timestamp, raw frame, meme file, scene description, and caption for each moment",
+      "captions are readable and meme-like"
+    ],
+    "partial_credit_if": [
+      "the candidate uses the correct groundhog segment but misses exactly one food item",
+      "food labels are imprecise while the saved frames visually match the reference food moments",
+      "the meme captions are weak but readable and paired with the correct frames"
+    ],
+    "reject_if": [
+      "the answer uses arbitrary funny animal moments instead of the groundhog food-stealing segment",
+      "the answer relies only on subtitles, summaries, or stock images without video-frame evidence",
+      "two or more required food moments are missing, duplicated, or replaced by unrelated animals",
+      "raw keyframes or meme images are not grounded in the target video",
+      "timestamps are omitted from the index"
+    ]
+  },
+  "common_mistakes": [
+    "Choosing five generic funny animal clips from the compilation instead of the groundhog food segment.",
+    "Using the same groundhog frame repeatedly while changing only the caption.",
+    "Missing the first small yellow-green food item because it appears briefly.",
+    "Failing to distinguish the apple, banana, carrot, and leafy green as separate food moments.",
+    "Omitting mandatory timestamps in meme_index.md."
+  ]
+}

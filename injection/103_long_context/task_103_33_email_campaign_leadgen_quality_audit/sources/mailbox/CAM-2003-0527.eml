@@ -1,0 +1,21 @@
+Message-ID: <15743.59802.802210.914537@12-248-11-90.client.attbi.com>
+X-Clawbench-ID: CAM-2003-0527
+Date: Wed, 11 Sep 2002 20:10:50 -0500
+From: skip@pobox.com
+To: recipient@example.net
+Subject: [Spambayes] Current histograms
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01758.ace2433031b3ea150e728b34850cdceb
+
+Anthony> They weren't partitioned in any particular scheme - I think
+    Anthony> I'll write a reshuffler and move them all around, ...
+
+Hmmm.   How about you create empty Data/Ham/Set[12345], stuff all your
+files into a Data/Ham/reservoir folder, then run the rebal.py script to
+randomly parcel messages out to the various real directories?
+
+I suspect you can pull the same stunt for your Data/Spam stuff.
+
+Skip

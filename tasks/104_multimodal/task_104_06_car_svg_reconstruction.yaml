@@ -1,0 +1,49 @@
+task_id: task_104_06_car_svg_reconstruction
+category: 104_multimodal
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  Open the JPG image:
+  /tmp_workspace/clawbench/sources/car_input.jpg
+
+  This image was rendered from a complex SVG. Do not search the web, do not try
+  to infer the original image from the filename or a webpage, and do not directly
+  inspect the original SVG file; reconstruct an editable SVG file yourself based
+  only on this JPG.
+
+  Your goal is for the final result to be broadly consistent with the input image
+  in overall appearance, not pixel-perfect identical. Focus on aligning:
+  - the overall composition and whitespace
+  - the car body outline, stance, and perspective
+  - the green main color scheme and black outlines
+  - the rough relationships among the windows, tires, spoiler, lights, and shadows
+
+  Requirements:
+  1. Output `/tmp_workspace/results/car_recreated.svg`
+  2. Output `/tmp_workspace/results/car_recreated_notes.md`
+  3. The final result must be an SVG; do not submit only a PNG/JPG
+  4. Do at least one round of comparison and revision, then overwrite and save the final version
+  5. Minor deviations in local details are acceptable, but do not turn it into a simple car sketch in a completely different style
+
+  In `car_recreated_notes.md`, briefly explain:
+  - which parts you compared
+  - what areas you adjusted
+  - why you think the final result is close enough
+
+references:
+  - references/eval_rule.md
+  - references/reference_car.svg
+  - references/reference_car_render.png
+
+sources:
+  - car_input.jpg
+
+codex:
+  max_user_followups: 2

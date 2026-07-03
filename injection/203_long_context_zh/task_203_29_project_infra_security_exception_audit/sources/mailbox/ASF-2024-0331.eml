@@ -1,0 +1,53 @@
+Message-ID: <0ee7b30ab32e86f1a63b8f6456a910b3@ausics.net>
+X-Clawbench-ID: ASF-2024-0331
+Date: Sat, 15 Oct 2022 10:05:31 +1000
+From: Noel Butler <noel.butler@ausics.net>
+To: dev@httpd.apache.org
+Subject: Re: Process-level htaccess cache
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-10.mbox
+
+On 14/10/2022 09:24, as@php.net wrote:
+
+> Hello,
+>
+> I work on a LAMP stack at a large e-commerce company. We have big
+> htaccess files filled with mod_rewrite rules which are slow to parse.
+> Moving these routes into httpd.conf would be more efficient, but would
+> require changing our deployment strategy. Moving them into application
+> code could also be more efficient, but porting them would take a lot of
+> effort. So we explored optimizing httpd itself.
+>
+> Patching[0] the existing htaccess cache to live at the process-level
+> instead of the request-level proved to be a significant win for us. We
+> expected to save a handful of millis across the board, but also got a
+> nice drop in CPU as well.
+>
+> The patch is probably too hacky or specific to merge as-is. (How many
+> perf-sensitive Apache installations have huge htaccess files?) Perhaps
+> a cleaner alternative would be adding in the necessary hooks and
+> rewriting the patch as a module. Feedback encouraged.
+>
+> Thanks,
+>
+> Adam
+>
+> [0] https://gist.github.com/adsr/d6360b5cd59c084d67adc5e8e6127695
+> applies to 2.4.6
+
+eh? you do realise 2.4.6 is  9 years old, we at 2.4.54 currently.
+
+--
+Regards,
+Noel Butler
+
+This Email, including attachments, may contain legally privileged
+information, therefore at all times remains confidential and subject to
+copyright protected under international law. You may not disseminate
+this message without the authors express written authority to do so.
+If you are not the intended recipient, please notify the sender then
+delete all copies of this message including attachments immediately.
+Confidentiality, copyright, and legal privilege are not waived or lost
+by reason of the mistaken delivery of this message.

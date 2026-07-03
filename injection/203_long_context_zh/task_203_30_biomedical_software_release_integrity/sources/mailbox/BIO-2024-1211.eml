@@ -1,0 +1,52 @@
+Message-ID: <YhZvGq6SuH5oP1Uf@an3as.eu>
+X-Clawbench-ID: BIO-2024-1211
+Date: Wed, 23 Feb 2022 18:30:02 +0100
+From: Andreas Tille <tille@debian.org>
+To: Mathieu Malaterre <malat@debian.org>
+Subject: Re: Cmake help needed for ncbi-vdb
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_02_msg00110.html
+
+Hi Mathieu,
+
+Am Wed, Feb 23, 2022 at 05:57:55PM +0100 schrieb Mathieu Malaterre:
+> > Unfortunately the build is not yet correct since the -soname options
+> > included into the build are wrong.  For instance the compile option that
+> > is generated is in the current configuration for instance:
+> >
+> >   ... -shared -Wl,-soname,libkdf5.so ...
+> >
+> > while the correct soname would be
+> >
+> >   ... -shared -Wl,-soname,libkdf5.so.3 ...
+> >
+> > (according to the fact that libkdf5.so.3.0.0 is created.)  I tried to
+> > fix this with the patch
+> >
+> >
+> > --- a/libs/hdf5/CMakeLists.txt
+> > +++ b/libs/hdf5/CMakeLists.txt
+> > @@ -54,3 +54,5 @@ if( HDF5_FOUND )
+> >      ExportShared( kdf5 true "${HDF5_LIBRARIES};ncbi-vdb" )
+> >
+> >  endif()
+> > +
+> > +SET_TARGET_PROPERTIES(kdf5 PROPERTIES OUTPUT_NAME kdf5 SOVERSION 3)
+>
+> I do not have access to my linux workstation, but can you try something like:
+
+What a bad state to be disconnected from a linux computer. ;-)
+
+> set_target_properties(kdf5 PROPERTIES VERSION 3.0.0 SOVERSION 3)
+
+I tried this but it does not change anything.  It might be that
+I even have choosen the wrong location to specify properties.
+
+Thanks a lot for your prompt attempt to help anyway
+
+     Andreas.
+
+--
+http://fam-tille.de

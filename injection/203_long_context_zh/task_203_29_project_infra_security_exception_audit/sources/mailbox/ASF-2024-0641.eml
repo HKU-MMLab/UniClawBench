@@ -1,0 +1,44 @@
+Message-ID: <85FBAF7F-CE7F-420F-9C53-3538193AC3D9@eissing.org>
+X-Clawbench-ID: ASF-2024-0641
+Date: Wed, 30 Aug 2023 13:50:14 +0200
+From: "Stefan Eissing via dev" <dev@httpd.apache.org>
+To: dev@httpd.apache.org
+Subject: Re: mod_ssl SSL_OP_IGNORE_UNEXPECTED_EOF: "unexpected eof while  reading"
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-08.mbox
+
+> Am 30.08.2023 um 13:21 schrieb Rainer Jung <rainer.jung@kippdata.de>:
+>
+> Hi there,
+>
+> OpenSSL 3 flags some abortive shutdowns as an error different to what 1.1.1 did. This results in info log output in httpd:
+>
+> [Tue Aug 29 12:33:06.787210 2023] [ssl:info] [pid 1994673:tid 1994737] SSL Library Error: error:0A000126:SSL routines::unexpected eof while reading
+> [Tue Aug 29 12:33:06.787374 2023] [ssl:info] [pid 1994673:tid 1994737] [client 1.2.3.4:54790] AH01998: Connection closed to child 215 with abortive shutdown (server myserver:443)
+>
+> Some background is given in
+>
+>  https://github.com/openssl/openssl/issues/18866
+>
+> They introduced a new context option "SSL_OP_IGNORE_UNEXPECTED_EOF" to suppress this. Some other software now sets it with SSL_CTX_set_options():
+>
+> - nginx
+>
+> https://github.com/nginx/nginx/commit/5155845ce4453a07d60e2ce43946c9181bc311fa
+>
+> - PHP
+>
+> https://github.com/php/php-src/pull/8558/commits/55be0f489e390d28892a07c32d45a404c62fc9f2
+>
+> I suggest to adopt it, ie. set it if the option is available.
+>
+> WDYT?
+
++1 to setting this for our users sake. I withhold my opinion about this stupid OpenSSL change...oops.
+
+>
+> Best regards,
+>
+> Rainer

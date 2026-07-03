@@ -1,0 +1,35 @@
+Message-ID: <Y4oW8WLcd9mXF5XI@redhat.com>
+X-Clawbench-ID: ASF-2024-0819
+Date: Fri, 2 Dec 2022 15:17:05 +0000
+From: Joe Orton <jorton@redhat.com>
+To: dev@httpd.apache.org
+Subject: Re: MS-WDV (was Re: Help with buckets)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-12.mbox
+
+On Fri, Dec 02, 2022 at 08:53:07AM +0000, Emmanuel Dreyfus wrote:
+> Hello
+>
+> I made some progress with the combined GET+PROPFIND specified
+> by MS-WDV (for a summary, see
+> https://lists.apache.org/thread/57s1vvl6k9qpdv5ym7mtcl29bd933w7k )
+>
+> Attached is the diff against trunk, form comments.
+
+Hi Emmanuel,
+
+That's a very weird protocol design, wow. Have you tested this with a
+long PROPFIND response? It needs to buffer the entire response in the
+output brigade to work out the length in the "multipart" prefix, but
+mod_dav will flush output brigades down the filter chain regularly
+during the multistatus response processing.
+
+I think this might need to do something more complex, maybe running the
+PROPFIND in a subrequest properly and capturing (buffering) the output
+in a custom filter, rather than using the mod_dav internal API directly.
+Have you tried using ap_sub_req_method_uri()? Not sure this has been
+tried before with mod_dav so might well be something I'm missing.
+
+Regards, Joe

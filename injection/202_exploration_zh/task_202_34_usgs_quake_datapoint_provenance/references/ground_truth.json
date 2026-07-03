@@ -1,0 +1,30 @@
+{
+  "task_id": "task_102_34_usgs_quake_datapoint_provenance",
+  "note": "Data-point provenance task. The executor is given a few attributes of an earthquake out of context and must trace it to the canonical USGS event record (event id + API), confirming magnitude, coordinates, depth, and origin time. Searching loose attributes returns news; the canonical answer is the USGS event page / FDSN event API.",
+  "given_clue": "A dataset row lists a major earthquake: magnitude ~9.1, off the Pacific coast of Tohoku, Japan, in March 2011. Find the authoritative USGS record for this exact event and confirm its parameters.",
+  "canonical_answer": {
+    "authoritative_source": "USGS Earthquake Hazards Program (ANSS ComCat)",
+    "event_id": "official20110311054624120_30",
+    "event_title": "2011 Great Tohoku Earthquake, Japan",
+    "magnitude": 9.1,
+    "longitude": 142.373,
+    "latitude": 38.297,
+    "depth_km": 29,
+    "origin_time_utc": "2011-03-11T05:46:24.120Z",
+    "origin_time_epoch_ms": 1299822384120,
+    "canonical_event_page": "https://earthquake.usgs.gov/earthquakes/eventpage/official20110311054624120_30/executive",
+    "canonical_api_url": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=official20110311054624120_30&format=geojson"
+  },
+  "scoring_anchors": {
+    "must_identify_event": "the 2011 Great Tohoku (Tohoku-oki) earthquake, March 11 2011, M~9.1",
+    "must_reach_canonical": {"event_id": "official20110311054624120_30", "source": "USGS event page or FDSN event API"},
+    "value_checks": {
+      "magnitude": "9.1 (USGS value; older citations say 9.0 — accept USGS's 9.1 as canonical; do not fail if executor notes the 9.0/9.1 history but reports USGS 9.1)",
+      "coordinates_tolerance": "latitude 38.297 / longitude 142.373 within +-0.1 deg",
+      "depth_tolerance": "29 km within +-5 km",
+      "origin_time": "2011-03-11 05:46:24 UTC within ~60 s"
+    },
+    "primary_source_rule": "canonical = the USGS event record (event page or FDSN API). Wikipedia/NOAA/news are secondary and may quote slightly different values.",
+    "anti_search_the_number": "loose attributes surface news coverage, not the canonical event id; full credit requires reaching the USGS event record (event id official20110311054624120_30) and confirming its parameters from USGS."
+  }
+}

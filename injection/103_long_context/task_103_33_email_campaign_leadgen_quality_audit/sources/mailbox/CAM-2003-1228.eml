@@ -1,0 +1,40 @@
+Message-ID: <00a701c22f3e$51120b10$3864a8c0@sabeo.ie>
+X-Clawbench-ID: CAM-2003-1228
+Date: Fri, 19 Jul 2002 17:06:59 +0100
+From: Matthew French <mfrench42@yahoo.co.uk>
+To: Irish Linux Users Group <ilug@linux.ie>
+Subject: Re: [ILUG] How to copy some files
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00067.98256b369aa90314ebc9999d2d00a713
+
+Brian wrote:
+>  however, the data will be read and written twice by the
+>  1st (source) `tar', and read twice by the 2nd (sink) `tar',
+>  albeit only written once as the sink realizes the second
+>  copy is a hard link to the first.
+
+Eh?!? Oh wait... <pause while original mail is re-read>
+
+Doh. Sorry, I automatically read 'soft' in front of 'links', despite all
+evidence to the contrary. I thought the original question was a bit
+strange...
+
+On that note: is there any real benefit to using hard links? I avoid them as
+a rule, and cannot think of any good reason to use them at the moment.
+
+- Matthew
+
+
+__________________________________________________
+Do You Yahoo!?
+Everything you'll ever need on one web page
+from News and Sport to Email and Music Charts
+http://uk.my.yahoo.comm
+
+
+--
+Irish Linux Users' Group: ilug@linux.ie
+http://www.linux.ie/mailman/listinfo/ilug for (un)subscription information.
+List maintainer: listmaster@linux.ie

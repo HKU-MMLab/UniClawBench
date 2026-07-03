@@ -1,0 +1,83 @@
+Message-ID: <E1mpugu-000GI0-O5@fasolo.debian.org>
+X-Clawbench-ID: BIO-2024-1135
+Date: Wed, 24 Nov 2021 16:00:12 +0000
+From: Debian FTP Masters <ftpmaster@ftp-master.debian.org>
+To: Debian Science Team <debian-science@lists.debian.org>, Vincent Prat <vivi@debian.org>
+Subject: suitesparse-graphblas_6.0.0+dfsg-1_amd64.changes ACCEPTED into unstable, unstable
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_11_msg00116.html
+
+Accepted:
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Format: 1.8
+Date: Wed, 17 Nov 2021 22:23:53 +0100
+Source: suitesparse-graphblas
+Binary: libgraphblas-dev libgraphblas-doc libgraphblas6 libgraphblas6-dbgsym
+Architecture: source amd64 all
+Version: 6.0.0+dfsg-1
+Distribution: unstable
+Urgency: medium
+Maintainer: Debian Science Team
+Changed-By: Vincent Prat
+Description:
+ libgraphblas-dev - graph algorithms in the language of linear algebra - development
+ libgraphblas-doc - graph algorithms in the language of linear algebra - documentatio
+ libgraphblas6 - graph algorithms in the language of linear algebra - shared libra
+Closes: 999561
+Changes:
+ suitesparse-graphblas (6.0.0+dfsg-1) unstable; urgency=medium
+ .
+   * Initial release. (Closes: #999561)
+Checksums-Sha1:
+ 6ec9028f8c8fb626a2cc1784f492cc471717a2b3 2284 suitesparse-graphblas_6.0.0+dfsg-1.dsc
+ 5d6177a1012a316fc91d00683d1e9f3466999f93 3676868 suitesparse-graphblas_6.0.0+dfsg.orig.tar.xz
+ 4223098d1ae9d6bb7946bb4012d694eabc337d42 39372 suitesparse-graphblas_6.0.0+dfsg-1.debian.tar.xz
+ ee87a4db6f224743efcadafdb46222bae3855c7d 51988 libgraphblas-dev_6.0.0+dfsg-1_amd64.deb
+ c49afa1e81cb0c983b66154bb8cd15eaf6b1b238 965928 libgraphblas-doc_6.0.0+dfsg-1_all.deb
+ e00fa30327e8bb90247cee5d1fa31aebe008cc05 197743900 libgraphblas6-dbgsym_6.0.0+dfsg-1_amd64.deb
+ 03286c115a7bad8c75206d7d03ad1151e5355a43 20135140 libgraphblas6_6.0.0+dfsg-1_amd64.deb
+ 65f05c2507875834d01cd7d44dcb3c2b51fd782a 9716 suitesparse-graphblas_6.0.0+dfsg-1_amd64.buildinfo
+Checksums-Sha256:
+ ce28d521a13b9afb154ea605aaebec7eae2c0c39189b3fe6688aaa6a19a0b4c6 2284 suitesparse-graphblas_6.0.0+dfsg-1.dsc
+ 229050141100ec613c7ffc23659bfd1901d4584724d700e62db67d1da91007c4 3676868 suitesparse-graphblas_6.0.0+dfsg.orig.tar.xz
+ a4ce38f2e8b8604ccf447787405af7e9af5f4283a2a9f9cccdb1ea7e67801570 39372 suitesparse-graphblas_6.0.0+dfsg-1.debian.tar.xz
+ ce5dd1ee9085aefe541622dc80387c3b0d1fbc45aa91bc391c348923b2afd821 51988 libgraphblas-dev_6.0.0+dfsg-1_amd64.deb
+ 0ab8b0883661a424ba04df1f737badcdbe5fe490ca3e4777efa147b6ff44abc7 965928 libgraphblas-doc_6.0.0+dfsg-1_all.deb
+ abc2bb13e9b0e3da66cc913db4775144d72c12664fe6165d4ea503d909a35493 197743900 libgraphblas6-dbgsym_6.0.0+dfsg-1_amd64.deb
+ a1ee5fa86031ec553382852990f09ca85fd7c73b69d6d1a4ed195fd21112086e 20135140 libgraphblas6_6.0.0+dfsg-1_amd64.deb
+ 96b148b45eeb9009c3ee421802ed176874fb9270be978c6246f8d6470dc99d59 9716 suitesparse-graphblas_6.0.0+dfsg-1_amd64.buildinfo
+Files:
+ e242aec997774e3726aa13b9db7cc091 2284 math optional suitesparse-graphblas_6.0.0+dfsg-1.dsc
+ 1a927ea3d0df57dabfc0907c01a50367 3676868 math optional suitesparse-graphblas_6.0.0+dfsg.orig.tar.xz
+ 57d53b6ac070a7cac7c0af6c20cae10a 39372 math optional suitesparse-graphblas_6.0.0+dfsg-1.debian.tar.xz
+ b8577870bd0ac99f871018bb76bc29a0 51988 libdevel optional libgraphblas-dev_6.0.0+dfsg-1_amd64.deb
+ 160214bf5df23fcff8223f101ba03551 965928 doc optional libgraphblas-doc_6.0.0+dfsg-1_all.deb
+ 3a4a16cf8edf9774f00b29a623c69835 197743900 debug optional libgraphblas6-dbgsym_6.0.0+dfsg-1_amd64.deb
+ c12a9072e8bffe782a645ff70887db5d 20135140 libs optional libgraphblas6_6.0.0+dfsg-1_amd64.deb
+ 5ca2a298be38ad8ba94c9d2917d43c22 9716 math optional suitesparse-graphblas_6.0.0+dfsg-1_amd64.buildinfo
+
+-----BEGIN PGP SIGNATURE-----
+
+iQJEBAEBCgAuFiEEwN+g0Kj2VQgeB/icBzHNjq6Fm38FAmGVd7EQHHZpdmlAZGVi
+aWFuLm9yZwAKCRAHMc2OroWbf8l3EAChNSosMzk8NVqM0qT8O+QpxKinMMOYGXCC
+Hg5QsS2pe2ndKWXeBtI6Hiii0Kk2okWloQYVi/ZA5G/OQfxZcv15R4G6SkjC4G2x
+uKZPEepfGn/UEajekdRcUa1qnk3TLz/8SEkxCLy1ZlEa7SwK5rOXl4kVvGor+oBO
+M2AyeBXY+fsYkXjGtIrimVxKI3E+hTeUHv8ki794GRmb1O3Mwfqm73K/AkRVQFVg
+0eEXLZtRwNlCsLHuTl0Q5YmRV/0TFmfDmiqooaAGY4AcTR1Rn2cnX1Ez7T36W/OH
+N7uDCCEZt/EEqeRRFagGuSWGYaeAEYTfqpFiqCdqbSizC2ihPCAUZQjDC6SPpdVi
+qIxuRrwD9rZ4AkWRi7N2SCUdR6dqxxon6TmhKguCjxxQBG/BdcyRZjLsyjRCQ0A8
+w8qQ6kQPj9sz6KlCw/pO3JUH9njJxoq+ms8zwL6Zk/UMpSzWzEua933mHwhUzvtW
+9yjtEfBUJiCMPV6UvQlfHIfcvS04Ct1gGZFVn58Pn7xE0TVMMNLosbpgkxzTTewu
+O3QTz4Vl30gsCu3beXo0RtItdAK5QKKOt0QFYLG7jYd+4rZhqHc1uiKqBNNUCrNO
+UGk7hHaDZvsolV4UsfjfIobdb13c0r/IUAN+Bu7Hqn8ppVNnpHIXR0zRhhfaatAc
+vPg46GiGYw==
+=O5CK
+-----END PGP SIGNATURE-----
+
+
+Thank you for your contribution to Debian.

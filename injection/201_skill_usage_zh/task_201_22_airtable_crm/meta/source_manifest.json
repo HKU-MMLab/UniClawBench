@@ -1,0 +1,14 @@
+{
+  "task_id": "task_201_22_airtable_crm",
+  "data_origin": "live_api_fixture_with_snapshot_fallback",
+  "entries": [
+    {
+      "path": "airtable_snapshot.json",
+      "description": "Executor-visible snapshot of the populated Airtable-style CRM records. In live mode, ops/populate.py refreshes the table fixture and ground truth before execution."
+    }
+  ],
+  "hidden_references": [
+    "references/ground_truth.json",
+    "references/eval_rule.md"
+  ]
+}

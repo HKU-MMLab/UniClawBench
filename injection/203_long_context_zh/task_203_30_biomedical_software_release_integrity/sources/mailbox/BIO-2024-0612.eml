@@ -1,0 +1,34 @@
+Message-ID: <ZJBB0agVYDRN5LWr@an3as.eu>
+X-Clawbench-ID: BIO-2024-0612
+Date: Mon, 19 Jun 2023 13:53:53 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: pychopper has switched to a non-free license in new upstream version
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_06_msg00008.html
+
+Hi Pierre,
+
+Am Sun, Jun 18, 2023 at 09:03:49PM +0200 schrieb Pierre Gruet:
+> > I opened an issue [2] and marked it in [1]. Let's see...
+> >
+> > [2] https://github.com/epi2me-labs/pychopper/issues/27
+>
+> Updates: upstream answered they would not revert to a DFSG-free license,
+> although the given reasons do not seem to address our concern, as tmancill
+> also pointed out in the Github issue [2].
+>
+> Meanwhile, I updated the package in Debian to version 2.7.3, which is the
+> last one under MPL-2.0. I dropped a note in debian/README.source about the
+> licensing issue.
+
+Thanks a lot to you and Tony to care for this issue.
+
+Kind regards
+    Andreas.
+
+
+--
+http://fam-tille.de

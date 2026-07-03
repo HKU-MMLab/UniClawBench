@@ -1,0 +1,56 @@
+Message-ID: <20210909100127.GA14598@an3as.eu>
+X-Clawbench-ID: BIO-2024-0312
+Date: Thu, 9 Sep 2021 12:01:27 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Re: Salsa-ci build failure but autobuilders are succeeding
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_09_msg00015.html
+
+Hi again,
+
+another comparable case is r-cran-av which fails on salsa[6] and
+succeeds on autobuilders[7].  Given that there is a chance that the
+ffmpeg call[8] might need a working TMPDIR the cause is possibly here.
+
+Kind regards
+
+      Andreas.
+
+[6] https://salsa.debian.org/r-pkg-team/r-cran-av/-/jobs/1926722
+[7] https://buildd.debian.org/status/package.php?p=r-cran-av
+[8] https://salsa.debian.org/r-pkg-team/r-cran-av/-/blob/master/debian/rules#L10
+
+On Thu, Sep 09, 2021 at 10:12:28AM +0200, Andreas Tille wrote:
+> Hi,
+>
+> for gff2aplot I get a build failure in salsa-ci[1] but the autobuilders
+> are fine[2].  I somehow suspected that this might be due to a missing
+> HOME dir and tried a fix[3] but it did not helped.
+>
+> There is another issue for gwyddion that fails in salsa-ci[4] and works
+> in the autobuilders[5].  Here I do not even have an idea for a fix.
+>
+> While I think autobuilders are relevant but it would be cool to silence
+> CI.
+>
+> Kind regards
+>
+>       Andreas.
+>
+>
+> [1] https://salsa.debian.org/med-team/gff2aplot/-/jobs/1926459
+> [2] https://buildd.debian.org/status/package.php?p=gff2aplot
+> [3] https://salsa.debian.org/med-team/gff2aplot/-/blob/master/debian/rules#L7
+> [4] https://salsa.debian.org/med-team/gwyddion/-/jobs/1926447
+> [5] https://buildd.debian.org/status/package.php?p=gwyddion
+>
+> --
+> http://fam-tille.de
+>
+>
+
+--
+http://fam-tille.de

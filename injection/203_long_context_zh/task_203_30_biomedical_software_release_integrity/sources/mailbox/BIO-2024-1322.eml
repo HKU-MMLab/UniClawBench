@@ -1,0 +1,34 @@
+Message-ID: <YhEiPGKHJNcg5VIl@an3as.eu>
+X-Clawbench-ID: BIO-2024-1322
+Date: Sat, 19 Feb 2022 18:00:44 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>,	"Rebecca N. Palmer" <rebecca_palmer@zoho.com>
+Subject: Is snakemake using drmaa?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_02_msg00080.html
+
+Hi Rebecca,
+
+I've checked the situation of python3-drmaa:
+
+Autopkgtest of python3-drmaa fails with:
+
+   OSError: /usr/lib/x86_64-linux-gnu/libjemalloc.so.2: cannot allocate memory in static TLS block
+
+which is caused by bug #951704 (tagged wontfix).
+Drmaa does not seem to be maintained upstream any more.
+Nilesh confirmed its a mess.
+
+The question is: Is it recommended by snakemake just for historic reasons or is it really profiting from it.
+I'm considering the consequences of just removing drmaa.
+
+What do you think?
+
+Kind regards
+
+      Andreas.
+
+--
+http://fam-tille.de

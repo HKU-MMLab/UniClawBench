@@ -1,0 +1,38 @@
+{
+  "task_id": "task_101_31_postmortem_merge",
+  "notes_visible_to_executor": false,
+  "skill_changes": [
+    {
+      "original_skill": "memory-manager",
+      "injected_skill": "memory-manager",
+      "original_source": "clawhub",
+      "change_type": "benchmark path adaptation",
+      "reason": "Original docs referenced ~/.openclaw/skills; the benchmark injects skills at /root/skills, so examples and helper script messages were aligned to the injected runtime path.",
+      "executor_skill_path": "skills/memory-manager"
+    },
+    {
+      "original_skill": "runesleo-systematic-debugging",
+      "injected_skill": "runesleo-systematic-debugging",
+      "original_source": "clawhub",
+      "change_type": "task_fit_adaptation",
+      "reason": "Replaces the prior markdown-convert injection (URL→markdown converter, useless when sources are already local md). Provides a five-phase RCA framework that maps cleanly onto the cross-incident root-cause synthesis required by this task. Added a 'cross-incident application' section that adapts the framework to multiple postmortems.",
+      "executor_skill_path": "skills/runesleo-systematic-debugging"
+    },
+    {
+      "original_skill": "markdown-formatter",
+      "injected_skill": "markdown-formatter",
+      "original_source": "clawhub",
+      "change_type": "benchmark environment adaptation",
+      "reason": "Replaces the prior cognitive-memory injection (multi-store agent memory with reflection cycles, weak fit for merging six local postmortem md files). markdown-formatter directly supports producing the four-section insights.md the prompt asks for.",
+      "executor_skill_path": "skills/markdown-formatter"
+    },
+    {
+      "original_skill": "daily-digest",
+      "injected_skill": "daily-digest",
+      "original_source": "clawhub",
+      "change_type": "task_fit_adaptation",
+      "reason": "Adds a fourth skill so the task retains skill-density parity. The original skill produces digests of decisions/lessons/actions/questions from dated memory files; the cross-incident postmortem synthesis maps to the same four buckets, so a 'cross-incident application' section was added to make the mapping explicit. No upstream behavior was rewritten.",
+      "executor_skill_path": "skills/daily-digest"
+    }
+  ]
+}

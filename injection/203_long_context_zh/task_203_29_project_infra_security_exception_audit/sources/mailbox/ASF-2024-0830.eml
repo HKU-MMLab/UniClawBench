@@ -1,0 +1,75 @@
+Message-ID: <FAB74D8F-27D5-47D0-985F-0FD08861278D@eissing.org>
+X-Clawbench-ID: ASF-2024-0830
+Date: Mon, 7 Feb 2022 11:35:01 +0100
+From: Stefan Eissing <stefan@eissing.org>
+To: dev@httpd.apache.org
+Subject: Re: mpm event assertion failures
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-02.mbox
+
+> Am 07.02.2022 um 11:31 schrieb Graham Leggett <minfrin@sharp.fm>:
+>
+> On 07 Feb 2022, at 12:18, Stefan Eissing <stefan@eissing.org> wrote:
+>
+>>>> Is the http2 code doing anything to work around mod_ssl trying to read, failing, throwing away the error, and then pretending nothing happened?
+>>>
+>>> The http2 code doesn't try to work around mod_ssl, instead it does the same as mod_ssl, which is that it performs an operation but throws away the error:
+>>>
+>>> https://github.com/apache/httpd/blob/1598f7aebd59acc7494389a3903a33c5e38a5460/modules/http2/h2_c2.c#L632
+>>>
+>>> This hook is sorted APR_HOOK_FIRST, which means h2_c2_hook_process() runs first, then passes the connection to mod_ssl, which then returns AGAIN, but AGAIN is now thrown away inside h2_c2_hook_process(), and now we’re off the rails from this point on and we can expect our socket to be stuck in a weird state.
+>>>
+>>> The http1 code has the same problem, but runs APR_HOOK_LAST, which means mod_ssl’s handshake is completely done before http1 touches the connection.
+>>>
+>>> I think to fix this test, we need to make sure http2 runs after mod_ssl.
+>>
+>> It does.
+>>
+>> h2_c1.c:
+>>
+>> static const char* const mod_reqtimeout[] = { "mod_ssl.c", "mod_reqtimeout.c", NULL};
+>>
+>> void h2_c1_register_hooks(void)
+>> {
+>>    /* Our main processing needs to run quite late. Definitely after mod_ssl,
+>>     * as we need its connection filters, but also before reqtimeout as its
+>>     * method of timeouts is specific to HTTP/1.1 (as of now).
+>>     * The core HTTP/1 processing run as REALLY_LAST, so we will have
+>>     * a chance to take over before it.
+>>     */
+>>    ap_hook_process_connection(h2_c1_hook_process_connection,
+>>                               mod_reqtimeout, NULL, APR_HOOK_LAST);
+>>    ...
+>>
+>>
+>> In my understanding this is how it should work. When mod_ssl's process_connection fails, it should return OK to prevent further hooks to run.
+>>
+>> AP_IMPLEMENT_HOOK_RUN_FIRST(int,process_connection,(conn_rec *c),(c),DECLINED)
+>>
+>> process_connection is a RUN_FIRST. So the first hook that returns OK, terminates it.
+>>
+>> If mod_ssl returns OK in case of handshake errors, the connection is done. That is my read of it.
+>
+> There are two parts that hook into the process_connection hook, the code you’ve cited above, and this code:
+>
+> void h2_c2_register_hooks(void)
+> {
+>     /* When the connection processing actually starts, we might
+>      * take over, if the connection is for a h2 stream.
+>      */
+>     ap_hook_process_connection(h2_c2_hook_process,
+>                                NULL, NULL, APR_HOOK_FIRST);
+>
+> Looks like this code is running before mod_ssl somehow.
+>
+> Is there a way to run the httpd under test in either lldb or gdb?
+
+The names "h2_c1..." and "h2_c2..." indicate, that the former operates on "primary" connections, e.g. the ones from a client where SSL is applied, and "secondary" connections (c->master != NULL), e.g. where h2 requests are processed and SSL is not involved.
+
+>
+> Regards,
+> Graham
+> —
+>

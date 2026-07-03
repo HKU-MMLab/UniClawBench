@@ -1,0 +1,21 @@
+Message-ID: <20211110153535.E996F20194@bendel.debian.org>
+X-Clawbench-ID: BIO-2024-1375
+Date: Wed, 10 Nov 2021 21:05:22 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: debian-science@lists.debian.org
+Subject: Re: CoinMP was listed as smelling ;-)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_11_msg00075.html
+
+On Wed, Nov 10, 2021 at 02:02:08PM +0100, Andreas Tille wrote:
+> > Probably i just forgot to commit to git..
+>
+> Yes, I've just seen some -1 Version in experimental...
+
+The tracker also does not show the repository (VCS: unknown) and also
+an ancient S-V (3.9.8)
+would you consider modernizing it whenever you upload next?
+
+Nilesh

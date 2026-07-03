@@ -1,0 +1,31 @@
+Message-ID: <udl1pyb7kl2.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-1201
+Date: Fri, 13 Dec 2024 08:56:25 -0500
+From: "Aaron M. Ucko" <ucko@debian.org>
+To: Andreas Tille <andreas@an3as.eu>
+Subject: Re: Upgrade of sra-sdk
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_12_msg00011.html
+
+Andreas Tille  writes:
+
+> while trying to fix bug #1087096 (Python SyntaxWarning) I realised there
+> is a new upstream version of sra-sdk.  I somehow got cmake passing after
+> adapting some patches
+
+Thanks!
+
+> In case this might be relevant:  I just uploaded ncbi-vdb 3.1.1 to
+> experimental - so if this might be helpful its there.
+
+Building sra-sdk 3.1.1 against ncbi-vdb 3.1.1 does in fact help a lot
+(no surprise -- releases are generally issued in lockstep and intended
+to be used together).  However, it will evidently also be necessary to
+extend support_libre2-11.patch to cover recent additions to
+fasta_defline_matcher.hpp.  I'll take a closer look when I get a chance.
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

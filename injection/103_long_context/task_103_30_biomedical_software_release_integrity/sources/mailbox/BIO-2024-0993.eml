@@ -1,0 +1,24 @@
+Message-ID: <Yk9KMbPP9VybHNq+@an3as.eu>
+X-Clawbench-ID: BIO-2024-0993
+Date: Thu, 7 Apr 2022 22:31:45 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: RFS : add autopkgtest for bmtk
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_04_msg00028.html
+
+Am Thu, Apr 07, 2022 at 04:17:17PM -0000 schrieb Mohd Bilal:
+>
+> Thank you for your inputs. I've dropped my patch now and the autopkgtest now passes[1].
+
+Nice.  I've cleaned up the changelog a bit to only cover user
+visible changes compared to previous package and uploaded.
+
+Thanks a lot for your work on this
+
+      Andreas.
+
+--
+http://fam-tille.de

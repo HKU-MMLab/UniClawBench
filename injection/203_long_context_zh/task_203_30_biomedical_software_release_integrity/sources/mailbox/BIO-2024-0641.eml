@@ -1,0 +1,26 @@
+Message-ID: <Y5A1z7h5Lh97pmwu@an3as.eu>
+X-Clawbench-ID: BIO-2024-0641
+Date: Wed, 7 Dec 2022 07:42:23 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Seqan2 FTBFS
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_12_msg00063.html
+
+Hi,
+
+I just wanted to do some polishing changes (watch file + lintian-brush)
+but I realised seqan2 is failing to build[1].  I wonder whether we need
+to care for this library and thus need to fix it or whether it is time
+to remove it from Debian.
+
+Kind regards
+   Andreas.
+
+
+[1] https://salsa.debian.org/med-team/seqan2/-/jobs/3622896
+
+--
+http://fam-tille.de

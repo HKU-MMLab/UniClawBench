@@ -1,0 +1,138 @@
+Message-ID: <20020923145419.09A9638C@mercea.net>
+X-Clawbench-ID: CAM-2003-0794
+Date: Mon, 23 Sep 2002 10:54:19 -0400
+From: Scott Lipcon <slipcon@mercea.net>
+To: Chris Garrigues <cwg-dated-1033224084.36f5b8@DeepEddy.Com>
+Subject: Re: traceback in new exmh
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01128.48db2981ac933d672bcc5203a7063305
+
+Oops - turns out i wasn't careful installing it, so the exmh(library)
+variable was pointing at my old installation.  I'm surprised it worked
+as well as it did.
+
+In any case, I removed the old library directory, and edited exmh,
+exmh-bg, exmh-strip, etc to point at the right one.  Now I'm getting
+another traceback on startup:
+
+can't read "mhPriv(pubseq,family,cur)": no such variable
+    while executing
+"MhSeq $folder $seq add $mhPriv(pubseq,$folder,$seq) [MhSeqExpand
+$folder $msgids"
+    (procedure "MhReadSeqs" line 73)
+    invoked from within
+"MhReadSeqs $folder seqs"
+    (procedure "Mh_Sequences" line 2)
+    invoked from within
+"Mh_Sequences $folder"
+    (procedure "Flist_UnseenUpdate" line 4)
+    invoked from within
+"Flist_UnseenUpdate $folder"
+    (procedure "FolderChange" line 51)
+    invoked from within
+"FolderChange family {Msg_Show cur}"
+    invoked from within
+"time [list  FolderChange $folder $msgShowProc"
+    (procedure "Folder_Change" line 3)
+    invoked from within
+"Folder_Change $exmh(folder)"
+    (procedure "Exmh" line 101)
+    invoked from within
+"Exmh"
+    ("after" script)
+
+
++family is the folder I was in when I quit exmh.
+
+I'm on a remote display right now, and its really slow.  I'll have to
+play with it more tonight when I get home to see if there are any
+other problems.
+
+Scott
+
+> > From:  Scott Lipcon <slipcon@mercea.net>
+> > Date:  Sun, 22 Sep 2002 22:58:16 -0400
+> >
+> > I just updated to the latest CVS - I had been running a build from June.
+> > Hitting the Flist button gives the following traceback:
+> >
+> > syntax error in expression "int(17+1+(222-)*(19-17-2)/(224-))"
+> >     while executing
+> > "expr int($minLine+1+($msgid-$minMsg)*($maxLine-$minLine-2)/($maxMsg-$minMs
+> > g))"
+> >     (procedure "Ftoc_FindMsg" line 57)
+> >     invoked from within
+> > "Ftoc_FindMsg $i"
+> >     (procedure "Ftoc_ShowSequences" line 16)
+> >     invoked from within
+> > "Ftoc_ShowSequences $F"
+> >     (procedure "ScanFolder" line 81)
+> >     invoked from within
+> > "ScanFolder inbox 0"
+> >     invoked from within
+> > "time [list ScanFolder $F $adjustDisplay"
+> >     (procedure "Scan_Folder" line 2)
+> >     invoked from within
+> > "Scan_Folder $exmh(folder) $ftoc(showNew)"
+> >     (procedure "Inc_PresortFinish" line 7)
+> >     invoked from within
+> > "Inc_PresortFinish"
+> >     invoked from within
+> > ".fops.flist invoke"
+> >     ("uplevel" body line 1)
+> >     invoked from within
+> > "uplevel #0 [list $w invoke]"
+> >     (procedure "tkButtonUp" line 7)
+> >     invoked from within
+> > "tkButtonUp .fops.flist
+> > "
+> >     (command bound to event)
+> >
+> >
+> > It seems to only happen in a folder with no unseen messages.
+> >
+> > Chris, is this related to your recent changes?
+>
+> Curious.  I changed the arguments to Ftoc_ShowSequences to drop the folder
+> argument and instead have an optional msgids argument.  Somehow your version
+> of ScanFolder is still trying to pass $F.  You seem to have the latest
+> ftoc.tcl (1.36), but not the latest scan.tcl (1.27).
+>
+> I don't know how that happened, but try getting your source tree completely
+> up to date.
+>
+> Chris
+>
+> --
+> Chris Garrigues                 http://www.DeepEddy.Com/~cwg/
+> virCIO                          http://www.virCIO.Com
+> 716 Congress, Suite 200
+> Austin, TX  78701		+1 512 374 0500
+>
+>   World War III:  The Wrong-Doers Vs. the Evil-Doers.
+>
+>
+>
+>
+> --==_Exmh_1988991284P
+> Content-Type: application/pgp-signature
+>
+> -----BEGIN PGP SIGNATURE-----
+> Version: GnuPG v1.0.6 (GNU/Linux)
+> Comment: Exmh version 2.2_20000822 06/23/2000
+>
+> iD8DBQE9jygSK9b4h5R0IUIRAix6AJ9CorKpwn/5KatPB2QytCyr1mVP5QCfd84d
+> CBV9usxWABobTcDTVHm8fLY=
+> =xJhj
+> -----END PGP SIGNATURE-----
+>
+> --==_Exmh_1988991284P--
+>
+
+
+_______________________________________________
+Exmh-workers mailing list
+Exmh-workers@redhat.com
+https://listman.redhat.com/mailman/listinfo/exmh-workers

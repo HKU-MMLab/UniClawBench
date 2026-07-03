@@ -1,0 +1,29 @@
+Message-ID: <8fe56e567360add537f2aa8a2f3c31bad3da61f3.camel@debian.org>
+X-Clawbench-ID: BIO-2024-1012
+Date: Sat, 11 Feb 2023 11:49:29 +0800
+From: Paul Wise <pabs@debian.org>
+To: Mathieu Malaterre <malat@debian.org>, ARM <debian-arm@lists.debian.org>
+Subject: Re: neon: armhf baseline for next release ?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_02_msg00041.html
+
+On Fri, 2023-02-10 at 10:23 -0800, Vagrant Cascadian wrote:
+
+> For an individual package that wants to make use of neon, the correct
+> thing to do is to make the neon support detected at run-time rather than
+> rely on it at build-time and enabling or disabling codepaths, features,
+> etc. as appropriate.
+
+FTR, there is documentation on the mechanisms for doing that here:
+
+https://wiki.debian.org/InstructionSelection
+
+If there is anything missing for NEON, please update it.
+
+--
+bye,
+pabs
+
+https://wiki.debian.org/PaulWise

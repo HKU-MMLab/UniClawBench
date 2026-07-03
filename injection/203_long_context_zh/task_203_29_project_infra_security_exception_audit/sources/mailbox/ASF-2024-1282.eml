@@ -1,0 +1,34 @@
+Message-ID: <PR_kwDOFoJrE85chEpL-161d11a2-5c16-4b19-bbb2-653126f0d487@gitbox.apache.org>
+X-Clawbench-ID: ASF-2024-1282
+Date: Thu, 12 Oct 2023 14:31:32 -0000
+From: =?utf-8?q?icing_=28via_GitHub=29?= <git@apache.org>
+To: dev@httpd.apache.org
+Subject: =?utf-8?q?Re=3A_=5BPR=5D_Document_non-impact_of_CVE-2023-44487_=5Bhttpd-site?=  =?utf-8?q?=5D?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-10.mbox
+
+icing commented on PR #10:
+URL: https://github.com/apache/httpd-site/pull/10#issuecomment-1759730884
+
+   > I'm not sure that I'd suggest that [CVE-2023-44487](https://github.com/advisories/GHSA-qppj-fm5r-hxr3) doesn't have an impact on Apache. Using a simple python-based PoC exploit from a **single** attacking host with fast bandwidth against Apache (default Ubuntu 22.04 install with http2 enabled) running on a 32GB machine will OOM kill the apache2 process in about 6 minutes in my testing. I suppose this assumes that Ubuntu isn't disabling whatever default protections might be in place against [CVE-2023-44487](https://github.com/advisories/GHSA-qppj-fm5r-hxr3), if those protections are indeed a thing.
+   >
+   > ```
+   > [Thu Oct 12 13:09:58 2023] Out of memory: Killed process 1328 (apache2) total-vm:63798416kB, anon-rss:31847208kB, file-rss:1332kB, shmem-rss:64kB, UID:33 pgtables:122424kB oom_score_adj:0
+   > ```
+
+   Interesting. I run the patched `h2load` distributed as demo by google before the announcement. I send over 1 GB of HEADER+RST to httpd and the memory does not increase after an initial warm up time. I tested the current version of mod_http2 v2.0.24 and the v2.0.11 that was released as part of Apache httpd 2.4.57.
+
+   Maybe your script is doing something different or triggering another effect? Is there a chance I can ran this for myself?
+
+
+--
+This is an automated message from the Apache Git Service.
+To respond to the message, please log on to GitHub and use the
+URL above to go to the specific comment.
+
+To unsubscribe, e-mail: dev-unsubscribe@httpd.apache.org
+
+For queries about this service, please contact Infrastructure at:
+users@infra.apache.org

@@ -1,0 +1,27 @@
+Message-ID: <FC74CEC7-65AC-4044-B35C-C3245E658F93@vmware.com>
+X-Clawbench-ID: ASF-2024-0251
+Date: Fri, 27 Jan 2023 17:35:56 +0000
+From: =?utf-8?B?SmVzw7pzIEdvbnrDoWxleg==?= <jesusgm@vmware.com>
+To: "dev@httpd.apache.org" <dev@httpd.apache.org>
+Subject: Re: mod_wasm: Contributing Upstream to Apache
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-01.mbox
+
+Thanks Joe. You are correct, this initial implementation is the simplest one to get it off the ground. We plan to continue development and add the streaming functionality, which we know we will need for things like large PDF file generation or support for Proxy-Wasm.
+
+Yes, isolating language runtimes (PHP, Python, ...) per thread is a cool feature that enables new possibilities like simultaneously supporting multiple versions of PHP as well as better multi-tenancy (you will be able to keep user's code and assets separate from each other using Wasm built-in isolation mechanism).
+
+Regarding apreq, right now we have not had a need to use it as we pass most of the headers and body to the runtimes themselves as the language runtimes code for handling requests, etc. takes care of it as part of the CGI implementation, etc. As we look to add different functionality (i.e. extending Apache itself) we will probably provide access to it from Wasm.
+
+
+De: Joe Schaefer <joe@sunstarsys.com>
+Responder a: "dev@httpd.apache.org" <dev@httpd.apache.org>
+Fecha: jueves, 26 de enero de 2023, 5:17
+Para: "dev@httpd.apache.org" <dev@httpd.apache.org>
+Asunto: Re: mod_wasm: Contributing Upstream to Apache
+
+Still, the idea is wicked cool if mod_wasm really can isolate the Python, PHP, etc targets onto individual POSIX threads.
+
+Very exciting stuff for HTTP/2 Webapps.

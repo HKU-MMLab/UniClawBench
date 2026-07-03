@@ -1,0 +1,29 @@
+Message-ID: <c260b5df-d6ad-4198-9784-82ba0cd5574e@gmail.com>
+X-Clawbench-ID: ASF-2024-0257
+Date: Tue, 16 Apr 2024 13:49:23 +0200
+From: jean-frederic clere <jfclere@gmail.com>
+To: Stefan Eissing via dev <dev@httpd.apache.org>
+Subject: Re: mod_tls in 2.4.x - remove?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-04.mbox
+
+On 4/16/24 12:56, Stefan Eissing via dev wrote:
+> mod_tls is experimental in 2.4.x. The rustls project, initially wanting to stay backward compatible to the v0.10.x API, has change its mind and no longer guarantees any stability in future versions. In fact, they have changed the API already, making mod_tls no longer viable.
+>
+> I personally do not have the time to chase after this. If no one else has interests (and I don't know of anyone using it - else, speak up), I propose to remove it from the 2.4.x branch again.
+>
+> Kind Regards,
+> Stefan
+
+I am +1 for that, I have looked to arrange the testsuite to test mod_ssl
+instead mod_ssl via pytest in trunk (PR:
+https://github.com/apache/httpd/pull/433) so I would like to keep
+mod_tls in trunk if possible (but I am NOT planning to work on mod_tls
+for the moment).
+
+--
+Cheers
+
+Jean-Frederic

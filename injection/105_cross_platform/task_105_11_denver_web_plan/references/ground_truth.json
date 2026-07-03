@@ -1,0 +1,50 @@
+{
+  "task_id": "task_105_11_denver_web_plan",
+  "created_at": "2026-05-04T00:00:00+00:00",
+  "task_type": "pure_web_itinerary_planning",
+  "city": "Denver",
+  "target_date_policy": {
+    "weekday": "Saturday",
+    "rule": "Use next Saturday. If next Saturday is a public holiday, closed day, special-hours day, sold out, or not verifiable from official pages, use the following Saturday and document why."
+  },
+  "reference_screenshot_date": "2026-06-06",
+  "time_window": "13:30-18:30",
+  "start_point": "Denver Union Station",
+  "candidate_attractions": [
+    "Denver Art Museum",
+    "Denver Botanic Gardens",
+    "Museum of Nature & Science",
+    "Meow Wolf Denver"
+  ],
+  "selection_requirement": "exactly two attractions plus one cafe/rest stop",
+  "source_requirements": [
+    "official pages for each candidate attraction where possible",
+    "Denver attraction official pages, map pages, and a cafe page"
+  ],
+  "route_constraints": [
+    "route must fit within 13:30-18:30",
+    "single transfer should preferably be no more than 35 minutes",
+    "one cafe rest stop with a cafe page confirming status/location",
+    "avoid attractions with materially uncertain same-day entry or rules"
+  ],
+  "required_sections": [
+    "candidate checks",
+    "chosen route",
+    "timed itinerary",
+    "why others were rejected"
+  ],
+  "final_artifact": "/tmp_workspace/results/denver_sat_trip.md",
+  "process_reference_screenshots": [
+    "process_evidence/denver_art_museum.png",
+    "process_evidence/google_map_DAM_to_DBG.png",
+    "process_evidence/google_map_DUS_to_DAM.png"
+  ],
+  "manual_reference_gaps": [
+    "The process_evidence set is illustrative and intentionally incomplete; it may not include every candidate attraction, cafe, map, ticket, or transit page required by the task.",
+    "The process_evidence screenshots are from an earlier successful run and do not constrain the dynamically selected target date, attraction choices, opening/ticket values, map durations, cafe status, or final itinerary.",
+    "Do not treat missing hidden screenshots as fixed ground truth failures; evaluate whether the executor obtained current evidence or honestly documented blocks.",
+    "Exact hours, ticket rules, prices, map/transit durations, cafe hours, and page layouts should not be treated as fixed ground truth."
+  ],
+  "grading_note": "Score web evidence, constraint-following, itinerary feasibility, required output sections, and honest handling of blocked or missing live-site data. Do not reward link dumps without decisions and timing.",
+  "final_plan_not_required_when_blocked": "The final Markdown plan is still expected; when live sites block key data, accept a clearly qualified plan with missing-data notes rather than hallucinated details."
+}

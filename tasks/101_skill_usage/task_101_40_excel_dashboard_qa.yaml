@@ -1,0 +1,69 @@
+task_id: task_101_40_excel_dashboard_qa
+category: 101_skill_usage
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  Someone on the ops team slapped together a sales dashboard in Excel and
+  I don't trust the numbers — I've already spotted one cell that looks
+  wrong. Before I share it with finance I need a proper QA pass. Use the
+  Excel reading skill to read the workbook, the workspace's Excel
+  inspection skill to walk the workbook and trace anomalies in stored
+  values, and the DuckDB SQL skill to run fresh SQL against the source
+  database and flag every place the dashboard disagrees.
+
+  The workbook is /tmp_workspace/clawbench/sources/sales_dashboard_2024.xlsx
+  with a Raw sheet plus Pivot, Chart, and Summary sheets. The source of
+  truth is /tmp_workspace/clawbench/sources/sales.db — wherever the
+  dashboard disagrees with a fresh query, that's a bug.
+
+  Write up what you find in /tmp_workspace/results/qa.md with three parts:
+    - A list of every inconsistency between the dashboard and sales.db.
+      For each one, give me the sheet and cell, what the dashboard says,
+      what the database says it should be, and a one-sentence explanation
+      of the bug. Cover numeric mismatches, mistyped labels, missing
+      regions, wrong date filters, missing total rows, anything where the
+      workbook disagrees with the database.
+    - For each inconsistency, the exact DuckDB SQL query you ran on
+      sales.db that produced the correct value. I need to be able to
+      paste each one and rerun it.
+    - A short overall verdict at the end, six sentences or fewer — do I
+      trust the dashboard or do we need a redo?
+    - Heads up: a few cells in the workbook carry an Excel cell comment
+      documenting an intentional out-of-band override — CFO memo, RMA
+      returns adjustment, audit holdback. Read each cell's comment before
+      classifying it. Cells with a documented business override are NOT
+      bugs and should not be in the inconsistency list.
+
+  Also save /tmp_workspace/results/qa_repro.csv with one row per
+  inconsistency and columns sheet, cell, category, xlsx_value, sql_value,
+  duckdb_sql, and status. This is what I'll hand to the dashboard owner,
+  so the CSV must cover the same set of issues as qa.md.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - sales_dashboard_2024.xlsx
+  - sales.db
+
+skills:
+  - excel-xlsx
+  - automate-excel
+  - duckdb-cli-ai-skills
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

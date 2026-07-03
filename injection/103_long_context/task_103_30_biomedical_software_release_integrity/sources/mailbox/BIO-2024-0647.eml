@@ -1,0 +1,49 @@
+Message-ID: <YfRVpkYwqS6130VU@an3as.eu>
+X-Clawbench-ID: BIO-2024-0647
+Date: Fri, 28 Jan 2022 21:44:22 +0100
+From: Andreas Tille <tille@debian.org>
+To: Nilesh Patra <nilesh@debian.org>
+Subject: Re: Java help for king needed
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_01_msg00108.html
+
+Hi Nilesh,
+
+Am Sat, Jan 29, 2022 at 01:07:54AM +0530 schrieb Nilesh Patra:
+> On Fri, Jan 28, 2022 at 06:25:41PM +0100, Andreas Tille wrote:
+> > Hi Pierre (and others),
+               ^^^^^^^^^^
+> > I realised that king was moved to Github and tried to upgrade the
+> > package to the latest upstream version.  Unfortunately I failed as you
+> > can see in Salsa-CI[1].
+> >
+> > Any help would be welcome
+>
+> I hope you do not mind me chiming in :)
+
+I'm happy that I did not only wrote to Pierre! ;-)
+
+> I fixed that error log a little, it is shorter than before now (changes in salsa).
+> The main bottleneck is that it needs
+> pdfbox-graphics2d jar/package[1] and we do not have this in the archive yet.
+>
+> Removing code for this seems non-trivial and would also affect user experience (to my understanding)
+
+I'd agree that it might affect user experience.
+
+> Hence, if you could package this and upload to new, that'd help it move forward.
+
+I'll see what I can do.  Seems I'm today packaging new predependencies.
+(I'll write to debian-python soon)
+
+Kind regards
+
+    Andreas.
+
+> [1]: https://github.com/rototor/pdfbox-graphics2d
+
+
+--
+http://fam-tille.de

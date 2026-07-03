@@ -1,0 +1,14 @@
+{
+  "task_id": "task_101_16_trello_triage",
+  "notes_visible_to_executor": false,
+  "skill_changes": [
+    {
+      "original_skill": "trello",
+      "injected_skill": "trello",
+      "original_source": "clawhub",
+      "change_type": "api_credential_adaptation",
+      "reason": "Keeps the upstream `trello` slug (top-1000). The SKILL.md guidance is narrowed to use the direct Trello REST endpoints with TRELLO_API_KEY / TRELLO_API_TOKEN / TRELLO_BOARD_ID supplied via `.privacy`, instead of the original third-party gateway credential flow.",
+      "executor_skill_path": "skills/trello"
+    }
+  ]
+}

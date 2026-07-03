@@ -1,0 +1,66 @@
+Message-ID: <Y38mkfXYmsJJ2oPs@an3as.eu>
+X-Clawbench-ID: BIO-2024-1475
+Date: Thu, 24 Nov 2022 09:08:49 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Help needed with python-cobra and python-pyani
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_11_msg00082.html
+
+Hi Nilesh,
+
+thanks a lot for having a look.
+
+Am Thu, Nov 24, 2022 at 10:01:47AM +0530 schrieb Nilesh Patra:
+> On Wed, Nov 23, 2022 at 09:01:40PM +0100, Andreas Tille wrote:
+> > python-cobra
+>
+> It seems like that the interpreter is having trouble referencing the
+> name variable. I tried using getName instead of that which gets the
+> test passing but I'm not very sure if it serves the purpose well.
+>
+> Pushed this change to salsa, but please review.
+
+I've forwarded you change to upstream[1] to evaluate the change (which
+looks perfectly sensible to me).  There is a remaining (and unrelated)
+autopkgtest error[2]:
+
+  E   ModuleNotFoundError: No module named '_libsbml'
+
+which is caused by the fact that python3-sbml5 can only deal with one
+Python3 version.  Thus I will restrict the test to default Python3 and
+upload to unstable.
+
+> > python-pyani
+>
+> This is because python3-biopython does not vendor shared object libs
+> for python3.11 yet
+>
+> $ apt-file list python3-biopython | grep '_align'
+> ...
+> python3-biopython: /usr/lib/python3/dist-packages/Bio/Align/_aligners.cpython-310-x86_64-linux-gnu.so
+> python3-biopython: /usr/lib/python3/dist-packages/Bio/Align/_aligners.cpython-39-x86_64-linux-gnu.so
+>
+> There are two ways to fix this:
+>
+> 1. Run tests only for default python3-dev version
+> 2. Re-compile biopython to vendor 3.11 bindings, but this has issues
+> at present due to t-coffee bug.
+>
+> I have pushed something that implements 1.) to salsa, please check.
+
+Makes sense.  I've added a FIXME to d/control which should create
+sufficient noise in the future to revert that change once it is not
+needed any more.
+
+Kind regards
+
+      Andreas.
+
+[1] https://github.com/opencobra/cobrapy/issues/1302
+[2] https://salsa.debian.org/med-team/python-cobra/-/jobs/3565917
+
+--
+http://fam-tille.de

@@ -1,0 +1,31 @@
+Message-ID: <CA+7wUszhDW7DGpLpFb5RCCM95K+0tCSYk2C6dE=McwJcUnA2nQ@mail.gmail.com>
+X-Clawbench-ID: BIO-2024-0556
+Date: Thu, 9 Jun 2022 15:22:59 +0200
+From: Mathieu Malaterre <malat@debian.org>
+To: Andreas Tille <tille@debian.org>
+Subject: Re: Added autopkgtests for dcm2niix
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_06_msg00019.html
+
+On Mon, May 23, 2022 at 1:34 PM Andreas Tille  wrote:
+>
+> Am Mon, May 23, 2022 at 11:22:45AM +0200 schrieb Mathieu Malaterre:
+> > > I've put Mathieu in CC.  I currently do not have time for this but in
+> > > case you find some extra energy you can probably have a lool into the
+> > > according patch which deals with the path.  It should not be to hard to
+> > > fix ... and writing a test + fixing the issues it uncovered scores extra
+> > > points / fame. ;-)
+> >
+> > I thought that #1010729 would be fixed by your upload -2, right ? The
+> > upload is still in NEW, so we simply have to wait a bit.
+>
+> The fix was for #1010536 (SONAME) - the path is not really affected.
+> If you could have a look we could include a fix into the source-only
+> upload following -2.
+
+Staring at dch history makes me believe this should be fixed by your
+upload -3. I've closed the bug.
+
+Thanks all,

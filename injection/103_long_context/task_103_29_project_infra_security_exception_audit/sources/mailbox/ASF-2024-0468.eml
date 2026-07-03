@@ -1,0 +1,29 @@
+Message-ID: <3C765CFB-C1C0-4909-8185-807CE8D9C9F0@gbiv.com>
+X-Clawbench-ID: ASF-2024-0468
+Date: Sun, 5 Mar 2023 14:49:35 -0800
+From: "Roy T. Fielding" <fielding@gbiv.com>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] [VOTE] Release httpd-2.4.56-rc1 as httpd-2.4.56
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-03.mbox
+
+> On Mar 5, 2023, at 1:31 PM, Eric Covener <covener@gmail.com> wrote:
+>
+> Hi all,
+>
+> Please find below the proposed release tarball and signatures:
+>
+> https://dist.apache.org/repos/dist/dev/httpd/
+>
+> I would like to call a VOTE over the next few days to release
+> this candidate tarball httpd-2.4.56-rc1 as 2.4.56:
+> [X] +1: It's not just good, it's good enough!
+
+Verified sigs, compiled and installed locally (Macbook Pro M1, macos Ventura 13.2.1),
+and tested around the relevant changes. Everything looks good.
+
++1 for release.
+
+....Roy T. Fielding

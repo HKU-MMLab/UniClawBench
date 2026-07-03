@@ -1,0 +1,130 @@
+{
+  "task_id": "task_103_14_chicago_architecture_food_budget",
+  "created_at": "2026-05-03T00:00:00+00:00",
+  "date_range": [
+    "next Friday",
+    "the following Monday"
+  ],
+  "party_size": 2,
+  "route": {
+    "origin_airport": "SFO",
+    "destination_airports": [
+      "ORD",
+      "MDW"
+    ]
+  },
+  "flight_constraints": [
+    "SFO to ORD or MDW outbound on next Friday",
+    "outbound SFO departure 07:00-12:30",
+    "Chicago to SFO return on the following Monday",
+    "return Chicago departure 15:00-20:30",
+    "check Google Flights, United official site, and at least one American Airlines or Southwest official site"
+  ],
+  "hotel_constraints": {
+    "checkin": "next Friday",
+    "checkout": "the following Monday",
+    "adults": 2,
+    "rooms": 1,
+    "sources": [
+      "Booking.com",
+      "official hotel site"
+    ],
+    "choose_count": 3,
+    "hotel_whitelist": [
+      "Hyatt Place Chicago/River North",
+      "citizenM Chicago Downtown",
+      "Hampton Inn Chicago Downtown/N Loop/Michigan Ave",
+      "LondonHouse Chicago"
+    ]
+  },
+  "architecture_activity_whitelist": [
+    "Chicago Architecture Center River Cruise",
+    "Wendella Architecture Boat Tour",
+    "Shoreline Sightseeing Architecture River Tour",
+    "Chicago Architecture Center admission"
+  ],
+  "architecture_constraints": [
+    "next Friday to the following Monday",
+    "2 adults",
+    "official pages",
+    "record date, time, ticket price, total price, meeting point, cancellation/exchange policy"
+  ],
+  "museum_attraction_whitelist": [
+    "Art Institute of Chicago",
+    "Skydeck Chicago",
+    "360 Chicago",
+    "Field Museum"
+  ],
+  "museum_constraints": [
+    "official ticket/admission pages",
+    "travel-period tickets",
+    "2 adults",
+    "record adult price, opening hours, timed-entry requirements, cancellation/change rules"
+  ],
+  "food_constraints": {
+    "deep_dish": [
+      "Lou Malnati's",
+      "Giordano's",
+      "Pequod's Pizza"
+    ],
+    "casual": [
+      "Portillo's"
+    ],
+    "reservation_dinner_choose_3": [
+      "Bavette's Bar & Boeuf",
+      "The Purple Pig",
+      "Girl & the Goat",
+      "RPM Steak"
+    ],
+    "reservation_time_constraints": [
+      "next Friday to the following Monday",
+      "party of 2",
+      "dinner 18:00-20:30"
+    ],
+    "reservation_sources": [
+      "OpenTable",
+      "Resy",
+      "official restaurant reservation page"
+    ]
+  },
+  "local_transport_constraints": {
+    "sources": [
+      "CTA fare page",
+      "official ORD or MDW to downtown transit information"
+    ],
+    "required_outputs": [
+      "1-day or 3-day pass prices",
+      "airport-to-downtown fares",
+      "estimated travel times"
+    ],
+    "default_no_car": true,
+    "car_exception_requires": [
+      "clear justification",
+      "parking costs",
+      "alternatives"
+    ]
+  },
+  "budget_targets": {
+    "comfortable_total_target_usd_for_2_people": 3600,
+    "required_versions": [
+      "budget option",
+      "comfortable option"
+    ]
+  },
+  "process_reference_screenshots": [
+    "process_evidence/booking_Art_Institute_of_Chicago.png",
+    "process_evidence/booking_citizenM_Chicago_Downtown.png",
+    "process_evidence/google_flight.png",
+    "process_evidence/opentable_Lou_Malnatis.png",
+    "process_evidence/ticket_Chicago_Architecture_Center_River_Cruise.png"
+  ],
+  "manual_reference_gaps": [
+    "The user noted that not all relevant screenshots were added to process_evidence; several attraction, restaurant, and public-transport screenshots are intentionally absent.",
+    "Missing likely categories include additional architecture tour pages, Skydeck/360 Chicago/Field Museum ticket pages, several deep dish/casual/dinner restaurant pages, and CTA/airport-to-downtown public-transit fare or route screenshots unless supplied by the executor during the run.",
+    "Do not treat missing hidden screenshots as fixed ground truth failures; evaluate whether the executor obtained current evidence or honestly documented blocks.",
+    "Exact prices, schedules, menu prices, ticket availability, public-transit fares, restaurant availability, and fees should not be treated as fixed ground truth."
+  ],
+  "grading_note": "Score process evidence and constraint-following. If live sites block prices, tickets, menu details, transit fare pages, or reservations, an honest insufficient-information conclusion can still score well when the executor documents real attempts, screenshots, and constraints. The hidden evidence set is illustrative and incomplete.",
+  "final_plan_not_required_when_blocked": "A full budget is expected when enough data is available; when live sites block key data, accept a clearly qualified plan with missing-data notes rather than hallucinated prices.",
+  "final_artifact": "/tmp_workspace/results/chicago_architecture_food_plan.md"
+}

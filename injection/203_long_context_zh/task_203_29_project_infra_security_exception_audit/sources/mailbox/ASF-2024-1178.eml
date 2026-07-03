@@ -1,0 +1,124 @@
+Message-ID: <CAFQGv+Z5s3Z973JaSPSnx_aaKQi_iBKjGN3LPzjKGejD4uTXvA@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1178
+Date: Mon, 31 Oct 2022 14:44:03 -0400
+From: Joe Schaefer <joe@sunstarsys.com>
+To: "dev@httpd.apache.org" <dev@httpd.apache.org>
+Subject: Re: [libapreq2] nits to pick about the patches to util.c over the  past few years
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-10.mbox
+
+The reason this took so long for the community to diagnose isn't because of
+ill-intent, but because it constituted
+a change of behavior in the parser logic that wasn't surfaced in the
+Changes file.
+
+There is never going to come a time when there is any need for urgent
+action on apreq- if it was easy to zero-day
+it, it would have happened by now.  Thus, take as much time as you need
+between releases to communicate with
+the community about the nature of the deltas you intend to ship with any GA
+release.  You have my email address
+if you need to spitball any patchsets you are toying with; it's a lot less
+painful to get my input in advance than after the fact.
+
+
+On Mon, Oct 31, 2022 at 1:56 PM Joe Schaefer <joe@sunstarsys.com> wrote:
+
+> With regard to the faulty patch this revolves around:
+> https://svn.apache.org/viewvc?view=revision&revision=1895107
+> I do not expect you to know the specs, know the code, nor know what this
+> patch actually does, in order to reject it from a GA release.
+>
+> I expect you to say to yourselves: High Risk, Low Reward, unmotivated
+> patches are not appropriate in maintenance releases.
+>
+>
+> On Mon, Oct 31, 2022 at 12:58 PM Joe Schaefer <joe@sunstarsys.com> wrote:
+>
+>> This stuff was written for an RFC era of the mid 2000s, and a lot of the
+>> uncertainties around industry direction have been clarified in the years
+>> since then, particularly as they relate to cookie standards.
+>>
+>> The nastiest code in here is the cookie parser logic that was required
+>> back then.  If anything should be radically refactored and simplified,
+>> start there.
+>>
+>> On Mon, Oct 31, 2022 at 12:36 PM Joe Schaefer <joe@sunstarsys.com> wrote:
+>>
+>>>
+>>>
+>>> Get Outlook for iOS <https://aka.ms/o0ukef>
+>>> ------------------------------
+>>> *From:* Ruediger Pluem <rpluem@apache.org>
+>>> *Sent:* Monday, October 31, 2022 12:21 PM
+>>> *To:* dev@httpd.apache.org <dev@httpd.apache.org>
+>>> *Subject:* Re: [libapreq2] nits to pick about the patches to util.c
+>>> over the past few years
+>>>
+>>>
+>>>
+>>> On 10/30/22 4:28 PM, Joe Schaefer wrote:
+>>> > And to be frank- framing my input as me slagging on Yann is
+>>> grotesque.  You ship GA releases as a team, and so when you ship a dud
+>>> > like 2.17 you should take your lumps as a team.
+>>>
+>>> I admit that the libapreq2 codebase doesn't get that much review
+>>> attention as other parts of httpd and does not draw that much
+>>> developer interest. Hence we were very grateful that Yann took some time
+>>> to do the needful, fixed the security issue and took it
+>>> to a release to get that issue fixed for the users. Thank you Yann for
+>>> this. The fact that at least the existing tests still
+>>> passed after the changes was at least for me a good indicator that the
+>>> changes don't break stuff and are fine.
+>>> I also understand if you feel upset if the codebase you wrote and regard
+>>> as better was changed and if you feel that the code
+>>> deserves more love and care.
+>>> The way to fix this is to participate here in a constructive way to get
+>>> it in the direction you want it to be.
+>>> If you feel that this isn't the correct community for this codebase we
+>>> can also talk about this as Eric indicated.
+>>> I am with Joe Orton and Greg that you are around for long enough to know
+>>> that the way you started this brought attention to your
+>>> desires but was counterproductive in many ways (tone of the emails,
+>>> number of emails, top postings, too broad statements) to get
+>>> things were you want them to be.
+>>>
+>>>
+>>>
+>>>
+>>> Thanks Rüdiger.  I’m not interested in any type of stewardship for this
+>>> code; my interests have long since moved on.  But my approach to software
+>>> projects is to finish them, not for them to be perpetual motion machines,
+>>> so I’m going to be concerned about frequent release cadences and constant
+>>> churn that entails.
+>>>
+>>> I honestly do not expect apreq to be all that burdensome to maintain for
+>>> you guys, regardless of all of the hot button items being fleshed out by
+>>> the fact that it’s sitting in your trunk. I think that only helps mature
+>>> and refine the product, regardless of how you deliver it to users.
+>>>
+>>> --
+>> Joe Schaefer, Ph.D.
+>> We only build what you need built.
+>> <joe@sunstarsys.com>
+>> 954.253.3732 <//954.253.3732>
+>>
+>>
+>>
+>
+> --
+> Joe Schaefer, Ph.D.
+> We only build what you need built.
+> <joe@sunstarsys.com>
+> 954.253.3732 <//954.253.3732>
+>
+>
+>
+
+--
+Joe Schaefer, Ph.D.
+We only build what you need built.
+<joe@sunstarsys.com>
+954.253.3732 <//954.253.3732>

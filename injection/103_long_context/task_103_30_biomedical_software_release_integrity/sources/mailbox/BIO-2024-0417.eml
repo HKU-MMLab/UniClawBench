@@ -1,0 +1,39 @@
+Message-ID: <YYDyAGibszkXeG+f@debian>
+X-Clawbench-ID: BIO-2024-0417
+Date: Tue, 2 Nov 2021 13:38:32 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: debian-science@lists.debian.org
+Subject: Re: Debian Math Team
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_11_msg00012.html
+
+On Mon, Nov 01, 2021 at 08:57:21PM +0000, Torrance, Douglas wrote:
+> On Mon 01 Nov 2021 04:35:36 PM EDT, Nilesh Patra  wrote:
+> > On Mon, Nov 01, 2021 at 09:20:18PM +0100, Julien Puydt wrote:
+> > > Hmmmm... for each package, the Maintainer field in d/control should
+> > > probably be changed to -- "Debian Math Team
+> > >  >
+> > The much better option would be to use  instead.
+> > So as to avoid large volumes of processing emails onto the main mailing list.
+> >
+> > Both golang and python teams use something similar,
+> > "" and "" respectively.
+>
+> I agree.  I went ahead and started a draft of a team policy including this as the
+> Maintainer address [1].  It's just a fork of the Debian Science policy and still needs a lot
+> of work.  The source is at [2].  Please feel free to suggest/make changes!
+
+I also created a wiki page here[3]
+Feel free to edit this as needed.
+
+I somewhat agree with Ole on the policy thingy, maybe this is just
+extra work. So for now, on the wiki I simply stated that we adopt the
+policy of science team.
+
+> [1] https://math-team.pages.debian.net/policy/
+> [2] https://salsa.debian.org/math-team/policy
+[3]: https://wiki.debian.org/DebianMath
+
+Nilesh

@@ -1,0 +1,43 @@
+# Base Deployment for the orders service.
+# Uses YAML anchors to DRY up resource blocks and probe ports.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: orders
+  namespace: shop
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: orders
+  template:
+    metadata:
+      labels:
+        app: orders
+    spec:
+      containers:
+        - name: orders
+          image: registry.example.com/orders:1.4.0
+          ports:
+            - containerPort: 8080
+          # anchor defines the default resource block
+          resources: &default-resources
+            requests:
+              cpu: "250m"
+              memory: "256Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+          env:
+            - name: LOG_LEVEL
+              value: "info"
+            - name: TLS_ENABLED
+              # unquoted "no" — YAML 1.1 parses this as boolean false,
+              # not the string "no"
+              value: no
+        - name: metrics-sidecar
+          image: registry.example.com/metrics:0.9.2
+          # reuse the same resource block via alias
+          resources: *default-resources
+          ports:
+            - containerPort: 9090

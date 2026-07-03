@@ -1,0 +1,33 @@
+Message-ID: <6F400C70-6F29-4DB6-A6D1-F4E54A5E1F57@sceal.ie>
+X-Clawbench-ID: BIO-2024-1494
+Date: Wed, 10 Nov 2021 19:36:00 +0000
+From: Alastair McKinstry <alastair.mckinstry@sceal.ie>
+To: Timo Röhling <roehling@debian.org>,	Andreas Tille <andreas@an3as.eu>
+Subject: Re: Upgrading pandas
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_11_msg00082.html
+
+﻿On 10/11/2021, 16:33, "Timo Röhling"  wrote:
+
+    Hi Andreas,
+
+    * Andreas Tille  [2021-11-10 18:14]:
+    >   nbsphinx.NotebookError: TypeError in user_guide/style.ipynb:
+    >   'coroutine' object is not subscriptable
+    This seems to be an issue with nbconvert 5.6.1, which apparently is
+    not playing nice with updated Jupyter notebook packages [1].
+
+
+    Cheers
+    Timo
+
+
+    [1] https://stackoverflow.com/a/67061046/13476707
+
+I've the same error in python-xarray, both 0.20.1 I'm packaging and the current 0.19.0 now FTBFS due to this.
+Can we prioritise upgrading nbconvert to 6+ ?
+
+Best regards
+Alastair

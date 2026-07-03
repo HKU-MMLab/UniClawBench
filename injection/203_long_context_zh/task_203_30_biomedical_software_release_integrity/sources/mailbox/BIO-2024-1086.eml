@@ -1,0 +1,54 @@
+Message-ID: <YhiipgryyG1Q8f46@an3as.eu>
+X-Clawbench-ID: BIO-2024-1086
+Date: Fri, 25 Feb 2022 10:34:30 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org, "Aaron M. Ucko" <ucko@debian.org>
+Subject: Please review ncbi-vdb (Was: Cmake help needed for ncbi-vdb)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_02_msg00118.html
+
+Hi,
+
+Am Thu, Feb 24, 2022 at 09:14:31AM +0100 schrieb Mathieu Malaterre:
+> I've pushed 25ca2396895c15afe738b9209b1c350da18847ca
+>
+> If I understand the original upstream code, this should be the right fix.
+
+Thanks a lot Mathieu.  This was extremely helpful!
+
+I managed the packaging now at the state where it builds binary packages
+that are technically basically OK from a Debian point of view (one RPATH
+issue left).  Aaron, I would love if you could give it a review with
+your specialist hat on.  I have no idea whether it makes sense to split
+up the libraries.  My only guideline to split things up was to have
+every shared library in its own package which was motivated by some
+lintian warnings.  I have no idea whether this is sensible from a users
+perspective or whether users need everything anyway.  Than we can get rid
+of this artificial split.
+
+I'd love if you change as much of my fiddling around as you like since
+I admit I'm a bit helpless with this package and I'm not sure what might
+make sense and what not.  Please also feel free to push the package -
+may be first to experimental since it has to go via new anyway and we
+can not know when it will be accepted.
+
+Please also check whether we should keep the Architecture restriction
+to certain architectures or whether cmake now enables us to simply use
+"any".
+
+I'd really welcome some sensible autopkgtest which could prevent me
+making mistakes in future.
+
+In any case I really like that upstream considered switching to cmake.
+
+Kind regards
+
+     Andreas.
+
+PS: Please note that I'm on vacation next week and will not do anything
+    on this package in the next 10 days.
+
+--
+http://fam-tille.de

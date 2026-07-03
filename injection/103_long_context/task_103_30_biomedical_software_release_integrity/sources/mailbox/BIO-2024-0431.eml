@@ -1,0 +1,24 @@
+Message-ID: <e0b34dcf8648c5d31ac7d9c81a531251687605c5.camel@med.uni-goettingen.de>
+X-Clawbench-ID: BIO-2024-0431
+Date: Tue, 26 Oct 2021 16:06:46 +0000
+From: "Uecker, Martin" <Martin.Uecker@med.uni-goettingen.de>
+To: "debian-med@lists.debian.org" <debian-med@lists.debian.org>
+Subject: bart: version 0.7.00
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00154.html
+
+Hi Andreas,
+
+I pushed changes for a the version of bart. Maybe you could
+take a look?  There are some failures in the CI on salsa.
+
+The i386 build triggers a compiler crash. I will try to
+look into this later (I am a GCC contributor myself), but
+this is a compiler problem.
+
+The other failures may be related to the build environment
+not being up-to-date.
+
+Martin

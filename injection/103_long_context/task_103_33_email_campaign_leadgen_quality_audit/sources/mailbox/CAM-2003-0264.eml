@@ -1,0 +1,40 @@
+Message-ID: <5175.1034197500@tatanka>
+X-Clawbench-ID: CAM-2003-0264
+Date: Wed, 09 Oct 2002 15:05:00 -0600
+From: "James C. McMaster (Jim)" <mcmasjc@tatanka.stortek.com>
+To: exmh-users@spamassassin.taint.org
+Subject: Re: From
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01182.c9d5fc1ef170c05409bf3daa8f36568e
+
+In message <200210091925.g99JPGfJ001534@fsck.intern.waldner.priv.at>, Robert
+Wa
+ldner said:
+>
+>
+> On Wed, 09 Oct 2002 14:43:32 EDT, Kevin Kenny writes:
+> >> 3)  You can learn to use procmail,
+>
+> >Can this be done via .forward?
+>
+> make your .forward contain only the following line:
+> "|/usr/bin/procmail"
+>  (incl. the quotes, your procmail binary may be in another path)
+>
+Check the procmail documentation.  They actually recommend:
+
+"|IFS=' '&&p=(PATH/TO/PROCMAIL)&&test -f $p&&exec $p -f-||exit
+75#(UNIQUE_STRING)"
+
+I don't know what this does, but it is explained in the doc.
+--
+Jim McMaster
+mailto:mcmasjc@tatanka.stortek.com
+
+
+_______________________________________________
+Exmh-users mailing list
+Exmh-users@redhat.com
+https://listman.redhat.com/mailman/listinfo/exmh-users

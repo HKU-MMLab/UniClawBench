@@ -1,0 +1,27 @@
+Message-ID: <YW1M3ujbW5NT33Lu@an3as.eu>
+X-Clawbench-ID: BIO-2024-0539
+Date: Mon, 18 Oct 2021 12:30:54 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Any volunteer to check two (hdf5 relatet?) issues with python-biom-format
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00097.html
+
+Hi,
+
+I wanted to update python-biom-format, but the build time test ends up in
+
+
+FAILED biom/tests/test_table.py::TableTests::test_from_hdf5_custom_parsers - ...
+FAILED biom/tests/test_table.py::TableTests::test_to_hdf5_missing_metadata_sample
+
+
+Any help would be welcome
+
+       Andreas.
+
+
+--
+http://fam-tille.de

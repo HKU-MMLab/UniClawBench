@@ -1,0 +1,48 @@
+task_id: task_204_06_car_svg_reconstruction
+category: 204_multimodal_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  打开 JPG 图像：
+  /tmp_workspace/clawbench/sources/car_input.jpg
+
+  这张图像是由一个复杂的 SVG 渲染而来的。不要联网搜索，不要试图
+  从文件名或网页推断原始图像，也不要直接查看原始的 SVG 文件；仅
+  基于这张 JPG 自己重建一个可编辑的 SVG 文件。
+
+  你的目标是让最终结果在整体外观上与输入图像大体一致，而非逐像素
+  完全相同。重点对齐：
+  - 整体构图和留白
+  - 车身轮廓、姿态和透视
+  - 绿色主色调和黑色轮廓
+  - 车窗、轮胎、尾翼、车灯和阴影之间的大致关系
+
+  要求：
+  1. 输出 `/tmp_workspace/results/car_recreated.svg`
+  2. 输出 `/tmp_workspace/results/car_recreated_notes.md`
+  3. 最终结果必须是 SVG；不要只提交 PNG/JPG
+  4. 至少进行一轮对比和修订，然后覆盖并保存最终版本
+  5. 局部细节的细微偏差是可以接受的，但不要把它变成一张风格完全不同的简单汽车草图
+
+  在 `car_recreated_notes.md` 中，简要说明：
+  - 你对比了哪些部分
+  - 你调整了哪些区域
+  - 你为什么认为最终结果已经足够接近
+
+references:
+  - references/eval_rule.md
+  - references/reference_car.svg
+  - references/reference_car_render.png
+
+sources:
+  - car_input.jpg
+
+codex:
+  max_user_followups: 2

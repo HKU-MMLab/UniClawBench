@@ -1,0 +1,42 @@
+Message-ID: <udlpmoqfk1o.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-0981
+Date: Mon, 17 Jan 2022 10:39:47 -0500
+From: ucko@debian.org (Aaron M. Ucko)
+To: Andreas Tille <tille@debian.org>
+Subject: Re: Any idea how to deal with multiple definitions in new version of genometester?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_01_msg00037.html
+
+Andreas Tille  writes:
+
+> Hi Aaron,
+>
+> Am Sun, Jan 16, 2022 at 09:32:08PM -0500 schrieb Aaron M. Ucko:
+>>
+>> It looks like this code base still goes by an old non-standard notion of
+>> the semantics of "inline" with vs. without "extern" in C [1].  Please
+>> try building with -fgnu89-inline or changing all occurrences of "inline
+>> extern" in headers to just "inline" (or perhaps "static inline").
+>
+> Thanks a lot for your hint.  I tried with just "inline" and "static inline"
+> (which I finally commited) with no success[2].  Any further ideas?
+
+No problem.
+
+AFAICT, injecting -fgnu89-inline works with no patching needed; the one
+catch is that due to a quirk of the upstream build system, you'll need
+to supply them via CXXFLAGS (or DEB_CXXFLAGS_MAINT_APPEND) even though
+this is a C project.  I suspect it would also work to patch *both*
+word-map.c (as you had before) *and* word-map.h (as you have now).
+
+With that issue (locally) out of the way, I see
+
+  gdistribution.c:32:10: fatal error: wordmap.h: No such file or directory
+
+... presumably a typo for word-map.h.
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

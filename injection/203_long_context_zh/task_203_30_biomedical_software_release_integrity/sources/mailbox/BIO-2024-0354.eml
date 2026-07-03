@@ -1,0 +1,33 @@
+Message-ID: <udl8rnbd3g0.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-0354
+Date: Fri, 26 Aug 2022 00:38:39 -0400
+From: ucko@debian.org (Aaron M. Ucko)
+To: <debian-med@lists.debian.org>
+Subject: Re: Finishing ncbi-vdb and sra-sdk
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_08_msg00057.html
+
+Andreas Tille  writes:
+
+> This would mean another trip through new.  I think it would be good to
+> upload this quickly sinnce the package is currently hanging in new and
+> ftpmaster can inspect your changed package.
+
+I wasn't quite as quick as I'd hoped, but still managed to avoid a
+separate NEW cycle.  I subsequently discovered the need for some
+additional tuneups, which I've pushed but not uploaded because I might
+not be entirely done.
+
+I've likewise pushed a couple of sra-sdk commits that in conjunction
+with my latest ncbi-vdb changes get the build step to succeed.  The
+installation step fails because debian/control currently lists just a
+single binary package, so debhelper directs the upstream build system to
+install directly into debian/sra-toolkit.  Accounting for ngs-sdk's
+incorporation should reinstate the use of debian/tmp, but I don't have
+time to look into that right now.
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

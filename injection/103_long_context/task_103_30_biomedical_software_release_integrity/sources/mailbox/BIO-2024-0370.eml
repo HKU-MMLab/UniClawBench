@@ -1,0 +1,24 @@
+Message-ID: <87bl2yycas.fsf@burgos>
+X-Clawbench-ID: BIO-2024-0370
+Date: Fri, 05 Nov 2021 14:14:35 +0100
+From: Ole Streicher <olebole@debian.org>
+To: debian-science@lists.debian.org
+Subject: Re: Debian Math Team
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2021_11_msg00050.html
+
+Andrius Merkys  writes:
+> On 2021-11-03 17:55, Andreas Tille wrote:
+>> Blends categorisation is *not* exclusive.  One package can be in two or
+>> more Blends (and we have lots of examples for this).
+>
+> ACK. However, team categorization is exclusive.
+
+In principle, we could put "secondary" teams into the uploaders field,
+which could allow them to do team uploads as well.
+
+Best
+
+Ole

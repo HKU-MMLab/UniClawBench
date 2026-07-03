@@ -1,0 +1,43 @@
+Message-ID: <ZljOIxEjZ_jda6Qp@fusion.emlwks999.eu>
+X-Clawbench-ID: BIO-2024-1359
+Date: Thu, 30 May 2024 21:06:11 +0200
+From: Étienne Mollier <emollier@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: Migration to htslib ecosystem 1.20.
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_05_msg00013.html
+
+Étienne Mollier, on 2024-05-30:
+> Some of the htslib packages were already available in their 1.20
+> version counterpart, so I tried to finish the migration
+> yesterday as I had some time.  I seem to have fumbled a bit the
+> samtools upload by forgetting to declare it requires libhts-dev
+> 1.20 specifically, as otherwise tests are not passing.  Giveback
+> attempts are still capturing htslib 1.19, so I prepared a
+> samtols upload with bumped build dependency version.  In the
+> meantime, there may be stray uninstallable samtools-test
+> packages in sid, as the arch-all package build went through, but
+> not the arch-anys.  Otherwise not too much to worry about.
+>
+> If everything goes according to the plan, the htslib 1.20
+> ecosystem should be consistent in testing in a couple of days.
+
+Erm, things didn't go according to the plan.  Thankfully Salsa
+caught properly my failure to handle properly arch-any &
+no-arch-all builds (which went hidden behind the version
+discrepancy issue).  Anyway this should be fixed in samtools
+1.20-3 upload (I failed to dcut rm 1.20-2 in time).  Hopefully
+it is good for real now.
+
+That's some entropy thrown at the archive in little time.
+Perhaps I should favor resting now and see how things evolved
+tomorrow.
+
+Have a good night,
+--
+  .''`.  Étienne Mollier
+ : :' :  pgp: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/1, please excuse my verbosity
+   `-    on air: England - The Imperial Hotel

@@ -1,0 +1,12 @@
+Message-ID: <asf-2024-1492@httpd.apache.org>
+X-Clawbench-ID: ASF-2024-1492
+Date: Fri, 23 Feb 2024 17:04:00 +0000
+From: Colin Madsen <cmadsen@apache.org>
+To: Paige Rutter <paige@apache.org>
+Subject: RE: records folder cleanup
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: synthetic Apache-style project infrastructure review implant
+
+Leave the token approvals with build support and keep the nightjar-west drafts in dev. The service package only needs the final Peregrine questionnaire; mixing drafts, rsync notes, and token records will make the pilot look bigger than it was.

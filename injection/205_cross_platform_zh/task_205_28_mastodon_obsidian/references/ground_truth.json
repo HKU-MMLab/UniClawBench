@@ -1,0 +1,69 @@
+{
+  "task_id": "task_105_28_mastodon_obsidian",
+  "schema_notes": "Anchored to 8 immutable public Mastodon posts split across two accounts: 5 from @Mastodon@mastodon.social and 3 from @Gargron@mastodon.social (Eugen Rochko). Engagement counters (replies/reblogs) are dynamic and intentionally NOT in eval. Eval focuses on Obsidian vault QUALITY: valid YAML frontmatter, readable body markdown, INDEX.md with proper two-author subsections + [[wikilinks]], plus hashtag set membership.",
+  "reference_date": "2026-05-02",
+  "ground_truth": {
+    "accounts": [
+      {"handle": "Mastodon", "instance": "mastodon.social", "account_id": "13179"},
+      {"handle": "Gargron",  "instance": "mastodon.social", "account_id": "1",     "display_name": "Eugen Rochko"}
+    ],
+    "post_ids_desc_global": [
+      "116494498602625362",
+      "116460783363908188",
+      "116402716327956884",
+      "116373951728885118",
+      "116342823659882398",
+      "116296392095869320",
+      "116160846932470950",
+      "116086899600949599"
+    ],
+    "post_ids_desc_by_author": {
+      "Mastodon": [
+        "116494498602625362",
+        "116402716327956884",
+        "116296392095869320",
+        "116160846932470950",
+        "116086899600949599"
+      ],
+      "Gargron": [
+        "116460783363908188",
+        "116373951728885118",
+        "116342823659882398"
+      ]
+    },
+    "posts": [
+      {"id": "116494498602625362", "author": "Mastodon", "url": "https://mastodon.social/@Mastodon/116494498602625362", "created_at": "2026-04-30T16:03:01.131Z", "created_date": "2026-04-30", "content_keyword": "leadership team",       "tags_lower": [],                              "expected_language": "en"},
+      {"id": "116460783363908188", "author": "Gargron",  "url": "https://mastodon.social/@Gargron/116460783363908188",  "created_at": "2026-04-24T17:08:47.416Z", "created_date": "2026-04-24", "content_keyword": "10th anniversary",     "tags_lower": ["mastodon", "merchtodon"],     "expected_language": "en"},
+      {"id": "116402716327956884", "author": "Mastodon", "url": "https://mastodon.social/@Mastodon/116402716327956884", "created_at": "2026-04-14T11:01:34.761Z", "created_date": "2026-04-14", "content_keyword": "service agreement",    "tags_lower": [],                              "expected_language": "en"},
+      {"id": "116373951728885118", "author": "Gargron",  "url": "https://mastodon.social/@Gargron/116373951728885118",  "created_at": "2026-04-09T09:06:21.805Z", "created_date": "2026-04-09", "content_keyword": "Mastodon",            "tags_lower": ["plushtodon"],                  "expected_language": "ja"},
+      {"id": "116342823659882398", "author": "Gargron",  "url": "https://mastodon.social/@Gargron/116342823659882398",  "created_at": "2026-04-03T21:10:05.168Z", "created_date": "2026-04-03", "content_keyword": "YouTube",             "tags_lower": ["thedearhunter", "gleeb"],     "expected_language": "en"},
+      {"id": "116296392095869320", "author": "Mastodon", "url": "https://mastodon.social/@Mastodon/116296392095869320", "created_at": "2026-03-26T16:21:55.727Z", "created_date": "2026-03-26", "content_keyword": "redesigned profile page", "tags_lower": [],                              "expected_language": "en"},
+      {"id": "116160846932470950", "author": "Mastodon", "url": "https://mastodon.social/@Mastodon/116160846932470950", "created_at": "2026-03-02T17:51:00.666Z", "created_date": "2026-03-02", "content_keyword": "Share button",         "tags_lower": [],                              "expected_language": "en"},
+      {"id": "116086899600949599", "author": "Mastodon", "url": "https://mastodon.social/@Mastodon/116086899600949599", "created_at": "2026-02-17T16:25:13.946Z", "created_date": "2026-02-17", "content_keyword": "leadership team",       "tags_lower": [],                              "expected_language": "en"}
+    ],
+    "expected_top5_hashtags_lower_set": ["mastodon", "merchtodon", "plushtodon", "thedearhunter", "gleeb"],
+    "frontmatter_required_keys": ["id", "author", "date", "url", "replies", "reblogs"],
+    "language_distribution_expected": {
+      "rationale": "Mastodon API returns each status's `language` field. Of the 8 anchored posts, 7 are 'en' and 1 is 'ja' (post 116373951728885118 — Gargron's plushtodon survey written in Japanese asking about renting a Japanese warehouse for Mastodon plushies). Eval allows ±1 tolerance per non-en bucket but anchors `en >= 6` and `ja >= 1`.",
+      "expected_distribution": {"en": 7, "ja": 1},
+      "min_english_count": 6,
+      "min_japanese_count": 1,
+      "min_per_post_language_match_count": 7
+    },
+    "deliverables": {
+      "vault_dir": "/tmp_workspace/results/vault/",
+      "card_files_required": [
+        "/tmp_workspace/results/vault/116494498602625362.md",
+        "/tmp_workspace/results/vault/116460783363908188.md",
+        "/tmp_workspace/results/vault/116402716327956884.md",
+        "/tmp_workspace/results/vault/116373951728885118.md",
+        "/tmp_workspace/results/vault/116342823659882398.md",
+        "/tmp_workspace/results/vault/116296392095869320.md",
+        "/tmp_workspace/results/vault/116160846932470950.md",
+        "/tmp_workspace/results/vault/116086899600949599.md"
+      ],
+      "index_md": "/tmp_workspace/results/vault/INDEX.md",
+      "cards_json": "/tmp_workspace/results/cards.json"
+    }
+  }
+}

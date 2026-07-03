@@ -1,0 +1,47 @@
+task_id: task_204_21_figma_config_briefing
+category: 204_multimodal_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  请打开 Figma Config 官方网站：
+  https://config.figma.com/
+
+  我想制作一份与我职业发展相关的 Config 大会简报。请执行以下操作：
+
+  1. 浏览官方主页，提取页面上明确展示的大会主题、日期、地点、参与方式，以及主要内容板块。
+  2. 截取至少 2 张最能代表大会视觉风格的页面截图，并保存到 `/tmp_workspace/results/`；建议覆盖：
+     - 主视觉 / hero 区域
+     - 一个能体现大会内容板块或氛围的区域
+  3. 阅读我的公开材料：
+     - `/tmp_workspace/clawbench/sources/my_design_interests.json`
+     - `/tmp_workspace/clawbench/sources/my_portfolio_screenshots/`
+  4. 基于官网信息和我的材料，判断这场大会中哪些主题、内容方向或参与方式最值得我关注，并清楚说明：
+     - 我目前的作品倾向于哪种风格或方向
+     - Config 网站的视觉语言与我的作品有哪些相似或不同之处
+     - 哪些内容最能帮助我弥补不足或拓展方向
+  5. 在 `/tmp_workspace/results/` 中生成以下文件：
+     - `config_highlights.md`
+     - `config_moodboard.html`
+     - `config_hero.png`
+     - `config_sections.png`
+
+  `config_highlights.md` 必须包含大会概览、要点内容列表、截图引用，以及对我的建议。
+  `config_moodboard.html` 必须是一份单页视觉简报，概括官网的主要视觉风格，并突出最适合我的 3-5 个重点。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - my_design_interests.json
+  - my_portfolio_screenshots/
+
+codex:
+  max_user_followups: 2

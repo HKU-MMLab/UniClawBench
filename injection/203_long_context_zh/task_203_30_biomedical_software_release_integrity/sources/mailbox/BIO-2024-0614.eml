@@ -1,0 +1,53 @@
+Message-ID: <Ye58GByvg2i4Q/CH@an3as.eu>
+X-Clawbench-ID: BIO-2024-0614
+Date: Mon, 24 Jan 2022 11:14:48 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: [Help] librostlab-blast fails its autopkgtest with C++ issue
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_01_msg00075.html
+
+Hi Aaron,
+
+Am Sun, Jan 23, 2022 at 04:26:20PM -0500 schrieb Aaron M. Ucko:
+>
+> Please try adjusting the test script to list parseblast.cpp ahead of the
+> -l flags; now that --as-needed is in effect by default, the linker
+> otherwise discards the libraries as not needed at the time of their
+> appearance.
+
+Ahhh, well that was simple and works.  Thanks a lot.
+
+However, what I do not understand is that the build of
+librg-blast-parser-perl remains on failing[1] (versioned Build-Depends on
+fixed librostlab-blast0-dev was set):
+
+
+In file included from /usr/include/rostlab/blast-parser-driver.h:26,
+                 from Parser.xs:15:
+blast-parser-parser.ypp:22:3: error: expected declaration before '}' token
+In file included from Parser.xs:15:
+/usr/include/rostlab/blast-parser-driver.h:37:1: error: 'token_type' in 'class rostlab::blast::parser' does not name a type
+   37 | YY_DECL;
+      | ^~~~~~~
+/usr/include/rostlab/blast-parser-driver.h:61:12: error: '::yylex' has not been declared
+   61 |     friend YY_DECL_FRIEND;
+      |            ^~~~~~~~~~~~~~
+/usr/include/rostlab/blast-parser-driver.h:61:12: error: 'token_type' declared as function returning a function
+   61 |     friend YY_DECL_FRIEND;
+      |            ^~~~~~~~~~~~~~
+/usr/bin/perl -MExtUtils::XSpp::Cmd -e xspp -- --typemap=typemap.xsp Parser.xsp: In function 'void XS_RG__Blast__Parser_parse(PerlInterpreter*, CV*)':
+/usr/bin/perl -MExtUtils::XSpp::Cmd -e xspp -- --typemap=typemap.xsp Parser.xsp:51:57: warning: too many arguments for format [-Wformat-extra-args]
+make[1]: *** [Makefile:345: Parser.o] Error 1
+
+
+Kind regards
+
+      Andreas.
+
+[1] https://salsa.debian.org/med-team/librg-blast-parser-perl/-/jobs/2395007
+
+--
+http://fam-tille.de

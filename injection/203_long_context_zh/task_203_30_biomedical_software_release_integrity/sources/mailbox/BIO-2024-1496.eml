@@ -1,0 +1,67 @@
+Message-ID: <YeVvr6062iWzd290@an3as.eu>
+X-Clawbench-ID: BIO-2024-1496
+Date: Mon, 17 Jan 2022 14:31:27 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Emmanuel Promayon <Emmanuel.Promayon@univ-grenoble-alpes.fr>
+Subject: Re: Updating camitk
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_01_msg00035.html
+
+Dear Emmanuel,
+
+thanks a lot for your quick response.
+
+Am Mon, Jan 17, 2022 at 01:57:05PM +0100 schrieb Emmanuel Promayon:
+> Dear Andreas
+>
+> Thank you very much for looking into that. It's true that the current
+> supported version of ITK is 4.12 or 4.13, but I was under the illusion that
+> it should also work with ITK 5.
+> I checked the pipeline on salsa but cannot see the build time failure you
+> are speaking about. Can the build/packaging be done now directly on salsa or
+> should I first try locally (e.g., using a docker)?
+
+At the time of pushing salsa-ci seemed to be broken.  In principle it
+should not be regarded as a replacement for local builds - so I personally
+use pbuilder ... a clean docker environment should be fine as well.
+
+We intend to orphan ITK4 so if you could switch to ITK5 in the not so
+distant future this would be probably helpful.
+
+> I would like to take this opportunity to thank all of you for your work and
+> wish you a very nice and pleasant 2022!
+
+:-)
+Same to you
+
+    Andreas.
+
+> Emmanuel
+>
+> On 17/01/2022 13:18, Andreas Tille wrote:
+> > Hi Emmanuel,
+> >
+> > I tried to upgrade camitk to its latest upstream version in Git[1].
+> > I somehow lived under the impression that insighttoolkit5 is needed
+> > but it seems some checks are proving me wrong.  In any case I was
+> > running into a build time failure and it would be great if you could
+> > have a look.
+> >
+> > Kind regards
+> >
+> >          Andreas.
+> >
+> >
+> > [1] https://salsa.debian.org/med-team/camitk
+> >
+>
+> --
+> Emmanuel Promayon
+> Professeur Univ. Grenoble Alpes - Polytech Grenoble
+> Laboratoire TIMC - équipe GMCAO
+>
+
+--
+http://fam-tille.de

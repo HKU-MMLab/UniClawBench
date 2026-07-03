@@ -1,0 +1,108 @@
+task_id: task_201_12_csv_pipeline_merge
+category: 201_skill_usage_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我们 Q1 的数据迁移留下了一团乱，我需要在
+  运营评审之前把它清理干净。在 /tmp_workspace/clawbench/sources/ 下有 15 个 CSV
+  文件，文件名看起来很随机，比如 data_001.csv 到
+  data_015.csv——原始名称在导出过程中丢失了。请调用
+  工作区里的 CSV pipeline 技能和 Python 可视化技能来
+  完成这里的重活：从每个文件的内容判断它实际是什么，
+  然后
+  把所有内容合并成一张统一的主事实表。
+
+  据我跟团队了解到的情况，这 15 个文件混在一起涵盖了
+  几类不同的东西：
+
+  - 客户信息，由于联系人列表被重新导出过几次，
+    存在多个 schema 版本在到处流传
+  - 订单，按月份拆分
+  - 产品，按地区拆分
+  - 对账数据，结清了其中一部分订单
+
+  文件没有标注，所以你需要读取表头，才能把
+  客户文件、订单文件、产品目录和
+  对账批次区分开来。
+
+  请产出：
+
+  1. /tmp_workspace/results/master.csv——以订单为粒度的、经过清洗的
+     事实表，并补充了客户和产品信息。仔细地把来源
+     schema 规范化，并确保结果可以安全地用作主表，
+     而不仅仅是把文件拼接在一起。
+
+  2. /tmp_workspace/results/summary.md——一份简短的 markdown 报告，
+     列出最终的行数、唯一客户数、总
+     营收，以及按总营收排名的前 5 个产品（以排名列表形式呈现）。
+
+  3. /tmp_workspace/results/conflicts.json——一个 JSON 列表，列出那些
+     因为来源文件之间存在分歧而需要人工复核的客户记录。所谓
+     "冲突"，是指同一个 customer_id 在不同导出中
+     呈现出不同值的任何情况——这包括姓名变更、电话更新、邮箱
+     更正以及地址差异，而不仅仅是姓名
+     明显对不上的情况。不要默默地选一个值就算了。仅出现在较旧导出中、
+     单纯只是没被刷新、且实际上并不存在分歧的记录，不算
+     冲突。对每个冲突，包含 customer_id、存在差异的
+     那个或那些字段、你看到的每一个不同值，以及每个值
+     各自来自哪个来源文件。
+
+  4. /tmp_workspace/results/conflict_review.csv——一份扁平的复核表，
+     来自 conflicts.json 的每个发生冲突的 customer_id 对应一行，列为
+     customer_id、distinct_names、source_files、chosen_name_if_any 和
+     why_it_needs_review。
+
+  硬性规则：不要凭空造出任何来源表里都不存在的 customer_id，
+  并且让主表保持每条真实订单对应一行。
+
+  摘要应当让人一眼看清实际出现了哪些类型的
+  分歧——错别字修正、地址变更、联系方式更新
+  等等——我们保留了哪个版本、是怎么挑选的、每条
+  规范记录来自哪里，以及结尾处的汇总数字。单独
+  指出在被标记的冲突中，哪些其实只是
+  表面性的漂移，哪些是真正需要人工
+  把关的。要么扩充 summary.md 把这些线索包含进去，要么放一个
+  附带文件 /tmp_workspace/results/merge_notes.md——哪种读起来更
+  自然就用哪种——但这些角度中的每一个都应当在
+  交付物的某处能够看到。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - data_001.csv
+  - data_002.csv
+  - data_003.csv
+  - data_004.csv
+  - data_005.csv
+  - data_006.csv
+  - data_007.csv
+  - data_008.csv
+  - data_009.csv
+  - data_010.csv
+  - data_011.csv
+  - data_012.csv
+  - data_013.csv
+  - data_014.csv
+  - data_015.csv
+
+skills:
+  - csv-pipeline
+  - python-dataviz
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

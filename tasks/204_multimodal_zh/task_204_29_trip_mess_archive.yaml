@@ -1,0 +1,50 @@
+task_id: task_204_29_trip_mess_archive
+category: 204_multimodal_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我最近出差回来，这次出差相关的文件在我电脑上非常混乱。
+  它们散落在 `/tmp_workspace/clawbench/sources/trip_mess/` 下，混杂着：
+  - 酒店预订截图
+  - 机票 / 登机牌截图
+  - 出租车和餐饮收据照片
+  - 景点门票截图
+  - 行程相关的 PDF 和邮件截图
+  - 一些无关图片和重复文件
+
+  请帮我把这些文件清晰地整理一下：
+
+  1. 先浏览并理解这些文件的内容，然后挑选出真正与这次出差相关的文件。
+  2. 在 `/tmp_workspace/results/trip_archive/` 下按类别整理，至少包含以下类别：
+     - flights
+     - hotel
+     - transport
+     - meals
+     - tickets
+     - other
+  3. 对每个保留的文件进行统一重命名。文件名必须包含任何可识别的日期、类别和关键信息；
+     当日期或关键信息无法识别时，用 `unknown` 标记，并在整理说明中加以解释。
+  4. 提取每一笔可识别的费用并生成 `/tmp_workspace/results/expense_summary.csv`，
+     至少包含：日期、类别、商家 / 项目、金额、币种和原始文件名。
+  5. 如果你发现明显重复、模糊到无法辨认或与这次出差无关的文件，
+     请在 `/tmp_workspace/results/cleanup_notes.md` 中单独记录原因。
+  6. 最后，生成 `/tmp_workspace/results/trip_report.md`，总结这次出差的主要行程和总费用。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/source_document_reference_sheet.jpg
+  - references/source_provenance.md
+
+sources:
+  - trip_mess/
+
+codex:
+  max_user_followups: 2

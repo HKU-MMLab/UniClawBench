@@ -1,0 +1,28 @@
+Message-ID: <YrXNVDRFXJWYLNe/@debian>
+X-Clawbench-ID: BIO-2024-1085
+Date: Fri, 24 Jun 2022 20:12:28 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: debian-med@lists.debian.org
+Subject: Removing myself from uploaders in (most) med-packages / Winding down involvement a little
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_06_msg00045.html
+
+Hi,
+
+I have noticed that I am maintaining a number of packages inside
+debian-med team i.e. mentioned in "Uploaders" field.
+
+I feel that I do not have much of a personal interest in majority of
+those packages (I am not a bioinformatic person) and I simply lack the bandwidth
+to do timely maintainence.
+
+Hence, if you see my name mentioned in d/control of med-team packages, feel
+free to remove/drop me from there.
+
+I will however continue contributing with the $team-work that I do.
+
+--
+Best,
+Nilesh

@@ -1,0 +1,14 @@
+{
+  "id": "R12",
+  "title": "Field recording with album-cover photo",
+  "type": "sound_recording",
+  "collection_rights": "varies",
+  "item_rights": "No known restrictions on publication",
+  "image": {
+    "thumbnail": true,
+    "full_image": false,
+    "iiif": false,
+    "width": 300
+  },
+  "dedup_group": "g_field_recording"
+}

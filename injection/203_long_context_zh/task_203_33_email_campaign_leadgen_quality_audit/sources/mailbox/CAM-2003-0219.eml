@@ -1,0 +1,37 @@
+Message-ID: <20020820105207.A1124@azrael.smilehouse.com>
+X-Clawbench-ID: CAM-2003-0219
+Date: Tue, 20 Aug 2002 10:52:08 +0300
+From: Harri Haataja <harri.haataja@cs.helsinki.fi>
+To: rpm-zzzlist@freshrpms.net
+Subject: Re: Portable RPMs
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01264.df4dfa46001904d832d56d2eabd4894d
+
+On Fri, Aug 16, 2002 at 07:58:07PM +0200, Torsten Bronger wrote:
+> If I create an RPM according to one of the how-to's with having Red
+> Hat in mind, how big are my chances that it will also work for the
+> SuSE distribution, or others?  (I don't know how many base on the RPM
+> system.)
+> Or what must I pay attention to when creating an RPM that should work
+> with the big distributions?
+
+Note also that there's hope of rpm being used on other systems than
+Linux.
+Look at
+http://www-1.ibm.com/servers/aix/products/aixos/linux/download.html
+
+I think a good way to guess is to look at others' spec files, hardcode
+as little as possible, replace abolute paths and commands with macros
+if possible and accept and request patches and suggestions :)
+
+--
+Designing in C, I find myself utilizing the Harley Davidson Design
+Principle: "If it breaks, make it bigger. If it sticks out, chrome it!" :-)
+		-- Marin David Condic, comp.lang.ada
+
+
+_______________________________________________
+RPM-List mailing list <RPM-List@freshrpms.net>
+http://lists.freshrpms.net/mailman/listinfo/rpm-list

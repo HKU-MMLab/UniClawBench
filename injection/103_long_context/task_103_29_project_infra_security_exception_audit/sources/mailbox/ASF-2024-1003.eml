@@ -1,0 +1,157 @@
+Message-ID: <edbdb48e2fe5467d9083cb34d8245934@3ds.com>
+X-Clawbench-ID: ASF-2024-1003
+Date: Thu, 9 Mar 2023 03:44:32 +0000
+From: BUSH Steve <Steven.BUSH@3ds.com>
+To: "dev@httpd.apache.org" <dev@httpd.apache.org>
+Subject: RE: [VOTE] [VOTE] Release httpd-2.4.56-rc1 as httpd-2.4.56
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-03.mbox
+
+I just completed upgrading to 2.4.56 from 2.4.55 and now we are having problems with existing mod_rewrite directives that use parameter substitution:
+
+An example of a mod_rewrite declaration we have is:
+RewriteCond %{REQUEST_METHOD} GET [NC]
+RewriteRule ^/zoology/animals/reset/(\d+)$ "/auth/launchjob?Number_of_Records=$1&__poolid=animal-magic" [B,PT,L,QSA]
+
+Our internal test case calls GET https://SERVER:PORT/zoology/animals/reset/10
+
+In 2.4.55,
+this works successfully and our internal service /auth/launchjob is called with “Number_of_Records” = 10
+
+However, after upgrading to 2.4.56,
+The service now returns 403 Forbidden.  Calling the mapped service directly works okay.
+
+In this case, the RewriteRule is not associated with mod_proxy and is used for REST service mapping.
+The rewrite flags are (https://httpd.apache.org/docs/2.4/rewrite/flags.html):
+B: Escape Backreferences
+PT: Passthrough
+L: Last
+QSA: qsappend (query string append)
+
+It seems to me that the changes to address CVE-2023-25690 have caused unintended side effects?
+
+https://downloads.apache.org/httpd/CHANGES_2.4.56
+  *) SECURITY: CVE-2023-25690: HTTP request splitting with
+     mod_rewrite and mod_proxy (cve.mitre.org)
+     Some mod_proxy configurations on Apache HTTP Server versions
+     2.4.0 through 2.4.55 allow a HTTP Request Smuggling attack.
+     Configurations are affected when mod_proxy is enabled along with
+     some form of RewriteRule
+     or ProxyPassMatch in which a non-specific pattern matches
+     some portion of the user-supplied request-target (URL) data and
+     is then
+     re-inserted into the proxied request-target using variable
+     substitution. For example, something like:
+     RewriteEngine on
+     RewriteRule "^/here/(.*)" "
+     http://example.com:8080/elsewhere?$1"
+     http://example.com:8080/elsewhere ; [P]
+     ProxyPassReverse /here/  http://example.com:8080/
+     http://example.com:8080/
+     Request splitting/smuggling could result in bypass of access
+     controls in the proxy server, proxying unintended URLs to
+     existing origin servers, and cache poisoning.
+     Credits: Lars Krapf of Adobe
+
+
+From: Eric Covener <covener@gmail.com>
+Sent: Tuesday, March 7, 2023 3:51 AM
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] [VOTE] Release httpd-2.4.56-rc1 as httpd-2.4.56
+
+I am going to call this one early and proceed with the release. 9 binding +1 and no other votes. fielding, covener, icing, gbechis, ylavic, jblond, jorton, steffenAL, rpluem On Tue, Mar 7, 2023 at 3: 18 AM Ruediger Pluem <rpluem@ apache. org>
+
+
+I am going to call this one early and proceed with the release. 9
+
+binding +1 and no other votes.
+
+
+fielding, covener, icing, gbechis, ylavic, jblond, jorton, steffenAL, rpluem
+
+
+On Tue, Mar 7, 2023 at 3:18 AM Ruediger Pluem <rpluem@apache.org<mailto:rpluem@apache.org>> wrote:
+
+>
+
+>
+
+>
+
+> On 3/5/23 10:31 PM, Eric Covener wrote:
+
+> > Hi all,
+
+> >
+
+> > Please find below the proposed release tarball and signatures:
+
+> >
+
+> > https://urldefense.com/v3/__https://dist.apache.org/repos/dist/dev/httpd/__;!!FbCVDoc3r24SyHFW!4XFRouSU1jZhSNWbdncMG2fbqx5jgbylu1lrmT3TcHgZF4isGV_f5UyJUDBZ5vwW8drNCig33VLluiM$<https://urldefense.com/v3/__https:/dist.apache.org/repos/dist/dev/httpd/__;!!FbCVDoc3r24SyHFW!4XFRouSU1jZhSNWbdncMG2fbqx5jgbylu1lrmT3TcHgZF4isGV_f5UyJUDBZ5vwW8drNCig33VLluiM$>[dist[.]apache[.]org]
+
+> >
+
+> > I would like to call a VOTE over the next few days to release
+
+> > this candidate tarball httpd-2.4.56-rc1 as 2.4.56:
+
+> > [X] +1: It's not just good, it's good enough!
+
+> > [ ] +0: Let's have a talk.
+
+> > [ ] -1: There's trouble in paradise. Here's what's wrong.
+
+> >
+
+> > The computed digests of the tarball up for vote are:
+
+> > sha256: db0d4c76007b231fd3ab41b580548dc798ae3844bb7c3d5ce1e4174ca2364698
+
+> > *httpd-2.4.56-rc1.tar.gz
+
+> > sha512: 68b1e8c3e3436e6947c0ccfeee6fea83254560e4d43bddbc79a4206d804a6dda6662cf5734e0b2f4019ab5c1fff40141a16dd7698e8fe72b7fd343fbebd42724
+
+> > *httpd-2.4.56-rc1.tar.gz
+
+> >
+
+> > The SVN candidate source is found at tags/2.4.56-rc1-candidate.
+
+> >
+
+>
+
+> Sigs and Hashes ok
+
+> Tested on RedHat 8 x86_64 with apr 1.7.2 / apr-util 1.6.3
+
+>
+
+> Regards
+
+>
+
+> Rüdiger
+
+
+--
+
+Eric Covener
+
+covener@gmail.com<mailto:covener@gmail.com>
+
+This email and any attachments are intended solely for the use of the individual or entity to whom it is addressed and may be confidential and/or privileged.
+
+If you are not one of the named recipients or have received this email in error,
+
+(i) you should not read, disclose, or copy it,
+
+(ii) please notify sender of your receipt by reply email and delete this email and all attachments,
+
+(iii) Dassault Systèmes does not accept or assume any liability or responsibility for any use of or reliance on this email.
+
+
+Please be informed that your personal data are processed according to our data privacy policy as described on our website. Should you have any questions related to personal data protection, please contact 3DS Data Protection Officer https://www.3ds.com/privacy-policy/contact/

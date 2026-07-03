@@ -1,0 +1,40 @@
+Message-ID: <Y4ZcT1tralUnXq+D@an3as.eu>
+X-Clawbench-ID: BIO-2024-0669
+Date: Tue, 29 Nov 2022 20:23:59 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Cmake help to upgrade spoa needed
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_11_msg00106.html
+
+Hi,
+
+I tried to upgrade spoa but the build[1] fails with
+
+-- Configuring done
+CMake Error in CMakeLists.txt:
+  Imported target "bioparser::bioparser" includes non-existent path
+    "/include"
+  in its INTERFACE_INCLUDE_DIRECTORIES.  Possible reasons include:
+  * The path was deleted, renamed, or moved to another location.
+  * An install or uninstall procedure did not complete successfully.
+  * The installation package was faulty and references files it does not
+  provide.
+CMake Error in CMakeLists.txt:
+  Imported target "bioparser::bioparser" includes non-existent path
+    "/include"
+  in its INTERFACE_INCLUDE_DIRECTORIES.  Possible reasons include:
+  * The path was deleted, renamed, or moved to another location.
+
+Any idea what might be wrong here would be great.
+
+Kind regards
+   Andreas.
+
+
+[1] https://salsa.debian.org/med-team/spoa/-/jobs/3593173
+
+--
+http://fam-tille.de

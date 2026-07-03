@@ -1,0 +1,21 @@
+Message-ID: <udlilwm9m6x.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-0933
+Date: Sat, 20 Nov 2021 23:17:42 -0500
+From: ucko@debian.org (Aaron M. Ucko)
+To: "Michael R. Crusoe" <crusoe@debian.org>
+Subject: Re: ncbi-vdb plans (fixing i386, enabling arm64)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_11_msg00115.html
+
+"Michael R. Crusoe"  writes:
+
+> Hey Aaron, thanks for the update and thanks for your continued support!
+
+No problem.  I was obviously way too optimistic above, but finally found
+time to go through with these tune-ups.
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

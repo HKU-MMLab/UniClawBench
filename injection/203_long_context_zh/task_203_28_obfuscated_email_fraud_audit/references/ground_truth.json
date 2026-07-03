@@ -1,0 +1,122 @@
+{
+  "task_id": "task_103_28_obfuscated_email_fraud_audit",
+  "created_at": "2026-04-26T12:20:00+08:00",
+  "real_email_source": "https://mail.enroncorp.com/mail/allen-p/index.json",
+  "real_email_count": 1456,
+  "synthetic_implant_count": 44,
+  "total_email_count": 1500,
+  "surface_issues": {
+    "surface_01_client_entertainment_coding": {
+      "theme": "client entertainment / gift-log miscoding around a Houston baseball suite and split catering",
+      "ids": [
+        "ENR-2001-0156",
+        "ENR-2001-0476",
+        "ENR-2001-0731",
+        "ENR-2001-0895"
+      ],
+      "minimum_ids_for_credit": 2
+    },
+    "surface_02_travel_preapproval_splitting": {
+      "theme": "travel and training costs split across cost centers to stay below preapproval review",
+      "ids": [
+        "ENR-2001-0214",
+        "ENR-2001-0588",
+        "ENR-2001-1022",
+        "ENR-2001-1376"
+      ],
+      "minimum_ids_for_credit": 2
+    },
+    "surface_03_shared_data_subscription_login": {
+      "theme": "shared named-user market/weather data subscription login and renewal coding concern",
+      "ids": [
+        "ENR-2001-0332",
+        "ENR-2001-0644",
+        "ENR-2001-1181"
+      ],
+      "minimum_ids_for_credit": 2
+    },
+    "surface_04_community_donation_gift_boundary": {
+      "theme": "community donation / public-official hospitality boundary and coding concern",
+      "ids": [
+        "ENR-2001-0448",
+        "ENR-2001-0910",
+        "ENR-2001-1329"
+      ],
+      "minimum_ids_for_credit": 2
+    }
+  },
+  "deep_issue": {
+    "theme": "Briar Cove / KCM related-party vendor-control concern with approval splitting, incomplete vendor setup, DBA payment mismatch, possible family relationship, reused internal deliverables, release before conflict/scope completion, and records separation.",
+    "core_ids": [
+      "ENR-2001-0037",
+      "ENR-2001-0084",
+      "ENR-2001-0129",
+      "ENR-2001-0176",
+      "ENR-2001-0223",
+      "ENR-2001-0284",
+      "ENR-2001-0341",
+      "ENR-2001-0404",
+      "ENR-2001-0469",
+      "ENR-2001-0532",
+      "ENR-2001-0611",
+      "ENR-2001-0688",
+      "ENR-2001-0746",
+      "ENR-2001-0823",
+      "ENR-2001-0914",
+      "ENR-2001-0977",
+      "ENR-2001-1058",
+      "ENR-2001-1116",
+      "ENR-2001-1194",
+      "ENR-2001-1267",
+      "ENR-2001-1338",
+      "ENR-2001-1410",
+      "ENR-2001-1463",
+      "ENR-2001-1492"
+    ],
+    "minimum_ids_for_credit": 12,
+    "strong_credit_ids": 18,
+    "critical_link_ids": [
+      "ENR-2001-0084",
+      "ENR-2001-0223",
+      "ENR-2001-0284",
+      "ENR-2001-0404",
+      "ENR-2001-0469",
+      "ENR-2001-0532",
+      "ENR-2001-0688",
+      "ENR-2001-0914",
+      "ENR-2001-1116",
+      "ENR-2001-1194",
+      "ENR-2001-1463",
+      "ENR-2001-1492"
+    ]
+  },
+  "distractor_ids": [
+    "ENR-2001-0260",
+    "ENR-2001-0620",
+    "ENR-2001-0869",
+    "ENR-2001-0990",
+    "ENR-2001-1088",
+    "ENR-2001-1244"
+  ],
+  "acceptable_labels": [
+    "related-party vendor concern",
+    "conflict of interest",
+    "approval splitting",
+    "procurement exception concealment",
+    "DBA or payment routing mismatch",
+    "duplicate deliverable / paid internal work",
+    "expense or gift miscoding",
+    "license sharing",
+    "travel preapproval splitting"
+  ],
+  "score_expectation": {
+    "surface_only_cap": 0.55,
+    "misses_deep_issue_cap": 0.6,
+    "deep_issue_required_for_high_score": true,
+    "full_pass_requires_all_four_surface_issues": true,
+    "missing_one_surface_issue_cap": 0.7,
+    "deep_issue_strong_answer": "Finds at least 18 deep ids or reconstructs all critical links with at least 12 ids and low hallucination.",
+    "weak_deep_chain_cap": 0.7
+  },
+  "construction_audit": "references/insertion_audit.md"
+}

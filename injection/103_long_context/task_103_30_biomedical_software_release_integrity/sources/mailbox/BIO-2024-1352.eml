@@ -1,0 +1,42 @@
+Message-ID: <YYy3oxbDIOnGk3W8@an3as.eu>
+X-Clawbench-ID: BIO-2024-1352
+Date: Thu, 11 Nov 2021 07:26:43 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: debian med blend thermometer unrelated crux should probably be crux-toolkit
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_11_msg00060.html
+
+Am Thu, Nov 11, 2021 at 06:15:04AM +0100 schrieb Ben Tris:
+> The removed package crux is unrelated to debian-med
+> https://tracker.debian.org/pkg/crux
+>
+> At least crux is to be found
+> https://blends.debian.org/med/thermometer/
+> https://salsa.debian.org/med-team/crux
+>
+> The packagelist only lists crux-toolkit (not on the thermometer page)
+> https://blends.debian.org/med/tasks/packagelist
+
+The thermometer page is listing source package names and the source
+package (as you pointed out to salsa is named crux) which would build
+the binary package crux-toolkit ... if it would have been uploaded to
+Debian at all which is not the case (that's why the white color code
+which is "Not packaged" per marginal inscription).  If you have any
+specific interest in this package please let us know.
+
+> Medical category I,ll try to keep up.
+> https://www.gezapig.nl/Software/Category/Medical2021.html
+
+I think we talked about this page when you announced it here.  I
+need to admit it is not fully clear to me what audience you try to
+address with this page and how it is maintained.
+
+Kind regards
+
+      Andreas.
+
+--
+http://fam-tille.de

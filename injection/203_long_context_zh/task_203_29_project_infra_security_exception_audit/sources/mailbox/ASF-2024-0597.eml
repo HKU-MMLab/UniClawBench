@@ -1,0 +1,26 @@
+Message-ID: <Ywc0fyLHXg0Ep1zu@redhat.com>
+X-Clawbench-ID: ASF-2024-0597
+Date: Thu, 25 Aug 2022 09:36:15 +0100
+From: Joe Orton <jorton@redhat.com>
+To: dev@perl.apache.org, dev@httpd.apache.org
+Subject: Re: [VOTE] Release libapreq2-2.17
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-08.mbox
+
+On Thu, Aug 18, 2022 at 12:31:56PM +0100, Joe Orton wrote:
+> Hi, I've prepared a candidate release tarball for libapreq2 v2.17 here:
+>
+> https://dist.apache.org/repos/dist/dev/httpd/libapreq/
+>
+> I would like to call a VOTE over the next week to release this candidate
+> tarball as v2.17:
+>
+> [X] +1: It's not just good, it's good enough!
+> [ ] +0: Let's have a talk.
+> [ ] -1: There's trouble in paradise. Here's what's wrong.
+
+Adding my own +1, tests fine here on Fedora 36.
+
+Regards, Joe

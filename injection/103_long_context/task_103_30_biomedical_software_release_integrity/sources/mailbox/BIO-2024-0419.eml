@@ -1,0 +1,42 @@
+Message-ID: <ZXa8FBrum_nsrHkf@an3as.eu>
+X-Clawbench-ID: BIO-2024-0419
+Date: Mon, 11 Dec 2023 08:36:52 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Attempt to upgrade sra-sdk
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_12_msg00034.html
+
+Hi Aaron,
+
+Am Sun, Dec 10, 2023 at 06:30:01PM -0500 schrieb Aaron M. Ucko:
+>
+> Because env/common.cmake doesn't actually try to use a system
+> installation:
+>
+>   #check_include_file_cxx(mbedtls/md.h HAVE_MBEDTLS_H)
+>   set(HAVE_MBEDTLS_H 0) # TODO: disabling system mbedtls since it may be outdated
+>
+> Patching that logic to enable and honor the check reveals that its
+> concerns are legitimate, with upstream bundling and evidently relying on
+> a 3.x version whereas Debian still ships 2.28.5; arranging to use the
+> Debian version yields several compilation errors in libs/cloud/gcp.c's
+> Sign_RSA_SHA256, and quite possibly more errors elsewhere.
+>
+> Per https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1036231, Debian
+> packaging of mbed TLS 3.x is waiting on a long-term-support release
+> series thereof, so our options are either backporting ncbi-vdb to build
+> against 2.28. (perhaps with the help of reverse cherry-picks) or
+> reinstating the bundled 3.x copy.
+
+Thanks a lot for your analysis.  I admit I stumbled for no important
+reason over sra-sdk and friends.  I'm perfectly fine with delaying the
+upgrade until Debian packaged mbed is catching up.
+
+Kind regards
+   Andreas.
+
+--
+http://fam-tille.de

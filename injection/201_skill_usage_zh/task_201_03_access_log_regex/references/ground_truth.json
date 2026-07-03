@@ -1,0 +1,425 @@
+{
+  "task_id": "task_101_03_access_log_regex",
+  "difficulty": "Medium",
+  "schema": "c",
+  "schema_notes": "blended log GT with tolerance bands; rank-preserving top URLs; tight tolerance rubric; >=10 4xx threshold for suspicious_ips and explicit anomaly time anchor",
+  "skills_declared": [
+    "log-analyzer"
+  ],
+  "seed": 20260425,
+  "data_provenance": "NASA-HTTP Kennedy Space Center Jul 1995 (first 50K parseable lines) + ClarkNet ISP Aug 28 1995 (first 20K parseable lines) from LBL Internet Traces (public). Interleaved and blended with ~1K synthesized postmortem-style suspicious lines (scanner IP 4xx/5xx bursts, %00 / ..\\ path-smuggling probes, \"-\" methods, truncated timestamps). Seed=20260425. Regenerate via build_access_log_v7.py.",
+  "ground_truth": {
+    "total_lines": 71000,
+    "parseable_count": 70949,
+    "malformed_line_count": 51,
+    "status_distribution": {
+      "200": 62312,
+      "304": 4730,
+      "499": 236,
+      "302": 2206,
+      "404": 773,
+      "400": 329,
+      "403": 176,
+      "503": 171,
+      "500": 11,
+      "204": 5
+    },
+    "top_urls": [
+      {
+        "path": "/images/NASA-logosmall.gif",
+        "count": 3139
+      },
+      {
+        "path": "/images/KSC-logosmall.gif",
+        "count": 2757
+      },
+      {
+        "path": "/shuttle/countdown/count.gif",
+        "count": 2078
+      },
+      {
+        "path": "/shuttle/countdown/",
+        "count": 2052
+      },
+      {
+        "path": "/shuttle/missions/sts-71/sts-71-patch-small.gif",
+        "count": 1249
+      },
+      {
+        "path": "/images/MOSAIC-logosmall.gif",
+        "count": 1205
+      },
+      {
+        "path": "/images/USA-logosmall.gif",
+        "count": 1200
+      },
+      {
+        "path": "/images/ksclogo-medium.gif",
+        "count": 1196
+      },
+      {
+        "path": "/images/WORLD-logosmall.gif",
+        "count": 1172
+      },
+      {
+        "path": "/shuttle/missions/sts-71/images/images.html",
+        "count": 1128
+      },
+      {
+        "path": "/images/launch-logo.gif",
+        "count": 1124
+      },
+      {
+        "path": "/shuttle/missions/sts-71/mission-sts-71.html",
+        "count": 1081
+      },
+      {
+        "path": "/",
+        "count": 954
+      },
+      {
+        "path": "/shuttle/countdown/liftoff.html",
+        "count": 858
+      },
+      {
+        "path": "/shuttle/countdown/video/livevideo.gif",
+        "count": 847
+      },
+      {
+        "path": "/images/ksclogosmall.gif",
+        "count": 790
+      },
+      {
+        "path": "/ksc.html",
+        "count": 735
+      },
+      {
+        "path": "/shuttle/missions/missions.html",
+        "count": 678
+      },
+      {
+        "path": "/images/launchmedium.gif",
+        "count": 549
+      },
+      {
+        "path": "/history/apollo/images/footprint-small.gif",
+        "count": 350
+      },
+      {
+        "path": "/icons/menu.xbm",
+        "count": 344
+      },
+      {
+        "path": "/icons/blank.xbm",
+        "count": 343
+      },
+      {
+        "path": "/shuttle/missions/sts-71/movies/movies.html",
+        "count": 328
+      },
+      {
+        "path": "/history/apollo/images/apollo-logo.gif",
+        "count": 321
+      },
+      {
+        "path": "/history/apollo/apollo.html",
+        "count": 313
+      },
+      {
+        "path": "/history/apollo/images/footprint-logo.gif",
+        "count": 313
+      },
+      {
+        "path": "/htbin/cdt_main.pl",
+        "count": 311
+      },
+      {
+        "path": "/shuttle/resources/orbiters/orbiters-logo.gif",
+        "count": 296
+      },
+      {
+        "path": "/pub/atomicbk/catalog/logo2.gif",
+        "count": 278
+      },
+      {
+        "path": "/pub/atomicbk/catalog/catalog.gif",
+        "count": 274
+      },
+      {
+        "path": "/pub/atomicbk/catalog/home.gif",
+        "count": 270
+      },
+      {
+        "path": "/pub/atomicbk/catalog/new.gif",
+        "count": 267
+      },
+      {
+        "path": "/pub/atomicbk/catalog/orders.gif",
+        "count": 265
+      },
+      {
+        "path": "/history/apollo/apollo-13/apollo-13.html",
+        "count": 264
+      },
+      {
+        "path": "/history/history.html",
+        "count": 254
+      },
+      {
+        "path": "/shuttle/countdown/countdown.html",
+        "count": 253
+      },
+      {
+        "path": "/icons/image.xbm",
+        "count": 247
+      },
+      {
+        "path": "/shuttle/countdown/video/livevideo.jpeg",
+        "count": 246
+      },
+      {
+        "path": "/pub/journalism/awesome.html",
+        "count": 242
+      },
+      {
+        "path": "/shuttle/technology/sts-newsref/stsref-toc.html",
+        "count": 227
+      },
+      {
+        "path": "/shuttle/resources/orbiters/atlantis.html",
+        "count": 226
+      },
+      {
+        "path": "/icons/text.xbm",
+        "count": 218
+      },
+      {
+        "path": "/pub/atomicbk/catalog/mini.gif",
+        "count": 204
+      },
+      {
+        "path": "/history/apollo/images/apollo-small.gif",
+        "count": 203
+      },
+      {
+        "path": "/history/apollo/apollo-13/apollo-13-patch-small.gif",
+        "count": 202
+      },
+      {
+        "path": "/shuttle/resources/orbiters/atlantis-logo.gif",
+        "count": 202
+      },
+      {
+        "path": "/pub/job/vk/vendela.html",
+        "count": 191
+      },
+      {
+        "path": "/shuttle/missions/sts-71/movies/crew-arrival-t38.mpg",
+        "count": 191
+      },
+      {
+        "path": "/shuttle/missions/sts-71/images/KSC-95EC-0918.jpg",
+        "count": 185
+      },
+      {
+        "path": "/software/winvn/winvn.html",
+        "count": 176
+      }
+    ],
+    "peak_error_hour": "01/Jul/1995 04",
+    "peak_error_hour_iso": "1995-07-01T04:00:00Z",
+    "peak_error_rate": 0.221691,
+    "min_error_hour": "01/Jul/1995 17",
+    "min_error_rate": 0.009493,
+    "peak_to_min_error_rate_ratio": 23.3535,
+    "error_rate_by_hour": {
+      "28/Aug/1995 01": 0.032753164556962026,
+      "01/Jul/1995 14": 0.013307984790874524,
+      "01/Jul/1995 15": 0.014294403892944039,
+      "01/Jul/1995 18": 0.012433944668946224,
+      "01/Jul/1995 09": 0.013220018885741265,
+      "01/Jul/1995 13": 0.0137997432605905,
+      "01/Jul/1995 01": 0.011612475116124751,
+      "28/Aug/1995 00": 0.024459748278318687,
+      "28/Aug/1995 02": 0.03188297074268567,
+      "01/Jul/1995 19": 0.03699284009546539,
+      "01/Jul/1995 16": 0.010910224438902744,
+      "01/Jul/1995 11": 0.012503634777551615,
+      "01/Jul/1995 04": 0.22169059011164274,
+      "01/Jul/1995 17": 0.009492812584757255,
+      "01/Jul/1995 06": 0.01804123711340206,
+      "01/Jul/1995 10": 0.013658536585365854,
+      "01/Jul/1995 00": 0.012573344509639563,
+      "01/Jul/1995 02": 0.012259194395796848,
+      "01/Jul/1995 03": 0.026225769669327253,
+      "01/Jul/1995 12": 0.011823719097097814,
+      "01/Jul/1995 07": 0.015238095238095238,
+      "01/Jul/1995 08": 0.01808785529715762,
+      "01/Jul/1995 05": 0.02631578947368421
+    },
+    "anomaly_time_anchor": {
+      "hour_bucket": "01/Jul/1995 04",
+      "hour_bucket_iso": "1995-07-01T04:00:00Z",
+      "error_count": 417,
+      "total_requests_in_bucket": 1881,
+      "error_rate": 0.22169059011164274,
+      "notes": "Peak error-rate hour. report.md must cite both the hour bucket and the exact 4xx+5xx error count (417) within the same paragraph."
+    },
+    "suspicious_ips_top10": [
+      "193.37.255.114",
+      "141.98.10.171",
+      "165.22.194.33",
+      "198.98.51.189",
+      "185.191.171.12",
+      "104.248.57.7",
+      "45.155.205.118",
+      "167.172.199.158",
+      "5.188.210.61",
+      "194.26.135.41"
+    ],
+    "top_5_suspicious_ips": [
+      "193.37.255.114",
+      "141.98.10.171",
+      "165.22.194.33",
+      "198.98.51.189",
+      "185.191.171.12"
+    ],
+    "suspicious_ips_all": [
+      {
+        "ip": "193.37.255.114",
+        "fourxx_count": 77
+      },
+      {
+        "ip": "141.98.10.171",
+        "fourxx_count": 70
+      },
+      {
+        "ip": "165.22.194.33",
+        "fourxx_count": 69
+      },
+      {
+        "ip": "198.98.51.189",
+        "fourxx_count": 62
+      },
+      {
+        "ip": "185.191.171.12",
+        "fourxx_count": 61
+      },
+      {
+        "ip": "104.248.57.7",
+        "fourxx_count": 59
+      },
+      {
+        "ip": "45.155.205.118",
+        "fourxx_count": 58
+      },
+      {
+        "ip": "167.172.199.158",
+        "fourxx_count": 57
+      },
+      {
+        "ip": "5.188.210.61",
+        "fourxx_count": 57
+      },
+      {
+        "ip": "194.26.135.41",
+        "fourxx_count": 53
+      },
+      {
+        "ip": "212.102.49.98",
+        "fourxx_count": 53
+      },
+      {
+        "ip": "91.240.118.172",
+        "fourxx_count": 53
+      },
+      {
+        "ip": "103.224.182.251",
+        "fourxx_count": 49
+      },
+      {
+        "ip": "slc12.xmission.com",
+        "fourxx_count": 22
+      },
+      {
+        "ip": "www-relay.pa-x.dec.com",
+        "fourxx_count": 22
+      },
+      {
+        "ip": "piweba4y.prodigy.com",
+        "fourxx_count": 13
+      },
+      {
+        "ip": "202.6.90.68",
+        "fourxx_count": 12
+      },
+      {
+        "ip": "www-b5.proxy.aol.com",
+        "fourxx_count": 11
+      },
+      {
+        "ip": "128.42.98.247",
+        "fourxx_count": 10
+      },
+      {
+        "ip": "clark.net",
+        "fourxx_count": 10
+      },
+      {
+        "ip": "scooter.pa-x.dec.com",
+        "fourxx_count": 10
+      }
+    ]
+  },
+  "tolerance_bands": {
+    "parseable_count_full": 3,
+    "parseable_count_partial": 10,
+    "parseable_count_half": 25,
+    "malformed_line_count_full": 0,
+    "malformed_line_count_partial": 2,
+    "malformed_line_count_half": 4,
+    "status_distribution_sum_vs_parseable": 2,
+    "status_breakdown_count_pct": 0.02,
+    "peak_error_rate_abs_full": 0.001,
+    "peak_error_rate_abs_penalty": 0.003,
+    "error_rate_ratio_pct": 0.02,
+    "suspicious_ips_jaccard_min": 0.85,
+    "suspicious_ips_top10_min_overlap": 9,
+    "anomaly_error_count_abs": 2
+  },
+  "required_status_keys_postmortem_only": [
+    "499",
+    "503"
+  ],
+  "summary_required_keys": [
+    "total_requests",
+    "malformed_line_count",
+    "top_urls",
+    "status_distribution",
+    "error_rate_by_hour",
+    "suspicious_ips"
+  ],
+  "topic_dimensions": [
+    "traffic_volume_trends",
+    "status_code_distribution",
+    "suspicious_ip_behaviors",
+    "url_hotspot_patterns",
+    "anomaly_timeline"
+  ],
+  "min_dimensions_covered": 4,
+  "status_precision_codes": [
+    "499",
+    "503",
+    "502",
+    "504",
+    "408"
+  ],
+  "status_precision_counts": {
+    "499": 236,
+    "503": 171,
+    "502": 0,
+    "504": 0,
+    "408": 0
+  },
+  "min_status_codes_cited": 4
+}

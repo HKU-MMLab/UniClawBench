@@ -1,0 +1,45 @@
+Message-ID: <Y72I+WvnSIdIT6+G@redhat.com>
+X-Clawbench-ID: ASF-2024-0403
+Date: Tue, 10 Jan 2023 15:49:13 +0000
+From: Joe Orton <jorton@redhat.com>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.55-rc1 as httpd-2.4.55
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-01.mbox
+
+On Tue, Jan 10, 2023 at 10:21:55AM -0500, Eric Covener wrote:
+> On Tue, Jan 10, 2023 at 10:17 AM Giovanni Bechis <giovanni@paclan.it> wrote:
+...
+> > In file included from /usr/include/openssl/asn1.h:27,
+> >                  from /usr/include/openssl/rsa.h:21,
+> >                  from ab.c:169:
+> > /usr/include/openssl/bio.h:279:28: note: declared here
+> >   279 | OSSL_DEPRECATEDIN_3_0 void BIO_set_callback(BIO *b, BIO_callback_fn callback);
+> >       |                            ^~~~~~~~~~~~~~~~
+> > cc1: all warnings being treated as errors
+> > -------------------------------------------------------------------------------------------------------------------------------------
+> >
+> > Is this considered a blocker ?
+> > This can be workarounded by building with different "-Werror" options.
+> >  Giovanni
+>
+> I think it's a known issue in ab.c and openssl 3.0
+> I think no regression, no veto -- but everyones vote (beyond veto) is
+> their own. AFAIK it has been there since 3.0 toleration was added.
+
+Yup - there are many more deprecation warnings in mod_ssl itself too
+when building against OpenSSL 3.x. Some of them are worthwhile fixing
+but IIRC some looked quite involved to fix.
+
+> I was going to send an email on this one, reminded by the recent
+> Actions CI activity.  I think we could drop the -wno-error-deprecated
+> from CI if ab.c was either fixed or maybe had something in its build
+> to set this itself. That way deprecated stuff sneaking in elsewhere
+> would not be supresed in maintainer mode.
+
+Adding -Wno-deprecated-declarations or -Wno-error-etc is probably a good
+idea for all OpenSSL 3 builds, yeah.
+
+Regards, Joe

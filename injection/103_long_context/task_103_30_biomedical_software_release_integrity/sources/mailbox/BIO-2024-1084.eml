@@ -1,0 +1,75 @@
+Message-ID: <ZbnuZqTQUV4aXfHv@an3as.eu>
+X-Clawbench-ID: BIO-2024-1084
+Date: Wed, 31 Jan 2024 07:53:26 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: 1061344@bugs.debian.org, Charles Plessy <charles@plessy.org>,	Debian Med Project List <debian-med@lists.debian.org>
+Subject: User input needed: Stop supporting 32 bit architectures with emboss (Was: emboss-lib: identified for time_t transition but no ABI in shlibs)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_01_msg00021.html
+
+Hi again,
+
+besides my suggested solution to split up emboss-lib again (and when
+doing so make the package emboss-lib a metapackage depending from single
+packages to match all its rdepends) I wonder whether we should provide
+EMBOSS for 64 bit architectures only.  While we probably need to file a
+lot of removal requests to 32 bit packages of its rdepends it somehow
+fits the reality that these days nobody seriously runs emboss on 32bit
+architectures.  As explained in the according wiki page[1] other binary
+distros are dropping 32-bit at all and Debian rather cares for
+automotive, IOT, TVs, routers, plant control, building
+monitoring/control, cheap Android phones - nothing that is using EMBOSS.
+
+I would really like to get some input from *our users* here on the
+Debian Med list since I need your response to draw a sensible decision.
+
+Kind regards
+    Andreas.
+
+[1] https://wiki.debian.org/ReleaseGoals/64bit-time
+
+Am Fri, Jan 26, 2024 at 10:44:09AM +0100 schrieb Andreas Tille:
+> Hi Charles,
+>
+> I wonder how we can properly solve this bug.  In the early stage of
+> Emboss packaging obviously the packages
+>
+>            libajax6,
+>            libajax6-dev,
+>            libnucleus6,
+>            libnucleus6-dev
+>
+> existed (thus the remaining Conflicts/Replaces on emboss-lib which can
+> probably be removed right now).  I wonder whether we should restore those
+> single library package per shared library + devel package, merge
+> static+shared library in one package or even merge
+>
+>    libacd 6 emboss-lib (>= 6.6.0+dfsg)
+>    libajax 6 emboss-lib (>= 6.6.0+dfsg)
+>    libajaxdb 6 emboss-lib (>= 6.6.0+dfsg)
+>    libajaxg 6 emboss-lib (>= 6.6.0+dfsg)
+>    libensembl 6 emboss-lib (>= 6.6.0+dfsg)
+>    libnucleus 6 emboss-lib (>= 6.6.0+dfsg)
+>
+> in libemboss6
+>
+>    libepcre 7 emboss-lib (>= 6.6.0+dfsg)
+>
+> in libemboss-pcre7 (ugly since its a code copy of pcre3 but well,
+> that's another battle field) and
+>
+>    libeplplot 3 emboss-lib (>= 6.6.0+dfsg)
+>
+> in libemboss-plplot3 to express the proper sonames inside the library
+> package names.  Any more sensible suggestion is pretty welcome.
+>
+> Kind regards
+>     Andreas.
+>
+> --
+> http://fam-tille.de
+
+--
+http://fam-tille.de

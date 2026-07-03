@@ -1,0 +1,53 @@
+task_id: task_202_16_hugo_academic_theme
+category: 202_exploration_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我们大学的研究实验室需要一个网站，我想为它挑选一个 Hugo 主题。要求：
+  必须是双语的（英文 + 中文），需要一个 Team / People 页面，让每位实验室
+  成员都有个人资料，并且需要一个用于展示我们论文的 Publications 列表。我们
+  会把它免费托管在 GitHub Pages / Netlify 上，所以它必须是带宽松开源许可证
+  的静态 Hugo 主题。
+
+  一组固定的候选主题离线提供，位于：
+
+      /tmp_workspace/clawbench/sources/theme_candidates/
+
+  `candidates.json` 列出了每个主题，附有归一化的功能标记、其来源和一条
+  证据说明；真实的上游 `theme.toml` 清单位于 `raw_theme_manifests/` 下，
+  以便你自己核实这些标记，而不是轻信摘要。请阅读这些清单/证据——不要凭
+  名称或流行度来挑选。
+
+  请弄清楚哪些主题真正满足所有 hard 要求（双语 i18n、一个 team/members
+  系统、一个 publications 系统、宽松许可证 + 静态托管），然后恰好挑选一个
+  主题进行推荐。注意有几个候选会因错误的理由而具有诱惑性：一个名字里带
+  "Academic"，另一个极其流行——务必确认你的选择真正同时覆盖 team-members
+  和 publications 两项需求，而不仅仅是其中之一。
+
+  请保存：
+  - `/tmp_workspace/results/theme_choice.json`：你推荐的 `selected_id`、它为
+    什么满足每一项 hard 要求（引用证据），以及让一个带 members + publications
+    的双语实验室网站跑起来的最小步骤。
+  - `/tmp_workspace/results/theme_evaluation.json`：每个候选针对四项 hard
+    要求的功能覆盖情况，附 keep/reject，并对每个被淘汰的主题给出它具体
+    未通过哪项 hard 要求。
+  - `/tmp_workspace/results/theme_method.json`：你阅读了哪些清单/文件，以及
+    你是如何核实每个功能标记的（可复现性）。
+
+  这是完全离线的——不要从网络获取任何内容。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+sources:
+  - theme_candidates/
+
+codex:
+  max_user_followups: 2

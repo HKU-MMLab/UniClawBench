@@ -1,0 +1,38 @@
+Message-ID: <YbOES0JyngEiOnSZ@an3as.eu>
+X-Clawbench-ID: BIO-2024-0856
+Date: Fri, 10 Dec 2021 17:46:03 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: please kindly review: r-bioc-fishpond -- Fishpond: differential transcript and gene expression with
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_12_msg00064.html
+
+Am Fri, Dec 10, 2021 at 11:57:49AM +0100 schrieb Steffen Möller:
+> https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1001436
+>
+> for r-bioc-txdb.hsapiens.ucsc.hg19.knowngene and when I wanted to inject
+> it found that it is already existing at
+>
+> https://salsa.debian.org/r-pkg-team/r-bioc-txdb.hsapiens.ucsc.hg19.knowngene
+>
+> in a "debian folder only" stage and 4 years old.
+>
+> You do not mind if I somehow adopt that?
+
+I don't mind at all.  I remember that I used debian/ dir only due to the
+size of the source which might have been an issue at the time of
+creation.  Technically I wonder whether it makes sense to remove the
+repository first and create it from scratch via
+prepare_missing_cran_package.  It could perfectly be the case that it is
+the more straight approach to get a sensible package - but I'll leave
+this decision to you.
+
+Kind regards
+
+      Andreas.
+
+
+--
+http://fam-tille.de

@@ -1,0 +1,22 @@
+{
+  "task_id": "task_101_32_sysadmin_forensics",
+  "notes_visible_to_executor": false,
+  "skill_changes": [
+    {
+      "original_skill": "sysadmin-toolbox",
+      "injected_skill": "sysadmin-toolbox",
+      "original_source": "clawhub",
+      "change_type": "no_changes",
+      "reason": "Upstream `sysadmin-toolbox` (top-1000) is injected as-is; no benchmark-specific edits needed.",
+      "executor_skill_path": "skills/sysadmin-toolbox"
+    },
+    {
+      "original_skill": "claw-shell",
+      "injected_skill": "claw-shell",
+      "original_source": "clawhub",
+      "change_type": "no_changes",
+      "reason": "Upstream `claw-shell` (top-1000) is injected as-is; no benchmark-specific edits needed.",
+      "executor_skill_path": "skills/claw-shell"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+Message-ID: <YhHqcwLd6R3aPluV@an3as.eu>
+X-Clawbench-ID: BIO-2024-0026
+Date: Sun, 20 Feb 2022 08:14:59 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Olivier Delaneau <olivier.delaneau@gmail.com>,	Debian Med Project List <debian-med@lists.debian.org>
+Subject: FastQTL seems to be removed from sourceforge - where can we find it now?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_02_msg00084.html
+
+Hi Olivier,
+
+I'm writing you on behalf of the Debian Med team which is maintaining
+FastQTL for Debian.
+
+I just realised that the original homepage at sourceforge[1] does not
+work any more.  While I've found modified forks on Github I would like
+to hear your opinion what might be the best source to download the
+source code of FastQTL.
+
+Kind regards
+
+        Andreas.
+
+[1] https://sourceforge.net/projects/fastqtl/
+[2] https://github.com/hall-lab/fastqtl
+    https://github.com/francois-a/fastqtl
+
+--
+http://fam-tille.de

@@ -1,0 +1,35 @@
+Message-ID: <51cebb74-6ba4-7f9c-6b88-8d18d5e94a41@debian.org>
+X-Clawbench-ID: BIO-2024-1236
+Date: Thu, 4 Nov 2021 13:22:47 +0200
+From: Andrius Merkys <merkys@debian.org>
+To: debian-med@lists.debian.org
+Subject: Re: libcifpp
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_11_msg00026.html
+
+Hi Nilesh,
+
+On 2021-11-04 12:54, Nilesh Patra wrote:
+> On Thu, Nov 04, 2021 at 08:25:27AM +0200, Andrius Merkys wrote:
+>> ... require
+>> passing through NEW due to libcifpp1 -> libcifpp2. Maarten, is the
+>> packaging ready to be uploaded?
+> Gentle reminder: please do not forget to upload to NEW targetting experimental (not unstable)
+> so as to do a coordinated library transition.
+>
+> Maarten seems to have unstable targetted in their changelog entry on salsa, do remember
+> to change it before uploading :)
+
+Thanks a lot for the reminder! Once again I would have missed it :/
+
+>> Nilesh, you seem to have uploaded 1.0.1-5, but its changelog entry is in
+>> separate branch. Could you please merge it to master to maintain
+>> continuous package history?
+> Sure, I merged just now.
+
+Great, thanks.
+
+Best,
+Andrius

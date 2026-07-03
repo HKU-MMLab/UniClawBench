@@ -1,0 +1,18 @@
+{
+  "task_id": "task_201_08_receipts_reconcile",
+  "note": "Operator populates these paths with real binary assets before running the task. The executor expects them under /tmp_workspace/clawbench/sources/.",
+  "entries": [
+    {
+      "path": "receipts/receipt_dm_2014-12-11.jpg",
+      "description": "dm-drogerie-markt receipt scan (public sample)"
+    },
+    {
+      "path": "receipts/receipt_kaisers_2015-08-31.jpg",
+      "description": "Kaisers Tengelmann receipt scan"
+    },
+    {
+      "path": "receipts/receipt_penny_2014-10-18.jpg",
+      "description": "Penny Markt receipt scan"
+    }
+  ]
+}

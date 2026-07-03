@@ -1,0 +1,57 @@
+task_id: task_102_16_hugo_academic_theme
+category: 102_exploration
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  Our university research lab needs a website and I want to pick a Hugo theme
+  for it. Requirements: it must be bilingual (English + Chinese), it needs a
+  Team / People page where each lab member has a profile, and it needs a
+  Publications list for our papers. We'll host it free on GitHub Pages /
+  Netlify, so it has to be a static Hugo theme with a permissive open-source
+  license.
+
+  A fixed set of candidate themes is provided offline at:
+
+      /tmp_workspace/clawbench/sources/theme_candidates/
+
+  `candidates.json` lists each theme with normalized feature flags, its source,
+  and an evidence note; the real upstream `theme.toml` manifests are under
+  `raw_theme_manifests/` so you can verify the flags yourself rather than
+  trusting the summary. Please read the manifests/evidence — don't pick by
+  name or popularity.
+
+  Work out which themes actually satisfy ALL of the hard requirements
+  (bilingual i18n, a team/members system, a publications system, permissive
+  license + static hosting), and pick exactly ONE theme to recommend. Note
+  that several candidates are tempting for the wrong reason: one has
+  "Academic" in its name, another is extremely popular — make sure your pick
+  truly covers the team-members AND publications needs, not just one of them.
+
+  Save:
+  - `/tmp_workspace/results/theme_choice.json`: your recommended `selected_id`,
+    why it satisfies every hard requirement (cite the evidence), and the
+    minimal steps to get a bilingual lab site with members + publications
+    running on it.
+  - `/tmp_workspace/results/theme_evaluation.json`: per-candidate feature
+    coverage against the four hard requirements, with keep/reject and, for each
+    rejected theme, exactly which hard requirement it fails.
+  - `/tmp_workspace/results/theme_method.json`: which manifests/files you read
+    and how you verified each feature flag (reproducibility).
+
+  This is fully offline — do not fetch anything from the network.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+sources:
+  - theme_candidates/
+
+codex:
+  max_user_followups: 2

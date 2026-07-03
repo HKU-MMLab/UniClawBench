@@ -1,0 +1,31 @@
+{
+  "task_id": "task_101_28_meeting_structure",
+  "skills": [
+    {
+      "skill": "video-frames",
+      "original_skill": "Clawhub video-frames",
+      "benchmark_skill_name": "video-frames",
+      "changes": [
+        "Removed the visible clawdbot brew install metadata from SKILL.md frontmatter."
+      ],
+      "reason": "The benchmark container provides ffmpeg through the task setup service, and executor-visible skill metadata should not ask the model to install dependencies during the task.",
+      "unchanged": [
+        "Skill name, user-facing instructions, helper script path, and ffmpeg requirement metadata remain otherwise unchanged."
+      ]
+    },
+    {
+      "skill": "openai-whisper-api",
+      "original_skill": "Clawhub openai-whisper-api",
+      "benchmark_skill_name": "openai-whisper-api",
+      "changes": [
+        "Added provider-aware default model selection for OpenAI-compatible transcription gateways, including vveai/Groq gateways where whisper-large-v3-turbo is the working model.",
+        "Added fallback from WHISPER_API_KEY/WHISPER_BASE_URL to OPENAI_API_KEY/OPENAI_BASE_URL when WHISPER_* is unset.",
+        "Added HTTP/API error validation so failed transcription responses do not get written as successful transcript text."
+      ],
+      "reason": "The benchmark uses live transcription credentials and may point at OpenAI-compatible gateways whose working model differs. The helper must avoid silently accepting provider errors as task outputs.",
+      "unchanged": [
+        "Skill name, endpoint shape, curl-based workflow, flags, and output paths remain otherwise unchanged."
+      ]
+    }
+  ]
+}

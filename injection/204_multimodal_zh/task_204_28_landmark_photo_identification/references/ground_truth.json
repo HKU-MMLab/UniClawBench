@@ -1,0 +1,635 @@
+{
+  "task_id": "task_104_28_landmark_photo_identification",
+  "items": [
+    {
+      "index": 1,
+      "file_name": "itkfpjvw9gzly4.jpg",
+      "landmark": "Eiffel Tower",
+      "city": "Paris",
+      "country": "France",
+      "accepted_landmark_aliases": [
+        "Eiffel Tower",
+        "La Tour Eiffel"
+      ],
+      "accepted_city_aliases": [
+        "Paris"
+      ],
+      "accepted_country_aliases": [
+        "France"
+      ],
+      "source_page_url": "https://www.britannica.com/topic/Eiffel-Tower-Paris-France",
+      "downloaded_image_url": "https://cdn.britannica.com/52/245552-050-3D7334F9/Eiffel-Tower-Paris.jpg",
+      "sha256": "d33402b887e88aeff5095de8babfceeafdba38fb9cc52f7cbd72026860801b72"
+    },
+    {
+      "index": 2,
+      "file_name": "6ww8ewocfkd49a.jpg",
+      "landmark": "Statue of Liberty",
+      "city": "New York City",
+      "country": "United States",
+      "accepted_landmark_aliases": [
+        "Statue of Liberty",
+        "Liberty Enlightening the World"
+      ],
+      "accepted_city_aliases": [
+        "New York City",
+        "New York",
+        "NYC"
+      ],
+      "accepted_country_aliases": [
+        "United States",
+        "United States of America",
+        "USA",
+        "US"
+      ],
+      "source_page_url": "https://www.britannica.com/topic/Statue-of-Liberty",
+      "downloaded_image_url": "https://cdn.britannica.com/71/99571-050-DFF0A6E5/Statue-of-Liberty-Island-New-York.jpg",
+      "sha256": "6b0ebcdd418aea405b870ffb1f0e1506e2735ce6daca693a798a1b340b8e8c91"
+    },
+    {
+      "index": 3,
+      "file_name": "jiw7xwrgwbdazg.jpg",
+      "landmark": "Colosseum",
+      "city": "Rome",
+      "country": "Italy",
+      "accepted_landmark_aliases": [
+        "Colosseum",
+        "Flavian Amphitheatre"
+      ],
+      "accepted_city_aliases": [
+        "Rome"
+      ],
+      "accepted_country_aliases": [
+        "Italy"
+      ],
+      "source_page_url": "https://www.britannica.com/topic/Colosseum",
+      "downloaded_image_url": "https://cdn.britannica.com/36/162636-050-932C5D49/Colosseum-Rome-Italy.jpg",
+      "sha256": "8ceab86f8584bb74179de533284fded2b1457faae6301c55d75aa2e607f912f6"
+    },
+    {
+      "index": 4,
+      "file_name": "f517efy1y4zkmh.jpg",
+      "landmark": "Sydney Opera House",
+      "city": "Sydney",
+      "country": "Australia",
+      "accepted_landmark_aliases": [
+        "Sydney Opera House"
+      ],
+      "accepted_city_aliases": [
+        "Sydney"
+      ],
+      "accepted_country_aliases": [
+        "Australia"
+      ],
+      "source_page_url": "https://www.britannica.com/topic/Sydney-Opera-House",
+      "downloaded_image_url": "https://cdn.britannica.com/96/100196-050-C92064E0/Sydney-Opera-House-Port-Jackson.jpg",
+      "sha256": "72d01e0785c7d431a351c40227ed30696e74a6c4c7cb8b94317d569abd9b2b9a"
+    },
+    {
+      "index": 5,
+      "file_name": "ca58wp4jtvu6i0.jpg",
+      "landmark": "Taj Mahal",
+      "city": "Agra",
+      "country": "India",
+      "accepted_landmark_aliases": [
+        "Taj Mahal"
+      ],
+      "accepted_city_aliases": [
+        "Agra"
+      ],
+      "accepted_country_aliases": [
+        "India"
+      ],
+      "source_page_url": "https://www.britannica.com/topic/Taj-Mahal",
+      "downloaded_image_url": "https://cdn.britannica.com/86/170586-050-AB7FEFAE/Taj-Mahal-Agra-India.jpg",
+      "sha256": "530006cdef884510cc2b28ae2ad46e9204c17fc96ad0067e3234ccd61fc72dee"
+    },
+    {
+      "index": 6,
+      "file_name": "7j20xye3rdu2mp.jpg",
+      "landmark": "Christ the Redeemer",
+      "city": "Rio de Janeiro",
+      "country": "Brazil",
+      "accepted_landmark_aliases": [
+        "Christ the Redeemer",
+        "Cristo Redentor"
+      ],
+      "accepted_city_aliases": [
+        "Rio de Janeiro"
+      ],
+      "accepted_country_aliases": [
+        "Brazil"
+      ],
+      "source_page_url": "https://www.britannica.com/topic/Christ-the-Redeemer",
+      "downloaded_image_url": "https://cdn.britannica.com/54/150754-050-5B93A950/statue-Christ-the-Redeemer-Rio-de-Janeiro.jpg",
+      "sha256": "5a5ed9cbc98df6f57f2d0270293066834a703b24c3a4f738fcca9700d2cf2533"
+    },
+    {
+      "index": 7,
+      "file_name": "8a7gjn6x46eddt.jpg",
+      "landmark": "Big Ben",
+      "city": "London",
+      "country": "United Kingdom",
+      "accepted_landmark_aliases": [
+        "Big Ben",
+        "Elizabeth Tower"
+      ],
+      "accepted_city_aliases": [
+        "London"
+      ],
+      "accepted_country_aliases": [
+        "United Kingdom",
+        "UK",
+        "Great Britain",
+        "Britain"
+      ],
+      "source_page_url": "https://www.britannica.com/topic/Big-Ben-clock-London",
+      "downloaded_image_url": "https://cdn.britannica.com/49/136849-050-6A33C899/Big-Ben-London.jpg",
+      "sha256": "3e0beb413bd194241ccb9646a1a1dda9c6126c6b4b2265c0853c245432971025"
+    },
+    {
+      "index": 8,
+      "file_name": "8ubrb987d9odns.jpg",
+      "landmark": "Sagrada Familia",
+      "city": "Barcelona",
+      "country": "Spain",
+      "accepted_landmark_aliases": [
+        "Sagrada Familia",
+        "Basílica de la Sagrada Família",
+        "Basilica of the Sagrada Familia"
+      ],
+      "accepted_city_aliases": [
+        "Barcelona"
+      ],
+      "accepted_country_aliases": [
+        "Spain"
+      ],
+      "source_page_url": "https://www.britannica.com/topic/Sagrada-Familia",
+      "downloaded_image_url": "https://cdn.britannica.com/15/194815-050-08B5E7D1/Nativity-facade-Sagrada-Familia-cathedral-Barcelona-Spain.jpg",
+      "sha256": "bc6ca989984b10c69a14b403c7af08dc75130a15c17bd3b9b0bdf25e912c881f"
+    },
+    {
+      "index": 9,
+      "file_name": "secvfxp5e5xxsk.jpg",
+      "landmark": "Burj Khalifa",
+      "city": "Dubai",
+      "country": "United Arab Emirates",
+      "accepted_landmark_aliases": [
+        "Burj Khalifa"
+      ],
+      "accepted_city_aliases": [
+        "Dubai"
+      ],
+      "accepted_country_aliases": [
+        "United Arab Emirates",
+        "UAE"
+      ],
+      "source_page_url": "https://www.britannica.com/topic/Burj-Khalifa",
+      "downloaded_image_url": "https://cdn.britannica.com/37/135437-050-A12461CC/Burj-Khalifa-world-Sheikh-Khalifah-ibn-Zayid-2010.jpg",
+      "sha256": "98103d53575878613a6547c8553799b8e0da44decf11e6206c7b2da7bc1efa93"
+    },
+    {
+      "index": 10,
+      "file_name": "8a9afo5pbwxghj.jpg",
+      "landmark": "Brandenburg Gate",
+      "city": "Berlin",
+      "country": "Germany",
+      "accepted_landmark_aliases": [
+        "Brandenburg Gate",
+        "Brandenburger Tor"
+      ],
+      "accepted_city_aliases": [
+        "Berlin"
+      ],
+      "accepted_country_aliases": [
+        "Germany"
+      ],
+      "source_page_url": "https://www.britannica.com/topic/Brandenburg-Gate",
+      "downloaded_image_url": "https://cdn.britannica.com/39/6839-050-27891400/Brandenburg-Gate-Berlin.jpg",
+      "sha256": "8c091dee03bf8a6c75d59b223c2f318eb4deec40e70fe2c0e37c714790d88116"
+    },
+    {
+      "index": 11,
+      "file_name": "oxm3m1cu8tgitl.jpg",
+      "landmark": "CN Tower",
+      "city": "Toronto",
+      "country": "Canada",
+      "accepted_landmark_aliases": [
+        "CN Tower"
+      ],
+      "accepted_city_aliases": [
+        "Toronto"
+      ],
+      "accepted_country_aliases": [
+        "Canada"
+      ],
+      "source_page_url": "https://www.britannica.com/topic/CN-Tower",
+      "downloaded_image_url": "https://cdn.britannica.com/62/85162-050-C8698F1F/CN-Tower-Toronto.jpg",
+      "sha256": "c6eeabd77bbaf6c227d4e2a292f18831b594ec8d242b44fe9433e81629c4c071"
+    },
+    {
+      "index": 12,
+      "file_name": "35dot43ize3bgv.jpg",
+      "landmark": "Empire State Building",
+      "city": "New York City",
+      "country": "United States",
+      "accepted_landmark_aliases": [
+        "Empire State Building"
+      ],
+      "accepted_city_aliases": [
+        "New York City",
+        "New York",
+        "NYC"
+      ],
+      "accepted_country_aliases": [
+        "United States",
+        "United States of America",
+        "USA",
+        "US"
+      ],
+      "source_page_url": "https://www.britannica.com/topic/Empire-State-Building",
+      "downloaded_image_url": "https://cdn.britannica.com/73/114973-050-2DC46083/Midtown-Manhattan-Empire-State-Building-New-York.jpg",
+      "sha256": "6ee06a99ba298d5c13a8bbe7d604563c8478a73695a0c37611d068966873366c"
+    },
+    {
+      "index": 13,
+      "file_name": "ka991hhnu26eg2.jpg",
+      "landmark": "Petronas Twin Towers",
+      "city": "Kuala Lumpur",
+      "country": "Malaysia",
+      "accepted_landmark_aliases": [
+        "Petronas Twin Towers",
+        "Petronas Towers"
+      ],
+      "accepted_city_aliases": [
+        "Kuala Lumpur"
+      ],
+      "accepted_country_aliases": [
+        "Malaysia"
+      ],
+      "source_page_url": "https://www.britannica.com/topic/Petronas-Twin-Towers",
+      "downloaded_image_url": "https://cdn.britannica.com/65/3465-050-AA5092D6/Petronas-Twin-Towers-Malaysia-Kuala-Lumpur-Associates.jpg",
+      "sha256": "a0e468774de4cea3bb53505b30818593d4b87bc0825947c3923ba6a7cb692a49"
+    },
+    {
+      "index": 14,
+      "file_name": "lt8zi6wktxwdm7.jpg",
+      "landmark": "Great Pyramid of Giza",
+      "city": "Giza",
+      "country": "Egypt",
+      "accepted_landmark_aliases": [
+        "Great Pyramid of Giza",
+        "Pyramid of Khufu",
+        "Khufu Pyramid"
+      ],
+      "accepted_city_aliases": [
+        "Giza"
+      ],
+      "accepted_country_aliases": [
+        "Egypt"
+      ],
+      "source_page_url": "https://www.britannica.com/place/Great-Pyramid-of-Giza",
+      "downloaded_image_url": "https://cdn.britannica.com/75/178475-050-E9212E3D/Pyramid-of-Khufu-Giza-Egypt.jpg",
+      "sha256": "7945799f96876496ee8e08bee1274028da2fef3e4c22ed38208c434e510a0bfb"
+    },
+    {
+      "index": 15,
+      "file_name": "89bmiq6gu6y5wb.jpg",
+      "landmark": "Leaning Tower of Pisa",
+      "city": "Pisa",
+      "country": "Italy",
+      "accepted_landmark_aliases": [
+        "Leaning Tower of Pisa",
+        "Tower of Pisa"
+      ],
+      "accepted_city_aliases": [
+        "Pisa"
+      ],
+      "accepted_country_aliases": [
+        "Italy"
+      ],
+      "source_page_url": "https://www.britannica.com/topic/Leaning-Tower-of-Pisa",
+      "downloaded_image_url": "https://cdn.britannica.com/88/80588-050-8D944BFE/Leaning-Tower-of-Pisa-Italy.jpg",
+      "sha256": "0ed0dbbffb5308eb8c02c1d31f439a3c0dc4e85a901fde1fce7c18272a5ce09e"
+    },
+    {
+      "index": 16,
+      "file_name": "0jj4nac6crjgvu.jpg",
+      "landmark": "Louvre Pyramid",
+      "city": "Paris",
+      "country": "France",
+      "accepted_landmark_aliases": [
+        "Louvre Pyramid",
+        "Pyramide du Louvre"
+      ],
+      "accepted_city_aliases": [
+        "Paris"
+      ],
+      "accepted_country_aliases": [
+        "France"
+      ],
+      "source_page_url": "https://www.britannica.com/topic/Louvre-Pyramid",
+      "downloaded_image_url": "https://cdn.britannica.com/74/250074-050-DD110B36/IM-Pei-designed-pyramid-Louvre-Paris-France.jpg",
+      "sha256": "b278827e1d8f86fb999bbad6c5ae4efeccc514b18c34ddd666b0b38dfb00818c"
+    },
+    {
+      "index": 17,
+      "file_name": "occ4ev59zwove7.jpg",
+      "landmark": "Temple of Heaven",
+      "city": "Beijing",
+      "country": "China",
+      "accepted_landmark_aliases": [
+        "Temple of Heaven",
+        "Tiantan"
+      ],
+      "accepted_city_aliases": [
+        "Beijing"
+      ],
+      "accepted_country_aliases": [
+        "China"
+      ],
+      "source_page_url": "https://www.britannica.com/topic/Temple-of-Heaven",
+      "downloaded_image_url": "https://cdn.britannica.com/41/178641-050-0FCF7D98/Hall-of-Prayer-for-Good-Harvests-complex.jpg",
+      "sha256": "1b0251825756e3da3588ceac00d2ea910fb5bf098afbcd5bea92cba01d7d39cb"
+    },
+    {
+      "index": 18,
+      "file_name": "0z4nwcsdof6gn0.jpg",
+      "landmark": "Hagia Sophia",
+      "city": "Istanbul",
+      "country": "Turkey",
+      "accepted_landmark_aliases": [
+        "Hagia Sophia",
+        "Ayasofya"
+      ],
+      "accepted_city_aliases": [
+        "Istanbul"
+      ],
+      "accepted_country_aliases": [
+        "Turkey"
+      ],
+      "source_page_url": "https://www.britannica.com/topic/Hagia-Sophia",
+      "downloaded_image_url": "https://cdn.britannica.com/24/61624-050-F010995F/shore-Hagia-Sophia-Istanbul-Bosporus.jpg",
+      "sha256": "46cffe61cd9be6f67b5b83e5e88ea83798e9852422abd46726a35c6b4573164b"
+    },
+    {
+      "index": 19,
+      "file_name": "95nwaxch6j7z5l.jpg",
+      "landmark": "Gateway Arch",
+      "city": "St. Louis",
+      "country": "United States",
+      "accepted_landmark_aliases": [
+        "Gateway Arch"
+      ],
+      "accepted_city_aliases": [
+        "St. Louis",
+        "Saint Louis"
+      ],
+      "accepted_country_aliases": [
+        "United States",
+        "United States of America",
+        "USA",
+        "US"
+      ],
+      "source_page_url": "https://www.britannica.com/topic/Gateway-Arch",
+      "downloaded_image_url": "https://cdn.britannica.com/69/151669-050-A6EB7F8E/Gateway-Arch-west-bank-Mississippi-River-Missouri.jpg",
+      "sha256": "cafee372bbfb49e4eba524f4313832ce232e5ad7547a53e68173f82348aa088d"
+    },
+    {
+      "index": 20,
+      "file_name": "8c28c0eciwm87e.jpg",
+      "landmark": "Golden Gate Bridge",
+      "city": "San Francisco",
+      "country": "United States",
+      "accepted_landmark_aliases": [
+        "Golden Gate Bridge"
+      ],
+      "accepted_city_aliases": [
+        "San Francisco"
+      ],
+      "accepted_country_aliases": [
+        "United States",
+        "United States of America",
+        "USA",
+        "US"
+      ],
+      "source_page_url": "https://www.britannica.com/topic/Golden-Gate-Bridge",
+      "downloaded_image_url": "https://cdn.britannica.com/72/972-050-24D5F532/Golden-Gate-Bridge-San-Francisco.jpg",
+      "sha256": "42902dde41eb07b99c64a74ebb026117bda74bdb15abc21d62d30faab289d53b"
+    },
+    {
+      "index": 21,
+      "file_name": "9eb8ti0sa6j096.jpg",
+      "landmark": "Atomium",
+      "city": "Brussels",
+      "country": "Belgium",
+      "accepted_landmark_aliases": [
+        "Atomium"
+      ],
+      "accepted_city_aliases": [
+        "Brussels"
+      ],
+      "accepted_country_aliases": [
+        "Belgium"
+      ],
+      "source_page_url": "https://www.britannica.com/topic/Atomium",
+      "downloaded_image_url": "https://cdn.britannica.com/39/250239-050-CBB81DEC/Atomium-Brussels-Belgium.jpg",
+      "sha256": "6ff4dfa24d84016dc0e97f223c2a26b450e62c8f26c924095dfd4bc9d959d4cc"
+    },
+    {
+      "index": 22,
+      "file_name": "oss10faube44vg.jpg",
+      "landmark": "The Shard",
+      "city": "London",
+      "country": "United Kingdom",
+      "accepted_landmark_aliases": [
+        "The Shard",
+        "Shard London Bridge"
+      ],
+      "accepted_city_aliases": [
+        "London"
+      ],
+      "accepted_country_aliases": [
+        "United Kingdom",
+        "UK",
+        "Great Britain",
+        "Britain"
+      ],
+      "source_page_url": "https://www.britannica.com/place/The-Shard",
+      "downloaded_image_url": "https://cdn.britannica.com/29/232029-050-2F28EA0D/The-Shard-by-Renzo-Piano-London-England.jpg",
+      "sha256": "d444e9f7df73bd6ee776535db51db36be307afb838892940308c6a2a526f4134"
+    },
+    {
+      "index": 23,
+      "file_name": "adkh19jtsqd5je.jpg",
+      "landmark": "One World Trade Center",
+      "city": "New York City",
+      "country": "United States",
+      "accepted_landmark_aliases": [
+        "One World Trade Center",
+        "One WTC",
+        "Freedom Tower"
+      ],
+      "accepted_city_aliases": [
+        "New York City",
+        "New York",
+        "NYC"
+      ],
+      "accepted_country_aliases": [
+        "United States",
+        "United States of America",
+        "USA",
+        "US"
+      ],
+      "source_page_url": "https://www.britannica.com/place/One-World-Trade-Center",
+      "downloaded_image_url": "https://cdn.britannica.com/23/231223-050-5AF2D96E/Skyline-with-One-World-Trade-Center-Lower-Manhattan-New-York-City.jpg",
+      "sha256": "c57c34fa61f2b51e50646298c9327b85711e5a0b0448aa0cc4d629550c00113e"
+    },
+    {
+      "index": 24,
+      "file_name": "0we0ech08qejhn.jpg",
+      "landmark": "Chateau Frontenac",
+      "city": "Quebec City",
+      "country": "Canada",
+      "accepted_landmark_aliases": [
+        "Chateau Frontenac",
+        "Château Frontenac",
+        "Fairmont Le Château Frontenac"
+      ],
+      "accepted_city_aliases": [
+        "Quebec City",
+        "Québec City",
+        "Quebec"
+      ],
+      "accepted_country_aliases": [
+        "Canada"
+      ],
+      "source_page_url": "https://www.britannica.com/topic/Chateau-Frontenac",
+      "downloaded_image_url": "https://cdn.britannica.com/97/93697-050-1B84BCF9/Chateau-Frontenac-Quebec.jpg",
+      "sha256": "8c44bcceee1cb98400c5f3f294e30fbba45fe884e0381f9d156f262f4c48e916"
+    },
+    {
+      "index": 25,
+      "file_name": "rxkfnd7rnm6p4z.jpg",
+      "landmark": "Angkor Wat",
+      "city": "Siem Reap",
+      "country": "Cambodia",
+      "accepted_landmark_aliases": [
+        "Angkor Wat"
+      ],
+      "accepted_city_aliases": [
+        "Siem Reap"
+      ],
+      "accepted_country_aliases": [
+        "Cambodia"
+      ],
+      "source_page_url": "https://www.britannica.com/topic/Angkor-Wat",
+      "downloaded_image_url": "https://cdn.britannica.com/56/122156-050-F5B469C8/overview-complex-Angkor-Wat-Cambodia.jpg",
+      "sha256": "39bba43020e64f9dd8e8c02c5862de558d5c34ce28569dfe18984d8c8e33fd2e"
+    },
+    {
+      "index": 26,
+      "file_name": "k6bo7zw13l8218.jpg",
+      "landmark": "Milan Cathedral",
+      "city": "Milan",
+      "country": "Italy",
+      "accepted_landmark_aliases": [
+        "Milan Cathedral",
+        "Duomo di Milano",
+        "Milan Duomo"
+      ],
+      "accepted_city_aliases": [
+        "Milan"
+      ],
+      "accepted_country_aliases": [
+        "Italy"
+      ],
+      "source_page_url": "https://www.britannica.com/place/Milan-Cathedral",
+      "downloaded_image_url": "https://cdn.britannica.com/41/250241-050-75947720/Milan-Duomo-in-Milan-Italy.jpg",
+      "sha256": "4e8825df7b5e7d4a9db1ce4bba123be1828ea897eaa1288eb70df2fa08caff21"
+    },
+    {
+      "index": 27,
+      "file_name": "e9hn43i8u3nnyk.jpg",
+      "landmark": "Kiyomizu-dera",
+      "city": "Kyoto",
+      "country": "Japan",
+      "accepted_landmark_aliases": [
+        "Kiyomizu-dera",
+        "Kiyomizu Temple"
+      ],
+      "accepted_city_aliases": [
+        "Kyoto"
+      ],
+      "accepted_country_aliases": [
+        "Japan"
+      ],
+      "source_page_url": "https://www.japan-guide.com/e/e3901.html",
+      "downloaded_image_url": "https://www.japan-guide.com/g18/3901_top.jpg",
+      "sha256": "2931f4923f0d6eeaab4fed9213875ad15f27b275e16e9504ba22d31c88363e8a"
+    },
+    {
+      "index": 28,
+      "file_name": "7hmb5cxco0pijr.jpg",
+      "landmark": "Trevi Fountain",
+      "city": "Rome",
+      "country": "Italy",
+      "accepted_landmark_aliases": [
+        "Trevi Fountain",
+        "Fontana di Trevi"
+      ],
+      "accepted_city_aliases": [
+        "Rome"
+      ],
+      "accepted_country_aliases": [
+        "Italy"
+      ],
+      "source_page_url": "https://www.britannica.com/topic/Trevi-Fountain",
+      "downloaded_image_url": "https://cdn.britannica.com/90/131690-050-2D578F74/Trevi-Fountain-Rome-Nicola-Salvi.jpg",
+      "sha256": "c98763a2340dc7b3a01fcbd920730538e971adb6b6ed06499fdbb40c4ce4314d"
+    },
+    {
+      "index": 29,
+      "file_name": "b9ejmzuu7a6trl.jpg",
+      "landmark": "Buckingham Palace",
+      "city": "London",
+      "country": "United Kingdom",
+      "accepted_landmark_aliases": [
+        "Buckingham Palace"
+      ],
+      "accepted_city_aliases": [
+        "London"
+      ],
+      "accepted_country_aliases": [
+        "United Kingdom",
+        "UK",
+        "Great Britain",
+        "Britain"
+      ],
+      "source_page_url": "https://www.britannica.com/topic/Buckingham-Palace",
+      "downloaded_image_url": "https://cdn.britannica.com/94/148994-050-3EFF8DCB/Buckingham-Palace-Queen-Victoria-Memorial-London-statue.jpg",
+      "sha256": "93a4a21f2a1f0299aa331d5e3a87d1bb51608efccd5aa9f4b15c4aec6917775b"
+    },
+    {
+      "index": 30,
+      "file_name": "2emaapje1hgx8l.jpg",
+      "landmark": "Notre-Dame de Paris",
+      "city": "Paris",
+      "country": "France",
+      "accepted_landmark_aliases": [
+        "Notre-Dame de Paris",
+        "Notre Dame Cathedral",
+        "Notre-Dame Cathedral"
+      ],
+      "accepted_city_aliases": [
+        "Paris"
+      ],
+      "accepted_country_aliases": [
+        "France"
+      ],
+      "source_page_url": "https://www.britannica.com/topic/Notre-Dame-de-Paris",
+      "downloaded_image_url": "https://cdn.britannica.com/29/255529-050-63A22A3C/notre-dame-de-paris-cathedral-paris-france.jpg",
+      "sha256": "eca0f3d112d53cf09b2d5fc1b815a5b3568b1ee27706621ab2ef31816c48ec15"
+    }
+  ]
+}

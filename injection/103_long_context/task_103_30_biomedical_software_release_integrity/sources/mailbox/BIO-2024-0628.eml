@@ -1,0 +1,36 @@
+Message-ID: <20221222152527.qusnziorhfuab65z@nileshpatra.info>
+X-Clawbench-ID: BIO-2024-0628
+Date: Thu, 22 Dec 2022 20:55:27 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: Pierre Gruet <pgt@debian.org>
+Subject: Re: [RFH] aeonbits-owner and capsule-maven-nextflow
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_12_msg00098.html
+
+On Thu, Dec 22, 2022 at 04:07:45PM +0100, Pierre Gruet wrote:
+> In passing: what do you think of the current RC bug of pplacer? It would
+> cause the removal of sepp and tipp which seem to have quite a few users, but
+> I am not sure of the direction to take to fix it.
+
+I did take a look at mcl's ocaml support and tried re-applying this patch
+but unfortunately a lot of code in mcl has changed since previous version
+and I do not think it is possible to get the ball rolling until someone
+explicitly writes the ocaml interface for it (and I can't be the "someone" here)
+
+I see three options:
+
+1. Revert mcl to past version
+
+2. Wait for upstream reaction on ocaml support for mcl -- they said someone
+might be interested to look into it but the wait time is not definite
+
+3. Disable build time tests which use pplacer and move
+the depends on pplacer to suggests; mention in README.Debian to get pplacer
+from github or something similar
+
+
+--
+Best,
+Nilesh

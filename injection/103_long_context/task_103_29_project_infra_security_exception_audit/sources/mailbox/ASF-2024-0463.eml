@@ -1,0 +1,32 @@
+Message-ID: <CALK=YjP7kk11OYt4X=K2ZdA90QkQaQVgSH-b4LkYt+XQP6MJ1g@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0463
+Date: Wed, 15 Feb 2023 08:57:04 -0500
+From: Eric Covener <covener@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] broader RTC exception for 2.4.x CI changes
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-02.mbox
+
+On Wed, Feb 15, 2023 at 8:49 AM Joe Orton <jorton@redhat.com> wrote:
+>
+> Per my previous Travis is dead, long live GitHub actions.
+>
+> I propose to broaden the RTC exception in 2.4.x/STATUS to allow CI
+> config changes and scripts to be merged from trunk:
+>
+> Index: STATUS
+> ===================================================================
+> --- STATUS      (revision 1907679)
+> +++ STATUS      (working copy)
+> @@ -141,7 +141,7 @@
+>      . non-Unix, single-platform code
+>      . routine APLOGNO() backports
+>      . .gdbinit
+> -    . Travis integration: .travis.yml and test/travis*.sh
+> +    . CI configuration and scripts
+>      . mod_tls
+
+
++1

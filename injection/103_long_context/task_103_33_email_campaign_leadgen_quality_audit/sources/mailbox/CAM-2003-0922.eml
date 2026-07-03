@@ -1,0 +1,49 @@
+Message-ID: <015101c23ff2$bb9ded40$640a000a@golden>
+X-Clawbench-ID: CAM-2003-0922
+Date: Fri, 09 Aug 2002 15:18:47 -0700
+From: Gordon Mohr <gojomo@usa.net>
+To: fork@spamassassin.taint.org
+Subject: Re: David Friedman: Mail Me the Money!
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00994.ffa3e87109fc0b9d3c94ee376db7f549
+
+My ideal mailwall will allow message passthrough in many ways:
+
+  - Sender membership on my personal whitelist or any one of
+    many other external whitelists I respect
+  - Payment of a small fee (via a website and PayPal link)
+  - Demonstration of special per-message effort, either
+    via...
+    - a computational challenge (hashcash)
+    or
+    - other challenge that requires human-level flexibility &
+      followthrough (sender manual whitelisting)
+  - Inclusion of a legally-enforceable guarantee that the
+    mail is not an unsolicited commercial pitch -- one
+    example of this class of guarantee would be a posted
+    bond
+  - By convincing some analysis software agent of mine that
+    I want to see the mail, based on its content and
+    distribution list
+
+There's no need to do only one. Some might overlap; the manual
+process for passing a message through might require the assertion
+of a legally-enforceable guarantee about the messages' contents.
+Passing certain tests once might add an address to the persistent
+whitelist.
+
+Any slightly determined and legitimate correspondent would be
+able to find multiple ways to get their mail read, while spammers
+would face a situation where the marginal cost of reaching me
+is much, much greater than the expected return.
+
+Some economically irrational spammers (and religious/political
+zealots) would get through, but such traffic should be a
+background trickle rather than an annoying torrent.
+
+- Gordon
+
+
+http://xent.com/mailman/listinfo/fork

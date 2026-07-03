@@ -1,0 +1,29 @@
+Message-ID: <077B9EE0-2B01-4971-9ECC-B27585414F40@eissing.org>
+X-Clawbench-ID: ASF-2024-0177
+Date: Wed, 21 Sep 2022 13:09:47 +0200
+From: "Stefan Eissing via dev" <dev@httpd.apache.org>
+To: dev@httpd.apache.org
+Subject: test logging
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-09.mbox
+
+FYI: pytest now logs test case names in the server log. This makes it
+easier to find the context in which unexpected errors are logged on the server
+side. So, you'll see in error.log lines as:
+
+[Time] [aptest:info] [pid xxxx] [client 127.0.0.1:50063] test[test_h2_600_01]: GET / HTTP/1.1
+...
+
+
+Cheers,
+Stefan
+
+Background:
+- a new mod_aptest is loaded into the server that inspects all read requests
+  for the incoming header 'AP-Test-Name' and info logs it, if found, together
+  with the request line
+- all pytest tests invoking curl or nghttp send the header with the current test
+  name. This works nicely with using pytest fixtures without you having to add
+  anything in your test code.

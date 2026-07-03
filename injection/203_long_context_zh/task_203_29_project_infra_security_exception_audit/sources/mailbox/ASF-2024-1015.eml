@@ -1,0 +1,33 @@
+Message-ID: <9EDCFD5A-BE79-4DFB-A222-D1F236FB9C0A@vmware.com>
+X-Clawbench-ID: ASF-2024-1015
+Date: Wed, 7 Dec 2022 22:07:18 +0000
+From: =?utf-8?B?SmVzw7pzIEdvbnrDoWxleg==?= <jesusgm@vmware.com>
+To: "dev@httpd.apache.org" <dev@httpd.apache.org>
+Subject: Re: mod_wasm: Contributing Upstream to Apache
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-12.mbox
+
+Hi everyone,
+
+
+We have just posted a new article<https://wasmlabs.dev/articles/multi-module-support-in-mod-wasm-0-10-0/> about mod_wasm v0.10.0 and published a new container<https://github.com/vmware-labs/mod_wasm/pkgs/container/httpd-mod-wasm> to try different mod_wasm demos in two simple steps:
+
+
+  1.  Run the container:
+
+docker run -p 8080:8080 ghcr.io/vmware-labs/httpd-mod-wasm:latest
+
+
+  1.  Open browser at:
+     *   http://localhost:8080/wordpress for a WordPress demo with PHP 7.3.33.
+     *   http://localhost:8080/http-request-viewer for a HTTP Request Viewer demo with Python 3.11.
+
+
+Hope this helps to visualize the ability of supporting different language runtimes (present and future ones!) in a secure way with one single module.
+
+
+Looking forward to your feedback.
+
+Jesús

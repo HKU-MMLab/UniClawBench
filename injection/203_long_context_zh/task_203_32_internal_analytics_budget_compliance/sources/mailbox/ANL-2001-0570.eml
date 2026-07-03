@@ -1,0 +1,103 @@
+Message-ID: <3f5be7bb42ec4cc9e302fb47af980c75@enron.com>
+X-Clawbench-ID: ANL-2001-0570
+Date: 2000-07-31T13:05:00-03:00
+From: Vladimir Gorny <Vladimir Gorny>
+To: Grant Masson <Grant Masson>, Vince J Kaminski <Vince J Kaminski>, Naveen Andrews <Naveen Andrews>, Pinnamaneni Krishnarao <Pinnamaneni Krishnarao>, Scott Stoness <Scott Stoness>, David Foti <David Foti>, John Neslage <John Neslage>, Minal Dalia <Minal Dalia>, Andy Knight <Andy Knight>
+Subject: Regulatory VaR
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Enron kaminski-v public mailbox index.json
+X-Original-Folder: kaminski-v_002/kaminski-v/All documents
+
+Tentative agenda for the Research Lunch meeting on Wednesday, August 2nd at
+
+11:30 am:
+
+
+Objective: Develop a methodology and a model for estimating risks of the EES
+
+Regulatory portfolio.
+
+
+Discussion Items:
+
+
+1. Elements of the Regulatory portfolio
+
+
+ - Transmission and Distribution (T&D) Positions
+
+ - Bundled Tariffs (full utility tariffs that are in place prior to
+
+deregulation)
+
+ - Competitive Transition Charges (CTC) Positions
+
+ - Diversification between the three risk elements
+
+
+2. Risk drivers in each bucket (Scott Stoness of EES to provide more detail)
+
+
+ - T&D: interest rates
+
+ - Bundled Tariffs: regulatory decisions, power prices, interest rates,
+
+inflation
+
+ - CTC: power prices, fuel prices, generation valuation, generation stack,
+
+regulatory decisions
+
+
+3. Position aggregation parameters (Scott Stoness of EES to provide
+
+suggestions)
+
+
+ - by NERC Region
+
+ - by state
+
+ - by utility
+
+ - by utility tariff
+
+
+4. Model environment
+
+
+ - Excel
+
+ - GRMS/RisktRAC
+
+ - Other
+
+
+5. VaR Parameters
+
+
+ - correlations
+
+ - factor loadings (1-factor model?)
+
+ - other
+
+
+6. EES specific issues
+
+
+ - The size of CTC positions is impacted by the roll-off date, which is
+
+subject to change due to a number of factors (jump diffusion?)
+
+ - T&D and Bundled Tariffs do not move daily, but rather once every 2-3 years
+
+(event driven?)
+
+
+Thanks, Vlady.
+
+
+PS: Shirley, could you please make the lunch arrangements accordingly.

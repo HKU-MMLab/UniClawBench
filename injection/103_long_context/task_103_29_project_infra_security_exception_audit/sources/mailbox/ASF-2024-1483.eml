@@ -1,0 +1,71 @@
+Message-ID: <f3e629cb-35d1-0cd6-3b8c-e357064b4f9a@wanadoo.fr>
+X-Clawbench-ID: ASF-2024-1483
+Date: Tue, 4 Apr 2023 20:33:44 +0200
+From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+To: dev@httpd.apache.org, Thomas Meyer <thomas@m3y3r.de>
+Subject: Re: [RFC] JSON logging support for httpd 2.4.x
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-04.mbox
+
+Le 31/03/2023 à 09:04, Thomas Meyer a écrit :
+> Hi,
+>
+> Sadly I got no feedback at all.
+>
+> What is the preferred way for contributions?
+
+Hi,
+
+mailing list is fine.
+You can also use github if it is easier for you.
+
+>
+> I also did raise a PR here with some fixes on top of this patch series:
+>
+> https://github.com/apache/httpd/pull/353
+> <https://github.com/apache/httpd/pull/353>
+>
+> Mfg
+> Thomas
+>
+> Am 24. März 2023 22:54:08 MEZ schrieb Thomas Meyer <thomas@m3y3r.de>:
+>
+>
+>     Hi,
+>
+>     please have a look at this preliminarily work to support JSON output in mod_log_config.
+>
+>     It's still unfinished and has probably a lot of bugs, but this is to show the general idea
+>     of my solution.
+>
+>     Help and feedback is most welcome.
+>
+>     Mfg
+>     thomas
+>
+>
+> --
+> Diese Nachricht wurde von meinem Android-Gerät mit K-9 Mail gesendet.
+
+As you have already notices, there is already a mod_log_json in trunk
+(see [1])
+
+AFAIK, it is not documented.
+
+Have you looked at it first?
+Does it match your needs?
+
+There is also an old WiP related to make ErrorLog logging modular.
+I've not looked at it since a LOOOONG time. But do you think it would help?
+
+
+CJ
+
+
+[1]:
+https://svn.apache.org/viewvc/httpd/httpd/trunk/modules/loggers/mod_log_json.c?view=markup&sortby=date
+
+[2]:
+http://people.apache.org/~jkaluza/patches/httpd-2.4.x-errorlog_provider.patch

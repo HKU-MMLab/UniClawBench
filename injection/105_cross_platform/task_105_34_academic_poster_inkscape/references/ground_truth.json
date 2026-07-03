@@ -1,0 +1,161 @@
+{
+  "task_id": "task_105_34_academic_poster_inkscape",
+  "schema_notes": "anchored to arxiv 2310.06825 (Mistral 7B) v1 PDF + 5 Wikipedia revisions PINNED via &oldid= URL parameter (immutable). The executor must (1) wget the paper, (2) extract its meta with poppler, (3) curl Wikipedia revids, (4) cross-check 5 concepts against the paper text, (5) author a single composite Inkscape SVG poster panel (≥1 rect + ≥8 text elements covering title/authors/page-count/5 concept boxes), (6) inkscape SVG→PDF export, (7) Evince screenshot. The Inkscape platform value is real composition (multiple visual elements with structure) — flat text dump fails the SVG and PDF checks. All values fetched 2026-05-02.",
+  "reference_date": "2026-05-02",
+  "ground_truth": {
+    "paper": {
+      "arxiv_id": "2310.06825",
+      "pdf_url": "https://arxiv.org/pdf/2310.06825",
+      "title": "Mistral 7B",
+      "page_count": 9,
+      "first_author": "Albert Q. Jiang",
+      "first_three_authors": [
+        "Albert Q. Jiang",
+        "Alexandre Sablayrolles",
+        "Arthur Mensch"
+      ],
+      "author_count": 18,
+      "authors_ordered": [
+        "Albert Q. Jiang",
+        "Alexandre Sablayrolles",
+        "Arthur Mensch",
+        "Chris Bamford",
+        "Devendra Singh Chaplot",
+        "Diego de las Casas",
+        "Florian Bressand",
+        "Gianna Lengyel",
+        "Guillaume Lample",
+        "Lucile Saulnier",
+        "Lélio Renard Lavaud",
+        "Marie-Anne Lachaux",
+        "Pierre Stock",
+        "Teven Le Scao",
+        "Thibaut Lavril",
+        "Thomas Wang",
+        "Timothée Lacroix",
+        "William El Sayed"
+      ]
+    },
+    "wiki_concepts": [
+      {
+        "name": "Mistral_AI",
+        "wiki_revision_id": 1352105656,
+        "wiki_url": "https://en.wikipedia.org/wiki/Mistral_AI?oldid=1352105656",
+        "first_para_first_100_chars": "Mistral AI SAS (French: [mistʁal]) is a French artificial intelligence (AI) company, headquartered i",
+        "paper_mentions": true,
+        "paper_marker": "mistralai",
+        "verification_status": "verified_in_paper"
+      },
+      {
+        "name": "Large_language_model",
+        "wiki_revision_id": 1351510195,
+        "wiki_url": "https://en.wikipedia.org/wiki/Large_language_model?oldid=1351510195",
+        "first_para_first_100_chars": "A large language model (LLM) is a neural network trained on a vast amount of text for natural langua",
+        "paper_mentions": true,
+        "paper_marker": "large language model",
+        "verification_status": "verified_in_paper"
+      },
+      {
+        "name": "Mixture_of_experts",
+        "wiki_revision_id": 1346279093,
+        "wiki_url": "https://en.wikipedia.org/wiki/Mixture_of_experts?oldid=1346279093",
+        "first_para_first_100_chars": "Mixture of experts (MoE) is a machine learning technique where multiple expert networks (learners) a",
+        "paper_mentions": false,
+        "paper_marker": "mixture of experts",
+        "verification_status": "wiki_only"
+      },
+      {
+        "name": "Generative_pre-trained_transformer",
+        "wiki_revision_id": 1351783271,
+        "wiki_url": "https://en.wikipedia.org/wiki/Generative_pre-trained_transformer?oldid=1351783271",
+        "first_para_first_100_chars": "A generative pre-trained transformer (GPT) is a type of large language model (LLM) that is widely us",
+        "paper_mentions": false,
+        "paper_marker": "pre-trained transformer or GPT (neither appears in the paper body)",
+        "verification_status": "wiki_only"
+      },
+      {
+        "name": "Open-source_artificial_intelligence",
+        "wiki_revision_id": 1350744847,
+        "wiki_url": "https://en.wikipedia.org/wiki/Open-source_artificial_intelligence?oldid=1350744847",
+        "first_para_first_100_chars": "Open-source artificial intelligence, as defined by the Open Source Initiative, is an AI system that ",
+        "paper_mentions": true,
+        "paper_marker": "open-source / Apache 2.0",
+        "verification_status": "verified_in_paper"
+      }
+    ],
+    "cross_check_csv_rows": [
+      {"concept": "Mistral_AI",                          "paper_mentions": "true",  "wiki_revision_id": 1352105656, "verification_status": "verified_in_paper"},
+      {"concept": "Large_language_model",                "paper_mentions": "true",  "wiki_revision_id": 1351510195, "verification_status": "verified_in_paper"},
+      {"concept": "Mixture_of_experts",                  "paper_mentions": "false", "wiki_revision_id": 1346279093, "verification_status": "wiki_only"},
+      {"concept": "Generative_pre-trained_transformer", "paper_mentions": "false", "wiki_revision_id": 1351783271, "verification_status": "wiki_only"},
+      {"concept": "Open-source_artificial_intelligence","paper_mentions": "true",  "wiki_revision_id": 1350744847, "verification_status": "verified_in_paper"}
+    ],
+    "poster_svg_structure_requirements": {
+      "rationale": "The Inkscape platform value is real composition: structured layout with a background/border rect plus multiple text elements arranged into a poster panel — not a flat text dump.",
+      "min_root_width": 600,
+      "min_root_height": 600,
+      "min_rect_count": 1,
+      "min_text_count": 8,
+      "expected_text_categories": [
+        "title (1 text)",
+        "authors (1 text, may be split across multiple)",
+        "page_count (1 text)",
+        "5 concept boxes (≥5 text, can be more if split into name/summary/marker)"
+      ]
+    },
+    "poster_pdf_required_strings": {
+      "rationale": "After inkscape exports the SVG to PDF, pdftotext should be able to extract every load-bearing string. Order does not matter; case-sensitive substring match unless noted.",
+      "must_contain_substrings": [
+        "Mistral 7B",
+        "Albert Q. Jiang",
+        "Alexandre Sablayrolles",
+        "Arthur Mensch",
+        "9"
+      ],
+      "must_contain_concept_names_normalized": [
+        "Mistral AI",
+        "Large language model",
+        "Mixture of experts",
+        "Generative pre-trained transformer",
+        "Open-source artificial intelligence"
+      ],
+      "concept_name_normalization": "underscore <-> space accepted (e.g., 'Mistral_AI' or 'Mistral AI' both count)",
+      "marker_count_required": {
+        "verified_count": 3,
+        "wiki_only_count": 2,
+        "accepted_encodings": [
+          "Unicode U+2713 (✓) for verified, U+2717 (✗) for wiki_only",
+          "ASCII 'VERIFIED' for verified, 'WIKI ONLY' for wiki_only"
+        ],
+        "rationale": "Either encoding is fine — what matters is the 3-vs-2 split matches the cross_check.csv."
+      }
+    },
+    "deliverables": {
+      "paper_meta_json": "/tmp_workspace/results/paper_meta.json",
+      "wiki_lookups_json": "/tmp_workspace/results/wiki_lookups.json",
+      "cross_check_csv": "/tmp_workspace/results/cross_check.csv",
+      "poster_svg": "/tmp_workspace/work/poster.svg",
+      "poster_panel_pdf": "/tmp_workspace/results/poster_panel.pdf",
+      "evince_screenshot_png": "/tmp_workspace/results/evince_screenshot.png",
+      "multi_lang_availability_json": "/tmp_workspace/results/multi_lang_availability.json"
+    },
+    "evince_screenshot_constraints": {
+      "min_width_px": 800,
+      "min_height_px": 500,
+      "min_distinct_non_white_colors": 4
+    },
+    "multi_lang_availability_expected": {
+      "rationale": "Cross-Wikipedia language coverage via the MediaWiki langlinks API on the EN page of each anchored concept. Pulled 2026-05-02. Out of the 5 concepts, 4 are present on Japanese Wikipedia and all 5 are present on Chinese Wikipedia; only Mixture_of_experts is missing a ja edition. The asymmetry (zh more complete than ja) is a stable, easily verifiable cross-platform signal. Eval allows >=4 of 5 to match.",
+      "checked_at": "2026-05-02",
+      "concepts": [
+        {"name": "Mistral_AI",                            "en": "yes", "zh": "yes", "ja": "yes"},
+        {"name": "Large_language_model",                  "en": "yes", "zh": "yes", "ja": "yes"},
+        {"name": "Mixture_of_experts",                    "en": "yes", "zh": "yes", "ja": "no"},
+        {"name": "Generative_pre-trained_transformer",   "en": "yes", "zh": "yes", "ja": "yes"},
+        {"name": "Open-source_artificial_intelligence",   "en": "yes", "zh": "yes", "ja": "yes"}
+      ],
+      "min_matching_concepts": 4,
+      "checker_command_hint": "curl 'https://en.wikipedia.org/w/api.php?action=query&titles=<C>&prop=langlinks&lllimit=500&format=json' | jq '.query.pages|to_entries[0].value.langlinks|map(.lang)'"
+    }
+  }
+}

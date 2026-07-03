@@ -1,0 +1,43 @@
+task_id: task_205_13_singapore_web_plan
+category: 205_cross_platform_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+recording: none
+headed: auto
+task: |
+  你是一名第一次到新加坡出差的游客。
+  请为下周六制定计划，那天你从 13:30 到 18:30 有空，固定
+  出发点是 Raffles Place MRT Station。如果下周六是公共
+  假日、闭馆日、特殊营业时间日、门票售罄，或官方页面
+  没有提供足够的针对该日期的开放/入场信息，则改用
+  下一个周六，并说明原因。只使用浏览器来制定一个
+  半日游计划。候选景点仅限于 National Gallery
+  Singapore、Gardens by the Bay、ArtScience Museum 和 Singapore Botanic
+  Gardens。
+
+  你需要至少访问 2 个官方景点网站，查看所选日期的开放
+  时间、最后入场时间以及预约/门票规则；用地图网页查看从
+  出发点出发以及各景点之间的通行时间；找一个候选咖啡馆
+  网页确认营业时间；查看一个公共交通/路线网页以核实主要
+  路段；然后将结果写入：
+
+      /tmp_workspace/results/singapore_sat_trip_5p.md
+
+  最终路线必须是 2 个景点加 1 个休息点，并且必须满足：
+  总时长不超过 5 小时，每段单独换乘最好不超过
+  35 分钟，且没有任何规则明显不确定的地点。该
+  Markdown 必须包含：候选检查、路线时间安排、休息点、最终
+  行程、为什么否决了其他选项。在最终计划中说明所选日期。
+codex:
+  max_user_followups: 2
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/process_evidence/National_Gallery_Singapore.png
+  - references/process_evidence/gardens_by_the_bay.png
+  - references/process_evidence/google_map_NGS_to_Gardens_by_the_bay.png
+  - references/process_evidence/google_map_RPS_to_NGS.png

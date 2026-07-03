@@ -1,0 +1,30 @@
+Message-ID: <Zprls57HrZ4mGYTM@fusion.emlwks999.eu>
+X-Clawbench-ID: BIO-2024-0969
+Date: Sat, 20 Jul 2024 00:16:19 +0200
+From: Étienne Mollier <emollier@debian.org>
+To: Steffen Möller <steffen_moeller@gmx.de>
+Subject: Re: PyMol 3.0 is out - salsa upload works for me
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_07_msg00025.html
+
+Hi Steffen,
+
+Steffen Möller, on 2024-07-18:
+> I addressed the lintian errors/warnings and introduced d/u/edam besides
+> updating d/u/metadata.
+
+Thanks, I was going to proceed to the upload, but it occurred to
+me that pymol is a debichem team package, team which I am not
+part of.  I requested salsa access to at least be able to push a
+tag and pinged the alioth list.  I thought it would be more
+appropriate that I join before begining to sponsor uploads and
+push tags.
+
+Have a nice day,  :)
+--
+  .''`.  Étienne Mollier
+ : :' :  pgp: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/pts/1, please excuse my verbosity
+   `-    on air: Pyramaze - She Who Summoned Me

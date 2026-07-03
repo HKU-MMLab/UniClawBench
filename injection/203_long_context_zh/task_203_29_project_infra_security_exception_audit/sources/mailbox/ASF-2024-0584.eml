@@ -1,0 +1,21 @@
+Message-ID: <C2F2EE15-57F4-4044-98F6-798605E6CD41@gbiv.com>
+X-Clawbench-ID: ASF-2024-0584
+Date: Wed, 10 May 2023 10:22:12 -0700
+From: "Roy T. Fielding" <fielding@gbiv.com>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Switch read/write repository from Subversion to Git
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-05.mbox
+
+> On May 4, 2023, at 1:34 AM, Ruediger Pluem <rpluem@apache.org> wrote:
+>
+> [X]: Move the read/write repository from Subversion to Git and leverage the features of Github (for now Actions and PR).
+
+I trust subversion more as a vcs, but that is outweighed by the
+convenience of Github's PR and issue management. Their integration is
+far too complete to consider retaining bugzilla as well, except as a
+source for legacy issues.
+
+....Roy

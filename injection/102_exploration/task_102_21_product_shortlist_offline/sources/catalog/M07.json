@@ -1,0 +1,22 @@
+{
+  "id": "M07",
+  "title": "Iiyama 27\" 4K USB-C ProLite",
+  "listing": {
+    "size_in": 27,
+    "resolution": "4K",
+    "usb_c": "yes",
+    "price": 419.0,
+    "condition": "new"
+  },
+  "detail": {
+    "size_in": 27,
+    "resolution": "3840x2160",
+    "usb_c_video": true,
+    "usb_c_note": "USB-C DP Alt Mode",
+    "price": 419.0,
+    "price_type": "new_direct",
+    "seller": "Iiyama EU",
+    "ships_to_us": false,
+    "availability": "in_stock_eu_only"
+  }
+}

@@ -1,0 +1,27 @@
+Message-ID: <YuIfomJINwmgiqSX@an3as.eu>
+X-Clawbench-ID: BIO-2024-1263
+Date: Thu, 28 Jul 2022 07:33:22 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Upgrading invesalius
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_07_msg00084.html
+
+Hi Thiago,
+
+I noticed that you pushed some patch and have build invesalius.  When
+I've started the executable it seems to work. Thus I uploaded now.
+
+I've also added a superficial autopkgtest.  When doing so I've spotted
+the --no-gui option.  This makes me wonder whether you could rather add
+a *real* test which works without GUI and just does some useful stuff
+to test the package properly.
+
+Kind regards
+
+      Andreas.
+
+--
+http://fam-tille.de

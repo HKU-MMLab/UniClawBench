@@ -1,0 +1,44 @@
+Message-ID: <94171b5c45602703693d3c91fe131776515d6156.camel@med.uni-goettingen.de>
+X-Clawbench-ID: BIO-2024-0146
+Date: Sat, 1 Jan 2022 13:40:16 +0000
+From: "Uecker, Martin" <Martin.Uecker@med.uni-goettingen.de>
+To: "nilesh@riseup.net" <nilesh@riseup.net>, "debian-med@lists.debian.org"	<debian-med@lists.debian.org>
+Subject: Re: bart-cuda fails its autopkgtest (Was: Re: bart: version 0.7.00)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_01_msg00001.html
+
+Am Freitag, den 31.12.2021, 23:52 +0530 schrieb Nilesh Patra:
+> On 12/31/21 6:05 PM, Uecker, Martin wrote:
+> > Yes, it was running the tests for the bart package but then
+> > the older version of the package was still installed and
+> > the test failed. I pushed a fix.  But I am still
+> > pondering why it is not fully reproducible....
+>
+> Looks like I misunderstood your earlier email, sorry about that.
+> I believe you are talking about
+
+I was talking about deterministic builds on Debian.
+This new issue was also a surprise to me...
+
+> > $ /usr/bin/bart version
+> > WARN: BART version is not reproducible.
+> > v0.7.00-168-gc3bb89e-dirty
+>
+> I am not sure why that's the case either. Can we ignore this test for now?
+> It does not look critical, since the package otherwise looks usable.
+
+The issue is that if you built locally it seems it picked
+up the git version and not the one in version.txt.  This
+does not happen when building using pbuilder.
+
+But it should not take the git version but the one in
+version.txt, so the test is correct to fail. I pushed
+a fix for this.
+
+I see you uploaded already. Can you do it again? Sorry
+for the trouble... (for reproducible science having the
+clean version string is important)
+
+Martin

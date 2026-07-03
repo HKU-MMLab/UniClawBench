@@ -1,0 +1,30 @@
+{
+  "task_id": "task_201_24_tender_recommendation",
+  "note": "Operator populates these paths with real binary assets before running the task. The executor expects them under /tmp_workspace/clawbench/sources/.",
+  "entries": [
+    {
+      "path": "bid_vendor_a.pdf",
+      "description": "vendor A 中文投标文件"
+    },
+    {
+      "path": "bid_vendor_b.pdf",
+      "description": "vendor B 中文投标文件"
+    },
+    {
+      "path": "bid_vendor_c.pdf",
+      "description": "vendor C 中文投标文件"
+    },
+    {
+      "path": "bid_vendor_d.pdf",
+      "description": "vendor D 中文投标文件"
+    },
+    {
+      "path": "price_summary_cn.xlsx",
+      "description": "四家报价汇总 Excel（含规格、报价、交付期）"
+    },
+    {
+      "path": "scoring_policy_cn.md",
+      "description": "采购委员会权重、价格/交付归一化公式、技术和风险预评分"
+    }
+  ]
+}

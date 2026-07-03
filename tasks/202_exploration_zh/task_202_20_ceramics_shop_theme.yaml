@@ -1,0 +1,54 @@
+task_id: task_202_20_ceramics_shop_theme
+category: 202_exploration_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我要为手工陶瓷开一家网店，想要一种日式极简的风格。我需要选择一个站点
+  主题。要求：
+
+  - 它必须是一个真正的商店：可用的购物车和结账；
+  - 响应式（我的大多数顾客用手机）；
+  - 一套克制、低饱和的日式极简配色（不要喧闹或鲜艳）；
+  - 以图像为主——陶瓷应当占据页面的主导，而不是密密麻麻的文字。
+
+  一组固定的候选主题离线提供，位于：
+
+      /tmp_workspace/clawbench/sources/theme_candidates/
+
+  每个主题有一份清单（`<id>.json`），声明其电商功能、是否响应式、其 5 色
+  配色（hex），以及 `product_image_area_ratio`（首屏（above the fold）有多大
+  比例留给产品图像）。`index.json` 重述了这些要求（将"低饱和"视为平均 HSV
+  色彩饱和度 <= 0.25，将"以图像为主"视为 product_image_area_ratio >= 0.45）。
+
+  请客观评估这些主题——从 hex 值计算每个配色的平均饱和度，而不是靠猜——
+  判断哪些主题满足所有 hard 要求，然后恰好挑选一个。注意：最漂亮的极简
+  主题可能根本不是一个商店，而一个契合品牌、低饱和的主题可能只支持桌面端
+  或文字过多。
+
+  请保存：
+  - `/tmp_workspace/results/theme_choice.json`：你的 `selected_id`、论证它的
+    计算指标（电商、响应式、配色平均饱和度、产品图像比例），以及打破平局/
+    决策的理由。
+  - `/tmp_workspace/results/theme_evaluation.json`：每个主题针对四项 hard
+    要求的取值，附 pass/fail 和所违反的要求名称。
+  - `/tmp_workspace/results/theme_method.json`：你是如何计算饱和度并核查
+    每项要求的（可复现）。
+
+  这是完全离线的——不要从网络获取任何内容。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/reference_analysis.py
+sources:
+  - theme_candidates/
+
+codex:
+  max_user_followups: 2

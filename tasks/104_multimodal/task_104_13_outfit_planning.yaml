@@ -1,0 +1,45 @@
+task_id: task_104_13_outfit_planning
+category: 104_multimodal
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I am going to a semi-formal in-person event this weekend, and
+  `/tmp_workspace/clawbench/sources/outfit_planning/` contains:
+  - Photos of several candidate clothes and shoes from my wardrobe
+  - Try-on reference photos / outfit collages for several candidate outfits
+  - Screenshots of the event invitation and photos of the venue
+  - A `notes.json` file
+
+  Please help me choose the most suitable outfit from these existing clothes. Do
+  not ask me to buy new clothes.
+
+  Requirements:
+  1. First determine roughly what kind of occasion this event is, how formal it is,
+     and what the venue atmosphere is like.
+  2. Based on my clothing photos and the candidate outfit references, choose the most
+     suitable complete outfit.
+  3. In `/tmp_workspace/results/outfit_recommendation.md`, explain:
+     - Which items you ultimately selected
+     - Why this outfit is more suitable than the other candidates
+     - Which outfits look mismatched, too casual, or too formal
+  4. You must add very small adjustment suggestions (for example, whether to roll
+     up sleeves, change shoes, or change the bag); if you confirm no adjustment is
+     needed, explicitly write "no additional adjustments needed", but do not turn
+     the task into shopping recommendations.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - outfit_planning/
+
+codex:
+  max_user_followups: 2

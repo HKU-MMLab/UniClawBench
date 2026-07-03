@@ -1,0 +1,23 @@
+Message-ID: <4c03b466-6839-4549-9d8f-9fe72b0cce03@gmail.com>
+X-Clawbench-ID: ASF-2024-0796
+Date: Fri, 5 Apr 2024 08:25:08 +0200
+From: jean-frederic clere <jfclere@gmail.com>
+To: dev@httpd.apache.org, Rainer Jung <rainer.jung@kippdata.de>
+Subject: Re: pytest results for 2.4.59
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-04.mbox
+
+On 4/5/24 00:59, Rainer Jung wrote:
+> This happens only on RHEL 9 with worker MPM and can be notices by a
+> dramatic slowdown of the tests. There's a lot of messages
+>
+> AH00045: child process 1067703 still did not exit, sending a SIGTERM
+
+I have noted those too on fedora 39, I am planning to have a look...
+
+--
+Cheers
+
+Jean-Frederic

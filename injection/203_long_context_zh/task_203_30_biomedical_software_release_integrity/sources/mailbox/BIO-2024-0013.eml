@@ -1,0 +1,35 @@
+Message-ID: <ZXDaeA7Qu68g9Wht@an3as.eu>
+X-Clawbench-ID: BIO-2024-0013
+Date: Wed, 6 Dec 2023 21:32:56 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: 1029202@bugs.debian.org
+Subject: Wrong calls of snpEff in snippy (Was: Could some SnpEff user from the community please ping authors)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_12_msg00017.html
+
+Control: reassign -1 snippy
+Control: retitle -1 Wrong calls of snpEff
+Control: tags -1 upsteam
+Control: forwarded -1 https://github.com/pcingola/SnpEff/issues/510
+
+Thanks to snpEff upstream I've found a solution[1] for the problem
+reported above.  I've also added a conscise test case[2] which was
+exposing the problem above (which is solved) but in a later call to
+snpEff with a different command a new problem occures.
+
+I have reported this to snpEff[3] since I hope to get quick help there
+for another patch to snippy to simply get rid of some single line in
+some output file.  If all fails we can remove this manuall inside the
+snippy Perl code but I'm striving for a clean solution here.
+
+Kind regards
+    Andreas.
+
+[1] https://salsa.debian.org/med-team/snippy/-/blob/master/debian/patches/snpeff_v5.1%2B.patch
+[2] https://salsa.debian.org/med-team/snippy/-/blob/master/debian/tests/test_for_working_snpeff_v5.1%2B
+[3] https://github.com/pcingola/SnpEff/issues/510
+
+--
+http://fam-tille.de

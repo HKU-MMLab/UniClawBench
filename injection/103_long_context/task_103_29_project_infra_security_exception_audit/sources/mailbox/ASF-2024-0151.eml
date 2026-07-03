@@ -1,0 +1,49 @@
+Message-ID: <8AFF891F-B370-4EBB-B6D7-7ECA214EE731@eissing.org>
+X-Clawbench-ID: ASF-2024-0151
+Date: Fri, 5 Jul 2024 16:09:25 +0200
+From: "Stefan Eissing via dev" <dev@httpd.apache.org>
+To: dev@httpd.apache.org
+Subject: Re: mod_md in 2.4.61 fails to compile with openssl < 1.1.1
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-07.mbox
+
+> Am 05.07.2024 um 15:44 schrieb Ruediger Pluem <rpluem@apache.org>:
+>
+>
+>
+> On 7/5/24 3:40 PM, Yann Ylavic wrote:
+>> On Fri, Jul 5, 2024 at 3:35 PM Yann Ylavic <ylavic.dev@gmail.com> wrote:
+>>>
+>>> On Fri, Jul 5, 2024 at 3:05 PM Ruediger Pluem <rpluem@apache.org> wrote:
+>>>>
+>>>>>>>> md_crypt.c: In function 'md_cert_get_ct_scts':
+>>>>>>>> md_crypt.c:2071:5: error: unknown type name 'SCT'
+>>>>>>>>    SCT *sct_handle;
+>>>>
+>>>> This one is caused by r1918195 in >= 2.4.60. Before r1918195 OPENSSL_NO_CT was defined when openssl was < 1.1.1. Now it is not any
+>>>> longer and hence md_cert_get_ct_scts gets a real function body as
+>>>>
+>>>> #ifndef OPENSSL_NO_CT
+>>>>
+>>>> (line 2068) is now true. Hence we error out on the non presence of the SCT struct (line 2071).
+>>>
+>>> Maybe something like the attached patch for this one too (which could
+>>> avoid configure tricks for both..).
+>>
+>> Or rather this one.
+>>
+>
+>
+> Looks good to me. Waiting for Stefan's feedback.
+
+The patches look good to me. I have not tested them as I have no old openssl lying around, but I trust in your build tests.
+
+Cheers,
+Stefan
+
+>
+> Regards
+>
+> Rüdiger

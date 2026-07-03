@@ -1,0 +1,27 @@
+Message-ID: <pony-4c48ce2c-f95a-4e69-a50f-b825d6f9ba45-dev@httpd.apache.org>
+X-Clawbench-ID: ASF-2024-1445
+Date: Fri, 11 Oct 2024 18:00:09 -0000
+From: Michael Osipov <michaelo@apache.org>
+To: dev@httpd.apache.org
+Subject: Re: Review PR for BZ 62497
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-10.mbox
+
+On 2024/10/11 16:23:22 Joe Orton wrote:
+> On Sat, Oct 05, 2024 at 03:37:42PM -0000, Michael Osipov wrote:
+> > Folks,
+> >
+> > I have an open trivial PR [1] for five years now. Is anyone willing to
+> > review and merge into into trunk and then to 2.4.x?
+> >
+> > [1] https://github.com/apache/httpd/pull/67
+>
+> Done, thanks for the ping. Unfortunately mod_lua is not being actively
+> developed and probably most of us aren't terribly comfortable about
+> changing the code there.
+
+Thanks for merging. I understand, but I haven't found a better way to set and remove that kind of information when using mod_proxy. It just works for me.
+
+Michael

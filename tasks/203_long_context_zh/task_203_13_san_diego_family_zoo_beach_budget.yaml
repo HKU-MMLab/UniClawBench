@@ -1,0 +1,42 @@
+task_id: task_203_13_san_diego_family_zoo_beach_budget
+category: 203_long_context_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  我想带家人去圣地亚哥过一个动物园 + 海滩的家庭周末。日期是：下周五到再下周一（周五到周一共住 3 晚），一家 4 口：2 名成人和 2 名儿童，从湾区出发前往 SAN。请实际调研并制定一份完整的预算和行程方案，但不要支付、不要订机票、不要订酒店、不要租车、不要买动物园或活动门票、不要预订餐厅，也不要提交任何不可逆的订单。把所有截图和文档保存到 `/tmp_workspace/results/`。
+
+  搜索从 SFO、SJC 或 OAK 飞往 SAN 的往返航班。去程航班必须在下周五 08:00 到 14:00 之间从湾区出发；返程航班必须在再下周一 14:00 到 20:00 之间从 SAN 出发。在 Google Flights、Southwest 官网，以及 Alaska 或 United 至少一家航空公司的官网上搜索；从每个平台记录 1 个最合适的结果，包括出发机场、航空公司、出发/到达时间、是否直飞、一家 4 口的总票价、行李/改签限制和截图。
+
+  住宿方面，从 Catamaran Resort Hotel and Spa、Bahia Resort Hotel、Hilton San Diego Bayfront 和 Kings Inn San Diego 中任选 3 家。在 Booking.com 和每家酒店官网搜索从下周五到再下周一、2 名成人和 2 名儿童、1 间房的住宿。记录房型、3 晚总价、是否含税费/度假村费/停车费、儿童政策、取消政策、评分/地址和截图。如果某网站拦截了查询或无法显示价格，就截图并在最终方案中如实说明；不要编造价格。
+
+  租车方面，只考虑 SAN 机场取还车，下周五 12:30 取车，再下周一 12:30 还车。在 Enterprise 以及 Hertz 或 Budget 中至少两个平台搜索 Economy、Compact、Midsize、SUV 或 Minivan，并从每个平台记录 2 个最合适的、适合家庭的结果，包括车型/车类、总价、税费说明、若有则记录可见的儿童座椅费用、里程或限制、取消/预付要求和截图。不要登录或输入支付信息。
+
+  动物园/家庭活动方面，只考虑 San Diego Zoo、San Diego Zoo Safari Park、Birch Aquarium、Belmont Park 和 Balboa Park Explorer Pass。使用官方门票页面查询行程期间 2 名成人和 2 名儿童的门票或通票。记录票种、成人/儿童票价、总价、开放时间、停车费、取消/改期规则和截图。
+
+  海滩/户外活动方面，只考虑 La Jolla Cove、Mission Beach 和 Coronado Beach。查询官方参观页面或可信的旅游信息页面，记录停车、开放信息、是否免费、适合儿童的限制或注意事项和截图。
+
+  餐厅方面，只查询 The Crack Shack、Duke's La Jolla、Miguel's Cocina 和 Puesto La Jolla，并查询从下周五到下周日、4 人能否在 17:30 到 19:30 之间预订晚餐。优先使用 OpenTable、Yelp Reservations 或餐厅的官方预订页面。记录最佳可用时间、平台、是否需要信用卡或押金、是否明确适合儿童，以及截图，但不要完成预订。
+
+  最后生成 `/tmp_workspace/results/san_diego_family_zoo_beach_plan.md`，包含每日家庭行程、一张涵盖机票/酒店/租车/动物园及活动/餐厅/停车/油费/儿童相关费用的预算表，以及两套方案：省钱版和舒适版。尽量把舒适版的总预算控制在 $4,800 / 4 人以内。最终文档必须列出所用的所有截图路径，并清晰标注任何被拦截、缺少价格或不可用的数据。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/process_evidence/Coronado_Beach.png
+  - references/process_evidence/Enterprise.png
+  - references/process_evidence/booking_Bahia_Resort_Hotel.png
+  - references/process_evidence/booking_Catamaran_Resort_Hotel_and_Spa.png
+  - references/process_evidence/booking_Hilton_San_Diego_Bayfront.png
+  - references/process_evidence/google_flight.png
+  - references/process_evidence/opentable_Puesto_La_Jolla.png
+  - references/process_evidence/southwest_flight.png
+  - references/process_evidence/united_flight.png
+codex:
+  max_user_followups: 2

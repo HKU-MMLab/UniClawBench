@@ -1,0 +1,24 @@
+Message-ID: <ZzBPn1S_lI0NPPMS@an3as.eu>
+X-Clawbench-ID: BIO-2024-1333
+Date: Sun, 10 Nov 2024 07:15:59 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: RM: pyqi
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_11_msg00005.html
+
+Hi Alexandre.
+
+Am Tue, Oct 22, 2024 at 08:12:38PM +0200 schrieb Alexandre Detiste:
+> It looks like #1085822 would be trivial to fix.
+> But is it even worth it ?
+
+If it has no rdepends we probably can remove it.
+
+Thank you for bringing this up
+   Andreas.
+
+--
+https://fam-tille.de

@@ -1,0 +1,74 @@
+Message-ID: <a89a35ef4393b2a077df39cc36efcddf@enron.com>
+X-Clawbench-ID: ANL-2001-0003
+Date: 2000-05-25T06:05:00-03:00
+From: Tom Halliburton <Tom Halliburton>
+To: Vince J Kaminski <Vince J Kaminski>
+Subject: CPLEX
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Enron kaminski-v public mailbox index.json
+X-Original-Folder: kaminski-v_000/kaminski-v/mangmt/group/software/Management
+
+---------------------- Forwarded by Tom Halliburton/Corp/Enron on 05/25/2000
+
+09:05 AM ---------------------------
+
+
+Chonawee Supatgiat
+
+05/22/2000 11:56 AM
+
+To: Grant Masson/HOU/ECT@ECT, Pinnamaneni Krishnarao/HOU/ECT@ECT, Tom
+
+Halliburton/Corp/Enron@Enron
+
+cc:
+
+
+Subject: CPLEX
+
+
+---------------------- Forwarded by Chonawee Supatgiat/Corp/Enron on
+
+05/22/2000 11:55 AM ---------------------------
+
+From: Samer Takriti@ENRON COMMUNICATIONS on 05/22/2000 11:46 AM
+
+To: Stinson Gibner/HOU/ECT@ECT
+
+cc: Chonawee Supatgiat/Corp/Enron@Enron, Ravi Thuraisingham/Enron
+
+Communications@Enron Communications
+
+
+Subject: CPLEX
+
+
+Stinson,
+
+Krishna mentioned that Tom wants to buy (may have bought) Xpress. Tom's
+
+argument is that Xpress's language allows the user to express special ordered
+
+sets (certain types of constraints) in a convenient fashion. Chonawee and I
+
+just talked to two of Cplex's consultants (whom I know personally). They both
+
+mentioned that these sets are recognized and handled implicitly within Cplex.
+
+As a result, there is no need for their modeling language to express these
+
+constraints explicitly.
+
+As a result, I feel that we should go with Cplex. Both Chonawee and Krishna
+
+seem to have the same impression. I need to get a final vote on this one so
+
+that we can order the licenses. This has been dragging on for too long.
+
+-Samer
+
+[Chonawee, my address book does not recognize ENA users. Please forward to
+
+Grant, Krishna, and Tom]

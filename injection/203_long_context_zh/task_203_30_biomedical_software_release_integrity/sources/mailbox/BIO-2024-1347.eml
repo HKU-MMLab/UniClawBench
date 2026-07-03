@@ -1,0 +1,41 @@
+Message-ID: <87k0e7f8p4.fsf@burgos>
+X-Clawbench-ID: BIO-2024-1347
+Date: Mon, 07 Feb 2022 08:16:07 +0100
+From: Ole Streicher <olebole@debian.org>
+To: debian-science@lists.debian.org
+Subject: Re: Update of scikit-learn on salsa
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2022_02_msg00013.html
+
+Dear Chiara,
+
+I think there is no real consensus within debian-science, as this is a
+quite diverse umbrella blend. What we have as consensus is written in
+the policy, https://science-team.pages.debian.net/policy/
+Feel free to discuss here extensions if you see it useful.
+
+I just added you to the debian-science team so that you can enable it in
+sklearn. It may be wise to contact the maintainers and add yourself to
+the list of uploaders; especially if you mind to co-maintain it.
+
+Cheers
+
+Ole
+
+Chiara Marmo  writes:
+> Dear list,
+>
+> I took the liberty to update the version of scikit-learn on salsa, as
+> 1.0.2 was out since December.  I've also added a standard
+> debian/.gitlab-ci.yml, as I find it very useful, especially for people
+> like me, with no rights to upload.  I have no rights to enable the CI
+> jobs on salsa.  If there is a consensus about using the CI on salsa,
+> perhaps one of the owners would mind enable it?  Otherwise I will
+> remove it from the repository.
+>
+> Thanks for listening,
+> Best,
+>
+> Chiara

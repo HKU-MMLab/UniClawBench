@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Generalized Visual Language Models</title>
+  <link href="assets/css/stylesheet.min.css" rel="preload stylesheet" as="style">
+  <script defer src="assets/js/highlight.min.js"></script>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$','$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] }
+    };
+  </script>
+  <script id="MathJax-script" async src="assets/js/tex-chtml.js"></script>
+  <style>
+    body { max-width: 900px; margin: 0 auto; }
+    .main { padding: 32px 20px 64px; }
+    .post-title { margin-bottom: 1.25rem; }
+    .toc { border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1.25rem; margin: 1.5rem 0 2rem; background: var(--code-bg); }
+    .toc ol { margin: 0.5rem 0 0 1.25rem; }
+    figure { margin: 1.75rem 0; text-align: center; }
+    figure img { max-width: 100%; border-radius: 10px; border: 1px solid var(--border); background: white; }
+    figcaption { margin-top: 0.55rem; color: var(--secondary); font-size: 0.92rem; line-height: 1.45; }
+    .takeaway { border-left: 4px solid #6aa6ff; padding: 0.75rem 1rem; background: var(--code-bg); border-radius: 8px; }
+    .refs li { margin-bottom: 0.6rem; }
+  </style>
+</head>
+<body>
+<main class="main post">
+  <article>
+    <header>
+      <h1 class="post-title">Generalized Visual Language Models</h1>
+    </header>
+    <section class="toc">
+      <strong>Table of contents</strong>
+      <ol>
+        <li>Why combine vision and language</li>
+        <li>Joint image-text pretraining</li>
+        <li>Image embeddings as language-model prefixes</li>
+        <li>Cross-attention fusion</li>
+        <li>Contrastive captioner foundation models</li>
+        <li>No-training and tool-composition approaches</li>
+        <li>Practical synthesis</li>
+      </ol>
+    </section>
+
+    <section><h2>1. Why combine vision and language</h2>
+      <p>Visual language models connect perception with language reasoning. The main design problem is how to align image representations with text tokens so that a model can caption, answer visual questions, reason about scenes, and use images as part of a broader interaction loop.</p>
+    </section>
+    <section><h2>2. Joint image-text pretraining</h2>
+      <p>Early generalized VLMs jointly train on image-text inputs so that visual regions and language tokens share a reasoning space. VisualBERT and SimVLM illustrate the progression from region-text fusion to simpler weakly supervised prefix-language objectives.</p>
+      <figure><img src="assets/images/VisualBERT-arch.png" alt="VisualBERT architecture"><figcaption>Figure 1. VisualBERT fuses image regions and text in a transformer. Source: Li et al. (2019).</figcaption></figure>
+      <figure><img src="assets/images/SimVLM-arch.png" alt="SimVLM architecture"><figcaption>Figure 2. SimVLM uses a simple prefix language modeling objective for image-text pretraining. Source: Wang et al. (2022).</figcaption></figure>
+    </section>
+    <section><h2>3. Image embeddings as language-model prefixes</h2>
+      <p>Another line keeps the language model mostly frozen and learns how to map image features into a prefix or prompt representation. Frozen and ClipCap show how visual encoders can condition a language model without retraining the entire stack.</p>
+      <figure><img src="assets/images/Frozen-arch.png" alt="Frozen architecture"><figcaption>Figure 3. Frozen uses image embeddings as context for a frozen language model. Source: Tsimpoukelli et al. (2021).</figcaption></figure>
+      <figure><img src="assets/images/ClipCap-arch.png" alt="ClipCap architecture"><figcaption>Figure 4. ClipCap maps CLIP image embeddings into a language-model prefix. Source: Mokady et al. (2021).</figcaption></figure>
+    </section>
+    <section><h2>4. Cross-attention fusion</h2>
+      <p>Cross-attention gives the language model a direct mechanism for attending to visual features while generating text. Flamingo is a representative example: it inserts gated cross-attention layers into a frozen language model and supports few-shot multimodal learning.</p>
+      <figure><img src="assets/images/Flamingo-cross-attention.png" alt="Flamingo cross attention"><figcaption>Figure 5. Flamingo injects visual information through gated cross-attention layers. Source: Alayrac et al. (2022).</figcaption></figure>
+    </section>
+    <section><h2>5. Contrastive captioner foundation models</h2>
+      <p>CoCa combines contrastive learning and captioning in a unified pretraining recipe. This line makes image-text alignment and generative captioning reinforce each other, supporting both retrieval-like and generation-like tasks.</p>
+      <figure><img src="assets/images/CoCa-arch.png" alt="CoCa architecture"><figcaption>Figure 6. CoCa combines contrastive and captioning losses for image-text foundation models. Source: Yu and Wang et al. (2022).</figcaption></figure>
+    </section>
+    <section><h2>6. No-training and tool-composition approaches</h2>
+      <p>Some systems avoid training a new multimodal foundation model. PICa uses GPT-3 with carefully constructed visual-question prompts, while Socratic-style systems compose existing vision and language models through language as the interface.</p>
+      <figure><img src="assets/images/PICa-fewshot.png" alt="PICa few-shot examples"><figcaption>Figure 7. PICa uses few-shot prompting for knowledge-based visual question answering. Source: Yang et al. (2021).</figcaption></figure>
+      <figure><img src="assets/images/VC-GPT.png" alt="Visual controls for language models"><figcaption>Figure 8. Visual control signals can guide language generation without fully retraining a VLM. Source: Su et al. (2022).</figcaption></figure>
+    </section>
+    <section><h2>7. Practical synthesis</h2>
+      <div class="takeaway"><p><strong>Main takeaway:</strong> VLM design is mostly about where visual information enters the language model: joint token fusion, learned prefixes, cross-attention, contrastive-captioning pretraining, or tool-like composition.</p></div>
+    </section>
+    <section><h2>References</h2><ol class="refs">
+      <li>Li et al. (2019). <em>VisualBERT: A Simple and Performant Baseline for Vision and Language.</em></li>
+      <li>Wang et al. (2022). <em>SimVLM: Simple Visual Language Model Pretraining with Weak Supervision.</em></li>
+      <li>Tsimpoukelli et al. (2021). <em>Multimodal Few-Shot Learning with Frozen Language Models.</em></li>
+      <li>Mokady et al. (2021). <em>ClipCap: CLIP Prefix for Image Captioning.</em></li>
+      <li>Alayrac et al. (2022). <em>Flamingo: a Visual Language Model for Few-Shot Learning.</em></li>
+      <li>Yu and Wang et al. (2022). <em>CoCa: Contrastive Captioners are Image-Text Foundation Models.</em></li>
+      <li>Yang et al. (2021). <em>An Empirical Study of GPT-3 for Few-Shot Knowledge-Based VQA.</em></li>
+      <li>Zeng et al. (2022). <em>Socratic Models: Composing Zero-Shot Multimodal Reasoning with Language.</em></li>
+    </ol></section>
+  </article>
+</main>
+</body>
+</html>

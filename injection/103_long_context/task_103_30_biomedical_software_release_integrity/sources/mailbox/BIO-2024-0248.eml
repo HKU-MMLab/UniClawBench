@@ -1,0 +1,41 @@
+Message-ID: <YuuNgi8jXNJgdNtw@an3as.eu>
+X-Clawbench-ID: BIO-2024-0248
+Date: Thu, 4 Aug 2022 11:12:34 +0200
+From: Andreas Tille <tille@debian.org>
+To: Mathieu Malaterre <malat@debian.org>
+Subject: Re: Help required for fixing build failure - gdcm
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_08_msg00019.html
+
+Hi Mathieu,
+
+Am Thu, Aug 04, 2022 at 08:32:56AM +0200 schrieb Mathieu Malaterre:
+> > > It seems that pdflatex is exiting with exit code 1.
+> > > However, the pdf is rendered just fine, when I tried to compile and open it.
+> > > I am seeing a bunch of warnings in refman.log but no show stoppers/errors.
+> >
+> > I wonder whether we simply could
+> >
+> >     pdflatex refman.tex || true
+> >
+> > (or whatever might trigger that call)
+
+What do you think about hiding our eyes from this pdflatex issue?
+
+> > Another question (basically to Mathieu:  There is a new upstream release.
+> > Do you think its a "harmless" upgrade (no ABI change etc.) ?
+>
+> Yes, this is mostly a tiny enhancement release, no real difference
+> with 3.0.13... feel free to upload. I am already working on 3.0.15
+> with actual new (cool) features.
+
+OK, will do.
+
+Kind regards
+
+      Andreas.
+
+--
+http://fam-tille.de

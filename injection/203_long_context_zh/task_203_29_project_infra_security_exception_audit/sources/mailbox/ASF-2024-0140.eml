@@ -1,0 +1,34 @@
+Message-ID: <YnuiL+GrENNfM1Uv@redhat.com>
+X-Clawbench-ID: ASF-2024-0140
+Date: Wed, 11 May 2022 12:46:55 +0100
+From: Joe Orton <jorton@redhat.com>
+To: dev@httpd.apache.org
+Subject: Re: Trouble in rusttls land?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-05.mbox
+
+On Tue, May 10, 2022 at 10:50:12PM +0200, Stefan Eissing wrote:
+> Will look at it tomorrow.
+
+Could we cache the crates if building them is the source of
+unreliability?  It looks like we just have to add a couple of extra
+directories to the cache list:
+
+https://docs.travis-ci.com/user/caching/#rust-cargo-cache
+
+On the other hand, if the aim is to always build against current
+versions of the rust components then maybe you don't want this?
+
+>
+> > Am 10.05.2022 um 15:17 schrieb Ruediger Pluem <rpluem@apache.org>:
+> >
+> > The latest build 0f 2.4.x on Travis failed with mod_tls. Ideas?
+> >
+> > https://app.travis-ci.com/github/apache/httpd/jobs/569587665
+> >
+> > Regards
+> >
+> > Rüdiger
+>

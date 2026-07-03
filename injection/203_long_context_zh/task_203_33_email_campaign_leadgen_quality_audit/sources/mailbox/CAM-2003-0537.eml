@@ -1,0 +1,21 @@
+Message-ID: <200210070800.g9780dK23242@dogma.slashnull.org>
+X-Clawbench-ID: CAM-2003-0537
+Date: Mon, 07 Oct 2002 08:00:39 -0000
+From: gamasutra <rssfeeds@spamassassin.taint.org>
+To: yyyy@spamassassin.taint.org
+Subject: Shader Integration: Merging Shading Technologies on the Nintendo    Gamecube
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 02334.742721e46b366730e9669b47f77a7f8e
+
+URL: http://www.newsisfree.com/click/-0,8613661,159/
+Date: 2002-10-06T18:12:59+01:00
+
+Rendering polygons is not as easy as it used to be, the reason being the vast
+amount of different rendering techniques, methods and algorithms available. Not
+only is choosing the right ones a problem, even worse, all that are selected
+need to work together. There are some algorithms which simply do not work
+together, and in that case, only one may be used whilt the other one needs to
+be replaced witha more compatible method. This feature explores how Factor 5
+approached the problem when developing Rogue Leader for Gamecube.

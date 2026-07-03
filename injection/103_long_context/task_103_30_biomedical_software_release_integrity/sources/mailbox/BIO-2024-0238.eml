@@ -1,0 +1,64 @@
+Message-ID: <YhTG92C47xDgdpk8@an3as.eu>
+X-Clawbench-ID: BIO-2024-0238
+Date: Tue, 22 Feb 2022 12:20:23 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Andrius Merkys <merkys@debian.org>,	Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>,	Pirate Praveen <praveen@debian.org>,	Paolo Greppi <paolo.greppi@libpf.com>
+Subject: sockjs-client is in Debian but needs update (Was: [covid-19] shiny-server (Was: dependencies Re: ITP: streamlit))
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2022_02_msg00046.html
+
+Hi,
+
+I checked the hint "some work on sockjs-client done in salsa" which is
+not complete since there is "competing work" even inside Debian[1].
+Since its Git repository points to alioth I simply took the freedom to
+merge the old packaging code into the work on Salsa[2] and shamelessly
+sticked to the old name without the leading "node-" (which is wrong
+but I intended to avoid passing new queue for the moment).
+
+I think we can close the open bug[3] with the new latest upstream
+version which I've injected.  Unfortunately we have a new problem as
+autopkgtest shows[4]
+
+   sockjs-client : Depends: node-json3 (>= 3.3.2) but it is not installable
+
+while we had this package before it was removed[5] from Debian.
+
+I need to admit that I have no idea how to sensibly proceed from here
+and would love if someone from Debian Javascript Maintainers would take
+over from here.
+
+Kind regards
+     Andreas.
+
+[1] https://tracker.debian.org/pkg/sockjs-client
+[2] https://salsa.debian.org/js-team/node-sockjs-client
+[3] https://bugs.debian.org/979958
+[4] https://salsa.debian.org/js-team/node-sockjs-client/-/jobs/2499248
+[5] https://bugs.debian.org/931653
+
+Am Tue, Feb 22, 2022 at 08:23:23AM +0200 schrieb Andrius Merkys:
+> Hi Eric,
+>
+> On 2022-02-22 06:43, Eric Brown wrote:
+> > It appears that significant progress has been made in packaging the
+> > dependencies of shiny-server. I wonder if anyone is interested and
+> > able to revisit packaging shiny-server?
+>
+> In past I have worked to package the dependencies of shiny-server.
+> Sadly, I do not have enough free cycles to work on shiny-server now. It
+> would be great if someone experienced in JS (js-team?) could give it a look.
+>
+> As for the remaining dependencies, sockjs, sockjs-client and rewire
+> stands out. There is some work on sockjs-client done in salsa, seemingly
+> never uploaded.
+>
+> Best,
+> Andrius
+>
+>
+
+--
+http://fam-tille.de

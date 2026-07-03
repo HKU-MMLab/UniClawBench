@@ -1,0 +1,54 @@
+Message-ID: <1028902217.418.12.camel@peck>
+X-Clawbench-ID: CAM-2003-1322
+Date: Fri, 09 Aug 2002 10:10:17 -0400
+From: Benoit Peccatte <benoit.peccatte@webmotion.com>
+To: spamassassin-talk@example.sourceforge.net
+Subject: Re: [SAtalk] Multiple regular expression
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01364.388f4e91846bf82b0ea60e9ca1244b43
+
+Thank you for this help. I will change the score of
+FROM_AND_TO_SAME rule to be higher.
+
+Benoit Peccatte
+
+PS: I've noticed that the reply-to is not fixed to your mailing-list
+is this normal ?
+
+On Tue, 2002-08-06 at 16:22, Theo Van Dinter wrote:
+> On Tue, Aug 06, 2002 at 03:29:30PM -0400, Benoit Peccatte wrote:
+> > I would like to add a rule to spamassassin to compare 2 header lines.
+> > By example match mails in which To: equals From:
+> >
+> > I don't think it is possible with a single regular expression.
+> > Can I use one after one other ?
+> > Does anobody have an idea ?
+>
+> You would have to make an Eval test that retrieves both header and
+> compares them.
+>
+> BTW:
+> header FROM_AND_TO_SAME                eval:check_for_from_to_equivalence()
+> describe FROM_AND_TO_SAME      From and To the same address
+>
+> :)
+>
+> --
+> Randomly Generated Tagline:
+> It really doesn't bother me if people want to use grep or map in a void
+>  context.  It didn't bother me before there was a for modifier, and
+>  now that there is one, it still doesn't bother me.  I'm just not very
+>  easy to bother.
+>               -- Larry Wall in <199911012346.PAA25557@kiev.wall.org>
+
+
+-------------------------------------------------------
+This sf.net email is sponsored by:ThinkGeek
+Welcome to geek heaven.
+http://thinkgeek.com/sf
+_______________________________________________
+Spamassassin-talk mailing list
+Spamassassin-talk@lists.sourceforge.net
+https://lists.sourceforge.net/lists/listinfo/spamassassin-talk

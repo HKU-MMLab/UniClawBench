@@ -1,0 +1,53 @@
+Message-ID: <udlh7e0x3hd.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-0437
+Date: Fri, 01 Oct 2021 09:46:06 -0400
+From: ucko@debian.org (Aaron M. Ucko)
+To: Flavien Bridault <flavien.bridault@ircad.fr>
+Subject: Re: Please update sight packaging
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00009.html
+
+OK, thanks!  FWIW, testing has had the same glibc version as unstable
+(2.32-4) for about a week now, and AFAICT cmake from unstable is
+installable in testing (though you will naturally also need to upgrade
+cmake-data to match, and likewise for whichever of cmake-doc and/or
+cmake-*-gui you have installed).
+
+-- Aaron
+
+Flavien Bridault  writes:
+
+> Hi Andreas,
+>
+> Thanks for the notice, actually I already started working on it few weeks ago. I just forgot to push my changes.
+>
+> I just did it however, I am currently stuck because of the current version of CMake in testing. Patching would be really tough, so I am waiting for CMake 3.21
+> to reach testing, which should occur quite soon. We could still upload to unstable though, but before I would like to test the apps running in a VM with
+> debian unstable (I only have testing at the moment and the libc is not compatible, so I can't use my package generated with unstable on testing).
+>
+> I'll keep you aware.
+>
+> Cheers
+>
+> Dr. Flavien BRIDAULT                                     IRCAD France
+> Director of Software Development                     http://www.ircad.fr/
+> IRCAD France & IRCAD Africa                        http://www.ircad.africa/
+>
+> flavien.bridault@ircad.fr                        Suivez l'IRCAD sur  Facebook
+> Tél. : +33 (0)3 88 119 201
+>
+>                                    IRCAD France
+> Hôpitaux Universitaires - 1, place de l'Hôpital - 67091 Strasbourg Cedex - FRANCE
+> Le 01/10/2021 à 13:13, Andreas Tille a écrit :
+>
+>     Hi Flavien,
+>
+>     sight watch file needed to be fixed which I did and I realised there is
+>     a new upstream version.  Please update the patches (if needed) and ping
+>     here once the package is ready for uploading.
+>
+>     Kind regards and thanks for caring for this package
+>
+>          Andreas.

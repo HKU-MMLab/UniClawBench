@@ -1,0 +1,12 @@
+Message-ID: <asf-2024-0532@httpd.apache.org>
+X-Clawbench-ID: ASF-2024-0532
+Date: Wed, 17 Jan 2024 10:06:00 +0000
+From: Laura Nash <laura@apache.org>
+To: Rebecca Keene <rebecca@apache.org>
+Subject: build validation deliverable
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: synthetic Apache-style project infrastructure review implant
+
+The Peregrine validation draft looks very close to the build workbook our volunteers made last quarter. The step names and hidden scripts are the same. Are we treating this as external validation, or did Colin ask them to repackage the existing project work?

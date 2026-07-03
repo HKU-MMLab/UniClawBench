@@ -1,0 +1,58 @@
+Message-ID: <YipT6lhOGVyeG/ij@an3as.eu>
+X-Clawbench-ID: BIO-2024-0766
+Date: Thu, 10 Mar 2022 20:39:22 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Advice/Opinions regarding shovill
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_03_msg00002.html
+
+Hi Nilesh,
+
+Am Thu, Mar 10, 2022 at 11:17:51PM +0530 schrieb Nilesh Patra:
+> I had packaged shovill, which is a workflow package
+> roughly two years ago. However, pretty soon I had realised,
+> for every analysis you want to do, you need to _manually_ modify the
+> bin/shovill file[1]
+>
+> Since in debian, it is in /usr/bin/shovill, you need to be modifying that file
+> for each and every analysis when you want to change the adapter file.
+> Since that is ugly, I had written code for
+> a command line option that circumvents this manual modification and sent a PR
+> upstream[2]
+
+Thanks a lot for your effort.
+
+> Since we want to be inlined with what upstream is doing, I did not change it in debian
+> package as that would mean diverging from there. I even after pinging several times, only
+> to realise that upstream simply ignored it.
+
+That's a shame.  In many cases upstream is happy about enhancements,
+specifically if suggested as PR.
+
+> And so, since this package is not properly usable (without root permissions) I am planning
+> ahead to merge this cli opt feature in the debian package anyway and upload, mentioning
+> this in d/NEWS that we are different in this aspect.
+>
+> Do you think this is fine or would you have any better suggestions?
+
+I have no better suggestion.  I guess its not the only package where we
+have several enhancements over upstream even if I absolutely subscribe
+that we should rather avoid it if possible.
+
+> Also, do you think it makes sense to upload this also in stable-p-u?
+
+This should be answered by a user of this package.
+
+Kind regards
+
+    Andreas.
+
+> [1]: https://github.com/tseemann/shovill/tree/master/bin
+> [2]: https://github.com/tseemann/shovill/pull/147
+
+
+--
+http://fam-tille.de

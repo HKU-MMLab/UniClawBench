@@ -1,0 +1,49 @@
+Message-ID: <Yeui3o7CZ7SM9zcE@an3as.eu>
+X-Clawbench-ID: BIO-2024-1293
+Date: Sat, 22 Jan 2022 07:23:26 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: [Help] librostlab-blast fails its autopkgtest with C++ issue
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_01_msg00061.html
+
+Hi,
+
+I did some cleanup in packages with uscan errors which affected all
+packages once created by members of rostlab.  According to popcon these
+packages have remaining users anyway I refreshed the packages but stumbled
+upon librostlab-blast which fails its autopkgtest[1] which is a real
+bug since it leads to an FTBFS for librg-blast-parser-perl.
+
+Any idea how to fix
+
+/usr/include/rostlab/blast-parser-driver.h:61:12: error: ‘enum rostlab::blast::parser::token::token_kind_type’ is not a class or namespace
+   61 |     friend YY_DECL_FRIEND;
+      |            ^~~~~~~~~~~~~~
+In file included from parseblast.cpp:2:
+/usr/include/rostlab/blast-parser-driver.h:91:88: error: ISO C++17 does not allow dynamic exception specifications
+   91 |                   parse( bool __trace_parsing = false, bool __trace_scanning = false ) throw (rostlab::blast::parser_error);
+      |                                                                                        ^~~~~
+autopkgtest [13:55:04]: test installation-test: -----------------------]
+installation-test    FAIL non-zero exit status 1autopkgtest [13:55:04]: test installation-test:  - - - - - - - - - - results - - - - - - - - - -
+autopkgtest [13:55:04]: test installation-test:  - - - - - - - - - - stderr - - - - - - - - - -
+In file included from parseblast.cpp:2:
+/usr/include/rostlab/blast-parser-driver.h:61:12: error: ‘enum rostlab::blast::parser::token::token_kind_type’ is not a class or namespace
+   61 |     friend YY_DECL_FRIEND;
+      |            ^~~~~~~~~~~~~~
+In file included from parseblast.cpp:2:
+/usr/include/rostlab/blast-parser-driver.h:91:88: error: ISO C++17 does not allow dynamic exception specifications
+   91 |                   parse( bool __trace_parsing = false, bool __trace_scanning = false ) throw (rostlab::blast::parser_error);
+      |                                                                                        ^~~~~
+autopkgtest [13:55:04]: @@@@@@@@@@@@@@@@@@@@ summary
+
+
+Kind regards
+     Andreas.
+
+[1] https://salsa.debian.org/med-team/librostlab-blast/-/jobs/2383360
+
+--
+http://fam-tille.de

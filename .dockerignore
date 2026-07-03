@@ -1,0 +1,78 @@
+# Build context exclusions — without this, ``docker build .`` sends the
+# entire 8.5 GB repo to the daemon every build.  The Dockerfiles only
+# need docker/, configs/base_skills.json, build/chrome-linux64.zip, and
+# (for openclaw) build/libsignal-node + downloads/edict/*.  Everything
+# else is noise that just inflates network usage.
+
+# Source / experiment artefacts the images don't ship
+runs/
+runs_*/
+logs/
+.runtime/
+
+# Don't ship the openclaw/edict/nanobot source tarballs (1.4GB).  The
+# Dockerfiles install upstream packages from npm/pip directly.
+# downloads/edict/ is needed by openclaw-edict.Dockerfile (its COPY
+# steps reference downloads/edict/{agents,dashboard,scripts,data,edict})
+# so keep the whole dir.  Only exclude the source tarballs.
+downloads/clawbench-openclaw-latest.tar.gz
+downloads/edict-main.tar.gz
+downloads/nanobot-main.tar.gz
+
+# Test + dev artefacts
+tests/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage*
+
+# VCS + IDE
+.git
+.git/
+.github/
+.idea/
+.vscode/
+.claude/
+*.swp
+
+# Python build / cache
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+# build/ holds chrome-linux64.zip + libsignal-node which Dockerfiles
+# COPY at build time.  Don't exclude the dir — both are needed.  Other
+# stuff under build/ is small enough to ship.  (.dockerignore negation
+# semantics are fragile; safer to just keep the whole dir.)
+
+# Node
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docs that don't need to be inside images
+docs/
+refactor/
+README.md
+AGENTS.md
+*.md
+
+# Local secrets
+.env
+.env.*
+configs/*.local.json
+configs/*.local.toml
+configs/*.local.env
+configs/*.local.yaml
+configs/*.local.json.bak
+configs/*.local.toml.bak
+configs/*.local.env.bak
+configs/*.local.yaml.bak
+configs/*.bak
+static-site/
+*.pem
+*.key

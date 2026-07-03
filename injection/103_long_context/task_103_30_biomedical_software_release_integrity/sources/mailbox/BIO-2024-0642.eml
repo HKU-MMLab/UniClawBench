@@ -1,0 +1,40 @@
+Message-ID: <20230825092031.cuzvakkhcfk62fb6@office.mailbox.org>
+X-Clawbench-ID: BIO-2024-0642
+Date: Fri, 25 Aug 2023 14:50:31 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: RAKESH TIWARI <rakeshtls@bicpu.edu.in>
+Subject: Re: Volunteer request
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_08_msg00015.html
+
+[[ Copying the mailing list ]]
+
+On Fri, Aug 25, 2023 at 01:57:47PM +0530, RAKESH TIWARI wrote:
+> Dear Nilesh Sir,
+
+No "sir" please :-)
+
+> I am Rakesh, a bioinformatics postgraduate I have requested Andreas to join
+> Debian med development as a volunteer, He suggested me to go into MoM page
+> and add a package with my name. I am stepping into this first time, can you
+> please help me with how to choose a package and how to follow the MoM
+> program.
+
+Just see the list, and check if there's a particular bioinformatics
+package that you're interested in. If none, check if there's any other
+package that you'd like to get into the distribution. You can start from
+packaging such an application of your interest.
+
+Admittedly, I'm very busy with other things, so I defer MoM stuff to
+Andreas.
+
+> MSc Bioinformatics
+> Pondicherry University
+^^^^^^^^^^^^^
+
+Great to see someone from India taking interest.
+
+Best,
+Nilesh

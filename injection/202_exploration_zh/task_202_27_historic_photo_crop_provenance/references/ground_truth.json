@@ -1,0 +1,25 @@
+{
+  "task_id": "task_102_27_historic_photo_crop_provenance",
+  "note": "Image-provenance task. The executor gets only a cropped detail of a historic photograph (sources/crop.jpg) with no caption. They must visually identify it and trace it to NASA's canonical photo record. No searchable text in the crop (the small + marks are the Hasselblad fiducial réseau crosses, a clue it's a NASA lunar-surface photo).",
+  "crop_origin": {
+    "source_full_image": "NASA images-assets as11-40-5903~orig.jpg",
+    "crop_box_xyxy_on_5189x5067": [1556, 608, 4047, 2786],
+    "what_it_shows": "an Apollo astronaut in a white EVA suit on the lunar surface, US flag on the shoulder, fiducial cross-marks; no caption"
+  },
+  "canonical_answer": {
+    "subject": "Astronaut Buzz Aldrin walking on the lunar surface near the leg of the Lunar Module 'Eagle'",
+    "mission": "Apollo 11",
+    "date": "1969-07-20",
+    "photographer": "Neil Armstrong",
+    "nasa_id": "as11-40-5903",
+    "nasa_center": "JSC",
+    "canonical_url": "https://images.nasa.gov/details/as11-40-5903",
+    "nasa_api_url": "https://images-api.nasa.gov/asset/as11-40-5903"
+  },
+  "scoring_anchors": {
+    "must_identify": "an Apollo 11 lunar-surface EVA photograph of Buzz Aldrin (July 1969). Identifying 'an astronaut on the moon' generically is partial only.",
+    "canonical_record_for_full_credit": {"nasa_id": "as11-40-5903", "source": "NASA image library"},
+    "primary_source_rule": "canonical = NASA's own photo record (images.nasa.gov / images-api, or the NASA/JSC Apollo image archive). Wikipedia/news reproductions are secondary.",
+    "tolerance": "Accept identifying it as Apollo 11 + Aldrin on the Moon as the core. Full credit requires reaching the NASA record (nasa_id as11-40-5903, or the official NASA Apollo 11 image-archive page for this frame). This frame AS11-40-5903 is the iconic full-figure 'visor portrait' of Aldrin (Armstrong + the LM reflected in the visor); NASA's own catalog caption phrases it as Aldrin walking on the surface near the leg of the LM 'Eagle'. Either description is acceptable. If the executor instead reports a different Apollo 11 EVA frame id (e.g. AS11-40-5902 or AS11-40-5905) it has the right event but the wrong specific frame — grade per the caps."
+  }
+}

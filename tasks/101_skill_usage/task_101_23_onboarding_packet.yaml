@@ -1,0 +1,88 @@
+task_id: task_101_23_onboarding_packet
+category: 101_skill_usage
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  Alex Morgan starts Monday and the onboarding bundle in
+  /tmp_workspace/clawbench/sources/onboard/ is a total mess — PDFs,
+  Word docs, plain-text notes, and a couple of photographed forms all
+  tossed into one folder. I need this turned into something I can
+  actually hand to a new engineer. Use the workspace's PDF OCR skill
+  on the photographed forms, the Office documents skill for the Word and
+  Excel files, and the data-analysis skill for the tabular tracking.
+
+  Please give me four deliverables under /tmp_workspace/results/.
+
+  1. checklist.md — a Markdown checklist grouped under Day 1, Week 1,
+     and Month 1 headings. Every item must cite the exact source filename
+     it came from, and the checklist together must cover all timed items
+     I can see in the welcome packet, the policies handbook, the IT
+     setup checklist, the benefits docs, and the welcome guide. If a
+     timed item is in the bundle, it should appear in the checklist.
+
+  2. forms.xlsx — one row per physical form file in the bundle. Columns
+     must include the form name, due date, whether a signature is
+     required (marked with the literal string Yes or No), status as
+     TODO, DONE, or N_A, and a notes field. Treat each form file as
+     its own row — you need to include all forms you find in the
+     bundle. If the bundle has both a blank or photographed template
+     and a signed counterpart for the same form, keep both physical
+     files visible on separate rows; do not merge them. Status should
+     reflect whether HR action is still required on that specific
+     physical file: leave blank or unsigned counterparts marked TODO
+     (HR action still required), and mark signed counterparts of the
+     same form DONE. Use N_A only when the file is genuinely
+     informational and never needs HR action.
+
+  3. handoff_plan.md — a short handoff note for the hiring manager
+     that surfaces every source conflict or stale or missing-reference
+     item you find in the packet, naming the exact disagreeing
+     filenames; the dependency order for the first-day setup work,
+     covering what has to happen before the access requests, the repo
+     setup, and the bootstrap script; and any forms or training assets
+     that are mentioned in the packet but absent as physical files.
+
+  4. onboarding_controls.xlsx — a small workbook for the hiring manager
+     with two sheets. Conflicts must have columns issue, source_files,
+     impact, owner_to_resolve, with one row per conflict or
+     missing-reference item. Dependency_Order must have columns action,
+     blocked_by, due_window, source_files, listing the first-week setup
+     actions in dependency order.
+
+  Once those four files are in place, please also leave a short
+  summary.md, or a Summary sheet at the top of forms.xlsx, walking the
+  manager through what the packet actually covers. I want to see how
+  the mandatory form sign-offs are tracked, what equipment provisioning
+  the new hire needs, what the training schedule looks like for the
+  first month, what access provisioning has to happen and in what
+  order, and how the buddy or mentorship arrangement is set up. Two or
+  three short paragraphs is plenty; tie each point to the source files
+  that back it.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - onboard/
+
+skills:
+  - pdf-ocr-local
+  - office
+  - data-analysis
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

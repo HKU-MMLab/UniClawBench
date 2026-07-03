@@ -1,0 +1,42 @@
+task_id: task_101_01_boarding_pass_ocr
+category: 101_skill_usage
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I need to reconcile my travel expenses for last quarter and the first step is
+  getting structured data out of a pile of boarding pass photos I scanned. They're
+  all sitting in /tmp_workspace/clawbench/sources/boarding_passes/ — grab those
+  with the workspace's OCR skill and pull the key fields off every image.
+
+  Write the extracted info to /tmp_workspace/results/passes.json as a JSON array.
+  Each record should carry passenger_name, flight, departure, arrival, and date.
+
+  Also save /tmp_workspace/results/itinerary_review.csv with one row per boarding
+  pass and columns file, passenger_name, flight, departure, arrival, date, and
+  boarding_time. That CSV is what I'll paste into the expense sheet.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - boarding_passes/
+
+skills:
+  - ocr-local
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

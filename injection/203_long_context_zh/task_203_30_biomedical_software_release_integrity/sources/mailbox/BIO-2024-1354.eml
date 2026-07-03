@@ -1,0 +1,21 @@
+Message-ID: <20230706151221.iuh4f2ikqfhaxmlq@office.mailbox.org>
+X-Clawbench-ID: BIO-2024-1354
+Date: Thu, 6 Jul 2023 20:42:21 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: César Pomar <cesarpomar18@gmail.com>
+Subject: Re: Request for Sponsorship: VeryFastTree - Parallelized and Optimized Version of FastTree
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_07_msg00019.html
+
+On Thu, Jul 06, 2023 at 04:53:11PM +0200, César Pomar wrote:
+> Thank Nilesh for the corrections. I have taken them into account in the
+> last implementation.
+
+This line
+
+	https://salsa.debian.org/med-team/veryfasttree/-/commit/71dd640efa995cf14239534cac5fff38a93b593b#66a85d79424c0df9294d31905896b99d0e8b06b7_0_16
+
+Seems wrong. There's no "veryfasttree-sse" binary. You need to change it
+to sse2. Also, why have you added extra `exec` before the binary is called?

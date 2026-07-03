@@ -1,0 +1,26 @@
+Message-ID: <YY5Pa9G+JP/BFTwK@an3as.eu>
+X-Clawbench-ID: BIO-2024-0204
+Date: Fri, 12 Nov 2021 12:26:35 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: Moved dcmstack to Debian Med team - any idea how to fix test failure?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_11_msg00066.html
+
+Hi,
+
+I have moved dcmstack from from NeuroDebian team to Debian Med team[1].  The
+package is not in testing for 1538 days.  There is an autopkgtest bug which is
+also happening at build-time.  This bug is known upstream[2] since March 2020
+but I think nobody is working on this.  Any volunteer to have a look at this?
+
+Kind regards
+    Andreas.
+
+[1] https://salsa.debian.org/med-team/dcmstack
+[2] https://github.com/moloney/dcmstack/issues/67
+
+--
+http://fam-tille.de

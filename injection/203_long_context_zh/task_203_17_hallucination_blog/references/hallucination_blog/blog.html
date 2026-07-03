@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Extrinsic Hallucinations in LLMs</title>
+  <link href="assets/css/stylesheet.min.css" rel="preload stylesheet" as="style">
+  <script defer src="assets/js/highlight.min.js"></script>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$','$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] }
+    };
+  </script>
+  <script id="MathJax-script" async src="assets/js/tex-chtml.js"></script>
+  <style>
+    body { max-width: 860px; margin: 0 auto; }
+    .main { padding: 32px 20px 64px; }
+    .post-title { margin-bottom: 0.25rem; }
+    .subtitle { color: var(--secondary); font-size: 1.05rem; margin-top: 0; }
+    .toc { border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1.25rem; margin: 1.5rem 0 2rem; background: var(--code-bg); }
+    .toc ol { margin: 0.5rem 0 0 1.25rem; }
+    figure { margin: 1.75rem 0; text-align: center; }
+    figure img { max-width: 100%; border-radius: 10px; border: 1px solid var(--border); background: white; }
+    figcaption { margin-top: 0.55rem; color: var(--secondary); font-size: 0.92rem; line-height: 1.45; }
+    .takeaway { border-left: 4px solid #6aa6ff; padding: 0.75rem 1rem; background: var(--code-bg); border-radius: 8px; }
+    .refs li { margin-bottom: 0.6rem; }
+  </style>
+</head>
+<body>
+<main class="main post">
+  <article>
+    <header>
+      <h1 class="post-title">Extrinsic Hallucinations in LLMs</h1>
+    </header>
+
+    <section class="toc">
+      <strong>Table of contents</strong>
+      <ol>
+        <li>Problem setup: what counts as extrinsic hallucination?</li>
+        <li>Why hallucinations happen</li>
+        <li>Measuring factuality with atomic claims</li>
+        <li>Detecting unsupported claims and uncertainty</li>
+        <li>Inference-time mitigation: retrieve, verify, revise</li>
+        <li>Training models for factuality and attribution</li>
+        <li>Practical synthesis</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>1. Problem setup: what counts as extrinsic hallucination?</h2>
+      <p>Hallucination in large language models is best treated as a grounding problem: the model produces a fluent answer, but some claims cannot be verified against the source context or external world knowledge. This note focuses on <em>extrinsic hallucination</em>, where the output introduces unsupported factual content beyond the available evidence. That is different from an in-context inconsistency, where the model contradicts information already present in the prompt.</p>
+      <p>The desired behavior is therefore not simply “always answer.” A factual system should answer when evidence supports the answer, cite or expose the evidence when possible, and abstain or express uncertainty when the question cannot be answered reliably.</p>
+      <figure>
+        <img src="assets/images/knowledge-categorization.png" alt="Knowledge categorization for hallucination and uncertainty">
+        <figcaption>Figure 1. Categorizing what a model knows, does not know, and may hallucinate. Source: knowledge categorization figure.</figcaption>
+      </figure>
+    </section>
+
+    <section>
+      <h2>2. Why hallucinations happen</h2>
+      <p>Pre-training data is incomplete, noisy, stale, and sometimes contradictory. A model may have seen false statements, missed rare facts, or learned a fact that became outdated after training. Even when the model has relevant knowledge, next-token prediction can favor a plausible continuation over a verified statement.</p>
+      <p>Fine-tuning does not automatically solve this. Gekhman et al. (2024) show an important failure mode: fine-tuning on new or unfamiliar factual knowledge can increase hallucinations, especially when the model has not robustly internalized the new knowledge. In other words, a model can become more confident in a domain without becoming more reliably factual.</p>
+      <figure>
+        <img src="assets/images/fine-tuning-new-knowledge.png" alt="Fine-tuning new knowledge can encourage hallucination">
+        <figcaption>Figure 2. Fine-tuning on unfamiliar factual knowledge can increase hallucination risk. Source: Gekhman et al. (2024).</figcaption>
+      </figure>
+    </section>
+
+    <section>
+      <h2>3. Measuring factuality with atomic claims</h2>
+      <p>Long-form answers are difficult to grade as a single unit. A better approach is to decompose a response into <em>atomic facts</em>, verify each claim, and aggregate the result. This is the central line from early factuality benchmarks to modern long-form factuality evaluation.</p>
+      <p>FActScore (Min et al., 2023) makes the atomic-fact idea explicit: split a biography-like answer into small factual propositions and measure the fraction supported by reliable sources. SAFE and LongFact (Wei et al., 2024) extend this logic with search-augmented checking and long-form prompts.</p>
+      <p>A simplified view is:</p>
+      <p>$$\text{Factual Precision} = \frac{\#\text{ supported atomic facts}}{\#\text{ generated atomic facts}}.$$</p>
+      <figure>
+        <img src="assets/images/SAFE-overview.png" alt="SAFE long-form factuality evaluation overview">
+        <figcaption>Figure 3. SAFE evaluates long-form answers by splitting, searching, and checking factual claims. Source: Wei et al. (2024).</figcaption>
+      </figure>
+    </section>
+
+    <section>
+      <h2>4. Detecting unsupported claims and uncertainty</h2>
+      <p>Sometimes we do not have a complete retrieval or search pipeline. Sampling-based methods exploit the model's own uncertainty: if multiple sampled answers disagree, the original answer is more likely to contain unsupported claims. SelfCheckGPT (Manakul et al., 2023) follows this black-box idea and checks whether generated passages are consistent with other samples from the same model.</p>
+      <p>Another line asks whether models know when they do not know. Calibration work such as Kadavath et al. (2022), along with benchmarks like TruthfulQA and SelfAware, evaluates whether model confidence tracks correctness and whether the model can avoid answering false-premise or unanswerable questions.</p>
+      <figure>
+        <img src="assets/images/SelfCheckGPT.png" alt="SelfCheckGPT sampling-based hallucination detection">
+        <figcaption>Figure 5. SelfCheckGPT detects likely hallucinations through disagreement across sampled responses. Source: Manakul et al. (2023).</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/images/calibration-results.png" alt="Calibration results for model uncertainty">
+        <figcaption>Figure 6. Calibration asks whether model confidence tracks factual correctness. Source: Kadavath et al. (2022).</figcaption>
+      </figure>
+    </section>
+
+    <section>
+      <h2>5. Inference-time mitigation: retrieve, verify, revise</h2>
+      <p>Retrieval-augmented generation is the baseline mitigation: bring evidence into the context before answering. But retrieval alone is not sufficient; the model may ignore evidence, overgeneralize from it, or cite it incorrectly. Stronger systems add verification and revision.</p>
+      <p>RARR (Gao et al., 2022) represents a retrieve-and-revise loop: identify claims, search for evidence, and edit unsupported content while preserving the useful parts of the original answer. Self-RAG (Asai et al., 2024) internalizes this workflow by training the model to decide when to retrieve, judge whether retrieved evidence is useful, and critique whether the output is supported. Chain-of-Verification (Dhuliawala et al., 2023) uses a model-only draft-check-revise pattern: generate an initial answer, plan verification questions, answer those questions independently, and then revise.</p>
+      <figure>
+        <img src="assets/images/RARR.png" alt="RARR retrieve and revise workflow">
+        <figcaption>Figure 7. RARR turns a first draft into a more attributable answer through retrieval and revision. Source: Gao et al. (2022).</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/images/self-RAG.png" alt="Self-RAG retrieve generate critique workflow">
+        <figcaption>Figure 8. Self-RAG learns when to retrieve and how to critique support from evidence. Source: Asai et al. (2024).</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/images/CoVe.png" alt="Chain-of-Verification workflow">
+        <figcaption>Figure 9. Chain-of-Verification uses planned checks before committing to a final answer. Source: Dhuliawala et al. (2023).</figcaption>
+      </figure>
+    </section>
+
+    <section>
+      <h2>6. Training models for factuality and attribution</h2>
+      <p>Post-generation checking can reduce risk, but it is expensive and imperfect. Another strategy is to train models to prefer answers that are grounded in evidence and expose their sources. Attribution-focused systems such as WebGPT and GopherCite represent this direction: the model is not only rewarded for answering correctly, but also for making the answer auditable through supporting evidence.</p>
+    </section>
+
+    <section>
+      <h2>7. Practical synthesis</h2>
+      <div class="takeaway">
+        <p><strong>Main takeaway:</strong> hallucination mitigation is not a single trick. It is a system design problem spanning data quality, evaluation, retrieval, uncertainty estimation, post-generation verification, and training.</p>
+      </div>
+      <ul>
+        <li><strong>Short factual QA:</strong> use retrieval, evidence display, and abstention when evidence is weak.</li>
+        <li><strong>Long-form generation:</strong> decompose outputs into atomic facts, verify them with search or trusted sources, and revise unsupported claims.</li>
+        <li><strong>Production systems:</strong> combine RAG, citations, calibration, monitoring, and factuality-oriented training rather than relying on prompting alone.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>References</h2>
+      <ol class="refs">
+        <li>Gekhman et al. (2024). <em>Does Fine-Tuning LLMs on New Knowledge Encourage Hallucinations?</em></li>
+        <li>Min et al. (2023). <em>FActScore: Fine-grained Atomic Evaluation of Factual Precision in Long Form Text Generation.</em></li>
+        <li>Wei et al. (2024). <em>Long-form Factuality in Large Language Models.</em></li>
+        <li>Manakul et al. (2023). <em>SelfCheckGPT: Zero-Resource Black-Box Hallucination Detection for Generative Large Language Models.</em></li>
+        <li>Kadavath et al. (2022). <em>Language Models Mostly Know What They Know.</em></li>
+        <li>Gao et al. (2022). <em>RARR: Researching and Revising What Language Models Say, Using Language Models.</em></li>
+        <li>Asai et al. (2024). <em>Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection.</em></li>
+        <li>Dhuliawala et al. (2023). <em>Chain-of-Verification Reduces Hallucination in Large Language Models.</em></li>
+      </ol>
+    </section>
+  </article>
+</main>
+</body>
+</html>

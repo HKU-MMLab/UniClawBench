@@ -1,0 +1,34 @@
+Message-ID: <AC020C17-DF74-4EB3-A04D-357D03DBC004@gbiv.com>
+X-Clawbench-ID: ASF-2024-0526
+Date: Tue, 7 Mar 2023 10:06:32 -0800
+From: "Roy T. Fielding" <fielding@gbiv.com>
+To: httpd dev <dev@httpd.apache.org>
+Subject: fixed autolinks from cve process
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-03.mbox
+
+FYI, I made some minor changes to the post-release description
+on httpd-site and within 2.4.x/CHANGES for CVE-2023-2569
+
+The form we use for editing the CVE json info has a
+feature for autolinking anything that looks like a
+URL reference. Unfortunately, it's buggy and cannot be
+turned off. When the form was updated yesterday, the
+autolinks came back. This causes every example URL to
+be repeated in the text as a link, which of course
+makes them an invalid example.
+
+I have fixed the JSON on httpd-site, rebuilding
+
+  https://httpd.apache.org/security/vulnerabilities_24.html
+
+and committed a fix in CHANGES.  I have not sent an update for
+the official CVE database, since I have no idea what that would break.
+
+No worries, but some users might complain about the weird examples.
+
+Cheers, and thanks for the release,
+
+....Roy

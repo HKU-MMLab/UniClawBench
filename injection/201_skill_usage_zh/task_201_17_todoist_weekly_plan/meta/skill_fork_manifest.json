@@ -1,0 +1,22 @@
+{
+  "task_id": "task_101_17_todoist_weekly_plan",
+  "notes_visible_to_executor": false,
+  "skill_changes": [
+    {
+      "original_skill": "todoist",
+      "injected_skill": "todoist",
+      "original_source": "clawhub",
+      "change_type": "benchmark environment adaptation",
+      "reason": "The task setup service installs the CLI and provides credentials or a local export, so the executor should not run npm install or ask the user to configure a token during the task.",
+      "executor_skill_path": "skills/todoist"
+    },
+    {
+      "original_skill": "plan-my-day",
+      "injected_skill": "plan-my-day",
+      "original_source": "clawhub",
+      "change_type": "benchmark environment adaptation",
+      "reason": "Keeps the upstream `plan-my-day` slug (top-1000 rank ~787, 'Generate an energy-optimized, time-blocked daily plan'). The SKILL.md guidance is extended slightly to emit a weekly markdown plan plus a CSV/ICS handoff under `/tmp_workspace/results/`, but the underlying planning model is unchanged.",
+      "executor_skill_path": "skills/plan-my-day"
+    }
+  ]
+}

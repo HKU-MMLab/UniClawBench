@@ -1,0 +1,28 @@
+Message-ID: <c15fa704-9aba-5a80-6bf0-9353fa73c1b9@debian.org>
+X-Clawbench-ID: BIO-2024-0722
+Date: Tue, 22 Feb 2022 08:23:23 +0200
+From: Andrius Merkys <merkys@debian.org>
+To: Eric Brown <eb@ericebrown.com>, debian-science@lists.debian.org
+Subject: Re: [covid-19] shiny-server (Was: dependencies Re: ITP: streamlit)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2022_02_msg00044.html
+
+Hi Eric,
+
+On 2022-02-22 06:43, Eric Brown wrote:
+> It appears that significant progress has been made in packaging the
+> dependencies of shiny-server. I wonder if anyone is interested and
+> able to revisit packaging shiny-server?
+
+In past I have worked to package the dependencies of shiny-server.
+Sadly, I do not have enough free cycles to work on shiny-server now. It
+would be great if someone experienced in JS (js-team?) could give it a look.
+
+As for the remaining dependencies, sockjs, sockjs-client and rewire
+stands out. There is some work on sockjs-client done in salsa, seemingly
+never uploaded.
+
+Best,
+Andrius

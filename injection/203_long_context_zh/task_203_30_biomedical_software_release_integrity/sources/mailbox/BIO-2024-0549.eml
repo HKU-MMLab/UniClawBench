@@ -1,0 +1,40 @@
+Message-ID: <ZHBaYvxnzlHR/Kx2@an3as.eu>
+X-Clawbench-ID: BIO-2024-0549
+Date: Fri, 26 May 2023 09:06:10 +0200
+From: Andreas Tille <andreas@fam-tille.de>
+To: Steffen Möller <steffen_moeller@gmx.de>
+Subject: Re: Please review release notes patch
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_05_msg00020.html
+
+Hi Steffen,
+
+Am Fri, May 26, 2023 at 06:53:14AM +0200 schrieb Andreas Tille:
+> My suggestion is that I push your text to our proposed release notes for
+> Debian 13 in our Git repository.  Its a good base to derive from and to
+> be faster next time.
+
+To make sure your well thought text will not be lost I've commited it to
+
+   https://salsa.debian.org/med-team/community/communication/-/blob/master/releasenotes/13_trixie/release-notes.patch
+
+did some s/Bookworm/Trixie/ and hope this will help us in a future
+release to be better in time.
+
+> Alternatively please forward your text to
+>  Bug#1036776: release-notes: Release notes paragraph from Debian Med team
+
+If someone thinks Steffen's text should be put into Bookworm release
+notes please write to the bug report.  The only reason why I'm
+hesitating is that I'm afraid editors of release notes are flooded
+with lots of information currently and I do not want to confuse those
+brave volunteers.  (Next time I give you team mates more than 24h
+time for responding to release note drafts, sorry about that.)
+
+Kind regards
+    Andreas.
+
+--
+http://fam-tille.de

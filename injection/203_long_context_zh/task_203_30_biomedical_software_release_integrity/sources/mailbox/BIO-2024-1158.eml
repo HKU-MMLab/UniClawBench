@@ -1,0 +1,40 @@
+Message-ID: <udlleiu4ma0.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-1158
+Date: Fri, 14 Apr 2023 09:37:59 -0400
+From: ucko@debian.org (Aaron M. Ucko)
+To: debian-med@lists.debian.org
+Subject: Re: C++ help needed
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_04_msg00007.html
+
+tags 1034369 + patch
+thanks
+
+Andreas Tille  writes:
+
+> I guess the fix will boil down to a type casting in this line
+>
+>   https://salsa.debian.org/med-team/libcereal/-/blob/master/unittests/map.hpp#L65
+>
+>      o_esplmap.insert({random_value(gen),  { random_value(gen), random_value(gen) }});
+>
+> unfortunately my C++ knowledge is too limited to know whether it is
+> really that simple nor how exactly this line needs to be fixed.  The fix
+> should be tested at least on arm64 (since the test passes on amd64).
+
+#1034369 looks very similar to #1021394, which worked around
+corresponding build-time errors by disabling -Werror but I see left the
+autopkgtest's cmake invocation as is; there may be merit in disabling
+-Werror on that front too.  At any rate, I would recommend properly
+addressing the compiler's concerns by changing random_value to
+random_value here and in the other unittests/*map.hpp headers to
+match the corresponding containers' declarations, per the attached
+patch.  The relevant platform difference is whether plain char is
+signed, as it notably is on x86 but not arm*.  (There are other
+architectures in each camp.)
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

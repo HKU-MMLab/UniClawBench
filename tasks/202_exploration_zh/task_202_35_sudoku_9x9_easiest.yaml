@@ -1,0 +1,36 @@
+task_id: task_202_35_sudoku_9x9_easiest
+category: 202_exploration_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  解这道 9x9 数独谜题。谜题位于：
+
+      /tmp_workspace/clawbench/sources/puzzle.txt
+
+  它是一个 9 行 9 列的网格；空格用点（`.`）表示，已给定的格子则填有其数值。规则：
+  - 用 1 到 9 之间的数字填满每一个空格。
+  - 每行恰好包含 1 到 9 各一次。
+  - 每列恰好包含 1 到 9 各一次。
+  - 每个 3x3 宫恰好包含 1 到 9 各一次。
+  - 已给定（预填）的数字不得更改。
+
+  将完成的网格保存到 `/tmp_workspace/results/solution.txt`，格式为 9 行、
+  每行 9 个以空格分隔的数字（不含点），并另外保存
+  `/tmp_workspace/results/solution.json`，其中含一个二维数组 `solution`（9x9），
+  以及一段关于你求解方法的简短说明。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+sources:
+  - puzzle.txt
+
+codex:
+  max_user_followups: 2

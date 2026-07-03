@@ -1,0 +1,79 @@
+task_id: task_105_01_rag_survey_gui_zotero_obsidian
+category: 105_cross_platform
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I have a local PDF from a real RAG survey reading pack and I want it moved
+  through a real desktop GUI workflow using Zotero and Obsidian.
+
+  The PDF is available here:
+
+      /tmp_workspace/clawbench/sources/rag_survey_pack/rag_survey.pdf
+
+  Please use the real desktop applications, not a web mock and not just
+  command-line file editing. A setup service installs/verifies Zotero and
+  Obsidian before you start; if they are still settling, wait briefly and try
+  launching them again. You may inspect this setup state if useful:
+
+      /tmp_workspace/clawbench/service_state/zotero-obsidian-ready.json
+
+  - Open and read the PDF with a visible PDF reader or browser PDF viewer.
+  - Launch the real Zotero desktop app. Create one Zotero record for the PDF,
+    including the title, authors, year, venue, DOI or arXiv ID, citation key,
+    tags, and a useful abstract/summary. Attach the local PDF to that Zotero
+    record.
+  - Export the Zotero item to BibTeX or Better BibTeX-style `.bib` if available.
+    The exported citation key should be `gao2024retrieval`.
+  - Launch the real Obsidian desktop app. Create/open an Obsidian vault under
+    `/tmp_workspace/results/rag_survey_obsidian_vault/` and create a literature
+    note that links to the Zotero record/citation key. The note must capture
+    the paper's objective, method, dataset/corpus or review scope, metrics or
+    evaluation dimensions, key findings, limitations, and how we could use it in
+    a RAG evaluation plan.
+
+  At the end I need these files under `/tmp_workspace/results/`:
+
+  - `rag_survey_note_export.md`
+  - `zotero_rag_survey_export.bib` (or an equivalent Zotero export with the same
+    base name and a standard citation extension)
+  - `pdf_reader_screenshot.png`
+  - `zotero_record_screenshot.png`
+  - `obsidian_note_screenshot.png`
+
+  The note should be useful as an Obsidian-style Markdown literature note with
+  YAML front matter, citation metadata, bullet-point synthesis, and enough
+  concrete facts that I can trace it back to the PDF. The screenshots should
+  show the real PDF/browser viewer, the real Zotero item, and the real Obsidian
+  note rather than a mock web page.
+
+  Please make the final screenshots auditable: the Zotero screenshot should
+  show the target parent item together with a visible attached PDF child item,
+  nonzero attachment count, or equivalent same-record attachment evidence; the
+  Obsidian screenshot should show the actual note title/content, not only a
+  startup or vault picker screen. Do not use scripts to substitute for reading
+  the PDF, creating the Zotero item, attaching the PDF, or creating the Obsidian
+  note in the real desktop applications.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/rag_survey_source_evidence.md
+
+sources:
+  - rag_survey_pack/
+
+services:
+  - name: zotero-obsidian-setup
+    path: zotero-obsidian-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

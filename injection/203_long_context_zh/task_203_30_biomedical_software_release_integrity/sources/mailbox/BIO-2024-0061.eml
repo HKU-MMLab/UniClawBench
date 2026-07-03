@@ -1,0 +1,27 @@
+Message-ID: <YWkTSZgTIT7iKm7a@an3as.eu>
+X-Clawbench-ID: BIO-2024-0061
+Date: Fri, 15 Oct 2021 07:36:09 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Is there anything blocking pysam update?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_10_msg00062.html
+
+Am Fri, Oct 15, 2021 at 02:59:18AM +0530 schrieb Nilesh Patra:
+> On 10/15/21 2:01 AM, Andreas Tille wrote:
+> > Since pysam has a lot of rdepends we should run at least ratt or upload
+> > to experimental first.
+>
+> I just uploaded to experimental, let's wait for britney pseudo-excuses then.
+> I've meanwhile spawned a reverse-rebuild for all reverse-B-D in a (relatively-)overloaded VPS -- let's see again.
+
+Cool.  Did you used ratt or something else?
+
+Kind regards
+
+     Andreas.
+
+--
+http://fam-tille.de

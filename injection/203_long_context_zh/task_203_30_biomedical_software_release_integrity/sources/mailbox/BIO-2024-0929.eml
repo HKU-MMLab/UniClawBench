@@ -1,0 +1,36 @@
+Message-ID: <Ze9rsz8BiZ-vpkMl@an3as.eu>
+X-Clawbench-ID: BIO-2024-0929
+Date: Mon, 11 Mar 2024 21:38:11 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Yaroslav Halchenko <debian@onerussian.com>,	Debian Med Project List <debian-med@lists.debian.org>
+Subject: Taking over datalad to either Debian Med or Debian Science team
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_03_msg00008.html
+
+Hi Yaroslav,
+
+once we agreed that we should probably move all Neurodebian packages to
+Debian Med to make it accessible for a bigger team.  I was not really
+active for some time in this attempt.  However, bug #1065841 brought
+datalad on my screen.  I would love to see it maintained on Salsa either
+in Debian Science team (since it has wider usage) or Debiam Med (since
+we moved Neurodebian packages there).
+
+I'd volunteer to do the move if you agree to and by doing so also fix
+the two open bugs and run some `routine-update` on the packaging.
+
+What do you think?
+
+Kind regards
+   AndreasI'd volunteer to do the move if you agree to and by doing so also fix
+the two open bugs and run some `routine-update` on the packaging.
+
+What do you think?
+
+Kind regards
+   Andreas.
+
+--
+http://fam-tille.de

@@ -1,0 +1,61 @@
+{
+  "description": "Candidate Hugo themes for a bilingual (English/Chinese) academic research-LAB website. Feature flags below are normalized from each theme's real upstream theme.toml / documentation (see source + evidence). 'multilingual' = built-in i18n; 'team_members' = a people/team profile system; 'publications' = an academic publication/BibTeX system; 'license_permissive' = MIT/Apache-style permissive license that allows free hosting + modification. Popularity is context only.",
+  "captured_at": "2026-06-19",
+  "use_case": "A university research lab needs: English+Chinese site, a Team/People page with member profiles, and a Publications list. Hosted free on GitHub/Netlify (Hugo static).",
+  "candidates": [
+    {
+      "id": "research_group",
+      "display_name": "Hugo Blox — Research Group",
+      "source": "https://github.com/HugoBlox/theme-research-group",
+      "license": "MIT",
+      "features": {"multilingual": true, "team_members": true, "publications": true, "events_talks": true, "license_permissive": true, "static_hostable": true},
+      "evidence": "theme.toml tags include 'multilingual'; features include 'research publication system'; description states 'team profiles', 'academic publications', 'events'.",
+      "popularity_note": "academic-focused, moderate adoption"
+    },
+    {
+      "id": "academic_cv",
+      "display_name": "Hugo Blox — Academic CV / Résumé",
+      "source": "https://github.com/HugoBlox/hugo-theme-academic-cv",
+      "license": "MIT",
+      "features": {"multilingual": true, "team_members": false, "publications": true, "events_talks": false, "license_permissive": true, "static_hostable": true},
+      "evidence": "Academic CV starter: single-person résumé/CV with a publications list and BibTeX import, but it is built around ONE person — no team/members system for a multi-person lab.",
+      "popularity_note": "the name says 'Academic' — tempting, but it's a personal CV, not a group site"
+    },
+    {
+      "id": "papermod",
+      "display_name": "PaperMod",
+      "source": "https://github.com/adityatelange/hugo-PaperMod",
+      "license": "MIT",
+      "features": {"multilingual": true, "team_members": false, "publications": false, "events_talks": false, "license_permissive": true, "static_hostable": true},
+      "evidence": "theme.toml features include 'multilingual', 'search', 'profile-mode', 'blog' — but no team-member or academic-publication system.",
+      "popularity_note": "one of the MOST POPULAR Hugo themes; fast/clean/blog-oriented"
+    },
+    {
+      "id": "ananke",
+      "display_name": "Ananke",
+      "source": "https://github.com/theNewDynamic/gohugo-theme-ananke",
+      "license": "MIT",
+      "features": {"multilingual": true, "team_members": false, "publications": false, "events_talks": false, "license_permissive": true, "static_hostable": true},
+      "evidence": "theme.toml tags include 'Multilingual'; a general starter/blog theme with posts + shortcodes; no members/publications.",
+      "popularity_note": "Hugo's classic default starter theme"
+    },
+    {
+      "id": "hugo_book",
+      "display_name": "Hugo Book",
+      "source": "https://github.com/alex-shpak/hugo-book",
+      "license": "MIT",
+      "features": {"multilingual": true, "team_members": false, "publications": false, "events_talks": false, "license_permissive": true, "static_hostable": true},
+      "evidence": "theme.toml tags include 'multilingual','documentation'; a docs/book theme — no team or publications system.",
+      "popularity_note": "popular documentation theme"
+    },
+    {
+      "id": "terminal",
+      "display_name": "Terminal",
+      "source": "https://github.com/panr/hugo-theme-terminal",
+      "license": "MIT",
+      "features": {"multilingual": true, "team_members": false, "publications": false, "events_talks": false, "license_permissive": true, "static_hostable": true},
+      "evidence": "theme.toml tags include 'multilingual'; a retro blog theme (features: blog, shortcode, syntax highlighting); no academic features.",
+      "popularity_note": "stylish retro blog theme"
+    }
+  ]
+}

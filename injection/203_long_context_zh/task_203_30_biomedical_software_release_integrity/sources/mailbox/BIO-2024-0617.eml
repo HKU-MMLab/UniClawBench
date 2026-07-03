@@ -1,0 +1,28 @@
+Message-ID: <ZcsZfmlcGLQ_03Zj@an3as.eu>
+X-Clawbench-ID: BIO-2024-0617
+Date: Tue, 13 Feb 2024 08:25:50 +0100
+From: Andreas Tille <tille@debian.org>
+To: "Aaron M. Ucko" <ucko@debian.org>
+Subject: Re: Should we restrict libtread-pool to 64bit only
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_02_msg00015.html
+
+Am Mon, Feb 12, 2024 at 10:09:43PM -0500 schrieb Aaron M. Ucko:
+> Andreas Tille  writes:
+>
+> >    Build-Depends libthread-pool 4.0.0 which does not build
+> >    for 32bit architectures[1]
+>
+> I see a fix in experimental:
+>
+> https://buildd.debian.org/status/package.php?p=libthread-pool&suite=experimental
+>
+> Why not just reupload it to unstable?
+
+Done.  Thanks a lot for the reminder
+    Andreas.
+
+--
+http://fam-tille.de

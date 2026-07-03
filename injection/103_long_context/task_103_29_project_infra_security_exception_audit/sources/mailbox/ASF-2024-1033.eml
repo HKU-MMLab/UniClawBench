@@ -1,0 +1,93 @@
+Message-ID: <CABw-3YexONr2XM+_HHO_LGuZPomQ1_V8+mWciG+jSfirRHyWsg@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1033
+Date: Mon, 11 Jul 2022 16:47:46 +0300
+From: "Ivan Zhakov via dev" <dev@httpd.apache.org>
+To: Stefan Eissing <stefan@eissing.org>
+Subject: Re: h2 worker pool -> mpm worker pool
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-07.mbox
+
+On Mon, 11 Jul 2022 at 10:17, Stefan Eissing <stefan@eissing.org> wrote:
+
+>
+>
+> > Am 10.07.2022 um 18:56 schrieb Ivan Zhakov <ivan@visualsvn.com>:
+> >
+> > On Mon, 20 Jun 2022 at 11:24, Stefan Eissing <stefan@eissing.org> wrote:
+> > I would like to move the h2 worker pool into the mpm at some time in the
+> future. To be available on systems with threads and non-prefork
+> configurations.
+> >
+> > The main motivation for this is that h2 workers have been so far "under
+> the hood" of mod_http2. This makes them invisible to other parts of the
+> system, like the scoreboard.
+> >
+> > On public fronting installations, h2 is now according to browsers and
+> CDNs, outnumbering h1. This means their configuration has become more
+> relevant and user need a way to monitor those.
+> >
+> > Also, should anyone ever start to tinker with a h3 implementation, such
+> a worker pool would also become necessary. I think this should be a single
+> instance. Duplicate pools for request processing do not make sense.
+> >
+> >
+> >
+> > Why a separate pool at all? Do not the mpms already have a worker pool?
+> >
+> > Yes, but we are not fully async. This means that an active worker on a
+> primary connection is firing off many secondary connections to process.
+> Would we try to run them in the same pool, we'd encounter deadlocks. Also,
+> dimensioning would become difficult. Example:
+> >
+> > An mpm_event with 10 workers, 9 active TCP connections running.
+> > - this leaves 1 worker to handle the actual requests of 9 connections.
+> Performance will be bad.
+> > - the mpm would accept a 10th connection and leave no worker available
+> for secondary requests. The system stalls until timeouts trigger.
+> >
+> > This is avoided by using separate pools for primary and secondary
+> connections. One could still encounter stalls with an under-dimensioned
+> second pool, but it can be more easily and transparently managed. We should
+> give the admin tools to monitor this second pool in the scoreboard, of
+> course.
+> >
+> > Hi Stefan,
+> >
+> > I agree that h2 workers should be part of MPM: MPM already knows how
+> thread it creates for connections and should manage all threads in process.
+> >
+> > The interesting question is what API would be suitable to implement for
+> different MPM.
+> >
+> > Can we use something like implemented by APR threadpool:
+> > threadpool_task_push()
+> > threadpool_task_cancel()
+> > threadpool_task_schedule(apr_interval_t)
+> >
+> > ?
+>
+> If you look at the current h2_workers.h in trunk, that one defines an
+> interface (disregard the h2_ prefixes) that would be suitable.
+>
+> The main gist here is:
+> - it is about processing conn_rec*, not a generalized task pool
+> - the conn_rec* instances need to be created on demand, e.g. when a thread
+> is available.
+>
+> It seems like threadpool API but with inverted semantics where tasks are
+provided using pull interface instead of push. Do I understand correctly?
+
+Is it possible for 'ap_conn_producer' to signal that it has a new task once
+ap_conn_producer_next returned *pmore=FALSE?
+
+A single HTTP/2 connection can have 100 pending requests and creating
+> conn_rec* with allocators, pools and bucket allocs should be only done when
+> they are actually needed.
+>
+> Ok, understand.
+
+
+--
+Ivan Zhakov

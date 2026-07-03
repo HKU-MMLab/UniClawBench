@@ -1,0 +1,6 @@
+country,continent,gdp_per_capita_cppp_2003,life_expectancy_2003,population_2003,expected_position
+Brazil,Americas,11543.0,72.39,180622688.0,mid-to-upper middle of the chart with clearly higher GDP and life expectancy than China or India
+China,Asia,4718.0,71.34,1294517326.0,large bubble around mid GDP and low-70s life expectancy
+India,Asia,2783.0,63.46,1116803006.0,very large bubble left of China and noticeably lower in life expectancy
+Nigeria,Africa,3158.0,55.6,137202644.0,left-to-middle GDP but clearly lowest life expectancy among the highlighted set
+United States,Americas,47260.0,77.27,289908100.0,far-right high-income bubble with high life expectancy

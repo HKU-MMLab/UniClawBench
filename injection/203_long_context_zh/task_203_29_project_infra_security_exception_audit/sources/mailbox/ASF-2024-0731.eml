@@ -1,0 +1,12 @@
+Message-ID: <asf-2024-0731@httpd.apache.org>
+X-Clawbench-ID: ASF-2024-0731
+Date: Fri, 26 Jan 2024 11:30:00 +0000
+From: Infra Access Review <access-review@apache.org>
+To: dev@httpd.apache.org
+Subject: ci-deploy token review
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: synthetic Apache-style project infrastructure review implant
+
+The mirror-move token still has deploy scope and no current owner attestation. Is the migration complete, or should infra revoke the token before the monthly credential review closes?

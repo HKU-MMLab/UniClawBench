@@ -1,0 +1,34 @@
+Message-ID: <20210913170511.GI19450@an3as.eu>
+X-Clawbench-ID: BIO-2024-1164
+Date: Mon, 13 Sep 2021 19:05:11 +0200
+From: Andreas Tille <andreas@fam-tille.de>
+To: Nilesh Patra <nilesh@tchncs.de>
+Subject: Re: Is pigx-rnaseq ready to be uploaded?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_09_msg00023.html
+
+On Mon, Sep 13, 2021 at 09:57:37PM +0530, Nilesh Patra wrote:
+> Hi Steffen,
+>
+> r-cran-gprofiler2, last missing dep of pigx-rnaseq has been accepted some hours ago.
+> However, I see that you've added this line in d/ch: "hisat2 - upstream changed default genomic aligner"
+> What would this mean? There's no upstream release for hisat2, as I saw, what needs to be done to get this in then?
+> For fastp, I had uploaded new release and also fixed architecture specific bugs.
+>
+> Also, with r-cran-gprofiler2, r-cran-grofiler is now obsolete. pigx-rnaseq was the last package which was needing it,
+> and with the new release this will also go away. I don't see a point in keeping cran-grpofiler around anymore.
+> Would you object it's removal?
+> Also, @Andreas, what d'you think?
+
+I'm perfectly fine with removal of outdated, unmaintained code but it
+should be discussed in public and thus CCing debian-med and debian-r
+list.
+
+Kind regards
+
+       Andreas.
+
+--
+http://fam-tille.de

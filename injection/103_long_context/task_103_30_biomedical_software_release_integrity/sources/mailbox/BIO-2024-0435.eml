@@ -1,0 +1,38 @@
+Message-ID: <ZLDnrYTyMy8AuO3U@an3as.eu>
+X-Clawbench-ID: BIO-2024-0435
+Date: Fri, 14 Jul 2023 08:14:05 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: GATK
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_07_msg00068.html
+
+Hi Pierre,
+
+Am Thu, Jul 13, 2023 at 10:23:10PM +0200 schrieb Pierre Gruet:
+> Yeah, GATK is one of my main goals, with Nextflow. If I remember correctly,
+> scala was a blocker but there might be a way to deal with it...
+
+Thanks a lot!
+
+> Right now I am preparing the move of my family some hundreds of kilometers
+> away, I expect to get more time to look at it closer afterwards.
+
+Sure, Real life should have preference over volunteer work.  Is the
+place where you move to a good location to have a developer sprint?
+While I like the location in Berlin (with the chance to get even more
+comfortable room) we can for sure rotate the sprint location a bit again
+to possibly attract other people.
+
+> Still, as I said, GATK and Nextflow are my packaging goals in the team, and
+> I am happy to say many dependencies have been added in the last year :)
+
+Yes, and we have some time for the next release cycle.
+
+Kind regards
+   Andreas.
+
+--
+http://fam-tille.de

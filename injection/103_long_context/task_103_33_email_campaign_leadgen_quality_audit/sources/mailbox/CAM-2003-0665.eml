@@ -1,0 +1,33 @@
+Message-ID: <20020910154508.D02ED9EDBF@belphegore.hughes-family.org>
+X-Clawbench-ID: CAM-2003-0665
+Date: Tue, 10 Sep 2002 08:45:08 -0700
+From: bugzilla-daemon@hughes-family.org
+To: spamassassin-devel@example.sourceforge.net
+Subject: [SAdev] [Bug 486] SpamAssassin causes zombies (network tests,    MIMEDefang 2.16)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 01454.9d6b2206cc67fc7bdce65109a7bf1b5f
+
+http://www.hughes-family.org/bugzilla/show_bug.cgi?id=486
+
+
+------- Additional Comments From larry@5points.net  2002-09-10 08:45 -------
+Dan,
+
+To answer your question to my post (which maybe should be a seperate bug?) I'm
+using Spamassassin version 2.30
+
+
+------- You are receiving this mail because: -------
+You are the assignee for the bug, or are watching the assignee.
+
+
+-------------------------------------------------------
+This sf.net email is sponsored by: OSDN - Tired of that same old
+cell phone?  Get a new here for FREE!
+https://www.inphonic.com/r.asp?r=sourceforge1&refcode1=vs3390
+_______________________________________________
+Spamassassin-devel mailing list
+Spamassassin-devel@lists.sourceforge.net
+https://lists.sourceforge.net/lists/listinfo/spamassassin-devel

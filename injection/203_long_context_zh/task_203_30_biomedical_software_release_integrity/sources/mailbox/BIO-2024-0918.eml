@@ -1,0 +1,49 @@
+Message-ID: <Y4hQ9xrdChkilSi1@an3as.eu>
+X-Clawbench-ID: BIO-2024-0918
+Date: Thu, 1 Dec 2022 08:00:07 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>
+Subject: December is bug squashing month
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_12_msg00000.html
+
+Hi folks,
+
+until 2021 we had the nice bug squashing advent calendar manually
+maintained by Thorsten Alteholz.  Since last year he confirmed that this
+manual work is draining time from his other tasks for Debian mainly his
+ftpmaster task.  I'd like to thank Thorsten again for all his effort -
+even mor for the ftpmaster work than the calendar.
+
+So last year we went without the graphical gimmick but I've posted my
+bug(s) of the day to the list.  I'd like to invite everybody to do the
+same here.  For those who want to squash bugs I recommend the following
+resources:
+
+ 1. Classical BTS:
+     https://bugs.debian.org/debian-med-packaging@lists.alioth.debian.org
+    Please note that at the end is a list of "Forwarded bugs" which also
+    might need fixing.
+
+ 2. Maintainer dashboard
+      https://udd.debian.org/dmd/?email1=debian-med-packaging%40lists.alioth.debian.org&email2=&email3=&packages=&ignpackages=&format=html#todo
+    It also notes testing migration is an issue we want to fix and caring
+    for this is also worth mentioning here in a posting.
+
+ 3. Blends pages
+    Bugs:
+      https://blends.debian.org/med/bugs/
+    Testing migration and autopkgtest issues
+      https://blends.debian.org/med/qa/
+
+Any contribution to increase the quality of our packages is really
+welcome.
+
+Thanks in advance for your contributions
+
+    Andreas.
+
+--
+http://fam-tille.de

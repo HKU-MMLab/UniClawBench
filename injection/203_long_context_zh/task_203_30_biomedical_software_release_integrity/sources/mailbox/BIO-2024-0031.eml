@@ -1,0 +1,26 @@
+Message-ID: <CADsTwjJRx5s1Ve9J_pTX1utryz9cOOZADQUr8Nh_7p83x-Xvdw@mail.gmail.com>
+X-Clawbench-ID: BIO-2024-0031
+Date: Tue, 22 Oct 2024 20:12:38 +0200
+From: Alexandre Detiste <alexandre.detiste@gmail.com>
+To: debian-med@lists.debian.org
+Subject: RM: pyqi
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_10_msg00016.html
+
+Hi,
+
+It looks like #1085822 would be trivial to fix.
+But is it even worth it ?
+It looks like everybody has moved to click for TUI.
+
+Greetings,
+Alexandre
+
+> This project is no longer under active development.
+> We have shifted to using click....
+
+https://github.com/biocore/pyqi
+
+https://qa.debian.org/popcon.php?package=pyqi

@@ -1,0 +1,36 @@
+Message-ID: <ZWBmHJbBv7dUX7ke@redhat.com>
+X-Clawbench-ID: ASF-2024-0634
+Date: Fri, 24 Nov 2023 09:00:12 +0000
+From: Joe Orton <jorton@redhat.com>
+To: dev@httpd.apache.org, dev@apr.apache.org
+Subject: Re: mod_dav_fs locking / Re: apr_dbm and concurrency
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-11.mbox
+
+On Thu, Nov 23, 2023 at 05:42:10PM +0000, Emmanuel Dreyfus wrote:
+> On Thu, Nov 23, 2023 at 05:36:06PM +0000, Joe Orton wrote:
+> > 3) in the mean time I worked up a PR for mod_dav_fs which adds a global
+> > mutex around the dbm lockdb use. This passes my stress tests for the
+> > first time.
+>
+> How concurent is the stress test?
+
+I've been testing with 20 concurrent clients on an 8 core machine.
+
+> In the past, I have been badly hurt by a few WebDAV clients proactively
+> exploring the filesystem using locksdiscovery. That compeltely killed the
+> service. I introduced the DavLockDiscovery directive to work it around.
+
+This is a good point. Was the load in that case PRPOFIND/depth:infinity
+do you know or "just" depth:1? A global lock like in my PR would make
+the PROPFIND load even worse, since the lock is held for the duration of
+the response and there are no concurrent read-only locks.
+
+It might be necessary to disable lock discovery by default then, I don't
+know if any clients rely on or expose that but it's only a "MAY" that
+lock discvovery is possible in RFC4918. I suspect the lock recovery
+mechanism for most users & clients is to delete the lockdb.
+
+Regards, Joe

@@ -1,0 +1,54 @@
+Message-ID: <Z3JaYdNY_yb-D117@an3as.eu>
+X-Clawbench-ID: BIO-2024-1283
+Date: Mon, 30 Dec 2024 09:31:29 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: [Advent Calendar] doors for the last week
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_12_msg00034.html
+
+Hi,
+
+Am Sun, Dec 29, 2024 at 12:08:56PM +0100 schrieb Étienne Mollier:
+>
+> I also tried to include a couple of bugs mentioned in the
+> mailing list or in Matrix that were not in Debian Med Packaging
+> list, but nevertheless were helpful for the Debian Med team, but
+> I fear I might have missed some.  Don't hesitate to add them to
+> the count if they turn out to be missing.
+
+Thank you for the summary!
+
+> The bug squashing marathon resulted in 122 bugs closed.  This
+> reduced the amount of open issues down below 300; I counted 284
+> open issues today, but some bugs were reported and some other
+> bugs were closed since Christmas, so my count may be off a bit.
+
+I don't think exact stats (whatever exact might mean in this case) do
+matter much.  Its the common feeling we had to foxus on the quality
+of our packages.
+
+> People who want to carry on squashing bugs may refer to the
+> Debian Med bug tracker[2].  There are still many double build
+> failures among 90 minor bugs that are usually low hanging
+> fruits, but also 17 packages still pending upload, and 11
+> packages with a patch available.  197 bugs are still
+> unclassified, and it may be helpful to have a look and see
+> whether they are still affecting us today.
+
+Sometimes pinging bugs forwarded upstream is helpful as well and can be
+done by everybody.
+
+> [1]: https://alioth-lists.debian.net/pipermail/debian-med-packaging/2024-December/date.html
+> [2]: https://bugs.debian.org/cgi-bin/pkgreport.cgi?maint=debian-med-packaging@lists.alioth.debian.org
+>
+> Merry Christmas and Happy New Year,  :)
+
++1 for the Happy New Year and see you in Berlin
+    Andreas.
+
+
+--
+https://fam-tille.de

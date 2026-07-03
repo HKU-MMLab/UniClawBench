@@ -1,0 +1,48 @@
+Message-ID: <Ygynv+R0Js3eOffM@an3as.eu>
+X-Clawbench-ID: BIO-2024-0751
+Date: Wed, 16 Feb 2022 08:29:03 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: 1003165@bugs.debian.org, debian-science@lists.debian.org
+Subject: Re: scikit-learn in unstable FTBFS on arm64, armel, armhf, i386, ppc64el and s390x
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-science_2022_02_msg00030.html
+
+Control: tags -1 upstream
+Control: forwarded -1 https://github.com/scikit-learn/scikit-learn/issues/22503
+         also sent another bug report https://github.com/scikit-learn/scikit-learn/issues/22504
+
+Hi,
+
+as I explained to Debian Science list[1] I'd recommend to drop armel and
+armhf architectures.  I checked the build logs and noticed that these
+architectures are failing with "Bus error".  While I subscribe to the
+reasoning that this could be caused by some coding bug which hides
+somewhere and is not detected on other architectures I think we should
+draw some line here.  Obviously we do not have the power to maintain
+this code for all architectures neither do I expect that there is any
+honest user of this code on the said architectures.  So I would simply
+exclude these from the list of architectures.
+
+For the other architectures I opened two different issues upstream:
+
+  Test suite failure for arm64, ppc64el, s390x, ppc64 and risc64[2]
+
+and
+
+  Second build failure for s390x and ppc64[3]
+
+Kind regards
+
+      Andreas.
+
+PS: Volunteers to sort out the Bus error on the 32 bit arm architectures
+    are welcome.
+
+[1] https://lists.debian.org/debian-science/2022/02/msg00029.html
+[2] https://github.com/scikit-learn/scikit-learn/issues/22503
+[3] https://github.com/scikit-learn/scikit-learn/issues/22504
+
+--
+http://fam-tille.de

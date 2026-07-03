@@ -1,0 +1,36 @@
+Message-ID: <CALK=YjPrOZ=AmUXY783J7p5S5FVxt+9vSCpRn9wz1SGWTWb+Wg@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0299
+Date: Wed, 3 May 2023 15:12:29 -0400
+From: Eric Covener <covener@gmail.com>
+To: dev@httpd.apache.org, Graham Leggett <minfrin@sharp.fm>
+Subject: Re: ci vs PR approvals? (was: [apache/httpd] Fix a possible NULL  pointer dereference in hook_uri2file (PR #355))
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2023-05.mbox
+
+On Tue, Apr 25, 2023 at 2:45 PM Graham Leggett via dev
+<dev@httpd.apache.org> wrote:
+>
+> On 25 Apr 2023, at 07:45, Ruediger Pluem <rpluem@apache.org> wrote:
+>
+> 2. Switching from Subversion to Git is mostly an emotional problem for me. We have some closer ties to Subversion by some
+>   overlaps in the community and via mod_dav_svn we kind of partially eat our very own dogfood here by using Subversion.
+>   We wouldn't do that any longer with Git. Plus it would switch another of our development tools from an Apache license to GPL.
+>   Apart from technical aspects that this change would create we should check if all of the current active committers are fine
+>   using Github. While people could use Gitbox and thus avoid Github when we use Git I would like us to leverage the features of
+>   Github when we would do this switch and I think this cannot be done if active committers would have issues with Github.
+>
+>
+> +1.
+>
+> I've always found the fight about “must be git” to be really tedious. Github supports both git and svn to this day, and people are free to use what they prefer by using the interface they are most familiar with.
+>
+> While Github is popular today, this is only because the goals of the owners of Github are presently aligned with our goals. As Twitter has taught us, goals change at any time and without warning.
+
+Hi Graham -- it's a little unclear to me where this would put you
+"vote" wise about moving to read/write Git.
+
+Anyone else with a stake have an opinion? It has been since about 2019
+since we last discussed it here, I am hoping people have warmed up to
+it.

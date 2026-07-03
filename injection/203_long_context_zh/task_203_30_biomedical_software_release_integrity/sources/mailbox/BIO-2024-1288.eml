@@ -1,0 +1,21 @@
+Message-ID: <2908163.mvXUDI8C0e@riemann>
+X-Clawbench-ID: BIO-2024-1288
+Date: Mon, 15 Apr 2024 13:03:47 -0500
+From: Steven Robbins <steve@sumost.ca>
+To: debian-med@lists.debian.org
+Subject: Re: Emboss not migrating due to autopkgtest error on s390x
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2024_04_msg00029.html
+
+On Monday, April 15, 2024 2:06:00 A.M. CDT Andrius Merkys wrote:
+
+> GDB localises the issue in a string formatting function. I have a hunch
+> this might be related to time_64 transition, but cannot say more, alas.
+
+Perhaps that is something worth transmitting to the s390 porters list?
+If true, it may mean the issue lies elsewhere and fixes there will mean emboss
+works again.
+
+-Steve

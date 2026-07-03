@@ -1,0 +1,25 @@
+Message-ID: <20020806014000.48D429E@whatexit.org>
+X-Clawbench-ID: CAM-2003-0139
+Date: Mon, 05 Aug 2002 21:39:59 -0400
+From: Tom Reingold <noglider@pobox.com>
+To: exmh-users@spamassassin.taint.org
+Subject: curses interface to nmh
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00757.7aeba72e6fd31d31196843f3238197b5
+
+On Fri, 26 Jul 2002 10:06:41 EDT,
+	pll@lanminds.com wrote:
+
+> [...]Unless someone writes a really neat curses based
+> interface to ride on top of nmh :)
+
+Years ago, there was a package called mh-e which was an emacs interface
+to MH.  I don't know if it's still around or works.  But it's an idea.
+
+
+_______________________________________________
+Exmh-users mailing list
+Exmh-users@redhat.com
+https://listman.redhat.com/mailman/listinfo/exmh-users

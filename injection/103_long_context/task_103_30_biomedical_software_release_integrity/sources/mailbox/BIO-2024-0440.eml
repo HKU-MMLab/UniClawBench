@@ -1,0 +1,69 @@
+Message-ID: <trinity-e6eeea34-c06b-4c16-950f-c7f8a82da792-1685051878993@3c-app-gmx-bs49>
+X-Clawbench-ID: BIO-2024-0440
+Date: Thu, 25 May 2023 23:57:59 +0200
+From: Steffen Möller <steffen_moeller@gmx.de>
+To: Med Team <debian-med@lists.debian.org>
+Subject: Aw: Re: Please review release notes patch
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_05_msg00018.html
+
+Heya,
+
+> Gesendet: Donnerstag, 25. Mai 2023 um 09:51 Uhr
+> Von: "Andreas Tille"
+> An: debian-med@lists.debian.org
+> Cc: "Steffen Möller"
+> Betreff: Re: Please review release notes patch
+>
+> Hi Nilesh,
+>
+> Am Wed, May 24, 2023 at 10:16:22PM +0530 schrieb Nilesh Patra:
+> > On Wed, May 24, 2023 at 11:28:13AM +0200, Pierre Gruet wrote:
+> > > Le 24/05/2023 à 08:25, Andreas Tille a écrit :
+> > > >    https://salsa.debian.org/med-team/community/communication/-/blob/master/releasenotes/bookworm/release-notes.patch
+> > > >
+> > > > Please review and comment on it (or just push fixes and enhancements)!
+> > > Is there any important piece of software we packaged during this release
+> > > cycle and that could be worth highlighting? From my limited perspective I
+> > > have none that comes to mind, but maybe it will for someone else.
+> >
+> > I do remember that during the bullseye release, we were looking forward
+> > to get nextflow into bookworm. AFAICS, that did not happen but I do see
+> > a capsule-nextflow package.
+> > Although it is mostly a deployment tool, _maybe_ it is worth a mention?
+> >
+> > I've CC'ed Steffen for any inputs about the same.
+>
+> Steffen?
+
+Nextflow has not made it. Pierre summarized the state not to long ago.
+The problem was the change to the build tool that Debian does not support its latest version.
+
+> IMHO I consider it less worth mentioning than shiny-server.
+
+shiny-server is a piece of infrastructure to run services, obviously.
+It is important, although many would say that it is not a core piece of bioinformatics.
+I propose to adjust the release notes accordingly, also adopting a bit of what Pierre described wrt dependencies. Here my shot:
+
+
+For the past 20 years, Debian has been a trusted distributor of software for the Life Sciences and Medicine, offering all the benefits that come with Debian as a distribution. This commitment has supported education, research, and service providers who rely on web-based software solutions. Particularly in the life sciences field, where data often exceeds transport capacity, Debian's contributions are of immense value. With the release of Debian Bookworm, we are excited to introduce the shiny-server package, which enables the creation of scientific web applications using the statistical environment R.
+
+
+Much of our work goes unnoticed by users who simply see their familiar packages updated. However, behind the scenes, we continuously strive to improve the reliability and quality of our software. Through enhanced Continuous Integration support, the packages maintained by the Debian Med team undergo official auto-tests and additional tests developed by our team. By keeping software dependencies up to date, multiple packages can work seamlessly together, benefiting from the collective identification of issues and ensuring a smooth user experience. Any patches we create are shared back with the original developers, allowing Debian Med to remain closely aligned with the original sciences.
+
+
+Bookworm ships with >1000 packages that are maintained by the Debian Med group that are kept compatible with the very latest versions of the software itself, but most work is invested into maintaining that often aging but established software to remain compatible with the latest versions of the shared libraries that often experiences incompatible changes to their API. This effort has become increasingly difficult over the past years as softwares have grown in complexity with many more dependencies, and also seeing many overlaps with other disciplines, such that the contributors to Debian Med also find themselves contributing to the Science and Electronic teams, or just help with basic Java or Python libraries that have not yet been packaged. But waiting for Debian to provide packages for all the latest softwares available today would slow your Science down. To the rescue may come the updated package of Singularity, i.e. a non-privileged means to install externally prepared software images, and we already know many such images to have Debian as their basis.
+
+
+The Debian Med team values feedback from users, especially regarding requests for packaging previously unpackaged free software or backports to earlier releases that are important to you.
+
+
+To install the packages maintained by the Debian Med team, simply install the metapackages named med-*, which are currently at version 3.8.x for Debian Bookworm. You can explore the full range of biological and medical software available in Debian by visiting the https://blends.debian.org/med/tasks";>Debian Med tasks pages.
+
+
+Please extend/shorten/mod as you see fit.
+
+Best,
+Steffen

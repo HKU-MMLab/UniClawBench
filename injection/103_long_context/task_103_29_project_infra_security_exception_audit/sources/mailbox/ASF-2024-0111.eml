@@ -1,0 +1,22 @@
+Message-ID: <AD66536F-AA1C-49CC-89C0-AA4159CDF06A@eissing.org>
+X-Clawbench-ID: ASF-2024-0111
+Date: Tue, 17 May 2022 14:57:12 +0200
+From: Stefan Eissing <stefan@eissing.org>
+To: dev@httpd.apache.org
+Subject: travis CI failing in 2.4.x
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-05.mbox
+
+We have the CI for 2.4.x failing for some time in endless log messages for "Linux Ubuntu Focal, ASan, pool-debug"
+
+[Mon May 16 14:36:38.939810 2022] [optional_hook_import:error] [pid 64983:tid 140667614734080] AH01866: Optional hook test said: GET /getfiles-perl-pod/perlapi.pod HTTP/1.1
+5989[Mon May 16 14:36:38.939815 2022] [optional_fn_export:error] [pid 64983:tid 140667614734080] AH01871: Optional function test said: GET /getfiles-perl-pod/perlapi.pod HTTP/1.1
+
+Anyone got an idea?
+
+Seems to have started with "Merge r1900026 from trunk:"? https://github.com/apache/httpd/commit/b64b0488b12dc81df972bff4747d9b9c68fbad3f
+
+Kind Regards,
+Stefan

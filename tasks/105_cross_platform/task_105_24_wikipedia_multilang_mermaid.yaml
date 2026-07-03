@@ -1,0 +1,61 @@
+task_id: task_105_24_wikipedia_multilang_mermaid
+category: 105_cross_platform
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I've been curious about something: for the same technical topic, do
+  different language editions of Wikipedia write it very differently? I
+  picked "Next.js" and want to compare the English, Chinese, Japanese,
+  and German versions to see which two are most similar and which is
+  most isolated.
+
+  I've pinned all four to specific historical revisions so the comparison
+  stays reproducible regardless of future edits. The oldids are at the
+  end.
+
+  My hypothesis is that the English and Japanese versions should be most
+  alike — both more "engineering-oriented" — and that the German version
+  will be relatively isolated. Can you help me verify this?
+
+  A few ideas: for each pinned revision, fetch the section list and
+  external links, then compute pairwise Jaccard similarity on the
+  external-link sets to see which two languages are written most alike.
+  Also check the "thickness" of each version — byte length, number of
+  categories, number of images — is the German version really much
+  thinner than the English one? Finally, draw a Mermaid concept diagram
+  connecting "Next.js" to the four languages with similarity scores on
+  the edges, and render it to PNG so I can see the relationships at a
+  glance.
+
+  Put results under /tmp_workspace/results/ — roughly a summary JSON,
+  the Mermaid source + rendered PNG, and a brief written explanation
+  (in Chinese) stating the conclusions: which two are most similar and
+  whether German is indeed the thinnest.
+
+  The four oldids:
+    en: https://en.wikipedia.org/wiki/Next.js?oldid=1350358134
+    zh: https://zh.wikipedia.org/wiki/Next.js?oldid=91416611
+    ja: https://ja.wikipedia.org/wiki/Next.js?oldid=108911848
+    de: https://de.wikipedia.org/wiki/Next.js?oldid=262493853
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources: []
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

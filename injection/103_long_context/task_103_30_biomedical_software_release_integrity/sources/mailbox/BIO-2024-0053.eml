@@ -1,0 +1,56 @@
+Message-ID: <Yb2TT6LXg7cuIiV6@an3as.eu>
+X-Clawbench-ID: BIO-2024-0053
+Date: Sat, 18 Dec 2021 08:52:47 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Scala error when trying to build latest version of pilon
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_12_msg00102.html
+
+Hi Pierre,
+
+Am Fri, Dec 17, 2021 at 11:27:50PM +0100 schrieb Pierre Gruet:
+> I have just uploaded latest upstream version of pilon to unstable, together
+> with a fix for the scala issues showing up. Normally we would have had to
+> update scala from 2.11 to 2.13, but here the fix was very short to write.
+
+Thanks a lot!
+
+> Sorry, I mixed up the changelog entries a bit because I forgot to pull from
+> Salsa before working on the package, but now on Salsa everything is right.
+
+:-)
+
+> > > Anyway, for sure the
+> > > right thing would be to upgrade Scala.
+> >
+> > Yep.  We need this anyway.
+>
+> Right!
+> This email is the opportunity to ask you a question: I saw you were the
+> initial sponsor of sbt, the Scala Build Tool. The source package was
+> accepted with a lot of embedded jars inside. Do you remember if you had some
+> discussion with FTP Masters about it before they accepted the package?
+> Arguably this is costly to avoid in such a setting, where we need Scala
+> dependencies to build a tool that builds Scala programs...
+
+I vaguely remember that the bootstrapping process required some
+discussion with ftpmaster but I forgot the details.  Since the discussion
+was long ago I think it needs to be taken up again if needed.
+
+> I am interested in this, because I regularly give some time to improving the
+> state of the Scala ecosystem in Debian, and sbt if central in it.
+
+It would be really great if you could update Scala since we will face
+issues over and over with other recent software using it.
+
+> Warm regards,
+
+Same to you
+
+      Andreas.
+
+--
+http://fam-tille.de

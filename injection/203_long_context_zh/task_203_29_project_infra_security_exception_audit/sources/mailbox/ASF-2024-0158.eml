@@ -1,0 +1,51 @@
+Message-ID: <E918AC57-45AD-47DB-9BD9-F843111E5FA9@sharp.fm>
+X-Clawbench-ID: ASF-2024-0158
+Date: Tue, 25 Jan 2022 23:25:47 +0200
+From: Graham Leggett <minfrin@sharp.fm>
+To: dev@httpd.apache.org
+Subject: Re: mpm event assertion failures
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-01.mbox
+
+On 25 Jan 2022, at 14:11, Stefan Eissing <stefan@eissing.org> wrote:
+
+> Also, while running the http2 test suite, I get repeated assert failures in event.c:1230
+>
+> if (rv != APR_SUCCESS && !APR_STATUS_IS_EEXIST(rv)) {
+> ->  AP_DEBUG_ASSERT(0);
+>    TO_QUEUE_REMOVE(cs->sc->wc_q, cs);
+>    apr_thread_mutex_unlock(timeout_mutex);
+>    ap_log_error(APLOG_MARK, APLOG_ERR, rv, ap_server_conf, APLOGNO(03465)
+>                 "process_socket: apr_pollset_add failure for "
+>                 "write completion");
+>    close_connection(cs);
+>    signal_threads(ST_GRACEFUL);
+> }
+
+One line above is this:
+
+            rv = apr_pollset_add(event_pollset, &cs->pfd);
+
+and looking up the log we fail with a bad file descriptor.
+
+This looks like it’s being triggered by this:
+
+https://github.com/apache/apr/blob/trunk/poll/unix/poll.c#L194
+
+which in turn looks like an apr_file_t is being added to the connection. Does that seem familiar?
+
+To explain what’s changed in mod_ssl, a bug has been fixed. In the old mod_ssl, directly after connecting we make one single attempt to read zero bytes in a blocking connection. OpenSSL kicks in and performs reads and writes to finish the handshake. And then if that failed for whatever reason - brokenly - we throw the errors away and pretend nothing happened.
+
+https://github.com/apache/httpd/blob/2.4.x/modules/ssl/mod_ssl.c#L695
+
+We then get into the protocol handler, and in http/1.1 we read the now broken connection a second time here:
+
+https://github.com/apache/httpd/blob/2.4.x/modules/http/http_core.c#L148
+
+Is the http2 code doing anything to work around mod_ssl trying to read, failing, throwing away the error, and then pretending nothing happened? To fix this behaviour, I suspect whatever you needed to do to work around the mod_ssl bug needs to be undone.
+
+Regards,
+Graham
+—

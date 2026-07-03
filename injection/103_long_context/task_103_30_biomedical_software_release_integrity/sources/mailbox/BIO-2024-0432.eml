@@ -1,0 +1,86 @@
+Message-ID: <20220407161717.1363.74921@mail.envs.net>
+X-Clawbench-ID: BIO-2024-0432
+Date: Thu, 07 Apr 2022 16:17:17 -0000
+From: "Mohd Bilal" <rmb@envs.net>
+To: andreas@an3as.eu
+Subject: Re: RFS : add autopkgtest for bmtk
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_04_msg00026.html
+
+Andreas Tille  wrote:
+>Hi Mohd,
+>
+>Am Wed, Apr 06, 2022 at 04:07:10PM -0000 schrieb Mohd Bilal:
+>&gt; Hello team,
+>&gt;
+>&gt; I&#39;ve added autopkgtest for bmtk[1] and would like someone to review and sponsor my changes.
+>
+>Thanks a lot for your effort.
+>
+>&gt; However I&#39;ve some concerns.
+>&gt;
+>&gt; https://salsa.debian.org/med-team/bmtk/-/tree/master/bmtk/simulator/filternet/lgnmodel/cell_metrics has some csv files.
+>&gt; But I cannot find these csv files in /usr/lib/python3/dist-packages/bmtk/simulator/filternet/lgnmodel/ after installing python3-bmtk.
+>&gt; These csv&#39;s are required for the tests and I&#39;m getting FileNotFound Error[2] for these files when running the tests.
+>
+>I&#39;ve added these csv files to the package now since it seems these are necessary.
+>
+>&gt; So as a  workaround I&#39;ve added a patch to skip this particular test since I was unable to fix that test without the csv files.
+>&gt;
+>&gt; Can somebody review this and guide if this is not the right way to do it.
+>
+>I&#39;ve not fully finished my review and need to go AFK now.  May
+>be you have another look whether you can drop your patch now.
+
+Thank you for your inputs. I've dropped my patch now and the autopkgtest now passes[1].
+
+[1] - https://salsa.debian.org/med-team/bmtk/-/jobs/2650792
+
+Regards,
+rmb
+
+>
+>Thanks again
+>
+>     Andreas.
+>
+>&gt; [1] - https://salsa.debian.org/med-team/bmtk
+>&gt; [2] - https://salsa.debian.org/med-team/bmtk/-/jobs/2647435
+>&gt;
+>&gt; Thanks &amp; Regards,
+>&gt; rmb
+>
+>&gt; -----BEGIN PGP MESSAGE-----
+>&gt;
+>&gt; owGNU3tQVFUYXxbQurSIOj6mRA+jiSTLVR7qRFPxEHES05VJgxDO3nt297T3sZ5z
+>&gt; dhemJrQx87FjIJoYSvUHGYyKqD3AHONhEY8eEo4zktYM4ZgoM6hjjDR17goNfzJz
+>&gt; //ru9/2+3+M7ZZZQkxBy9sFB23sx1QtCToba7OFIhVix53x1Oxspig4Ygmq8IKyN
+>&gt; 9SEAZRnJAHqZ7nE7GaIMOHQC7Cpz5y8vAFCTgV/3KjJQsBsBqqtI1xBgOiDIh5E/
+>&gt; 2EA9ukb5kFoCJBfUnIgmCEK27kc+REBwiTEHJF2TENGMny7GPPR5UaRQoTBBRnYM
+>&gt; tQSdOEUVyVaDnWgQEK0iIwiJKqQMkcclilWvAplORAdWeFVDTFScmqrLSBElrq5Q
+>&gt; RYxgiQIXpGN7qQ/wZoNVupeBtUCCmqZznZhzZy5EJ7QArAHRS4moYLvoKWEuXUsS
+>&gt; ZUyZ1QMlN+TSJkEDQAcvcSjKoKJgzQnGkKzGbIKQO74zlgJIELdymxcTnoLhPCcE
+>&gt; jBho0Nq1sSpwIsYMkCxOcL3OsnQv/7GaEJ3kJxaMz3DAxwL8LqQB4tU0Y+R/MO75
+>&gt; Jh1wRyDgeRI3JEGUiRcAPJBJLiNa6sYePoopLxGGJa6UBGEAxTxC7qCfI3k1aFeC
+>&gt; p+DAxbwdsjHefszFcqON5RO8FzKgFgzErssl4+cT3GIIdXqxjAB2PK7wz0jIQCDY
+>&gt; 6WJ8YYmxSdYBZhzKOE0rmNwVCYZLk23mJ/embqdi4orklclJKQLPCmpuChYDG3JC
+>&gt; ItN4gah2YY85KcwUIpiiZ8eEWdE38xsdedrhESqMv7pws/HYTMKTUeMV1Bpl2r5t
+>&gt; ZFPsOQu+oETUf+L607RmirnjxQ1Rdc+GjyYuuJIZ2X28/esPMm8ebTw9ciLKtjd3
+>&gt; /52Ky81hnkeDyandi2LaHwTCz9wz06Fwd0QLWDp1IG10Ws8TW/9uFWsdxa8+FXdd
+>&gt; HarZ2XBcje5pzh3yKZvCKj8v7rHV1K0oXa4OR1XB/ANVvccG43vSW2C3LWLQ31Ez
+>&gt; /FNd1u7Fp1Kf+35HZ+K/SW/0VlrbYsJbGtSBda5r0q6rz3w8NTfxeKFS9WvjrMWR
+>&gt; ceduexdtfK33YldE2urik5FpncL2iFtLYt14z+Wq1hmuOVWp/UviUjK/KP8o7Lvz
+>&gt; PZ05eb0JZYvu7V36cn+5r3j+9JX6tL7X8wKllV3TDlt29fdtLjx9Y97oxV96p/Zn
+>&gt; vBWx/1rOP2fffueFnweKA3eXJV87YLlknp2QfiSy+X72nfcDv5XN/OyCWmMNaeoo
+>&gt; 21s7OutM7XlLZ0dNq7mpW9q3Zs+R/PjqoXPO6LkPQ3f/8PTM7nfnzvEV7PzWdDDw
+>&gt; FwnJ0vArW2+2P7xXBApmmPety2368XRf/IHBhRt/z6hurRi5Kn05UF9d82l5SqDh
+>&gt; +h9bbFdODce1rZ9y6MPeykbvjhurjm2oX2bqyjnYvFkr7Z+V5rMUHTpR31RflDfY
+>&gt; Zbk+ev+lhamnpHkVdYPDpUdbrm65e8Pi3JBGLg0HHkwP6TjZ8OjWqr6mVS0pbXPM
+>&gt; /wE=
+>&gt; =0vJv
+>&gt; -----END PGP MESSAGE-----
+>
+>--
+>http://fam-tille.de

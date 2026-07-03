@@ -1,0 +1,43 @@
+Message-ID: <YY/zlkKWRRVylmQ8@an3as.eu>
+X-Clawbench-ID: BIO-2024-1401
+Date: Sat, 13 Nov 2021 18:19:18 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: debian-med@lists.debian.org
+Subject: Re: Progress in merging neurodebian team?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_11_msg00072.html
+
+Hi Nilesh,
+
+Am Sat, Nov 13, 2021 at 08:28:07PM +0530 schrieb Nilesh Patra:
+> It was decided that the neurodeb team will be merged into
+> -med going forward.
+> I see 19 packages there (18 free, 1 non-free) few of them have
+> already been removed from the archive, which means even less packages to move.
+>
+> Do we have a, sort of ETA to do this?
+
+I do it
+
+   A) if I have time _and_
+   B) I find some specific issue on a package
+
+Issues can be RC bugs, package not in testing, broken watch file etc.
+
+There are packages I gave up.  For instance I have some mental note on
+fsl saying: non-free, outdated (upstream has version 6.0) and terribly
+complex.
+
+Feel free to pick one (and do not hesitate to ask me to transfer a
+repository and when doing so bring it in Debian Med policy conform
+shape).
+
+Kind regards
+
+         Andreas.
+
+
+--
+http://fam-tille.de

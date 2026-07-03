@@ -1,0 +1,68 @@
+task_id: task_101_03_access_log_regex
+category: 101_skill_usage
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I've got ~70K lines of web logs in
+  /tmp_workspace/clawbench/sources/access.log from our old NASA mirror
+  plus a chunk from some other hosts — all Apache common log format.
+  Someone's been hammering us with weird requests and I want to figure out
+  who and when. Use the workspace's log-analysis skill to chew through
+  this for me; I really don't want to hand-roll regex again.
+
+  Give me a JSON summary at /tmp_workspace/results/summary.json with:
+    - total_requests        : parseable request count
+    - malformed_line_count  : lines that don't parse as CLF
+    - top_urls              : array of the 50 most-requested URL paths,
+                              each {path, count}, sorted by count desc
+                              then path asc
+    - status_distribution   : object mapping each HTTP status code to
+                              its request count
+    - error_rate_by_hour    : object mapping each hour bucket
+                              "DD/Mon/YYYY HH" to its 4xx+5xx rate, using
+                              the hour printed in the log line without
+                              converting time zones
+    - suspicious_ips        : array of IPs with at least 10 4xx hits, each
+                              {ip, fourxx_count}, sorted by count desc —
+                              the scanners are the ones I really want flagged
+
+  Alongside summary.json please drop a short companion writeup at
+  /tmp_workspace/results/report.md so I can actually read what's going on.
+  I don't need a formal report — just give me a feel for the whole picture:
+  how the traffic volume rises and falls across the window, what the
+  status-code mix looks like especially the chunk that isn't 200,
+  which IPs are misbehaving and what shape that bad behavior takes,
+  and which URLs are getting hammered the hardest.
+
+  And one thing I really need pinned down: tell me roughly when things
+  started looking off. Don't just say "early in the window" — give me
+  the exact hour bucket where the error rate goes off the rails and the
+  exact 4xx+5xx error count in that bucket, both pulled straight from
+  summary.json so the numbers tie out. That's the anchor I'll use to
+  decide where to dig in next.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - access.log
+
+skills:
+  - log-analyzer
+
+services:
+  - name: task-setup
+    path: task-setup
+    start: bash install.sh
+    oneshot: true
+
+codex:
+  max_user_followups: 2

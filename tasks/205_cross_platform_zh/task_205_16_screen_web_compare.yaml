@@ -1,0 +1,17 @@
+task_id: task_205_16_screen_web_compare
+category: 205_cross_platform_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+recording: none
+headed: auto
+task: "你是一名经常出差、使用 MacBook 的程序员。你想购买一台支持 USB-C 连接的轻量便携显示器，用于移动办公和副屏使用，配送到加拿大多伦多。只使用浏览器完成以下任务：以 ASUS ZenScreen MB16ACV 便携显示器为目标型号，在 Amazon、eBay 和 AliExpress 上各找一个尽可能符合该型号的商品页面；在 ASUS 官方商品页面上确认目标规格；并找一个公开的评测页面以确认常见的优缺点。\n\n将价格、运费、退货、来自评论的 2 个优点 / 2 个缺点，以及第三方评测的主要印象写入：\n\n    /tmp_workspace/results/asus_zenscreen_mb16acv_5p_compare.md\n\n推荐时必须综合考虑总成本、评论口碑、退换货便利性以及评测印象；不要混入 MB16A、MB16AC、MB16ACE、MB16AMT、不同尺寸的型号或翻新/二手商品。如果某个平台无法提供足够可信或足够匹配的商品，要明确说明，并解释缺失的字段。\n"
+codex:
+  max_user_followups: 2
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+  - references/process_evidence/amazon_asus.png

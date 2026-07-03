@@ -1,0 +1,55 @@
+Message-ID: <CAM-sOH8kT0+6dQCaba3Wn8fGQ5qeTk8aMeC7a=pCpO_FtpaOWw@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-1421
+Date: Thu, 11 Aug 2022 20:22:28 +0200
+From: Pierre Forstmann <pierre.forstmann@gmail.com>
+To: dev@httpd.apache.org
+Subject: =?UTF-8?Q?question_about_code_example_from_https=3A=2F=2Fhttpd=2Eapach?= 	=?UTF-8?Q?e=2Eorg=2Fdocs=2F2=2E4=2Fdeveloper=2Fmodguide=2Ehtml_Bo=C3=AE?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-08.mbox
+
+Hello,
+
+I don't understand how following loop can work
+
+
+        for (i = 0; &formData[i]; i++) {
+
+    }
+
+from:
+
+static int example_handler(request_rec *r){
+    /*~~~~~~~~~~~~~~~~~~~~~~*/
+    keyValuePair *formData;
+    /*~~~~~~~~~~~~~~~~~~~~~~*/
+
+    formData = readPost(r);
+    if (formData) {
+        int i;
+        for (i = 0; &formData[i]; i++) {
+            if (formData[i].key && formData[i].value) {
+                ap_rprintf(r, "%s = %s\n", formData[i].key, formData[i].value);
+            } else if (formData[i].key) {
+                ap_rprintf(r, "%s\n", formData[i].key);
+            } else if (formData[i].value) {
+                ap_rprintf(r, "= %s\n", formData[i].value);
+            } else {
+                break;
+            }
+        }
+    }
+    return OK;}
+
+I tried to use this code in https://github.com/pierreforstmann/mod_plpgsql
+but I could not
+so I have modified it by just using the array entry number.
+
+Can somebody explain to me why the array entry address is used ?
+
+I tried to simplify this with following code that also does not work:
+
+https://github.com/pierreforstmann/mcc/blob/ebabf5d2f784542d90a71825abb12506f3e64784/tal.c
+
+Thanks.

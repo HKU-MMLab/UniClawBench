@@ -1,0 +1,107 @@
+Message-ID: <a47221cc0cf200205613c865e2f90c03@enron.com>
+X-Clawbench-ID: ANL-2001-0929
+Date: 2000-12-11T12:56:00-03:00
+From: Yannis Tzamouranis <Yannis Tzamouranis>
+To: Mark Tawney <Mark Tawney>, Claudio Ribeiro <Claudio Ribeiro>, Joseph Hrgovcic <Joseph Hrgovcic>, Vince J Kaminski <Vince J Kaminski>, Todd Kimberlain <Todd Kimberlain>, Vasant Shanbhogue <Vasant Shanbhogue>
+Subject: HDAF seminar topics
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Enron kaminski-v public mailbox index.json
+X-Original-Folder: kaminski-v_001/kaminski-v/Discussion threads
+
+Folks:
+
+
+I am trying to set up a meeting with professor Don Kouri of the University of
+
+Houston and I believe you may have an interest in the topic of discussion.
+
+If you know of other interested parties, or want to substitute a proxy for
+
+yourselves, please let me know.
+
+
+This first meeting with Dr. Kouri will introduce the participants to his area
+
+of research (HDAFs for data analysis) and allow us to define the contents and
+
+attendants of a seminar (to come up soon).
+
+
+We are looking to hold this discussion this week (hopefully) and to have the
+
+seminar happen before Christmas (given that this is the in-between semester
+
+season for schools).
+
+
+A couple of other similar meetings will follow up: Dr Kevin Bassler  will be
+
+talking about Microscopic Simulation of Economic Markets and Dr. Pinsky about
+
+the Effect of Solar phenomena on the Earth's atmosphere.
+
+
+Yannis
+
+----- Forwarded by Yannis Tzamouranis/HOU/ECT on 12/11/2000 03:36 PM -----
+
+
+        KOURI@Kitten.chem.uh.edu
+
+        12/11/2000 02:32 PM
+
+
+
+                 To: Yannis.Tzamouranis@enron.com
+
+                 cc:
+
+                 Subject: HDAF seminar topics
+
+
+Hi Yannis,
+
+I got your email without any problem. For possible topics to
+
+be discussed at a small ``roundtable'' format meeting, here are
+
+some possibilities.
+
+1. HDAFs for data analysis, including ``gap-filling'', data
+
+extrapolation, denoising, mathematical manipulations of digital
+
+data (e.g., taking derivatives, applying functions of differential
+
+operators to digital data, etc.)
+
+
+2. HDAFs as the basis of numerical algorithms for solving nonlinear
+
+partial differential equations, particularly for equations for which
+
+existing methods encounter stability problems.
+
+
+There are certainly other areas of interest and applications of the
+
+HDAFs but I think that even trying to do both of the above in a
+
+single meeting would be difficult. Of course, in this first meeting
+
+we would focus on general aspects of the HDAFs that make them robust
+
+for such applications. If, however, you have other topics in which
+
+you are interested, I am willing to focus on them.
+
+
+Regarding timing of a meeting, I am free from teaching duties now
+
+so I am flexible. I will be in Houston all of December. I look
+
+forward to hearing more from you. With best wishes,
+
+Don Kouri

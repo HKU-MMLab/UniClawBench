@@ -1,0 +1,36 @@
+Message-ID: <20021009083602.6a8bcf32.matthias_haase@bennewitz.com>
+X-Clawbench-ID: CAM-2003-1320
+Date: Wed, 09 Oct 2002 08:36:02 +0200
+From: Matthias Haase <matthias_haase@bennewitz.com>
+To: rpm-zzzlist@freshrpms.net
+Subject: Re: RedHat 8.0 and his own freetype
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache SpamAssassin public corpus ham 00289.759738dc8d12e85d6e26b866faa94337
+
+On Tue, 08 Oct 2002 23:15:07 -0700
+Ben Liblit <liblit@eecs.berkeley.edu> wrote:
+
+> Ick.  Perhaps this is why Red Hat turned the bytecode interpreter off.
+> It may improve non-antialiased rendering, but only at the expense of
+> making a mess of antialiased rendering.
+>
+> This may come down to a matter of personal aesthetics, but for my part,
+> I'm going back to Red Hat's standard packages with the bytecode
+> interpreter turned *off*.
+Yes, confirmed, but for my part, I'm using mostly non-antialiased fonts
+and
+they are true ugly without the bytecode interpreter enabled.
+
+Remember my stupid request about your RPM ;-)
+
+
+--
+  Regards from Germany
+                     Matthias
+
+
+_______________________________________________
+RPM-List mailing list <RPM-List@freshrpms.net>
+http://lists.freshrpms.net/mailman/listinfo/rpm-list

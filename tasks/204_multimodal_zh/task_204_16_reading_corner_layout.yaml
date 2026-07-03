@@ -1,0 +1,44 @@
+task_id: task_204_16_reading_corner_layout
+category: 204_multimodal_zh
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1200
+max_total_seconds: 1800
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  `/tmp_workspace/clawbench/sources/reading_corner/` 包含我房间一个角落
+  的照片、墙面和窗户区域的尺寸，以及几件
+  现有的椅子、小边几、落地灯和地毯的照片。
+
+  我想把这个角落改造成一个更舒适的阅读角，但我不
+  想买任何新东西。
+  请基于这些现有物品，帮我制定一个更合理的布局
+  方案。
+
+  要求：
+  1. 首先指出这个角落目前的主要问题，比如拥挤、
+     动线不畅、采光不合适，或视觉杂乱。
+  2. 从我现有的家具和物品中，挑选出最适合
+     这个角落的一组。
+  3. 生成 `/tmp_workspace/results/reading_corner_plan.md`，说明：
+     - 哪些物品应该保留
+     - 哪些物品不适合放在这个位置
+     - 椅子、边几、灯和地毯大致应如何摆放
+     - 这样布局的主要原因
+  4. 你的判断需要明确参考房间照片中现有物品的空间、采光
+     和外观，而不只是给出抽象的
+     建议。
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+sources:
+  - reading_corner/
+
+codex:
+  max_user_followups: 2

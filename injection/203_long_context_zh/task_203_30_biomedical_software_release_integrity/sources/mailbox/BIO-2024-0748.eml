@@ -1,0 +1,31 @@
+Message-ID: <Yp+e3hBvSPWxCXUP@an3as.eu>
+X-Clawbench-ID: BIO-2024-0748
+Date: Tue, 7 Jun 2022 20:54:22 +0200
+From: Andreas Tille <tille@debian.org>
+To: Andrius Merkys <merkys@debian.org>
+Subject: Re: Added autopkgtest for busco - Closes #1010653
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_06_msg00015.html
+
+Hi again,
+
+Am Tue, Jun 07, 2022 at 11:34:44AM +0200 schrieb Andreas Tille:
+> >
+> > Erm. Was not the original intent to wait for the upstream clarification
+> > of the license of this data? And what about mention in debian/copyright?
+>
+> Aaaargh, I was to much concentratet on the second part of the mail. :-(
+
+The good news is that I forgot the '-sa' flag and thus my upload was
+rejected.  I commited a TODO item in d/changelog and we wait for
+clarification.  Bilal, feel free to proceed with your upload permissions
+once the license is clarified.
+
+Kind regards
+
+     Andreas.
+
+--
+http://fam-tille.de

@@ -1,0 +1,35 @@
+Message-ID: <20220213045815.ghnmvg3qrrblaple@localhost>
+X-Clawbench-ID: BIO-2024-0568
+Date: Sun, 13 Feb 2022 10:28:15 +0530
+From: Mayuresh <mayuresh@acm.org>
+To: debian-med@lists.debian.org
+Subject: Re: Acquiring Dental RVG on Linux
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_02_msg00059.html
+
+On Sun, Feb 13, 2022 at 12:15:13AM +0530, Mayuresh wrote:
+> Please do have a look at a sample header attached. If you find any fields
+> that may give any hints about the calibration or post processing that the
+> vendor software applies, please do highlight.
+
+E.g. this (undocumented aka Private) tag's value seems to be varying
+across images:
+
+(0009, 110a) Private tag data                    UL: 1983368088
+
+More sample values are:
+
+205530709
+2356546661
+27354866
+1198677341
+408134796
+3519754323
+696629143
+1680188119
+140
+
+--
+Mayuresh

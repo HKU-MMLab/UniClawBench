@@ -1,0 +1,51 @@
+Message-ID: <CANUS2KX4j_7=JaJy-q8Xe41TsFTh-vuNDhMVQk93AyVdKwRrwQ@mail.gmail.com>
+X-Clawbench-ID: ASF-2024-0070
+Date: Sat, 4 Jun 2022 13:16:58 -0700
+From: John Doe <ghalleck21@gmail.com>
+To: dev@httpd.apache.org
+Subject: Re: [VOTE] Release httpd-2.4.54-rc2 as httpd-2.4.54
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2022-06.mbox
+
+Hi,
+Eric's fix did not fix because I'm building with APR 1.7.0.
+
+In apr.hw 1.7.0 there is
+/* If we have a TCP implementation that can be "corked", what flag
+ * do we use?
+ */
+#define APR_TCP_NOPUSH_FLAG       @apr_tcp_nopush_flag@
+
+/* Is the TCP_NODELAY socket option inherited from listening sockets?
+
+It looks like Yann has fixed this in apr 1.7 & 1.8. So I guess apr needs to
+T&R 1.7.1 minimum.
+For the work around until then,httpd needs to look for <= < 1.7, not 6.
+
+Gregg
+
+
+On Sat, Jun 4, 2022 at 8:45 AM Eric Covener <covener@gmail.com> wrote:
+
+> On Sat, Jun 4, 2022 at 8:59 AM Stefan Eissing <stefan@eissing.org> wrote:
+> >
+> > Hi all,
+> >
+> > next attempt at 2.5.54. Thanks everyone for participating!
+> >
+> > Please find below the proposed release tarball and signatures:
+> >
+> > https://dist.apache.org/repos/dist/dev/httpd/
+> >
+> > I would like to call a VOTE over the next few days to release
+> > this candidate tarball httpd-2.4.54-rc2 as 2.4.54:
+> > [ ] +1: It's not just good, it's good enough!
+> > [ ] +0: Let's have a talk.
+> > [ ] -1: There's trouble in paradise. Here's what's wrong.
+>
+> +1 AIX/xlc/ppc64 100% pass in maintainer mode (but limited modules)
+>
+> Thanks for RM'ing!
+>

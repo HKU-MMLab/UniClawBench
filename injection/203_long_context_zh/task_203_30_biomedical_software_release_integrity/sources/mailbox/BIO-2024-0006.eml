@@ -1,0 +1,129 @@
+Message-ID: <20230706040403.6cjbmjt5hj743lpf@office.mailbox.org>
+X-Clawbench-ID: BIO-2024-0006
+Date: Thu, 6 Jul 2023 09:34:03 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: César Pomar <cesarpomar18@gmail.com>
+Subject: Re: Request for Sponsorship: VeryFastTree - Parallelized and Optimized Version of FastTree
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_07_msg00015.html
+
+On Wed, Jul 05, 2023 at 09:16:38PM +0200, César Pomar wrote:
+> I am still considering whether it would be necessary to include all
+> possible
+> compilations. Perhaps with only SSE2, AVX2, and AVX512F, it would be
+> sufficient, or even just SSE2 and AVX2.
+
+I'd recommend building for all levels, if your code supports it (it
+probbaly does?). But upto you, as you know the use-case of your package
+better as upstream.
+
+> The only change would be in the rules.
+
+You also need to add a dispatcher script to select correct binary at
+runtime.
+For future, please consider to instead paste (or attach) patches / diffs as it is
+much easier to apply them and review.
+
+>     #!/usr/bin/make -f
+>
+>     # Output every command that modifies files on the build system.
+>     #export DH_VERBOSE = 1
+>
+>     export DEB_BUILD_MAINT_OPTIONS=hardening=+all
+>     include /usr/share/dpkg/default.mk
+>
+>     DEB_HOST_ARCH ?= $(shell dpkg-architecture -qDEB_HOST_ARCH )
+
+Setting it is not needed, this is already exported as a part of default.mk
+
+>     %:
+>         dh $@
+>
+>
+>     override_dh_auto_configure:
+>     ifeq (amd64,$(DEB_HOST_ARCH))
+>         for i in "sse2 SEE2" "sse4_1 SEE4" "avx AVX" "avx2 AVX2" "avx512f
+> AVX512" ; do \
+>             set -- $${i} ; \
+>             dh_auto_configure --builddirectory build_$${1} -- \
+>                 -DUSE_NATIVE=OFF -DUSE_SHARED=ON -DUSE_$${2}=ON ; \
+>         done
+>     else
+>         dh_auto_configure -- \
+>             -DUSE_NATIVE=OFF -DUSE_SHARED=ON
+>     endif
+>
+>
+>     override_dh_auto_build:
+>     ifeq (amd64,$(DEB_HOST_ARCH))
+>         printf "#!/bin/sh\n\n" > VeryFastTree
+>         for SIMD in avx512f avx2 avx sse4_1 sse2 ; do \
+>             dh_auto_build --builddirectory build_$${SIMD} && \
+>             cp build_$${SIMD}/VeryFastTree
+> build_$${SIMD}/VeryFastTree-$${SIMD} ; \
+
+I think you'd really want to do `mv` here instead to prevent multiple
+VeryFastTree binaries in different dirs to prevent confusion.
+
+>             printf "if grep -q $${SIMD} /proc/cpuinfo; then\n  exec
+> /usr/bin/VeryFastTree-$${SIMD} \"\$$@\"\nfi\n\n" >> VeryFastTree ; \
+
+Doing printf to generate a file in d/rules makes things un-maintainable
+in long run. It'd be better to put this file in debian/bin (just like it
+is done in scrappie) and dh_install this file if the arch is amd64.
+
+	https://salsa.debian.org/med-team/scrappie/-/blob/master/debian/bin/simd-dispatch
+	https://salsa.debian.org/med-team/scrappie/-/blob/master/debian/rules#L84
+
+>         done
+>         chmod +x VeryFastTree
+
+Not needed, chmod/permissions be taken care of in the dh_fixperms step, if it is getting
+installed in /usr/bin.
+
+>     else
+>         dh_auto_build
+>     endif
+>
+>
+>     override_dh_auto_test:
+>     ifeq (amd64,$(DEB_HOST_ARCH))
+>         dh_auto_test --builddirectory build_SEE2
+
+It should be build_sse2 instead, otherwise tests are never run (this is
+a non-existent directory) if they are added at some point.
+That said, if you are building for multiple
+simd levels, you should be running tests in each of them and not just sse2, right?
+
+Not a biggie for now since it seems there is no option to run/enable
+tests in CMakeLists.txt
+
+>     else
+>         dh_auto_test
+>     endif
+>
+>
+>     override_dh_auto_install:
+>     ifeq (amd64,$(DEB_HOST_ARCH))
+>         dh_install build_*/VeryFastTree-* /usr/bin/
+>         dh_install VeryFastTree /usr/bin/
+
+When you use a dispatcher script you can change it to
+
+	dh_install debian/bin/VeryFastTree /usr/bin/
+
+>     else
+>         dh_auto_install
+>     endif
+>
+>     override_dh_auto_clean:
+>         dh_auto_clean
+>         rm -Rf build_*
+>         rm -f VeryFastTree
+
+You can use a d/clean file instead, but this is also OK.
+
+Best,
+Nilesh

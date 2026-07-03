@@ -1,0 +1,36 @@
+Message-ID: <Y4CRb2lN76i8bvSg@an3as.eu>
+X-Clawbench-ID: BIO-2024-0171
+Date: Fri, 25 Nov 2022 10:57:03 +0100
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>,	Pierre Gruet <pgtdebian@free.fr>
+Subject: [Help] Build issue of latest version of libsbml (probably Java compatibility issue)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_11_msg00094.html
+
+Hi,
+
+I just realised that libsbml moved to Github.  After fixing the watch
+file I tried to package the latest upstream version.  Unfortunately
+the build fails and I see the lines
+
+/builds/med-team/libsbml/debian/output/source_dir/src/bindings/java/AutoTestRunner.java:48: error: package org.sbml.libsbml.test does not exist
+import org.sbml.libsbml.test.*;
+^
+Note: /builds/med-team/libsbml/debian/output/source_dir/src/bindings/java/AutoTestRunner.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+1 error
+
+in the build log[1].
+
+Any help would be appreciated.
+
+Kind regards
+   Andreas.
+
+
+[1] https://salsa.debian.org/med-team/libsbml/-/jobs/3571584
+
+--
+http://fam-tille.de

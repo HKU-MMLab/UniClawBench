@@ -1,0 +1,24 @@
+Message-ID: <Yr28Cv0z9o1M3z5/@an3as.eu>
+X-Clawbench-ID: BIO-2024-0320
+Date: Thu, 30 Jun 2022 17:06:50 +0200
+From: Andreas Tille <andreas@an3as.eu>
+To: Debian Med Project List <debian-med@lists.debian.org>,	Pierre Gruet <pgtdebian@free.fr>
+Subject: milib moved to gradle build system - help needed
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_06_msg00057.html
+
+Hi Pierre (and others)
+
+I injected latest version of milib which moved to gradle even in some
+versions before.  My extremely weak attempt to switch to gradle failed
+(quite expected) but I hope its a nice start for you (or anybody else
+who might know gradle better than me which is basically zero).
+
+Kind regards
+
+      Andreas.
+
+--
+http://fam-tille.de

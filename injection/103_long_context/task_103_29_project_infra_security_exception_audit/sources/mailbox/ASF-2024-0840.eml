@@ -1,0 +1,36 @@
+Message-ID: <E239B9BC-4AD3-4829-82AF-ED7B17864E35@eissing.org>
+X-Clawbench-ID: ASF-2024-0840
+Date: Mon, 8 Jul 2024 17:15:01 +0200
+From: "Stefan Eissing via dev" <dev@httpd.apache.org>
+To: dev@httpd.apache.org
+Subject: Re: mod_md in 2.4.61 fails to compile with openssl < 1.1.1
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2024-07.mbox
+
+> Am 08.07.2024 um 17:07 schrieb Yann Ylavic <ylavic.dev@gmail.com>:
+>
+> On Fri, Jul 5, 2024 at 5:59 PM Yann Ylavic <ylavic.dev@gmail.com> wrote:
+>>
+>> On Fri, Jul 5, 2024 at 5:08 PM Ruediger Pluem <rpluem@apache.org> wrote:
+>>>
+>>> On 7/5/24 4:09 PM, Stefan Eissing via dev wrote:
+>>>>
+>>>> The patches look good to me. I have not tested them as I have no old openssl lying around, but I trust in your build tests.
+>>>
+>>> Rebuild 2.4.61 with both patches from Yann on RedHat 7 - 9. All good now, even on 7 with openssl 1.0.2 (means it compiles and no
+>>> more implicit declaration warnings).
+>>> @Yann: Care to commit the patches?
+>>
+>> Will do on the weekend if/when possible, feel free to beat me to it if
+>> you can ;)
+>
+> r1919026.
+
+Thanks, Yann!
+>
+>>
+>>
+>> Regards;
+>> Yann.

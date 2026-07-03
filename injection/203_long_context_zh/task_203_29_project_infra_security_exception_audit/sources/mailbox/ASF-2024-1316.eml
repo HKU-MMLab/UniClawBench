@@ -1,0 +1,37 @@
+Message-ID: <D5E059AD-CAE6-4268-8DA9-15E76750FF3D@eissing.org>
+X-Clawbench-ID: ASF-2024-1316
+Date: Wed, 8 Dec 2021 14:14:27 +0100
+From: Stefan Eissing <stefan@eissing.org>
+To: dev@httpd.apache.org
+Subject: Re: release vibes?
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Apache httpd dev public mailing list apache_httpd_dev_2021-12.mbox
+
+> Am 08.12.2021 um 13:56 schrieb Joe Orton <jorton@redhat.com>:
+>
+> On Mon, Dec 06, 2021 at 11:36:51AM +0100, Stefan Eissing wrote:
+>> Friends of httpd, how do you feel about a release in the next two weeks?
+>
+> Sounds good to me. We may have fewer people around to test it, but at
+> least trying to get a release out is better than definitely having no
+> release IMO.
+
+Excellent. I propose targeting Tuesday 14th for a candidate. If
+we go later, it becomes very close to the holidays. But if the time is
+needed, we can do that as well.
+
+I will hold back the current http2 backport, as I need some more people
+to dare test that from the github on their sites.
+
+The mod_tls acceptance I understood as we would like to include that
+as experimental in the next 2.4.x release. If there are no objections,
+I will prepare that.
+
+Kind Regards,
+Stefan
+
+>
+> Regards, Joe
+>

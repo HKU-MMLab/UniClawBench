@@ -1,0 +1,20 @@
+Message-ID: <udlh6whkjna.fsf@mit.edu>
+X-Clawbench-ID: BIO-2024-1285
+Date: Sun, 22 Jan 2023 22:35:37 -0500
+From: ucko@debian.org (Aaron M. Ucko)
+To: debian-med@lists.debian.org
+Subject: Re: Finishing ncbi-vdb and sra-sdk
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2023_01_msg00043.html
+
+Version 3.x of ncbi-vdb and sra-sdk are now in unstable, and looking
+good.  Please do not make further uploads of either, or of skesa, until
+they migrate unless absolutely necessary.
+
+Thanks!
+
+--
+Aaron M. Ucko, KB1CJC (amu at alum.mit.edu, ucko at debian.org)
+http://www.mit.edu/~amu/ | http://stuff.mit.edu/cgi/finger/?amu@monk.mit.edu

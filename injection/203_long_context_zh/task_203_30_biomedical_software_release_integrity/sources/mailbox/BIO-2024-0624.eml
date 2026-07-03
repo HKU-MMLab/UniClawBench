@@ -1,0 +1,36 @@
+Message-ID: <YbJ3L5jCpMs8VX+m@debian>
+X-Clawbench-ID: BIO-2024-0624
+Date: Fri, 10 Dec 2021 03:07:51 +0530
+From: Nilesh Patra <nilesh@debian.org>
+To: Steffen Möller <steffen_moeller@gmx.de>
+Subject: Re: please kindly review: r-bioc-fishpond -- Fishpond: differential transcript and gene expression with
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_12_msg00055.html
+
+Hi Steffen,
+
+Long time! :)
+
+On Thu, Dec 09, 2021 at 08:32:46PM +0100, Steffen Möller wrote:
+> Hello this goes out to Andreas in particular,
+
+I hope you do not mind me taking over (have a few spare cycles)
+
+> I completed the packaging of r-bioc-fishpond earlier this afternoon.
+> This is a suggestion for r-bioc-tximport with some other interesting
+> reverse-dependencies - and tximport makes problems with my rabbit data
+> that I yet do not understand.
+>
+> The package does not seem to be overly complicated, builds in
+> cowbuilder.  I just injected everything to
+>
+> https://salsa.debian.org/r-pkg-team/r-bioc-fishpond
+
+Uploaded after a few changes. Do consider taking a look at my commits.
+
+PS: Do consider to enable salsa CI for any packages that you push.
+
+Regards,
+Nilesh

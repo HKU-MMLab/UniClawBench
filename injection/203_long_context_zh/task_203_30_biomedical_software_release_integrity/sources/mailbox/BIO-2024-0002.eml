@@ -1,0 +1,42 @@
+Message-ID: <YhIPGtSvZSvoQHqV@an3as.eu>
+X-Clawbench-ID: BIO-2024-0002
+Date: Sun, 20 Feb 2022 10:51:22 +0100
+From: Andreas Tille <tille@debian.org>
+To: Andrius Merkys <merkys@debian.org>
+Subject: Re: Autodocksuite not available at Sourceforge any more
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_02_msg00089.html
+
+Hi Andrius,
+
+Am Sun, Feb 20, 2022 at 09:47:05AM +0200 schrieb Andrius Merkys:
+> >
+> >    https://sourceforge.net/projects/autodocksuite/files/
+> >
+> > has no files any more.  Could you shade some light into what we should
+> > package and what we should rather drop?  Does it help to keep the
+> > current autodocksuite code inside Debian (but provide a fake watch file
+> > to reduce noise about failed uscan)?
+> >
+>
+> Quick search lead me to:
+>
+> https://autodock.scripps.edu/download-autodock4/
+>
+> Maybe the upstream migrated away from SourceForge?
+
+Hmmm, watch file did not pointed to sourceforge any more but failed
+anyway via
+
+   debian/watch: uscan returned an error: In watchfile debian/watch, reading webpage http://autodock.scripps.edu/downloads/autodock-registration/autodock-4-2-download-page/ failed: 404 Not Found
+
+for automated uscan.  I'll try again.
+
+Thanks for the hint anyway
+
+      Andreas.
+
+--
+http://fam-tille.de

@@ -1,0 +1,26 @@
+Message-ID: <CA+7wUsxraU1ddtA2WQ=EfUzkR76hae4mn0ZyPutziY2Vu9U5ZA@mail.gmail.com>
+X-Clawbench-ID: BIO-2024-0629
+Date: Fri, 10 Dec 2021 14:31:20 +0100
+From: Mathieu Malaterre <malat@debian.org>
+To: Étienne Mollier <emollier@emlwks999.eu>
+Subject: Re: Any help to get pydicom build welcome
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2021_12_msg00061.html
+
+On Fri, Dec 10, 2021 at 12:22 PM Étienne Mollier  wrote:
+[...]
+> My impression by looking at it to unroll is that something seems
+> caught in a recursive loop.
+
+The bug is upstream. One cannot do:
+
+    image = gdcm.Image()
+
+This will not work with the simple shared pointer implementation in
+upstream gdcm.
+
+I would just remove the gdcm test suite from pydicom.
+
+-M

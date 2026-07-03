@@ -1,0 +1,34 @@
+task_id: task_103_05_mcp_server_landscape
+category: 103_long_context
+agent_sys: openclaw
+agent_id: main
+model: gpt-5.4
+timeout_seconds: 1800
+max_total_seconds: 2700
+success_threshold: 0.9
+
+recording: none
+headed: auto
+task: |
+  I want a verified inventory of real MCP (Model Context Protocol) servers so I can pick some to try. Please research this live — search GitHub and the web — and do not rely on your prior memory, because the ecosystem changes quickly.
+
+  An MCP server is a program that exposes tools/resources/prompts to an MCP client (like Claude Desktop or an IDE) over the MCP protocol, usually via stdio or HTTP/SSE. I specifically want actual servers — not "awesome" lists of servers, not client libraries/SDKs, and not inspector/debugging tools. If something looks like a server by name but is really a list or a client, exclude it (or clearly flag it as not-a-server).
+
+  Find at least 12 genuine MCP servers. For each one, record:
+  - the repository or official link
+  - what it does (which tools/resources it exposes)
+  - its primary language
+  - an approximate star count or other popularity signal
+  - whether it is official/first-party or community-built
+  - the transport it uses (stdio / HTTP / SSE) where you can determine it
+
+  Verify each entry by actually looking at the repo (read its README/description), not just by matching the name "mcp". Be sure to include the official reference servers collection if you find it.
+
+  Save the inventory to `/tmp_workspace/results/mcp_server_landscape.md`, organized clearly, and add a short note listing any name-look-alikes you deliberately excluded and why.
+
+references:
+  - references/eval_rule.md
+  - references/ground_truth.json
+
+codex:
+  max_user_followups: 2

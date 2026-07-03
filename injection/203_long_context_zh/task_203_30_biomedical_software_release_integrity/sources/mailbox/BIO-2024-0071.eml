@@ -1,0 +1,28 @@
+Message-ID: <Y3alctHwnkPEYz3V@fusion>
+X-Clawbench-ID: BIO-2024-0071
+Date: Thu, 17 Nov 2022 22:19:46 +0100
+From: Étienne Mollier <emollier@debian.org>
+To: "Maarten L. Hekkelman" <maarten@hekkelman.com>
+Subject: Re: oops.. could someone with the proper rights...
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Source-Archive: Debian Med/Science public mailing list debian-med_2022_11_msg00059.html
+
+Hi all,
+
+Maarten L. Hekkelman, on 2022-11-17:
+> Looking for an appropriate name I inadvertently created a project on salsa
+> called libcfg. That clashes with a package already in Debian and I'm not
+> allowed to remove that repository again. Could someone please remove that
+> repository?
+
+I tried to have a look but this needs to be done by an Owner of
+the med-team group on salsa; personally, I'm just a Maintainer.
+
+In hope this draws further help,
+--
+  .''`.  Étienne Mollier
+ : :' :  gpg: 8f91 b227 c7d6 f2b1 948c  8236 793c f67e 8f0d 11da
+ `. `'   sent from /dev/tty1, please excuse my verbosity
+   `-    on air: The Flower Kings - Theme For A Hero

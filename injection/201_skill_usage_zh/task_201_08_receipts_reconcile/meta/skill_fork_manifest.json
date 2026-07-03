@@ -1,0 +1,22 @@
+{
+  "task_id": "task_101_08_receipts_reconcile",
+  "notes_visible_to_executor": false,
+  "skill_changes": [
+    {
+      "original_skill": "image-ocr",
+      "injected_skill": "image-ocr",
+      "original_source": "clawhub",
+      "change_type": "benchmark environment adaptation",
+      "reason": "The task setup service provides Tesseract and no image-ocr wrapper is injected, so executor-facing docs now show direct tesseract commands and avoid system package installation.",
+      "executor_skill_path": "skills/image-ocr"
+    },
+    {
+      "original_skill": "xlsx-cn",
+      "injected_skill": "xlsx-cn",
+      "original_source": "clawhub",
+      "change_type": "no_changes",
+      "reason": "Used as-is for the workbook reconciliation step; no changes were necessary for the benchmark environment.",
+      "executor_skill_path": "skills/xlsx-cn"
+    }
+  ]
+}
