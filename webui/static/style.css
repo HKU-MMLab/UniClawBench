@@ -2084,6 +2084,41 @@ pre {
 .home-resource-badge.arxiv:hover { background: linear-gradient(180deg, #fff 0%, #fff0f2 100%); }
 .home-resource-badge.pending:hover { transform: none; }
 
+.home-citation {
+  display: grid;
+  gap: 14px;
+}
+
+.home-citation-copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 34px;
+  padding: 7px 11px;
+  border: 1px solid rgba(31, 111, 95, 0.2);
+  border-radius: 7px;
+  background: rgba(216, 239, 232, 0.56);
+  color: #0c5b47;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.home-citation-copy:hover { background: rgba(216, 239, 232, 0.86); }
+
+.home-citation-code {
+  margin: 0;
+  padding: 16px 18px;
+  overflow-x: auto;
+  border: 1px solid rgba(22, 34, 43, 0.1);
+  border-radius: 8px;
+  background: rgba(248, 250, 249, 0.86);
+  color: #26353a;
+  font: 12px/1.55 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  white-space: pre;
+}
+
 .home-action.primary:hover {
   background: #175846;
 }

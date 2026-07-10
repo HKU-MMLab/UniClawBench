@@ -13,9 +13,9 @@
   &nbsp;
   <a href="https://github.com/HKU-MMLab/UniClawBench"><img alt="Code" src="https://img.shields.io/badge/Code-UniClawBench-2f855a"></a>
   &nbsp;
-  <img alt="arXiv" src="https://img.shields.io/badge/arXiv-Paper-b31b1b.svg">
+  <a href="https://arxiv.org/abs/2607.08768"><img alt="arXiv" src="https://img.shields.io/badge/arXiv-2607.08768-b31b1b.svg"></a>
   &nbsp;
-  <img alt="Daily Paper" src="https://img.shields.io/badge/🤗%20Daily%20Paper-orange">
+  <a href="https://huggingface.co/papers/2607.08768"><img alt="Daily Paper" src="https://img.shields.io/badge/🤗%20Daily%20Paper-2607.08768-orange"></a>
 </p>
 
 **UniClawBench** is a bilingual, capability-driven benchmark for proactive AI agents. It evaluates agents in a closed loop with an executor, a hidden answer supervisor, and a public user simulator, covering long-context reasoning, multimodal perception, tool use, browser work, file manipulation, and desktop GUI workflows.
@@ -424,3 +424,16 @@ Before publishing:
 6. Review WebUI static export output before deployment.
 
 The expected release repository contains source code, task YAML, public injection resources, paper assets, demo assets, examples, and docs. It should not contain local experiment result trees, private credentials, controller-specific paths, or machine-specific config.
+
+## Citation
+
+If you use UniClawBench in your work, please cite:
+
+```bibtex
+@article{chen2026uniclawbench0,
+  title   = {UniClawBench: A Universal Benchmark for Proactive Agents on Real-World Tasks},
+  author  = {Zhekai Chen and Chengqi Duan and Kaiyue Sun and Bohao Li and Yuqing Wang and Manyuan Zhang and Xihui Liu},
+  year    = {2026},
+  journal = {arXiv preprint arXiv: 2607.08768}
+}
+```

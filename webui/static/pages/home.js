@@ -16,9 +16,16 @@ const DEMO_ASSET_VERSION = "demo_20260703_1";
 const RESOURCE_LINKS = [
   { label: "Project Page", icon: "🌐", href: "https://uniclawbench.github.io", tone: "project" },
   { label: "Code", icon: "⌘", href: "https://github.com/HKU-MMLab/UniClawBench", tone: "code" },
-  { label: "arXiv", icon: "📄", href: "#", tone: "arxiv" },
-  { label: "Daily Paper", icon: "🤗", href: "#", tone: "daily" },
+  { label: "arXiv", icon: "📄", href: "https://arxiv.org/abs/2607.08768", value: "2607.08768", tone: "arxiv" },
+  { label: "Daily Paper", icon: "🤗", href: "https://huggingface.co/papers/2607.08768", tone: "daily" },
 ];
+
+const CITATION = `@article{chen2026uniclawbench0,
+  title   = {UniClawBench: A Universal Benchmark for Proactive Agents on Real-World Tasks},
+  author  = {Zhekai Chen and Chengqi Duan and Kaiyue Sun and Bohao Li and Yuqing Wang and Manyuan Zhang and Xihui Liu},
+  year    = {2026},
+  journal = {arXiv preprint arXiv: 2607.08768}
+}`;
 
 const LEADERBOARD_PALETTE = [
   ["#1f6f5f", "rgba(31,111,95,0.42)", "rgba(31,111,95,0.1)"],
@@ -128,6 +135,7 @@ export async function mount(root, route) {
     page.appendChild(buildMethodsSection());
     page.appendChild(dataSection);
     page.appendChild(buildRuntimeSection());
+    page.appendChild(buildCitationSection());
 
     getJSON(aggregateUrl()).then((aggregate) => {
       if (generation !== mountGeneration) return;
@@ -1258,6 +1266,43 @@ function buildRuntimeSection() {
       ]),
     ]),
   ]);
+}
+
+function buildCitationSection() {
+  const button = h("button.home-citation-copy", { type: "button" }, [
+    h("span", { "aria-hidden": "true" }, "⧉"),
+    h("span", "Copy BibTeX"),
+  ]);
+  button.onclick = async () => {
+    const copied = await copyText(CITATION);
+    button.lastElementChild.textContent = copied ? "Copied" : "Copy failed";
+    setTimeout(() => { button.lastElementChild.textContent = "Copy BibTeX"; }, 1600);
+  };
+  return h("section.home-section.home-citation", [
+    h("div.home-section-head", [
+      h("div", [h("div.eyebrow", "Citation"), h("h2", "Cite UniClawBench")]),
+      button,
+    ]),
+    h("pre.home-citation-code", h("code", CITATION)),
+  ]);
+}
+
+async function copyText(text) {
+  try {
+    await navigator.clipboard.writeText(text);
+    return true;
+  } catch {
+    const area = document.createElement("textarea");
+    area.value = text;
+    area.setAttribute("readonly", "");
+    area.style.position = "fixed";
+    area.style.opacity = "0";
+    document.body.appendChild(area);
+    area.select();
+    const copied = document.execCommand("copy");
+    area.remove();
+    return copied;
+  }
 }
 
 function figureCard(src, caption, variant = "") {
