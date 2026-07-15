@@ -22,6 +22,7 @@ import { h, clear } from "../lib/dom.js";
 import { pct, score, categoryLabel, tokens, duration, displayModelName } from "../lib/format.js";
 import { writeHash } from "../lib/router.js";
 import { registerPageRefresh } from "../lib/refresh.js";
+import { getTextOnlyTaskIds, isTextOnlyEnabled } from "../lib/text-only.js";
 
 // ALL / EN / ZH scope: which suite family to include.
 const SCOPES = [
@@ -61,6 +62,7 @@ export async function mount(root, route) {
   const state = {
     dim,
     scope,
+    textOnly: isTextOnlyEnabled(route.query),
     showModels: route.query.models === "on",
     // Common tasks + common models is the default selected comparison mode
     // for fair cross-harness comparisons.
@@ -83,6 +85,7 @@ export async function mount(root, route) {
   try {
     let data = prepareAggregate(await getJSON(aggregateUrl()));
     if (scope !== "all") data = applyScope(data, scope);
+    if (state.textOnly) data = applyTaskSet(data, await getTextOnlyTaskIds());
     renderList(list, data, state);
   } catch (err) {
     clear(list);
@@ -184,8 +187,18 @@ function countTasks(rows) {
 function applyScope(data, scope) {
   const sc = SCOPES.find((s) => s.id === scope) || SCOPES[0];
   const rows = (data.rows || []).filter((r) => sc.match(r.category));
-  const allBackends = [...new Set(rows.map((r) => r.backend).filter(Boolean))].sort();
   const categories = knownCategories(data).filter((cat) => sc.match(cat));
+  return reaggregateRows(data, rows, categories);
+}
+
+function applyTaskSet(data, taskIds) {
+  const rows = (data.rows || []).filter((row) => taskIds.has(row.task_id));
+  const categories = knownCategories(data).filter((cat) => rows.some((row) => row.category === cat));
+  return reaggregateRows(data, rows, categories);
+}
+
+function reaggregateRows(data, rows, categories) {
+  const allBackends = [...new Set(rows.map((r) => r.backend).filter(Boolean))].sort();
   return {
     ...data,
     rows,
@@ -208,7 +221,7 @@ function applyScope(data, scope) {
 }
 
 function buildControls(state) {
-  const { dim, scope } = state;
+  const { dim, scope, textOnly } = state;
 
   // Build a query object from the current state, applying overrides. This
   // makes every control carry the others (scope survives a mode change,
@@ -220,6 +233,7 @@ function buildControls(state) {
     if (!s.coverageAll) q.coverage = "off";
     if (!s.commonModels) q.common = "off";
     if (s.scope && s.scope !== "all") q.scope = s.scope;
+    if (s.textOnly) q.text = "only";
     return q;
   };
 
@@ -231,7 +245,7 @@ function buildControls(state) {
       href: `#/leaderboard/${value}`,
       onclick: (event) => {
         event.preventDefault();
-        writeHash({ page: "leaderboard", sub: value, query: scope !== "all" ? { scope } : {} });
+        writeHash({ page: "leaderboard", sub: value, query: queryFrom({ showModels: false, coverageAll: true, commonModels: true }) });
       },
     }, value === "model" ? "Model" : "Harness");
     if (value === dim) link.classList.add("active");
@@ -252,6 +266,22 @@ function buildControls(state) {
     scopeTabs.appendChild(link);
   }
 
+  const taskScopeTabs = h("div.results-tabs.results-task-scope", { role: "group", "aria-label": "Task capability scope" });
+  for (const option of [
+    { textOnly: false, label: "All tasks" },
+    { textOnly: true, label: "Text-only" },
+  ]) {
+    const link = h("a.results-tab", {
+      href: `#/leaderboard/${dim}`,
+      onclick: (event) => {
+        event.preventDefault();
+        writeHash({ page: "leaderboard", sub: dim, query: queryFrom(option) });
+      },
+    }, option.label);
+    if (option.textOnly === textOnly) link.classList.add("active");
+    taskScopeTabs.appendChild(link);
+  }
+
   // Per-category/detail expansion is per-card. Backend/Harness comparison
   // filters are mode buttons rather than on/off switches so the interaction
   // language stays aligned with the expandable metric cards.
@@ -262,7 +292,7 @@ function buildControls(state) {
     }));
   }
 
-  return h("div.results-controls", [tabs, scopeTabs, modeWrap]);
+  return h("div.results-controls", [tabs, scopeTabs, taskScopeTabs, modeWrap]);
 }
 
 function buildComparisonModes(state, onChange) {

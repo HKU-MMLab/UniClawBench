@@ -12,6 +12,7 @@ import { categoryLabel } from "../../lib/format.js";
 import { parseHash, writeHash } from "../../lib/router.js";
 import { registerPageRefresh } from "../../lib/refresh.js";
 import { mount as mountDetail } from "./detail.js";
+import { getTextOnlyTaskIds, isTextOnlyEnabled } from "../../lib/text-only.js";
 
 const GROUPS = [
   { id: "smoke", label: "Smoketest", match: (c) => c.startsWith("0") },
@@ -55,10 +56,11 @@ export async function mount(root, route) {
   lastRoute = route;
   const grp = route.query.grp || "all";
   const cat = route.query.cat || "";
+  const textOnly = isTextOnlyEnabled(route.query);
 
   clear(root);
   const page = h("div.tasks-page", [
-    h("div.tasks-header", [h("h2", "Tasks")]),
+    h("div.tasks-header", [h("h2", "Tasks"), textOnly ? h("span.results-note", "Text-only task subset") : null]),
     h("div#tasks-nav"),
     h("div#tasks-body", h("div.loading-stub", "Loading…")),
   ]);
@@ -67,10 +69,10 @@ export async function mount(root, route) {
   const body = page.querySelector("#tasks-body");
   const nav = page.querySelector("#tasks-nav");
   try {
-    const data = await getJSON(tasksListUrl());
-    const tasks = data.tasks || [];
+    const [data, textOnlyIds] = await Promise.all([getJSON(tasksListUrl()), getTextOnlyTaskIds()]);
+    const tasks = (data.tasks || []).filter((task) => !textOnly || textOnlyIds.has(task.task_id));
     const cats = categoriesFrom(tasks);
-    renderNav(nav, cats, grp, cat);
+    renderNav(nav, cats, grp, cat, textOnly);
     renderBody(body, tasks, cats, grp, cat);
   } catch (err) {
     clear(body);
@@ -93,26 +95,31 @@ registerPageRefresh("tasks", async () => {
   }
 });
 
-function pill(label, active, query) {
+function pill(label, active, query, textOnly) {
   const link = h("a", {
     href: "#/tasks",
     onclick: (event) => {
       event.preventDefault();
-      writeHash({ page: "tasks", query });
+      writeHash({ page: "tasks", query: { ...query, ...(textOnly ? { text: "only" } : {}) } });
     },
   }, label);
   if (active) link.classList.add("active");
   return link;
 }
 
-function renderNav(nav, cats, grp, cat) {
+function renderNav(nav, cats, grp, cat, textOnly) {
   clear(nav);
+  const capability = h("div.tasks-cat-filter", { role: "group", "aria-label": "Task capability scope" });
+  capability.appendChild(pill("All tasks", !textOnly, { grp, ...(cat ? { cat } : {}) }, false));
+  capability.appendChild(pill("Text-only", textOnly, { grp, ...(cat ? { cat } : {}) }, true));
+  nav.appendChild(capability);
+
   // Top level: ALL + only the groups that actually have suites present.
   const top = h("div.tasks-cat-filter");
-  top.appendChild(pill("ALL", grp === "all", {}));
+  top.appendChild(pill("ALL", grp === "all", {}, textOnly));
   for (const g of GROUPS) {
     if (!cats.some((c) => groupOf(c) === g.id)) continue;
-    top.appendChild(pill(g.label, grp === g.id, { grp: g.id }));
+    top.appendChild(pill(g.label, grp === g.id, { grp: g.id }, textOnly));
   }
   nav.appendChild(top);
 
@@ -120,10 +127,10 @@ function renderNav(nav, cats, grp, cat) {
   if (grp !== "all") {
     const suites = cats.filter((c) => groupOf(c) === grp);
     const sub = h("div.tasks-cat-filter.tasks-cat-sub");
-    sub.appendChild(pill("ALL", !cat, { grp }));
+    sub.appendChild(pill("ALL", !cat, { grp }, textOnly));
     for (const c of suites) {
       const slug = c.split("_")[0];
-      sub.appendChild(pill(`${slug} ${categoryLabel(c)}`, cat === slug, { grp, cat: slug }));
+      sub.appendChild(pill(`${slug} ${categoryLabel(c)}`, cat === slug, { grp, cat: slug }, textOnly));
     }
     nav.appendChild(sub);
   }

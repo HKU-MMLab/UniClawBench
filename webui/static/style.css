@@ -4153,6 +4153,14 @@ pre {
   margin-left: 4px;
 }
 
+.results-controls .results-task-scope {
+  margin-left: 4px;
+}
+
+.tasks-page > #tasks-nav > .tasks-cat-filter:first-child {
+  margin-bottom: 10px;
+}
+
 /* ── Unify the ALL/EN/ZH selectors across Tasks + Results, and give each
    task suite section an ordered (sequenced) accent color. ── */
 .tasks-cat-filter { gap: 2px; border-radius: 12px; }
