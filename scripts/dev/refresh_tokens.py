@@ -15,7 +15,8 @@ Usage:
     python3 scripts/dev/refresh_tokens.py --provider zoom
     python3 scripts/dev/refresh_tokens.py --provider ncm
 
-    # Verify-only (no rotation, exits non-zero if any provider is broken):
+    # Verify-only (no rotation; providers with rotating refresh tokens report
+    # an inconclusive status rather than consuming the token):
     python3 scripts/dev/refresh_tokens.py --check-only
 
     # Don't auto-open a browser; just print the URL (SSH / headless mode):
@@ -310,8 +311,16 @@ def _zoom_token_call(*, client_id: str, client_secret: str, body: dict[str, str]
     return resp.json()
 
 
-def check_zoom(env: dict[str, str]) -> bool:
-    """Try a refresh_token grant; success means the token is healthy."""
+def check_zoom(env: dict[str, str]) -> bool | None:
+    """Validate Zoom configuration without consuming its refresh token.
+
+    Zoom rotates a refresh token on every successful ``refresh_token`` grant.
+    There is no non-mutating token-introspection endpoint for this app, so a
+    regular health probe would invalidate the value in ``privacy.local.env``
+    unless it also persisted the replacement token.  Return ``None`` to ask
+    the caller to run the normal refresh path (or report an inconclusive
+    result for ``--check-only``) instead of making that destructive probe.
+    """
     client_id = env.get("ZOOM_CLIENT_ID", "")
     client_secret = env.get("ZOOM_CLIENT_SECRET", "")
     refresh_token = env.get("ZOOM_REFRESH_TOKEN", "")
@@ -321,17 +330,11 @@ def check_zoom(env: dict[str, str]) -> bool:
             file=sys.stderr,
         )
         return False
-    try:
-        _zoom_token_call(
-            client_id=client_id,
-            client_secret=client_secret,
-            body={"grant_type": "refresh_token", "refresh_token": refresh_token},
-        )
-    except Exception as exc:
-        print(f"  ✗ zoom: existing refresh_token rejected: {exc}", file=sys.stderr)
-        return False
-    print("  ✓ zoom: existing refresh_token still valid (Zoom rotates on every refresh).")
-    return True
+    print(
+        "  ! zoom: token validity cannot be probed without rotating the "
+        "refresh token; no network request was made."
+    )
+    return None
 
 
 def refresh_zoom(env: dict[str, str], args) -> dict[str, str]:
@@ -728,6 +731,32 @@ def main() -> int:
         if prov.notes:
             print(f"  ({prov.notes})")
         ok = prov.check(env)
+        if ok is None:
+            if args.check_only:
+                any_failure = True
+                print(
+                    f"  --check-only: {prov.name} cannot be verified "
+                    "non-destructively; skipping rotation."
+                )
+                print()
+                continue
+            try:
+                updates = prov.refresh(env, args)
+            except KeyboardInterrupt:
+                print(f"\n  ↪ {prov.name}: aborted by user.")
+                any_failure = True
+                print()
+                continue
+            except Exception as exc:
+                print(f"  ✗ {prov.name}: refresh raised {exc}", file=sys.stderr)
+                any_failure = True
+                print()
+                continue
+            if updates:
+                accumulated_updates.update(updates)
+                print(f"  ✓ {prov.name}: queued {len(updates)} env-var update(s).")
+            print()
+            continue
         if ok:
             print(f"  ✓ {prov.name}: no rotation needed.")
             print()

@@ -88,6 +88,10 @@ configs/*.local.json.bak
 configs/*.local.toml.bak
 configs/*.local.env.bak
 configs/*.local.yaml.bak
+configs/*.local.json.*
+configs/*.local.toml.*
+configs/*.local.env.*
+configs/*.local.yaml.*
 
 # ──────────────────────────────────────────────────────────────────────
 # Per-task service pycache (containers occasionally drop these into the
